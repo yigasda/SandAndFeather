@@ -64,7 +64,7 @@ function stand(ctx, name, x, y, footX, footY) {
 }
 
 // decor that has a drawn picture: flowers, beds, bushes, rocks, reeds, lily pads
-const PIC_KINDS = { flowers: ['flowers_0', 'flowers_1', 'flowers_2'], bed: ['bed_0', 'bed_1', 'bed_2'], bush: ['bush', 'bush_berry'], rocks: ['rocks'], reeds: ['reeds', 'reeds_1'], lily: ['lily'] };
+const PIC_KINDS = { jackal: ['duat_guardian'], flowers: ['flowers_0', 'flowers_1', 'flowers_2'], bed: ['bed_0', 'bed_1', 'bed_2'], bush: ['bush', 'bush_berry'], rocks: ['rocks'], reeds: ['reeds', 'reeds_1'], lily: ['lily'] };
 const PIC_FLAT = new Set(['flowers', 'bed', 'lily']);
 function picFor(ctx, d) {
     const names = PIC_KINDS[d.k];
@@ -98,9 +98,12 @@ export function paintMap(m, S, gr, tp, season) {
         if (!pic) continue;
         const x = f.x * T, y = (f.y + f.h) * T - pic.height;
         const split = Math.max(0, f.y * T - y);
-        // Broad feet shadows; no rectangular tile shadows around the irregular outline.
-        box(g, x + 7, y + pic.height - 3, 20, 5, SHADOW);
-        box(g, x + pic.width - 19, y + pic.height - 2, 22, 5, SHADOW);
+        // Follow the uneven silhouette, including feet at different ground levels.
+        const shadow = layer(pic.width, pic.height), sg = shadow.getContext('2d');
+        sg.drawImage(pic, 0, 0); sg.globalCompositeOperation = 'source-in';
+        box(sg, 0, 0, pic.width, pic.height, SHADOW);
+        g.drawImage(shadow, x + 4, y + 3);
+        shadow.width = shadow.height = 1;
         if (split) u.drawImage(pic, 0, 0, pic.width, split, x, y, pic.width, split);
         g.drawImage(pic, 0, split, pic.width, pic.height - split, x, y + split, pic.width, pic.height - split);
     }
@@ -355,16 +358,21 @@ function steppingStones(ctx) {
         let span = 1;
         while (paving(i + span, j)) span++;
         const inner = m.legend(i, j).style === 'duat';
-        const width = inner ? 22 : [17, 20, 16][j % 3];
+        const width = inner ? 22 : [16, 21, 15, 19][j % 4];
         const offset = inner ? 0 : [-3, 3, 0, 2][j % 4];
         const x = i * T + Math.floor((span * T - width) / 2) + offset, y = j * T + 4;
-        box(g, x + 3, y + 7, width - 3, 2, SHADOW);
-        box(g, x + 2, y, width - 4, 1, '#D7CEBC');
-        box(g, x, y + 2, width, 4, '#BEB5A3');
-        box(g, x + 1, y + 1, width - 2, 6, '#CFC5AF');
-        box(g, x + 3, y + 1, width - 6, 1, '#E9DFC9');
-        box(g, x + 2, y + 7, width - 4, 1, '#A69A86');
-        box(g, x + width - 2, y + 3, 1, 3, '#AEA18D');
+        const h = inner ? 6 : [9, 7, 10, 8][j % 4];
+        const shape = [[3,0],[width-4,0],[width-4,1],[width-1,1],[width-1,3],
+            [width,3],[width,h-3],[width-3,h-3],[width-3,h],[3,h],[3,h-1],[0,h-1],[0,2],[3,2]];
+        const fill = (dx, dy, color) => {
+            g.fillStyle = color; g.beginPath();
+            shape.forEach(([a,b], n) => n ? g.lineTo(x+a+dx,y+b+dy) : g.moveTo(x+a+dx,y+b+dy));
+            g.closePath(); g.fill();
+        };
+        fill(2, 2, SHADOW); fill(0, 1, '#A99E89'); fill(0, 0, '#D0C6B0');
+        box(g, x + 3, y, width - 7, 1, '#EEE2C9');
+        box(g, x + 1, y + 3, 2, Math.max(1, h - 5), '#E5D8BE');
+        if (j % 2) box(g, x + width - 4, y + 3, 2, 2, '#C0B49B');
     }
 }
 // sand: from its pictures, or flat with a little ripple in fixed places

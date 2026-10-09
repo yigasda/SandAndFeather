@@ -180,7 +180,7 @@ if __name__ == '__main__':
               'crop_akhet': to_grid(crop('sprout')), 'crop_peret': to_grid(crop('leafy')), 'crop_shemu': to_grid(crop('wheat'))}
     import props, buildings, duat
     things.update({k: to_grid(v) for k, v in buildings.build_all().items()})
-    things['duat_cliff'] = to_grid(duat.cliff())
+    things.update({k: to_grid(v) for k, v in duat.build_all().items()})
     things.update({'bush': to_grid(props.bush(0)), 'bush_berry': to_grid(props.bush(1)), 'rocks': to_grid(props.rocks()),
                    'flowers_0': to_grid(props.flowers(0)), 'flowers_1': to_grid(props.flowers(1)), 'flowers_2': to_grid(props.flowers(2)),
                    'bed_0': to_grid(props.bed(0)), 'bed_1': to_grid(props.bed(1)), 'bed_2': to_grid(props.bed(2)),

@@ -14,7 +14,7 @@ const SEASON = {
 SEASON.epagomenal = SEASON.shemu;
 // sprites drawn flat on the ground, under people
 const FLAT = new Set(['prints', 'sluice', 'mural']);
-const TINT = { dawn: 'rgba(255,190,150,0.10)', day: null, evening: 'rgba(214,110,40,0.18)', night: 'rgba(16,24,58,0.42)' };
+const TINT = { dawn: 'rgba(255,190,150,0.10)', day: null, evening: 'rgba(214,110,40,0.18)', night: 'rgba(20,44,103,0.52)' };
 
 export const MODE = { life: '생활', growth: '육성', duat: '원정', realm: '경영' };
 
