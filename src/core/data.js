@@ -19,12 +19,13 @@ export async function loadJson(name) {
     return j;
 }
 
-export const DATA = { calendar: null, places: null, items: null, finds: null, talk: null, maps: {} };
+export const DATA = { calendar: null, places: null, items: null, finds: null, talk: null, market: null, recipes: null, works: null, duat: null, daily: null, adventures: null, maps: {} };
+const FILES = ['calendar', 'places', 'items', 'finds', 'talk', 'market', 'recipes', 'works', 'duat', 'daily', 'adventures'];
+export const MAPS = ['ombos', 'ruins'];
 
 export async function loadData() {
-    const [calendar, places, items, finds, talk, ombos] = await Promise.all(
-        ['calendar.json', 'places.json', 'items.json', 'finds.json', 'talk.json', 'maps/ombos.json'].map(loadJson));
-    Object.assign(DATA, { calendar, places, items, finds, talk });
-    DATA.maps.ombos = ombos;
+    const all = await Promise.all([...FILES.map(f => loadJson(`${f}.json`)), ...MAPS.map(m => loadJson(`maps/${m}.json`))]);
+    FILES.forEach((f, k) => { DATA[f] = all[k]; });
+    MAPS.forEach((m, k) => { DATA.maps[m] = all[FILES.length + k]; });
     return DATA;
 }

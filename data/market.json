@@ -1,0 +1,17 @@
+{
+  "_about": "시장에서 파는 것. 사는 값은 items.json의 price, 파는 값은 그 절반이야. 기록은 못 팔아.",
+  "sells": [
+    "bread",
+    "honey",
+    "onion",
+    "salt",
+    "dates",
+    "lotus_seed",
+    "barley_seed",
+    "fig_seed",
+    "reed_bundle",
+    "pitch",
+    "limestone",
+    "cedar_plank"
+  ]
+}

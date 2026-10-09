@@ -1,5 +1,5 @@
 {
-  "_about": "선착장에서 건질 수 있는 것. weight가 클수록 자주 나와. parts는 그 시간대에만, seasons는 그 계절에만. 비우면 언제나.",
+  "_about": "dock은 선착장에서 건질 거리, fish는 낚시. weight가 클수록 자주 나와. parts는 그 시간대에만, seasons는 그 계절에만. 비우면 언제나.",
   "dock": [
     {
       "item": "sealed_jar",
@@ -50,6 +50,42 @@
     },
     {
       "item": "sealed_letter",
+      "weight": 1
+    }
+  ],
+  "fish": [
+    {
+      "item": "tilapia",
+      "weight": 6
+    },
+    {
+      "item": "nile_perch",
+      "weight": 4
+    },
+    {
+      "item": "catfish",
+      "weight": 4,
+      "parts": [
+        "evening",
+        "night"
+      ]
+    },
+    {
+      "item": "eel",
+      "weight": 3,
+      "parts": [
+        "night"
+      ]
+    },
+    {
+      "item": "golden_carp",
+      "weight": 1,
+      "parts": [
+        "dawn"
+      ]
+    },
+    {
+      "item": "sealed_jar",
       "weight": 1
     }
   ]

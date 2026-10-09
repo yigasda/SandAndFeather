@@ -7,6 +7,8 @@ const PAL = {
     sand: ['#E7C995', '#E2C08A', '#EBD0A0'], rock: ['#B79C7A', '#AD9271', '#C2A784'], wall: ['#C9B08C', '#C2A985', '#CFB794'],
     stone: ['#DCCBAE', '#D6C4A6', '#E1D1B5'], path: ['#D3BF9E', '#CDB896', '#D8C5A6'], bank: ['#C9B48C', '#C3AE86', '#CFBA92'],
     dock: ['#9A7650', '#93704B', '#A07C55'], fence: ['#E2C08A', '#E7C995', '#E2C08A'],
+    ditch: ['#B89B72', '#B29569', '#BEA17A'], dryearth: ['#A98A63', '#A3845D', '#AF9069'],
+    rubble: ['#D3BF9E', '#CDB896', '#D8C5A6'], pillar: ['#DCCBAE', '#D6C4A6', '#E1D1B5'], gate: ['#C9B08C', '#C2A985', '#CFB794'],
 };
 // the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
 const SEASON = {
@@ -15,6 +17,8 @@ const SEASON = {
     shemu: { water: ['#7DB8B0', '#76B1A9', '#86BFB7'], grass: ['#B7B26A', '#AFA962', '#C0BA72'], farm: ['#8A6A45', '#80623F'], crop: '#C9A84A' },
 };
 SEASON.epagomenal = SEASON.shemu;
+// sprites drawn flat on the ground, under people
+const FLAT = new Set(['prints', 'sluice', 'mural']);
 const TINT = { dawn: 'rgba(255,190,150,0.10)', day: null, evening: 'rgba(214,110,40,0.18)', night: 'rgba(16,24,58,0.42)' };
 
 export const MODE = { life: '생활', growth: '육성', duat: '원정', realm: '경영' };
@@ -66,6 +70,12 @@ export class Renderer {
             if (t === 'bank') px(g, x, y + 13, T, 3, '#E2EFE9');
             if (t === 'dock') { px(g, x, y, T, 1, 'rgba(0,0,0,.25)'); px(g, x + 4, y, 1, T, 'rgba(0,0,0,.2)'); px(g, x + 11, y, 1, T, 'rgba(0,0,0,.2)'); }
             if (t === 'fence') { px(g, x, y + 6, T, 2, '#8A6644'); px(g, x + 2, y + 3, 2, 10, '#7A5A38'); px(g, x + 12, y + 3, 2, 10, '#7A5A38'); }
+            if (t === 'ditch') { px(g, x + 3, y, 10, T, 'rgba(90,65,40,.25)'); px(g, x + 5, y, 6, T, 'rgba(90,65,40,.2)'); }
+            if (t === 'dryearth') { px(g, x + 2, y + 5, 6, 1, 'rgba(60,40,20,.35)'); px(g, x + 8, y + 5, 1, 5, 'rgba(60,40,20,.35)'); px(g, x + 9, y + 11, 5, 1, 'rgba(60,40,20,.3)'); }
+            if (t === 'rubble') { px(g, x + 1, y + 6, 7, 6, '#B8A07E'); px(g, x + 8, y + 3, 6, 5, '#C4AC88'); px(g, x + 6, y + 10, 8, 5, '#AD9572'); px(g, x + 2, y + 13, 12, 2, 'rgba(60,40,20,.2)'); }
+            if (t === 'pillar') { px(g, x + 3, y + 1, 10, 14, '#E8DCC4'); px(g, x + 3, y + 1, 10, 2, '#C9B591'); px(g, x + 3, y + 13, 10, 2, '#B9A27E'); px(g, x + 6, y + 3, 1, 10, 'rgba(0,0,0,.1)'); px(g, x + 9, y + 3, 1, 10, 'rgba(0,0,0,.1)'); }
+            if (t === 'gate') { px(g, x, y, T, T, '#7A5A38'); px(g, x + 2, y + 2, 12, 12, '#8E6A44'); px(g, x + 7, y + 2, 2, 12, '#6A4C2E'); px(g, x + 3, y + 7, 10, 2, '#5A3F28'); }
+            if (m.legend(i, j).obj === 'lotus') { px(u, x + 4, y + 6, 8, 5, '#5E8C46'); px(u, x + 6, y + 3, 4, 4, '#7FA6E0'); px(u, x + 7, y + 2, 2, 2, '#B9CFF2'); }
             if (m.legend(i, j).obj === 'palm') { px(g, x + 7, y + 5, 3, 11, '#7A5A38'); px(g, x + 4, y + 14, 9, 2, 'rgba(60,40,20,.25)'); this.palmTop(u, x, y); }
         }
         for (const b of m.buildings) this.building(g, b);
@@ -122,7 +132,7 @@ export class Renderer {
     }
 
     // ---- a frame
-    draw({ player, npcs, part, time, near }) {
+    draw({ player, people, things = [], part, time, near }) {
         const g = this.g, m = this.map, z = this.zoom, W = this.cv.width, H = this.cv.height, ts = T * z;
         g.imageSmoothingEnabled = false;
         // the camera follows her, but never shows past the map's edge
@@ -141,10 +151,15 @@ export class Renderer {
             const off = ((time * 3 + rnd(i, j, 6) * 16) % 16);
             g.fillRect(i * ts + off * z - cx, j * ts + (5 + rnd(i, j, 7) * 7) * z - cy, 5 * z, z);
         }
-        // people, back to front
-        const ppl = [...npcs.map(n => ({ look: n.look, x: n.x, y: n.y, dir: 'down', step: 0 })), { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0 }];
+        // things lying on the ground first, then people and standing things back to front
+        for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
+        const ppl = [...people, { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0 },
+            ...things.filter(t => !FLAT.has(t.sprite)).map(t => ({ thing: t, x: t.x, y: t.y }))];
         ppl.sort((a, b) => a.y - b.y);
-        for (const p of ppl) this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
+        for (const p of ppl) {
+            if (p.thing) this.sprite(g, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
+            else this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
+        }
         g.drawImage(this.top, -cx, -cy, mw, mh);
         // place names: the mode in orange, then the name ("생활 시장"), like the mockup
         g.textBaseline = 'middle';
@@ -169,6 +184,51 @@ export class Renderer {
         // the hour's light
         const tint = TINT[part];
         if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
+    }
+
+    // a thing on the map, drawn on its tile (x, y = the tile's top left on screen)
+    sprite(g, t, x, y, z, time) {
+        const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(x + a * z, y + b * z, w * z, h * z); };
+        const bob = Math.round(Math.sin(time * 4 + t.x) * 1);
+        switch (t.sprite) {
+            case 'beetle':
+                P(5, 13, 6, 1, 'rgba(40,25,10,.2)');
+                P(6, 7 + bob, 4, 4, '#2F6FB6'); P(7, 6 + bob, 2, 1, '#1D3F6E'); P(6, 7 + bob, 1, 2, '#7FB2EE'); P(5, 8 + bob, 1, 2, '#2F6FB6'); P(10, 8 + bob, 1, 2, '#2F6FB6');
+                if (Math.floor(time * 3) % 2) { P(4, 6 + bob, 2, 1, 'rgba(255,255,255,.7)'); P(10, 6 + bob, 2, 1, 'rgba(255,255,255,.7)'); }
+                break;
+            case 'falcon':
+                P(5, 14, 6, 1, 'rgba(40,25,10,.2)');
+                P(6, 6, 4, 6, '#6B5A4A'); P(7, 4, 3, 3, '#3B3028'); P(10, 5, 1, 1, '#E0B040'); P(5, 7, 2, 4, '#4E4136'); P(9, 7, 2, 4, '#4E4136'); P(7, 12, 1, 2, '#E0B040'); P(9, 12, 1, 2, '#E0B040');
+                break;
+            case 'cat':
+                P(4, 14, 8, 1, 'rgba(40,25,10,.2)');
+                P(5, 9, 6, 4, '#C9A36A'); P(9, 6, 4, 4, '#C9A36A'); P(9, 5, 1, 1, '#C9A36A'); P(12, 5, 1, 1, '#C9A36A'); P(10, 7, 1, 1, '#2B2018'); P(4, 7 + bob, 1, 3, '#C9A36A'); P(6, 10, 1, 2, '#8A6A45');
+                break;
+            case 'prints':
+                for (let k = 0; k < 3; k++) { P(3 + k * 4, 6 + (k % 2) * 4, 2, 3, 'rgba(90,65,40,.45)'); }
+                break;
+            case 'chest':
+                P(3, 13, 10, 2, 'rgba(40,25,10,.25)'); P(3, 7, 10, 7, '#8E6A44'); P(3, 7, 10, 2, '#6A4C2E'); P(7, 9, 2, 2, '#E0B040');
+                break;
+            case 'sluice':
+                P(3, 4, 2, 11, '#6A4C2E'); P(11, 4, 2, 11, '#6A4C2E'); P(5, t.open ? 4 : 8, 6, 5, '#8E6A44');
+                if (t.open) P(5, 11, 6, 4, '#5FA7A3');
+                break;
+            case 'boat':
+                P(1, 9, 14, 3, '#7A5A38'); P(2, 12, 12, 1, '#5A3F28'); P(7, 2, 1, 8, '#5A3F28'); P(8, 3, 4, 5, '#F2E8DA');
+                break;
+            case 'mural':
+                P(2, 3, 12, 10, `rgba(160,190,255,${0.35 + 0.2 * Math.sin(time * 2)})`); P(5, 5, 6, 1, '#E8F0FF'); P(7, 6, 2, 5, '#E8F0FF'); P(4, 10, 8, 1, '#E8F0FF');
+                break;
+            case 'stone':
+                P(2, 7, 12, 8, '#B8A07E'); P(3, 6, 9, 3, '#C9B591'); P(2, 14, 12, 1, 'rgba(40,25,10,.25)');
+                break;
+            default: { // a sparkle: something to look at
+                const k = 0.5 + 0.5 * Math.sin(time * 5 + t.x * 3);
+                g.fillStyle = `rgba(255,236,170,${0.55 + 0.45 * k})`;
+                P(7, 4, 2, 8, g.fillStyle); P(4, 7, 8, 2, g.fillStyle); P(7, 7, 2, 2, '#FFFFFF');
+            }
+        }
     }
 
     // the whole map small, with a dot for her

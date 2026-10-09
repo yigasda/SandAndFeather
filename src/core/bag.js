@@ -62,3 +62,37 @@ export async function openItem(uid) {
     });
     return ok ? { gave: got } : null;
 }
+
+// ---- straight on the state, for activities that check first and then change (the caller saves) ----
+export const countOf = (s, id) => s.bag.items.filter(it => it.id === id).length;
+export const ofKind = (s, kind) => s.bag.items.filter(it => itemInfo(it.id)?.kind === kind);
+// needs: { itemId: count }, deben: number → can it all be paid?
+export function canPay(s, needs = {}, deben = 0) {
+    if ((s.bag.deben || 0) < deben) return false;
+    return Object.entries(needs).every(([id, n]) => countOf(s, id) >= n);
+}
+// takes the oldest ones first; only after canPay said yes
+export function pay(s, needs = {}, deben = 0) {
+    if (!canPay(s, needs, deben)) return false;
+    s.bag.deben -= deben;
+    for (const [id, n] of Object.entries(needs)) {
+        for (let k = 0; k < n; k++) { const i = s.bag.items.findIndex(it => it.id === id); s.bag.items.splice(i, 1); }
+    }
+    emit('bag:changed', {});
+    return true;
+}
+export function give(s, id, n = 1, from = '') {
+    const uids = [];
+    for (let k = 0; k < n; k++) uids.push(put(s.bag, s, id, from));
+    emit('bag:changed', {});
+    return uids;
+}
+export function takeUid(s, uid) {
+    const i = s.bag.items.findIndex(it => it.uid === uid);
+    if (i < 0) return null;
+    const it = s.bag.items.splice(i, 1)[0];
+    emit('bag:changed', {});
+    return it;
+}
+// "푸른 파이앙스 풍뎅이 2" style list of a needs object
+export const needsText = (needs = {}) => Object.entries(needs).map(([id, n]) => `${itemInfo(id)?.ko || id}${n > 1 ? ` ${n}` : ''}`).join(', ');

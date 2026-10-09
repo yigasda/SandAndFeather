@@ -45,6 +45,28 @@
    "t": "sand",
    "obj": "palm",
    "solid": true
+  },
+  "c": {
+   "t": "ditch"
+  },
+  "D": {
+   "t": "dryearth"
+  },
+  "G": {
+   "t": "gate",
+   "solid": true
+  },
+  "w": {
+   "t": "water",
+   "solid": true
+  },
+  "o": {
+   "t": "stone"
+  },
+  "l": {
+   "t": "water",
+   "solid": true,
+   "obj": "lotus"
   }
  },
  "buildings": [
@@ -115,7 +137,7 @@
    "label": "세트의 신전",
    "mode": "realm",
    "title": "세트의 신전 · 집무실",
-   "text": "지도 탁자 위에 이집트가 펼쳐져 있다. 땅을 다스리는 일은 나중에 열린다."
+   "text": "지도 탁자 위에 옴보스가 펼쳐져 있다. 마을을 정비할 수 있다."
   },
   {
    "id": "scriptorium",
@@ -124,7 +146,7 @@
    "label": "필사실",
    "mode": "growth",
    "title": "필사실",
-   "text": "서기들이 갈대 펜을 깎고 있다. 공부는 육성 단계에서 열린다."
+   "text": "서기들이 갈대 펜을 깎고 있다. 공부하거나 기록을 해독할 수 있다."
   },
   {
    "id": "training",
@@ -133,7 +155,7 @@
    "label": "훈련장",
    "mode": "growth",
    "title": "훈련장",
-   "text": "모래 위에 발자국이 어지럽다. 세트의 사막 훈련은 육성 단계에서 열린다."
+   "text": "모래 위에 발자국이 어지럽다. 세트식 사막 훈련."
   },
   {
    "id": "market",
@@ -142,7 +164,7 @@
    "label": "시장",
    "mode": "life",
    "title": "시장",
-   "text": "상인들이 좌판을 펴고 있다. 사고팔기는 생활 단계에서 열린다."
+   "text": "상인들이 좌판을 펴고 있다."
   },
   {
    "id": "garden",
@@ -151,7 +173,7 @@
    "label": "텃밭",
    "mode": "life",
    "title": "텃밭",
-   "text": "물기를 머금은 검은 흙. 씨를 뿌리는 건 생활 단계에서 열린다."
+   "text": "물기를 머금은 검은 흙."
   },
   {
    "id": "kitchen",
@@ -160,7 +182,7 @@
    "label": "부엌",
    "mode": "life",
    "title": "부엌",
-   "text": "화덕에서 빵 굽는 냄새가 난다. 요리는 생활 단계에서 열린다."
+   "text": "화덕에서 빵 굽는 냄새가 난다."
   },
   {
    "id": "dock",
@@ -178,7 +200,16 @@
    "label": "두아트",
    "mode": "duat",
    "title": "두아트의 문",
-   "text": "바위 틈에서 차가운 바람이 올라온다. 저승 원정은 원정 단계에서 열린다."
+   "text": "바위 틈에서 차가운 바람이 올라온다. 밤에만 문이 열린다."
+  },
+  {
+   "id": "altar",
+   "x": 21,
+   "y": 10,
+   "label": "제단",
+   "mode": "growth",
+   "title": "신전 제단",
+   "text": "향이 타고 있다. 신전 일을 도우면 신앙이 깊어진다."
   }
  ],
  "npcs": [
@@ -217,13 +248,372 @@
   "x": 25,
   "y": 16
  },
+ "overlays": {
+  "_about": "정비나 모험이 끝나면 바뀌는 칸. x, y 자리의 글자를 c로 바꿔.",
+  "canal": [
+   {
+    "x": 13,
+    "y": 21,
+    "c": "w"
+   },
+   {
+    "x": 13,
+    "y": 22,
+    "c": "w"
+   },
+   {
+    "x": 13,
+    "y": 23,
+    "c": "w"
+   },
+   {
+    "x": 13,
+    "y": 24,
+    "c": "w"
+   },
+   {
+    "x": 13,
+    "y": 25,
+    "c": "w"
+   },
+   {
+    "x": 13,
+    "y": 26,
+    "c": "w"
+   }
+  ],
+  "field": [
+   {
+    "x": 15,
+    "y": 21,
+    "c": "f"
+   },
+   {
+    "x": 15,
+    "y": 22,
+    "c": "f"
+   },
+   {
+    "x": 15,
+    "y": 23,
+    "c": "f"
+   },
+   {
+    "x": 16,
+    "y": 21,
+    "c": "f"
+   },
+   {
+    "x": 16,
+    "y": 22,
+    "c": "f"
+   },
+   {
+    "x": 16,
+    "y": 23,
+    "c": "f"
+   },
+   {
+    "x": 17,
+    "y": 21,
+    "c": "f"
+   },
+   {
+    "x": 17,
+    "y": 22,
+    "c": "f"
+   },
+   {
+    "x": 17,
+    "y": 23,
+    "c": "f"
+   },
+   {
+    "x": 18,
+    "y": 21,
+    "c": "f"
+   },
+   {
+    "x": 18,
+    "y": 22,
+    "c": "f"
+   },
+   {
+    "x": 18,
+    "y": 23,
+    "c": "f"
+   },
+   {
+    "x": 19,
+    "y": 21,
+    "c": "f"
+   },
+   {
+    "x": 19,
+    "y": 22,
+    "c": "f"
+   },
+   {
+    "x": 19,
+    "y": 23,
+    "c": "f"
+   },
+   {
+    "x": 20,
+    "y": 21,
+    "c": "f"
+   },
+   {
+    "x": 20,
+    "y": 22,
+    "c": "f"
+   },
+   {
+    "x": 20,
+    "y": 23,
+    "c": "f"
+   }
+  ],
+  "garden": [
+   {
+    "x": 3,
+    "y": 5,
+    "c": "o"
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "c": "g"
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "c": "g"
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "c": "w"
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "c": "g"
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "c": "l"
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "c": "g"
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "c": "w"
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "c": "g"
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "c": "g"
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "c": "g"
+   }
+  ]
+ },
+ "anchors": [
+  {
+   "id": "palm_shade",
+   "x": 15,
+   "y": 10,
+   "ko": "야자수 그늘"
+  },
+  {
+   "id": "west_road",
+   "x": 3,
+   "y": 17,
+   "ko": "마을 서쪽 길"
+  },
+  {
+   "id": "by_scriptorium",
+   "x": 14,
+   "y": 5,
+   "ko": "필사실 옆"
+  },
+  {
+   "id": "rock_foot",
+   "x": 35,
+   "y": 15,
+   "ko": "바위 언덕 아래"
+  },
+  {
+   "id": "meadow",
+   "x": 31,
+   "y": 22,
+   "ko": "동쪽 풀밭"
+  },
+  {
+   "id": "south_grass",
+   "x": 18,
+   "y": 25,
+   "ko": "강가 풀밭"
+  },
+  {
+   "id": "furrow",
+   "x": 6,
+   "y": 23,
+   "ko": "밭고랑"
+  },
+  {
+   "id": "roadside",
+   "x": 21,
+   "y": 20,
+   "ko": "큰길 가"
+  },
+  {
+   "id": "east_end",
+   "x": 36,
+   "y": 21,
+   "ko": "마을 동쪽 끝"
+  },
+  {
+   "id": "north_path",
+   "x": 10,
+   "y": 13,
+   "ko": "북쪽 길"
+  },
+  {
+   "id": "behind_temple",
+   "x": 34,
+   "y": 8,
+   "ko": "신전 뒤"
+  },
+  {
+   "id": "before_dock",
+   "x": 24,
+   "y": 26,
+   "ko": "선착장 앞"
+  },
+  {
+   "id": "house_front",
+   "x": 19,
+   "y": 17,
+   "ko": "집 앞"
+  },
+  {
+   "id": "garden_wall",
+   "x": 8,
+   "y": 4,
+   "ko": "옛 정원 담 옆"
+  }
+ ],
+ "secrets": [
+  {
+   "id": "night_mural",
+   "x": 35,
+   "y": 13,
+   "ko": "빛나는 벽화",
+   "when": {
+    "parts": [
+     "night"
+    ]
+   },
+   "text": "달빛을 받은 바위에 별을 삼키는 여신이 그려져 있다. 낮에는 보이지 않던 그림이다.",
+   "give": "",
+   "xp": 4,
+   "en": "a mural on the rocks east of Ombos that glows only in moonlight"
+  },
+  {
+   "id": "sand_trace",
+   "x": 36,
+   "y": 19,
+   "ko": "모래 밑 흔적",
+   "when": {
+    "with": "set"
+   },
+   "text": "세트가 발끝으로 모래를 쓸자 묻혀 있던 돌상자 모서리가 드러난다.",
+   "give": "ancient_seal",
+   "xp": 5,
+   "en": "a stone box buried under the sand at the edge of Ombos, with an old cylinder seal inside"
+  },
+  {
+   "id": "high_mark",
+   "x": 38,
+   "y": 22,
+   "ko": "높은 표식",
+   "when": {
+    "with": "horus"
+   },
+   "text": "호루스가 가리킨 바위 꼭대기에 매 표식이 새겨져 있다. 틈에 접힌 종이가 끼워져 있다.",
+   "give": "map_scrap",
+   "xp": 5,
+   "en": "a falcon mark carved high on a rock outside Ombos, with a folded map scrap tucked into it"
+  },
+  {
+   "id": "low_stairs",
+   "x": 30,
+   "y": 26,
+   "ko": "드러난 계단",
+   "when": {
+    "seasons": [
+     "peret",
+     "shemu"
+    ]
+   },
+   "text": "물이 빠진 강가에 돌계단 세 칸이 드러났다. 맨 아래 칸 틈에 뭔가 끼어 있다.",
+   "give": "ka_statue",
+   "xp": 5,
+   "en": "old stone steps uncovered by the low river at Ombos, with a small ka statuette caught in them"
+  },
+  {
+   "id": "dawn_lotus",
+   "x": 2,
+   "y": 26,
+   "ko": "새벽 연꽃",
+   "when": {
+    "parts": [
+     "dawn"
+    ]
+   },
+   "text": "강가에 푸른 연꽃이 막 피었다.",
+   "give": "blue_lotus",
+   "xp": 2,
+   "daily": true,
+   "en": "a blue lotus just opened on the riverbank at dawn"
+  }
+ ],
+ "companionSpots": {
+  "set": {
+   "x": 24,
+   "y": 12
+  },
+  "horus": {
+   "x": 28,
+   "y": 11
+  }
+ },
+ "gardenChest": {
+  "x": 1,
+  "y": 3
+ },
  "rows": [
   "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
   ".rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.",
-  "....................................rrrr",
-  "..................################rrrrrr",
-  ".............p....#TTTTTTTTTTTTTT#rrrrrr",
-  "..................#TTTTTTTTTTTTTT#rrrrrr",
+  "#######.............................rrrr",
+  "#DDDDD#...........################rrrrrr",
+  "#DDDDD#......p....#TTTTTTTTTTTTTT#rrrrrr",
+  "###G###...........#TTTTTTTTTTTTTT#rrrrrr",
   "...=============..#TTTTTTTTTTTTTT#rrrrrr",
   "...=============..#TTTTTTTTTTTTTT#rrrrrr",
   "..........==......#TTTTTTTTTTTTTT#..rrrr",
@@ -239,12 +629,12 @@
   "..==================================.rrr",
   "..==================================.rrr",
   ".........................==..........rrr",
-  "...ffffffffff.p..........==.ggggggg.....",
-  ".p.ffffffffff.........p..==.ggggggg.....",
-  "...ffffffffff............==.ggggggg.p...",
-  "gggffffffffffggggggggggggggggggggggggggg",
-  "gggffffffffffggggpgggggggggggggpgggggggg",
-  "gggggggggggggggggggggggggggggggggggggggg",
+  "...ffffffffffcp..........==.ggggggg.....",
+  ".p.ffffffffffc........p..==.ggggggg.....",
+  "...ffffffffffc...........==.ggggggg.p...",
+  "gggffffffffffcgggggggggggggggggggggggggg",
+  "gggffffffffffcgggpgggggggggggggpgggggggg",
+  "gggggggggggggcgggggggggggggggggggggggggg",
   "bbbbbbbbbbbbbbbbbbbbbbbbbddbbbbbbbbbbbbb",
   "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~",
   "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~",

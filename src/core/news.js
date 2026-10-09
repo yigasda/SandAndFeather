@@ -28,11 +28,11 @@ export function newsStatus(n, chat = ctx().chat || []) {
 
 // text: English for the prompt; ko: how the game shows it; key: one of a kind (a newer one replaces it)
 // prepared: wait for a sent message that has one of `marks`; uid: the bag item it is about (marked talked then)
-export async function addNews({ text, ko = '', weight = 5, key = '', prepared = false, marks = [], uid = '' }) {
+export async function addNews({ text, ko = '', weight = 5, key = '', prepared = false, marks = [], uid = '', jid = '' }) {
     const s = getState();
     if (!s || !text) return null;
     if (key) s.news = s.news.filter(n => n.key !== key || (!n.prepared && newsStatus(n) === 'done'));
-    const n = { id: `n${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`, text, ko, weight, key, from: (ctx().chat || []).length, day: today(s), prepared, marks, uid };
+    const n = { id: `n${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`, text, ko, weight, key, from: (ctx().chat || []).length, day: today(s), prepared, marks, uid, jid };
     s.news.push(n);
     prune(s);
     await saveState();
@@ -72,6 +72,7 @@ export function armPrepared(index) {
         return true;
     });
     // the bag says "말함" only now that it was really said
+    for (const n of armed) if (n.jid) { const e = s.journal.find(j => j.id === n.jid); if (e) e.told = true; }
     const uids = armed.map(n => n.uid).filter(Boolean);
     (uids.length ? transact(d => { for (const u of uids) { const it = find(d, u); if (it) it.talked = true; } }) : saveState())
         .then(() => emit('news:changed', {}));

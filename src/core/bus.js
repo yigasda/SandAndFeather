@@ -12,6 +12,13 @@ export const EVENTS = {
     'bag:changed': 'something went into or out of the bag, or changed in it',
     'news:changed': 'what goes to the chat was added or taken out',
     'view:changed': 'a display setting changed (month names, theme)',
+    'sun:changed': "today's 태양 기운 went up or down",
+    'stats:changed': '지혜, 체력, 신앙 or 모험 경험치 changed { rankUp }',
+    'act:done': 'an activity was finished { kind, id } (daily commissions count these)',
+    'journal:added': 'something worth telling happened { entry }',
+    'world:changed': 'the map changed: an overlay opened, a companion joined, a thing appeared { map }',
+    'adventure:changed': 'the small adventure moved on, started or ended',
+    'duat:changed': 'a Duat run moved on, started or ended',
 };
 
 const handlers = new Map();

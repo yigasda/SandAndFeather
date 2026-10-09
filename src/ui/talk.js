@@ -6,16 +6,9 @@
 import { enOf, find, items, nameOf } from '../core/bag.js';
 import { DATA } from '../core/data.js';
 import { addNews } from '../core/news.js';
+import { josa } from '../core/ko.js';
 import { getState } from '../core/state.js';
 
-// 을/를, 이/가… after a Korean word: the first form after a final consonant
-function josa(word, pair) {
-    const [a, b] = { '을': ['을', '를'], '를': ['을', '를'], '이': ['이', '가'], '가': ['이', '가'], '은': ['은', '는'], '는': ['은', '는'], '과': ['과', '와'], '와': ['과', '와'] }[pair] || [pair, pair];
-    const c = String(word).trim().slice(-1).charCodeAt(0);
-    const jong = c >= 0xac00 && c <= 0xd7a3 ? (c - 0xac00) % 28 : 0;
-    if (pair === '으로' || pair === '로') return word + (jong && jong !== 8 ? '으로' : '로'); // ㄹ 받침은 "로"
-    return word + (jong ? a : b);
-}
 // "{물건:을} 들고 {상대}에게" with the values filled in
 function fill(tpl, vals) {
     return String(tpl || '').replace(/\{([^}:]+)(?::([^}]+))?\}/g, (m, k, j) => (k in vals ? (j ? josa(vals[k], j) : vals[k]) : m));
@@ -33,8 +26,8 @@ function marksOf(name, extra = []) {
 
 // puts the sentence in the chat's input box and folds the game. The line for the prompt is only prepared:
 // it goes in if the message Somang sends still has the thing (or the person) in it (news.js).
-async function hand(ui, ko, en, marks, uid = '') {
-    await addNews({ text: tidy(en), ko, weight: 9, key: 'talk', prepared: true, marks, uid });
+async function hand(ui, ko, en, marks, uid = '', jid = '') {
+    await addNews({ text: tidy(en), ko, weight: 9, key: 'talk', prepared: true, marks, uid, jid });
     const box = document.getElementById('send_textarea');
     if (box) {
         box.value = box.value.trim() ? `${box.value.trimEnd()}\n${ko}` : ko;
@@ -49,10 +42,16 @@ export async function showItem(ui, uid, npc = null) {
     const T = DATA.talk || {};
     const it = find(getState().bag, uid);
     if (!it) return;
-    const from = T.from?.[it.from] || { ko: '어딘가', en: '' };
-    const ko = fill(npc ? T.showTo : T.show, { 상대: npc?.label || '', 장소: from.ko, 물건: nameOf(it) });
+    const from = T.from?.[it.from] || { ko: '어딘가', got: '얻은', en: '' };
+    const ko = fill(npc ? T.showTo : T.show, { 상대: npc?.label || '', 장소: from.ko, 얻은: from.got || '얻은', 물건: nameOf(it) });
     const en = fill(T.line?.show, { item: enOf(it), from: from.en || '' });
     await hand(ui, ko, en, marksOf(nameOf(it)), uid);
+}
+
+// something that happened (a journal entry): its sentence into the input box, its fact for the prompt
+export async function showEvent(ui, entry) {
+    if (!entry?.say || !entry.en) return;
+    await hand(ui, entry.say, entry.en, entry.marks?.length ? entry.marks : [entry.say.split(' ')[0]], '', entry.id);
 }
 
 // on purpose: take the scene to where that person stands on the map (with a thing, or not)

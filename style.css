@@ -350,7 +350,11 @@
     opacity: 0;
     transition: opacity 0.2s, transform 0.2s;
     pointer-events: none;
-    white-space: nowrap;
+    width: max-content;
+    max-width: calc(100% - 40px);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.45;
     z-index: 6;
 }
 #sf_game .sf_toast.sf_show { opacity: 1; transform: translate(-50%, 0); }
@@ -464,3 +468,81 @@
     color: var(--sf-ink);
     font-family: ui-monospace, Menlo, monospace;
 }
+
+/* ---------- 0.4: chips, hint, lists, bars, fishing ---------- */
+#sf_game .sf_chips {
+    position: absolute;
+    top: calc(94px + env(safe-area-inset-top, 0px));
+    left: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    pointer-events: none;
+    max-width: calc(100% - 140px);
+}
+#sf_game .sf_chip {
+    background: var(--sf-glass);
+    border: 1px solid var(--sf-line);
+    border-radius: 14px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: var(--sf-shadow);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+#sf_game .sf_chip_sun i { color: #E0A020; }
+#sf_game .sf_chip_deben i { color: #B8862F; }
+#sf_game .sf_chip_rank i { display: inline-block; width: 44px; height: 5px; border-radius: 3px; background: var(--sf-line); overflow: hidden; }
+#sf_game .sf_chip_rank s { display: block; height: 100%; background: var(--sf-accent); text-decoration: none; }
+#sf_game .sf_hint_pill {
+    position: absolute;
+    top: calc(124px + env(safe-area-inset-top, 0px));
+    left: 10px;
+    max-width: calc(100% - 20px);
+    background: rgba(43, 32, 24, 0.72);
+    color: #FBF3EA;
+    border: 0;
+    border-radius: 14px;
+    padding: 6px 12px;
+    font: 700 12px var(--sf-font);
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#sf_game .sf_list { display: flex; flex-direction: column; gap: 6px; }
+#sf_game .sf_list_row {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--sf-line);
+    border-radius: 14px;
+    background: var(--sf-card2);
+}
+#sf_game .sf_list_row.sf_dim { opacity: 0.62; }
+#sf_game .sf_list_icon { font-size: 20px; text-align: center; }
+#sf_game .sf_list_main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+#sf_game .sf_list_main b { font-size: 14px; }
+#sf_game .sf_list_main small { font-size: 12px; color: var(--sf-dim); white-space: pre-line; line-height: 1.45; }
+#sf_game .sf_list_btns { display: flex; flex-direction: column; gap: 4px; align-items: stretch; }
+#sf_game .sf_btn:disabled { opacity: 0.45; cursor: default; }
+#sf_game .sf_stack { display: flex; flex-direction: column; gap: 10px; }
+#sf_game .sf_money { font-weight: 800; color: var(--sf-ink); font-size: 13px; }
+#sf_game .sf_sub_head { font-weight: 800; color: var(--sf-accent-ink); font-size: 13px; margin-top: 4px; }
+#sf_game .sf_bar { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 800; }
+#sf_game .sf_bar i { display: block; height: 8px; border-radius: 5px; background: var(--sf-line); overflow: hidden; }
+#sf_game .sf_bar b { display: block; height: 100%; background: var(--sf-ok); border-radius: 5px; }
+#sf_game .sf_bar.sf_fear b { background: #6B5BA8; }
+#sf_game .sf_bar.sf_enemy b { background: var(--sf-bad); }
+#sf_game .sf_bar.sf_rank b { background: var(--sf-accent); }
+#sf_game .sf_fish { display: flex; flex-direction: column; gap: 10px; }
+#sf_game .sf_fish_bar { position: relative; height: 26px; border-radius: 13px; background: #5FA7A3; overflow: hidden; }
+#sf_game .sf_fish_bar.sf_off { opacity: 0.4; }
+#sf_game .sf_fish_zone { position: absolute; top: 0; bottom: 0; background: rgba(140, 220, 120, 0.85); }
+#sf_game .sf_fish_mark { position: absolute; top: 2px; bottom: 2px; width: 6px; margin-left: -3px; border-radius: 3px; background: #FBF3EA; box-shadow: 0 0 4px rgba(0,0,0,.4); }
+#sf_game .sf_fish_msg { white-space: pre-line; font-size: 13px; color: var(--sf-ink); }

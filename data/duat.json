@@ -1,0 +1,127 @@
+{
+  "_about": "두아트 원정. 저녁과 밤에만 문이 열려. 체력은 13에 체력 능력치 하나마다 3. 체력이 0이 되거나 공포가 다 차면 동행이 소망을 데리고 올라와. 죽지 않아.",
+  "enemies": [
+    {
+      "id": "shade",
+      "ko": "떠도는 그림자",
+      "hp": 6,
+      "atk": 2
+    },
+    {
+      "id": "jackal",
+      "ko": "모래 자칼",
+      "hp": 8,
+      "atk": 3
+    },
+    {
+      "id": "serpent",
+      "ko": "갈대 사이 뱀",
+      "hp": 9,
+      "atk": 3
+    },
+    {
+      "id": "ammit",
+      "ko": "아미트의 새끼",
+      "hp": 12,
+      "atk": 3
+    }
+  ],
+  "boss": {
+    "id": "gatekeeper",
+    "ko": "문지기 아펩의 비늘",
+    "hp": 16,
+    "atk": 4
+  },
+  "events": [
+    {
+      "id": "boat",
+      "ko": "검은 물 위에 빈 배가 떠 있다. 노는 없다.",
+      "a": {
+        "label": "배에 탄다",
+        "fear": 1,
+        "loot": "duat_reed"
+      },
+      "b": {
+        "label": "물가를 따라 걷는다",
+        "hp": -2
+      }
+    },
+    {
+      "id": "voices",
+      "ko": "이름을 부르는 목소리가 들린다. 네 이름이다.",
+      "a": {
+        "label": "대답한다",
+        "fear": 3,
+        "loot": "duat_scroll"
+      },
+      "b": {
+        "label": "귀를 막는다",
+        "fear": -1
+      },
+      "spell": "spell_name"
+    },
+    {
+      "id": "scale",
+      "ko": "깃털 하나와 빈 저울이 놓여 있다.",
+      "a": {
+        "label": "깃털을 올린다",
+        "fear": -2
+      },
+      "b": {
+        "label": "그냥 지나간다"
+      }
+    },
+    {
+      "id": "sand",
+      "ko": "발밑 모래가 검게 반짝인다.",
+      "a": {
+        "label": "한 줌 쥔다",
+        "loot": "black_sand",
+        "fear": 1
+      },
+      "b": {
+        "label": "밟지 않고 돌아간다"
+      }
+    },
+    {
+      "id": "star",
+      "ko": "천장에서 빛 한 점이 떨어진다.",
+      "a": {
+        "label": "받는다",
+        "loot": "star_shard",
+        "hp": -1
+      },
+      "b": {
+        "label": "피한다"
+      }
+    }
+  ],
+  "relics": [
+    "was_shard",
+    "wedjat",
+    "heart_scarab",
+    "ka_statue",
+    "ancient_seal"
+  ],
+  "materials": [
+    "black_sand",
+    "duat_reed",
+    "black_sand",
+    "duat_reed",
+    "star_shard"
+  ],
+  "companions": {
+    "set": {
+      "ko": "세트",
+      "en": "Set",
+      "skill": "폭풍으로 친다",
+      "about": "싸움에 강해. 적 하나를 크게 치고, 맞는 피해를 줄여 줘."
+    },
+    "horus": {
+      "ko": "호루스",
+      "en": "Horus",
+      "skill": "하늘에서 본다",
+      "about": "길을 봐. 갈림길마다 앞에 뭐가 있는지 보이고, 적의 다음 공격을 빗나가게 해."
+    }
+  }
+}

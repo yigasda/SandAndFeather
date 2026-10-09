@@ -1,15 +1,49 @@
 {
-  "_about": "게임에서 말 걸기를 누르면 입력칸에 들어가는 첫 문장과, 프롬프트에 들어가는 영어 한 줄. {상대}, {장소}, {곳}, {물건}을 바꿔 넣어. {물건:을}은 받침에 따라 을/를을 붙여 줘. 입력칸 문장은 보내기 전에 고칠 수 있어.",
-  "show": "{장소}에서 건진 {물건:을} 꺼내 보인다.",
-  "showTo": "{장소}에서 건진 {물건:을} 꺼내 {상대}에게 보여 준다.",
+  "_about": "게임에서 꺼내기나 찾아가기를 누르면 입력칸에 들어가는 첫 문장과, 프롬프트에 들어가는 영어 한 줄. {상대}, {장소}, {얻은}, {곳}, {물건}을 바꿔 넣어. {물건:을}은 받침에 따라 을/를을 붙여 줘. from은 물건을 어디서 어떻게 얻었는지.",
+  "show": "{장소}에서 {얻은} {물건:을} 꺼내 보인다.",
+  "showTo": "{장소}에서 {얻은} {물건:을} 꺼내 {상대}에게 보여 준다.",
   "visit": "{물건:을} 들고 {곳}의 {상대}에게 간다.",
   "visitPlain": "{곳}의 {상대}에게 간다.",
   "from": {
-    "dock": { "ko": "선착장", "en": "at the river dock" }
+    "dock": {
+      "ko": "선착장",
+      "got": "건진",
+      "en": "found at the river dock"
+    },
+    "market": {
+      "ko": "시장",
+      "got": "산",
+      "en": "bought at the market"
+    },
+    "garden": {
+      "ko": "텃밭",
+      "got": "거둔",
+      "en": "grown in her garden"
+    },
+    "kitchen": {
+      "ko": "부엌",
+      "got": "만든",
+      "en": "made in the kitchen"
+    },
+    "ruins": {
+      "ko": "강 건너 무너진 신전",
+      "got": "찾은",
+      "en": "found in the fallen temple across the river"
+    },
+    "duat": {
+      "ko": "두아트",
+      "got": "가져온",
+      "en": "brought back from the Duat"
+    },
+    "adventure": {
+      "ko": "마을",
+      "got": "찾은",
+      "en": "found around Ombos"
+    }
   },
   "line": {
-    "show": "Earlier Somang found {item} {from}; she has it on her now.",
-    "visit": "Somang goes to find {who} {where}, bringing {item} she found {from}.",
+    "show": "Somang has {item} with her, {from}.",
+    "visit": "Somang goes to find {who} {where}, bringing {item}, {from}.",
     "visitPlain": "Somang goes to find {who} {where}."
   }
 }

@@ -1,5 +1,5 @@
 {
-  "_about": "물건 종류. id는 저장과 이어져 있어서 바꾸면 안 돼. ko, en, about, icon은 마음대로 고쳐도 돼. en은 프롬프트에 들어가는 영어 이름이야.",
+  "_about": "물건 종류. id는 저장과 이어져 있어서 바꾸면 안 돼. ko, en, about, icon, price는 마음대로 고쳐도 돼. en은 프롬프트에 들어가는 영어 이름. kind: find 발견물, fish 물고기, crop 작물, seed 씨앗, ingredient 재료, material 자재, food 음식, relic 유물, record 기록. food의 heal은 원정 체력 회복, fear는 공포 줄이기. read의 need는 해독에 필요한 지혜.",
   "items": {
     "sealed_jar": {
       "ko": "봉인된 항아리",
@@ -11,61 +11,92 @@
         "ko_name": "열린 항아리",
         "en_name": "a clay jar with its mud seal broken",
         "gives": "wet_papyrus"
-      }
+      },
+      "kind": "find",
+      "price": 8
     },
     "wet_papyrus": {
       "ko": "젖은 파피루스",
       "en": "a damp papyrus roll",
       "icon": "📜",
-      "about": "글씨가 번져 있다. 마르면 몇 글자는 읽힐지도 모른다."
+      "about": "글씨가 번져 있다. 마르면 몇 글자는 읽힐지도 모른다.",
+      "kind": "record",
+      "price": 0,
+      "read": {
+        "need": 1,
+        "ko": "마르자 몇 글자가 읽힌다. \"…곡식 열 자루를 신전 창고로…\" 누군가의 영수증이었다."
+      }
     },
     "faience_scarab": {
       "ko": "푸른 파이앙스 풍뎅이",
       "en": "a blue faience scarab amulet",
       "icon": "🪲",
-      "about": "손톱만 한 부적. 배 쪽에 누군가의 이름이 새겨져 있다."
+      "about": "손톱만 한 부적. 배 쪽에 누군가의 이름이 새겨져 있다.",
+      "kind": "find",
+      "price": 14
     },
     "toy_boat": {
       "ko": "갈대 장난감 배",
       "en": "a child's toy boat woven from reeds",
       "icon": "⛵",
-      "about": "작은 손으로 엮은 배. 돛대에 실이 감겨 있다."
+      "about": "작은 손으로 엮은 배. 돛대에 실이 감겨 있다.",
+      "kind": "find",
+      "price": 4
     },
     "bronze_mirror": {
       "ko": "녹슨 청동 거울",
       "en": "a tarnished bronze mirror",
       "icon": "🪞",
-      "about": "손잡이가 파피루스 줄기 모양이다. 닦으면 다시 비칠 것 같다."
+      "about": "손잡이가 파피루스 줄기 모양이다. 닦으면 다시 비칠 것 같다.",
+      "kind": "find",
+      "price": 12
     },
     "blue_lotus": {
       "ko": "푸른 연꽃",
       "en": "a blue lotus flower",
       "icon": "🪷",
-      "about": "새벽에 피고 저녁에 오므라드는 꽃. 향이 달다."
+      "about": "새벽에 피고 저녁에 오므라드는 꽃. 향이 달다.",
+      "kind": "crop",
+      "price": 4,
+      "food": {
+        "fear": 1
+      }
     },
     "nile_perch": {
       "ko": "나일 농어",
       "en": "a Nile perch",
       "icon": "🐟",
-      "about": "팔뚝만 한 물고기. 오늘 저녁거리로 충분하다."
+      "about": "팔뚝만 한 물고기. 오늘 저녁거리로 충분하다.",
+      "kind": "fish",
+      "price": 6
     },
     "ushabti": {
       "ko": "깨진 샤브티 인형",
       "en": "a broken ushabti figurine",
       "icon": "🗿",
-      "about": "저승에서 대신 일해 줄 작은 인형. 팔 하나가 없다."
+      "about": "저승에서 대신 일해 줄 작은 인형. 팔 하나가 없다.",
+      "kind": "find",
+      "price": 9
     },
     "ostracon": {
       "ko": "글씨 긁힌 도기 조각",
       "en": "a pottery shard scratched with writing",
       "icon": "🧱",
-      "about": "누군가 연습 삼아 쓴 듯한 글. 끝이 잘려 있다."
+      "about": "누군가 연습 삼아 쓴 듯한 글. 끝이 잘려 있다.",
+      "kind": "record",
+      "price": 0,
+      "read": {
+        "need": 1,
+        "ko": "서기 견습생의 연습 글씨다. \"나는 게으르지 않겠다\"를 세 번 쓰다 말았다."
+      }
     },
     "croc_tooth": {
       "ko": "악어 이빨",
       "en": "a crocodile tooth",
       "icon": "🦷",
-      "about": "끝이 아직 날카롭다. 끈을 꿰면 부적이 된다."
+      "about": "끝이 아직 날카롭다. 끈을 꿰면 부적이 된다.",
+      "kind": "find",
+      "price": 7
     },
     "sealed_letter": {
       "ko": "밀랍 봉인 편지",
@@ -77,13 +108,339 @@
         "ko_name": "뜯은 편지",
         "en_name": "a letter whose wax seal has been broken",
         "gives": "map_scrap"
-      }
+      },
+      "kind": "find",
+      "price": 5
     },
     "map_scrap": {
       "ko": "지도 조각",
       "en": "a scrap of a hand-drawn map",
       "icon": "🗺️",
-      "about": "강줄기와 표시 하나. 어디인지는 아직 모르겠다."
+      "about": "강줄기와 표시 하나. 어디인지는 아직 모르겠다.",
+      "kind": "record",
+      "price": 0,
+      "read": {
+        "need": 2,
+        "ko": "강줄기 표시는 옴보스 북서쪽, 담으로 막힌 옛 정원 자리를 가리킨다. 물길이 끊긴 정원이라고 적혀 있다.",
+        "flag": "garden_hint"
+      }
+    },
+    "tilapia": {
+      "ko": "틸라피아",
+      "en": "a tilapia",
+      "icon": "🐟",
+      "kind": "fish",
+      "price": 4,
+      "about": "나일에서 제일 흔한 물고기. 구우면 맛있다."
+    },
+    "catfish": {
+      "ko": "메기",
+      "en": "a Nile catfish",
+      "icon": "🐟",
+      "kind": "fish",
+      "price": 5,
+      "about": "수염이 긴 메기. 저녁 무렵 잘 문다."
+    },
+    "eel": {
+      "ko": "뱀장어",
+      "en": "an eel",
+      "icon": "🐍",
+      "kind": "fish",
+      "price": 8,
+      "about": "밤에만 올라오는 미끈한 녀석."
+    },
+    "golden_carp": {
+      "ko": "금빛 잉어",
+      "en": "a golden carp",
+      "icon": "🐠",
+      "kind": "fish",
+      "price": 24,
+      "about": "비늘이 햇빛처럼 빛난다. 신전에 바치면 좋아할지도."
+    },
+    "bread": {
+      "ko": "빵",
+      "en": "a loaf of bread",
+      "icon": "🍞",
+      "kind": "ingredient",
+      "price": 4,
+      "about": "화덕에서 갓 나온 납작빵."
+    },
+    "honey": {
+      "ko": "꿀",
+      "en": "a pot of honey",
+      "icon": "🍯",
+      "kind": "ingredient",
+      "price": 8,
+      "about": "벌집째 짜낸 꿀."
+    },
+    "onion": {
+      "ko": "양파",
+      "en": "an onion",
+      "icon": "🧅",
+      "kind": "ingredient",
+      "price": 3,
+      "about": "이집트 사람들이 제일 좋아하는 채소."
+    },
+    "salt": {
+      "ko": "소금",
+      "en": "a pinch of salt",
+      "icon": "🧂",
+      "kind": "ingredient",
+      "price": 2,
+      "about": "사막 호수에서 긁어 온 소금."
+    },
+    "dates": {
+      "ko": "대추야자",
+      "en": "a handful of dates",
+      "icon": "🌴",
+      "kind": "ingredient",
+      "price": 4,
+      "about": "달고 쫀득하다."
+    },
+    "lotus_seed": {
+      "ko": "연꽃 씨앗",
+      "en": "lotus seeds",
+      "icon": "🌱",
+      "kind": "seed",
+      "price": 6,
+      "about": "물기 많은 흙에 심으면 사흘 뒤 꽃이 핀다.",
+      "grow": {
+        "days": 3,
+        "gives": "blue_lotus",
+        "count": 2
+      }
+    },
+    "barley_seed": {
+      "ko": "보리 씨앗",
+      "en": "barley seed",
+      "icon": "🌾",
+      "kind": "seed",
+      "price": 4,
+      "about": "이틀이면 이삭이 팬다.",
+      "grow": {
+        "days": 2,
+        "gives": "barley",
+        "count": 3
+      }
+    },
+    "fig_seed": {
+      "ko": "무화과 묘목",
+      "en": "a fig sapling",
+      "icon": "🌳",
+      "kind": "seed",
+      "price": 10,
+      "about": "나흘 기다리면 열매가 달린다.",
+      "grow": {
+        "days": 4,
+        "gives": "fig",
+        "count": 2
+      }
+    },
+    "barley": {
+      "ko": "보리",
+      "en": "barley",
+      "icon": "🌾",
+      "kind": "crop",
+      "price": 3,
+      "about": "빵과 맥주의 시작."
+    },
+    "fig": {
+      "ko": "무화과",
+      "en": "figs",
+      "icon": "🟣",
+      "kind": "crop",
+      "price": 5,
+      "about": "말랑하고 달다."
+    },
+    "reed_bundle": {
+      "ko": "갈대 묶음",
+      "en": "a bundle of reeds",
+      "icon": "🎋",
+      "kind": "material",
+      "price": 4,
+      "about": "배도 엮고 지붕도 엮는다."
+    },
+    "pitch": {
+      "ko": "송진",
+      "en": "a pot of pitch",
+      "icon": "🫙",
+      "kind": "material",
+      "price": 10,
+      "about": "배 틈을 메우는 끈적한 송진."
+    },
+    "limestone": {
+      "ko": "석회석 덩이",
+      "en": "a block of limestone",
+      "icon": "🪨",
+      "kind": "material",
+      "price": 6,
+      "about": "수로 둑을 쌓을 돌."
+    },
+    "cedar_plank": {
+      "ko": "삼나무 판자",
+      "en": "a cedar plank",
+      "icon": "🪵",
+      "kind": "material",
+      "price": 30,
+      "about": "레바논에서 건너온 귀한 나무."
+    },
+    "black_sand": {
+      "ko": "두아트의 검은 모래",
+      "en": "black sand from the Duat",
+      "icon": "⚫",
+      "kind": "material",
+      "price": 10,
+      "about": "손에 쥐면 차갑다. 둑에 섞으면 물이 새지 않는다고 한다."
+    },
+    "duat_reed": {
+      "ko": "저승 갈대",
+      "en": "a reed from the Duat",
+      "icon": "🎋",
+      "kind": "material",
+      "price": 12,
+      "about": "잘라도 시들지 않는 갈대."
+    },
+    "star_shard": {
+      "ko": "별 조각",
+      "en": "a fallen star shard",
+      "icon": "✨",
+      "kind": "material",
+      "price": 30,
+      "about": "누트의 몸에서 떨어진 조각이라고 한다."
+    },
+    "was_shard": {
+      "ko": "와스 지팡이 조각",
+      "en": "a shard of a was-sceptre",
+      "icon": "🔱",
+      "kind": "relic",
+      "price": 30,
+      "about": "세트의 짐승 머리가 새겨진 지팡이 끝."
+    },
+    "wedjat": {
+      "ko": "우제트 부적",
+      "en": "a wedjat-eye amulet",
+      "icon": "🧿",
+      "kind": "relic",
+      "price": 28,
+      "about": "호루스의 눈. 다친 것을 낫게 한다는 부적."
+    },
+    "heart_scarab": {
+      "ko": "심장 스카라베",
+      "en": "a heart scarab",
+      "icon": "🪲",
+      "kind": "relic",
+      "price": 35,
+      "about": "배에 \"내 심장아, 나를 거슬러 증언하지 말라\"가 새겨져 있다."
+    },
+    "ka_statue": {
+      "ko": "카 조각상",
+      "en": "a small ka statuette",
+      "icon": "🗿",
+      "kind": "relic",
+      "price": 32,
+      "about": "두 팔을 든 작은 사람. 누군가의 카가 머물던 곳."
+    },
+    "ancient_seal": {
+      "ko": "오래된 인장",
+      "en": "an old cylinder seal",
+      "icon": "🔘",
+      "kind": "relic",
+      "price": 25,
+      "about": "굴리면 낯선 왕의 이름이 찍힌다."
+    },
+    "duat_scroll": {
+      "ko": "저승 두루마리",
+      "en": "a scroll from the Duat",
+      "icon": "📜",
+      "kind": "record",
+      "price": 0,
+      "about": "불에 그을린 두루마리.",
+      "read": {
+        "need": 2,
+        "ko": "두 번째 문을 지나는 주문이다. \"나는 너의 이름을 안다.\" 이름을 아는 자는 문을 지난다.",
+        "flag": "spell_name"
+      }
+    },
+    "tomb_rubbing": {
+      "ko": "무덤 비문 탁본",
+      "en": "a rubbing of a tomb inscription",
+      "icon": "📜",
+      "kind": "record",
+      "price": 0,
+      "about": "강 건너 무너진 신전 벽에서 뜬 탁본.",
+      "read": {
+        "need": 3,
+        "ko": "\"메키르 달, 물이 가장 낮을 때 남쪽 계단이 드러난다.\" 옛 사제가 남긴 기록이다.",
+        "flag": "stair_hint"
+      }
+    },
+    "grilled_fish": {
+      "ko": "구운 생선",
+      "en": "a grilled fish",
+      "icon": "🍢",
+      "kind": "food",
+      "price": 8,
+      "about": "소금만 쳐서 구웠다.",
+      "food": {
+        "heal": 4
+      }
+    },
+    "honey_bread": {
+      "ko": "꿀빵",
+      "en": "honey bread",
+      "icon": "🥯",
+      "kind": "food",
+      "price": 10,
+      "about": "꿀을 바른 납작빵.",
+      "food": {
+        "heal": 3,
+        "fear": 1
+      }
+    },
+    "fig_cake": {
+      "ko": "무화과 과자",
+      "en": "a fig cake",
+      "icon": "🍪",
+      "kind": "food",
+      "price": 12,
+      "about": "무화과와 꿀을 졸여 굳혔다.",
+      "food": {
+        "heal": 2,
+        "fear": 2
+      }
+    },
+    "barley_porridge": {
+      "ko": "보리죽",
+      "en": "barley porridge",
+      "icon": "🥣",
+      "kind": "food",
+      "price": 8,
+      "about": "든든하다.",
+      "food": {
+        "heal": 5
+      }
+    },
+    "lotus_tea": {
+      "ko": "연꽃차",
+      "en": "lotus tea",
+      "icon": "🍵",
+      "kind": "food",
+      "price": 10,
+      "about": "마음이 가라앉는 향.",
+      "food": {
+        "fear": 3
+      }
+    },
+    "fish_stew": {
+      "ko": "생선 스튜",
+      "en": "a fish stew",
+      "icon": "🍲",
+      "kind": "food",
+      "price": 12,
+      "about": "양파를 듬뿍 넣었다.",
+      "food": {
+        "heal": 6
+      }
     }
   }
 }

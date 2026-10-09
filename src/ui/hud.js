@@ -4,6 +4,9 @@
 import { dateLabel, partInfo, seasonName, seasonAbout } from '../core/clock.js';
 import { DATA } from '../core/data.js';
 import { placeInfo } from '../core/tracker.js';
+import { rankInfo } from '../core/progress.js';
+import { SUN_MAX, sunLeft } from '../core/sun.js';
+import { hint } from '../packs/adventure/engine.js';
 import { esc } from './popups.js';
 
 export const TABS = [
@@ -31,6 +34,12 @@ export function buildHud(root) {
           <span class="sf_mini_name"></span>
         </button>
       </div>
+      <div class="sf_chips">
+        <span class="sf_chip sf_chip_sun" title="태양 기운"></span>
+        <span class="sf_chip sf_chip_deben" title="데벤"></span>
+        <span class="sf_chip sf_chip_rank" title="모험 등급"><b></b><i><s></s></i></span>
+      </div>
+      <button type="button" class="sf_hint_pill" hidden></button>
       <div class="sf_bubble" hidden></div>
       <div class="sf_controls">
         <div class="sf_pad"><div class="sf_knob"></div></div>
@@ -46,7 +55,7 @@ export function buildHud(root) {
     return {
         root, view: q('.sf_view'), dateCard: q('.sf_date_card'), date: q('.sf_date'), season: q('.sf_season'), dot: q('.sf_dot'), sync: q('.sf_sync'),
         collapse: q('.sf_collapse'), close: q('.sf_close'), mini: q('.sf_mini'), miniCv: q('.sf_mini_cv'), miniName: q('.sf_mini_name'),
-        bubble: q('.sf_bubble'), pad: q('.sf_pad'), knob: q('.sf_knob'), bag: q('.sf_bag'), talk: q('.sf_talk'), tabs: q('.sf_tabs'),
+        bubble: q('.sf_bubble'), sun: q('.sf_chip_sun'), deben: q('.sf_chip_deben'), rank: q('.sf_chip_rank b'), rankBar: q('.sf_chip_rank s'), hint: q('.sf_hint_pill'), pad: q('.sf_pad'), knob: q('.sf_knob'), bag: q('.sf_bag'), talk: q('.sf_talk'), tabs: q('.sf_tabs'),
     };
 }
 
@@ -62,6 +71,14 @@ export function updateHud(h, s) {
     h.sync.classList.toggle('sf_ok', !!s.sync.ok);
     const map = DATA.maps[s.pos?.map || 'ombos'];
     h.miniName.textContent = map?.name || placeInfo(s.place)?.ko || '';
+    h.sun.innerHTML = `<i class="fa-solid fa-sun"></i> ${sunLeft(s)}/${SUN_MAX}`;
+    h.deben.innerHTML = `<i class="fa-solid fa-coins"></i> ${s.bag.deben}`;
+    const r = rankInfo(s.stats.xp);
+    h.rank.textContent = `모험 등급 ${r.rank}`;
+    h.rankBar.style.width = `${Math.round(r.frac * 100)}%`;
+    const tip = hint(s);
+    h.hint.hidden = !tip;
+    h.hint.textContent = tip ? `✦ ${tip}` : '';
 }
 
 // the bubble over the nearest place or person, in CSS pixels from the renderer's camera

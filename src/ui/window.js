@@ -2,6 +2,7 @@
 // The frame loop runs only while it is open. Where she stands is saved to the chat when the window closes or folds.
 
 import { on } from '../core/bus.js';
+import { DATA } from '../core/data.js';
 import { seasonOf } from '../core/clock.js';
 import { settings } from '../core/settings.js';
 import { hasChat } from '../core/st.js';
@@ -9,12 +10,14 @@ import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
 import { bindPad, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
-import { feet, placePlayer, player, rememberPosition, stepPlayer } from '../world/player.js';
+import { feet, follower, placePlayer, player, rememberPosition, stepPlayer } from '../world/player.js';
+import { thingsOn } from '../world/things.js';
 import { MODE, Renderer } from '../world/render.js';
 import { buildHud, placeBubble, setTab, shortDate, todayBody, updateHud } from './hud.js';
 import { FEATHER } from './icon.js';
 import { bagCard } from './items.js';
 import { personCard } from './talk.js';
+import { partyCard, questsCard, somangCard } from './tabs.js';
 import { cardOpen, closeCards, showCard, toast } from './popups.js';
 
 let root = null, chip = null, hud = null, renderer = null, map = null;
@@ -31,6 +34,9 @@ const ui = {
     toast: t => toast(root, t),
     fold: () => foldGame(),
 };
+// packs that want to know the window opened (to settle works, start an adventure): onOpen(fn)
+const openers = new Set();
+export const onOpen = fn => { openers.add(fn); };
 // a pack takes over a place: onSpot('dock', (spot, ui, map) => …)
 const spotActs = new Map();
 export const onSpot = (id, fn) => { spotActs.set(id, fn); };
@@ -79,6 +85,10 @@ function build() {
 
     on('clock:synced', refresh);
     on('view:changed', refresh);
+    // the map changed under her (an overlay opened, a companion joined): same place, new map
+    on('world:changed', () => { if (mode === 'open') { swapMap(); frameNow(); } });
+    for (const ev of ['sun:changed', 'bag:changed', 'adventure:changed']) on(ev, refreshSoon);
+    on('stats:changed', d => { refreshSoon(); if (d?.rankUp && mode === 'open') toast(root, `모험 등급 ${d.rankUp}!`); });
     // a new chat or a new game: show that chat's game, or close when no chat is open
     on('game:loaded', () => {
         if (!hasChat()) { closeGame(); return; }
@@ -93,9 +103,29 @@ function closeTopCard() { const all = root.querySelectorAll('.sf_pop_wrap'); all
 function enterMap() {
     const s = getState();
     map = getMap(s?.pos?.map || 'ombos');
+    if (!map) { s.pos = { map: 'ombos', x: null, y: null, dir: 'down' }; map = getMap('ombos'); }
     placePlayer(map);
+    swapMap();
+}
+// the current map as the game has it now, without moving her
+function swapMap() {
+    const s = getState();
+    map = getMap(player.map) || map;
+    map.setAway(s?.party.with ? [s.party.with] : []);
     renderer.setMap(map, seasonOf(s?.date.month ?? 0));
 }
+// to another map: on its spawn, or at pos
+export async function travel(mapId, pos = null) {
+    const s = getState();
+    if (!s || !DATA.maps[mapId]) return;
+    closeCards(root);
+    s.pos = { map: mapId, x: pos?.x ?? null, y: pos?.y ?? null, dir: 'down' };
+    await saveState();
+    enterMap();
+    refresh();
+}
+let soon = 0;
+function refreshSoon() { clearTimeout(soon); soon = setTimeout(refresh, 60); }
 
 export async function openGame() {
     if (!hasChat()) { window.toastr?.info?.('채팅을 먼저 열어 줘', '모래와 깃털'); return; }
@@ -109,6 +139,7 @@ export async function openGame() {
     renderer.resize();
     await syncFromChat();
     refresh();
+    for (const fn of openers) { try { await fn(ui); } catch (e) { console.error('[SandAndFeather] open', e); } }
     startInput(talk);
     window.addEventListener('keydown', onEscape, true);
     last = 0; drawnAt = 0;
@@ -166,10 +197,20 @@ export function refresh() {
 
 function frameNow() { if (map && renderer.cv.width > 1) draw(performance.now()); }
 
-function draw(t) {
+// what she can use from where she stands, worked out now (also when the button is pressed between frames)
+function lookAround() {
     const s = getState();
-    near = map.nearest(feet().x, feet().y);
-    renderer.draw({ player, npcs: map.npcs, part: s?.part || 'day', time: t / 1000, near });
+    const away = s?.party.with ? [s.party.with] : [];
+    const things = thingsOn(map.id);
+    near = map.nearest(feet().x, feet().y, things, away);
+    return { s, away, things };
+}
+
+function draw(t) {
+    const { s, away, things } = lookAround();
+    const people = map.npcs.filter(n => !away.includes(n.id)).map(n => ({ look: n.look, x: n.x, y: n.y, dir: 'down', step: 0 }));
+    if (away.length) { const f = follower(); people.push({ look: away[0], x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0 }); }
+    renderer.draw({ player, people, things, part: s?.part || 'day', time: t / 1000, near });
     placeBubble(hud, renderer, cardOpen() ? null : near);
     if (t - miniAt > 250) { miniAt = t; renderer.minimap(hud.miniCv, player); }
 }
@@ -190,6 +231,7 @@ function frame(t) {
 function talk() {
     if (mode !== 'open') return;
     if (cardOpen()) { closeTopCard(); return; }
+    lookAround();
     if (!near) { toast(root, '가까이에 말 걸 곳이 없어'); return; }
     if (near.kind === 'spot') {
         const act = spotActs.get(near.id);
@@ -197,6 +239,7 @@ function talk() {
         showCard(root, { tag: MODE[near.mode] || '', title: near.title || near.label, text: near.text || '' });
         return;
     }
+    if (near.kind === 'thing') { near.act?.(ui, map); return; }
     personCard(ui, map.npcs.find(n => n.id === near.id) || near);
 }
 
@@ -222,22 +265,17 @@ function openMap() {
     box.append(cv);
     const note = document.createElement('div');
     note.className = 'sf_note';
-    note.textContent = '다른 지역은 원신 층 넓히기 단계에서 열려.';
+    note.textContent = map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.';
     box.append(note);
     showCard(root, { title: map.d.name || '지도', body: box, wide: true, onClose: () => setTab(hud, 'world') });
 }
 
-const SOON = {
-    somang: ['소망', '능력치, 일정판, 칭호는 육성 단계에서 열려.'],
-    party: ['파티', '함께 걷는 신들과 원정 파티는 원정 단계에서 열려.'],
-    quests: ['임무', '매일 의뢰와 신화 1장은 임무와 말 걸기 단계에서 열려.'],
-};
 function pickTab(id) {
     closeCards(root);
     hud.mini.classList.toggle('sf_on', id === 'map');
     setTab(hud, id);
     if (id === 'world') return;
     if (id === 'map') { openMap(); return; }
-    const [title, text] = SOON[id];
-    showCard(root, { title, text, onClose: () => setTab(hud, 'world') });
+    const back = () => setTab(hud, 'world');
+    ({ somang: somangCard, party: partyCard, quests: questsCard })[id]?.(ui, back);
 }

@@ -10,6 +10,8 @@ import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
 import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex, weatherOf } from '../core/tracker.js';
 import { dropNews, newsStatus, pending, prepared } from '../core/news.js';
+import { aiLabel } from '../packs/adventure/ai.js';
+import { ensureAdventure } from '../packs/adventure/gen.js';
 import { FEATHER } from './icon.js';
 import { esc } from './popups.js';
 import { applyTheme, openGame } from './window.js';
@@ -75,6 +77,17 @@ export function renderDrawer(problems = []) {
             </details>
 
             <div class="sf_box">
+              <div class="sf_box_head"><b>작은 모험</b><span class="sf_hint" id="sf_adv_ai_label"></span></div>
+              <div class="sf_grid">
+                <label>새 모험 쓰는 쪽<select id="sf_adv_ai">${opt([['draft', '아카이브 초안 모델'], ['ai', '아카이브 AI 기능 모델'], ['off', '끄기 · 무작위만']], st.advAI)}</select></label>
+                <label>아카이브 폴더<input type="text" id="sf_archive_folder" value="${esc(st.archiveFolder || 'NarrativeArchive')}"></label>
+              </div>
+              <div class="sf_sub" id="sf_adv_status"></div>
+              <div class="sf_line_btns"><button type="button" class="sf_btn sf_small" id="sf_adv_new">지금 새 모험 만들기</button></div>
+              <details><summary class="sf_sub">개발용: 지금 모험 전체 보기 · 스포일러</summary><pre class="sf_pre" id="sf_adv_dump"></pre></details>
+            </div>
+
+            <div class="sf_box">
               <div class="sf_box_head"><b>보기</b></div>
               <div class="sf_grid">
                 <label>달 이름<select id="sf_monthstyle">${opt([['en', 'Hathyr'], ['ko', '하티르']], st.monthStyle)}</select></label>
@@ -111,6 +124,17 @@ function bind() {
     $id('sf_wordcap').addEventListener('change', e => set('wordCap', Math.max(20, Number(e.target.value) || 80)));
     $id('sf_monthstyle').addEventListener('change', e => { set('monthStyle', e.target.value); emit('view:changed', {}); });
     $id('sf_theme').addEventListener('change', e => { set('theme', e.target.value); applyTheme(); });
+    $id('sf_adv_ai').addEventListener('change', e => { set('advAI', e.target.value); });
+    $id('sf_archive_folder').addEventListener('change', e => { set('archiveFolder', e.target.value.trim() || 'NarrativeArchive'); });
+    $id('sf_adv_new').addEventListener('click', async () => {
+        const s = hasChat() ? getState() : null;
+        if (!s) return;
+        if (s.adv.cur && !window.confirm('지금 모험을 버리고 새로 만들까?')) return;
+        s.adv.cur = null; await saveState();
+        $id('sf_adv_status').textContent = '만드는 중…';
+        await ensureAdventure({ force: true });
+        refreshDrawer();
+    });
     let reTimer;
     $id('sf_tracker_re').addEventListener('input', e => {
         clearTimeout(reTimer);
@@ -171,6 +195,14 @@ export function refreshDrawer() {
     const list = s ? [...prepared(s), ...pending(s)] : [];
     news.innerHTML = list.length ? `<div class="sf_sub">챗에 넘길 일</div>${list.map(n => `<div class="sf_news_row"><span>${esc(n.ko || n.text)}</span><span class="sf_hint">${n.prepared ? '입력칸에 준비됨. 보내면 들어가' : newsStatus(n) === 'live' ? '방금 답장에 넣음' : '다음 답장에'}</span><button type="button" class="sf_icon_btn sf_news_x" data-id="${esc(n.id)}" title="빼기"><i class="fa-solid fa-xmark"></i></button></div>`).join('')}` : '';
     news.querySelectorAll('.sf_news_x').forEach(b => b.addEventListener('click', () => dropNews(b.dataset.id)));
+
+    // the small adventure: where it came from, the last AI error, the whole thing only on request
+    if (s) {
+        const c = s.adv.cur;
+        $id('sf_adv_status').textContent = c ? `진행 중: ${c.title} · ${({ ai: 'AI가 씀', random: '무작위 조립', hand: '손으로 만든 것', seed: '예전 선택에서 이어짐' })[c.source] || ''}${s.adv.lastError ? ` · 지난 AI 실패: ${s.adv.lastError}` : ''}` : (s.adv.lastError ? `지난 AI 실패: ${s.adv.lastError}` : '진행 중인 모험 없음');
+        $id('sf_adv_dump').textContent = c ? JSON.stringify(c, null, 1) : '';
+    }
+    aiLabel().then(t => { const el = $id('sf_adv_ai_label'); if (el) el.textContent = t; });
 
     // what the tracker pattern reads from the newest message that has one
     const test = $id('sf_tracker_test');

@@ -38,6 +38,7 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
         el.type = 'button';
         el.className = `sf_btn${b.primary ? ' sf_primary' : ''}`;
         el.textContent = b.label;
+        el.disabled = !!b.disabled;
         el.addEventListener('click', () => { if (b.onClick?.() === false) return; close(); });
         btns.append(el);
     }

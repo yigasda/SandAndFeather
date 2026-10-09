@@ -1,0 +1,164 @@
+{
+ "id": "ruins",
+ "name": "강 건너 무너진 신전",
+ "nameEn": "the fallen temple across the river",
+ "tile": 16,
+ "legend": {
+  ".": {
+   "t": "sand"
+  },
+  "r": {
+   "t": "rock",
+   "solid": true
+  },
+  "#": {
+   "t": "wall",
+   "solid": true
+  },
+  "T": {
+   "t": "stone"
+  },
+  "=": {
+   "t": "path"
+  },
+  "~": {
+   "t": "water",
+   "solid": true
+  },
+  "b": {
+   "t": "bank"
+  },
+  "d": {
+   "t": "dock"
+  },
+  "p": {
+   "t": "sand",
+   "obj": "palm",
+   "solid": true
+  },
+  "u": {
+   "t": "rubble",
+   "solid": true
+  },
+  "P": {
+   "t": "pillar",
+   "solid": true
+  }
+ },
+ "buildings": [],
+ "spots": [
+  {
+   "id": "ruins_dock",
+   "x": 10,
+   "y": 3,
+   "label": "배",
+   "mode": "",
+   "title": "배",
+   "text": "옴보스로 돌아가는 배."
+  },
+  {
+   "id": "inscription",
+   "x": 11,
+   "y": 12,
+   "label": "비문",
+   "mode": "growth",
+   "title": "무너진 벽의 비문",
+   "text": "반쯤 지워진 글이 벽을 따라 이어진다."
+  },
+  {
+   "id": "dig",
+   "x": 15,
+   "y": 7,
+   "label": "발굴터",
+   "mode": "life",
+   "title": "발굴터",
+   "text": "무너진 돌더미 사이로 뭔가 반짝인다."
+  },
+  {
+   "id": "ruins_shrine",
+   "x": 11,
+   "y": 15,
+   "label": "작은 사당",
+   "mode": "growth",
+   "title": "작은 사당",
+   "text": "아무도 돌보지 않은 사당. 먼지를 털면 신앙이 깊어진다."
+  }
+ ],
+ "npcs": [],
+ "spawn": {
+  "x": 10,
+  "y": 4
+ },
+ "anchors": [
+  {
+   "id": "ruin_palm",
+   "x": 5,
+   "y": 5,
+   "ko": "야자수 옆"
+  },
+  {
+   "id": "ruin_rubble",
+   "x": 7,
+   "y": 8,
+   "ko": "돌무더기"
+  },
+  {
+   "id": "ruin_hall",
+   "x": 8,
+   "y": 12,
+   "ko": "기둥 사이"
+  },
+  {
+   "id": "ruin_east",
+   "x": 21,
+   "y": 7,
+   "ko": "동쪽 모래"
+  },
+  {
+   "id": "ruin_south",
+   "x": 12,
+   "y": 17,
+   "ko": "신전 뒤 모래"
+  }
+ ],
+ "secrets": [
+  {
+   "id": "ruin_star",
+   "x": 20,
+   "y": 12,
+   "ko": "별자리 천장",
+   "when": {
+    "parts": [
+     "night"
+    ]
+   },
+   "text": "무너진 천장 틈으로 별이 보인다. 별자리 하나가 벽 그림과 똑같다.",
+   "give": "star_shard",
+   "xp": 5,
+   "en": "a fallen star shard under the broken roof of the temple across the river"
+  }
+ ],
+ "overlays": {},
+ "rows": [
+  "~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~",
+  "bbbbbbbbbbddbbbbbbbbbbbb",
+  "..........dd............",
+  "....p.....==.......p....",
+  "..........==............",
+  "...uuu....==....uuu.....",
+  "...u.u....==....u.......",
+  "..........==............",
+  "....#######==#######....",
+  "....#TTTTTTTTTTTTTT#....",
+  "....#TPTTPTTTTPTTPT#....",
+  "....#TTTTTTTTTTTTTT#....",
+  "....#TPTTPTTTTPTTPT#....",
+  "....#TTTTTTTTTTTTTT#....",
+  "....#TTTTTTTTTTTTTT#....",
+  "....################....",
+  "........................",
+  "..rrr.............rrr...",
+  "rrrrrrrrrrrrrrrrrrrrrrrr"
+ ]
+}

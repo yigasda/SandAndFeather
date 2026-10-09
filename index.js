@@ -12,6 +12,14 @@ import { addWandMenu, refreshDrawer, renderDrawer } from './src/ui/drawer.js';
 import { applyTheme, refresh } from './src/ui/window.js';
 import { armPrepared } from './src/core/news.js';
 import './src/packs/life/dock.js';
+import './src/packs/life/market.js';
+import './src/packs/life/garden.js';
+import './src/packs/life/kitchen.js';
+import './src/packs/growth/growth.js';
+import './src/packs/duat/duat.js';
+import './src/packs/realm/works.js';
+import './src/packs/world/world.js';
+import './src/packs/adventure/gen.js';
 
 (function init() {
     const es = ctx().eventSource;

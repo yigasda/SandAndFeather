@@ -1,0 +1,71 @@
+{
+  "_about": "부엌 요리법. needs의 id는 그 물건, kind는 그 종류 아무거나. 태양 기운 1을 써.",
+  "recipes": [
+    {
+      "id": "grilled_fish",
+      "needs": [
+        {
+          "kind": "fish"
+        },
+        {
+          "id": "salt"
+        }
+      ]
+    },
+    {
+      "id": "fish_stew",
+      "needs": [
+        {
+          "kind": "fish"
+        },
+        {
+          "id": "onion"
+        }
+      ]
+    },
+    {
+      "id": "honey_bread",
+      "needs": [
+        {
+          "id": "bread"
+        },
+        {
+          "id": "honey"
+        }
+      ]
+    },
+    {
+      "id": "fig_cake",
+      "needs": [
+        {
+          "id": "fig"
+        },
+        {
+          "id": "honey"
+        }
+      ]
+    },
+    {
+      "id": "barley_porridge",
+      "needs": [
+        {
+          "id": "barley"
+        },
+        {
+          "id": "onion"
+        }
+      ]
+    },
+    {
+      "id": "lotus_tea",
+      "needs": [
+        {
+          "id": "blue_lotus"
+        },
+        {
+          "id": "honey"
+        }
+      ]
+    }
+  ]
+}

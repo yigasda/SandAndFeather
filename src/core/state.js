@@ -3,7 +3,7 @@
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 3;
+export const STATE_VERSION = 4;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -16,9 +16,19 @@ export const freshState = () => ({
     sync: { at: -1, raw: '', ok: false, when: 0 }, // the last tracker read: message index, its text
     linked: false,                                 // a tracker was read or the date was set by hand at least once
     ledger: { lastDay: -1, acts: {} },             // ledger.js: the newest day already handled, once-a-day actions done
-    bag: { items: [], deben: 0, seq: 0 },          // bag.js
+    bag: { items: [], deben: 60, seq: 0 },         // bag.js
     news: [],                                      // news.js: what the chat should hear about
     recent: { finds: [] },                         // what came up lately, so it does not come up again at once
+    sun: { day: -1, left: 0 },                     // sun.js: today's 태양 기운
+    stats: { wisdom: 0, strength: 0, faith: 0, xp: 0 }, // progress.js: 지혜 · 체력 · 신앙, 모험 경험치
+    party: { with: '' },                           // the companion walking with her: '' | 'set' | 'horus'
+    garden: { plots: [] },                         // garden.js: [{ seed, day }] or null per plot
+    works: {},                                     // works.js: { canal: { start, ready, done } }
+    flags: {},                                     // one-time things: secrets found, overlays opened, hints read
+    journal: [],                                   // progress.js: what happened, each can be brought out in the chat
+    daily: { day: -1, tasks: [] },                 // progress.js: today's two commissions
+    adv: { cur: null, done: [], recent: [], memory: [], day: -1, wait: false }, // packs/adventure
+    duat: null,                                    // packs/duat: a run in progress
     started: Date.now(),
 });
 
@@ -30,14 +40,17 @@ const STEPS = {
     // 2 → 3: 말 걸기 no longer moves the scene by itself. Talk lines made before that, still waiting, are dropped
     // so an ongoing scene is not pulled to the temple courtyard.
     2: s => { if (Array.isArray(s.news)) s.news = s.news.filter(n => n.key !== 'talk'); },
+    // 3 → 4: the first playable version. Somang starts with some deben.
+    3: s => { if (s.bag) s.bag.deben = Math.max(s.bag.deben || 0, 60); },
 };
 
 function fill(s) {
     const f = freshState();
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
-    for (const k of ['date', 'pos', 'sync', 'ledger', 'bag', 'recent']) if (!s[k] || typeof s[k] !== 'object') s[k] = structuredClone(f[k]);
-    if (!Array.isArray(s.news)) s.news = [];
-    for (const k of ['ledger', 'bag', 'recent']) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);
+    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'garden', 'works', 'flags', 'daily', 'adv'];
+    for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
+    for (const k of ['news', 'journal']) if (!Array.isArray(s[k])) s[k] = [];
+    for (const k of objs) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);
 }
 
 const checked = new WeakSet(); // each save object is looked over once, not on every frame

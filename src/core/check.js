@@ -24,6 +24,14 @@ export function checkData() {
             for (const s of f.seasons || []) if (!seasons.has(s)) bad('finds.json', `${tag}: 계절 ${s}는 없어. ${[...seasons].join(', ')} 중에서`);
         });
     }
+    const known = (file, where, id) => { if (id && !items[id]) bad(file, `${where}: ${id}가 items.json에 없어`); };
+    for (const id of DATA.market?.sells || []) known('market.json', '파는 것', id);
+    for (const r of DATA.recipes?.recipes || []) { known('recipes.json', '요리', r.id); for (const n of r.needs || []) known('recipes.json', `${r.id} 재료`, n.id); }
+    for (const w of DATA.works?.works || []) for (const id of Object.keys(w.needs || {})) known('works.json', w.id, id);
+    for (const id of [...(DATA.duat?.relics || []), ...(DATA.duat?.materials || [])]) known('duat.json', '보상', id);
+    for (const e of DATA.duat?.events || []) { known('duat.json', e.id, e.a?.loot); known('duat.json', e.id, e.b?.loot); }
+    for (const id of DATA.adventures?.finds || []) known('adventures.json', 'finds', id);
+    for (const [id, it] of Object.entries(items)) if (it.grow) known('items.json', `${id} 수확물`, it.grow.gives);
     for (const [id, m] of Object.entries(DATA.maps)) {
         const file = `maps/${id}.json`;
         const w = m.rows?.[0]?.length;
@@ -33,6 +41,9 @@ export function checkData() {
         if (unknown.size) bad(file, `legend에 없는 글자: ${[...unknown].join(' ')}`);
         for (const sp of m.spots || []) if (!(sp.x >= 0 && sp.y >= 0 && sp.x < w && sp.y < m.rows.length)) bad(file, `장소 ${sp.id}: 지도 밖에 있어`);
         for (const n of m.npcs || []) if (n.talk && !n.en) bad(file, `사람 ${n.id}: 말을 걸려면 en 이름이 있어야 해`);
+        const walk = (x, y) => m.legend[m.rows[y]?.[x]] && !m.legend[m.rows[y][x]].solid;
+        for (const a of m.anchors || []) if (!walk(a.x, a.y)) bad(file, `지점 ${a.id}: 걸을 수 없는 칸에 있어`);
+        for (const sc of m.secrets || []) if (sc.give) known(file, `비밀 ${sc.id}`, sc.give);
     }
     return out;
 }
