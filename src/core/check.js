@@ -37,7 +37,8 @@ export function checkData() {
     }
     for (const n of DATA.festivals?.nights || []) known('festivals.json', 'nights', n.give);
     const pic = (where, rows, colors) => (rows || []).forEach((r, k) => {
-        if (String(r).length !== 16) bad('sprites.json', `${where} ${k + 1}번째 줄이 ${String(r).length}칸, 16칸이어야 해`);
+        const w = String(rows[0]).length;
+        if (String(r).length !== w) bad('sprites.json', `${where} ${k + 1}번째 줄이 ${String(r).length}칸, 첫 줄처럼 ${w}칸이어야 해`);
         const miss = [...new Set([...String(r)].filter(ch => ch !== '.' && !colors?.[ch]))];
         if (miss.length) bad('sprites.json', `${where} ${k + 1}번째 줄: colors에 없는 글자 ${miss.join(' ')}`);
     });

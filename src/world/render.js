@@ -40,13 +40,14 @@ export class Renderer {
     setSprites(data) {
         this.art.clear();
         const make = (rows, colors, flip = false) => {
+            // usually 16×16; a wider or taller one (wings) is centred on the tile and stands on its bottom
             const c = document.createElement('canvas');
-            c.width = 16; c.height = 16;
+            c.width = Math.max(1, ...rows.map(r => String(r).length)); c.height = rows.length;
             const g = c.getContext('2d');
             rows.forEach((r, y) => [...String(r)].forEach((ch, x) => {
                 const col = colors?.[ch];
                 if (ch === '.' || !col) return;
-                g.fillStyle = col; g.fillRect(flip ? 15 - x : x, y, 1, 1);
+                g.fillStyle = col; g.fillRect(flip ? c.width - 1 - x : x, y, 1, 1);
             }));
             return c;
         };
@@ -147,7 +148,7 @@ export class Renderer {
         const pic = this.art.get(`${look}|${dir}`) || this.art.get(`${look}|down`);
         if (pic) { // a drawn picture: a shadow, and a step makes it bob
             P(4, 14, 8, 2, 'rgba(40,25,10,.25)');
-            g.drawImage(pic, x, y - (Math.floor(step) % 2) * z, 16 * z, 16 * z);
+            g.drawImage(pic, x - (pic.width - 16) / 2 * z, y - (pic.height - 16 + Math.floor(step) % 2) * z, pic.width * z, pic.height * z);
             return;
         }
         const L = LOOKS[look] || LOOKS.townsman;
@@ -229,7 +230,7 @@ export class Renderer {
         const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(x + a * z, y + b * z, w * z, h * z); };
         const bob = Math.round(Math.sin(time * 4 + t.x) * 1);
         const pic = this.art.get(`thing|${t.sprite}`);
-        if (pic) { g.drawImage(pic, x, y, 16 * z, 16 * z); return; }
+        if (pic) { g.drawImage(pic, x - (pic.width - 16) / 2 * z, y - (pic.height - 16) * z, pic.width * z, pic.height * z); return; }
         switch (t.sprite) {
             case 'beetle':
                 P(5, 13, 6, 1, 'rgba(40,25,10,.2)');
