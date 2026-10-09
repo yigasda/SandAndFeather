@@ -231,6 +231,15 @@ export class Renderer {
                 P(6, 0, 4, 1, '#E0B040');
                 break;
             }
+            case 'obelisk': case 'obelisk_on': { // a tall stone, its tip gold and glowing once woken
+                const on = t.sprite === 'obelisk_on';
+                P(4, 14, 8, 1, 'rgba(40,25,10,.3)'); P(5, 12, 6, 2, '#A89070');
+                P(6, 3, 4, 9, '#C9B591'); P(6, 3, 1, 9, '#E2D2B0'); P(9, 3, 1, 9, '#A89070');
+                P(7, 5, 2, 1, '#8A7556'); P(7, 7, 2, 1, '#8A7556'); P(7, 9, 1, 1, '#8A7556');
+                P(7, 1, 2, 2, on ? '#F2C94C' : '#B8A07E'); P(6, 2, 4, 1, on ? '#E0B040' : '#A89070');
+                if (on) { const k = 0.35 + 0.25 * Math.sin(time * 3 + t.x); P(5, 0, 6, 4, `rgba(255,220,120,${k})`); }
+                break;
+            }
             case 'stone':
                 P(2, 7, 12, 8, '#B8A07E'); P(3, 6, 9, 3, '#C9B591'); P(2, 14, 12, 1, 'rgba(40,25,10,.25)');
                 break;

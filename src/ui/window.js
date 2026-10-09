@@ -42,6 +42,12 @@ export const gameUi = () => ui;
 // more buttons on the 오늘 card: addTodayButton({ label, onClick(ui) })
 const todayBtns = [];
 export const addTodayButton = b => { todayBtns.push(b); };
+// more inside the 지도 card: addMapPart(ui => element | null)
+const mapParts = [];
+export const addMapPart = fn => { mapParts.push(fn); };
+// marks on the big map: addMapMarks(mapId => [{ x, y, on }])
+const markers = [];
+export const addMapMarks = fn => { markers.push(fn); };
 // a pack takes over a place: onSpot('dock', (spot, ui, map) => …)
 const spotActs = new Map();
 export const onSpot = (id, fn) => { spotActs.set(id, fn); };
@@ -127,6 +133,8 @@ export async function travel(mapId, pos = null) {
     const s = getState();
     if (!s || !DATA.maps[mapId]) return;
     closeCards(root);
+    setTab(hud, 'world');
+    hud.mini.classList.remove('sf_on');
     s.pos = { map: mapId, x: pos?.x ?? null, y: pos?.y ?? null, dir: 'down' };
     await saveState();
     enterMap();
@@ -271,12 +279,22 @@ function openMap() {
     cv.className = 'sf_bigmap';
     cv.width = map.w * 16; cv.height = map.h * 16;
     renderer.minimap(cv, player);
+    // obelisks and such, as small triangles: gold when woken
+    const g = cv.getContext('2d'), k = Math.min(cv.width / renderer.ground.width, cv.height / renderer.ground.height);
+    const ox = (cv.width - renderer.ground.width * k) / 2, oy = (cv.height - renderer.ground.height * k) / 2, ts = renderer.ground.width / map.w;
+    for (const fn of markers) for (const m of fn(map.id) || []) {
+        const x = ox + (m.x + 0.5) * ts * k, y = oy + (m.y + 0.5) * ts * k, r = Math.max(4, cv.width / 90);
+        g.fillStyle = m.on ? '#E0B040' : '#8A7A70'; g.strokeStyle = '#2a2018'; g.lineWidth = 1.5;
+        g.beginPath(); g.moveTo(x, y - r * 1.4); g.lineTo(x + r * 0.7, y + r); g.lineTo(x - r * 0.7, y + r); g.closePath(); g.fill(); g.stroke();
+    }
     const box = document.createElement('div');
+    box.className = 'sf_stack';
     box.append(cv);
     const note = document.createElement('div');
     note.className = 'sf_note';
     note.textContent = map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.';
     box.append(note);
+    for (const fn of mapParts) { try { const el = fn(ui, map); if (el) box.append(el); } catch (e) { console.error('[SandAndFeather] map part', e); } }
     showCard(root, { title: map.d.name || '지도', body: box, wide: true, onClose: () => setTab(hud, 'world') });
 }
 

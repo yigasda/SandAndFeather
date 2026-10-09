@@ -607,6 +607,12 @@
   "x": 1,
   "y": 3
  },
+ "obelisks": [
+   {"id": "ob_north", "x": 16, "y": 3, "ko": "북쪽 오벨리스크", "about": "필사실 옆 길"},
+   {"id": "ob_west", "x": 1, "y": 16, "ko": "서쪽 오벨리스크", "about": "훈련장 아래 서쪽 길"},
+   {"id": "ob_east", "x": 37, "y": 21, "ko": "동쪽 오벨리스크", "about": "동쪽 풀밭 끝"},
+   {"id": "ob_river", "x": 21, "y": 26, "ko": "강가 오벨리스크", "about": "선착장 가는 풀밭"}
+ ],
  "rows": [
   "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
   ".rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.",
