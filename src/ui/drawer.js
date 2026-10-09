@@ -10,6 +10,7 @@ import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
 import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex, weatherOf } from '../core/tracker.js';
 import { dropNews, newsStatus, pending } from '../core/news.js';
+import { FEATHER } from './icon.js';
 import { esc } from './popups.js';
 import { applyTheme, openGame } from './window.js';
 
@@ -24,12 +25,12 @@ export function renderDrawer(problems = []) {
     <div id="sf_settings" class="extension_settings">
       <div class="inline-drawer">
         <div class="inline-drawer-toggle inline-drawer-header">
-          <b class="sf_title">☥ 모래와 깃털 <span class="sf_ver">v${VERSION}</span></b>
+          <b class="sf_title">${FEATHER} 모래와 깃털 <span class="sf_ver">v${VERSION}</span></b>
           <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
         </div>
         <div class="inline-drawer-content">
           <div class="sf_body">
-            <button type="button" class="sf_btn sf_primary sf_wide" id="sf_open"><i class="fa-solid fa-ankh"></i> 게임 열기</button>
+            <button type="button" class="sf_btn sf_primary sf_wide" id="sf_open">${FEATHER} 게임 열기</button>
             ${problems.length ? `<div class="sf_box sf_warn"><b>데이터 확인</b>${problems.map(p => `<div class="sf_sub">${esc(p)}</div>`).join('')}</div>` : ''}
 
             <div class="sf_box">
@@ -192,7 +193,7 @@ export function addWandMenu() {
         box.id = 'sf_wand_container';
         box.className = 'extension_container';
         box.innerHTML = `<div id="sf_wand_open" class="list-group-item flex-container flexGap5 interactable" tabindex="0" title="모래와 깃털">
-            <div class="fa-solid fa-ankh extensionsMenuExtensionButton"></div><span>모래와 깃털</span></div>`;
+            <div class="extensionsMenuExtensionButton sf_wand_icon">${FEATHER}</div><span>모래와 깃털</span></div>`;
         const it = box.firstElementChild;
         it.addEventListener('click', openGame);
         it.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGame(); } });

@@ -390,7 +390,11 @@
     gap: 6px;
     cursor: pointer;
 }
-#sf_chip .sf_chip_ank { color: var(--sf-accent); font-size: 15px; }
+#sf_chip .sf_chip_mark { color: var(--sf-accent); font-size: 15px; display: inline-flex; }
+.sf_mark { vertical-align: -0.18em; flex: none; }
+.sf_wand_icon { display: inline-flex; align-items: center; justify-content: center; }
+.sf_wand_icon .sf_mark { width: 1.35em; height: 1.35em; stroke-width: 2.2; }
+#sf_settings #sf_open { display: flex; align-items: center; justify-content: center; gap: 6px; }
 
 /* ---------- the drawer in the Extensions tab ---------- */
 #sf_settings .sf_title { font-weight: 800; }

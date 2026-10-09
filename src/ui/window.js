@@ -12,6 +12,7 @@ import { getMap } from '../world/map.js';
 import { feet, placePlayer, player, rememberPosition, stepPlayer } from '../world/player.js';
 import { MODE, Renderer } from '../world/render.js';
 import { buildHud, placeBubble, setTab, shortDate, todayBody, updateHud } from './hud.js';
+import { FEATHER } from './icon.js';
 import { bagCard } from './items.js';
 import { personCard } from './talk.js';
 import { cardOpen, closeCards, showCard, toast } from './popups.js';
@@ -158,7 +159,7 @@ export function refresh() {
     const s = getState();
     if (!s) return;
     updateHud(hud, s);
-    chip.innerHTML = `<span class="sf_chip_ank">☥</span>${shortDate(s)}`;
+    chip.innerHTML = `<span class="sf_chip_mark">${FEATHER}</span>${shortDate(s)}`;
     if (map) renderer.setMap(map, seasonOf(s.date.month));
     if (mode === 'open') frameNow();
 }
