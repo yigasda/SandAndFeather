@@ -7,6 +7,7 @@
 import { give, itemInfo, nameOf, ofKind, takeUid } from '../../core/bag.js';
 import { emit } from '../../core/bus.js';
 import { DATA } from '../../core/data.js';
+import { noteDay } from '../../core/daylog.js';
 import { canDo, markDone } from '../../core/ledger.js';
 import { addXP, hasSkill, journal, rank } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
@@ -212,6 +213,7 @@ async function finish(rescued) {
         say: `${josa(comp?.ko, '와')} 두아트에 내려갔던 이야기를 꺼낸다.`,
         en: `Somang went down into the Duat with ${comp?.en}${r.won ? ' and they got past the gatekeeper' : ''}; ${rescued ? `${comp?.en} carried her back up` : 'she came back up on her own feet'}${names.length ? ` with ${names.slice(0, 3).join(', ')}` : ''}.`,
         marks: ['두아트'], kind: 'duat' });
+    if (rescued) noteDay(s, 'close');
     r.phase = 'end'; r.result = { rescued, keep, xp };
     await save();
     endCard();

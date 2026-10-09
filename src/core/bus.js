@@ -19,6 +19,7 @@ export const EVENTS = {
     'world:changed': 'the map changed: an overlay opened, a companion joined, a thing appeared { map }',
     'adventure:changed': 'the small adventure moved on, started or ended',
     'duat:changed': 'a Duat run moved on, started or ended',
+    'daylog:closed': 'a game day closed into the calendar; its 하루 결산 may wait to be shown { summary }',
     'picks:changed': 'something was taken from a chat message, used, or went away with its reply',
 };
 

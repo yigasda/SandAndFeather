@@ -37,6 +37,11 @@ const ui = {
 // packs that want to know the window opened (to settle works, start an adventure): onOpen(fn)
 const openers = new Set();
 export const onOpen = fn => { openers.add(fn); };
+// the game's ui for a pack that shows something on its own (a day closed while the window is open)
+export const gameUi = () => ui;
+// more buttons on the 오늘 card: addTodayButton({ label, onClick(ui) })
+const todayBtns = [];
+export const addTodayButton = b => { todayBtns.push(b); };
 // a pack takes over a place: onSpot('dock', (spot, ui, map) => …)
 const spotActs = new Map();
 export const onSpot = (id, fn) => { spotActs.set(id, fn); };
@@ -254,6 +259,7 @@ function openToday() {
         title: '오늘',
         body: todayBody(s),
         buttons: [
+            ...todayBtns.map(b => ({ label: b.label, onClick: () => b.onClick(ui) })),
             { label: '챗에서 다시 읽기', onClick: () => { syncFromChat({ force: true }).then(r => { refresh(); toast(root, r.ok ? '챗의 트래커와 다시 맞췄어' : '트래커를 못 찾았어'); }); } },
             { label: '닫기', primary: true },
         ],
