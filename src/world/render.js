@@ -158,6 +158,18 @@ export class Renderer {
         // the hour's light
         const tint = TINT[part];
         if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
+        // The sealed passage keeps its light inside the existing doorway.
+        // A small threshold and inner seam brighten at night, with no village-wide glow.
+        for (const b of m.buildings) if (b.glow === 'duat') {
+            const bx = b.x * ts - cx, bottom = (b.y + b.h) * ts - cy;
+            const night = part === 'night' || part === 'evening';
+            g.fillStyle = night ? 'rgba(156,124,191,.65)' : 'rgba(128,104,153,.25)';
+            g.fillRect(bx + 6 * z, bottom - 2 * z, (b.w * T - 12) * z, z);
+            if (night) {
+                g.fillStyle = 'rgba(123,94,155,.25)';
+                g.fillRect(bx + 5 * z, bottom - 6 * z, (b.w * T - 10) * z, 4 * z);
+            }
+        }
         const fires = (m.decor || []).filter(d => d.k === 'brazier');
         // braziers burn
         for (const d of fires) {

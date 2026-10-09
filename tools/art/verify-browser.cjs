@@ -69,10 +69,30 @@ const passed = [];
       let gateOnStone=true;
       for(let y=gate.y;y<gate.y+gate.h;y++)for(let x=gate.x;x<gate.x+gate.w;x++)gateOnStone &&= m.type(x,y)==='stone';
       return {gateOnStone,statueOnStone:m.type(jackal.x,jackal.y)==='stone',statueBlocks:m.solidAt(jackal.x,jackal.y),
-        passageClear:!m.solidAt(35,11)&&!m.solidAt(35,12)&&!m.solidAt(35,13),edgeGap:!m.solidAt(jackal.x+1,jackal.y)};
+        passageClear:!m.solidAt(35,11)&&!m.solidAt(35,12)&&!m.solidAt(35,13),guardianBesidePassage:!m.solidAt(jackal.x-1,jackal.y),
+        roadClear:Array.from({length:8},(_,k)=>11+k).every(y=>[35,36].every(x=>!m.solidAt(x,y))),
+        sealBlocks:m.decor.some(d=>d.k==='seal'&&m.solidAt(d.x,d.y))};
     });
     assert(Object.values(forecourt).every(Boolean),JSON.stringify(forecourt));
-    passed.push('Duat stone forecourt, statue clearance, gate collision and daytime interaction');
+    // Walk the full approach using real player collision, in both lanes and directions.
+    const approach=await page.evaluate(()=>{
+      const m=artTest.map.getMap(),p=artTest.player.player,step=artTest.player.stepPlayer;
+      return [35,36].map(x=>{
+        Object.assign(p,{x,y:18});
+        for(let n=0;n<240;n++)step(m,0,-1,1/60);
+        const atGate=p.y;
+        for(let n=0;n<112;n++)step(m,0,1,1/60);
+        return {x,atGate,back:p.y};
+      });
+    });
+    assert(approach.every(p=>p.atGate>=10.37&&p.atGate<10.5&&p.back>18),JSON.stringify(approach));
+    await page.evaluate(()=>{artTest.state.getState().part='night';artTest.win.refresh();});
+    await travel(35,11); await page.locator('.sf_talk').click();
+    const nightGate=page.locator('.sf_pop_wrap').last(); await nightGate.waitFor();
+    assert((await nightGate.innerText()).includes('누구와 내려갈까?'));
+    await nightGate.locator('.sf_pop_x').click();
+    await page.evaluate(()=>{artTest.state.getState().part='day';artTest.win.refresh();});
+    passed.push('Duat two-lane approach both ways, guardian/seal collision, gate and day/night interactions');
     const reachability = await page.evaluate(() => {
       const {GameMap}=artTest.map, d=artTest.data.DATA.maps.ombos;
       return [[],['canal','field','garden']].map(open=>{
@@ -136,7 +156,7 @@ const passed = [];
     await page.keyboard.down('ArrowDown');await page.waitForTimeout(500);await page.keyboard.up('ArrowDown');
     assert.equal(requests.length,fetched);passed.push('movement does not reload art');
     assert.deepEqual(errors,[]);
-    const result={passed,art,reachability,forecourt,occlusion,restoration,pageErrors:errors};
+    const result={passed,art,reachability,forecourt,approach,occlusion,restoration,pageErrors:errors};
     fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify(result,null,2)+'\n');
     console.log(JSON.stringify(result,null,2));
   } finally {

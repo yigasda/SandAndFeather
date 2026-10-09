@@ -168,6 +168,9 @@ function baseOf(ctx, t, i, j) {
 // ---------- tiles
 function tile(ctx, i, j) {
     const { m, S, g, o } = ctx, t = m.type(i, j), x = i * T, y = j * T, alt = (i + j) % 2, c = ctx.art.cols;
+    const style = m.legend(i, j).style;
+    if (style === 'duat' && t === 'rock') return sealedCliff(ctx, i, j);
+    if (style === 'worn' || (style === 'duat' && t === 'stone')) return buriedStone(ctx, i, j);
     const at = (a, b) => (a < 0 || b < 0 || a >= m.w || b >= m.h ? t : m.type(a, b));
     switch (t) {
         case 'grass': if (drawTile(ctx, 'grass', i, j, x, y)) break;
@@ -331,6 +334,78 @@ function tile(ctx, i, j) {
         default: sand(g, x, y, alt);
     }
 }
+// Broad connected rock masses; their edges use the same solid tiles as collision.
+// No brick grid or repeated small boulders around the gate.
+function sealedCliff(ctx, i, j) {
+    const { g, m } = ctx, x = i * T, y = j * T;
+    const rock = (a, b) => m.type(a, b) === 'rock';
+    const front = !rock(i, j + 1), left = !rock(i - 1, j), right = !rock(i + 1, j);
+    box(g, x, y, T, T, '#C8B08B');
+    // Irregular planes span 3×4 tiles. Clipping keeps the art inside solid ground.
+    g.save(); g.beginPath(); g.rect(x, y, T, T); g.clip();
+    const px = Math.floor(i / 3) * 48, py = Math.floor(j / 4) * 64;
+    const plane = (points, color) => {
+        g.fillStyle = color; g.beginPath();
+        points.forEach(([a, b], n) => n ? g.lineTo(px + a, py + b) : g.moveTo(px + a, py + b));
+        g.closePath(); g.fill();
+    };
+    plane([[0,12],[20,12],[20,7],[39,7],[39,13],[48,13],[48,39],[30,39],[30,45],[5,45],[5,34],[0,34]], '#D0BA96');
+    plane([[30,45],[30,39],[48,39],[48,64],[39,64],[39,58],[25,58],[25,52],[12,52],[12,45]], '#B49C7C');
+    g.restore();
+    if (!rock(i, j - 1)) { box(g, x, y, T, 1, '#79664F'); box(g, x, y + 1, T, 2, '#DECAA6'); }
+    // The exposed face spans two tiles in height, with a broad illuminated top.
+    // A single stepped fault crosses each three-tile mass, rather than a tile grid.
+    const upperFace = rock(i, j + 1) && !rock(i, j + 2);
+    if (upperFace) {
+        const lip = 5 + Math.floor(i / 2) % 3;
+        box(g, x, y + lip, T, T - lip, '#9E8A6E');
+        box(g, x, y + lip, T, 1, '#E0C9A1');
+    }
+    if (front) {
+        box(g, x, y, T, T, '#9E8A6E');
+        box(g, x, y + 14, T, 2, '#75624F');
+        if (i % 3 === 1) { box(g, x + 10, y, 1, 7, '#786551'); box(g, x + 11, y + 7, 1, 4, '#786551'); }
+    }
+    if (left) {
+        box(g, x, y, 1, T, '#79664F');
+        box(g, x + 1, y, 5, T, '#AD9779');
+        box(g, x + 6, y, 1, T, '#DECAA6');
+    }
+    if (!front && !upperFace && i % 3 === 1 && j % 3 === 2) {
+        box(g, x + 2, y + 4, 10, 1, '#A28C70');
+        box(g, x + 12, y + 5, 4, 1, '#A28C70');
+    }
+    if (right) box(g, x + 13, y, 3, T, '#8B7962');
+}
+
+// Sand remains visible between increasingly worn paving near the sealed entrance.
+function buriedStone(ctx, i, j) {
+    const { g, m } = ctx, x = i * T, y = j * T;
+    const inner = m.legend(i, j).style === 'duat';
+    let age = inner ? 1 : 0;
+    if (!inner) for (let n = 1; n <= 4; n++) {
+        if (m.legend(i, j - n).style === 'duat') { age = (5 - n) / 5; break; }
+    }
+    sand(g, x, y, (i + j) % 2);
+    const base = mix('#DED0B2', '#AAA296', age), lit = mix('#EEE0C1', '#C7BDB0', age);
+    const edge = mix('#BCAA8B', '#8E8476', age), inset = age > .5 ? 2 : 1;
+    if (inner) {
+        box(g, x + 1, y + 2, 14, 12, base);
+        box(g, x + 2, y + 1, 11, 1, lit);
+        box(g, x + 2, y + 14, 12, 1, edge);
+        box(g, x + 14, y + 4, 1, 9, edge);
+        // A buried corner, without noisy speckling.
+        box(g, x + 1, y + 12, 2, 2, ctx.art.cols.s || SAND.base);
+    } else {
+        const split = (i + j) % 2 ? 6 : 9;
+        for (const [a, w, dy] of [[inset, split - inset, 1], [split + inset, 16 - split - 2 * inset, 2]]) {
+            box(g, x + a, y + dy, w, 12, base);
+            box(g, x + a + 1, y + dy, Math.max(1, w - 2), 1, lit);
+            box(g, x + a, y + dy + 11, w, 1, edge);
+            box(g, x + a, y + dy, 1, 2, ctx.art.cols.s || SAND.base);
+        }
+    }
+}
 // sand: from its pictures, or flat with a little ripple in fixed places
 let sandCtx = null;
 function sand(g, x, y, alt) {
@@ -344,6 +419,7 @@ function sand(g, x, y, alt) {
 const RIM = { grass: 1, path: 1, farm: 1, stone: 1, water: 1 };
 function edges(ctx, i, j) {
     const { m, g } = ctx, t = m.type(i, j), x = i * T, y = j * T, c = ctx.art.cols;
+    if (m.legend(i, j).style) return; // buried paving has its own irregular sand rim
     if (!RIM[t]) return;
     const raised = nt => nt === 'wall' || nt === 'rock' || nt === 'stairs' || nt === 'pillar' || nt === 'dock' || nt === 'hedge' || nt === 'fence';
     const other = (a, b) => { if (a < 0 || b < 0 || a >= m.w || b >= m.h) return false; const nt = m.type(a, b); return nt !== t && !raised(nt) && !(t === 'stone' && nt === 'stairs'); };
@@ -498,6 +574,18 @@ function lotus(g, x, y) {
 
 // ---------- decor: { k, x, y } in data/maps/*.json. Which ones block walking is in map.js (SOLID_DECOR).
 const DECOR = {
+    seal(c, x, y) {
+        const { g } = c;
+        box(c.s, x + 4, y + 13, 12, 3, SHADOW);
+        box(g, x + 2, y + 5, 12, 9, '#9A9081');
+        box(g, x + 3, y + 3, 10, 3, '#C9BCA5');
+        box(g, x + 4, y + 3, 8, 1, '#E1D3BB');
+        box(g, x + 12, y + 6, 2, 8, '#756B5D');
+        // One recessed seal, deliberately quiet beside the black guardian.
+        box(g, x + 6, y + 7, 4, 1, '#625B53');
+        box(g, x + 7, y + 6, 2, 5, '#625B53');
+        box(g, x + 6, y + 11, 4, 1, '#625B53');
+    },
     // A plain sandstone column: one low capital, a quiet shaft and a grounded plinth.
     column(c, x, y) {
         const { g, u } = c;
