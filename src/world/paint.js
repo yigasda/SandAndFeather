@@ -264,21 +264,22 @@ function building(ctx, b) {
     if (b.kind === 'temple') return temple(g, u, x, y, w, h);
     if (b.kind === 'gate') return duatGate(g, x, y, w, h);
     const roof = b.roof || '#B98F5E';
-    const wall = '#DCBD8F', line = '#8E6C46';
+    const wall = '#DCBD8F';
     if (b.kind === 'stall') return stall(g, u, x, y, w, h, roof);
     // walls of mud brick, a flat roof with a parapet, windows set in, a framed door
     box(g, x, y, w, h, wall);
-    box(g, x, y, w, 8, roof); box(g, x, y, w, 2, shade(roof, 0.18)); box(g, x, y + 8, w, 2, 'rgba(60,40,20,.25)');
+    box(g, x, y, w, 8, shade(roof, 0.12)); box(g, x, y, w, 1, shade(roof, 0.3)); box(g, x, y + 7, w, 1, roof); box(g, x, y + 8, w, 2, 'rgba(60,40,20,.12)');
     box(g, x + 3, y + 3, 4, 3, shade(roof, -0.25)); box(g, x + 3, y + 2, 4, 1, shade(roof, 0.1)); // a jar on the roof
     if (w > 48) { box(g, x + w - 14, y + 3, 9, 3, '#C9A46A'); box(g, x + w - 14, y + 3, 9, 1, '#E0C08A'); } // a drying mat
-    box(g, x, y + h - 3, w, 3, '#B8976A');
+    box(g, x, y + h - 2, w, 2, 'rgba(150,115,75,.35)');
     for (let k = 10; k < w - 14; k += 20) {
         if (Math.abs(k + 3 - w / 2) < 11) continue; // not over the door
         box(g, x + k, y + 14, 7, 6, '#4A3424'); box(g, x + k - 1, y + 13, 9, 1, '#EAD2A8'); box(g, x + k - 1, y + 20, 9, 1, '#B8976A'); box(g, x + k + 3, y + 14, 1, 6, '#6A4C34');
     }
     const dx = x + w / 2 - 7, dy = y + h - 15;
     box(g, dx, dy, 14, 15, '#E6D2AC'); box(g, dx + 2, dy + 2, 10, 13, '#3A2618'); box(g, dx + 2, dy + 2, 10, 2, '#24170E'); box(g, dx - 1, dy - 1, 16, 2, '#C9A97A');
-    outline(g, x, y, w, h, line);
+    // no drawn border: like the temple, the shape shows by light on the left and top, shade on the right
+    box(g, x, y + 10, 1, h - 13, 'rgba(255,245,225,.35)'); box(g, x + w - 2, y + 10, 2, h - 13, 'rgba(120,85,50,.18)');
 }
 function stall(g, u, x, y, w, h, roof) {
     // a counter with goods under a striped awning on two posts
