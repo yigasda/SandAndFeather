@@ -36,9 +36,15 @@
 }
 
 /* ---------- the game window ---------- */
+/* SillyTavern puts a transform on <html> and gives it no height, so a fixed box is measured against that
+   zero-height <html>, not the screen: inset: 0 alone comes out 0px tall. The size is given outright. */
 #sf_game {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     z-index: 10050;
     background: #2a2018;
     color: var(--sf-ink);
@@ -53,10 +59,12 @@
 /* a wide screen: a framed window in the middle instead of the whole page */
 @media (min-width: 900px) {
     #sf_game {
-        inset: 3vh auto auto 50%;
+        top: 3vh;
+        left: 50%;
         transform: translateX(-50%);
         width: min(960px, 94vw);
         height: 94vh;
+        height: 94dvh;
         border-radius: 22px;
         box-shadow: 0 0 0 100vmax rgba(20, 14, 10, 0.55), 0 10px 40px rgba(0, 0, 0, 0.5);
     }
