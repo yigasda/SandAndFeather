@@ -66,6 +66,9 @@ function build() {
     hud = buildHud(root);
     renderer = new Renderer(hud.view);
     new ResizeObserver(() => { renderer.resize(); if (mode === 'open') frameNow(); }).observe(hud.view);
+    // coming back to the tab, or the browser giving the canvas back: paint the ground again
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && mode === 'open') { renderer.repaint(); frameNow(); } });
+    hud.view.addEventListener('contextrestored', () => { renderer.repaint(); if (mode === 'open') frameNow(); });
     bindPad(hud.pad, hud.knob);
     hud.close.addEventListener('click', closeGame);
     hud.collapse.addEventListener('click', foldGame);
@@ -136,6 +139,7 @@ export async function openGame() {
     chip.hidden = true;
     mode = 'open';
     enterMap();
+    renderer.repaint();
     renderer.resize();
     await syncFromChat();
     refresh();

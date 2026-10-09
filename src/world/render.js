@@ -39,6 +39,9 @@ export class Renderer {
         this.map = map; this.season = season;
         this.paintGround();
     }
+    // a phone browser can throw canvas pictures away while the tab is in the background (the GPU memory is
+    // taken back); the ground painted once is then blank. Painting it again brings the map back.
+    repaint() { if (this.map) this.paintGround(); }
     resize() {
         const r = this.cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
         this.cv.width = Math.max(1, Math.round(r.width * dpr));
