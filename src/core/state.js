@@ -3,7 +3,7 @@
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 4;
+export const STATE_VERSION = 5;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -30,6 +30,7 @@ export const freshState = () => ({
     adv: { cur: null, done: [], recent: [], memory: [], day: -1, wait: false }, // packs/adventure
     duat: null,                                    // packs/duat: a run in progress
     lessons: { cur: '', prog: {}, done: [] },      // progress.js: the learning goal and what was learned
+    picks: [],                                     // picks.js: what was taken from chat messages, while they still say it
     started: Date.now(),
 });
 
@@ -43,6 +44,7 @@ const STEPS = {
     2: s => { if (Array.isArray(s.news)) s.news = s.news.filter(n => n.key !== 'talk'); },
     // 3 → 4: the first playable version. Somang starts with some deben.
     3: s => { if (s.bag) s.bag.deben = Math.max(s.bag.deben || 0, 60); },
+    4: () => {},  // 4 → 5: picks is new (게임에 반영하기); filled below
 };
 
 function fill(s) {
@@ -50,7 +52,7 @@ function fill(s) {
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
     const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons'];
     for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
-    for (const k of ['news', 'journal']) if (!Array.isArray(s[k])) s[k] = [];
+    for (const k of ['news', 'journal', 'picks']) if (!Array.isArray(s[k])) s[k] = [];
     for (const k of objs) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);
 }
 

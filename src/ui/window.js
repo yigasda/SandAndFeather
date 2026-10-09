@@ -54,7 +54,7 @@ function isDark() {
 }
 export function applyTheme() {
     const dark = isDark();
-    for (const el of [root, chip, document.getElementById('sf_settings')]) el?.classList.toggle('sf_dark', dark);
+    for (const el of [root, chip, document.getElementById('sf_settings'), document.getElementById('sf_pick')]) el?.classList.toggle('sf_dark', dark);
 }
 
 function build() {

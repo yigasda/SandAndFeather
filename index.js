@@ -11,6 +11,8 @@ import { syncFromChat } from './src/core/tracker.js';
 import { addWandMenu, refreshDrawer, renderDrawer } from './src/ui/drawer.js';
 import { applyTheme, refresh } from './src/ui/window.js';
 import { armPrepared } from './src/core/news.js';
+import { syncPicks } from './src/core/picks.js';
+import { addMesButtons, markChat } from './src/ui/mesbtn.js';
 import './src/packs/life/dock.js';
 import './src/packs/life/market.js';
 import './src/packs/life/garden.js';
@@ -29,10 +31,11 @@ import './src/packs/adventure/gen.js';
     // a chat was opened (or the page loaded with one): read its game, its newest tracker, set the prompt block
     const onChat = async () => {
         if (!ready) return;
-        if (hasChat()) await syncFromChat({ force: true });
+        if (hasChat()) { await syncFromChat({ force: true }); await syncPicks(); }
         emit('game:loaded', {});
         applyInjection();
         refreshDrawer();
+        markChat();
     };
     // a reply came, was edited, swiped or deleted: read the tracker again, a moment later
     let timer;
@@ -41,9 +44,12 @@ import './src/packs/adventure/gen.js';
         clearTimeout(timer);
         timer = setTimeout(async () => {
             await syncFromChat();
+            // what was taken from a reply goes away with it, and comes back with a swipe back to it
+            await syncPicks();
             applyInjection();
             refreshDrawer();
             refresh();
+            markChat();
         }, 250);
     };
 
@@ -57,6 +63,7 @@ import './src/packs/adventure/gen.js';
         if (problems.length) window.toastr?.warning?.(problems.slice(0, 3).join('<br>'), '모래와 깃털 · 데이터 확인', { escapeHtml: false });
         renderDrawer(problems);
         addWandMenu();
+        addMesButtons();
         applyTheme();
         onChat();
     };

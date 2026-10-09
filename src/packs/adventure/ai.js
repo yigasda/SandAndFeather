@@ -11,6 +11,7 @@ import { partInfo, seasonOf } from '../../core/clock.js';
 import { placeInfo, roomEn } from '../../core/tracker.js';
 import { settings } from '../../core/settings.js';
 import { callConn, connSettings, ownReady } from '../../core/ai.js';
+import { livePicks, usePick } from '../../core/picks.js';
 import { ctx } from '../../core/st.js';
 import { getMap } from '../../world/map.js';
 import { resolve } from './engine.js';
@@ -62,9 +63,12 @@ export async function askAdventure(s) {
     const A = DATA.adventures || {};
     const items = [...(A.finds || []), ...(rank(s) >= 2 ? A.rewards?.relics || [] : []), 'map_scrap', 'wet_papyrus'].filter(id => itemInfo(id));
     const recent = (s.adv.recent || []).map(r => `${r.tpl}${r.guide ? `/${r.guide}` : ''}${r.item ? `/${r.item}` : ''}`).join(', ') || 'none';
-    // how closely this one may touch the story: mostly mood only, so a dinner scene does not breed fish adventures
+    // a seed Somang took from the chat herself (게임에 반영하기) leads; it is used up once this adventure is written
+    const idea = livePicks(s, 'idea').at(-1);
+    // otherwise how closely this one may touch the story: mostly mood only, so a dinner scene does not breed fish adventures
     const dice = Math.random();
-    const link = dice < 0.7 ? 'MOOD: match the season, hour and feeling of the story, but do not reuse its objects or events.'
+    const link = idea ? `SOMANG ASKED FOR THIS: build the adventure around it, as something she comes across later in the village. Do not end or change the current scene, do not use names other than Set and Horus, nothing romantic.\n${idea.text}`
+        : dice < 0.7 ? 'MOOD: match the season, hour and feeling of the story, but do not reuse its objects or events.'
         : dice < 0.85 ? 'DIRECT: you may start from one object or place the story mentioned lately, as something Somang comes across later in the village; do not end or change the current scene.'
             : 'APART: make it unrelated to the story; just a small village happening.';
     const lesson = lessonState(s);
@@ -104,6 +108,7 @@ Rules: a "choice" needs a "find" or a "bring" before it. A "bring" with need "fo
     const def = check(parse(raw), map);
     const r = resolve({ ...def, id: `a${Date.now().toString(36)}`, tpl: 'ai', guide: def.steps.find(x => x.kind === 'follow')?.guide || '', item: def.steps.find(x => x.kind === 'find')?.item || '' });
     if (!r) throw new Error('AI 모험이 지도에 맞지 않아');
+    if (idea) usePick(s, idea.id);
     return r;
 }
 

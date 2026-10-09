@@ -19,6 +19,7 @@ export const EVENTS = {
     'world:changed': 'the map changed: an overlay opened, a companion joined, a thing appeared { map }',
     'adventure:changed': 'the small adventure moved on, started or ended',
     'duat:changed': 'a Duat run moved on, started or ended',
+    'picks:changed': 'something was taken from a chat message, used, or went away with its reply',
 };
 
 const handlers = new Map();

@@ -1,7 +1,7 @@
 /* 모래와 깃털 — the same look as NarrativeArchive: cream paper, orange accent, round cards.
    .sf_dark (set by the theme setting) swaps the colours for the warm dark palette. */
 
-#sf_game, #sf_chip, #sf_settings {
+#sf_game, #sf_chip, #sf_settings, #sf_pick {
     --sf-bg: #F0E4DB;
     --sf-card: #F7EEE7;
     --sf-card2: #F1E6DD;
@@ -18,7 +18,7 @@
     --sf-round: #6E5D52;
     --sf-font: 'Noto Sans KR', 'Pretendard', system-ui, sans-serif;
 }
-#sf_game.sf_dark, #sf_chip.sf_dark, #sf_settings.sf_dark {
+#sf_game.sf_dark, #sf_chip.sf_dark, #sf_settings.sf_dark, #sf_pick.sf_dark {
     --sf-bg: #2A211C;
     --sf-card: #362A23;
     --sf-card2: #3E3129;
@@ -256,7 +256,7 @@
 #sf_game .sf_tab.sf_on { color: var(--sf-accent); }
 
 /* cards over the map */
-#sf_game .sf_pop_wrap {
+:is(#sf_game, #sf_pick) .sf_pop_wrap {
     position: absolute;
     inset: 0;
     background: rgba(30, 20, 14, 0.35);
@@ -265,7 +265,7 @@
     padding: 16px;
     z-index: 5;
 }
-#sf_game .sf_pop {
+:is(#sf_game, #sf_pick) .sf_pop {
     width: min(380px, 100%);
     max-height: 86%;
     overflow: auto;
@@ -280,11 +280,11 @@
     user-select: text;
     -webkit-user-select: text;
 }
-#sf_game .sf_pop_wide { width: min(560px, 100%); }
-#sf_game .sf_pop_head { display: flex; align-items: center; gap: 8px; }
-#sf_game .sf_pop_title { flex: 1; font-size: 17px; font-weight: 800; }
-#sf_game .sf_pop_x { box-shadow: none; background: transparent; border-color: transparent; color: var(--sf-dim); }
-#sf_game .sf_pop_text { font-size: 14px; line-height: 1.6; white-space: pre-line; }
+:is(#sf_game, #sf_pick) .sf_pop_wide { width: min(560px, 100%); }
+:is(#sf_game, #sf_pick) .sf_pop_head { display: flex; align-items: center; gap: 8px; }
+:is(#sf_game, #sf_pick) .sf_pop_title { flex: 1; font-size: 17px; font-weight: 800; }
+:is(#sf_game, #sf_pick) .sf_pop_x { box-shadow: none; background: transparent; border-color: transparent; color: var(--sf-dim); }
+:is(#sf_game, #sf_pick) .sf_pop_text { font-size: 14px; line-height: 1.6; white-space: pre-line; }
 #sf_game .sf_bag_list { display: flex; flex-direction: column; gap: 6px; }
 #sf_game .sf_bag_row {
     display: grid;
@@ -302,7 +302,7 @@
 #sf_game .sf_bag_icon { font-size: 22px; text-align: center; }
 #sf_game .sf_bag_name { font-size: 14px; font-weight: 700; }
 #sf_game .sf_bag_meta { font-size: 12px; color: var(--sf-dim); }
-#sf_game .sf_pop_btns { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+:is(#sf_game, #sf_pick) .sf_pop_btns { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
 .sf_tag {
     background: var(--sf-accent-soft);
     color: var(--sf-accent-ink);
@@ -321,8 +321,8 @@
     border-bottom: 1px solid var(--sf-line);
 }
 #sf_game .sf_row span { color: var(--sf-dim); }
-#sf_game .sf_note { font-size: 12px; color: var(--sf-dim); line-height: 1.5; margin-top: 4px; }
-#sf_game .sf_note code {
+:is(#sf_game, #sf_pick) .sf_note { font-size: 12px; color: var(--sf-dim); line-height: 1.5; margin-top: 4px; }
+:is(#sf_game, #sf_pick) .sf_note code {
     display: block;
     margin-top: 4px;
     padding: 6px 8px;
@@ -513,8 +513,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#sf_game .sf_list { display: flex; flex-direction: column; gap: 6px; }
-#sf_game .sf_list_row {
+:is(#sf_game, #sf_pick) .sf_list { display: flex; flex-direction: column; gap: 6px; }
+:is(#sf_game, #sf_pick) .sf_list_row {
     display: grid;
     grid-template-columns: 30px 1fr auto;
     align-items: center;
@@ -524,16 +524,16 @@
     border-radius: 14px;
     background: var(--sf-card2);
 }
-#sf_game .sf_list_row.sf_dim { opacity: 0.62; }
-#sf_game .sf_list_icon { font-size: 20px; text-align: center; }
-#sf_game .sf_list_main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-#sf_game .sf_list_main b { font-size: 14px; }
-#sf_game .sf_list_main small { font-size: 12px; color: var(--sf-dim); white-space: pre-line; line-height: 1.45; }
-#sf_game .sf_list_btns { display: flex; flex-direction: column; gap: 4px; align-items: stretch; }
-#sf_game .sf_btn:disabled { opacity: 0.45; cursor: default; }
-#sf_game .sf_stack { display: flex; flex-direction: column; gap: 10px; }
+:is(#sf_game, #sf_pick) .sf_list_row.sf_dim { opacity: 0.62; }
+:is(#sf_game, #sf_pick) .sf_list_icon { font-size: 20px; text-align: center; }
+:is(#sf_game, #sf_pick) .sf_list_main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+:is(#sf_game, #sf_pick) .sf_list_main b { font-size: 14px; }
+:is(#sf_game, #sf_pick) .sf_list_main small { font-size: 12px; color: var(--sf-dim); white-space: pre-line; line-height: 1.45; }
+:is(#sf_game, #sf_pick) .sf_list_btns { display: flex; flex-direction: column; gap: 4px; align-items: stretch; }
+:is(#sf_game, #sf_pick) .sf_btn:disabled { opacity: 0.45; cursor: default; }
+:is(#sf_game, #sf_pick) .sf_stack { display: flex; flex-direction: column; gap: 10px; }
 #sf_game .sf_money { font-weight: 800; color: var(--sf-ink); font-size: 13px; }
-#sf_game .sf_sub_head { font-weight: 800; color: var(--sf-accent-ink); font-size: 13px; margin-top: 4px; }
+:is(#sf_game, #sf_pick) .sf_sub_head { font-weight: 800; color: var(--sf-accent-ink); font-size: 13px; margin-top: 4px; }
 #sf_game .sf_bar { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 800; }
 #sf_game .sf_bar i { display: block; height: 8px; border-radius: 5px; background: var(--sf-line); overflow: hidden; }
 #sf_game .sf_bar b { display: block; height: 100%; background: var(--sf-ok); border-radius: 5px; }
@@ -554,3 +554,48 @@
 }
 #sf_settings .sf_conn { display: flex; flex-direction: column; gap: 8px; }
 #sf_settings .sf_conn[hidden] { display: none; }
+
+/* ---------- 게임에 반영하기: the card over the chat ---------- */
+/* fixed like the game window: SillyTavern's <html> has no height, so the size is given outright */
+#sf_pick {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 10060;
+    pointer-events: none;
+    color: var(--sf-ink);
+    font-family: var(--sf-font);
+}
+#sf_pick * { box-sizing: border-box; }
+#sf_pick .sf_pop_wrap { pointer-events: auto; }
+#sf_pick button, #sf_pick textarea { font-family: inherit; }
+#sf_pick .sf_pick_lines { display: flex; flex-direction: column; gap: 6px; max-height: 42vh; max-height: 42dvh; overflow: auto; }
+#sf_pick .sf_pick_line {
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid var(--sf-line);
+    border-radius: 12px;
+    background: var(--sf-card2);
+    color: var(--sf-ink);
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+#sf_pick .sf_pick_line.sf_on { border-color: var(--sf-accent); background: var(--sf-accent-soft); }
+#sf_pick .sf_pick_edit {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--sf-accent);
+    border-radius: 12px;
+    background: var(--sf-card);
+    color: var(--sf-ink);
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+}
+#sf_pick .sf_pick_edit[hidden] { display: none; }
+/* the feather on chat messages, only in a chat the game follows */
+body:not(.sf_linked) .sf_mes_pick { display: none !important; }

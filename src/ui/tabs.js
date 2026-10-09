@@ -4,6 +4,7 @@
 import { emit } from '../core/bus.js';
 import { DATA } from '../core/data.js';
 import { DAILY_NEED, STATS, dailyTasks, lessonList, lessonState, pickLesson, rankInfo } from '../core/progress.js';
+import { dropLessonPicks, dropPick, livePicks } from '../core/picks.js';
 import { getState, saveState } from '../core/state.js';
 import { sunLeft, sunMax } from '../core/sun.js';
 import { hint } from '../packs/adventure/engine.js';
@@ -26,7 +27,7 @@ export function somangCard(ui, onClose) {
                 const x = cur ? lessonState(s) : null;
                 return { icon: done ? '✅' : cur ? '▶️' : '◻️', name: `${L.ko}${done ? ` · ${L.skill}` : ''}`,
                     sub: done ? '익혔어' : cur ? `지금: ${x.st.ko} ${x.p.n}/${x.st.n}` : `${L.about}\n${L.steps.map(t => t.ko).join(' → ')}`,
-                    buttons: done || cur ? [] : [{ label: '이걸 익히기', onClick: async () => { pickLesson(s, L.id); await saveState(); close(); somangCard(ui, onClose); } }] };
+                    buttons: done || cur ? [] : [{ label: '이걸 익히기', onClick: async () => { pickLesson(s, L.id); dropLessonPicks(s); await saveState(); close(); somangCard(ui, onClose); } }] };
             })),
             para(`태양 기운 ${sunLeft(s)}/${sunMax()} · 데벤 ${s.bag.deben}`)) });
 }
@@ -47,13 +48,18 @@ export function questsCard(ui, onClose) {
     const daily = dailyTasks(s);
     const r = DATA.daily?.reward || {};
     const told = s.journal.slice().reverse().slice(0, 12);
-    ui.showCard({ title: '임무', wide: true, onClose,
+    const picks = livePicks(s).filter(p => p.kind !== 'lesson').reverse();
+    const close = ui.showCard({ title: '임무', wide: true, onClose,
         body: stack(
             para('작은 모험', 'sf_sub_head'),
             para(hint(s) || '오늘 모험은 끝났어. 다음 날 새로 생겨.'),
             para(`매일 의뢰 · 넷 중 아무거나 ${DAILY_NEED}개 · 하나에 데벤 ${r.deben || 10}`, 'sf_sub_head'),
             list(daily.map(t => ({ icon: t.done ? '✅' : '◻️', name: t.ko, sub: t.done ? '완료' : '', dim: !t.done && daily.filter(x => x.done).length >= DAILY_NEED })), '오늘 의뢰가 없어.'),
             (x => x ? para(`배움: ${x.L.ko} · ${x.st.ko} ${x.p.n}/${x.st.n}`) : null)(lessonState(s)),
+            picks.length ? para('챗에서 받은 것', 'sf_sub_head') : null,
+            picks.length ? list(picks.map(p => ({ icon: p.kind === 'idea' ? '🧭' : '📌', name: p.text,
+                sub: p.kind === 'idea' ? '모험 소재 · 다음 AI 모험에 써' : '메모',
+                buttons: [{ label: '지우기', onClick: async () => { await dropPick(p.id); close(); questsCard(ui, onClose); } }] }))) : null,
             para('일지 · 원할 때 지금 장면에 꺼내', 'sf_sub_head'),
             list(told.map(e => ({ icon: e.told ? '💬' : '📝', name: e.ko, sub: e.told ? '챗에 꺼냄' : '',
                 buttons: e.en ? [{ label: '꺼내기', primary: !e.told, onClick: () => { showEvent(ui, e); } }] : [] })), '아직 적힌 일이 없어.')) });
