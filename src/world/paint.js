@@ -26,7 +26,7 @@ const box = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h);
 const layer = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
 
 import { DATA } from '../core/data.js';
-import { referenceGround, referenceEscarpment } from './terrain-reference.js';
+import { referenceGround } from './terrain-reference.js';
 
 // the pictures of data/tiles.json as small canvases, made once per season
 const artCache = new Map();
@@ -95,7 +95,6 @@ export function paintMap(m, S, gr, tp, season) {
     steppingStones(ctx);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) edges(ctx, i, j);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) shadows(ctx, i, j);
-    referenceEscarpment(ctx);
     for (const b of m.buildings) buildingShadow(g, b);
     for (const f of m.d.landforms || []) {
         const pic = ctx.art.things[f.sprite];
