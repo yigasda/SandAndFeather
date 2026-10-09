@@ -66,6 +66,11 @@ export class Renderer {
     // a phone browser can throw canvas pictures away while the tab is in the background (the GPU memory is
     // taken back); the ground painted once is then blank. Painting it again brings the map back.
     repaint() { if (this.map) this.paintGround(); }
+    // folded or closed: give the pictures' memory back (about 10MB on a phone); setMap paints them again on open
+    release() {
+        for (const c of [this.cv, this.ground, this.top]) { c.width = 1; c.height = 1; }
+        this.map = null; this.season = null;
+    }
     resize() {
         const r = this.cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
         this.cv.width = Math.max(1, Math.round(r.width * dpr));

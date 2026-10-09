@@ -1,4 +1,4 @@
-# 인수인계 · 모래와 깃털 0.5.1
+# 인수인계 · 모래와 깃털 0.5.8
 
 > 다음에 이 확장을 맡을 Claude에게. 이 문서 하나로 이어서 일할 수 있게 썼어.
 > 함께 읽을 것: `SPEC.md` 기획서, `docs/PROGRESS.md` 진행 상황, `docs/CONSULT.md` 소개서, `README.md`.
@@ -80,17 +80,19 @@ src/core/
   ledger.js sun.js progress.js   처리 기록, 태양 기운, 능력치·등급·일지·매일 의뢰
   bag.js check.js data.js ko.js  가방, 데이터 검사, 불러오기, 을/를 조사
   picks.js               챗에서 받은 것: 배움 목표, 모험 소재, 메모. 그 메시지에 문장이 남아 있을 때만 살아 있어
+  daylog.js codex.js     하루 결산 기록과 도장, 도감. 둘 다 이벤트를 듣고 스스로 채워
   ai.js                  모험 AI 연결. 커스텀 URL, Anthropic, Vertex. 아카이브와 같은 코드
 src/world/               map.js 오버레이와 충돌, render.js 캔버스, player.js, input.js, things.js
 src/ui/                  window.js 게임 창, hud.js, popups.js, kit.js, items.js, talk.js 꺼내기·찾아가기,
                          tabs.js 소망·파티·임무 탭, drawer.js 확장 서랍, icon.js,
-                         mesbtn.js 메시지마다 붙는 게임에 반영하기 버튼과 카드
+                         mesbtn.js 메시지마다 붙는 게임에 반영하기 버튼과 카드,
+                         daycard.js 하루 결산과 달력, codexcard.js 도감
 src/packs/
-  life/     market dock garden kitchen
+  life/     market dock garden kitchen festival
   growth/   growth.js: 필사실, 훈련장, 제단, 강 건너 비문·사당·발굴터
   duat/     duat.js 원정
   realm/    works.js 정비
-  world/    world.js 비밀, 배와 이동
+  world/    world.js 비밀, 배와 이동, obelisk.js 오벨리스크 빠른 이동
   adventure/ engine.js 실행, gen.js 무엇을 만들지, ai.js AI가 쓰고 검사
 ```
 
@@ -98,6 +100,9 @@ src/packs/
 - **장소:** `onSpot(id, (spot, ui, map) => …)`
 - **맵 위 물건:** `addThings(fn)`
 - **창 열릴 때:** `onOpen(fn)`
+- **날짜 카드 버튼:** `addTodayButton({ label, onClick(ui) })`
+- **지도 탭:** `addMapPart(ui => 요소)`, 큰 지도 위 표시는 `addMapMarks(mapId => [{ x, y, on }])`
+- **게임 창이 열려 있을 때 뭔가 띄우기:** `gameMode() === 'open'`이면 `gameUi()`
 - **카드:** `ui.showCard({ tag, title, text, body, buttons, onClose })`. 버튼의 onClick이 false를 돌려주면 카드가 안 닫혀.
 - **목록:** `kit.js`의 list, para, stack, bar
 - **활동 비용:** `spend(s, n)`. 끝나면 `addXP`, `didAct(s, kind)`, `saveState()`
@@ -120,7 +125,7 @@ src/packs/
 
 ## 6. 지금 상태
 
-0.4.3 기준으로 네 장르, 탐험, 작은 모험, AI 모험이 다 조금씩 돌아. 자세한 건 `docs/PROGRESS.md`.
+0.5.8 기준으로 네 장르, 탐험, 작은 모험, AI 모험이 다 조금씩 돌아. 자세한 건 `docs/PROGRESS.md`.
 
 **최근 고친 것**
 - 탭을 나갔다 오면 바닥이 사라지던 문제. `renderer.repaint()`로 다시 그려.
@@ -137,10 +142,20 @@ src/packs/
 
 0.5.1에서 한 것: 챗에서 게임으로. 메시지 메뉴의 깃털 버튼 "게임에 반영하기"로 문장 하나를 골라 배움 목표, 모험 소재, 메모로 받아. 버튼은 실리태번 메시지 틀 `#message_template .extraMesButtons`에 넣어서 새 메시지마다 붙어. 받은 건 보상이 없고, `picks.js`가 메시지에 그 문장이 남아 있는지로 살아 있는지 봐. 스와이프로 사라지면 숨고, 돌아오면 살아나고, 다음 메시지가 오면 지워. 배움 목표는 한 걸음도 안 했을 때만 원래대로 돌아가. 모험 소재가 있으면 AI 프롬프트의 연결 강도 대신 그 문장이 들어가고, AI가 모험을 쓰면 소재는 다 쓴 걸로 지워져.
 
+0.5.2~0.5.8에서 한 것:
+- **0.5.2 모험 기억:** 끝난 모험마다 제목, 단계 모양, 고른 갈림길, 간직했는지, 배운 기술을 썼는지, 동행을 `adv.recent`에 남겨. AI 프롬프트의 최근 모험 줄에 이게 들어가고, 요즘과 다른 종류의 갈림길을 내라고 해. 무작위 조립은 최근 결말을 덜 골라.
+- **0.5.3 하루 결산:** `daylog.js`가 act:done, journal:added, bag:changed, stats:changed를 듣고 하루를 모아. day:started에 닫아서 `s.days`에 도장과 함께 넣어. 결산은 다음에 창을 열 때 떠. 날짜 카드에 달력.
+- **0.5.4 축제의 밤:** `data/festivals.json`. 축제 7일 전부터 신전 앞 광장 24,16에 기둥. 준비 셋, 축제 날 저녁과 밤에 축제에 가기. 해마다 한 번 `s.fest`. 결과는 일지로만 챗에 가고 자동 주입은 없어.
+- **0.5.5 도감:** 가방에 들어온 적 있는 물건과 찾은 비밀. 소망 탭 아래 버튼.
+- **0.5.6 오벨리스크:** 맵 JSON의 obelisks. 깨우면 `flags['obelisk:id']`, 지도 탭에서 이동.
+- **0.5.7 스프라이트:** `data/sprites.json` 사람 넷의 16×16 그림. 렌더러가 있으면 쓰고 없으면 코드 그림. things도 같은 모양으로 넣을 수 있어.
+- **0.5.8 메모리:** 접거나 닫으면 `renderer.release()`로 화면, 바닥, 위층 캔버스를 1×1로. 접힌 동안 refresh는 그림을 다시 그리지 않아. 열 때 다시 칠해.
+
+저장 버전은 지금 8이야.
+
 아직 안 한 것:
-1. 모험 기억에 목표, 해결 방식, 고른 결과도 넣기.
-2. 소망이 진짜 제미니로 AI 모험을 써 봤는지 확인.
-3. 나중 후보: 축제의 밤, 하루 결산 화면, 도감, 오벨리스크 빠른 이동, 스프라이트 그림, 접었을 때 그림판 메모리 비우기.
+1. 소망이 진짜 제미니로 AI 모험을 써 봤는지 확인.
+2. 나중 후보: 축제 더 많이, 지도 위 물건 스프라이트, 사람 말고 다른 NPC, 판결석, 일정판, 탐사율.
 
 ## 8. 알아 두면 좋은 것
 
@@ -151,5 +166,5 @@ src/packs/
 - **AI 답:** `{물건}을`처럼 조사를 중괄호 밖에 써서 와. engine.js의 fill이 처리해.
 - **경제 숫자:** 시작 데벤 60. 정비는 수로 10, 밭 10, 배 20 데벤에 자재가 필요해.
 - **두아트 난이도:** 체력 13+3×체력, 공격 3+체력+0~2. 문지기 16/4. 맨몸이면 대략 열에 일곱 번 이기고, 준비하면 거의 다 이겨. 숫자를 바꾸면 시뮬레이션으로 다시 맞춰.
-- **메모리:** 게임을 열면 약 10MB, 대부분 캔버스야.
+- **메모리:** 게임을 열면 약 10MB, 대부분 캔버스야. 접거나 닫으면 0.5.8부터 비워.
 - **NarrativeArchive:** 소망이 쓰는 다른 확장이고 `yigasda/NarrativeArchive`에 있어. 이 확장의 디자인과 AI 연결 코드는 그쪽을 따라 했어. 그쪽 작업은 따로야.

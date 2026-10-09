@@ -172,6 +172,7 @@ export async function foldGame() {
     stop();
     root.hidden = true;
     mode = 'folded';
+    renderer.release();
     refresh();
     chip.hidden = false;
     await remember();
@@ -184,6 +185,7 @@ export async function closeGame() {
     root.hidden = true;
     chip.hidden = true;
     mode = 'closed';
+    renderer.release();
     if (wasOpen) await remember();
 }
 
@@ -209,8 +211,10 @@ export function refresh() {
     if (!s) return;
     updateHud(hud, s);
     chip.innerHTML = `<span class="sf_chip_mark">${FEATHER}</span>${shortDate(s)}`;
+    // the map is painted only while it shows; folded, its pictures stay empty
+    if (mode !== 'open') return;
     if (map) renderer.setMap(map, seasonOf(s.date.month));
-    if (mode === 'open') frameNow();
+    frameNow();
 }
 
 function frameNow() { if (map && renderer.cv.width > 1) draw(performance.now()); }
