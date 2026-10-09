@@ -13,7 +13,7 @@ if(await page.locator('.popup-button-ok').isVisible())await page.locator('.popup
 await page.evaluate(()=>document.querySelector('.character_select').click());await page.waitForTimeout(700);
 await page.evaluate(()=>{window.artCaptureSaved=structuredClone(SillyTavern.getContext().chatMetadata.sand_feather);document.querySelector('#sf_open').click();});await page.locator('#sf_game').waitFor({state:'visible'});
 const tag=process.argv[2]||'before';
-for(const [name,x,y,part='day'] of [['house',21,18],['market',14,20],['kitchen',30,19],['temple',26,13],['duat',35,13],['duat-night',35,13,'night'],['scribe',11,8]]) {
+for(const [name,x,y,part='day'] of [['house',21,18],['market',14,20],['kitchen',30,19],['temple',26,13],['duat',37,14],['duat-night',37,14,'night'],['scribe',11,8]]) {
 await page.evaluate(async({base,x,y,part})=>{const w=await import(base+'src/ui/window.js');const s=await import(base+'src/core/state.js');s.getState().part=part;await w.travel('ombos',{x,y});}, {base,x,y,part});
 await page.waitForTimeout(200);await page.screenshot({path:path.join(output,`${tag}-${name}.png`)});
 }
