@@ -10,7 +10,9 @@ page=await browser.newPage({viewport:{width:412,height:900},deviceScaleFactor:1}
 page.on('pageerror',e=>console.error('PAGE ERROR:',e.message));
 await page.goto('http://127.0.0.1:8000');await page.waitForSelector('#sf_open',{state:'attached'});
 if(await page.locator('.popup-button-ok').isVisible())await page.locator('.popup-button-ok').click();
-await page.evaluate(()=>document.querySelector('.character_select').click());await page.waitForTimeout(700);
+await page.waitForSelector('.character_select[data-chid]', {state:'attached'});
+await page.evaluate(()=>document.querySelector('.character_select[data-chid]').click());
+await page.waitForFunction(()=>{const c=SillyTavern.getContext();return !!(c.chatId||c.getCurrentChatId?.());});
 await page.evaluate(()=>{window.artCaptureSaved=structuredClone(SillyTavern.getContext().chatMetadata.sand_feather);document.querySelector('#sf_open').click();});await page.locator('#sf_game').waitFor({state:'visible'});
 const tag=process.argv[2]||'before';
 for(const [name,x,y,part='day'] of [['house',21,18],['market',14,20],['kitchen',30,19],['temple',26,13],['duat',37,14],['duat-night',37,14,'night'],['scribe',11,8]]) {
