@@ -2,7 +2,7 @@
 
 세트·호루스 RP 채팅 옆에서 돌아가는 이집트 오픈월드 게임 — SillyTavern 확장.
 
-기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups)
+기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md)
 
 ## 지금 되는 것 — 1단계 엔진과 마을
 
