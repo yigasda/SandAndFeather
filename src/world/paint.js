@@ -395,7 +395,11 @@ function shadows(ctx, i, j) {
 }
 function buildingShadow(g, b) {
     const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
-    box(g, x + 4, y + h, w, 5, SHADOW); box(g, x + w, y + 6, 5, h - 1, SHADOW);
+    // Taller stone towers cast a broader shadow down/right, away from the upper-left sun.
+    const depth = b.kind === 'temple' ? 9 : 5;
+    const color = b.kind === 'temple' ? 'rgba(70,45,20,.34)' : SHADOW;
+    box(g, x + depth, y + h, w - depth, depth, color);
+    box(g, x + w, y + depth, depth, h, color);
 }
 
 // ---------- buildings, on the object layers so they get the outline
@@ -479,7 +483,11 @@ function shade(hex, f) {
 function palm(ctx, x, y, i, j) {
     // a drawn palm (data/tiles.json): three shapes so a row of them does not look stamped
     const name = ['palm', 'palm_l', 'palm_r'][Math.floor(rnd(i, j, 23) * 3)];
-    box(ctx.g, x - 2, y + 12, 22, 4, SHADOW); box(ctx.g, x + 1, y + 11, 16, 1, SHADOW);
+    // A connected trunk-to-crown silhouette, falling down/right in three broad lobes.
+    // Non-overlapping pixel rows keep the common translucent colour even throughout.
+    const shadeRows = [[8,12], [8,17], [9,22], [10,26], [11,23], [12,28],
+        [13,30], [14,28], [16,24], [18,24], [19,22]];
+    shadeRows.forEach(([a, b], row) => box(ctx.g, x + a, y + 13 + row, b - a, 1, SHADOW));
     if (stand(ctx, name, x, y, 25, 50)) return;
     box(ctx.g, x + 7, y + 4, 3, 12, '#8A6644');
 }
@@ -490,17 +498,21 @@ function lotus(g, x, y) {
 
 // ---------- decor: { k, x, y } in data/maps/*.json. Which ones block walking is in map.js (SOLID_DECOR).
 const DECOR = {
-    // a column with a papyrus capital, two tiles tall
+    // A plain sandstone column: one low capital, a quiet shaft and a grounded plinth.
     column(c, x, y) {
         const { g, u } = c;
-        box(c.s, x + 3, y + 13, 13, 3, SHADOW);
-        box(g, x + 2, y + 12, 12, 4, '#BFA985'); box(g, x + 2, y + 12, 12, 1, '#DCCBA8');
-        box(u, x + 4, y - 8, 8, 20, '#E8DCC4'); box(u, x + 4, y - 8, 2, 20, '#F5EDDD'); box(u, x + 10, y - 8, 2, 20, '#C9B591');
-        for (let r = -4; r < 12; r += 5) box(u, x + 4, y + r, 8, 1, '#D2C2A0');
-        box(u, x + 6, y - 2, 1, 2, '#4F7FB0'); box(u, x + 9, y + 3, 1, 2, '#C0392B');
-        box(u, x + 1, y - 14, 14, 6, '#7FA650'); box(u, x + 2, y - 15, 12, 1, '#9CC46A'); box(u, x + 1, y - 9, 14, 1, '#D9B65A');
-        box(u, x + 3, y - 13, 1, 4, '#5E8C46'); box(u, x + 7, y - 13, 1, 4, '#5E8C46'); box(u, x + 11, y - 13, 1, 4, '#5E8C46');
-        box(u, x, y - 17, 16, 3, '#E3D3B3'); box(u, x, y - 17, 16, 1, '#F2E8D4');
+        const stone = '#E8DCC4', light = '#F5EDDD', shade = '#A69B88';
+        box(c.s, x + 5, y + 13, 12, 4, SHADOW);
+        box(g, x + 2, y + 12, 12, 4, shade);
+        box(g, x + 2, y + 12, 12, 2, stone);
+        box(g, x + 3, y + 12, 10, 1, light);
+        box(u, x + 5, y - 8, 6, 20, stone);
+        box(u, x + 5, y - 8, 1, 20, light);
+        box(u, x + 9, y - 8, 2, 20, shade);
+        box(u, x + 3, y - 12, 10, 4, stone);
+        box(u, x + 3, y - 12, 10, 1, light);
+        box(u, x + 3, y - 9, 10, 1, shade);
+        box(u, x + 5, y - 7, 6, 1, '#C0A476');
     },
     // Set's animal, seated on a plinth: long snout, square ears, forked tail
     statue_set(c, x, y) {
