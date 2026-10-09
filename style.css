@@ -546,3 +546,11 @@
 #sf_game .sf_fish_zone { position: absolute; top: 0; bottom: 0; background: rgba(140, 220, 120, 0.85); }
 #sf_game .sf_fish_mark { position: absolute; top: 2px; bottom: 2px; width: 6px; margin-left: -3px; border-radius: 3px; background: #FBF3EA; box-shadow: 0 0 4px rgba(0,0,0,.4); }
 #sf_game .sf_fish_msg { white-space: pre-line; font-size: 13px; color: var(--sf-ink); }
+
+#sf_settings .sf_field { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--sf-dim); }
+#sf_settings .sf_field input, #sf_settings .sf_field textarea {
+    background: var(--sf-card2); color: var(--sf-ink); border: 1px solid var(--sf-line); border-radius: 10px;
+    padding: 6px 8px; font-size: 13px; width: 100%; box-sizing: border-box; margin: 0;
+}
+#sf_settings .sf_conn { display: flex; flex-direction: column; gap: 8px; }
+#sf_settings .sf_conn[hidden] { display: none; }

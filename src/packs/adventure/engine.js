@@ -154,6 +154,8 @@ export async function begin(def, source) {
     const s = getState();
     s.adv.cur = { ...def, source, started: today(s) };
     s.adv.day = today(s);
+    if (s.adv.count?.day !== s.adv.day) s.adv.count = { day: s.adv.day, n: 0 };
+    s.adv.count.n++;
     s.adv.wait = false;
     await save();
 }

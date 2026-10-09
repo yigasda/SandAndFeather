@@ -1,7 +1,7 @@
 // The extension's drawer in SillyTavern's Extensions tab, and its entry in the wand menu.
 // 게임 열기 · 오늘(트래커가 읽은 것) · 손으로 맞추기 · 프롬프트(+미리보기) · 트래커 모양 · 보기 · 새 판
 
-import { emit } from '../core/bus.js';
+import { emit, on } from '../core/bus.js';
 import { EPAG, dateLabel, partInfo, seasonName } from '../core/clock.js';
 import { DATA } from '../core/data.js';
 import { applyInjection, buildBlock } from '../core/inject.js';
@@ -10,10 +10,12 @@ import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
 import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex, weatherOf } from '../core/tracker.js';
 import { dropNews, newsStatus, pending, prepared } from '../core/news.js';
-import { aiLabel } from '../packs/adventure/ai.js';
+import { connSettings, listModels, parseServiceAccount, vxTokens } from '../core/ai.js';
+import { aiLabel, testConn } from '../packs/adventure/ai.js';
 import { ensureAdventure } from '../packs/adventure/gen.js';
 import { sunLeft } from '../core/sun.js';
 import { FEATHER } from './icon.js';
+import { today as gameDay } from '../core/ledger.js';
 import { esc } from './popups.js';
 import { applyTheme, openGame } from './window.js';
 
@@ -80,8 +82,33 @@ export function renderDrawer(problems = []) {
             <div class="sf_box">
               <div class="sf_box_head"><b>작은 모험</b><span class="sf_hint" id="sf_adv_ai_label"></span></div>
               <div class="sf_grid">
-                <label>새 모험 쓰는 쪽<select id="sf_adv_ai">${opt([['draft', '아카이브 초안 모델'], ['ai', '아카이브 AI 기능 모델'], ['off', '끄기 · 무작위만']], st.advAI)}</select></label>
-                <label>아카이브 폴더<input type="text" id="sf_archive_folder" value="${esc(st.archiveFolder || 'NarrativeArchive')}"></label>
+                <label>새 모험 쓰는 쪽<select id="sf_conn_mode">${opt([['custom', '커스텀 API'], ['vertex', 'Vertex AI'], ['archive-draft', '아카이브 초안 모델'], ['archive-ai', '아카이브 AI 기능 모델'], ['off', '끄기 · 무작위만']], connSettings().mode)}</select></label>
+                <label>하루 모험 수<input type="number" min="1" max="10" id="sf_adv_per_day" value="${Number(st.advPerDay) || 3}"></label>
+              </div>
+              <div class="sf_conn" data-for="custom">
+                <label class="sf_field">주소<input type="text" id="sf_conn_url" placeholder="https://…/v1" value="${esc(connSettings().url)}" spellcheck="false" autocomplete="off"></label>
+                <label class="sf_field">키<input type="password" id="sf_conn_key" placeholder="sk-…" value="${esc(connSettings().key)}" autocomplete="off"></label>
+                <div class="sf_grid">
+                  <label>형식<select id="sf_conn_fmt">${opt([['', '주소 보고 자동'], ['openai', 'OpenAI 호환'], ['anthropic', 'Anthropic']], connSettings().fmt)}</select></label>
+                  <label>모델<input type="text" id="sf_conn_model" list="sf_conn_models" value="${esc(connSettings().model)}" spellcheck="false" autocomplete="off"><datalist id="sf_conn_models"></datalist></label>
+                </div>
+                <div class="sf_line_btns"><button type="button" class="sf_btn sf_small" id="sf_conn_list">모델 불러오기</button></div>
+              </div>
+              <div class="sf_conn" data-for="vertex">
+                <label class="sf_field">서비스 계정 JSON<textarea class="sf_ta" id="sf_conn_vxjson" rows="3" spellcheck="false" placeholder="${connSettings().vxJson ? '저장됨 · 바꾸려면 새 JSON을 붙여넣기' : '키 파일 내용을 통째로 붙여넣기'}"></textarea></label>
+                <div class="sf_sub" id="sf_conn_vxinfo"></div>
+                <div class="sf_grid">
+                  <label>위치<input type="text" id="sf_conn_vxloc" value="${esc(connSettings().vxLocation)}" spellcheck="false"></label>
+                  <label>모델<input type="text" id="sf_conn_vxmodel" value="${esc(connSettings().vxModel)}" spellcheck="false"></label>
+                </div>
+              </div>
+              <div class="sf_conn" data-for="archive-draft archive-ai">
+                <label class="sf_field">아카이브 폴더<input type="text" id="sf_archive_folder" value="${esc(st.archiveFolder || 'NarrativeArchive')}"></label>
+              </div>
+              <div class="sf_conn" data-for="custom vertex archive-draft archive-ai">
+                <div class="sf_grid"><label>답 최대 길이<input type="number" min="1024" step="1024" id="sf_conn_max" value="${Number(connSettings().max) || 6000}"></label></div>
+                <div class="sf_line_btns"><button type="button" class="sf_btn sf_small" id="sf_conn_test">연결 시험</button></div>
+                <div class="sf_sub" id="sf_conn_result"></div>
               </div>
               <div class="sf_sub" id="sf_adv_status"></div>
               <div class="sf_line_btns"><button type="button" class="sf_btn sf_small" id="sf_adv_new">지금 새 모험 만들기</button></div>
@@ -114,6 +141,7 @@ export function renderDrawer(problems = []) {
 }
 
 function bind() {
+    for (const ev of ['adventure:changed', 'clock:synced', 'game:loaded']) on(ev, () => refreshDrawer());
     const st = settings();
     const set = (k, v) => { st[k] = v; saveSettings(); applyInjection(); refreshDrawer(); };
     $id('sf_open').addEventListener('click', openGame);
@@ -132,7 +160,36 @@ function bind() {
         saveSettings();
         if (hasChat()) { sunLeft(); await saveState(); emit('sun:changed', {}); }
     });
-    $id('sf_adv_ai').addEventListener('change', e => { set('advAI', e.target.value); });
+    // the adventure model's connection
+    const conn = (k, v) => { connSettings()[k] = v; saveSettings(); refreshDrawer(); };
+    $id('sf_conn_mode').addEventListener('change', e => conn('mode', e.target.value));
+    $id('sf_adv_per_day').addEventListener('change', e => { st.advPerDay = Math.max(1, Math.min(10, Number(e.target.value) || 3)); e.target.value = st.advPerDay; saveSettings(); });
+    $id('sf_conn_url').addEventListener('change', e => conn('url', e.target.value.trim()));
+    $id('sf_conn_key').addEventListener('change', e => conn('key', e.target.value.trim()));
+    $id('sf_conn_fmt').addEventListener('change', e => conn('fmt', e.target.value));
+    $id('sf_conn_model').addEventListener('change', e => conn('model', e.target.value.trim()));
+    $id('sf_conn_max').addEventListener('change', e => conn('max', Math.max(1024, Number(e.target.value) || 6000)));
+    $id('sf_conn_vxloc').addEventListener('change', e => conn('vxLocation', e.target.value.trim() || 'global'));
+    $id('sf_conn_vxmodel').addEventListener('change', e => conn('vxModel', e.target.value.trim()));
+    $id('sf_conn_vxjson').addEventListener('change', e => { const v = e.target.value.trim(); if (!v) return; connSettings().vxJson = v; vxTokens.clear(); e.target.value = ''; e.target.placeholder = '저장됨 · 바꾸려면 새 JSON을 붙여넣기'; saveSettings(); refreshDrawer(); });
+    $id('sf_conn_list').addEventListener('click', async e => {
+        const b = e.currentTarget, out = $id('sf_conn_result');
+        b.disabled = true; out.textContent = '모델 목록을 불러오는 중…';
+        try {
+            const ids = await listModels(connSettings());
+            $id('sf_conn_models').innerHTML = ids.map(id => `<option value="${esc(id)}"></option>`).join('');
+            out.textContent = `모델 ${ids.length}개. 모델 칸을 누르면 골라져.`;
+            if (!connSettings().model) { connSettings().model = ids[0]; $id('sf_conn_model').value = ids[0]; saveSettings(); refreshDrawer(); }
+        } catch (err) { out.textContent = String(err.message || err); }
+        b.disabled = false;
+    });
+    $id('sf_conn_test').addEventListener('click', async e => {
+        const b = e.currentTarget, out = $id('sf_conn_result');
+        b.disabled = true; out.textContent = '물어보는 중…';
+        try { const r = await testConn(); out.textContent = `됐어: ${String(r).slice(0, 80)}`; }
+        catch (err) { out.textContent = `안 됐어: ${String(err.message || err).slice(0, 200)}`; }
+        b.disabled = false;
+    });
     $id('sf_archive_folder').addEventListener('change', e => { set('archiveFolder', e.target.value.trim() || 'NarrativeArchive'); });
     $id('sf_adv_new').addEventListener('click', async () => {
         const s = hasChat() ? getState() : null;
@@ -207,10 +264,16 @@ export function refreshDrawer() {
     // the small adventure: where it came from, the last AI error, the whole thing only on request
     if (s) {
         const c = s.adv.cur;
-        $id('sf_adv_status').textContent = c ? `진행 중: ${c.title} · ${({ ai: 'AI가 씀', random: '무작위 조립', hand: '손으로 만든 것', seed: '예전 선택에서 이어짐' })[c.source] || ''}${s.adv.lastError ? ` · 지난 AI 실패: ${s.adv.lastError}` : ''}` : (s.adv.lastError ? `지난 AI 실패: ${s.adv.lastError}` : '진행 중인 모험 없음');
+        const per = Math.max(1, Number(settings().advPerDay) || 3), used = s.adv.count?.day === gameDay(s) ? s.adv.count.n : 0;
+        $id('sf_adv_status').textContent = `오늘 모험 ${used}/${per} · ` + (c ? `진행 중: ${c.title} · ${({ ai: 'AI가 씀', random: '무작위 조립', hand: '손으로 만든 것', seed: '예전 선택에서 이어짐' })[c.source] || ''}${s.adv.lastError ? ` · 지난 AI 실패: ${s.adv.lastError}` : ''}` : (s.adv.lastError ? `지난 AI 실패: ${s.adv.lastError}` : used >= per ? '오늘 모험은 다 했어. 다음 날 또 생겨' : '진행 중인 모험 없음'));
         $id('sf_adv_dump').textContent = c ? JSON.stringify(c, null, 1) : '';
     }
     aiLabel().then(t => { const el = $id('sf_adv_ai_label'); if (el) el.textContent = t; });
+    // only the fields of the chosen connection
+    const mode = connSettings().mode;
+    document.querySelectorAll('#sf_settings .sf_conn').forEach(el => { el.hidden = !el.dataset.for.split(' ').includes(mode); });
+    const vx = $id('sf_conn_vxinfo');
+    if (vx) { const j = connSettings().vxJson; try { vx.textContent = j ? (sa => `프로젝트 ${sa.project_id} · ${sa.client_email}`)(parseServiceAccount(j)) : ''; } catch (e) { vx.textContent = e.message; } }
 
     // what the tracker pattern reads from the newest message that has one
     const test = $id('sf_tracker_test');

@@ -13,7 +13,7 @@ import { settings } from '../../core/settings.js';
 import { getState, saveState } from '../../core/state.js';
 import { getMap } from '../../world/map.js';
 import { onOpen } from '../../ui/window.js';
-import { askAdventure } from './ai.js';
+import { aiOn, askAdventure } from './ai.js';
 import { begin, current, resolve } from './engine.js';
 import { josa } from '../../core/ko.js';
 
@@ -81,14 +81,17 @@ let busy = false;
 export async function ensureAdventure({ force = false } = {}) {
     const s = getState();
     if (!s || busy || current(s)) return;
-    if (!force && s.adv.day >= today(s)) return;
+    // a new one when today's count is not used up; the count starts over on a new game day
+    const t = today(s);
+    if (s.adv.count?.day !== t) s.adv.count = { day: t, n: 0 };
+    if (!force && s.adv.count.n >= Math.max(1, Number(settings().advPerDay) || 3)) return;
     busy = true;
     try {
         const hand = (A().handmade || []).find(h => !s.adv.done.includes(h.id));
         if (hand) { const r = resolve({ ...hand, hand: true }); if (r) return await begin(r, 'hand'); }
         const seeded = fromSeed(s);
         if (seeded) return await begin(seeded, 'seed');
-        if (settings().advAI !== 'off') {
+        if (aiOn()) {
             s.adv.wait = true; await saveState();
             const def = await askAdventure(s).catch(e => { s.adv.lastError = String(e.message || e).slice(0, 200); return null; });
             if (def) { s.adv.lastError = ''; return await begin(def, 'ai'); }
@@ -99,4 +102,6 @@ export async function ensureAdventure({ force = false } = {}) {
 }
 
 on('day:started', () => { ensureAdventure(); });
+// one ended: the next of today's comes along a moment later
+on('adventure:changed', () => { if (!current()) setTimeout(() => ensureAdventure(), 1500); });
 onOpen(() => { ensureAdventure(); });

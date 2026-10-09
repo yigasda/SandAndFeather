@@ -8,6 +8,7 @@ import { itemInfo } from '../../core/bag.js';
 import { DATA } from '../../core/data.js';
 import { rank } from '../../core/progress.js';
 import { settings } from '../../core/settings.js';
+import { callConn, connSettings, ownReady } from '../../core/ai.js';
 import { ctx } from '../../core/st.js';
 import { getMap } from '../../world/map.js';
 import { resolve } from './engine.js';
@@ -16,19 +17,32 @@ async function archive() {
     const folder = settings().archiveFolder || 'NarrativeArchive';
     try { return await import(new URL(`../../../../${folder}/src/ai.js`, import.meta.url).href); } catch { return null; }
 }
+// which model writes: the game's own connection (custom URL or Vertex), NarrativeArchive's, or none
+export const aiOn = () => connSettings().mode !== 'off';
 export async function aiLabel() {
+    const t = connSettings();
+    if (t.mode === 'off') return '꺼짐 · 무작위만';
+    if (t.mode === 'custom') return ownReady(t) ? `커스텀 · ${t.model}` : '커스텀 · 주소와 모델을 넣어 줘';
+    if (t.mode === 'vertex') return ownReady(t) ? `Vertex · ${t.vxModel}` : 'Vertex · JSON과 모델을 넣어 줘';
     const m = await archive();
     if (!m) return '아카이브 확장을 못 찾았어';
-    const src = settings().advAI;
-    if (src === 'off') return '꺼짐';
-    if (src === 'draft' && m.draftReady?.()) return `아카이브 초안 모델 · ${m.drLabel?.() || ''}`;
+    if (t.mode === 'archive-draft' && m.draftReady?.()) return `아카이브 초안 모델 · ${m.drLabel?.() || ''}`;
     return `아카이브 AI 기능 모델 · ${m.aiLabel?.() || ''}`;
 }
+// a tiny request to see the connection answers
+export const testConn = () => ask('Reply with one short Korean greeting and nothing else.', '인사해 줘.');
+
 async function ask(system, prompt) {
+    const t = connSettings();
+    const max = Math.max(1024, Number(t.max) || 6000);
+    if (t.mode === 'custom' || t.mode === 'vertex') {
+        if (!ownReady(t)) throw new Error(t.mode === 'custom' ? '커스텀 API 주소와 모델을 넣어 줘' : 'Vertex JSON과 모델을 넣어 줘');
+        return callConn(t, system, prompt, max, 'low');
+    }
     const m = await archive();
-    if (!m) throw new Error('NarrativeArchive 확장을 못 찾았어. 확장 폴더 이름을 설정에서 확인해 줘');
-    if (settings().advAI === 'draft' && m.draftReady?.()) return m.askDraft(prompt, { system, maxTokens: 4000, effort: 'low', force: true });
-    return m.askAI(prompt, { system, maxTokens: 4000 });
+    if (!m) throw new Error('NarrativeArchive 확장을 못 찾았어. 아카이브 폴더 이름을 확인해 줘');
+    if (t.mode === 'archive-draft' && m.draftReady?.()) return m.askDraft(prompt, { system, maxTokens: max, effort: 'low', force: true });
+    return m.askAI(prompt, { system, maxTokens: max });
 }
 
 // the last few chat messages, trackers and markup taken out, for mood only
