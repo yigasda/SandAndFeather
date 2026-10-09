@@ -10,6 +10,7 @@ import { sunLeft, sunMax } from '../core/sun.js';
 import { hint } from '../packs/adventure/engine.js';
 import { festivalLine } from '../packs/life/festival.js';
 import { bar, list, para, stack } from './kit.js';
+import { codexCard } from './codexcard.js';
 import { showEvent } from './talk.js';
 
 export function somangCard(ui, onClose) {
@@ -30,7 +31,8 @@ export function somangCard(ui, onClose) {
                     sub: done ? '익혔어' : cur ? `지금: ${x.st.ko} ${x.p.n}/${x.st.n}` : `${L.about}\n${L.steps.map(t => t.ko).join(' → ')}`,
                     buttons: done || cur ? [] : [{ label: '이걸 익히기', onClick: async () => { pickLesson(s, L.id); dropLessonPicks(s); await saveState(); close(); somangCard(ui, onClose); } }] };
             })),
-            para(`태양 기운 ${sunLeft(s)}/${sunMax()} · 데벤 ${s.bag.deben}`)) });
+            para(`태양 기운 ${sunLeft(s)}/${sunMax()} · 데벤 ${s.bag.deben}`)),
+        buttons: [{ label: '도감', onClick: () => { codexCard(ui, onClose); } }, { label: '닫기', primary: true }] });
 }
 
 export function partyCard(ui, onClose) {

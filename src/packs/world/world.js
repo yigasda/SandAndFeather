@@ -4,6 +4,7 @@
 import { give, itemInfo } from '../../core/bag.js';
 import { seasonOf } from '../../core/clock.js';
 import { DATA } from '../../core/data.js';
+import { noteCodex } from '../../core/codex.js';
 import { canDo, markDone } from '../../core/ledger.js';
 import { addXP, didAct, journal, lessonState, rank } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
@@ -25,6 +26,7 @@ addThings((mapId, s) => (DATA.maps[mapId]?.secrets || []).filter(sec => shows(se
     act: async ui => {
         const st = getState();
         if (sec.daily) markDone(st, `secret:${sec.id}`); else st.flags[`secret:${sec.id}`] = true;
+        noteCodex(st, 'secrets', sec.id);
         if (sec.give) give(st, sec.give, 1, mapId === 'ruins' ? 'ruins' : 'adventure');
         addXP(st, sec.xp || 2);
         if (!sec.daily) journal(st, { ko: `${josa(sec.ko, '을')} 찾았다.`, say: `${sec.ko} 이야기를 꺼낸다.`, en: `Somang found ${sec.en || sec.ko}.`, marks: [sec.ko.split(' ').pop()], kind: 'secret' });

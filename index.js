@@ -14,6 +14,7 @@ import { armPrepared } from './src/core/news.js';
 import { syncPicks } from './src/core/picks.js';
 import { addMesButtons, markChat } from './src/ui/mesbtn.js';
 import './src/ui/daycard.js';
+import './src/core/codex.js';
 import './src/packs/life/dock.js';
 import './src/packs/life/market.js';
 import './src/packs/life/garden.js';

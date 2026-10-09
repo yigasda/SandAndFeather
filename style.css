@@ -635,3 +635,22 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_cal_day span { font-size: 18px; line-height: 1; min-height: 18px; }
 #sf_game .sf_cal_day.sf_dim { opacity: 0.55; cursor: default; }
 #sf_game .sf_cal_day.sf_on { border-color: var(--sf-accent); border-width: 2px; opacity: 1; }
+
+/* ---------- 도감 ---------- */
+#sf_game .sf_codex_grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 6px; }
+#sf_game .sf_codex_cell {
+    aspect-ratio: 1;
+    border: 1px solid var(--sf-line);
+    border-radius: 12px;
+    background: var(--sf-card2);
+    color: var(--sf-ink);
+    font-size: 22px;
+    font-family: inherit;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    padding: 0;
+}
+#sf_game .sf_codex_cell.sf_dim { font-size: 16px; color: var(--sf-dim); opacity: 0.6; }
+#sf_game .sf_codex_detail { padding: 8px 10px; border-radius: 12px; background: var(--sf-accent-soft); position: sticky; top: -16px; z-index: 1; }
+#sf_game .sf_codex_detail:empty { display: none; }
