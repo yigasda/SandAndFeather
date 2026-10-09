@@ -29,6 +29,7 @@ export const freshState = () => ({
     daily: { day: -1, tasks: [] },                 // progress.js: today's two commissions
     adv: { cur: null, done: [], recent: [], memory: [], day: -1, wait: false }, // packs/adventure
     duat: null,                                    // packs/duat: a run in progress
+    lessons: { cur: '', prog: {}, done: [] },      // progress.js: the learning goal and what was learned
     started: Date.now(),
 });
 
@@ -47,7 +48,7 @@ const STEPS = {
 function fill(s) {
     const f = freshState();
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
-    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'garden', 'works', 'flags', 'daily', 'adv'];
+    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons'];
     for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
     for (const k of ['news', 'journal']) if (!Array.isArray(s[k])) s[k] = [];
     for (const k of objs) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);

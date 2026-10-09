@@ -9,7 +9,7 @@ import { emit } from '../../core/bus.js';
 import { DATA } from '../../core/data.js';
 import { josa } from '../../core/ko.js';
 import { today } from '../../core/ledger.js';
-import { addStat, addXP, didAct, journal } from '../../core/progress.js';
+import { addStat, addXP, didAct, hasSkill, journal } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { addThings } from '../../world/things.js';
 import { getMap } from '../../world/map.js';
@@ -114,7 +114,13 @@ function choose(ui) {
         ui.toast(o.label);
         await next(ui);
     };
-    ui.showCard({ tag: '모험', title: c.title, text: fill(st.text), buttons: [{ label: st.b.label, onClick: pick(st.b) }, { label: st.a.label, primary: true, onClick: pick(st.a) }] });
+    // what she has learned opens more ways to end it
+    const info = it ? itemInfo(it.id) : null, extra = [];
+    if (it && hasSkill(s, 'read')) extra.push({ label: '숨은 뜻 읽기', keep: true, xp: 6, memory: 'kept_sealed', journal: `${josa(name, '에')} 새겨진 글을 읽어 출처를 알아냈다.` });
+    if (it && hasSkill(s, 'carry')) extra.push({ label: '안전하게 운반하기', keep: false, deben: 25, xp: 5, journal: `${josa(name, '을')} 깨뜨리지 않고 시장 상인에게 넘겼다.` });
+    if (it && info?.open && !it.opened && hasSkill(s, 'seal')) extra.push({ label: '봉인 안정시키기', keep: true, open: true, faith: 1, xp: 5, journal: `${name}의 봉인을 조심스레 안정시키고 열었다.` });
+    ui.showCard({ tag: '모험', title: c.title, text: fill(st.text) + (extra.length ? '\n배운 것으로 다른 방법도 쓸 수 있어.' : ''),
+        buttons: [...extra.map(o => ({ label: `✦ ${o.label}`, onClick: pick(o) })), { label: st.b.label, onClick: pick(st.b) }, { label: st.a.label, primary: true, onClick: pick(st.a) }] });
 }
 
 async function finish(ui) {

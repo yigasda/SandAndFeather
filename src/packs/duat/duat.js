@@ -8,7 +8,7 @@ import { give, itemInfo, nameOf, ofKind, takeUid } from '../../core/bag.js';
 import { emit } from '../../core/bus.js';
 import { DATA } from '../../core/data.js';
 import { canDo, markDone } from '../../core/ledger.js';
-import { addXP, journal, rank } from '../../core/progress.js';
+import { addXP, hasSkill, journal, rank } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { bar, list, para, stack } from '../../ui/kit.js';
@@ -126,6 +126,8 @@ function fightCard() {
         { label: '공격', primary: true, onClick: () => { act('hit'); } },
         { label: `${comp?.ko} · ${comp?.skill}`, disabled: f.skill, onClick: () => { act('skill'); } },
         { label: '주문', disabled: f.spell || s.stats.faith < 1, onClick: () => { act('spell'); } },
+        ...(hasSkill(s, 'carry') ? [{ label: '엄호', disabled: f.cover, onClick: () => { act('cover'); } }] : []),
+        ...(hasSkill(s, 'seal') && !r.ward ? [{ label: '보호 주문', onClick: () => { act('ward'); } }] : []),
         ...r.pack.map((id, k) => ({ label: `${itemInfo(id)?.ko} 먹기`, onClick: () => { act('eat', k); } })),
     ];
     show({ body: stack(head(r), bar(`${f.ko} ${f.hp}/${f.max}`, f.hp / f.max, 'sf_enemy'), para(f.log, 'sf_pop_text')), buttons: acts });
@@ -148,6 +150,8 @@ async function act(kind, k) {
         f.hp -= d; r.fear = Math.max(0, r.fear - 1);
         log = `${s.flags.spell_name && r.boss ? '이름을 불렀다. ' : ''}주문이 ${d}만큼 태웠다. 공포 −1.`;
     }
+    if (kind === 'cover') { f.cover = true; f.dodge = true; f.hp -= 2; log = `소망이 ${josa(C, '을')} 엄호했다. 2를 쳤고, 다음 공격은 막아.`; }
+    if (kind === 'ward') { r.ward = true; r.hp = Math.min(r.max, r.hp + 4); r.fear = Math.max(0, r.fear - 2); log = '보호 주문이 둘을 감쌌다. 체력 +4, 공포 −2.'; }
     if (kind === 'eat') {
         const id = r.pack.splice(k, 1)[0], fd = itemInfo(id)?.food || {};
         r.hp = Math.min(r.max, r.hp + (fd.heal || 0)); r.fear = Math.max(0, r.fear - (fd.fear || 0));

@@ -5,8 +5,9 @@ import { give, itemInfo } from '../../core/bag.js';
 import { seasonOf } from '../../core/clock.js';
 import { DATA } from '../../core/data.js';
 import { canDo, markDone } from '../../core/ledger.js';
-import { addXP, journal, rank } from '../../core/progress.js';
+import { addXP, didAct, journal, lessonState, rank } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
+import { spend } from '../../core/sun.js';
 import { addThings } from '../../world/things.js';
 import { onSpot, travel } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
@@ -31,6 +32,21 @@ addThings((mapId, s) => (DATA.maps[mapId]?.secrets || []).filter(sec => shows(se
         ui.showCard({ tag: '발견', title: sec.ko, text: `${sec.text}${sec.give ? `\n가방에 ${josa(itemInfo(sec.give)?.ko, '이')} 들어왔어.` : ''}` });
     },
 })));
+
+// 짐 다루기: a collapsed passage behind the temple, there while that lesson is at its last step
+addThings((mapId, s) => {
+    const x = lessonState(s);
+    if (mapId !== 'ombos' || x?.st?.act !== 'clear' || s.flags.passage) return [];
+    return [{ id: 'passage', x: 34, y: 8, label: '무너진 통로', sprite: 'stone', act: ui => {
+        const st = getState();
+        ui.showCard({ tag: '육성', title: '무너진 통로', text: `신전 뒤 통로가 돌무더기로 막혀 있다. 체력 ${st.stats.strength} · 태양 기운 2.`, buttons: [{ label: '닫기' }, { label: '돌 치우기', primary: true, disabled: st.stats.strength < 1, onClick: async () => {
+            if (!spend(st, 2)) { ui.toast('태양 기운이 모자라'); return; }
+            st.flags.passage = true; give(st, 'was_shard', 1, 'adventure'); addXP(st, 4);
+            const d = didAct(st, 'clear'); await saveState();
+            ui.showCard({ tag: '육성', title: '통로가 열렸다', text: `돌을 하나씩 들어 옮기자 좁은 통로가 드러났다. 바닥에 와스 지팡이 조각이 떨어져 있다.${d ? `\n${d}` : ''}` });
+        } }] });
+    } }];
+});
 
 // the boat across the river, once it is repaired
 addThings((mapId, s) => (mapId === 'ombos' && s.works.boat?.done ? [{

@@ -5,7 +5,7 @@
 import { give, itemInfo, nameOf } from '../../core/bag.js';
 import { DATA } from '../../core/data.js';
 import { canDo, markDone } from '../../core/ledger.js';
-import { STATS, addStat, addXP, didAct, journal } from '../../core/progress.js';
+import { STATS, addStat, addXP, didAct, hasSkill, journal, lessonState } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { list, para, stack } from '../../ui/kit.js';
@@ -29,7 +29,7 @@ function scriptorium(ui) {
     const rows = unread(s).map(it => { const r = itemInfo(it.id).read; return {
         icon: itemInfo(it.id).icon, name: nameOf(it), sub: s.stats.wisdom >= r.need ? '해독할 수 있어' : `지혜 ${josa(r.need, '이')} 있어야 읽혀`,
         buttons: [{ label: '해독', primary: true, disabled: s.stats.wisdom < r.need, onClick: async () => {
-            it.opened = true; addXP(s, 3); if (r.flag) s.flags[r.flag] = true;
+            it.opened = true; addXP(s, 3); if (r.flag) s.flags[r.flag] = true; didAct(s, 'read');
             journal(s, { ko: `${josa(nameOf(it), '을')} 해독했다.`, say: `${nameOf(it)}에 적힌 내용을 이야기한다.`, en: `Somang deciphered ${itemInfo(it.id).en}: ${r.ko}`.slice(0, 220), marks: [itemInfo(it.id).ko.split(' ').pop()], kind: 'read' });
             await saveState(); close(); ui.showCard({ tag: '육성', title: `${itemInfo(it.id).icon} 해독`, text: r.ko });
         } }] }; });
@@ -46,10 +46,20 @@ onSpot('training', (spot, ui) => {
     ui.showCard({ tag: '육성', title: '훈련장', text: `${spot.text}\n체력 ${s.stats.strength} · 훈련은 태양 기운 2. 체력은 두아트에서 버티는 힘이 돼.`,
         buttons: [{ label: '훈련하기', primary: true, disabled: sunLeft(s) < 2, onClick: () => { practise(ui, 'strength', 'train', 2, '모래 언덕을 세 번 오르내렸다.'); } }] });
 });
+const sealed = s => s.bag.items.find(it => itemInfo(it.id)?.open && !it.opened);
 const shrine = (spot, ui) => {
     const s = getState();
-    ui.showCard({ tag: '육성', title: spot.title, text: `${spot.text}\n신앙 ${s.stats.faith} · 태양 기운 2. 신앙은 두아트에서 쓰는 주문이 돼.`,
-        buttons: [{ label: '신전 일 돕기', primary: true, disabled: sunLeft(s) < 2, onClick: () => { practise(ui, 'faith', 'pray', 2, '향을 갈고 제단을 닦았다.'); } }] });
+    const x = lessonState(s), canSeal = (x?.st?.act === 'seal' || hasSkill(s, 'seal')) && sealed(s);
+    ui.showCard({ tag: '육성', title: spot.title, text: `${spot.text}\n신앙 ${s.stats.faith} · 태양 기운 2. 신앙은 두아트에서 쓰는 주문이 돼.${canSeal ? `\n봉인된 ${josa(nameOf(canSeal), '을')} 제단에서 안정시킬 수 있어.` : ''}`,
+        buttons: [
+            ...(canSeal ? [{ label: '봉인 안정시키기 · 기운 1', disabled: sunLeft(s) < 1, onClick: async () => {
+                if (!spend(s, 1)) return;
+                const it = sealed(s), info = itemInfo(it.id);
+                it.opened = true; if (info.open.gives) give(s, info.open.gives, 1, it.from); addXP(s, 3);
+                const d = didAct(s, 'seal'); await saveState();
+                ui.showCard({ tag: '육성', title: '봉인 안정', text: `향 연기 속에서 봉인이 조용히 풀렸다. ${info.open.ko}${d ? `\n${d}` : ''}` });
+            } }] : []),
+            { label: '신전 일 돕기', primary: true, disabled: sunLeft(s) < 2, onClick: () => { practise(ui, 'faith', 'pray', 2, '향을 갈고 제단을 닦았다.'); } }] });
 };
 onSpot('altar', shrine);
 onSpot('ruins_shrine', shrine);

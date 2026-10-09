@@ -6,7 +6,9 @@
 
 import { itemInfo } from '../../core/bag.js';
 import { DATA } from '../../core/data.js';
-import { rank } from '../../core/progress.js';
+import { lessonList, lessonState, rank } from '../../core/progress.js';
+import { partInfo, seasonOf } from '../../core/clock.js';
+import { placeInfo, roomEn } from '../../core/tracker.js';
 import { settings } from '../../core/settings.js';
 import { callConn, connSettings, ownReady } from '../../core/ai.js';
 import { ctx } from '../../core/st.js';
@@ -60,6 +62,15 @@ export async function askAdventure(s) {
     const A = DATA.adventures || {};
     const items = [...(A.finds || []), ...(rank(s) >= 2 ? A.rewards?.relics || [] : []), 'map_scrap', 'wet_papyrus'].filter(id => itemInfo(id));
     const recent = (s.adv.recent || []).map(r => `${r.tpl}${r.guide ? `/${r.guide}` : ''}${r.item ? `/${r.item}` : ''}`).join(', ') || 'none';
+    // how closely this one may touch the story: mostly mood only, so a dinner scene does not breed fish adventures
+    const dice = Math.random();
+    const link = dice < 0.7 ? 'MOOD: match the season, hour and feeling of the story, but do not reuse its objects or events.'
+        : dice < 0.85 ? 'DIRECT: you may start from one object or place the story mentioned lately, as something Somang comes across later in the village; do not end or change the current scene.'
+            : 'APART: make it unrelated to the story; just a small village happening.';
+    const lesson = lessonState(s);
+    const learned = (s.lessons.done || []).map(id => lessonList().find(l => l.id === id)?.skill).filter(Boolean);
+    const place = `${placeInfo(s.place)?.en || 'Ombos'}${s.room ? `, ${roomEn(s.room) || s.room}` : ''}, ${partInfo(s.part).en}, ${DATA.calendar.seasons[seasonOf(s.date.month)]?.en || ''}`;
+    const chosen = (s.adv.memory || []).map(m => m.tag).join(', ') || 'none';
     const prompt = `Write the next small adventure. Every name you use must come from these lists.
 
 MAP POINTS (use the id): ${map.anchors.map(a => `${a.id} = ${a.ko}`).join('; ')}
@@ -67,6 +78,10 @@ GUIDES (for follow): ${Object.entries(A.guides || {}).map(([id, g]) => `${id} = 
 ITEMS (for find): ${items.map(id => `${id} = ${itemInfo(id).ko}`).join('; ')}
 SOMEONE TO BRING THINGS TO: merchant (시장 상인)
 RECENT ADVENTURES, do not repeat their shape, guide or item: ${recent}
+WHERE THE STORY IS NOW (do not move or end it): ${place}
+SOMANG IS LEARNING: ${lesson ? `${lesson.L.ko}, now ${lesson.st.ko}` : 'nothing in particular'}${learned.length ? `; she can already ${learned.join(', ')}` : ''}. A step or choice that uses this is welcome.
+EARLIER CHOICES STILL OPEN: ${chosen}
+HOW CLOSE TO THE STORY: ${link}
 WHAT IS GOING ON IN THE STORY LATELY (mood and objects only; do not copy events, do not use names other than Set and Horus, nothing romantic):
 ${chatMood() || '(nothing)'}
 
@@ -125,6 +140,7 @@ export function check(d, map) {
     if (steps.some(x => x.kind === 'follow' && x.path.length < 2) || steps.some(x => x.kind === 'touch' && !x.marks.length)) throw new Error('빈 단계');
     const e = d.end || {};
     if (!str(e.en, 300)) throw new Error('end.en이 없어');
+    if (/\b(Set|Horus)\b[^.]*\b(says?|said|tells?|told|promis|asks?|feels?|decides?)/i.test(e.en)) throw new Error('신의 말이나 마음을 정한 문장');
     return { title: str(d.title, 20) || '작은 모험', steps,
         end: { xp: num(e.xp, 4, 10), deben: num(e.deben, 0, 20), journal: str(e.journal, 120), en: str(e.en, 260), say: str(e.say, 80), marks: (Array.isArray(e.marks) ? e.marks : []).map(m => str(m, 12)).filter(m => m.length >= 2).slice(0, 3) } };
 }
