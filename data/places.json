@@ -1,0 +1,28 @@
+{
+ "_note": "트래커의 장소 글자를 게임 장소로 잇는 표. 첫 단계(도시)는 places, 그 뒤(방)는 rooms. 별칭은 마음대로 더하세요.",
+ "places": [
+  { "id": "ombos", "en": "Ombos", "ko": "옴보스", "map": "ombos", "aliases": ["Nubt", "눕트", "옴보스 신전", "Ombos temple", "세트의 신전"] },
+  { "id": "edfu", "en": "Edfu", "ko": "에드푸", "map": null, "aliases": ["Behdet", "베흐데트", "에드푸 신전"] },
+  { "id": "behedet", "en": "Behedet", "ko": "베헤데트", "map": null, "aliases": ["하늘 궁정", "sky court", "하늘의 궁정"] },
+  { "id": "thebes", "en": "Thebes", "ko": "테베", "map": null, "aliases": ["Waset", "와세트", "카르나크", "Karnak", "룩소르", "Luxor"] },
+  { "id": "delta", "en": "the Delta", "ko": "델타", "map": null, "aliases": ["Delta", "삼각주", "하이집트"] },
+  { "id": "desert", "en": "the desert", "ko": "사막", "map": null, "aliases": ["desert", "붉은 땅", "Deshret", "데셰레트", "사막 한가운데", "모래언덕"] },
+  { "id": "nile", "en": "the Nile", "ko": "나일", "map": null, "aliases": ["Nile", "강가", "강변", "배 위", "나일강"] },
+  { "id": "nubia", "en": "Nubia", "ko": "누비아", "map": null, "aliases": ["Kush", "쿠시"] },
+  { "id": "duat", "en": "the Duat", "ko": "두아트", "map": null, "aliases": ["Duat", "저승", "Underworld"] }
+ ],
+ "rooms": [
+  { "en": "the west wing", "ko": "서쪽 별채", "aliases": ["서쪽 방", "서쪽 별관", "west wing", "west room"] },
+  { "en": "the east annex", "ko": "동쪽 별채", "aliases": ["동쪽 방", "동쪽 별관", "east annex", "east wing"] },
+  { "en": "the outer colonnade", "ko": "바깥 회랑", "aliases": ["회랑", "colonnade", "회랑 문간", "바깥 회랑 문간"] },
+  { "en": "the courtyard", "ko": "안뜰", "aliases": ["뜰", "마당", "courtyard"] },
+  { "en": "the sanctuary", "ko": "성소", "aliases": ["지성소", "sanctuary"] },
+  { "en": "the inner bedchamber", "ko": "내실", "aliases": ["침실", "침소", "bedchamber", "안방", "세트의 방"] },
+  { "en": "the kitchen", "ko": "부엌", "aliases": ["주방", "kitchen"] },
+  { "en": "the garden", "ko": "정원", "aliases": ["텃밭", "garden"] },
+  { "en": "the storeroom", "ko": "창고", "aliases": ["곡물 창고", "storeroom", "granary"] },
+  { "en": "the market", "ko": "시장", "aliases": ["저잣거리", "장터", "market"] },
+  { "en": "the riverbank", "ko": "강가", "aliases": ["선착장", "나루", "riverbank", "dock"] },
+  { "en": "the scriptorium", "ko": "필사실", "aliases": ["서고", "scriptorium"] }
+ ]
+}

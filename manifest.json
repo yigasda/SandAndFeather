@@ -1,0 +1,13 @@
+{
+    "display_name": "모래와 깃털",
+    "loading_order": 110,
+    "requires": [],
+    "optional": [],
+    "dependencies": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Somnag",
+    "version": "0.1.0",
+    "homePage": "https://github.com/yigasda/SandAndFeather",
+    "auto_update": true
+}

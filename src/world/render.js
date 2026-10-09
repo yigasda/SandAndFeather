@@ -1,0 +1,194 @@
+// Drawing the world on a canvas. Stand-in art made in code: the ground (tiles, buildings, palm trunks) is painted
+// once per map and season into an off-screen canvas at 16px a tile, then scaled up crisp each frame; people,
+// palm crowns, labels and the light of the hour go on top. Real sprite sheets can replace these functions later.
+
+const T = 16;
+const PAL = {
+    sand: ['#E7C995', '#E2C08A', '#EBD0A0'], rock: ['#B79C7A', '#AD9271', '#C2A784'], wall: ['#C9B08C', '#C2A985', '#CFB794'],
+    stone: ['#DCCBAE', '#D6C4A6', '#E1D1B5'], path: ['#D3BF9E', '#CDB896', '#D8C5A6'], bank: ['#C9B48C', '#C3AE86', '#CFBA92'],
+    dock: ['#9A7650', '#93704B', '#A07C55'], fence: ['#E2C08A', '#E7C995', '#E2C08A'],
+};
+// the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
+const SEASON = {
+    akhet: { water: ['#3F8F8B', '#3A8985', '#47958F'], grass: ['#8FAE62', '#88A65B', '#97B56A'], farm: ['#6E5236', '#674D33'], crop: '#5E9645' },
+    peret: { water: ['#5FA7A3', '#58A09C', '#68AFAA'], grass: ['#9DB56A', '#93AC61', '#A6BD72'], farm: ['#7F6140', '#76593B'], crop: '#6DA34D' },
+    shemu: { water: ['#7DB8B0', '#76B1A9', '#86BFB7'], grass: ['#B7B26A', '#AFA962', '#C0BA72'], farm: ['#8A6A45', '#80623F'], crop: '#C9A84A' },
+};
+SEASON.epagomenal = SEASON.shemu;
+const TINT = { dawn: 'rgba(255,190,150,0.10)', day: null, evening: 'rgba(214,110,40,0.18)', night: 'rgba(16,24,58,0.42)' };
+
+export const MODE = { life: '생활', growth: '육성', duat: '원정', realm: '경영' };
+
+const rnd = (i, j, k = 1) => { const x = Math.sin(i * 127.1 + j * 311.7 + k * 74.7) * 43758.5453; return x - Math.floor(x); };
+
+export class Renderer {
+    constructor(canvas) {
+        this.cv = canvas;
+        this.g = canvas.getContext('2d');
+        this.ground = document.createElement('canvas');
+        this.top = document.createElement('canvas');
+        this.map = null; this.season = null;
+        this.zoom = 2; this.cam = { x: 0, y: 0 };
+    }
+    setMap(map, season) {
+        if (this.map === map && this.season === season) return;
+        this.map = map; this.season = season;
+        this.paintGround();
+    }
+    resize() {
+        const r = this.cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+        this.cv.width = Math.max(1, Math.round(r.width * dpr));
+        this.cv.height = Math.max(1, Math.round(r.height * dpr));
+        this.dpr = dpr;
+        // about 12 tiles across on a phone, about 18 on a wide screen, always whole pixels
+        this.zoom = Math.max(2, Math.min(4, Math.round(r.width / ((r.width < 600 ? 12 : 18) * T)))) * dpr;
+    }
+
+    // ---- the still layer
+    paintGround() {
+        const m = this.map, S = SEASON[this.season] || SEASON.peret;
+        const gr = this.ground, tp = this.top;
+        gr.width = tp.width = m.w * T; gr.height = tp.height = m.h * T;
+        const g = gr.getContext('2d'), u = tp.getContext('2d');
+        u.clearRect(0, 0, tp.width, tp.height);
+        const px = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
+        for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) {
+            const t = m.type(i, j), x = i * T, y = j * T, n = rnd(i, j);
+            const cs = t === 'water' ? S.water : t === 'grass' ? S.grass : t === 'farm' ? S.farm : PAL[t] || PAL.sand;
+            px(g, x, y, T, T, cs[Math.floor(n * cs.length)]);
+            if (t === 'sand' && rnd(i, j, 2) > 0.7) px(g, x + 3 + rnd(i, j, 3) * 9, y + 4 + rnd(i, j, 4) * 8, 2, 1, '#D4B07A');
+            if (t === 'grass' && rnd(i, j, 2) > 0.45) { px(g, x + 3, y + 9, 1, 3, 'rgba(60,80,30,.35)'); px(g, x + 11, y + 4, 1, 3, 'rgba(60,80,30,.35)'); }
+            if (t === 'farm') { px(g, x, y + 3, T, 2, 'rgba(0,0,0,.18)'); px(g, x, y + 11, T, 2, 'rgba(0,0,0,.18)'); if (n > 0.35) { px(g, x + 3, y + 5, 3, 5, S.crop); px(g, x + 10, y + 6, 3, 4, S.crop); } }
+            if (t === 'path' && rnd(i, j, 8) > 0.72) px(g, x + 5, y + 5, 4, 3, 'rgba(120,95,60,.18)');
+            if (t === 'stone') { px(g, x, y + 15, T, 1, 'rgba(120,95,60,.15)'); px(g, x + 15, y, 1, T, 'rgba(120,95,60,.15)'); }
+            if (t === 'wall') { px(g, x, y, T, 3, '#E0CCA8'); px(g, x, y + 13, T, 3, '#A88E6A'); px(g, x + 7, y + 3, 1, 10, 'rgba(0,0,0,.12)'); }
+            if (t === 'rock') { px(g, x + 2, y + 3, 7, 5, 'rgba(255,255,255,.12)'); px(g, x + 8, y + 9, 6, 4, 'rgba(0,0,0,.12)'); }
+            if (t === 'bank') px(g, x, y + 13, T, 3, '#E2EFE9');
+            if (t === 'dock') { px(g, x, y, T, 1, 'rgba(0,0,0,.25)'); px(g, x + 4, y, 1, T, 'rgba(0,0,0,.2)'); px(g, x + 11, y, 1, T, 'rgba(0,0,0,.2)'); }
+            if (t === 'fence') { px(g, x, y + 6, T, 2, '#8A6644'); px(g, x + 2, y + 3, 2, 10, '#7A5A38'); px(g, x + 12, y + 3, 2, 10, '#7A5A38'); }
+            if (m.legend(i, j).obj === 'palm') { px(g, x + 7, y + 5, 3, 11, '#7A5A38'); px(g, x + 4, y + 14, 9, 2, 'rgba(60,40,20,.25)'); this.palmTop(u, x, y); }
+        }
+        for (const b of m.buildings) this.building(g, b);
+    }
+    palmTop(u, x, y) {
+        const px = (a, b, w, h, col) => { u.fillStyle = col; u.fillRect(x + a, y + b, w, h); };
+        px(1, 3, 6, 3, '#4E7A3A'); px(10, 3, 6, 3, '#4E7A3A'); px(4, 0, 9, 3, '#5E8C46'); px(2, 6, 4, 2, '#4E7A3A'); px(11, 6, 4, 2, '#4E7A3A'); px(7, 4, 3, 3, '#3F6630');
+    }
+    building(g, b) {
+        const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
+        const px = (a, c, ww, hh, col) => { g.fillStyle = col; g.fillRect(a, c, ww, hh); };
+        px(x + 3, y + h - 2, w - 2, 5, 'rgba(60,40,20,.25)');
+        if (b.kind === 'temple') {
+            // pylons either side of a gate, a dark doorway, columns along the front
+            px(x, y, w, h, '#D9C7A8');
+            px(x, y + 10, 30, h - 10, '#C2A985'); px(x + w - 30, y + 10, 30, h - 10, '#C2A985');
+            px(x, y + 10, 30, 4, '#A88E6A'); px(x + w - 30, y + 10, 30, 4, '#A88E6A');
+            for (let k = 0; k < 4; k++) px(x + 38 + k * 16, y + 22, 6, h - 22, '#CBB391');
+            px(x + w / 2 - 9, y + h - 26, 18, 26, '#3E2A1A'); px(x + w / 2 - 12, y + h - 30, 24, 4, '#A88E6A');
+            px(x + 6, y + 18, 18, 2, '#9C805C'); px(x + w - 24, y + 18, 18, 2, '#9C805C');
+            return;
+        }
+        if (b.kind === 'gate') {
+            px(x - 4, y - 6, w + 8, h + 6, '#8A7A68'); px(x + 4, y + 4, w - 8, h - 4, '#160F0B'); px(x + 4, y + 2, w - 8, 2, '#5E3C8E');
+            return;
+        }
+        const roof = b.roof || '#B98F5E';
+        px(x, y, w, h, '#D7B98E'); px(x, y, w, 7, roof); px(x, y + 7, w, 1, 'rgba(0,0,0,.15)');
+        if (b.kind === 'stall') { for (let k = 0; k < w; k += 8) px(x + k, y, 4, 7, '#F2E8DA'); }
+        for (let k = 10; k < w - 10; k += 22) px(x + k, y + 13, 7, 6, '#8A6A45');
+        px(x + w / 2 - 6, y + h - 13, 12, 13, '#5A3F28'); px(x + w / 2 - 6, y + h - 13, 12, 2, '#3E2A1A');
+    }
+
+    // ---- people
+    person(g, look, x, y, dir, step, z) {
+        const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(x + a * z, y + b * z, w * z, h * z); };
+        const L = LOOKS[look] || LOOKS.townsman;
+        const leg = Math.floor(step) % 2;
+        P(4, 14, 8, 2, 'rgba(40,25,10,.25)');
+        if (L.wings) { P(1, 6, 3, 7, L.wings); P(12, 6, 3, 7, L.wings); P(1, 6, 3, 1, L.wingsHi); P(12, 6, 3, 1, L.wingsHi); }
+        if (L.longHair && dir !== 'down') P(5, 3, 6, 9, L.hair);
+        P(5 + leg, 12, 2, 3, L.skin); P(9 - leg, 12, 2, 3, L.skin);         // legs
+        P(4, 7, 8, 6, L.body); if (L.top) P(5, 7, 6, 3, L.top);              // body (and bare chest)
+        if (L.collar) P(5, 7, 6, 1, L.collar);
+        P(5, 2, 6, 5, L.skin);                                              // head
+        P(5, 1, 6, 2, L.hair);
+        if (L.spikes) { P(5, 0, 1, 1, L.hair); P(7, 0, 1, 1, L.hair); P(9, 0, 1, 1, L.hair); }
+        if (L.longHair && dir === 'down') { P(4, 2, 1, 8, L.hair); P(11, 2, 1, 8, L.hair); }
+        if (L.side && dir === 'down') { P(4, 2, 1, 5, L.hair); P(11, 2, 1, 5, L.hair); }
+        if (dir === 'down') { P(6, 4, 1, 1, '#2B2018'); P(9, 4, 1, 1, '#2B2018'); }
+        if (dir === 'left') P(6, 4, 1, 1, '#2B2018');
+        if (dir === 'right') P(9, 4, 1, 1, '#2B2018');
+        P(4, 7, 1, 4, L.skin); P(11, 7, 1, 4, L.skin);                       // arms
+    }
+
+    // ---- a frame
+    draw({ player, npcs, part, time, near }) {
+        const g = this.g, m = this.map, z = this.zoom, W = this.cv.width, H = this.cv.height, ts = T * z;
+        g.imageSmoothingEnabled = false;
+        // the camera follows her, but never shows past the map's edge
+        const mw = m.w * ts, mh = m.h * ts;
+        let cx = (player.x + 0.5) * ts - W / 2, cy = (player.y + 0.5) * ts - H / 2;
+        cx = mw <= W ? (mw - W) / 2 : Math.max(0, Math.min(mw - W, cx));
+        cy = mh <= H ? (mh - H) / 2 : Math.max(0, Math.min(mh - H, cy));
+        this.cam = { x: cx, y: cy };
+        g.fillStyle = '#2a2018'; g.fillRect(0, 0, W, H);
+        g.drawImage(this.ground, -cx, -cy, mw, mh);
+        // the river moves
+        g.fillStyle = 'rgba(225,245,240,.55)';
+        const i0 = Math.max(0, Math.floor(cx / ts)), i1 = Math.min(m.w, Math.ceil((cx + W) / ts)), j0 = Math.max(0, Math.floor(cy / ts)), j1 = Math.min(m.h, Math.ceil((cy + H) / ts));
+        for (let j = j0; j < j1; j++) for (let i = i0; i < i1; i++) {
+            if (m.type(i, j) !== 'water' || rnd(i, j, 5) < 0.55) continue;
+            const off = ((time * 3 + rnd(i, j, 6) * 16) % 16);
+            g.fillRect(i * ts + off * z - cx, j * ts + (5 + rnd(i, j, 7) * 7) * z - cy, 5 * z, z);
+        }
+        // people, back to front
+        const ppl = [...npcs.map(n => ({ look: n.look, x: n.x, y: n.y, dir: 'down', step: 0 })), { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0 }];
+        ppl.sort((a, b) => a.y - b.y);
+        for (const p of ppl) this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
+        g.drawImage(this.top, -cx, -cy, mw, mh);
+        // place names: the mode in orange, then the name ("생활 시장"), like the mockup
+        g.textBaseline = 'middle';
+        for (const sp of m.spots) {
+            if (!sp.label) continue;
+            const tag = MODE[sp.mode] || '';
+            g.font = `700 ${Math.round(5.5 * z)}px 'Noto Sans KR', sans-serif`;
+            const wt = tag ? g.measureText(tag + ' ').width : 0, wl = g.measureText(sp.label).width, w = wt + wl + 9 * z;
+            const x = (sp.x + 0.5) * ts - cx - w / 2, y = (sp.y - 0.55) * ts - cy;
+            if (x + w < 0 || x > W || y < -10 * z || y > H + 10 * z) continue;
+            g.fillStyle = 'rgba(43,32,24,.62)';
+            g.beginPath(); g.roundRect ? g.roundRect(x, y - 5 * z, w, 10 * z, 5 * z) : g.rect(x, y - 5 * z, w, 10 * z); g.fill();
+            g.textAlign = 'left';
+            if (tag) { g.fillStyle = '#F2A36E'; g.fillText(tag, x + 4.5 * z, y + 0.5 * z); }
+            g.fillStyle = '#FBF3EA'; g.fillText(sp.label, x + 4.5 * z + wt, y + 0.5 * z);
+        }
+        // a soft ring under what she can talk to
+        if (near) {
+            g.strokeStyle = 'rgba(184,84,31,.85)'; g.lineWidth = Math.max(2, z);
+            g.beginPath(); g.ellipse((near.x + 0.5) * ts - cx, (near.y + 0.95) * ts - cy, 6 * z, 2.5 * z, 0, 0, Math.PI * 2); g.stroke();
+        }
+        // the hour's light
+        const tint = TINT[part];
+        if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
+    }
+
+    // the whole map small, with a dot for her
+    minimap(cv, player) {
+        const m = this.map, g = cv.getContext('2d');
+        g.imageSmoothingEnabled = true;
+        g.clearRect(0, 0, cv.width, cv.height);
+        const k = Math.min(cv.width / this.ground.width, cv.height / this.ground.height);
+        const w = this.ground.width * k, h = this.ground.height * k, ox = (cv.width - w) / 2, oy = (cv.height - h) / 2;
+        g.fillStyle = '#2a2018'; g.fillRect(0, 0, cv.width, cv.height);
+        g.drawImage(this.ground, ox, oy, w, h);
+        g.fillStyle = '#B8541F'; g.strokeStyle = '#FBF3EA'; g.lineWidth = 1.5;
+        g.lineWidth = Math.max(1.5, cv.width / 220);
+        g.beginPath(); g.arc(ox + (player.x + 0.5) * T * k, oy + (player.y + 0.6) * T * k, Math.max(3.2, cv.width / 90), 0, Math.PI * 2); g.fill(); g.stroke();
+    }
+}
+
+const LOOKS = {
+    somang: { skin: '#F1D2B6', body: '#F4EFE6', hair: '#2B2018', side: true },
+    set: { skin: '#F3DCC8', body: '#1E1A18', top: '#F3DCC8', hair: '#7A1E22', longHair: true, collar: '#D9B65A' },
+    horus: { skin: '#F6EEE8', body: '#F7F3EC', top: '#F6EEE8', hair: '#1B2440', spikes: true, collar: '#D9B65A', wings: '#5B5E8F', wingsHi: '#8E90B8' },
+    townsman: { skin: '#C99A72', body: '#E8E0D0', top: '#C99A72', hair: '#2B2018' },
+};

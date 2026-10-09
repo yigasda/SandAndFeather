@@ -1,0 +1,214 @@
+{
+ "id": "ombos",
+ "name": "옴보스",
+ "nameEn": "Ombos",
+ "tile": 16,
+ "legend": {
+  ".": {
+   "t": "sand"
+  },
+  "r": {
+   "t": "rock",
+   "solid": true
+  },
+  "#": {
+   "t": "wall",
+   "solid": true
+  },
+  "T": {
+   "t": "stone"
+  },
+  "=": {
+   "t": "path"
+  },
+  "g": {
+   "t": "grass"
+  },
+  "f": {
+   "t": "farm"
+  },
+  "~": {
+   "t": "water",
+   "solid": true
+  },
+  "b": {
+   "t": "bank"
+  },
+  "d": {
+   "t": "dock"
+  },
+  "x": {
+   "t": "fence",
+   "solid": true
+  },
+  "p": {
+   "t": "sand",
+   "obj": "palm",
+   "solid": true
+  }
+ },
+ "rows": [
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", ".rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.", "....................................rrrr", "..................################rrrrrr", ".............p....#TTTTTTTTTTTTTT#rrrrrr", "..................#TTTTTTTTTTTTTT#rrrrrr", "...=============..#TTTTTTTTTTTTTT#rrrrrr", "...=============..#TTTTTTTTTTTTTT#rrrrrr", "..........==......#TTTTTTTTTTTTTT#..rrrr", "..xxxxxxx.==......#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==....p.#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==......#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==.p....#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==......#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==......#######TT#######..rrrr", "..xxx.xxx.==.............==.........rrrr", "..........==.............==......p..rrrr", "..........==.............==..........rrr", "..==================================.rrr", "..==================================.rrr", ".........................==..........rrr", "...ffffffffff.p..........==.ggggggg.....", ".p.ffffffffff.........p..==.ggggggg.....", "...ffffffffff............==.ggggggg.p...", "gggffffffffffggggggggggggggggggggggggggg", "gggffffffffffggggpgggggggggggggpgggggggg", "gggggggggggggggggggggggggggggggggggggggg", "bbbbbbbbbbbbbbbbbbbbbbbbbddbbbbbbbbbbbbb", "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+ ],
+ "buildings": [
+  {
+   "id": "temple",
+   "kind": "temple",
+   "x": 22,
+   "y": 5,
+   "w": 8,
+   "h": 5,
+   "label": "세트의 신전"
+  },
+  {
+   "id": "scriptorium",
+   "kind": "house",
+   "x": 8,
+   "y": 3,
+   "w": 6,
+   "h": 4,
+   "label": "필사실",
+   "roof": "#B98F5E"
+  },
+  {
+   "id": "market",
+   "kind": "stall",
+   "x": 12,
+   "y": 15,
+   "w": 5,
+   "h": 2,
+   "label": "시장",
+   "roof": "#C0632F"
+  },
+  {
+   "id": "kitchen",
+   "kind": "house",
+   "x": 28,
+   "y": 15,
+   "w": 4,
+   "h": 3,
+   "label": "부엌",
+   "roof": "#A88B66"
+  },
+  {
+   "id": "houses1",
+   "kind": "house",
+   "x": 19,
+   "y": 15,
+   "w": 4,
+   "h": 2,
+   "label": "",
+   "roof": "#B9926A"
+  },
+  {
+   "id": "duat",
+   "kind": "gate",
+   "x": 35,
+   "y": 9,
+   "w": 2,
+   "h": 2,
+   "label": "두아트"
+  }
+ ],
+ "spots": [
+  {
+   "id": "temple_hall",
+   "x": 26,
+   "y": 10,
+   "label": "세트의 신전",
+   "mode": "realm",
+   "title": "세트의 신전 · 집무실",
+   "text": "지도 탁자 위에 이집트가 펼쳐져 있다. 땅을 다스리는 일은 나중에 열린다."
+  },
+  {
+   "id": "scriptorium",
+   "x": 11,
+   "y": 7,
+   "label": "필사실",
+   "mode": "growth",
+   "title": "필사실",
+   "text": "서기들이 갈대 펜을 깎고 있다. 공부는 육성 단계에서 열린다."
+  },
+  {
+   "id": "training",
+   "x": 5,
+   "y": 12,
+   "label": "훈련장",
+   "mode": "growth",
+   "title": "훈련장",
+   "text": "모래 위에 발자국이 어지럽다. 세트의 사막 훈련은 육성 단계에서 열린다."
+  },
+  {
+   "id": "market",
+   "x": 14,
+   "y": 18,
+   "label": "시장",
+   "mode": "life",
+   "title": "시장",
+   "text": "상인들이 좌판을 펴고 있다. 사고팔기는 생활 단계에서 열린다."
+  },
+  {
+   "id": "garden",
+   "x": 8,
+   "y": 20,
+   "label": "텃밭",
+   "mode": "life",
+   "title": "텃밭",
+   "text": "물기를 머금은 검은 흙. 씨를 뿌리는 건 생활 단계에서 열린다."
+  },
+  {
+   "id": "kitchen",
+   "x": 30,
+   "y": 18,
+   "label": "부엌",
+   "mode": "life",
+   "title": "부엌",
+   "text": "화덕에서 빵 굽는 냄새가 난다. 요리는 생활 단계에서 열린다."
+  },
+  {
+   "id": "dock",
+   "x": 25,
+   "y": 30,
+   "label": "낚시",
+   "mode": "life",
+   "title": "선착장",
+   "text": "나일이 발밑에서 출렁인다. 낚시는 생활 단계에서 열린다."
+  },
+  {
+   "id": "duat",
+   "x": 35,
+   "y": 11,
+   "label": "두아트",
+   "mode": "duat",
+   "title": "두아트의 문",
+   "text": "바위 틈에서 차가운 바람이 올라온다. 저승 원정은 원정 단계에서 열린다."
+  }
+ ],
+ "npcs": [
+  {
+   "id": "set",
+   "x": 24,
+   "y": 12,
+   "look": "set",
+   "label": "세트"
+  },
+  {
+   "id": "horus",
+   "x": 28,
+   "y": 11,
+   "look": "horus",
+   "label": "호루스"
+  },
+  {
+   "id": "merchant",
+   "x": 12,
+   "y": 17,
+   "look": "townsman",
+   "label": "상인"
+  }
+ ],
+ "spawn": {
+  "x": 25,
+  "y": 16
+ }
+}

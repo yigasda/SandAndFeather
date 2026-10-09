@@ -1,0 +1,46 @@
+{
+ "_note": "이집트 민력. 달 이름(en/ko)과 다른 표기(aliases)는 트래커를 읽을 때 씁니다. 표기를 더하고 싶으면 aliases에 넣으세요.",
+ "seasons": {
+  "akhet": { "en": "Akhet", "ko": "아케트", "about": "범람기" },
+  "peret": { "en": "Peret", "ko": "페레트", "about": "파종기" },
+  "shemu": { "en": "Shemu", "ko": "셰무", "about": "수확기" },
+  "epagomenal": { "en": "the Epagomenal Days", "ko": "윤일", "about": "신들의 생일" }
+ },
+ "months": [
+  { "en": "Thoth", "ko": "토트", "season": "akhet", "aliases": ["Djehuty", "토트월"] },
+  { "en": "Phaophi", "ko": "파오피", "season": "akhet", "aliases": ["Paophi", "Paopi", "파오페"] },
+  { "en": "Hathyr", "ko": "하티르", "season": "akhet", "aliases": ["Hathor", "Athyr", "Hator", "하토르월", "아티르"] },
+  { "en": "Choiak", "ko": "코이악", "season": "akhet", "aliases": ["Khoiak", "Koiak", "Kiahk", "코이아크", "키아크"] },
+  { "en": "Tybi", "ko": "티비", "season": "peret", "aliases": ["Tobi", "Tubah", "토비"] },
+  { "en": "Mechir", "ko": "메키르", "season": "peret", "aliases": ["Mekhir", "Meshir", "Amshir", "메케르", "메시르"] },
+  { "en": "Phamenoth", "ko": "파메노트", "season": "peret", "aliases": ["Paremhat", "Baramhat", "파레므하트"] },
+  { "en": "Pharmouthi", "ko": "파르무티", "season": "peret", "aliases": ["Pharmuthi", "Parmouti", "Baramouda", "파르무디"] },
+  { "en": "Pachons", "ko": "파콘스", "season": "shemu", "aliases": ["Pakhons", "Pashons", "Bashans", "파숀스"] },
+  { "en": "Payni", "ko": "파이니", "season": "shemu", "aliases": ["Paoni", "Paone", "Baounah", "파위니", "파오니"] },
+  { "en": "Epiphi", "ko": "에피피", "season": "shemu", "aliases": ["Epip", "Epep", "Abib", "에펩"] },
+  { "en": "Mesore", "ko": "메소레", "season": "shemu", "aliases": ["Mesori", "Mesra", "메소리"] }
+ ],
+ "epagomenal": {
+  "en": "Epagomenal Day", "ko": "윤일", "aliases": ["Epagomenal", "Epagomenae", "Heriu Renpet", "윤일", "에파고메나이"],
+  "days": [
+   { "en": "the birth of Osiris", "ko": "오시리스의 탄생일" },
+   { "en": "the birth of Horus the Elder", "ko": "큰 호루스의 탄생일" },
+   { "en": "the birth of Set", "ko": "세트의 탄생일" },
+   { "en": "the birth of Isis", "ko": "이시스의 탄생일" },
+   { "en": "the birth of Nephthys", "ko": "네프티스의 탄생일" }
+  ]
+ },
+ "parts": [
+  { "id": "dawn", "en": "morning", "ko": "아침", "from": 4, "to": 10, "aliases": ["새벽", "아침", "동틀", "dawn", "morning", "sunrise"] },
+  { "id": "day", "en": "afternoon", "ko": "낮", "from": 10, "to": 16, "aliases": ["낮", "정오", "한낮", "오후", "noon", "midday", "afternoon"] },
+  { "id": "evening", "en": "evening", "ko": "저녁", "from": 16, "to": 20, "aliases": ["저녁", "해질녘", "노을", "dusk", "evening", "sunset"] },
+  { "id": "night", "en": "night", "ko": "밤", "from": 20, "to": 4, "aliases": ["밤", "한밤", "자정", "night", "midnight"] }
+ ],
+ "koDays": {
+  "초하룻날": 1, "하룻날": 1, "초하루": 1, "이튿날": 2, "사흗날": 3, "나흗날": 4, "닷샛날": 5, "엿샛날": 6, "이렛날": 7,
+  "여드렛날": 8, "아흐렛날": 9, "열흘날": 10, "열하룻날": 11, "열이튿날": 12, "열사흗날": 13, "열나흗날": 14,
+  "보름날": 15, "열닷샛날": 15, "열엿샛날": 16, "열이렛날": 17, "열여드렛날": 18, "열아흐렛날": 19, "스무날": 20,
+  "스무하룻날": 21, "스무이튿날": 22, "스무사흗날": 23, "스무나흗날": 24, "스무닷샛날": 25, "스무엿샛날": 26,
+  "스무이렛날": 27, "스무여드렛날": 28, "스무아흐렛날": 29, "그믐날": 30, "서른날": 30, "그믐": 30
+ }
+}
