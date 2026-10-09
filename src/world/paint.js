@@ -26,6 +26,7 @@ const box = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h);
 const layer = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
 
 import { DATA } from '../core/data.js';
+import { referenceGround, referenceEscarpment } from './terrain-reference.js';
 
 // the pictures of data/tiles.json as small canvases, made once per season
 const artCache = new Map();
@@ -48,6 +49,8 @@ function art(season) {
 }
 // one of a kind's pictures, chosen by place so the same tile always looks the same
 function drawTile(ctx, kind, i, j, x, y) {
+    if (ctx.m.d.referenceScenes?.includes('duat') && (kind === 'sand' || kind === 'path'))
+        return referenceGround(ctx.g, kind, x, y);
     const list = ctx.art.tiles[kind];
     if (!list?.length) return false;
     ctx.g.drawImage(list[Math.floor(rnd(i, j, 17) * list.length)], x, y);
@@ -92,6 +95,7 @@ export function paintMap(m, S, gr, tp, season) {
     steppingStones(ctx);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) edges(ctx, i, j);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) shadows(ctx, i, j);
+    referenceEscarpment(ctx);
     for (const b of m.buildings) buildingShadow(g, b);
     for (const f of m.d.landforms || []) {
         const pic = ctx.art.things[f.sprite];
@@ -177,7 +181,7 @@ function baseOf(ctx, t, i, j) {
         case 'bank': return c.b || BANK.base;
         case 'farm': return c.o || ctx.S.farm[0];
         case 'water': return c.w || waterTones(ctx.S)[1];
-        default: return c.s || SAND.base;
+        default: return ctx.m.d.referenceScenes?.includes('duat') ? '#F4D79C' : c.s || SAND.base;
     }
 }
 
@@ -386,6 +390,7 @@ function steppingStones(ctx) {
 // sand: from its pictures, or flat with a little ripple in fixed places
 let sandCtx = null;
 function sand(g, x, y, alt) {
+    if (sandCtx?.m.d.referenceScenes?.includes('duat') && referenceGround(g, 'sand', x, y)) return;
     if (sandCtx?.art.tiles.sand?.length) { const L = sandCtx.art.tiles.sand; g.drawImage(L[Math.floor(rnd(x / T, y / T, 17) * L.length)], x, y); return; }
     box(g, x, y, T, T, SAND.base);
     if (alt) { box(g, x + 3, y + 5, 3, 1, SAND.dark); box(g, x + 4, y + 4, 1, 1, SAND.light); }

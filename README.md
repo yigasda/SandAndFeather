@@ -4,6 +4,8 @@
 
 기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md) · 진행 상황: [docs/PROGRESS.md](docs/PROGRESS.md) · 인수인계: [docs/HANDOFF.md](docs/HANDOFF.md)
 
+**0.8.11 두아트 연결부:** 원본 모래·보도를 마을에 적용하고 부엌 옆 그림자와 절벽 위아래를 연결했다. [실제 낮·밤 화면과 검증](docs/DUAT-SEAMS.md).
+
 ## 지금 되는 것 · 0.4 첫 플레이 버전
 
 마술봉 메뉴 → **모래와 깃털**, 또는 확장 탭 서랍 → **게임 열기**. 방향키·WASD, 폰에선 왼쪽 아래 패드. 가까이 가서 **말 걸기** 또는 E.

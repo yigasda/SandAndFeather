@@ -14,6 +14,9 @@ function panel(scene, night) {
     cv.width = source[2]; cv.height = source[3];
     const g = cv.getContext('2d'); g.drawImage(scene.image, ...source, 0, 0, cv.width, cv.height);
     const pixels = g.getImageData(0, 0, cv.width, cv.height);
+    const inside = (x,y,poly) => {let yes=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++) {const a=poly[i],b=poly[j];if((a[1]>y)!==(b[1]>y) && x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;}return yes;};
+    const oven=[[237,700],[280,699],[295,716],[298,760],[237,760]];
+    const jars=[[237,789],[258,775],[282,776],[288,785],[305,790],[310,840],[237,840]];
     for (let y = 0; y < cv.height; y++) for (let x = 0; x < cv.width; x++) {
         let opacity = 1;
         for (const {a, b, width} of scene.seams || []) {
@@ -21,6 +24,11 @@ function panel(scene, night) {
             const t = Math.max(0, Math.min(1, ((x-a[0])*vx+(y-a[1])*vy)/(vx*vx+vy*vy)));
             opacity = Math.min(opacity, Math.hypot(x-a[0]-t*vx, y-a[1]-t*vy)/width);
         }
+        // The source house is elsewhere in the live map. Remove its detached
+        // wall shadow, retaining the oven/jars and the palm's own shadow.
+        if(x<340 && y>=680 && y<854) opacity=(inside(x,y,oven)||inside(x,y,jars)) ? 1 : 0;
+        // Let the actual map paving meet the last authored stepping stone.
+        if(y>838 && x<668) opacity=Math.min(opacity,Math.max(0,(866-y)/28));
         pixels.data[(y*cv.width+x)*4+3] = Math.round(255*opacity);
     }
     g.putImageData(pixels,0,0); pair[key]=cv; return cv;

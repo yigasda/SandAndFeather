@@ -1,6 +1,8 @@
 // Compare selected unoccluded interior regions of the ACTUAL renderer with the
 // approved source atlas at 1:1 source-pixel scale (game zoom 4). Ground seams and
 // UI/actors are intentionally outside these regions; this is not a whole-frame claim.
+// Paving is now shared with the live map, so it is intentionally not source-identical.
+// Palm comparison ends before the new paving transition at source y=838.
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {chromium}=require('playwright');
 const out=path.resolve(process.argv[2]||'/tmp/duat-reference-review');fs.mkdirSync(out,{recursive:true});
@@ -14,7 +16,7 @@ const result=await page.evaluate(async()=>{
  r.setMap(m,'akhet');r.setSprites(DATA.sprites);cv.width=832;cv.height=878;r.zoom=4;
  const cameraPlayer={x:(464*4+416)/64-.5,y:(76*4+45+439)/64-.5,dir:'down',step:0};
  const atlas=document.createElement('canvas');atlas.width=1704;atlas.height=923;const ag=atlas.getContext('2d');ag.drawImage(DATA.sceneArt.duat.image,0,0);
- const regions=[['high_cliff',600,96,70,50],['left_rock',352,288,50,70],['door_depth',500,260,90,75],['guardian',684,420,64,115],['stepping_stones',500,645,140,110],['palm_shadow',420,755,130,90],['paving',300,870,220,18],['raised_bank',715,790,90,70]];
+ const regions=[['high_cliff',600,96,70,50],['left_rock',352,288,50,70],['door_depth',500,260,90,75],['guardian',684,420,64,115],['stepping_stones',500,645,140,110],['palm_shadow',420,755,130,75],['raised_bank',715,790,90,70]];
  const frames=[],comparisons=[];
  for(const part of ['day','night']){
   r.draw({player:cameraPlayer,people:[],part,time:0});
