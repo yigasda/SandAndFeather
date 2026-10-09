@@ -4,7 +4,7 @@ import { find, itemInfo, items, nameOf, openItem } from '../core/bag.js';
 import { dateLabel, fromDayNumber } from '../core/clock.js';
 import { DATA } from '../core/data.js';
 import { getState } from '../core/state.js';
-import { josa, pickTalker } from './talk.js';
+import { josa, pickVisit, showItem } from './talk.js';
 
 const fromKo = it => DATA.talk?.from?.[it.from]?.ko || '';
 
@@ -13,8 +13,9 @@ export function itemCard(ui, map, uid, { fresh = false } = {}) {
     if (!info) return;
     const buttons = [];
     if (info.open && !it.opened) buttons.push({ label: '열어 보기', onClick: () => { opened(ui, map, uid); } });
-    buttons.push({ label: '이 일로 말 걸기', onClick: () => { pickTalker(ui, map, uid); } });
-    buttons.push({ label: fresh ? '보관하기' : '닫기', primary: true });
+    buttons.push({ label: '찾아가기', onClick: () => { pickVisit(ui, map, uid); } });
+    buttons.push({ label: fresh ? '보관하기' : '닫기' });
+    buttons.push({ label: '지금 꺼내기', primary: true, onClick: () => { showItem(ui, uid); } });
     ui.showCard({
         tag: fresh ? '발견' : '',
         title: `${info.icon || ''} ${nameOf(it)}`.trim(),
@@ -33,8 +34,8 @@ async function opened(ui, map, uid) {
         text: `${info.open.ko}${gave ? `\n가방에 ${josa(nameOf(gave), '이')} 들어왔어.` : ''}`,
         buttons: [
             ...(gave ? [{ label: `${nameOf(gave)} 보기`, onClick: () => { itemCard(ui, map, gave.uid); } }] : []),
-            { label: '이 일로 말 걸기', onClick: () => { pickTalker(ui, map, gave ? gave.uid : uid); } },
-            { label: '닫기', primary: true },
+            { label: '닫기' },
+            { label: '지금 꺼내기', primary: true, onClick: () => { showItem(ui, gave ? gave.uid : uid); } },
         ],
     });
 }

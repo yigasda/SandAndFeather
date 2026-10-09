@@ -3,7 +3,7 @@
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 2;
+export const STATE_VERSION = 3;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -27,6 +27,9 @@ export const freshState = () => ({
 // A save from a newer version of the extension is left as it is (never cut down to this version's shape).
 const STEPS = {
     1: () => {},  // 1 → 2: ledger, bag, news, recent are new; they are filled below
+    // 2 → 3: 말 걸기 no longer moves the scene by itself. Talk lines made before that, still waiting, are dropped
+    // so an ongoing scene is not pulled to the temple courtyard.
+    2: s => { if (Array.isArray(s.news)) s.news = s.news.filter(n => n.key !== 'talk'); },
 };
 
 function fill(s) {

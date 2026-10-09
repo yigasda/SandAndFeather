@@ -10,7 +10,7 @@ import { ctx, eventTypes, hasChat } from './src/core/st.js';
 import { syncFromChat } from './src/core/tracker.js';
 import { addWandMenu, refreshDrawer, renderDrawer } from './src/ui/drawer.js';
 import { applyTheme, refresh } from './src/ui/window.js';
-import './src/core/news.js';
+import { armPrepared } from './src/core/news.js';
 import './src/packs/life/dock.js';
 
 (function init() {
@@ -60,7 +60,9 @@ import './src/packs/life/dock.js';
 
     es.on(et.APP_READY, start);
     es.on(et.CHAT_CHANGED, onChat);
-    for (const ev of [et.MESSAGE_SENT, et.GENERATION_STARTED]) if (ev) es.on(ev, now);
+    // a sent message decides whether a line the game only prepared goes in: only if the message still carries it
+    if (et.MESSAGE_SENT) es.on(et.MESSAGE_SENT, i => { if (ready && hasChat()) { armPrepared(i); applyInjection(); } });
+    if (et.GENERATION_STARTED) es.on(et.GENERATION_STARTED, now);
     for (const ev of [et.MESSAGE_RECEIVED, et.MESSAGE_SENT, et.MESSAGE_EDITED, et.MESSAGE_UPDATED, et.MESSAGE_SWIPED, et.MESSAGE_DELETED]) {
         if (ev) es.on(ev, onMessage);
     }

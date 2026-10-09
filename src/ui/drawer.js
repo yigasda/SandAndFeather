@@ -9,7 +9,7 @@ import { DEFAULT_TRACKER_RE, VERSION, saveSettings, settings } from '../core/set
 import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
 import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex, weatherOf } from '../core/tracker.js';
-import { dropNews, newsStatus, pending } from '../core/news.js';
+import { dropNews, newsStatus, pending, prepared } from '../core/news.js';
 import { FEATHER } from './icon.js';
 import { esc } from './popups.js';
 import { applyTheme, openGame } from './window.js';
@@ -168,8 +168,8 @@ export function refreshDrawer() {
     }
     // the game's happenings still waiting for the chat, each can be taken out
     const news = $id('sf_news');
-    const list = s ? pending(s) : [];
-    news.innerHTML = list.length ? `<div class="sf_sub">챗에 넘길 일</div>${list.map(n => `<div class="sf_news_row"><span>${esc(n.ko || n.text)}</span><span class="sf_hint">${newsStatus(n) === 'live' ? '방금 답장에 넣음' : '다음 답장에'}</span><button type="button" class="sf_icon_btn sf_news_x" data-id="${esc(n.id)}" title="빼기"><i class="fa-solid fa-xmark"></i></button></div>`).join('')}` : '';
+    const list = s ? [...prepared(s), ...pending(s)] : [];
+    news.innerHTML = list.length ? `<div class="sf_sub">챗에 넘길 일</div>${list.map(n => `<div class="sf_news_row"><span>${esc(n.ko || n.text)}</span><span class="sf_hint">${n.prepared ? '입력칸에 준비됨. 보내면 들어가' : newsStatus(n) === 'live' ? '방금 답장에 넣음' : '다음 답장에'}</span><button type="button" class="sf_icon_btn sf_news_x" data-id="${esc(n.id)}" title="빼기"><i class="fa-solid fa-xmark"></i></button></div>`).join('')}` : '';
     news.querySelectorAll('.sf_news_x').forEach(b => b.addEventListener('click', () => dropNews(b.dataset.id)));
 
     // what the tracker pattern reads from the newest message that has one

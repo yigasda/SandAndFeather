@@ -197,7 +197,7 @@ function talk() {
         showCard(root, { tag: MODE[near.mode] || '', title: near.title || near.label, text: near.text || '' });
         return;
     }
-    personCard(ui, map.npcs.find(n => n.id === near.id) || near, map);
+    personCard(ui, map.npcs.find(n => n.id === near.id) || near);
 }
 
 function openToday() {
