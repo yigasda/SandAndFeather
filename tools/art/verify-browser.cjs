@@ -56,6 +56,23 @@ const passed = [];
       assert((await card.innerText()).includes(title), title); await card.locator('.sf_pop_x').click();
     }
     passed.push('market, kitchen, scriptorium, temple and NPC interaction cards');
+    await page.evaluate(()=>{artTest.state.getState().part='day';artTest.win.refresh();});
+    await travel(35,11);
+    await page.keyboard.down('ArrowUp'); await page.waitForTimeout(400); await page.keyboard.up('ArrowUp');
+    assert((await pos()).y >= 10.37, 'Duat gate still blocks northward movement');
+    await travel(35,11); await page.locator('.sf_talk').click();
+    const gateCard=page.locator('.sf_pop_wrap').last(); await gateCard.waitFor();
+    assert((await gateCard.innerText()).includes('문은 저녁과 밤에만 열려'));
+    await gateCard.locator('.sf_pop_x').click();
+    const forecourt=await page.evaluate(()=>{
+      const m=artTest.map.getMap(),gate=m.buildings.find(b=>b.id==='duat'),jackal=m.decor.find(d=>d.k==='jackal');
+      let gateOnStone=true;
+      for(let y=gate.y;y<gate.y+gate.h;y++)for(let x=gate.x;x<gate.x+gate.w;x++)gateOnStone &&= m.type(x,y)==='stone';
+      return {gateOnStone,statueOnStone:m.type(jackal.x,jackal.y)==='stone',statueBlocks:m.solidAt(jackal.x,jackal.y),
+        passageClear:!m.solidAt(35,11)&&!m.solidAt(35,12)&&!m.solidAt(35,13),edgeGap:!m.solidAt(jackal.x+1,jackal.y)};
+    });
+    assert(Object.values(forecourt).every(Boolean),JSON.stringify(forecourt));
+    passed.push('Duat stone forecourt, statue clearance, gate collision and daytime interaction');
     const reachability = await page.evaluate(() => {
       const {GameMap}=artTest.map, d=artTest.data.DATA.maps.ombos;
       return [[],['canal','field','garden']].map(open=>{
@@ -119,7 +136,7 @@ const passed = [];
     await page.keyboard.down('ArrowDown');await page.waitForTimeout(500);await page.keyboard.up('ArrowDown');
     assert.equal(requests.length,fetched);passed.push('movement does not reload art');
     assert.deepEqual(errors,[]);
-    const result={passed,art,reachability,occlusion,restoration,pageErrors:errors};
+    const result={passed,art,reachability,forecourt,occlusion,restoration,pageErrors:errors};
     fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify(result,null,2)+'\n');
     console.log(JSON.stringify(result,null,2));
   } finally {

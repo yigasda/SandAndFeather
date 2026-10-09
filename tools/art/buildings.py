@@ -26,32 +26,40 @@ def house(w, h, kind='house'):
 def stall(w, h):
     W, H = w * 16, h * 16 + 30
     p = Pic(W, H)
-    # Recessed back of the booth. An open side separates the front posts from it.
+    # One shallow deck joins both posts and projects in front of the counter.
+    framed(p, 3, H - 8, W - 6, 8, C['wood'])
+    p.rect(4, H - 7, W - 8, 5, C['woodlit'])
+    p.rect(4, H - 4, W - 8, 1, C['wood'])
+    p.rect(W // 2, H - 7, 1, 3, C['wood'])
+    p.rect(4, H - 2, W - 8, 1, C['creamShade'])
+    # Recessed back of the booth. The canopy dimensions are unchanged.
     p.rect(8, 24, W - 16, 20, '#6B503D')
     p.rect(8, 27, W - 16, 7, C['deep'])
     for x in (5, W - 8):
-        framed(p, x, 19, 3, H - 19, C['woodlit'])
-        p.rect(x + 2, 30, 1, H - 31, C['deep'])
-    # Counter: a visible horizontal top, then the lower, darker front board.
-    framed(p, 10, H - 21, W - 20, 17, C['wood'])
-    p.rect(11, H - 20, W - 22, 9, C['woodlit'])
-    p.rect(11, H - 20, W - 22, 2, C['wood'])
-    p.rect(10, H - 11, W - 20, 1, C['creamShade'])
-    p.rect(11, H - 10, W - 22, 5, C['wood'])
-    p.rect(11, H - 6, W - 22, 2, '#6B503D')
-    for x in (11, W - 14): p.rect(x, H - 4, 3, 4, LINE)
+        framed(p, x, 19, 3, H - 23, C['woodlit'])
+        p.rect(x + 2, 30, 1, H - 35, C['deep'])
+    # Lit tabletop, darker front board, short feet resting on the same deck.
+    framed(p, 10, H - 23, W - 20, 15, C['wood'])
+    p.rect(11, H - 22, W - 22, 8, C['woodlit'])
+    p.rect(11, H - 22, W - 22, 2, C['wood'])
+    p.rect(10, H - 14, W - 20, 1, C['creamShade'])
+    p.rect(11, H - 13, W - 22, 4, C['wood'])
+    p.rect(11, H - 10, W - 22, 2, '#6B503D')
+    for x in (11, W - 14): p.rect(x, H - 8, 3, 3, LINE)
     produce = [('#70894E', '#A5B970', '#465B3B'),
                ('#A76554', '#CE8B72', '#794C41'),
                ('#DDC69E', '#F4E8CD', '#A88B62')]
     basket_w = (W - 30) // 3
     for i, (body, hi, shade) in enumerate(produce):
-        x, y = 13 + i * (basket_w + 2), H - 24
+        x, y = 13 + i * (basket_w + 2), H - 26
+        # Three broad heaps, not individually outlined vertical sticks.
         framed(p, x, y + 3, basket_w, 8, C['woodlit'])
-        for dx, dy in ((2, 1), (7, 0), (11, 1), (4, 4), (9, 4)):
-            p.ellipse(x + dx + 1, y + dy + 2, 2.5, 3, LINE)
-            p.ellipse(x + dx + 1, y + dy + 2, 1.5, 2, body)
-            p.put(x + dx, y + dy + 1, hi)
-            p.put(x + dx + 1, y + dy + 3, shade)
+        p.ellipse(x + 8, y + 5, 7, 4, LINE)
+        p.ellipse(x + 8, y + 5, 6, 3, shade)
+        for dx, dy, rx in ((4, 3, 3), (11, 3, 3), (8, 6, 4)):
+            p.ellipse(x + dx, y + dy, rx, 2.5, body)
+            p.rect(x + dx - 1, y + dy - 2, 2, 1, hi)
+        p.rect(x + 1, y + 8, basket_w - 2, 1, C['creamShade'])
         p.rect(x + 1, y + 9, basket_w - 2, 1, C['wood'])
     # 26px of canopy top, followed by only 3px of hanging cloth.
     # The broad top shades the empty space above the smaller, inset counter.
