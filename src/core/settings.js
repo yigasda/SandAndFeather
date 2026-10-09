@@ -2,7 +2,7 @@
 
 import { ctx } from './st.js';
 
-export const VERSION = '0.4.0';
+export const VERSION = '0.4.1';
 export const MODULE = 'sand_feather';
 export const PROMPT_KEY = 'sand_feather_world';
 
@@ -21,6 +21,7 @@ const DEFAULTS = {
     trackerRe: '',      // '' = DEFAULT_TRACKER_RE
     monthStyle: 'en',   // how month names show in the game: 'en' Hathyr, 'ko' 하티르
     theme: 'auto',      // 'auto' follows NarrativeArchive / SillyTavern, or 'light' / 'dark'
+    sunMax: 12,         // 태양 기운 a game day holds
     advAI: 'draft',     // who writes new small adventures: 'draft' NarrativeArchive's draft model, 'ai' its AI 기능 model, 'off' random only
     archiveFolder: 'NarrativeArchive', // NarrativeArchive's folder under third-party, for its connection
 };

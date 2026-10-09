@@ -5,7 +5,7 @@ import { emit } from '../core/bus.js';
 import { DATA } from '../core/data.js';
 import { STATS, dailyTasks, rankInfo } from '../core/progress.js';
 import { getState, saveState } from '../core/state.js';
-import { SUN_MAX, sunLeft } from '../core/sun.js';
+import { sunLeft, sunMax } from '../core/sun.js';
 import { hint } from '../packs/adventure/engine.js';
 import { bar, list, para, stack } from './kit.js';
 import { showEvent } from './talk.js';
@@ -19,7 +19,7 @@ export function somangCard(ui, onClose) {
             bar(`모험 등급 ${r.rank} · ${r.next ? `${s.stats.xp}/${r.next}` : '최고'}`, r.frac, 'sf_rank'),
             para(r.rank < 2 ? '등급 2: 두아트 길이 하나 더 길어져' : r.rank < 3 ? '등급 3: 고친 배로 강 건너 신전에 갈 수 있어' : '등급이 오를수록 모험에서 유물이 나와'),
             list(Object.entries(STATS).map(([k, ko]) => ({ icon: { wisdom: '📜', strength: '💪', faith: '🔆' }[k], name: `${ko} ${s.stats[k]}`, sub: opens[k] }))),
-            para(`태양 기운 ${sunLeft(s)}/${SUN_MAX} · 데벤 ${s.bag.deben}`)) });
+            para(`태양 기운 ${sunLeft(s)}/${sunMax()} · 데벤 ${s.bag.deben}`)) });
 }
 
 export function partyCard(ui, onClose) {

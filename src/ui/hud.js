@@ -5,7 +5,7 @@ import { dateLabel, partInfo, seasonName, seasonAbout } from '../core/clock.js';
 import { DATA } from '../core/data.js';
 import { placeInfo } from '../core/tracker.js';
 import { rankInfo } from '../core/progress.js';
-import { SUN_MAX, sunLeft } from '../core/sun.js';
+import { sunLeft, sunMax } from '../core/sun.js';
 import { hint } from '../packs/adventure/engine.js';
 import { esc } from './popups.js';
 
@@ -71,7 +71,7 @@ export function updateHud(h, s) {
     h.sync.classList.toggle('sf_ok', !!s.sync.ok);
     const map = DATA.maps[s.pos?.map || 'ombos'];
     h.miniName.textContent = map?.name || placeInfo(s.place)?.ko || '';
-    h.sun.innerHTML = `<i class="fa-solid fa-sun"></i> ${sunLeft(s)}/${SUN_MAX}`;
+    h.sun.innerHTML = `<i class="fa-solid fa-sun"></i> ${sunLeft(s)}/${sunMax()}`;
     h.deben.innerHTML = `<i class="fa-solid fa-coins"></i> ${s.bag.deben}`;
     const r = rankInfo(s.stats.xp);
     h.rank.textContent = `모험 등급 ${r.rank}`;

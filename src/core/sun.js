@@ -4,13 +4,20 @@
 
 import { emit } from './bus.js';
 import { today } from './ledger.js';
+import { settings } from './settings.js';
 import { getState, saveState } from './state.js';
 
-export const SUN_MAX = 6;
+// how much a day holds: 서랍 › 하루 태양 기운 (4–30, default 12)
+export const sunMax = () => Math.max(4, Math.min(30, Number(settings().sunMax) || 12));
 
 function fill(s) {
     const t = today(s);
-    if (s.sun.day < 0 || t > s.sun.day) { s.sun.day = t; s.sun.left = SUN_MAX; }
+    const max = sunMax();
+    if (s.sun.day < 0 || t > s.sun.day) { s.sun.day = t; s.sun.left = max; }
+    // the day's size changed (the setting, or a save from when a day held 6): today grows or shrinks by as much
+    const was = s.sun.max ?? 6;
+    if (was !== max) s.sun.left = Math.max(0, Math.min(max, s.sun.left + (max - was)));
+    s.sun.max = max;
     return s.sun.left;
 }
 export const sunLeft = (s = getState()) => (s ? fill(s) : 0);

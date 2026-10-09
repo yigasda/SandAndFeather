@@ -12,6 +12,7 @@ import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRege
 import { dropNews, newsStatus, pending, prepared } from '../core/news.js';
 import { aiLabel } from '../packs/adventure/ai.js';
 import { ensureAdventure } from '../packs/adventure/gen.js';
+import { sunLeft } from '../core/sun.js';
 import { FEATHER } from './icon.js';
 import { esc } from './popups.js';
 import { applyTheme, openGame } from './window.js';
@@ -91,6 +92,7 @@ export function renderDrawer(problems = []) {
               <div class="sf_box_head"><b>보기</b></div>
               <div class="sf_grid">
                 <label>달 이름<select id="sf_monthstyle">${opt([['en', 'Hathyr'], ['ko', '하티르']], st.monthStyle)}</select></label>
+                <label>하루 태양 기운<input type="number" min="4" max="30" id="sf_sunmax" value="${Number(st.sunMax) || 12}"></label>
                 <label>테마<select id="sf_theme">${opt([['auto', '자동'], ['light', '밝게'], ['dark', '어둡게']], st.theme)}</select></label>
               </div>
             </div>
@@ -124,6 +126,12 @@ function bind() {
     $id('sf_wordcap').addEventListener('change', e => set('wordCap', Math.max(20, Number(e.target.value) || 80)));
     $id('sf_monthstyle').addEventListener('change', e => { set('monthStyle', e.target.value); emit('view:changed', {}); });
     $id('sf_theme').addEventListener('change', e => { set('theme', e.target.value); applyTheme(); });
+    $id('sf_sunmax').addEventListener('change', async e => {
+        st.sunMax = Math.max(4, Math.min(30, Number(e.target.value) || 12));
+        e.target.value = st.sunMax;
+        saveSettings();
+        if (hasChat()) { sunLeft(); await saveState(); emit('sun:changed', {}); }
+    });
     $id('sf_adv_ai').addEventListener('change', e => { set('advAI', e.target.value); });
     $id('sf_archive_folder').addEventListener('change', e => { set('archiveFolder', e.target.value.trim() || 'NarrativeArchive'); });
     $id('sf_adv_new').addEventListener('click', async () => {
