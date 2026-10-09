@@ -42,7 +42,6 @@ function art(season) {
     const tiles = {}, things = {};
     for (const [k, list] of Object.entries(D.tiles || {})) tiles[k] = list.map(rows => make(rows, cols));
     for (const [k, d] of Object.entries(D.things || {})) things[k] = make(d.rows, d.colors);
-    Object.assign(things, DATA.sceneArt || {});
     const A = { cols, tiles, things, has: k => !!tiles[k]?.length };
     artCache.set(key, A);
     return A;
@@ -111,6 +110,7 @@ export function paintMap(m, S, gr, tp, season) {
     for (const b of m.buildings) building(ctx, b);
     const pics = [];
     for (const d of [...(m.decor || [])].sort((a, b) => a.y - b.y)) {
+        if (d.referenceOwned) continue;
         const pic = picFor(ctx, d);
         if (pic) { pics.push({ x: d.x, y: d.y, pic, k: d.k }); continue; }
         const flat = d.flat ?? FLAT.has(d.k);

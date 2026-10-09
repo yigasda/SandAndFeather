@@ -4,6 +4,7 @@
 // otherwise the stand-in drawn in code.
 
 import { T, paintMap, rnd } from './paint.js';
+import { drawReferenceScenes } from './reference-scene.js';
 
 // the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
 const SEASON = {
@@ -14,7 +15,7 @@ const SEASON = {
 SEASON.epagomenal = SEASON.shemu;
 // sprites drawn flat on the ground, under people
 const FLAT = new Set(['prints', 'sluice', 'mural']);
-const TINT = { dawn: 'rgba(255,190,150,0.10)', day: null, evening: 'rgba(214,110,40,0.18)', night: 'rgba(20,44,103,0.52)' };
+const TINT = { dawn: 'rgba(255,190,150,0.10)', day: null, evening: 'rgba(214,110,40,0.18)', night: 'rgba(16,32,100,0.57)' };
 
 export const MODE = { life: '생활', growth: '육성', duat: '원정', realm: '경영' };
 
@@ -25,6 +26,7 @@ export class Renderer {
         this.g = canvas.getContext('2d');
         this.ground = document.createElement('canvas');
         this.top = document.createElement('canvas');
+        this.referenceActors = document.createElement('canvas');
         this.map = null; this.season = null;
         this.zoom = 2; this.cam = { x: 0, y: 0 };
         this.art = new Map(); // drawn pictures from data/sprites.json, one small canvas each
@@ -62,7 +64,7 @@ export class Renderer {
     repaint() { if (this.map) this.paintGround(); }
     // folded or closed: give the pictures' memory back (about 10MB on a phone); setMap paints them again on open
     release() {
-        for (const c of [this.cv, this.ground, this.top]) { c.width = 1; c.height = 1; }
+        for (const c of [this.cv, this.ground, this.top, this.referenceActors]) { c.width = 1; c.height = 1; }
         this.map = null; this.season = null;
     }
     resize() {
@@ -135,6 +137,20 @@ export class Renderer {
             else this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
         }
         g.drawImage(this.top, -cx, -cy, mw, mh);
+        // the hour's light
+        const tint = TINT[part];
+        if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
+        drawReferenceScenes(this, {part, tint, cx, cy, z, actors:ppl,
+            paintActors: (target, minimumFoot) => {
+                if (minimumFoot === -Infinity) for (const t of things) if (FLAT.has(t.sprite))
+                    this.sprite(target, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
+                for (const p of ppl) {
+                    if ((p.y + 1) * T < minimumFoot) continue;
+                    if (p.thing) this.sprite(target, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
+                    else this.person(target, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
+                }
+            }
+        });
         // place names: the mode in orange, then the name ("생활 시장"), like the mockup
         g.textBaseline = 'middle';
         for (const sp of m.spots) {
@@ -155,12 +171,9 @@ export class Renderer {
             g.strokeStyle = 'rgba(184,84,31,.85)'; g.lineWidth = Math.max(2, z);
             g.beginPath(); g.ellipse((near.x + 0.5) * ts - cx, (near.y + 0.95) * ts - cy, 6 * z, 2.5 * z, 0, 0, Math.PI * 2); g.stroke();
         }
-        // the hour's light
-        const tint = TINT[part];
-        if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
         // The sealed passage keeps its light inside the existing doorway.
         // A small threshold and inner seam brighten at night, with no village-wide glow.
-        for (const b of m.buildings) if (b.glow === 'duat') {
+        for (const b of m.buildings) if (b.glow === 'duat' && !b.artInReference) {
             const bx = b.x * ts - cx, bottom = (b.y + b.h) * ts - cy;
             const night = part === 'night' || part === 'evening';
             g.fillStyle = night ? 'rgba(156,124,191,.65)' : 'rgba(128,104,153,.25)';

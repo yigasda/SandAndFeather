@@ -31,27 +31,18 @@ export async function loadData() {
     return DATA;
 }
 
-// Decode the reference-based sprites once, before the first map is painted.
-// Keep the native tile coordinates and crisp pixels used by the rest of the map.
+// Keep the approved reference pixels at their original resolution. The renderer
+// selects the authored day/night panel; it does not recolour or regenerate it.
 let sceneArtPromise;
 function loadSceneArt() {
     return sceneArtPromise ||= (async () => {
         const definitions = await loadJson('scene-art.json');
-        const entries = await Promise.all(Object.entries(definitions).map(async ([name, d]) => {
+        const entries = await Promise.all(Object.entries(definitions).map(async ([name, definition]) => {
             const image = new Image();
-            image.src = new URL(d.file, base).href;
+            image.src = new URL(definition.file, base).href;
             try { await image.decode(); }
-            catch { throw new Error(`data/${d.file} 그림을 못 불러왔어`); }
-            const canvas = document.createElement('canvas');
-            canvas.width = d.width; canvas.height = d.height;
-            const g = canvas.getContext('2d');
-            g.imageSmoothingEnabled = false;
-            g.drawImage(image, ...d.source, 0, 0, d.width, d.height);
-            const pixels = g.getImageData(0, 0, d.width, d.height);
-            // Exported cutouts include a soft alpha fringe. The game uses hard silhouettes.
-            for (let i = 3; i < pixels.data.length; i += 4) pixels.data[i] = pixels.data[i] > 220 ? 255 : 0;
-            g.putImageData(pixels, 0, 0);
-            return [name, canvas];
+            catch { throw new Error(`data/${definition.file} 그림을 못 불러왔어`); }
+            return [name, { image, ...definition }];
         }));
         DATA.sceneArt = Object.fromEntries(entries);
     })().catch(error => { sceneArtPromise = null; throw error; });

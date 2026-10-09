@@ -39,17 +39,9 @@ const passed = [];
       return all.map(([id, d]) => ({ id, w: d.rows[0].length, h: d.rows.length, valid: d.rows.every(row => row.length === d.rows[0].length && [...row].every(c => c === '.' || d.colors[c])) }));
     });
     assert.equal(art.length, 6); assert(art.every(a => a.valid)); passed.push('6 building grids and extension data load');
-    const sceneArt = await page.evaluate(() => Object.entries(artTest.data.DATA.sceneArt).map(([id, cv]) => {
-      const pixels = cv.getContext('2d').getImageData(0, 0, cv.width, cv.height).data;
-      let solid = 0, clear = 0, partial = 0;
-      for (let i = 3; i < pixels.length; i += 4) {
-        if (pixels[i] === 255) solid++; else if (pixels[i] === 0) clear++; else partial++;
-      }
-      return {id,width:cv.width,height:cv.height,solid,clear,partial};
-    }));
-    assert.equal(sceneArt.length, 2);
-    assert(sceneArt.every(p => p.solid > 200 && p.clear > 0 && p.partial === 0));
-    passed.push('reference sprites decoded with opaque interiors and clear hard-edged backgrounds');
+    const sceneArt = await page.evaluate(() => Object.entries(artTest.data.DATA.sceneArt).map(([id, d]) => ({id,width:d.image.naturalWidth,height:d.image.naturalHeight})));
+    assert.deepEqual(sceneArt,[{id:'duat',width:1704,height:923}]);
+    passed.push('approved day/night atlas decoded at original resolution');
     const travel = (x, y) => page.evaluate(async ({x,y}) => { await artTest.win.travel('ombos',{x,y}); }, {x,y});
     const pos = () => page.evaluate(() => ({x:artTest.player.player.x,y:artTest.player.player.y}));
     await travel(21,17);
@@ -74,10 +66,10 @@ const passed = [];
     }
     passed.push('market, kitchen, scriptorium, temple and NPC interaction cards');
     await page.evaluate(()=>{artTest.state.getState().part='day';artTest.win.refresh();});
-    await travel(38,11);
+    await travel(37,11);
     await page.evaluate(() => document.activeElement?.blur()); await page.keyboard.down('ArrowUp'); await page.waitForTimeout(400); await page.keyboard.up('ArrowUp');
     assert((await pos()).y >= 10.37, 'Duat gate still blocks northward movement');
-    await travel(38,11); await page.locator('.sf_talk').click();
+    await travel(37,11); await page.locator('.sf_talk').click();
     const gateCard=page.locator('.sf_pop_wrap').last(); await gateCard.waitFor();
     assert((await gateCard.innerText()).includes('문은 저녁과 밤에만 열려'));
     await gateCard.locator('.sf_pop_x').click();
@@ -114,7 +106,7 @@ const passed = [];
     assert(guardianPass.x>guardianPass.statueX+.8&&guardianPass.y===guardianPass.behindY,JSON.stringify(guardianPass));
     assert(approach.every(p=>p.atGate>=10.37&&p.atGate<10.5&&p.back>18),JSON.stringify(approach));
     await page.evaluate(()=>{artTest.state.getState().part='night';artTest.win.refresh();});
-    await travel(38,11); await page.locator('.sf_talk').click();
+    await travel(37,11); await page.locator('.sf_talk').click();
     const nightGate=page.locator('.sf_pop_wrap').last(); await nightGate.waitFor();
     assert((await nightGate.innerText()).includes('누구와 내려갈까?'));
     await nightGate.locator('.sf_pop_x').click();
