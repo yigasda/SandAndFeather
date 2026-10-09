@@ -620,7 +620,7 @@
    {"id": "ob_east", "x": 37, "y": 21, "ko": "동쪽 오벨리스크", "about": "동쪽 풀밭 끝"},
    {"id": "ob_river", "x": 21, "y": 26, "ko": "강가 오벨리스크", "about": "선착장 가는 풀밭"}
  ],
- "_decor_about": "꾸밈. k는 종류, x와 y는 칸. 종류: column 기둥, statue_set 세트 석상, statue_falcon 매 석상, jackal 자칼 상, brazier 화로, pool 연못, altar 제물상, runner 붉은 길, plant 화분, jars 항아리, goods 장바구니, flowers 꽃, bush 덤불, reeds 갈대, skiff 작은 배, rocks 돌무더기, dummy 짚 인형, target 과녁, well 우물, oven 화덕, shaduf 물 긷는 장대, mat 말리는 돗자리, bench 돌 의자, banner 깃대, hanging 벽 걸개, stele 비석, shrine 작은 사당, dig 발굴 구덩이, fallen 쓰러진 기둥, broken 부서진 석상, block 새김 돌. 꽃, 덤불, 갈대, 돗자리, 붉은 길, 걸개, 작은 배, 발굴 구덩이는 지나갈 수 있고 나머지는 막혀. solid에 true나 false를 넣으면 바꿀 수 있어. hanging과 banner는 c에 색을 넣어. bed는 줄 맞춘 꽃밭이야. 길이 막히지 않게 조심해.",
+ "_decor_about": "꾸밈. k는 종류, x와 y는 칸. 종류: column 기둥, statue_set 세트 석상, statue_falcon 매 석상, jackal 자칼 상, brazier 화로, pool 연못, altar 제물상, runner 붉은 길, plant 화분, jars 항아리, goods 장바구니, flowers 꽃, bush 덤불, reeds 갈대, skiff 작은 배, rocks 돌무더기, dummy 짚 인형, target 과녁, well 우물, oven 화덕, shaduf 물 긷는 장대, mat 말리는 돗자리, bench 돌 의자, banner 깃대, hanging 벽 걸개, stele 비석, shrine 작은 사당, dig 발굴 구덩이, lily 연잎, fallen 쓰러진 기둥, broken 부서진 석상, block 새김 돌. 꽃, 덤불, 갈대, 돗자리, 붉은 길, 걸개, 작은 배, 발굴 구덩이는 지나갈 수 있고 나머지는 막혀. solid에 true나 false를 넣으면 바꿀 수 있어. hanging과 banner는 c에 색을 넣어. bed는 줄 맞춘 꽃밭이야. 길이 막히지 않게 조심해.",
  "decor": [
    {"k": "hanging", "x": 20, "y": 3, "c": "#2F6FB6"},
    {"k": "hanging", "x": 31, "y": 3, "c": "#C0392B"},
@@ -698,7 +698,12 @@
    {"k": "reeds", "x": 31, "y": 27},
    {"k": "reeds", "x": 37, "y": 27},
    {"k": "skiff", "x": 20, "y": 29},
-   {"k": "skiff", "x": 6, "y": 30}
+   {"k": "skiff", "x": 6, "y": 30},
+   {"k": "lily", "x": 9, "y": 29},
+   {"k": "lily", "x": 15, "y": 31},
+   {"k": "lily", "x": 31, "y": 29},
+   {"k": "lily", "x": 36, "y": 31},
+   {"k": "lily", "x": 3, "y": 32}
  ],
  "rows": [
   "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
@@ -723,7 +728,7 @@
   "..==================================.rrr",
   "...hhhh..................==..hhhhhh..rrr",
   "...ffffffffffcp..........==.ggggggg.....",
-  ".p.ffffffffffc........p..==.ggggggg.....",
+  ".p.ffffffffffc...........==.ggggggg.....",
   "...ffffffffffc...........==.ggggggg.p...",
   "gggffffffffffcgggggggggggggggggggggggggg",
   "gggffffffffffcgggpgggggggggggggpgggggggg",

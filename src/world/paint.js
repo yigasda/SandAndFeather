@@ -1,11 +1,12 @@
 // Painting the still world, once per map and season, into two off-screen layers at 16px a tile:
 //   ground  the land, its edges and shadows, and everything standing on it
 //   top     what stands over people walking behind it: palm crowns, statues, columns, flagpoles
-// The look follows top-down pixel games like Pokémon: flat land with a small pattern repeated in fixed places, clear
-// edges with rounded corners where one kind of land meets another, rocks and walls as raised blocks with a lit top
-// and a dark face, water darker the farther from the shore, and a dark outline around every object but never the land.
-// Objects (buildings, palms, fences, the map's "decor") are drawn on their own layers first; the outline is traced
-// from their shape and then they are laid onto the ground and top layers.
+// The look follows RPG Maker style games seen at three quarters from above: the land is drawn from small pixel
+// pictures (data/tiles.json, a few of each kind, the season changing some colours), grass frays into the sand in
+// little blades, water is darker the farther from the shore with a line of foam at its edge, rocks and walls are raised
+// blocks with a lit top and a dark face, and every object has a dark outline but the land never does.
+// Objects drawn in code (buildings, fences, the map's "decor") go on their own layers first; the outline is traced
+// from their shape and then they are laid onto the ground and top layers. Pictures (palms, crops) bring their own.
 
 export const T = 16;
 export const rnd = (i, j, k = 1) => { const x = Math.sin(i * 127.1 + j * 311.7 + k * 74.7) * 43758.5453; return x - Math.floor(x); };
@@ -24,28 +25,93 @@ const FLAT = new Set(['runner', 'flowers', 'mat', 'dig', 'reeds', 'pool', 'bed']
 const box = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
 const layer = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
 
-export function paintMap(m, S, gr, tp) {
+import { DATA } from '../core/data.js';
+
+// the pictures of data/tiles.json as small canvases, made once per season
+const artCache = new Map();
+function art(season) {
+    const key = season || 'peret';
+    if (artCache.has(key)) return artCache.get(key);
+    const D = DATA.tiles || { colors: {}, seasons: {}, tiles: {}, things: {} };
+    const cols = { ...D.colors, ...(D.seasons?.[key === 'epagomenal' ? 'shemu' : key] || {}) };
+    const make = (rows, colors) => {
+        const c = layer(Math.max(...rows.map(r => r.length)), rows.length), g = c.getContext('2d');
+        rows.forEach((r, y) => [...r].forEach((ch, x) => { if (ch !== '.' && colors[ch]) { g.fillStyle = colors[ch]; g.fillRect(x, y, 1, 1); } }));
+        return c;
+    };
+    const tiles = {}, things = {};
+    for (const [k, list] of Object.entries(D.tiles || {})) tiles[k] = list.map(rows => make(rows, cols));
+    for (const [k, d] of Object.entries(D.things || {})) things[k] = make(d.rows, d.colors);
+    const A = { cols, tiles, things, has: k => !!tiles[k]?.length };
+    artCache.set(key, A);
+    return A;
+}
+// one of a kind's pictures, chosen by place so the same tile always looks the same
+function drawTile(ctx, kind, i, j, x, y) {
+    const list = ctx.art.tiles[kind];
+    if (!list?.length) return false;
+    ctx.g.drawImage(list[Math.floor(rnd(i, j, 17) * list.length)], x, y);
+    return true;
+}
+// a picture standing on a tile: its foot on the tile's bottom middle; what rises above the tile goes on the top layer
+function stand(ctx, name, x, y, footX, footY) {
+    const pic = ctx.art.things[name];
+    if (!pic) return false;
+    const dx = x + 8 - footX, dy = y + 16 - footY, split = y - dy; // rows of the picture above the tile's top edge
+    if (split > 0) ctx.u.drawImage(pic, 0, 0, pic.width, split, dx, dy, pic.width, split);
+    ctx.g.drawImage(pic, 0, Math.max(0, split), pic.width, pic.height - Math.max(0, split), dx, dy + Math.max(0, split), pic.width, pic.height - Math.max(0, split));
+    return true;
+}
+
+// decor that has a drawn picture: flowers, beds, bushes, rocks, reeds, lily pads
+const PIC_KINDS = { flowers: ['flowers_0', 'flowers_1', 'flowers_2'], bed: ['bed_0', 'bed_1', 'bed_2'], bush: ['bush', 'bush_berry'], rocks: ['rocks'], reeds: ['reeds', 'reeds_1'], lily: ['lily'] };
+const PIC_FLAT = new Set(['flowers', 'bed', 'lily']);
+function picFor(ctx, d) {
+    const names = PIC_KINDS[d.k];
+    if (!names) return null;
+    return ctx.art.things[names[(d.x * 7 + d.y * 3) % names.length]] || null;
+}
+function standPic(ctx, p) {
+    const x = p.x * T, y = p.y * T, pic = p.pic;
+    if (PIC_FLAT.has(p.k)) { ctx.g.drawImage(pic, x + 8 - Math.floor(pic.width / 2), y + 8 - Math.floor(pic.height / 2)); return; }
+    box(ctx.g, x + 1, y + 13, 15, 3, SHADOW);
+    const dx = x + 8 - Math.floor(pic.width / 2), dy = y + 16 - pic.height, split = Math.max(0, y - dy);
+    if (split) ctx.u.drawImage(pic, 0, 0, pic.width, split, dx, dy, pic.width, split);
+    ctx.g.drawImage(pic, 0, split, pic.width, pic.height - split, dx, dy + split, pic.width, pic.height - split);
+}
+
+export function paintMap(m, S, gr, tp, season) {
     const W = m.w * T, H = m.h * T;
     gr.width = tp.width = W; gr.height = tp.height = H;
     const g = gr.getContext('2d'), u = tp.getContext('2d');
     u.clearRect(0, 0, W, H);
     const og = layer(W, H), ou = layer(W, H); // objects, to be outlined
-    const ctx = { m, S, g, s: g, o: og.getContext('2d'), ou: ou.getContext('2d'), u, depth: waterDepth(m) };
+    const ctx = { m, S, g, s: g, o: og.getContext('2d'), ou: ou.getContext('2d'), u, depth: waterDepth(m), art: art(season), season };
+    sandCtx = ctx;
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) tile(ctx, i, j);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) edges(ctx, i, j);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) shadows(ctx, i, j);
     for (const b of m.buildings) buildingShadow(g, b);
     for (const b of m.buildings) building(ctx, b);
+    const pics = [];
     for (const d of [...(m.decor || [])].sort((a, b) => a.y - b.y)) {
+        const pic = picFor(ctx, d);
+        if (pic) { pics.push({ x: d.x, y: d.y, pic, k: d.k }); continue; }
         const flat = d.flat ?? FLAT.has(d.k);
         DECOR[d.k]?.({ m, S, s: g, g: flat ? g : ctx.o, u: flat ? u : ctx.ou }, d.x * T, d.y * T, d);
     }
-    for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) {
-        const L = m.legend(i, j);
-        if (L.obj === 'palm') palm(ctx, i * T, j * T, i, j);
-        if (L.obj === 'lotus') lotus(g, i * T, j * T);
-    }
+    for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) if (m.legend(i, j).obj === 'lotus') lotus(g, i * T, j * T);
     withOutline(og, g); withOutline(ou, u);
+    // pictures that bring their own outline: crops on the fields, palms; back to front
+    const crop = `crop_${season === 'epagomenal' ? 'shemu' : season || 'peret'}`;
+    for (let j = 0; j < m.h; j++) {
+        for (let i = 0; i < m.w; i++) {
+            // crops on every other row, so the soil shows between the rows
+            if (m.type(i, j) === 'farm' && j % 2 === 1 && ctx.art.things[crop]) g.drawImage(ctx.art.things[crop], i * T + 2, j * T + 2);
+            if (m.legend(i, j).obj === 'palm') palm(ctx, i * T, j * T, i, j);
+        }
+        for (const p of pics) if (p.y === j) standPic(ctx, p);
+    }
     og.width = og.height = ou.width = ou.height = 1;
 }
 
@@ -87,30 +153,27 @@ const waterTones = S => [mix(S.water[2], '#FFFFFF', 0.28), mix(S.water[1], S.wat
 
 // the base colour a kind of land shows, for rounding a neighbour's corner
 function baseOf(ctx, t, i, j) {
+    const c = ctx.art.cols;
     switch (t) {
-        case 'grass': return ctx.S.grass[1];
-        case 'path': return PATH.base;
-        case 'stone': return STONE.base;
-        case 'bank': return BANK.base;
-        case 'farm': return ctx.S.farm[0];
-        case 'water': return waterTones(ctx.S)[1];
-        default: return SAND.base;
+        case 'grass': return c.g || ctx.S.grass[1];
+        case 'path': return c.k || PATH.base;
+        case 'stone': return c.t || STONE.base;
+        case 'bank': return c.b || BANK.base;
+        case 'farm': return c.o || ctx.S.farm[0];
+        case 'water': return c.w || waterTones(ctx.S)[1];
+        default: return c.s || SAND.base;
     }
 }
 
 // ---------- tiles
 function tile(ctx, i, j) {
-    const { m, S, g, o } = ctx, t = m.type(i, j), x = i * T, y = j * T, alt = (i + j) % 2;
+    const { m, S, g, o } = ctx, t = m.type(i, j), x = i * T, y = j * T, alt = (i + j) % 2, c = ctx.art.cols;
     const at = (a, b) => (a < 0 || b < 0 || a >= m.w || b >= m.h ? t : m.type(a, b));
     switch (t) {
-        case 'grass': {
-            box(g, x, y, T, T, S.grass[1]);
-            // a tuft in two fixed places, mirrored on every other tile
-            const tuft = (a, b) => { box(g, x + a, y + b, 1, 2, S.grass[0]); box(g, x + a + 2, y + b, 1, 2, S.grass[0]); box(g, x + a + 1, y + b - 1, 1, 3, S.grass[0]); box(g, x + a + 1, y + b - 1, 1, 1, S.grass[2]); };
-            if (alt) { tuft(3, 4); tuft(10, 11); } else { tuft(10, 3); tuft(3, 11); }
-            break;
-        }
+        case 'grass': if (drawTile(ctx, 'grass', i, j, x, y)) break;
+            box(g, x, y, T, T, S.grass[1]); break;
         case 'stone': {
+            if (drawTile(ctx, 'stone', i, j, x, y)) break;
             const sr = Math.floor(j / 2), off = sr % 2;
             box(g, x, y, T, T, STONE.base);
             if ((i + off) % 2 === 1) box(g, x + 15, y, 1, T, STONE.seam);
@@ -119,12 +182,14 @@ function tile(ctx, i, j) {
             break;
         }
         case 'path': {
+            if (drawTile(ctx, 'path', i, j, x, y)) break;
             box(g, x, y, T, T, PATH.base);
             // paving: a seam across the middle, and down one side offset by row
             box(g, x, y + 7, T, 1, PATH.seam); box(g, x + (j % 2 ? 4 : 11), y, 1, 7, PATH.seam); box(g, x + (j % 2 ? 11 : 4), y + 8, 1, 8, PATH.seam);
             break;
         }
         case 'farm': {
+            if (drawTile(ctx, 'farm', i, j, x, y)) break;
             box(g, x, y, T, T, S.farm[0]);
             for (let r = 0; r < 4; r++) { box(g, x, y + r * 4 + 3, T, 1, S.farm[1]); box(g, x, y + r * 4, T, 1, 'rgba(255,230,190,.1)'); }
             for (let r = 0; r < 2; r++) for (let k = 0; k < 2; k++) {
@@ -134,15 +199,16 @@ function tile(ctx, i, j) {
             break;
         }
         case 'water': {
-            const tones = waterTones(S), d = ctx.depth[j * m.w + i];
+            const d = ctx.depth[j * m.w + i];
+            if (drawTile(ctx, d >= 3 ? 'deep' : 'water', i, j, x, y)) break;
+            const tones = waterTones(S);
             box(g, x, y, T, T, tones[d]);
             if (alt) box(g, x + 3, y + 5, 5, 1, d === 1 ? 'rgba(255,255,255,.35)' : 'rgba(255,255,255,.15)');
             else box(g, x + 9, y + 11, 4, 1, d === 1 ? 'rgba(255,255,255,.35)' : 'rgba(255,255,255,.15)');
             break;
         }
         case 'bank': {
-            box(g, x, y, T, T, BANK.base);
-            if (alt) box(g, x + 5, y + 5, 2, 1, BANK.dark); else box(g, x + 11, y + 9, 2, 1, BANK.dark);
+            if (!drawTile(ctx, 'bank', i, j, x, y)) box(g, x, y, T, T, BANK.base);
             if (at(i, j + 1) === 'water') { box(g, x, y + 13, T, 3, BANK.lip); box(g, x, y + 13, T, 1, BANK.dark); }
             break;
         }
@@ -157,6 +223,13 @@ function tile(ctx, i, j) {
         case 'rock': {
             // a raised block of rock: the lit top while rock goes on below, a dark face where it ends
             const face = at(i, j + 1) !== 'rock';
+            if (drawTile(ctx, face ? 'cliff' : 'rock', i, j, x, y)) {
+                const L = c.L || LINE;
+                if (!face && at(i, j - 1) !== 'rock') box(g, x, y, T, 1, L);
+                if (at(i - 1, j) !== 'rock') { box(g, x, y, 1, T, L); box(g, x + 1, y, 1, T, face ? (c.h || '#CB9C6E') : (c.R || '#E8C995')); }
+                if (at(i + 1, j) !== 'rock') { box(g, x + 15, y, 1, T, L); box(g, x + 14, y, 1, T, face ? (c.Z || '#93673F') : (c.y || '#C29A6C')); }
+                break;
+            }
             if (!face) {
                 box(g, x, y, T, T, ROCK.top);
                 if (alt) { box(g, x + 3, y + 4, 3, 2, ROCK.topDark); box(g, x + 3, y + 4, 3, 1, ROCK.topLight); box(g, x + 10, y + 11, 2, 1, ROCK.topDark); }
@@ -177,6 +250,13 @@ function tile(ctx, i, j) {
         case 'wall': {
             // the same raised look in cut stone: a capped top, a face of blocks where the wall ends
             const face = at(i, j + 1) !== 'wall';
+            if (drawTile(ctx, face ? 'wallface' : 'wall', i, j, x, y)) {
+                const L = c.L || LINE;
+                if (!face && at(i, j - 1) !== 'wall') box(g, x, y, T, 1, L);
+                if (at(i - 1, j) !== 'wall') box(g, x, y, 1, T, L);
+                if (at(i + 1, j) !== 'wall') { box(g, x + 15, y, 1, T, L); box(g, x + 14, y + 1, 1, T - 1, face ? (c.E || '#BFA176') : (c.i || '#D3BC93')); }
+                break;
+            }
             if (!face) {
                 box(g, x, y, T, T, WALL.top); box(g, x + 7, y, 1, T, WALL.topSeam);
                 if (at(i, j - 1) !== 'wall') { box(g, x, y, T, 2, WALL.lip); box(g, x, y, T, 1, LINE); }
@@ -251,46 +331,57 @@ function tile(ctx, i, j) {
         default: sand(g, x, y, alt);
     }
 }
-// sand: flat, with a little ripple in fixed places
+// sand: from its pictures, or flat with a little ripple in fixed places
+let sandCtx = null;
 function sand(g, x, y, alt) {
+    if (sandCtx?.art.tiles.sand?.length) { const L = sandCtx.art.tiles.sand; g.drawImage(L[Math.floor(rnd(x / T, y / T, 17) * L.length)], x, y); return; }
     box(g, x, y, T, T, SAND.base);
     if (alt) { box(g, x + 3, y + 5, 3, 1, SAND.dark); box(g, x + 4, y + 4, 1, 1, SAND.light); }
     else { box(g, x + 10, y + 11, 3, 1, SAND.dark); box(g, x + 11, y + 10, 1, 1, SAND.light); }
 }
 
 // ---------- where two kinds of land meet: a clear line, corners cut round
-const RIM = { grass: 'rim', path: 'rim', farm: 'rim', stone: 'rim', water: 'shore' };
+const RIM = { grass: 1, path: 1, farm: 1, stone: 1, water: 1 };
 function edges(ctx, i, j) {
-    const { m, S, g } = ctx, t = m.type(i, j), x = i * T, y = j * T;
+    const { m, g } = ctx, t = m.type(i, j), x = i * T, y = j * T, c = ctx.art.cols;
     if (!RIM[t]) return;
     const raised = nt => nt === 'wall' || nt === 'rock' || nt === 'stairs' || nt === 'pillar' || nt === 'dock' || nt === 'hedge' || nt === 'fence';
     const other = (a, b) => { if (a < 0 || b < 0 || a >= m.w || b >= m.h) return false; const nt = m.type(a, b); return nt !== t && !raised(nt) && !(t === 'stone' && nt === 'stairs'); };
     const up = other(i, j - 1), down = other(i, j + 1), left = other(i - 1, j), right = other(i + 1, j);
-    const line = t === 'grass' ? mix(S.grass[0], '#203818', 0.35) : t === 'path' ? PATH.edge : t === 'farm' ? '#4E3520' : t === 'stone' ? STONE.edge : null;
-    const inner = t === 'grass' ? S.grass[2] : t === 'path' ? PATH.light : t === 'stone' ? STONE.light : null;
-    if (t === 'water') {
-        // the shore: a white line of foam and a shallow band
-        const foam = 'rgba(245,252,250,.85)';
-        if (up) { box(g, x, y, T, 1, foam); box(g, x, y + 1, T, 2, 'rgba(255,255,255,.18)'); }
-        if (left) box(g, x, y, 1, T, foam);
-        if (right) box(g, x + 15, y, 1, T, foam);
-        if (down) box(g, x, y + 15, T, 1, foam);
+    // a strip along one side; k runs along it, d goes outward (d < 0 reaches into the neighbour)
+    const at = (side, k, d, col) => {
+        if (side === 'up') box(g, x + k, y - 1 - d, 1, 1, col);
+        else if (side === 'down') box(g, x + k, y + 16 + d, 1, 1, col);
+        else if (side === 'left') box(g, x - 1 - d, y + k, 1, 1, col);
+        else box(g, x + 16 + d, y + k, 1, 1, col);
+    };
+    const sides = [['up', up], ['down', down], ['left', left], ['right', right]].filter(s => s[1]).map(s => s[0]);
+    if (t === 'grass') {
+        // the grass frays into its neighbour: blades of uneven height with a darker tip
+        const FR = [1, 2, 3, 1, 2, 2, 3, 1, 1, 2, 3, 2, 1, 2, 3, 1];
+        for (const side of sides) {
+            const nt = side === 'up' ? m.type(i, j - 1) : side === 'down' ? m.type(i, j + 1) : side === 'left' ? m.type(i - 1, j) : m.type(i + 1, j);
+            if (nt === 'water') continue;
+            for (let k = 0; k < 16; k++) {
+                const h = FR[(k + i * 5 + j * 3) % 16] - (side === 'down' ? 1 : 0);
+                for (let d = 0; d < h; d++) at(side, k, d, c.g);
+                if (h > 0) at(side, k, h, c.q);
+            }
+        }
         return;
     }
-    if (up) { box(g, x, y, T, 1, line); if (inner) box(g, x, y + 1, T, 1, inner); }
-    if (down) box(g, x, y + 15, T, 1, line);
-    if (left) { box(g, x, y, 1, T, line); if (inner) box(g, x + 1, y + 1, 1, T - 1, inner); }
-    if (right) box(g, x + 15, y, 1, T, line);
-    // round the outer corners: the corner pixels take the neighbour's colour and the line steps in
-    const corner = (cx, cy, nb) => {
-        const col = baseOf(ctx, nb, 0, 0);
-        box(g, x + cx * 14, y + cy * 14, 2, 2, col);
-        box(g, x + (cx ? 14 : 1), y + (cy ? 14 : 1), 1, 1, line);
-    };
-    if (up && left) corner(0, 0, m.type(i - 1, j - 1));
-    if (up && right) corner(1, 0, m.type(i + 1, j - 1));
-    if (down && left) corner(0, 1, m.type(i - 1, j + 1));
-    if (down && right) corner(1, 1, m.type(i + 1, j + 1));
+    if (t === 'water') {
+        // the shore: a wavy line of foam and a lighter band just inside
+        for (const side of sides) for (let k = 0; k < 16; k++) {
+            const d = ((k + i * 16 + j * 7) % 6) < 3 ? 0 : 1;
+            at(side, k, -1 - d, '#FFFFFF');
+            if (k % 3 !== 0) at(side, k, -2 - d, c.W || '#8CC0EA');
+        }
+        return;
+    }
+    const line = t === 'farm' ? (c.N || '#4E3520') : t === 'stone' ? (c.u || STONE.edge) : t === 'path' ? (c.k || PATH.edge) : null;
+    if (!line) return;
+    for (const side of sides) for (let k = 0; k < 16; k++) at(side, k, -1, line);
 }
 
 // ---------- shadows cast down and to the right by raised blocks
@@ -311,6 +402,15 @@ function buildingShadow(g, b) {
 function building(ctx, b) {
     const g = ctx.o, u = ctx.ou;
     const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
+    // a drawn building (data/tiles.json bld_<id>): centred on its tiles, standing on their bottom edge;
+    // what rises above them (roof edge, flags) goes on the top layer
+    const pic = ctx.art.things[`bld_${b.id}`];
+    if (pic) {
+        const dx = x + Math.round((w - pic.width) / 2), dy = y + h - pic.height + 1, split = Math.max(0, y - dy);
+        if (split) ctx.u.drawImage(pic, 0, 0, pic.width, split, dx, dy, pic.width, split);
+        ctx.g.drawImage(pic, 0, split, pic.width, pic.height - split, dx, dy + split, pic.width, pic.height - split);
+        return;
+    }
     if (b.kind === 'temple') return temple(g, u, x, y, w, h);
     if (b.kind === 'gate') return duatGate(g, x, y, w, h);
     const roof = b.roof || '#B98F5E';
@@ -377,24 +477,11 @@ function shade(hex, f) {
 
 // ---------- palms and lotus
 function palm(ctx, x, y, i, j) {
-    const g = ctx.o, u = ctx.ou;
-    box(ctx.s, x + 3, y + 12, 13, 4, SHADOW);
-    box(g, x + 7, y + 4, 3, 12, '#8A6644'); box(g, x + 7, y + 4, 1, 12, '#A88158');
-    for (let r = 5; r < 16; r += 3) box(g, x + 7, y + r, 3, 1, '#6E4F30');
-    // the crown: fronds fanning out from the top of the trunk, drooping at their tips
-    const dk = '#3F6A30', md = '#55853E', lt = '#7DB058';
-    const cx = x + 8, cy = y + 2;
-    const fronds = [[180, 10, 0.09], [0, 10, 0.09], [212, 9, 0.06], [328, 9, 0.06], [252, 7, 0.03], [288, 7, 0.03], [150, 7, 0.12], [30, 7, 0.12]];
-    for (const [deg, L, droop] of fronds) {
-        const a = deg * Math.PI / 180, dx = Math.cos(a), dy = Math.sin(a);
-        for (let k = 1; k <= L; k++) {
-            const px = Math.round(cx + dx * k), py = Math.round(cy + dy * k + droop * k * k);
-            box(u, px - 1, py - 1, k < L - 1 ? 3 : 2, 2, k > L - 3 ? dk : md);
-            if (k % 3 === 1 && k < L - 2) box(u, px - 1, py - 1, 1, 1, lt);
-        }
-    }
-    box(u, cx - 2, cy - 1, 4, 3, dk); box(u, cx - 1, cy - 1, 2, 1, md);
-    box(u, cx - 2, cy + 2, 1, 2, '#A0522D'); box(u, cx + 1, cy + 2, 1, 2, '#A0522D'); box(u, cx - 1, cy + 3, 2, 1, '#B8662F');
+    // a drawn palm (data/tiles.json): three shapes so a row of them does not look stamped
+    const name = ['palm', 'palm_l', 'palm_r'][Math.floor(rnd(i, j, 23) * 3)];
+    box(ctx.g, x - 2, y + 12, 22, 4, SHADOW); box(ctx.g, x + 1, y + 11, 16, 1, SHADOW);
+    if (stand(ctx, name, x, y, 25, 50)) return;
+    box(ctx.g, x + 7, y + 4, 3, 12, '#8A6644');
 }
 function lotus(g, x, y) {
     box(g, x + 2, y + 7, 7, 4, '#5E8C46'); box(g, x + 2, y + 7, 7, 1, '#7FA65E'); box(g, x + 9, y + 3, 5, 3, '#5E8C46');
@@ -639,6 +726,8 @@ const DECOR = {
         box(g, x + 1, y + 2, 14, 1, 'rgba(240,230,200,.7)'); box(g, x + 1, y + 13, 14, 1, 'rgba(240,230,200,.7)');
         box(g, x + 12, y + 9, 3, 3, '#C9A46A'); box(g, x + 1, y + 7, 1, 6, '#8E6A44'); box(g, x, y + 12, 3, 2, '#7E8A90');
     },
+    // lily pads on the water; drawn from its picture (data/tiles.json)
+    lily(c, x, y) {},
     // a flower bed in neat rows, like a garden tile
     bed(c, x, y, d) {
         const { g } = c;

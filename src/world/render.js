@@ -75,7 +75,7 @@ export class Renderer {
     }
 
     // ---- the still layers: painted once per map and season (paint.js)
-    paintGround() { paintMap(this.map, SEASON[this.season] || SEASON.peret, this.ground, this.top); }
+    paintGround() { paintMap(this.map, SEASON[this.season] || SEASON.peret, this.ground, this.top, this.season); }
 
     // ---- people
     person(g, look, x, y, dir, step, z) {
