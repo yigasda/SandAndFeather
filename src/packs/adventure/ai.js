@@ -62,7 +62,10 @@ export async function askAdventure(s) {
     const map = getMap('ombos');
     const A = DATA.adventures || {};
     const items = [...(A.finds || []), ...(rank(s) >= 2 ? A.rewards?.relics || [] : []), 'map_scrap', 'wet_papyrus'].filter(id => itemInfo(id));
-    const recent = (s.adv.recent || []).map(r => `${r.tpl}${r.guide ? `/${r.guide}` : ''}${r.item ? `/${r.item}` : ''}`).join(', ') || 'none';
+    // the last few, newest last: what each was about, its shape, and how she ended it
+    const recent = (s.adv.recent || []).map(r => [r.title ? `"${r.title}"` : r.tpl, r.how, r.guide, r.item,
+        r.chose ? `she chose "${r.chose}"${r.skill ? ' using what she learned' : r.kept === true ? ', kept the find' : r.kept === false ? ', let the find go' : ''}` : '',
+        r.with ? `with ${r.with === 'set' ? 'Set' : 'Horus'}` : ''].filter(Boolean).join(' / ')).join('; ') || 'none';
     // a seed Somang took from the chat herself (게임에 반영하기) leads; it is used up once this adventure is written
     const idea = livePicks(s, 'idea').at(-1);
     // otherwise how closely this one may touch the story: mostly mood only, so a dinner scene does not breed fish adventures
@@ -81,7 +84,7 @@ MAP POINTS (use the id): ${map.anchors.map(a => `${a.id} = ${a.ko}`).join('; ')}
 GUIDES (for follow): ${Object.entries(A.guides || {}).map(([id, g]) => `${id} = ${g.ko}`).join('; ')}
 ITEMS (for find): ${items.map(id => `${id} = ${itemInfo(id).ko}`).join('; ')}
 SOMEONE TO BRING THINGS TO: merchant (시장 상인)
-RECENT ADVENTURES, do not repeat their shape, guide or item: ${recent}
+RECENT ADVENTURES, newest last; do not repeat their goal, shape, guide or item, and offer a different kind of choice than she made lately: ${recent}
 WHERE THE STORY IS NOW (do not move or end it): ${place}
 SOMANG IS LEARNING: ${lesson ? `${lesson.L.ko}, now ${lesson.st.ko}` : 'nothing in particular'}${learned.length ? `; she can already ${learned.join(', ')}` : ''}. A step or choice that uses this is welcome.
 EARLIER CHOICES STILL OPEN: ${chosen}

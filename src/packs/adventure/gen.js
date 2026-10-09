@@ -31,7 +31,7 @@ export function randomAdventure(s) {
     const g = A().guides[guideId];
     const item = pickOne(A().finds || [], recent.map(r => r.item));
     const ends = (A().endings || []).filter(e => e.id !== 'open' || itemInfo(item)?.open);
-    const end = pickOne(ends);
+    const end = pickOne(ends, recent.slice(-2).map(r => r.end));
     const i = itemInfo(item);
     const choice = { kind: 'choice', text: end.text, a: end.a, b: end.b };
     const mat = Math.random() < 0.5 ? pickOne(A().rewards?.materials || []) : '';
@@ -56,7 +56,7 @@ export function randomAdventure(s) {
         steps = [{ kind: 'bring', to: 'merchant', need: 'food', text: '시장 상인이 배가 고프다며 음식을 하나 부탁한다.', reply: '상인이 맛있게 먹고는 좌판 밑에서 뭔가를 꺼내 준다.' },
             { kind: 'find', at: 'house_front', item: relic, label: itemInfo(relic).ko, text: `상인이 집 앞에 두었다는 답례품, ${itemInfo(relic).ko}.` }];
     }
-    const def = { id: `r${Date.now().toString(36)}`, title, tpl: tpl.id, guide: guideId, item, anchors: anchors.slice(0, 3).map(a => a.id), steps,
+    const def = { id: `r${Date.now().toString(36)}`, title, tpl: tpl.id, endId: end.id, guide: guideId, item, anchors: anchors.slice(0, 3).map(a => a.id), steps,
         end: { xp: 6, deben: 5 + Math.floor(Math.random() * 10), give: mat, journal: `${title}. 작은 일이 하나 끝났다.`, en: `Somang followed a small mystery around Ombos and came away with ${i.en}.`, say: `${title} 이야기를 꺼낸다.`, marks: [i.ko.split(' ').pop()] } };
     return resolve(def);
 }

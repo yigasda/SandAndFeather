@@ -110,15 +110,15 @@ function choose(ui) {
         if (o.give) give(st2, o.give, 1, 'adventure');
         if (o.memory) st2.adv.memory.push({ tag: o.memory, day: today(st2) });
         addXP(st2, Math.min(8, o.xp || 3));
-        cc.chosen = { label: o.label, journal: fill(o.journal || '') };
+        cc.chosen = { label: o.label, journal: fill(o.journal || ''), keep: !!o.keep, skill: !!o.skill };
         ui.toast(o.label);
         await next(ui);
     };
     // what she has learned opens more ways to end it
     const info = it ? itemInfo(it.id) : null, extra = [];
-    if (it && hasSkill(s, 'read')) extra.push({ label: '숨은 뜻 읽기', keep: true, xp: 6, memory: 'kept_sealed', journal: `${josa(name, '에')} 새겨진 글을 읽어 출처를 알아냈다.` });
-    if (it && hasSkill(s, 'carry')) extra.push({ label: '안전하게 운반하기', keep: false, deben: 25, xp: 5, journal: `${josa(name, '을')} 깨뜨리지 않고 시장 상인에게 넘겼다.` });
-    if (it && info?.open && !it.opened && hasSkill(s, 'seal')) extra.push({ label: '봉인 안정시키기', keep: true, open: true, faith: 1, xp: 5, journal: `${name}의 봉인을 조심스레 안정시키고 열었다.` });
+    if (it && hasSkill(s, 'read')) extra.push({ label: '숨은 뜻 읽기', keep: true, skill: true, xp: 6, memory: 'kept_sealed', journal: `${josa(name, '에')} 새겨진 글을 읽어 출처를 알아냈다.` });
+    if (it && hasSkill(s, 'carry')) extra.push({ label: '안전하게 운반하기', keep: false, skill: true, deben: 25, xp: 5, journal: `${josa(name, '을')} 깨뜨리지 않고 시장 상인에게 넘겼다.` });
+    if (it && info?.open && !it.opened && hasSkill(s, 'seal')) extra.push({ label: '봉인 안정시키기', keep: true, skill: true, open: true, faith: 1, xp: 5, journal: `${name}의 봉인을 조심스레 안정시키고 열었다.` });
     ui.showCard({ tag: '모험', title: c.title, text: fill(st.text) + (extra.length ? '\n배운 것으로 다른 방법도 쓸 수 있어.' : ''),
         buttons: [...extra.map(o => ({ label: `✦ ${o.label}`, onClick: pick(o) })), { label: st.b.label, onClick: pick(st.b) }, { label: st.a.label, primary: true, onClick: pick(st.a) }] });
 }
@@ -132,7 +132,10 @@ async function finish(ui) {
     const d = didAct(s, 'adventure');
     const line = c.chosen?.journal || e.journal || `${josa(c.title, '을')} 마쳤다.`;
     if (e.en) journal(s, { ko: line, say: e.say || `${c.title} 이야기를 꺼낸다.`, en: e.en, marks: e.marks?.length ? e.marks : [c.title.split(' ').pop()], kind: 'adventure' });
-    s.adv.recent = [...s.adv.recent, { tpl: c.tpl || c.id, guide: c.guide || '', anchors: c.anchors || [], item: c.item || '' }].slice(-5);
+    // what it was about, how it went and how she ended it, so the next one is a different kind of day
+    s.adv.recent = [...s.adv.recent, { tpl: c.tpl || c.id, guide: c.guide || '', anchors: c.anchors || [], item: c.item || '', end: c.endId || '',
+        title: c.title, how: c.steps.map(x => x.kind).join('>'), chose: c.chosen?.label || '', kept: c.chosen ? c.chosen.keep : null,
+        skill: !!c.chosen?.skill, with: s.party.with || '', day: today(s) }].slice(-5);
     if (c.hand) s.adv.done.push(c.id);
     s.adv.cur = null;
     await save();
