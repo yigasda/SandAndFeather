@@ -1,0 +1,20 @@
+{
+  "base": "/workspace/map-road-outline/option1-road-outline.png",
+  "results": [
+    {
+      "file": "/workspace/wide-road-review/road-only-1.png",
+      "changedPixels": 193600,
+      "changedOutsideRoadMask": 0
+    },
+    {
+      "file": "/workspace/wide-road-review/road-only-2.png",
+      "changedPixels": 204190,
+      "changedOutsideRoadMask": 0
+    },
+    {
+      "file": "/workspace/wide-road-review/road-only-3.png",
+      "changedPixels": 196258,
+      "changedOutsideRoadMask": 0
+    }
+  ]
+}
