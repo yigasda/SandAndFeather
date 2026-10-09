@@ -31,6 +31,11 @@ export function checkData() {
     for (const id of [...(DATA.duat?.relics || []), ...(DATA.duat?.materials || [])]) known('duat.json', '보상', id);
     for (const e of DATA.duat?.events || []) { known('duat.json', e.id, e.a?.loot); known('duat.json', e.id, e.b?.loot); }
     for (const id of DATA.adventures?.finds || []) known('adventures.json', 'finds', id);
+    for (const f of DATA.festivals?.festivals || []) {
+        if (!(f.month >= 0 && f.month <= 12 && f.day >= 1 && f.day <= 30)) bad('festivals.json', `${f.id}: month는 0~12, day는 1~30`);
+        for (const pr of f.preps || []) for (const id of Object.keys(pr.need?.items || {})) known('festivals.json', `${f.id} ${pr.id}`, id);
+    }
+    for (const n of DATA.festivals?.nights || []) known('festivals.json', 'nights', n.give);
     for (const [id, it] of Object.entries(items)) if (it.grow) known('items.json', `${id} 수확물`, it.grow.gives);
     for (const [id, m] of Object.entries(DATA.maps)) {
         const file = `maps/${id}.json`;

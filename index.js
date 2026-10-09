@@ -18,6 +18,7 @@ import './src/packs/life/dock.js';
 import './src/packs/life/market.js';
 import './src/packs/life/garden.js';
 import './src/packs/life/kitchen.js';
+import './src/packs/life/festival.js';
 import './src/packs/growth/growth.js';
 import './src/packs/duat/duat.js';
 import './src/packs/realm/works.js';

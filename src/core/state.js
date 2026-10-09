@@ -3,7 +3,7 @@
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 6;
+export const STATE_VERSION = 7;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -35,6 +35,7 @@ export const freshState = () => ({
     days: [],                                      // daylog.js: the days closed, with their stamps (the calendar)
     summary: null,                                 // daylog.js: a closed day whose 하루 결산 is still to be shown
     dayFirst: -1,                                  // daylog.js: the first game day counted (생존 D+N)
+    fest: {},                                      // packs/life/festival.js: { 'opet:2': { preps, done } }
     started: Date.now(),
 });
 
@@ -50,12 +51,13 @@ const STEPS = {
     3: s => { if (s.bag) s.bag.deben = Math.max(s.bag.deben || 0, 60); },
     4: () => {},  // 4 → 5: picks is new (게임에 반영하기); filled below
     5: () => {},  // 5 → 6: daylog, days, summary, dayFirst are new (하루 결산); filled below
+    6: () => {},  // 6 → 7: fest is new (축제의 밤); filled below
 };
 
 function fill(s) {
     const f = freshState();
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
-    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog'];
+    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest'];
     for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
     for (const k of ['news', 'journal', 'picks', 'days']) if (!Array.isArray(s[k])) s[k] = [];
     for (const k of objs) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);

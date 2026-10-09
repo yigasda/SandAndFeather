@@ -12,7 +12,7 @@ const KEEP = 90;
 export const STAMPS = { safe: { icon: '☥', ko: '무사' }, special: { icon: '✨', ko: '특별한 날' }, close: { icon: '🩹', ko: '죽을 뻔' } };
 // activity names as the summary says them
 export const ACT_KO = { fish: '낚시', cook: '요리', study: '공부', train: '훈련', pray: '신전 일', sell: '팔기', pull: '건지기',
-    plant: '심기', read: '기록 해독', seal: '봉인 다루기', clear: '통로 치우기', adventure: '작은 모험', duat: '두아트' };
+    plant: '심기', read: '기록 해독', seal: '봉인 다루기', clear: '통로 치우기', adventure: '작은 모험', duat: '두아트', festival: '축제' };
 
 const seqOf = uid => Number(String(uid).slice(1)) || 0;
 

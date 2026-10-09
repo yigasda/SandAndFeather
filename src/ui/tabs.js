@@ -8,6 +8,7 @@ import { dropLessonPicks, dropPick, livePicks } from '../core/picks.js';
 import { getState, saveState } from '../core/state.js';
 import { sunLeft, sunMax } from '../core/sun.js';
 import { hint } from '../packs/adventure/engine.js';
+import { festivalLine } from '../packs/life/festival.js';
 import { bar, list, para, stack } from './kit.js';
 import { showEvent } from './talk.js';
 
@@ -56,6 +57,7 @@ export function questsCard(ui, onClose) {
             para(`매일 의뢰 · 넷 중 아무거나 ${DAILY_NEED}개 · 하나에 데벤 ${r.deben || 10}`, 'sf_sub_head'),
             list(daily.map(t => ({ icon: t.done ? '✅' : '◻️', name: t.ko, sub: t.done ? '완료' : '', dim: !t.done && daily.filter(x => x.done).length >= DAILY_NEED })), '오늘 의뢰가 없어.'),
             (x => x ? para(`배움: ${x.L.ko} · ${x.st.ko} ${x.p.n}/${x.st.n}`) : null)(lessonState(s)),
+            (f => f ? para(`축제: ${f}`) : null)(festivalLine(s)),
             picks.length ? para('챗에서 받은 것', 'sf_sub_head') : null,
             picks.length ? list(picks.map(p => ({ icon: p.kind === 'idea' ? '🧭' : '📌', name: p.text,
                 sub: p.kind === 'idea' ? '모험 소재 · 다음 AI 모험에 써' : '메모',

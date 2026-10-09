@@ -223,6 +223,14 @@ export class Renderer {
             case 'mural':
                 P(2, 3, 12, 10, `rgba(160,190,255,${0.35 + 0.2 * Math.sin(time * 2)})`); P(5, 5, 6, 1, '#E8F0FF'); P(7, 6, 2, 5, '#E8F0FF'); P(4, 10, 8, 1, '#E8F0FF');
                 break;
+            case 'banner': { // a festival pole with pennants that stir
+                const w = Math.round(Math.sin(time * 3 + t.x) * 1);
+                P(3, 14, 10, 1, 'rgba(40,25,10,.25)'); P(7, 1, 2, 14, '#6A4C2E');
+                P(9, 2 + w, 5, 2, '#D9733A'); P(9, 5, 4, 2, '#2F6FB6'); P(9, 8 - w, 5, 2, '#E0B040');
+                P(2, 3 - w, 5, 2, '#5FA7A3'); P(3, 6, 4, 2, '#C0392B');
+                P(6, 0, 4, 1, '#E0B040');
+                break;
+            }
             case 'stone':
                 P(2, 7, 12, 8, '#B8A07E'); P(3, 6, 9, 3, '#C9B591'); P(2, 14, 12, 1, 'rgba(40,25,10,.25)');
                 break;

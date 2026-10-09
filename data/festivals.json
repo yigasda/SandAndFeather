@@ -1,0 +1,52 @@
+{
+  "_about": "축제. 날짜는 대략이야, 역사 그대로가 아니니까 마음대로 고쳐도 돼. month는 0부터 토트, 1 파오피, 2 하티르, 3 코이악 순서. prepDays일 전부터 신전 앞 광장에 준비 기둥이 서고, 준비 셋 중 한 만큼 축제의 밤이 달라져. 준비 하나에 태양 기운 1. need는 items에 물건 id와 개수, kind에 물건 갈래와 개수, deben에 데벤.",
+  "prepDays": 7,
+  "at": { "x": 24, "y": 16 },
+  "festivals": [
+    {
+      "id": "opet",
+      "ko": "오페트 축제",
+      "en": "the Opet festival",
+      "month": 1,
+      "day": 15,
+      "about": "강이 가장 높을 때 신상을 배에 태워 강을 오르내리는 축제. 마을도 밤새 불을 밝혀.",
+      "preps": [
+        { "id": "feast", "ko": "잔치 음식", "about": "음식 둘을 광장 상에 올려", "need": { "kind": { "food": 2 } } },
+        { "id": "decor", "ko": "연꽃과 등불", "about": "푸른 연꽃 둘과 갈대 묶음 하나로 배 모형을 꾸며", "need": { "items": { "blue_lotus": 2, "reed_bundle": 1 } } },
+        { "id": "offer", "ko": "신전 제물", "about": "데벤 20을 신전에 바쳐", "need": { "deben": 20 } }
+      ]
+    },
+    {
+      "id": "khoiak",
+      "ko": "코이악 축제",
+      "en": "the Khoiak festival",
+      "month": 3,
+      "day": 26,
+      "about": "범람이 물러갈 무렵, 보리를 심은 오시리스 모형에 싹이 트기를 비는 축제.",
+      "preps": [
+        { "id": "feast", "ko": "잔치 음식", "about": "음식 둘을 광장 상에 올려", "need": { "kind": { "food": 2 } } },
+        { "id": "decor", "ko": "보리 싹 모형", "about": "보리 둘과 석회석 덩이 하나로 싹 틔울 틀을 만들어", "need": { "items": { "barley": 2, "limestone": 1 } } },
+        { "id": "offer", "ko": "신전 제물", "about": "데벤 20을 신전에 바쳐", "need": { "deben": 20 } }
+      ]
+    },
+    {
+      "id": "wepet",
+      "ko": "웨페트 렌페트",
+      "en": "Wepet Renpet, the opening of the year",
+      "month": 0,
+      "day": 1,
+      "about": "새해를 여는 날. 집집마다 새 불을 켜고 단 것을 나눠.",
+      "preps": [
+        { "id": "feast", "ko": "새해 단 것", "about": "꿀과 무화과 하나씩", "need": { "items": { "honey": 1, "fig": 1 } } },
+        { "id": "decor", "ko": "새 등불", "about": "송진 하나와 갈대 묶음 하나로 등불을 만들어", "need": { "items": { "pitch": 1, "reed_bundle": 1 } } },
+        { "id": "offer", "ko": "신전 제물", "about": "데벤 20을 신전에 바쳐", "need": { "deben": 20 } }
+      ]
+    }
+  ],
+  "nights": [
+    { "ko": "준비 없이 맞은 축제의 밤. 광장 가장자리에서 불빛과 사람들을 구경했다.", "xp": 2, "deben": 0, "give": "", "en": "Somang watched the lights of {fest} from the edge of the village square in Ombos." },
+    { "ko": "작게 차린 축제의 밤. 소망이 내놓은 것이 광장 한쪽을 밝혔다.", "xp": 4, "deben": 5, "give": "", "en": "Somang had a small part in {fest} in Ombos and spent its night in the village square." },
+    { "ko": "흥겨운 축제의 밤. 이웃들이 소망이 준비한 것을 알아보고 노래에 끼워 줬다.", "xp": 7, "deben": 10, "give": "feast_garland", "en": "Somang helped prepare {fest} in Ombos; the neighbours knew her work and pulled her into the singing that night." },
+    { "ko": "잊지 못할 축제의 밤. 음식도, 장식도, 제물도 소망 손을 거쳤다. 광장은 새벽까지 비지 않았다.", "xp": 10, "deben": 15, "give": "feast_garland", "en": "Somang's food, decorations and offering were all part of {fest} in Ombos, and the village square stayed full until dawn." }
+  ]
+}

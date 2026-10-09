@@ -441,6 +441,14 @@
       "food": {
         "heal": 6
       }
+    },
+    "feast_garland": {
+      "ko": "축제 화관",
+      "en": "a festival garland of flowers",
+      "icon": "💐",
+      "kind": "find",
+      "price": 6,
+      "about": "축제의 밤에 이웃이 씌워 준 꽃 화관. 시들어도 향이 남아."
     }
   }
 }

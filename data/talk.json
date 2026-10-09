@@ -39,6 +39,11 @@
       "ko": "마을",
       "got": "찾은",
       "en": "found around Ombos"
+    },
+    "festival": {
+      "ko": "축제 광장",
+      "got": "받은",
+      "en": "given to her on a festival night in Ombos"
     }
   },
   "line": {
