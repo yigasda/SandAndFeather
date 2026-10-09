@@ -9,12 +9,13 @@ import { DEFAULT_TRACKER_RE, VERSION, saveSettings, settings } from '../core/set
 import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
 import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex } from '../core/tracker.js';
+import { dropNews, newsStatus, pending } from '../core/news.js';
 import { esc } from './popups.js';
 import { applyTheme, openGame } from './window.js';
 
 const $id = id => document.getElementById(id);
 
-export function renderDrawer() {
+export function renderDrawer(problems = []) {
     if ($id('sf_settings')) return;
     const st = settings();
     const months = [...DATA.calendar.months.map((m, i) => [i, `${m.en} · ${m.ko}`]), [EPAG, `${DATA.calendar.epagomenal.en} · ${DATA.calendar.epagomenal.ko}`]];
@@ -29,6 +30,7 @@ export function renderDrawer() {
         <div class="inline-drawer-content">
           <div class="sf_body">
             <button type="button" class="sf_btn sf_primary sf_wide" id="sf_open"><i class="fa-solid fa-ankh"></i> 게임 열기</button>
+            ${problems.length ? `<div class="sf_box sf_warn"><b>데이터 확인</b>${problems.map(p => `<div class="sf_sub">${esc(p)}</div>`).join('')}</div>` : ''}
 
             <div class="sf_box">
               <div class="sf_box_head"><b>오늘</b><span class="sf_hint" id="sf_today_sync"></span></div>
@@ -60,6 +62,7 @@ export function renderDrawer() {
               </div>
               <div class="sf_sub">지금 들어가는 블록</div>
               <pre class="sf_pre" id="sf_preview"></pre>
+              <div class="sf_news" id="sf_news"></div>
             </div>
 
             <details class="sf_box">
@@ -162,6 +165,12 @@ export function refreshDrawer() {
         $id('sf_h_part').value = s.part;
         $id('sf_h_place').value = s.place;
     }
+    // the game's happenings still waiting for the chat, each can be taken out
+    const news = $id('sf_news');
+    const list = s ? pending(s) : [];
+    news.innerHTML = list.length ? `<div class="sf_sub">챗에 넘길 일</div>${list.map(n => `<div class="sf_news_row"><span>${esc(n.ko || n.text)}</span><span class="sf_hint">${newsStatus(n) === 'live' ? '방금 답장에 넣음' : '다음 답장에'}</span><button type="button" class="sf_icon_btn sf_news_x" data-id="${esc(n.id)}" title="빼기"><i class="fa-solid fa-xmark"></i></button></div>`).join('')}` : '';
+    news.querySelectorAll('.sf_news_x').forEach(b => b.addEventListener('click', () => dropNews(b.dataset.id)));
+
     // what the tracker pattern reads from the newest message that has one
     const test = $id('sf_tracker_test');
     if (!trackerRegex()) { test.innerHTML = '<span class="sf_bad">정규식이 깨졌어.</span>'; return; }

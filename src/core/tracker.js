@@ -3,8 +3,9 @@
 // and the game follows it: date, part of the day and place. No AI call — a regular expression (settings).
 
 import { emit } from './bus.js';
-import { EPAG, addDays, dayNumber, minutesOf, parseDate, partOfMinutes, partOfWords } from './clock.js';
+import { EPAG, dayNumber, fromDayNumber, minutesOf, parseDate, partOfMinutes, partOfWords } from './clock.js';
 import { DATA } from './data.js';
+import { newDays } from './ledger.js';
 import { trackerPattern } from './settings.js';
 import { ctx } from './st.js';
 import { getState, saveState } from './state.js';
@@ -77,12 +78,18 @@ export async function syncFromChat({ force = false } = {}) {
     s.room = pl.room || '';
     s.sync = { at: i, raw: tr.raw, ok: true, when: Date.now() };
     s.linked = true;
+    const fresh = newDays(s);
     await saveState();
     const days = dayNumber(s.date) - dayNumber(before);
-    if (days > 0) emit('day:start', { days, from: before, to: s.date, last: addDays(s.date, -1) });
+    dayStart(fresh, before, s);
     if (s.place !== placeBefore) emit('place', { from: placeBefore, to: s.place });
     emit('sync', { ok: true, days, tr });
     return { ok: true, days, placeChanged: s.place !== placeBefore };
+}
+
+// 'day:start' only for days the ledger had never handled: { days: [dates], from, to }
+function dayStart(fresh, before, s) {
+    if (fresh.length) emit('day:start', { days: fresh.map(fromDayNumber), from: before, to: s.date });
 }
 
 // by hand, when the chat has no tracker or it read wrong
@@ -96,8 +103,8 @@ export async function setByHand({ year, month, day, part, place }) {
     if (part) s.part = part;
     if (place) s.place = place;
     s.linked = true;
+    const fresh = newDays(s);
     await saveState();
-    const days = dayNumber(s.date) - dayNumber(before);
-    if (days > 0) emit('day:start', { days, from: before, to: s.date, last: addDays(s.date, -1) });
+    dayStart(fresh, before, s);
     emit('sync', { ok: s.sync.ok, byHand: true });
 }

@@ -24,11 +24,11 @@ export class GameMap {
     legend(x, y) { return this.d.legend[this.char(x, y)] || { t: 'sand' }; }
     type(x, y) { return this.legend(x, y).t; }
     solidAt(x, y) { const ix = Math.floor(x), iy = Math.floor(y); return ix < 0 || iy < 0 || ix >= this.w || iy >= this.h || this.block[iy * this.w + ix] === 1; }
-    // what is close enough to talk to from (x, y): the nearest spot or person within reach
+    // what is close enough to talk to from (x, y): the nearest spot (its middle) or person (feet to feet) within reach
     nearest(x, y, reach = 1.6) {
         let best = null, dist = reach;
         for (const s of this.spots) { const d = Math.hypot(s.x + 0.5 - x, s.y + 0.5 - y); if (d < dist) { dist = d; best = { kind: 'spot', ...s }; } }
-        for (const n of this.npcs) { const d = Math.hypot(n.x + 0.5 - x, n.y + 0.5 - y); if (d < dist) { dist = d; best = { kind: 'npc', ...n }; } }
+        for (const n of this.npcs) { const d = Math.hypot(n.x + 0.5 - x, n.y + 0.8 - y); if (d < dist) { dist = d; best = { kind: 'npc', ...n }; } }
         return best;
     }
 }

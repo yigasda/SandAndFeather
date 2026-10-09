@@ -24,18 +24,26 @@ function down(e) {
 }
 function up(e) { if (keys.delete(e.code)) update(); }
 
+// leaving the window (another app, another tab) lets go of every key: the keyup would never come
+const release = () => { keys.clear(); update(); };
+const hidden = () => { if (document.hidden) release(); };
+
 export function startInput(talk) {
     onTalk = talk;
     if (active) return;
     active = true;
     window.addEventListener('keydown', down, true);
     window.addEventListener('keyup', up, true);
+    window.addEventListener('blur', release);
+    document.addEventListener('visibilitychange', hidden);
 }
 export function stopInput() {
     active = false;
     keys.clear(); pad = { x: 0, y: 0 }; update();
     window.removeEventListener('keydown', down, true);
     window.removeEventListener('keyup', up, true);
+    window.removeEventListener('blur', release);
+    document.removeEventListener('visibilitychange', hidden);
 }
 
 // the round pad: drag from its middle; the knob follows up to its rim

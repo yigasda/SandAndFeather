@@ -1,0 +1,56 @@
+{
+  "_about": "선착장에서 건질 수 있는 것. weight가 클수록 자주 나와. parts는 그 시간대에만, seasons는 그 계절에만. 비우면 언제나.",
+  "dock": [
+    {
+      "item": "sealed_jar",
+      "weight": 3
+    },
+    {
+      "item": "faience_scarab",
+      "weight": 2
+    },
+    {
+      "item": "toy_boat",
+      "weight": 3
+    },
+    {
+      "item": "bronze_mirror",
+      "weight": 2,
+      "parts": [
+        "evening",
+        "night"
+      ]
+    },
+    {
+      "item": "blue_lotus",
+      "weight": 4,
+      "parts": [
+        "dawn",
+        "day"
+      ]
+    },
+    {
+      "item": "nile_perch",
+      "weight": 5
+    },
+    {
+      "item": "ushabti",
+      "weight": 2
+    },
+    {
+      "item": "ostracon",
+      "weight": 3
+    },
+    {
+      "item": "croc_tooth",
+      "weight": 2,
+      "seasons": [
+        "akhet"
+      ]
+    },
+    {
+      "item": "sealed_letter",
+      "weight": 1
+    }
+  ]
+}

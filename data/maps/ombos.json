@@ -47,9 +47,6 @@
    "solid": true
   }
  },
- "rows": [
-  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", ".rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.", "....................................rrrr", "..................################rrrrrr", ".............p....#TTTTTTTTTTTTTT#rrrrrr", "..................#TTTTTTTTTTTTTT#rrrrrr", "...=============..#TTTTTTTTTTTTTT#rrrrrr", "...=============..#TTTTTTTTTTTTTT#rrrrrr", "..........==......#TTTTTTTTTTTTTT#..rrrr", "..xxxxxxx.==......#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==....p.#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==......#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==.p....#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==......#TTTTTTTTTTTTTT#..rrrr", "..x.....x.==......#######TT#######..rrrr", "..xxx.xxx.==.............==.........rrrr", "..........==.............==......p..rrrr", "..........==.............==..........rrr", "..==================================.rrr", "..==================================.rrr", ".........................==..........rrr", "...ffffffffff.p..........==.ggggggg.....", ".p.ffffffffff.........p..==.ggggggg.....", "...ffffffffff............==.ggggggg.p...", "gggffffffffffggggggggggggggggggggggggggg", "gggffffffffffggggpgggggggggggggpgggggggg", "gggggggggggggggggggggggggggggggggggggggg", "bbbbbbbbbbbbbbbbbbbbbbbbbddbbbbbbbbbbbbb", "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
- ],
  "buildings": [
   {
    "id": "temple",
@@ -169,10 +166,10 @@
    "id": "dock",
    "x": 25,
    "y": 30,
-   "label": "낚시",
+   "label": "선착장",
    "mode": "life",
    "title": "선착장",
-   "text": "나일이 발밑에서 출렁인다. 낚시는 생활 단계에서 열린다."
+   "text": "나일이 발밑에서 출렁인다. 물가 갈대 사이로 뭔가 걸려 있는 게 보인다."
   },
   {
    "id": "duat",
@@ -190,25 +187,70 @@
    "x": 24,
    "y": 12,
    "look": "set",
-   "label": "세트"
+   "label": "세트",
+   "en": "Set",
+   "talk": true,
+   "where": "in the temple courtyard of Ombos",
+   "whereKo": "신전 앞마당"
   },
   {
    "id": "horus",
    "x": 28,
    "y": 11,
    "look": "horus",
-   "label": "호루스"
+   "label": "호루스",
+   "en": "Horus",
+   "talk": true,
+   "where": "in the temple courtyard of Ombos",
+   "whereKo": "신전 앞마당"
   },
   {
    "id": "merchant",
    "x": 12,
    "y": 17,
    "look": "townsman",
-   "label": "상인"
+   "label": "상인",
+   "text": "좌판 너머로 고개를 끄덕인다. 사고팔기는 생활 단계에서 열려."
   }
  ],
  "spawn": {
   "x": 25,
   "y": 16
- }
+ },
+ "rows": [
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  ".rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.rr.",
+  "....................................rrrr",
+  "..................################rrrrrr",
+  ".............p....#TTTTTTTTTTTTTT#rrrrrr",
+  "..................#TTTTTTTTTTTTTT#rrrrrr",
+  "...=============..#TTTTTTTTTTTTTT#rrrrrr",
+  "...=============..#TTTTTTTTTTTTTT#rrrrrr",
+  "..........==......#TTTTTTTTTTTTTT#..rrrr",
+  "..xxxxxxx.==......#TTTTTTTTTTTTTT#..rrrr",
+  "..x.....x.==....p.#TTTTTTTTTTTTTT#..rrrr",
+  "..x.....x.==......#TTTTTTTTTTTTTT#..rrrr",
+  "..x.....x.==.p....#TTTTTTTTTTTTTT#..rrrr",
+  "..x.....x.==......#TTTTTTTTTTTTTT#..rrrr",
+  "..x.....x.==......#######TT#######..rrrr",
+  "..xxx.xxx.==.............==.........rrrr",
+  "..........==.............==......p..rrrr",
+  "..........==.............==..........rrr",
+  "..==================================.rrr",
+  "..==================================.rrr",
+  ".........................==..........rrr",
+  "...ffffffffff.p..........==.ggggggg.....",
+  ".p.ffffffffff.........p..==.ggggggg.....",
+  "...ffffffffff............==.ggggggg.p...",
+  "gggffffffffffggggggggggggggggggggggggggg",
+  "gggffffffffffggggpgggggggggggggpgggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "bbbbbbbbbbbbbbbbbbbbbbbbbddbbbbbbbbbbbbb",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+ ]
 }

@@ -2,13 +2,16 @@
 // The chat is the clock: every reply's tracker moves the game's date, hour and place,
 // and the game puts one short English line about the world back into the prompt.
 
-import { emit } from './src/core/bus.js';
+import { emit, on } from './src/core/bus.js';
+import { checkData } from './src/core/check.js';
 import { loadData } from './src/core/data.js';
 import { applyInjection } from './src/core/inject.js';
 import { ctx, eventTypes, hasChat } from './src/core/st.js';
 import { syncFromChat } from './src/core/tracker.js';
 import { addWandMenu, refreshDrawer, renderDrawer } from './src/ui/drawer.js';
 import { applyTheme, refresh } from './src/ui/window.js';
+import './src/core/news.js';
+import './src/packs/life/dock.js';
 
 (function init() {
     const es = ctx().eventSource;
@@ -42,14 +45,22 @@ import { applyTheme, refresh } from './src/ui/window.js';
         started = true;
         try { await loadData(); } catch (e) { console.error('[SandAndFeather] data', e); window.toastr?.error?.(String(e.message || e), '모래와 깃털'); return; }
         ready = true;
-        renderDrawer();
+        const problems = checkData();
+        if (problems.length) window.toastr?.warning?.(problems.slice(0, 3).join('<br>'), '모래와 깃털 · 데이터 확인', { escapeHtml: false });
+        renderDrawer(problems);
         addWandMenu();
         applyTheme();
         onChat();
     };
 
+    // right before a reply is written, the block must already be right: a new turn drops news a reply already
+    // carried, a regenerate keeps it (news.js). No waiting here, SillyTavern builds the prompt next.
+    const now = () => { if (ready && hasChat()) applyInjection(); };
+    on('news', () => { applyInjection(); refreshDrawer(); });
+
     es.on(et.APP_READY, start);
     es.on(et.CHAT_CHANGED, onChat);
+    for (const ev of [et.MESSAGE_SENT, et.GENERATION_STARTED]) if (ev) es.on(ev, now);
     for (const ev of [et.MESSAGE_RECEIVED, et.MESSAGE_SENT, et.MESSAGE_EDITED, et.MESSAGE_UPDATED, et.MESSAGE_SWIPED, et.MESSAGE_DELETED]) {
         if (ev) es.on(ev, onMessage);
     }

@@ -1,0 +1,12 @@
+{
+  "_about": "말 걸기를 누르면 입력칸에 들어가는 첫 문장. {상대}, {장소}, {물건}을 바꿔 넣어. {물건:을}은 받침에 따라 을/를을 붙여 줘. 보내기 전에 입력칸에서 고칠 수 있어.",
+  "plain": "{상대}에게 다가간다.",
+  "withItem": "{장소}에서 건진 {물건:을} 들고 {상대}에게 다가간다.",
+  "from": {
+    "dock": { "ko": "선착장", "en": "at the river dock" }
+  },
+  "line": {
+    "plain": "Somang seeks out {who} {where}.",
+    "withItem": "Somang seeks out {who} {where}, bringing {item} she found {from}."
+  }
+}

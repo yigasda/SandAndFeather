@@ -1,0 +1,89 @@
+{
+  "_about": "물건 종류. id는 저장과 이어져 있어서 바꾸면 안 돼. ko, en, about, icon은 마음대로 고쳐도 돼. en은 프롬프트에 들어가는 영어 이름이야.",
+  "items": {
+    "sealed_jar": {
+      "ko": "봉인된 항아리",
+      "en": "a clay jar sealed with river mud",
+      "icon": "🏺",
+      "about": "입구가 진흙으로 봉해져 있다. 흔들면 안에서 뭔가 사락거린다.",
+      "open": {
+        "ko": "봉인을 깨자 젖은 파피루스 두루마리가 나왔다.",
+        "ko_name": "열린 항아리",
+        "en_name": "a clay jar with its mud seal broken",
+        "gives": "wet_papyrus"
+      }
+    },
+    "wet_papyrus": {
+      "ko": "젖은 파피루스",
+      "en": "a damp papyrus roll",
+      "icon": "📜",
+      "about": "글씨가 번져 있다. 마르면 몇 글자는 읽힐지도 모른다."
+    },
+    "faience_scarab": {
+      "ko": "푸른 파이앙스 풍뎅이",
+      "en": "a blue faience scarab amulet",
+      "icon": "🪲",
+      "about": "손톱만 한 부적. 배 쪽에 누군가의 이름이 새겨져 있다."
+    },
+    "toy_boat": {
+      "ko": "갈대 장난감 배",
+      "en": "a child's toy boat woven from reeds",
+      "icon": "⛵",
+      "about": "작은 손으로 엮은 배. 돛대에 실이 감겨 있다."
+    },
+    "bronze_mirror": {
+      "ko": "녹슨 청동 거울",
+      "en": "a tarnished bronze mirror",
+      "icon": "🪞",
+      "about": "손잡이가 파피루스 줄기 모양이다. 닦으면 다시 비칠 것 같다."
+    },
+    "blue_lotus": {
+      "ko": "푸른 연꽃",
+      "en": "a blue lotus flower",
+      "icon": "🪷",
+      "about": "새벽에 피고 저녁에 오므라드는 꽃. 향이 달다."
+    },
+    "nile_perch": {
+      "ko": "나일 농어",
+      "en": "a Nile perch",
+      "icon": "🐟",
+      "about": "팔뚝만 한 물고기. 오늘 저녁거리로 충분하다."
+    },
+    "ushabti": {
+      "ko": "깨진 샤브티 인형",
+      "en": "a broken ushabti figurine",
+      "icon": "🗿",
+      "about": "저승에서 대신 일해 줄 작은 인형. 팔 하나가 없다."
+    },
+    "ostracon": {
+      "ko": "글씨 긁힌 도기 조각",
+      "en": "a pottery shard scratched with writing",
+      "icon": "🧱",
+      "about": "누군가 연습 삼아 쓴 듯한 글. 끝이 잘려 있다."
+    },
+    "croc_tooth": {
+      "ko": "악어 이빨",
+      "en": "a crocodile tooth",
+      "icon": "🦷",
+      "about": "끝이 아직 날카롭다. 끈을 꿰면 부적이 된다."
+    },
+    "sealed_letter": {
+      "ko": "밀랍 봉인 편지",
+      "en": "a letter sealed with wax",
+      "icon": "✉️",
+      "about": "봉인에 낯선 문양이 찍혀 있다. 물에 젖지 않게 기름 먹인 천에 싸여 있었다.",
+      "open": {
+        "ko": "봉인을 뜯었다. 짧은 글과 함께 작은 지도 조각이 들어 있다.",
+        "ko_name": "뜯은 편지",
+        "en_name": "a letter whose wax seal has been broken",
+        "gives": "map_scrap"
+      }
+    },
+    "map_scrap": {
+      "ko": "지도 조각",
+      "en": "a scrap of a hand-drawn map",
+      "icon": "🗺️",
+      "about": "강줄기와 표시 하나. 어디인지는 아직 모르겠다."
+    }
+  }
+}

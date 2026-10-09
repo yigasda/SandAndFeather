@@ -12,6 +12,8 @@ import { getMap } from '../world/map.js';
 import { feet, placePlayer, player, rememberPosition, stepPlayer } from '../world/player.js';
 import { MODE, Renderer } from '../world/render.js';
 import { buildHud, placeBubble, setTab, shortDate, todayBody, updateHud } from './hud.js';
+import { bagCard } from './items.js';
+import { personCard } from './talk.js';
 import { cardOpen, closeCards, showCard, toast } from './popups.js';
 
 let root = null, chip = null, hud = null, renderer = null, map = null;
@@ -19,6 +21,16 @@ let mode = 'closed'; // 'open' | 'folded' | 'closed'
 let raf = 0, last = 0, miniAt = 0, near = null;
 
 export const gameMode = () => mode;
+
+// what packs get to show things with: cards, a toast, folding the window
+const ui = {
+    showCard: o => showCard(root, o),
+    toast: t => toast(root, t),
+    fold: () => foldGame(),
+};
+// a pack takes over a place: onSpot('dock', (spot, ui, map) => …)
+const spotActs = new Map();
+export const onSpot = (id, fn) => { spotActs.set(id, fn); };
 
 // the look: 'auto' follows NarrativeArchive's dark switch if it is there, else SillyTavern's text colour
 function isDark() {
@@ -49,7 +61,7 @@ function build() {
     hud.close.addEventListener('click', closeGame);
     hud.collapse.addEventListener('click', foldGame);
     hud.talk.addEventListener('click', talk);
-    hud.bag.addEventListener('click', () => toast(root, '가방은 생활 단계에서 열려'));
+    hud.bag.addEventListener('click', () => { if (!cardOpen()) bagCard(ui, map); });
     hud.dateCard.addEventListener('click', openToday);
     hud.mini.addEventListener('click', openMap);
     hud.tabs.addEventListener('click', e => { const b = e.target.closest('.sf_tab'); if (b) pickTab(b.dataset.tab); });
@@ -168,20 +180,18 @@ function frame(t) {
     raf = requestAnimationFrame(frame);
 }
 
-// 말 걸기 (button, E, Space, Enter): a place opens its card, a person says when they will talk
+// 말 걸기 (button, E, Space, Enter): a place opens its card (or a pack's), a person their card
 function talk() {
     if (mode !== 'open') return;
     if (cardOpen()) { closeTopCard(); return; }
     if (!near) { toast(root, '가까이에 말 걸 곳이 없어'); return; }
-    remember();
     if (near.kind === 'spot') {
+        const act = spotActs.get(near.id);
+        if (act) { act(near, ui, map); return; }
         showCard(root, { tag: MODE[near.mode] || '', title: near.title || near.label, text: near.text || '' });
         return;
     }
-    showCard(root, {
-        title: near.label,
-        text: `${near.label}에게 말 걸기는 임무와 말 걸기 단계에서 열려. 그때는 여기서 고른 말이 챗의 장면으로 이어져.`,
-    });
+    personCard(ui, map.npcs.find(n => n.id === near.id) || near, map);
 }
 
 function openToday() {

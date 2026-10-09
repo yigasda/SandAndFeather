@@ -273,7 +273,24 @@
 #sf_game .sf_pop_head { display: flex; align-items: center; gap: 8px; }
 #sf_game .sf_pop_title { flex: 1; font-size: 17px; font-weight: 800; }
 #sf_game .sf_pop_x { box-shadow: none; background: transparent; border-color: transparent; color: var(--sf-dim); }
-#sf_game .sf_pop_text { font-size: 14px; line-height: 1.6; }
+#sf_game .sf_pop_text { font-size: 14px; line-height: 1.6; white-space: pre-line; }
+#sf_game .sf_bag_list { display: flex; flex-direction: column; gap: 6px; }
+#sf_game .sf_bag_row {
+    display: grid;
+    grid-template-columns: 34px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid var(--sf-line);
+    border-radius: 14px;
+    background: var(--sf-card2);
+    color: var(--sf-ink);
+    cursor: pointer;
+}
+#sf_game .sf_bag_icon { font-size: 22px; text-align: center; }
+#sf_game .sf_bag_name { font-size: 14px; font-weight: 700; }
+#sf_game .sf_bag_meta { font-size: 12px; color: var(--sf-dim); }
 #sf_game .sf_pop_btns { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
 .sf_tag {
     background: var(--sf-accent-soft);
@@ -398,6 +415,11 @@
 #sf_settings .sf_sub { font-size: 12px; color: var(--sf-dim); line-height: 1.5; }
 #sf_settings .sf_sub b { color: var(--sf-ink); }
 #sf_settings .sf_bad { color: var(--sf-bad); font-weight: 700; }
+#sf_settings .sf_warn { background: #FFF1D6; border-color: #EBCF95; }
+#sf_settings.sf_dark .sf_warn { background: #4A3A1E; border-color: #6B5528; }
+#sf_settings .sf_news { display: flex; flex-direction: column; gap: 6px; }
+#sf_settings .sf_news_row { display: grid; grid-template-columns: 1fr auto 28px; align-items: center; gap: 8px; font-size: 13px; padding: 6px 8px; background: var(--sf-card2); border-radius: 10px; }
+#sf_settings .sf_news_x { width: 28px; height: 28px; box-shadow: none; font-size: 12px; }
 #sf_settings .sf_grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
 #sf_settings .sf_grid label { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--sf-dim); }
 #sf_settings .sf_grid input, #sf_settings .sf_grid select, #sf_settings .sf_ta {
