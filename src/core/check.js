@@ -2,6 +2,7 @@
 // so a hand edit that breaks something says where instead of failing quietly.
 
 import { DATA } from './data.js';
+import { DECOR_KINDS } from '../world/paint.js';
 
 export function checkData() {
     const out = [];
@@ -57,6 +58,11 @@ export function checkData() {
         const walk = (x, y) => m.legend[m.rows[y]?.[x]] && !m.legend[m.rows[y][x]].solid;
         for (const a of m.anchors || []) if (!walk(a.x, a.y)) bad(file, `지점 ${a.id}: 걸을 수 없는 칸에 있어`);
         for (const sc of m.secrets || []) if (sc.give) known(file, `비밀 ${sc.id}`, sc.give);
+        for (const d of m.decor || []) {
+            if (!DECOR_KINDS.includes(d.k)) bad(file, `꾸밈 ${d.k}: 없는 종류야`);
+            if (!(d.x >= 0 && d.y >= 0 && d.x < w && d.y < m.rows.length)) bad(file, `꾸밈 ${d.k}: 지도 밖에 있어`);
+            for (const sp of m.spots || []) if (sp.x === d.x && sp.y === d.y && (d.solid ?? true) && !['altar', 'stele', 'shrine', 'dig'].includes(d.k)) bad(file, `꾸밈 ${d.k}: 장소 ${sp.id} 위에 있어`);
+        }
     }
     return out;
 }

@@ -1,16 +1,10 @@
-// Drawing the world on a canvas. The ground (tiles, buildings, palm trunks) is painted in code once per map and
-// season into an off-screen canvas at 16px a tile, then scaled up crisp each frame; people, palm crowns, labels and
-// the light of the hour go on top. People and things use the pictures in data/sprites.json when there is one,
+// Drawing the world on a canvas. The ground and what stands over it are painted once per map and season into two
+// off-screen canvases at 16px a tile (paint.js), then scaled up crisp each frame; people, things, the river's
+// shimmer, fire, labels and the light of the hour go on top. People and things use the pictures in data/sprites.json when there is one,
 // otherwise the stand-in drawn in code.
 
-const T = 16;
-const PAL = {
-    sand: ['#E7C995', '#E2C08A', '#EBD0A0'], rock: ['#B79C7A', '#AD9271', '#C2A784'], wall: ['#C9B08C', '#C2A985', '#CFB794'],
-    stone: ['#DCCBAE', '#D6C4A6', '#E1D1B5'], path: ['#D3BF9E', '#CDB896', '#D8C5A6'], bank: ['#C9B48C', '#C3AE86', '#CFBA92'],
-    dock: ['#9A7650', '#93704B', '#A07C55'], fence: ['#E2C08A', '#E7C995', '#E2C08A'],
-    ditch: ['#B89B72', '#B29569', '#BEA17A'], dryearth: ['#A98A63', '#A3845D', '#AF9069'],
-    rubble: ['#D3BF9E', '#CDB896', '#D8C5A6'], pillar: ['#DCCBAE', '#D6C4A6', '#E1D1B5'], gate: ['#C9B08C', '#C2A985', '#CFB794'],
-};
+import { T, paintMap, rnd } from './paint.js';
+
 // the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
 const SEASON = {
     akhet: { water: ['#3F8F8B', '#3A8985', '#47958F'], grass: ['#8FAE62', '#88A65B', '#97B56A'], farm: ['#6E5236', '#674D33'], crop: '#5E9645' },
@@ -24,7 +18,6 @@ const TINT = { dawn: 'rgba(255,190,150,0.10)', day: null, evening: 'rgba(214,110
 
 export const MODE = { life: '생활', growth: '육성', duat: '원정', realm: '경영' };
 
-const rnd = (i, j, k = 1) => { const x = Math.sin(i * 127.1 + j * 311.7 + k * 74.7) * 43758.5453; return x - Math.floor(x); };
 
 export class Renderer {
     constructor(canvas) {
@@ -81,66 +74,8 @@ export class Renderer {
         this.zoom = Math.max(2, Math.min(4, Math.round(r.width / ((r.width < 600 ? 12 : 18) * T)))) * dpr;
     }
 
-    // ---- the still layer
-    paintGround() {
-        const m = this.map, S = SEASON[this.season] || SEASON.peret;
-        const gr = this.ground, tp = this.top;
-        gr.width = tp.width = m.w * T; gr.height = tp.height = m.h * T;
-        const g = gr.getContext('2d'), u = tp.getContext('2d');
-        u.clearRect(0, 0, tp.width, tp.height);
-        const px = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
-        for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) {
-            const t = m.type(i, j), x = i * T, y = j * T, n = rnd(i, j);
-            const cs = t === 'water' ? S.water : t === 'grass' ? S.grass : t === 'farm' ? S.farm : PAL[t] || PAL.sand;
-            px(g, x, y, T, T, cs[Math.floor(n * cs.length)]);
-            if (t === 'sand' && rnd(i, j, 2) > 0.7) px(g, x + 3 + rnd(i, j, 3) * 9, y + 4 + rnd(i, j, 4) * 8, 2, 1, '#D4B07A');
-            if (t === 'grass' && rnd(i, j, 2) > 0.45) { px(g, x + 3, y + 9, 1, 3, 'rgba(60,80,30,.35)'); px(g, x + 11, y + 4, 1, 3, 'rgba(60,80,30,.35)'); }
-            if (t === 'farm') { px(g, x, y + 3, T, 2, 'rgba(0,0,0,.18)'); px(g, x, y + 11, T, 2, 'rgba(0,0,0,.18)'); if (n > 0.35) { px(g, x + 3, y + 5, 3, 5, S.crop); px(g, x + 10, y + 6, 3, 4, S.crop); } }
-            if (t === 'path' && rnd(i, j, 8) > 0.72) px(g, x + 5, y + 5, 4, 3, 'rgba(120,95,60,.18)');
-            if (t === 'stone') { px(g, x, y + 15, T, 1, 'rgba(120,95,60,.15)'); px(g, x + 15, y, 1, T, 'rgba(120,95,60,.15)'); }
-            if (t === 'wall') { px(g, x, y, T, 3, '#E0CCA8'); px(g, x, y + 13, T, 3, '#A88E6A'); px(g, x + 7, y + 3, 1, 10, 'rgba(0,0,0,.12)'); }
-            if (t === 'rock') { px(g, x + 2, y + 3, 7, 5, 'rgba(255,255,255,.12)'); px(g, x + 8, y + 9, 6, 4, 'rgba(0,0,0,.12)'); }
-            if (t === 'bank') px(g, x, y + 13, T, 3, '#E2EFE9');
-            if (t === 'dock') { px(g, x, y, T, 1, 'rgba(0,0,0,.25)'); px(g, x + 4, y, 1, T, 'rgba(0,0,0,.2)'); px(g, x + 11, y, 1, T, 'rgba(0,0,0,.2)'); }
-            if (t === 'fence') { px(g, x, y + 6, T, 2, '#8A6644'); px(g, x + 2, y + 3, 2, 10, '#7A5A38'); px(g, x + 12, y + 3, 2, 10, '#7A5A38'); }
-            if (t === 'ditch') { px(g, x + 3, y, 10, T, 'rgba(90,65,40,.25)'); px(g, x + 5, y, 6, T, 'rgba(90,65,40,.2)'); }
-            if (t === 'dryearth') { px(g, x + 2, y + 5, 6, 1, 'rgba(60,40,20,.35)'); px(g, x + 8, y + 5, 1, 5, 'rgba(60,40,20,.35)'); px(g, x + 9, y + 11, 5, 1, 'rgba(60,40,20,.3)'); }
-            if (t === 'rubble') { px(g, x + 1, y + 6, 7, 6, '#B8A07E'); px(g, x + 8, y + 3, 6, 5, '#C4AC88'); px(g, x + 6, y + 10, 8, 5, '#AD9572'); px(g, x + 2, y + 13, 12, 2, 'rgba(60,40,20,.2)'); }
-            if (t === 'pillar') { px(g, x + 3, y + 1, 10, 14, '#E8DCC4'); px(g, x + 3, y + 1, 10, 2, '#C9B591'); px(g, x + 3, y + 13, 10, 2, '#B9A27E'); px(g, x + 6, y + 3, 1, 10, 'rgba(0,0,0,.1)'); px(g, x + 9, y + 3, 1, 10, 'rgba(0,0,0,.1)'); }
-            if (t === 'gate') { px(g, x, y, T, T, '#7A5A38'); px(g, x + 2, y + 2, 12, 12, '#8E6A44'); px(g, x + 7, y + 2, 2, 12, '#6A4C2E'); px(g, x + 3, y + 7, 10, 2, '#5A3F28'); }
-            if (m.legend(i, j).obj === 'lotus') { px(u, x + 4, y + 6, 8, 5, '#5E8C46'); px(u, x + 6, y + 3, 4, 4, '#7FA6E0'); px(u, x + 7, y + 2, 2, 2, '#B9CFF2'); }
-            if (m.legend(i, j).obj === 'palm') { px(g, x + 7, y + 5, 3, 11, '#7A5A38'); px(g, x + 4, y + 14, 9, 2, 'rgba(60,40,20,.25)'); this.palmTop(u, x, y); }
-        }
-        for (const b of m.buildings) this.building(g, b);
-    }
-    palmTop(u, x, y) {
-        const px = (a, b, w, h, col) => { u.fillStyle = col; u.fillRect(x + a, y + b, w, h); };
-        px(1, 3, 6, 3, '#4E7A3A'); px(10, 3, 6, 3, '#4E7A3A'); px(4, 0, 9, 3, '#5E8C46'); px(2, 6, 4, 2, '#4E7A3A'); px(11, 6, 4, 2, '#4E7A3A'); px(7, 4, 3, 3, '#3F6630');
-    }
-    building(g, b) {
-        const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
-        const px = (a, c, ww, hh, col) => { g.fillStyle = col; g.fillRect(a, c, ww, hh); };
-        px(x + 3, y + h - 2, w - 2, 5, 'rgba(60,40,20,.25)');
-        if (b.kind === 'temple') {
-            // pylons either side of a gate, a dark doorway, columns along the front
-            px(x, y, w, h, '#D9C7A8');
-            px(x, y + 10, 30, h - 10, '#C2A985'); px(x + w - 30, y + 10, 30, h - 10, '#C2A985');
-            px(x, y + 10, 30, 4, '#A88E6A'); px(x + w - 30, y + 10, 30, 4, '#A88E6A');
-            for (let k = 0; k < 4; k++) px(x + 38 + k * 16, y + 22, 6, h - 22, '#CBB391');
-            px(x + w / 2 - 9, y + h - 26, 18, 26, '#3E2A1A'); px(x + w / 2 - 12, y + h - 30, 24, 4, '#A88E6A');
-            px(x + 6, y + 18, 18, 2, '#9C805C'); px(x + w - 24, y + 18, 18, 2, '#9C805C');
-            return;
-        }
-        if (b.kind === 'gate') {
-            px(x - 4, y - 6, w + 8, h + 6, '#8A7A68'); px(x + 4, y + 4, w - 8, h - 4, '#160F0B'); px(x + 4, y + 2, w - 8, 2, '#5E3C8E');
-            return;
-        }
-        const roof = b.roof || '#B98F5E';
-        px(x, y, w, h, '#D7B98E'); px(x, y, w, 7, roof); px(x, y + 7, w, 1, 'rgba(0,0,0,.15)');
-        if (b.kind === 'stall') { for (let k = 0; k < w; k += 8) px(x + k, y, 4, 7, '#F2E8DA'); }
-        for (let k = 10; k < w - 10; k += 22) px(x + k, y + 13, 7, 6, '#8A6A45');
-        px(x + w / 2 - 6, y + h - 13, 12, 13, '#5A3F28'); px(x + w / 2 - 6, y + h - 13, 12, 2, '#3E2A1A');
-    }
+    // ---- the still layers: painted once per map and season (paint.js)
+    paintGround() { paintMap(this.map, SEASON[this.season] || SEASON.peret, this.ground, this.top); }
 
     // ---- people
     person(g, look, x, y, dir, step, z) {
@@ -223,6 +158,21 @@ export class Renderer {
         // the hour's light
         const tint = TINT[part];
         if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
+        const fires = (m.decor || []).filter(d => d.k === 'brazier');
+        // braziers burn
+        for (const d of fires) {
+            const fx = d.x * ts - cx, fy = d.y * ts - cy;
+            if (fx < -ts || fx > W + ts || fy < -ts * 2 || fy > H + ts) continue;
+            const f = Math.floor(time * 8 + d.x * 3) % 3;
+            const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(fx + a * z, fy + b * z, w * z, h * z); };
+            P(4, 1 - f % 2, 8, 3, '#E0702A'); P(5, -1 + (f === 2 ? 1 : 0), 6, 3, '#F2A33A'); P(6 + (f === 1 ? 1 : 0), -3, 3, 3, '#FFD86A'); P(7, -4 - f % 2, 2, 1, '#FFF3C0');
+        }
+        if (part === 'evening' || part === 'night') for (const d of fires) {
+            const fx = (d.x + 0.5) * ts - cx, fy = (d.y + 0.1) * ts - cy, r = ts * (2.4 + 0.15 * Math.sin(time * 6 + d.x));
+            const gr = g.createRadialGradient(fx, fy, 0, fx, fy, r);
+            gr.addColorStop(0, 'rgba(255,190,90,.45)'); gr.addColorStop(1, 'rgba(255,190,90,0)');
+            g.fillStyle = gr; g.fillRect(fx - r, fy - r, r * 2, r * 2);
+        }
     }
 
     // a thing on the map, drawn on its tile (x, y = the tile's top left on screen)

@@ -1,4 +1,4 @@
-# 인수인계 · 모래와 깃털 0.5.8
+# 인수인계 · 모래와 깃털 0.6.0
 
 > 다음에 이 확장을 맡을 Claude에게. 이 문서 하나로 이어서 일할 수 있게 썼어.
 > 함께 읽을 것: `SPEC.md` 기획서, `docs/PROGRESS.md` 진행 상황, `docs/CONSULT.md` 소개서, `README.md`.
@@ -82,7 +82,8 @@ src/core/
   picks.js               챗에서 받은 것: 배움 목표, 모험 소재, 메모. 그 메시지에 문장이 남아 있을 때만 살아 있어
   daylog.js codex.js     하루 결산 기록과 도장, 도감. 둘 다 이벤트를 듣고 스스로 채워
   ai.js                  모험 AI 연결. 커스텀 URL, Anthropic, Vertex. 아카이브와 같은 코드
-src/world/               map.js 오버레이와 충돌, render.js 캔버스, player.js, input.js, things.js
+src/world/               map.js 오버레이와 충돌, render.js 캔버스, paint.js 바닥과 건물과 꾸밈을 한 번 칠하기,
+                         player.js, input.js, things.js
 src/ui/                  window.js 게임 창, hud.js, popups.js, kit.js, items.js, talk.js 꺼내기·찾아가기,
                          tabs.js 소망·파티·임무 탭, drawer.js 확장 서랍, icon.js,
                          mesbtn.js 메시지마다 붙는 게임에 반영하기 버튼과 카드,
@@ -150,6 +151,8 @@ src/packs/
 - **0.5.6 오벨리스크:** 맵 JSON의 obelisks. 깨우면 `flags['obelisk:id']`, 지도 탭에서 이동.
 - **0.5.7 스프라이트:** `data/sprites.json` 사람 넷의 16×16 그림. 호루스 날개는 나방 같다고 해서 뺐어. 16칸보다 넓은 그림도 그릴 수 있고, 넓은 그림은 타일 가운데에 맞추고 발밑에 세워. 렌더러가 있으면 쓰고 없으면 코드 그림. things도 같은 모양으로 넣을 수 있어.
 - **0.5.8 메모리:** 접거나 닫으면 `renderer.release()`로 화면, 바닥, 위층 캔버스를 1×1로. 접힌 동안 refresh는 그림을 다시 그리지 않아. 열 때 다시 칠해.
+
+- **0.6.0 배경과 꾸밈:** `paint.js`가 타일 무늬, 땅 경계, 그림자, 건물, 야자수, 꾸밈을 바닥 층과 위 층에 한 번 칠해. 맵 JSON의 `decor`가 꾸밈이고, 막히는 종류는 `map.js`의 SOLID_DECOR. 꾸밈을 옮길 땐 장소, 지점, 오벨리스크, 비밀, 축제 기둥, 통로가 막히지 않는지 꼭 확인해. 이번엔 지도 전체를 걸어 보는 검사로 확인했어. 화로 불은 render.js가 매 프레임 그려.
 
 저장 버전은 지금 8이야.
 

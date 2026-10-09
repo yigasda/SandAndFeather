@@ -1,9 +1,13 @@
 // A map from data/maps/*.json: rows of tile letters (legend says what each is and whether it blocks),
-// buildings (blocking rectangles), spots (fixed places), people standing about, and overlays: groups of tiles
+// buildings (blocking rectangles), spots (fixed places), people standing about, decor, and overlays: groups of tiles
 // that change once something is done (a canal filled, a garden opened). Which overlays are open is in the chat's
 // game (state.flags['overlay:<map>:<id>']), so the same map can look different in two chats.
 
 import { DATA } from '../core/data.js';
+
+// decor (data/maps/*.json "decor": [{ k, x, y }]) that stands in the way; flowers, mats, reeds and the like do not.
+// An entry can say "solid": true or false to change it.
+export const SOLID_DECOR = new Set(['column', 'statue_set', 'statue_falcon', 'jackal', 'brazier', 'pool', 'altar', 'plant', 'jars', 'goods', 'rocks', 'dummy', 'target', 'well', 'oven', 'shaduf', 'bench', 'banner', 'fallen', 'broken', 'block', 'stele', 'shrine']);
 import { getState } from '../core/state.js';
 
 export class GameMap {
@@ -22,9 +26,11 @@ export class GameMap {
         this.spots = data.spots || [];
         this.npcs = (data.npcs || []).map(n => ({ ...n }));
         this.anchors = data.anchors || [];
+        this.decor = data.decor || [];
         this.block = new Uint8Array(this.w * this.h);
         for (let y = 0; y < this.h; y++) for (let x = 0; x < this.w; x++) if (this.legend(x, y).solid) this.block[y * this.w + x] = 1;
         for (const b of this.buildings) for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) this.mark(x, y);
+        for (const d of this.decor) if (d.solid ?? SOLID_DECOR.has(d.k)) this.mark(d.x, d.y);
         this.base = this.block.slice(); // without people, who can step aside
         for (const n of this.npcs) this.mark(n.x, n.y);
     }

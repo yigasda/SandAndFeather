@@ -142,6 +142,27 @@
  "obelisks": [
    {"id": "ob_ruins", "x": 13, "y": 5, "ko": "무너진 신전 오벨리스크", "about": "강 건너 나루 옆"}
  ],
+ "_decor_about": "꾸밈. k는 종류, x와 y는 칸. 종류: column 기둥, statue_set 세트 석상, statue_falcon 매 석상, jackal 자칼 상, brazier 화로, pool 연못, altar 제물상, runner 붉은 길, plant 화분, jars 항아리, goods 장바구니, flowers 꽃, bush 덤불, reeds 갈대, skiff 작은 배, rocks 돌무더기, dummy 짚 인형, target 과녁, well 우물, oven 화덕, shaduf 물 긷는 장대, mat 말리는 돗자리, bench 돌 의자, banner 깃대, hanging 벽 걸개, stele 비석, shrine 작은 사당, dig 발굴 구덩이, fallen 쓰러진 기둥, broken 부서진 석상, block 새김 돌. 꽃, 덤불, 갈대, 돗자리, 붉은 길, 걸개, 작은 배, 발굴 구덩이는 지나갈 수 있고 나머지는 막혀. solid에 true나 false를 넣으면 바꿀 수 있어. hanging과 banner는 c에 색을 넣어. 길이 막히지 않게 조심해.",
+ "decor": [
+   {"k": "fallen", "x": 2, "y": 8},
+   {"k": "broken", "x": 20, "y": 5},
+   {"k": "block", "x": 22, "y": 10},
+   {"k": "block", "x": 1, "y": 12},
+   {"k": "fallen", "x": 7, "y": 14},
+   {"k": "broken", "x": 16, "y": 10},
+   {"k": "rocks", "x": 2, "y": 15},
+   {"k": "rocks", "x": 21, "y": 15},
+   {"k": "bush", "x": 14, "y": 3},
+   {"k": "bush", "x": 22, "y": 3},
+   {"k": "reeds", "x": 3, "y": 2},
+   {"k": "reeds", "x": 16, "y": 2},
+   {"k": "reeds", "x": 21, "y": 2},
+   {"k": "hanging", "x": 7, "y": 9, "c": "#8E5A4A"},
+   {"k": "hanging", "x": 16, "y": 9, "c": "#4A6A8A"},
+   {"k": "stele", "x": 11, "y": 12},
+   {"k": "shrine", "x": 11, "y": 15},
+   {"k": "dig", "x": 15, "y": 7}
+ ],
  "rows": [
   "~~~~~~~~~~~~~~~~~~~~~~~~",
   "~~~~~~~~~~~~~~~~~~~~~~~~",
