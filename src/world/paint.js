@@ -45,12 +45,24 @@ export function paintMap(m, S, gr, tp) {
 
 // ---------- small tools
 const box = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
-// a tile in 4×4 blocks of a few tones, following the soft noise
+// a tile in 8×8 blocks of a few close tones, following a broad soft noise, so the ground reads calm
 function blocks(g, x, y, i, j, tones, k, scale = 6) {
-    for (let by = 0; by < 4; by++) for (let bx = 0; bx < 4; bx++) {
-        const n = vnoise((i * 4 + bx) / scale, (j * 4 + by) / scale, k) + (rnd(i * 4 + bx, j * 4 + by, k + 9) - 0.5) * 0.25;
-        box(g, x + bx * 4, y + by * 4, 4, 4, tones[n < 0.38 ? 0 : n < 0.66 ? 1 : 2]);
+    for (let by = 0; by < 2; by++) for (let bx = 0; bx < 2; bx++) {
+        const n = vnoise((i * 2 + bx) / (scale * 0.9), (j * 2 + by) / (scale * 0.9), k);
+        box(g, x + bx * 8, y + by * 8, 8, 8, soften(tones, n < 0.4 ? 0 : n < 0.62 ? 1 : 2));
     }
+}
+// a tone pulled halfway toward the middle one: less contrast between blocks
+const softCache = new Map();
+function soften(tones, k) {
+    const key = `${tones[k]}|${tones[1]}`;
+    if (!softCache.has(key)) softCache.set(key, mixHex(tones[k], tones[1], 0.5));
+    return softCache.get(key);
+}
+function mixHex(a, b, f) {
+    const p = h => { const n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; };
+    const A = p(a), B = p(b);
+    return `rgb(${A.map((v, q) => Math.round(v + (B[q] - v) * f)).join(',')})`;
 }
 const dots = (g, x, y, i, j, k, n, col) => { for (let q = 0; q < n; q++) box(g, x + Math.floor(rnd(i, j, k + q) * 15), y + Math.floor(rnd(i, j, k + q + 20) * 15), 1, 1, col); };
 
@@ -61,28 +73,28 @@ function tile(ctx, i, j) {
     switch (t) {
         case 'grass': {
             blocks(g, x, y, i, j, S.grass, 3, 5);
-            for (let q = 0; q < 4; q++) { // tufts
-                const a = x + 1 + Math.floor(rnd(i, j, 30 + q) * 13), b = y + 2 + Math.floor(rnd(i, j, 40 + q) * 12);
-                box(g, a, b, 1, 2, 'rgba(40,70,25,.35)'); box(g, a + 1, b - 1, 1, 2, 'rgba(40,70,25,.3)'); box(g, a + 1, b - 1, 1, 1, 'rgba(255,255,220,.25)');
+            for (let q = 0; q < 2; q++) if (rnd(i, j, 35 + q) > 0.35) { // tufts
+                const a = x + 2 + Math.floor(rnd(i, j, 30 + q) * 11), b = y + 3 + Math.floor(rnd(i, j, 40 + q) * 10);
+                box(g, a, b, 1, 2, 'rgba(40,70,25,.22)'); box(g, a + 1, b - 1, 1, 2, 'rgba(40,70,25,.2)');
             }
-            if (rnd(i, j, 50) > 0.9) { const a = x + 3 + Math.floor(rnd(i, j, 51) * 10), b = y + 3 + Math.floor(rnd(i, j, 52) * 10); box(g, a, b, 1, 1, rnd(i, j, 53) > 0.5 ? '#F6F0E0' : '#F2D25A'); }
+            if (rnd(i, j, 50) > 0.96) { const a = x + 3 + Math.floor(rnd(i, j, 51) * 10), b = y + 3 + Math.floor(rnd(i, j, 52) * 10); box(g, a, b, 1, 1, rnd(i, j, 53) > 0.5 ? '#F6F0E0' : '#F2D25A'); }
             break;
         }
         case 'stone': {
-            const tone = STONE[Math.floor(n * 3)];
-            box(g, x, y, T, T, tone);
-            const vx = j % 2 ? 7 : 15; // staggered flagstones
-            box(g, x, y + 15, T, 1, '#C3B293'); box(g, x + vx, y, 1, 15, '#C3B293');
-            box(g, x, y, T, 1, '#EFE5D0'); box(g, x + (vx + 1) % 16, y + 1, 1, 14, '#EFE5D0');
-            if (rnd(i, j, 6) > 0.82) { const a = x + 3 + Math.floor(rnd(i, j, 7) * 8); box(g, a, y + 5, 1, 2, '#C9B898'); box(g, a + 1, y + 7, 1, 2, '#C9B898'); box(g, a + 2, y + 9, 1, 1, '#C9B898'); }
-            dots(g, x, y, i, j, 60, 3, 'rgba(150,125,90,.18)');
+            // big slabs two tiles square, rows of slabs offset by one tile, faint joints
+            const sr = Math.floor(j / 2), sc = Math.floor((i + (sr % 2)) / 2);
+            box(g, x, y, T, T, soften(STONE, Math.floor(rnd(sc, sr, 4) * 3)));
+            if ((i + (sr % 2)) % 2 === 1) box(g, x + 15, y, 1, T, '#D0C0A1');
+            if (j % 2 === 1) box(g, x, y + 15, T, 1, '#D0C0A1');
+            if (j % 2 === 0) box(g, x, y, T, 1, 'rgba(255,250,240,.35)');
+            if (rnd(i, j, 6) > 0.94) { const a = x + 4 + Math.floor(rnd(i, j, 7) * 7); box(g, a, y + 6, 1, 2, 'rgba(160,135,100,.35)'); box(g, a + 1, y + 8, 2, 1, 'rgba(160,135,100,.35)'); }
             break;
         }
         case 'path': {
             blocks(g, x, y, i, j, PATH, 4, 6);
-            for (let q = 0; q < 3; q++) { // cobbles
-                const a = x + 1 + Math.floor(rnd(i, j, 70 + q) * 12), b = y + 1 + Math.floor(rnd(i, j, 80 + q) * 12);
-                box(g, a, b, 3, 2, '#C5B08C'); box(g, a, b, 3, 1, '#E3D3B3'); box(g, a, b + 2, 3, 1, 'rgba(110,85,55,.25)');
+            if (rnd(i, j, 75) > 0.55) { // a cobble now and then
+                const a = x + 3 + Math.floor(rnd(i, j, 70) * 9), b = y + 3 + Math.floor(rnd(i, j, 80) * 9);
+                box(g, a, b, 4, 3, 'rgba(170,145,110,.35)'); box(g, a, b, 4, 1, 'rgba(255,245,225,.35)');
             }
             break;
         }
@@ -97,16 +109,15 @@ function tile(ctx, i, j) {
         }
         case 'water': {
             blocks(g, x, y, i, j, S.water, 5, 4);
-            for (let q = 0; q < 2; q++) if (rnd(i, j, 90 + q) > 0.45) {
-                const a = x + Math.floor(rnd(i, j, 92 + q) * 11), b = y + 2 + Math.floor(rnd(i, j, 94 + q) * 12);
-                box(g, a, b, 4, 1, 'rgba(255,255,255,.16)'); box(g, a + 1, b + 1, 3, 1, 'rgba(0,30,40,.12)');
+            if (rnd(i, j, 90) > 0.6) {
+                const a = x + Math.floor(rnd(i, j, 92) * 10), b = y + 3 + Math.floor(rnd(i, j, 94) * 10);
+                box(g, a, b, 6, 1, 'rgba(255,255,255,.12)');
             }
             break;
         }
         case 'bank': {
             blocks(g, x, y, i, j, BANK, 6, 5);
-            box(g, x, y + 11, T, 5, 'rgba(90,70,40,.18)');
-            dots(g, x, y, i, j, 100, 3, '#B39C76');
+            box(g, x, y + 11, T, 5, 'rgba(90,70,40,.14)');
             break;
         }
         case 'dock': {
@@ -119,14 +130,13 @@ function tile(ctx, i, j) {
         case 'rock': {
             // a weathered rock surface, now and then a boulder sitting on it
             blocks(g, x, y, i, j, ['#B49A77', '#AE9471', '#B9A07D'], 7, 3);
-            if (rnd(i, j, 8) > 0.55) { const a = x + 3 + Math.floor(rnd(i, j, 9) * 9); box(g, a, y + 4, 1, 3, 'rgba(80,60,40,.3)'); box(g, a + 1, y + 7, 2, 1, 'rgba(80,60,40,.3)'); box(g, a + 3, y + 8, 1, 2, 'rgba(80,60,40,.25)'); }
+            if (rnd(i, j, 8) > 0.75) { const a = x + 3 + Math.floor(rnd(i, j, 9) * 9); box(g, a, y + 4, 1, 3, 'rgba(80,60,40,.3)'); box(g, a + 1, y + 7, 2, 1, 'rgba(80,60,40,.3)'); box(g, a + 3, y + 8, 1, 2, 'rgba(80,60,40,.25)'); }
             if (rnd(i, j, 41) > 0.62) {
                 const w = 7 + Math.floor(rnd(i, j, 42) * 4), h = 5 + Math.floor(rnd(i, j, 43) * 3), X = x + Math.floor(rnd(i, j, 44) * (16 - w)), Y = y + 1 + Math.floor(rnd(i, j, 45) * (13 - h));
                 box(g, X + 1, Y + h, w, 1, 'rgba(60,40,20,.25)');
                 box(g, X + 1, Y, w - 2, h, '#C2A784'); box(g, X, Y + 1, w, h - 2, '#C2A784');
                 box(g, X + 1, Y, w - 2, 1, '#DCC5A0'); box(g, X + 1, Y + h - 1, w - 2, 1, '#92785A'); box(g, X + w - 1, Y + 1, 1, h - 2, '#9E8464');
             }
-            dots(g, x, y, i, j, 140, 2, 'rgba(255,240,215,.25)');
             if (at(i, j + 1) !== 'rock' && j + 1 < m.h) { // a cliff face where the rocks end
                 box(g, x, y + 10, T, 6, '#9A7F60');
                 for (let q = 0; q < 4; q++) box(g, x + 1 + q * 4 + Math.floor(rnd(i, j, 11 + q) * 2), y + 11, 1, 5, '#866C50');
@@ -139,11 +149,9 @@ function tile(ctx, i, j) {
         }
         case 'wall': {
             box(g, x, y, T, T, '#CDB48E');
-            for (let r = 0; r < 4; r++) {
-                box(g, x, y + r * 4 + 3, T, 1, '#B39A74');
-                const off = (r + j) % 2 ? 0 : 4;
-                for (let c = off; c < T; c += 8) box(g, x + c, y + r * 4, 1, 3, '#B39A74');
-                box(g, x, y + r * 4, T, 1, 'rgba(255,245,225,.18)');
+            for (let r = 0; r < 2; r++) {
+                box(g, x, y + r * 8 + 7, T, 1, '#BEA47E');
+                box(g, x + ((r + j) % 2 ? 4 : 12), y + r * 8, 1, 7, '#BEA47E');
             }
             if (at(i, j - 1) !== 'wall') { box(g, x, y, T, 3, '#E4CFA8'); box(g, x, y, T, 1, '#F2E3C6'); box(g, x, y + 3, T, 1, '#A88E6A'); }
             if (at(i, j + 1) !== 'wall') box(g, x, y + 14, T, 2, '#A0855F');
@@ -194,10 +202,8 @@ function tile(ctx, i, j) {
         }
         default: { // sand
             blocks(g, x, y, i, j, SAND, 1, 6);
-            dots(g, x, y, i, j, 110, 3, '#CDA978');
-            dots(g, x, y, i, j, 130, 2, '#F4DFB4');
-            if (n > 0.86) { const a = x + 3 + Math.floor(rnd(i, j, 12) * 9), b = y + 4 + Math.floor(rnd(i, j, 13) * 8); box(g, a, b, 2, 1, '#B89A70'); box(g, a, b - 1, 2, 1, '#EAD6AE'); }
-            if (rnd(i, j, 14) > 0.8) { const b = y + 3 + Math.floor(rnd(i, j, 15) * 10); box(g, x + 2, b, 5, 1, 'rgba(180,140,90,.25)'); box(g, x + 7, b - 1, 3, 1, 'rgba(180,140,90,.2)'); }
+            if (n > 0.95) { const a = x + 4 + Math.floor(rnd(i, j, 12) * 8), b = y + 5 + Math.floor(rnd(i, j, 13) * 7); box(g, a, b, 3, 2, 'rgba(160,125,80,.35)'); box(g, a, b, 3, 1, 'rgba(255,245,225,.4)'); }
+            if (rnd(i, j, 14) > 0.9) { const b = y + 4 + Math.floor(rnd(i, j, 15) * 8); box(g, x + 1, b, 9, 1, 'rgba(180,140,90,.15)'); }
         }
     }
 }
@@ -222,7 +228,7 @@ function edges(ctx, i, j) {
         if ((t === 'sand' || t === 'path' || t === 'bank') && nt === 'grass') {
             for (let k = 0; k < 16; k++) { const r = rnd(a * 16 + k, b, 21); if (r > 0.35) at(k, 0, 1, r > 0.75 ? 3 : 2, S.grass[r > 0.6 ? 0 : 1]); }
         } else if (t === 'path' && (nt === 'sand' || nt === 'fence')) {
-            for (let k = 0; k < 16; k += 2) if (rnd(i * 16 + k, j, 22) > 0.4) at(k, 0, 2, 1 + Math.floor(rnd(i, j * 16 + k, 23) * 2), SAND[0]);
+            for (let k = 0; k < 16; k += 4) if (rnd(i * 16 + k, j, 22) > 0.5) at(k, 0, 4, 1, soften(SAND, 1));
         } else if (t === 'stone' && nt !== 'wall' && nt !== 'pillar') {
             at(0, 0, 16, 1, '#B5A383');
         } else if (t === 'water') {
@@ -262,7 +268,6 @@ function building(ctx, b) {
     if (b.kind === 'stall') return stall(g, u, x, y, w, h, roof);
     // walls of mud brick, a flat roof with a parapet, windows set in, a framed door
     box(g, x, y, w, h, wall);
-    for (let r = 10; r < h - 3; r += 4) for (let c = (r / 4) % 2 ? 0 : 6; c < w; c += 12) box(g, x + c + 1, y + r, 5, 1, 'rgba(150,110,70,.18)');
     box(g, x, y, w, 8, roof); box(g, x, y, w, 2, shade(roof, 0.18)); box(g, x, y + 8, w, 2, 'rgba(60,40,20,.25)');
     box(g, x + 3, y + 3, 4, 3, shade(roof, -0.25)); box(g, x + 3, y + 2, 4, 1, shade(roof, 0.1)); // a jar on the roof
     if (w > 48) { box(g, x + w - 14, y + 3, 9, 3, '#C9A46A'); box(g, x + w - 14, y + 3, 9, 1, '#E0C08A'); } // a drying mat
@@ -302,9 +307,9 @@ function temple(g, u, x, y, w, h) {
             box(g, a, y + r, ww, 1, r < 5 ? lime : mid);
         }
         box(g, px + (flip ? 0 : 6), y, 28, 3, '#EFE3CA'); box(g, px + (flip ? 0 : 6), y + 3, 28, 1, dark);
-        for (let r = 12; r < h - 8; r += 9) {
+        for (let r = 14; r < h - 10; r += 14) {
             box(g, px + 6, y + r, 22, 1, carve);
-            for (let k = 0; k < 5; k++) { const c = px + 8 + k * 4; box(g, c, y + r + 2, 2, 3, rnd(c, r, 3) > 0.5 ? carve : '#B07A5A'); if (rnd(c, r, 4) > 0.6) box(g, c, y + r + 3, 1, 1, '#4F7FB0'); }
+            for (let k = 0; k < 3; k++) box(g, px + 10 + k * 7, y + r + 3, 3, 5, 'rgba(164,138,100,.6)');
         }
         box(g, px + (flip ? 33 : 0), y, 1, h, dark);
         // flagpoles reaching above the roof, on the top layer
