@@ -22,7 +22,7 @@ import './src/packs/life/dock.js';
     const onChat = async () => {
         if (!ready) return;
         if (hasChat()) await syncFromChat({ force: true });
-        emit('state', {});
+        emit('game:loaded', {});
         applyInjection();
         refreshDrawer();
     };
@@ -56,7 +56,7 @@ import './src/packs/life/dock.js';
     // right before a reply is written, the block must already be right: a new turn drops news a reply already
     // carried, a regenerate keeps it (news.js). No waiting here, SillyTavern builds the prompt next.
     const now = () => { if (ready && hasChat()) applyInjection(); };
-    on('news', () => { applyInjection(); refreshDrawer(); });
+    on('news:changed', () => { applyInjection(); refreshDrawer(); });
 
     es.on(et.APP_READY, start);
     es.on(et.CHAT_CHANGED, onChat);

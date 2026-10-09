@@ -18,7 +18,9 @@ import { cardOpen, closeCards, showCard, toast } from './popups.js';
 
 let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
-let raf = 0, last = 0, miniAt = 0, near = null;
+let raf = 0, last = 0, miniAt = 0, drawnAt = 0, near = null;
+// frames drawn a second: walking, standing (only the river moves), a card is open
+const FPS = { walk: 30, still: 8, card: 4 };
 
 export const gameMode = () => mode;
 
@@ -74,9 +76,10 @@ function build() {
     chip.addEventListener('click', openGame);
     document.body.append(chip);
 
-    on('sync', refresh);
+    on('clock:synced', refresh);
+    on('view:changed', refresh);
     // a new chat or a new game: show that chat's game, or close when no chat is open
-    on('state', () => {
+    on('game:loaded', () => {
         if (!hasChat()) { closeGame(); return; }
         if (mode === 'open') enterMap();
         refresh();
@@ -107,7 +110,7 @@ export async function openGame() {
     refresh();
     startInput(talk);
     window.addEventListener('keydown', onEscape, true);
-    last = 0;
+    last = 0; drawnAt = 0;
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(frame);
 }
@@ -176,7 +179,9 @@ function frame(t) {
     last = t;
     if (!cardOpen()) stepPlayer(map, input.dx, input.dy, dt);
     else player.moving = false;
-    draw(t);
+    // the battery: draw only as often as something on screen changes
+    const fps = cardOpen() ? FPS.card : player.moving ? FPS.walk : FPS.still;
+    if (t - drawnAt >= 1000 / fps - 2) { drawnAt = t; draw(t); }
     raf = requestAnimationFrame(frame);
 }
 

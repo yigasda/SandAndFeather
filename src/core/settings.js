@@ -2,12 +2,14 @@
 
 import { ctx } from './st.js';
 
-export const VERSION = '0.2.0';
+export const VERSION = '0.2.1';
 export const MODULE = 'sand_feather';
 export const PROMPT_KEY = 'sand_feather_world';
 
-// "<tracker> 🌇 05:48 오후 | 하티르 여드렛날, 2년 | 옴보스 → 서쪽 별채 | ☀️ 맑음 </tracker>": time | date | place
-export const DEFAULT_TRACKER_RE = String.raw`<tracker>(?:[^|]*?(?<time>\d{1,2}:\d{2}\s*(?:오전|오후|AM|PM|am|pm)?))?[^|]*\|\s*(?<date>[^|]+?)\s*\|\s*(?<place>[^|<]+?)\s*(?:\||</tracker>)`;
+// finds the tracker; what is inside is read field by field in tracker.js, in any order:
+// "<tracker> 🌇 05:48 오후 | 하티르 여드렛날, 2년 | 옴보스 → 서쪽 별채 | ☀️ 맑음 </tracker>"
+// (a closing tag that never came: the rest of that line)
+export const DEFAULT_TRACKER_RE = String.raw`<tracker>([\s\S]*?)<\/tracker>|<tracker>([^\n]*)`;
 
 const DEFAULTS = {
     enabled: true,      // the extension at all

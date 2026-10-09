@@ -39,15 +39,20 @@ export function dateLabelEn(d) {
     return `${monthName(d.month, 'en')} ${d.day}`;
 }
 
-// "05:48 오후" → 17:48 → minutes since midnight
+// the clock time in a piece of text: "05:48 오후" · "17:48" · "오후 5시 48분" · "5 PM"
+export const TIME_RE = /(?:(오전|오후|새벽|아침|저녁|밤)\s*)?(\d{1,2})(?::(\d{2})|\s*시(?:\s*(\d{1,2})\s*분)?|\s*(?=AM|PM|am|pm))\s*(오전|오후|AM|PM|am|pm)?/;
+// → minutes since midnight, or null
 export function minutesOf(text) {
-    const mt = String(text || '').match(/(\d{1,2}):(\d{2})\s*(오전|오후|AM|PM|am|pm)?/);
+    const mt = String(text || '').match(TIME_RE);
     if (!mt) return null;
-    let h = Number(mt[1]);
-    const pm = /오후|PM|pm/.test(mt[3] || ''), am = /오전|AM|am/.test(mt[3] || '');
-    if (pm && h < 12) h += 12;
+    let h = Number(mt[2]);
+    const m = Number(mt[3] ?? mt[4] ?? 0);
+    if (h > 23 || m > 59) return null;
+    const word = `${mt[1] || ''} ${mt[5] || ''}`;
+    const pm = /오후|저녁|밤|PM|pm/.test(word), am = /오전|새벽|아침|AM|am/.test(word);
+    if (pm && h < 12 && !(/밤/.test(word) && h <= 3)) h += 12;
     if (am && h === 12) h = 0;
-    return (h % 24) * 60 + Number(mt[2]);
+    return (h % 24) * 60 + m;
 }
 export function partOfMinutes(min) {
     const h = min / 60;

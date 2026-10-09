@@ -8,7 +8,7 @@ import { applyInjection, buildBlock } from '../core/inject.js';
 import { DEFAULT_TRACKER_RE, VERSION, saveSettings, settings } from '../core/settings.js';
 import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
-import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex } from '../core/tracker.js';
+import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex, weatherOf } from '../core/tracker.js';
 import { dropNews, newsStatus, pending } from '../core/news.js';
 import { esc } from './popups.js';
 import { applyTheme, openGame } from './window.js';
@@ -67,7 +67,7 @@ export function renderDrawer(problems = []) {
 
             <details class="sf_box">
               <summary><b>트래커 모양</b><span class="sf_hint">정규식</span></summary>
-              <div class="sf_sub">이름 붙은 묶음 time · date · place를 읽어. 비우면 기본값.</div>
+              <div class="sf_sub">트래커 줄을 찾는 정규식이야. 찾은 줄 안에서 시간, 날짜, 장소, 날씨는 칸 순서와 상관없이 따로 찾아. 비우면 기본값.</div>
               <textarea class="sf_ta" id="sf_tracker_re" rows="4" spellcheck="false" placeholder="${esc(DEFAULT_TRACKER_RE)}">${esc(st.trackerRe || '')}</textarea>
               <div class="sf_line_btns"><button type="button" class="sf_btn sf_small" id="sf_tracker_default">기본값</button></div>
               <div class="sf_sub" id="sf_tracker_test"></div>
@@ -108,7 +108,7 @@ function bind() {
     $id('sf_depth').addEventListener('change', e => set('depth', Math.max(0, Number(e.target.value) || 0)));
     $id('sf_role').addEventListener('change', e => set('role', Number(e.target.value)));
     $id('sf_wordcap').addEventListener('change', e => set('wordCap', Math.max(20, Number(e.target.value) || 80)));
-    $id('sf_monthstyle').addEventListener('change', e => { set('monthStyle', e.target.value); emit('sync', {}); });
+    $id('sf_monthstyle').addEventListener('change', e => { set('monthStyle', e.target.value); emit('view:changed', {}); });
     $id('sf_theme').addEventListener('change', e => { set('theme', e.target.value); applyTheme(); });
     let reTimer;
     $id('sf_tracker_re').addEventListener('input', e => {
@@ -138,7 +138,7 @@ function bind() {
         resetState();
         await saveState();
         await syncFromChat({ force: true });
-        emit('state', { reset: true });
+        emit('game:loaded', { reset: true });
         applyInjection();
         refreshDrawer();
     });
@@ -178,7 +178,8 @@ export function refreshDrawer() {
     if (!found) { test.textContent = '챗에서 트래커를 못 찾았어.'; return; }
     const { tr } = found;
     const pl = readPlace(tr.place);
-    test.innerHTML = `#${found.i} 메시지에서 읽음 · 시간 <b>${esc(tr.time || '없음')}</b> · 날짜 <b>${esc(tr.date || '없음')}</b> · 장소 <b>${esc(placeInfo(pl.place)?.ko || '모름')}</b>${pl.room ? ` → ${esc(pl.room)}` : ''}`;
+    const w = weatherOf(tr.weather);
+    test.innerHTML = `#${found.i} 메시지에서 읽음 · 시간 <b>${esc(tr.time || '없음')}</b> · 날짜 <b>${esc(tr.date || '없음')}</b> · 장소 <b>${esc(placeInfo(pl.place)?.ko || '모름')}</b>${pl.room ? ` → ${esc(pl.room)}` : ''} · 날씨 <b>${esc(w?.ko || '없음')}</b><br>없음으로 나온 칸은 이전 값을 그대로 둬.`;
 }
 
 // the wand menu: one "모래와 깃털" entry that opens the game. SillyTavern builds #extensionsMenu late, so wait for it.

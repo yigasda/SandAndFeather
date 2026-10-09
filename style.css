@@ -182,6 +182,7 @@
 }
 #sf_game .sf_controls > * { pointer-events: auto; }
 #sf_game .sf_pad {
+    position: relative;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -191,6 +192,8 @@
     place-items: center;
     touch-action: none;
 }
+/* the pad takes touches a little outside its ring too, so a thumb that slips still steers */
+#sf_game .sf_pad::before { content: ''; position: absolute; inset: -30px; border-radius: 50%; }
 #sf_game .sf_knob {
     width: 46px;
     height: 46px;

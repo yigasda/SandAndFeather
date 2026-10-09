@@ -19,7 +19,7 @@ export async function transact(fn) {
     if (!ok) return false;
     s.bag = draft;
     await saveState();
-    emit('bag', {});
+    emit('bag:changed', {});
     return true;
 }
 

@@ -32,7 +32,7 @@ export async function addNews({ text, ko = '', weight = 5, key = '' }) {
     s.news.push(n);
     prune(s);
     await saveState();
-    emit('news', {});
+    emit('news:changed', {});
     return n;
 }
 export async function dropNews(id) {
@@ -40,7 +40,7 @@ export async function dropNews(id) {
     if (!s) return;
     s.news = id ? s.news.filter(n => n.id !== id) : [];
     await saveState();
-    emit('news', {});
+    emit('news:changed', {});
 }
 // delivered and well past, or too old, or too many
 function prune(s) {

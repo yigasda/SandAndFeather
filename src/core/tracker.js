@@ -3,7 +3,7 @@
 // and the game follows it: date, part of the day and place. No AI call — a regular expression (settings).
 
 import { emit } from './bus.js';
-import { EPAG, dayNumber, fromDayNumber, minutesOf, parseDate, partOfMinutes, partOfWords } from './clock.js';
+import { EPAG, TIME_RE, dayNumber, fromDayNumber, minutesOf, parseDate, partOfMinutes, partOfWords } from './clock.js';
 import { DATA } from './data.js';
 import { newDays } from './ledger.js';
 import { trackerPattern } from './settings.js';
@@ -14,13 +14,46 @@ export function trackerRegex() {
     try { return new RegExp(trackerPattern(), 's'); } catch { return null; }
 }
 
-// one message's tracker → { time, date, place } (strings, any may be ''), or null
+// one message's tracker → { raw, time, date, place, weather } (strings, any may be ''), or null.
+// The pattern only finds the tracker. Inside it every field is looked for on its own, in any order and with or
+// without "|" between them, so a missing or moved field loses only itself. What is not found stays as it was.
+// A pattern with named groups time / date / place (older settings) is used as it is.
 export function readTracker(text, re = trackerRegex()) {
     if (!re) return null;
     const mt = String(text || '').match(re);
     if (!mt) return null;
     const g = mt.groups || {};
-    return { raw: mt[0], time: (g.time || '').trim(), date: (g.date || '').trim(), place: (g.place || '').trim() };
+    if ('time' in g || 'date' in g || 'place' in g) {
+        return { raw: mt[0], time: (g.time || '').trim(), date: (g.date || '').trim(), place: (g.place || '').trim(), weather: (g.weather || '').trim() };
+    }
+    const inner = mt.slice(1).find(x => x !== undefined) ?? mt[0];
+    return { raw: mt[0].trim(), ...readFields(inner) };
+}
+
+const hasPlace = t => !!readPlace(t).place;
+const looksDate = t => { const d = parseDate(t); return !!d && (d.month !== undefined || d.day !== undefined); };
+export function weatherOf(t) {
+    const low = String(t || '').toLowerCase();
+    return (DATA.calendar.weather || []).find(w => w.signs.some(sg => low.includes(sg.toLowerCase()))) || null;
+}
+
+// the fields of one tracker's inside. A part can hold two fields ("05:48 오후, 하티르 8일").
+export function readFields(inner) {
+    const parts = String(inner || '').split(/\s*[|｜\n]\s*/).map(x => x.trim()).filter(Boolean);
+    const at = (test, skip = []) => parts.findIndex((x, k) => !skip.includes(k) && test(x, k));
+    const timeAt = at(x => TIME_RE.test(x));
+    const time = timeAt >= 0 ? parts[timeAt].match(TIME_RE)[0].trim() : '';
+    const clean = k => (k === timeAt ? parts[k].replace(time, ' ') : parts[k]).replace(/[^\p{L}\p{N}\s,]/gu, ' ').replace(/\s+/g, ' ').replace(/^[\s,]+|[\s,]+$/g, '');
+    // the date: a part of its own first, else one shared with the place
+    let dateAt = at((x, k) => looksDate(clean(k)) && !hasPlace(x));
+    if (dateAt < 0) dateAt = at((x, k) => looksDate(clean(k)));
+    const date = dateAt >= 0 ? clean(dateAt) : '';
+    // the place: a part that names a known place; else a part with an arrow, whose room words still count
+    let placeAt = at(x => hasPlace(x), [timeAt]);
+    if (placeAt < 0) placeAt = at(x => /→|->/.test(x), [timeAt, dateAt]);
+    const place = placeAt >= 0 ? parts[placeAt] : '';
+    const weatherAt = at(x => !!weatherOf(x), [timeAt, dateAt, placeAt]);
+    return { time, date, place, weather: weatherAt >= 0 ? parts[weatherAt] : '' };
 }
 
 // the newest message that carries a tracker: { i, tr }
@@ -58,7 +91,7 @@ export async function syncFromChat({ force = false } = {}) {
     const found = lastTracker();
     if (!found) {
         if (s.sync.ok) { s.sync.ok = false; await saveState(); }
-        emit('sync', { ok: false });
+        emit('clock:synced', { ok: false });
         return { ok: false };
     }
     const { i, tr } = found;
@@ -73,23 +106,27 @@ export async function syncFromChat({ force = false } = {}) {
     }
     const min = minutesOf(tr.time);
     s.part = min !== null ? partOfMinutes(min) : (partOfWords(`${tr.time} ${tr.raw}`) || s.part);
-    const pl = readPlace(tr.place);
-    if (pl.place) s.place = pl.place;
-    s.room = pl.room || '';
+    if (tr.place) {
+        const pl = readPlace(tr.place);
+        if (pl.place) s.place = pl.place;
+        s.room = pl.room || '';
+    }
+    const w = weatherOf(tr.weather);
+    s.weather = w ? w.id : '';
     s.sync = { at: i, raw: tr.raw, ok: true, when: Date.now() };
     s.linked = true;
     const fresh = newDays(s);
     await saveState();
     const days = dayNumber(s.date) - dayNumber(before);
     dayStart(fresh, before, s);
-    if (s.place !== placeBefore) emit('place', { from: placeBefore, to: s.place });
-    emit('sync', { ok: true, days, tr });
+    if (s.place !== placeBefore) emit('place:changed', { from: placeBefore, to: s.place });
+    emit('clock:synced', { ok: true, days, tr });
     return { ok: true, days, placeChanged: s.place !== placeBefore };
 }
 
-// 'day:start' only for days the ledger had never handled: { days: [dates], from, to }
+// 'day:started' only for days the ledger had never handled: { days: [dates], from, to }
 function dayStart(fresh, before, s) {
-    if (fresh.length) emit('day:start', { days: fresh.map(fromDayNumber), from: before, to: s.date });
+    if (fresh.length) emit('day:started', { days: fresh.map(fromDayNumber), from: before, to: s.date });
 }
 
 // by hand, when the chat has no tracker or it read wrong
@@ -106,5 +143,5 @@ export async function setByHand({ year, month, day, part, place }) {
     const fresh = newDays(s);
     await saveState();
     dayStart(fresh, before, s);
-    emit('sync', { ok: s.sync.ok, byHand: true });
+    emit('clock:synced', { ok: s.sync.ok, byHand: true });
 }

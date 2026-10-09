@@ -90,6 +90,7 @@ export function todayBody(s) {
         ['계절', `${seasonName(s.date.month)} · ${seasonAbout(s.date.month)}`],
         ['시간대', partInfo(s.part).ko],
         ['장소', `${pl?.ko || s.place}${s.room ? ` → ${s.room}` : ''}`],
+        ...(s.weather ? [['날씨', (DATA.calendar.weather || []).find(w => w.id === s.weather)?.ko || '']] : []),
     ];
     el.innerHTML = rows.map(([k, v]) => `<div class="sf_row"><span>${k}</span><b>${esc(v)}</b></div>`).join('')
         + (s.sync.ok

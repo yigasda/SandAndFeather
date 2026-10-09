@@ -11,6 +11,7 @@ export const freshState = () => ({
     part: 'day',                                   // dawn | day | evening | night
     place: 'ombos',                                // places.json id
     room: '',                                      // the tracker's room words, as written
+    weather: '',                                   // calendar.json weather id from the tracker, or ''
     pos: { map: 'ombos', x: null, y: null, dir: 'down' },
     sync: { at: -1, raw: '', ok: false, when: 0 }, // the last tracker read: message index, its text
     linked: false,                                 // a tracker was read or the date was set by hand at least once
@@ -21,13 +22,34 @@ export const freshState = () => ({
     started: Date.now(),
 });
 
-function migrate(s) {
+// Upgrading an older save, one version at a time: STEPS[n] turns a version n save into version n+1.
+// A step only moves or renames what changed shape; new fields are filled from freshState() after the steps.
+// A save from a newer version of the extension is left as it is (never cut down to this version's shape).
+const STEPS = {
+    1: () => {},  // 1 → 2: ledger, bag, news, recent are new; they are filled below
+};
+
+function fill(s) {
     const f = freshState();
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
     for (const k of ['date', 'pos', 'sync', 'ledger', 'bag', 'recent']) if (!s[k] || typeof s[k] !== 'object') s[k] = structuredClone(f[k]);
     if (!Array.isArray(s.news)) s.news = [];
     for (const k of ['ledger', 'bag', 'recent']) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);
-    s.v = STATE_VERSION;
+}
+
+const checked = new WeakSet(); // each save object is looked over once, not on every frame
+let warnedNewer = false;
+function migrate(s) {
+    if (checked.has(s)) return s;
+    let v = Number(s.v) || 1;
+    if (v > STATE_VERSION) {
+        if (!warnedNewer) { warnedNewer = true; window.toastr?.warning?.('이 채팅의 게임은 더 새 버전 확장에서 저장됐어. 확장을 업데이트해 줘.', '모래와 깃털'); }
+    } else {
+        for (; v < STATE_VERSION; v++) STEPS[v]?.(s);
+        s.v = STATE_VERSION;
+    }
+    fill(s);
+    checked.add(s);
     return s;
 }
 
