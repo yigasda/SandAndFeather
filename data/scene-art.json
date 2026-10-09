@@ -1,0 +1,4 @@
+{
+ "duat_entrance": {"file":"art/duat-entrance.png","source":[17,43,1500,964],"width":160,"height":104},
+ "duat_guardian": {"file":"art/duat-guardian.png","source":[85,140,829,1293],"width":28,"height":44}
+}

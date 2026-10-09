@@ -39,6 +39,17 @@ const passed = [];
       return all.map(([id, d]) => ({ id, w: d.rows[0].length, h: d.rows.length, valid: d.rows.every(row => row.length === d.rows[0].length && [...row].every(c => c === '.' || d.colors[c])) }));
     });
     assert.equal(art.length, 6); assert(art.every(a => a.valid)); passed.push('6 building grids and extension data load');
+    const sceneArt = await page.evaluate(() => Object.entries(artTest.data.DATA.sceneArt).map(([id, cv]) => {
+      const pixels = cv.getContext('2d').getImageData(0, 0, cv.width, cv.height).data;
+      let solid = 0, clear = 0, partial = 0;
+      for (let i = 3; i < pixels.length; i += 4) {
+        if (pixels[i] === 255) solid++; else if (pixels[i] === 0) clear++; else partial++;
+      }
+      return {id,width:cv.width,height:cv.height,solid,clear,partial};
+    }));
+    assert.equal(sceneArt.length, 2);
+    assert(sceneArt.every(p => p.solid > 200 && p.clear > 0 && p.partial === 0));
+    passed.push('reference sprites decoded with opaque interiors and clear hard-edged backgrounds');
     const travel = (x, y) => page.evaluate(async ({x,y}) => { await artTest.win.travel('ombos',{x,y}); }, {x,y});
     const pos = () => page.evaluate(() => ({x:artTest.player.player.x,y:artTest.player.player.y}));
     await travel(21,17);
@@ -63,10 +74,10 @@ const passed = [];
     }
     passed.push('market, kitchen, scriptorium, temple and NPC interaction cards');
     await page.evaluate(()=>{artTest.state.getState().part='day';artTest.win.refresh();});
-    await travel(36,11);
+    await travel(38,11);
     await page.evaluate(() => document.activeElement?.blur()); await page.keyboard.down('ArrowUp'); await page.waitForTimeout(400); await page.keyboard.up('ArrowUp');
     assert((await pos()).y >= 10.37, 'Duat gate still blocks northward movement');
-    await travel(36,11); await page.locator('.sf_talk').click();
+    await travel(38,11); await page.locator('.sf_talk').click();
     const gateCard=page.locator('.sf_pop_wrap').last(); await gateCard.waitFor();
     assert((await gateCard.innerText()).includes('문은 저녁과 밤에만 열려'));
     await gateCard.locator('.sf_pop_x').click();
@@ -75,8 +86,8 @@ const passed = [];
       let gateOnStone=true;
       for(let y=gate.y;y<gate.y+gate.h;y++)for(let x=gate.x;x<gate.x+gate.w;x++)gateOnStone &&= m.type(x,y)==='stone';
       return {gateOnStone,statueOnSand:m.type(jackal.x,jackal.y)==='sand',statueBlocks:m.solidAt(jackal.x,jackal.y),
-        passageClear:!m.solidAt(36,11)&&!m.solidAt(36,12)&&!m.solidAt(36,13),guardianBesidePassage:!m.solidAt(jackal.x-1,jackal.y),
-        roadClear:Array.from({length:8},(_,k)=>11+k).every(y=>[36,37].every(x=>!m.solidAt(x,y))),
+        passageClear:!m.solidAt(gate.x,11)&&!m.solidAt(gate.x,12)&&!m.solidAt(gate.x,13),guardianBesidePassage:!m.solidAt(jackal.x-1,jackal.y),
+        roadClear:Array.from({length:8},(_,k)=>11+k).every(y=>[gate.x,gate.x+1].every(x=>!m.solidAt(x,y))),
         guardianBackClear:[jackal.x-1,jackal.x,jackal.x+1].every(x=>!m.solidAt(x,jackal.y-1)),
         sealRemoved:!m.decor.some(d=>d.k==='seal')};
     });
@@ -84,7 +95,8 @@ const passed = [];
     // Walk the full approach using real player collision, in both lanes and directions.
     const approach=await page.evaluate(()=>{
       const m=artTest.map.getMap(),p=artTest.player.player,step=artTest.player.stepPlayer;
-      return [36,37].map(x=>{
+      const gate=m.buildings.find(b=>b.id==='duat');
+      return [gate.x,gate.x+1].map(x=>{
         Object.assign(p,{x,y:18});
         for(let n=0;n<240;n++)step(m,0,-1,1/60);
         const atGate=p.y;
@@ -102,7 +114,7 @@ const passed = [];
     assert(guardianPass.x>guardianPass.statueX+.8&&guardianPass.y===guardianPass.behindY,JSON.stringify(guardianPass));
     assert(approach.every(p=>p.atGate>=10.37&&p.atGate<10.5&&p.back>18),JSON.stringify(approach));
     await page.evaluate(()=>{artTest.state.getState().part='night';artTest.win.refresh();});
-    await travel(36,11); await page.locator('.sf_talk').click();
+    await travel(38,11); await page.locator('.sf_talk').click();
     const nightGate=page.locator('.sf_pop_wrap').last(); await nightGate.waitFor();
     assert((await nightGate.innerText()).includes('누구와 내려갈까?'));
     await nightGate.locator('.sf_pop_x').click();
@@ -176,7 +188,7 @@ const passed = [];
     await page.evaluate(() => document.activeElement?.blur()); await page.keyboard.down('ArrowDown');await page.waitForTimeout(500);await page.keyboard.up('ArrowDown');
     assert.equal(requests.length,fetched);passed.push('movement does not reload art');
     assert.deepEqual(errors,[]);
-    const result={passed,art,reachability,forecourt,approach,guardianPass,occlusion,restoration,pageErrors:errors};
+    const result={passed,art,sceneArt,reachability,forecourt,approach,guardianPass,occlusion,restoration,pageErrors:errors};
     fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify(result,null,2)+'\n');
     console.log(JSON.stringify(result,null,2));
   } finally {

@@ -42,6 +42,7 @@ function art(season) {
     const tiles = {}, things = {};
     for (const [k, list] of Object.entries(D.tiles || {})) tiles[k] = list.map(rows => make(rows, cols));
     for (const [k, d] of Object.entries(D.things || {})) things[k] = make(d.rows, d.colors);
+    Object.assign(things, DATA.sceneArt || {});
     const A = { cols, tiles, things, has: k => !!tiles[k]?.length };
     artCache.set(key, A);
     return A;
@@ -358,8 +359,8 @@ function steppingStones(ctx) {
         let span = 1;
         while (paving(i + span, j)) span++;
         const inner = m.legend(i, j).style === 'duat';
-        const width = inner ? 22 : [16, 21, 15, 19][j % 4];
-        const offset = inner ? 0 : [-3, 3, 0, 2][j % 4];
+        const width = inner ? 24 : [19, 25, 18, 23][j % 4];
+        const offset = inner ? 0 : [-5, 5, -2, 4][j % 4];
         const x = i * T + Math.floor((span * T - width) / 2) + offset, y = j * T + 4;
         const h = inner ? 6 : [9, 7, 10, 8][j % 4];
         const shape = [[3,0],[width-4,0],[width-4,1],[width-1,1],[width-1,3],
@@ -369,10 +370,17 @@ function steppingStones(ctx) {
             shape.forEach(([a,b], n) => n ? g.lineTo(x+a+dx,y+b+dy) : g.moveTo(x+a+dx,y+b+dy));
             g.closePath(); g.fill();
         };
-        fill(2, 2, SHADOW); fill(0, 1, '#A99E89'); fill(0, 0, '#D0C6B0');
-        box(g, x + 3, y, width - 7, 1, '#EEE2C9');
-        box(g, x + 1, y + 3, 2, Math.max(1, h - 5), '#E5D8BE');
-        if (j % 2) box(g, x + width - 4, y + 3, 2, 2, '#C0B49B');
+        fill(2, 2, SHADOW); fill(0, 2, '#B6A88E'); fill(0, 0, '#DED3B8');
+        box(g, x + 3, y, width - 7, 1, '#F4E8CB');
+        box(g, x + 1, y + 3, 2, Math.max(1, h - 5), '#F0E2C2');
+        if (j % 2) box(g, x + width - 4, y + 3, 2, 2, '#C6B798');
+        if (!inner) {
+            // Sparse fallen sandstone beside the worn route, not all over the sand.
+            const sx = j % 2 ? x - 6 : x + width + 4;
+            box(g, sx + 1, y + h + 1, 4, 2, '#C39B67');
+            box(g, sx, y + h - 1, 4, 2, '#E3BD82');
+            box(g, sx + 1, y + h - 2, 2, 1, '#F5D7A0');
+        }
     }
 }
 // sand: from its pictures, or flat with a little ripple in fixed places
@@ -440,6 +448,7 @@ function shadows(ctx, i, j) {
     if (!tall(right) && right !== 'water') box(g, x + 16, y + 3, 4, 14, SHADOW);
 }
 function buildingShadow(g, b) {
+    if (b.artInLandform) return;
     const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
     // Taller stone towers cast a broader shadow down/right, away from the upper-left sun.
     const depth = b.kind === 'temple' ? 9 : 5;
@@ -450,6 +459,7 @@ function buildingShadow(g, b) {
 
 // ---------- buildings, on the object layers so they get the outline
 function building(ctx, b) {
+    if (b.artInLandform) return;
     const g = ctx.o, u = ctx.ou;
     const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
     // a drawn building (data/tiles.json bld_<id>): centred on its tiles, standing on their bottom edge;
