@@ -1,6 +1,7 @@
-// Drawing the world on a canvas. Stand-in art made in code: the ground (tiles, buildings, palm trunks) is painted
-// once per map and season into an off-screen canvas at 16px a tile, then scaled up crisp each frame; people,
-// palm crowns, labels and the light of the hour go on top. Real sprite sheets can replace these functions later.
+// Drawing the world on a canvas. The ground (tiles, buildings, palm trunks) is painted in code once per map and
+// season into an off-screen canvas at 16px a tile, then scaled up crisp each frame; people, palm crowns, labels and
+// the light of the hour go on top. People and things use the pictures in data/sprites.json when there is one,
+// otherwise the stand-in drawn in code.
 
 const T = 16;
 const PAL = {
@@ -33,6 +34,29 @@ export class Renderer {
         this.top = document.createElement('canvas');
         this.map = null; this.season = null;
         this.zoom = 2; this.cam = { x: 0, y: 0 };
+        this.art = new Map(); // drawn pictures from data/sprites.json, one small canvas each
+    }
+    // data/sprites.json: people by look and view, things by sprite name; what is missing stays drawn in code
+    setSprites(data) {
+        this.art.clear();
+        const make = (rows, colors, flip = false) => {
+            const c = document.createElement('canvas');
+            c.width = 16; c.height = 16;
+            const g = c.getContext('2d');
+            rows.forEach((r, y) => [...String(r)].forEach((ch, x) => {
+                const col = colors?.[ch];
+                if (ch === '.' || !col) return;
+                g.fillStyle = col; g.fillRect(flip ? 15 - x : x, y, 1, 1);
+            }));
+            return c;
+        };
+        const ok = rows => Array.isArray(rows) && rows.length;
+        for (const [look, d] of Object.entries(data?.looks || {})) {
+            if (ok(d.down)) this.art.set(`${look}|down`, make(d.down, d.colors));
+            if (ok(d.up)) this.art.set(`${look}|up`, make(d.up, d.colors));
+            if (ok(d.side)) { this.art.set(`${look}|right`, make(d.side, d.colors)); this.art.set(`${look}|left`, make(d.side, d.colors, true)); }
+        }
+        for (const [name, d] of Object.entries(data?.things || {})) if (ok(d.rows)) this.art.set(`thing|${name}`, make(d.rows, d.colors));
     }
     setMap(map, season) {
         if (this.map === map && this.season === season) return;
@@ -115,6 +139,12 @@ export class Renderer {
     // ---- people
     person(g, look, x, y, dir, step, z) {
         const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(x + a * z, y + b * z, w * z, h * z); };
+        const pic = this.art.get(`${look}|${dir}`) || this.art.get(`${look}|down`);
+        if (pic) { // a drawn picture: a shadow, and a step makes it bob
+            P(4, 14, 8, 2, 'rgba(40,25,10,.25)');
+            g.drawImage(pic, x, y - (Math.floor(step) % 2) * z, 16 * z, 16 * z);
+            return;
+        }
         const L = LOOKS[look] || LOOKS.townsman;
         const leg = Math.floor(step) % 2;
         P(4, 14, 8, 2, 'rgba(40,25,10,.25)');
@@ -193,6 +223,8 @@ export class Renderer {
     sprite(g, t, x, y, z, time) {
         const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(x + a * z, y + b * z, w * z, h * z); };
         const bob = Math.round(Math.sin(time * 4 + t.x) * 1);
+        const pic = this.art.get(`thing|${t.sprite}`);
+        if (pic) { g.drawImage(pic, x, y, 16 * z, 16 * z); return; }
         switch (t.sprite) {
             case 'beetle':
                 P(5, 13, 6, 1, 'rgba(40,25,10,.2)');

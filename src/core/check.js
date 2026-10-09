@@ -36,6 +36,13 @@ export function checkData() {
         for (const pr of f.preps || []) for (const id of Object.keys(pr.need?.items || {})) known('festivals.json', `${f.id} ${pr.id}`, id);
     }
     for (const n of DATA.festivals?.nights || []) known('festivals.json', 'nights', n.give);
+    const pic = (where, rows, colors) => (rows || []).forEach((r, k) => {
+        if (String(r).length !== 16) bad('sprites.json', `${where} ${k + 1}번째 줄이 ${String(r).length}칸, 16칸이어야 해`);
+        const miss = [...new Set([...String(r)].filter(ch => ch !== '.' && !colors?.[ch]))];
+        if (miss.length) bad('sprites.json', `${where} ${k + 1}번째 줄: colors에 없는 글자 ${miss.join(' ')}`);
+    });
+    for (const [look, d] of Object.entries(DATA.sprites?.looks || {})) for (const v of ['down', 'up', 'side']) pic(`${look} ${v}`, d[v], d.colors);
+    for (const [name, d] of Object.entries(DATA.sprites?.things || {})) pic(name, d.rows, d.colors);
     for (const [id, it] of Object.entries(items)) if (it.grow) known('items.json', `${id} 수확물`, it.grow.gives);
     for (const [id, m] of Object.entries(DATA.maps)) {
         const file = `maps/${id}.json`;

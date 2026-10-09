@@ -76,6 +76,7 @@ function build() {
     document.body.append(root);
     hud = buildHud(root);
     renderer = new Renderer(hud.view);
+    renderer.setSprites(DATA.sprites);
     new ResizeObserver(() => { renderer.resize(); if (mode === 'open') frameNow(); }).observe(hud.view);
     // coming back to the tab, or the browser giving the canvas back: paint the ground again
     document.addEventListener('visibilitychange', () => { if (!document.hidden && mode === 'open') { renderer.repaint(); frameNow(); } });
