@@ -1,7 +1,7 @@
 """OMBOS building study: shared materials, upper-left light, 1px outlines.
 
 Sizes are map footprints in 16px tiles. Pictures can rise above those footprints;
-paint.js already splits the overhang onto the layer above people. No map edits.
+paint.js already splits the overhang onto the layer above people. Footprints remain separate from picture heights.
 """
 from px import Pic, preview, to_grid, padded
 from house5 import C, LINE, house as flat_house, framed
@@ -24,45 +24,48 @@ def house(w, h, kind='house'):
 
 
 def stall(w, h):
-    W, H = w * 16, h * 16 + UP
+    W, H = w * 16, h * 16 + 30
     p = Pic(W, H)
-    # Posts and the recessed, shaded space beneath the canopy.
-    p.rect(4, 18, W - 8, 17, C['wood'])
-    p.rect(5, 19, W - 10, 7, C['deep'])
-    for x in (3, W - 6):
-        framed(p, x, 14, 3, H - 14, C['woodlit'])
-    # Three baskets, with a broad tabletop visible around them.
-    framed(p, 7, H - 14, W - 14, 11, C['wood'])
-    p.rect(8, H - 13, W - 16, 4, C['woodlit'])
-    p.rect(8, H - 9, W - 16, 1, C['creamShade'])
-    p.rect(8, H - 4, W - 16, 1, C['deep'])
+    # Recessed back of the booth. An open side separates the front posts from it.
+    p.rect(8, 24, W - 16, 20, '#6B503D')
+    p.rect(8, 27, W - 16, 7, C['deep'])
+    for x in (5, W - 8):
+        framed(p, x, 19, 3, H - 19, C['woodlit'])
+        p.rect(x + 2, 30, 1, H - 31, C['deep'])
+    # Counter: a visible horizontal top, then the lower, darker front board.
+    framed(p, 10, H - 21, W - 20, 17, C['wood'])
+    p.rect(11, H - 20, W - 22, 9, C['woodlit'])
+    p.rect(11, H - 20, W - 22, 2, C['wood'])
+    p.rect(10, H - 11, W - 20, 1, C['creamShade'])
+    p.rect(11, H - 10, W - 22, 5, C['wood'])
+    p.rect(11, H - 6, W - 22, 2, '#6B503D')
+    for x in (11, W - 14): p.rect(x, H - 4, 3, 4, LINE)
     produce = [('#70894E', '#A5B970', '#465B3B'),
                ('#A76554', '#CE8B72', '#794C41'),
                ('#DDC69E', '#F4E8CD', '#A88B62')]
-    basket_w = (W - 22) // 3
+    basket_w = (W - 30) // 3
     for i, (body, hi, shade) in enumerate(produce):
-        x, y = 10 + i * (basket_w + 2), H - 21
-        framed(p, x, y + 3, basket_w, 7, C['woodlit'])
-        p.rect(x + 1, y + 8, basket_w - 2, 1, C['wood'])
-        for dx, dy in ((2, 1), (7, 0), (12, 1), (4, 4), (10, 4)):
-            p.ellipse(x + dx + 2, y + dy + 2, 3, 3, LINE)
-            p.ellipse(x + dx + 2, y + dy + 2, 2, 2, body)
-            p.put(x + dx + 1, y + dy + 1, hi)
-            p.put(x + dx + 2, y + dy + 3, shade)
-        p.rect(x + 1, y + 8, basket_w - 2, 1, C['woodlit'])
-    # The canvas has a broad top plane and a short shaded hem, not a curtain.
-    for y in range(19):
-        inset = 2 if y < 5 else 1 if y < 12 else 0
+        x, y = 13 + i * (basket_w + 2), H - 24
+        framed(p, x, y + 3, basket_w, 8, C['woodlit'])
+        for dx, dy in ((2, 1), (7, 0), (11, 1), (4, 4), (9, 4)):
+            p.ellipse(x + dx + 1, y + dy + 2, 2.5, 3, LINE)
+            p.ellipse(x + dx + 1, y + dy + 2, 1.5, 2, body)
+            p.put(x + dx, y + dy + 1, hi)
+            p.put(x + dx + 1, y + dy + 3, shade)
+        p.rect(x + 1, y + 9, basket_w - 2, 1, C['wood'])
+    # 26px of canopy top, followed by only 3px of hanging cloth.
+    # The broad top shades the empty space above the smaller, inset counter.
+    for y in range(27):
+        inset = 3 if y < 7 else 2 if y < 16 else 1
         p.rect(inset, y, W - inset * 2, 1, LINE)
         for x in range(inset + 1, W - inset - 1):
             red = (x // 8) % 2 == 0
             p.put(x, y, C['clay'] if red else C['cream'])
-    p.rect(3, 0, W - 6, 1, C['rim'])
+    p.rect(4, 0, W - 8, 1, C['rim'])
     for x in range(1, W - 1):
         red = (x // 8) % 2 == 0
-        p.put(x, 18, C['clayshade'] if red else C['creamShade'])
-        p.put(x, 19, LINE)
-        if x % 4 in (1, 2): p.put(x, 20, C['clay'] if red else C['cream'])
+        p.rect(x, 26, 1, 3, C['clayshade'] if red else C['creamShade'])
+        p.put(x, 29, LINE)
     return finish(p)
 
 
@@ -81,13 +84,17 @@ def temple(w, h):
     framed(p, tower - 2, 27, W - tower * 2 + 4, H - 27, C['stone'])
     p.rect(tower, 28, W - tower * 2, 7, C['roof'])
     p.rect(tower, 28, W - tower * 2, 1, C['rim'])
-    p.rect(tower, 35, W - tower * 2, 2, C['stoneShade'])
-    dx, dy = W // 2 - 11, H - 35
-    framed(p, dx - 4, dy - 5, 30, 36, C['roof'])
-    p.rect(dx - 3, dy - 4, 28, 2, C['rim'])
-    p.rect(dx - 2, dy - 1, 26, 31, C['stoneShade'])
-    p.rect(dx, dy, 22, 29, C['deep'])
-    p.rect(dx + 20, dy + 1, 2, 28, C['wood'])
+    p.rect(tower, 35, W - tower * 2, 4, C['wood'])
+    dx, dy = W // 2 - 11, H - 38
+    # A projecting lintel, shaded inner jamb and a smaller, recessed opening.
+    framed(p, dx - 7, dy - 6, 36, 37, C['stone'])
+    p.rect(dx - 6, dy - 5, 34, 3, C['rim'])
+    p.rect(dx - 6, dy - 2, 34, 2, C['wood'])
+    p.rect(dx - 4, dy, 30, 29, C['wood'])
+    p.rect(dx - 3, dy, 3, 29, C['stoneShade'])
+    p.rect(dx, dy + 3, 22, 26, C['deep'])
+    p.rect(dx + 22, dy, 3, 29, C['rim'])
+    p.rect(dx - 6, dy + 1, 2, 28, C['roof'])
     # Winged sun: two quiet teal wings and one gold disc.
     cx, sy = W // 2, 43
     for step in range(4):
@@ -98,24 +105,26 @@ def temple(w, h):
     p.put(cx - 1, sy - 1, C['rim'])
     # Pylons taper gently. Unlike houses, these intentionally have sloped sides.
     for tx in (0, W - tower):
-        for y in range(11, H - 3):
+        for y in range(17, H - 3):
             inset = max(0, (H - 4 - y) // 18)
             width = tower - inset * 2
             p.rect(tx + inset, y, width, 1, LINE)
             p.rect(tx + inset + 1, y, width - 2, 1, C['roof'])
             p.put(tx + inset + 1, y, C['rim'])
-            p.rect(tx + tower - inset - 4, y, 3, 1, C['stone'])
-        # One thin parapet round a small visible flat top.
-        framed(p, tx + 5, 0, tower - 10, 13, C['rim'])
-        p.rect(tx + 7, 2, tower - 14, 7, C['roof'])
-        p.rect(tx + 7, 2, tower - 14, 2, C['wood'])
-        p.rect(tx + 7, 4, 1, 5, C['stoneShade'])
-        p.rect(tx + 6, 10, tower - 12, 2, C['stone'])
-        p.rect(tx + 5, 13, tower - 10, 3, C['teal'])
-        p.rect(tx + 5, 16, tower - 10, 1, C['gold'])
-        for x in range(tx + 8, tx + tower - 6, 7): p.rect(x, 13, 2, 2, C['tealshade'])
+            p.rect(tx + tower - inset - 7, y, 6, 1, C['stoneShade'])
+            p.put(tx + tower - inset - 2, y, C['wood'])
+        # A deep flat top with a low rim, then a thick projecting cornice.
+        framed(p, tx + 4, 0, tower - 8, 19, C['rim'])
+        p.rect(tx + 7, 3, tower - 14, 11, C['roof'])
+        p.rect(tx + 7, 3, tower - 14, 3, C['wood'])
+        p.rect(tx + 7, 6, 2, 8, C['stoneShade'])
+        p.rect(tx + 5, 15, tower - 10, 2, C['stone'])
+        p.rect(tx + 5, 17, tower - 10, 3, C['wood'])
+        p.rect(tx + 5, 20, tower - 10, 3, C['teal'])
+        p.rect(tx + 5, 23, tower - 10, 1, C['gold'])
+        p.rect(tx + 5, 24, tower - 10, 2, C['wood'])
         # A few large incised marks; no dense hieroglyph texture.
-        for x, y in ((12, 24), (26, 28), (12, 33)):
+        for x, y in ((12, 31), (26, 34), (12, 38)):
             p.rect(tx + x, y, 3, 3, C['stoneShade'])
             p.rect(tx + x, y + 3, 3, 1, C['rim'])
         ankh(p, tx + 17, 43, C['stoneShade'])
@@ -126,12 +135,13 @@ def temple(w, h):
         p.rect(tx + 1, H - 13, tower - 2, 10, C['stone'])
         p.rect(tx + 1, H - 13, tower - 2, 1, C['rim'])
         for x in range(tx + 2, tx + tower - 2, 10): p.rect(x, H - 12, 1, 9, C['stoneShade'])
+        p.rect(tx + 1, H - 5, tower - 2, 2, C['wood'])
         p.rect(tx, H - 3, tower, 1, LINE)
     # Three shallow steps, their lit tops visible from the same viewpoint.
     for k in range(3):
         sx = dx - 2 - k * 2
-        p.rect(sx, H - 6 + k * 2, 26 + k * 4, 2, C['stoneShade'])
-        p.rect(sx, H - 6 + k * 2, 26 + k * 4, 1, C['rim'])
+        p.rect(sx, H - 9 + k * 3, 26 + k * 4, 3, C['wood'])
+        p.rect(sx, H - 9 + k * 3, 26 + k * 4, 2, C['roof'])
     return finish(p)
 
 

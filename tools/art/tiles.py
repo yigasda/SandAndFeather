@@ -7,11 +7,11 @@ COLORS = {
     # grass
     'g': '#8CC152', 'G': '#A6D365', 'q': '#73A743', 'v': '#C2E58A',
     # sand
-    's': '#ECD3A2', 'S': '#F5E3BC', 'd': '#DDBF8C', 'P': '#C9A67A', 'p': '#F7EBD0',
+    's': '#ECD3A2', 'S': '#F0DCB4', 'd': '#E4C998', 'P': '#DCC08F', 'p': '#F2DEB6',
     # the stone road: cobbles, their lit tops, the gaps
-    'c': '#E8DCC2', 'C': '#F5EEDD', 'k': '#D2C2A0', 'K': '#DDCFB2',
+    'c': '#E8DCC2', 'C': '#EBDFC7', 'k': '#DED1B6', 'K': '#E2D5BC',
     # temple floor slabs
-    't': '#EDE4D0', 'T': '#F8F3E6', 'u': '#D9CCB0',
+    't': '#DDD3BC', 'T': '#E5DBC5', 'u': '#D5CAB3',
     # water: shallow, waves, deep
     'w': '#4F95D0', 'W': '#8CC0EA', 'x': '#3A7CBC', 'X': '#5E9DD6',
     # wet sand by the river

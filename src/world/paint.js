@@ -395,7 +395,11 @@ function shadows(ctx, i, j) {
 }
 function buildingShadow(g, b) {
     const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
-    box(g, x + 4, y + h, w, 5, SHADOW); box(g, x + w, y + 6, 5, h - 1, SHADOW);
+    // Taller stone towers cast a broader shadow down/right, away from the upper-left sun.
+    const depth = b.kind === 'temple' ? 9 : 5;
+    const color = b.kind === 'temple' ? 'rgba(65,44,29,.34)' : SHADOW;
+    box(g, x + depth, y + h, w - depth, depth, color);
+    box(g, x + w, y + depth, depth, h, color);
 }
 
 // ---------- buildings, on the object layers so they get the outline

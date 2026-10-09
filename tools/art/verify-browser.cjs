@@ -67,6 +67,11 @@ const passed = [];
     });
     assert(reachability.every(r=>r.unreachable.length===0),JSON.stringify(reachability));
     passed.push('all 9 places, 3 NPCs and 14 adventure anchors approachable before/after overlays');
+    const blockedNpcs = await page.evaluate(() => {
+      const m=artTest.map.getMap();
+      return m.npcs.filter(n=>m.base[n.y*m.w+n.x]).map(n=>n.id);
+    });
+    assert.deepEqual(blockedNpcs,[], 'NPC feet must not overlap the revised courtyard wall');
     // Exercise existing completion logic, including the repaint triggered by world:changed.
     const works=await page.evaluate(()=>{
       const s=artTest.state.getState(),t=artTest.ledger.today(s);
