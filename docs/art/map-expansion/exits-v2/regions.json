@@ -1,40 +1,46 @@
 [
   {
     "id": "well-day",
-    "name": "well-courtyard-v1.png",
-    "generated": "exec-97228a5f-c3a1-4f8c-86d0-0050e3a9bb7d.png",
+    "name": "well-courtyard-expanded-v2.png",
+    "generated": "exec-551588e3-39eb-477b-b1fd-5e12303d9e2b.png",
     "regions": [
       [
-        1285,
         0,
-        1445,
-        280
+        0,
+        72,
+        887
       ],
       [
-        30,
-        75,
-        130,
-        450
+        1702,
+        0,
+        1774,
+        887
       ],
       [
-        1644,
-        75,
-        1744,
-        485
+        0,
+        470,
+        125,
+        670
+      ],
+      [
+        1649,
+        470,
+        1774,
+        670
+      ],
+      [
+        1180,
+        0,
+        1550,
+        330
       ]
     ],
     "generatedSize": [
-      1774,
-      887
+      2161,
+      728
     ],
-    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
+    "revision": "2026-10-11 bilateral expansion after floating door rejection; upper structural bay fully redrawn",
     "protectedRegions": [
-      [
-        112,
-        50,
-        205,
-        325
-      ],
       [
         54,
         325,
@@ -48,25 +54,24 @@
         521
       ],
       [
-        1580,
-        50,
-        1660,
-        380
-      ],
-      [
         1572,
         376,
         1718,
         550
-      ],
-      [
-        1430,
-        110,
-        1545,
-        286
       ]
     ],
-    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly."
+    "sourceAlignment": "Generated layer normalized to2638x887; approved original at(432,0) preserved outside local transition/top-exit masks. Mask rectangles use ORIGINAL coordinates.",
+    "mode": "extend-canvas-local",
+    "outputSize": [
+      2638,
+      887
+    ],
+    "originalOffset": [
+      432,
+      0
+    ],
+    "feather": 32,
+    "originalName": "well-courtyard-v1.png"
   },
   {
     "id": "pond-day",
@@ -231,40 +236,46 @@
   },
   {
     "id": "well-night",
-    "name": "well-courtyard-v1-night.png",
-    "generated": "exec-a55f27cf-a803-47a8-b635-863b8f01754a.png",
+    "name": "well-courtyard-expanded-v2-night.png",
+    "generated": "exec-ed383b0a-1db9-4dd6-a839-b7a143a3ad9b.png",
     "regions": [
       [
-        1285,
         0,
-        1445,
-        280
+        0,
+        72,
+        887
       ],
       [
-        30,
-        75,
-        130,
-        450
+        1702,
+        0,
+        1774,
+        887
       ],
       [
-        1644,
-        75,
-        1744,
-        485
+        0,
+        470,
+        125,
+        670
+      ],
+      [
+        1649,
+        470,
+        1774,
+        670
+      ],
+      [
+        1180,
+        0,
+        1550,
+        330
       ]
     ],
     "generatedSize": [
-      1774,
-      887
+      2161,
+      728
     ],
-    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
+    "revision": "2026-10-11 bilateral expansion after floating door rejection; upper structural bay fully redrawn",
     "protectedRegions": [
-      [
-        112,
-        50,
-        205,
-        325
-      ],
       [
         54,
         325,
@@ -278,25 +289,24 @@
         521
       ],
       [
-        1580,
-        50,
-        1660,
-        380
-      ],
-      [
         1572,
         376,
         1718,
         550
-      ],
-      [
-        1430,
-        110,
-        1545,
-        286
       ]
     ],
-    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly."
+    "sourceAlignment": "Generated layer normalized to2638x887; approved original at(432,0) preserved outside local transition/top-exit masks. Mask rectangles use ORIGINAL coordinates.",
+    "mode": "extend-canvas-local",
+    "outputSize": [
+      2638,
+      887
+    ],
+    "originalOffset": [
+      432,
+      0
+    ],
+    "feather": 32,
+    "originalName": "well-courtyard-v1-night.png"
   },
   {
     "id": "pond-night",

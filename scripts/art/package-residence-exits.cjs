@@ -5,11 +5,26 @@ const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 (async()=>{
  const spec=JSON.parse(fs.readFileSync(process.argv[2]||path.join(out,'regions.json'),'utf8'));const records=[];
  for(const job of spec){
-  const src=path.join(base,job.name),editFile=path.join(out,'sources',job.id+'.png');
+  const src=path.join(base,job.originalName||job.name),editFile=path.join(out,'sources',job.id+'.png');
   if(!fs.existsSync(editFile))fs.copyFileSync(path.join('/workspace/generated_images',job.generated),editFile);
   const original=await sharp(src).ensureAlpha().raw().toBuffer({resolveWithObject:true});
   const {width:ow,height:oh}=original.info;const [w,h]=job.outputSize||[ow,oh];const edited=await sharp(editFile).metadata();
   if(edited.width!==w||edited.height!==h)throw Error('Generated source dimensions differ: '+job.id);
+  if(job.mode==='extend-canvas-local'){
+   const [dx,dy]=job.originalOffset,feather=job.feather||32;
+   if(dx<0||dy<0||dx+ow>w||dy+oh>h)throw Error('Original does not fit expanded canvas');
+   const generated=await sharp(editFile).ensureAlpha().raw().toBuffer(),result=Buffer.from(generated);let outside=0,changed=0;
+   for(let y=0;y<oh;y++)for(let x=0;x<ow;x++){
+    let a=0;for(const[l,t,r,b]of job.regions){if(x<l||x>=r||y<t||y>=b)continue;const dist=Math.min(l===0?feather:x-l,t===0?feather:y-t,r===ow?feather:r-1-x,b===oh?feather:b-1-y);a=Math.max(a,Math.min(1,dist/feather));}
+    if((job.protectedRegions||[]).some(([l,t,r,b])=>x>=l&&x<r&&y>=t&&y<b))a=0;
+    const oi=(y*ow+x)*4,ni=((y+dy)*w+x+dx)*4;
+    for(let c=0;c<4;c++)result[ni+c]=Math.round(original.data[oi+c]*(1-a)+generated[ni+c]*a);
+    const differs=!result.subarray(ni,ni+4).equals(original.data.subarray(oi,oi+4));if(differs)changed++;if(!a&&differs)outside++;
+   }
+   if(outside)throw Error('Protected expanded-map pixels changed');
+   const target=path.join(out,job.name);await sharp(result,{raw:{width:w,height:h,channels:4}}).png().toFile(target);
+   records.push({id:job.id,mode:job.mode,source:path.relative(root,src),output:path.relative(root,target),sourceSize:[ow,oh],size:[w,h],originalOffset:[dx,dy],editRegionsOriginalCoordinates:job.regions,protectedRegionsOriginalCoordinates:job.protectedRegions,feather,revision:job.revision,generatedSize:job.generatedSize,sourceAlignment:job.sourceAlignment,changedOriginalPixelCount:changed,changedProtectedPixelCount:outside,extensionPixelCount:w*h-ow*oh,unchangedOutsideRegions:true,sourceSha256:hash(fs.readFileSync(src)),outputSha256:hash(fs.readFileSync(target))});continue;
+  }
   if(job.mode==='extend-right'){
    if(w<=ow||h!==oh)throw Error('Right expansion must keep original height and increase width');
    const result=await sharp(editFile).ensureAlpha().raw().toBuffer();
