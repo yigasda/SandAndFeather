@@ -31,3 +31,12 @@
 `horus-idle-v3-catchlight.png`는 투명 원본, `horus-idle-v3-catchlight-preview.jpg`는 밝은 배경 미리보기다. 게임 적용은 하지 않았다.
 
 [v3 Drive 미리보기](https://drive.google.com/file/d/16fSzzBC5Km8R7ktMEx2eM9YE002sZIDi/view)
+
+## 호루스 v4: 원본의 안광 픽셀만 직접 수정 — v3 대체
+
+사용자가 v3의 커진 동공을 거절했다. v3는 사용하지 않는다. 사용자가 요청한 직접 픽셀 수정 방식으로 승인된 v2(67번) 원본에 돌아가 네 눈의 위쪽 안광 영역만 주변 동공색으로 보간했다. 이미지 재생성을 사용하지 않았다.
+
+`horus-idle-v4-pixel-correction.png`가 최신 검토 원본이다. 2160×728 PNG에서 수정된 픽셀은 총 180개, 네 작은 안광 마스크 밖의 변경은 0개, 알파 변경은 0개다. 동공 외곽 및 크기, 아래쪽 안광, 나머지 캐릭터는 원본과 동일하다. 재현 스크립트는 `scripts/art/horus-remove-catchlights.cjs`, 검증 기록은 `horus-idle-v4-pixel-correction-verification.json`에 있다. JPEG 미리보기는 인코딩에 따른 픽셀 차이가 있을 수 있으며 위 검증은 PNG 원본 기준이다.
+
+- [4방향 Drive 미리보기](https://drive.google.com/file/d/12RI13xm4Kt39t-Is0XHFXR7T6L9uUYv6/view)
+- [정면 확대 Drive 미리보기](https://drive.google.com/file/d/11PapQmPWVtL8zlLFX1LX-04EEFrCAxCN/view)
