@@ -1,0 +1,21 @@
+{
+  "passed": [
+    "cozy HUD loads, status rows do not overlap",
+    "inventory groups/filter/detail retain individual UID/history and existing item actions",
+    "party portraits open full body views; companion selection still works",
+    "Somang character screen retains stats/lessons and both approved full-body expressions",
+    "conversation uses detailed busts; smile selector only changes appearance",
+    "mobile finger swipe scrolls the character screen",
+    "320/360 mobile, landscape, desktop: all tabs and bag stay within screen with scrolling",
+    "light and dark variants remain readable",
+    "visit prepares chat input and folds game without sending a message"
+  ],
+  "hud": {
+    "dateBottom": 81,
+    "chipsTop": 99,
+    "chipsBottom": 127,
+    "hintTop": 136
+  },
+  "pageErrors": [],
+  "failedRequests": []
+}

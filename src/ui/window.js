@@ -19,6 +19,7 @@ import { bagCard } from './items.js';
 import { personCard } from './talk.js';
 import { partyCard, questsCard, somangCard } from './tabs.js';
 import { cardOpen, closeCards, showCard, toast } from './popups.js';
+import { appearanceCard } from './appearance.js';
 
 let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
@@ -65,7 +66,14 @@ function isDark() {
 }
 export function applyTheme() {
     const dark = isDark();
-    for (const el of [root, chip, document.getElementById('sf_settings'), document.getElementById('sf_pick')]) el?.classList.toggle('sf_dark', dark);
+    const s = settings();
+    for (const el of [root, chip, document.getElementById('sf_settings'), document.getElementById('sf_pick')]) if (el) {
+        el.classList.toggle('sf_dark', dark);
+        el.dataset.uiTheme = s.uiTheme;
+    }
+    const themeSelect=document.getElementById('sf_ui_theme'), brightness=document.getElementById('sf_theme');
+    if(themeSelect)themeSelect.value=s.uiTheme;
+    if(brightness)brightness.value=s.theme;
 }
 
 function build() {
@@ -86,6 +94,7 @@ function build() {
     hud.collapse.addEventListener('click', foldGame);
     hud.talk.addEventListener('click', talk);
     hud.bag.addEventListener('click', () => { if (!cardOpen()) bagCard(ui, map); });
+    hud.appearance.addEventListener('click', () => { if (!cardOpen()) appearanceCard(ui, applyTheme); });
     hud.dateCard.addEventListener('click', openToday);
     hud.mini.addEventListener('click', openMap);
     hud.tabs.addEventListener('click', e => { const b = e.target.closest('.sf_tab'); if (b) pickTab(b.dataset.tab); });

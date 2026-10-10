@@ -18,7 +18,8 @@ const MOVE = new Set(['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyA',
 
 let active = false, onTalk = null;
 function down(e) {
-    if (!active || typing(e)) return;
+    // Popup buttons/radio groups own their keys; arrows must not become movement.
+    if (!active || typing(e) || e.target?.closest?.('.sf_pop_wrap')) return;
     if (MOVE.has(e.code)) { keys.add(e.code); update(); e.preventDefault(); e.stopPropagation(); }
     else if ((e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter') && !e.repeat) { e.preventDefault(); e.stopPropagation(); onTalk?.(); }
 }

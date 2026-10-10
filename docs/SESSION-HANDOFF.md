@@ -2,7 +2,19 @@
 
 최종 갱신: 2026-10-10. 이 문서는 과거 `docs/HANDOFF.md` 및 `/workspace/SandAndFeather-DESIGN-HANDOFF.md`보다 최신이다. 아래 진행 상태가 실제 완료 여부의 기준이다.
 
-## 지금 요청과 진행 상태
+## 최신 상태 — 0.9.0
+
+사용자가 전체 UI **5번 포근한 픽셀 동화**를 확정하고 실제 게임 적용, 미반영 초미니 등록, 대화 상반신과 파티/캐릭터 전신 사용까지 명시적으로 요청했다. 이후 **1~5번 테마 모두 설정에서 선택**하도록 요청했고, 5번 기본값을 유지하며 다섯 테마를 구현하고 검증했다. 변경 전체는 PR #3으로 main에 배포하는 범위다. 아래 0.8.14 및 UI 선택 전 기록보다 이 단락과 문서 마지막의0.9.0 내역이 우선한다. 원격 병합 상태는 GitHub에서 확인한다.
+
+- 새 버전: **0.9.0**. `manifest.json`과 `src/core/settings.js` 일치.
+- 구현/실제 화면: [COZY-UI.md](COZY-UI.md).
+- 테마 선택: 게임 우측 상단 ⚙ → 화면 설정, 또는 확장 설정 → 보기 → UI 테마. 5번 기본. 전역 `settings.uiTheme`(classic/walnut/journal/temple/cozy), 밝기 `settings.theme`는 별도.
+- 모바일 화면: https://drive.google.com/drive/folders/1jKWH_en5N49dYIqFLhkKLynDLASQXoa7
+- 테마별 맵/정밀 미니 복제 없이 CSS와 작은 SVG로 구현. 선택창/추가 테마 스타일 등 약20KB 이내. 정밀 미니 PNG8개는 총5,187,309바이트 별도.
+- 정밀 미니 UI가 미구현이라는 아래 과거 설명은 이제 유효하지 않다. 구현 완료다.
+- 초미니는 이미 구현된 코드를 함께 배포한다. 새로 재생성하지 않았다.
+
+## 이전 요청과 진행 기록 — 0.8.14
 
 사용자는 세션의 이미지 용량 오류를 걱정해 최대한 자세한 인수인계와 실제 게임 스프라이트 등록을 요청했다. 초미니 4번 셋소호와 같은 비율의 상인을 게임에 등록했고 실제 SillyTavern 검증을 마쳤다. 버전 0.8.14. 변경은 `feat/pocket-chibi-sprites` 브랜치로 전달하며 main 병합 및 사용자 기기의 확장 업데이트는 별도다. 아래 완료 내역과 제한을 반드시 읽는다.
 
@@ -218,3 +230,43 @@ node tools/art/verify-full-map.cjs /tmp/pocket-map-regression
 - 로컬 원본 경로/프롬프트/Drive 매핑: `/workspace/ui-concepts-20261010/manifest.json`.
 - 각각 한 장씩 축소 확인했고 Drive 파일 업로드 후 메타데이터를 확인했다.
 - 추천 의견은 1번이 정통 쯔꾸르, 3번이 여행수첩 분위기, 5번이 현재 맵과 초미니에 포근하게 어울린다는 것. **사용자가 선택했다는 뜻은 아니다.**
+
+
+## 0.9.0 상세 인수인계
+
+### 확정사항과 실제 구현
+
+- 전체 UI는5번 확정이다. 기존 UI 시안5장 중 다시 고르게 하지 않는다.
+- `style.css` 마지막의0.9 섹션이 테마를 담당한다. 크림색 패널, 짙은 갈색 헤더, 주황색 선택, SVG 테두리/꽃, 모바일 HUD/탭/공통팝업을 함께 적용했다. 다크 모드는 따뜻한 크림색을 조금 더 어둡게 조정한다.
+- 말 걸기 창에서 세트/호루스의 상반신과 소망 상반신을 표시한다. 소망의 다문 미소/활짝 웃기 버튼은 외형만 바꾼다. 자동 표정 추론이나 AI 대사 생성 기능이 아니다.
+- 파티는3명 전신을 보여주고 누르면 확대한다. 소망 상세도 전신/표정/확대와 기존 능력치/배움 목표를 제공한다.
+- `src/ui/portraits.js`의 `portrait`, `somangPortrait`, `conversationPortraits`, `characterDetail`을 이용한다. `src/ui/popups.js`의kind는 DOM data-kind로 종류를 구분한다.
+- 정밀 미니 전신과 상반신은 확정 원본을 자른PNG다. 원본 외형은 새로 그리지 않았다. `/data/art/portraits/`의8개 파일을 확인한다. `tools/art/pack-portraits.cjs`에 원본 크롭 좌표가 있다.
+- `docs/art/ui-approved-05.png`의 아이템 그림 일부를 잘라서 가방에 사용한다. 재현 스크립트 `tools/art/pack-ui-icons.cjs`. 수량 글자는 별도의 실제 데이터 렌더링이다. 나머지 아이템은 기존아이콘을 사용한다.
+- 가방 묶음 키는 item.id/opened/talked. 실제 저장 아이템을 합치지 않는다. 상세는 그 묶음의 최신 UID를 사용하며 기존 열기/찾아가기/지금 꺼내기 흐름이 유지된다.
+- 파티 선택 후 저장이 끝날 때 닫은 창을 다시 여는 기존경쟁상태를 수정했다. 현재 열린 선택패널만 갱신하므로 창닫기/다른탭열기를 되돌리지 않는다.
+
+### 검증과 재현
+
+`node tools/art/verify-cozy-ui.cjs docs/consult/cozy-ui`로 실제 SillyTavern 테스트를 재현한다. 서버8000과 테스트용 채팅이 필요하다. 다른 ST 테스트와 동시 실행하지 않는다. UI9개 검사와 기존맵12개 검사 통과, 페이지오류/확장파일요청실패0이다. 손가락 터치 스크롤도 CDP 입력으로 검증했다. 대화 이동은 입력칸에만 준비하고 채팅 메시지수는 변하지 않는지 확인한다. 검증후 채팅메타데이터, 테마설정, 입력칸을 복원한다.
+
+`docs/consult/cozy-ui/`에 실제 모바일/데스크톱 PNG들과 verification.json, map-regression.json이 있다. 화면은 테스트 가방을 채운 별도테스트채팅에서 찍은 것이다. 사용자의 실제 인벤토리 내용으로 오해하지 않는다.
+
+### 아직 없는 기능
+
+- 독립적인 다리 교대 걷기 애니메이션. 초미니4방향과 기존bob은 유지한다.
+- 실제 RP 메시지를 읽어 표정을 자동 전환하는 기능. 표정은 화면에서 사용자가 선택한다.
+- UI 시안의 예시HP/MP/캐릭터레벨을 새 게임규칙으로 추가하지 않았다. 기존실제수치만 표시한다.
+- 사용자기기 업데이트는 SillyTavern 확장 업데이트와 새로고침으로 받는다. main 버전과 설치버전부터 확인한다.
+
+
+### 다섯 테마 추가 구현과 검증
+
+- `src/core/settings.js`의 `UI_THEMES`, `uiTheme` 기본값/유효성 검사.
+- `src/ui/appearance.js` 게임 내 테마 라디오와 밝기 선택. 키보드 방향키/Home/End도 동작한다.
+- `src/ui/window.js`의 `applyTheme()`가 게임·접기칩·아이템선택창·확장설정에 `data-ui-theme`와 밝기를 함께 반영하고 서랍의 select를 동기화한다.
+- `style.css` 마지막 부분에 공통 선택창과 각 테마 스타일. 3번은 실제 목록형 가방과 가로 파티 카드이다.
+- `src/world/input.js`: 팝업 내부 키 입력은 팝업이 처리하도록 이동 capture handler에서 제외했다.
+- `tools/art/verify-ui-themes.cjs` 전체8검사 통과. 5종 × 모바일320/412/데스크톱1280에서 가방/파티/대화, 밝기 변경, 저장→서버 설정 저장 응답→실제 페이지 재로드까지 검사했다. `docs/consult/ui-themes/verification.json`.
+- 최종 기존맵12검사도 다시 통과했다. 낮/밤 원본 비교 각1,462,272픽셀 불일치0.
+- 전체 테마 검증 PNG25장은 `/workspace/ui-theme-verification-20261010/`에 보존. 저장소에는 대표6장만 포함하여 용량을 줄였다. Drive 링크는 `docs/consult/ui-themes/drive-links.json`.

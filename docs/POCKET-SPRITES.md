@@ -13,7 +13,7 @@
 - 게임에서 셀 크기는20×20 논리px. 발 좌표와 충돌 크기는 기존대로 유지한다.
 - 호루스는 날개 없이, 정면 화면 오른쪽에만 눈 문양을 가진다. 좌우 이미지를 따로 사용한다.
 - 방향별 정지 이미지와 기존 이동bob을 사용한다. 별도의 다리 교대 애니메이션은 이번 작업 범위에 없다.
-- 정밀 미니는 [보존 폴더](art/sprites/approved)에 남겼다. 대화/파티 화면에 표시하는 기능은 아직 구현하지 않았다.
+- 정밀 미니는 [보존 폴더](art/sprites/approved)에 남겼다. 0.9.0부터 대화 상반신과 파티/캐릭터 전신에 연결했다. [현재 구현](COZY-UI.md).
 - [방향 원본](art/sprites/pocket-directions-source.png), [런타임 확대판](consult/pocket-chibi/board.png), [전체 맵](consult/pocket-chibi/map.png).
 
 ## 검증

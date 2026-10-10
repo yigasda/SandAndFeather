@@ -1,0 +1,82 @@
+{
+  "passed": [
+    "extension data loads without validation errors",
+    "entire day/night background matches approved atlas (night tint applied)",
+    "all places/NPCs/adventure anchors/secrets/obelisks reachable before and after works",
+    "real keyboard movement stops at illustrated kitchen wall",
+    "mobile touch-pad movement on wide road",
+    "market/kitchen/scriptorium/temple/training/dock/NPC interactions align with art",
+    "Duat day/night gate interactions",
+    "walk to Duat and back; dock ends at visible water",
+    "approved building silhouette hides rear actor and preserves front actor; canvas release",
+    "completed canal/field overlays and repaired boat remain functional",
+    "saved position inside moved building safely returns to spawn",
+    "fold/reopen and context restoration restore map"
+  ],
+  "pixels": [
+    {
+      "part": "day",
+      "pixels": 1462272,
+      "mismatch": 0
+    },
+    {
+      "part": "night",
+      "pixels": 1462272,
+      "mismatch": 0
+    }
+  ],
+  "reachability": [
+    {
+      "open": [],
+      "tiles": 2980,
+      "unreachable": [],
+      "blockedNpcs": []
+    },
+    {
+      "open": [
+        "canal",
+        "field",
+        "garden"
+      ],
+      "tiles": 3017,
+      "unreachable": [],
+      "blockedNpcs": []
+    }
+  ],
+  "approach": {
+    "atGate": 9.879999999999967,
+    "back": 19.680000000000007,
+    "dockEnd": 30.150000000000013
+  },
+  "occlusion": {
+    "samples": [
+      [
+        30,
+        27,
+        24,
+        255
+      ],
+      [
+        255,
+        0,
+        0,
+        255
+      ]
+    ],
+    "released": true
+  },
+  "works": {
+    "done": [
+      "canal",
+      "field",
+      "boat"
+    ],
+    "open": [
+      "canal",
+      "field"
+    ],
+    "changes": 766,
+    "boat": true
+  },
+  "pageErrors": []
+}
