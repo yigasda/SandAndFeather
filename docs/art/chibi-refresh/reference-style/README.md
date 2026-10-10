@@ -12,3 +12,9 @@
 [Google Drive 미리보기](https://drive.google.com/file/d/1858lBxUOODMo6hx5clLYEannzxuBk2T4/view)
 
 기존 게임 코드와 런타임 이미지는 수정하지 않았다.
+
+## v2: 소망 앞머리와 곱슬 끝 수정
+
+사용자가 v1의 그림체를 좋아하며 소망의 시스루뱅과 가볍고 퐁실한 곱슬 끝을 요청했다. `trio-v2-somang-hair.png`는 해당 머리 부분을 수정한 최신 검토 시안이며, JPG는 밝은 배경 미리보기다. 가는 앞머리 사이로 이마가 비치게 하고 머리 끝을 분리된 느슨한 컬로 표현했다.
+
+[v2 Google Drive 미리보기](https://drive.google.com/file/d/1eOH0Lg7CvGj5J50gUy7c9c6Dw7uUYvTs/view)
