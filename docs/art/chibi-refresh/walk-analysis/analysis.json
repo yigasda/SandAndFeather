@@ -1,0 +1,1344 @@
+{
+ "set-front": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 34977,
+     "cx": 175.6,
+     "cy": 187.9,
+     "left": 39,
+     "right": 319,
+     "lowest": 322
+    },
+    "face": {
+     "area": 9235,
+     "cx": 169.6,
+     "cy": 165.5,
+     "left": 81,
+     "right": 259,
+     "top": 104,
+     "bottom": 220
+    },
+    "bodyCx": 169.0,
+    "faceMinusBody": 0.6,
+    "feet": {
+     "left": 80,
+     "right": 257
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 34585,
+     "cx": 176.3,
+     "cy": 188.1,
+     "left": 42,
+     "right": 317,
+     "lowest": 322
+    },
+    "face": {
+     "area": 9271,
+     "cx": 171.5,
+     "cy": 165.2,
+     "left": 83,
+     "right": 260,
+     "top": 104,
+     "bottom": 220
+    },
+    "bodyCx": 171.5,
+    "faceMinusBody": 0.0,
+    "feet": {
+     "left": 102,
+     "right": 255
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 34151,
+     "cx": 176.7,
+     "cy": 186.1,
+     "left": 44,
+     "right": 315,
+     "lowest": 322
+    },
+    "face": {
+     "area": 9229,
+     "cx": 173.4,
+     "cy": 166.2,
+     "left": 84,
+     "right": 262,
+     "top": 104,
+     "bottom": 220
+    },
+    "bodyCx": 173.5,
+    "faceMinusBody": -0.1,
+    "feet": {
+     "left": 82,
+     "right": 248
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": -0.7,
+    "hairCY": -0.2,
+    "hairLeft": -3,
+    "hairRight": 2,
+    "hairLowest": 0,
+    "faceCX": -1.9,
+    "faceCY": 0.3,
+    "faceWidth": 1,
+    "bodyCX": -2.5
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": 0.4,
+    "hairCY": -2.0,
+    "hairLeft": 2,
+    "hairRight": -2,
+    "hairLowest": 0,
+    "faceCX": 1.9,
+    "faceCY": 1.0,
+    "faceWidth": 1,
+    "bodyCX": 2.0
+   }
+  },
+  "headChange": {
+   "0": 0.172,
+   "2": 0.155
+  }
+ },
+ "set-back": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 49881,
+     "cx": 184.2,
+     "cy": 194.1,
+     "left": 44,
+     "right": 315,
+     "lowest": 322
+    },
+    "bodyCx": null,
+    "feet": {
+     "left": 123,
+     "right": 258
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 49509,
+     "cx": 180.1,
+     "cy": 195.5,
+     "left": 46,
+     "right": 312,
+     "lowest": 322
+    },
+    "bodyCx": null,
+    "feet": {
+     "left": 145,
+     "right": 208
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 50304,
+     "cx": 181.5,
+     "cy": 195.8,
+     "left": 45,
+     "right": 313,
+     "lowest": 322
+    },
+    "bodyCx": null,
+    "feet": {
+     "left": 118,
+     "right": 256
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": 4.1,
+    "hairCY": -1.4,
+    "hairLeft": -2,
+    "hairRight": 3,
+    "hairLowest": 0
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": 1.4,
+    "hairCY": 0.3,
+    "hairLeft": -1,
+    "hairRight": 1,
+    "hairLowest": 0
+   }
+  },
+  "headChange": {
+   "0": 0.146,
+   "2": 0.08
+  }
+ },
+ "set-left": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 38566,
+     "cx": 180.9,
+     "cy": 180.1,
+     "left": 40,
+     "right": 319,
+     "lowest": 322
+    },
+    "face": {
+     "area": 5244,
+     "cx": 118.8,
+     "cy": 164.4,
+     "left": 76,
+     "right": 199,
+     "top": 103,
+     "bottom": 216
+    },
+    "bodyCx": 144.5,
+    "faceMinusBody": -25.7,
+    "feet": {
+     "left": 73,
+     "right": 252
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 38892,
+     "cx": 178.9,
+     "cy": 180.7,
+     "left": 38,
+     "right": 320,
+     "lowest": 322
+    },
+    "face": {
+     "area": 5042,
+     "cx": 117.4,
+     "cy": 165.6,
+     "left": 76,
+     "right": 198,
+     "top": 105,
+     "bottom": 217
+    },
+    "bodyCx": 151.6,
+    "faceMinusBody": -34.2,
+    "feet": {
+     "left": 95,
+     "right": 262
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 38116,
+     "cx": 180.5,
+     "cy": 177.9,
+     "left": 40,
+     "right": 319,
+     "lowest": 322
+    },
+    "face": {
+     "area": 5175,
+     "cx": 119.4,
+     "cy": 165.8,
+     "left": 77,
+     "right": 200,
+     "top": 105,
+     "bottom": 219
+    },
+    "bodyCx": 159.7,
+    "faceMinusBody": -40.3,
+    "feet": {
+     "left": 90,
+     "right": 259
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": 2.0,
+    "hairCY": -0.6,
+    "hairLeft": 2,
+    "hairRight": -1,
+    "hairLowest": 0,
+    "faceCX": 1.4,
+    "faceCY": -1.2,
+    "faceWidth": 1,
+    "bodyCX": -7.1
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": 1.6,
+    "hairCY": -2.8,
+    "hairLeft": 2,
+    "hairRight": -1,
+    "hairLowest": 0,
+    "faceCX": 2.0,
+    "faceCY": 0.2,
+    "faceWidth": 1,
+    "bodyCX": 8.1
+   }
+  },
+  "headChange": {
+   "0": 0.118,
+   "2": 0.15
+  }
+ },
+ "set-right": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 39785,
+     "cx": 174.4,
+     "cy": 176.6,
+     "left": 39,
+     "right": 320,
+     "lowest": 322
+    },
+    "face": {
+     "area": 5430,
+     "cx": 236.4,
+     "cy": 168.4,
+     "left": 152,
+     "right": 281,
+     "top": 107,
+     "bottom": 220
+    },
+    "bodyCx": 198.8,
+    "faceMinusBody": 37.6,
+    "feet": {
+     "left": 148,
+     "right": 273
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 39639,
+     "cx": 175.5,
+     "cy": 176.5,
+     "left": 39,
+     "right": 320,
+     "lowest": 322
+    },
+    "face": {
+     "area": 5491,
+     "cx": 235.0,
+     "cy": 167.9,
+     "left": 151,
+     "right": 281,
+     "top": 108,
+     "bottom": 220
+    },
+    "bodyCx": 195.9,
+    "faceMinusBody": 39.1,
+    "feet": {
+     "left": 134,
+     "right": 238
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 39778,
+     "cx": 173.8,
+     "cy": 178.4,
+     "left": 40,
+     "right": 319,
+     "lowest": 322
+    },
+    "face": {
+     "area": 5376,
+     "cx": 235.5,
+     "cy": 169.2,
+     "left": 151,
+     "right": 280,
+     "top": 107,
+     "bottom": 220
+    },
+    "bodyCx": 199.1,
+    "faceMinusBody": 36.4,
+    "feet": {
+     "left": 115,
+     "right": 273
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": -1.1,
+    "hairCY": 0.1,
+    "hairLeft": 0,
+    "hairRight": 0,
+    "hairLowest": 0,
+    "faceCX": 1.4,
+    "faceCY": 0.5,
+    "faceWidth": -1,
+    "bodyCX": 2.9
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": -1.7,
+    "hairCY": 1.9,
+    "hairLeft": 1,
+    "hairRight": -1,
+    "hairLowest": 0,
+    "faceCX": 0.5,
+    "faceCY": 1.3,
+    "faceWidth": -1,
+    "bodyCX": 3.2
+   }
+  },
+  "headChange": {
+   "0": 0.098,
+   "2": 0.117
+  }
+ },
+ "somang-front": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 36559,
+     "cx": 181.7,
+     "cy": 157.0,
+     "left": 40,
+     "right": 319,
+     "lowest": 322
+    },
+    "face": {
+     "area": 4243,
+     "cx": 182.9,
+     "cy": 186.2,
+     "left": 97,
+     "right": 271,
+     "top": 100,
+     "bottom": 219
+    },
+    "bodyCx": 179.6,
+    "faceMinusBody": 3.3,
+    "feet": {
+     "left": 124,
+     "right": 238
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 36041,
+     "cx": 180.6,
+     "cy": 156.2,
+     "left": 44,
+     "right": 315,
+     "lowest": 322
+    },
+    "face": {
+     "area": 4197,
+     "cx": 181.2,
+     "cy": 186.9,
+     "left": 96,
+     "right": 268,
+     "top": 100,
+     "bottom": 220
+    },
+    "bodyCx": 178.1,
+    "faceMinusBody": 3.1,
+    "feet": {
+     "left": 117,
+     "right": 236
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 36078,
+     "cx": 181.4,
+     "cy": 155.7,
+     "left": 43,
+     "right": 315,
+     "lowest": 322
+    },
+    "face": {
+     "area": 4300,
+     "cx": 183.1,
+     "cy": 186.6,
+     "left": 98,
+     "right": 271,
+     "top": 102,
+     "bottom": 219
+    },
+    "bodyCx": 180.7,
+    "faceMinusBody": 2.4,
+    "feet": {
+     "left": 119,
+     "right": 237
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": 1.1,
+    "hairCY": 0.8,
+    "hairLeft": -4,
+    "hairRight": 4,
+    "hairLowest": 0,
+    "faceCX": 1.7,
+    "faceCY": -0.7,
+    "faceWidth": 2,
+    "bodyCX": 1.5
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": 0.8,
+    "hairCY": -0.5,
+    "hairLeft": -1,
+    "hairRight": 0,
+    "hairLowest": 0,
+    "faceCX": 1.9,
+    "faceCY": -0.3,
+    "faceWidth": 1,
+    "bodyCX": 2.6
+   }
+  },
+  "headChange": {
+   "0": 0.106,
+   "2": 0.175
+  }
+ },
+ "somang-back": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 42815,
+     "cx": 177.6,
+     "cy": 163.0,
+     "left": 43,
+     "right": 316,
+     "lowest": 322
+    },
+    "bodyCx": 178.6,
+    "feet": {
+     "left": 110,
+     "right": 242
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 43442,
+     "cx": 177.7,
+     "cy": 162.1,
+     "left": 41,
+     "right": 318,
+     "lowest": 322
+    },
+    "bodyCx": 178.2,
+    "feet": {
+     "left": 108,
+     "right": 249
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 42803,
+     "cx": 177.0,
+     "cy": 162.0,
+     "left": 45,
+     "right": 313,
+     "lowest": 322
+    },
+    "bodyCx": 173.0,
+    "feet": {
+     "left": 104,
+     "right": 239
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": -0.1,
+    "hairCY": 0.9,
+    "hairLeft": 2,
+    "hairRight": -2,
+    "hairLowest": 0,
+    "bodyCX": 0.4
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": -0.7,
+    "hairCY": -0.1,
+    "hairLeft": 4,
+    "hairRight": -5,
+    "hairLowest": 0,
+    "bodyCX": -5.2
+   }
+  },
+  "headChange": {
+   "0": 0.107,
+   "2": 0.086
+  }
+ },
+ "somang-left": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 36891,
+     "cx": 179.8,
+     "cy": 155.9,
+     "left": 57,
+     "right": 301,
+     "lowest": 322
+    },
+    "face": {
+     "area": 2395,
+     "cx": 133.3,
+     "cy": 187.3,
+     "left": 85,
+     "right": 201,
+     "top": 104,
+     "bottom": 220
+    },
+    "bodyCx": 147.3,
+    "faceMinusBody": -14.0,
+    "feet": {
+     "left": 79,
+     "right": 224
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 36594,
+     "cx": 179.2,
+     "cy": 156.5,
+     "left": 57,
+     "right": 301,
+     "lowest": 322
+    },
+    "face": {
+     "area": 2419,
+     "cx": 134.3,
+     "cy": 186.6,
+     "left": 86,
+     "right": 201,
+     "top": 105,
+     "bottom": 219
+    },
+    "bodyCx": 152.2,
+    "faceMinusBody": -17.9,
+    "feet": {
+     "left": 94,
+     "right": 214
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 36688,
+     "cx": 178.4,
+     "cy": 156.5,
+     "left": 54,
+     "right": 305,
+     "lowest": 322
+    },
+    "face": {
+     "area": 2414,
+     "cx": 132.1,
+     "cy": 186.4,
+     "left": 83,
+     "right": 199,
+     "top": 107,
+     "bottom": 220
+    },
+    "bodyCx": 156.8,
+    "faceMinusBody": -24.7,
+    "feet": {
+     "left": 91,
+     "right": 235
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": 0.6,
+    "hairCY": -0.6,
+    "hairLeft": 0,
+    "hairRight": 0,
+    "hairLowest": 0,
+    "faceCX": -1.0,
+    "faceCY": 0.7,
+    "faceWidth": 1,
+    "bodyCX": -4.9
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": -0.8,
+    "hairCY": 0.0,
+    "hairLeft": -3,
+    "hairRight": 4,
+    "hairLowest": 0,
+    "faceCX": -2.2,
+    "faceCY": -0.2,
+    "faceWidth": 1,
+    "bodyCX": 4.6
+   }
+  },
+  "headChange": {
+   "0": 0.075,
+   "2": 0.148
+  }
+ },
+ "somang-right": {
+  "frames": [
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 39595,
+     "cx": 178.7,
+     "cy": 156.1,
+     "left": 48,
+     "right": 311,
+     "lowest": 322
+    },
+    "face": {
+     "area": 2354,
+     "cx": 231.4,
+     "cy": 187.7,
+     "left": 163,
+     "right": 281,
+     "top": 106,
+     "bottom": 220
+    },
+    "bodyCx": 210.6,
+    "faceMinusBody": 20.8,
+    "feet": {
+     "left": 131,
+     "right": 279
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 38701,
+     "cx": 179.2,
+     "cy": 156.0,
+     "left": 51,
+     "right": 307,
+     "lowest": 322
+    },
+    "face": {
+     "area": 2286,
+     "cx": 230.3,
+     "cy": 187.0,
+     "left": 162,
+     "right": 278,
+     "top": 105,
+     "bottom": 219
+    },
+    "bodyCx": 207.4,
+    "faceMinusBody": 22.9,
+    "feet": {
+     "left": 144,
+     "right": 263
+    }
+   },
+   {
+    "top": 40,
+    "bottom": 369,
+    "height": 330,
+    "headCut": 221,
+    "hair": {
+     "area": 39285,
+     "cx": 179.5,
+     "cy": 157.9,
+     "left": 48,
+     "right": 311,
+     "lowest": 322
+    },
+    "face": {
+     "area": 2337,
+     "cx": 230.1,
+     "cy": 190.3,
+     "left": 163,
+     "right": 282,
+     "top": 108,
+     "bottom": 220
+    },
+    "bodyCx": 203.1,
+    "faceMinusBody": 27.0,
+    "feet": {
+     "left": 132,
+     "right": 282
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": -0.5,
+    "hairCY": 0.1,
+    "hairLeft": -3,
+    "hairRight": 4,
+    "hairLowest": 0,
+    "faceCX": 1.1,
+    "faceCY": 0.7,
+    "faceWidth": 2,
+    "bodyCX": 3.2
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": 0.3,
+    "hairCY": 1.9,
+    "hairLeft": -3,
+    "hairRight": 4,
+    "hairLowest": 0,
+    "faceCX": -0.2,
+    "faceCY": 3.3,
+    "faceWidth": 3,
+    "bodyCX": -4.3
+   }
+  },
+  "headChange": {
+   "0": 0.111,
+   "2": 0.148
+  }
+ },
+ "horus-front": {
+  "frames": [
+   {
+    "top": 42,
+    "bottom": 367,
+    "height": 326,
+    "headCut": 221,
+    "hair": {
+     "area": 14648,
+     "cx": 182.7,
+     "cy": 110.7,
+     "left": 80,
+     "right": 279,
+     "lowest": 218
+    },
+    "face": {
+     "area": 7273,
+     "cx": 172.7,
+     "cy": 171.3,
+     "left": 97,
+     "right": 251,
+     "top": 126,
+     "bottom": 216
+    },
+    "bodyCx": 172.0,
+    "faceMinusBody": 0.7,
+    "feet": {
+     "left": 141,
+     "right": 206
+    }
+   },
+   {
+    "top": 41,
+    "bottom": 365,
+    "height": 325,
+    "headCut": 219,
+    "hair": {
+     "area": 15019,
+     "cx": 181.7,
+     "cy": 110.1,
+     "left": 78,
+     "right": 280,
+     "lowest": 218
+    },
+    "face": {
+     "area": 7281,
+     "cx": 175.7,
+     "cy": 171.4,
+     "left": 98,
+     "right": 253,
+     "top": 125,
+     "bottom": 216
+    },
+    "bodyCx": 175.5,
+    "faceMinusBody": 0.2,
+    "feet": {
+     "left": 140,
+     "right": 210
+    }
+   },
+   {
+    "top": 42,
+    "bottom": 367,
+    "height": 326,
+    "headCut": 221,
+    "hair": {
+     "area": 15118,
+     "cx": 181.8,
+     "cy": 110.3,
+     "left": 78,
+     "right": 281,
+     "lowest": 218
+    },
+    "face": {
+     "area": 7294,
+     "cx": 175.8,
+     "cy": 171.5,
+     "left": 98,
+     "right": 254,
+     "top": 125,
+     "bottom": 215
+    },
+    "bodyCx": 174.5,
+    "faceMinusBody": 1.3,
+    "feet": {
+     "left": 137,
+     "right": 205
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 1,
+    "hairCX": 1.0,
+    "hairCY": 0.6,
+    "hairLeft": 2,
+    "hairRight": -1,
+    "hairLowest": 0,
+    "faceCX": -3.0,
+    "faceCY": -0.1,
+    "faceWidth": -1,
+    "bodyCX": -3.5
+   },
+   "2": {
+    "topDy": 1,
+    "hairCX": 0.1,
+    "hairCY": 0.2,
+    "hairLeft": 0,
+    "hairRight": 1,
+    "hairLowest": 0,
+    "faceCX": 0.1,
+    "faceCY": 0.1,
+    "faceWidth": 1,
+    "bodyCX": -1.0
+   }
+  },
+  "headChange": {
+   "0": 0.174,
+   "2": 0.07
+  }
+ },
+ "horus-back": {
+  "frames": [
+   {
+    "top": 44,
+    "bottom": 367,
+    "height": 324,
+    "headCut": 222,
+    "hair": {
+     "area": 24670,
+     "cx": 178.0,
+     "cy": 135.3,
+     "left": 78,
+     "right": 280,
+     "lowest": 221
+    },
+    "bodyCx": 174.5,
+    "feet": {
+     "left": 146,
+     "right": 207
+    }
+   },
+   {
+    "top": 42,
+    "bottom": 367,
+    "height": 326,
+    "headCut": 221,
+    "hair": {
+     "area": 25099,
+     "cx": 179.2,
+     "cy": 135.0,
+     "left": 77,
+     "right": 282,
+     "lowest": 221
+    },
+    "bodyCx": 177.5,
+    "feet": {
+     "left": 141,
+     "right": 213
+    }
+   },
+   {
+    "top": 42,
+    "bottom": 367,
+    "height": 326,
+    "headCut": 221,
+    "hair": {
+     "area": 25063,
+     "cx": 179.0,
+     "cy": 134.7,
+     "left": 77,
+     "right": 282,
+     "lowest": 221
+    },
+    "bodyCx": 177.0,
+    "feet": {
+     "left": 145,
+     "right": 207
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 2,
+    "hairCX": -1.2,
+    "hairCY": 0.3,
+    "hairLeft": 1,
+    "hairRight": -2,
+    "hairLowest": 0,
+    "bodyCX": -3.0
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": -0.2,
+    "hairCY": -0.3,
+    "hairLeft": 0,
+    "hairRight": 0,
+    "hairLowest": 0,
+    "bodyCX": -0.5
+   }
+  },
+  "headChange": {
+   "0": 0.144,
+   "2": 0.054
+  }
+ },
+ "horus-left": {
+  "frames": [
+   {
+    "top": 42,
+    "bottom": 368,
+    "height": 327,
+    "headCut": 221,
+    "hair": {
+     "area": 19103,
+     "cx": 190.1,
+     "cy": 123.0,
+     "left": 78,
+     "right": 281,
+     "lowest": 221
+    },
+    "face": {
+     "area": 4017,
+     "cx": 147.0,
+     "cy": 179.6,
+     "left": 106,
+     "right": 202,
+     "top": 125,
+     "bottom": 220
+    },
+    "bodyCx": 168.0,
+    "faceMinusBody": -21.0,
+    "feet": {
+     "left": 85,
+     "right": 227
+    }
+   },
+   {
+    "top": 42,
+    "bottom": 367,
+    "height": 326,
+    "headCut": 221,
+    "hair": {
+     "area": 19099,
+     "cx": 189.4,
+     "cy": 123.0,
+     "left": 78,
+     "right": 280,
+     "lowest": 221
+    },
+    "face": {
+     "area": 4175,
+     "cx": 146.7,
+     "cy": 179.7,
+     "left": 104,
+     "right": 201,
+     "top": 126,
+     "bottom": 220
+    },
+    "bodyCx": 166.5,
+    "faceMinusBody": -19.8,
+    "feet": {
+     "left": 123,
+     "right": 215
+    }
+   },
+   {
+    "top": 42,
+    "bottom": 368,
+    "height": 327,
+    "headCut": 221,
+    "hair": {
+     "area": 18820,
+     "cx": 189.8,
+     "cy": 122.9,
+     "left": 80,
+     "right": 279,
+     "lowest": 221
+    },
+    "face": {
+     "area": 4032,
+     "cx": 146.8,
+     "cy": 179.6,
+     "left": 105,
+     "right": 202,
+     "top": 126,
+     "bottom": 220
+    },
+    "bodyCx": 171.5,
+    "faceMinusBody": -24.7,
+    "feet": {
+     "left": 96,
+     "right": 245
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 0,
+    "hairCX": 0.7,
+    "hairCY": 0.0,
+    "hairLeft": 0,
+    "hairRight": 1,
+    "hairLowest": 0,
+    "faceCX": 0.3,
+    "faceCY": -0.1,
+    "faceWidth": -1,
+    "bodyCX": 1.5
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": 0.4,
+    "hairCY": -0.1,
+    "hairLeft": 2,
+    "hairRight": -1,
+    "hairLowest": 0,
+    "faceCX": 0.1,
+    "faceCY": -0.1,
+    "faceWidth": 0,
+    "bodyCX": 5.0
+   }
+  },
+  "headChange": {
+   "0": 0.05,
+   "2": 0.059
+  }
+ },
+ "horus-right": {
+  "frames": [
+   {
+    "top": 43,
+    "bottom": 366,
+    "height": 324,
+    "headCut": 221,
+    "hair": {
+     "area": 18510,
+     "cx": 170.4,
+     "cy": 122.5,
+     "left": 78,
+     "right": 282,
+     "lowest": 217
+    },
+    "face": {
+     "area": 4382,
+     "cx": 211.1,
+     "cy": 177.2,
+     "left": 155,
+     "right": 253,
+     "top": 124,
+     "bottom": 219
+    },
+    "bodyCx": 186.0,
+    "faceMinusBody": 25.1,
+    "feet": {
+     "left": 118,
+     "right": 265
+    }
+   },
+   {
+    "top": 41,
+    "bottom": 367,
+    "height": 327,
+    "headCut": 220,
+    "hair": {
+     "area": 19078,
+     "cx": 169.7,
+     "cy": 122.4,
+     "left": 76,
+     "right": 283,
+     "lowest": 219
+    },
+    "face": {
+     "area": 4465,
+     "cx": 211.0,
+     "cy": 178.2,
+     "left": 155,
+     "right": 253,
+     "top": 125,
+     "bottom": 219
+    },
+    "bodyCx": 188.0,
+    "faceMinusBody": 23.0,
+    "feet": {
+     "left": 132,
+     "right": 233
+    }
+   },
+   {
+    "top": 41,
+    "bottom": 366,
+    "height": 326,
+    "headCut": 220,
+    "hair": {
+     "area": 19052,
+     "cx": 169.2,
+     "cy": 122.4,
+     "left": 76,
+     "right": 283,
+     "lowest": 218
+    },
+    "face": {
+     "area": 4427,
+     "cx": 210.3,
+     "cy": 177.5,
+     "left": 154,
+     "right": 253,
+     "top": 125,
+     "bottom": 219
+    },
+    "bodyCx": 182.5,
+    "faceMinusBody": 27.8,
+    "feet": {
+     "left": 115,
+     "right": 265
+    }
+   }
+  ],
+  "motion": {
+   "0": {
+    "topDy": 2,
+    "hairCX": 0.7,
+    "hairCY": 0.1,
+    "hairLeft": 2,
+    "hairRight": -1,
+    "hairLowest": -2,
+    "faceCX": 0.1,
+    "faceCY": -1.0,
+    "faceWidth": 0,
+    "bodyCX": -2.0
+   },
+   "2": {
+    "topDy": 0,
+    "hairCX": -0.5,
+    "hairCY": 0.0,
+    "hairLeft": 0,
+    "hairRight": 0,
+    "hairLowest": -1,
+    "faceCX": -0.7,
+    "faceCY": -0.7,
+    "faceWidth": 1,
+    "bodyCX": -5.5
+   }
+  },
+  "headChange": {
+   "0": 0.081,
+   "2": 0.067
+  }
+ }
+}
