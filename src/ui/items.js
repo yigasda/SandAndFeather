@@ -67,14 +67,16 @@ export function bagCard(ui, map) {
     let close=null, selected=null;
     const select=(group,b)=>{
         selected=group; for(const button of grid.querySelectorAll('button'))button.setAttribute('aria-pressed',String(button===b));
-        const it=group[0], info=itemInfo(it.id)||{};detail.replaceChildren(itemIcon(info,it.id));
+        const it=group[0], info=itemInfo(it.id)||{};
+        const head=document.createElement('div');head.className='sf_inventory_detail_head';
+        const icon=document.createElement('div');icon.className='sf_inventory_icon_frame';icon.append(itemIcon(info,it.id));
+        const identity=document.createElement('div');identity.className='sf_inventory_identity';
         const title=document.createElement('b');title.textContent=nameOf(it);
-        const count=document.createElement('span');count.className='sf_inventory_count';count.textContent=`보유 수량 ${group.length}`;
-        const about=document.createElement('p');about.textContent=it.opened&&info.open?.ko?info.open.ko:info.about||'';
-        const when=document.createElement('small');when.textContent=`${dateLabel(fromDayNumber(it.got))}${fromKo(it)?` · ${fromKo(it)}`:''}${it.talked?' · 말함':''}`;
-        const inspect=document.createElement('button');inspect.type='button';inspect.className='sf_btn sf_primary';inspect.textContent='살펴보기';
-        inspect.addEventListener('click',()=>{close?.();itemCard(ui,map,it.uid);});
-        detail.append(title,count,about,when,inspect);
+        const count=document.createElement('span');count.className='sf_inventory_count';
+        count.append('보유 수량 ');const quantity=document.createElement('strong');quantity.textContent=String(group.length);count.append(quantity);
+        identity.append(title,count);head.append(icon,identity);
+        const about=document.createElement('p');about.className='sf_inventory_description';about.textContent=it.opened&&info.open?.ko?info.open.ko:info.about||'';
+        detail.replaceChildren(head,about);
     };
     const materials=new Set(['material','ingredient','crop','seed']);
     const categories=[['all','전체'],['material','재료'],['food','음식'],['other','기타']];
@@ -87,7 +89,8 @@ export function bagCard(ui, map) {
             const qty=document.createElement('small');qty.textContent=String(group.length);
             const label=document.createElement('span');label.className='sf_inventory_slot_name';label.textContent=nameOf(it);
             b.append(itemIcon(info,it.id),label,qty);
-            b.addEventListener('click',()=>select(group,b));grid.append(b);
+            b.title='선택한 물건을 한 번 더 누르면 자세히 볼 수 있어.';
+            b.addEventListener('click',()=>{if(selected===group){close?.();itemCard(ui,map,it.uid);}else select(group,b);});grid.append(b);
             if(!selected)select(group,b);
         }
         if(!visible.length){const note=document.createElement('p');note.className='sf_note';note.textContent=all.length?'이 분류에는 물건이 없어.':'가방이 비어 있어. 선착장 물가를 살펴봐.';detail.append(note);}

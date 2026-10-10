@@ -1460,3 +1460,56 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 :is(#sf_game,#sf_pick)[data-ui-theme='temple'] { --skin-head-proportion:0.120370370; }
 
 :is(#sf_game,#sf_pick)[data-ui-theme='cozy'] { --skin-head-proportion:0.104477612; }
+
+/* 0.9.2: source-framed icon/identity and separate description, as in concept 5. */
+#sf_game[data-ui-theme] .sf_inventory_detail {
+ --detail-icon:var(--skin-slot);--detail-icon-slice:var(--slice-slot);
+ --detail-description:var(--skin-panel);--detail-description-slice:var(--slice-panel);
+ display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
+ gap:12px;padding:8px;min-height:0;text-align:left;
+}
+#sf_game[data-ui-theme='cozy'] .sf_inventory_detail {
+ --detail-icon:url('data/art/ui/skins/cozy/detail-icon.png');--detail-icon-slice:9;
+ --detail-description:url('data/art/ui/skins/cozy/detail-description.png');--detail-description-slice:10;
+}
+#sf_game[data-ui-theme='classic'] .sf_inventory_detail {
+ --detail-icon:url('data/art/ui/skins/classic/detail-icon.png');--detail-icon-slice:10;
+ --detail-description:url('data/art/ui/skins/classic/detail-description.png');--detail-description-slice:10;
+}
+#sf_game[data-ui-theme] .sf_inventory_detail_head {
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.85fr);align-items:center;gap:12px;min-width:0;
+}
+#sf_game[data-ui-theme] .sf_inventory_icon_frame {
+ display:flex;align-items:center;justify-content:center;aspect-ratio:0.95;min-width:0;
+ border:5px solid transparent;border-image:var(--detail-icon) var(--detail-icon-slice) stretch;
+ background:#f5e5c966;background-clip:padding-box;padding:4px;
+}
+#sf_game[data-ui-theme] .sf_inventory_icon_frame .sf_item_art { width:100%;max-width:70px;max-height:80px;object-fit:contain; }
+#sf_game[data-ui-theme] .sf_inventory_identity { min-width:0; }
+#sf_game[data-ui-theme] .sf_inventory_identity > b {
+ display:block;font-size:17px;line-height:1.4;word-break:keep-all;overflow-wrap:anywhere;
+ padding-bottom:10px;margin-bottom:9px;border-bottom:2px dashed #ccac85;
+}
+#sf_game[data-ui-theme] .sf_inventory_identity .sf_inventory_count { display:block;font-size:14px;line-height:1.5; }
+#sf_game[data-ui-theme] .sf_inventory_count strong { margin-left:7px;color:#372719; }
+#sf_game[data-ui-theme] .sf_inventory_detail .sf_inventory_description {
+ margin:0;min-width:0;flex:1;padding:12px 10px;min-height:78px;font-size:15px;line-height:1.65;
+ border:5px solid transparent;border-image:var(--detail-description) var(--detail-description-slice) stretch;
+ background:#f5e5c944;background-clip:padding-box;overflow-wrap:anywhere;
+}
+/* Keep nested frames pale in the walnut card instead of using its dark item slots. */
+#sf_game[data-ui-theme='walnut'] .sf_inventory_detail { --detail-icon:var(--skin-panel);--detail-icon-slice:var(--slice-panel); }
+@media(max-width:899px){
+ #sf_game[data-ui-theme] .sf_inventory_detail { gap:7px;padding:3px;border-width:6px; }
+ #sf_game[data-ui-theme] .sf_inventory_detail_head { gap:5px;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr); }
+ #sf_game[data-ui-theme] .sf_inventory_icon_frame { border-width:3px;padding:1px; }
+ #sf_game[data-ui-theme] .sf_inventory_identity > b { font-size:12px;padding-bottom:5px;margin-bottom:4px;border-bottom-width:1px; }
+ #sf_game[data-ui-theme] .sf_inventory_identity .sf_inventory_count { font-size:10px; }
+ #sf_game[data-ui-theme] .sf_inventory_count strong { margin-left:2px; }
+ #sf_game[data-ui-theme] .sf_inventory_detail .sf_inventory_description { font-size:12px;border-width:3px;min-height:70px;padding:6px 4px; }
+}
+
+#sf_game[data-ui-theme='journal'] .sf_inventory_detail {
+ --detail-icon:var(--skin-button);--detail-icon-slice:var(--slice-button);
+ --detail-description:var(--skin-button);--detail-description-slice:var(--slice-button);
+}

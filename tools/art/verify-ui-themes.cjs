@@ -34,6 +34,13 @@ await p.setViewportSize(size);
 const overlap=await p.evaluate(()=>{const a=document.querySelector('.sf_appearance').getBoundingClientRect(),b=document.querySelector('.sf_chips').getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;});assert(!overlap,`${id} ${size.width} HUD`);
 if(size.width===412)await shot(`${i+1}-${id}-world`);
 await p.locator('.sf_bag').click();await bounds();
+assert.equal(await p.locator('.sf_inventory_detail_head').count(),1);
+assert.equal(await p.locator('.sf_inventory_detail button,.sf_inventory_detail small').count(),0);
+const detailLayout=await p.locator('.sf_inventory_detail').evaluate(e=>{
+ const icon=e.querySelector('.sf_inventory_icon_frame'),identity=e.querySelector('.sf_inventory_identity'),description=e.querySelector('.sf_inventory_description');
+ const a=icon.getBoundingClientRect(),b=identity.getBoundingClientRect(),c=description.getBoundingClientRect(),outer=e.getBoundingClientRect();
+ return a.right<=b.left+1&&c.top>=Math.max(a.bottom,b.bottom)&&b.right<=outer.right&&c.right<=outer.right&&getComputedStyle(icon).borderImageSource!=='none'&&getComputedStyle(description).borderImageSource!=='none';
+});assert(detailLayout,`${id} ${size.width}: separate icon/identity/description frames`);
 if(size.width===1280)await last().locator('.sf_pop').screenshot({path:path.join(out,`${i+1}-${id}-bag-panel.png`)});
 if(size.width===412)await shot(`${i+1}-${id}-bag`);
 if(id==='journal')assert.equal(await p.locator('.sf_inventory_grid').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),1);
