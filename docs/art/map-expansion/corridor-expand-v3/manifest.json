@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "file": "inner-corridor-expanded-v3.png",
+      "size": [
+        2492,
+        887
+      ],
+      "sha256": "ca17f7c3198bbebe0eb45e4f599a9d961884b58acff3d4a4ec77d9d1214d5392"
+    },
+    {
+      "file": "previews/137-entrance-avatar-scale.png",
+      "size": [
+        1560,
+        650
+      ],
+      "sha256": "2ddf71918ec192e2d52ab5708b933187a99da2024f8f9ee37f8e824e7007acd3"
+    },
+    {
+      "file": "previews/137-inner-before-after.png",
+      "size": [
+        1495,
+        1164
+      ],
+      "sha256": "2a74cdddc87eb915bdfb668fa26aa73c9b9ea342f8560628a9f5fa39a98d05d4"
+    },
+    {
+      "file": "sources/inner-outpaint.png",
+      "size": [
+        2101,
+        748
+      ],
+      "sha256": "8ddb04e9104e7d4fe99ebfb20dda6c3f6fc33a8a17e0aeaff1bf4c02b9dc5170"
+    }
+  ]
+}

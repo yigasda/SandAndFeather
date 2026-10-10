@@ -1,0 +1,72 @@
+{
+  "status": {
+    "day": "user-approved option 3",
+    "night": "review-only",
+    "runtime": "not applied"
+  },
+  "imageSize": [
+    2160,
+    887
+  ],
+  "daySource": "../well-review-three-v3/option-3.png",
+  "dayByteIdentical": true,
+  "sharedExitProposals": [
+    {
+      "name": "kitchen-left",
+      "thresholdPx": [
+        42,
+        518,
+        185,
+        628
+      ],
+      "suggestedArrivalPx": [
+        158,
+        650
+      ]
+    },
+    {
+      "name": "dining-right",
+      "thresholdPx": [
+        1973,
+        518,
+        2119,
+        628
+      ],
+      "suggestedArrivalPx": [
+        2000,
+        650
+      ]
+    },
+    {
+      "name": "pond-upper-right",
+      "thresholdPx": [
+        1455,
+        226,
+        1641,
+        277
+      ],
+      "suggestedArrivalPx": [
+        1548,
+        310
+      ]
+    },
+    {
+      "name": "south-existing",
+      "thresholdPx": [
+        813,
+        842,
+        1280,
+        887
+      ],
+      "suggestedArrivalPx": [
+        1047,
+        795
+      ]
+    }
+  ],
+  "notes": [
+    "Coordinates visually estimated on selected day image; use same on night. Not measured runtime triggers.",
+    "No simple offset from old 1774x887 map; selected option3 is 2160x887. Opus must fit collision to selected image.",
+    "Night is a lighting edit, not pixel-identical to day; SIFT correspondence median displacement 0.84px, p95 2.06px (1667 inliers). This does not prove all pixels or landmarks identical."
+  ]
+}

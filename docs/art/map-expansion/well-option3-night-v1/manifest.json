@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "file": "previews/138-well-option3-day-night.png",
+      "size": [
+        1512,
+        1342
+      ],
+      "sha256": "753c4e0e82054ad5b562cad3d65b6879abc8b08fa5d8313dcca033697bc916a6"
+    },
+    {
+      "file": "sources/night-edit.png",
+      "size": [
+        1956,
+        804
+      ],
+      "sha256": "65ae8e5e82f87e5e20e8bdc4464731eaec61da2c619b1f35df5c016600ded1a9"
+    },
+    {
+      "file": "well-courtyard-option3-day.png",
+      "size": [
+        2160,
+        887
+      ],
+      "sha256": "9398d91d6e344c65935b1566249a16d14e42df79cb50d64cef91148ee9955292"
+    },
+    {
+      "file": "well-courtyard-option3-night.png",
+      "size": [
+        2160,
+        887
+      ],
+      "sha256": "7c4a7ee96e4171667fc90f7936d49ed638a05b8ab5a5432fe13b337eb38ddd51"
+    }
+  ]
+}
