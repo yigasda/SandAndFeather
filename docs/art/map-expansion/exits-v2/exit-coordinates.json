@@ -1,16 +1,16 @@
 {
   "coordinateConvention": "Image pixels; origin top-left; boxes [left,top,right,bottom], right/bottom exclusive; arrivals are feet anchors.",
-  "status": "Art handoff; suggested triggers/arrivals require collision and traversal validation by Opus; not runtime configuration.",
+  "status": "Expanded well proposal is NOT runtime configuration. Other 7 art maps were integrated in0.9.20; their current collision/entry behavior is in tools/maps/residence.py. This JSON is art guidance, not authoritative runtime values.",
   "scenes": [
     {
       "scene": "temple_courtyard",
       "name": "우물 마당",
       "files": [
-        "well-courtyard-v1.png",
-        "well-courtyard-v1-night.png"
+        "well-courtyard-expanded-v2.png",
+        "well-courtyard-expanded-v2-night.png"
       ],
       "imageSize": [
-        1774,
+        2638,
         887
       ],
       "tileSize": [
@@ -30,21 +30,23 @@
             237.88
           ],
           "visibleThresholdPx": [
-            1325,
-            200,
-            1420,
-            270
+            1735,
+            215,
+            1895,
+            285
           ],
           "suggestedTriggerPx": [
-            1335,
-            215,
-            1410,
-            250
+            1760,
+            250,
+            1860,
+            280
           ],
           "suggestedArrivalPx": [
-            1370,
-            310
-          ]
+            1805,
+            330
+          ],
+          "suggestedArrivalDirection": "down",
+          "exitFacing": "up"
         },
         {
           "entryKey": "west",
@@ -58,23 +60,23 @@
             612.84
           ],
           "visibleThresholdPx": [
-            0,
-            510,
-            60,
-            590
+            92,
+            490,
+            300,
+            535
           ],
           "suggestedTriggerPx": [
-            0,
-            535,
-            45,
-            580
+            125,
+            500,
+            280,
+            535
           ],
           "suggestedArrivalPx": [
-            95,
-            580
+            210,
+            595
           ],
-          "suggestedArrivalDirection": "right",
-          "exitFacing": "left"
+          "suggestedArrivalDirection": "down",
+          "exitFacing": "up"
         },
         {
           "entryKey": "east",
@@ -88,27 +90,65 @@
             612.84
           ],
           "visibleThresholdPx": [
-            1714,
-            535,
-            1774,
-            610
+            2338,
+            490,
+            2546,
+            535
           ],
           "suggestedTriggerPx": [
-            1729,
-            555,
-            1774,
-            600
+            2360,
+            500,
+            2515,
+            535
           ],
           "suggestedArrivalPx": [
-            1675,
-            600
+            2440,
+            595
           ],
-          "suggestedArrivalDirection": "left",
-          "exitFacing": "right"
+          "suggestedArrivalDirection": "down",
+          "exitFacing": "up"
         }
       ],
-      "revision": "2026-10-11 urgent integrated full-height passages, rejected miniature portals removed",
-      "approachNote": "Side exit triggers use clear foreground floor below original stool/bench. Recessed corridor is behind full-height columns; do not route characters through furnishings or column bases. All trigger positions require runtime testing."
+      "revision": "2026-10-11 bilateral expansion; full upper doorway redraw after all three exits rejected",
+      "approachNote": "All three new openings face up. Kitchen/dining entrances are in expanded wings, separate from basin/stool/bench. Preserve original features at original pixel x+432; reproject collision and entries. Old triggers are original-canvas coordinates, not shifted.",
+      "originalImageSize": [
+        1774,
+        887
+      ],
+      "originalOffset": [
+        432,
+        0
+      ],
+      "suggestedTileSize": [
+        33,
+        11
+      ],
+      "canvasExtension": {
+        "left": 432,
+        "right": 432
+      },
+      "tileSizeNote": "tileSize is existing runtime; suggestedTileSize is proposed new map size, not yet applied.",
+      "preservedSouthReference": {
+        "oldTriggerTiles": [
+          8.3,
+          10.25,
+          13.7,
+          11
+        ],
+        "shiftedTriggerPx": [
+          1101.28,
+          826.52,
+          1536.72,
+          887
+        ],
+        "shiftedArrivalPx": [
+          1319,
+          774.11
+        ],
+        "note": "Original south doorway shifts by432px along with all approved original content; do not shift twice."
+      },
+      "runtimeBaselineCommit": "be86ecd",
+      "oldTriggerNote": "oldTriggerPx is pre-0.9.20 historical original map coordinates; current runtime must be read from tools/maps/residence.py after be86ecd."
     },
     {
       "scene": "courtyard_colonnade",

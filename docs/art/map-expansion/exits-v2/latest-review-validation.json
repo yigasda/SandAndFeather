@@ -1,0 +1,25 @@
+[
+  {
+    "file": "well-courtyard-expanded-v2.png",
+    "originalOffset": [
+      432,
+      0
+    ],
+    "changedPixelsOutsideDeclaredOriginalRegions": 0,
+    "protectedFurnitureDifference": 0
+  },
+  {
+    "file": "well-courtyard-expanded-v2-night.png",
+    "originalOffset": [
+      432,
+      0
+    ],
+    "changedPixelsOutsideDeclaredOriginalRegions": 0,
+    "protectedFurnitureDifference": 0
+  },
+  {
+    "approvedPondAndEastUnchanged": true,
+    "approvedIdleSourcesUnchanged": true,
+    "setV1PixelsUnchanged": true
+  }
+]

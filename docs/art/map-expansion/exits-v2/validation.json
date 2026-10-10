@@ -1,39 +1,54 @@
 [
   {
     "id": "well-day",
+    "mode": "extend-canvas-local",
     "source": "docs/art/map-expansion/well-courtyard-v1.png",
-    "output": "docs/art/map-expansion/exits-v2/well-courtyard-v1.png",
-    "size": [
+    "output": "docs/art/map-expansion/exits-v2/well-courtyard-expanded-v2.png",
+    "sourceSize": [
       1774,
       887
     ],
-    "editRegions": [
+    "size": [
+      2638,
+      887
+    ],
+    "originalOffset": [
+      432,
+      0
+    ],
+    "editRegionsOriginalCoordinates": [
       [
-        1285,
         0,
-        1445,
-        280
+        0,
+        72,
+        887
       ],
       [
-        30,
-        75,
-        130,
-        450
+        1702,
+        0,
+        1774,
+        887
       ],
       [
-        1644,
-        75,
-        1744,
-        485
+        0,
+        470,
+        125,
+        670
+      ],
+      [
+        1649,
+        470,
+        1774,
+        670
+      ],
+      [
+        1180,
+        0,
+        1550,
+        330
       ]
     ],
-    "protectedRegions": [
-      [
-        112,
-        50,
-        205,
-        325
-      ],
+    "protectedRegionsOriginalCoordinates": [
       [
         54,
         325,
@@ -47,34 +62,25 @@
         521
       ],
       [
-        1580,
-        50,
-        1660,
-        380
-      ],
-      [
         1572,
         376,
         1718,
         550
-      ],
-      [
-        1430,
-        110,
-        1545,
-        286
       ]
     ],
-    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
+    "feather": 32,
+    "revision": "2026-10-11 bilateral expansion after floating door rejection; upper structural bay fully redrawn",
     "generatedSize": [
-      1774,
-      887
+      2161,
+      728
     ],
-    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly.",
-    "changedPixelCount": 91701,
+    "sourceAlignment": "Generated layer normalized to2638x887; approved original at(432,0) preserved outside local transition/top-exit masks. Mask rectangles use ORIGINAL coordinates.",
+    "changedOriginalPixelCount": 250572,
+    "changedProtectedPixelCount": 0,
+    "extensionPixelCount": 766368,
     "unchangedOutsideRegions": true,
     "sourceSha256": "9af5265a7ae8d9ea990efc6479b607d07edbbe81d6648e6c1e84307bfb9de769",
-    "outputSha256": "4ab9226b34bc68e26ec766bc4009f61ffdbd034668fc7f54ee3de7784ace0505"
+    "outputSha256": "6a37becb10ee6888c05a64078575bdf745a59e72666434ae2debd992654e691e"
   },
   {
     "id": "pond-day",
@@ -293,39 +299,54 @@
   },
   {
     "id": "well-night",
+    "mode": "extend-canvas-local",
     "source": "docs/art/map-expansion/well-courtyard-v1-night.png",
-    "output": "docs/art/map-expansion/exits-v2/well-courtyard-v1-night.png",
-    "size": [
+    "output": "docs/art/map-expansion/exits-v2/well-courtyard-expanded-v2-night.png",
+    "sourceSize": [
       1774,
       887
     ],
-    "editRegions": [
+    "size": [
+      2638,
+      887
+    ],
+    "originalOffset": [
+      432,
+      0
+    ],
+    "editRegionsOriginalCoordinates": [
       [
-        1285,
         0,
-        1445,
-        280
+        0,
+        72,
+        887
       ],
       [
-        30,
-        75,
-        130,
-        450
+        1702,
+        0,
+        1774,
+        887
       ],
       [
-        1644,
-        75,
-        1744,
-        485
+        0,
+        470,
+        125,
+        670
+      ],
+      [
+        1649,
+        470,
+        1774,
+        670
+      ],
+      [
+        1180,
+        0,
+        1550,
+        330
       ]
     ],
-    "protectedRegions": [
-      [
-        112,
-        50,
-        205,
-        325
-      ],
+    "protectedRegionsOriginalCoordinates": [
       [
         54,
         325,
@@ -339,34 +360,25 @@
         521
       ],
       [
-        1580,
-        50,
-        1660,
-        380
-      ],
-      [
         1572,
         376,
         1718,
         550
-      ],
-      [
-        1430,
-        110,
-        1545,
-        286
       ]
     ],
-    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
+    "feather": 32,
+    "revision": "2026-10-11 bilateral expansion after floating door rejection; upper structural bay fully redrawn",
     "generatedSize": [
-      1774,
-      887
+      2161,
+      728
     ],
-    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly.",
-    "changedPixelCount": 92009,
+    "sourceAlignment": "Generated layer normalized to2638x887; approved original at(432,0) preserved outside local transition/top-exit masks. Mask rectangles use ORIGINAL coordinates.",
+    "changedOriginalPixelCount": 247239,
+    "changedProtectedPixelCount": 0,
+    "extensionPixelCount": 766368,
     "unchangedOutsideRegions": true,
     "sourceSha256": "4617368229178ef6dc6cc7bbbb6854388281c37ef4d58cfebcecda0fc6be79e0",
-    "outputSha256": "26c4a8f2cf01f951c80bab5d30b52ac507ef2421ec9331ce9874ac74b794d2cf"
+    "outputSha256": "3dac784ce476640254b0a57b5d82d5d50877d8a37b56faa93e2cf69d0ea2cfdf"
   },
   {
     "id": "pond-night",
