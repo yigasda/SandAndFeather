@@ -73,3 +73,7 @@
 
 - [90번 호루스 정면 1픽셀 움직임 GIF](https://drive.google.com/file/d/1COLz3Sf_VaLgkWocJ86FeEEybxtxWXum/view)
 - [91번 셋소호 전체 걷기 GIF](https://drive.google.com/file/d/1SXdiluUcTU0xmBDo4kyrNi8Ld6dCGRTg/view)
+
+## 최종 승인 및 오푸스 인수인계
+
+사용자가 v4의 1픽셀 움직임을 승인했다. 정지 81번과 걷기 91번이 적용 기준이다. [오푸스 상세 지시](../../../OPUS-IDLE-WALK-INTEGRATION.md), [48장 파일별 목록](../../../APPROVED-IDLE-WALK-FILES.md), [단일 적용 명세](approved-idle-walk-manifest.json)를 추가했다. 아직 실제 게임 연결은 하지 않았다.

@@ -1,3 +1,5 @@
+> 셋소호 최신 정지·걷기 적용은 [오푸스 상세 지시](OPUS-IDLE-WALK-INTEGRATION.md)와 [48장 파일별 목록](APPROVED-IDLE-WALK-FILES.md)을 우선한다. 아트 승인 완료, 게임 연결 대기.
+
 > 최신 스프라이트 작업과 세션 인수인계는 [SESSION-HANDOFF.md](SESSION-HANDOFF.md)를 먼저 읽는다. 아래는 과거 기록이다.
 
 # 인수인계 · 모래와 깃털 0.8.0

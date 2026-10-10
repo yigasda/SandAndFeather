@@ -2,6 +2,10 @@
 
 최종 갱신: 2026-10-10. 이 문서는 과거 `docs/HANDOFF.md` 및 `/workspace/SandAndFeather-DESIGN-HANDOFF.md`보다 최신이다. 아래 진행 상태가 실제 완료 여부의 기준이다.
 
+## 우선 적용 요청 — 승인된 셋소호 기본 자세·걷기
+
+사용자가 81번 기본 자세와 91번 걷기를 승인하고 오푸스용 상세 적용 지시를 main에 올리도록 요청했다. **아직 런타임에 연결되지 않았다.** [오푸스 상세 지시](OPUS-IDLE-WALK-INTEGRATION.md)와 [48장 파일별 목록](APPROVED-IDLE-WALK-FILES.md)을 먼저 읽는다. 호루스 정면은 v2 PNG + v4의 1픽셀 배치 설정이며, 거절된 v3나 옛 정면으로 되돌리지 않는다. 나머지 게임 진행 상태는 아래 기록을 유지한다.
+
 ## 최신 상태 — 0.9.7 새 옴보스 전체맵 낮밤
 
 - 승인된 `ombos-upgrade-v1-day/night.png`를 게임 배경으로 연결했다. 밤은 밤 그림 그대로 나오고 마을 전체 필터는 없다. 상세는 [OMBOS-097.md](OMBOS-097.md).
