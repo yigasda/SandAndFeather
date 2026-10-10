@@ -77,7 +77,9 @@ def octagon(a, rgb, key):
         if not moved:
             break
     if key == 'cozy/action-talk':
-        p[6] = p[7]  # that corner hides behind a crate in the concept: mirror the left one
+        # its right side stands against a dark crate the fit cannot tell from the frame: the frame is
+        # symmetric, so the right edge mirrors the left one about the cream rim, corners like the left ones
+        p[2], p[5], p[6] = 92, p[4], p[7]
     m = mask(p)
     m_out = grow(m, 3)
     edge = m_out & ~shrink(m, 5)
