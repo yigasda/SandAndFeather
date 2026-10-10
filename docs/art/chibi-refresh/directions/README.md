@@ -58,3 +58,9 @@
 - `somang-idle-v2-new-reference.png`: 새 참고의 부드러운 미소와 처진 눈매, 시스루 앞머리와 가슴 길이 곱슬, 흰 목 끈리본, 종아리가 보이는 가벼운 아이보리 치맛단을 따른다. 이전의 나른한 무표정 시안을 기준으로 되돌리지 않는다. [Drive](https://drive.google.com/file/d/1CAhvBeHNp5U7K6WRnKFUV-MmgWa7omih/view)
 
 둘 다 왼쪽부터 앞·뒤·왼쪽·오른쪽이며, 같은 이름의 `-preview.jpg`는 밝은 배경 확인용이다. 사용자 검토 전으로 게임 프레임 교체나 걷기 애니메이션 적용은 하지 않았다.
+
+## 세트 v3: 하체 길이 축소
+
+사용자가 세트의 등신이 길다고 하여 v2의 허리 아래 치마와 다리 길이를 줄인 4방향 수정 시안을 만들었다. 얼굴과 상체 디자인을 유지하는 방향으로 편집했으며, 치마는 짧아진 다리에서도 발목 길이의 닫힌 주름치마로 유지한다. `set-idle-v3-shorter-lower-body.png`가 최신 검토 원본, 같은 이름의 `-preview.jpg`가 밝은 배경 미리보기다. 소망과 호루스는 이번 수정 대상이 아니다.
+
+[세트 v3 Drive 미리보기](https://drive.google.com/file/d/17ii0c315uPVSgNZgq-_1u3FEso8AKsML/view)
