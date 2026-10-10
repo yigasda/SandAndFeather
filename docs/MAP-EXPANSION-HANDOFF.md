@@ -6,6 +6,23 @@
 
 ## 최신 사용자 결정과 시안
 
+사용자는 세트 방 넓은 침대 v2, 열린 안뜰 회랑 v1, 긴 가로 입구 회랑 v1을 본 뒤 “아 존나 좋아 이거야”라고 응답하고, 다음으로 긴 실내 복도와 호루스·소망 방 제작을 요청했다. 앞선 세 장은 승인된 방향으로 유지한다.
+
+새로 제작한 다음 세 장은 **검토용 시안**이다. 세트 방과 같은 화풍·가구 크기를 참고했으며 게임 배율·충돌·이동은 아직 적용하지 않았다.
+
+| 새 장면 | 저장소 원본 | 모바일 Drive | 원본 Drive |
+| --- | --- | --- | --- |
+| 긴 실내 복도 v1 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/inner-corridor-wide-v1.png) | [보기](https://drive.google.com/file/d/1SFD7q6qNzOyKguYUk2ClZUHk_8Ttmg1X/view) | [보기](https://drive.google.com/file/d/1HjJZ51_JAbt_qGaZb_pctuTsqEhnjXSK/view) |
+| 호루스 방 v1 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/horus-room-v1.png) | [보기](https://drive.google.com/file/d/1GdeNH9nWnUf1tZHyXf2_320ztDTGODcp/view) | [보기](https://drive.google.com/file/d/1gB60flps2-V-GRbH0mKRGkQU6f4J7l8P/view) |
+| 소망 방 v1 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/somang-room-v1.png) | [보기](https://drive.google.com/file/d/1ZtHSIWjJ5nEHhhvVcTKHYmX_fwV5hf_J/view) | [보기](https://drive.google.com/file/d/1AW6QLK8mMOMzX2xc9CijnkXXNJZ1WvEP/view) |
+
+- 실내 복도는 2172×724의 긴 가로 맵이다. 열린 안뜰 회랑과 달리 뒷벽이 있고 햇빛·연못·방문은 없다. 기둥·등잔·벤치가 이어지며 좌우 끝의 보행 바닥을 다른 회랑과 연결한다. 이를 세 방문이 있는 입구 맵으로 바꾸지 않는다.
+- 호루스 방은 1448×1086. 왼쪽에 베개 두 개가 나란한 넓은 침대, 청색 침구, 오른쪽에 파피루스·갈대 펜·깃털을 둔 책상과 기록 선반이 있다. 하단 중앙 출구는 긴 입구 맵의 호루스 방문으로 돌아간다.
+- 소망 방은 1448×1086. 거울·화장 도구·옷장·기념품 선반·낮은 소파를 둔 개인 공간이다. 앞선 물건방 계획을 이어가며, 별도 고정 침대는 추가하지 않았다. 하단 중앙 출구는 소망 방문으로 돌아간다.
+- 이 실내 복도 한 장으로 별도 동·서·중앙 회랑이 모두 제작됐다고 보고하지 않는다. 각 회랑의 연결과 배경은 후속 설계 범위로 유지한다.
+
+이전에 승인한 세 장의 정보:
+
 사용자는 세트 방 v1을 침대 폭을 제외하고 승인했다. 두 사람이 함께 잘 수 있도록 침대를 넓히고, 향후 호루스 방도 같은 두 사람용 침대로 만든다. 세트 방의 다른 가구·색·구도는 유지한다.
 
 이전 residence-corridor-v1은 사용자에게 불합격한 구도다. 세 방문을 한 화면에 모아 놓은 복도로 구현하지 않는다. 사용자는 열린 안뜰 회랑, 실내 복도, 중앙·동쪽·서쪽 회랑, 입구, 방 내부를 구분하고 싶다고 설명했다.
@@ -20,7 +37,7 @@
 | 열린 안뜰 회랑 v1 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/courtyard-colonnade-v1.png) | [보기](https://drive.google.com/file/d/1vNcdVGZa8ygJeqJ_4WjETA6GycT8JUor/view) | [보기](https://drive.google.com/file/d/1eZhU6Ya-Tro-tdMX5MPnNYBZu6jRsHZH/view) |
 | 긴 가로 입구 회랑 v1 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/room-entrances-wide-v1.png) | [보기](https://drive.google.com/file/d/1ZncQmGBZjgmuSCLCDcK3d6DwGXykslBg/view) | [보기](https://drive.google.com/file/d/16fa8tf8orUB-E6-Hv1kznbnevjYJAD6f/view) |
 
-최신 세 장은 요청을 반영해 제작한 검토용 결과물이다. 최초 방 v1의 승인을 새 회랑 시안까지 승인한 것으로 확대하지 않는다. 실제 게임 연결과 캐릭터 배율은 아직 검증하지 않았다.
+위 세트 방 v2·열린 안뜰 회랑 v1·긴 입구 회랑 v1은 후속 사용자 응답에서 승인된 방향이다. 이 승인을 새 실내 복도·호루스 방·소망 방까지 확대하지 않는다. 실제 게임 연결과 캐릭터 배율은 아직 검증하지 않았다.
 
 세트 방과 안뜰 회랑은 1448×1086 PNG, 긴 입구 회랑은 2172×724 PNG다. 게임용 가공은 PNG에서 한다. 모바일 JPG는 열람용이다. 전체 입구 파노라마를 화면 폭에 맞춰 축소하면 다시 세 문이 함께 보이므로, 게임에서는 원본 일부를 카메라로 보여줘야 한다. 문 사이 빈 구간에서 두 입구가 동시에 보이지 않도록 카메라 폭과 줌을 실제 412px 화면에서 검증한다.
 
