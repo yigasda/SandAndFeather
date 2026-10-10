@@ -27,108 +27,139 @@
   {
     "id": "pond-day",
     "name": "courtyard-colonnade-v1.png",
-    "generated": "exec-130da99e-1367-43e3-820d-57142d1f2ef3.png",
+    "generated": "exec-1c8be23f-31be-4b10-b5c8-68f1b0b251f0.png",
     "regions": [
       [
-        1330,
-        509,
+        1397,
+        90,
         1448,
-        870
+        500
+      ],
+      [
+        1417,
+        480,
+        1448,
+        620
       ]
-    ]
+    ],
+    "revision": "2026-10-11 full-height recessed passage, original column preserved"
   },
   {
     "id": "inner",
     "name": "inner-corridor-wide-v1.png",
-    "generated": "exec-68b1d361-8494-4f0b-b80f-9d34cbde60f1.png",
+    "generated": "exec-a4bc0295-0d03-44f4-99d1-c3665fe40146.png",
     "regions": [
       [
         0,
-        413,
-        135,
-        705
+        72,
+        68,
+        350
       ],
       [
-        2037,
-        413,
+        2104,
+        72,
         2172,
-        705
+        350
       ]
-    ]
+    ],
+    "generatedSize": [
+      2172,
+      724
+    ],
+    "sourceAlignment": "Only the generated layer normalized to 2172x724; original canvas never resized.",
+    "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns"
   },
   {
     "id": "central",
     "name": "central-gallery-v1.png",
-    "generated": "exec-2d78556e-0e4f-4925-9d76-90fec790646b.png",
+    "generated": "exec-eed89afa-c309-4b5b-af84-67ddcae53728.png",
     "regions": [
       [
         0,
-        263,
-        132,
-        565
+        72,
+        68,
+        350
       ],
       [
-        2040,
-        263,
+        2104,
+        72,
         2172,
-        565
+        350
       ]
-    ]
+    ],
+    "generatedSize": [
+      2171,
+      724
+    ],
+    "sourceAlignment": "Only the generated layer normalized to 2172x724; original canvas never resized.",
+    "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns"
   },
   {
     "id": "east",
     "name": "east-gallery-v1.png",
-    "generated": "exec-b7a6f5b3-f6a3-47a7-86de-7d21bc9e08b5.png",
+    "generated": "exec-a772de29-7ee5-4fa6-a245-5b1fcf23641d.png",
     "regions": [
       [
         0,
-        263,
-        132,
-        565
+        72,
+        68,
+        350
       ],
       [
-        2040,
-        270,
+        2104,
+        72,
         2172,
-        565
+        350
       ]
-    ]
+    ],
+    "generatedSize": [
+      2172,
+      724
+    ],
+    "sourceAlignment": "Only the generated layer normalized to 2172x724; original canvas never resized.",
+    "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns"
   },
   {
     "id": "west",
     "name": "west-gallery-v1.png",
-    "generated": "exec-f3d24557-5ef9-4cbf-9ba7-0becb9682d86.png",
+    "generated": "exec-eb687a8c-38a3-4064-a2e5-0cf211e24a30.png",
     "regions": [
       [
         0,
-        263,
-        132,
-        565
+        72,
+        68,
+        350
       ],
       [
-        2040,
-        263,
+        2104,
+        72,
         2172,
-        565
+        350
       ]
-    ]
+    ],
+    "generatedSize": [
+      2172,
+      724
+    ],
+    "sourceAlignment": "Only the generated layer normalized to 2172x724; original canvas never resized.",
+    "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns"
   },
   {
     "id": "rooms",
     "name": "room-entrances-wide-v1.png",
-    "generated": "exec-9ecfdf63-d855-4ebb-aae6-2e6ee59d4345.png",
+    "generated": "exec-86e765d5-be7e-4e39-9044-1c599bc3c2fe.png",
     "regions": [
       [
         0,
-        263,
-        132,
-        565
+        85,
+        48,
+        350
       ],
       [
-        2040,
-        263,
+        2124,
+        85,
         2172,
-        565
+        350
       ],
       [
         780,
@@ -136,7 +167,13 @@
         1347,
         724
       ]
-    ]
+    ],
+    "generatedSize": [
+      2170,
+      725
+    ],
+    "sourceAlignment": "Only the generated layer normalized to 2172x724; original canvas never resized.",
+    "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns"
   },
   {
     "id": "well-night",
@@ -166,14 +203,21 @@
   {
     "id": "pond-night",
     "name": "courtyard-colonnade-v1-night.png",
-    "generated": "exec-d3673102-a134-41c7-88da-638e9059f1aa.png",
+    "generated": "exec-5881ad93-9647-4bcb-89f3-b3b6b9fe6af4.png",
     "regions": [
       [
-        1330,
-        509,
+        1397,
+        90,
         1448,
-        870
+        500
+      ],
+      [
+        1417,
+        480,
+        1448,
+        620
       ]
-    ]
+    ],
+    "revision": "2026-10-11 full-height recessed passage, original column preserved"
   }
 ]

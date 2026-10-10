@@ -22,7 +22,7 @@ const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){const k=(y*w+x)*4;if(!job.regions.some(([l,t,r,b])=>x>=l&&x<r&&y>=t&&y<b)&&!result.subarray(k,k+4).equals(original.data.subarray(k,k+4)))outside++;}
   if(outside)throw Error('Pixels changed outside allowed regions');
   const target=path.join(out,job.name);await sharp(result,{raw:{width:w,height:h,channels:4}}).png().toFile(target);
-  records.push({id:job.id,source:path.relative(root,src),output:path.relative(root,target),size:[w,h],editRegions:job.regions,changedPixelCount:changed,unchangedOutsideRegions:true,sourceSha256:hash(fs.readFileSync(src)),outputSha256:hash(fs.readFileSync(target))});
+  records.push({id:job.id,source:path.relative(root,src),output:path.relative(root,target),size:[w,h],editRegions:job.regions,revision:job.revision||"2026-10-10",generatedSize:job.generatedSize||[w,h],sourceAlignment:job.sourceAlignment||"No size normalization required.",changedPixelCount:changed,unchangedOutsideRegions:true,sourceSha256:hash(fs.readFileSync(src)),outputSha256:hash(fs.readFileSync(target))});
  }
  fs.writeFileSync(path.join(out,'validation.json'),JSON.stringify(records,null,2)+'\n');console.log('Packaged '+records.length+' exact-size maps. Outside edit regions: zero pixel changes.');
 })().catch(e=>{console.error(e);process.exit(1)});

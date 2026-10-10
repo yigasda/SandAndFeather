@@ -1,5 +1,7 @@
 # 안채 출구 보정 v2
 
+2026-10-11 수정. 회랑 5곳과 연못 낮밤은 기존 천장 높이의 안쪽 통로 버전이다. 낮은 돌출 문틀은 교체했다.
+
 7장면·9장. 게임에는 이 폴더 바로 아래의 PNG 9장만 사용한다. `sources/`는 재합성용이며 `previews/`는 비교/좌표 표시용이다.
 
 [오푸스 적용 명세](../../../RESIDENCE-EXITS-V2.md) · [좌표 JSON](exit-coordinates.json) · [검증 결과](validation.json)
