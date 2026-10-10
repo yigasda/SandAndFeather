@@ -2,7 +2,7 @@
 
 세트·호루스 RP 채팅 옆에서 돌아가는 이집트 오픈월드 게임 — SillyTavern 확장.
 
-기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md) · 진행 상황: [docs/PROGRESS.md](docs/PROGRESS.md) · 인수인계: [최신 인수인계](docs/SESSION-HANDOFF.md) · 아트 작업 전 필독: [아스트라 시안 원칙](docs/ASTRA-HANDOFF.md)
+기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md) · 진행 상황: [docs/PROGRESS.md](docs/PROGRESS.md) · 인수인계: [최신 인수인계](docs/OPUS-HANDOFF.md) · 아트 작업 전 필독: [아스트라 시안 원칙](docs/ASTRA-HANDOFF.md)
 
 **셋소호 승인 아트:** 기본 자세·걷기 48장은 0.9.8에 게임 적용됐다. [적용 기록](docs/TRIO-MOTION-098.md) · [파일별 목록](docs/APPROVED-IDLE-WALK-FILES.md). 호루스 가슴천은 게임용으로 채택하지 않았다.
 
