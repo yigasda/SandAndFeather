@@ -4,9 +4,29 @@
 
 주요 지역 8곳과 모든 하위 공간은 유지한다. 바뀐 것은 보여주는 단위다. 미술 제작·보정은 아스트라, 이동·충돌·가림·상호작용·저장 연결은 오푸스가 담당한다. 이번 커밋은 시안과 문서만 등록하며 실제 게임은 변경하지 않는다.
 
-## 최신 세트 방 창문 보정
+## 최신: 세트 작은 창 삭제 및 세트·소망·안뜰 밤 버전
 
-사용자는 가운데 가구를 보충한 결과를 좋다고 평가하고, 세트 방의 마주 앉는 자리 바로 위 벽에 비슷한 폭의 창문 하나만 추가해 달라고 요청했다. **최신 세트 방은 v5 창문 보정본**이다. 가운데 낮은 탁자·방석·침대·나머지 가구 배치를 유지하고, 찻자리 위에 상아색 커튼과 하늘·붉은 사막 풍경이 보이는 가로 창문을 추가했다. 기존 왼쪽 작은 창문도 유지한다.
+사용자는 세트 방 책상 위 작은 창 삭제를 확정하고, 큰 창으로 보이는 밤 사막과 소망 방·열린 안뜰 회랑의 밤 버전을 요청했다. 아래 네 장이 새 검토용 결과물이다. **세트는 v6 낮/밤을 사용하며 v5의 작은 창은 되살리지 않는다.** 소망 낮은 기존 v3, 안뜰 낮은 기존 v1, 호루스는 승인된 v2 낮/밤을 유지한다. 아래 옛 버전 표는 제작 이력이다.
+
+| 장면 | 저장소 | Drive 모바일 | Drive PNG |
+| --- | --- | --- | --- |
+| 세트방 작은창삭제 낮 | [PNG](art/map-expansion/set-room-v6-single-window-day.png) | [모바일](https://drive.google.com/file/d/1zEbdIP6if6dHrmlpiHNjYqAlXiwbvpVg/view?usp=drivesdk) | [PNG](https://drive.google.com/file/d/1bVbGo9dNEHzFgxEsmi1xJvkkxIifFS1b/view?usp=drivesdk) |
+| 세트방 밤사막 | [PNG](art/map-expansion/set-room-v6-single-window-night.png) | [모바일](https://drive.google.com/file/d/1jYh93k3Fqvx0XzBbww9hIAdBcFJmn6-E/view?usp=drivesdk) | [PNG](https://drive.google.com/file/d/1GuPxv8BlfEtUuBCiIvTZgBpfVD3rtWFh/view?usp=drivesdk) |
+| 소망방 달빛밤 | [PNG](art/map-expansion/somang-room-v3-center-night.png) | [모바일](https://drive.google.com/file/d/1iD_jcIiqgvHZPK3YGutxmjoebfC4a324/view?usp=drivesdk) | [PNG](https://drive.google.com/file/d/1f3KazL9FnWnQt3Zi0uro6_ydm2D5hhGC/view?usp=drivesdk) |
+| 열린안뜰회랑 별밤 | [PNG](art/map-expansion/courtyard-colonnade-v1-night.png) | [모바일](https://drive.google.com/file/d/1t_oI57MrQG--yYMHInZJ6UPCL3l1Dc_R/view?usp=drivesdk) | [PNG](https://drive.google.com/file/d/1lfJ56SK2lSleBvTC66Wn8d7c6LsS1jRl/view?usp=drivesdk) |
+
+- 세트 v6 낮: 책상 위 작은 창을 사암 벽으로 메우고, 찻자리 위 큰 창을 유지했다.
+- 세트 v6 밤: 같은 방의 큰 창 너머 별·달·밤 사막, 기존 책상 등잔과 화로의 따뜻한 조명.
+- 소망 v3 밤: 낮의 강한 햇살을 없애고 작은 창의 달빛과 출입구 쪽 은은한 온기로 표현했다. 새 가구나 침대를 추가하지 않았다.
+- 열린 안뜰 v1 밤: 기둥 사이 별밤과 연못의 달빛 반사. 방문·뒷벽 없이 열린 회랑이며 우물 마당과는 별도다.
+
+세트·소망 PNG는 1774×887, 모바일은 1200×600이다. 안뜰 밤 생성 결과 1447×1087은 기존 낮 캔버스에 맞게 1448×1086으로 미세 크기 보정하여 저장했으며 모바일은 1000×750이다. 생성 원본은 작업 공간에 별도로 남겼다.
+
+구도와 가구 배치를 보존하도록 편집했지만 생성 이미지의 픽셀 단위 정합이나 게임 충돌은 검증하지 않았다. 연결 전에 낮/밤의 기둥·문턱·가구 경계를 겹쳐 확인하고 공통 충돌/출입 좌표를 검증한다. 낮밤은 같은 장면의 배경 변형으로 연결하고, 전환으로 캐릭터 좌표·날짜·태양 기운을 바꾸지 않는다. 이미 조명 처리된 밤 이미지 위에 전역 밤 필터를 중복 적용하지 않는다. 원본 이력과 기존 게임 파일은 보존했다.
+
+## 이전: 세트 방 창문 보정
+
+사용자는 가운데 가구를 보충한 결과를 좋다고 평가하고, 세트 방의 마주 앉는 자리 바로 위 벽에 비슷한 폭의 창문 하나만 추가해 달라고 요청했다. 당시 v5에서는 가운데 낮은 탁자·방석·침대·나머지 가구 배치를 유지하고, 찻자리 위에 상아색 커튼과 하늘·붉은 사막 풍경이 보이는 가로 창문을 추가했다. 기존 왼쪽 작은 창문도 당시에는 유지했으나, 최신 v6에서 삭제했다.
 
 - [세트 방 v5 PNG — 저장소](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/set-room-v5-window.png)
 - [세트 방 v5 — Drive 모바일](https://drive.google.com/file/d/10Hc_S2lk3UXsL2EPNqmoAkk6-bgdnx1z/view)
