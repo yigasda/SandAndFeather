@@ -40,3 +40,12 @@
 
 - [4방향 Drive 미리보기](https://drive.google.com/file/d/12RI13xm4Kt39t-Is0XHFXR7T6L9uUYv6/view)
 - [정면 확대 Drive 미리보기](https://drive.google.com/file/d/11PapQmPWVtL8zlLFX1LX-04EEFrCAxCN/view)
+
+## 세트·소망 4방향 v1
+
+사용자가 호루스 v4를 승인하고 세트와 소망의 방향별 제작을 요청했다. 각 시트는 왼쪽부터 정면, 뒷면, 왼쪽을 보는 측면, 오른쪽을 보는 측면이다. 외형 검토용으로 아직 게임 프레임을 교체하지 않았다.
+
+- `set-idle-v1.png`: 승인된 세트 외형을 바탕으로 긴 다크 크림슨 생머리, 차콜 치마, 가는 금색 허리끈과 작은 중앙 금장식을 유지한다. 트임은 캐릭터 왼쪽에만 있으며 좌우 시트를 단순 반전하지 않는다. [Drive](https://drive.google.com/file/d/1lFpcLSyKYGbGpLOZa0rCMDIk97PtYXyT/view)
+- `somang-idle-v1.png`: 승인된 소망 v3 단독 시안을 바탕으로 가슴 길이의 풀어 내린 곱슬, 나른한 처진 눈매, 목 끈리본과 느슨한 아이보리 드레스, 갈색 샌들을 따른다. 이전의 둥글게 뜬 눈과 별자리 치맛단은 사용하지 않는다. [Drive](https://drive.google.com/file/d/15RPNBu6kWfl6dePCHyqJbgGyIrdfMcqL/view)
+
+각 `-preview.jpg`는 밝은 배경 미리보기다. 후속 게임 에셋화 과정에서 셋의 표시 높이 및 발 위치를 정렬하고, 뒷면 샌들처럼 방향에 따라 달라지는 작은 부분을 정리해야 한다. 현재 시안을 곧바로 완성된 애니메이션 시트로 취급하지 않는다.
