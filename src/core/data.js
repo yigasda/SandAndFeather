@@ -38,7 +38,7 @@ export async function loadData() {
 let spriteArtPromise;
 function loadSpriteArt() {
     return spriteArtPromise ||= (async () => {
-        const files = [...new Set(Object.values(DATA.sprites?.looks || {}).map(d => d.atlas?.file).filter(Boolean))];
+        const files = [...new Set(Object.values(DATA.sprites?.looks || {}).flatMap(d => [d.atlas?.file, d.motion?.file]).filter(Boolean))];
         const entries = await Promise.all(files.map(async file => {
             const image = new Image();
             image.src = new URL(file, base).href;

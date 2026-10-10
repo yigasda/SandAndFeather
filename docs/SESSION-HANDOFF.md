@@ -8,7 +8,13 @@
 
 **런타임 연결은 아직 하지 않았다.** [오푸스 상세 지시](OPUS-IDLE-WALK-INTEGRATION.md), [48장 파일별 목록](APPROVED-IDLE-WALK-FILES.md), [단일 명세](art/chibi-refresh/approved/manifest.json)를 먼저 읽는다. 최종 걷기 미리보기는 97번이며 호루스 정면에 원본 셀 기준 ±1픽셀 미세 배치 설정을 한 번만 적용한다.
 
-## 최신 상태 — 0.9.7 새 옴보스 전체맵 낮밤
+## 최신 상태 — 0.9.8 셋소호 정지·걷기 스프라이트
+
+- `docs/art/chibi-refresh/approved/`의 48장을 `tools/art/pack-trio-motion.py`로 `data/art/characters/trio-motion.png`에 패킹하고, `sprites.json`의 `looks.*.motion`에 연결했다. 상세는 [TRIO-MOTION-098.md](TRIO-MOTION-098.md).
+- 표시 높이 24 논리 px. 정지와 걷기 높이가 같다. 걷기는 0-1-2-1, 180ms. 호루스 정면만 승인 오프셋이 있고, 옛 bob은 셋소호에서 뺐다.
+- 상인은 옛 `pocket-chibi.png` 그대로다. `pack-pocket-sprites.cjs`를 실행하지 말 것.
+
+## 이전 완료 — 0.9.7 새 옴보스 전체맵 낮밤
 
 - 승인된 `ombos-upgrade-v1-day/night.png`를 게임 배경으로 연결했다. 밤은 밤 그림 그대로 나오고 마을 전체 필터는 없다. 상세는 [OMBOS-097.md](OMBOS-097.md).
 - 충돌은 이전 그대로 두고, 신전 탑문, 문, 기둥 네 개만 새 그림에 맞췄다. 신전 문은 `ombos.json`의 `exits`로 안채 우물 마당과 이어진다.

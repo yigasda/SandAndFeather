@@ -87,7 +87,9 @@ export function updateHud(h, s) {
 export function placeBubble(h, r, near) {
     if (!near) { if (!h.bubble.hidden) h.bubble.hidden = true; h.talk.classList.remove('sf_ready'); return; }
     const ts = 16 * r.zoom, dpr = r.dpr || 1;
-    const x = ((near.x + 0.5) * ts - r.cam.x) / dpr, y = (near.y * ts - r.cam.y) / dpr - (near.kind === 'npc' ? 6 : 18);
+    // over a person's head: the approved standing pictures are taller than the tile they stand on
+    const head = near.kind === 'npc' ? 6 + Math.max(0, (r.motion?.get(near.look)?.height ?? 16) - 16) * r.zoom / dpr : 18;
+    const x = ((near.x + 0.5) * ts - r.cam.x) / dpr, y = (near.y * ts - r.cam.y) / dpr - head;
     const text = `${near.kind === 'npc' ? '말 걸기' : '살펴보기'} · ${near.label}`;
     if (h.bubble.textContent !== text) h.bubble.textContent = text;
     h.bubble.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px) translate(-50%, -100%)`;

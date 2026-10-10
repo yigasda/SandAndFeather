@@ -32,11 +32,13 @@ export class Renderer {
         this.zoom = 2; this.cam = { x: 0, y: 0 };
         this.art = new Map(); // drawn pictures from data/sprites.json, one small canvas each
         this.artScale = new Map();
+        this.motion = new Map(); // look → standing/walking frames in their atlas (Set, Somang, Horus)
     }
     // data/sprites.json: people by look and view, things by sprite name; what is missing stays drawn in code
     setSprites(data) {
         this.art.clear();
         this.artScale.clear();
+        this.motion.clear();
         const make = (rows, colors, flip = false) => {
             // usually 16×16; a wider or taller one (wings) is centred on the tile and stands on its bottom
             const c = document.createElement('canvas');
@@ -67,7 +69,33 @@ export class Renderer {
                 this.artScale.set(`${look}|${dir}`, atlas.scale);
             }
         }
+        for (const [look, d] of Object.entries(data?.looks || {})) {
+            const image = d.motion && DATA.spriteArt?.[d.motion.file];
+            if (image) this.motion.set(look, { ...d.motion, image });
+        }
         for (const [name, d] of Object.entries(data?.things || {})) if (ok(d.rows)) this.art.set(`thing|${name}`, make(d.rows, d.colors));
+    }
+    // the approved standing and walking pictures: walking (anim.moving) plays the poses in sequence by the time
+    // walked (anim.walkT, seconds), each frameMs; standing shows the direction's idle picture. The feet's pivot
+    // stands on the middle of the tile's bottom edge. Walking may shift the whole picture by the approved
+    // offsets (source walk-cell pixels); nothing else bobs. Returns false for a look without these pictures.
+    motionPerson(g, look, x, y, dir, z, anim) {
+        const m = this.motion.get(look);
+        if (!m) return false;
+        let r = m.idle[dir] || m.idle.down, ox = 0, oy = 0;
+        if (anim?.moving) {
+            const k = Math.floor((anim.walkT || 0) * 1000 / m.frameMs) % m.sequence.length;
+            r = (m.walk[dir] || m.walk.down)[m.sequence[k]];
+            [ox, oy] = m.offsets[dir]?.[k] || [0, 0];
+        }
+        const k = m.height * z / m.visible, step = m.height * z / m.offsetRef;
+        const fx = x + 8 * z, fy = y + 16 * z;
+        g.fillStyle = 'rgba(40,25,10,.22)';
+        g.beginPath(); g.ellipse(fx, fy - 0.6 * z, 5.5 * z, 1.6 * z, 0, 0, Math.PI * 2); g.fill();
+        g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+        g.drawImage(m.image, r[0], r[1], r[2], r[3], fx + ox * step - r[4] * k, fy + oy * step - r[5] * k, r[2] * k, r[3] * k);
+        g.imageSmoothingEnabled = false;
+        return true;
     }
     setMap(map, season) {
         if (this.map === map && this.season === season) return;
@@ -95,7 +123,8 @@ export class Renderer {
     paintGround() { paintMap(this.map, SEASON[this.season] || SEASON.peret, this.ground, this.top, this.season); }
 
     // ---- people
-    person(g, look, x, y, dir, step, z) {
+    person(g, look, x, y, dir, step, z, anim) {
+        if (this.motionPerson(g, look, x, y, dir, z, anim)) return;
         const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(x + a * z, y + b * z, w * z, h * z); };
         const key = this.art.has(`${look}|${dir}`) ? `${look}|${dir}` : `${look}|down`;
         const pic = this.art.get(key);
@@ -149,12 +178,12 @@ export class Renderer {
         }
         // things lying on the ground first, then people and standing things back to front
         if (!fullScene) for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
-        const ppl = [...people, { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0 },
+        const ppl = [...people, { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0, moving: player.moving, walkT: player.walkT },
             ...things.filter(t => !FLAT.has(t.sprite)).map(t => ({ thing: t, x: t.x, y: t.y }))];
         ppl.sort((a, b) => a.y - b.y);
         if (!fullScene) for (const p of ppl) {
             if (p.thing) this.sprite(g, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
-            else this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
+            else this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z, p);
         }
         if (!fullScene) g.drawImage(this.top, -cx, -cy, mw, mh);
         // the hour's light
@@ -167,7 +196,7 @@ export class Renderer {
                 for (const p of ppl) {
                     if ((p.y + 1) * T < minimumFoot) continue;
                     if (p.thing) this.sprite(target, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
-                    else this.person(target, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
+                    else this.person(target, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z, p);
                 }
             }
         });
