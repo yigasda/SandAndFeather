@@ -18,6 +18,7 @@
 - 0.9.9: 전신 보기(파티, 소망 카드)는 정면 정지 그림 `data/art/portraits/*-idle-full.png`.
 - 0.9.10: 대화 카드 상반신, 소망 미소 버튼 두 개, `전신 크게 보기` 버튼 제거. 상반신은 다시 넣지 말 것.
 - 0.9.11: 파티 카드를 어깨까지로 줄임.
+- 0.9.15: `인물 보기`는 세트·호루스 일러스트 세 장씩 넘겨 보기(`data/art/portraits/gallery/*.webp`, 원본 `docs/art/portraits-illust/gallery/`).
 - 0.9.14: 파티 카드는 `현재 동행` 한 줄 + 혼자/세트/호루스 선택 카드(문양·이름·효과·고르기), `인물 보기`로 정지 스프라이트 크게. 소망 카드도 정지 스프라이트. 일러스트는 화풍이 달라 게임에서 뺐다(원본만 보관).
 - (지난) 0.9.13: 파티 카드와 소망 카드는 사용자 일러스트 `data/art/portraits/*-illust-head.png`, 누르면 `*-illust.png` 전체. 원본은 `docs/art/portraits-illust/`, 바탕 제거는 `tools/art/cut-illust-portraits.py`.
 

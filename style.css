@@ -1633,3 +1633,16 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_party_name b { font-size: 15px; }
 #sf_game .sf_party_look { min-height: 28px; padding: 2px 8px; font-size: 11px; }
 #sf_game[data-ui-theme] .sf_party_look { min-height: 28px; border-width: 5px; padding: 0 6px; font-size: 11px; }
+
+/* 0.9.15 인물 보기 gallery: three illustrations for Set and Horus, one at a time */
+#sf_game .sf_gallery { display: flex; flex-direction: column; gap: 8px; outline: none; }
+#sf_game .sf_gallery_pic { touch-action: pan-y; user-select: none; }
+#sf_game .sf_gallery_pic img { mix-blend-mode: normal; -webkit-user-drag: none; }
+#sf_game .sf_gallery_nav { display: flex; align-items: center; justify-content: center; gap: 14px; }
+#sf_game .sf_gallery_step { min-width: 44px; min-height: 40px; font-size: 22px; line-height: 1; padding: 0 10px; }
+#sf_game .sf_gallery_dots { display: flex; gap: 8px; }
+#sf_game .sf_gallery_dot { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 1.5px solid #8a6a45; background: transparent; cursor: pointer; }
+#sf_game .sf_gallery_dot[aria-current='true'] { background: var(--sf-accent, #b8541f); border-color: var(--sf-accent, #b8541f); }
+#sf_game[data-ui-theme='walnut'] .sf_gallery_dot { border-color: #d9b27a; }
+#sf_game[data-ui-theme='walnut'] .sf_gallery_dot[aria-current='true'] { background: #e7c485; border-color: #e7c485; }
+#sf_game .sf_character_detail .sf_gallery .sf_portrait_full { height: min(58dvh, 560px); }

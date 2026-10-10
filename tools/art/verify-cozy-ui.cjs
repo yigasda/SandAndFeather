@@ -33,9 +33,9 @@ assert.equal(await p.locator('.sf_inventory_detail button,.sf_inventory_detail s
 assert.equal(await p.locator('.sf_inventory_icon_frame > *').count(),1);
 await p.locator('.sf_inventory_slot[aria-pressed="true"]').click();assert((await last().innerText()).includes('지금 꺼내기'));await close();passed.push('inventory groups/filter/detail retain individual UID/history and existing item actions');
 await p.locator('[data-tab="party"]').click();await capture('03-party-mobile');await bounds();
-assert((await last().locator('.sf_party_now').innerText()).includes('현재 동행'));for(const id of ['set','horus']){await p.locator(`[data-character="${id}"]`).click();await images();assert.equal(await last().locator('.sf_portrait_full').count(),1);await bounds();if(id==='set')await capture('04-set-full');await close();}
+assert((await last().locator('.sf_party_now').innerText()).includes('현재 동행'));for(const id of ['set','horus']){await p.locator(`[data-character="${id}"]`).click();await images();assert.equal(await last().locator('.sf_portrait_full').count(),1);assert.equal(await last().locator('.sf_gallery_dot').count(),3);await bounds();if(id==='set')await capture('04-set-full');await close();}
 const setRow=last().locator('.sf_list_row').filter({has:p.locator('b',{hasText:/^세트$/})});await setRow.getByRole('button',{name:'고르기'}).click();
-assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.with),'set');await close();passed.push('party shows 현재 동행, 인물 보기 opens the standing picture; companion selection still works');
+assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.with),'set');await close();passed.push('party shows 현재 동행, 인물 보기 opens a three-picture gallery; companion selection still works');
 await p.locator('[data-tab="somang"]').click();await images();assert((await last().locator('.sf_portrait img').getAttribute('src')).includes('somang-idle-full'));
 await capture('05-somang-character');await bounds();await close();passed.push('Somang character screen retains stats/lessons and shows her standing sprite');
 await p.evaluate(async()=>{cozyTest.state.getState().party.with='';await cozyTest.win.travel('ombos',{x:24,y:13});});

@@ -82,3 +82,9 @@
 - 소망 카드 그림도 정지 스프라이트로 되돌렸다. 일러스트 원본은 `docs/art/portraits-illust/`에 보관만 하고 게임에서는 쓰지 않는다.
 
 다섯 테마 모두 확인했다. [화면](consult/trio-motion-098/party-choices.png) · [확대](consult/trio-motion-098/party-choices-zoom.png)
+
+## 0.9.15 인물 보기: 세트·호루스 그림 세 장씩
+
+사용자가 준 수채화 일러스트 여섯 장을 `인물 보기`에 넣었다. 세트 세 장, 호루스 세 장이다. 원본 PNG는 `docs/art/portraits-illust/gallery/`에 그대로 두었다. 게임은 같은 그림을 품질 90 WebP로 줄인 `data/art/portraits/gallery/{set,horus}-{1,2,3}.webp`를 읽는다. 한 장에 약 130KB다. 그림마다 자기 테두리가 있어서 바탕 제거나 자르기는 하지 않았다.
+
+한 번에 한 장을 보여준다. `‹` `›` 버튼, 아래 점 세 개, 좌우 화살표 키, 그림 위에서 옆으로 밀기로 넘긴다. 마지막 장 다음은 첫 장이다. 포근함과 호두나무에서 확인했다. [화면](consult/trio-motion-098/gallery.png)
