@@ -1,0 +1,94 @@
+{
+  "status": "review-not-approved",
+  "date": "2026-10-11",
+  "scope": "Three front idle concepts only; no runtime replacement, no side/back/walk generation.",
+  "designSources": [
+    "docs/art/chibi-refresh/approved/idle/set-front.png",
+    "docs/art/chibi-refresh/approved/idle/somang-front.png",
+    "docs/art/chibi-refresh/approved/idle/horus-front.png"
+  ],
+  "styleSource": "docs/art/sprites/pocket-directions-source.png",
+  "generatedSource": "exec-d75bed68-99bf-4c58-ae3d-2e7a472aedd9.png",
+  "frames": [
+    {
+      "character": "set",
+      "file": "front/set-front.png",
+      "sourceRect": [
+        43,
+        64,
+        617,
+        671
+      ],
+      "visibleSize": [
+        617,
+        671
+      ],
+      "pivot": [
+        308.5,
+        671
+      ]
+    },
+    {
+      "character": "somang",
+      "file": "front/somang-front.png",
+      "sourceRect": [
+        740,
+        97,
+        595,
+        638
+      ],
+      "visibleSize": [
+        595,
+        638
+      ],
+      "pivot": [
+        297.5,
+        638
+      ]
+    },
+    {
+      "character": "horus",
+      "file": "front/horus-front.png",
+      "sourceRect": [
+        1491,
+        56,
+        513,
+        679
+      ],
+      "visibleSize": [
+        513,
+        679
+      ],
+      "pivot": [
+        256.5,
+        679
+      ]
+    }
+  ],
+  "mapMockup": {
+    "background": "docs/art/map-expansion/ombos-upgrade-v1-day.png",
+    "crop": {
+      "left": 570,
+      "top": 195,
+      "width": 550,
+      "height": 530
+    },
+    "visibleHeightInMapPixels": 65,
+    "feet": [
+      [
+        210,
+        240
+      ],
+      [
+        275,
+        350
+      ],
+      [
+        380,
+        240
+      ]
+    ],
+    "previewScale": 2,
+    "note": "Both versions use identical height and foot positions on actual map image; static art composite, not runtime integration."
+  }
+}

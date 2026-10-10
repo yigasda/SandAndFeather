@@ -59,20 +59,22 @@
           ],
           "visibleThresholdPx": [
             0,
-            465,
-            55,
-            525
+            510,
+            60,
+            590
           ],
           "suggestedTriggerPx": [
             0,
-            485,
+            535,
             45,
-            520
+            580
           ],
           "suggestedArrivalPx": [
-            90,
-            555
-          ]
+            95,
+            580
+          ],
+          "suggestedArrivalDirection": "right",
+          "exitFacing": "left"
         },
         {
           "entryKey": "east",
@@ -86,23 +88,27 @@
             612.84
           ],
           "visibleThresholdPx": [
-            1719,
-            465,
+            1714,
+            535,
             1774,
-            525
+            610
           ],
           "suggestedTriggerPx": [
             1729,
-            485,
+            555,
             1774,
-            520
+            600
           ],
           "suggestedArrivalPx": [
-            1680,
-            565
-          ]
+            1675,
+            600
+          ],
+          "suggestedArrivalDirection": "left",
+          "exitFacing": "right"
         }
-      ]
+      ],
+      "revision": "2026-10-11 urgent integrated full-height passages, rejected miniature portals removed",
+      "approachNote": "Side exit triggers use clear foreground floor below original stool/bench. Recessed corridor is behind full-height columns; do not route characters through furnishings or column bases. All trigger positions require runtime testing."
     },
     {
       "scene": "courtyard_colonnade",

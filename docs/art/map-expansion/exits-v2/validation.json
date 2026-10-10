@@ -11,32 +11,70 @@
       [
         1285,
         0,
-        1472,
-        286
+        1445,
+        280
       ],
       [
-        0,
-        310,
-        67,
-        555
+        30,
+        75,
+        130,
+        450
       ],
       [
-        1707,
-        320,
-        1774,
-        565
+        1644,
+        75,
+        1744,
+        485
       ]
     ],
-    "revision": "2026-10-10",
+    "protectedRegions": [
+      [
+        112,
+        50,
+        205,
+        325
+      ],
+      [
+        54,
+        325,
+        233,
+        453
+      ],
+      [
+        52,
+        411,
+        145,
+        521
+      ],
+      [
+        1580,
+        50,
+        1660,
+        380
+      ],
+      [
+        1572,
+        376,
+        1718,
+        550
+      ],
+      [
+        1430,
+        110,
+        1545,
+        286
+      ]
+    ],
+    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
     "generatedSize": [
       1774,
       887
     ],
-    "sourceAlignment": "No size normalization required.",
-    "changedPixelCount": 84098,
+    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly.",
+    "changedPixelCount": 91701,
     "unchangedOutsideRegions": true,
     "sourceSha256": "9af5265a7ae8d9ea990efc6479b607d07edbbe81d6648e6c1e84307bfb9de769",
-    "outputSha256": "c7c576ce47387444e3a3661d1326006cbd487e10f2a8a816f4af35dde65700f4"
+    "outputSha256": "4ab9226b34bc68e26ec766bc4009f61ffdbd034668fc7f54ee3de7784ace0505"
   },
   {
     "id": "pond-day",
@@ -99,6 +137,7 @@
         350
       ]
     ],
+    "protectedRegions": [],
     "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns",
     "generatedSize": [
       2172,
@@ -132,6 +171,7 @@
         350
       ]
     ],
+    "protectedRegions": [],
     "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns",
     "generatedSize": [
       2171,
@@ -165,6 +205,7 @@
         350
       ]
     ],
+    "protectedRegions": [],
     "revision": "2026-10-11 remove only urn obstructing right entrance",
     "generatedSize": [
       2172,
@@ -198,6 +239,7 @@
         350
       ]
     ],
+    "protectedRegions": [],
     "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns",
     "generatedSize": [
       2172,
@@ -237,6 +279,7 @@
         724
       ]
     ],
+    "protectedRegions": [],
     "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns",
     "generatedSize": [
       2170,
@@ -260,32 +303,70 @@
       [
         1285,
         0,
-        1472,
-        286
+        1445,
+        280
       ],
       [
-        0,
-        310,
-        67,
-        555
+        30,
+        75,
+        130,
+        450
       ],
       [
-        1707,
-        320,
-        1774,
-        565
+        1644,
+        75,
+        1744,
+        485
       ]
     ],
-    "revision": "2026-10-10",
+    "protectedRegions": [
+      [
+        112,
+        50,
+        205,
+        325
+      ],
+      [
+        54,
+        325,
+        233,
+        453
+      ],
+      [
+        52,
+        411,
+        145,
+        521
+      ],
+      [
+        1580,
+        50,
+        1660,
+        380
+      ],
+      [
+        1572,
+        376,
+        1718,
+        550
+      ],
+      [
+        1430,
+        110,
+        1545,
+        286
+      ]
+    ],
+    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
     "generatedSize": [
       1774,
       887
     ],
-    "sourceAlignment": "No size normalization required.",
-    "changedPixelCount": 84132,
+    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly.",
+    "changedPixelCount": 92009,
     "unchangedOutsideRegions": true,
     "sourceSha256": "4617368229178ef6dc6cc7bbbb6854388281c37ef4d58cfebcecda0fc6be79e0",
-    "outputSha256": "53eca8526a7a879335becef8d5ab6507284546cc1883b0bdaeac331be71686d1"
+    "outputSha256": "26c4a8f2cf01f951c80bab5d30b52ac507ef2421ec9331ce9874ac74b794d2cf"
   },
   {
     "id": "pond-night",

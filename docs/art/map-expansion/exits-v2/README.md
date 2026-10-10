@@ -13,6 +13,12 @@
 - [연못 회랑 원본 보존·오른쪽 확장 낮밤](https://drive.google.com/file/d/1T7XMnBbi59rA_WKioRxGEnw321Ym7JqC/view)
 - [동쪽 회랑 항아리 제거 전후](https://drive.google.com/file/d/1qNlGK68dux83HAqjx8l-PlAxHtF2aac8/view)
 - [회랑 5곳 최신 검토본](https://drive.google.com/file/d/1ixDv8tdVb7WoXsJJzsDHUPcbRGx3bNXr/view)
-- [우물 마당 낮밤 전후](https://drive.google.com/file/d/1YsCdFZUltmmnn0FidGsDq5E-ZsaPRCeL/view)
+- [우물 마당 긴급 수정 낮밤](https://drive.google.com/file/d/1Vi3vv2IEGNZTFFJGctLMpLFNFmCDo6-N/view)
 
 [채택 파일·해시 기록](approval.json). 이후 이 3장의 수정은 해당 채택 파일을 베이스로 한다.
+
+## 우물 마당 최신 수정
+
+2026-10-11 긴급 후속: 우물 마당의 작은 레고 같은 아치는 사용자 반려. 낮밤을 원본에서 다시 국소 편집해 기존 큰 기둥·천장 아래의 열린 통로로 교체했다. 크기 1774×887 유지. 대야·의자·벤치 등 보호 사각형과 출구 편집 영역 밖 RGBA 차이 0. 새 우물 2장은 검토본이며 아직 채택되지 않았다. 채택된 연못 낮밤·동쪽 회랑 3장은 해시 그대로 유지했다.
+
+[좌우 입구 확대](https://drive.google.com/file/d/1nBlOHtxyYqPJbL10jXWg-FRDlMM8rzDv/view)

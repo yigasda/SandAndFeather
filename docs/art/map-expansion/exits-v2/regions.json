@@ -2,27 +2,71 @@
   {
     "id": "well-day",
     "name": "well-courtyard-v1.png",
-    "generated": "exec-acd7f91f-07df-4569-bec2-8ea97f05cc72.png",
+    "generated": "exec-97228a5f-c3a1-4f8c-86d0-0050e3a9bb7d.png",
     "regions": [
       [
         1285,
         0,
-        1472,
-        286
+        1445,
+        280
       ],
       [
-        0,
-        310,
-        67,
-        555
+        30,
+        75,
+        130,
+        450
       ],
       [
-        1707,
-        320,
-        1774,
-        565
+        1644,
+        75,
+        1744,
+        485
       ]
-    ]
+    ],
+    "generatedSize": [
+      1774,
+      887
+    ],
+    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
+    "protectedRegions": [
+      [
+        112,
+        50,
+        205,
+        325
+      ],
+      [
+        54,
+        325,
+        233,
+        453
+      ],
+      [
+        52,
+        411,
+        145,
+        521
+      ],
+      [
+        1580,
+        50,
+        1660,
+        380
+      ],
+      [
+        1572,
+        376,
+        1718,
+        550
+      ],
+      [
+        1430,
+        110,
+        1545,
+        286
+      ]
+    ],
+    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly."
   },
   {
     "id": "pond-day",
@@ -188,27 +232,71 @@
   {
     "id": "well-night",
     "name": "well-courtyard-v1-night.png",
-    "generated": "exec-1fd662c4-99e9-46a7-8616-977d0eb9c96a.png",
+    "generated": "exec-a55f27cf-a803-47a8-b635-863b8f01754a.png",
     "regions": [
       [
         1285,
         0,
-        1472,
-        286
+        1445,
+        280
       ],
       [
-        0,
-        310,
-        67,
-        555
+        30,
+        75,
+        130,
+        450
       ],
       [
-        1707,
-        320,
-        1774,
-        565
+        1644,
+        75,
+        1744,
+        485
       ]
-    ]
+    ],
+    "generatedSize": [
+      1774,
+      887
+    ],
+    "revision": "2026-10-11 urgent well courtyard: full-height integrated side passages, no miniature arches",
+    "protectedRegions": [
+      [
+        112,
+        50,
+        205,
+        325
+      ],
+      [
+        54,
+        325,
+        233,
+        453
+      ],
+      [
+        52,
+        411,
+        145,
+        521
+      ],
+      [
+        1580,
+        50,
+        1660,
+        380
+      ],
+      [
+        1572,
+        376,
+        1718,
+        550
+      ],
+      [
+        1430,
+        110,
+        1545,
+        286
+      ]
+    ],
+    "sourceAlignment": "Generated edit layer normalized to 1774x887; original outside exit regions and protected furnishing rectangles copied exactly."
   },
   {
     "id": "pond-night",

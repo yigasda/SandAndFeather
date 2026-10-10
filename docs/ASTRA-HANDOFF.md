@@ -76,6 +76,14 @@
 - 최종 그림 크기는 기본적으로 고정한다. **사용자가 가로 확장을 요청한 2026-10-11 연못 회랑은 예외: 원본 1448×1086을 (0,0)에 보존하고 오른쪽 484px를 추가해 1932×1086.** 출구 위치가 바뀌면 원본 픽셀 좌표로 전달한다. 편집 사각형, 시각적 문턱, 제안 트리거, 제안 도착점을 구분한다.
 - 아스트라는 미술 보정과 적용 자료를 맡고, 오푸스는 이 요청에서 충돌·출구·도착점을 연결한다. 이후 사용자가 역할을 바꾸면 그 지시를 따른다. 좌표 제안만 하고 실제 걸어봤다고 말하지 않는다.
 
+## 현재 후속 작업 — 우물 긴급 수정 / 치비 정면 검토
+
+2026-10-11 긴급 후속: 우물 마당의 작은 레고 같은 아치는 사용자 반려. 낮밤을 원본에서 다시 국소 편집해 기존 큰 기둥·천장 아래의 열린 통로로 교체했다. 크기 1774×887 유지. 대야·의자·벤치 등 보호 사각형과 출구 편집 영역 밖 RGBA 차이 0. 새 우물 2장은 검토본이며 아직 채택되지 않았다. 채택된 연못 낮밤·동쪽 회랑 3장은 해시 그대로 유지했다.
+
+2026-10-11 치비 그림체 검토: 사용자는 캐디 전체를 현행 승인 스프라이트로 유지하면서 예전 치비의 짧뚱한 체형·또렷한 도트 표현을 요청했다. `review-pocket-style-v1/`에 정면 3장과 현재/후보 비교를 제작했다. 예전 치비 파일은 그림체·체형 참고만이며 옛 의상·머리로 되돌리지 않는다. 정면 후보는 미채택이고 4방향·걷기·런타임 교체는 아직 하지 않았다. 맵 비교는 같은 발 위치/같은 높이의 정적 합성이다.
+
+[우물 낮밤](https://drive.google.com/file/d/1Vi3vv2IEGNZTFFJGctLMpLFNFmCDo6-N/view) · [좌우 확대](https://drive.google.com/file/d/1nBlOHtxyYqPJbL10jXWg-FRDlMM8rzDv/view) · [치비 정면 비교](https://drive.google.com/file/d/16dW_e9KWsvfHvLMQntaFWfJqaa2OVWxZ/view) · [치비 맵 비교](https://drive.google.com/file/d/1200i2p48Qgho6pCBKbJV575c9nTFB5SF/view)
+
 ## 현재 파일과 상태 — 2026-10-11 기준
 
 | 대상 | 기준 파일 / 문서 | 확인된 상태 |
@@ -98,7 +106,7 @@
 - [연못 회랑 원본 보존·오른쪽 확장 낮밤](https://drive.google.com/file/d/1T7XMnBbi59rA_WKioRxGEnw321Ym7JqC/view)
 - [동쪽 회랑 항아리 제거 전후](https://drive.google.com/file/d/1qNlGK68dux83HAqjx8l-PlAxHtF2aac8/view)
 - [회랑 5곳 최신 검토본](https://drive.google.com/file/d/1ixDv8tdVb7WoXsJJzsDHUPcbRGx3bNXr/view)
-- [우물 마당 낮밤 전후](https://drive.google.com/file/d/1YsCdFZUltmmnn0FidGsDq5E-ZsaPRCeL/view)
+- [우물 마당 긴급 수정 낮밤](https://drive.google.com/file/d/1Vi3vv2IEGNZTFFJGctLMpLFNFmCDo6-N/view)
 
 ## 저장소와 전달
 
