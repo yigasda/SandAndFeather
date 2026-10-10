@@ -1,0 +1,251 @@
+[
+  {
+    "id": "well-day",
+    "source": "docs/art/map-expansion/well-courtyard-v1.png",
+    "output": "docs/art/map-expansion/exits-v2/well-courtyard-v1.png",
+    "size": [
+      1774,
+      887
+    ],
+    "editRegions": [
+      [
+        1285,
+        0,
+        1472,
+        286
+      ],
+      [
+        0,
+        310,
+        67,
+        555
+      ],
+      [
+        1707,
+        320,
+        1774,
+        565
+      ]
+    ],
+    "changedPixelCount": 84098,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "9af5265a7ae8d9ea990efc6479b607d07edbbe81d6648e6c1e84307bfb9de769",
+    "outputSha256": "c7c576ce47387444e3a3661d1326006cbd487e10f2a8a816f4af35dde65700f4"
+  },
+  {
+    "id": "pond-day",
+    "source": "docs/art/map-expansion/courtyard-colonnade-v1.png",
+    "output": "docs/art/map-expansion/exits-v2/courtyard-colonnade-v1.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "editRegions": [
+      [
+        1330,
+        509,
+        1448,
+        870
+      ]
+    ],
+    "changedPixelCount": 41544,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "01d1490e34b6d270bdcba371f75b1f9ac2154cff995d73ee1f26faad194d7762",
+    "outputSha256": "cac9ab58bcffebd8bb9e75ced5703b4820718d518c950fd3f2b916efadd64990"
+  },
+  {
+    "id": "inner",
+    "source": "docs/art/map-expansion/inner-corridor-wide-v1.png",
+    "output": "docs/art/map-expansion/exits-v2/inner-corridor-wide-v1.png",
+    "size": [
+      2172,
+      724
+    ],
+    "editRegions": [
+      [
+        0,
+        413,
+        135,
+        705
+      ],
+      [
+        2037,
+        413,
+        2172,
+        705
+      ]
+    ],
+    "changedPixelCount": 76925,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "747abad01be436a63aef455dce7c457d8c801f9d795ebcad3fcc696ac17afc86",
+    "outputSha256": "d7710feb6508a1b8a546cb2c1feda960fe12c1ccfbac705f9488b70ecfe86399"
+  },
+  {
+    "id": "central",
+    "source": "docs/art/map-expansion/central-gallery-v1.png",
+    "output": "docs/art/map-expansion/exits-v2/central-gallery-v1.png",
+    "size": [
+      2172,
+      724
+    ],
+    "editRegions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        263,
+        2172,
+        565
+      ]
+    ],
+    "changedPixelCount": 78267,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "a2760ed96019e4a9907c240c9f97335a6ffa509e014c5c08081b1e2d1c239a10",
+    "outputSha256": "be34af1922693f2b88e36ca53a45aea6f2727f331d6f45dc5ef9fcf68aba9600"
+  },
+  {
+    "id": "east",
+    "source": "docs/art/map-expansion/east-gallery-v1.png",
+    "output": "docs/art/map-expansion/exits-v2/east-gallery-v1.png",
+    "size": [
+      2172,
+      724
+    ],
+    "editRegions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        270,
+        2172,
+        565
+      ]
+    ],
+    "changedPixelCount": 76702,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "453e5e99497c7793aad9b6d9ab9090ef04c00073c055c8fb198a9d9681e46a86",
+    "outputSha256": "0aaacc3b4dc56cffb3bc82e07befc3c3270956e26c12e977c10fe27b47a99fb0"
+  },
+  {
+    "id": "west",
+    "source": "docs/art/map-expansion/west-gallery-v1.png",
+    "output": "docs/art/map-expansion/exits-v2/west-gallery-v1.png",
+    "size": [
+      2172,
+      724
+    ],
+    "editRegions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        263,
+        2172,
+        565
+      ]
+    ],
+    "changedPixelCount": 78129,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "9c6e5d79b1c6037b750ab05d52cfd301a1cd46cd40256ba56491199e5e721154",
+    "outputSha256": "411e83d165c7fefd4b7a0489c933f3cd94cb45203e8e06d21a539582a214b03f"
+  },
+  {
+    "id": "rooms",
+    "source": "docs/art/map-expansion/room-entrances-wide-v1.png",
+    "output": "docs/art/map-expansion/exits-v2/room-entrances-wide-v1.png",
+    "size": [
+      2172,
+      724
+    ],
+    "editRegions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        263,
+        2172,
+        565
+      ],
+      [
+        780,
+        601,
+        1347,
+        724
+      ]
+    ],
+    "changedPixelCount": 146174,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "8545469ce7f696d95da32500437ce3a2130fc9078ac560be8b0efb4c0f9af9c5",
+    "outputSha256": "61f9b4bd12bc4473075edea054cd7cead475ec41d747db66963526879c457c64"
+  },
+  {
+    "id": "well-night",
+    "source": "docs/art/map-expansion/well-courtyard-v1-night.png",
+    "output": "docs/art/map-expansion/exits-v2/well-courtyard-v1-night.png",
+    "size": [
+      1774,
+      887
+    ],
+    "editRegions": [
+      [
+        1285,
+        0,
+        1472,
+        286
+      ],
+      [
+        0,
+        310,
+        67,
+        555
+      ],
+      [
+        1707,
+        320,
+        1774,
+        565
+      ]
+    ],
+    "changedPixelCount": 84132,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "4617368229178ef6dc6cc7bbbb6854388281c37ef4d58cfebcecda0fc6be79e0",
+    "outputSha256": "53eca8526a7a879335becef8d5ab6507284546cc1883b0bdaeac331be71686d1"
+  },
+  {
+    "id": "pond-night",
+    "source": "docs/art/map-expansion/courtyard-colonnade-v1-night.png",
+    "output": "docs/art/map-expansion/exits-v2/courtyard-colonnade-v1-night.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "editRegions": [
+      [
+        1330,
+        509,
+        1448,
+        870
+      ]
+    ],
+    "changedPixelCount": 41806,
+    "unchangedOutsideRegions": true,
+    "sourceSha256": "063764ad7be36eb1e29e933e6294b155ff5658907b7db29f15ac0b5e8a2a7bb6",
+    "outputSha256": "8da77300c406066540a232b547f305f1d0b89326c946ddd01a2a5973888e329c"
+  }
+]

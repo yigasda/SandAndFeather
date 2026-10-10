@@ -1,0 +1,179 @@
+[
+  {
+    "id": "well-day",
+    "name": "well-courtyard-v1.png",
+    "generated": "exec-acd7f91f-07df-4569-bec2-8ea97f05cc72.png",
+    "regions": [
+      [
+        1285,
+        0,
+        1472,
+        286
+      ],
+      [
+        0,
+        310,
+        67,
+        555
+      ],
+      [
+        1707,
+        320,
+        1774,
+        565
+      ]
+    ]
+  },
+  {
+    "id": "pond-day",
+    "name": "courtyard-colonnade-v1.png",
+    "generated": "exec-130da99e-1367-43e3-820d-57142d1f2ef3.png",
+    "regions": [
+      [
+        1330,
+        509,
+        1448,
+        870
+      ]
+    ]
+  },
+  {
+    "id": "inner",
+    "name": "inner-corridor-wide-v1.png",
+    "generated": "exec-68b1d361-8494-4f0b-b80f-9d34cbde60f1.png",
+    "regions": [
+      [
+        0,
+        413,
+        135,
+        705
+      ],
+      [
+        2037,
+        413,
+        2172,
+        705
+      ]
+    ]
+  },
+  {
+    "id": "central",
+    "name": "central-gallery-v1.png",
+    "generated": "exec-2d78556e-0e4f-4925-9d76-90fec790646b.png",
+    "regions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        263,
+        2172,
+        565
+      ]
+    ]
+  },
+  {
+    "id": "east",
+    "name": "east-gallery-v1.png",
+    "generated": "exec-b7a6f5b3-f6a3-47a7-86de-7d21bc9e08b5.png",
+    "regions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        270,
+        2172,
+        565
+      ]
+    ]
+  },
+  {
+    "id": "west",
+    "name": "west-gallery-v1.png",
+    "generated": "exec-f3d24557-5ef9-4cbf-9ba7-0becb9682d86.png",
+    "regions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        263,
+        2172,
+        565
+      ]
+    ]
+  },
+  {
+    "id": "rooms",
+    "name": "room-entrances-wide-v1.png",
+    "generated": "exec-9ecfdf63-d855-4ebb-aae6-2e6ee59d4345.png",
+    "regions": [
+      [
+        0,
+        263,
+        132,
+        565
+      ],
+      [
+        2040,
+        263,
+        2172,
+        565
+      ],
+      [
+        780,
+        601,
+        1347,
+        724
+      ]
+    ]
+  },
+  {
+    "id": "well-night",
+    "name": "well-courtyard-v1-night.png",
+    "generated": "exec-1fd662c4-99e9-46a7-8616-977d0eb9c96a.png",
+    "regions": [
+      [
+        1285,
+        0,
+        1472,
+        286
+      ],
+      [
+        0,
+        310,
+        67,
+        555
+      ],
+      [
+        1707,
+        320,
+        1774,
+        565
+      ]
+    ]
+  },
+  {
+    "id": "pond-night",
+    "name": "courtyard-colonnade-v1-night.png",
+    "generated": "exec-d3673102-a134-41c7-88da-638e9059f1aa.png",
+    "regions": [
+      [
+        1330,
+        509,
+        1448,
+        870
+      ]
+    ]
+  }
+]
