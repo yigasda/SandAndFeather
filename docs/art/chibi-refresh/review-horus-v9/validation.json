@@ -1,0 +1,22 @@
+{
+  "status": "review-not-approved",
+  "rejected_previous": "review-horus-v8 in entirety, including eye reduction",
+  "head_source": "../review-horus-set-body-v5/option-2.png",
+  "body_source": "../review-horus-v6/edit-source.png, normalized to 576x730 in body-source-normalized.png",
+  "body_source_crop": [
+    0,
+    438,
+    576,
+    708
+  ],
+  "body_destination": [
+    0,
+    460
+  ],
+  "body_changed_pixels_within_original_silhouette": 0,
+  "head_changed_pixels_outside_ear_mask": 0,
+  "eye_left_changed_pixels": 0,
+  "eye_right_changed_pixels": 0,
+  "runtime_changed": false,
+  "ear_generated_source": "/workspace/generated_images/exec-4c1c55a8-1f73-4f9a-a0a8-648503cb925b.png"
+}
