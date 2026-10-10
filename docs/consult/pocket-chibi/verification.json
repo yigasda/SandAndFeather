@@ -1,0 +1,251 @@
+{
+  "frames": [
+    {
+      "look": "set",
+      "dir": "down",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2602,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "set",
+      "dir": "left",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2387,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "set",
+      "dir": "right",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2382,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "set",
+      "dir": "up",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2595,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "somang",
+      "dir": "down",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2633,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "somang",
+      "dir": "left",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2394,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "somang",
+      "dir": "right",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2414,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "somang",
+      "dir": "up",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2583,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "horus",
+      "dir": "down",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2119,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "horus",
+      "dir": "left",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2005,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "horus",
+      "dir": "right",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2006,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "horus",
+      "dir": "up",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 2137,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "townsman",
+      "dir": "down",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 1964,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "townsman",
+      "dir": "left",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 1850,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "townsman",
+      "dir": "right",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 1840,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "look": "townsman",
+      "dir": "up",
+      "width": 64,
+      "height": 64,
+      "scale": 0.3125,
+      "visible": 1941,
+      "bottom": 63,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "asymmetry": 6779,
+  "valid": [],
+  "invalid": [
+    "data/sprites.json · horus left: 프레임이 이미지 밖에 있어"
+  ],
+  "pageErrors": [],
+  "failedRequests": []
+}

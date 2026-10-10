@@ -27,8 +27,23 @@ export async function loadData() {
     const all = await Promise.all([...FILES.map(f => loadJson(`${f}.json`)), ...MAPS.map(m => loadJson(`maps/${m}.json`))]);
     FILES.forEach((f, k) => { DATA[f] = all[k]; });
     MAPS.forEach((m, k) => { DATA.maps[m] = all[FILES.length + k]; });
-    await loadSceneArt();
+    await Promise.all([loadSceneArt(), loadSpriteArt()]);
     return DATA;
+}
+
+let spriteArtPromise;
+function loadSpriteArt() {
+    return spriteArtPromise ||= (async () => {
+        const files = [...new Set(Object.values(DATA.sprites?.looks || {}).map(d => d.atlas?.file).filter(Boolean))];
+        const entries = await Promise.all(files.map(async file => {
+            const image = new Image();
+            image.src = new URL(file, base).href;
+            try { await image.decode(); }
+            catch { throw new Error(`data/${file} 스프라이트를 못 불러왔어`); }
+            return [file, image];
+        }));
+        DATA.spriteArt = Object.fromEntries(entries);
+    })().catch(error => { spriteArtPromise = null; throw error; });
 }
 
 // Keep the approved reference pixels at their original resolution. The renderer

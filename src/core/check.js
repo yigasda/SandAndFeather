@@ -44,6 +44,18 @@ export function checkData() {
         if (miss.length) bad('sprites.json', `${where} ${k + 1}번째 줄: colors에 없는 글자 ${miss.join(' ')}`);
     });
     for (const [look, d] of Object.entries(DATA.sprites?.looks || {})) for (const v of ['down', 'up', 'side']) pic(`${look} ${v}`, d[v], d.colors);
+    for (const [look, d] of Object.entries(DATA.sprites?.looks || {})) if (d.atlas) {
+        const a = d.atlas, image = DATA.spriteArt?.[a.file];
+        if (!image) bad('sprites.json', `${look}: atlas.file 이미지를 불러오지 못했어`);
+        if (!(Number.isFinite(a.scale) && a.scale > 0)) bad('sprites.json', `${look}: atlas.scale은 양수여야 해`);
+        for (const dir of ['down', 'left', 'right', 'up']) {
+            const f = a.frames?.[dir];
+            if (!Array.isArray(f) || f.length !== 4 || !f.every(Number.isInteger) || f[0] < 0 || f[1] < 0 || f[2] <= 0 || f[3] <= 0)
+                bad('sprites.json', `${look} ${dir}: 프레임은 [x,y,너비,높이] 정수 네 개여야 해`);
+            else if (image && (f[0]+f[2] > image.naturalWidth || f[1]+f[3] > image.naturalHeight))
+                bad('sprites.json', `${look} ${dir}: 프레임이 이미지 밖에 있어`);
+        }
+    }
     for (const [name, d] of Object.entries(DATA.sprites?.things || {})) pic(name, d.rows, d.colors);
     for (const [id, it] of Object.entries(items)) if (it.grow) known('items.json', `${id} 수확물`, it.grow.gives);
     for (const [id, m] of Object.entries(DATA.maps)) {
