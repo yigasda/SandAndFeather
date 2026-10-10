@@ -1,0 +1,9 @@
+{
+  "base": "../review-horus-v9/horus-front.png",
+  "status": "review-not-approved",
+  "body_changed_pixels_y460_plus": 0,
+  "eyes_changed_pixels": 0,
+  "outside_mask_changed_pixels": 0,
+  "scope": "face contour and skin/hair shading; original eyes, markings, mouth and repaired body retained",
+  "generated_source": "exec-11778efd-6328-4aed-b8af-6ffb47d1dca6.png"
+}
