@@ -1544,3 +1544,55 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  #sf_game[data-ui-theme='journal'] [data-kind='inventory'] .sf_inventory_tabs { right:calc(6.5% + 40px); }
 }
 #sf_game[data-ui-theme='journal'] .sf_tab.sf_on i { filter:brightness(0) invert(94%) sepia(18%); }
+
+/* 0.9.5: approved per-theme menu glyphs, separate from repaired window skins. */
+#sf_game[data-ui-theme='classic'] {
+ --menu-world:url('data/art/ui/menu-icons/classic/world.png');
+ --menu-somang:url('data/art/ui/menu-icons/classic/somang.png');
+ --menu-party:url('data/art/ui/menu-icons/classic/party.png');
+ --menu-quests:url('data/art/ui/menu-icons/classic/quests.png');
+ --menu-map:url('data/art/ui/menu-icons/classic/map.png');
+}
+#sf_game[data-ui-theme='walnut'] {
+ --menu-world:url('data/art/ui/menu-icons/walnut/world.png');
+ --menu-somang:url('data/art/ui/menu-icons/walnut/somang.png');
+ --menu-party:url('data/art/ui/menu-icons/walnut/party.png');
+ --menu-quests:url('data/art/ui/menu-icons/walnut/quests.png');
+ --menu-map:url('data/art/ui/menu-icons/walnut/map.png');
+}
+#sf_game[data-ui-theme='journal'] {
+ --menu-world:url('data/art/ui/menu-icons/journal/world.png');
+ --menu-somang:url('data/art/ui/menu-icons/journal/somang.png');
+ --menu-party:url('data/art/ui/menu-icons/journal/party.png');
+ --menu-quests:url('data/art/ui/menu-icons/journal/quests.png');
+ --menu-map:url('data/art/ui/menu-icons/journal/map.png');
+}
+#sf_game[data-ui-theme='temple'] {
+ --menu-world:url('data/art/ui/menu-icons/temple/world.png');
+ --menu-somang:url('data/art/ui/menu-icons/temple/somang.png');
+ --menu-party:url('data/art/ui/menu-icons/temple/party.png');
+ --menu-quests:url('data/art/ui/menu-icons/temple/quests.png');
+ --menu-map:url('data/art/ui/menu-icons/temple/map.png');
+}
+#sf_game[data-ui-theme='cozy'] {
+ --menu-world:url('data/art/ui/menu-icons/cozy/world.png');
+ --menu-somang:url('data/art/ui/menu-icons/cozy/somang.png');
+ --menu-party:url('data/art/ui/menu-icons/cozy/party.png');
+ --menu-quests:url('data/art/ui/menu-icons/cozy/quests.png');
+ --menu-map:url('data/art/ui/menu-icons/cozy/map.png');
+}
+#sf_game[data-ui-theme] .sf_tab i { width:24px;height:24px;flex:none;image-rendering:auto; }
+#sf_game[data-ui-theme] .sf_tab[data-tab='world'] i { background-image:var(--menu-world); }
+#sf_game[data-ui-theme] .sf_tab[data-tab='somang'] i { background-image:var(--menu-somang); }
+#sf_game[data-ui-theme] .sf_tab[data-tab='party'] i { background-image:var(--menu-party); }
+#sf_game[data-ui-theme] .sf_tab[data-tab='quests'] i { background-image:var(--menu-quests); }
+#sf_game[data-ui-theme] .sf_tab[data-tab='map'] i { background-image:var(--menu-map); }
+/* Light world glyphs need ink on the inactive cream tile. Keep their approved silhouette. */
+#sf_game:is([data-ui-theme='classic'],[data-ui-theme='temple']) .sf_tab[data-tab='world']:not(.sf_on) i {
+ background-image:none;background-color:#483123;
+ mask:var(--menu-world) center/contain no-repeat;
+}
+/* Other glyphs use the same pale ink as their label on a selected dark tile. */
+#sf_game:is([data-ui-theme='classic'],[data-ui-theme='temple']) .sf_tab.sf_on:not([data-tab='world']) i {
+ filter:brightness(0) invert(94%) sepia(18%);
+}
