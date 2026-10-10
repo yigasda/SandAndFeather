@@ -188,3 +188,19 @@ node tools/art/verify-full-map.cjs /tmp/pocket-map-regression
 - 초미니에서 작은 얼굴 점과 머리 한 가닥의 식별성은 화면 확대 배율에 따라 제한된다. 사용자의 형태 선택을 바꾸지 말고 해당 셀만 수정한다.
 - 사용자 기기의 성능과 실제 설치 환경에서는 추가 확인이 필요하다. 이번 확인은 로컬 실제 ST 모바일 뷰포트다.
 
+
+## 원격 보존과 전달 상태
+
+- 구현 커밋: `4d14eb3f088eed58cfcce99da2dc350168faaeb3`.
+- 브랜치: `feat/pocket-chibi-sprites`, origin에 push 완료.
+- PR #3: https://github.com/yigasda/SandAndFeather/pull/3 — 생성 당시 open, main 미병합. 다음 세션은 실시간 상태를 다시 확인한다.
+- 온라인 인수인계 원문: https://github.com/yigasda/SandAndFeather/blob/feat/pocket-chibi-sprites/docs/SESSION-HANDOFF.md
+- 모바일용 4방향 확대판: https://drive.google.com/file/d/1LRTgBSRA3H4T_ZsoFfYAxg-hmV9mn2bp/view
+- 실제 셋소호 게임 화면: https://drive.google.com/file/d/1bMqJUzzGpHnjoZPwsgbSujq29ZryL277/view
+- 실제 상인 게임 화면: https://drive.google.com/file/d/1Tx23II3cvh1n3FdpFCv0qQNledd6q4Ig/view
+- 인수인계 TXT는 기존 결과 Drive 폴더에도 업로드한다. 이름 `다음세션_상세인수인계_0.8.14.txt`.
+- 전체 원본/등록PNG/코드/검증결과가 GitHub 브랜치에 들어 있다. 이 채팅이 닫혀도 위 링크와 저장소로 작업을 이어갈 수 있다.
+
+다음 세션에 보낼 짧은 시작 문장:
+
+> SandAndFeather PR #3와 `docs/SESSION-HANDOFF.md`를 먼저 읽고 현재 브랜치와 main 병합 여부를 확인해 줘. 맵과 확정 시안 원본을 보존하고, 초미니4번 셋소호·상인 등록 작업에서 이어서 해 줘. 이미지는 한 번에 한 장씩 필요한 영역만 확인해 줘.
