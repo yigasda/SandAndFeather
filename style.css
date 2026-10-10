@@ -1603,9 +1603,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_climb[hidden] { display: none; }
 #sf_game[data-ui-theme] .sf_climb { min-height: 52px; font-size: 26px; padding: 0 10px; }
 
-/* 0.9.11: party cards show head and shoulders (536×440 crop), about half the old full-body height. */
+/* 0.9.11: party cards show head and shoulders (500×412), about half the old full-body height. */
 #sf_game .sf_party_portrait .sf_portrait.sf_portrait_head,
-#sf_game[data-ui-theme] .sf_party_portrait .sf_portrait.sf_portrait_head { height: auto; aspect-ratio: 536 / 440; }
+#sf_game[data-ui-theme] .sf_party_portrait .sf_portrait.sf_portrait_head { height: auto; aspect-ratio: 500 / 412; }
 #sf_game[data-ui-theme='journal'] .sf_party_portrait .sf_portrait.sf_portrait_head { height: auto; }
 /* walnut is a dark theme: the character pictures sit on the card's own dark wood, not on white paper */
 #sf_game[data-ui-theme='walnut'] .sf_portrait,
@@ -1613,3 +1613,6 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  background:radial-gradient(ellipse at 50% 42%,#5a432e 0%,#3b2b1f 62%,#2c211a 100%);background-clip:padding-box;
 }
 #sf_game[data-ui-theme='walnut'] .sf_portrait img { mix-blend-mode:normal; }
+/* 0.9.13: the Somang card's picture is head and shoulders too; illustrations keep their own colours */
+#sf_game .sf_character_summary .sf_portrait.sf_portrait_head { height: auto; aspect-ratio: 500 / 412; }
+#sf_game .sf_portrait.sf_portrait_head img, #sf_game .sf_portrait.sf_portrait_full img { mix-blend-mode: normal; }

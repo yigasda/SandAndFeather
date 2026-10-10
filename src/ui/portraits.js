@@ -1,17 +1,17 @@
-// Full-body pictures of the trio for the party and Somang cards: their approved standing sprites.
+// Pictures of the trio for the party and Somang cards.
 import { stack } from './kit.js';
 
 const base = new URL('../../data/art/portraits/', import.meta.url);
 export const CHARACTER_NAMES = {somang:'소망', set:'세트', horus:'호루스'};
 
-// The approved standing sprite (front), cropped from docs/art/chibi-refresh/approved/idle: the whole of it, or
-// (head) down to the shoulders for the party cards. All three share one crop box, so they stand at one scale.
+// The user's character illustrations, cut out from their plain ground (tools/art/cut-illust-portraits.py):
+// head and shoulders for the party and Somang cards, the whole picture when a party card is opened.
 export function portrait(id, {head = false} = {}) {
     const box = document.createElement('figure');
     box.className = `sf_portrait ${head ? 'sf_portrait_head' : 'sf_portrait_full'}`;
     const image = document.createElement('img');
-    image.src = new URL(`${id}-idle-${head ? 'head' : 'full'}.png`, base).href;
-    image.alt = `${CHARACTER_NAMES[id] || id} ${head ? '얼굴' : '전신'}`;
+    image.src = new URL(`${id}-illust${head ? '-head' : ''}.png`, base).href;
+    image.alt = `${CHARACTER_NAMES[id] || id} ${head ? '상반신' : '전신'}`;
     image.decoding = 'async';
     box.append(image);
     return box;

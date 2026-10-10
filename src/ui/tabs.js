@@ -20,7 +20,7 @@ export function somangCard(ui, onClose) {
     const r = rankInfo(s.stats.xp);
     const opens = { wisdom: '기록 해독, 강 건너 비문', strength: '두아트에서 버티는 체력, 공격', faith: '두아트의 주문' };
     const hero = document.createElement('div'); hero.className = 'sf_character_summary';
-    hero.append(portrait('somang'),stack(para('소망','sf_character_name'),para(`모험 등급 ${r.rank}`),
+    hero.append(portrait('somang',{head:true}),stack(para('소망','sf_character_name'),para(`모험 등급 ${r.rank}`),
         ...Object.entries(STATS).map(([k,ko])=>para(`${ko} ${s.stats[k]}`,'sf_character_stat'))));
     close = ui.showCard({ title: '소망', onClose, kind:'character-stats', wide:true,
         body: stack(
