@@ -97,3 +97,15 @@
 
 - [78번 4방향 전체](https://drive.google.com/file/d/1XYCfYyy8dRW9QiVxXtIscAW5HTy9z_SV/view)
 - [78번 정면 비교](https://drive.google.com/file/d/1HxWBdFCoBEw6uAwLvaUTTRMWfF8fP0UP/view)
+
+## 소망 의상 / 세트 측면 추가 수정 — 79~81번
+
+사용자가 78번을 긍정적으로 평가한 뒤 소망의 의상 참고를 추가했고, 이어 세트 측면의 배가 여전히 나와 보인다며 호루스 측면 몸과 같게 수정하도록 요청했다. 78번 전체를 최종 확정으로 취급하지 않는다.
+
+`common-body-v2-dress-and-profile/`에 새 검토본을 보관했다. 소망은 얇은 흰 끈리본, 모아진 상의와 허리 주름, 조금 퍼지는 소매 끝과 가벼운 치맛단을 반영했다. 세트는 호루스 시트를 첫 번째 몸 참조로 삼아 양쪽 측면만 다시 편집했고, 앞·뒤와 호루스 네 방향은 78번 파일을 그대로 사용했다. 생성 편집한 두 캐릭터는 참조와 픽셀 단위로 동일하지 않으며, 특히 세트 몸의 정확한 일치 여부는 측면 비교본으로 검토해야 한다.
+
+생성 원본은 `somang-source.png`, `set-sides-source.png`다. 합본은 개별 그림을 조합하며 `scripts/art/compose-dress-and-profile-v2.py`로 재현한다. 이전 시안은 보존했고 게임 에셋 적용은 하지 않았다.
+
+- [79번 소망 의상 4방향](https://drive.google.com/file/d/10r-Ng-ezwna89iXOSE9b1UQwYYDBA-sm/view)
+- [80번 세트·호루스 측면 비교](https://drive.google.com/file/d/1Y5_ufJiqRFpNpqHMpFZFiOztg6DV68JY/view)
+- [81번 셋소호 전체 4방향](https://drive.google.com/file/d/14TTQbVje5QID5Uneuf4r4DhM79Y3rQiI/view)
