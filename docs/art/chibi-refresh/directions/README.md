@@ -23,3 +23,11 @@
 `horus-idle-v2-blue-hair.png`는 원본, `horus-idle-v2-blue-hair-preview.jpg`는 밝은 배경 확인용이다. 기존 v1은 보존한다. 아직 게임용 프레임으로 적용하지 않았다.
 
 [v2 Drive 미리보기](https://drive.google.com/file/d/1HjNhBibVElJnplqxUSFMsOraoUF2864P/view)
+
+## 호루스 v3: 위쪽 큰 안광 제거
+
+사용자가 v2 머리를 승인하며 각 눈의 맨 위 큰 안광만 제거하도록 요청했다. 정면과 양쪽 측면의 위쪽 흰 반사점을 제거하고 금색 홍채 아래의 작은 안광은 유지한 검토 시안이다. 이미지 생성 편집 특성상 동공 형태에 미세한 변화가 있으므로 사용자 확인 전 최종 확정하지 않는다.
+
+`horus-idle-v3-catchlight.png`는 투명 원본, `horus-idle-v3-catchlight-preview.jpg`는 밝은 배경 미리보기다. 게임 적용은 하지 않았다.
+
+[v3 Drive 미리보기](https://drive.google.com/file/d/16fSzzBC5Km8R7ktMEx2eM9YE002sZIDi/view)
