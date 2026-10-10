@@ -1,0 +1,255 @@
+{
+  "status": "review-not-approved",
+  "source": "docs/art/chibi-refresh/review-horus-walk-v1/frames/horus-front-1.png",
+  "reference": "approved/previews/trio-walk-preview.gif and approved/walk/horus-front-{0,1,2}.png",
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "duration_ms": 180,
+  "offsets": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      0,
+      -1
+    ]
+  ],
+  "head_difference_pixels": [
+    0,
+    0,
+    0
+  ],
+  "redrawn_pixels": 0,
+  "method": "piecewise affine retargeting of approved final sprite pixels to measured approved walk landmarks",
+  "coordinate_remap": {
+    "center_x": 175,
+    "target_center_x": 180,
+    "x_scale": 1.1,
+    "neck_y": 218,
+    "target_neck_y": 236,
+    "y_scale": 0.9054054054054054
+  },
+  "approved_leg_landmarks": [
+    [
+      [
+        [
+          159,
+          308,
+          15
+        ],
+        [
+          158,
+          321,
+          14
+        ],
+        [
+          158,
+          329,
+          17
+        ],
+        [
+          160,
+          341,
+          20
+        ],
+        [
+          161,
+          351,
+          18
+        ]
+      ],
+      [
+        [
+          184,
+          305,
+          15
+        ],
+        [
+          184,
+          326,
+          15
+        ],
+        [
+          184,
+          334,
+          19
+        ],
+        [
+          183,
+          355,
+          24
+        ],
+        [
+          184,
+          366,
+          22
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          160,
+          310,
+          16
+        ],
+        [
+          159,
+          326,
+          15
+        ],
+        [
+          159,
+          334,
+          20
+        ],
+        [
+          161,
+          353,
+          23
+        ],
+        [
+          162,
+          365,
+          21
+        ]
+      ],
+      [
+        [
+          195,
+          310,
+          15
+        ],
+        [
+          195,
+          325,
+          14
+        ],
+        [
+          195,
+          331,
+          17
+        ],
+        [
+          195,
+          347,
+          21
+        ],
+        [
+          195,
+          355,
+          19
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          164,
+          304,
+          15
+        ],
+        [
+          164,
+          326,
+          15
+        ],
+        [
+          164,
+          334,
+          19
+        ],
+        [
+          163,
+          355,
+          24
+        ],
+        [
+          163,
+          366,
+          22
+        ]
+      ],
+      [
+        [
+          191,
+          309,
+          15
+        ],
+        [
+          192,
+          321,
+          14
+        ],
+        [
+          192,
+          328,
+          17
+        ],
+        [
+          192,
+          340,
+          20
+        ],
+        [
+          192,
+          351,
+          18
+        ]
+      ]
+    ]
+  ],
+  "runtime_changed": false,
+  "runtime_atlas_checks": [
+    {
+      "atlas": "art/characters/trio-motion.png",
+      "phase": 0,
+      "different_pixels": 0
+    },
+    {
+      "atlas": "art/characters/trio-motion.png",
+      "phase": 1,
+      "different_pixels": 0
+    },
+    {
+      "atlas": "art/characters/trio-motion.png",
+      "phase": 2,
+      "different_pixels": 0
+    },
+    {
+      "atlas": "art/characters/trio-motion-small.png",
+      "phase": 0,
+      "different_pixels": 0
+    },
+    {
+      "atlas": "art/characters/trio-motion-small.png",
+      "phase": 1,
+      "different_pixels": 0
+    },
+    {
+      "atlas": "art/characters/trio-motion-small.png",
+      "phase": 2,
+      "different_pixels": 0
+    }
+  ],
+  "runtime_preview": {
+    "zoom": 4,
+    "visible_atlas_height": 125,
+    "renderer": "src/world/render.js motionPerson rounding and pivots reproduced",
+    "actual_game_atlas_used": true,
+    "browser_test": false
+  }
+}
