@@ -1607,3 +1607,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_party_portrait .sf_portrait.sf_portrait_head,
 #sf_game[data-ui-theme] .sf_party_portrait .sf_portrait.sf_portrait_head { height: auto; aspect-ratio: 536 / 440; }
 #sf_game[data-ui-theme='journal'] .sf_party_portrait .sf_portrait.sf_portrait_head { height: auto; }
+/* walnut is a dark theme: the character pictures sit on the card's own dark wood, not on white paper */
+#sf_game[data-ui-theme='walnut'] .sf_portrait,
+#sf_game[data-ui-theme='walnut'] .sf_party_portrait .sf_portrait {
+ background:radial-gradient(ellipse at 50% 42%,#5a432e 0%,#3b2b1f 62%,#2c211a 100%);background-clip:padding-box;
+}
+#sf_game[data-ui-theme='walnut'] .sf_portrait img { mix-blend-mode:normal; }
