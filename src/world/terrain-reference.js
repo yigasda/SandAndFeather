@@ -4,7 +4,7 @@ import { DATA } from '../core/data.js';
 const cache = new WeakMap();
 export function materials() {
     const scene = DATA.sceneArt?.materials;
-    if (!scene) return null;
+    if (!scene?.image) return null; // not loaded: no map in play uses it
     if (cache.has(scene)) return cache.get(scene);
     const make = (sx, sy, sw, sh, w, h) => {
         const cv = document.createElement('canvas'); cv.width=w; cv.height=h;

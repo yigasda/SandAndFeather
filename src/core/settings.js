@@ -2,7 +2,7 @@
 
 import { ctx } from './st.js';
 
-export const VERSION = '0.9.16';
+export const VERSION = '0.9.17';
 export const MODULE = 'sand_feather';
 export const PROMPT_KEY = 'sand_feather_world';
 export const UI_THEMES = [

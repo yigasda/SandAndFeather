@@ -272,13 +272,17 @@ function draw(t) {
 
 function frame(t) {
     if (mode !== 'open') return;
-    const dt = last ? Math.min(0.05, (t - last) / 1000) : 0;
+    // a slow frame still moves her the real time's distance (up to 0.2 s), in steps of at most 0.05 s so she
+    // cannot pass through a thin wall; before, a slow phone made her walk slower as well as jerkier
+    let dt = last ? Math.min(0.2, (t - last) / 1000) : 0;
     last = t;
     if (!cardOpen() && !moving) {
-        stepPlayer(map, input.dx, input.dy, dt);
-        const f = feet(), ex = map.exitAt(f.x, f.y);
-        if (!ex) doorArmed = true;
-        else if (doorArmed) { doorArmed = false; useExit(ex); }
+        for (; dt > 1e-6 && !moving; dt -= 0.05) {
+            stepPlayer(map, input.dx, input.dy, Math.min(0.05, dt));
+            const f = feet(), ex = map.exitAt(f.x, f.y);
+            if (!ex) doorArmed = true;
+            else if (doorArmed) { doorArmed = false; useExit(ex); break; }
+        }
     } else stand();
     // the battery: draw only as often as something on screen changes
     const fps = cardOpen() ? FPS.card : player.moving ? FPS.walk : FPS.still;

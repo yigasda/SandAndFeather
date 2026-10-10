@@ -1,6 +1,7 @@
 {
   "duat": {
     "file": "art/duat-approved.png",
+    "lazy": true,
     "origin": [448, 40],
     "scale": 0.25,
     "day": [0, 0, 1122, 1402],
@@ -39,10 +40,12 @@
     ]
   },
   "materials": {
-    "file": "art/duat-reference.png"
+    "file": "art/duat-reference.png",
+    "lazy": true
   },
   "ombos": {
     "file": "../docs/art/map-expansion/ombos-upgrade-v1-day.png",
+    "lazy": true,
     "nightFile": "../docs/art/map-expansion/ombos-upgrade-v1-night.png",
     "fullMap": true,
     "origin": [0, 0],

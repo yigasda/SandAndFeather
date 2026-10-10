@@ -76,6 +76,7 @@ function loadSceneArt() {
 // the pictures a map needs, day and its own night; other lazy scenes let go of theirs
 export async function ensureSceneArt(mapId) {
     const want = new Set(DATA.maps[mapId]?.referenceScenes || []);
+    if (want.has('duat')) want.add('materials'); // the Duat ground borrows that picture's sand and paving
     for (const [name, scene] of Object.entries(DATA.sceneArt || {})) {
         if (!scene.lazy) continue;
         if (!want.has(name)) { scene.image = null; scene.nightImage = null; continue; }

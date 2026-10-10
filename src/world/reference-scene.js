@@ -13,6 +13,8 @@ function panel(scene, night) {
     if (!image) return null;
     const key = night && scene.nightImage ? 'night' : 'day';
     if (panels.has(image)) return panels.get(image);
+    // without seams the decoded picture is drawn as it is: no second copy of it in memory
+    if (!scene.seams?.length) { panels.set(image, image); return image; }
     const source = scene[key], cv = document.createElement('canvas');
     cv.width = source[2]; cv.height = source[3];
     const g = cv.getContext('2d'); g.drawImage(image, ...source, 0, 0, cv.width, cv.height);
@@ -53,41 +55,53 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
             });
             g.closePath(); g.clip();
         };
-        const background = () => {
-            g.drawImage(picture, dx, dy, dw, dh);
+        // Only the part of the picture inside `box` (screen pixels) is drawn: the whole map scaled up every
+        // frame was the slow part on phones.
+        const inter = (a, b) => { const x0 = Math.max(a[0], b[0]), y0 = Math.max(a[1], b[1]), x1 = Math.min(a[2], b[2]), y1 = Math.min(a[3], b[3]); return x1 > x0 && y1 > y0 ? [x0, y0, x1, y1] : null; };
+        const view = inter([0, 0, W, H], [dx, dy, dx + dw, dy + dh]);
+        if (!view) continue;
+        const nightPicture = part === 'night' && scene.nightImage;
+        // Dawn/evening retain the normal world lighting; night is authored.
+        // a lamp-lit room keeps one picture and darkens less than the open village (tintNight: its own colour)
+        const roomNight = part === 'night' && scene.tintNight && !scene.nightImage ? (typeof scene.tintNight === 'string' ? scene.tintNight : tint) : null;
+        const groundShade = part === 'night' ? roomNight : tint;
+        // people under an authored night get a lighter shade than the village's, to sit in its lamplight
+        const actorShade = part === 'night' && (scene.nightImage || typeof scene.tintNight === 'string') ? 'rgba(24,34,90,.28)' : tint;
+        const pw = picture.width || picture.naturalWidth, ph = picture.height || picture.naturalHeight;
+        const background = box => {
+            const [x0, y0, x1, y1] = box.map(Math.round);
+            if (x1 <= x0 || y1 <= y0) return;
+            g.drawImage(picture, (x0 - dx) / dw * pw, (y0 - dy) / dh * ph, (x1 - x0) / dw * pw, (y1 - y0) / dh * ph, x0, y0, x1 - x0, y1 - y0);
             // Completed works remain visible above the otherwise untouched atlas.
             // (painted in daylight: under an authored night they take the village's night shade)
-            const nightPicture = part === 'night' && scene.nightImage;
             if (scene.fullMap) for (const id of renderer.map.open) for (const c of renderer.map.d.overlays?.[id] || []) {
-                g.drawImage(renderer.ground, c.x*16, c.y*16, 16, 16,
-                    c.x*16*z-cx, c.y*16*z-cy, 16*z, 16*z);
-                if (nightPicture && tint) { g.fillStyle = tint; g.fillRect(c.x*16*z-cx, c.y*16*z-cy, 16*z, 16*z); }
+                const cxs = c.x*16*z-cx, cys = c.y*16*z-cy;
+                if (cxs > x1 || cys > y1 || cxs + 16*z < x0 || cys + 16*z < y0) continue;
+                g.drawImage(renderer.ground, c.x*16, c.y*16, 16, 16, cxs, cys, 16*z, 16*z);
+                if (nightPicture && tint) { g.fillStyle = tint; g.fillRect(cxs, cys, 16*z, 16*z); }
             }
-            // Dawn/evening retain the normal world lighting; night is authored.
-            // a lamp-lit room keeps one picture and darkens less than the open village (tintNight: its own colour)
-            const night = part === 'night' && scene.tintNight && !scene.nightImage ? (typeof scene.tintNight === 'string' ? scene.tintNight : tint) : null;
-            const shade = part === 'night' ? night : tint;
-            if (shade) { g.fillStyle = shade; g.fillRect(dx, dy, dw, dh); }
+            if (groundShade) { g.fillStyle = groundShade; g.fillRect(x0, y0, x1 - x0, y1 - y0); }
         };
-        const liveActors = (minimumFoot = -Infinity) => {
+        // People are painted straight onto the screen; only a shade (evening, night) needs them on their own
+        // layer first, and then only the box is cleared, shaded and copied.
+        const liveActors = (minimumFoot, box) => {
+            if (!actorShade) { paintActors(g, minimumFoot); return; }
             const cv = renderer.referenceActors;
             if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
             const ag = cv.getContext('2d');
-            ag.clearRect(0, 0, W, H); ag.imageSmoothingEnabled = false;
+            const [x0, y0, x1, y1] = [Math.floor(box[0]), Math.floor(box[1]), Math.ceil(box[2]), Math.ceil(box[3])];
+            ag.clearRect(x0, y0, x1 - x0, y1 - y0); ag.imageSmoothingEnabled = false;
+            ag.save(); ag.beginPath(); ag.rect(x0, y0, x1 - x0, y1 - y0); ag.clip();
             paintActors(ag, minimumFoot);
-            // people under an authored night get a lighter shade than the village's, to sit in its lamplight
-            const shade = part === 'night' && (scene.nightImage || typeof scene.tintNight === 'string') ? 'rgba(24,34,90,.28)' : tint;
-            if (shade) {
-                ag.globalCompositeOperation = 'source-atop';
-                ag.fillStyle = shade; ag.fillRect(0, 0, W, H);
-                ag.globalCompositeOperation = 'source-over';
-            }
-            g.drawImage(cv, 0, 0);
+            ag.globalCompositeOperation = 'source-atop';
+            ag.fillStyle = actorShade; ag.fillRect(x0, y0, x1 - x0, y1 - y0);
+            ag.restore();
+            g.drawImage(cv, x0, y0, x1 - x0, y1 - y0, x0, y0, x1 - x0, y1 - y0);
         };
         g.save();
         g.beginPath(); g.rect(-cx,-cy,renderer.map.w*16*z,renderer.map.h*16*z); g.clip();
         clip(scene.clip);
-        background(); liveActors();
+        background(view); liveActors(-Infinity, view);
         // Restore authored foreground silhouettes over actors behind them. A
         // foreground actor is then redrawn only inside that silhouette's clip.
         for (const o of scene.occluders || []) {
@@ -96,7 +110,9 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
             const left = Math.min(...xs), right = Math.max(...xs), top = Math.min(...ys), bottom = Math.max(...ys);
             if (!actors.some(a => (a.y + 1)*16 < foot && (a.x + 2)*16 > left &&
                 (a.x - 1)*16 < right && (a.y + 1)*16 > top && (a.y - 2)*16 < bottom)) continue;
-            g.save(); clip(o.polygon); background(); liveActors(foot); g.restore();
+            const box = inter(view, [left*z - cx - 1, top*z - cy - 1, right*z - cx + 1, bottom*z - cy + 1]);
+            if (!box) continue;
+            g.save(); clip(o.polygon); background(box); liveActors(foot, box); g.restore();
         }
         g.restore();
     }
