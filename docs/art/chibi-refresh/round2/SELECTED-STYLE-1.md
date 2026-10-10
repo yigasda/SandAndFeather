@@ -17,3 +17,9 @@
 - 최신 [style-1-r4.png](style-1-r4.png), [Drive](https://drive.google.com/file/d/1suEEhHU-6DhMeHMIPN0IkkMZdWSxEMhn/view).
 - r3은 트임 없이 긴 치마로 만든 중간본으로 보존한다. [중간본 Drive](https://drive.google.com/file/d/1k8yoJyA9rYqNS2ULsiTwPcIiiEfLvl_z/view).
 - 이번 수정 결과는 사용자 확인 전. 게임 스프라이트 파일과 코드는 변경하지 않았다.
+
+## r5 — 차콜색 주름 명암과 얇은 금색 허리끈 복구
+
+사용자는 r4의 치마가 지나치게 진하고 단순하다고 지적했다. 55번(r2) 시안에 있는 치마·허리끈의 채도와 명도를 기준으로 복원하도록 요청했다. 얇고 단순한 금색 허리끈은 복구 대상이며, 앞선 '허리 장식 제외'를 허리끈 제거로 해석하지 않는다. 보석·메달·체인 등 추가 허리 장식은 넣지 않는다.
+
+최신 검토본은 [style-1-r5.png](style-1-r5.png), [Drive](https://drive.google.com/file/d/1v0iJPmRdSgtvTqe61st_jQiUsrMgo5Uc/view). 치마는 더 밝고 부드러운 차콜색에 주름 명암을 살렸고 금색 허리끈을 복구했다. 발목 길이·한쪽 트임·속바지 표시 없음·중앙 금장식과 술은 유지했다. 원 시안과의 픽셀 단위 색상 일치를 검증한 것은 아니며 사용자 시각 확인용이다. 기존 버전은 보관하고 게임에는 적용하지 않았다.
