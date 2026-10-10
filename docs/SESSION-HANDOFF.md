@@ -1,5 +1,7 @@
 # 다음 세션 인수인계 — 모래와 깃털
 
+> 후속 요청: 호루스의 흰 가슴천이 누락되어 [2차 기본 시안·걷기 GIF](art/chibi-refresh/review-chest-cloth/README.md)를 추가했다. 해당 폴더는 새 검토본이다. 기존 승인 원본 및 적용 명세는 유지하며, 가슴천 없는 호루스가 최종 의상이라는 뜻은 아니다.
+
 최종 갱신: 2026-10-10. 이 문서는 과거 `docs/HANDOFF.md` 및 `/workspace/SandAndFeather-DESIGN-HANDOFF.md`보다 최신이다. 아래 진행 상태가 실제 완료 여부의 기준이다.
 
 ## 우선 적용 요청 — 승인된 셋소호 기본 자세·걷기

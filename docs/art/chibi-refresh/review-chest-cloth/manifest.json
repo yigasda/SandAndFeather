@@ -1,0 +1,306 @@
+{
+  "status": "second-base-chest-cloth-review",
+  "runtimeApplied": false,
+  "approvedBase": "docs/art/chibi-refresh/approved/manifest.json",
+  "change": "White linen chest drape from anatomical right shoulder to waistband; generated costume edit, not pixel-identical outside edited region.",
+  "cycle": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "durationMs": 180,
+  "frontOffsetsSourcePx": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      0,
+      -1
+    ]
+  ],
+  "rotationAdded": 0,
+  "frames": [
+    {
+      "state": "idle",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-idle-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "b2655515a2fb7390017be416880cca52faf8fd0d893cf2e90d811808506d0c1b"
+    },
+    {
+      "state": "idle",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-idle-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "cbb59f36750a7dbf72f1eb6b4a95fafa7952e06764dba107a7cc93f9674a1766"
+    },
+    {
+      "state": "idle",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-idle-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "a2ddb598b2c9f3d5a852e97c6abcefe76d151420622882b82f2032b849f49a14"
+    },
+    {
+      "state": "idle",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-idle-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "d033526d51a8e46d1631691828e8b59364dfd64aafa7c9918e7bff7e3cd09ae9"
+    },
+    {
+      "state": "walk",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-front-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "8079a2965acb23d6bf93a97bc5687690c9dff42f588d85be4332071aa364c6de"
+    },
+    {
+      "state": "walk",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-front-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "d82cd5400d3b48b6f9345d00a801c7f148b8a1c9302e3cf2562e47a3b79f39a1"
+    },
+    {
+      "state": "walk",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-front-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "eee800940048cc3a6370112ed189409ec79131e3ae2072f0fffea617119e882a"
+    },
+    {
+      "state": "walk",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-back-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "5b3830939faa5689381a08585df41ac735774112ca7466f80fd5c18b64f45a92"
+    },
+    {
+      "state": "walk",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-back-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "0a02b7737c31d45e085d73af6651a77c5c91ddace2fc30dd4f67869e047d0a2b"
+    },
+    {
+      "state": "walk",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-back-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "21f0f5eb7b37d2ecb6d11fad80dc7499b702a05421d4de39cf746939d968053b"
+    },
+    {
+      "state": "walk",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-left-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "680969de61996dba45a90d1de3388efabbbf92a65ea9cab7c25059e70dfd4270"
+    },
+    {
+      "state": "walk",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-left-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "0aa91c49e8a7f45ecebcacaf5c738b72070344783e23ad13120e57c7bea2f64b"
+    },
+    {
+      "state": "walk",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-left-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "8f5d1cebe08b69566fe5ecbe313234da8f42b3ae1d59b3c9a9da5e5f2a4b30f2"
+    },
+    {
+      "state": "walk",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-right-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "0cb68069c02fa9a087515de65c73d35c9a1412fa72c431ee7dfcc21e4be4708f"
+    },
+    {
+      "state": "walk",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-right-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "83f4d6f15c8b0609399adbc39421742481895a42869b14409f9ba6248e1ee9bc"
+    },
+    {
+      "state": "walk",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-chest-cloth/horus-walk-right-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "e3c049ca0d5f3e97fd947787331697b9aacd37effb101e16df01a76929235448"
+    }
+  ]
+}
