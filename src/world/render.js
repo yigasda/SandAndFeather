@@ -31,10 +31,12 @@ export class Renderer {
         this.map = null; this.season = null;
         this.zoom = 2; this.cam = { x: 0, y: 0 };
         this.art = new Map(); // drawn pictures from data/sprites.json, one small canvas each
+        this.artScale = new Map();
     }
     // data/sprites.json: people by look and view, things by sprite name; what is missing stays drawn in code
     setSprites(data) {
         this.art.clear();
+        this.artScale.clear();
         const make = (rows, colors, flip = false) => {
             // usually 16×16; a wider or taller one (wings) is centred on the tile and stands on its bottom
             const c = document.createElement('canvas');
@@ -52,6 +54,18 @@ export class Renderer {
             if (ok(d.down)) this.art.set(`${look}|down`, make(d.down, d.colors));
             if (ok(d.up)) this.art.set(`${look}|up`, make(d.up, d.colors));
             if (ok(d.side)) { this.art.set(`${look}|right`, make(d.side, d.colors)); this.art.set(`${look}|left`, make(d.side, d.colors, true)); }
+            // Explicit views preserve asymmetric details (Horus's eye ornament).
+            const atlas = d.atlas, image = DATA.spriteArt?.[atlas?.file];
+            if (image) for (const dir of ['down', 'left', 'right', 'up']) {
+                const frame = atlas.frames?.[dir];
+                if (!frame) continue;
+                const [sx, sy, w, h] = frame;
+                const c = document.createElement('canvas'); c.width = w; c.height = h;
+                const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
+                g.drawImage(image, sx, sy, w, h, 0, 0, w, h);
+                this.art.set(`${look}|${dir}`, c);
+                this.artScale.set(`${look}|${dir}`, atlas.scale);
+            }
         }
         for (const [name, d] of Object.entries(data?.things || {})) if (ok(d.rows)) this.art.set(`thing|${name}`, make(d.rows, d.colors));
     }
@@ -83,10 +97,14 @@ export class Renderer {
     // ---- people
     person(g, look, x, y, dir, step, z) {
         const P = (a, b, w, h, col) => { g.fillStyle = col; g.fillRect(x + a * z, y + b * z, w * z, h * z); };
-        const pic = this.art.get(`${look}|${dir}`) || this.art.get(`${look}|down`);
+        const key = this.art.has(`${look}|${dir}`) ? `${look}|${dir}` : `${look}|down`;
+        const pic = this.art.get(key);
         if (pic) { // a drawn picture: a shadow, and a step makes it bob
+            const scale = this.artScale.get(key) ?? 1;
+            const w = pic.width * scale, h = pic.height * scale;
             P(4, 14, 8, 2, 'rgba(40,25,10,.25)');
-            g.drawImage(pic, x - (pic.width - 16) / 2 * z, y - (pic.height - 16 + Math.floor(step) % 2) * z, pic.width * z, pic.height * z);
+            g.imageSmoothingEnabled = false;
+            g.drawImage(pic, Math.round(x - (w - 16) / 2 * z), Math.round(y - (h - 16 + Math.floor(step) % 2) * z), Math.round(w * z), Math.round(h * z));
             return;
         }
         const L = LOOKS[look] || LOOKS.townsman;
@@ -290,6 +308,6 @@ export class Renderer {
 const LOOKS = {
     somang: { skin: '#F1D2B6', body: '#F4EFE6', hair: '#2B2018', side: true },
     set: { skin: '#F3DCC8', body: '#1E1A18', top: '#F3DCC8', hair: '#7A1E22', longHair: true, collar: '#D9B65A' },
-    horus: { skin: '#F6EEE8', body: '#F7F3EC', top: '#F6EEE8', hair: '#1B2440', spikes: true, collar: '#D9B65A', wings: '#5B5E8F', wingsHi: '#8E90B8' },
+    horus: { skin: '#F6EEE8', body: '#F7F3EC', top: '#F6EEE8', hair: '#1B2440', spikes: true, collar: '#D9B65A' },
     townsman: { skin: '#C99A72', body: '#E8E0D0', top: '#C99A72', hair: '#2B2018' },
 };

@@ -2,7 +2,11 @@
 
 세트·호루스 RP 채팅 옆에서 돌아가는 이집트 오픈월드 게임 — SillyTavern 확장.
 
-기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md) · 진행 상황: [docs/PROGRESS.md](docs/PROGRESS.md) · 인수인계: [docs/HANDOFF.md](docs/HANDOFF.md)
+기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md) · 진행 상황: [docs/PROGRESS.md](docs/PROGRESS.md) · 인수인계: [최신 인수인계](docs/SESSION-HANDOFF.md)
+
+**0.9.0 다섯 UI 테마:** 게임 우측 상단 ⚙ → 화면 설정 또는 확장 설정 → 보기 → UI 테마에서 1~5번을 선택한다. 5번 포근한 픽셀 동화가 기본이며 즉시 적용·자동 저장된다. 대화 상반신·소망 두 미소·파티 전신 확대·아이템 칸 가방과 초미니 셋소호/상인을 포함한다. [실제 화면과 검증](docs/COZY-UI.md).
+
+**0.8.14 초미니 등록:** 세트·소망·호루스와 상인에 초미니4방향 PNG를 적용했다. [실제 화면·검증·원본](docs/POCKET-SPRITES.md).
 
 **0.8.13 전체 시안 적용:** 채택한 도보 2번 시안 전체를 원본 그대로 사용한다. 건물·길·절벽·물가를 함께 적용하고 이동·상호작용 위치를 맞췄다. [실제 게임 화면과 검증](docs/OMBOS-APPROVED.md).
 

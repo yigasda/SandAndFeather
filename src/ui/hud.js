@@ -40,12 +40,13 @@ export function buildHud(root) {
         <span class="sf_chip sf_chip_rank" title="모험 등급"><b></b><i><s></s></i></span>
       </div>
       <button type="button" class="sf_hint_pill" hidden></button>
+      <button type="button" class="sf_icon_btn sf_appearance" title="화면 설정" aria-label="화면 설정"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
       <div class="sf_bubble" hidden></div>
       <div class="sf_controls">
-        <div class="sf_pad"><div class="sf_knob"></div></div>
+        <div class="sf_pad"><span class="sf_pad_arrows" aria-hidden="true"><i>▴</i><i>◂</i><i>▸</i><i>▾</i></span><div class="sf_knob"></div></div>
         <div class="sf_actions">
-          <button type="button" class="sf_round sf_bag">가방</button>
-          <button type="button" class="sf_round sf_talk">말 걸기</button>
+          <button type="button" class="sf_round sf_bag"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i><span>가방</span></button>
+          <button type="button" class="sf_round sf_talk"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i><span>말 걸기</span></button>
         </div>
       </div>
       <nav class="sf_tabs">
@@ -54,7 +55,7 @@ export function buildHud(root) {
     const q = s => root.querySelector(s);
     return {
         root, view: q('.sf_view'), dateCard: q('.sf_date_card'), date: q('.sf_date'), season: q('.sf_season'), dot: q('.sf_dot'), sync: q('.sf_sync'),
-        collapse: q('.sf_collapse'), close: q('.sf_close'), mini: q('.sf_mini'), miniCv: q('.sf_mini_cv'), miniName: q('.sf_mini_name'),
+        collapse: q('.sf_collapse'), close: q('.sf_close'), appearance: q('.sf_appearance'), mini: q('.sf_mini'), miniCv: q('.sf_mini_cv'), miniName: q('.sf_mini_name'),
         bubble: q('.sf_bubble'), sun: q('.sf_chip_sun'), deben: q('.sf_chip_deben'), rank: q('.sf_chip_rank b'), rankBar: q('.sf_chip_rank s'), hint: q('.sf_hint_pill'), pad: q('.sf_pad'), knob: q('.sf_knob'), bag: q('.sf_bag'), talk: q('.sf_talk'), tabs: q('.sf_tabs'),
     };
 }

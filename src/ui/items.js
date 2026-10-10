@@ -40,23 +40,59 @@ async function opened(ui, map, uid) {
     });
 }
 
+const iconBase = new URL('../../data/art/ui/', import.meta.url);
+const ICONS = {blue_lotus:'lotus', lotus_seed:'lotus', bread:'bread', honey_bread:'bread', fig_cake:'bread',
+    nile_perch:'fish', tilapia:'fish', catfish:'fish', eel:'fish', golden_carp:'fish', grilled_fish:'fish', fish_stew:'fish',
+    faience_scarab:'scarab', heart_scarab:'scarab', wet_papyrus:'scroll', sealed_letter:'scroll', map_scrap:'scroll',
+    duat_scroll:'scroll', tomb_rubbing:'scroll', limestone:'stone', black_sand:'stone', star_shard:'stone', feast_garland:'flower'};
+function itemIcon(info, id) {
+    const el = document.createElement(ICONS[id] ? 'img' : 'span'); el.className='sf_item_art';
+    if(ICONS[id]){el.src=new URL(`item-${ICONS[id]}.png`,iconBase).href;el.alt='';}
+    else el.textContent=info.icon || '◆';
+    return el;
+}
+
 export function bagCard(ui, map) {
-    const list = items().slice().reverse();
-    const box = document.createElement('div');
-    box.className = 'sf_bag_list';
-    if (!list.length) box.innerHTML = '<div class="sf_note">가방이 비어 있어. 선착장 물가를 살펴봐.</div>';
-    let close = null;
-    for (const it of list) {
-        const info = itemInfo(it.id) || {};
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'sf_bag_row';
-        b.innerHTML = `<span class="sf_bag_icon"></span><span class="sf_bag_name"></span><span class="sf_bag_meta"></span>`;
-        b.querySelector('.sf_bag_icon').textContent = info.icon || '·';
-        b.querySelector('.sf_bag_name').textContent = nameOf(it);
-        b.querySelector('.sf_bag_meta').textContent = `${dateLabel(fromDayNumber(it.got))}${it.talked ? ' · 말함' : ''}`;
-        b.addEventListener('click', () => { close?.(); itemCard(ui, map, it.uid); });
-        box.append(b);
-    }
-    close = ui.showCard({ title: '가방', body: box });
+    // Retain each item's UID and history. Stacked display never merges saved items.
+    const all = items().slice().reverse(), groups = new Map();
+    for(const it of all){const key=`${it.id}|${it.opened}|${it.talked}`;
+        if(!groups.has(key))groups.set(key,[]);groups.get(key).push(it);}
+    const box=document.createElement('div');box.className='sf_inventory';
+    const tabs=document.createElement('div');tabs.className='sf_inventory_tabs';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','가방 분류');
+    const content=document.createElement('div');content.className='sf_inventory_content';
+    const grid=document.createElement('div');grid.className='sf_inventory_grid';
+    const detail=document.createElement('div');detail.className='sf_inventory_detail';detail.setAttribute('aria-live','polite');
+    content.append(grid,detail);box.append(tabs,content);
+    let close=null, selected=null;
+    const select=(group,b)=>{
+        selected=group; for(const button of grid.querySelectorAll('button'))button.setAttribute('aria-pressed',String(button===b));
+        const it=group[0], info=itemInfo(it.id)||{};detail.replaceChildren(itemIcon(info,it.id));
+        const title=document.createElement('b');title.textContent=nameOf(it);
+        const count=document.createElement('span');count.className='sf_inventory_count';count.textContent=`보유 수량 ${group.length}`;
+        const about=document.createElement('p');about.textContent=it.opened&&info.open?.ko?info.open.ko:info.about||'';
+        const when=document.createElement('small');when.textContent=`${dateLabel(fromDayNumber(it.got))}${fromKo(it)?` · ${fromKo(it)}`:''}${it.talked?' · 말함':''}`;
+        const inspect=document.createElement('button');inspect.type='button';inspect.className='sf_btn sf_primary';inspect.textContent='살펴보기';
+        inspect.addEventListener('click',()=>{close?.();itemCard(ui,map,it.uid);});
+        detail.append(title,count,about,when,inspect);
+    };
+    const materials=new Set(['material','ingredient','crop','seed']);
+    const categories=[['all','전체'],['material','재료'],['food','음식'],['other','기타']];
+    const show=category=>{
+        grid.replaceChildren();detail.replaceChildren();selected=null;
+        const visible=[...groups.values()].filter(g=>{const kind=itemInfo(g[0].id)?.kind;return category==='all'||(category==='material'?materials.has(kind):category==='food'?kind==='food':!materials.has(kind)&&kind!=='food');});
+        for(const group of visible){const it=group[0],info=itemInfo(it.id)||{};
+            const b=document.createElement('button');b.type='button';b.className='sf_inventory_slot';b.dataset.uid=it.uid;
+            b.setAttribute('aria-label',`${nameOf(it)} ${group.length}개`);b.setAttribute('aria-pressed','false');
+            const qty=document.createElement('small');qty.textContent=String(group.length);
+            const label=document.createElement('span');label.className='sf_inventory_slot_name';label.textContent=nameOf(it);
+            b.append(itemIcon(info,it.id),label,qty);
+            b.addEventListener('click',()=>select(group,b));grid.append(b);
+            if(!selected)select(group,b);
+        }
+        if(!visible.length){const note=document.createElement('p');note.className='sf_note';note.textContent=all.length?'이 분류에는 물건이 없어.':'가방이 비어 있어. 선착장 물가를 살펴봐.';detail.append(note);}
+        for(let i=visible.length;i<8;i++){const empty=document.createElement('span');empty.className='sf_inventory_slot sf_empty_slot';empty.setAttribute('aria-hidden','true');grid.append(empty);}
+    };
+    for(const [id,label]of categories){const b=document.createElement('button');b.type='button';b.className='sf_btn sf_small';b.textContent=label;b.dataset.category=id;
+        b.setAttribute('aria-pressed',String(id==='all'));b.addEventListener('click',()=>{for(const other of tabs.children)other.setAttribute('aria-pressed',String(other===b));show(id);});tabs.append(b);}
+    show('all');close=ui.showCard({title:'가방',kind:'inventory',wide:true,body:box});
 }

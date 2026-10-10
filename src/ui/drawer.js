@@ -5,7 +5,7 @@ import { emit, on } from '../core/bus.js';
 import { EPAG, dateLabel, partInfo, seasonName } from '../core/clock.js';
 import { DATA } from '../core/data.js';
 import { applyInjection, buildBlock } from '../core/inject.js';
-import { DEFAULT_TRACKER_RE, VERSION, saveSettings, settings } from '../core/settings.js';
+import { DEFAULT_TRACKER_RE, VERSION, UI_THEMES, saveSettings, settings } from '../core/settings.js';
 import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
 import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex, weatherOf } from '../core/tracker.js';
@@ -120,7 +120,8 @@ export function renderDrawer(problems = []) {
               <div class="sf_grid">
                 <label>달 이름<select id="sf_monthstyle">${opt([['en', 'Hathyr'], ['ko', '하티르']], st.monthStyle)}</select></label>
                 <label>하루 태양 기운<input type="number" min="4" max="30" id="sf_sunmax" value="${Number(st.sunMax) || 12}"></label>
-                <label>테마<select id="sf_theme">${opt([['auto', '자동'], ['light', '밝게'], ['dark', '어둡게']], st.theme)}</select></label>
+                <label>UI 테마<select id="sf_ui_theme">${opt(UI_THEMES.map(t=>[t.id,t.label]),st.uiTheme)}</select></label>
+                <label>밝기<select id="sf_theme">${opt([['auto', '자동'], ['light', '밝게'], ['dark', '어둡게']], st.theme)}</select></label>
               </div>
             </div>
 
@@ -154,6 +155,7 @@ function bind() {
     $id('sf_wordcap').addEventListener('change', e => set('wordCap', Math.max(20, Number(e.target.value) || 80)));
     $id('sf_monthstyle').addEventListener('change', e => { set('monthStyle', e.target.value); emit('view:changed', {}); });
     $id('sf_theme').addEventListener('change', e => { set('theme', e.target.value); applyTheme(); });
+    $id('sf_ui_theme').addEventListener('change', e => { st.uiTheme=e.target.value;saveSettings();applyTheme(); });
     $id('sf_sunmax').addEventListener('change', async e => {
         st.sunMax = Math.max(4, Math.min(30, Number(e.target.value) || 12));
         e.target.value = st.sunMax;

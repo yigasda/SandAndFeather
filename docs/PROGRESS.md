@@ -1,3 +1,5 @@
+> 최신 스프라이트 작업과 세션 인수인계는 [SESSION-HANDOFF.md](SESSION-HANDOFF.md)를 먼저 읽는다. 아래는 과거 기록이다.
+
 # 모래와 깃털 — 진행 상황 · 0.4.2
 
 > 이 문서를 받은 AI에게: 소망이 만드는 SillyTavern 확장의 지금 상태야.

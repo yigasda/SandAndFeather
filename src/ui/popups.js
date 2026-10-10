@@ -9,9 +9,10 @@ export { esc };
 let openCount = 0;
 export const cardOpen = () => openCount > 0;
 
-export function showCard(root, { tag = '', title = '', text = '', body = null, buttons = null, wide = false, onClose = null } = {}) {
+export function showCard(root, { tag = '', title = '', text = '', body = null, buttons = null, wide = false, kind = '', onClose = null } = {}) {
     const wrap = document.createElement('div');
     wrap.className = 'sf_pop_wrap';
+    if (kind) wrap.dataset.kind = kind;
     wrap.innerHTML = `
       <div class="sf_pop${wide ? ' sf_pop_wide' : ''}" role="dialog" aria-label="${esc(title)}">
         <div class="sf_pop_head">

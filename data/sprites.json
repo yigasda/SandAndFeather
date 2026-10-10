@@ -1,5 +1,5 @@
 {
- "_about": "사람 그림. 한 칸이 한 점이고 보통 16×16. 날개처럼 넓은 건 줄을 더 길게 그려도 돼, 가운데에 맞춰서 그려. 줄 길이는 모두 같아야 해. colors는 글자마다 색, 점은 '.'이 비어 있는 칸. down은 앞, up은 뒤, side는 오른쪽을 보는 모습이고 왼쪽은 뒤집어서 그려. 여기 없는 사람이나 물건은 코드로 그린 그림이 나와. things에 같은 모양으로 넣으면 지도 위 물건도 바꿀 수 있어. 이름은 beetle, falcon, cat, chest, boat, stone, banner, obelisk 같은 것.",
+ "_about": "사람 그림: atlas.file은 data 기준 PNG 경로, frames는 down/left/right/up별 [x,y,w,h], scale은 원본 픽셀당 논리 크기. 발은 타일 아래에 정렬. colors와 down/up/side 글자 그림은 이전 포맷 호환용이며 side만 좌우 반전한다. things는 기존 글자 픽셀 형식.",
  "looks": {
   "somang": {
    "colors": {
@@ -68,7 +68,37 @@
     "....kwwwwwk.....",
     ".....ks.sk......",
     ".....kd.dk......"
-   ]
+   ],
+   "atlas": {
+    "file": "art/characters/pocket-chibi.png",
+    "scale": 0.3125,
+    "frames": {
+     "down": [
+      0,
+      64,
+      64,
+      64
+     ],
+     "left": [
+      64,
+      64,
+      64,
+      64
+     ],
+     "right": [
+      128,
+      64,
+      64,
+      64
+     ],
+     "up": [
+      192,
+      64,
+      64,
+      64
+     ]
+    }
+   }
   },
   "set": {
    "colors": {
@@ -136,7 +166,37 @@
     "....kbBBbbk.....",
     ".....ks.sk......",
     ".....kd.dk......"
-   ]
+   ],
+   "atlas": {
+    "file": "art/characters/pocket-chibi.png",
+    "scale": 0.3125,
+    "frames": {
+     "down": [
+      0,
+      0,
+      64,
+      64
+     ],
+     "left": [
+      64,
+      0,
+      64,
+      64
+     ],
+     "right": [
+      128,
+      0,
+      64,
+      64
+     ],
+     "up": [
+      192,
+      0,
+      64,
+      64
+     ]
+    }
+   }
   },
   "horus": {
    "colors": {
@@ -207,7 +267,37 @@
     "....kccsCck.....",
     "....kcCcCck.....",
     ".....kd.dk......"
-   ]
+   ],
+   "atlas": {
+    "file": "art/characters/pocket-chibi.png",
+    "scale": 0.3125,
+    "frames": {
+     "down": [
+      0,
+      128,
+      64,
+      64
+     ],
+     "left": [
+      64,
+      128,
+      64,
+      64
+     ],
+     "right": [
+      128,
+      128,
+      64,
+      64
+     ],
+     "up": [
+      192,
+      128,
+      64,
+      64
+     ]
+    }
+   }
   },
   "townsman": {
    "colors": {
@@ -273,7 +363,37 @@
     "....kwwwwwk.....",
     ".....ks.sk......",
     ".....kd.dk......"
-   ]
+   ],
+   "atlas": {
+    "file": "art/characters/pocket-chibi.png",
+    "scale": 0.3125,
+    "frames": {
+     "down": [
+      0,
+      192,
+      64,
+      64
+     ],
+     "left": [
+      64,
+      192,
+      64,
+      64
+     ],
+     "right": [
+      128,
+      192,
+      64,
+      64
+     ],
+     "up": [
+      192,
+      192,
+      64,
+      64
+     ]
+    }
+   }
   }
  },
  "things": {}

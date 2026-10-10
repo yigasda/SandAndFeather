@@ -12,14 +12,22 @@ import { festivalLine } from '../packs/life/festival.js';
 import { bar, list, para, stack } from './kit.js';
 import { codexCard } from './codexcard.js';
 import { showEvent } from './talk.js';
+import { portrait, somangPortrait, characterDetail, CHARACTER_NAMES } from './portraits.js';
 
 export function somangCard(ui, onClose) {
     const s = getState();
     let close = () => {};
     const r = rankInfo(s.stats.xp);
     const opens = { wisdom: '기록 해독, 강 건너 비문', strength: '두아트에서 버티는 체력, 공격', faith: '두아트의 주문' };
-    close = ui.showCard({ title: '소망', onClose,
+    const hero = document.createElement('div'); hero.className = 'sf_character_summary';
+    const art = somangPortrait({full:true});
+    const inspect = document.createElement('button'); inspect.type='button'; inspect.className='sf_btn sf_small'; inspect.textContent='전신 크게 보기';
+    inspect.addEventListener('click',()=>characterDetail(ui,'somang'));
+    hero.append(stack(art,inspect),stack(para('소망','sf_character_name'),para(`모험 등급 ${r.rank}`),
+        ...Object.entries(STATS).map(([k,ko])=>para(`${ko} ${s.stats[k]}`,'sf_character_stat'))));
+    close = ui.showCard({ title: '소망', onClose, kind:'character-stats', wide:true,
         body: stack(
+            hero,
             bar(`모험 등급 ${r.rank} · ${r.next ? `${s.stats.xp}/${r.next}` : '최고'}`, r.frac, 'sf_rank'),
             para(r.rank < 2 ? '등급 2: 두아트 길이 하나 더 길어져' : r.rank < 3 ? '등급 3: 고친 배로 강 건너 신전에 갈 수 있어' : '등급이 오를수록 모험에서 유물이 나와'),
             list(Object.entries(STATS).map(([k, ko]) => ({ icon: { wisdom: '📜', strength: '💪', faith: '🔆' }[k], name: `${ko} ${s.stats[k]}`, sub: opens[k] }))),
@@ -38,12 +46,34 @@ export function somangCard(ui, onClose) {
 export function partyCard(ui, onClose) {
     const s = getState();
     const C = DATA.duat?.companions || {};
-    const set = async id => { s.party.with = id; await saveState(); emit('world:changed', { map: s.pos.map }); close(); partyCard(ui, onClose); };
-    const close = ui.showCard({ title: '파티', onClose,
+    const choices = stack(); let changing = false;
+    const redrawChoices = () => choices.replaceChildren(list([['', { ko: '혼자', about: '조용히 다니기' }], ...Object.entries(C)].map(([id,c]) => ({
+        icon:s.party.with===id?'✔':'', name:c.ko, sub:c.about,
+        buttons:[{label:s.party.with===id?'함께하는 중':'고르기',primary:s.party.with===id,disabled:changing||s.party.with===id,onClick:()=>set(id)}]
+    }))));
+    const set = async id => {
+        if(changing)return; changing=true; s.party.with=id; redrawChoices();
+        for(const card of gallery.children) {
+            const who=card.dataset.character;card.classList.toggle('sf_selected',who===id);
+            card.querySelector('.sf_party_caption').textContent=who==='somang'?'모험가':who===id?'함께하는 중':'전신 보기';
+        }
+        try { await saveState(); emit('world:changed', {map:s.pos.map}); }
+        finally { changing=false; redrawChoices(); }
+    };
+    const gallery = document.createElement('div'); gallery.className='sf_party_gallery';
+    for(const id of ['somang','set','horus']) {
+        const card=document.createElement('button');card.type='button';card.className='sf_party_portrait';
+        card.dataset.character=id;card.setAttribute('aria-label',`${CHARACTER_NAMES[id]} 전신 보기`);
+        card.classList.toggle('sf_selected',id===s.party.with);
+        card.append(para(CHARACTER_NAMES[id],'sf_character_name'),portrait(id,{full:true}),
+            para(id==='somang'?'모험가':s.party.with===id?'함께하는 중':'전신 보기','sf_party_caption'));
+        card.addEventListener('click',()=>characterDetail(ui,id));gallery.append(card);
+    }
+    redrawChoices();
+    ui.showCard({ title: '파티', onClose, kind:'party', wide:true,
         body: stack(para('함께 걸으면 혼자는 못 보는 것이 보여. 세트는 모래 밑을, 호루스는 높은 곳을 봐. 두아트에도 기본으로 같이 가.'),
-            list([['', { ko: '혼자', about: '조용히 다니기' }], ...Object.entries(C)].map(([id, c]) => ({
-                icon: s.party.with === id ? '✔' : '', name: c.ko, sub: c.about,
-                buttons: [{ label: s.party.with === id ? '함께하는 중' : '고르기', primary: s.party.with === id, disabled: s.party.with === id, onClick: () => set(id) }] })))) });
+            gallery,
+            choices) });
 }
 
 export function questsCard(ui, onClose) {
