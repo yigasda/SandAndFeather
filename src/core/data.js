@@ -38,7 +38,8 @@ export async function loadData() {
 let spriteArtPromise;
 function loadSpriteArt() {
     return spriteArtPromise ||= (async () => {
-        const files = [...new Set(Object.values(DATA.sprites?.looks || {}).flatMap(d => [d.atlas?.file, d.motion?.file]).filter(Boolean))];
+        // the large walking atlas (wide screens) waits until a screen needs it: see spriteFile()
+        const files = [...new Set(Object.values(DATA.sprites?.looks || {}).flatMap(d => [d.atlas?.file, d.motion?.small?.file || d.motion?.file]).filter(Boolean))];
         const entries = await Promise.all(files.map(async file => {
             const image = new Image();
             image.src = new URL(file, base).href;
@@ -81,4 +82,16 @@ export async function ensureSceneArt(mapId) {
         if (!scene.image) scene.image = await decode(scene.file);
         if (scene.nightFile && !scene.nightImage) scene.nightImage = await decode(scene.nightFile);
     }
+}
+
+// a sprite picture loaded on first need (the large trio atlas): null until it has decoded
+const spriteLoading = new Map();
+export function spriteFile(file) {
+    if (DATA.spriteArt?.[file]) return DATA.spriteArt[file];
+    if (!spriteLoading.has(file)) {
+        const image = new Image();
+        image.src = new URL(file, base).href;
+        spriteLoading.set(file, image.decode().then(() => { DATA.spriteArt[file] = image; }).catch(() => { spriteLoading.delete(file); }));
+    }
+    return null;
 }

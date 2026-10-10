@@ -59,9 +59,10 @@ export function checkData() {
     // standing and walking pictures (motion): every rect inside its image, a pivot inside its rect,
     // three walk poses a direction, a cycle of known poses, a positive frame time and an offset a cycle step
     for (const [look, d] of Object.entries(DATA.sprites?.looks || {})) if (d.motion) {
-        const m = d.motion, image = DATA.spriteArt?.[m.file], where = `${look} motion`;
-        if (!image) bad('sprites.json', `${where}: file 이미지를 불러오지 못했어`);
+        const m = d.motion, where = `${look} motion`;
+        if (!m.small || !DATA.spriteArt?.[m.small.file]) bad('sprites.json', `${where}: small.file 이미지를 불러오지 못했어`);
         for (const k of ['visible', 'height', 'frameMs', 'offsetRef']) if (!(Number.isFinite(m[k]) && m[k] > 0)) bad('sprites.json', `${where}: ${k}는 양수여야 해`);
+        let image = null;
         const rect = (r, at) => {
             if (!Array.isArray(r) || r.length !== 6 || !r.every(Number.isFinite) || r[0] < 0 || r[1] < 0 || r[2] <= 0 || r[3] <= 0) { bad('sprites.json', `${where} ${at}: [x,y,너비,높이,발x,발y]여야 해`); return; }
             if (image && (r[0]+r[2] > image.naturalWidth || r[1]+r[3] > image.naturalHeight)) bad('sprites.json', `${where} ${at}: 이미지 밖에 있어`);
@@ -69,11 +70,18 @@ export function checkData() {
         };
         const seq = m.sequence || [];
         if (!seq.length || !seq.every(i => Number.isInteger(i) && i >= 0 && i < 3)) bad('sprites.json', `${where}: sequence는 0~2 포즈 번호여야 해`);
+        // both packings: the large one's image may still be on its way, then only its numbers are checked
+        for (const a of [m, m.small].filter(Boolean)) {
+            image = DATA.spriteArt?.[a.file] || null;
+            if (!(Number.isFinite(a.visible) && a.visible > 0)) bad('sprites.json', `${where}: visible은 양수여야 해`);
+            for (const dir of ['down', 'up', 'left', 'right']) {
+                rect(a.idle?.[dir], `${a.file} idle ${dir}`);
+                const poses = a.walk?.[dir];
+                if (!Array.isArray(poses) || poses.length !== 3) bad('sprites.json', `${where} walk ${dir}: 포즈 세 장이 있어야 해`);
+                else poses.forEach((r, i) => rect(r, `${a.file} walk ${dir} ${i}`));
+            }
+        }
         for (const dir of ['down', 'up', 'left', 'right']) {
-            rect(m.idle?.[dir], `idle ${dir}`);
-            const poses = m.walk?.[dir];
-            if (!Array.isArray(poses) || poses.length !== 3) bad('sprites.json', `${where} walk ${dir}: 포즈 세 장이 있어야 해`);
-            else poses.forEach((r, i) => rect(r, `walk ${dir} ${i}`));
             const off = m.offsets?.[dir];
             if (!Array.isArray(off) || off.length !== seq.length || !off.every(o => Array.isArray(o) && o.length === 2 && o.every(Number.isFinite)))
                 bad('sprites.json', `${where} offsets ${dir}: 걸음 단계마다 [x,y] 하나씩이어야 해`);

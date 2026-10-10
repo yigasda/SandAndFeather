@@ -13,11 +13,12 @@
 ## 최신 상태 — 0.9.8 셋소호 정지·걷기 스프라이트
 
 - `docs/art/chibi-refresh/approved/`의 48장을 `tools/art/pack-trio-motion.py`로 `data/art/characters/trio-motion.png`에 패킹하고, `sprites.json`의 `looks.*.motion`에 연결했다. 상세는 [TRIO-MOTION-098.md](TRIO-MOTION-098.md).
-- 표시 높이 24 논리 px. 정지와 걷기 높이가 같다. 걷기는 0-1-2-1, 180ms. 호루스 정면만 승인 오프셋이 있고, 옛 bob은 셋소호에서 뺐다.
+- 표시 높이 0.9.16부터 31.2 논리 px. 정지와 걷기 높이가 같다. 걷기는 0-1-2-1, 180ms. 호루스 정면만 승인 오프셋이 있고, 옛 bob은 셋소호에서 뺐다.
 - 상인은 옛 `pocket-chibi.png` 그대로다. `pack-pocket-sprites.cjs`를 실행하지 말 것.
 - 0.9.9: 전신 보기(파티, 소망 카드)는 정면 정지 그림 `data/art/portraits/*-idle-full.png`.
 - 0.9.10: 대화 카드 상반신, 소망 미소 버튼 두 개, `전신 크게 보기` 버튼 제거. 상반신은 다시 넣지 말 것.
 - 0.9.11: 파티 카드를 어깨까지로 줄임.
+- 0.9.16: 셋소호 표시 높이 31.2 논리 px. 아틀라스는 폰용 `trio-motion-small.png` 125px와 넓은 화면용 `trio-motion.png` 256px 두 장이다. 바꿀 때는 `pack-trio-motion.py`의 HEIGHT·SMALL·VISIBLE을 고친다.
 - 0.9.15: `인물 보기`는 세트·호루스 일러스트 세 장씩 넘겨 보기(`data/art/portraits/gallery/*.webp`, 원본 `docs/art/portraits-illust/gallery/`).
 - 0.9.14: 파티 카드는 `현재 동행` 한 줄 + 혼자/세트/호루스 선택 카드(문양·이름·효과·고르기), `인물 보기`로 정지 스프라이트 크게. 소망 카드도 정지 스프라이트. 일러스트는 화풍이 달라 게임에서 뺐다(원본만 보관).
 - (지난) 0.9.13: 파티 카드와 소망 카드는 사용자 일러스트 `data/art/portraits/*-illust-head.png`, 누르면 `*-illust.png` 전체. 원본은 `docs/art/portraits-illust/`, 바탕 제거는 `tools/art/cut-illust-portraits.py`.

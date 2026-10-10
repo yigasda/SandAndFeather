@@ -5,7 +5,7 @@
 
 import { T, paintMap, rnd } from './paint.js';
 import { drawReferenceScenes } from './reference-scene.js';
-import { DATA } from '../core/data.js';
+import { DATA, spriteFile } from '../core/data.js';
 
 // the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
 const SEASON = {
@@ -69,31 +69,38 @@ export class Renderer {
                 this.artScale.set(`${look}|${dir}`, atlas.scale);
             }
         }
-        for (const [look, d] of Object.entries(data?.looks || {})) {
-            const image = d.motion && DATA.spriteArt?.[d.motion.file];
-            if (image) this.motion.set(look, { ...d.motion, image });
-        }
+        for (const [look, d] of Object.entries(data?.looks || {})) if (d.motion) this.motion.set(look, d.motion);
         for (const [name, d] of Object.entries(data?.things || {})) if (ok(d.rows)) this.art.set(`thing|${name}`, make(d.rows, d.colors));
     }
     // the approved standing and walking pictures: walking (anim.moving) plays the poses in sequence by the time
     // walked (anim.walkT, seconds), each frameMs; standing shows the direction's idle picture. The feet's pivot
     // stands on the middle of the tile's bottom edge. Walking may shift the whole picture by the approved
     // offsets (source walk-cell pixels); nothing else bobs. Returns false for a look without these pictures.
+    // Two packings of the same frames: the phone-size one when it is big enough for this zoom (drawn nearly
+    // 1:1, so it stays crisp), else the large one once it has loaded.
     motionPerson(g, look, x, y, dir, z, anim) {
         const m = this.motion.get(look);
         if (!m) return false;
-        let r = m.idle[dir] || m.idle.down, ox = 0, oy = 0;
+        const small = m.small && DATA.spriteArt?.[m.small.file];
+        let a = small && m.height * z <= m.small.visible + 1 ? m.small : null;
+        if (!a) a = spriteFile(m.file) ? m : small ? m.small : null;
+        if (!a) return false;
+        const image = DATA.spriteArt[a.file];
+        let r = a.idle[dir] || a.idle.down, ox = 0, oy = 0;
         if (anim?.moving) {
             const k = Math.floor((anim.walkT || 0) * 1000 / m.frameMs) % m.sequence.length;
-            r = (m.walk[dir] || m.walk.down)[m.sequence[k]];
+            r = (a.walk[dir] || a.walk.down)[m.sequence[k]];
             [ox, oy] = m.offsets[dir]?.[k] || [0, 0];
         }
-        const k = m.height * z / m.visible, step = m.height * z / m.offsetRef;
+        let k = m.height * z / a.visible;
+        if (Math.abs(k - 1) < 0.03) k = 1; // drawn pixel for pixel: no resampling at all
+        const step = m.height * z / m.offsetRef;
         const fx = x + 8 * z, fy = y + 16 * z;
         g.fillStyle = 'rgba(40,25,10,.22)';
         g.beginPath(); g.ellipse(fx, fy - 0.6 * z, 5.5 * z, 1.6 * z, 0, 0, Math.PI * 2); g.fill();
         g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
-        g.drawImage(m.image, r[0], r[1], r[2], r[3], fx + ox * step - r[4] * k, fy + oy * step - r[5] * k, r[2] * k, r[3] * k);
+        // whole device pixels, so a 1:1 picture is not smeared by a half-pixel shift
+        g.drawImage(image, r[0], r[1], r[2], r[3], Math.round(fx + ox * step - r[4] * k), Math.round(fy + oy * step - r[5] * k), Math.round(r[2] * k), Math.round(r[3] * k));
         g.imageSmoothingEnabled = false;
         return true;
     }
