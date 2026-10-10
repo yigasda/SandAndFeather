@@ -73,3 +73,16 @@
 - `horus-idle-v5-small-hands.png`: 승인된 v4를 참조하여 둥근 주먹을 조금 줄인 생성 편집 시안이다. 안광 수정 당시의 직접 픽셀 편집과 달리 손 외 영역의 픽셀 동일성을 보장하는 버전은 아니다. 얼굴이나 눈의 미세한 변화가 문제되면 승인된 v4를 원본으로 사용한다. [Drive](https://drive.google.com/file/d/1GukuI7zylFZt1L3y5qw6y-qQsbwoexXV/view)
 
 각 `-preview.jpg`는 밝은 배경 확인용이다. 소망은 v2 새 참고 버전을 유지하며, 게임 적용은 하지 않았다.
+
+## 셋소호 등신 정렬 비교 시안: 재생성 없이 기존 이미지 조정
+
+사용자가 호루스를 기준으로 세트·소망의 등신 및 손발 크기를 맞추고, 셋의 4방향을 다시 그리지 말고 한 장으로 합치도록 요청했다. `aligned-trio-v1/`에 기존 PNG를 기하학적으로 조정한 결과를 저장했다. 이미지 생성 도구를 사용하지 않았다.
+
+입력은 세트 v4, 소망 v2 새 참고, 호루스 v5 작은 손 버전이다. 각 머리는 형태를 다시 그리지 않고 균일 배율로 표시 높이를 정렬했다. 호루스 정면의 정수리~턱과 턱~발바닥 비율을 기준으로 몸 구간을 조정했고, 세트·소망 손은 작은 국소 확대, 신발은 폭 조정을 했다. 옷·머리카락에 가려진 부분은 기존 그림을 유지한다. 원본 그대로의 픽셀 보존 편집은 아니며 보간 리샘플링에 따른 변화가 있다.
+
+- `trio-4directions-comparison.jpg`: 3행×4열. 행은 세트·소망·호루스, 열은 앞·뒤·왼쪽·오른쪽. [Drive](https://drive.google.com/file/d/1GsjSwbvlaIKBXqfPv0pAgFVIeYz6p7fa/view)
+- `trio-front-comparison.jpg`: 같은 표시 크기로 나란히 놓은 정면 비교. [Drive](https://drive.google.com/file/d/1R1rqd8ARUm_SmRmnszqa3LiY5BP7Ej8p/view)
+- 각 캐릭터 4방향 개별 투명 PNG와 통합 행 PNG, `geometry.json` 변환 기록을 보관했다.
+- 재현: 저장소 루트에서 `python scripts/art/align-trio-proportions.py` 실행. Pillow와 NumPy 사용.
+
+이 결과는 비율 검토 시안이며 런타임 에셋은 교체하지 않았다. 얼굴과 머리의 새 디자인 생성 없이 비율을 비교하기 위한 버전이다.
