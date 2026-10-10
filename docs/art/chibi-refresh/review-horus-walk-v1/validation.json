@@ -1,0 +1,55 @@
+{
+  "status": "review-not-approved",
+  "direction": "front/down",
+  "approved_art": "docs/art/chibi-refresh/review-horus-v13/horus-front.png",
+  "approved_art_sha256": "3a48cccec3b70e3a467b027a2f938c9101f3054c711e8f58320729e2b41d43ad",
+  "forehead_repaired_hair_pixels": 54,
+  "forehead_removed_isolated_shadow_pixels": 48,
+  "cleanup_changed_pixels_outside_mask": 0,
+  "head_changed_pixels_per_native_pose": [
+    0,
+    0,
+    0
+  ],
+  "motion_source": "../approved/walk/horus-front-{0,1,2}.png and approved manifest",
+  "frame_size": [
+    360,
+    400
+  ],
+  "pivot": [
+    180,
+    370
+  ],
+  "reference_height": 330,
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "offsets": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      0,
+      -1
+    ]
+  ],
+  "duration_ms": 180,
+  "loop_ms": 720,
+  "head_rotation_degrees": 0,
+  "head_deformation": false,
+  "creation": "rigged approved original pixels, no generated character or walk frames",
+  "scale": 0.5296950240770465,
+  "runtime_changed": false
+}
