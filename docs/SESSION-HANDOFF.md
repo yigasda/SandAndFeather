@@ -4,7 +4,7 @@
 
 ## 최신 상태 — 0.9.5 승인 메뉴 아이콘
 
-메뉴 아이콘 적용 완료, main 배포 준비. 아래 릴리스 기록을 최신 기준으로 사용한다.
+PR #6으로 main 병합 완료. 병합 커밋 `c9d3c7dbf9cf23f66214fa12d7c10dff214493cc`, 기능 커밋 `7a942dbd9771ab2d994c2ed9586c69fb087eaf64`. 확장 업데이트 후 새로고침하면 0.9.5를 받는다.
 
 - 사용자가 승인한 시안: `docs/art/menu-icons-approved.png`. https://drive.google.com/file/d/1GzwBe8KFEmDE-BkP74lk75SfKZn3BmIX/view
 - 두 이전 시안은 반려됨: 캐릭터 일러스트 아이콘, 그리고 5번 모양으로 전체 통일한 아이콘. 반드시 테마마다 원래 다른 디자인 유지. 1번은 지구본·별, 3번은 야자수·앉은 사람.
