@@ -64,3 +64,12 @@
 
 - [88번 호루스 정면 작은 흔들림 GIF](https://drive.google.com/file/d/1k7-QOCPvN8LDS_BxWp6KrlixxVSYCY9U/view)
 - [89번 셋소호 전체 걷기 GIF](https://drive.google.com/file/d/1S2Hp-LB5uRaoMvMIDkXGyBg7EImG2sYS/view)
+
+## 걷기 v4 — 흔들림을 GIF 배치 오프셋으로 제한
+
+사용자가 v3 고개 기울기를 그네처럼 과하다고 지적하며 아주 작은 움직임을 요청했다. `walk-v4-horus-micro-motion`은 고개가 안정적이었던 v2의 정면 PNG 세 장을 다시 사용한다. 그림을 재생성하거나 수정하지 않고 GIF에 놓는 위치만 걸음 단계에 따라 `(1,0) → (0,-1) → (-1,0) → (0,-1)`픽셀로 이동한다. 수치는 원래 360×400 셀 기준이며, 50% 크기인 합본에서는 절반으로 표시된다. 새 회전은 0도이며 v2 원본의 미세한 프레임 차이는 그대로 남는다.
+
+세트·소망과 호루스 나머지 방향은 v1 원본을 계속 사용한다. 총 36개 입력 PNG의 해시 불변, 프레임 경계 잘림 없음, GIF 4프레임/180ms를 검증했다. 새 게임용 프레임을 만들거나 런타임을 바꾸지 않은 재생 검토본이다. 재현: `python scripts/art/preview-horus-walk-micro-motion.py`. 배치와 입력 해시는 새 `manifest.json`에 기록했다.
+
+- [90번 호루스 정면 1픽셀 움직임 GIF](https://drive.google.com/file/d/1COLz3Sf_VaLgkWocJ86FeEEybxtxWXum/view)
+- [91번 셋소호 전체 걷기 GIF](https://drive.google.com/file/d/1SXdiluUcTU0xmBDo4kyrNi8Ld6dCGRTg/view)
