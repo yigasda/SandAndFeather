@@ -65,7 +65,7 @@ if(size.width===1280)await last().locator('.sf_pop').screenshot({path:path.join(
 if(size.width===412)await shot(`${i+1}-${id}-bag`);
 if(id==='journal')assert.equal(await p.locator('.sf_inventory_grid').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),1);
 await close();await p.locator('[data-tab="party"]').click();await bounds();if(size.width===412)await shot(`${i+1}-${id}-party`);await close();
-await p.locator('.sf_talk').click();await bounds();assert.equal(await last().locator('.sf_portrait_bust').count(),2);await last().getByRole('button',{name:'활짝 웃기',exact:true}).click();await images();if(size.width===412)await shot(`${i+1}-${id}-talk`);await close();
+await p.locator('.sf_talk').click();await bounds();assert.equal(await last().locator('.sf_portrait').count(),0);if(size.width===412)await shot(`${i+1}-${id}-talk`);await close();
 }
 await p.setViewportSize({width:412,height:900});await p.locator('.sf_appearance').click();await p.getByLabel('밝기',{exact:true}).selectOption('dark');assert(await p.locator('#sf_game').evaluate(e=>e.classList.contains('sf_dark')));await close();
 await p.locator('.sf_bag').click();await bounds();await shot(`${i+1}-${id}-dark`);await close();

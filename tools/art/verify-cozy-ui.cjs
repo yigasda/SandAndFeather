@@ -40,11 +40,10 @@ await p.locator('[data-tab="somang"]').click();await images();assert((await last
 await capture('05-somang-character');await bounds();await close();passed.push('Somang character screen retains stats/lessons and shows the approved standing sprite');
 await p.evaluate(async()=>{cozyTest.state.getState().party.with='';await cozyTest.win.travel('ombos',{x:24,y:13});});
 await p.waitForTimeout(150);await p.locator('.sf_talk').click();assert.equal(await last().getAttribute('data-kind'),'conversation');await images();await capture('06-conversation-calm');
-assert.equal(await last().locator('.sf_portrait_bust').count(),2);await last().getByRole('button',{name:'활짝 웃기',exact:true}).click();await capture('07-conversation-smile');
-assert((await last().locator('img[alt*="소망"]').getAttribute('src')).includes('somang-smile-bust'));await last().getByRole('button',{name:'다문 미소',exact:true}).click();await images();
-assert.equal(await p.evaluate(()=>document.querySelector('#send_textarea').value),await p.evaluate(()=>cozyTest.text));passed.push('conversation uses detailed busts; smile selector only changes appearance');await close();
+assert.equal(await last().locator('.sf_portrait').count(),0);assert.equal(await last().getByRole('button',{name:'활짝 웃기',exact:true}).count(),0);
+assert.equal(await p.evaluate(()=>document.querySelector('#send_textarea').value),await p.evaluate(()=>cozyTest.text));passed.push('conversation card has no portraits or expression buttons and sends no chat');await close();
 await p.evaluate(()=>cozyTest.win.travel('ombos',{x:28,y:13}));await p.waitForTimeout(150);await p.locator('.sf_talk').click();await images();
-assert((await last().locator('img[alt*="호루스"]').getAttribute('src')).includes('horus-bust'));await capture('11-horus-conversation');await close();
+assert.equal(await last().locator('.sf_portrait').count(),0);await capture('11-horus-conversation');await close();
 await p.setViewportSize({width:320,height:740});await p.locator('[data-tab="somang"]').click();await images();
 const scrollBox=await last().locator('.sf_pop').boundingBox(),cdp=await p.context().newCDPSession(p);
 const x=scrollBox.x+scrollBox.width/2,y=Math.min(620,scrollBox.y+scrollBox.height-70);

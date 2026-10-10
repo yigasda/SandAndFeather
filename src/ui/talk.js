@@ -8,7 +8,6 @@ import { DATA } from '../core/data.js';
 import { addNews } from '../core/news.js';
 import { josa } from '../core/ko.js';
 import { getState } from '../core/state.js';
-import { conversationPortraits } from './portraits.js';
 
 // "{물건:을} 들고 {상대}에게" with the values filled in
 function fill(tpl, vals) {
@@ -78,7 +77,6 @@ export function personCard(ui, npc) {
     ui.showCard({
         title: npc.label,
         kind: 'conversation',
-        body: ['set', 'horus'].includes(npc.id) ? conversationPortraits(npc) : null,
         text: fresh.length
             ? `챗의 지금 장면에서 ${npc.label}에게 꺼내 보일 수 있어. 장면을 옮기고 싶을 때만 찾아가기.`
             : `${npc.whereKo || ''}에 있다. 가방에 꺼내 보일 게 없어서 찾아가기만 할 수 있어.`,

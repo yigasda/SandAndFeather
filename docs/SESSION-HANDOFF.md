@@ -13,7 +13,8 @@
 - `docs/art/chibi-refresh/approved/`의 48장을 `tools/art/pack-trio-motion.py`로 `data/art/characters/trio-motion.png`에 패킹하고, `sprites.json`의 `looks.*.motion`에 연결했다. 상세는 [TRIO-MOTION-098.md](TRIO-MOTION-098.md).
 - 표시 높이 24 논리 px. 정지와 걷기 높이가 같다. 걷기는 0-1-2-1, 180ms. 호루스 정면만 승인 오프셋이 있고, 옛 bob은 셋소호에서 뺐다.
 - 상인은 옛 `pocket-chibi.png` 그대로다. `pack-pocket-sprites.cjs`를 실행하지 말 것.
-- 0.9.9: 전신 보기(파티, 전신 크게 보기, 소망 카드)도 정면 정지 그림 `data/art/portraits/*-idle-full.png`. 대화 상반신과 소망 표정 두 개는 그대로.
+- 0.9.9: 전신 보기(파티, 소망 카드)는 정면 정지 그림 `data/art/portraits/*-idle-full.png`.
+- 0.9.10: 대화 카드 상반신, 소망 미소 버튼 두 개, `전신 크게 보기` 버튼 제거. 상반신은 다시 넣지 말 것.
 
 ## 이전 완료 — 0.9.7 새 옴보스 전체맵 낮밤
 
