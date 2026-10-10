@@ -4,7 +4,26 @@
 
 주요 지역 8곳과 모든 하위 공간은 유지한다. 바뀐 것은 보여주는 단위다. 미술 제작·보정은 아스트라, 이동·충돌·가림·상호작용·저장 연결은 오푸스가 담당한다. 이번 커밋은 시안과 문서만 등록하며 실제 게임은 변경하지 않는다.
 
-## 최신 사용자 결정과 시안
+## 최신 수정 요청과 넓어진 방 시안
+
+사용자가 세 방의 꽉 찬 느낌을 줄이기 위해 가로로 더 긴 방을 요청했다. 호루스 방에는 하늘이 크게 보이는 창을 만들고, 밤에는 그 창에서 별을 볼 수 있어야 한다. **아래 가로 확장본을 최신 검토 대상으로 삼고, 이전 4:3 방은 기록으로 보존한다.** 긴 복도·입구·열린 안뜰 회랑의 구조는 유지한다.
+
+| 최신 장면 | 저장소 원본 | 모바일 Drive | 원본 Drive |
+| --- | --- | --- | --- |
+| 호루스 방 v2 낮 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/horus-room-v2-wide-day.png) | [보기](https://drive.google.com/file/d/1hy8iEOzqhLsBbj_g0CyypdFYk9_vl1To/view) | [보기](https://drive.google.com/file/d/1XlDqOFoUF-0TuCwstUkxl9mKb4yI35E-/view) |
+| 호루스 방 v2 별밤 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/horus-room-v2-wide-night.png) | [보기](https://drive.google.com/file/d/1T0lGoIs1x1ZvMnh6kxtXaEruylU_F_cZ/view) | [보기](https://drive.google.com/file/d/1sHd2veD5gD1vYYEUzZSmQxaRk4LmGEkH/view) |
+| 세트 방 v3 가로 확장 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/set-room-v3-wide.png) | [보기](https://drive.google.com/file/d/1Q6wtl-QyDyoN0eQlgnuiXEcv3jerZzOx/view) | [보기](https://drive.google.com/file/d/1cgjzD0prJxqJhejHzD8zPJf8Ej5TwD0n/view) |
+| 소망 방 v2 가로 확장 | [PNG](https://github.com/yigasda/SandAndFeather/blob/main/docs/art/map-expansion/somang-room-v2-wide.png) | [보기](https://drive.google.com/file/d/110RDUFEweoowSwIIYBE5lJ2SQ2dZMQCs/view) | [보기](https://drive.google.com/file/d/18G5iP5XXtYG-C5H_LkHjN9K5PebcMOC7/view) |
+
+네 PNG는 모두 **1774×887, 2:1**이고 모바일 JPG는 1200×600이다. 새 배경을 넓히면서 가구 사이의 이동 바닥을 늘렸다. 빈 공간에 새 가구를 추가해 다시 꽉 채우거나, 이미지를 단순 가로 늘리기로 왜곡하지 않는다. 세트·호루스 침대는 베개 두 개를 나란히 둔 두 사람용을 유지한다. 소망 방은 화장·옷·수집품·소파가 있는 개인 공간을 유지한다.
+
+호루스 방의 큰 창은 침대와 책상 사이 벽에 있다. 창 아래에는 다가설 수 있는 바닥을 남기며 창 자체는 통과하는 출구가 아니다. 낮에는 하늘과 구름, 밤에는 별을 보여준다. 창가의 별 관찰은 향후 상호작용 지점으로 연결할 수 있다. 특정 별자리나 새 이야기 사건을 이번 그림만으로 정사로 확정하지 않는다.
+
+호루스 낮·밤 그림은 같은 방을 기준으로 제작한 한 쌍이다. 구현 시 출입구·가구·충돌·캐릭터 위치를 공유하고 배경과 조명만 전환한다. 게임 시간 상태를 사용하며 배경 전환을 위해 날짜를 넘기지 않는다. 이미지 크기는 같지만 세부 경계의 픽셀 정합과 실제 캐릭터 가림은 아직 런타임 검증 전이므로 적용 때 확인한다. 별밤 그림에 기존 전역 야간 필터를 중복 적용하여 과하게 어둡게 만들지 않는다. 별이 나타나는 효과를 단순 화면 색조만으로 대신하지 않는다.
+
+이번 네 장은 요청을 반영한 새 검토용 결과물이며, 이전 방의 승인을 새 버전까지 승인한 것으로 확대하지 않는다. 게임 파일은 수정하지 않았다. 가구와 캐릭터의 상대 크기는 기존 기준을 유지하고, 넓어진 방 전체를 모바일 한 화면에 억지로 축소하지 않는다.
+
+## 이전 시안과 승인 이력
 
 사용자는 세트 방 넓은 침대 v2, 열린 안뜰 회랑 v1, 긴 가로 입구 회랑 v1을 본 뒤 “아 존나 좋아 이거야”라고 응답하고, 다음으로 긴 실내 복도와 호루스·소망 방 제작을 요청했다. 앞선 세 장은 승인된 방향으로 유지한다.
 
