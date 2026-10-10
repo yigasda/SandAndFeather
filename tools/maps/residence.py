@@ -19,6 +19,10 @@ V2 = 'exits-v2/'
 END_W, END_E = [0, 2.9, 0.62, 3.3], [26.38, 2.9, 27, 3.3]
 AT_W, AT_E = [0.32, 3.8, 'right'], [26.68, 3.8, 'left']
 OPEN_ENDS = [[0, 2.9, 0.62, 3.9], [26.38, 2.9, 27, 3.9]]  # the recess floors behind the end columns
+# what stands in front of her inside a deep doorway, drawn again over her (scene-art occluders):
+# (front line in tiles, outline in tiles); someone whose feet are above the line is behind it
+FRONT_ENDS = [(4.12, [[0, 0], [1.72, 0], [1.72, 4.12], [0.6, 4.12], [0.6, 1.0], [0, 1.0]]),
+              (4.12, [[27, 0], [25.28, 0], [25.28, 4.12], [26.4, 4.12], [26.4, 1.0], [27, 1.0]])]
 COL_W, COL_E = [0.65, 0, 1.7, 4.1], [25.3, 0, 26.35, 4.1]  # the last column's base at each end
 # back out in the village, on the carpet just below the temple door (ombos.json's exit walks in through that door)
 OMBOS_TEMPLE = {'x': 24.9, 'y': 9.75, 'dir': 'down'}
@@ -28,23 +32,29 @@ SCENES = {
         'name': '우물 마당', 'day': V2 + 'well-courtyard-v1.png', 'night': V2 + 'well-courtyard-v1-night.png', 'size': [22, 11],
         'solid': [[0, 0, 22, 2.75], [2.8, 2.75, 16.2, 3.35], [17.8, 2.75, 22, 3.35], [0, 0, 2.45, 3.95], [0, 0, 0.6, 6.2],
                   [0.5, 3.95, 2.9, 6.45], [18.9, 0, 22, 3.65], [21.45, 0, 22, 6.2], [19.2, 4.0, 21.3, 6.8],
-                  [9.3, 3.2, 12.7, 6.3], [12.4, 5.0, 13.6, 6.8], [0, 7.6, 1.5, 11], [20.6, 7.6, 22, 11],  # the corner ferns: their pots, under the leaves
+                  [9.4, 4.3, 12.4, 6.3], [12.4, 5.0, 13.6, 6.8], [0, 7.6, 1.5, 11], [20.6, 7.6, 22, 11],  # the corner ferns: their pots, under the leaves
                  
                   [0, 8.6, 8.1, 11], [13.9, 8.6, 22, 11], [4.7, 8.2, 5.6, 11], [16.4, 8.2, 17.3, 11]],
-        'exits': [[[8.3, 10.25, 13.7, 11], 'ombos', OMBOS_TEMPLE], [[16.2, 1.6, 17.7, 2.1], 'courtyard_colonnade', 'south'],
+        'exits': [[[8.3, 10.25, 13.7, 11], 'ombos', OMBOS_TEMPLE], [[16.2, 1.6, 17.7, 2.0], 'courtyard_colonnade', 'south'],
                   [[0, 6.63, 0.56, 7.42], 'temple_kitchen', 'door'], [[21.44, 6.88, 22, 7.44], 'temple_dining', 'door']],
         'entry': {'south': [11, 9.6, 'up'], 'north': [16.95, 2.95, 'down'], 'west': [1.18, 7.19, 'right'], 'east': [20.77, 7.4, 'left']},
         'open': [[16.2, 1.6, 17.7, 3.35]],
+        'front': [(4.5, [[9.36, 3.2], [12.6, 3.2], [12.6, 3.8], [12.4, 3.8], [12.4, 5.1], [12.12, 5.1], [12.12, 3.8], [9.88, 3.8],
+                         [9.88, 5.1], [9.58, 5.1], [9.58, 3.8], [9.36, 3.8]]),  # the well's posts and bar
+                  (3.3, [[14.95, 0], [16.1, 0], [16.1, 3.3], [14.95, 3.3]]),  # the column left of the north passage
+                  (3.35, [[17.75, 1.5], [18.7, 1.5], [18.7, 3.35], [17.75, 3.35]])],  # the planter right of it
         'spawn': 'south',
         'spots': [{'id': 'temple_well', 'x': 10.5, 'y': 6.6, 'label': '우물', 'title': '우물', 'text': '두레박 줄이 축축하다. 마당 사람들이 여기서 물을 긷고 빨래를 한다.'}],
     },
     'courtyard_colonnade': {
         'name': '열린 연못 회랑', 'day': V2 + 'courtyard-colonnade-v1.png', 'night': V2 + 'courtyard-colonnade-v1-night.png', 'size': [24, 14],
         # widened on the right (1932 px for 24 tiles, as the 1448 px original was 18); the new arch is walked into going up
-        'solid': [[0, 0, 19.05, 6.9], [19.05, 0, 21.5, 4.9], [21.5, 0, 24, 6.9], [0, 11.6, 6.6, 14], [11.39, 11.6, 24, 14],
+        'solid': [[0, 0, 19.05, 6.9], [19.05, 0, 21.5, 4.5], [20.85, 4.5, 21.5, 4.75], [21.5, 0, 24, 6.9], [0, 11.6, 6.6, 14], [11.39, 11.6, 24, 14],
                   [5.5, 11.0, 6.6, 14], [11.39, 11.0, 12.49, 14], [23.2, 11.0, 24, 14], [0, 0, 0.3, 14]],
-        'exits': [[[6.7, 13.3, 11.29, 14], 'temple_courtyard', 'north'], [[19.05, 4.9, 21.5, 5.4], 'temple_inner_corridor', 'west']],
+        'exits': [[[6.7, 13.3, 11.29, 14], 'temple_courtyard', 'north'], [[19.05, 4.5, 21.5, 4.95], 'temple_inner_corridor', 'west']],
         'entry': {'south': [8.99, 11.9, 'up'], 'east': [20.3, 6.2, 'down']},
+        'front': [(6.3, [[18.45, 1.6], [22.17, 1.6], [22.17, 6.3], [21.5, 6.3], [21.5, 3.0], [21.2, 2.55], [20.3, 2.3], [19.4, 2.55],
+                         [19.07, 3.0], [19.07, 6.3], [18.45, 6.3]])],  # the arch's frame
         'spawn': 'south',
         'spots': [{'id': 'colonnade_pond', 'x': 8.49, 'y': 7.1, 'title': '연못', 'text': '기둥 사이로 연꽃이 떠 있다. 물빛이 천장에 어른거린다.'}],
     },
@@ -53,6 +63,7 @@ SCENES = {
         'solid': [[0, 0, 27, 3.9], [4.5, 0, 8.4, 4.2], [18.9, 0, 21.9, 4.2], COL_W, COL_E],
         'exits': [[END_W, 'courtyard_colonnade', 'east'], [END_E, 'temple_central_gallery', 'south']],
         'entry': {'west': AT_W, 'east': AT_E},
+        'front': FRONT_ENDS,
         'open': OPEN_ENDS,
         'spawn': 'west',
     },
@@ -61,8 +72,9 @@ SCENES = {
         'solid': [[0, 0, 12.45, 3.9], [14.35, 0, 27, 3.9], [12.3, 0, 12.6, 3.95], [14.2, 0, 14.5, 3.95], [4.5, 0, 7.5, 4.2],
                   [19.1, 0, 22.2, 4.2], [0, 7.0, 11.9, 9], [15.1, 7.0, 27, 9], [10.8, 6.9, 11.9, 9], [15.1, 6.9, 16.1, 9], COL_W, COL_E],
         'exits': [[[11.9, 8.6, 15.1, 9], 'temple_inner_corridor', 'east'], [END_W, 'temple_west_gallery', 'east'],
-                  [END_E, 'temple_east_gallery', 'west'], [[12.6, 0, 14.2, 2.3], 'room_entrances_wide', 'arch']],
+                  [END_E, 'temple_east_gallery', 'west'], [[12.6, 0, 14.2, 2.1], 'room_entrances_wide', 'arch']],
         'entry': {'south': [13.5, 7.9, 'up'], 'west': AT_W, 'east': AT_E, 'arch': [13.4, 3.4, 'down']},
+        'front': FRONT_ENDS + [(3.95, [[11.9, 0.3], [14.95, 0.3], [14.95, 3.95], [14.25, 3.95], [14.25, 1.45], [14.0, 0.95], [13.4, 0.65], [12.8, 0.95], [12.55, 1.45], [12.55, 3.95], [11.9, 3.95]])],
         'open': OPEN_ENDS,
         'spawn': 'south',
     },
@@ -70,17 +82,19 @@ SCENES = {
         'name': '동쪽 회랑', 'day': V2 + 'east-gallery-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 14.9, 3.9], [16.6, 0, 27, 3.9], [4.5, 0, 7.6, 4.2], COL_W, COL_E],
         'exits': [[END_W, 'temple_central_gallery', 'east'], [END_E, 'room_entrances_wide', 'west'],
-                  [[14.95, 0, 16.55, 2.8], 'temple_sanctuary', 'door']],
+                  [[14.95, 0, 16.55, 2.6], 'temple_sanctuary', 'door']],
         'entry': {'west': AT_W, 'east': AT_E, 'shrine': [15.75, 3.75, 'down']},
+        'front': FRONT_ENDS + [(3.95, [[14.4, 0.5], [17.05, 0.5], [17.05, 3.95], [16.5, 3.95], [16.5, 1.6], [15.0, 1.6], [15.0, 3.95], [14.4, 3.95]])],
         'open': OPEN_ENDS,
         'spawn': 'west',
     },
     'temple_west_gallery': {
         'name': '서쪽 회랑', 'day': V2 + 'west-gallery-v1.png', 'size': [27, 9],
-        'solid': [[0, 0, 6.65, 3.9], [8.55, 0, 27, 3.9], [1.9, 0, 4.2, 4.2], [17.8, 0, 21.0, 4.2], COL_W, COL_E],
+        'solid': [[0, 0, 6.65, 3.9], [8.55, 0, 27, 3.9], [1.9, 0, 4.2, 4.2], [17.8, 0, 21.0, 4.2], COL_W, COL_E, [6.6, 0, 7.0, 2.95], [8.25, 0, 8.6, 2.95]],  # + the passage's front posts
         'exits': [[END_E, 'temple_central_gallery', 'west'], [END_W, 'room_entrances_wide', 'east'],
-                  [[6.7, 0, 8.5, 2.8], 'temple_colonnade', 'door']],
+                  [[6.7, 0, 8.5, 2.5], 'temple_colonnade', 'door']],
         'entry': {'east': AT_E, 'west': AT_W, 'stairs': [7.6, 3.75, 'down']},
+        'front': FRONT_ENDS + [(3.95, [[5.95, 0.2], [9.2, 0.2], [9.2, 3.95], [8.55, 3.95], [8.55, 1.05], [6.6, 1.05], [6.6, 3.95], [5.95, 3.95]])],
         'open': OPEN_ENDS,
         'spawn': 'east',
     },
@@ -94,6 +108,7 @@ SCENES = {
                   [END_E, 'temple_west_gallery', 'west'], [[11.19, 8.58, 15.29, 9], 'temple_central_gallery', 'arch']],
         'entry': {'set': [2.9, 4.9, 'down'], 'somang': [13.2, 4.9, 'down'], 'horus': [24.0, 4.9, 'down'],
                   'west': AT_W, 'east': AT_E, 'arch': [13.24, 7.46, 'up']},
+        'front': FRONT_ENDS,
         'open': OPEN_ENDS,
         'spawn': 'arch',
     },
@@ -254,6 +269,9 @@ def main():
             f.write('\n')
         art[sid] = {'file': ART + sc['day'], 'fullMap': True, 'lazy': True, 'origin': [0, 0], 'scale': [w * 16 / iw, h * 16 / ih],
                     'day': [0, 0, iw, ih], 'night': [0, 0, iw, ih], 'clip': [[0, 0], [iw, 0], [iw, ih], [0, ih]]}
+        if sc.get('front'):
+            art[sid]['occluders'] = [{'foot': round(f * ky, 1), 'polygon': [[round(x * kx, 1), round(y * ky, 1)] for x, y in pts]}
+                                     for f, pts in sc['front']]
         if sc.get('night'):
             art[sid]['nightFile'] = ART + sc['night']  # an authored night: no dark filter over it
         else:
