@@ -71,6 +71,7 @@ export function applyTheme() {
         el.classList.toggle('sf_dark', dark);
         el.dataset.uiTheme = s.uiTheme;
     }
+    for(const img of document.querySelectorAll('#sf_game img[data-item-art]'))img.src=new URL(`../../data/art/ui/skins/${s.uiTheme}/item-${img.dataset.itemArt}.png`,import.meta.url).href;
     const themeSelect=document.getElementById('sf_ui_theme'), brightness=document.getElementById('sf_theme');
     if(themeSelect)themeSelect.value=s.uiTheme;
     if(brightness)brightness.value=s.theme;

@@ -4,6 +4,8 @@
 
 기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md) · 진행 상황: [docs/PROGRESS.md](docs/PROGRESS.md) · 인수인계: [최신 인수인계](docs/SESSION-HANDOFF.md)
 
+**0.9.1 원본 픽셀 UI:** 시안과 다르다는 피드백을 반영해 CSS로 근사한 프레임·버튼·아이콘을 시안에서 직접 추출한 PNG로 교체했다. [원본 대조와 구현](docs/SOURCE-PIXEL-UI.md).
+
 **0.9.0 다섯 UI 테마:** 게임 우측 상단 ⚙ → 화면 설정 또는 확장 설정 → 보기 → UI 테마에서 1~5번을 선택한다. 5번 포근한 픽셀 동화가 기본이며 즉시 적용·자동 저장된다. 대화 상반신·소망 두 미소·파티 전신 확대·아이템 칸 가방과 초미니 셋소호/상인을 포함한다. [실제 화면과 검증](docs/COZY-UI.md).
 
 **0.8.14 초미니 등록:** 세트·소망·호루스와 상인에 초미니4방향 PNG를 적용했다. [실제 화면·검증·원본](docs/POCKET-SPRITES.md).
