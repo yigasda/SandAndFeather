@@ -66,4 +66,3 @@
 | walk | right | 0 · 발 A | [docs/art/chibi-refresh/animations/walk-v1/horus-right-0.png](art/chibi-refresh/animations/walk-v1/horus-right-0.png) |
 | walk | right | 1 · 가운데 | [docs/art/chibi-refresh/animations/walk-v1/horus-right-1.png](art/chibi-refresh/animations/walk-v1/horus-right-1.png) |
 | walk | right | 2 · 발 B | [docs/art/chibi-refresh/animations/walk-v1/horus-right-2.png](art/chibi-refresh/animations/walk-v1/horus-right-2.png) |
-

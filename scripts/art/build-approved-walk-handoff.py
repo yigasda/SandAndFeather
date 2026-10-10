@@ -23,5 +23,5 @@ for who in chars:
   phase='정지' if f['phase'] is None else ['0 · 발 A','1 · 가운데','2 · 발 B'][f['phase']]
   lines.append(f"| {f['state']} | {f['gameDirection']} | {phase} | [{f['path']}]({f['path'][5:]}) |")
  lines+=['']
-(ROOT/'docs/APPROVED-IDLE-WALK-FILES.md').write_text('\n'.join(lines)+'\n')
+(ROOT/'docs/APPROVED-IDLE-WALK-FILES.md').write_text('\n'.join(lines).rstrip()+'\n')
 print(f'Validated and indexed {len(frames)} approved RGBA files: 12 idle + 36 walk.')
