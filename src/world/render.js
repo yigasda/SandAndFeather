@@ -173,7 +173,7 @@ export class Renderer {
         });
         // place names: the mode in orange, then the name ("생활 시장"), like the mockup
         g.textBaseline = 'middle';
-        for (const sp of m.spots) {
+        for (const sp of [...m.spots, ...m.labels]) {
             if (!sp.label) continue;
             const tag = MODE[sp.mode] || '';
             g.font = `700 ${Math.round(5.5 * z)}px 'Noto Sans KR', sans-serif`;
@@ -295,7 +295,7 @@ export class Renderer {
         g.fillStyle = '#2a2018'; g.fillRect(0, 0, cv.width, cv.height);
         const scene = (m.d.referenceScenes || []).map(id => DATA.sceneArt?.[id]).find(s => s?.fullMap);
         if (scene) {
-            g.drawImage(scene.image, ...scene.day, ox, oy, w, h);
+            if (scene.image) g.drawImage(scene.image, ...scene.day, ox, oy, w, h);
             for (const id of m.open) for (const c of m.d.overlays?.[id] || [])
                 g.drawImage(this.ground,c.x*T,c.y*T,T,T,ox+c.x*T*k,oy+c.y*T*k,T*k,T*k);
         } else g.drawImage(this.ground, ox, oy, w, h);

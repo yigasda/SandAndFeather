@@ -4,26 +4,32 @@ import { DATA } from '../core/data.js';
 
 // Feather only the four ground seams specified by the map artist. Rock, statue,
 // path and shadow interiors keep their original RGB values and full opacity.
+// One prepared canvas per decoded picture: dropping a room's picture lets its canvas go too.
+// A scene with an authored night (nightFile) shows that picture at night instead of darkening the day.
 const panels = new WeakMap();
+const pictureOf = (scene, night) => (night && scene.nightImage) || scene.image;
 function panel(scene, night) {
-    let pair = panels.get(scene);
-    if (!pair) { pair = {}; panels.set(scene, pair); }
-    const key = night ? 'night' : 'day';
-    if (pair[key]) return pair[key];
+    const image = pictureOf(scene, night);
+    if (!image) return null;
+    const key = night && scene.nightImage ? 'night' : 'day';
+    if (panels.has(image)) return panels.get(image);
     const source = scene[key], cv = document.createElement('canvas');
     cv.width = source[2]; cv.height = source[3];
-    const g = cv.getContext('2d'); g.drawImage(scene.image, ...source, 0, 0, cv.width, cv.height);
-    const pixels = g.getImageData(0, 0, cv.width, cv.height);
-    for (let y = 0; y < cv.height; y++) for (let x = 0; x < cv.width; x++) {
-        let opacity = 1;
-        for (const {a, b, width} of scene.seams || []) {
-            const vx = b[0]-a[0], vy = b[1]-a[1];
-            const t = Math.max(0, Math.min(1, ((x-a[0])*vx+(y-a[1])*vy)/(vx*vx+vy*vy)));
-            opacity = Math.min(opacity, Math.hypot(x-a[0]-t*vx, y-a[1]-t*vy)/width);
+    const g = cv.getContext('2d'); g.drawImage(image, ...source, 0, 0, cv.width, cv.height);
+    if (scene.seams?.length) {
+        const pixels = g.getImageData(0, 0, cv.width, cv.height);
+        for (let y = 0; y < cv.height; y++) for (let x = 0; x < cv.width; x++) {
+            let opacity = 1;
+            for (const {a, b, width} of scene.seams) {
+                const vx = b[0]-a[0], vy = b[1]-a[1];
+                const t = Math.max(0, Math.min(1, ((x-a[0])*vx+(y-a[1])*vy)/(vx*vx+vy*vy)));
+                opacity = Math.min(opacity, Math.hypot(x-a[0]-t*vx, y-a[1]-t*vy)/width);
+            }
+            pixels.data[(y*cv.width+x)*4+3] = Math.round(255*opacity);
         }
-        pixels.data[(y*cv.width+x)*4+3] = Math.round(255*opacity);
+        g.putImageData(pixels,0,0);
     }
-    g.putImageData(pixels,0,0); pair[key]=cv; return cv;
+    panels.set(image, cv); return cv;
 }
 
 export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActors, actors }) {
@@ -33,6 +39,7 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
         if (!scene) continue;
         const source = part === 'night' ? scene.night : scene.day;
         const picture = panel(scene, part === 'night');
+        if (!picture) continue;
         const [ox, oy] = scene.origin;
         const [kx, ky] = Array.isArray(scene.scale) ? scene.scale : [scene.scale, scene.scale];
         const dx = ox * z - cx, dy = oy * z - cy;
@@ -54,7 +61,10 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
                     c.x*16*z-cx, c.y*16*z-cy, 16*z, 16*z);
             }
             // Dawn/evening retain the normal world lighting; night is authored.
-            if (tint && (part !== 'night' || scene.tintNight)) { g.fillStyle = tint; g.fillRect(dx, dy, dw, dh); }
+            // a lamp-lit room keeps one picture and darkens less than the open village (tintNight: its own colour)
+            const night = part === 'night' && scene.tintNight && !scene.nightImage ? (typeof scene.tintNight === 'string' ? scene.tintNight : tint) : null;
+            const shade = part === 'night' ? night : tint;
+            if (shade) { g.fillStyle = shade; g.fillRect(dx, dy, dw, dh); }
         };
         const liveActors = (minimumFoot = -Infinity) => {
             const cv = renderer.referenceActors;
@@ -62,9 +72,11 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
             const ag = cv.getContext('2d');
             ag.clearRect(0, 0, W, H); ag.imageSmoothingEnabled = false;
             paintActors(ag, minimumFoot);
-            if (tint) {
+            // people under an authored night get a lighter shade than the village's, to sit in its lamplight
+            const shade = part === 'night' && (scene.nightImage || typeof scene.tintNight === 'string') ? 'rgba(24,34,90,.28)' : tint;
+            if (shade) {
                 ag.globalCompositeOperation = 'source-atop';
-                ag.fillStyle = tint; ag.fillRect(0, 0, W, H);
+                ag.fillStyle = shade; ag.fillRect(0, 0, W, H);
                 ag.globalCompositeOperation = 'source-over';
             }
             g.drawImage(cv, 0, 0);

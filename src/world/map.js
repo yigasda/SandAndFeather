@@ -11,11 +11,18 @@ export const SOLID_DECOR = new Set(['seal', 'column', 'statue_set', 'statue_falc
 import { getState } from '../core/state.js';
 import { inPolygon } from './geometry.js';
 
+// Which time of the story the game is in. The residence keeps one set of rooms for every era; a spot, door or
+// person can say which eras it belongs to ("eras": ["now"]) so the first-meeting starts can leave out what was not
+// there yet (Horus living in the west room, Somang's things). Today every saved game is in 'now'.
+export const eraOf = (s = getState()) => s?.era || 'now';
+const inEra = (o, era) => !o.eras || o.eras.includes(era);
+
 export class GameMap {
-    constructor(data, open = []) {
+    constructor(data, open = [], era = 'now') {
         this.d = data;
         this.id = data.id;
         this.open = open;
+        this.era = era;
         // the rows with the open overlays applied
         const rows = data.rows.map(r => r.split(''));
         for (const id of open) for (const c of data.overlays?.[id] || []) if (rows[c.y]?.[c.x] !== undefined) rows[c.y][c.x] = c.c;
@@ -24,8 +31,11 @@ export class GameMap {
         this.h = this.rows.length;
         this.tile = data.tile || 16;
         this.buildings = data.buildings || [];
-        this.spots = data.spots || [];
-        this.npcs = (data.npcs || []).map(n => ({ ...n }));
+        this.spots = (data.spots || []).filter(o => inEra(o, era));
+        this.npcs = (data.npcs || []).filter(o => inEra(o, era)).map(n => ({ ...n }));
+        // walking into an exit's box (her feet's middle) takes her to another map's entry
+        this.exits = (data.exits || []).filter(o => inEra(o, era));
+        this.labels = (data.labels || []).filter(o => inEra(o, era));
         this.anchors = data.anchors || [];
         this.decor = data.decor || [];
         this.authored = data.authoredCollision;
@@ -68,6 +78,7 @@ export class GameMap {
         for (const n of this.npcs) if (!ids.includes(n.id)) { this.mark(n.x, n.y); this.npcCells.add(`${n.x},${n.y}`); }
     }
     anchor(id) { return this.anchors.find(a => a.id === id) || null; }
+    exitAt(fx, fy) { return this.exits.find(e => fx >= e.x0 && fx <= e.x1 && fy >= e.y0 && fy <= e.y1) || null; }
     // what is close enough to use from (x, y): the nearest spot (its middle), person or thing (feet to feet)
     nearest(x, y, things = [], away = [], reach = 1.6) {
         let best = null, dist = reach;
@@ -86,8 +97,8 @@ const loaded = new Map();
 export function getMap(id = 'ombos') {
     const d = DATA.maps[id];
     if (!d) return null;
-    const open = openOverlays(id);
-    const key = `${id}|${open.join(',')}`;
-    if (!loaded.has(key)) loaded.set(key, new GameMap(d, open));
+    const open = openOverlays(id), era = eraOf();
+    const key = `${id}|${open.join(',')}|${era}`;
+    if (!loaded.has(key)) loaded.set(key, new GameMap(d, open, era));
     return loaded.get(key);
 }

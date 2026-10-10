@@ -9,7 +9,7 @@ import { addXP, journal, rank } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { list, para, stack } from '../../ui/kit.js';
-import { onOpen, onSpot } from '../../ui/window.js';
+import { onOpen, onSpot, travel } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
 
 const WORKS = () => DATA.works?.works || [];
@@ -50,8 +50,11 @@ function card(ui) {
                 await saveState(); ui.toast(`${josa(w.ko, '를')} 시작했어. ${w.days}일 뒤에 끝나`); close(); card(ui);
             } }] };
     });
-    const close = ui.showCard({ tag: '경영', title: '지도 탁자', wide: true, body: stack(para(`데벤 ${s.bag.deben} · 모험 등급 ${rank(s)}`), list(rows)) });
+    const close = ui.showCard({ tag: '경영', title: '지도 탁자', wide: true, body: stack(para(`데벤 ${s.bag.deben} · 모험 등급 ${rank(s)}`), list(rows)),
+        buttons: [{ label: '닫기' }, { label: '안채로 들어가기', primary: true, onClick: () => { travel('temple_courtyard', 'south'); } }] });
 }
+// The temple door: the map table for the village's works, and the way into the residence behind it.
+// (Provisional while the Ombos picture is being redrawn: the door and its point are set again then.)
 onSpot('temple_hall', (spot, ui) => card(ui));
 
 on('clock:synced', async () => { const s = getState(); if (s && settleWorks(s).length) await saveState(); });

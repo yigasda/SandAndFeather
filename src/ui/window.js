@@ -2,7 +2,7 @@
 // The frame loop runs only while it is open. Where she stands is saved to the chat when the window closes or folds.
 
 import { on } from '../core/bus.js';
-import { DATA } from '../core/data.js';
+import { DATA, ensureSceneArt } from '../core/data.js';
 import { seasonOf } from '../core/clock.js';
 import { settings } from '../core/settings.js';
 import { hasChat } from '../core/st.js';
@@ -24,6 +24,8 @@ import { appearanceCard } from './appearance.js';
 let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
 let raf = 0, last = 0, miniAt = 0, drawnAt = 0, near = null;
+// doors: one fires only after her feet have been off every exit once (no bouncing back on arrival); one move at a time
+let doorArmed = false, moving = false;
 // frames drawn a second: walking, standing (only the river moves), a card is open
 const FPS = { walk: 30, still: 8, card: 4 };
 
@@ -94,6 +96,7 @@ function build() {
     hud.close.addEventListener('click', closeGame);
     hud.collapse.addEventListener('click', foldGame);
     hud.talk.addEventListener('click', talk);
+    hud.climb.addEventListener('click', climb);
     hud.bag.addEventListener('click', () => { if (!cardOpen()) bagCard(ui, map); });
     hud.appearance.addEventListener('click', () => { if (!cardOpen()) appearanceCard(ui, applyTheme); });
     hud.dateCard.addEventListener('click', openToday);
@@ -115,9 +118,9 @@ function build() {
     for (const ev of ['sun:changed', 'bag:changed', 'adventure:changed']) on(ev, refreshSoon);
     on('stats:changed', d => { refreshSoon(); if (d?.rankUp && mode === 'open') toast(root, `모험 등급 ${d.rankUp}!`); });
     // a new chat or a new game: show that chat's game, or close when no chat is open
-    on('game:loaded', () => {
+    on('game:loaded', async () => {
         if (!hasChat()) { closeGame(); return; }
-        if (mode === 'open') enterMap();
+        if (mode === 'open') await enterMap();
         refresh();
     });
     applyTheme();
@@ -125,11 +128,15 @@ function build() {
 
 function closeTopCard() { const all = root.querySelectorAll('.sf_pop_wrap'); all[all.length - 1]?.querySelector('.sf_pop_x')?.click(); }
 
-function enterMap() {
+async function enterMap() {
     const s = getState();
-    map = getMap(s?.pos?.map || 'ombos');
-    if (!map) { s.pos = { map: 'ombos', x: null, y: null, dir: 'down' }; map = getMap('ombos'); }
+    if (!s) { map = getMap('ombos'); placePlayer(map); swapMap(); return; }
+    if (!DATA.maps[s?.pos?.map]) s.pos = { map: 'ombos', x: null, y: null, dir: 'down' };
+    try { await ensureSceneArt(s.pos.map); }
+    catch (e) { console.error('[SandAndFeather] scene art', e); toast(root, '그림을 못 불러와서 옴보스로 돌아왔어'); s.pos = { map: 'ombos', x: null, y: null, dir: 'down' }; }
+    map = getMap(s.pos.map);
     placePlayer(map);
+    doorArmed = false;
     swapMap();
 }
 // the current map as the game has it now, without moving her
@@ -139,17 +146,28 @@ function swapMap() {
     map.setAway(s?.party.with ? [s.party.with] : []);
     renderer.setMap(map, seasonOf(s?.date.month ?? 0));
 }
-// to another map: on its spawn, or at pos
+// to another map: on its spawn, at pos ({ x, y, dir }), or at one of its named entries (a string)
 export async function travel(mapId, pos = null) {
     const s = getState();
-    if (!s || !DATA.maps[mapId]) return;
-    closeCards(root);
-    setTab(hud, 'world');
-    hud.mini.classList.remove('sf_on');
-    s.pos = { map: mapId, x: pos?.x ?? null, y: pos?.y ?? null, dir: 'down' };
-    await saveState();
-    enterMap();
-    refresh();
+    if (!s || !DATA.maps[mapId] || moving) return;
+    moving = true;
+    try {
+        if (typeof pos === 'string') pos = DATA.maps[mapId].entries?.[pos] || null;
+        closeCards(root);
+        setTab(hud, 'world');
+        hud.mini.classList.remove('sf_on');
+        s.pos = { map: mapId, x: pos?.x ?? null, y: pos?.y ?? null, dir: pos?.dir || 'down' };
+        await saveState();
+        await enterMap();
+        refresh();
+    } finally { moving = false; }
+}
+// through a door she walked into, or up and down the stairs
+function useExit(ex) { travel(ex.to, ex.at); }
+function climb() {
+    const c = near?.climb;
+    if (!c || moving || mode !== 'open') return;
+    travel(c.to, c.at);
 }
 let soon = 0;
 function refreshSoon() { clearTimeout(soon); soon = setTimeout(refresh, 60); }
@@ -162,7 +180,7 @@ export async function openGame() {
     root.hidden = false;
     chip.hidden = true;
     mode = 'open';
-    enterMap();
+    await enterMap();
     renderer.repaint();
     renderer.resize();
     await syncFromChat();
@@ -244,6 +262,10 @@ function draw(t) {
     if (away.length) { const f = follower(); people.push({ look: away[0], x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0 }); }
     renderer.draw({ player, people, things, part: s?.part || 'day', time: t / 1000, near });
     placeBubble(hud, renderer, cardOpen() ? null : near);
+    // ^ by the stairs (v on the roof): shown only where the stairs are, pressed to go
+    const c = !cardOpen() && near?.climb;
+    hud.climb.hidden = !c;
+    if (c) { hud.climb.textContent = c.glyph; hud.climb.setAttribute('aria-label', c.name); hud.climb.title = c.name; }
     if (t - miniAt > 250) { miniAt = t; renderer.minimap(hud.miniCv, player); }
 }
 
@@ -251,8 +273,12 @@ function frame(t) {
     if (mode !== 'open') return;
     const dt = last ? Math.min(0.05, (t - last) / 1000) : 0;
     last = t;
-    if (!cardOpen()) stepPlayer(map, input.dx, input.dy, dt);
-    else player.moving = false;
+    if (!cardOpen() && !moving) {
+        stepPlayer(map, input.dx, input.dy, dt);
+        const f = feet(), ex = map.exitAt(f.x, f.y);
+        if (!ex) doorArmed = true;
+        else if (doorArmed) { doorArmed = false; useExit(ex); }
+    } else player.moving = false;
     // the battery: draw only as often as something on screen changes
     const fps = cardOpen() ? FPS.card : player.moving ? FPS.walk : FPS.still;
     if (t - drawnAt >= 1000 / fps - 2) { drawnAt = t; draw(t); }
@@ -268,7 +294,10 @@ function talk() {
     if (near.kind === 'spot') {
         const act = spotActs.get(near.id);
         if (act) { act(near, ui, map); return; }
-        showCard(root, { tag: MODE[near.mode] || '', title: near.title || near.label, text: near.text || '' });
+        const text = (getState()?.part === 'night' && near.textNight) || near.text || '';
+        const c = near.climb;
+        showCard(root, { tag: MODE[near.mode] || '', title: near.title || near.label, text,
+            buttons: c ? [{ label: '닫기' }, { label: c.name, primary: true, onClick: () => { travel(c.to, c.at); } }] : null });
         return;
     }
     if (near.kind === 'thing') { near.act?.(ui, map); return; }
@@ -307,7 +336,7 @@ function openMap() {
     box.append(cv);
     const note = document.createElement('div');
     note.className = 'sf_note';
-    note.textContent = map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.';
+    note.textContent = map.d.note || (map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.');
     box.append(note);
     for (const fn of mapParts) { try { const el = fn(ui, map); if (el) box.append(el); } catch (e) { console.error('[SandAndFeather] map part', e); } }
     showCard(root, { title: map.d.name || '지도', body: box, wide: true, onClose: () => setTab(hud, 'world') });

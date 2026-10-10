@@ -157,5 +157,170 @@
         "polygon": [[875, 375], [1107, 375], [1107, 397], [875, 397]]
       }
     ]
+  },
+  "temple_courtyard": {
+    "file": "../docs/art/map-expansion/well-courtyard-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/well-courtyard-v1-night.png"
+  },
+  "courtyard_colonnade": {
+    "file": "../docs/art/map-expansion/courtyard-colonnade-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.19889502762430938, 0.20626151012891344],
+    "day": [0, 0, 1448, 1086],
+    "night": [0, 0, 1448, 1086],
+    "clip": [[0, 0], [1448, 0], [1448, 1086], [0, 1086]],
+    "nightFile": "../docs/art/map-expansion/courtyard-colonnade-v1-night.png"
+  },
+  "temple_inner_corridor": {
+    "file": "../docs/art/map-expansion/inner-corridor-wide-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.19889502762430938, 0.19889502762430938],
+    "day": [0, 0, 2172, 724],
+    "night": [0, 0, 2172, 724],
+    "clip": [[0, 0], [2172, 0], [2172, 724], [0, 724]],
+    "tintNight": "rgba(18,26,70,.30)"
+  },
+  "temple_central_gallery": {
+    "file": "../docs/art/map-expansion/central-gallery-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.19889502762430938, 0.19889502762430938],
+    "day": [0, 0, 2172, 724],
+    "night": [0, 0, 2172, 724],
+    "clip": [[0, 0], [2172, 0], [2172, 724], [0, 724]],
+    "tintNight": "rgba(18,26,70,.30)"
+  },
+  "temple_east_gallery": {
+    "file": "../docs/art/map-expansion/east-gallery-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.19889502762430938, 0.19889502762430938],
+    "day": [0, 0, 2172, 724],
+    "night": [0, 0, 2172, 724],
+    "clip": [[0, 0], [2172, 0], [2172, 724], [0, 724]],
+    "tintNight": "rgba(18,26,70,.30)"
+  },
+  "temple_west_gallery": {
+    "file": "../docs/art/map-expansion/west-gallery-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.19889502762430938, 0.19889502762430938],
+    "day": [0, 0, 2172, 724],
+    "night": [0, 0, 2172, 724],
+    "clip": [[0, 0], [2172, 0], [2172, 724], [0, 724]],
+    "tintNight": "rgba(18,26,70,.30)"
+  },
+  "room_entrances_wide": {
+    "file": "../docs/art/map-expansion/room-entrances-wide-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.19889502762430938, 0.19889502762430938],
+    "day": [0, 0, 2172, 724],
+    "night": [0, 0, 2172, 724],
+    "clip": [[0, 0], [2172, 0], [2172, 724], [0, 724]],
+    "tintNight": "rgba(18,26,70,.30)"
+  },
+  "set_room": {
+    "file": "../docs/art/map-expansion/set-room-v6-single-window-day.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/set-room-v6-single-window-night.png"
+  },
+  "horus_room": {
+    "file": "../docs/art/map-expansion/horus-room-v2-wide-day.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/horus-room-v2-wide-night.png"
+  },
+  "somang_room": {
+    "file": "../docs/art/map-expansion/somang-room-v3-center.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/somang-room-v3-center-night.png"
+  },
+  "temple_kitchen": {
+    "file": "../docs/art/map-expansion/temple-kitchen-v2-open-day.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/temple-kitchen-v2-open-night.png"
+  },
+  "temple_dining": {
+    "file": "../docs/art/map-expansion/temple-dining-v2-garden-day.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/temple-dining-v2-garden-night.png"
+  },
+  "temple_sanctuary": {
+    "file": "../docs/art/map-expansion/set-sanctuary-v6-neutral.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "tintNight": "rgba(18,26,70,.30)"
+  },
+  "temple_colonnade": {
+    "file": "../docs/art/map-expansion/colonnade-stairs-v1.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/colonnade-stairs-v1-night.png"
+  },
+  "temple_roof": {
+    "file": "../docs/art/map-expansion/temple-roof-v1-day.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.1984216459977452, 0.1984216459977452],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "nightFile": "../docs/art/map-expansion/temple-roof-v1-night.png"
   }
 }

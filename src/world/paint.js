@@ -96,7 +96,7 @@ export function paintMap(m, S, gr, tp, season) {
         // The minimap uses the same approved artwork. The main renderer draws
         // from the original image at screen resolution, avoiding downsampling.
         g.imageSmoothingEnabled = false;
-        g.drawImage(scene.image, ...scene.day, 0, 0, W, H);
+        if (scene.image) g.drawImage(scene.image, ...scene.day, 0, 0, W, H);
         for (const id of m.open) for (const c of m.d.overlays?.[id] || []) tile(ctx, c.x, c.y);
         og.width = og.height = ou.width = ou.height = 1;
         return;

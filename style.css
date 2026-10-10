@@ -1596,3 +1596,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game:is([data-ui-theme='classic'],[data-ui-theme='temple']) .sf_tab.sf_on:not([data-tab='world']) i {
  filter:brightness(0) invert(94%) sepia(18%);
 }
+
+/* 0.9.6: the stairs button in the residence (^ up to the roof, v down), above 말 걸기. */
+#sf_game .sf_actions { position: relative; }
+#sf_game .sf_climb { position: absolute; right: 14px; bottom: calc(100% + 12px); min-width: 52px; height: 52px; padding: 0 10px; font-size: 26px; line-height: 1; font-weight: 800; }
+#sf_game .sf_climb[hidden] { display: none; }
+#sf_game[data-ui-theme] .sf_climb { min-height: 52px; font-size: 26px; padding: 0 10px; }
