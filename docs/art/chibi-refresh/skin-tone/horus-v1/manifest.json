@@ -1,0 +1,308 @@
+{
+  "status": "skin-tone-revision-review",
+  "supersedesAppearanceRequest": "Horus skin half-tone lighter with neutral-cool undertone",
+  "method": "image-generation edit, then crop and uniform resize; not pixel-identical outside skin",
+  "runtimeApplied": false,
+  "approvedMotionSettingsPreserved": {
+    "sequence": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "durationMs": 180,
+    "horusDownOffsetsSourcePx": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        -1
+      ]
+    ],
+    "addedRotation": 0
+  },
+  "frames": [
+    {
+      "state": "idle",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-idle-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "ced191decfd67b69a8f4e0d35c4a45f4d16d892d51fcfdb1ccba1c70af1ef0a8"
+    },
+    {
+      "state": "idle",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-idle-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "08942f03551b0f57aa58e27436fb182da7e2862764493f58d8dd813ea12974df"
+    },
+    {
+      "state": "idle",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-idle-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "b67b2f5ce0bc736fa69579d2892255e591ddfb1ef8b7cdddf1e50a2e2301b69f"
+    },
+    {
+      "state": "idle",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-idle-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "sha256": "b6f805de81be758978c5942805f13e7f9341e4408f5b25285d16e5be31c857a2"
+    },
+    {
+      "state": "walk",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-front-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "32f24442d66b4ea0eb1932ad3cdfffd77c0611da77ad9ab01fb540cb93e067c3"
+    },
+    {
+      "state": "walk",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-front-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "aa30830bf46083007c1036786342db46507e2a5035664b423c03b5c0c871a3d6"
+    },
+    {
+      "state": "walk",
+      "view": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-front-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "f10bce3cd558dd2a515659aa033b3915f8bcc92f69ad3563700796b4cf2788c6"
+    },
+    {
+      "state": "walk",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-back-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "bffeccb018cf001e69d79a5e666c8572d84e6682d0b9c652f479681c1171065f"
+    },
+    {
+      "state": "walk",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-back-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "db1a9dcadc2ef699e26afda8e55a74dde4a1bf3828555adbcbb968e6e90c2152"
+    },
+    {
+      "state": "walk",
+      "view": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-back-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "6a26603923c6d70e61ee1dadb1a0629d6730e71e56fd5265ac2aa911e0dcdc3a"
+    },
+    {
+      "state": "walk",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-left-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "5e98f25ba85b11564bfc35ff5961294cae9a071a26a21a1528b6ba572f701f0e"
+    },
+    {
+      "state": "walk",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-left-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "a10ad5c7e1f014edd8730c6206b7339116826dbec3a25e9a46c9136a979c5ef1"
+    },
+    {
+      "state": "walk",
+      "view": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-left-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "2c4a8b636ff63e3f43c97521ff5ecfc3d017d57108894e64569fcb0171ca40df"
+    },
+    {
+      "state": "walk",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-right-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "d241cdf813559103b287ea38355df5ce1f35933f90b1dccc3426b5d9aacfc8b0"
+    },
+    {
+      "state": "walk",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-right-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "55a60c269bcec99df391c6dbcd7836dc43c46e3a34a6f8a528bb38ffdd847cd1"
+    },
+    {
+      "state": "walk",
+      "view": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/skin-tone/horus-v1/horus-walk-right-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "sha256": "2f3f3b8efcddfdfc47453f49bd3cae6c62fc16f899d38eb4bfe71cf2497d20c3"
+    }
+  ]
+}
