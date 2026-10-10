@@ -217,7 +217,11 @@ export class Renderer {
             const tag = MODE[sp.mode] || '';
             g.font = `700 ${Math.round(5.5 * z)}px 'Noto Sans KR', sans-serif`;
             const wt = tag ? g.measureText(tag + ' ').width : 0, wl = g.measureText(sp.label).width, w = wt + wl + 9 * z;
-            const x = (sp.x + 0.5) * ts - cx - w / 2, y = (sp.y - 0.55) * ts - cy;
+            const x = (sp.x + 0.5) * ts - cx - w / 2;
+            let y = (sp.y - 0.55) * ts - cy;
+            // a sign never covers her: where it would (she stands right by the door), it goes under her feet instead
+            if (sp.near && Math.abs(sp.x + 0.5 - fx) * ts < w / 2 + 0.45 * ts && sp.y - 0.55 > fy - 2.15 && sp.y - 0.55 < fy + 0.3)
+                y = (fy + 0.45) * ts - cy;
             if (x + w < 0 || x > W || y < -10 * z || y > H + 10 * z) continue;
             g.fillStyle = 'rgba(43,32,24,.62)';
             g.beginPath(); g.roundRect ? g.roundRect(x, y - 5 * z, w, 10 * z, 5 * z) : g.rect(x, y - 5 * z, w, 10 * z); g.fill();

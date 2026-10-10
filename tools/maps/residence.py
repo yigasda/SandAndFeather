@@ -10,72 +10,91 @@ import json, os
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 ART = '../docs/art/map-expansion/'
 ROOM_DOOR = [9.4, 10.3, 12.6, 11]  # the bottom doorway every 22×11 room shares
+# Astra's exit art v2 (docs/RESIDENCE-EXITS-V2.md): the same approved pictures with the ways out drawn in. The corridors'
+# ends are passages recessed under the ceiling beside the last column, so each end's way out is the floor in front of
+# that passage, not the whole edge; the end column's base stays solid.
+V2 = 'exits-v2/'
+# Deep doorways (0.9.20 follow-up): she arrives standing inside the doorway's own floor, and the way out is its far end,
+# so a passage reads as a place she walks through rather than a strip in front of a wall.
+END_W, END_E = [0, 2.9, 0.62, 3.3], [26.38, 2.9, 27, 3.3]
+AT_W, AT_E = [0.32, 3.8, 'right'], [26.68, 3.8, 'left']
+OPEN_ENDS = [[0, 2.9, 0.62, 3.9], [26.38, 2.9, 27, 3.9]]  # the recess floors behind the end columns
+COL_W, COL_E = [0.65, 0, 1.7, 4.1], [25.3, 0, 26.35, 4.1]  # the last column's base at each end
 # back out in the village, on the carpet just below the temple door (ombos.json's exit walks in through that door)
 OMBOS_TEMPLE = {'x': 24.9, 'y': 9.75, 'dir': 'down'}
 
 SCENES = {
     'temple_courtyard': {
-        'name': '우물 마당', 'day': 'well-courtyard-v1.png', 'night': 'well-courtyard-v1-night.png', 'size': [22, 11],
-        'solid': [[0, 0, 22, 2.75], [2.8, 2.75, 16.2, 3.35], [17.8, 2.75, 22, 3.35], [0, 0, 2.45, 3.95], [0, 0, 0.6, 5.9],
+        'name': '우물 마당', 'day': V2 + 'well-courtyard-v1.png', 'night': V2 + 'well-courtyard-v1-night.png', 'size': [22, 11],
+        'solid': [[0, 0, 22, 2.75], [2.8, 2.75, 16.2, 3.35], [17.8, 2.75, 22, 3.35], [0, 0, 2.45, 3.95], [0, 0, 0.6, 6.2],
                   [0.5, 3.95, 2.9, 6.45], [18.9, 0, 22, 3.65], [21.45, 0, 22, 6.2], [19.2, 4.0, 21.3, 6.8],
                   [9.3, 3.2, 12.7, 6.3], [12.4, 5.0, 13.6, 6.8], [0, 7.6, 1.5, 11], [20.6, 7.6, 22, 11],  # the corner ferns: their pots, under the leaves
                  
                   [0, 8.6, 8.1, 11], [13.9, 8.6, 22, 11], [4.7, 8.2, 5.6, 11], [16.4, 8.2, 17.3, 11]],
-        'exits': [[[8.3, 10.25, 13.7, 11], 'ombos', OMBOS_TEMPLE], [[16.2, 0, 17.8, 2.95], 'courtyard_colonnade', 'south'],
-                  [[0, 6.45, 0.45, 7.6], 'temple_kitchen', 'door'], [[21.55, 6.8, 22, 7.6], 'temple_dining', 'door']],
-        'entry': {'south': [11, 9.6, 'up'], 'north': [17, 3.6, 'down'], 'west': [1.0, 7.05, 'right'], 'east': [21.0, 7.2, 'left']},
+        'exits': [[[8.3, 10.25, 13.7, 11], 'ombos', OMBOS_TEMPLE], [[16.2, 1.6, 17.7, 2.1], 'courtyard_colonnade', 'south'],
+                  [[0, 6.63, 0.56, 7.42], 'temple_kitchen', 'door'], [[21.44, 6.88, 22, 7.44], 'temple_dining', 'door']],
+        'entry': {'south': [11, 9.6, 'up'], 'north': [16.95, 2.95, 'down'], 'west': [1.18, 7.19, 'right'], 'east': [20.77, 7.4, 'left']},
+        'open': [[16.2, 1.6, 17.7, 3.35]],
         'spawn': 'south',
         'spots': [{'id': 'temple_well', 'x': 10.5, 'y': 6.6, 'label': '우물', 'title': '우물', 'text': '두레박 줄이 축축하다. 마당 사람들이 여기서 물을 긷고 빨래를 한다.'}],
     },
     'courtyard_colonnade': {
-        'name': '열린 연못 회랑', 'day': 'courtyard-colonnade-v1.png', 'night': 'courtyard-colonnade-v1-night.png', 'size': [18, 14],
-        'solid': [[0, 0, 18, 6.9], [0, 11.6, 6.6, 14], [11.4, 11.6, 18, 14], [5.5, 11.0, 6.6, 14], [11.4, 11.0, 12.5, 14], [0, 0, 0.3, 14]],
-        'exits': [[[6.7, 13.3, 11.3, 14], 'temple_courtyard', 'north'], [[17.55, 6.9, 18, 11.6], 'temple_inner_corridor', 'west']],
-        'entry': {'south': [9, 11.9, 'up'], 'east': [17.0, 9.2, 'left']},
+        'name': '열린 연못 회랑', 'day': V2 + 'courtyard-colonnade-v1.png', 'night': V2 + 'courtyard-colonnade-v1-night.png', 'size': [24, 14],
+        # widened on the right (1932 px for 24 tiles, as the 1448 px original was 18); the new arch is walked into going up
+        'solid': [[0, 0, 19.05, 6.9], [19.05, 0, 21.5, 4.9], [21.5, 0, 24, 6.9], [0, 11.6, 6.6, 14], [11.39, 11.6, 24, 14],
+                  [5.5, 11.0, 6.6, 14], [11.39, 11.0, 12.49, 14], [23.2, 11.0, 24, 14], [0, 0, 0.3, 14]],
+        'exits': [[[6.7, 13.3, 11.29, 14], 'temple_courtyard', 'north'], [[19.05, 4.9, 21.5, 5.4], 'temple_inner_corridor', 'west']],
+        'entry': {'south': [8.99, 11.9, 'up'], 'east': [20.3, 6.2, 'down']},
         'spawn': 'south',
-        'spots': [{'id': 'colonnade_pond', 'x': 8.5, 'y': 7.1, 'title': '연못', 'text': '기둥 사이로 연꽃이 떠 있다. 물빛이 천장에 어른거린다.'}],
+        'spots': [{'id': 'colonnade_pond', 'x': 8.49, 'y': 7.1, 'title': '연못', 'text': '기둥 사이로 연꽃이 떠 있다. 물빛이 천장에 어른거린다.'}],
     },
     'temple_inner_corridor': {
-        'name': '안쪽 복도', 'day': 'inner-corridor-wide-v1.png', 'size': [27, 9],
-        'solid': [[0, 0, 27, 3.9], [4.5, 0, 8.4, 4.2], [18.9, 0, 21.9, 4.2]],
-        'exits': [[[0, 3.9, 0.45, 9], 'courtyard_colonnade', 'east'], [[26.55, 3.9, 27, 9], 'temple_central_gallery', 'south']],
-        'entry': {'west': [1.0, 6.5, 'right'], 'east': [26.0, 6.5, 'left']},
+        'name': '안쪽 복도', 'day': V2 + 'inner-corridor-wide-v1.png', 'size': [27, 9],
+        'solid': [[0, 0, 27, 3.9], [4.5, 0, 8.4, 4.2], [18.9, 0, 21.9, 4.2], COL_W, COL_E],
+        'exits': [[END_W, 'courtyard_colonnade', 'east'], [END_E, 'temple_central_gallery', 'south']],
+        'entry': {'west': AT_W, 'east': AT_E},
+        'open': OPEN_ENDS,
         'spawn': 'west',
     },
     'temple_central_gallery': {
-        'name': '중앙 회랑', 'day': 'central-gallery-v1.png', 'size': [27, 9],
+        'name': '중앙 회랑', 'day': V2 + 'central-gallery-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 12.45, 3.9], [14.35, 0, 27, 3.9], [12.3, 0, 12.6, 3.95], [14.2, 0, 14.5, 3.95], [4.5, 0, 7.5, 4.2],
-                  [19.1, 0, 22.2, 4.2], [0, 7.0, 11.9, 9], [15.1, 7.0, 27, 9], [10.8, 6.9, 11.9, 9], [15.1, 6.9, 16.1, 9]],
-        'exits': [[[11.9, 8.6, 15.1, 9], 'temple_inner_corridor', 'east'], [[0, 3.9, 0.45, 7.0], 'temple_west_gallery', 'east'],
-                  [[26.55, 3.9, 27, 7.0], 'temple_east_gallery', 'west'], [[12.6, 0, 14.2, 3.3], 'room_entrances_wide', 'arch']],
-        'entry': {'south': [13.5, 7.9, 'up'], 'west': [1.0, 5.5, 'right'], 'east': [26.0, 5.5, 'left'], 'arch': [13.4, 4.1, 'down']},
+                  [19.1, 0, 22.2, 4.2], [0, 7.0, 11.9, 9], [15.1, 7.0, 27, 9], [10.8, 6.9, 11.9, 9], [15.1, 6.9, 16.1, 9], COL_W, COL_E],
+        'exits': [[[11.9, 8.6, 15.1, 9], 'temple_inner_corridor', 'east'], [END_W, 'temple_west_gallery', 'east'],
+                  [END_E, 'temple_east_gallery', 'west'], [[12.6, 0, 14.2, 2.3], 'room_entrances_wide', 'arch']],
+        'entry': {'south': [13.5, 7.9, 'up'], 'west': AT_W, 'east': AT_E, 'arch': [13.4, 3.4, 'down']},
+        'open': OPEN_ENDS,
         'spawn': 'south',
     },
     'temple_east_gallery': {
-        'name': '동쪽 회랑', 'day': 'east-gallery-v1.png', 'size': [27, 9],
-        'solid': [[0, 0, 14.9, 3.9], [16.6, 0, 27, 3.9], [4.5, 0, 7.6, 4.2], [26.2, 0, 27, 4.2]],
-        'exits': [[[0, 3.9, 0.45, 9], 'temple_central_gallery', 'east'], [[26.55, 4.25, 27, 9], 'room_entrances_wide', 'west'],
-                  [[14.95, 0, 16.55, 4.2], 'temple_sanctuary', 'door']],
-        'entry': {'west': [1.0, 6.5, 'right'], 'east': [26.0, 6.5, 'left'], 'shrine': [15.75, 4.9, 'down']},
+        'name': '동쪽 회랑', 'day': V2 + 'east-gallery-v1.png', 'size': [27, 9],
+        'solid': [[0, 0, 14.9, 3.9], [16.6, 0, 27, 3.9], [4.5, 0, 7.6, 4.2], COL_W, COL_E],
+        'exits': [[END_W, 'temple_central_gallery', 'east'], [END_E, 'room_entrances_wide', 'west'],
+                  [[14.95, 0, 16.55, 2.8], 'temple_sanctuary', 'door']],
+        'entry': {'west': AT_W, 'east': AT_E, 'shrine': [15.75, 3.75, 'down']},
+        'open': OPEN_ENDS,
         'spawn': 'west',
     },
     'temple_west_gallery': {
-        'name': '서쪽 회랑', 'day': 'west-gallery-v1.png', 'size': [27, 9],
-        'solid': [[0, 0, 6.65, 3.9], [8.55, 0, 27, 3.9], [1.9, 0, 4.2, 4.2], [17.8, 0, 21.0, 4.2]],
-        'exits': [[[26.55, 3.9, 27, 9], 'temple_central_gallery', 'west'], [[0, 3.9, 0.45, 9], 'room_entrances_wide', 'east'],
-                  [[6.7, 0, 8.5, 4.2], 'temple_colonnade', 'door']],
-        'entry': {'east': [26.0, 6.5, 'left'], 'west': [1.0, 6.5, 'right'], 'stairs': [7.6, 4.9, 'down']},
+        'name': '서쪽 회랑', 'day': V2 + 'west-gallery-v1.png', 'size': [27, 9],
+        'solid': [[0, 0, 6.65, 3.9], [8.55, 0, 27, 3.9], [1.9, 0, 4.2, 4.2], [17.8, 0, 21.0, 4.2], COL_W, COL_E],
+        'exits': [[END_E, 'temple_central_gallery', 'west'], [END_W, 'room_entrances_wide', 'east'],
+                  [[6.7, 0, 8.5, 2.8], 'temple_colonnade', 'door']],
+        'entry': {'east': AT_E, 'west': AT_W, 'stairs': [7.6, 3.75, 'down']},
+        'open': OPEN_ENDS,
         'spawn': 'east',
     },
     'room_entrances_wide': {
-        'name': '방문 회랑', 'day': 'room-entrances-wide-v1.png', 'size': [27, 9],
+        'name': '방문 회랑', 'day': V2 + 'room-entrances-wide-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 2.25, 3.9], [3.55, 0, 12.55, 3.9], [13.85, 0, 23.35, 3.9], [24.65, 0, 27, 3.9],
-                  [6.3, 0, 8.6, 4.2], [18.7, 0, 19.7, 4.25]],
+                  [6.3, 0, 8.6, 4.2], [18.7, 0, 19.7, 4.25], COL_W, COL_E,
+                  [9.85, 7.6, 10.65, 9], [15.75, 7.6, 16.55, 9]],  # the stair's two posts
         'exits': [[[2.3, 0, 3.5, 4.25], 'set_room', 'door'], [[12.6, 0, 13.8, 4.25], 'somang_room', 'door'],
-                  [[23.4, 0, 24.6, 4.25], 'horus_room', 'door'], [[0, 3.9, 0.45, 9], 'temple_east_gallery', 'east'],
-                  [[26.55, 3.9, 27, 9], 'temple_west_gallery', 'west'], [[11.2, 8.6, 15.2, 9], 'temple_central_gallery', 'arch']],
+                  [[23.4, 0, 24.6, 4.25], 'horus_room', 'door'], [END_W, 'temple_east_gallery', 'east'],
+                  [END_E, 'temple_west_gallery', 'west'], [[11.19, 8.58, 15.29, 9], 'temple_central_gallery', 'arch']],
         'entry': {'set': [2.9, 4.9, 'down'], 'somang': [13.2, 4.9, 'down'], 'horus': [24.0, 4.9, 'down'],
-                  'west': [1.0, 6.5, 'right'], 'east': [26.0, 6.5, 'left'], 'arch': [13.2, 7.8, 'up']},
+                  'west': AT_W, 'east': AT_E, 'arch': [13.24, 7.46, 'up']},
+        'open': OPEN_ENDS,
         'spawn': 'arch',
     },
     'set_room': {
@@ -152,14 +171,28 @@ SCENES = {
 }
 
 
+def carve(solids, holes):
+    # cut each hole (a doorway's floor) out of the solid rectangles, keeping the rest of each as up to four pieces
+    for hx0, hy0, hx1, hy1 in holes:
+        out = []
+        for x0, y0, x1, y1 in solids:
+            if hx0 >= x1 or hx1 <= x0 or hy0 >= y1 or hy1 <= y0: out.append([x0, y0, x1, y1]); continue
+            if y0 < hy0: out.append([x0, y0, x1, hy0])
+            if hy1 < y1: out.append([x0, hy1, x1, y1])
+            if x0 < hx0: out.append([x0, max(y0, hy0), hx0, min(y1, hy1)])
+            if hx1 < x1: out.append([hx1, max(y0, hy0), x1, min(y1, hy1)])
+        solids = out
+    return solids
+
+
 def signs(sc, w, h):
     out = []
     for (x0, y0, x1, y1), to, _ in sc['exits']:
         name = '옴보스' if to == 'ombos' else SCENES[to]['name']
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
         box = [x0, y0, x1, y1]
-        if x1 <= 0.5: out.append((2.4, cy, f'← {name}', box))
-        elif x0 >= w - 0.5: out.append((w - 2.4, cy, f'{name} →', box))
+        if x0 <= 0: out.append((2.4, cy, f'← {name}', box))
+        elif x1 >= w: out.append((w - 2.4, cy, f'{name} →', box))
         elif y1 >= h - 0.01: out.append((cx, h - 0.75, f'↓ {name}', box))
         else: out.append((cx, max(0.75, y0 + 0.6), f'↑ {name}', box))
     return out
@@ -186,6 +219,7 @@ def main():
     art = json.load(open(os.path.join(ROOT, 'data', 'scene-art.json')))
     for sid, sc in SCENES.items():
         w, h = sc['size']
+        sc['solid'] = carve(sc['solid'], sc.get('open', []))
         iw, ih = size_of(os.path.join(ROOT, 'docs', 'art', 'map-expansion', sc['day']))
         if sc.get('night'):
             assert size_of(os.path.join(ROOT, 'docs', 'art', 'map-expansion', sc['night'])) == (iw, ih), sid

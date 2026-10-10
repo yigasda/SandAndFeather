@@ -163,7 +163,7 @@
     ]
   },
   "temple_courtyard": {
-    "file": "../docs/art/map-expansion/well-courtyard-v1.png",
+    "file": "../docs/art/map-expansion/exits-v2/well-courtyard-v1.png",
     "fullMap": true,
     "lazy": true,
     "origin": [0, 0],
@@ -171,21 +171,21 @@
     "day": [0, 0, 1774, 887],
     "night": [0, 0, 1774, 887],
     "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
-    "nightFile": "../docs/art/map-expansion/well-courtyard-v1-night.png"
+    "nightFile": "../docs/art/map-expansion/exits-v2/well-courtyard-v1-night.png"
   },
   "courtyard_colonnade": {
-    "file": "../docs/art/map-expansion/courtyard-colonnade-v1.png",
+    "file": "../docs/art/map-expansion/exits-v2/courtyard-colonnade-v1.png",
     "fullMap": true,
     "lazy": true,
     "origin": [0, 0],
-    "scale": [0.19889502762430938, 0.20626151012891344],
-    "day": [0, 0, 1448, 1086],
-    "night": [0, 0, 1448, 1086],
-    "clip": [[0, 0], [1448, 0], [1448, 1086], [0, 1086]],
-    "nightFile": "../docs/art/map-expansion/courtyard-colonnade-v1-night.png"
+    "scale": [0.19875776397515527, 0.20626151012891344],
+    "day": [0, 0, 1932, 1086],
+    "night": [0, 0, 1932, 1086],
+    "clip": [[0, 0], [1932, 0], [1932, 1086], [0, 1086]],
+    "nightFile": "../docs/art/map-expansion/exits-v2/courtyard-colonnade-v1-night.png"
   },
   "temple_inner_corridor": {
-    "file": "../docs/art/map-expansion/inner-corridor-wide-v1.png",
+    "file": "../docs/art/map-expansion/exits-v2/inner-corridor-wide-v1.png",
     "fullMap": true,
     "lazy": true,
     "origin": [0, 0],
@@ -196,7 +196,7 @@
     "tintNight": "rgba(18,26,70,.30)"
   },
   "temple_central_gallery": {
-    "file": "../docs/art/map-expansion/central-gallery-v1.png",
+    "file": "../docs/art/map-expansion/exits-v2/central-gallery-v1.png",
     "fullMap": true,
     "lazy": true,
     "origin": [0, 0],
@@ -207,7 +207,7 @@
     "tintNight": "rgba(18,26,70,.30)"
   },
   "temple_east_gallery": {
-    "file": "../docs/art/map-expansion/east-gallery-v1.png",
+    "file": "../docs/art/map-expansion/exits-v2/east-gallery-v1.png",
     "fullMap": true,
     "lazy": true,
     "origin": [0, 0],
@@ -218,7 +218,7 @@
     "tintNight": "rgba(18,26,70,.30)"
   },
   "temple_west_gallery": {
-    "file": "../docs/art/map-expansion/west-gallery-v1.png",
+    "file": "../docs/art/map-expansion/exits-v2/west-gallery-v1.png",
     "fullMap": true,
     "lazy": true,
     "origin": [0, 0],
@@ -229,7 +229,7 @@
     "tintNight": "rgba(18,26,70,.30)"
   },
   "room_entrances_wide": {
-    "file": "../docs/art/map-expansion/room-entrances-wide-v1.png",
+    "file": "../docs/art/map-expansion/exits-v2/room-entrances-wide-v1.png",
     "fullMap": true,
     "lazy": true,
     "origin": [0, 0],
