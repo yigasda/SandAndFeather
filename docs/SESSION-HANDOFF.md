@@ -2,7 +2,19 @@
 
 최종 갱신: 2026-10-10. 이 문서는 과거 `docs/HANDOFF.md` 및 `/workspace/SandAndFeather-DESIGN-HANDOFF.md`보다 최신이다. 아래 진행 상태가 실제 완료 여부의 기준이다.
 
-## 최신 상태 — 0.9.1 원본 픽셀 UI
+## 최신 상태 — 0.9.2 프레임과 가방 상세
+
+0.9.2 릴리스 준비 완료. 병합 상태는 아래 릴리스 기록을 확인한다.
+
+- 사용자 최신 요청은 깨지는 프레임 전반 수정과 가방 오른쪽을 원본 시안처럼 만드는 것. 1~5 테마, 기존 맵/캐릭터 유지.
+- 버튼·패널 외곽의 배경 픽셀을 투명 처리하고 클래식 선택 프레임 및 수첩 버튼 크롭을 수정했다. 원본 색/장식은 유지. 이미지 생성 사용하지 않음.
+- 가방 상세 DOM은 `.sf_inventory_detail_head` 안의 `.sf_inventory_icon_frame`, `.sf_inventory_identity`와 별도 `.sf_inventory_description`. 아이콘 칸, 제목 아래 점선, 수량, 설명 칸이다.
+- **살펴보기 버튼과 입수 날짜는 가방 요약에서 제거. 선택된 슬롯을 다시 누르면 기존 itemCard로 이동.** 개별 UID·날짜/출처·아이템 행동은 기존 상세에 그대로 있다.
+- 1/5번 내부 칸은 실제 원본에서 추가 크롭. 총 PNG187개. 아이템 원본 수량/이웃 선 조각도 제거했다.
+- 구현 및 검증: [UI-FRAME-REPAIR.md](UI-FRAME-REPAIR.md). 실제 화면과 JSON은 `docs/consult/ui-frame-repair/`.
+- 모바일 확대: https://drive.google.com/drive/folders/1wNp_G2Xxc8J72B7fZX7OGMELHMVI5dlp
+
+## 이전 완료 — 0.9.1 원본 픽셀 UI
 
 PR #4로 main에 병합 완료. 병합 커밋 `2600a4a616695cba6c63e804cf2986cdc992d6ab`, 기능 커밋 `005e3bcc4bb3fe34abc4fbfcf642f9bb2aea5e1b`. 확장 업데이트와 새로고침으로 받는다.
 

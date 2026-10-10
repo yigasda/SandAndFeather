@@ -5,9 +5,9 @@ const root=path.resolve(__dirname,'../..'),manifest=JSON.parse(fs.readFileSync(p
 const recipes={
  classic:{frame:[735,87,770,370,25],panel:[1153,191,330,246,14],slot:[858,192,87,95,7],selected:[759,295,93,100,9],button:[1240,110,117,53,9],primary:[1117,110,118,53,9],hud:[45,98,224,64,15],party:[757,556,232,166,10],paper:[945,413,48,23],header:[938,109,150,42],bar:[47,895,652,88,9],icons:[[87,906,35,32],[217,905,31,34],[341,905,42,34],[471,905,36,34],[612,905,38,34]],bag:[770,110,48,48],talk:[766,773,43,37],sun:[64,108,34,39]},
  walnut:{frame:[701,77,797,410,25],panel:[1126,221,345,246,18],slot:[829,229,89,96,8],selected:[730,229,92,97,10],button:[1113,879,284,65,12],primary:[800,879,283,65,12],hud:[61,93,246,64,15],party:[727,580,238,179,14],paper:[936,446,64,24],header:[906,108,490,25],bar:[39,898,633,92,12],icons:[[82,912,38,34],[208,912,30,34],[327,912,39,34],[452,912,34,34],[575,912,41,34]],bag:[735,104,34,35],talk:[740,813,36,35],sun:[77,105,37,39]},
- journal:{frame:[708,75,799,473,35],panel:[1124,151,362,376,18],slot:[752,220,322,61,6],selected:[752,163,323,46,8],button:[1126,906,190,64,10],primary:[926,906,192,64,10],hud:[61,90,272,53,15],party:[749,691,718,64,10],paper:[1170,391,80,30],header:[1145,402,70,28],bar:[49,908,617,91,13],icons:[[98,919,36,36],[216,919,31,36],[330,919,42,36],[452,919,33,36],[566,919,39,36]],bag:[765,95,44,49],talk:[756,860,36,34],sun:[85,99,30,36]},
+ journal:{frame:[708,75,799,473,35],panel:[1126,154,352,366,18],slot:[752,220,322,61,6],selected:[752,163,323,46,8],button:[1135,906,181,62,10],primary:[926,906,192,64,10],hud:[61,90,272,53,15],party:[749,691,718,64,10],paper:[1170,391,80,30],header:[1145,402,70,28],bar:[49,908,617,91,13],icons:[[98,919,36,36],[216,919,31,36],[330,919,42,36],[452,919,33,36],[566,919,39,36]],bag:[765,95,44,49],talk:[756,860,36,34],sun:[85,99,30,36]},
  temple:{frame:[756,80,756,438,30],panel:[1231,241,260,254,12],slot:[878,250,86,82,9],selected:[792,250,80,82,10],button:[1112,177,156,53,12],primary:[791,177,157,53,12],hud:[82,99,294,61,18],party:[868,613,205,163,10],paper:[1260,456,60,25],header:[1299,116,87,29],bar:[28,905,711,96,15],icons:[[96,919,34,32],[227,919,30,32],[358,919,42,32],[503,919,34,32],[636,919,37,32]],bag:[1386,182,30,25],talk:[932,861,46,41],sun:[109,113,33,38]},
- cozy:{frame:[705,94,804,369,24],panel:[1166,200,315,236,17],slot:[1075,337,79,94,9],selected:[990,240,81,94,9],button:[874,185,130,43,9],primary:[741,185,130,43,9],hud:[68,115,317,90,20],party:[742,548,235,222,18],paper:[880,431,90,15],header:[927,130,456,26],bar:[39,897,640,99,15],icons:[[93,913,35,33],[218,913,29,33],[330,913,44,33],[458,913,31,33],[575,913,36,33]],bag:[746,120,36,44],talk:[744,818,41,37],sun:[92,128,30,35]}
+ cozy:{frame:[705,94,804,369,24],panel:[1163,198,320,240,17],slot:[1075,337,79,94,9],selected:[990,240,81,94,9],button:[874,185,130,43,9],primary:[741,185,130,43,9],hud:[68,115,317,90,20],party:[742,548,235,222,18],paper:[880,431,90,15],header:[927,130,456,26],bar:[39,897,640,99,15],icons:[[93,913,35,33],[218,913,29,33],[330,913,44,33],[458,913,31,33],[575,913,36,33]],bag:[746,120,36,44],talk:[744,818,41,37],sun:[92,128,30,35]}
 };
 const output=path.join(root,'data/art/ui/skins');fs.mkdirSync(output,{recursive:true});const provenance=[];
 (async()=>{
@@ -23,17 +23,55 @@ for(const [i,[id,r]]of Object.entries(recipes).entries()){
    for(let y=0;y<height;y++)for(let x=0;x<width;x++)if((!x||!y||x===width-1||y===height-1)&&matches(y*width+x)){queue.push(y*width+x);seen[y*width+x]=1;}
    for(let n=0;n<queue.length;n++){const p=queue[n];buffer[p*4+3]=0;const x=p%width,y=Math.floor(p/width);for(const q of [x?p-1:-1,x<width-1?p+1:-1,y?p-width:-1,y<height-1?p+width:-1])if(q>=0&&!seen[q]&&matches(q)){seen[q]=1;queue.push(q);}}
   }
+  // Item crops must not retain a sample quantity or neighbouring slot stroke.
+  // Keep the connected item silhouette, preserving its original RGB exactly.
+  if(name.startsWith('item-')){
+   const seen=new Uint8Array(width*height);let largest=[];
+   for(let start=0;start<seen.length;start++)if(!seen[start]&&buffer[start*4+3]){
+    const component=[start];seen[start]=1;
+    for(let j=0;j<component.length;j++){
+     const p=component[j],x=p%width,y=Math.floor(p/width);
+     for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){
+      if(x+dx<0||x+dx>=width||y+dy<0||y+dy>=height)continue;
+      const q=(y+dy)*width+x+dx;if(!seen[q]&&buffer[q*4+3]){seen[q]=1;component.push(q);}
+     }
+    }
+    if(component.length>largest.length)largest=component;
+   }
+   const keep=new Set(largest);for(let p=0;p<seen.length;p++)if(!keep.has(p))buffer[p*4+3]=0;
+  }
   await sharp(buffer,{raw:{width,height,channels:4}}).png().toFile(path.join(dir,name+'.png'));
-  provenance.push({theme:id,asset:name,sourceSha256:sourceHash,crop:rect,cutout});
+  provenance.push({theme:id,asset:name,sourceSha256:sourceHash,crop:rect,cutout,isolatedItem:name.startsWith('item-')});
  };
  const frame=async(name,rect)=>{
   const [x,y,w,h,c]=rect,t=8,n=2*c+t;
   const entries=[[[x,y,c,c],[0,0]],[[x+Math.floor(w/2),y,t,c],[c,0]],[[x+w-c,y,c,c],[c+t,0]],[[x,y+Math.floor(h/2),c,t],[0,c]],[[x+w-c,y+Math.floor(h/2),c,t],[c+t,c]],[[x,y+h-c,c,c],[0,c+t]],[[x+Math.floor(w/2),y+h-c,t,c],[c,c+t]],[[x+w-c,y+h-c,c,c],[c+t,c+t]]];
-  const layers=[];for(const [a,b]of entries){const[left,top,width,height]=a;layers.push({input:await sharp(bytes).extract({left,top,width,height}).png().toBuffer(),left:b[0],top:b[1]});}
+  // The classic selection arrow is an overlay, not part of a repeatable left edge.
+  if(id==='classic'&&name==='selected')entries[3][0][1]=306;
+  const raw=await sharp(bytes).extract({left:x,top:y,width:w,height:h}).ensureAlpha().raw().toBuffer();
+  // Trace the exterior silhouette, rather than color-flooding: pale borders
+  // share colors with their paper and must never be erased with the matte.
+  const silhouettes={
+   classic:{button:[2,6],primary:[1,6],selected:[1,4],slot:[1,3],panel:[1,6],hud:[1,7],chip:[1,7],minimap:[1,6]},
+   walnut:{button:[2,6],primary:[2,6],selected:[1,5],slot:[1,5],panel:[1,9],hud:[1,7],chip:[1,7],minimap:[1,7]},
+   journal:{button:[1,5],primary:[2,5],selected:[0,0],slot:[0,0],panel:[0,0],hud:[1,5],chip:[1,6],minimap:[1,9]},
+   temple:{button:[1,5],primary:[1,5],selected:[0,5],slot:[1,5],panel:[0,3],hud:[0,0],chip:[0,5],minimap:[0,7]},
+   cozy:{button:[1,6],primary:[1,6],selected:[1,6],slot:[1,6],panel:[0,9],hud:[1,15],chip:[1,11],minimap:[1,12]},
+  };
+  const [inset,bevel]=silhouettes[id][name]||[0,0];
+  for(let py=0;py<h;py++)for(let px=0;px<w;px++){
+   const dx=Math.min(px,w-1-px)-inset,dy=Math.min(py,h-1-py)-inset;
+   if(dx<0||dy<0||dx+dy<bevel)raw[(py*w+px)*4+3]=0;
+  }
+  const cleaned=await sharp(raw,{raw:{width:w,height:h,channels:4}}).png().toBuffer();
+  const layers=[];for(const [a,b]of entries){const[left,top,width,height]=a;layers.push({input:await sharp(cleaned).extract({left:left-x,top:top-y,width,height}).png().toBuffer(),left:b[0],top:b[1]});}
   await sharp({create:{width:n,height:n,channels:4,background:'#0000'}}).composite(layers).png().toFile(path.join(dir,name+'.png'));
-  provenance.push({theme:id,asset:name,sourceSha256:hash,nineSlice:rect,size:n,regions:entries});
+  provenance.push({theme:id,asset:name,sourceSha256:hash,nineSlice:rect,size:n,regions:entries,exteriorSilhouette:{inset,bevel}});
  };
  for(const name of ['frame','panel','slot','selected','button','primary','hud','party','bar'])await frame(name,r[name]);
+ // The approved cream design has two separate inner frames, not a single card.
+ if(id==='cozy'){await frame('detail-icon',[1184,215,93,98,9]);await frame('detail-description',[1184,326,279,93,10]);}
+ if(id==='classic'){await frame('detail-icon',[1171,209,107,110,10]);await frame('detail-description',[1164,333,309,93,10]);}
  const heads={
  classic:{rect:[735,87,770,96],mask:[[760,106,160,60],[1115,107,369,62]],sample:[947,110,30,30]},
  walnut:{rect:[701,77,797,89],mask:[[728,100,133,45]],sample:[903,88,30,22]},
