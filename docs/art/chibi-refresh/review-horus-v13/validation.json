@@ -1,0 +1,54 @@
+{
+  "base": "../review-horus-v12/horus-front.png",
+  "status": "review-not-approved",
+  "user_correction": "Keep existing gradient width; ADD a layer at half existing band width. Do not shrink existing gradient.",
+  "body_eyedropper_samples": [
+    {
+      "xy": [
+        212,
+        537
+      ],
+      "rgb": [
+        252,
+        213,
+        191
+      ],
+      "role": "body light skin shadow"
+    },
+    {
+      "xy": [
+        329,
+        577
+      ],
+      "rgb": [
+        252,
+        206,
+        182
+      ],
+      "role": "body deeper skin shadow"
+    }
+  ],
+  "existing_band_width_preserved": true,
+  "half_width_method": "outer_distance <= distance_to_inner_light_skin; pixel-rounded distance partition, subset of original shaded band",
+  "new_shadow_pixels": 5285,
+  "new_shadow_outside_old_band": 0,
+  "unchanged_old_shadow_pixels": 5573,
+  "changed_pixels_outside_mask": 0,
+  "body_changed_pixels_y466_plus": 0,
+  "chin_cleanup_changed_pixels": 362,
+  "chin_cleanup_boxes": [
+    [
+      188,
+      459,
+      224,
+      466
+    ],
+    [
+      294,
+      459,
+      326,
+      466
+    ]
+  ],
+  "generation_source_for_chin_only": "exec-e88ec6ed-b292-4665-98cf-d3c8168d1a6d.png"
+}
