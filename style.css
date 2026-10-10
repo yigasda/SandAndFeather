@@ -1602,3 +1602,8 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_climb { position: absolute; right: 14px; bottom: calc(100% + 12px); min-width: 52px; height: 52px; padding: 0 10px; font-size: 26px; line-height: 1; font-weight: 800; }
 #sf_game .sf_climb[hidden] { display: none; }
 #sf_game[data-ui-theme] .sf_climb { min-height: 52px; font-size: 26px; padding: 0 10px; }
+
+/* 0.9.11: party cards show head and shoulders (536×440 crop), about half the old full-body height. */
+#sf_game .sf_party_portrait .sf_portrait.sf_portrait_head,
+#sf_game[data-ui-theme] .sf_party_portrait .sf_portrait.sf_portrait_head { height: auto; aspect-ratio: 536 / 440; }
+#sf_game[data-ui-theme='journal'] .sf_party_portrait .sf_portrait.sf_portrait_head { height: auto; }

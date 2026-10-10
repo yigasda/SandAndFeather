@@ -62,7 +62,7 @@ export function partyCard(ui, onClose) {
         const card=document.createElement('button');card.type='button';card.className='sf_party_portrait';
         card.dataset.character=id;card.setAttribute('aria-label',`${CHARACTER_NAMES[id]} 전신 보기`);
         card.classList.toggle('sf_selected',id===s.party.with);
-        card.append(para(CHARACTER_NAMES[id],'sf_character_name'),portrait(id),
+        card.append(para(CHARACTER_NAMES[id],'sf_character_name'),portrait(id,{head:true}),
             para(id==='somang'?'모험가':s.party.with===id?'함께하는 중':'전신 보기','sf_party_caption'));
         card.addEventListener('click',()=>characterDetail(ui,id));gallery.append(card);
     }
