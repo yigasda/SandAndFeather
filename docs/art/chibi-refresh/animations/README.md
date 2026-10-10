@@ -46,3 +46,12 @@
 - [83번 세트 걷기](https://drive.google.com/file/d/1m93P1IiYoauseJR8jMa1eSvcuGgnlKUu/view)
 - [84번 소망 걷기](https://drive.google.com/file/d/1VjFGSsYZKeeNFTLPWChzHbIRi_oPOxP4/view)
 - [85번 호루스 걷기](https://drive.google.com/file/d/18V0qfWO3ruGBJOikVVUuBHrbQ9Sgf38J/view)
+
+## 걷기 v2 — 호루스 정면 고개 흔들림 수정
+
+사용자가 세트·소망 걷기는 괜찮다고 승인했고, 호루스는 정면만 프레임마다 고개가 왔다 갔다 하는 느낌을 수정하도록 요청했다. `walk-v2-horus-front`는 호루스 정면 세 프레임만 교체한다. 같은 정면 머리를 기준으로 얼굴 각도를 맞춰 생성 편집한 후, 공통 배율과 같은 머리 시작 높이로 정렬했다. 생성 편집이므로 세 머리의 픽셀이 완전히 동일하다는 뜻은 아니다.
+
+세트·소망 24개 프레임과 호루스 나머지 9개 프레임은 v1에서 그대로 읽어 합본에 사용하며, 픽셀 동일성 검증 및 원본 해시를 새 `manifest.json`에 기록했다. GIF의 팔레트는 재생성되므로 GIF 인코딩 색상은 이전 미리보기와 미세하게 다를 수 있다. 재현은 `python scripts/art/compose-horus-walk-front-v2.py`. 게임 런타임은 변경하지 않았다.
+
+- [86번 호루스 정면 걷기 수정 GIF](https://drive.google.com/file/d/1li_2WBGFgb5651F3HX35qmRJ8IsJTCsn/view)
+- [87번 셋소호 전체 걷기 수정 GIF](https://drive.google.com/file/d/1RlPb8FoY04GPZu-1S1v1xMbXDbM_PjDN/view)
