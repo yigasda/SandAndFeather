@@ -33,20 +33,26 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
         if (!scene) continue;
         const source = part === 'night' ? scene.night : scene.day;
         const picture = panel(scene, part === 'night');
-        const [ox, oy] = scene.origin, k = scene.scale;
+        const [ox, oy] = scene.origin;
+        const [kx, ky] = Array.isArray(scene.scale) ? scene.scale : [scene.scale, scene.scale];
         const dx = ox * z - cx, dy = oy * z - cy;
-        const dw = source[2] * k * z, dh = source[3] * k * z;
+        const dw = source[2] * kx * z, dh = source[3] * ky * z;
         if (dx > W || dy > H || dx + dw < 0 || dy + dh < 0) continue;
         const clip = polygon => {
             g.beginPath();
             polygon.forEach(([x, y], i) => {
-                const px = dx + x * k * z, py = dy + y * k * z;
+                const px = dx + x * kx * z, py = dy + y * ky * z;
                 if (i) g.lineTo(px, py); else g.moveTo(px, py);
             });
             g.closePath(); g.clip();
         };
         const background = () => {
             g.drawImage(picture, dx, dy, dw, dh);
+            // Completed works remain visible above the otherwise untouched atlas.
+            if (scene.fullMap) for (const id of renderer.map.open) for (const c of renderer.map.d.overlays?.[id] || []) {
+                g.drawImage(renderer.ground, c.x*16, c.y*16, 16, 16,
+                    c.x*16*z-cx, c.y*16*z-cy, 16*z, 16*z);
+            }
             // Dawn/evening retain the normal world lighting; night is authored.
             if (tint && (part !== 'night' || scene.tintNight)) { g.fillStyle = tint; g.fillRect(dx, dy, dw, dh); }
         };
@@ -70,8 +76,8 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
         // Restore authored foreground silhouettes over actors behind them. A
         // foreground actor is then redrawn only inside that silhouette's clip.
         for (const o of scene.occluders || []) {
-            const foot = oy + o.foot * k;
-            const xs = o.polygon.map(p => ox + p[0]*k), ys = o.polygon.map(p => oy + p[1]*k);
+            const foot = oy + o.foot * ky;
+            const xs = o.polygon.map(p => ox + p[0]*kx), ys = o.polygon.map(p => oy + p[1]*ky);
             const left = Math.min(...xs), right = Math.max(...xs), top = Math.min(...ys), bottom = Math.max(...ys);
             if (!actors.some(a => (a.y + 1)*16 < foot && (a.x + 2)*16 > left &&
                 (a.x - 1)*16 < right && (a.y + 1)*16 > top && (a.y - 2)*16 < bottom)) continue;

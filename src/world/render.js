@@ -5,6 +5,7 @@
 
 import { T, paintMap, rnd } from './paint.js';
 import { drawReferenceScenes } from './reference-scene.js';
+import { DATA } from '../core/data.js';
 
 // the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
 const SEASON = {
@@ -110,6 +111,7 @@ export class Renderer {
     // ---- a frame
     draw({ player, people, things = [], part, time, near }) {
         const g = this.g, m = this.map, z = this.zoom, W = this.cv.width, H = this.cv.height, ts = T * z;
+        const fullScene = (m.d.referenceScenes || []).map(id => DATA.sceneArt?.[id]).find(s => s?.fullMap);
         g.imageSmoothingEnabled = false;
         // the camera follows her, but never shows past the map's edge
         const mw = m.w * ts, mh = m.h * ts;
@@ -118,28 +120,28 @@ export class Renderer {
         cy = mh <= H ? (mh - H) / 2 : Math.max(0, Math.min(mh - H, cy));
         this.cam = { x: cx, y: cy };
         g.fillStyle = '#2a2018'; g.fillRect(0, 0, W, H);
-        g.drawImage(this.ground, -cx, -cy, mw, mh);
+        if (!fullScene) g.drawImage(this.ground, -cx, -cy, mw, mh);
         // the river moves
         g.fillStyle = 'rgba(225,245,240,.55)';
         const i0 = Math.max(0, Math.floor(cx / ts)), i1 = Math.min(m.w, Math.ceil((cx + W) / ts)), j0 = Math.max(0, Math.floor(cy / ts)), j1 = Math.min(m.h, Math.ceil((cy + H) / ts));
         for (let j = j0; j < j1; j++) for (let i = i0; i < i1; i++) {
-            if (m.type(i, j) !== 'water' || rnd(i, j, 5) < 0.55) continue;
+            if (fullScene || m.type(i, j) !== 'water' || rnd(i, j, 5) < 0.55) continue;
             const off = ((time * 3 + rnd(i, j, 6) * 16) % 16);
             g.fillRect(i * ts + off * z - cx, j * ts + (5 + rnd(i, j, 7) * 7) * z - cy, 5 * z, z);
         }
         // things lying on the ground first, then people and standing things back to front
-        for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
+        if (!fullScene) for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
         const ppl = [...people, { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0 },
             ...things.filter(t => !FLAT.has(t.sprite)).map(t => ({ thing: t, x: t.x, y: t.y }))];
         ppl.sort((a, b) => a.y - b.y);
-        for (const p of ppl) {
+        if (!fullScene) for (const p of ppl) {
             if (p.thing) this.sprite(g, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
             else this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z);
         }
-        g.drawImage(this.top, -cx, -cy, mw, mh);
+        if (!fullScene) g.drawImage(this.top, -cx, -cy, mw, mh);
         // the hour's light
         const tint = TINT[part];
-        if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
+        if (tint && !fullScene) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
         drawReferenceScenes(this, {part, tint, cx, cy, z, actors:ppl,
             paintActors: (target, minimumFoot) => {
                 if (minimumFoot === -Infinity) for (const t of things) if (FLAT.has(t.sprite))
@@ -186,6 +188,7 @@ export class Renderer {
         const fires = (m.decor || []).filter(d => d.k === 'brazier');
         // braziers burn
         for (const d of fires) {
+            if (d.referenceOwned) continue;
             const fx = d.x * ts - cx, fy = d.y * ts - cy;
             if (fx < -ts || fx > W + ts || fy < -ts * 2 || fy > H + ts) continue;
             const f = Math.floor(time * 8 + d.x * 3) % 3;
@@ -272,7 +275,12 @@ export class Renderer {
         const k = Math.min(cv.width / this.ground.width, cv.height / this.ground.height);
         const w = this.ground.width * k, h = this.ground.height * k, ox = (cv.width - w) / 2, oy = (cv.height - h) / 2;
         g.fillStyle = '#2a2018'; g.fillRect(0, 0, cv.width, cv.height);
-        g.drawImage(this.ground, ox, oy, w, h);
+        const scene = (m.d.referenceScenes || []).map(id => DATA.sceneArt?.[id]).find(s => s?.fullMap);
+        if (scene) {
+            g.drawImage(scene.image, ...scene.day, ox, oy, w, h);
+            for (const id of m.open) for (const c of m.d.overlays?.[id] || [])
+                g.drawImage(this.ground,c.x*T,c.y*T,T,T,ox+c.x*T*k,oy+c.y*T*k,T*k,T*k);
+        } else g.drawImage(this.ground, ox, oy, w, h);
         g.fillStyle = '#B8541F'; g.strokeStyle = '#FBF3EA'; g.lineWidth = 1.5;
         g.lineWidth = Math.max(1.5, cv.width / 220);
         g.beginPath(); g.arc(ox + (player.x + 0.5) * T * k, oy + (player.y + 0.6) * T * k, Math.max(3.2, cv.width / 90), 0, Math.PI * 2); g.fill(); g.stroke();

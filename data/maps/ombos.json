@@ -1,752 +1,1527 @@
 {
- "id": "ombos",
- "name": "옴보스",
- "nameEn": "Ombos",
- "tile": 16,
- "legend": {
-  "P": {"t": "sand", "solid": true},
-  "R": {"t": "rock", "solid": true, "style": "duat"},
-  "Q": {"t": "stone", "style": "duat"},
-  "v": {"t": "path", "style": "worn"},
-  "s": {
-   "t": "stairs"
+  "id": "ombos",
+  "name": "옴보스",
+  "nameEn": "Ombos",
+  "tile": 16,
+  "legend": {
+    "P": {
+      "t": "sand",
+      "solid": true
+    },
+    "R": {
+      "t": "rock",
+      "solid": true,
+      "style": "duat"
+    },
+    "Q": {
+      "t": "stone",
+      "style": "duat"
+    },
+    "v": {
+      "t": "path",
+      "style": "worn"
+    },
+    "s": {
+      "t": "stairs"
+    },
+    "h": {
+      "t": "hedge",
+      "solid": true
+    },
+    ".": {
+      "t": "sand"
+    },
+    "r": {
+      "t": "rock",
+      "solid": true
+    },
+    "#": {
+      "t": "wall",
+      "solid": true
+    },
+    "T": {
+      "t": "stone"
+    },
+    "=": {
+      "t": "path"
+    },
+    "g": {
+      "t": "grass"
+    },
+    "f": {
+      "t": "farm"
+    },
+    "~": {
+      "t": "water",
+      "solid": true
+    },
+    "b": {
+      "t": "bank"
+    },
+    "d": {
+      "t": "dock"
+    },
+    "x": {
+      "t": "fence",
+      "solid": true
+    },
+    "p": {
+      "t": "sand",
+      "obj": "palm",
+      "solid": true
+    },
+    "c": {
+      "t": "ditch"
+    },
+    "D": {
+      "t": "dryearth"
+    },
+    "G": {
+      "t": "gate",
+      "solid": true
+    },
+    "w": {
+      "t": "water",
+      "solid": true
+    },
+    "o": {
+      "t": "stone"
+    },
+    "l": {
+      "t": "water",
+      "solid": true,
+      "obj": "lotus"
+    }
   },
-  "h": {
-   "t": "hedge",
-   "solid": true
-  },
-  ".": {
-   "t": "sand"
-  },
-  "r": {
-   "t": "rock",
-   "solid": true
-  },
-  "#": {
-   "t": "wall",
-   "solid": true
-  },
-  "T": {
-   "t": "stone"
-  },
-  "=": {
-   "t": "path"
-  },
-  "g": {
-   "t": "grass"
-  },
-  "f": {
-   "t": "farm"
-  },
-  "~": {
-   "t": "water",
-   "solid": true
-  },
-  "b": {
-   "t": "bank"
-  },
-  "d": {
-   "t": "dock"
-  },
-  "x": {
-   "t": "fence",
-   "solid": true
-  },
-  "p": {
-   "t": "sand",
-   "obj": "palm",
-   "solid": true
-  },
-  "c": {
-   "t": "ditch"
-  },
-  "D": {
-   "t": "dryearth"
-  },
-  "G": {
-   "t": "gate",
-   "solid": true
-  },
-  "w": {
-   "t": "water",
-   "solid": true
-  },
-  "o": {
-   "t": "stone"
-  },
-  "l": {
-   "t": "water",
-   "solid": true,
-   "obj": "lotus"
-  }
- },
- "landforms": [],
- "referenceScenes": ["duat"],
- "buildings": [
-  {
-   "id": "temple",
-   "kind": "temple",
-   "x": 22,
-   "y": 5,
-   "w": 8,
-   "h": 5,
-   "label": "세트의 신전"
-  },
-  {
-   "id": "scriptorium",
-   "kind": "house",
-   "x": 8,
-   "y": 3,
-   "w": 6,
-   "h": 4,
-   "label": "필사실",
-   "roof": "#B98F5E"
-  },
-  {
-   "id": "market",
-   "kind": "stall",
-   "x": 12,
-   "y": 15,
-   "w": 5,
-   "h": 2,
-   "label": "시장",
-   "roof": "#C0632F"
-  },
-  {
-   "id": "kitchen",
-   "kind": "house",
-   "x": 28,
-   "y": 15,
-   "w": 4,
-   "h": 3,
-   "label": "부엌",
-   "roof": "#A88B66",
-   "artInLandform": true,
-   "artInReference": true
-  },
-  {
-   "id": "houses1",
-   "kind": "house",
-   "x": 19,
-   "y": 15,
-   "w": 4,
-   "h": 2,
-   "label": "",
-   "roof": "#B9926A"
-  },
-  {
-   "id": "duat",
-   "kind": "gate",
-   "glow": "duat",
-   "artInLandform": true,
-   "artInReference": true,
-   "x": 35,
-   "y": 7,
-   "w": 3,
-   "h": 3,
-   "label": "두아트"
-  }
- ],
- "spots": [
-  {
-   "id": "temple_hall",
-   "x": 26,
-   "y": 10,
-   "label": "세트의 신전",
-   "mode": "realm",
-   "title": "세트의 신전 · 집무실",
-   "text": "지도 탁자 위에 옴보스가 펼쳐져 있다. 마을을 정비할 수 있다."
-  },
-  {
-   "id": "scriptorium",
-   "x": 11,
-   "y": 7,
-   "label": "필사실",
-   "mode": "growth",
-   "title": "필사실",
-   "text": "서기들이 갈대 펜을 깎고 있다. 공부하거나 기록을 해독할 수 있다."
-  },
-  {
-   "id": "training",
-   "x": 5,
-   "y": 12,
-   "label": "훈련장",
-   "mode": "growth",
-   "title": "훈련장",
-   "text": "모래 위에 발자국이 어지럽다. 세트식 사막 훈련."
-  },
-  {
-   "id": "market",
-   "x": 14,
-   "y": 18,
-   "label": "시장",
-   "mode": "life",
-   "title": "시장",
-   "text": "상인들이 좌판을 펴고 있다."
-  },
-  {
-   "id": "garden",
-   "x": 8,
-   "y": 20,
-   "label": "텃밭",
-   "mode": "life",
-   "title": "텃밭",
-   "text": "물기를 머금은 검은 흙."
-  },
-  {
-   "id": "kitchen",
-   "x": 30,
-   "y": 18,
-   "label": "부엌",
-   "mode": "life",
-   "title": "부엌",
-   "text": "화덕에서 빵 굽는 냄새가 난다."
-  },
-  {
-   "id": "dock",
-   "x": 25,
-   "y": 30,
-   "label": "선착장",
-   "mode": "life",
-   "title": "선착장",
-   "text": "나일이 발밑에서 출렁인다. 물가 갈대 사이로 뭔가 걸려 있는 게 보인다."
-  },
-  {
-   "id": "duat",
-   "x": 36,
-   "y": 10,
-   "label": "두아트",
-   "mode": "duat",
-   "title": "두아트의 문",
-   "text": "바위 틈에서 차가운 바람이 올라온다. 밤에만 문이 열린다."
-  },
-  {
-   "id": "altar",
-   "x": 21,
-   "y": 10,
-   "label": "제단",
-   "mode": "growth",
-   "title": "신전 제단",
-   "text": "향이 타고 있다. 신전 일을 도우면 신앙이 깊어진다."
-  }
- ],
- "npcs": [
-  {
-   "id": "set",
-   "x": 24,
-   "y": 12,
-   "look": "set",
-   "label": "세트",
-   "en": "Set",
-   "talk": true,
-   "where": "in the temple courtyard of Ombos",
-   "whereKo": "신전 앞마당"
-  },
-  {
-   "id": "horus",
-   "x": 28,
-   "y": 11,
-   "look": "horus",
-   "label": "호루스",
-   "en": "Horus",
-   "talk": true,
-   "where": "in the temple courtyard of Ombos",
-   "whereKo": "신전 앞마당"
-  },
-  {
-   "id": "merchant",
-   "x": 12,
-   "y": 17,
-   "look": "townsman",
-   "label": "상인",
-   "text": "좌판 너머로 고개를 끄덕인다. 사고팔기는 생활 단계에서 열려."
-  }
- ],
- "spawn": {
-  "x": 25,
-  "y": 16
- },
- "overlays": {
-  "_about": "정비나 모험이 끝나면 바뀌는 칸. x, y 자리의 글자를 c로 바꿔.",
-  "canal": [
-   {
-    "x": 13,
-    "y": 21,
-    "c": "w"
-   },
-   {
-    "x": 13,
-    "y": 22,
-    "c": "w"
-   },
-   {
-    "x": 13,
-    "y": 23,
-    "c": "w"
-   },
-   {
-    "x": 13,
-    "y": 24,
-    "c": "w"
-   },
-   {
-    "x": 13,
-    "y": 25,
-    "c": "w"
-   },
-   {
-    "x": 13,
-    "y": 26,
-    "c": "w"
-   }
+  "landforms": [],
+  "referenceScenes": [
+    "ombos"
   ],
-  "field": [
-   {
-    "x": 15,
-    "y": 21,
-    "c": "f"
-   },
-   {
-    "x": 15,
-    "y": 22,
-    "c": "f"
-   },
-   {
-    "x": 15,
-    "y": 23,
-    "c": "f"
-   },
-   {
-    "x": 16,
-    "y": 21,
-    "c": "f"
-   },
-   {
-    "x": 16,
-    "y": 22,
-    "c": "f"
-   },
-   {
-    "x": 16,
-    "y": 23,
-    "c": "f"
-   },
-   {
-    "x": 17,
-    "y": 21,
-    "c": "f"
-   },
-   {
-    "x": 17,
-    "y": 22,
-    "c": "f"
-   },
-   {
-    "x": 17,
-    "y": 23,
-    "c": "f"
-   },
-   {
-    "x": 18,
-    "y": 21,
-    "c": "f"
-   },
-   {
-    "x": 18,
-    "y": 22,
-    "c": "f"
-   },
-   {
-    "x": 18,
-    "y": 23,
-    "c": "f"
-   },
-   {
-    "x": 19,
-    "y": 21,
-    "c": "f"
-   },
-   {
-    "x": 19,
-    "y": 22,
-    "c": "f"
-   },
-   {
-    "x": 19,
-    "y": 23,
-    "c": "f"
-   },
-   {
-    "x": 20,
-    "y": 21,
-    "c": "f"
-   },
-   {
-    "x": 20,
-    "y": 22,
-    "c": "f"
-   },
-   {
-    "x": 20,
-    "y": 23,
-    "c": "f"
-   }
+  "buildings": [
+    {
+      "id": "temple",
+      "kind": "temple",
+      "x": 22,
+      "y": 5,
+      "w": 8,
+      "h": 5,
+      "label": "세트의 신전",
+      "artInReference": true,
+      "artInLandform": true
+    },
+    {
+      "id": "scriptorium",
+      "kind": "house",
+      "x": 8,
+      "y": 3,
+      "w": 6,
+      "h": 4,
+      "label": "필사실",
+      "roof": "#B98F5E",
+      "artInReference": true,
+      "artInLandform": true
+    },
+    {
+      "id": "market",
+      "kind": "stall",
+      "x": 12,
+      "y": 15,
+      "w": 5,
+      "h": 2,
+      "label": "시장",
+      "roof": "#C0632F",
+      "artInReference": true,
+      "artInLandform": true
+    },
+    {
+      "id": "kitchen",
+      "kind": "house",
+      "x": 27,
+      "y": 15,
+      "w": 5,
+      "h": 3,
+      "label": "부엌",
+      "roof": "#A88B66",
+      "artInLandform": true,
+      "artInReference": true
+    },
+    {
+      "id": "houses1",
+      "kind": "house",
+      "x": 19,
+      "y": 15,
+      "w": 4,
+      "h": 2,
+      "label": "",
+      "roof": "#B9926A",
+      "artInReference": true,
+      "artInLandform": true
+    },
+    {
+      "id": "duat",
+      "kind": "gate",
+      "glow": "duat",
+      "artInLandform": true,
+      "artInReference": true,
+      "x": 35,
+      "y": 7,
+      "w": 3,
+      "h": 3,
+      "label": "두아트"
+    }
   ],
-  "garden": [
-   {
-    "x": 3,
-    "y": 5,
-    "c": "o"
-   },
-   {
+  "spots": [
+    {
+      "id": "temple_hall",
+      "x": 25,
+      "y": 10,
+      "label": "세트의 신전",
+      "mode": "realm",
+      "title": "세트의 신전 · 집무실",
+      "text": "지도 탁자 위에 옴보스가 펼쳐져 있다. 마을을 정비할 수 있다."
+    },
+    {
+      "id": "scriptorium",
+      "x": 10,
+      "y": 7,
+      "label": "필사실",
+      "mode": "growth",
+      "title": "필사실",
+      "text": "서기들이 갈대 펜을 깎고 있다. 공부하거나 기록을 해독할 수 있다."
+    },
+    {
+      "id": "training",
+      "x": 5,
+      "y": 14,
+      "label": "훈련장",
+      "mode": "growth",
+      "title": "훈련장",
+      "text": "모래 위에 발자국이 어지럽다. 세트식 사막 훈련."
+    },
+    {
+      "id": "market",
+      "x": 14,
+      "y": 17,
+      "label": "시장",
+      "mode": "life",
+      "title": "시장",
+      "text": "상인들이 좌판을 펴고 있다."
+    },
+    {
+      "id": "garden",
+      "x": 8,
+      "y": 21,
+      "label": "텃밭",
+      "mode": "life",
+      "title": "텃밭",
+      "text": "물기를 머금은 검은 흙."
+    },
+    {
+      "id": "kitchen",
+      "x": 28,
+      "y": 18,
+      "label": "부엌",
+      "mode": "life",
+      "title": "부엌",
+      "text": "화덕에서 빵 굽는 냄새가 난다."
+    },
+    {
+      "id": "dock",
+      "x": 25,
+      "y": 30,
+      "label": "선착장",
+      "mode": "life",
+      "title": "선착장",
+      "text": "나일이 발밑에서 출렁인다. 물가 갈대 사이로 뭔가 걸려 있는 게 보인다."
+    },
+    {
+      "id": "duat",
+      "x": 36,
+      "y": 10,
+      "label": "두아트",
+      "mode": "duat",
+      "title": "두아트의 문",
+      "text": "바위 틈에서 차가운 바람이 올라온다. 밤에만 문이 열린다."
+    },
+    {
+      "id": "altar",
+      "x": 20,
+      "y": 10,
+      "label": "제단",
+      "mode": "growth",
+      "title": "신전 제단",
+      "text": "향이 타고 있다. 신전 일을 도우면 신앙이 깊어진다."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "set",
+      "x": 24,
+      "y": 12,
+      "look": "set",
+      "label": "세트",
+      "en": "Set",
+      "talk": true,
+      "where": "in the temple courtyard of Ombos",
+      "whereKo": "신전 앞마당"
+    },
+    {
+      "id": "horus",
+      "x": 28,
+      "y": 12,
+      "look": "horus",
+      "label": "호루스",
+      "en": "Horus",
+      "talk": true,
+      "where": "in the temple courtyard of Ombos",
+      "whereKo": "신전 앞마당"
+    },
+    {
+      "id": "merchant",
+      "x": 12,
+      "y": 17,
+      "look": "townsman",
+      "label": "상인",
+      "text": "좌판 너머로 고개를 끄덕인다. 사고팔기는 생활 단계에서 열려."
+    }
+  ],
+  "spawn": {
+    "x": 25,
+    "y": 18
+  },
+  "overlays": {
+    "_about": "정비나 모험이 끝나면 바뀌는 칸. x, y 자리의 글자를 c로 바꿔.",
+    "canal": [
+      {
+        "x": 13,
+        "y": 21,
+        "c": "w"
+      },
+      {
+        "x": 13,
+        "y": 22,
+        "c": "w"
+      },
+      {
+        "x": 13,
+        "y": 23,
+        "c": "w"
+      },
+      {
+        "x": 13,
+        "y": 24,
+        "c": "w"
+      },
+      {
+        "x": 13,
+        "y": 25,
+        "c": "w"
+      },
+      {
+        "x": 13,
+        "y": 26,
+        "c": "w"
+      }
+    ],
+    "field": [
+      {
+        "x": 15,
+        "y": 21,
+        "c": "f"
+      },
+      {
+        "x": 15,
+        "y": 22,
+        "c": "f"
+      },
+      {
+        "x": 15,
+        "y": 23,
+        "c": "f"
+      },
+      {
+        "x": 16,
+        "y": 21,
+        "c": "f"
+      },
+      {
+        "x": 16,
+        "y": 22,
+        "c": "f"
+      },
+      {
+        "x": 16,
+        "y": 23,
+        "c": "f"
+      },
+      {
+        "x": 17,
+        "y": 21,
+        "c": "f"
+      },
+      {
+        "x": 17,
+        "y": 22,
+        "c": "f"
+      },
+      {
+        "x": 17,
+        "y": 23,
+        "c": "f"
+      },
+      {
+        "x": 18,
+        "y": 21,
+        "c": "f"
+      },
+      {
+        "x": 18,
+        "y": 22,
+        "c": "f"
+      },
+      {
+        "x": 18,
+        "y": 23,
+        "c": "f"
+      },
+      {
+        "x": 19,
+        "y": 21,
+        "c": "f"
+      },
+      {
+        "x": 19,
+        "y": 22,
+        "c": "f"
+      },
+      {
+        "x": 19,
+        "y": 23,
+        "c": "f"
+      },
+      {
+        "x": 20,
+        "y": 21,
+        "c": "f"
+      },
+      {
+        "x": 20,
+        "y": 22,
+        "c": "f"
+      },
+      {
+        "x": 20,
+        "y": 23,
+        "c": "f"
+      }
+    ],
+    "garden": [
+      {
+        "x": 1,
+        "y": 3,
+        "c": "g"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "c": "g"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "c": "w"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "c": "g"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "c": "l"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "c": "g"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "c": "w"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "c": "g"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "c": "g"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "c": "g"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "palm_shade",
+      "x": 15,
+      "y": 10,
+      "ko": "야자수 그늘"
+    },
+    {
+      "id": "west_road",
+      "x": 3,
+      "y": 17,
+      "ko": "마을 서쪽 길"
+    },
+    {
+      "id": "by_scriptorium",
+      "x": 15,
+      "y": 7,
+      "ko": "필사실 옆"
+    },
+    {
+      "id": "rock_foot",
+      "x": 35,
+      "y": 15,
+      "ko": "바위 언덕 아래"
+    },
+    {
+      "id": "meadow",
+      "x": 31,
+      "y": 22,
+      "ko": "동쪽 풀밭"
+    },
+    {
+      "id": "south_grass",
+      "x": 18,
+      "y": 25,
+      "ko": "강가 풀밭"
+    },
+    {
+      "id": "furrow",
+      "x": 6,
+      "y": 23,
+      "ko": "밭고랑"
+    },
+    {
+      "id": "roadside",
+      "x": 21,
+      "y": 20,
+      "ko": "큰길 가"
+    },
+    {
+      "id": "east_end",
+      "x": 36,
+      "y": 21,
+      "ko": "마을 동쪽 끝"
+    },
+    {
+      "id": "north_path",
+      "x": 10,
+      "y": 13,
+      "ko": "북쪽 길"
+    },
+    {
+      "id": "behind_temple",
+      "x": 33,
+      "y": 12,
+      "ko": "신전 뒤"
+    },
+    {
+      "id": "before_dock",
+      "x": 24,
+      "y": 26,
+      "ko": "선착장 앞"
+    },
+    {
+      "id": "house_front",
+      "x": 20,
+      "y": 18,
+      "ko": "집 앞"
+    },
+    {
+      "id": "garden_wall",
+      "x": 7,
+      "y": 6,
+      "ko": "옛 정원 담 옆"
+    }
+  ],
+  "secrets": [
+    {
+      "id": "night_mural",
+      "x": 35,
+      "y": 11,
+      "ko": "빛나는 벽화",
+      "when": {
+        "parts": [
+          "night"
+        ]
+      },
+      "text": "달빛을 받은 바위에 별을 삼키는 여신이 그려져 있다. 낮에는 보이지 않던 그림이다.",
+      "give": "",
+      "xp": 4,
+      "en": "a mural on the rocks east of Ombos that glows only in moonlight"
+    },
+    {
+      "id": "sand_trace",
+      "x": 36,
+      "y": 19,
+      "ko": "모래 밑 흔적",
+      "when": {
+        "with": "set"
+      },
+      "text": "세트가 발끝으로 모래를 쓸자 묻혀 있던 돌상자 모서리가 드러난다.",
+      "give": "ancient_seal",
+      "xp": 5,
+      "en": "a stone box buried under the sand at the edge of Ombos, with an old cylinder seal inside"
+    },
+    {
+      "id": "high_mark",
+      "x": 38,
+      "y": 22,
+      "ko": "높은 표식",
+      "when": {
+        "with": "horus"
+      },
+      "text": "호루스가 가리킨 바위 꼭대기에 매 표식이 새겨져 있다. 틈에 접힌 종이가 끼워져 있다.",
+      "give": "map_scrap",
+      "xp": 5,
+      "en": "a falcon mark carved high on a rock outside Ombos, with a folded map scrap tucked into it"
+    },
+    {
+      "id": "low_stairs",
+      "x": 30,
+      "y": 26,
+      "ko": "드러난 계단",
+      "when": {
+        "seasons": [
+          "peret",
+          "shemu"
+        ]
+      },
+      "text": "물이 빠진 강가에 돌계단 세 칸이 드러났다. 맨 아래 칸 틈에 뭔가 끼어 있다.",
+      "give": "ka_statue",
+      "xp": 5,
+      "en": "old stone steps uncovered by the low river at Ombos, with a small ka statuette caught in them"
+    },
+    {
+      "id": "dawn_lotus",
+      "x": 2,
+      "y": 26,
+      "ko": "새벽 연꽃",
+      "when": {
+        "parts": [
+          "dawn"
+        ]
+      },
+      "text": "강가에 푸른 연꽃이 막 피었다.",
+      "give": "blue_lotus",
+      "xp": 2,
+      "daily": true,
+      "en": "a blue lotus just opened on the riverbank at dawn"
+    }
+  ],
+  "companionSpots": {
+    "set": {
+      "x": 24,
+      "y": 12
+    },
+    "horus": {
+      "x": 28,
+      "y": 12
+    }
+  },
+  "gardenChest": {
     "x": 1,
-    "y": 3,
-    "c": "g"
-   },
-   {
-    "x": 1,
-    "y": 4,
-    "c": "g"
-   },
-   {
-    "x": 2,
-    "y": 3,
-    "c": "w"
-   },
-   {
-    "x": 2,
-    "y": 4,
-    "c": "g"
-   },
-   {
-    "x": 3,
-    "y": 3,
-    "c": "l"
-   },
-   {
-    "x": 3,
-    "y": 4,
-    "c": "g"
-   },
-   {
-    "x": 4,
-    "y": 3,
-    "c": "w"
-   },
-   {
-    "x": 4,
-    "y": 4,
-    "c": "g"
-   },
-   {
-    "x": 5,
-    "y": 3,
-    "c": "g"
-   },
-   {
-    "x": 5,
-    "y": 4,
-    "c": "g"
-   }
-  ]
- },
- "anchors": [
-  {
-   "id": "palm_shade",
-   "x": 15,
-   "y": 10,
-   "ko": "야자수 그늘"
+    "y": 3
   },
-  {
-   "id": "west_road",
-   "x": 3,
-   "y": 17,
-   "ko": "마을 서쪽 길"
-  },
-  {
-   "id": "by_scriptorium",
-   "x": 14,
-   "y": 5,
-   "ko": "필사실 옆"
-  },
-  {
-   "id": "rock_foot",
-   "x": 35,
-   "y": 15,
-   "ko": "바위 언덕 아래"
-  },
-  {
-   "id": "meadow",
-   "x": 31,
-   "y": 22,
-   "ko": "동쪽 풀밭"
-  },
-  {
-   "id": "south_grass",
-   "x": 18,
-   "y": 25,
-   "ko": "강가 풀밭"
-  },
-  {
-   "id": "furrow",
-   "x": 6,
-   "y": 23,
-   "ko": "밭고랑"
-  },
-  {
-   "id": "roadside",
-   "x": 21,
-   "y": 20,
-   "ko": "큰길 가"
-  },
-  {
-   "id": "east_end",
-   "x": 36,
-   "y": 21,
-   "ko": "마을 동쪽 끝"
-  },
-  {
-   "id": "north_path",
-   "x": 10,
-   "y": 13,
-   "ko": "북쪽 길"
-  },
-  {
-   "id": "behind_temple",
-   "x": 34,
-   "y": 12,
-   "ko": "신전 뒤"
-  },
-  {
-   "id": "before_dock",
-   "x": 24,
-   "y": 26,
-   "ko": "선착장 앞"
-  },
-  {
-   "id": "house_front",
-   "x": 19,
-   "y": 17,
-   "ko": "집 앞"
-  },
-  {
-   "id": "garden_wall",
-   "x": 8,
-   "y": 4,
-   "ko": "옛 정원 담 옆"
-  }
- ],
- "secrets": [
-  {
-   "id": "night_mural",
-   "x": 35,
-   "y": 11,
-   "ko": "빛나는 벽화",
-   "when": {
-    "parts": [
-     "night"
+  "obelisks": [
+    {
+      "id": "ob_north",
+      "x": 16,
+      "y": 3,
+      "ko": "북쪽 오벨리스크",
+      "about": "필사실 옆 길"
+    },
+    {
+      "id": "ob_west",
+      "x": 1,
+      "y": 16,
+      "ko": "서쪽 오벨리스크",
+      "about": "훈련장 아래 서쪽 길"
+    },
+    {
+      "id": "ob_east",
+      "x": 37,
+      "y": 21,
+      "ko": "동쪽 오벨리스크",
+      "about": "동쪽 풀밭 끝"
+    },
+    {
+      "id": "ob_river",
+      "x": 21,
+      "y": 26,
+      "ko": "강가 오벨리스크",
+      "about": "선착장 가는 풀밭"
+    }
+  ],
+  "_decor_about": "꾸밈. k는 종류, x와 y는 칸. 종류: seal 봉인석, column 기둥, statue_set 세트 석상, statue_falcon 매 석상, jackal 자칼 상, brazier 화로, pool 연못, altar 제물상, runner 붉은 길, plant 화분, jars 항아리, goods 장바구니, flowers 꽃, bush 덤불, reeds 갈대, skiff 작은 배, rocks 돌무더기, dummy 짚 인형, target 과녁, well 우물, oven 화덕, shaduf 물 긷는 장대, mat 말리는 돗자리, bench 돌 의자, banner 깃대, hanging 벽 걸개, stele 비석, shrine 작은 사당, dig 발굴 구덩이, lily 연잎, fallen 쓰러진 기둥, broken 부서진 석상, block 새김 돌. 꽃, 덤불, 갈대, 돗자리, 붉은 길, 걸개, 작은 배, 발굴 구덩이는 지나갈 수 있고 나머지는 막혀. solid에 true나 false를 넣으면 바꿀 수 있어. hanging과 banner는 c에 색을 넣어. bed는 줄 맞춘 꽃밭이야. 길이 막히지 않게 조심해.",
+  "decor": [
+    {
+      "k": "hanging",
+      "x": 20,
+      "y": 3,
+      "c": "#A66E54",
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "hanging",
+      "x": 31,
+      "y": 3,
+      "c": "#A66E54",
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "plant",
+      "x": 20,
+      "y": 4,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "plant",
+      "x": 31,
+      "y": 4,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "column",
+      "x": 19,
+      "y": 5,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "column",
+      "x": 19,
+      "y": 9,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "column",
+      "x": 32,
+      "y": 5,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "column",
+      "x": 32,
+      "y": 9,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "statue_set",
+      "x": 21,
+      "y": 7,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "statue_falcon",
+      "x": 30,
+      "y": 7,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "altar",
+      "x": 21,
+      "y": 10,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "brazier",
+      "x": 23,
+      "y": 10,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "brazier",
+      "x": 29,
+      "y": 10,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 25,
+      "y": 11,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 26,
+      "y": 11,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 25,
+      "y": 12,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 26,
+      "y": 12,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 25,
+      "y": 13,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 26,
+      "y": 13,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 25,
+      "y": 14,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "runner",
+      "x": 26,
+      "y": 14,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "pool",
+      "x": 30,
+      "y": 9,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "pool",
+      "x": 31,
+      "y": 9,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "pool",
+      "x": 30,
+      "y": 10,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "pool",
+      "x": 31,
+      "y": 10,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "plant",
+      "x": 19,
+      "y": 10,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bench",
+      "x": 20,
+      "y": 10,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "hanging",
+      "x": 21,
+      "y": 11,
+      "c": "#A66E54",
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "hanging",
+      "x": 30,
+      "y": 11,
+      "c": "#A66E54",
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "plant",
+      "x": 24,
+      "y": 15,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "plant",
+      "x": 27,
+      "y": 15,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "jars",
+      "x": 18,
+      "y": 16,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "mat",
+      "x": 23,
+      "y": 17,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "oven",
+      "x": 32,
+      "y": 16,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "jars",
+      "x": 32,
+      "y": 17,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "goods",
+      "x": 11,
+      "y": 16,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "goods",
+      "x": 17,
+      "y": 16,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "mat",
+      "x": 17,
+      "y": 17,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "jars",
+      "x": 7,
+      "y": 2,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "rocks",
+      "x": 17,
+      "y": 2,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "dummy",
+      "x": 3,
+      "y": 11,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "target",
+      "x": 7,
+      "y": 11,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "shaduf",
+      "x": 14,
+      "y": 23,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "well",
+      "x": 23,
+      "y": 21,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "mat",
+      "x": 17,
+      "y": 20,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "jars",
+      "x": 2,
+      "y": 21,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 19,
+      "y": 24,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 28,
+      "y": 25,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 34,
+      "y": 24,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 33,
+      "y": 24,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 16,
+      "y": 25,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 20,
+      "y": 24,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 29,
+      "y": 25,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "flowers",
+      "x": 8,
+      "y": 26,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "flowers",
+      "x": 38,
+      "y": 25,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "flowers",
+      "x": 29,
+      "y": 21,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "flowers",
+      "x": 33,
+      "y": 23,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bed",
+      "x": 15,
+      "y": 25,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bush",
+      "x": 0,
+      "y": 19,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bush",
+      "x": 33,
+      "y": 26,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bush",
+      "x": 11,
+      "y": 26,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bush",
+      "x": 14,
+      "y": 8,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "flowers",
+      "x": 16,
+      "y": 12,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "rocks",
+      "x": 12,
+      "y": 9,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "bush",
+      "x": 35,
+      "y": 20,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "flowers",
+      "x": 27,
+      "y": 20,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "jackal",
+      "x": 39,
+      "y": 12,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "reeds",
+      "x": 3,
+      "y": 27,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "reeds",
+      "x": 9,
+      "y": 27,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "reeds",
+      "x": 16,
+      "y": 27,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "reeds",
+      "x": 31,
+      "y": 27,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "reeds",
+      "x": 37,
+      "y": 27,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "skiff",
+      "x": 20,
+      "y": 29,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "skiff",
+      "x": 6,
+      "y": 30,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "lily",
+      "x": 9,
+      "y": 29,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "lily",
+      "x": 15,
+      "y": 31,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "lily",
+      "x": 31,
+      "y": 29,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "lily",
+      "x": 36,
+      "y": 31,
+      "referenceOwned": true,
+      "solid": false
+    },
+    {
+      "k": "lily",
+      "x": 3,
+      "y": 32,
+      "referenceOwned": true,
+      "solid": false
+    }
+  ],
+  "rows": [
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..................TTTTTTTTTTTTTTT.........",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "..........................................",
+    "...ffffffffff.............................",
+    "...ffffffffff.............................",
+    "gggffffffffffggggggggggggggggggggggggggggg",
+    "gggffffffffffggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggggggggggggggg",
+    "ggggggggggggggggggggggggdddggggggggggggggg",
+    "~~~~~~~~~~~~~~~~~~~~~~~~ddd~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~ddd~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~ddd~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "authoredCollision": {
+    "width": 1392,
+    "height": 1130,
+    "shapes": [
+      {
+        "id": "north-ridge",
+        "polygon": [[0, 0], [1105, 0], [1105, 68], [0, 68]]
+      },
+      {
+        "id": "duat-cliffs",
+        "polygon": [[1105, 0], [1392, 0], [1392, 442], [1336, 442], [1336, 369], [1280, 369], [1280, 348], [1181, 348], [1151, 365], [1105, 363]]
+      },
+      {
+        "id": "east-outcrop",
+        "polygon": [[1333, 575], [1392, 561], [1392, 669], [1322, 662], [1285, 622], [1287, 600]]
+      },
+      {
+        "id": "river",
+        "polygon": [[0, 936], [799, 936], [799, 1034], [880, 1034], [880, 936], [1392, 936], [1392, 1130], [0, 1130]]
+      },
+      {
+        "id": "old-garden-west",
+        "polygon": [[0, 66], [23, 66], [23, 200], [0, 200]]
+      },
+      {
+        "id": "old-garden-front-left",
+        "polygon": [[0, 174], [95, 174], [95, 202], [0, 202]]
+      },
+      {
+        "id": "old-garden-front-right",
+        "polygon": [[135, 174], [234, 174], [234, 202], [135, 202]]
+      },
+      {
+        "id": "old-garden-east",
+        "polygon": [[207, 67], [235, 67], [235, 200], [207, 200]]
+      },
+      {
+        "id": "garden-gate",
+        "polygon": [[94, 172], [135, 172], [135, 202], [94, 202]],
+        "untilOverlay": "garden"
+      },
+      {
+        "id": "scriptorium",
+        "polygon": [[259, 155], [458, 155], [458, 236], [259, 236]]
+      },
+      {
+        "id": "market",
+        "polygon": [[391, 507], [550, 507], [550, 571], [391, 571]]
+      },
+      {
+        "id": "houses1",
+        "polygon": [[613, 510], [748, 510], [748, 574], [613, 574]]
+      },
+      {
+        "id": "kitchen",
+        "polygon": [[905, 502], [1039, 502], [1039, 595], [905, 595]]
+      },
+      {
+        "id": "temple-left",
+        "polygon": [[711, 179], [783, 179], [789, 331], [707, 331]]
+      },
+      {
+        "id": "temple-right",
+        "polygon": [[889, 179], [958, 179], [966, 331], [885, 331]]
+      },
+      {
+        "id": "temple-door",
+        "polygon": [[783, 229], [890, 229], [890, 333], [783, 333]]
+      },
+      {
+        "id": "temple-wall-west",
+        "polygon": [[581, 105], [604, 105], [604, 397], [581, 397]]
+      },
+      {
+        "id": "temple-wall-east",
+        "polygon": [[1080, 105], [1107, 105], [1107, 397], [1080, 397]]
+      },
+      {
+        "id": "temple-wall-front-left",
+        "polygon": [[582, 386], [808, 386], [808, 397], [582, 397]]
+      },
+      {
+        "id": "temple-wall-front-right",
+        "polygon": [[875, 386], [1107, 386], [1107, 397], [875, 397]]
+      },
+      {
+        "id": "temple-wall-north",
+        "polygon": [[581, 101], [1107, 101], [1107, 126], [581, 126]]
+      },
+      {
+        "id": "pool",
+        "polygon": [[976, 300], [1036, 300], [1036, 354], [976, 354]]
+      },
+      {
+        "id": "guardian",
+        "polygon": [[1275, 402], [1330, 402], [1330, 437], [1275, 437]]
+      },
+      {
+        "id": "oven",
+        "polygon": [[1036, 529], [1076, 529], [1076, 570], [1036, 570]]
+      },
+      {
+        "id": "jars",
+        "polygon": [[1037, 574], [1076, 574], [1076, 602], [1037, 602]]
+      },
+      {
+        "id": "altar",
+        "polygon": [[681, 342], [710, 342], [710, 366], [681, 366]]
+      },
+      {
+        "id": "brazier-west",
+        "polygon": [[746, 341], [772, 341], [772, 366], [746, 366]]
+      },
+      {
+        "id": "brazier-east",
+        "polygon": [[910, 341], [935, 341], [935, 366], [910, 366]]
+      },
+      {
+        "id": "column-nw",
+        "polygon": [[619, 174], [646, 174], [646, 190], [619, 190]]
+      },
+      {
+        "id": "column-sw",
+        "polygon": [[617, 337], [648, 337], [648, 356], [617, 356]]
+      },
+      {
+        "id": "column-ne",
+        "polygon": [[1038, 174], [1065, 174], [1065, 190], [1038, 190]]
+      },
+      {
+        "id": "column-se",
+        "polygon": [[1038, 337], [1065, 337], [1065, 356], [1038, 356]]
+      },
+      {
+        "id": "set-statue",
+        "polygon": [[681, 238], [711, 238], [711, 261], [681, 261]]
+      },
+      {
+        "id": "horus-statue",
+        "polygon": [[975, 240], [1005, 240], [1005, 261], [975, 261]]
+      },
+      {
+        "id": "courtyard-plant-left",
+        "polygon": [[781, 518], [803, 518], [803, 539], [781, 539]]
+      },
+      {
+        "id": "courtyard-plant-right",
+        "polygon": [[879, 518], [899, 518], [899, 539], [879, 539]]
+      },
+      {
+        "id": "training-north",
+        "polygon": [[62, 315], [285, 315], [285, 333], [62, 333]]
+      },
+      {
+        "id": "training-west",
+        "polygon": [[63, 321], [79, 321], [79, 542], [63, 542]]
+      },
+      {
+        "id": "training-east",
+        "polygon": [[269, 321], [286, 321], [286, 542], [269, 542]]
+      },
+      {
+        "id": "training-front-left",
+        "polygon": [[64, 521], [155, 521], [155, 542], [64, 542]]
+      },
+      {
+        "id": "training-front-right",
+        "polygon": [[194, 521], [285, 521], [285, 542], [194, 542]]
+      },
+      {
+        "id": "dummy-1",
+        "polygon": [[99, 375], [128, 375], [128, 405], [99, 405]]
+      },
+      {
+        "id": "dummy-2",
+        "polygon": [[154, 438], [186, 438], [186, 469], [154, 469]]
+      },
+      {
+        "id": "target",
+        "polygon": [[224, 382], [257, 382], [257, 410], [224, 410]]
+      },
+      {
+        "id": "rack",
+        "polygon": [[153, 371], [204, 371], [204, 392], [153, 392]]
+      },
+      {
+        "id": "hedge-west",
+        "polygon": [[99, 672], [226, 672], [226, 697], [99, 697]]
+      },
+      {
+        "id": "field-edge",
+        "polygon": [[419, 694], [441, 694], [441, 853], [419, 853]]
+      },
+      {
+        "id": "shaduf",
+        "polygon": [[453, 767], [478, 767], [478, 805], [453, 805]]
+      },
+      {
+        "id": "road-rock",
+        "polygon": [[391, 312], [426, 312], [426, 335], [391, 335]]
+      },
+      {
+        "id": "grass-rock",
+        "polygon": [[915, 738], [958, 738], [958, 765], [915, 765]]
+      },
+      {
+        "id": "palm-0",
+        "polygon": [[10, 227], [32, 227], [32, 251], [10, 251]]
+      },
+      {
+        "id": "palm-1",
+        "polygon": [[5, 307], [27, 307], [27, 331], [5, 331]]
+      },
+      {
+        "id": "palm-2",
+        "polygon": [[5, 385], [27, 385], [27, 409], [5, 409]]
+      },
+      {
+        "id": "palm-3",
+        "polygon": [[6, 493], [28, 493], [28, 517], [6, 517]]
+      },
+      {
+        "id": "palm-4",
+        "polygon": [[529, 343], [551, 343], [551, 367], [529, 367]]
+      },
+      {
+        "id": "palm-5",
+        "polygon": [[423, 411], [445, 411], [445, 435], [423, 435]]
+      },
+      {
+        "id": "palm-6",
+        "polygon": [[473, 716], [495, 716], [495, 740], [473, 740]]
+      },
+      {
+        "id": "palm-7",
+        "polygon": [[1098, 550], [1120, 550], [1120, 574], [1098, 574]]
+      },
+      {
+        "id": "palm-8",
+        "polygon": [[42, 785], [64, 785], [64, 809], [42, 809]]
+      },
+      {
+        "id": "palm-9",
+        "polygon": [[554, 860], [576, 860], [576, 884], [554, 884]]
+      },
+      {
+        "id": "palm-10",
+        "polygon": [[1027, 856], [1049, 856], [1049, 880], [1027, 880]]
+      },
+      {
+        "id": "palm-11",
+        "polygon": [[1200, 791], [1222, 791], [1222, 815], [1200, 815]]
+      }
     ]
-   },
-   "text": "달빛을 받은 바위에 별을 삼키는 여신이 그려져 있다. 낮에는 보이지 않던 그림이다.",
-   "give": "",
-   "xp": 4,
-   "en": "a mural on the rocks east of Ombos that glows only in moonlight"
-  },
-  {
-   "id": "sand_trace",
-   "x": 36,
-   "y": 19,
-   "ko": "모래 밑 흔적",
-   "when": {
-    "with": "set"
-   },
-   "text": "세트가 발끝으로 모래를 쓸자 묻혀 있던 돌상자 모서리가 드러난다.",
-   "give": "ancient_seal",
-   "xp": 5,
-   "en": "a stone box buried under the sand at the edge of Ombos, with an old cylinder seal inside"
-  },
-  {
-   "id": "high_mark",
-   "x": 38,
-   "y": 22,
-   "ko": "높은 표식",
-   "when": {
-    "with": "horus"
-   },
-   "text": "호루스가 가리킨 바위 꼭대기에 매 표식이 새겨져 있다. 틈에 접힌 종이가 끼워져 있다.",
-   "give": "map_scrap",
-   "xp": 5,
-   "en": "a falcon mark carved high on a rock outside Ombos, with a folded map scrap tucked into it"
-  },
-  {
-   "id": "low_stairs",
-   "x": 30,
-   "y": 26,
-   "ko": "드러난 계단",
-   "when": {
-    "seasons": [
-     "peret",
-     "shemu"
-    ]
-   },
-   "text": "물이 빠진 강가에 돌계단 세 칸이 드러났다. 맨 아래 칸 틈에 뭔가 끼어 있다.",
-   "give": "ka_statue",
-   "xp": 5,
-   "en": "old stone steps uncovered by the low river at Ombos, with a small ka statuette caught in them"
-  },
-  {
-   "id": "dawn_lotus",
-   "x": 2,
-   "y": 26,
-   "ko": "새벽 연꽃",
-   "when": {
-    "parts": [
-     "dawn"
-    ]
-   },
-   "text": "강가에 푸른 연꽃이 막 피었다.",
-   "give": "blue_lotus",
-   "xp": 2,
-   "daily": true,
-   "en": "a blue lotus just opened on the riverbank at dawn"
   }
- ],
- "companionSpots": {
-  "set": {
-   "x": 24,
-   "y": 12
-  },
-  "horus": {
-   "x": 28,
-   "y": 11
-  }
- },
- "gardenChest": {
-  "x": 1,
-  "y": 3
- },
- "obelisks": [
-   {"id": "ob_north", "x": 16, "y": 3, "ko": "북쪽 오벨리스크", "about": "필사실 옆 길"},
-   {"id": "ob_west", "x": 1, "y": 16, "ko": "서쪽 오벨리스크", "about": "훈련장 아래 서쪽 길"},
-   {"id": "ob_east", "x": 37, "y": 21, "ko": "동쪽 오벨리스크", "about": "동쪽 풀밭 끝"},
-   {"id": "ob_river", "x": 21, "y": 26, "ko": "강가 오벨리스크", "about": "선착장 가는 풀밭"}
- ],
- "_decor_about": "꾸밈. k는 종류, x와 y는 칸. 종류: seal 봉인석, column 기둥, statue_set 세트 석상, statue_falcon 매 석상, jackal 자칼 상, brazier 화로, pool 연못, altar 제물상, runner 붉은 길, plant 화분, jars 항아리, goods 장바구니, flowers 꽃, bush 덤불, reeds 갈대, skiff 작은 배, rocks 돌무더기, dummy 짚 인형, target 과녁, well 우물, oven 화덕, shaduf 물 긷는 장대, mat 말리는 돗자리, bench 돌 의자, banner 깃대, hanging 벽 걸개, stele 비석, shrine 작은 사당, dig 발굴 구덩이, lily 연잎, fallen 쓰러진 기둥, broken 부서진 석상, block 새김 돌. 꽃, 덤불, 갈대, 돗자리, 붉은 길, 걸개, 작은 배, 발굴 구덩이는 지나갈 수 있고 나머지는 막혀. solid에 true나 false를 넣으면 바꿀 수 있어. hanging과 banner는 c에 색을 넣어. bed는 줄 맞춘 꽃밭이야. 길이 막히지 않게 조심해.",
- "decor": [
-   {"k": "hanging", "x": 20, "y": 3, "c": "#A66E54"},
-   {"k": "hanging", "x": 31, "y": 3, "c": "#A66E54"},
-   {"k": "plant", "x": 20, "y": 4},
-   {"k": "plant", "x": 31, "y": 4},
-   {"k": "column", "x": 19, "y": 5},
-   {"k": "column", "x": 19, "y": 9},
-   {"k": "column", "x": 32, "y": 5},
-   {"k": "column", "x": 32, "y": 9},
-   {"k": "statue_set", "x": 21, "y": 7},
-   {"k": "statue_falcon", "x": 30, "y": 7},
-   {"k": "altar", "x": 21, "y": 10},
-   {"k": "brazier", "x": 23, "y": 10},
-   {"k": "brazier", "x": 29, "y": 10},
-   {"k": "runner", "x": 25, "y": 11},
-   {"k": "runner", "x": 26, "y": 11},
-   {"k": "runner", "x": 25, "y": 12},
-   {"k": "runner", "x": 26, "y": 12},
-   {"k": "runner", "x": 25, "y": 13},
-   {"k": "runner", "x": 26, "y": 13},
-   {"k": "runner", "x": 25, "y": 14},
-   {"k": "runner", "x": 26, "y": 14},
-   {"k": "pool", "x": 30, "y": 9},
-   {"k": "pool", "x": 31, "y": 9},
-   {"k": "pool", "x": 30, "y": 10},
-   {"k": "pool", "x": 31, "y": 10},
-   {"k": "plant", "x": 19, "y": 10},
-   {"k": "bench", "x": 20, "y": 10},
-   {"k": "hanging", "x": 21, "y": 11, "c": "#A66E54"},
-   {"k": "hanging", "x": 30, "y": 11, "c": "#A66E54"},
-   {"k": "plant", "x": 24, "y": 15},
-   {"k": "plant", "x": 27, "y": 15},
-   {"k": "jars", "x": 18, "y": 16},
-   {"k": "mat", "x": 23, "y": 17},
-   {"k": "oven", "x": 32, "y": 16, "referenceOwned": true},
-   {"k": "jars", "x": 32, "y": 17, "referenceOwned": true},
-   {"k": "goods", "x": 11, "y": 16},
-   {"k": "goods", "x": 17, "y": 16},
-   {"k": "mat", "x": 17, "y": 17},
-   {"k": "jars", "x": 7, "y": 2},
-   {"k": "rocks", "x": 17, "y": 2},
-   {"k": "dummy", "x": 3, "y": 11},
-   {"k": "target", "x": 7, "y": 11},
-   {"k": "shaduf", "x": 14, "y": 23},
-   {"k": "well", "x": 23, "y": 21},
-   {"k": "mat", "x": 17, "y": 20},
-   {"k": "jars", "x": 2, "y": 21},
-   {"k": "bed", "x": 19, "y": 24},
-   {"k": "bed", "x": 28, "y": 25},
-   {"k": "bed", "x": 34, "y": 24},
-   {"k": "bed", "x": 33, "y": 24},
-   {"k": "bed", "x": 16, "y": 25},
-   {"k": "bed", "x": 20, "y": 24},
-   {"k": "bed", "x": 29, "y": 25},
-   {"k": "flowers", "x": 8, "y": 26},
-   {"k": "flowers", "x": 38, "y": 25},
-   {"k": "flowers", "x": 29, "y": 21},
-   {"k": "flowers", "x": 33, "y": 23},
-   {"k": "bed", "x": 15, "y": 25},
-   {"k": "bush", "x": 0, "y": 19},
-   {"k": "bush", "x": 33, "y": 26},
-   {"k": "bush", "x": 11, "y": 26},
-   {"k": "bush", "x": 14, "y": 8},
-   {"k": "flowers", "x": 16, "y": 12},
-   {"k": "rocks", "x": 12, "y": 9},
-   {"k": "bush", "x": 35, "y": 20},
-   {"k": "flowers", "x": 27, "y": 20},
-   {"k": "jackal", "x": 39, "y": 12, "referenceOwned": true},
-   {"k": "reeds", "x": 3, "y": 27},
-   {"k": "reeds", "x": 9, "y": 27},
-   {"k": "reeds", "x": 16, "y": 27},
-   {"k": "reeds", "x": 31, "y": 27},
-   {"k": "reeds", "x": 37, "y": 27},
-   {"k": "skiff", "x": 20, "y": 29},
-   {"k": "skiff", "x": 6, "y": 30},
-   {"k": "lily", "x": 9, "y": 29},
-   {"k": "lily", "x": 15, "y": 31},
-   {"k": "lily", "x": 31, "y": 29},
-   {"k": "lily", "x": 36, "y": 31},
-   {"k": "lily", "x": 3, "y": 32}
- ],
- "rows": [
-  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
-  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
-  "#######.p..p......p......p..p.....RRRRRRRR",
-  "#DDDDD#...........################RRRRRRRR",
-  "#DDDDD#...........#TTTTTTTTTTTTTT#RRRRRRRR",
-  "###G###...........#TTTTTTTTTTTTTT#RRRRRRRR",
-  "...=============..#TTTTTTTTTTTTTT#RRRRRRRR",
-  "p..=============..#TTTTTTTTTTTTTT#RQQQRRRR",
-  "..........==......#TTTTTTTTTTTTTT#RQQQRRRR",
-  "p.xxxxxxx.==......#TTTTTTTTTTTTTT#RQQQRRRR",
-  "..x.....x.==....p.#TTTTTTTTTTTTTT#......RR",
-  "p.x.....x.==......####TTTTTTTT####.......R",
-  "..x.....x.==.p..........TTTT............RR",
-  "p.x.....x.==............TTTT............RR",
-  "..x.....x.==............TTTT............RR",
-  "..xxx.xxx.==.............ss.............RR",
-  "..........==.............==.......P.......",
-  "..........==oooooo.......==...............",
-  "..=====================================...",
-  "..=====================================...",
-  "...hhhh..................==..hhhhhh......R",
-  "...ffffffffffcp..........==..gggggg......R",
-  ".p.ffffffffffc...........==..gggggg......R",
-  "...ffffffffffc...........==.ggggggg.p....R",
-  "gggffffffffffcgggggggggggggggggggggggggggg",
-  "gggffffffffffcgggpgggggggggggggpgggggggggg",
-  "gggggggggggggcgggggggggggggggggggggggggggg",
-  "bbbbbbbbbbbbbbbbbbbbbbbbbddbbbbbbbbbbbbbbb",
-  "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~~~",
-  "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~~~",
-  "~~~~~~~~~~~~~~~~~~~~~~~~~dd~~~~~~~~~~~~~~~",
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
- ]
 }

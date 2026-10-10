@@ -4,7 +4,7 @@
 
 기획서: [SPEC.md](SPEC.md) · 시안: [docs/mockups](docs/mockups) · 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md) · 진행 상황: [docs/PROGRESS.md](docs/PROGRESS.md) · 인수인계: [docs/HANDOFF.md](docs/HANDOFF.md)
 
-**0.8.12 확정 시안 적용:** 원본 절벽과 부엌·그림자·소품을 직접 적용하고 기존 강·풀밭은 유지했다. [최신 실제 화면](docs/DUAT-APPROVED.md).
+**0.8.13 전체 시안 적용:** 채택한 도보 2번 시안 전체를 원본 그대로 사용한다. 건물·길·절벽·물가를 함께 적용하고 이동·상호작용 위치를 맞췄다. [실제 게임 화면과 검증](docs/OMBOS-APPROVED.md).
 
 **0.8.11 두아트 연결부:** 원본 모래·보도를 마을에 적용하고 부엌 옆 그림자와 절벽 위아래를 연결했다. [실제 낮·밤 화면과 검증](docs/DUAT-SEAMS.md).
 

@@ -91,6 +91,16 @@ export function paintMap(m, S, gr, tp, season) {
     const og = layer(W, H), ou = layer(W, H); // objects, to be outlined
     const ctx = { m, S, g, s: g, o: og.getContext('2d'), ou: ou.getContext('2d'), u, depth: waterDepth(m), art: art(season), season };
     sandCtx = ctx;
+    const scene = (m.d.referenceScenes || []).map(id => DATA.sceneArt?.[id]).find(s => s?.fullMap);
+    if (scene) {
+        // The minimap uses the same approved artwork. The main renderer draws
+        // from the original image at screen resolution, avoiding downsampling.
+        g.imageSmoothingEnabled = false;
+        g.drawImage(scene.image, ...scene.day, 0, 0, W, H);
+        for (const id of m.open) for (const c of m.d.overlays?.[id] || []) tile(ctx, c.x, c.y);
+        og.width = og.height = ou.width = ou.height = 1;
+        return;
+    }
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) tile(ctx, i, j);
     steppingStones(ctx);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) edges(ctx, i, j);
