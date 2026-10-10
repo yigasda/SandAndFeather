@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "somang-horus-approved-set-review",
+  "status": "user-approved-art-awaiting-runtime-integration",
   "reviewNumber": 136,
   "analysisBaselineCommit": "8b39c1e",
   "runtimeModified": false,
@@ -93,7 +93,7 @@
       "sha256": "ef014edc468297c3cd6d09dd9defc7eed7e2f5c22a1ab99843cf2a5488a78917",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-front-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-front-0.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.down.1",
@@ -127,7 +127,7 @@
       "sha256": "d4ecf0aaf1199dfaa5a762a1b3e901535a11ad15cea5b3eef888cf6f80219936",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-front-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-front-1.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.down.2",
@@ -161,7 +161,7 @@
       "sha256": "e4df5d5109700488bb3fa266c2e49ae3309aab2b6d163078564365277d6bc8b2",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-front-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-front-2.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.up.0",
@@ -195,7 +195,7 @@
       "sha256": "ae5493baee54bc1f0f69c97a97192fd6d169883e532cf15621b12269cd7e2b84",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-back-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-back-0.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.up.1",
@@ -229,7 +229,7 @@
       "sha256": "aa1c499eb661787f82a8473b26f368178594911fec2d19364485fd438f36b74e",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-back-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-back-1.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.up.2",
@@ -263,7 +263,7 @@
       "sha256": "e6ec9134c2abf52347a1242c6babf433dece3be2a157a00e740b5705acb9366a",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-back-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-back-2.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.left.0",
@@ -297,7 +297,7 @@
       "sha256": "aaf6837d008b6732e63f6496b668cf9b5ccb86b15791fe403c3f5c45901c1db4",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-left-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-left-0.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.left.1",
@@ -331,7 +331,7 @@
       "sha256": "f7ddef6c33487acae8f260883fb6701168c6c5830d06a9d0f1ce750ca36eca84",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-left-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-left-1.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.left.2",
@@ -365,7 +365,7 @@
       "sha256": "a9c27e393a99051588805b8611f2604482866968a7b3dc80db769f27802b4b2a",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-left-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-left-2.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.right.0",
@@ -399,7 +399,7 @@
       "sha256": "942b63dc698172c50754e4f7f31a5f2186003b388f219ebdd239f88dc4736df7",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-right-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-right-0.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.right.1",
@@ -433,7 +433,7 @@
       "sha256": "d0439460dfd18da58c8e4b597bc1102f5c0202702cba0d14c11b7e151b048014",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-right-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-right-1.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "set.walk.right.2",
@@ -467,7 +467,7 @@
       "sha256": "0e5da5717e0dfa1e589a4bbdbb7ac1838bbc880ca360a6faec25e5c8545d3a7f",
       "motionReference": "docs/art/chibi-refresh/approved/walk/set-right-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-right-2.png",
-      "approvalStatus": "review-pending"
+      "approvalStatus": "user-approved"
     },
     {
       "id": "somang.walk.down.0",
@@ -1287,8 +1287,10 @@
     }
   ],
   "characterStatus": {
-    "set": "136 seam fix: review pending",
+    "set": "136 user approved",
     "somang": "135 user approved",
     "horus": "135 user approved"
-  }
+  },
+  "approvalDate": "2026-10-11",
+  "approvalEvidence": "사용자: 셋소호 다 합격"
 }
