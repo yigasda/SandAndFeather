@@ -1,6 +1,6 @@
 # 안채 출구 보정 v2
 
-2026-10-11 후속 수정. **검토본, 사용자 채택 미확인, 런타임 미적용.**
+2026-10-11 후속 수정. **2026-10-11 사용자 “ㅈㄴ 예쁘다 채택!!!!”으로 `e2a536b`의 연못 회랑 낮밤 확장본과 동쪽 회랑 항아리 제거본 3장 채택. 런타임 미적용. 나머지 6장의 승인 상태는 이번 발언으로 확대 해석하지 않는다.**
 
 - 연못 낮밤: 원본 전체 1448×1086을 (0,0)에 보존하고 오른쪽 484px를 추가. 최종 1932×1086. 이전의 끝 좁은 어두운 통로는 교체했다.
 - 동쪽 회랑: 기존 보정본의 오른쪽 입구 항아리만 제거. 2172×724 유지.
@@ -14,3 +14,5 @@
 - [동쪽 회랑 항아리 제거 전후](https://drive.google.com/file/d/1qNlGK68dux83HAqjx8l-PlAxHtF2aac8/view)
 - [회랑 5곳 최신 검토본](https://drive.google.com/file/d/1ixDv8tdVb7WoXsJJzsDHUPcbRGx3bNXr/view)
 - [우물 마당 낮밤 전후](https://drive.google.com/file/d/1YsCdFZUltmmnn0FidGsDq5E-ZsaPRCeL/view)
+
+[채택 파일·해시 기록](approval.json). 이후 이 3장의 수정은 해당 채택 파일을 베이스로 한다.

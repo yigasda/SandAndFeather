@@ -1,0 +1,22 @@
+{
+  "approvedOn": "2026-10-11",
+  "timezone": "Asia/Seoul",
+  "evidence": "ㅈㄴ 예쁘다 채택!!!!",
+  "artCommit": "e2a536b",
+  "scope": "Pond day/night right extension and east-gallery blocking urn removal only. Other six outputs retain prior review status.",
+  "runtimeStatus": "Not integrated by this art task; Opus integration and traversal checks pending.",
+  "files": [
+    {
+      "path": "courtyard-colonnade-v1.png",
+      "sha256": "cd43d9c7737c8cc894d241c3eaa044260aa0e89a76106004bea1e9b3b6561ae0"
+    },
+    {
+      "path": "courtyard-colonnade-v1-night.png",
+      "sha256": "80fc33b65c576ba0f4c42699326d5dd5df8ef404742c2bad97e9ef3fd0d64707"
+    },
+    {
+      "path": "east-gallery-v1.png",
+      "sha256": "a16fde947596d7651cc089a317791d3dc1596d7fe24f7d47e2f925d4b039ef10"
+    }
+  ]
+}
