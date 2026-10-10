@@ -18,3 +18,11 @@
 사용자가 v1의 그림체를 좋아하며 소망의 시스루뱅과 가볍고 퐁실한 곱슬 끝을 요청했다. `trio-v2-somang-hair.png`는 해당 머리 부분을 수정한 최신 검토 시안이며, JPG는 밝은 배경 미리보기다. 가는 앞머리 사이로 이마가 비치게 하고 머리 끝을 분리된 느슨한 컬로 표현했다.
 
 [v2 Google Drive 미리보기](https://drive.google.com/file/d/1eOH0Lg7CvGj5J50gUy7c9c6Dw7uUYvTs/view)
+
+## 소망 v3: 사용자 새 참고 우선
+
+소망 v2의 옷, 눈매, 머리가 원하는 모습과 다르다는 사용자 피드백으로 새로 제공된 두 장 중 첫 번째 그림을 기준으로 변경했다. 해당 그림의 나른하고 반쯤 감긴 처진 눈매, 자연스러운 곱슬, 느슨하게 주름 잡힌 아이보리 드레스와 목의 흰 끈리본을 따르되 머리 길이만 가슴까지 줄인 단독 시안이다. 이전 소망의 둥글고 크게 뜬 눈, 머리 리본 장식, 별자리 치맛단을 다시 넣지 않는다. 세트와 호루스 시안은 이번 수정 대상이 아니다.
+
+`somang-v3-user-reference.png`가 원본이며 `somang-v3-user-reference-preview.jpg`는 모바일 확인용이다. 사용자 검토 전이며 게임 적용은 하지 않았다.
+
+[소망 v3 Google Drive 미리보기](https://drive.google.com/file/d/1QAlfQQZtrTcD80jL25AMeTLZPZlg3Ygg/view)
