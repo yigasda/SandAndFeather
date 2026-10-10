@@ -1,0 +1,104 @@
+{
+  "comparisons": [
+    {
+      "part": "day",
+      "name": "cliff",
+      "pixels": 14400,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "door_above_label",
+      "pixels": 6600,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "guardian",
+      "pixels": 5525,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "kitchen_shadow_and_objects",
+      "pixels": 22100,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "palm",
+      "pixels": 23800,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "stones",
+      "pixels": 19600,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "cliff",
+      "pixels": 14400,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "door_above_label",
+      "pixels": 6600,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "guardian",
+      "pixels": 5525,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "kitchen_shadow_and_objects",
+      "pixels": 22100,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "palm",
+      "pixels": 23800,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "stones",
+      "pixels": 19600,
+      "mismatch": 0,
+      "maxError": 0
+    }
+  ],
+  "probe": [
+    [
+      178,
+      141,
+      100,
+      255
+    ],
+    [
+      255,
+      0,
+      0,
+      255
+    ]
+  ],
+  "releaseBefore": 1003520,
+  "released": true
+}

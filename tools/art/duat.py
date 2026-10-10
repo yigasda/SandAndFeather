@@ -1,4 +1,7 @@
-"""Duat sandstone outcrop, in the game's native 16px tile scale.
+"""Legacy grid fallback for Duat, in the game's native 16px tile scale.
+
+The live Ombos entrance uses data/scene-art.json and data/art/*.png as of 0.8.9.
+This generator retains the historical grids used by the full tile rebuild.
 
 Individual overlapping rock silhouettes follow the supplied day/night study.
 Broad lit caps, broken sides, unequal feet and light from upper left.

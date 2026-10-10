@@ -27,5 +27,23 @@ export async function loadData() {
     const all = await Promise.all([...FILES.map(f => loadJson(`${f}.json`)), ...MAPS.map(m => loadJson(`maps/${m}.json`))]);
     FILES.forEach((f, k) => { DATA[f] = all[k]; });
     MAPS.forEach((m, k) => { DATA.maps[m] = all[FILES.length + k]; });
+    await loadSceneArt();
     return DATA;
+}
+
+// Keep the approved reference pixels at their original resolution. The renderer
+// selects the authored day/night panel; it does not recolour or regenerate it.
+let sceneArtPromise;
+function loadSceneArt() {
+    return sceneArtPromise ||= (async () => {
+        const definitions = await loadJson('scene-art.json');
+        const entries = await Promise.all(Object.entries(definitions).map(async ([name, definition]) => {
+            const image = new Image();
+            image.src = new URL(definition.file, base).href;
+            try { await image.decode(); }
+            catch { throw new Error(`data/${definition.file} 그림을 못 불러왔어`); }
+            return [name, { image, ...definition }];
+        }));
+        DATA.sceneArt = Object.fromEntries(entries);
+    })().catch(error => { sceneArtPromise = null; throw error; });
 }

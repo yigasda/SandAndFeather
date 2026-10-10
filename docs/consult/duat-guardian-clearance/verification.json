@@ -1,0 +1,107 @@
+{
+  "passed": [
+    "6 building grids and extension data load",
+    "keyboard movement and house-wall collision",
+    "mobile touch-pad movement",
+    "market, kitchen, scriptorium, temple and NPC interaction cards",
+    "Duat two-lane approach both ways, guardian clearance, gate day/night interactions and relocated mural",
+    "all 9 places, 3 NPCs and 14 adventure anchors approachable before/after overlays",
+    "canal/field repair overlays and repaired boat appear",
+    "night lighting and moonlight-only discovery",
+    "roof overhang occludes character through existing top layer",
+    "fold releases canvas; reopen and simulated tab/context restoration repaint",
+    "movement does not reload art"
+  ],
+  "art": [
+    {
+      "id": "bld_scriptorium",
+      "w": 98,
+      "h": 76,
+      "valid": true
+    },
+    {
+      "id": "bld_kitchen",
+      "w": 66,
+      "h": 62,
+      "valid": true
+    },
+    {
+      "id": "bld_houses1",
+      "w": 66,
+      "h": 52,
+      "valid": true
+    },
+    {
+      "id": "bld_market",
+      "w": 82,
+      "h": 64,
+      "valid": true
+    },
+    {
+      "id": "bld_temple",
+      "w": 130,
+      "h": 96,
+      "valid": true
+    },
+    {
+      "id": "bld_duat",
+      "w": 44,
+      "h": 42,
+      "valid": true
+    }
+  ],
+  "reachability": [
+    {
+      "open": [],
+      "tiles": 692,
+      "unreachable": []
+    },
+    {
+      "open": [
+        "canal",
+        "field",
+        "garden"
+      ],
+      "tiles": 694,
+      "unreachable": []
+    }
+  ],
+  "forecourt": {
+    "gateOnStone": true,
+    "statueOnSand": true,
+    "statueBlocks": true,
+    "passageClear": true,
+    "guardianBesidePassage": true,
+    "roadClear": true,
+    "guardianBackClear": true,
+    "sealRemoved": true
+  },
+  "approach": [
+    {
+      "x": 36,
+      "atGate": 10.43999999999997,
+      "back": 18.28
+    },
+    {
+      "x": 37,
+      "atGate": 10.43999999999997,
+      "back": 18.28
+    }
+  ],
+  "guardianPass": {
+    "x": 38.96000000000001,
+    "y": 13,
+    "behindY": 13,
+    "statueX": 38
+  },
+  "occlusion": {
+    "opaque": 256,
+    "mismatch": 0
+  },
+  "restoration": {
+    "visibility": 370800,
+    "context": 370800,
+    "pixels": 370800
+  },
+  "pageErrors": []
+}

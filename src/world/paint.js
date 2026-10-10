@@ -26,6 +26,7 @@ const box = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h);
 const layer = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
 
 import { DATA } from '../core/data.js';
+import { referenceGround } from './terrain-reference.js';
 
 // the pictures of data/tiles.json as small canvases, made once per season
 const artCache = new Map();
@@ -48,6 +49,8 @@ function art(season) {
 }
 // one of a kind's pictures, chosen by place so the same tile always looks the same
 function drawTile(ctx, kind, i, j, x, y) {
+    if (ctx.m.d.referenceScenes?.includes('duat') && (kind === 'sand' || kind === 'path'))
+        return referenceGround(ctx.g, kind, x, y);
     const list = ctx.art.tiles[kind];
     if (!list?.length) return false;
     ctx.g.drawImage(list[Math.floor(rnd(i, j, 17) * list.length)], x, y);
@@ -88,6 +91,16 @@ export function paintMap(m, S, gr, tp, season) {
     const og = layer(W, H), ou = layer(W, H); // objects, to be outlined
     const ctx = { m, S, g, s: g, o: og.getContext('2d'), ou: ou.getContext('2d'), u, depth: waterDepth(m), art: art(season), season };
     sandCtx = ctx;
+    const scene = (m.d.referenceScenes || []).map(id => DATA.sceneArt?.[id]).find(s => s?.fullMap);
+    if (scene) {
+        // The minimap uses the same approved artwork. The main renderer draws
+        // from the original image at screen resolution, avoiding downsampling.
+        g.imageSmoothingEnabled = false;
+        g.drawImage(scene.image, ...scene.day, 0, 0, W, H);
+        for (const id of m.open) for (const c of m.d.overlays?.[id] || []) tile(ctx, c.x, c.y);
+        og.width = og.height = ou.width = ou.height = 1;
+        return;
+    }
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) tile(ctx, i, j);
     steppingStones(ctx);
     for (let j = 0; j < m.h; j++) for (let i = 0; i < m.w; i++) edges(ctx, i, j);
@@ -110,6 +123,7 @@ export function paintMap(m, S, gr, tp, season) {
     for (const b of m.buildings) building(ctx, b);
     const pics = [];
     for (const d of [...(m.decor || [])].sort((a, b) => a.y - b.y)) {
+        if (d.referenceOwned) continue;
         const pic = picFor(ctx, d);
         if (pic) { pics.push({ x: d.x, y: d.y, pic, k: d.k }); continue; }
         const flat = d.flat ?? FLAT.has(d.k);
@@ -176,7 +190,7 @@ function baseOf(ctx, t, i, j) {
         case 'bank': return c.b || BANK.base;
         case 'farm': return c.o || ctx.S.farm[0];
         case 'water': return c.w || waterTones(ctx.S)[1];
-        default: return c.s || SAND.base;
+        default: return ctx.m.d.referenceScenes?.includes('duat') ? '#F4D79C' : c.s || SAND.base;
     }
 }
 
@@ -358,8 +372,8 @@ function steppingStones(ctx) {
         let span = 1;
         while (paving(i + span, j)) span++;
         const inner = m.legend(i, j).style === 'duat';
-        const width = inner ? 22 : [16, 21, 15, 19][j % 4];
-        const offset = inner ? 0 : [-3, 3, 0, 2][j % 4];
+        const width = inner ? 24 : [19, 25, 18, 23][j % 4];
+        const offset = inner ? 0 : [-5, 5, -2, 4][j % 4];
         const x = i * T + Math.floor((span * T - width) / 2) + offset, y = j * T + 4;
         const h = inner ? 6 : [9, 7, 10, 8][j % 4];
         const shape = [[3,0],[width-4,0],[width-4,1],[width-1,1],[width-1,3],
@@ -369,15 +383,23 @@ function steppingStones(ctx) {
             shape.forEach(([a,b], n) => n ? g.lineTo(x+a+dx,y+b+dy) : g.moveTo(x+a+dx,y+b+dy));
             g.closePath(); g.fill();
         };
-        fill(2, 2, SHADOW); fill(0, 1, '#A99E89'); fill(0, 0, '#D0C6B0');
-        box(g, x + 3, y, width - 7, 1, '#EEE2C9');
-        box(g, x + 1, y + 3, 2, Math.max(1, h - 5), '#E5D8BE');
-        if (j % 2) box(g, x + width - 4, y + 3, 2, 2, '#C0B49B');
+        fill(2, 2, SHADOW); fill(0, 2, '#B6A88E'); fill(0, 0, '#DED3B8');
+        box(g, x + 3, y, width - 7, 1, '#F4E8CB');
+        box(g, x + 1, y + 3, 2, Math.max(1, h - 5), '#F0E2C2');
+        if (j % 2) box(g, x + width - 4, y + 3, 2, 2, '#C6B798');
+        if (!inner) {
+            // Sparse fallen sandstone beside the worn route, not all over the sand.
+            const sx = j % 2 ? x - 6 : x + width + 4;
+            box(g, sx + 1, y + h + 1, 4, 2, '#C39B67');
+            box(g, sx, y + h - 1, 4, 2, '#E3BD82');
+            box(g, sx + 1, y + h - 2, 2, 1, '#F5D7A0');
+        }
     }
 }
 // sand: from its pictures, or flat with a little ripple in fixed places
 let sandCtx = null;
 function sand(g, x, y, alt) {
+    if (sandCtx?.m.d.referenceScenes?.includes('duat') && referenceGround(g, 'sand', x, y)) return;
     if (sandCtx?.art.tiles.sand?.length) { const L = sandCtx.art.tiles.sand; g.drawImage(L[Math.floor(rnd(x / T, y / T, 17) * L.length)], x, y); return; }
     box(g, x, y, T, T, SAND.base);
     if (alt) { box(g, x + 3, y + 5, 3, 1, SAND.dark); box(g, x + 4, y + 4, 1, 1, SAND.light); }
@@ -440,6 +462,7 @@ function shadows(ctx, i, j) {
     if (!tall(right) && right !== 'water') box(g, x + 16, y + 3, 4, 14, SHADOW);
 }
 function buildingShadow(g, b) {
+    if (b.artInLandform) return;
     const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
     // Taller stone towers cast a broader shadow down/right, away from the upper-left sun.
     const depth = b.kind === 'temple' ? 9 : 5;
@@ -450,6 +473,7 @@ function buildingShadow(g, b) {
 
 // ---------- buildings, on the object layers so they get the outline
 function building(ctx, b) {
+    if (b.artInLandform) return;
     const g = ctx.o, u = ctx.ou;
     const x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
     // a drawn building (data/tiles.json bld_<id>): centred on its tiles, standing on their bottom edge;

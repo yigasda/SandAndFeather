@@ -1,0 +1,138 @@
+{
+  "comparisons": [
+    {
+      "part": "day",
+      "name": "high_cliff",
+      "pixels": 3500,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "left_rock",
+      "pixels": 3500,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "door_depth",
+      "pixels": 6750,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "guardian",
+      "pixels": 7360,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "stepping_stones",
+      "pixels": 15400,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "palm_shadow",
+      "pixels": 11700,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "paving",
+      "pixels": 3960,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "day",
+      "name": "raised_bank",
+      "pixels": 6300,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "high_cliff",
+      "pixels": 3500,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "left_rock",
+      "pixels": 3500,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "door_depth",
+      "pixels": 6750,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "guardian",
+      "pixels": 7360,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "stepping_stones",
+      "pixels": 15400,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "palm_shadow",
+      "pixels": 11700,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "paving",
+      "pixels": 3960,
+      "mismatch": 0,
+      "maxError": 0
+    },
+    {
+      "part": "night",
+      "name": "raised_bank",
+      "pixels": 6300,
+      "mismatch": 0,
+      "maxError": 0
+    }
+  ],
+  "probe": [
+    [
+      47,
+      35,
+      27,
+      255
+    ],
+    [
+      255,
+      0,
+      0,
+      255
+    ]
+  ],
+  "bareGroundProbe": [
+    255,
+    0,
+    0,
+    255
+  ],
+  "releaseBefore": 730496,
+  "released": true
+}

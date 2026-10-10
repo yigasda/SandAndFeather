@@ -9,6 +9,7 @@ import { DATA } from '../core/data.js';
 // An entry can say "solid": true or false to change it.
 export const SOLID_DECOR = new Set(['seal', 'column', 'statue_set', 'statue_falcon', 'jackal', 'brazier', 'pool', 'altar', 'plant', 'jars', 'goods', 'rocks', 'dummy', 'target', 'well', 'oven', 'shaduf', 'bench', 'banner', 'fallen', 'broken', 'block', 'stele', 'shrine']);
 import { getState } from '../core/state.js';
+import { inPolygon } from './geometry.js';
 
 export class GameMap {
     constructor(data, open = []) {
@@ -27,22 +28,44 @@ export class GameMap {
         this.npcs = (data.npcs || []).map(n => ({ ...n }));
         this.anchors = data.anchors || [];
         this.decor = data.decor || [];
+        this.authored = data.authoredCollision;
+        this.shapes = (this.authored?.shapes || []).filter(s => !s.untilOverlay || !open.includes(s.untilOverlay));
+        this.changedCells = new Map();
+        for (const id of open) for (const c of data.overlays?.[id] || []) this.changedCells.set(`${c.x},${c.y}`, c.c);
         this.block = new Uint8Array(this.w * this.h);
-        for (let y = 0; y < this.h; y++) for (let x = 0; x < this.w; x++) if (this.legend(x, y).solid) this.block[y * this.w + x] = 1;
-        for (const b of this.buildings) for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) this.mark(x, y);
-        for (const d of this.decor) if (d.solid ?? SOLID_DECOR.has(d.k)) this.mark(d.x, d.y);
+        if (this.authored) {
+            // Keep a coarse occupancy grid for navigation, but use the exact
+            // illustrated footprints for the moving player's feet.
+            for (let y = 0; y < this.h; y++) for (let x = 0; x < this.w; x++)
+                if (this.authoredSolidAt(x+.5, y+.8)) this.mark(x, y);
+        } else {
+            for (let y = 0; y < this.h; y++) for (let x = 0; x < this.w; x++) if (this.legend(x, y).solid) this.block[y * this.w + x] = 1;
+            for (const b of this.buildings) for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) this.mark(x, y);
+            for (const d of this.decor) if (d.solid ?? SOLID_DECOR.has(d.k)) this.mark(d.x, d.y);
+        }
         this.base = this.block.slice(); // without people, who can step aside
-        for (const n of this.npcs) this.mark(n.x, n.y);
+        this.setAway([]);
     }
     mark(x, y) { if (x >= 0 && y >= 0 && x < this.w && y < this.h) this.block[y * this.w + x] = 1; }
     char(x, y) { return this.rows[y]?.[x] ?? 'r'; }
     legend(x, y) { return this.d.legend[this.char(x, y)] || { t: 'sand' }; }
     type(x, y) { return this.legend(x, y).t; }
-    solidAt(x, y) { const ix = Math.floor(x), iy = Math.floor(y); return ix < 0 || iy < 0 || ix >= this.w || iy >= this.h || this.block[iy * this.w + ix] === 1; }
+    authoredSolidAt(x, y) {
+        const c = this.changedCells.get(`${Math.floor(x)},${Math.floor(y)}`);
+        if (c && this.d.legend[c]?.solid) return true;
+        const px = x / this.w * this.authored.width, py = y / this.h * this.authored.height;
+        return this.shapes.some(s => inPolygon(px, py, s.polygon));
+    }
+    solidAt(x, y) {
+        const ix = Math.floor(x), iy = Math.floor(y);
+        if (ix < 0 || iy < 0 || ix >= this.w || iy >= this.h) return true;
+        return this.authored ? this.authoredSolidAt(x, y) || this.npcCells.has(`${ix},${iy}`) : this.block[iy*this.w+ix] === 1;
+    }
     // a person who left their place (walking with Somang) no longer blocks it
     setAway(ids) {
         this.block.set(this.base);
-        for (const n of this.npcs) if (!ids.includes(n.id)) this.mark(n.x, n.y);
+        this.npcCells = new Set();
+        for (const n of this.npcs) if (!ids.includes(n.id)) { this.mark(n.x, n.y); this.npcCells.add(`${n.x},${n.y}`); }
     }
     anchor(id) { return this.anchors.find(a => a.id === id) || null; }
     // what is close enough to use from (x, y): the nearest spot (its middle), person or thing (feet to feet)
