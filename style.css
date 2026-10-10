@@ -1288,9 +1288,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme='classic'] .sf_empty_slot:nth-child(n+9),#sf_game[data-ui-theme='walnut'] .sf_empty_slot:nth-child(n+9) { display:none; }
 #sf_game[data-ui-theme='temple'] .sf_empty_slot { display:grid; }
 #sf_game[data-ui-theme='journal'] .sf_empty_slot { display:none; }
-#sf_game[data-ui-theme] .sf_round { border:0;width:70px;height:74px;background:var(--skin-action-bag) center/100% 100% no-repeat;clip-path:ellipse(49% 49% at 50% 50%);image-rendering:pixelated; }
-#sf_game[data-ui-theme] .sf_talk { background-image:var(--skin-action-talk);width:76px;height:78px; }
-#sf_game[data-ui-theme='cozy'] .sf_round { clip-path:polygon(23% 0,77% 0,100% 21%,100% 83%,80% 100%,20% 100%,0 81%,0 21%); }
+/* The action art is cut out along its own frame (transparent outside), so it is drawn whole, never stretched. */
+#sf_game[data-ui-theme] .sf_round { border:0;width:72px;height:72px;background:var(--skin-action-bag) center/contain no-repeat;image-rendering:pixelated; }
+#sf_game[data-ui-theme] .sf_talk { background-image:var(--skin-action-talk);width:78px;height:78px; }
 #sf_game[data-ui-theme] .sf_round > * { opacity:0; }
 @media(max-width:360px){
  #sf_game[data-ui-theme] .sf_date_card { width:calc(100% - 94px);border-width:7px; }
@@ -1513,3 +1513,34 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  --detail-icon:var(--skin-button);--detail-icon-slice:var(--slice-button);
  --detail-description:var(--skin-button);--detail-description-slice:var(--slice-button);
 }
+
+/* 0.9.3: frames whose source crop caught the map or a neighbouring panel use a clean frame of the same theme. */
+#sf_game[data-ui-theme] .sf_mini { --skin-minimap:var(--skin-hud);--slice-minimap:var(--slice-hud); }
+#sf_game[data-ui-theme='temple'] .sf_mini { --skin-minimap:var(--skin-button);--slice-minimap:var(--slice-button); }
+:is(#sf_game,#sf_pick,#sf_settings,#sf_chip)[data-ui-theme='temple'] {
+ --skin-frame:url('data/art/ui/skins/temple/panel.png');--slice-frame:12;
+ --skin-hud:url('data/art/ui/skins/temple/button.png');--slice-hud:12;
+}
+#sf_game[data-ui-theme='temple'] { --skin-chip:url('data/art/ui/skins/temple/button.png');--slice-chip:12; }
+#sf_game[data-ui-theme='classic'] { --skin-bar:url('data/art/ui/skins/classic/panel.png');--slice-bar:14; }
+#sf_game[data-ui-theme='walnut'] { --skin-bar:url('data/art/ui/skins/walnut/hud.png');--slice-bar:15; }
+#sf_game[data-ui-theme='journal'] { --skin-bar:url('data/art/ui/skins/journal/hud.png');--slice-bar:15;--skin-selected:var(--skin-primary);--slice-selected:var(--slice-primary); }
+/* the selected-tab crops held the bar and map around them: the theme's own selected look instead */
+#sf_game[data-ui-theme='journal'] .sf_tab.sf_on { border-image:var(--skin-primary) var(--slice-primary) stretch;background:var(--skin-primary-fill) repeat;color:#fff1d3; }
+#sf_game[data-ui-theme='walnut'] .sf_tab.sf_on { border:0;border-image:none; }
+/* close buttons sit on plain title paper, never on an ornament or the frame corner */
+#sf_game[data-ui-theme='classic'] [data-kind='inventory'] .sf_inventory_tabs,
+#sf_game[data-ui-theme='journal'] [data-kind='inventory'] .sf_inventory_tabs { right:46px;width:43%; }
+#sf_game[data-ui-theme='classic'] [data-kind='inventory'] .sf_pop_x,
+#sf_game[data-ui-theme='journal'] [data-kind='inventory'] .sf_pop_x { top:13px;right:16px;width:24px;height:24px;font-size:inherit; }
+:is(#sf_game,#sf_pick)[data-ui-theme='walnut'] .sf_pop_x { right:9.5%; }
+:is(#sf_game,#sf_pick)[data-ui-theme='temple'] .sf_pop_x { right:calc(20% - 12px);top:50%;transform:translateY(-42%); }
+@media(min-width:900px){
+ #sf_game[data-ui-theme='classic'] [data-kind='inventory'] .sf_inventory_tabs,
+ #sf_game[data-ui-theme='journal'] [data-kind='inventory'] .sf_inventory_tabs { right:66px;width:42%; }
+ #sf_game[data-ui-theme='classic'] [data-kind='inventory'] .sf_pop_x,
+ #sf_game[data-ui-theme='journal'] [data-kind='inventory'] .sf_pop_x { top:22px;right:24px; }
+ :is(#sf_game,#sf_pick)[data-ui-theme='journal'] .sf_pop_wide .sf_pop_x { right:6.5%; }
+ #sf_game[data-ui-theme='journal'] [data-kind='inventory'] .sf_inventory_tabs { right:calc(6.5% + 40px); }
+}
+#sf_game[data-ui-theme='journal'] .sf_tab.sf_on i { filter:brightness(0) invert(94%) sepia(18%); }
