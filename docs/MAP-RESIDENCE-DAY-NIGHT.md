@@ -2,7 +2,16 @@
 
 2026-10-10. 사용자의 식사방 창밖·세트 동물·부엌 수정 요청과 빠진 낮밤 버전을 반영했다. 새 8장은 검토용 결과이며 아직 사용자 승인 전이다. 이번 변경은 아트와 문서만이고 실제 게임 연결은 하지 않았다. 이전 PNG·모바일 파일과 기존 게임을 모두 보존했다.
 
-## 최신 성소 v5 — 닫힌 입선 복원
+## 최신 성소 v6 — 아래턱 축소와 무표정
+
+사용자가 표시한 만큼 아래턱을 얇게 줄이고, 웃는 듯 올라가던 입꼬리를 없애 달라고 요청했다. **성소는 v6를 낮밤 공통으로 사용한다.** 짧고 곧은 닫힌 입선과 얇은 아래턱으로 무표정하게 다듬었다. 둥근 코와 코 안쪽 원형 음영 제거는 유지한다. 전체 맵에서 잘라낸 확대본으로 확인했으며 v6는 새 검토용이다. 이전 버전과 게임 코드는 보존한다.
+
+- [최신 PNG](art/map-expansion/set-sanctuary-v6-neutral.png)
+- [Drive 전체 모바일](https://drive.google.com/file/d/1P7qJe6oLVUmmKpctAzejGWmXdmm8OAHH/view?usp=drivesdk)
+- [Drive 실제 맵 얼굴 확대](https://drive.google.com/file/d/1kpkVF2TIsRzGVO9PLE92mQBDWpplhbxZ/view?usp=drivesdk)
+- [Drive 원본](https://drive.google.com/file/d/1BlszdRbq6guZvGaaapZ4vVwGdQJs_ABI/view?usp=drivesdk)
+
+## 이전 성소 v5 — 닫힌 입선 복원
 
 사용자가 v4에서 사라진 입만 복원해 달라고 요청했다. **성소는 v5를 낮밤 공통으로 사용한다.** v4의 짧고 평평한 주둥이 윤곽과 원형 코 음영 제거를 유지하면서, 주둥이 아래쪽에 얇은 닫힌 입선만 추가했다. 전체 맵에서 잘라낸 확대본으로 확인했다. v5는 새 검토용이고 이전 파일은 보존한다.
 
@@ -74,7 +83,7 @@ PNG 1774×887, 모바일 1200×600. 확대본은 확인용 크롭이며 게임 �
 
 | 공간 | 낮밤 공통 원본 |
 | --- | --- |
-| 성소 | [set-sanctuary-v5-mouth.png](art/map-expansion/set-sanctuary-v5-mouth.png) |
+| 성소 | [set-sanctuary-v6-neutral.png](art/map-expansion/set-sanctuary-v6-neutral.png) |
 | 안쪽 복도 | [inner-corridor-wide-v1.png](art/map-expansion/inner-corridor-wide-v1.png) |
 | 긴 방문 입구 회랑 | [room-entrances-wide-v1.png](art/map-expansion/room-entrances-wide-v1.png) |
 | 동쪽 회랑 | [east-gallery-v1.png](art/map-expansion/east-gallery-v1.png) |
@@ -83,7 +92,7 @@ PNG 1774×887, 모바일 1200×600. 확대본은 확인용 크롭이며 게임 �
 
 ## 오푸스 적용 시 유의점
 
-1. 부엌은 v1 대신 **v2 낮/밤 모두 함께** 연결한다. v1 낮과 v2 밤을 섞으면 앞쪽 조리대와 벽이 갑자기 생기거나 사라진다. 식사방도 v2 쌍, 성소는 최신 v5 공통을 사용한다.
+1. 부엌은 v1 대신 **v2 낮/밤 모두 함께** 연결한다. v1 낮과 v2 밤을 섞으면 앞쪽 조리대와 벽이 갑자기 생기거나 사라진다. 식사방도 v2 쌍, 성소는 최신 v6 공통을 사용한다.
 2. 기존 부엌 충돌 데이터가 있다면 새 앞쪽 조리대·대야·기둥·낮은 난간에 맞춰 다시 대조한다. 열린 하늘은 이동 출구가 아니다. 난간과 물 대야 내부로 캐릭터가 들어가지 않게 한다. 출입구는 기존 하단 중앙이다.
 3. 같은 장면의 시간대 변형은 동일 카메라 배율·충돌·상호작용·출입 좌표를 공유하는 방향으로 연결한다. 이미지 생성만으로 픽셀 단위 정합을 보장하지 않는다. 실제로 겹쳐 비교하고 가구 경계 이동이 있으면 아트 보정이 필요하다.
 4. 날짜/시간 상태에 맞는 배경을 선택하되 배경 전환 자체로 날짜·태양 기운·캐릭터 위치·동행 상태를 바꾸지 않는다. 밤 이미지에 전역 어둠 필터를 겹쳐 과도하게 어둡게 하지 않는다.
