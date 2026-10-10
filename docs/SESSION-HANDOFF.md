@@ -204,3 +204,17 @@ node tools/art/verify-full-map.cjs /tmp/pocket-map-regression
 다음 세션에 보낼 짧은 시작 문장:
 
 > SandAndFeather PR #3와 `docs/SESSION-HANDOFF.md`를 먼저 읽고 현재 브랜치와 main 병합 여부를 확인해 줘. 맵과 확정 시안 원본을 보존하고, 초미니4번 셋소호·상인 등록 작업에서 이어서 해 줘. 이미지는 한 번에 한 장씩 필요한 영역만 확인해 줘.
+
+## 후속 요청 — 전체 UI 쯔꾸르 시안 5개
+
+사용자가 같은 세션에서 계속 작업하기로 했고, 기존 베이스와 비슷한 색의 쯔꾸르 UI 시안5개를 요청했다. 게임 화면을 참고해 탐험HUD·가방·파티·상호작용창을 묶은5개 콘셉트 이미지를 생성했다. **선택 전이며 실제 UI 코드에는 적용하지 않았다.** 시안의 배경/캐릭터는 생성 과정의 표현이므로 기존 맵이나 확정 스프라이트를 대체하는 에셋으로 쓰면 안 된다. 수치·레벨·아이템 문구도 디자인 예시이며 새 기능이 구현된 것이 아니다.
+
+- 원본 폴더: https://drive.google.com/drive/folders/1YIQpIYd3Q8NbQmqYMHDvyABdaRZ2-MGL
+- 1 클래식 크림: https://drive.google.com/file/d/18NurJC7C1_dfgkUqjfXlGjVxskIbyZlE/view
+- 2 월넛 골드: https://drive.google.com/file/d/1Q3ayInu0nTSXncZU0VZkj5wTgUUKreFF/view
+- 3 사막 여행수첩: https://drive.google.com/file/d/1jCAnLjPbmjc1AhTO2hzxxlkXt9Qt435W/view
+- 4 청동 신전: https://drive.google.com/file/d/1CZqaZwOGjlzMN9eshXaHm1uw3mur9SYS/view
+- 5 포근한 픽셀 동화: https://drive.google.com/file/d/1YWXb3xmMV3J4buq1WZRh8cawIDilhdTB/view
+- 로컬 원본 경로/프롬프트/Drive 매핑: `/workspace/ui-concepts-20261010/manifest.json`.
+- 각각 한 장씩 축소 확인했고 Drive 파일 업로드 후 메타데이터를 확인했다.
+- 추천 의견은 1번이 정통 쯔꾸르, 3번이 여행수첩 분위기, 5번이 현재 맵과 초미니에 포근하게 어울린다는 것. **사용자가 선택했다는 뜻은 아니다.**
