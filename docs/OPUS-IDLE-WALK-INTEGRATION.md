@@ -1,58 +1,46 @@
 # 오푸스 적용 지시 — 승인된 셋소호 기본 자세와 걷기
 
-> 최신 상태: 호루스의 밝은 뉴트럴 쿨톤 피부는 **사용자 승인**. 정지는 [피부 수정 폴더](art/chibi-refresh/skin-tone/horus-v1/README.md)의 `horus-idle-*` 4장이 기준이다. 걷기는 머리 전체 재작화 요청을 받아 [v5 새 12장·파일별 명세](art/chibi-refresh/animations/walk-v5-horus-head-redraw/README.md)를 추가했다. v5는 검토본이며 아직 승인/게임 적용 완료가 아니다. 아래 81·91번 및 48장 명세는 피부 변경 전 승인 이력으로 보존한 스냅샷이다. 호루스의 과거 걷기 외형을 최신 확정본으로 적용하지 말 것. 세트·소망 파일 및 승인된 1픽셀 재생 설정은 동일하다.
+2026-10-10 최종 정리. 사용자가 호루스 머리 전체 수정본까지 승인하고 이전 반려 시안을 삭제하도록 요청했다. **최종 원본은 `docs/art/chibi-refresh/approved/` 한 곳에만 있다.** 이전 버전 선택 지시와 시안 생성 스크립트는 제거했다. 게임 런타임은 아직 연결 전이다.
 
-작성일 2026-10-10. 사용자가 최신 시안을 승인하고 이 지시와 파일을 main에 올려 달라고 요청했다. 이 문서가 **기본 자세·걷기 선택에 대한 최신 기준**이다. 다른 인수인계의 초미니 스프라이트 설명은 과거 구현 기록이다.
-
-**해야 할 일:** 승인된 세트·소망·호루스의 4방향 기본 자세와 걷기를 실제 게임에 연결한다. 아트 원본을 다시 그리지 않는다. 이번 커밋은 적용 지시와 파일 명세만 추가하며, 런타임 적용 완료를 뜻하지 않는다. 코드 조사 기준은 main `afbf12b`, 현재 확장 버전은 0.9.7이다. 작업 시작 시 최신 main을 받아 다른 작업자의 변경도 확인한다.
+**해야 할 일:** 아래 48장으로 셋소호의 4방향 정지와 걷기를 게임에 연결한다. 원본을 다시 그리지 않는다. 런타임 코드 조사 기준은 main `afbf12b`, 확장 버전은 0.9.7이다. 적용 시작 시 최신 main의 실제 코드와 진행 상태를 확인한다.
 
 ## 1. 먼저 읽을 파일
 
 | 순서 | 파일 | 용도 |
 |---|---|---|
-| 1 | 이 문서 | 적용 범위, 선택 기준, 렌더링 수정, 검증 지시 |
-| 2 | [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md) | **48장 전체를 한 파일씩 나열한 원본 목록** |
-| 3 | [approved-idle-walk-manifest.json](art/chibi-refresh/animations/approved-idle-walk-manifest.json) | 같은 48장의 경로, 방향, 프레임 번호, 크기, 기준점, 알파 경계, SHA-256, 재생 설정 |
-| 4 | [walk-v4-horus-micro-motion/manifest.json](art/chibi-refresh/animations/walk-v4-horus-micro-motion/manifest.json) | 호루스 정면 최종 미세 움직임과 참조 PNG 해시 |
-| 5 | [animations/README.md](art/chibi-refresh/animations/README.md) | 제작 이력과 아직 만들지 않은 동작 |
+| 1 | 이 문서 | 적용 범위·렌더링·검증 지시 |
+| 2 | [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md) | 48장 전체를 한 파일씩 나열한 목록 |
+| 3 | [approved/manifest.json](art/chibi-refresh/approved/manifest.json) | 경로·방향·프레임·크기·기준점·해시·재생 설정 |
+| 4 | [아트 안내](art/chibi-refresh/README.md) | 최종 폴더와 다음 동작 제작 범위 |
 
-원본 이미지는 이미 main에 커밋되어 있다. Drive에서 이미지나 GIF를 내려받아 다시 자르지 말고 저장소 PNG를 읽는다. JSON의 모든 `path`는 저장소 루트 기준이다. `status`는 아트 승인 상태이며 게임 적용 상태는 `runtimeApplied: false`다.
+JSON 경로는 저장소 루트 기준이다. `status`는 아트 승인 상태이며 `runtimeApplied: false`는 실제 게임 적용 전임을 뜻한다. Drive에서 GIF를 내려받아 자르지 말고 저장소의 개별 PNG를 읽는다.
 
 ## 2. 승인 상태와 이번 범위
 
-- **기본 자세:** 81번 승인. `common-body-v2-dress-and-profile`의 12개 개별 PNG.
-- **세트·소망 걷기:** 첫 걷기 시안 승인. `walk-v1`의 두 캐릭터 24개 개별 PNG 그대로.
-- **호루스 뒤·좌·우 걷기:** `walk-v1`의 9개 개별 PNG 그대로.
-- **호루스 정면 걷기:** 그림은 `walk-v2-horus-front`의 3개 개별 PNG. 여기에 `walk-v4-horus-micro-motion`의 1픽셀 배치 설정을 적용한 **91번 합본이 최종 승인**이다.
-- 상인과 다른 NPC, 대화 초상화, 파티 전신 일러스트는 이번 승인 대상에 포함하지 않는다. 기존 것을 유지한다.
-- 달리기·상호작용·조사·전투·주문·부상 등 나머지 바리에이션, 두아트 새 맵 제작은 아직 별도 작업이다. 기다리지 말고 이번 기본 자세·걷기를 먼저 연결한다.
+- 세트·소망: 승인된 정지와 걷기 파일의 픽셀을 그대로 보존했다.
+- 호루스 정지: 승인된 반 톤 밝은 뉴트럴 쿨톤 피부 수정본.
+- 호루스 걷기: 얼굴 윤곽·이목구비·귀·두상·머리카락 전체 수정본, 97번 합본 승인. 정면의 1 원본 픽셀 배치 움직임 유지.
+- 상인·다른 NPC·초상화는 이 정리 및 적용 대상에 포함하지 않는다.
+- 달리기·상호작용·전투 등 나머지 동작과 두아트 맵 제작을 기다리지 않고 이번 정지·걷기를 연결한다.
 
-그림체, 얼굴, 등신, 손발 크기, 세트의 곧은 측면 몸을 바꾸지 않는다. 세트 하의를 옛 긴 치마나 비대칭 치마로 되돌리지 않는다. 소망은 최신 하늘하늘한 흰 드레스와 풀어 내린 가슴 길이 곱슬을 사용한다. 호루스는 푸른 남색 짧은 머리, 기존 동공 크기, 작은 아래 안광, 캐릭터 왼쪽 눈 문양을 유지한다. 큰 위 안광을 추가하지 않는다.
+세트의 곧은 측면 몸과 짧은 차콜 치마, 소망의 하늘하늘한 흰 드레스·시스루뱅·가슴 길이 곱슬, 호루스의 짧은 푸른 남색 머리·작은 동공·아래 안광·캐릭터 왼쪽 눈 문양을 유지한다. 손발과 등신을 다시 변경하지 않는다.
 
-## 3. 폴더와 보조 파일의 역할
+## 3. 사용할 폴더
 
-아래 경로는 모두 저장소 루트 기준이다. 개별 PNG 이름은 별도 48장 목록에 빠짐없이 적었다.
+모두 `docs/art/chibi-refresh/approved/` 아래다.
 
-| 경로 | 역할 / 사용 방법 |
+| 경로 | 역할 |
 |---|---|
-| `docs/art/chibi-refresh/directions/common-body-v2-dress-and-profile/` | 정지 원본 폴더. `set`, `somang`, `horus`의 `front`, `back`, `left`, `right` 개별 PNG 12장을 사용 |
-| 같은 폴더의 `set-4directions.png`, `somang-4directions.png`, `horus-4directions.png` | 2480×720 정지 합본. 열 순서 앞·뒤·좌·우. 개별 PNG를 쓰면 다시 자를 필요 없음 |
-| 같은 폴더의 `trio-4directions.jpg` | 81번 외형 확인용. 게임 텍스처로 사용하지 않음 |
-| `docs/art/chibi-refresh/animations/walk-v1/` | 승인된 세트·소망 전체 걷기와 호루스 비정면 걷기 원본 |
-| `walk-v1/set-walk-sheet.png` | 세트 1080×1600 투명 합본, 승인된 개별 12장과 같은 구성 |
-| `walk-v1/somang-walk-sheet.png` | 소망 1080×1600 투명 합본, 승인된 개별 12장과 같은 구성 |
-| `walk-v1/horus-walk-sheet.png` | 정면이 옛 버전이므로 **전체를 그대로 쓰면 안 됨** |
-| `docs/art/chibi-refresh/animations/walk-v2-horus-front/horus-front-0.png` | 호루스 정면 발 A. 최종 선택된 그림 |
-| `docs/art/chibi-refresh/animations/walk-v2-horus-front/horus-front-1.png` | 호루스 정면 가운데. 주기 중 두 번 사용 |
-| `docs/art/chibi-refresh/animations/walk-v2-horus-front/horus-front-2.png` | 호루스 정면 발 B. 최종 선택된 그림 |
-| `walk-v2-horus-front/horus-walk-sheet.png` | 최신 선택 그림 12장이 합쳐진 호루스 시트. **v4 배치 움직임은 이 PNG에 구워져 있지 않음** |
-| `docs/art/chibi-refresh/animations/walk-v4-horus-micro-motion/manifest.json` | 최종 호루스 정면 움직임 설정. 이 폴더에는 새 걷기 PNG가 없음 |
-| 같은 폴더의 `horus-front-preview.gif` | 90번 호루스 정면 재생 확인용 |
-| 같은 폴더의 `trio-walk-preview.gif` | 91번 최종 승인 합본. 최종 움직임 대조 기준 |
-| 같은 폴더의 `trio-walk-overview.jpg` | 한 순간의 정지 미리보기. 움직임 대조에는 GIF 사용 |
-| `docs/art/chibi-refresh/animations/approved-idle-walk-manifest.json` | 적용용 단일 파일 목록. 아트 선택은 이 명세를 우선 |
+| `idle/` | 정지 12장. `{set,somang,horus}-{front,back,left,right}.png` |
+| `walk/` | 걷기 36장. `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` |
+| `sheets/` | 각 캐릭터의 정지·걷기 투명 합본 6장. 개별 파일과 동일한 그림 |
+| `previews/trio-idle.jpg` | 최종 셋소호 정지 4방향 확인용 |
+| `previews/trio-walk-preview.gif` | 최종 97번 셋소호 걷기 합본 |
+| `previews/horus-four-directions.gif` | 호루스 4방향 걷기 확인용 |
+| `previews/idle-walk-comparison.jpg` | 호루스 기본 시안·걷기 비교 |
+| `manifest.json` | 적용에 사용할 유일한 프레임 명세 |
 
-`*-source.png`는 자르기 전 생성 원본이다. `*-preview.jpg`, `*-poses.jpg`, GIF는 검토용이다. 게임에는 투명 PNG 프레임을 패킹해서 사용한다. 호루스 `walk-v3-horus-soft-motion`은 고개가 그네처럼 흔들려 사용자가 거절했으므로 사용하지 않는다. v2 GIF만 재현하는 것도 최종 요청과 다르다. **v2 그림 + v4 배치 설정**을 함께 사용한다.
+개별 48장의 정확한 경로는 파일별 목록을 따른다. 합본 정지는 2480×720, 열 앞·뒤·좌·우다. GIF/JPG는 검토용이며 런타임 텍스처는 PNG를 쓴다.
 
 ## 4. 방향과 프레임 번호
 
@@ -65,7 +53,7 @@
 
 걷기 합본은 **4행 × 3열**이다. 행은 `down, up, left, right`, 열은 포즈 `0, 1, 2`. 각 셀은 360×400이고 좌표는 `[phase * 360, row * 400, 360, 400]`이다. 기존 게임의 정지 아틀라스 열 순서 `down, left, right, up`와 다르므로 배열 순서를 추정하지 않는다.
 
-걷기 주기는 `0 → 1 → 2 → 1`, 미리보기에서는 단계당 180ms, 한 주기 720ms다. `0 → 1 → 2`만 반복하지 않는다. 포즈 1은 이동 중 가운데 자세이지 멈춘 상태의 기본 자세가 아니다. 멈추면 81번 `idle` PNG로 돌아간다.
+걷기 주기는 `0 → 1 → 2 → 1`, 미리보기에서는 단계당 180ms, 한 주기 720ms다. `0 → 1 → 2`만 반복하지 않는다. 포즈 1은 이동 중 가운데 자세이지 멈춘 상태의 기본 자세가 아니다. 멈추면 `approved/idle/` PNG로 돌아간다.
 
 ## 5. 호루스 정면 1픽셀 예외 — 가장 중요
 
@@ -133,7 +121,7 @@
 - 48개 소스 로드/패킹, 투명 배경, 아틀라스 rect 범위와 방향을 확인한다. 새 손발이 셀 끝에서 잘리지 않아야 한다.
 - 셋 각각 4방향으로 걷기·멈춤·방향 전환을 확인한다. 세트·호루스는 동료로도 확인한다. 호루스 정면 문양은 화면 오른쪽이며 오른쪽 측면에 복제되지 않는다.
 - 걷기 순서 `0,1,2,1`, 정상 frame duration, 정지 시 idle 복귀를 확인한다. 첫 위상 0도 움직임으로 처리한다.
-- 호루스 정면은 최종 91번 GIF와 비교한다. 기존 논리 픽셀 bob, 추가 회전, head sway가 중복되지 않아야 한다. 1 source px를 1 logical px로 착각하지 않는다.
+- 호루스 정면은 최종 97번 GIF와 비교한다. 기존 논리 픽셀 bob, 추가 회전, head sway가 중복되지 않아야 한다. 1 source px를 1 logical px로 착각하지 않는다.
 - 정지↔이동 시 키가 튀지 않는지, 세트 배가 다시 부풀어 보이지 않는지, 소망 치마/머리가 잘리지 않는지 폰 화면에서 확인한다.
 - 옴보스 낮·밤, 안채 문/기둥 뒤, 전경 가림, 상호작용 범위, 출입·계단·동료 따라오기·충돌을 확인한다. 발 충돌 범위는 원래대로 유지한다.
 - 정지 상인 등 기존 NPC와 폴백이 정상인지 확인한다. 새 걸음 때문에 상인 그림이나 기존 초상화가 바뀌면 안 된다.
@@ -142,22 +130,15 @@
 
 이 문서 작성 시에는 48개 파일의 존재·RGBA·크기·잘림 여부와 해시를 검사했다. 게임 로딩, 접지, 실제 맵 크기, 애니메이션 상태 전환은 오푸스 적용 후 검증할 항목이다.
 
-## 10. 재현 도구와 승인 미리보기
+## 10. 명세 재생성과 최종 미리보기
 
-| 파일 | 용도 |
-|---|---|
-| `scripts/art/build-approved-walk-handoff.py` | 원본 48장을 검증하고 JSON 명세·파일별 목록을 재생성. 런타임 변경 없음 |
-| `scripts/art/preview-horus-walk-micro-motion.py` | 91번 미리보기 재현. v1과 v2 PNG를 읽고 GIF 배치만 조정 |
-| `scripts/art/compose-horus-walk-front-v2.py` | 호루스 정면 안정적인 세 포즈의 추출 과정. 이미 출력이 있으므로 적용을 위해 재실행할 필요 없음 |
-| `scripts/art/compose-walk-study.py` | 최초 걷기 36장 추출 과정. 호루스 정면은 이후 대체됐으므로 결과 전체를 최종으로 간주하지 않음 |
-| `scripts/art/compose-dress-and-profile-v2.py` | 승인된 정지 81번의 합본 과정. 이미 개별 PNG가 있으므로 재생성 필요 없음 |
+`python scripts/art/build-approved-walk-handoff.py`는 승인 원본 48장의 존재·RGBA·크기·잘림 여부·SHA-256을 확인하고 JSON 명세와 파일별 목록을 갱신한다. Pillow가 필요하다. 이 도구는 아트를 생성하거나 게임을 배포하지 않는다.
 
-검증/명세 재생성 명령은 저장소 루트에서 `python scripts/art/build-approved-walk-handoff.py`다. Pillow가 필요하다. 코드를 새로 배포하는 명령은 아니다.
-
-- [81번 승인 정지 4방향](https://drive.google.com/file/d/14TTQbVje5QID5Uneuf4r4DhM79Y3rQiI/view)
-- [90번 호루스 정면 최종 미세 움직임](https://drive.google.com/file/d/1COLz3Sf_VaLgkWocJ86FeEEybxtxWXum/view)
-- [91번 최종 승인 걷기 합본](https://drive.google.com/file/d/1SXdiluUcTU0xmBDo4kyrNi8Ld6dCGRTg/view)
+- [최종 셋소호 정지 4방향](https://drive.google.com/file/d/14TTQbVje5QID5Uneuf4r4DhM79Y3rQiI/view)
+- [호루스 기본 시안·걷기 비교](https://drive.google.com/file/d/1WX526JmajXWjk-yWGH4fLUuHVcZSb4VS/view)
+- [호루스 4방향 걷기](https://drive.google.com/file/d/1Urr0N_jJd4emRz7zjmtRL4wu-JTW3XjB/view)
+- [최종 셋소호 걷기 합본](https://drive.google.com/file/d/1GYwmhowSwGQgh1RMbkhGKCD1DqQvjTQe/view)
 
 ## 11. 오푸스에게 전달할 작업 문장
 
-> main의 `docs/OPUS-IDLE-WALK-INTEGRATION.md`를 기준으로 승인된 셋소호 정지와 걷기를 게임에 적용해줘. `docs/APPROVED-IDLE-WALK-FILES.md`에 48장 전부를 파일별로 적었고, `approved-idle-walk-manifest.json`에 경로와 방향·pivot·해시·재생 설정이 있어. 호루스 정면은 v2 그림 + v4 미세 오프셋, 최종 승인 미리보기는 91번이야. 기존 bob 중복을 없애고 정지/걷기 전환·동료·가림·접지·폰 표시 크기를 확인해줘. 아트는 다시 그리지 말고 상인과 기존 초상화는 유지해줘. 새 두아트나 다른 동작이 끝날 때까지 기다릴 필요 없어.
+> main의 `docs/OPUS-IDLE-WALK-INTEGRATION.md`를 기준으로 셋소호 정지·걷기를 게임에 적용해줘. 최종 아트는 `docs/art/chibi-refresh/approved/`에만 있어. `docs/APPROVED-IDLE-WALK-FILES.md`의 48장을 전부 사용하고 `approved/manifest.json`의 방향·pivot·재생 설정을 따라줘. 호루스 피부와 머리 전체 수정까지 승인됐고 최종 걷기 미리보기는 97번이야. 기존 bob 중복을 없애고 정지/걷기 전환·동료·가림·접지·폰 표시 크기를 확인해줘. 아트는 다시 그리지 말고 상인과 기존 초상화는 유지해줘.
