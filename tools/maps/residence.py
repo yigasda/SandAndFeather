@@ -58,7 +58,6 @@ SCENES = {
                   [[14.95, 0, 16.55, 4.2], 'temple_sanctuary', 'door']],
         'entry': {'west': [1.0, 6.5, 'right'], 'east': [26.0, 6.5, 'left'], 'shrine': [15.75, 4.9, 'down']},
         'spawn': 'west',
-        'labels': [{'x': 15.75, 'y': 0.9, 'label': '성소'}],
     },
     'temple_west_gallery': {
         'name': '서쪽 회랑', 'day': 'west-gallery-v1.png', 'size': [27, 9],
@@ -67,7 +66,6 @@ SCENES = {
                   [[6.7, 0, 8.5, 4.2], 'temple_colonnade', 'door']],
         'entry': {'east': [26.0, 6.5, 'left'], 'west': [1.0, 6.5, 'right'], 'stairs': [7.6, 4.9, 'down']},
         'spawn': 'east',
-        'labels': [{'x': 7.6, 'y': 0.9, 'label': '열주 계단'}],
     },
     'room_entrances_wide': {
         'name': '방문 회랑', 'day': 'room-entrances-wide-v1.png', 'size': [27, 9],
@@ -79,7 +77,6 @@ SCENES = {
         'entry': {'set': [2.9, 4.9, 'down'], 'somang': [13.2, 4.9, 'down'], 'horus': [24.0, 4.9, 'down'],
                   'west': [1.0, 6.5, 'right'], 'east': [26.0, 6.5, 'left'], 'arch': [13.2, 7.8, 'up']},
         'spawn': 'arch',
-        'labels': [{'x': 2.9, 'y': 0.75, 'label': '세트 방'}, {'x': 13.2, 'y': 0.75, 'label': '소망 방'}, {'x': 24.0, 'y': 0.75, 'label': '호루스 방'}],
     },
     'set_room': {
         'name': '세트 방', 'day': 'set-room-v6-single-window-day.png', 'night': 'set-room-v6-single-window-night.png', 'size': [22, 11],
@@ -155,6 +152,18 @@ SCENES = {
 }
 
 
+def signs(sc, w, h):
+    out = []
+    for (x0, y0, x1, y1), to, _ in sc['exits']:
+        name = '옴보스' if to == 'ombos' else SCENES[to]['name']
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        if x1 <= 0.5: out.append((2.4, cy, f'← {name}'))
+        elif x0 >= w - 0.5: out.append((w - 2.4, cy, f'{name} →'))
+        elif y1 >= h - 0.01: out.append((cx, h - 0.75, f'↓ {name}'))
+        else: out.append((cx, max(0.75, y0 + 0.6), f'↑ {name}'))
+    return out
+
+
 def dump(v, pad=''):
     # objects one key a line, number lists on one line, as the file was written by hand
     if isinstance(v, dict):
@@ -200,7 +209,8 @@ def main():
             'exits': [{'x0': r[0], 'y0': r[1], 'x1': r[2], 'y1': r[3], 'to': to, 'at': at} for r, to, at in sc['exits']],
             'entries': entry, 'spawn': entry[sc['spawn']], 'spots': spots,
             # a door's name, drawn centred on (x, y) like a place name
-            'labels': [{'x': round(l['x'] - 0.5, 2), 'y': round(l['y'] + 0.55, 2), 'label': l['label']} for l in sc.get('labels', [])],
+            # a sign on every way out, so each door and passage can be found: where it leads, with an arrow
+            'labels': [{'x': round(lx - 0.5, 2), 'y': round(ly + 0.55, 2), 'label': text} for lx, ly, text in signs(sc, w, h)],
             'note': '안채 안에서는 문과 통로로 걸어 다녀. 마당 아래 큰 문으로 나가면 옴보스야.',
         }
         with open(os.path.join(ROOT, 'data', 'maps', f'{sid}.json'), 'w') as f:
