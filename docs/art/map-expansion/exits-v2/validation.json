@@ -40,36 +40,42 @@
   },
   {
     "id": "pond-day",
+    "mode": "extend-right",
     "source": "docs/art/map-expansion/courtyard-colonnade-v1.png",
     "output": "docs/art/map-expansion/exits-v2/courtyard-colonnade-v1.png",
+    "sourceSize": [
+      1448,
+      1086
+    ],
     "size": [
+      1932,
+      1086
+    ],
+    "protectedOriginalRect": [
+      0,
+      0,
       1448,
       1086
     ],
     "editRegions": [
       [
-        1397,
-        90,
         1448,
-        500
-      ],
-      [
-        1417,
-        480,
-        1448,
-        620
+        0,
+        1932,
+        1086
       ]
     ],
-    "revision": "2026-10-11 full-height recessed passage, original column preserved",
+    "revision": "2026-10-11 user-requested right expansion; entire original pond preserved",
     "generatedSize": [
-      1448,
-      1086
+      1673,
+      940
     ],
-    "sourceAlignment": "No size normalization required.",
-    "changedPixelCount": 23986,
+    "sourceAlignment": "Generated extension layer normalized to target canvas; original 1448x1086 copied exactly at (0,0).",
+    "changedOriginalPixelCount": 0,
+    "extensionPixelCount": 525624,
     "unchangedOutsideRegions": true,
     "sourceSha256": "01d1490e34b6d270bdcba371f75b1f9ac2154cff995d73ee1f26faad194d7762",
-    "outputSha256": "531f9167f4862e3d3f3d71378f0868a24e0ce9611cad0527a57fa0fdbf658e99"
+    "outputSha256": "cd43d9c7737c8cc894d241c3eaa044260aa0e89a76106004bea1e9b3b6561ae0"
   },
   {
     "id": "inner",
@@ -159,16 +165,16 @@
         350
       ]
     ],
-    "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns",
+    "revision": "2026-10-11 remove only urn obstructing right entrance",
     "generatedSize": [
       2172,
       724
     ],
-    "sourceAlignment": "Only the generated layer normalized to 2172x724; original canvas never resized.",
-    "changedPixelCount": 36871,
+    "sourceAlignment": "Prior edited source preserved; only urn patch replaced from new imagegen result.",
+    "changedPixelCount": 36875,
     "unchangedOutsideRegions": true,
     "sourceSha256": "453e5e99497c7793aad9b6d9ab9090ef04c00073c055c8fb198a9d9681e46a86",
-    "outputSha256": "ad04d51ff79d9a228e92ce57d16ada348a96957462a19effe29b8060d7db7175"
+    "outputSha256": "a16fde947596d7651cc089a317791d3dc1596d7fe24f7d47e2f925d4b039ef10"
   },
   {
     "id": "west",
@@ -283,35 +289,41 @@
   },
   {
     "id": "pond-night",
+    "mode": "extend-right",
     "source": "docs/art/map-expansion/courtyard-colonnade-v1-night.png",
     "output": "docs/art/map-expansion/exits-v2/courtyard-colonnade-v1-night.png",
+    "sourceSize": [
+      1448,
+      1086
+    ],
     "size": [
+      1932,
+      1086
+    ],
+    "protectedOriginalRect": [
+      0,
+      0,
       1448,
       1086
     ],
     "editRegions": [
       [
-        1397,
-        90,
         1448,
-        500
-      ],
-      [
-        1417,
-        480,
-        1448,
-        620
+        0,
+        1932,
+        1086
       ]
     ],
-    "revision": "2026-10-11 full-height recessed passage, original column preserved",
+    "revision": "2026-10-11 user-requested right expansion; entire original pond preserved",
     "generatedSize": [
-      1448,
-      1086
+      1672,
+      940
     ],
-    "sourceAlignment": "No size normalization required.",
-    "changedPixelCount": 23717,
+    "sourceAlignment": "Generated extension layer normalized to target canvas; original 1448x1086 copied exactly at (0,0).",
+    "changedOriginalPixelCount": 0,
+    "extensionPixelCount": 525624,
     "unchangedOutsideRegions": true,
     "sourceSha256": "063764ad7be36eb1e29e933e6294b155ff5658907b7db29f15ac0b5e8a2a7bb6",
-    "outputSha256": "e31a692e40b8d2614499d003d333b3e9b2914b7df8410543cda4bb9b9875ead0"
+    "outputSha256": "80fc33b65c576ba0f4c42699326d5dd5df8ef404742c2bad97e9ef3fd0d64707"
   }
 ]

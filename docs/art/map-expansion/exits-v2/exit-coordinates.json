@@ -112,7 +112,7 @@
         "courtyard-colonnade-v1-night.png"
       ],
       "imageSize": [
-        1448,
+        1932,
         1086
       ],
       "tileSize": [
@@ -132,23 +132,61 @@
             899.83
           ],
           "visibleThresholdPx": [
-            1418,
-            500,
-            1448,
-            570
+            1530,
+            490,
+            1735,
+            550
           ],
           "suggestedTriggerPx": [
-            1398,
-            560,
-            1448,
-            610
+            1550,
+            495,
+            1715,
+            545
           ],
           "suggestedArrivalPx": [
-            1360,
-            630
-          ]
+            1635,
+            625
+          ],
+          "suggestedArrivalDirection": "down",
+          "exitFacing": "up"
         }
-      ]
+      ],
+      "originalImageSize": [
+        1448,
+        1086
+      ],
+      "suggestedTileSize": [
+        24,
+        14
+      ],
+      "canvasExtension": {
+        "side": "right",
+        "pixels": 484,
+        "originalOrigin": [
+          0,
+          0
+        ]
+      },
+      "tileSizeNote": "tileSize is existing runtime size; suggestedTileSize requires Opus integration. Preserve original pixel positions; do not stretch enlarged art into old width.",
+      "preservedSouthReference": {
+        "oldTriggerTiles": [
+          6.7,
+          13.3,
+          11.3,
+          14
+        ],
+        "triggerPx": [
+          538.98,
+          1031.7,
+          909.02,
+          1086
+        ],
+        "arrivalPx": [
+          724,
+          923.1
+        ],
+        "note": "Retain original south connection pixel position; do not recenter it in expanded canvas."
+      }
     },
     {
       "scene": "temple_inner_corridor",

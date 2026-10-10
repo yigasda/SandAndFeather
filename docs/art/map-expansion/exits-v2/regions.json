@@ -27,22 +27,26 @@
   {
     "id": "pond-day",
     "name": "courtyard-colonnade-v1.png",
-    "generated": "exec-1c8be23f-31be-4b10-b5c8-68f1b0b251f0.png",
+    "generated": "exec-3298cddd-5447-4784-961c-46b0c6d64534.png",
     "regions": [
       [
-        1397,
-        90,
         1448,
-        500
-      ],
-      [
-        1417,
-        480,
-        1448,
-        620
+        0,
+        1932,
+        1086
       ]
     ],
-    "revision": "2026-10-11 full-height recessed passage, original column preserved"
+    "revision": "2026-10-11 user-requested right expansion; entire original pond preserved",
+    "generatedSize": [
+      1673,
+      940
+    ],
+    "mode": "extend-right",
+    "outputSize": [
+      1932,
+      1086
+    ],
+    "sourceAlignment": "Generated extension layer normalized to target canvas; original 1448x1086 copied exactly at (0,0)."
   },
   {
     "id": "inner",
@@ -97,7 +101,7 @@
   {
     "id": "east",
     "name": "east-gallery-v1.png",
-    "generated": "exec-a772de29-7ee5-4fa6-a245-5b1fcf23641d.png",
+    "generated": "exec-8b70b4a2-cf2b-49e0-8a8e-8762ab3e7e17.png",
     "regions": [
       [
         0,
@@ -116,8 +120,14 @@
       2172,
       724
     ],
-    "sourceAlignment": "Only the generated layer normalized to 2172x724; original canvas never resized.",
-    "revision": "2026-10-11 recessed passage aligned to existing ceiling and columns"
+    "sourceAlignment": "Prior edited source preserved; only urn patch replaced from new imagegen result.",
+    "revision": "2026-10-11 remove only urn obstructing right entrance",
+    "latestPatchRegion": [
+      2100,
+      215,
+      2172,
+      352
+    ]
   },
   {
     "id": "west",
@@ -203,21 +213,25 @@
   {
     "id": "pond-night",
     "name": "courtyard-colonnade-v1-night.png",
-    "generated": "exec-5881ad93-9647-4bcb-89f3-b3b6b9fe6af4.png",
+    "generated": "exec-93a2a74a-816e-4cd6-88f7-06232f9ed014.png",
     "regions": [
       [
-        1397,
-        90,
         1448,
-        500
-      ],
-      [
-        1417,
-        480,
-        1448,
-        620
+        0,
+        1932,
+        1086
       ]
     ],
-    "revision": "2026-10-11 full-height recessed passage, original column preserved"
+    "revision": "2026-10-11 user-requested right expansion; entire original pond preserved",
+    "generatedSize": [
+      1672,
+      940
+    ],
+    "mode": "extend-right",
+    "outputSize": [
+      1932,
+      1086
+    ],
+    "sourceAlignment": "Generated extension layer normalized to target canvas; original 1448x1086 copied exactly at (0,0)."
   }
 ]
