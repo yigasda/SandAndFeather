@@ -1,0 +1,22 @@
+{
+  "status": "design-review-not-runtime",
+  "size": [
+    2160,
+    887
+  ],
+  "referenceOriginalSize": [
+    1774,
+    887
+  ],
+  "plannedOriginalOffset": [
+    193,
+    0
+  ],
+  "pixelPreservationVerified": false,
+  "note": "Three image-edit concepts based on approved source. Discarded composite drafts with visible seams. These whole-map design previews are not pixel-preserved runtime deliverables; no collision coordinates certified.",
+  "generatedSources": [
+    "exec-c29c7ffa-f7c3-46f7-8bb6-abc221d7da4d.png",
+    "exec-cbfa0f57-4fa4-4917-8283-1e2a9e9a379b.png",
+    "exec-88dea45d-3aa7-4f87-a55e-3d4822e45e8b.png"
+  ]
+}
