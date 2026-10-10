@@ -33,6 +33,26 @@ for(const size of [{width:320,height:740},{width:412,height:900},{width:1280,hei
 await p.setViewportSize(size);
 const overlap=await p.evaluate(()=>{const a=document.querySelector('.sf_appearance').getBoundingClientRect(),b=document.querySelector('.sf_chips').getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;});assert(!overlap,`${id} ${size.width} HUD`);
 if(size.width===412)await shot(`${i+1}-${id}-world`);
+// Verify every approved glyph in its live selected and inactive menu states.
+for(const tab of ['world','somang','party','quests','map']){
+ await p.locator(`.sf_tab[data-tab="${tab}"]`).click();await bounds();
+ assert.equal(await p.locator('.sf_tabs .sf_on').getAttribute('data-tab'),tab);
+ const glyphs=await p.locator('.sf_tab i').evaluateAll(async els=>{
+  return Promise.all(els.map(async e=>{
+   const style=getComputedStyle(e),url=(style.backgroundImage==='none'?style.maskImage:style.backgroundImage).match(/url\(["']?(.*?)["']?\)/)?.[1];
+   const img=new Image();img.src=url;await img.decode();
+   const a=e.getBoundingClientRect(),b=e.closest('button').getBoundingClientRect();
+   return{url,width:img.naturalWidth,height:img.naturalHeight,inside:a.left>=b.left&&a.right<=b.right&&a.top>=b.top&&a.bottom<=b.bottom};
+  }));
+ });
+ assert.equal(glyphs.length,5);
+ for(const [j,g]of glyphs.entries()){
+  assert(g.url.includes(`/menu-icons/${id}/${['world','somang','party','quests','map'][j]}.png`),g.url);
+  assert(g.width===48&&g.height===48&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong icon`);
+ }
+ if(size.width===412)await p.locator('.sf_tabs').screenshot({path:path.join(out,`${i+1}-${id}-menu-${tab}.png`)});
+ if(tab!=='world')await close();
+}
 await p.locator('.sf_bag').click();await bounds();
 assert.equal(await p.locator('.sf_inventory_detail_head').count(),1);
 assert.equal(await p.locator('.sf_inventory_detail button,.sf_inventory_detail small').count(),0);

@@ -2,7 +2,19 @@
 
 최종 갱신: 2026-10-10. 이 문서는 과거 `docs/HANDOFF.md` 및 `/workspace/SandAndFeather-DESIGN-HANDOFF.md`보다 최신이다. 아래 진행 상태가 실제 완료 여부의 기준이다.
 
-## 최신 상태 — 0.9.4 포근한 테마 말 걸기 테두리
+## 최신 상태 — 0.9.5 승인 메뉴 아이콘
+
+메뉴 아이콘 적용 완료, main 배포 준비. 아래 릴리스 기록을 최신 기준으로 사용한다.
+
+- 사용자가 승인한 시안: `docs/art/menu-icons-approved.png`. https://drive.google.com/file/d/1GzwBe8KFEmDE-BkP74lk75SfKZn3BmIX/view
+- 두 이전 시안은 반려됨: 캐릭터 일러스트 아이콘, 그리고 5번 모양으로 전체 통일한 아이콘. 반드시 테마마다 원래 다른 디자인 유지. 1번은 지구본·별, 3번은 야자수·앉은 사람.
+- 승인 시안에서 직접 분리한 25개 PNG는 `data/art/ui/menu-icons/`. 48×48 에셋, 실제 24×24 CSS px, 사방 투명 여백, 합계86,788바이트. 선택 상태 대비 처리.
+- 하단 메뉴만 변경. Opus의 0.9.3/0.9.4 수리와 `data/art/ui/skins`는 유지. `pack-approved-menu-icons.cjs`만 사용하고 전체 skin packer를 실행하지 말 것.
+- 구현/검증/제한: [APPROVED-MENU-ICONS.md](APPROVED-MENU-ICONS.md). 5테마×3화면폭×5메뉴 선택 상태 검증과 기존 UI 회귀 통과.
+- 실제 화면: https://drive.google.com/drive/folders/1g0P3rnygjoVKDNRxwP3FdI3HJMVEEzf9
+- **사용자가 인라인 이미지를 못 본다. 이미지 결과는 무조건 Google Drive 링크 포함.**
+
+## 이전 완료 — 0.9.4 포근한 테마 말 걸기 테두리
 
 - 포근한 테마 말 걸기 버튼 오른쪽과 오른쪽 아래에 갈색 상자 조각이 튀어나와 있었다. 원본에서 그 자리가 상자 그림에 가려 있었기 때문이다. 이제 팔각형 오른쪽 변과 모서리를 왼쪽에 맞춰 대칭으로 자른다. `cut-action-buttons.py`.
 - 푸른 연꽃 뒤로 튀어나오던 분홍빛 바탕은 0.9.3에서 이미 지웠다. 0.9.4 화면에서 다섯 테마 모두 다시 확인했다.
