@@ -209,7 +209,10 @@ export class Renderer {
         });
         // place names: the mode in orange, then the name ("생활 시장"), like the mockup
         g.textBaseline = 'middle';
-        for (const sp of [...m.spots, ...m.labels]) {
+        // a way out's sign shows only while her feet are within a couple of tiles of it
+        const fx = player.x + 0.5, fy = player.y + 0.8;
+        const close = l => !l.near || Math.hypot(Math.max(l.near[0] - fx, 0, fx - l.near[2]), Math.max(l.near[1] - fy, 0, fy - l.near[3])) < 2.2;
+        for (const sp of [...m.spots, ...m.labels.filter(close)]) {
             if (!sp.label) continue;
             const tag = MODE[sp.mode] || '';
             g.font = `700 ${Math.round(5.5 * z)}px 'Noto Sans KR', sans-serif`;

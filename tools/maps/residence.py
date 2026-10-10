@@ -157,10 +157,11 @@ def signs(sc, w, h):
     for (x0, y0, x1, y1), to, _ in sc['exits']:
         name = '옴보스' if to == 'ombos' else SCENES[to]['name']
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
-        if x1 <= 0.5: out.append((2.4, cy, f'← {name}'))
-        elif x0 >= w - 0.5: out.append((w - 2.4, cy, f'{name} →'))
-        elif y1 >= h - 0.01: out.append((cx, h - 0.75, f'↓ {name}'))
-        else: out.append((cx, max(0.75, y0 + 0.6), f'↑ {name}'))
+        box = [x0, y0, x1, y1]
+        if x1 <= 0.5: out.append((2.4, cy, f'← {name}', box))
+        elif x0 >= w - 0.5: out.append((w - 2.4, cy, f'{name} →', box))
+        elif y1 >= h - 0.01: out.append((cx, h - 0.75, f'↓ {name}', box))
+        else: out.append((cx, max(0.75, y0 + 0.6), f'↑ {name}', box))
     return out
 
 
@@ -210,7 +211,8 @@ def main():
             'entries': entry, 'spawn': entry[sc['spawn']], 'spots': spots,
             # a door's name, drawn centred on (x, y) like a place name
             # a sign on every way out, so each door and passage can be found: where it leads, with an arrow
-            'labels': [{'x': round(lx - 0.5, 2), 'y': round(ly + 0.55, 2), 'label': text} for lx, ly, text in signs(sc, w, h)],
+            # (shown only while she is near that way out: `near` is the exit's box)
+            'labels': [{'x': round(lx - 0.5, 2), 'y': round(ly + 0.55, 2), 'label': text, 'near': box} for lx, ly, text, box in signs(sc, w, h)],
             'note': '안채 안에서는 문과 통로로 걸어 다녀. 마당 아래 큰 문으로 나가면 옴보스야.',
         }
         with open(os.path.join(ROOT, 'data', 'maps', f'{sid}.json'), 'w') as f:

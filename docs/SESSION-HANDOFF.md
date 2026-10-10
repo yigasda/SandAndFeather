@@ -18,6 +18,7 @@
 - 0.9.9: 전신 보기(파티, 소망 카드)는 정면 정지 그림 `data/art/portraits/*-idle-full.png`.
 - 0.9.10: 대화 카드 상반신, 소망 미소 버튼 두 개, `전신 크게 보기` 버튼 제거. 상반신은 다시 넣지 말 것.
 - 0.9.11: 파티 카드를 어깨까지로 줄임.
+- 0.9.19: 안채 출구 표지는 근처 2.2칸에서만. 그림 보정 요청은 [ASTRA-RESIDENCE-EXITS.md](ASTRA-RESIDENCE-EXITS.md).
 - 0.9.17: 렉 수리. 지도는 보이는 부분만 그린다. 이동은 실제 시간만큼 하되 0.05초씩 나눠서 한다. 지도 그림은 그 지도에 있을 때만 풀어 둔다(`lazy`). 측정은 [PERF-0917.md](PERF-0917.md).
 - 0.9.16: 셋소호 표시 높이 31.2 논리 px. 아틀라스는 폰용 `trio-motion-small.png` 125px와 넓은 화면용 `trio-motion.png` 256px 두 장이다. 바꿀 때는 `pack-trio-motion.py`의 HEIGHT·SMALL·VISIBLE을 고친다.
 - 0.9.15: `인물 보기`는 세트·호루스 일러스트 세 장씩 넘겨 보기(`data/art/portraits/gallery/*.webp`, 원본 `docs/art/portraits-illust/gallery/`).
