@@ -1,0 +1,32 @@
+{
+  "base": "../review-horus-v11/horus-front.png",
+  "status": "review-not-approved",
+  "hair_changed_pixels": 0,
+  "original_feature_changed_pixels": 0,
+  "repaired_body_changed_pixels": 0,
+  "outside_mask_changed_pixels": 0,
+  "skin_palette": [
+    [
+      254,
+      233,
+      220
+    ],
+    [
+      254,
+      229,
+      215
+    ],
+    [
+      253,
+      224,
+      209
+    ],
+    [
+      251,
+      219,
+      204
+    ]
+  ],
+  "outline_edit": "chin and underside of ears only; clear duplicate strips",
+  "image_generation_source": "exec-97f7794b-3e03-4e66-ad06-6a0a577e8589.png"
+}
