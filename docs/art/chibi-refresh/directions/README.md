@@ -109,3 +109,7 @@
 - [79번 소망 의상 4방향](https://drive.google.com/file/d/10r-Ng-ezwna89iXOSE9b1UQwYYDBA-sm/view)
 - [80번 세트·호루스 측면 비교](https://drive.google.com/file/d/1Y5_ufJiqRFpNpqHMpFZFiOztg6DV68JY/view)
 - [81번 셋소호 전체 4방향](https://drive.google.com/file/d/14TTQbVje5QID5Uneuf4r4DhM79Y3rQiI/view)
+
+## 81번 공통 베이스 승인 · 동작 제작 시작
+
+사용자가 세트 측면/소망 의상 수정본에 긍정적으로 응답했고 공통 베이스를 확정했다. 최신 베이스는 `common-body-v2-dress-and-profile`이며, 이어 요청한 18종 동작의 진행 상황은 [동작 제작 문서](../animations/README.md)에 기록한다. 첫 제작 묶음은 걷기 1차 시안이다.

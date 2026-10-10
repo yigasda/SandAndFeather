@@ -1,0 +1,359 @@
+{
+  "status": "pose-study-review",
+  "base": "81 common-body-v2-dress-and-profile approved",
+  "cell": [
+    360,
+    400
+  ],
+  "directions": [
+    "front",
+    "back",
+    "left",
+    "right"
+  ],
+  "phases": [
+    "contact-a",
+    "passing",
+    "contact-b"
+  ],
+  "previewSequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "frameDurationMs": 180,
+  "runtimeApplied": false,
+  "frames": {
+    "set": [
+      {
+        "file": "set-front-0.png",
+        "direction": "front",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-front-1.png",
+        "direction": "front",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-front-2.png",
+        "direction": "front",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-back-0.png",
+        "direction": "back",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-back-1.png",
+        "direction": "back",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-back-2.png",
+        "direction": "back",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-left-0.png",
+        "direction": "left",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-left-1.png",
+        "direction": "left",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-left-2.png",
+        "direction": "left",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-right-0.png",
+        "direction": "right",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-right-1.png",
+        "direction": "right",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "set-right-2.png",
+        "direction": "right",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      }
+    ],
+    "somang": [
+      {
+        "file": "somang-front-0.png",
+        "direction": "front",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-front-1.png",
+        "direction": "front",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-front-2.png",
+        "direction": "front",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-back-0.png",
+        "direction": "back",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-back-1.png",
+        "direction": "back",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-back-2.png",
+        "direction": "back",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-left-0.png",
+        "direction": "left",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-left-1.png",
+        "direction": "left",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-left-2.png",
+        "direction": "left",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-right-0.png",
+        "direction": "right",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-right-1.png",
+        "direction": "right",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "somang-right-2.png",
+        "direction": "right",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      }
+    ],
+    "horus": [
+      {
+        "file": "horus-front-0.png",
+        "direction": "front",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-front-1.png",
+        "direction": "front",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-front-2.png",
+        "direction": "front",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-back-0.png",
+        "direction": "back",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-back-1.png",
+        "direction": "back",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-back-2.png",
+        "direction": "back",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-left-0.png",
+        "direction": "left",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-left-1.png",
+        "direction": "left",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-left-2.png",
+        "direction": "left",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-right-0.png",
+        "direction": "right",
+        "phase": 0,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-right-1.png",
+        "direction": "right",
+        "phase": 1,
+        "pivot": [
+          180,
+          370
+        ]
+      },
+      {
+        "file": "horus-right-2.png",
+        "direction": "right",
+        "phase": 2,
+        "pivot": [
+          180,
+          370
+        ]
+      }
+    ]
+  }
+}
