@@ -1,0 +1,71 @@
+{
+  "status": "review-only",
+  "replaces": "137 rejected",
+  "originalChangedPixels": 0,
+  "files": [
+    {
+      "file": "inner-corridor-expanded-v4.png",
+      "size": [
+        2492,
+        887
+      ],
+      "sha256": "40d7a0dad1e05d9e086a400569dd913bfe7ac3a90e17e6a1712b9e9cd2afea44"
+    },
+    {
+      "file": "previews/139-entrances-before-after.png",
+      "size": [
+        1200,
+        1404
+      ],
+      "sha256": "30452e633a25c789bc46418151c53a240ededaf52096c6da7b8e5f9ac9bdfc37"
+    },
+    {
+      "file": "previews/139-inner-corridor-full.png",
+      "size": [
+        1744,
+        663
+      ],
+      "sha256": "5709ea859c2c7f9296fd6a04d9e962e3901efe5cd35bb2c49e1d4024e651b427"
+    },
+    {
+      "file": "previews/139-original-preserved-compare.png",
+      "size": [
+        1246,
+        888
+      ],
+      "sha256": "ec39f1b57b5b24a774233d6d205206779f1538f2436807bb1eadd4dec6b9c739"
+    },
+    {
+      "file": "previews/139-phone-width-static.png",
+      "size": [
+        480,
+        444
+      ],
+      "sha256": "0a004baf99bb958a7ae5ca526571e08d061c71ee411977b0872a151a93e9bbea"
+    },
+    {
+      "file": "previews/139-trio-scale-static.png",
+      "size": [
+        800,
+        900
+      ],
+      "sha256": "64a6a9eb544076846fdc6ad4c28c534c2d417355a09ca5d3ac47ea09b49fb97f"
+    },
+    {
+      "file": "sources/left-extension.png",
+      "size": [
+        1130,
+        1392
+      ],
+      "sha256": "d33b8d24c20034460969a1bbcdd7715a44547f8aac20c98207ecbd28fcadc4ae"
+    },
+    {
+      "file": "sources/right-extension.png",
+      "size": [
+        1130,
+        1392
+      ],
+      "sha256": "bfb042d76e272fba5734b33c5875317545165baa256a6d41cadb9059b6d772cf"
+    }
+  ]
+}
