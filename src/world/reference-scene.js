@@ -56,9 +56,12 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
         const background = () => {
             g.drawImage(picture, dx, dy, dw, dh);
             // Completed works remain visible above the otherwise untouched atlas.
+            // (painted in daylight: under an authored night they take the village's night shade)
+            const nightPicture = part === 'night' && scene.nightImage;
             if (scene.fullMap) for (const id of renderer.map.open) for (const c of renderer.map.d.overlays?.[id] || []) {
                 g.drawImage(renderer.ground, c.x*16, c.y*16, 16, 16,
                     c.x*16*z-cx, c.y*16*z-cy, 16*z, 16*z);
+                if (nightPicture && tint) { g.fillStyle = tint; g.fillRect(c.x*16*z-cx, c.y*16*z-cy, 16*z, 16*z); }
             }
             // Dawn/evening retain the normal world lighting; night is authored.
             // a lamp-lit room keeps one picture and darkens less than the open village (tintNight: its own colour)

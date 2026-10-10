@@ -42,7 +42,8 @@
     "file": "art/duat-reference.png"
   },
   "ombos": {
-    "file": "art/ombos-approved.png",
+    "file": "../docs/art/map-expansion/ombos-upgrade-v1-day.png",
+    "nightFile": "../docs/art/map-expansion/ombos-upgrade-v1-night.png",
     "fullMap": true,
     "origin": [0, 0],
     "scale": [0.4827586206896552, 0.4814159292035398],

@@ -64,8 +64,11 @@ const decode = async file => {
 function loadSceneArt() {
     return sceneArtPromise ||= (async () => {
         const definitions = await loadJson('scene-art.json');
-        const entries = await Promise.all(Object.entries(definitions).map(async ([name, definition]) =>
-            [name, { ...definition, image: definition.lazy ? null : await decode(definition.file) }]));
+        const entries = await Promise.all(Object.entries(definitions).map(async ([name, definition]) => [name, {
+            ...definition,
+            image: definition.lazy ? null : await decode(definition.file),
+            nightImage: definition.lazy || !definition.nightFile ? null : await decode(definition.nightFile),
+        }]));
         DATA.sceneArt = Object.fromEntries(entries);
     })().catch(error => { sceneArtPromise = null; throw error; });
 }

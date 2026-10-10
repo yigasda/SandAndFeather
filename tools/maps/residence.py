@@ -10,9 +10,8 @@ import json, os
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 ART = '../docs/art/map-expansion/'
 ROOM_DOOR = [9.4, 10.3, 12.6, 11]  # the bottom doorway every 22×11 room shares
-# back out in the village, before the temple door. Provisional: the Ombos map is being redrawn, and this point and
-# the way in are set again against the approved picture.
-OMBOS_TEMPLE = {'x': 25.0, 'y': 11.2, 'dir': 'down'}
+# back out in the village, on the carpet just below the temple door (ombos.json's exit walks in through that door)
+OMBOS_TEMPLE = {'x': 24.9, 'y': 9.75, 'dir': 'down'}
 
 SCENES = {
     'temple_courtyard': {
