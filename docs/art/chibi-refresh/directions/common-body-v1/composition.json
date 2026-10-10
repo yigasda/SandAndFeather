@@ -1,0 +1,104 @@
+{
+  "set": {
+    "source": "/workspace/generated_images/exec-d4eca445-1ed7-476c-bb63-273ecba0e173.png",
+    "seams": [
+      0,
+      534,
+      1045,
+      1608,
+      2159
+    ],
+    "top": [
+      26,
+      23,
+      21,
+      17
+    ],
+    "chin": [
+      389,
+      389,
+      378,
+      378
+    ],
+    "shoe": [
+      633,
+      630,
+      633,
+      633
+    ],
+    "bottom": [
+      692,
+      687,
+      693,
+      693
+    ]
+  },
+  "somang": {
+    "source": "/workspace/generated_images/exec-2e57d116-fe2e-4859-b6ec-0a4a03e3746b.png",
+    "seams": [
+      0,
+      529,
+      1060,
+      1591,
+      2159
+    ],
+    "top": [
+      13,
+      13,
+      8,
+      8
+    ],
+    "chin": [
+      368,
+      368,
+      370,
+      370
+    ],
+    "shoe": [
+      648,
+      646,
+      648,
+      648
+    ],
+    "bottom": [
+      712,
+      709,
+      711,
+      711
+    ]
+  },
+  "horus": {
+    "source": "docs/art/chibi-refresh/directions/horus-idle-v5-small-hands.png",
+    "seams": [
+      0,
+      453,
+      1003,
+      1543,
+      2160
+    ],
+    "top": [
+      19,
+      19,
+      19,
+      19
+    ],
+    "chin": [
+      399,
+      394,
+      397,
+      397
+    ],
+    "shoe": [
+      625,
+      621,
+      625,
+      625
+    ],
+    "bottom": [
+      682,
+      678,
+      682,
+      682
+    ]
+  }
+}

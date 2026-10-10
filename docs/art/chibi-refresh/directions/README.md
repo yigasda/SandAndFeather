@@ -86,3 +86,14 @@
 - 재현: 저장소 루트에서 `python scripts/art/align-trio-proportions.py` 실행. Pillow와 NumPy 사용.
 
 이 결과는 비율 검토 시안이며 런타임 에셋은 교체하지 않았다. 얼굴과 머리의 새 디자인 생성 없이 비율을 비교하기 위한 버전이다.
+
+## 공통 몸 형태 수정 v1 — 77번 비율 조정본은 거절됨
+
+사용자가 77번을 거절했다. 요청은 기존 몸을 압축하는 것이 아니라 호루스의 몸통·팔다리·둥근 손발 디자인으로 세트와 소망을 수정하는 것이었다. 따라서 `aligned-trio-v1`을 승인된 몸 베이스로 사용하지 않는다.
+
+`common-body-v1`은 호루스 v5 시트를 첫 번째 몸 참조로 제공하여 세트·소망의 몸 형태를 이미지 편집한 새 검토 시안이다. 손가락 선 없는 타원형 손, 발가락이 구분되지 않는 단순한 샌들, 호루스에 가까운 몸통과 팔다리 묘사를 사용한다. 세트는 단순한 차콜 주름치마, 소망은 같은 몸 구조 위에 흰 끈리본과 소매·단순한 A라인 치마를 입힌 형태다. 생성 편집이므로 원본 얼굴·머리와 픽셀 단위로 동일하다는 뜻은 아니다.
+
+`set-source.png`, `somang-source.png`는 몸을 새로 수정한 생성 원본이고 `horus-source.png`는 비교 기준이다. 수정 후 표시 크기를 맞춰 머리·몸·신발 구간을 정렬했으며, 합본은 새로 생성하지 않고 이 이미지들을 조합했다. 재현 스크립트는 `scripts/art/compose-common-body-trio.py`다. 아직 사용자 승인 전, 게임 적용 없음.
+
+- [78번 4방향 전체](https://drive.google.com/file/d/1XYCfYyy8dRW9QiVxXtIscAW5HTy9z_SV/view)
+- [78번 정면 비교](https://drive.google.com/file/d/1HxWBdFCoBEw6uAwLvaUTTRMWfF8fP0UP/view)
