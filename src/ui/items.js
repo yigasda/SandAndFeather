@@ -3,6 +3,7 @@
 import { find, itemInfo, items, nameOf, openItem } from '../core/bag.js';
 import { dateLabel, fromDayNumber } from '../core/clock.js';
 import { DATA } from '../core/data.js';
+import { settings } from '../core/settings.js';
 import { getState } from '../core/state.js';
 import { josa, pickVisit, showItem } from './talk.js';
 
@@ -47,7 +48,7 @@ const ICONS = {blue_lotus:'lotus', lotus_seed:'lotus', bread:'bread', honey_brea
     duat_scroll:'scroll', tomb_rubbing:'scroll', limestone:'stone', black_sand:'stone', star_shard:'stone', feast_garland:'flower'};
 function itemIcon(info, id) {
     const el = document.createElement(ICONS[id] ? 'img' : 'span'); el.className='sf_item_art';
-    if(ICONS[id]){el.src=new URL(`item-${ICONS[id]}.png`,iconBase).href;el.alt='';}
+    if(ICONS[id]){el.dataset.itemArt=ICONS[id];el.src=new URL(`skins/${settings().uiTheme}/item-${ICONS[id]}.png`,iconBase).href;el.alt='';}
     else el.textContent=info.icon || '◆';
     return el;
 }
@@ -90,9 +91,9 @@ export function bagCard(ui, map) {
             if(!selected)select(group,b);
         }
         if(!visible.length){const note=document.createElement('p');note.className='sf_note';note.textContent=all.length?'이 분류에는 물건이 없어.':'가방이 비어 있어. 선착장 물가를 살펴봐.';detail.append(note);}
-        for(let i=visible.length;i<8;i++){const empty=document.createElement('span');empty.className='sf_inventory_slot sf_empty_slot';empty.setAttribute('aria-hidden','true');grid.append(empty);}
+        for(let i=visible.length;i<15;i++){const empty=document.createElement('span');empty.className='sf_inventory_slot sf_empty_slot';empty.setAttribute('aria-hidden','true');grid.append(empty);}
     };
     for(const [id,label]of categories){const b=document.createElement('button');b.type='button';b.className='sf_btn sf_small';b.textContent=label;b.dataset.category=id;
         b.setAttribute('aria-pressed',String(id==='all'));b.addEventListener('click',()=>{for(const other of tabs.children)other.setAttribute('aria-pressed',String(other===b));show(id);});tabs.append(b);}
-    show('all');close=ui.showCard({title:'가방',kind:'inventory',wide:true,body:box});
+    show('all');close=ui.showCard({title:'가방',kind:'inventory',wide:true,body:box,buttons:[]});
 }

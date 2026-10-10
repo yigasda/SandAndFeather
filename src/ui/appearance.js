@@ -25,7 +25,7 @@ export function appearanceCard(ui, apply) {
         const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:
             ['ArrowRight','ArrowDown'].includes(event.key)?(index+1)%buttons.length:
             ['ArrowLeft','ArrowUp'].includes(event.key)?(index+buttons.length-1)%buttons.length:-1;
-        if(next>=0){event.preventDefault();buttons[next].focus();buttons[next].click();}
+        if(next>=0){event.preventDefault();event.stopPropagation();buttons[next].focus();buttons[next].click();}
     });
     const label=document.createElement('label');label.className='sf_brightness';label.append('밝기');
     const select=document.createElement('select');select.setAttribute('aria-label','밝기');

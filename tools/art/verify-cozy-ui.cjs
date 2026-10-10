@@ -14,7 +14,7 @@ const bounds=async()=>{const a=await p.evaluate(()=>[...document.querySelectorAl
 try{
 await p.goto('http://127.0.0.1:8000');await p.waitForSelector('#sf_open',{state:'attached'});
 if(await p.locator('.popup-button-ok').isVisible())await p.locator('.popup-button-ok').click();
-await p.waitForSelector('.character_select[data-chid]',{state:'attached'});await p.evaluate(()=>document.querySelector('.character_select[data-chid]').click());await p.waitForFunction(()=>!!SillyTavern.getContext().chatId);
+await p.waitForSelector('.character_select[data-chid]',{state:'attached'});await p.evaluate(async()=>{const {selectCharacterById}=await import('/script.js');await selectCharacterById(Number(document.querySelector('.character_select[data-chid]').dataset.chid));});await p.waitForFunction(()=>!!SillyTavern.getContext().chatId);
 await p.evaluate(async()=>{window.cozyTest={};const base='/scripts/extensions/third-party/SandAndFeather/src/';
 for(const[k,v]of Object.entries({win:'ui/window',state:'core/state',data:'core/data',settings:'core/settings',bag:'core/bag',player:'world/player',check:'core/check'}))cozyTest[k]=await import(base+v+'.js');
 const t=cozyTest,ctx=SillyTavern.getContext();t.saved=structuredClone(ctx.chatMetadata.sand_feather);t.text=document.querySelector('#send_textarea').value;t.chatLength=ctx.chat.length;t.theme=t.settings.settings().theme;t.uiTheme=t.settings.settings().uiTheme;t.settings.settings().uiTheme='cozy';

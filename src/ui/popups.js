@@ -9,6 +9,14 @@ export { esc };
 let openCount = 0;
 export const cardOpen = () => openCount > 0;
 
+// ST transforms <html>, so a horizontal document scroll also moves its fixed game.
+// Browser focus/scroll-into-view can leave a few pixels of scroll after a mobile popup.
+function keepGameInViewport(root) {
+    if (root.id === 'sf_game' && window.scrollX) {
+        window.scrollTo({ left: 0, top: window.scrollY, behavior: 'instant' });
+    }
+}
+
 export function showCard(root, { tag = '', title = '', text = '', body = null, buttons = null, wide = false, kind = '', onClose = null } = {}) {
     const wrap = document.createElement('div');
     wrap.className = 'sf_pop_wrap';
@@ -32,6 +40,7 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
         if (closed) return;
         closed = true; openCount--;
         wrap.remove();
+        keepGameInViewport(root);
         onClose?.();
     };
     for (const b of buttons || [{ label: '닫기', primary: true }]) {
@@ -47,6 +56,7 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
     wrap.addEventListener('pointerdown', e => { if (e.target === wrap) close(); });
     openCount++;
     root.append(wrap);
+    keepGameInViewport(root);
     return close;
 }
 
