@@ -1,0 +1,131 @@
+{
+  "approvedOriginalFilesHashVerified": 48,
+  "walkPNGCount": 36,
+  "size": [
+    360,
+    400
+  ],
+  "pivot": [
+    180,
+    370
+  ],
+  "clippedCanvasEdges": false,
+  "analyzerDirectionsWithinTolerance": 12,
+  "analyzerDirectionsTotal": 12,
+  "analyzerThresholdsChanged": false,
+  "horusBodyPixelDifferenceAtAndBelowY245": {
+    "horus-left-1.png": 0,
+    "horus-front-2.png": 0,
+    "horus-right-1.png": 0,
+    "horus-left-2.png": 0,
+    "horus-right-2.png": 0,
+    "horus-back-2.png": 0,
+    "horus-left-0.png": 0,
+    "horus-right-0.png": 0,
+    "horus-back-1.png": 0,
+    "horus-front-0.png": 0,
+    "horus-front-1.png": 0,
+    "horus-back-0.png": 0
+  },
+  "gifs": [
+    {
+      "path": "previews/135-horus-original-comparison.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    },
+    {
+      "path": "previews/135-horus-walk.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    },
+    {
+      "path": "previews/135-somang-original-comparison.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    },
+    {
+      "path": "previews/135-somang-walk.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    },
+    {
+      "path": "previews/136-set-original-comparison.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    },
+    {
+      "path": "previews/136-set-walk.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    },
+    {
+      "path": "previews/136-trio-front.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    },
+    {
+      "path": "previews/136-trio-walk.gif",
+      "frames": 4,
+      "durationMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": 0
+    }
+  ],
+  "visualInspection": "Original individual PNGs and final per-pose sheets / selected edge closeups inspected.",
+  "limitations": [
+    "No browser playback or in-game observation in this environment.",
+    "Analysis tolerance pass is not a claim of identical original animation.",
+    "Long hair/body masks change overlap pixels; Set/Somang are not claimed globally pixel-identical below the neck."
+  ],
+  "approvedSomangHorus24ByteIdenticalToDelivered135": true,
+  "setSeamsInspectedOnBackgrounds": [
+    "#f5efe3",
+    "#253041"
+  ]
+}

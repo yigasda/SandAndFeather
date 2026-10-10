@@ -1,0 +1,1294 @@
+{
+  "schemaVersion": 1,
+  "status": "somang-horus-approved-set-review",
+  "reviewNumber": 136,
+  "analysisBaselineCommit": "8b39c1e",
+  "runtimeModified": false,
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  },
+  "walkFrameCount": 36,
+  "walkCycle": {
+    "sequence": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "previewFrameDurationMs": 180,
+    "previewCycleDurationMs": 720,
+    "offsetSpace": "source 360x400 cell pixels before render scaling",
+    "defaultOffsets": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "horusDownOffsets": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        -1
+      ]
+    ],
+    "headRotationDegreesAdded": 0,
+    "note": "Offsets translate the full rendered sprite, not head alone. Do not combine with old renderer bob."
+  },
+  "frames": [
+    {
+      "id": "set.walk.down.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-front-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        32,
+        40,
+        352,
+        370
+      ],
+      "sha256": "ef014edc468297c3cd6d09dd9defc7eed7e2f5c22a1ab99843cf2a5488a78917",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-front-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-front-0.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.down.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-front-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        352,
+        370
+      ],
+      "sha256": "d4ecf0aaf1199dfaa5a762a1b3e901535a11ad15cea5b3eef888cf6f80219936",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-front-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-front-1.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.down.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-front-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        355,
+        370
+      ],
+      "sha256": "e4df5d5109700488bb3fa266c2e49ae3309aab2b6d163078564365277d6bc8b2",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-front-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-front-2.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.up.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-back-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        40,
+        40,
+        334,
+        369
+      ],
+      "sha256": "ae5493baee54bc1f0f69c97a97192fd6d169883e532cf15621b12269cd7e2b84",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-back-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-back-0.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.up.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-back-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        326,
+        370
+      ],
+      "sha256": "aa1c499eb661787f82a8473b26f368178594911fec2d19364485fd438f36b74e",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-back-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-back-1.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.up.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-back-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        328,
+        369
+      ],
+      "sha256": "e6ec9134c2abf52347a1242c6babf433dece3be2a157a00e740b5705acb9366a",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-back-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-back-2.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.left.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-left-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        59,
+        40,
+        348,
+        369
+      ],
+      "sha256": "aaf6837d008b6732e63f6496b668cf9b5ccb86b15791fe403c3f5c45901c1db4",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-left-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-left-0.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.left.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-left-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        57,
+        40,
+        347,
+        370
+      ],
+      "sha256": "f7ddef6c33487acae8f260883fb6701168c6c5830d06a9d0f1ce750ca36eca84",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-left-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-left-1.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.left.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-left-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        59,
+        40,
+        344,
+        370
+      ],
+      "sha256": "a9c27e393a99051588805b8611f2604482866968a7b3dc80db769f27802b4b2a",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-left-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-left-2.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.right.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-right-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        10,
+        40,
+        300,
+        369
+      ],
+      "sha256": "942b63dc698172c50754e4f7f31a5f2186003b388f219ebdd239f88dc4736df7",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-right-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-right-0.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.right.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-right-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        4,
+        40,
+        305,
+        370
+      ],
+      "sha256": "d0439460dfd18da58c8e4b597bc1102f5c0202702cba0d14c11b7e151b048014",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-right-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-right-1.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "set.walk.right.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/set-right-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        4,
+        40,
+        302,
+        369
+      ],
+      "sha256": "0e5da5717e0dfa1e589a4bbdbb7ac1838bbc880ca360a6faec25e5c8545d3a7f",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/set-right-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/set-right-2.png",
+      "approvalStatus": "review-pending"
+    },
+    {
+      "id": "somang.walk.down.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-front-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        46,
+        40,
+        321,
+        370
+      ],
+      "sha256": "c4b726c6310efe332396e98b2ee89e9ff66da337b20b6db5a70496233ae1a09d",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-front-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-front-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.down.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-front-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        46,
+        40,
+        321,
+        370
+      ],
+      "sha256": "bf255fe1dcec21dda8d4fcb8f0856961ffd9e91faa419b3b17e441019590b3d8",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-front-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-front-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.down.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-front-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        47,
+        40,
+        322,
+        370
+      ],
+      "sha256": "1c7eedb90dc38dd4b6f513ba816c117be1f977fdfd41769d40c2b8a8e87f4095",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-front-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-front-2.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.up.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-back-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        53,
+        40,
+        303,
+        370
+      ],
+      "sha256": "7e08c5b06aabb772b23889552f921627c9a105daaf5ca12c80e28404066b94c5",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-back-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-back-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.up.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-back-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        48,
+        40,
+        307,
+        370
+      ],
+      "sha256": "20db7319d3888616d749818e8ceadc0866d4381d9c27ef435e23aa070000e5c3",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-back-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-back-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.up.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-back-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        51,
+        40,
+        303,
+        370
+      ],
+      "sha256": "4950effd1c23903abd4154632a33c4ec108e358c3eb33ebd76d1cb2e10ef517f",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-back-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-back-2.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.left.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-left-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        63,
+        40,
+        319,
+        369
+      ],
+      "sha256": "51dea5825a48c3ca811d02c4079f6d0abc8ac44d92181a136cfee03a860f7386",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-left-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-left-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.left.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-left-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        65,
+        40,
+        320,
+        369
+      ],
+      "sha256": "0954837433336cdda702b78069b589d91eec751adb45a534ef9aa8692650029d",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-left-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-left-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.left.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-left-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        64,
+        40,
+        316,
+        370
+      ],
+      "sha256": "470dca34ce9a956cd0c8b279c264aa362d86d9cd708fc86d9fbf04e421ffd714",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-left-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-left-2.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.right.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-right-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        43,
+        40,
+        304,
+        369
+      ],
+      "sha256": "15f62d4deeaa14ad3dccf3b83e83d134cb8e3220a205662760566f995c110cce",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-right-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-right-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.right.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-right-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        37,
+        40,
+        304,
+        370
+      ],
+      "sha256": "3d0c979889baf12fe851a32f31d0efcd998ecabaee339c6b5292638919f0588d",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-right-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-right-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "somang.walk.right.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/somang-right-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        31,
+        40,
+        305,
+        370
+      ],
+      "sha256": "8dc20b5fdbc0e9fe87a0b346a50fe0186ab4cfba1c951eae61f11720d73dcb6f",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/somang-right-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-right-2.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.down.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-front-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        68,
+        51,
+        289,
+        369
+      ],
+      "sha256": "108f42ac73f7269890d71330b444866a9272fc9386984ec97fe655097c69bb97",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-front-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-front-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.down.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-front-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        71,
+        50,
+        289,
+        367
+      ],
+      "sha256": "87283c06f3b2025880cd42e11ab8d9c9fbe8b537053bba89a379fb9d6f1a15a6",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-front-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-front-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.down.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-front-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        70,
+        51,
+        287,
+        369
+      ],
+      "sha256": "705f8fc715746401a5b0700be6f225cce43be8ea8535362864a715c21f3d987c",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-front-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-front-2.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.up.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-back-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        76,
+        51,
+        280,
+        370
+      ],
+      "sha256": "ee09199d8feebd2c81bc12979ff0234dae7d0f40950649b006a8f99c095ae891",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-back-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-back-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.up.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-back-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        75,
+        49,
+        283,
+        370
+      ],
+      "sha256": "bc673f107e283cfb76779c60c4a1cdab443e571d9ae3d8a3465bc241b19fd58b",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-back-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-back-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.up.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-back-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        75,
+        49,
+        283,
+        370
+      ],
+      "sha256": "c6ccedca1beeda15452fdcbf64c49409887d30fe96ae38a5e8a1c38ddd533ff7",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-back-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-back-2.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.left.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-left-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        74,
+        49,
+        286,
+        368
+      ],
+      "sha256": "6ca02c258ccc5f1db5c898fe10a0d3873845533d380116e71db712beb881f397",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-left-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-left-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.left.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-left-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        70,
+        49,
+        286,
+        369
+      ],
+      "sha256": "1b71e124ee12d788b4594bc3f15d52dd6b4de650690a9d0031807fa254564ee2",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-left-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-left-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.left.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-left-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        71,
+        49,
+        284,
+        368
+      ],
+      "sha256": "9776050f0c2d7af786086704bcc4fbf5988a83ddd30eda19fc309ab8384a82e4",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-left-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-left-2.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.right.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-right-0.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        74,
+        51,
+        288,
+        370
+      ],
+      "sha256": "2dc0c1416d9ade80fda6669316fcff420bffc7aff4a24de84e0114eda738041b",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-right-0.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-right-0.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.right.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-right-1.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        73,
+        49,
+        290,
+        370
+      ],
+      "sha256": "cc239f107322326dc6f9fdc20b84c28315aedaa554101c4db6f8834965426215",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-right-1.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-right-1.png",
+      "approvalStatus": "user-approved"
+    },
+    {
+      "id": "horus.walk.right.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "path": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-right-2.png",
+      "size": [
+        360,
+        400
+      ],
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        72,
+        49,
+        288,
+        370
+      ],
+      "sha256": "f1609774c67a7a4db3eaa47c0afa97f8e982b41d34a910865370ecb7989a101e",
+      "motionReference": "docs/art/chibi-refresh/approved/walk/horus-right-2.png",
+      "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/horus-right-2.png",
+      "approvalStatus": "user-approved"
+    }
+  ],
+  "characterStatus": {
+    "set": "136 seam fix: review pending",
+    "somang": "135 user approved",
+    "horus": "135 user approved"
+  }
+}
