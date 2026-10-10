@@ -1,0 +1,49 @@
+{
+  "base": "../review-horus-v6/edit-source.png normalized576x730",
+  "eyeSource": "../review-horus-set-body-v5/option-2.png",
+  "eyeScale": [
+    0.9,
+    0.9
+  ],
+  "resampling": "nearest",
+  "edgeBlendPixels": 3,
+  "eyePatches": [
+    {
+      "side": "left",
+      "rect": {
+        "left": 130,
+        "top": 334,
+        "width": 101,
+        "height": 78
+      },
+      "at": [
+        135,
+        321
+      ],
+      "outputSize": [
+        91,
+        70
+      ]
+    },
+    {
+      "side": "right",
+      "rect": {
+        "left": 278,
+        "top": 334,
+        "width": 106,
+        "height": 67
+      },
+      "at": [
+        279,
+        321
+      ],
+      "outputSize": [
+        95,
+        60
+      ]
+    }
+  ],
+  "changedChannelsOutsideMasks": 0,
+  "bodyBelowY445Unchanged": true,
+  "status": "review-pending"
+}
