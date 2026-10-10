@@ -1,0 +1,427 @@
+{
+  "status": "review-not-approved",
+  "runtime_modified": false,
+  "method": "source-pose image edits; original final front head pixels restored; common per-direction scale and anchored cells",
+  "frame_size": [
+    360,
+    400
+  ],
+  "pivot": [
+    180,
+    370
+  ],
+  "cycle": {
+    "sequence": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "previewFrameDurationMs": 180,
+    "previewCycleDurationMs": 720,
+    "offsetSpace": "source 360x400 cell pixels before render scaling",
+    "defaultOffsets": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "horusDownOffsets": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        -1
+      ]
+    ],
+    "headRotationDegreesAdded": 0,
+    "note": "Offsets translate the full rendered sprite, not head alone. Do not combine with old renderer bob."
+  },
+  "characters": {
+    "set": {
+      "front_original_head_pixels_reused": true,
+      "front_neck_source": 222,
+      "front_neck_target": 241,
+      "front": {
+        "scale": 1.0,
+        "bounds": [
+          [
+            29,
+            40,
+            347,
+            370
+          ],
+          [
+            29,
+            40,
+            345,
+            370
+          ],
+          [
+            29,
+            40,
+            344,
+            370
+          ]
+        ],
+        "head_lock_y": 241,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "back": {
+        "scale": 1.0,
+        "bounds": [
+          [
+            38,
+            40,
+            323,
+            369
+          ],
+          [
+            34,
+            40,
+            316,
+            370
+          ],
+          [
+            35,
+            40,
+            319,
+            369
+          ]
+        ],
+        "head_lock_y": 205,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "left": {
+        "scale": 1.0060975609756098,
+        "bounds": [
+          [
+            62,
+            40,
+            354,
+            369
+          ],
+          [
+            62,
+            40,
+            359,
+            370
+          ],
+          [
+            62,
+            40,
+            354,
+            370
+          ]
+        ],
+        "head_lock_y": 205,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "right": {
+        "scale": 0.9821428571428571,
+        "bounds": [
+          [
+            14,
+            40,
+            298,
+            369
+          ],
+          [
+            7,
+            40,
+            298,
+            370
+          ],
+          [
+            11,
+            40,
+            298,
+            369
+          ]
+        ],
+        "head_lock_y": 205,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "somang": {
+      "front_original_head_pixels_reused": true,
+      "front_neck_source": 215,
+      "front_neck_target": 235,
+      "front": {
+        "scale": 0.9792284866468842,
+        "bounds": [
+          [
+            50,
+            40,
+            311,
+            370
+          ],
+          [
+            50,
+            40,
+            311,
+            370
+          ],
+          [
+            50,
+            40,
+            311,
+            370
+          ]
+        ],
+        "head_lock_y": 235,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "back": {
+        "scale": 0.9821428571428571,
+        "bounds": [
+          [
+            52,
+            40,
+            308,
+            370
+          ],
+          [
+            50,
+            40,
+            313,
+            370
+          ],
+          [
+            53,
+            40,
+            307,
+            370
+          ]
+        ],
+        "head_lock_y": 205,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "left": {
+        "scale": 0.990990990990991,
+        "bounds": [
+          [
+            66,
+            40,
+            316,
+            369
+          ],
+          [
+            66,
+            40,
+            318,
+            369
+          ],
+          [
+            66,
+            40,
+            318,
+            370
+          ]
+        ],
+        "head_lock_y": 205,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "right": {
+        "scale": 0.9939759036144579,
+        "bounds": [
+          [
+            40,
+            40,
+            297,
+            369
+          ],
+          [
+            37,
+            40,
+            297,
+            370
+          ],
+          [
+            39,
+            40,
+            297,
+            370
+          ]
+        ],
+        "head_lock_y": 205,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "horus": {
+      "front_original_head_pixels_reused": true,
+      "front_neck_source": 210,
+      "front_neck_target": 235,
+      "front": {
+        "scale": 0.9565217391304348,
+        "bounds": [
+          [
+            73,
+            40,
+            287,
+            369
+          ],
+          [
+            73,
+            40,
+            287,
+            367
+          ],
+          [
+            73,
+            40,
+            287,
+            369
+          ]
+        ],
+        "head_lock_y": 235,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "back": {
+        "scale": 0.9620991253644315,
+        "bounds": [
+          [
+            74,
+            40,
+            287,
+            370
+          ],
+          [
+            74,
+            40,
+            287,
+            370
+          ],
+          [
+            74,
+            40,
+            287,
+            370
+          ]
+        ],
+        "head_lock_y": 218,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "left": {
+        "scale": 0.953757225433526,
+        "bounds": [
+          [
+            70,
+            40,
+            290,
+            368
+          ],
+          [
+            70,
+            40,
+            290,
+            369
+          ],
+          [
+            70,
+            40,
+            290,
+            368
+          ]
+        ],
+        "head_lock_y": 218,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      },
+      "right": {
+        "scale": 0.9375,
+        "bounds": [
+          [
+            70,
+            40,
+            291,
+            370
+          ],
+          [
+            70,
+            40,
+            291,
+            370
+          ],
+          [
+            70,
+            40,
+            291,
+            370
+          ]
+        ],
+        "head_lock_y": 218,
+        "head_pixel_differences": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  }
+}
