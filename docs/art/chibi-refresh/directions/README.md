@@ -15,3 +15,11 @@
 다른 캐릭터 기준: 세트는 `../reference-style/trio-v2-somang-hair.png`의 세트, 소망은 사용자가 승인한 `../reference-style/somang-v3-user-reference.png`. 소망 v1/v2로 돌아가지 않는다.
 
 제작 순서는 각자의 4방향 기본 자세, 걷기, 전투 대기, 공격, 주문, 피격, 쓰러짐 순으로 진행한다. 타격·주문 효과는 캐릭터 프레임과 분리하며, 생활 및 두 캐릭터 상호작용 동작은 기본 동작 이후 확장한다.
+
+## 호루스 v2: 머리색과 길이
+
+사용자가 v1 머리가 검게 보이고 길다고 지적하며 남색의 짧은 삐죽머리 참고 그림 두 장을 제공했다. 4방향의 머리를 푸른 기가 분명한 남색으로 조정하고 길게 솟은 머리 덩어리를 짧은 뾰족한 머리결로 다듬은 후속 시안이다. 줄인 눈 크기와 기존 의상 방향을 유지한다. 새 참고의 날개나 근육은 추가하지 않았다.
+
+`horus-idle-v2-blue-hair.png`는 원본, `horus-idle-v2-blue-hair-preview.jpg`는 밝은 배경 확인용이다. 기존 v1은 보존한다. 아직 게임용 프레임으로 적용하지 않았다.
+
+[v2 Drive 미리보기](https://drive.google.com/file/d/1HjNhBibVElJnplqxUSFMsOraoUF2864P/view)
