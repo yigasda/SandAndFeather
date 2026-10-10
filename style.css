@@ -1616,3 +1616,20 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 /* 0.9.13: the Somang card's picture is head and shoulders too; illustrations keep their own colours */
 #sf_game .sf_character_summary .sf_portrait.sf_portrait_head { height: auto; aspect-ratio: 500 / 412; }
 #sf_game .sf_portrait.sf_portrait_head img, #sf_game .sf_portrait.sf_portrait_full img { mix-blend-mode: normal; }
+
+/* 0.9.14 party: 현재 동행 line, then one choice card each (mark · name + 인물 보기 · effect · 고르기) */
+#sf_game .sf_party_now { font-weight: 800; font-size: 15px; padding: 2px 2px 0; }
+#sf_game .sf_party_choices { display: flex; flex-direction: column; gap: 8px; }
+#sf_game .sf_party_choice { align-items: center; }
+#sf_game .sf_party_choice.sf_on { box-shadow: inset 3px 0 0 var(--sf-accent, #b8541f); }
+#sf_game .sf_party_sigil { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex: none; font-size: 26px; color: #8a6a45; }
+#sf_game .sf_party_sigil svg { width: 28px; height: 28px; }
+#sf_game .sf_party_choice[data-companion='set'] .sf_party_sigil { color: #9c3128; }
+#sf_game .sf_party_choice[data-companion='horus'] .sf_party_sigil { color: #2f4f96; }
+#sf_game[data-ui-theme='walnut'] .sf_party_sigil { color: #d9b27a; }
+#sf_game[data-ui-theme='walnut'] .sf_party_choice[data-companion='set'] .sf_party_sigil { color: #e58a74; }
+#sf_game[data-ui-theme='walnut'] .sf_party_choice[data-companion='horus'] .sf_party_sigil { color: #9db5ee; }
+#sf_game .sf_party_name { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+#sf_game .sf_party_name b { font-size: 15px; }
+#sf_game .sf_party_look { min-height: 28px; padding: 2px 8px; font-size: 11px; }
+#sf_game[data-ui-theme] .sf_party_look { min-height: 28px; border-width: 5px; padding: 0 6px; font-size: 11px; }

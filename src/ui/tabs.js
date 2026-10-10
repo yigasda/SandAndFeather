@@ -12,7 +12,8 @@ import { festivalLine } from '../packs/life/festival.js';
 import { bar, list, para, stack } from './kit.js';
 import { codexCard } from './codexcard.js';
 import { showEvent } from './talk.js';
-import { portrait, characterDetail, CHARACTER_NAMES } from './portraits.js';
+import { portrait, characterDetail } from './portraits.js';
+import { FEATHER } from './icon.js';
 
 export function somangCard(ui, onClose) {
     const s = getState();
@@ -20,7 +21,7 @@ export function somangCard(ui, onClose) {
     const r = rankInfo(s.stats.xp);
     const opens = { wisdom: '기록 해독, 강 건너 비문', strength: '두아트에서 버티는 체력, 공격', faith: '두아트의 주문' };
     const hero = document.createElement('div'); hero.className = 'sf_character_summary';
-    hero.append(portrait('somang',{head:true}),stack(para('소망','sf_character_name'),para(`모험 등급 ${r.rank}`),
+    hero.append(portrait('somang'),stack(para('소망','sf_character_name'),para(`모험 등급 ${r.rank}`),
         ...Object.entries(STATS).map(([k,ko])=>para(`${ko} ${s.stats[k]}`,'sf_character_stat'))));
     close = ui.showCard({ title: '소망', onClose, kind:'character-stats', wide:true,
         body: stack(
@@ -40,37 +41,55 @@ export function somangCard(ui, onClose) {
         buttons: [{ label: '도감', onClick: () => { codexCard(ui, onClose); } }, { label: '닫기', primary: true }] });
 }
 
+// 파티: who walks with her now, then one card each for 혼자 / 세트 / 호루스 — the name, what walking together
+// does, 고르기. A god's card has his mark and 인물 보기, which opens his picture large.
+const SIGIL = {
+    '': FEATHER,
+    // was-scepter: Set-animal head on a staff, forked foot
+    set: '<svg class="sf_sigil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v12.5"/><path d="M12 8c0-1.7.9-2.8 2.4-3.4l4.4-1.3-1.5 2.6-3 .9"/><path d="M13.3 4.8l-.7-2.6M14.9 4.2V1.8"/><path d="M12 20.5l-2.2 2M12 20.5l2.2 2"/></svg>',
+    // wedjat: the eye of Horus
+    horus: '<svg class="sf_sigil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11c3-3.5 6.5-4.5 9-4.5s5.5 1 8.5 4.5c-3 2.6-6 3.5-8.5 3.5S6 13.6 3 11z"/><circle cx="12" cy="10.8" r="2.1" fill="currentColor"/><path d="M4 6.6c3-2.2 6-3 8.5-3s5.5.8 7.5 2.4"/><path d="M10.6 14.4 9.2 20"/><path d="M13.6 14.2c1 2.2 2.6 3.6 4.6 3.6 1.4 0 2.2-.9 2-1.9-.2-1-1.3-1.2-1.9-.6"/></svg>',
+};
 export function partyCard(ui, onClose) {
     const s = getState();
     const C = DATA.duat?.companions || {};
-    const choices = stack(); let changing = false;
-    const redrawChoices = () => choices.replaceChildren(list([['', { ko: '혼자', about: '조용히 다니기' }], ...Object.entries(C)].map(([id,c]) => ({
-        icon:s.party.with===id?'✔':'', name:c.ko, sub:c.about,
-        buttons:[{label:s.party.with===id?'함께하는 중':'고르기',primary:s.party.with===id,disabled:changing||s.party.with===id,onClick:()=>set(id)}]
-    }))));
-    const set = async id => {
-        if(changing)return; changing=true; s.party.with=id; redrawChoices();
-        for(const card of gallery.children) {
-            const who=card.dataset.character;card.classList.toggle('sf_selected',who===id);
-            card.querySelector('.sf_party_caption').textContent=who==='somang'?'모험가':who===id?'함께하는 중':'전신 보기';
-        }
-        try { await saveState(); emit('world:changed', {map:s.pos.map}); }
-        finally { changing=false; redrawChoices(); }
+    const options = [['', { ko: '혼자', about: '조용히 다니기. 어디든 소망 혼자 걸어.' }], ...Object.entries(C)];
+    const now = para('', 'sf_party_now');
+    const box = document.createElement('div'); box.className = 'sf_party_choices';
+    let changing = false;
+    const draw = () => {
+        now.textContent = `현재 동행: ${options.find(([id]) => id === s.party.with)?.[1].ko || '혼자'}`;
+        box.replaceChildren(...options.map(([id, c]) => {
+            const on = s.party.with === id;
+            const row = document.createElement('div');
+            row.className = `sf_list_row sf_party_choice${on ? ' sf_on' : ''}`;
+            row.dataset.companion = id || 'alone';
+            row.innerHTML = `<span class="sf_list_icon sf_party_sigil">${SIGIL[id] || ''}</span><span class="sf_list_main"><span class="sf_party_name"><b></b></span><small></small></span><span class="sf_list_btns"></span>`;
+            row.querySelector('b').textContent = c.ko;
+            row.querySelector('small').textContent = c.about;
+            if (id) {
+                const look = document.createElement('button');
+                look.type = 'button'; look.className = 'sf_btn sf_small sf_party_look'; look.textContent = '인물 보기';
+                look.dataset.character = id; look.setAttribute('aria-label', `${c.ko} 인물 보기`);
+                look.addEventListener('click', () => characterDetail(ui, id));
+                row.querySelector('.sf_party_name').append(look);
+            }
+            const pick = document.createElement('button');
+            pick.type = 'button'; pick.className = `sf_btn sf_small${on ? ' sf_primary' : ''}`;
+            pick.textContent = on ? '함께하는 중' : '고르기'; pick.disabled = changing || on;
+            pick.addEventListener('click', () => choose(id));
+            row.querySelector('.sf_list_btns').append(pick);
+            return row;
+        }));
     };
-    const gallery = document.createElement('div'); gallery.className='sf_party_gallery';
-    for(const id of ['somang','set','horus']) {
-        const card=document.createElement('button');card.type='button';card.className='sf_party_portrait';
-        card.dataset.character=id;card.setAttribute('aria-label',`${CHARACTER_NAMES[id]} 전신 보기`);
-        card.classList.toggle('sf_selected',id===s.party.with);
-        card.append(para(CHARACTER_NAMES[id],'sf_character_name'),portrait(id,{head:true}),
-            para(id==='somang'?'모험가':s.party.with===id?'함께하는 중':'전신 보기','sf_party_caption'));
-        card.addEventListener('click',()=>characterDetail(ui,id));gallery.append(card);
-    }
-    redrawChoices();
-    ui.showCard({ title: '파티', onClose, kind:'party', wide:true,
-        body: stack(para('함께 걸으면 혼자는 못 보는 것이 보여. 세트는 모래 밑을, 호루스는 높은 곳을 봐. 두아트에도 기본으로 같이 가.'),
-            gallery,
-            choices) });
+    const choose = async id => {
+        if (changing) return; changing = true; s.party.with = id; draw();
+        try { await saveState(); emit('world:changed', { map: s.pos.map }); }
+        finally { changing = false; draw(); }
+    };
+    draw();
+    ui.showCard({ title: '파티', onClose, kind: 'party', wide: true,
+        body: stack(now, para('함께 걸으면 혼자는 못 보는 것이 보여. 두아트에도 기본으로 같이 가.'), box) });
 }
 
 export function questsCard(ui, onClose) {

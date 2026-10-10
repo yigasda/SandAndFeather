@@ -1,17 +1,16 @@
-// Pictures of the trio for the party and Somang cards.
+// Pictures of the trio: the approved standing sprites, large.
 import { stack } from './kit.js';
 
 const base = new URL('../../data/art/portraits/', import.meta.url);
 export const CHARACTER_NAMES = {somang:'소망', set:'세트', horus:'호루스'};
 
-// The user's character illustrations, cut out from their plain ground (tools/art/cut-illust-portraits.py):
-// head and shoulders for the party and Somang cards, the whole picture when a party card is opened.
-export function portrait(id, {head = false} = {}) {
+// The approved standing sprite (front), shown large from 인물 보기 and on the Somang card.
+export function portrait(id) {
     const box = document.createElement('figure');
-    box.className = `sf_portrait ${head ? 'sf_portrait_head' : 'sf_portrait_full'}`;
+    box.className = 'sf_portrait sf_portrait_full';
     const image = document.createElement('img');
-    image.src = new URL(`${id}-illust${head ? '-head' : ''}.png`, base).href;
-    image.alt = `${CHARACTER_NAMES[id] || id} ${head ? '상반신' : '전신'}`;
+    image.src = new URL(`${id}-idle-full.png`, base).href;
+    image.alt = `${CHARACTER_NAMES[id] || id} 전신`;
     image.decoding = 'async';
     box.append(image);
     return box;
