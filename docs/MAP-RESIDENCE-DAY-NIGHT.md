@@ -2,7 +2,18 @@
 
 2026-10-10. 사용자의 식사방 창밖·세트 동물·부엌 수정 요청과 빠진 낮밤 버전을 반영했다. 새 8장은 검토용 결과이며 아직 사용자 승인 전이다. 이번 변경은 아트와 문서만이고 실제 게임 연결은 하지 않았다. 이전 PNG·모바일 파일과 기존 게임을 모두 보존했다.
 
-## 새 결과 8장
+## 최신 성소 v3 — 둥근 코 제거
+
+사용자는 앞선 수정본을 긍정적으로 평가하고 세트 동물 주둥이 끝의 동그란 코만 없애 달라고 요청했다. **성소는 v3을 낮밤 공통으로 사용한다.** 짧은 주둥이 끝까지 같은 석재 면이 매끈하게 이어지며, 별도로 튀어나온 둥근 코와 원형 경계를 제거했다. 귀·꼬리·제단과 성소 구성은 유지하는 국소 보정이다. v3은 새 검토용이며 v2도 이력으로 보존한다.
+
+- [최신 PNG](art/map-expansion/set-sanctuary-v3-smooth-muzzle.png)
+- [Drive 전체 모바일](https://drive.google.com/file/d/14IqnaCh3fenxb8g08dUo4G_o8KkBQYN1/view?usp=drivesdk)
+- [Drive 주둥이 확대](https://drive.google.com/file/d/1Tvhl6w2IM_W6Lnoqz9NXSz66_ctGF4zd/view?usp=drivesdk)
+- [Drive 원본](https://drive.google.com/file/d/1ynlhPTJa8rdetxR3ZiBmRgCJktYocgw7/view?usp=drivesdk)
+
+PNG 1774×887, 모바일 1200×600. 확대본은 확인용 크롭이며 게임 배경으로 사용하지 않는다. 전체와 확대 크롭을 한 장씩 확인했다. 기존 파일 및 게임 코드는 보존했다.
+
+## 앞선 결과 8장
 
 | 장면 | 저장소 PNG | Drive 모바일 | Drive 원본 |
 | --- | --- | --- | --- |
@@ -45,7 +56,7 @@
 
 | 공간 | 낮밤 공통 원본 |
 | --- | --- |
-| 성소 | [set-sanctuary-v2-round-muzzle.png](art/map-expansion/set-sanctuary-v2-round-muzzle.png) |
+| 성소 | [set-sanctuary-v3-smooth-muzzle.png](art/map-expansion/set-sanctuary-v3-smooth-muzzle.png) |
 | 안쪽 복도 | [inner-corridor-wide-v1.png](art/map-expansion/inner-corridor-wide-v1.png) |
 | 긴 방문 입구 회랑 | [room-entrances-wide-v1.png](art/map-expansion/room-entrances-wide-v1.png) |
 | 동쪽 회랑 | [east-gallery-v1.png](art/map-expansion/east-gallery-v1.png) |
@@ -54,7 +65,7 @@
 
 ## 오푸스 적용 시 유의점
 
-1. 부엌은 v1 대신 **v2 낮/밤 모두 함께** 연결한다. v1 낮과 v2 밤을 섞으면 앞쪽 조리대와 벽이 갑자기 생기거나 사라진다. 식사방도 v2 쌍, 성소는 v2 공통을 사용한다.
+1. 부엌은 v1 대신 **v2 낮/밤 모두 함께** 연결한다. v1 낮과 v2 밤을 섞으면 앞쪽 조리대와 벽이 갑자기 생기거나 사라진다. 식사방도 v2 쌍, 성소는 최신 v3 공통을 사용한다.
 2. 기존 부엌 충돌 데이터가 있다면 새 앞쪽 조리대·대야·기둥·낮은 난간에 맞춰 다시 대조한다. 열린 하늘은 이동 출구가 아니다. 난간과 물 대야 내부로 캐릭터가 들어가지 않게 한다. 출입구는 기존 하단 중앙이다.
 3. 같은 장면의 시간대 변형은 동일 카메라 배율·충돌·상호작용·출입 좌표를 공유하는 방향으로 연결한다. 이미지 생성만으로 픽셀 단위 정합을 보장하지 않는다. 실제로 겹쳐 비교하고 가구 경계 이동이 있으면 아트 보정이 필요하다.
 4. 날짜/시간 상태에 맞는 배경을 선택하되 배경 전환 자체로 날짜·태양 기운·캐릭터 위치·동행 상태를 바꾸지 않는다. 밤 이미지에 전역 어둠 필터를 겹쳐 과도하게 어둡게 하지 않는다.
