@@ -55,3 +55,12 @@
 
 - [86번 호루스 정면 걷기 수정 GIF](https://drive.google.com/file/d/1li_2WBGFgb5651F3HX35qmRJ8IsJTCsn/view)
 - [87번 셋소호 전체 걷기 수정 GIF](https://drive.google.com/file/d/1RlPb8FoY04GPZu-1S1v1xMbXDbM_PjDN/view)
+
+## 걷기 v3 — 호루스 정면에 작은 흔들림 복원
+
+사용자가 v2는 머리가 너무 똑같아 고정된 느낌이라고 지적하고, 세트·소망처럼 조금 흔들리는 움직임을 요청했다. `walk-v3-horus-soft-motion`은 정면 시선을 유지하면서 걸음에 따른 작은 머리 기울기와 높이 변화를 생성 편집한 후속 시안이다. 공통 배율·공통 세로 자르기 영역을 사용해 작은 상하 차이를 지우지 않았다. 기울기와 높이는 생성된 시각적 결과이며 정확한 각도/이동량을 보장하는 수치 편집은 아니다.
+
+호루스 정면 세 프레임만 교체했고 세트·소망 및 호루스 나머지 방향 33개 프레임의 픽셀 동일성을 검증했다. v2도 보존한다. 재현: `python scripts/art/compose-horus-walk-front-v3.py`. 아직 사용자 검토 전이며 게임 적용 없음.
+
+- [88번 호루스 정면 작은 흔들림 GIF](https://drive.google.com/file/d/1k7-QOCPvN8LDS_BxWp6KrlixxVSYCY9U/view)
+- [89번 셋소호 전체 걷기 GIF](https://drive.google.com/file/d/1S2Hp-LB5uRaoMvMIDkXGyBg7EImG2sYS/view)
