@@ -1646,3 +1646,10 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme='walnut'] .sf_gallery_dot { border-color: #d9b27a; }
 #sf_game[data-ui-theme='walnut'] .sf_gallery_dot[aria-current='true'] { background: #e7c485; border-color: #e7c485; }
 #sf_game .sf_character_detail .sf_gallery .sf_portrait_full { height: min(58dvh, 560px); }
+
+/* A long card: the frame and the title stay put, only the inside scrolls (the frame used to scroll off with the list). */
+:is(#sf_game, #sf_pick) .sf_pop { overflow: hidden; }
+:is(#sf_game, #sf_pick) .sf_pop_scroll {
+    flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: inherit;
+    overscroll-behavior: contain; touch-action: pan-y; scrollbar-color: inherit; scrollbar-width: inherit;
+}

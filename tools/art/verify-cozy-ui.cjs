@@ -50,7 +50,7 @@ const x=scrollBox.x+scrollBox.width/2,y=Math.min(620,scrollBox.y+scrollBox.heigh
 await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
 for(let i=1;i<=10;i++){await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:y-i*23}]});await p.waitForTimeout(20);}
 await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await p.waitForTimeout(150);
-assert(await last().locator('.sf_pop').evaluate(el=>el.scrollTop>50));await close();passed.push('mobile finger swipe scrolls the character screen');
+assert(await last().locator('.sf_pop_scroll').evaluate(el=>el.scrollTop>50));await close();passed.push('mobile finger swipe scrolls the character screen');
 for(const size of [{width:320,height:740},{width:360,height:800},{width:740,height:420},{width:1280,height:900}]){
  await p.setViewportSize(size);await p.waitForTimeout(150);
  for(const tab of ['party','somang','quests','map']){await p.locator(`[data-tab="${tab}"]`).click();await images();await bounds();if(size.width===1280&&tab==='party')await capture('08-party-desktop');await close();}
