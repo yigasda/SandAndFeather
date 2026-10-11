@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/interaction-horus-v176/sources/horus-left-0-input.png",
+ "view": "left",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "horus": {
+   "scale": 0.9425,
+   "match": 0.61,
+   "shift": [
+    110,
+    98
+   ],
+   "feetOffsetPx": -13,
+   "heightRatio": 0.982,
+   "heightFit": {
+    "scale": 0.959,
+    "headScaleVsIdle": 1.018,
+    "shift": [
+     106,
+     101
+    ],
+    "headTopOffsetPx": -306
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 -13px (-2.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

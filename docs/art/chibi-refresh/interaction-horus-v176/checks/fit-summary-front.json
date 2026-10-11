@@ -1,0 +1,50 @@
+[
+  [
+    "front",
+    0,
+    {
+      "scale": 0.9725,
+      "match": 0.521,
+      "shift": [
+        112,
+        82
+      ],
+      "feetOffsetPx": -21,
+      "heightRatio": 0.974,
+      "heightFit": {
+        "scale": 0.9983,
+        "headScaleVsIdle": 1.026,
+        "shift": [
+          107,
+          88
+        ],
+        "headTopOffsetPx": -12
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -21px (-3.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  ],
+  [
+    "front",
+    1,
+    {
+      "scale": 0.9775,
+      "match": 0.531,
+      "shift": [
+        112,
+        81
+      ],
+      "feetOffsetPx": -19,
+      "heightRatio": 0.979,
+      "heightFit": {
+        "scale": 0.9983,
+        "headScaleVsIdle": 1.021,
+        "shift": [
+          108,
+          88
+        ],
+        "headTopOffsetPx": -12
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -19px (-3.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  ]
+]

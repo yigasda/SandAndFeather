@@ -1,0 +1,54 @@
+{
+  "back": {
+    "idle": {
+      "whiteKiltMedianRGB": [
+        250,
+        238,
+        223
+      ],
+      "pixels": 5142
+    },
+    "0": {
+      "whiteKiltMedianRGB": [
+        250,
+        240,
+        226
+      ],
+      "pixels": 5151
+    },
+    "1": {
+      "whiteKiltMedianRGB": [
+        250,
+        240,
+        226
+      ],
+      "pixels": 5147
+    }
+  },
+  "right": {
+    "idle": {
+      "whiteKiltMedianRGB": [
+        250,
+        238,
+        223
+      ],
+      "pixels": 4912
+    },
+    "0": {
+      "whiteKiltMedianRGB": [
+        250,
+        241,
+        229
+      ],
+      "pixels": 4895
+    },
+    "1": {
+      "whiteKiltMedianRGB": [
+        250,
+        244,
+        233
+      ],
+      "pixels": 4861
+    }
+  }
+}

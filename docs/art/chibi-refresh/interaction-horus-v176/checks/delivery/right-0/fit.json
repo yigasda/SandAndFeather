@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-right-0.png",
+ "view": "right",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "horus": {
+   "scale": 0.9975,
+   "match": 0.645,
+   "shift": [
+    109,
+    100
+   ],
+   "feetOffsetPx": 7,
+   "heightRatio": 1.014,
+   "heightFit": {
+    "scale": 0.9842,
+    "headScaleVsIdle": 0.987,
+    "shift": [
+     112,
+     101
+    ],
+    "headTopOffsetPx": 2
+   },
+   "verdict": "맞음 (발 +7px 보정)"
+  }
+ }
+}
