@@ -70,6 +70,8 @@ def main():
     rgb, b = ch.load(o.idle)
     e, top, H = ch.eyes(rgb, b)
     hair, tf = ch.place(g['sil'], g['eyes'], e, b.shape)
+    head, _ = ch.place(g['head'], g['eyes'], e, b.shape)
+    Image.fromarray((head * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-front-head-mask.png'))
     Image.fromarray((body * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-front-body-mask.png'))
     Image.fromarray((hair * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-front-hair-mask.png'))
     Image.fromarray(new).save(os.path.join(OUT, 'idle-front-shape-preview.png'))
@@ -84,7 +86,8 @@ def main():
             big[ch.grow(ch.edge(mb), 1)] = col
         return Image.fromarray(big[(I["top"] - 12) * k:(I["sole"] + 6) * k, 50 * k:310 * k])
     red = (230, 0, 0)
-    tiles = [tile(walk, []), tile(idle, [(body, red), (hair, red)]), tile(new, [(body, red), (hair, red)])]
+    # the body from the target, the head (ears included) and hair from the user's drawing
+    tiles = [tile(walk, []), tile(idle, [(body & ~head | head, red), (hair, red)]), tile(new, [(body & ~head | head, red), (hair, red)])]
     heads = ['채택 걷기 정면 1 (비율 기준)', '지금 정지 정면(156) + 빨간 목표선', '목표 모양 미리보기 (기계로 자르고 늘린 것, 그림 아님)']
     tw, th = tiles[0].size
     sheet = Image.new('RGB', (tw * 3, th + 30), (250, 248, 244))

@@ -160,6 +160,28 @@ def dist_to(mask_edge, pts):
     return out
 
 
+def head_mask(rgb, body, e):
+    # the whole head as drawn: hair, ears and face down to the gold collar, with the paper gaps the user left between
+    # hair and ears (they show as notches in the outline)
+    h, s, v = hsv(rgb)
+    gold = (h > 0.08) & (h < 0.15) & (s > 0.45) & (v > 0.35) & body
+    eye_y = max(e[0][1], e[1][1]); eye_d = abs(e[1][0] - e[0][0])
+    collar = rgb.shape[0]
+    for y in range(int(eye_y + 0.4 * eye_d), rgb.shape[0]):
+        if gold[y].sum() > 0.3 * eye_d: collar = y; break
+    rows = np.arange(rgb.shape[0])[:, None]
+    head = components(shrink(grow(body & (rows < collar), 1), 1))[0]
+    m = np.zeros_like(body); m[head[:, 0], head[:, 1]] = True
+    # pale highlights on the face read like paper; only paper that reaches the outside counts as a gap
+    outside = ~m
+    reach = np.zeros_like(m); reach[0] = outside[0]; reach[-1] = outside[-1]; reach[:, 0] = outside[:, 0]; reach[:, -1] = outside[:, -1]
+    while True:
+        nxt = reach | (grow(reach, 1) & outside)
+        if nxt.sum() == reach.sum(): break
+        reach = nxt
+    return ~reach
+
+
 GUIDE_CACHE = {}
 
 
@@ -174,7 +196,8 @@ def guide():
         k = max(2, int(round(0.03 * abs(e[1][0] - e[0][0]))))
         outer = edge(sil) & grow(~body, k)
         hairline = edge(blue) & grow(skin & ~sil, k + 1)
-        GUIDE_CACHE.update(rgb=rgb, body=body, sil=sil, blue=blue, eyes=e, outer=outer, hairline=hairline)
+        GUIDE_CACHE.update(rgb=rgb, body=body, sil=sil, blue=blue, eyes=e, outer=outer, hairline=hairline,
+                           head=head_mask(rgb, body, e))
     return GUIDE_CACHE
 
 
@@ -255,7 +278,9 @@ def targets():
         e, top, H = eyes(rgb, body)
         target, tf = place(g['sil'], g['eyes'], e, body.shape)
         tblue, _ = place(g['blue'], g['eyes'], e, body.shape)
+        thead, _ = place(g['head'], g['eyes'], e, body.shape)
         Image.fromarray((target * 255).astype(np.uint8)).save(os.path.join(out, f'{name}-hair-mask.png'))
+        Image.fromarray((thead * 255).astype(np.uint8)).save(os.path.join(out, f'{name}-head-mask.png'))
         Image.fromarray((tblue * 255).astype(np.uint8)).save(os.path.join(out, f'{name}-hair-blue-mask.png'))
         mid = ((e[0][0] + e[1][0]) / 2, (e[0][1] + e[1][1]) / 2)
         rows.append((name, mid, np.hypot(e[1][0] - e[0][0], e[1][1] - e[0][1]), tf, os.path.relpath(p, ROOT)))
@@ -270,7 +295,8 @@ def targets():
         xs = np.nonzero(body[y0:y1].any(0))[0]; x0, x1 = int(max(0, xs.min() - 8)), int(min(body.shape[1], xs.max() + 9))
         k = 3
         big = lambda a: np.kron(a[y0:y1, x0:x1], np.ones((k, k), bool)) if a.dtype == bool else np.asarray(Image.fromarray(a[y0:y1, x0:x1]).resize(((x1 - x0) * k, (y1 - y0) * k), Image.NEAREST))
-        line = edge(big(target)); line = grow(line, 1)
+        # the hair (its edge against face and ears too) and the whole head's outline, ears included
+        line = grow(edge(big(target)) | edge(big(thead)), 1)
         a = big(user).copy(); a[line] = (230, 0, 0)
         b = big(pic).copy(); b[line] = (230, 0, 0)
         tiles.append((Image.fromarray(a), Image.fromarray(b)))
