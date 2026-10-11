@@ -1653,3 +1653,6 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
     flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: inherit;
     overscroll-behavior: contain; touch-action: pan-y; scrollbar-color: inherit; scrollbar-width: inherit;
 }
+/* 일행: who walks in front */
+#sf_game .sf_party_lead { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+#sf_game .sf_party_lead .sf_sub_head { flex: 1 0 100%; margin: 0; }

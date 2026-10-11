@@ -1,4 +1,4 @@
-// The tabs under the map: 소망 (abilities and 모험 등급), 파티 (who walks with her), 임무 (today's commissions,
+// The tabs under the map: 일행 (who walks with her, who walks in front, and her abilities and 모험 등급), 임무 (today's commissions,
 // the small adventure's next step, and the journal of things she can bring up in the chat).
 
 import { emit } from '../core/bus.js';
@@ -41,8 +41,9 @@ export function somangCard(ui, onClose) {
         buttons: [{ label: '도감', onClick: () => { codexCard(ui, onClose); } }, { label: '닫기', primary: true }] });
 }
 
-// 파티: who walks with her now, then one card each for 혼자 / 세트 / 호루스 — the name, what walking together
-// does, 고르기. A god's card has his mark and 인물 보기, which opens his picture large.
+// 일행: Somang (her rank and abilities, 자세히 for the full card), who walks in front, then one card each for
+// 혼자 / 세트 / 호루스 — the name, what walking together does, 고르기. A god's card has his mark and 인물 보기.
+// Whoever is in front is the one moved on the map; the other follows. Somang stays the one who grows.
 const SIGIL = {
     '': FEATHER,
     // was-scepter: Set-animal head on a staff, forked foot
@@ -50,15 +51,39 @@ const SIGIL = {
     // wedjat: the eye of Horus
     horus: '<svg class="sf_sigil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11c3-3.5 6.5-4.5 9-4.5s5.5 1 8.5 4.5c-3 2.6-6 3.5-8.5 3.5S6 13.6 3 11z"/><circle cx="12" cy="10.8" r="2.1" fill="currentColor"/><path d="M4 6.6c3-2.2 6-3 8.5-3s5.5.8 7.5 2.4"/><path d="M10.6 14.4 9.2 20"/><path d="M13.6 14.2c1 2.2 2.6 3.6 4.6 3.6 1.4 0 2.2-.9 2-1.9-.2-1-1.3-1.2-1.9-.6"/></svg>',
 };
+// who walks in front: Somang, or the companion when one is chosen and put in front
+export const leadOf = s => (s?.party.lead && s.party.lead === s.party.with ? s.party.lead : 'somang');
+
 export function partyCard(ui, onClose) {
     const s = getState();
     const C = DATA.duat?.companions || {};
     const options = [['', { ko: '혼자', about: '조용히 다니기. 어디든 소망 혼자 걸어.' }], ...Object.entries(C)];
     const now = para('', 'sf_party_now');
+    const lead = document.createElement('div'); lead.className = 'sf_party_lead';
     const box = document.createElement('div'); box.className = 'sf_party_choices';
     let changing = false;
+    // Somang: who she is now, and her full card
+    const r = rankInfo(s.stats.xp);
+    const hero = document.createElement('div'); hero.className = 'sf_character_summary';
+    const more = document.createElement('button'); more.type = 'button'; more.className = 'sf_btn sf_small'; more.textContent = '소망 자세히';
+    more.addEventListener('click', () => somangCard(ui, null)); // on top of 일행; closing it shows 일행 again
+    hero.append(portrait('somang'), stack(para('소망', 'sf_character_name'), para(`모험 등급 ${r.rank}`),
+        ...Object.entries(STATS).map(([k, ko]) => para(`${ko} ${s.stats[k]}`, 'sf_character_stat')), more));
     const draw = () => {
-        now.textContent = `현재 동행: ${options.find(([id]) => id === s.party.with)?.[1].ko || '혼자'}`;
+        const w = s.party.with, inFront = leadOf(s);
+        now.textContent = `현재 동행: ${options.find(([id]) => id === w)?.[1].ko || '혼자'} · 앞장: ${inFront === 'somang' ? '소망' : C[inFront]?.ko || inFront}`;
+        lead.replaceChildren();
+        if (w) {
+            lead.append(para('누가 앞장설까? 앞장선 사람을 움직이고, 나머지는 뒤따라와.', 'sf_sub_head'));
+            for (const [id, ko] of [['somang', '소망'], [w, C[w]?.ko || w]]) {
+                const b = document.createElement('button'); b.type = 'button';
+                b.className = `sf_btn sf_small sf_lead_pick${inFront === id ? ' sf_primary' : ''}`;
+                b.dataset.lead = id; b.textContent = inFront === id ? `${ko} 앞장 중` : `${ko} 앞장`;
+                b.disabled = changing || inFront === id;
+                b.addEventListener('click', () => setLead(id));
+                lead.append(b);
+            }
+        }
         box.replaceChildren(...options.map(([id, c]) => {
             const on = s.party.with === id;
             const row = document.createElement('div');
@@ -82,14 +107,17 @@ export function partyCard(ui, onClose) {
             return row;
         }));
     };
-    const choose = async id => {
-        if (changing) return; changing = true; s.party.with = id; draw();
+    const commit = async () => {
+        changing = true; draw();
         try { await saveState(); emit('world:changed', { map: s.pos.map }); }
         finally { changing = false; draw(); }
     };
+    // a new companion walks behind her; whoever led before steps back
+    const choose = async id => { if (changing) return; s.party.with = id; s.party.lead = 'somang'; await commit(); };
+    const setLead = async id => { if (changing) return; s.party.lead = id; await commit(); };
     draw();
-    ui.showCard({ title: '파티', onClose, kind: 'party', wide: true,
-        body: stack(now, para('함께 걸으면 혼자는 못 보는 것이 보여. 두아트에도 기본으로 같이 가.'), box) });
+    ui.showCard({ title: '일행', onClose, kind: 'party', wide: true,
+        body: stack(hero, now, lead, para('함께 걸으면 혼자는 못 보는 것이 보여. 두아트에도 기본으로 같이 가. 성장은 소망이 해.'), box) });
 }
 
 export function questsCard(ui, onClose) {

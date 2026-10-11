@@ -34,7 +34,7 @@ await p.setViewportSize(size);
 const overlap=await p.evaluate(()=>{const a=document.querySelector('.sf_appearance').getBoundingClientRect(),b=document.querySelector('.sf_chips').getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;});assert(!overlap,`${id} ${size.width} HUD`);
 if(size.width===412)await shot(`${i+1}-${id}-world`);
 // Verify every approved glyph in its live selected and inactive menu states.
-for(const tab of ['world','somang','party','quests','map']){
+for(const tab of ['world','party','quests','map']){
  await p.locator(`.sf_tab[data-tab="${tab}"]`).click();await bounds();
  assert.equal(await p.locator('.sf_tabs .sf_on').getAttribute('data-tab'),tab);
  const glyphs=await p.locator('.sf_tab i').evaluateAll(async els=>{
@@ -45,9 +45,9 @@ for(const tab of ['world','somang','party','quests','map']){
    return{url,width:img.naturalWidth,height:img.naturalHeight,inside:a.left>=b.left&&a.right<=b.right&&a.top>=b.top&&a.bottom<=b.bottom};
   }));
  });
- assert.equal(glyphs.length,5);
+ assert.equal(glyphs.length,4);
  for(const [j,g]of glyphs.entries()){
-  assert(g.url.includes(`/menu-icons/${id}/${['world','somang','party','quests','map'][j]}.png`),g.url);
+  assert(g.url.includes(`/menu-icons/${id}/${['world','party','quests','map'][j]}.png`),g.url);
   assert(g.width===48&&g.height===48&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong icon`);
  }
  if(size.width===412)await p.locator('.sf_tabs').screenshot({path:path.join(out,`${i+1}-${id}-menu-${tab}.png`)});

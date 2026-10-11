@@ -35,25 +35,28 @@ await p.locator('.sf_inventory_slot[aria-pressed="true"]').click();assert((await
 await p.locator('[data-tab="party"]').click();await capture('03-party-mobile');await bounds();
 assert((await last().locator('.sf_party_now').innerText()).includes('현재 동행'));for(const id of ['set','horus']){await p.locator(`[data-character="${id}"]`).click();await images();assert.equal(await last().locator('.sf_portrait_full').count(),1);assert.equal(await last().locator('.sf_gallery_dot').count(),3);await bounds();if(id==='set')await capture('04-set-full');await close();}
 const setRow=last().locator('.sf_list_row').filter({has:p.locator('b',{hasText:/^세트$/})});await setRow.getByRole('button',{name:'고르기'}).click();
-assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.with),'set');await close();passed.push('party shows 현재 동행, 인물 보기 opens a three-picture gallery; companion selection still works');
-await p.locator('[data-tab="somang"]').click();await images();assert((await last().locator('.sf_portrait img').getAttribute('src')).includes('somang-idle-full'));
-await capture('05-somang-character');await bounds();await close();passed.push('Somang character screen retains stats/lessons and shows her standing sprite');
+assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.with),'set');
+await last().locator('[data-lead="set"]').click();await p.waitForTimeout(100);assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.lead),'set');
+await last().locator('[data-lead="somang"]').click();await p.waitForTimeout(100);assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.lead),'somang');
+await close();passed.push('일행 shows 현재 동행, 인물 보기 opens a three-picture gallery; companion and 앞장 selection work');
+await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();assert((await last().locator('.sf_portrait img').getAttribute('src')).includes('somang-idle-full'));
+await capture('05-somang-character');await bounds();await close();await close();passed.push('Somang character screen retains stats/lessons and shows her standing sprite');
 await p.evaluate(async()=>{cozyTest.state.getState().party.with='';await cozyTest.win.travel('ombos',{x:24,y:13});});
 await p.waitForTimeout(150);await p.locator('.sf_talk').click();assert.equal(await last().getAttribute('data-kind'),'conversation');await images();await capture('06-conversation-calm');
 assert.equal(await last().locator('.sf_portrait').count(),0);assert.equal(await last().getByRole('button',{name:'활짝 웃기',exact:true}).count(),0);
 assert.equal(await p.evaluate(()=>document.querySelector('#send_textarea').value),await p.evaluate(()=>cozyTest.text));passed.push('conversation card has no portraits or expression buttons and sends no chat');await close();
 await p.evaluate(()=>cozyTest.win.travel('ombos',{x:28,y:13}));await p.waitForTimeout(150);await p.locator('.sf_talk').click();await images();
 assert.equal(await last().locator('.sf_portrait').count(),0);await capture('11-horus-conversation');await close();
-await p.setViewportSize({width:320,height:740});await p.locator('[data-tab="somang"]').click();await images();
+await p.setViewportSize({width:320,height:740});await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();
 const scrollBox=await last().locator('.sf_pop').boundingBox(),cdp=await p.context().newCDPSession(p);
 const x=scrollBox.x+scrollBox.width/2,y=Math.min(620,scrollBox.y+scrollBox.height-70);
 await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
 for(let i=1;i<=10;i++){await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:y-i*23}]});await p.waitForTimeout(20);}
 await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await p.waitForTimeout(150);
-assert(await last().locator('.sf_pop_scroll').evaluate(el=>el.scrollTop>50));await close();passed.push('mobile finger swipe scrolls the character screen');
+assert(await last().locator('.sf_pop_scroll').evaluate(el=>el.scrollTop>50));await close();await close();passed.push('mobile finger swipe scrolls the character screen');
 for(const size of [{width:320,height:740},{width:360,height:800},{width:740,height:420},{width:1280,height:900}]){
  await p.setViewportSize(size);await p.waitForTimeout(150);
- for(const tab of ['party','somang','quests','map']){await p.locator(`[data-tab="${tab}"]`).click();await images();await bounds();if(size.width===1280&&tab==='party')await capture('08-party-desktop');await close();}
+ for(const tab of ['party','quests','map']){await p.locator(`[data-tab="${tab}"]`).click();await images();await bounds();if(size.width===1280&&tab==='party')await capture('08-party-desktop');await close();}
  await p.locator('.sf_bag').click();await images();await bounds();await close();
 }
 passed.push('320/360 mobile, landscape, desktop: all tabs and bag stay within screen with scrolling');

@@ -193,7 +193,7 @@ export class Renderer {
         }
         // things lying on the ground first, then people and standing things back to front
         if (!fullScene) for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
-        const ppl = [...people, { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0, moving: player.moving, walkT: player.walkT,
+        const ppl = [...people, { look: player.look || 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0, moving: player.moving, walkT: player.walkT,
             act: player.act && !player.moving ? { name: player.act.name, t: (performance.now() - player.act.at) / 1000 } : null },
             ...things.filter(t => !FLAT.has(t.sprite)).map(t => ({ thing: t, x: t.x, y: t.y }))];
         ppl.sort((a, b) => a.y - b.y);

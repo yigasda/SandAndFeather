@@ -21,7 +21,7 @@ export const freshState = () => ({
     recent: { finds: [] },                         // what came up lately, so it does not come up again at once
     sun: { day: -1, left: 0 },                     // sun.js: today's 태양 기운
     stats: { wisdom: 0, strength: 0, faith: 0, xp: 0 }, // progress.js: 지혜 · 체력 · 신앙, 모험 경험치
-    party: { with: '' },                           // the companion walking with her: '' | 'set' | 'horus'
+    party: { with: '', lead: 'somang' },           // the companion walking with her: '' | 'set' | 'horus'; who walks in front (she or the companion)
     garden: { plots: [] },                         // garden.js: [{ seed, day }] or null per plot
     works: {},                                     // works.js: { canal: { start, ready, done } }
     flags: {},                                     // one-time things: secrets found, overlays opened, hints read

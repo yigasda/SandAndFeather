@@ -17,7 +17,7 @@ import { buildHud, placeBubble, setTab, shortDate, todayBody, updateHud } from '
 import { FEATHER } from './icon.js';
 import { bagCard } from './items.js';
 import { personCard } from './talk.js';
-import { partyCard, questsCard, somangCard } from './tabs.js';
+import { leadOf, partyCard, questsCard } from './tabs.js';
 import { cardOpen, closeCards, showCard, toast } from './popups.js';
 import { appearanceCard } from './appearance.js';
 
@@ -251,6 +251,7 @@ function frameNow() { if (map && renderer.cv.width > 1) draw(performance.now());
 function lookAround() {
     const s = getState();
     const away = s?.party.with ? [s.party.with] : [];
+    player.look = leadOf(s);
     const things = thingsOn(map.id);
     near = map.nearest(feet().x, feet().y, things, away);
     return { s, away, things };
@@ -260,7 +261,8 @@ function draw(t) {
     const { s, away, things } = lookAround();
     // people standing about stand; the companion walks while she walks and stands when she stops
     const people = map.npcs.filter(n => !away.includes(n.id)).map(n => ({ look: n.look, x: n.x, y: n.y, dir: 'down', step: 0, moving: false }));
-    if (away.length) { const f = follower(); people.push({ look: away[0], x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT }); }
+    // whoever is not in front walks behind: the companion, or Somang when the companion leads
+    if (away.length) { const f = follower(); people.push({ look: player.look === 'somang' ? away[0] : 'somang', x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT }); }
     renderer.draw({ player, people, things, part: s?.part || 'day', time: t / 1000, near });
     placeBubble(hud, renderer, cardOpen() ? null : near);
     // ^ by the stairs (v on the roof): shown only where the stairs are, pressed to go
@@ -304,7 +306,20 @@ function talk() {
     setTimeout(() => { if (mode === 'open' && !cardOpen()) use(target); }, ACT_MS);
 }
 const ACT_MS = 260;
+// what only Somang does (her craft and her own learning): with Set or Horus in front, he hands it to her
+const HERS = new Set(['dock', 'kitchen', 'garden', 'scriptorium', 'training']);
+const LEAD_KO = { set: '세트', horus: '호루스' };
 function use(near) {
+    const s = getState();
+    if (near.kind === 'spot' && HERS.has(near.id) && leadOf(s) !== 'somang') {
+        const who = LEAD_KO[leadOf(s)];
+        showCard(root, { tag: MODE[near.mode] || '', title: near.title || near.label,
+            text: `${who}: "이건 소망이 더 잘해. 소망한테 맡기자."`,
+            buttons: [{ label: '닫기' }, { label: '소망이 앞장서기', primary: true, onClick: async () => {
+                s.party.lead = 'somang'; await saveState(); closeCards(root); use(near);
+            } }] });
+        return;
+    }
     if (near.kind === 'spot') {
         const act = spotActs.get(near.id);
         if (act) { act(near, ui, map); return; }
@@ -363,5 +378,5 @@ function pickTab(id) {
     if (id === 'world') return;
     if (id === 'map') { openMap(); return; }
     const back = () => setTab(hud, 'world');
-    ({ somang: somangCard, party: partyCard, quests: questsCard })[id]?.(ui, back);
+    ({ party: partyCard, quests: questsCard })[id]?.(ui, back);
 }

@@ -11,8 +11,7 @@ import { esc } from './popups.js';
 
 export const TABS = [
     { id: 'world', label: '세계', icon: 'fa-house' },
-    { id: 'somang', label: '소망', icon: 'fa-user' },
-    { id: 'party', label: '파티', icon: 'fa-users' },
+    { id: 'party', label: '일행', icon: 'fa-users' },
     { id: 'quests', label: '임무', icon: 'fa-scroll' },
     { id: 'map', label: '지도', icon: 'fa-map' },
 ];
