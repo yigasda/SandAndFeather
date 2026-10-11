@@ -1,0 +1,57 @@
+[
+  {
+    "variant": "set-sleep",
+    "scale": 0.05381944444444445,
+    "cell": [
+      33,
+      39
+    ],
+    "changedPixelsDelta5": 182,
+    "changedPixelsDelta20": 73,
+    "maxChannelDelta": 92
+  },
+  {
+    "variant": "somang-sleep",
+    "scale": 0.05381944444444445,
+    "cell": [
+      33,
+      39
+    ],
+    "changedPixelsDelta5": 112,
+    "changedPixelsDelta20": 39,
+    "maxChannelDelta": 83
+  },
+  {
+    "variant": "horus-sleep",
+    "scale": 0.05381944444444445,
+    "cell": [
+      33,
+      39
+    ],
+    "changedPixelsDelta5": 118,
+    "changedPixelsDelta20": 39,
+    "maxChannelDelta": 71
+  },
+  {
+    "variant": "set-sleep-side",
+    "scale": 0.05381944444444445,
+    "cell": [
+      33,
+      39
+    ],
+    "changedPixelsDelta5": 139,
+    "changedPixelsDelta20": 68,
+    "maxChannelDelta": 115
+  },
+  {
+    "variant": "horus-sleep-side",
+    "scale": 0.05381944444444445,
+    "cell": [
+      33,
+      39
+    ],
+    "changedPixelsDelta5": 94,
+    "changedPixelsDelta20": 28,
+    "maxChannelDelta": 82
+  }
+]

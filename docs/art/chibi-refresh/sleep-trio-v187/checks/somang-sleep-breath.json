@@ -1,0 +1,40 @@
+{
+  "source": "docs/art/chibi-refresh/sleep-somang-v180/png/somang-sleep-0.png",
+  "result": "docs/art/chibi-refresh/sleep-trio-v187/png/somang-sleep-1.png",
+  "config": {
+    "amplitude": 8,
+    "rise": [
+      365,
+      390
+    ],
+    "fall": [
+      440,
+      530
+    ],
+    "center": [
+      300,
+      405
+    ],
+    "slope": 0.4,
+    "head": [
+      237,
+      287,
+      136,
+      99
+    ],
+    "pillowLimit": 160
+  },
+  "changedPixels": 70236,
+  "outlineChangedPixels": 3443,
+  "changedBounds": [
+    57,
+    199,
+    484,
+    517
+  ],
+  "maxBodyRisePx": 8,
+  "maxWidthDisplacementPx": 6,
+  "pillowRegionChangedPixels": 0,
+  "feetRegionChangedPixels": 0,
+  "method": "Coherent chest+shoulders+arms+overlapping hair displacement, 8px rise and small width expansion; face/eye pattern translated1px, pillow hair and feet fixed; original source colors only."
+}

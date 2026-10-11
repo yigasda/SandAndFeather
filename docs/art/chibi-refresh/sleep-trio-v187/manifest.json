@@ -1,0 +1,267 @@
+{
+  "revision": 187,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "runtimeOwner": "opus",
+  "canvas": [
+    620,
+    720
+  ],
+  "referenceVisibleHeight": 576,
+  "frameCount": 10,
+  "newOrModifiedCount": 9,
+  "unchangedApprovedCount": 1,
+  "files": [
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "pose": "solo-bed-oblique",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          364,
+          455
+        ]
+      },
+      "pillowHeadReference": [
+        265,
+        250
+      ],
+      "sha256": "97d90e1cd7a50b08548c734929f97f04905d02178ffc167f6e283ad157cd7f14",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "pose": "solo-bed-oblique",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          364,
+          455
+        ]
+      },
+      "pillowHeadReference": [
+        265,
+        250
+      ],
+      "sha256": "e158e59715b94993318aff867739c3be24679fe06efe541ec799eac6ef1b906e",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/horus-sleep-side-0.png",
+      "character": "horus",
+      "pose": "side-facing-right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          260,
+          460
+        ]
+      },
+      "pillowHeadReference": [
+        285,
+        245
+      ],
+      "sha256": "19754d9c5406b95a37f93b4f764aa968ebfe8a4bc2008049c681a7d2fb3073a3",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/horus-sleep-side-1.png",
+      "character": "horus",
+      "pose": "side-facing-right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          260,
+          460
+        ]
+      },
+      "pillowHeadReference": [
+        285,
+        245
+      ],
+      "sha256": "08f91368f22b1dfbd847d9bf0671b3d387d7838ec6c9997a9c7189092b43e577",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "pose": "solo-bed-oblique",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          365,
+          455
+        ]
+      },
+      "pillowHeadReference": [
+        267,
+        248
+      ],
+      "sha256": "ae961985d46274b0b73abd69a652f594f519ad90f66562a125fe7bc0e51d61dd",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "pose": "solo-bed-oblique",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          365,
+          455
+        ]
+      },
+      "pillowHeadReference": [
+        267,
+        248
+      ],
+      "sha256": "18763431e9a149cb31c7af14099167072ea3154dd61fadd56f5c4355e4df9fbd",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/set-sleep-side-0.png",
+      "character": "set",
+      "pose": "side-facing-right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          270,
+          463
+        ]
+      },
+      "pillowHeadReference": [
+        350,
+        250
+      ],
+      "sha256": "5d27caa598c13366f55dbc08c012088b7672194fba1a504fde3a9444d6d9fcf1",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/set-sleep-side-1.png",
+      "character": "set",
+      "pose": "side-facing-right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          270,
+          463
+        ]
+      },
+      "pillowHeadReference": [
+        350,
+        250
+      ],
+      "sha256": "dbfe6ed01b5b31e469b2fd01ac8e563792bb3ba980893e24fd28ab482dc328c6",
+      "unchangedApproved180": false
+    },
+    {
+      "path": "png/somang-sleep-0.png",
+      "character": "somang",
+      "pose": "solo-bed-oblique",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "pillowHeadReference": [
+        263,
+        248
+      ],
+      "sha256": "1ea2007da36e028a9f977ff6d3c357e15951c82210b28d4024834c0c86cb7eb7",
+      "unchangedApproved180": true
+    },
+    {
+      "path": "png/somang-sleep-1.png",
+      "character": "somang",
+      "pose": "solo-bed-oblique",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "pillowHeadReference": [
+        263,
+        248
+      ],
+      "sha256": "84ea9e2ca15644cc628784492629aabd8f6c12dc244084d5755577ab0dc5d884",
+      "unchangedApproved180": false
+    }
+  ],
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "replacesUnapproved": "../sleep-trio-v184/",
+  "approvedReference": "../sleep-somang-v180/png/somang-sleep-0.png",
+  "approvedReferenceModified": false,
+  "poseGuide": "../pose-guides/",
+  "skinReference": "../final/<character>/idle + walk; front for solo, right for right-facing side; Somang180 original colors retained",
+  "soloPoses": {
+    "set": "screen-left arm behind head, screen-right arm lowered on abdomen; diagonal overhead-oblique lying plane",
+    "horus": "hands on abdomen, diagonal overhead-oblique lying plane",
+    "somang": "approved180 frame0 unchanged; inhalation1 only replaced"
+  },
+  "pairedPoses": {
+    "set": "faces right toward Somang, lower arm under head, upper arm loose in front, hair flows over pillow and behind back",
+    "horus": "faces right toward Somang, hands together in front, knees slightly bent"
+  },
+  "breathing": {
+    "torsoShoulderArmHairRisePx": 8,
+    "torsoWidthExpansionPxPerSideMax": 6,
+    "headEyeTranslationPx": [
+      0,
+      -1
+    ],
+    "closedEyeDrawing": "same pixel pattern in both frames, translated1px with head",
+    "pillowHair": "fixed",
+    "feet": "fixed",
+    "hairOverShoulders": "moves in the same field as shoulder/chest; lower tips move"
+  },
+  "bedReferenceScale": 0.2777777777777778,
+  "gamePreviewScale": 0.05381944444444445,
+  "bedReferences": [
+    "../../map-expansion/set-room-v6-single-window-day.png",
+    "../../map-expansion/horus-room-v2-wide-day.png"
+  ],
+  "effectPolicy": "No bed, pillow, quilt, cast shadow or effects in character PNG; game handles quilt occlusion.",
+  "checks": {
+    "skin": "10/10 같음",
+    "head": "action-check cannot match Set/Horus rotated sleeping heads (x2.0+ invalid); Somang approved180 itself measures1.25; do not resize approved head to force this metric. Same-scale idle-front / both sleep frames / Somang180 comparison visually inspected.",
+    "actionInput": "Filename aliases are byte-identical copies; mapping in checks/action-input-map.json because checker regex ignores sleep filenames.",
+    "game31": "Decoded shared-palette GIF compared at31px idle scale and enlarged; chest/arm/lower hair changes remain, pillow and feet stay anchored.",
+    "pairOverlap": "0 opaque overlap pixels in both frames on both actual room beds."
+  },
+  "visualReview": [
+    "소망180의 대각선 누운 시점·머리 베개 자리·짧아진 몸을 기준으로 비교",
+    "정지 정면과 같은 배율로 얼굴·머리 크기 확인; 누운 몸 길이는 머리를 줄이지 않고 조정",
+    "화면 오른쪽 세트 팔을 내리고 옆잠의 위쪽 팔도 몸 앞으로 내림",
+    "목·어깨·팔·몸통·머리 끝을 밝고 어두운 배경에서 두 프레임 확대 비교",
+    "31px GIF의 실제 저장 프레임을 비교해 머리 전체의 흔들림 없이 호흡부 변화 확인",
+    "같이 자기에서 양쪽 베개를 향한 머리와 마주 보는 얼굴·침대 안 위치 및 두 프레임 겹침 확인"
+  ]
+}

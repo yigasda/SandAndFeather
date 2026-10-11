@@ -1,7 +1,7 @@
 {
   "revision": 184,
   "action": "sleep",
-  "status": "awaiting-user-review",
+  "status": "rejected-superseded",
   "artApproved": false,
   "runtimeEligible": false,
   "runtimeOwner": "opus",
@@ -133,5 +133,7 @@
     "밝고 어두운 배경에서 목·어깨·팔·옷·신발 연결을 확대 확인",
     "0.8초 호흡 프레임에서 얼굴·머리가 바뀌지 않고 가슴·어깨만 움직임"
   ],
-  "fitNote": "Horus fit 맞음. Set/Somang fit 비율 다름 retained: lying tilt/foreshortening versus standing feet. Set face187x185 area and Horus hair368px normalize without shrinking heads; Somang approved180 unchanged."
+  "fitNote": "Horus fit 맞음. Set/Somang fit 비율 다름 retained: lying tilt/foreshortening versus standing feet. Set face187x185 area and Horus hair368px normalize without shrinking heads; Somang approved180 unchanged.",
+  "supersededBy": "../sleep-trio-v187/",
+  "rejectionReason": "사용자:0과1 차이가 없고 세트·호루스가 누운 대신 앉아 보임.187에서 누운 원근·호흡을 수정하고 옆잠4장 추가."
 }

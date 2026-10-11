@@ -1,0 +1,28 @@
+[
+  {
+    "file": "horus-sleep-0.png",
+    "scale": 0.612,
+    "offset": [
+      -10,
+      -35
+    ],
+    "targetHeadCenter": [
+      265,
+      250
+    ],
+    "referenceHeadWidth": 367
+  },
+  {
+    "file": "horus-sleep-side-0.png",
+    "scale": 0.583,
+    "offset": [
+      -71,
+      23
+    ],
+    "targetHeadCenter": [
+      285,
+      245
+    ],
+    "referenceHeadWidth": 394
+  }
+]

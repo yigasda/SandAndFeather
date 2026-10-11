@@ -1,0 +1,40 @@
+{
+  "source": "docs/art/chibi-refresh/sleep-trio-v187/png/set-sleep-side-0.png",
+  "result": "docs/art/chibi-refresh/sleep-trio-v187/png/set-sleep-side-1.png",
+  "config": {
+    "amplitude": 8,
+    "rise": [
+      413,
+      440
+    ],
+    "fall": [
+      478,
+      565
+    ],
+    "center": [
+      292,
+      460
+    ],
+    "slope": -0.28,
+    "head": [
+      369,
+      327,
+      110,
+      100
+    ],
+    "pillowLimit": 180
+  },
+  "changedPixels": 66167,
+  "outlineChangedPixels": 4410,
+  "changedBounds": [
+    18,
+    238,
+    503,
+    552
+  ],
+  "maxBodyRisePx": 8,
+  "maxWidthDisplacementPx": 6,
+  "pillowRegionChangedPixels": 0,
+  "feetRegionChangedPixels": 0,
+  "method": "Coherent chest+shoulders+arms+overlapping hair displacement, 8px rise and small width expansion; face/eye pattern translated1px, pillow hair and feet fixed; original source colors only."
+}

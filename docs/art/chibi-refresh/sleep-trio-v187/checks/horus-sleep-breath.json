@@ -1,0 +1,40 @@
+{
+  "source": "docs/art/chibi-refresh/sleep-trio-v187/png/horus-sleep-0.png",
+  "result": "docs/art/chibi-refresh/sleep-trio-v187/png/horus-sleep-1.png",
+  "config": {
+    "amplitude": 8,
+    "rise": [
+      390,
+      420
+    ],
+    "fall": [
+      462,
+      546
+    ],
+    "center": [
+      340,
+      440
+    ],
+    "slope": 0.45,
+    "head": [
+      271,
+      296,
+      148,
+      105
+    ],
+    "pillowLimit": 160
+  },
+  "changedPixels": 50753,
+  "outlineChangedPixels": 2216,
+  "changedBounds": [
+    140,
+    203,
+    538,
+    534
+  ],
+  "maxBodyRisePx": 8,
+  "maxWidthDisplacementPx": 6,
+  "pillowRegionChangedPixels": 0,
+  "feetRegionChangedPixels": 0,
+  "method": "Coherent chest+shoulders+arms+overlapping hair displacement, 8px rise and small width expansion; face/eye pattern translated1px, pillow hair and feet fixed; original source colors only."
+}

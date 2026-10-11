@@ -1,6 +1,6 @@
 # 아스트라 인수인계 — 그림 작업 (지금 기준만)
 
-**아스트라용 문서다.** 갱신 2026-10-11. 이 문서에는 **지금 지켜야 할 규칙과 지금 할 일만** 적는다. 지난 경과는 git 커밋 기록에만 남아 있다. 현재 대화에서 사용자가 내린 지시가 이 문서보다 우선한다.
+**아스트라용 문서다.** 갱신 2026-10-12. 이 문서에는 **지금 지켜야 할 규칙과 지금 할 일만** 적는다. 지난 경과는 git 커밋 기록에만 남아 있다. 현재 대화에서 사용자가 내린 지시가 이 문서보다 우선한다.
 
 ## 1. 시작할 때
 
@@ -106,7 +106,7 @@
 | 대상 | 상태·다음 작업 |
 |---|---|
 | 상호작용 | [소망172](art/chibi-refresh/interaction-somang-v172/README.md)8장과 [세트174/175](art/chibi-refresh/interaction-set-v174/README.md)8장 채택 완료. 세트는 오른쪽 팔·손 길이175 수정 포함 사용자 채택,0.9.30 게임 적용 완료. [호루스176/177](art/chibi-refresh/interaction-horus-v176/README.md)4방향×2프레임.177에서 오른쪽0·1 피부 팔레트와 왼쪽0·1 배·치마 외곽선 수정, fit8/8 맞음·비교·GIF 갱신. 사용자 “고마워 채택!!”으로8장 채택 완료, 0.9.31 게임 적용 완료. |
-| 줍기·앉기·잠들기 | 소망 [줍기181](art/chibi-refresh/pickup-somang-v178/README.md)8장 **채택**(“줍기는 괜찮아! 만족”). [앉기179](art/chibi-refresh/sit-somang-v179/README.md)·[잠들기180](art/chibi-refresh/sleep-somang-v180/README.md) 대표 각1장 **채택**(“앉기 잠들기 맘에 들어”). 채택 PNG는 보존. 추가 [줍기185](art/chibi-refresh/pickup-trio-v182/README.md) 세트185 머리 크기·중간 자세 수정 포함16장: main manifest 채택·0.9.33 적용 기록. [앉기183](art/chibi-refresh/sit-trio-v183/README.md)14장 검토본 전달(채택 대기), 호루스 방석 뒤186 수정 포함. [잠들기184](art/chibi-refresh/sleep-trio-v184/README.md) 추가5장 검토본·0.8초 호흡GIF 전달(채택 대기). 게임 적용은 오푸스. |
+| 줍기·앉기·잠들기 | 소망 [줍기181](art/chibi-refresh/pickup-somang-v178/README.md)8장 **채택**(“줍기는 괜찮아! 만족”). [앉기179](art/chibi-refresh/sit-somang-v179/README.md)·[잠들기180](art/chibi-refresh/sleep-somang-v180/README.md) 대표 각1장 **채택**(“앉기 잠들기 맘에 들어”). 채택 PNG는 보존. 추가 [줍기185](art/chibi-refresh/pickup-trio-v182/README.md) 세트185 머리 크기·중간 자세 수정 포함16장: main manifest 채택·0.9.33 적용 기록. [앉기183](art/chibi-refresh/sit-trio-v183/README.md)14장 검토본 전달(채택 대기), 호루스 방석 뒤186 수정 포함. 184는 원근·호흡 반려. [잠들기187](art/chibi-refresh/sleep-trio-v187/README.md): 수정·추가9장+그대로인 소망180 원본0=10장 검토본, 옆잠4장 포함.31px 호흡GIF·혼자/함께 침대 시트 제공, 채택 대기. 게임 적용은 오푸스. |
 | 셋소호 베이스 스프라이트 | **전체48장 최종 채택 완료.** 사용자 “완벽해 고생했어! 이제 베이스 스프라이트는 끝났네”. [final/](art/chibi-refresh/final/README.md)만 사용한다. 캐릭터별 정지4+걷기12=16장. |
 | 세트 | 정지148·채택 걷기163. 원본 그대로 최종 폴더로 정리. |
 | 소망 | 정지151 네 방향·채택 걷기163(접합부144 보수 포함).150 정면으로 되돌리지 않는다. |

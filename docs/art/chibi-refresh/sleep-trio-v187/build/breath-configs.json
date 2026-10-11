@@ -1,0 +1,7 @@
+{
+"somang-sleep":{"amplitude":8,"rise":[365,390],"fall":[440,530],"center":[300,405],"slope":0.40,"head":[237,287,136,99],"pillowLimit":160},
+"set-sleep":{"amplitude":8,"rise":[403,430],"fall":[469,560],"center":[349,449],"slope":0.4,"head":[294,310,141,108],"pillowLimit":175},
+"horus-sleep":{"amplitude":8,"rise":[390,420],"fall":[462,546],"center":[340,440],"slope":0.45,"head":[271,296,148,105],"pillowLimit":160},
+"set-sleep-side":{"amplitude":8,"rise":[413,440],"fall":[478,565],"center":[292,460],"slope":-0.28,"head":[369,327,110,100],"pillowLimit":180},
+"horus-sleep-side":{"amplitude":8,"rise":[409,436],"fall":[475,555],"center":[290,455],"slope":-0.3,"head":[319,329,105,94],"pillowLimit":190}
+}

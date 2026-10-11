@@ -1,0 +1,62 @@
+[
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/horus-sleep-0.png",
+    "alias": "/workspace/actions187/action-input/horus-front-0.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/horus-sleep-1.png",
+    "alias": "/workspace/actions187/action-input/horus-front-1.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/horus-sleep-side-0.png",
+    "alias": "/workspace/actions187/action-input/horus-right-0.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/horus-sleep-side-1.png",
+    "alias": "/workspace/actions187/action-input/horus-right-1.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/set-sleep-0.png",
+    "alias": "/workspace/actions187/action-input/set-front-0.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/set-sleep-1.png",
+    "alias": "/workspace/actions187/action-input/set-front-1.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/set-sleep-side-0.png",
+    "alias": "/workspace/actions187/action-input/set-right-0.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/set-sleep-side-1.png",
+    "alias": "/workspace/actions187/action-input/set-right-1.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-trio-v187/png/somang-sleep-1.png",
+    "alias": "/workspace/actions187/action-input/somang-front-1.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  },
+  {
+    "source": "docs/art/chibi-refresh/sleep-somang-v180/png/somang-sleep-0.png",
+    "alias": "/workspace/actions187/action-input/somang-front-0.png",
+    "identicalBytes": true,
+    "reason": "action-check.py recognizes only front/back/left/right filename views; geometry and pixels unchanged"
+  }
+]

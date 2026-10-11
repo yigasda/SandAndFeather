@@ -1,0 +1,22 @@
+[
+  {
+    "file": "set-sleep-0.png",
+    "scale": 0.663,
+    "offset": [
+      -52,
+      -47
+    ],
+    "headPreservedAboveY": 405,
+    "bodyPerspectiveFactor": 0.71
+  },
+  {
+    "file": "set-sleep-side-0.png",
+    "scale": 0.6,
+    "offset": [
+      -98,
+      -10
+    ],
+    "headPreservedAboveY": 408,
+    "bodyPerspectiveFactor": 0.8
+  }
+]

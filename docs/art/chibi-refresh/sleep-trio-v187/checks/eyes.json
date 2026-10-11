@@ -1,0 +1,78 @@
+[
+  {
+    "variant": "set-sleep",
+    "eyePatternBoxFrame0": [
+      187,
+      280,
+      379,
+      368
+    ],
+    "frame1Offset": [
+      0,
+      -1
+    ],
+    "eyeRegionChangedPixelsAfterOffset": 18,
+    "darkEyeAndTwoPixelRimChanged": 0
+  },
+  {
+    "variant": "somang-sleep",
+    "eyePatternBoxFrame0": [
+      172,
+      266,
+      300,
+      337
+    ],
+    "frame1Offset": [
+      0,
+      -1
+    ],
+    "eyeRegionChangedPixelsAfterOffset": 0,
+    "darkEyeAndTwoPixelRimChanged": 0
+  },
+  {
+    "variant": "horus-sleep",
+    "eyePatternBoxFrame0": [
+      188,
+      264,
+      373,
+      354
+    ],
+    "frame1Offset": [
+      0,
+      -1
+    ],
+    "eyeRegionChangedPixelsAfterOffset": 0,
+    "darkEyeAndTwoPixelRimChanged": 0,
+    "note": "ROI tightened to the closed-eye area; earlier broad rectangle included moving lower jaw boundary at y357..366."
+  },
+  {
+    "variant": "set-sleep-side",
+    "eyePatternBoxFrame0": [
+      310,
+      310,
+      433,
+      377
+    ],
+    "frame1Offset": [
+      0,
+      -1
+    ],
+    "eyeRegionChangedPixelsAfterOffset": 0,
+    "darkEyeAndTwoPixelRimChanged": 0
+  },
+  {
+    "variant": "horus-sleep-side",
+    "eyePatternBoxFrame0": [
+      325,
+      312,
+      395,
+      367
+    ],
+    "frame1Offset": [
+      0,
+      -1
+    ],
+    "eyeRegionChangedPixelsAfterOffset": 0,
+    "darkEyeAndTwoPixelRimChanged": 0
+  }
+]
