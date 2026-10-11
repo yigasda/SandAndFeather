@@ -1,5 +1,14 @@
 # 아스트라 입구 — 여기서 시작한다
 
+> # ⚠️ READ THIS FIRST — NON-NEGOTIABLE
+> ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. COPY THEIR LOOK EXACTLY. DO NOT REDESIGN ANYTHING.
+> 1. **OPEN THE ORIGINAL FILES BEFORE YOU DRAW** — `docs/art/chibi-refresh/final/<who>/idle/` and `walk/`, same direction. Not from memory, not from a description, not from your last attempt.
+> 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `python3 tools/art/line-guide.py` (the idle's own head lines in red, at the right place and size) and `head-check.py --guide`. Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
+> 3. **SAME FACE SHAPE, SAME HEAD SIZE, SAME LINE THICKNESS, SAME HAIR DETAIL, SAME COLOURS, SAME FACE MARK as the idle.** Only the pose changes. Never narrower, pointier, longer, thinner-lined, more detailed, paler or greyer.
+> 4. **NO EXTRA DETAIL.** Never draw hair or shading finer than the idle/walk.
+> 5. **"sprite-review 0 issues" IS NOT "DONE".** Before sending, put your picture next to the idle at the same scale and look. If anything differs from the idle, fix it first.
+> 6. **If you did not open the idle and trace on a guide, the drawing is rejected.**
+
 > **길 안내** — 입구 [START](ASTRA-START.md) · 할 일 [PLAN](ASTRA-PLAN.md) · 캐릭터 그림 [SPRITE](ASTRA-SPRITE.md) · 맵 [MAP](ASTRA-MAP.md) · 공통 규칙 [HANDOFF](ASTRA-HANDOFF.md)
 > **지금 여기: 입구.** 매번 이 문서부터 열고, 아래 순서대로 다음 문서로 간다.
 
