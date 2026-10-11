@@ -1,0 +1,194 @@
+[
+  [
+    "front",
+    0,
+    {
+      "scale": 1.0025,
+      "match": 0.65,
+      "shift": [
+        53,
+        86
+      ],
+      "feetOffsetPx": 6,
+      "heightRatio": 1.012,
+      "heightFit": {
+        "scale": 0.9897,
+        "headScaleVsIdle": 0.987,
+        "shift": [
+          56,
+          87
+        ],
+        "headTopOffsetPx": 1
+      },
+      "verdict": "맞음 (발 +6px 보정)"
+    }
+  ],
+  [
+    "front",
+    1,
+    {
+      "scale": 1.0025,
+      "match": 0.599,
+      "shift": [
+        53,
+        86
+      ],
+      "feetOffsetPx": 6,
+      "heightRatio": 1.012,
+      "heightFit": {
+        "scale": 0.9897,
+        "headScaleVsIdle": 0.987,
+        "shift": [
+          -463,
+          87
+        ],
+        "headTopOffsetPx": -112
+      },
+      "verdict": "맞음 (발 +6px 보정)"
+    }
+  ],
+  [
+    "back",
+    0,
+    {
+      "scale": 0.9975,
+      "match": 0.584,
+      "shift": [
+        55,
+        85
+      ],
+      "feetOffsetPx": 1,
+      "heightRatio": 1.005,
+      "heightFit": {
+        "scale": 0.9931,
+        "headScaleVsIdle": 0.996,
+        "shift": [
+          56,
+          87
+        ],
+        "headTopOffsetPx": -2
+      },
+      "verdict": "맞음 (발 +1px 보정)"
+    }
+  ],
+  [
+    "back",
+    1,
+    {
+      "scale": 1.0,
+      "match": 0.488,
+      "shift": [
+        56,
+        85
+      ],
+      "feetOffsetPx": -1,
+      "heightRatio": 1.002,
+      "heightFit": {
+        "scale": 0.9983,
+        "headScaleVsIdle": 0.998,
+        "shift": [
+          56,
+          87
+        ],
+        "headTopOffsetPx": -2
+      },
+      "verdict": "맞음 (발 -1px 보정)"
+    }
+  ],
+  [
+    "left",
+    0,
+    {
+      "scale": 0.9975,
+      "match": 0.558,
+      "shift": [
+        88,
+        85
+      ],
+      "feetOffsetPx": 2,
+      "heightRatio": 1.007,
+      "heightFit": {
+        "scale": 0.9914,
+        "headScaleVsIdle": 0.994,
+        "shift": [
+          88,
+          87
+        ],
+        "headTopOffsetPx": -1
+      },
+      "verdict": "맞음 (발 +2px 보정)"
+    }
+  ],
+  [
+    "left",
+    1,
+    {
+      "scale": 1.0025,
+      "match": 0.534,
+      "shift": [
+        88,
+        85
+      ],
+      "feetOffsetPx": 2,
+      "heightRatio": 1.007,
+      "heightFit": {
+        "scale": 0.9948,
+        "headScaleVsIdle": 0.992,
+        "shift": [
+          -390,
+          87
+        ],
+        "headTopOffsetPx": -77
+      },
+      "verdict": "맞음 (발 +2px 보정)"
+    }
+  ],
+  [
+    "right",
+    0,
+    {
+      "scale": 1.0025,
+      "match": 0.604,
+      "shift": [
+        0,
+        85
+      ],
+      "feetOffsetPx": -1,
+      "heightRatio": 1.002,
+      "heightFit": {
+        "scale": 1.0,
+        "headScaleVsIdle": 0.998,
+        "shift": [
+          1,
+          87
+        ],
+        "headTopOffsetPx": -2
+      },
+      "verdict": "맞음 (발 -1px 보정)"
+    }
+  ],
+  [
+    "right",
+    1,
+    {
+      "scale": 1.005,
+      "match": 0.6,
+      "shift": [
+        -2,
+        84
+      ],
+      "feetOffsetPx": 0,
+      "heightRatio": 1.003,
+      "heightFit": {
+        "scale": 1.0,
+        "headScaleVsIdle": 0.995,
+        "shift": [
+          0,
+          87
+        ],
+        "headTopOffsetPx": -2
+      },
+      "verdict": "맞음 (발 +0px 보정)"
+    }
+  ]
+]
