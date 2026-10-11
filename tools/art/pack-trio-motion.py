@@ -2,6 +2,7 @@
 # data/art/characters/trio-motion.png, and writes the frame table into data/sprites.json (looks.<who>.motion).
 # Nothing is redrawn: each frame is the approved picture, scaled with one uniform factor per state so the
 # character's visible height is the same standing and walking (idle576 source px, walk 330 → VISIBLE atlas px).
+# Approved action sets (ACTIONS) go into the same atlas as looks.<who>.motion.acts[action][dir][frame].
 # The source files and the manifest are read only; the old pocket atlas (townsman) is left alone.
 import hashlib, json, os
 from PIL import Image
@@ -64,8 +65,37 @@ def pack(frames, visible, out):
             rect = [*place[f['id']], piece.width, piece.height, *pivot]
             if f['state'] == 'idle': idle[f['gameDirection']] = rect
             else: walk[f['gameDirection']][f['phase']] = rect
-        tables[who] = {'file': out, 'visible': visible, 'idle': idle, 'walk': walk}
+        acts = {}
+        for f, piece, pivot in pieces:
+            if f['character'] != who or f['state'] in ('idle', 'walk'): continue
+            rect = [*place[f['id']], piece.width, piece.height, *pivot]
+            acts.setdefault(f['state'], {}).setdefault(f['gameDirection'], {})[f['phase']] = rect
+        acts = {st: {d: [ph[i] for i in sorted(ph)] for d, ph in byd.items()} for st, byd in acts.items()}
+        tables[who] = {'file': out, 'visible': visible, 'idle': idle, 'walk': walk, **({'acts': acts} if acts else {})}
     return tables
+
+
+# approved action sets packed beside the base 48 (same canvas, pivot and reference height as the idle)
+ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'interaction-somang-v172', 'manifest.json')]
+
+
+def action_frames():
+    frames, playback = [], {}
+    for mp in ACTIONS:
+        am = json.load(open(mp))
+        if not am.get('artApproved'): raise SystemExit(f'not approved: {mp}')
+        base = os.path.dirname(mp); dmap = am['directionMap']
+        for f in am['files']:
+            path = os.path.join(base, f['path'])
+            data = open(path, 'rb').read()
+            assert hashlib.sha256(data).hexdigest() == f['sha256'], path
+            bb = Image.open(path).getchannel('A').getbbox()
+            frames.append({'id': f"{f['character']}.{am['action']}.{dmap[f['direction']]}.{f['frame']}", 'character': f['character'],
+                           'state': am['action'], 'gameDirection': dmap[f['direction']], 'phase': f['frame'],
+                           'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': am['referenceVisibleHeight'],
+                           'alphaBounds': list(bb), 'pivot': am['anchor']['position']})
+        playback[am['action']] = {'frameMs': am['playback']['durationMs'], 'loop': am['playback']['loop']}
+    return frames, playback
 
 
 def main():
@@ -79,8 +109,9 @@ def main():
     for f in frames:
         data = open(os.path.join(ROOT, f['path']), 'rb').read()
         assert hashlib.sha256(data).hexdigest() == f['sha256'], f['id']
-    big = pack(frames, VISIBLE, 'art/characters/trio-motion.png')
-    small = pack(frames, SMALL, 'art/characters/trio-motion-small.png')
+    extra, playback = action_frames()
+    big = pack(frames + extra, VISIBLE, 'art/characters/trio-motion.png')
+    small = pack(frames + extra, SMALL, 'art/characters/trio-motion-small.png')
     sprites_path = os.path.join(ROOT, 'data', 'sprites.json')
     sprites = json.load(open(sprites_path))
     for who in ['set', 'somang', 'horus']:
@@ -95,6 +126,9 @@ def main():
             # the same frames packed at phone size: drawn nearly 1:1 at a phone's zoom, so they stay crisp
             'small': small[who],
         }
+        if b.get('acts'):
+            sprites['looks'][who]['motion']['acts'] = b['acts']
+            sprites['looks'][who]['motion']['actPlay'] = {k: v for k, v in playback.items() if k in b['acts']}
     with open(sprites_path, 'w') as fh:
         fh.write(compact(json.dumps(sprites, ensure_ascii=False, indent=1)) + '\n')
 

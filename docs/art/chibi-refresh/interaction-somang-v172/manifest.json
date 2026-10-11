@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "status": "user-approved",
   "artApproved": true,
-  "runtimeEligible": false,
+  "runtimeEligible": true,
   "action": "interact",
   "characters": [
     "somang"
@@ -127,5 +127,6 @@
       "fitReport": "checks/delivery/right-1/fit.json"
     }
   ],
-  "approvalEvidence": "합격!!!"
+  "approvalEvidence": "합격!!!",
+  "runtimeIntegrated": "0.9.26"
 }

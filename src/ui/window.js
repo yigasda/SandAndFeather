@@ -10,7 +10,7 @@ import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
 import { bindPad, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
-import { feet, follower, placePlayer, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
+import { feet, follower, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
 import { thingsOn } from '../world/things.js';
 import { MODE, Renderer } from '../world/render.js';
 import { buildHud, placeBubble, setTab, shortDate, todayBody, updateHud } from './hud.js';
@@ -285,7 +285,8 @@ function frame(t) {
         }
     } else stand();
     // the battery: draw only as often as something on screen changes
-    const fps = cardOpen() ? FPS.card : player.moving ? FPS.walk : FPS.still;
+    const acting = player.act && performance.now() - player.act.at < 800;
+    const fps = cardOpen() ? FPS.card : player.moving || acting ? FPS.walk : FPS.still;
     if (t - drawnAt >= 1000 / fps - 2) { drawnAt = t; draw(t); }
     raf = requestAnimationFrame(frame);
 }
@@ -296,6 +297,14 @@ function talk() {
     if (cardOpen()) { closeTopCard(); return; }
     lookAround();
     if (!near) { toast(root, '가까이에 말 걸 곳이 없어'); return; }
+    // she turns to it and reaches out (the interaction picture), and what it does follows once her hand is there
+    if (player.act && performance.now() - player.act.at < ACT_MS) return;
+    const target = near;
+    playAct('interact', target.x + 0.5, target.y + 0.8);
+    setTimeout(() => { if (mode === 'open' && !cardOpen()) use(target); }, ACT_MS);
+}
+const ACT_MS = 260;
+function use(near) {
     if (near.kind === 'spot') {
         const act = spotActs.get(near.id);
         if (act) { act(near, ui, map); return; }

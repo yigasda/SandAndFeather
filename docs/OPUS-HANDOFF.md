@@ -18,7 +18,7 @@
 ## 저장소, 버전, 검증
 
 - 저장소 https://github.com/yigasda/SandAndFeather, 작업 브랜치 `main`. 아스트라도 main에 올리므로 커밋 전에 받아서 합친다. 남의 작업을 강제 푸시로 덮지 않는다.
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.25**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄을 추가하고, README의 "현재 버전" 줄도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.26**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄을 추가하고, README의 "현재 버전" 줄도 고친다. README에는 버전 내역을 쌓지 않는다.
 - 검증 스크립트는 `tools/art/`에 있다.
   - `verify-full-map.cjs`: 옴보스 전체맵 낮밤 픽셀 일치와 이동
   - `verify-cozy-ui.cjs`: 포근한 테마 UI
@@ -46,7 +46,7 @@
 
 | 무엇 | 아트 상태 | 게임에 넣을 때 할 일 |
 |---|---|---|
-| (없음) | 셋소호 최종 48장은 0.9.24에 적용했다. 다음은 아스트라 계획 2단계의 상호작용·생활 동작 | 새 동작이 오면 `final/manifest.json` 형식으로 받아 패커에 상태를 추가한다 |
+| 다음 동작(줍기, 텃밭…) | 상호작용(소망 172)은 0.9.26에 적용했다 | 채택된 동작 manifest를 `pack-trio-motion.py`의 `ACTIONS`에 더하면 `looks.<who>.motion.acts[동작][방향][프레임]`과 `actPlay`(프레임 시간)로 같은 아틀라스에 묶인다. 재생은 `player.playAct(name, x, y)`(대상 쪽으로 돌아서 한 번, 마지막 장 220ms 머문 뒤 정지), 그리는 쪽은 `render.js motionPerson`의 `anim.act`. 동작마다 어디서 부를지 정해 연결한다 |
 
 **적용할 때마다:** 출구 31곳 걷기, 깊은 입구 실제 동선, 낮밤, 폰 화면 확인을 다시 하고, 검증 스크립트 세 개를 돌린다. 기록은 해당 기록 문서에 쓰고, 이 문서의 표를 고친다.
 

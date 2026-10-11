@@ -34,6 +34,12 @@ const blocked = (map, x, y) => map.solidAt(x + FOOT.x0, y + FOOT.y0) || map.soli
 
 // standing still: the idle picture, and the next walk starts on its first pose
 export function stand() { player.moving = false; player.walkT = 0; }
+// an action picture (looks.somang.motion.acts): turns her to face (tx, ty) and plays it once; walking ends it
+export function playAct(name, tx, ty) {
+    const f = feet(), dx = tx - f.x, dy = ty - f.y;
+    if (Math.hypot(dx, dy) > 0.05) player.dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+    player.act = { name, at: performance.now() };
+}
 // one frame of movement; dx, dy in -1…1. Slides along walls instead of sticking.
 export function stepPlayer(map, dx, dy, dt) {
     const len = Math.hypot(dx, dy);
@@ -46,6 +52,7 @@ export function stepPlayer(map, dx, dy, dt) {
     // sliding along a wall still walks; pressed flat against it she stands, facing the way pressed
     player.moving = Math.hypot(player.x - x0, player.y - y0) > 1e-4;
     if (!player.moving) { player.walkT = 0; return; }
+    player.act = null;
     player.walkT += dt;
     player.step += dt * 8;
     const last = trail[trail.length - 1];

@@ -6,6 +6,7 @@
 import { T, paintMap, rnd } from './paint.js';
 import { drawReferenceScenes } from './reference-scene.js';
 import { DATA, spriteFile } from '../core/data.js';
+const HOLD_MS = 220; // how long the last frame of an action (the hand touching) stays before standing again
 
 // the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
 const SEASON = {
@@ -78,6 +79,7 @@ export class Renderer {
     // offsets (source walk-cell pixels); nothing else bobs. Returns false for a look without these pictures.
     // Two packings of the same frames: the phone-size one when it is big enough for this zoom (drawn nearly
     // 1:1, so it stays crisp), else the large one once it has loaded.
+    // An action (anim.act) shows its frames in order, the last one held HOLD_MS, then the idle again.
     motionPerson(g, look, x, y, dir, z, anim) {
         const m = this.motion.get(look);
         if (!m) return false;
@@ -87,7 +89,13 @@ export class Renderer {
         if (!a) return false;
         const image = DATA.spriteArt[a.file];
         let r = a.idle[dir] || a.idle.down, ox = 0, oy = 0;
-        if (anim?.moving) {
+        // an action (anim.act = { name, t } seconds since it started) plays its frames once, then the idle shows
+        const act = anim?.act && a.acts?.[anim.act.name]?.[dir], play = m.actPlay?.[anim?.act?.name];
+        if (act && play) {
+            let t = anim.act.t * 1000, i = 0;
+            while (i < act.length - 1 && t >= play.frameMs[i]) t -= play.frameMs[i++];
+            if (anim.act.t * 1000 < play.frameMs.reduce((x, y) => x + y, 0) + HOLD_MS) r = act[i];
+        } else if (anim?.moving) {
             const k = Math.floor((anim.walkT || 0) * 1000 / m.frameMs) % m.sequence.length;
             r = (a.walk[dir] || a.walk.down)[m.sequence[k]];
             [ox, oy] = m.offsets[dir]?.[k] || [0, 0];
@@ -185,7 +193,8 @@ export class Renderer {
         }
         // things lying on the ground first, then people and standing things back to front
         if (!fullScene) for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
-        const ppl = [...people, { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0, moving: player.moving, walkT: player.walkT },
+        const ppl = [...people, { look: 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0, moving: player.moving, walkT: player.walkT,
+            act: player.act && !player.moving ? { name: player.act.name, t: (performance.now() - player.act.at) / 1000 } : null },
             ...things.filter(t => !FLAT.has(t.sprite)).map(t => ({ thing: t, x: t.x, y: t.y }))];
         ppl.sort((a, b) => a.y - b.y);
         if (!fullScene) for (const p of ppl) {
