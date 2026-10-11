@@ -159,7 +159,7 @@
         "scale": 1.0,
         "headScaleVsIdle": 0.998,
         "shift": [
-          1,
+          0,
           87
         ],
         "headTopOffsetPx": -2
@@ -172,7 +172,7 @@
     1,
     {
       "scale": 1.005,
-      "match": 0.6,
+      "match": 0.599,
       "shift": [
         -2,
         84

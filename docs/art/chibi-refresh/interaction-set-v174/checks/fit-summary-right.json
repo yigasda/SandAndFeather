@@ -3,46 +3,46 @@
     "right",
     0,
     {
-      "scale": 1.03,
-      "match": 0.6,
+      "scale": 0.9825,
+      "match": 0.51,
       "shift": [
-        1,
-        85
+        -7,
+        81
       ],
-      "feetOffsetPx": -2,
-      "heightRatio": 1.0,
+      "feetOffsetPx": 2,
+      "heightRatio": 1.014,
       "heightFit": {
-        "scale": 1.0304,
-        "headScaleVsIdle": 1.0,
+        "scale": 0.9697,
+        "headScaleVsIdle": 0.987,
         "shift": [
           0,
           87
         ],
-        "headTopOffsetPx": -2
+        "headTopOffsetPx": -3
       },
-      "verdict": "맞음 (발 -2px 보정)"
+      "verdict": "맞음 (발 +2px 보정)"
     }
   ],
   [
     "right",
     1,
     {
-      "scale": 1.0325,
-      "match": 0.595,
+      "scale": 0.975,
+      "match": 0.493,
       "shift": [
-        -1,
-        85
+        -5,
+        83
       ],
       "feetOffsetPx": -1,
-      "heightRatio": 1.002,
+      "heightRatio": 1.005,
       "heightFit": {
-        "scale": 1.0304,
-        "headScaleVsIdle": 0.998,
+        "scale": 0.9697,
+        "headScaleVsIdle": 0.995,
         "shift": [
-          0,
+          -1,
           87
         ],
-        "headTopOffsetPx": -2
+        "headTopOffsetPx": -3
       },
       "verdict": "맞음 (발 -1px 보정)"
     }

@@ -1,6 +1,10 @@
 {
  "sheet": "docs/art/chibi-refresh/interaction-set-v174/png/set-right-1.png",
  "view": "right",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
  "canvas": [
   620,
   720
@@ -13,7 +17,7 @@
  "characters": {
   "set": {
    "scale": 1.005,
-   "match": 0.6,
+   "match": 0.599,
    "shift": [
     -2,
     84

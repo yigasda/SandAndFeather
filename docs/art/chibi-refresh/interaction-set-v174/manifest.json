@@ -113,7 +113,7 @@
       "gameDirection": "right",
       "frame": 0,
       "phase": "reach-start",
-      "sha256": "5ef3637aef1e4cdcc04c561f9117b9fb8e7d55554d7cf398cf6ef121a0065899",
+      "sha256": "5f65eac1c53c8c42bb9447890ddeba04afc1a86593afc312d952af9fcf350533",
       "sourceIdle": "../final/set/idle/set-right.png",
       "guide": "../pose-guides/set-right-guide.png",
       "fitReport": "checks/delivery/right-0/fit.json"
@@ -125,11 +125,13 @@
       "gameDirection": "right",
       "frame": 1,
       "phase": "contact",
-      "sha256": "65a963b7b112f609395e8c4ddc48c3d262f6c91eb72d8add544fad267ddc20bb",
+      "sha256": "73d01224bf837a91ec83a1d2a3ec0d0d419608f8d930f558cb03d0f2445f34c4",
       "sourceIdle": "../final/set/idle/set-right.png",
       "guide": "../pose-guides/set-right-guide.png",
       "fitReport": "checks/delivery/right-1/fit.json"
     }
   ],
-  "alphaExport": "Near-opaque alpha>=0.85 exported as fully opaque; RGB and lower-alpha edge values unchanged."
+  "alphaExport": "Near-opaque alpha>=0.85 exported as fully opaque; RGB and lower-alpha edge values unchanged.",
+  "revision": 175,
+  "revisionNote": "오른쪽0·1 팔·손을 왼쪽0·1 기준으로 짧고 둥글게 수정. 나머지6장 동일. 사용자 확인 대기."
 }
