@@ -62,7 +62,9 @@ def check(who, view, frames):
     for k, p in frames:
         h = height(alpha(p)); sc = head(p, who, view)
         rows.append({'frame': k, 'height': round(h / H0, 3), 'head': round(sc, 3)})
-        if sc > HEAD_MAX: notes.append(f'{k}: 머리 작음 (머리 맞춤 ×{sc:.2f})')
+        # past ×1.8 the head match has lost the head (a back view of long hair has little to hold on to): look instead
+        if sc > 1.8: notes.append(f'{k}: 머리 측정 안 됨 (×{sc:.2f}, 눈으로 볼 것)')
+        elif sc > HEAD_MAX: notes.append(f'{k}: 머리 작음 (머리 맞춤 ×{sc:.2f})')
     if len(frames) >= 2:
         hs = [1.0] + [r['height'] for r in rows]
         whole = hs[0] - hs[-1]
