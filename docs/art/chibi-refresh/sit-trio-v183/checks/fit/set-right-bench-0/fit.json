@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-right-bench-0.png",
+ "view": "right",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "set": {
+   "scale": 0.9875,
+   "match": 0.416,
+   "shift": [
+    -11,
+    86
+   ],
+   "feetOffsetPx": -3,
+   "heightRatio": 0.997,
+   "heightFit": {
+    "scale": 0.9914,
+    "headScaleVsIdle": 1.004,
+    "shift": [
+     -6,
+     87
+    ],
+    "headTopOffsetPx": -1
+   },
+   "verdict": "맞음 (발 -3px 보정)"
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-right-floor-0.png",
+ "view": "right",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "horus": {
+   "scale": 1.0675,
+   "match": 0.247,
+   "shift": [
+    90,
+    100
+   ],
+   "feetOffsetPx": -22,
+   "heightRatio": 0.963,
+   "heightFit": {
+    "scale": 1.1085,
+    "headScaleVsIdle": 1.038,
+    "shift": [
+     82,
+     101
+    ],
+    "headTopOffsetPx": -7
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 -22px (-3.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

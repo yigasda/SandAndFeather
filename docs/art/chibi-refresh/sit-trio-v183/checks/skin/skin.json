@@ -1,0 +1,660 @@
+[
+  {
+    "file": "horus-back-floor-0.png",
+    "who": "horus",
+    "view": "back",
+    "skinPixels": 18471,
+    "toneDeltaE": {
+      "base": 2.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        254,
+        230,
+        226
+      ],
+      "shadow": [
+        250,
+        198,
+        178
+      ],
+      "light": [
+        254,
+        246,
+        222
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        230,
+        222
+      ],
+      "shadow": [
+        250,
+        198,
+        178
+      ],
+      "light": [
+        254,
+        246,
+        222
+      ]
+    },
+    "offPaletteShare": 0.017,
+    "verdict": "같음"
+  },
+  {
+    "file": "horus-back-stool-0.png",
+    "who": "horus",
+    "view": "back",
+    "skinPixels": 20285,
+    "toneDeltaE": {
+      "base": 2.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        254,
+        230,
+        226
+      ],
+      "shadow": [
+        250,
+        198,
+        178
+      ],
+      "light": [
+        254,
+        246,
+        222
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        230,
+        222
+      ],
+      "shadow": [
+        250,
+        198,
+        178
+      ],
+      "light": [
+        254,
+        246,
+        222
+      ]
+    },
+    "offPaletteShare": 0.019,
+    "verdict": "같음"
+  },
+  {
+    "file": "horus-left-floor-0.png",
+    "who": "horus",
+    "view": "left",
+    "skinPixels": 31402,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        254,
+        230,
+        222
+      ],
+      "shadow": [
+        254,
+        206,
+        198
+      ],
+      "light": [
+        254,
+        242,
+        226
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        230,
+        222
+      ],
+      "shadow": [
+        254,
+        206,
+        198
+      ],
+      "light": [
+        254,
+        242,
+        226
+      ]
+    },
+    "offPaletteShare": 0.006,
+    "verdict": "같음"
+  },
+  {
+    "file": "horus-right-bench-0.png",
+    "who": "horus",
+    "view": "right",
+    "skinPixels": 28358,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        242,
+        222,
+        214
+      ],
+      "shadow": [
+        250,
+        182,
+        178
+      ],
+      "light": [
+        254,
+        230,
+        222
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        242,
+        222,
+        214
+      ],
+      "shadow": [
+        250,
+        182,
+        178
+      ],
+      "light": [
+        254,
+        230,
+        222
+      ]
+    },
+    "offPaletteShare": 0.003,
+    "verdict": "같음"
+  },
+  {
+    "file": "horus-right-floor-0.png",
+    "who": "horus",
+    "view": "right",
+    "skinPixels": 32210,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        242,
+        222,
+        214
+      ],
+      "shadow": [
+        250,
+        182,
+        178
+      ],
+      "light": [
+        254,
+        230,
+        222
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        242,
+        222,
+        214
+      ],
+      "shadow": [
+        250,
+        182,
+        178
+      ],
+      "light": [
+        254,
+        230,
+        222
+      ]
+    },
+    "offPaletteShare": 0.003,
+    "verdict": "같음"
+  },
+  {
+    "file": "set-back-floor-0.png",
+    "who": "set",
+    "view": "back",
+    "skinPixels": 16219,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        250,
+        206,
+        186
+      ],
+      "shadow": [
+        250,
+        186,
+        166
+      ],
+      "light": [
+        250,
+        214,
+        194
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        250,
+        206,
+        186
+      ],
+      "shadow": [
+        250,
+        186,
+        166
+      ],
+      "light": [
+        250,
+        214,
+        194
+      ]
+    },
+    "offPaletteShare": 0.004,
+    "verdict": "같음"
+  },
+  {
+    "file": "set-left-floor-0.png",
+    "who": "set",
+    "view": "left",
+    "skinPixels": 44516,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        254,
+        206,
+        186
+      ],
+      "shadow": [
+        250,
+        178,
+        154
+      ],
+      "light": [
+        254,
+        214,
+        194
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        206,
+        186
+      ],
+      "shadow": [
+        250,
+        178,
+        154
+      ],
+      "light": [
+        254,
+        214,
+        194
+      ]
+    },
+    "offPaletteShare": 0.0,
+    "verdict": "같음"
+  },
+  {
+    "file": "set-right-floor-0.png",
+    "who": "set",
+    "view": "right",
+    "skinPixels": 45977,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        250,
+        202,
+        182
+      ],
+      "shadow": [
+        250,
+        182,
+        158
+      ],
+      "light": [
+        254,
+        210,
+        186
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        250,
+        202,
+        182
+      ],
+      "shadow": [
+        250,
+        182,
+        158
+      ],
+      "light": [
+        254,
+        210,
+        186
+      ]
+    },
+    "offPaletteShare": 0.0,
+    "verdict": "같음"
+  },
+  {
+    "file": "somang-back-stool-0.png",
+    "who": "somang",
+    "view": "back",
+    "skinPixels": 11450,
+    "toneDeltaE": {
+      "base": 1.4,
+      "shadow": 0.0,
+      "light": 1.9
+    },
+    "tones": {
+      "base": [
+        250,
+        214,
+        198
+      ],
+      "shadow": [
+        242,
+        186,
+        166
+      ],
+      "light": [
+        254,
+        222,
+        206
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        218,
+        202
+      ],
+      "shadow": [
+        242,
+        186,
+        166
+      ],
+      "light": [
+        254,
+        226,
+        210
+      ]
+    },
+    "offPaletteShare": 0.003,
+    "verdict": "같음"
+  },
+  {
+    "file": "somang-right-bench-0.png",
+    "who": "somang",
+    "view": "right",
+    "skinPixels": 21037,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 1.9
+    },
+    "tones": {
+      "base": [
+        254,
+        218,
+        202
+      ],
+      "shadow": [
+        250,
+        182,
+        166
+      ],
+      "light": [
+        254,
+        234,
+        218
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        218,
+        202
+      ],
+      "shadow": [
+        250,
+        182,
+        166
+      ],
+      "light": [
+        254,
+        230,
+        214
+      ]
+    },
+    "offPaletteShare": 0.001,
+    "verdict": "같음"
+  },
+  {
+    "file": "somang-right-floor-0.png",
+    "who": "somang",
+    "view": "right",
+    "skinPixels": 18501,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 1.9
+    },
+    "tones": {
+      "base": [
+        254,
+        218,
+        202
+      ],
+      "shadow": [
+        250,
+        190,
+        174
+      ],
+      "light": [
+        254,
+        234,
+        218
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        218,
+        202
+      ],
+      "shadow": [
+        250,
+        190,
+        174
+      ],
+      "light": [
+        254,
+        230,
+        214
+      ]
+    },
+    "offPaletteShare": 0.0,
+    "verdict": "같음"
+  },
+  {
+    "file": "set-right-bench-0.png",
+    "who": "set",
+    "view": "right",
+    "skinPixels": 29899,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        250,
+        202,
+        182
+      ],
+      "shadow": [
+        250,
+        182,
+        158
+      ],
+      "light": [
+        254,
+        210,
+        186
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        250,
+        202,
+        182
+      ],
+      "shadow": [
+        250,
+        182,
+        158
+      ],
+      "light": [
+        254,
+        210,
+        186
+      ]
+    },
+    "offPaletteShare": 0.0,
+    "verdict": "같음"
+  },
+  {
+    "file": "set-back-stool-0.png",
+    "who": "set",
+    "view": "back",
+    "skinPixels": 6291,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        250,
+        206,
+        186
+      ],
+      "shadow": [
+        246,
+        166,
+        146
+      ],
+      "light": [
+        250,
+        214,
+        194
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        250,
+        206,
+        186
+      ],
+      "shadow": [
+        246,
+        166,
+        146
+      ],
+      "light": [
+        250,
+        214,
+        194
+      ]
+    },
+    "offPaletteShare": 0.04,
+    "verdict": "같음"
+  },
+  {
+    "file": "somang-back-floor-0.png",
+    "who": "somang",
+    "view": "back",
+    "skinPixels": 4728,
+    "toneDeltaE": {
+      "base": 1.5,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        250,
+        226,
+        214
+      ],
+      "shadow": [
+        238,
+        186,
+        166
+      ],
+      "light": [
+        254,
+        234,
+        218
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        254,
+        226,
+        214
+      ],
+      "shadow": [
+        238,
+        186,
+        166
+      ],
+      "light": [
+        254,
+        234,
+        218
+      ]
+    },
+    "offPaletteShare": 0.002,
+    "verdict": "같음"
+  }
+]

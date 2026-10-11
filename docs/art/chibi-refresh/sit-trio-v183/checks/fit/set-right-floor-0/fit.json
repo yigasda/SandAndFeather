@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-right-floor-0.png",
+ "view": "right",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "set": {
+   "scale": 0.9925,
+   "match": 0.384,
+   "shift": [
+    3,
+    84
+   ],
+   "feetOffsetPx": -7,
+   "heightRatio": 0.993,
+   "heightFit": {
+    "scale": 1.0,
+    "headScaleVsIdle": 1.008,
+    "shift": [
+     0,
+     87
+    ],
+    "headTopOffsetPx": -4
+   },
+   "verdict": "맞음 (발 -7px 보정)"
+  }
+ }
+}

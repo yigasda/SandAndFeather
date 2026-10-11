@@ -1,0 +1,590 @@
+[
+  {
+    "file": "horus-back-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-back-floor-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0325,
+          "match": 0.222,
+          "shift": [
+            119,
+            80
+          ],
+          "feetOffsetPx": -33,
+          "heightRatio": 0.957,
+          "heightFit": {
+            "scale": 1.0788,
+            "headScaleVsIdle": 1.045,
+            "shift": [
+              110,
+              88
+            ],
+            "headTopOffsetPx": -378
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -33px (-5.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-back-stool-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-back-stool-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0375,
+          "match": 0.215,
+          "shift": [
+            108,
+            81
+          ],
+          "feetOffsetPx": -3,
+          "heightRatio": 1.007,
+          "heightFit": {
+            "scale": 1.0305,
+            "headScaleVsIdle": 0.993,
+            "shift": [
+              110,
+              88
+            ],
+            "headTopOffsetPx": -7
+          },
+          "verdict": "맞음 (발 -3px 보정)"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-left-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-left-floor-0.png",
+      "view": "left",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0625,
+          "match": 0.295,
+          "shift": [
+            108,
+            100
+          ],
+          "feetOffsetPx": -29,
+          "heightRatio": 0.95,
+          "heightFit": {
+            "scale": 1.1173,
+            "headScaleVsIdle": 1.052,
+            "shift": [
+              97,
+              101
+            ],
+            "headTopOffsetPx": -13
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -29px (-5.2% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-right-bench-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-right-bench-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.08,
+          "match": 0.343,
+          "shift": [
+            85,
+            100
+          ],
+          "feetOffsetPx": 15,
+          "heightRatio": 1.028,
+          "heightFit": {
+            "scale": 1.0505,
+            "headScaleVsIdle": 0.973,
+            "shift": [
+              91,
+              101
+            ],
+            "headTopOffsetPx": -393
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +15px (+2.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-right-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-right-floor-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0675,
+          "match": 0.247,
+          "shift": [
+            90,
+            100
+          ],
+          "feetOffsetPx": -22,
+          "heightRatio": 0.963,
+          "heightFit": {
+            "scale": 1.1085,
+            "headScaleVsIdle": 1.038,
+            "shift": [
+              82,
+              101
+            ],
+            "headTopOffsetPx": -7
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -22px (-3.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-back-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-back-floor-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.0075,
+          "match": 0.581,
+          "shift": [
+            44,
+            82
+          ],
+          "feetOffsetPx": 37,
+          "heightRatio": 1.073,
+          "heightFit": {
+            "scale": 0.9396,
+            "headScaleVsIdle": 0.933,
+            "shift": [
+              62,
+              87
+            ],
+            "headTopOffsetPx": 2
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +37px (+6.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-back-stool-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-back-stool-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.04,
+          "match": 0.27,
+          "shift": [
+            46,
+            84
+          ],
+          "feetOffsetPx": 57,
+          "heightRatio": 1.104,
+          "heightFit": {
+            "scale": 0.8889,
+            "headScaleVsIdle": 0.855,
+            "shift": [
+              84,
+              87
+            ],
+            "headTopOffsetPx": -1
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-left-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-left-floor-0.png",
+      "view": "left",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 0.9825,
+          "match": 0.416,
+          "shift": [
+            14,
+            86
+          ],
+          "feetOffsetPx": -27,
+          "heightRatio": 0.955,
+          "heightFit": {
+            "scale": 1.0286,
+            "headScaleVsIdle": 1.047,
+            "shift": [
+              0,
+              87
+            ],
+            "headTopOffsetPx": -11
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -27px (-4.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-right-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-right-floor-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 0.9925,
+          "match": 0.384,
+          "shift": [
+            3,
+            84
+          ],
+          "feetOffsetPx": -7,
+          "heightRatio": 0.993,
+          "heightFit": {
+            "scale": 1.0,
+            "headScaleVsIdle": 1.008,
+            "shift": [
+              0,
+              87
+            ],
+            "headTopOffsetPx": -4
+          },
+          "verdict": "맞음 (발 -7px 보정)"
+        }
+      }
+    }
+  },
+  {
+    "file": "somang-back-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/somang-back-floor-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "somang": {
+          "scale": 1.1675,
+          "match": 0.262,
+          "shift": [
+            43,
+            78
+          ],
+          "feetOffsetPx": 41,
+          "heightRatio": 1.083,
+          "heightFit": {
+            "scale": 1.0784,
+            "headScaleVsIdle": 0.924,
+            "shift": [
+              62,
+              85
+            ],
+            "headTopOffsetPx": 21
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +41px (+7.1% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "somang-back-stool-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/somang-back-stool-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "somang": {
+          "scale": 1.1175,
+          "match": 0.307,
+          "shift": [
+            59,
+            84
+          ],
+          "feetOffsetPx": 57,
+          "heightRatio": 1.1,
+          "heightFit": {
+            "scale": 0.946,
+            "headScaleVsIdle": 0.847,
+            "shift": [
+              97,
+              85
+            ],
+            "headTopOffsetPx": 38
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "somang-right-bench-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/somang-right-bench-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "somang": {
+          "scale": 1.01,
+          "match": 0.338,
+          "shift": [
+            53,
+            86
+          ],
+          "feetOffsetPx": 57,
+          "heightRatio": 1.101,
+          "heightFit": {
+            "scale": 0.8916,
+            "headScaleVsIdle": 0.883,
+            "shift": [
+              81,
+              87
+            ],
+            "headTopOffsetPx": 32
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "somang-right-floor-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/somang-right-floor-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "somang": {
+          "scale": 0.995,
+          "match": 0.385,
+          "shift": [
+            56,
+            83
+          ],
+          "feetOffsetPx": 10,
+          "heightRatio": 1.024,
+          "heightFit": {
+            "scale": 0.9713,
+            "headScaleVsIdle": 0.976,
+            "shift": [
+              62,
+              87
+            ],
+            "headTopOffsetPx": -4
+          },
+          "verdict": "맞음 (발 +10px 보정)"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-right-bench-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-right-bench-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 0.9875,
+          "match": 0.416,
+          "shift": [
+            -11,
+            86
+          ],
+          "feetOffsetPx": -3,
+          "heightRatio": 0.997,
+          "heightFit": {
+            "scale": 0.9914,
+            "headScaleVsIdle": 1.004,
+            "shift": [
+              -6,
+              87
+            ],
+            "headTopOffsetPx": -1
+          },
+          "verdict": "맞음 (발 -3px 보정)"
+        }
+      }
+    }
+  }
+]

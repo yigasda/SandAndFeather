@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-right-bench-0.png",
+ "view": "right",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "horus": {
+   "scale": 1.08,
+   "match": 0.343,
+   "shift": [
+    85,
+    100
+   ],
+   "feetOffsetPx": 15,
+   "heightRatio": 1.028,
+   "heightFit": {
+    "scale": 1.0505,
+    "headScaleVsIdle": 0.973,
+    "shift": [
+     91,
+     101
+    ],
+    "headTopOffsetPx": -393
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +15px (+2.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

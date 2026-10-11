@@ -1,0 +1,220 @@
+[
+  {
+    "file": "somang-right-floor-0.png",
+    "character": "somang",
+    "direction": "right",
+    "pose": "floor",
+    "headHairWidthReference": 466,
+    "headHairWidthSource": 454,
+    "uniformScale": 1.026431718061674,
+    "visibleHeight": 593,
+    "sourceBox": [
+      78,
+      37,
+      548,
+      615
+    ]
+  },
+  {
+    "file": "somang-back-floor-0.png",
+    "character": "somang",
+    "direction": "back",
+    "pose": "floor",
+    "headHairWidthReference": 440,
+    "headHairWidthSource": 465,
+    "uniformScale": 0.946236559139785,
+    "visibleHeight": 536,
+    "sourceBox": [
+      647,
+      44,
+      1116,
+      610
+    ]
+  },
+  {
+    "file": "somang-back-stool-0.png",
+    "character": "somang",
+    "direction": "back",
+    "pose": "stool",
+    "headHairWidthReference": 440,
+    "headHairWidthSource": 418,
+    "uniformScale": 1.0526315789473684,
+    "visibleHeight": 620,
+    "sourceBox": [
+      141,
+      646,
+      564,
+      1235
+    ]
+  },
+  {
+    "file": "somang-right-bench-0.png",
+    "character": "somang",
+    "direction": "right",
+    "pose": "bench",
+    "headHairWidthReference": 466,
+    "headHairWidthSource": 430,
+    "uniformScale": 1.083720930232558,
+    "visibleHeight": 646,
+    "sourceBox": [
+      643,
+      641,
+      1075,
+      1237
+    ]
+  },
+  {
+    "file": "set-left-floor-0.png",
+    "character": "set",
+    "direction": "left",
+    "pose": "floor",
+    "headHairWidthReference": 506,
+    "headHairWidthSource": 447,
+    "uniformScale": 1.3648317064398519,
+    "visibleHeight": 560,
+    "sourceBox": [
+      58,
+      76,
+      505,
+      486
+    ]
+  },
+  {
+    "file": "set-right-floor-0.png",
+    "character": "set",
+    "direction": "right",
+    "pose": "floor",
+    "headHairWidthReference": 525,
+    "headHairWidthSource": 439,
+    "uniformScale": 1.4051042014791808,
+    "visibleHeight": 576,
+    "sourceBox": [
+      526,
+      76,
+      965,
+      486
+    ]
+  },
+  {
+    "file": "set-back-stool-0.png",
+    "character": "set",
+    "direction": "back",
+    "pose": "stool",
+    "headHairWidthReference": 508,
+    "headHairWidthSource": 352,
+    "uniformScale": 1.4431818181818181,
+    "visibleHeight": 648,
+    "sourceBox": [
+      591,
+      553,
+      943,
+      1002
+    ]
+  },
+  {
+    "file": "set-right-bench-0.png",
+    "character": "set",
+    "direction": "right",
+    "pose": "bench",
+    "headHairWidthReference": 525,
+    "headHairWidthSource": 388,
+    "uniformScale": 1.4265360930100566,
+    "visibleHeight": 663,
+    "sourceBox": [
+      70,
+      1031,
+      458,
+      1496
+    ]
+  },
+  {
+    "file": "horus-left-floor-0.png",
+    "character": "horus",
+    "direction": "left",
+    "pose": "floor",
+    "headHairWidthReference": 392,
+    "headHairWidthSource": 307,
+    "uniformScale": 1.276872964169381,
+    "visibleHeight": 503,
+    "sourceBox": [
+      128,
+      70,
+      435,
+      464
+    ]
+  },
+  {
+    "file": "horus-right-floor-0.png",
+    "character": "horus",
+    "direction": "right",
+    "pose": "floor",
+    "headHairWidthReference": 394,
+    "headHairWidthSource": 306,
+    "uniformScale": 1.2875816993464053,
+    "visibleHeight": 507,
+    "sourceBox": [
+      590,
+      70,
+      896,
+      464
+    ]
+  },
+  {
+    "file": "horus-back-floor-0.png",
+    "character": "horus",
+    "direction": "back",
+    "pose": "floor",
+    "headHairWidthReference": 368,
+    "headHairWidthSource": 286,
+    "uniformScale": 1.2867132867132867,
+    "visibleHeight": 533,
+    "sourceBox": [
+      125,
+      548,
+      411,
+      962
+    ]
+  },
+  {
+    "file": "horus-back-stool-0.png",
+    "character": "horus",
+    "direction": "back",
+    "pose": "stool",
+    "headHairWidthReference": 368,
+    "headHairWidthSource": 286,
+    "uniformScale": 1.2867132867132867,
+    "visibleHeight": 558,
+    "sourceBox": [
+      614,
+      549,
+      900,
+      983
+    ]
+  },
+  {
+    "file": "horus-right-bench-0.png",
+    "character": "horus",
+    "direction": "right",
+    "pose": "bench",
+    "headHairWidthReference": 394,
+    "headHairWidthSource": 318,
+    "uniformScale": 1.2389937106918238,
+    "visibleHeight": 535,
+    "sourceBox": [
+      114,
+      1041,
+      432,
+      1473
+    ]
+  },
+  {
+    "file": "set-back-floor-0.png",
+    "character": "set",
+    "direction": "back",
+    "pose": "floor",
+    "referenceEarSpan": 328,
+    "sourceEarSpan": 566,
+    "uniformScale": 0.5795053003533569,
+    "visibleHeight": 613
+  }
+]

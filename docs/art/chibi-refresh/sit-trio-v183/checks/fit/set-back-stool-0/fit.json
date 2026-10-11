@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-back-stool-0.png",
+ "view": "back",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "set": {
+   "scale": 1.04,
+   "match": 0.27,
+   "shift": [
+    46,
+    84
+   ],
+   "feetOffsetPx": 57,
+   "heightRatio": 1.104,
+   "heightFit": {
+    "scale": 0.8889,
+    "headScaleVsIdle": 0.855,
+    "shift": [
+     84,
+     87
+    ],
+    "headTopOffsetPx": -1
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

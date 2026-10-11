@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/somang-back-floor-0.png",
+ "view": "back",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "somang": {
+   "scale": 1.1675,
+   "match": 0.262,
+   "shift": [
+    43,
+    78
+   ],
+   "feetOffsetPx": 41,
+   "heightRatio": 1.083,
+   "heightFit": {
+    "scale": 1.0784,
+    "headScaleVsIdle": 0.924,
+    "shift": [
+     62,
+     85
+    ],
+    "headTopOffsetPx": 21
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +41px (+7.1% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

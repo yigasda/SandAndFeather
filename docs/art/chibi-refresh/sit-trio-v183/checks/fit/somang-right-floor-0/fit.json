@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/somang-right-floor-0.png",
+ "view": "right",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "somang": {
+   "scale": 0.995,
+   "match": 0.385,
+   "shift": [
+    56,
+    83
+   ],
+   "feetOffsetPx": 10,
+   "heightRatio": 1.024,
+   "heightFit": {
+    "scale": 0.9713,
+    "headScaleVsIdle": 0.976,
+    "shift": [
+     62,
+     87
+    ],
+    "headTopOffsetPx": -4
+   },
+   "verdict": "맞음 (발 +10px 보정)"
+  }
+ }
+}

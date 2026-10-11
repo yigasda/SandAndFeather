@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/horus-back-stool-0.png",
+ "view": "back",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "horus": {
+   "scale": 1.0375,
+   "match": 0.215,
+   "shift": [
+    108,
+    81
+   ],
+   "feetOffsetPx": -3,
+   "heightRatio": 1.007,
+   "heightFit": {
+    "scale": 1.0305,
+    "headScaleVsIdle": 0.993,
+    "shift": [
+     110,
+     88
+    ],
+    "headTopOffsetPx": -7
+   },
+   "verdict": "맞음 (발 -3px 보정)"
+  }
+ }
+}

@@ -150,7 +150,7 @@
 
 #### 앉기
 
-[179 대표](art/chibi-refresh/sit-somang-v179/README.md): 소망 방석 왼쪽1장 **채택**: “앉기 잠들기 맘에 들어”. 원본 보존, 소망4장·세트5장·호루스5장 추가.
+[179 대표](art/chibi-refresh/sit-somang-v179/README.md): 소망 방석 왼쪽1장 **채택**: “앉기 잠들기 맘에 들어”. 원본 보존. [앉기183](art/chibi-refresh/sit-trio-v183/README.md) 소망4장·세트5장·호루스5장 검토본 전달, 채택 대기.
 | 칸 | 내용 |
 |---|---|
 | 누가 | 셋 다 |

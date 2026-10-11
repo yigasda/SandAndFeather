@@ -1,0 +1,49 @@
+[
+ {
+  "file": "set-right-bench-0.png",
+  "who": "set",
+  "view": "right",
+  "skinPixels": 29899,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 0.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    254,
+    210,
+    186
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    254,
+    210,
+    186
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ }
+]

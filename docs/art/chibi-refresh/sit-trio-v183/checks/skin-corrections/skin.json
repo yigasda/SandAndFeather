@@ -1,0 +1,96 @@
+[
+ {
+  "file": "set-back-stool-0.png",
+  "who": "set",
+  "view": "back",
+  "skinPixels": 6291,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 0.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    250,
+    206,
+    186
+   ],
+   "shadow": [
+    246,
+    166,
+    146
+   ],
+   "light": [
+    250,
+    214,
+    194
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    206,
+    186
+   ],
+   "shadow": [
+    246,
+    166,
+    146
+   ],
+   "light": [
+    250,
+    214,
+    194
+   ]
+  },
+  "offPaletteShare": 0.04,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-back-floor-0.png",
+  "who": "somang",
+  "view": "back",
+  "skinPixels": 4728,
+  "toneDeltaE": {
+   "base": 1.5,
+   "shadow": 0.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    250,
+    226,
+    214
+   ],
+   "shadow": [
+    238,
+    186,
+    166
+   ],
+   "light": [
+    254,
+    234,
+    218
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    226,
+    214
+   ],
+   "shadow": [
+    238,
+    186,
+    166
+   ],
+   "light": [
+    254,
+    234,
+    218
+   ]
+  },
+  "offPaletteShare": 0.002,
+  "verdict": "같음"
+ }
+]

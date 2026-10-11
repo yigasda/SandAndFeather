@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-trio-v183/png/set-left-floor-0.png",
+ "view": "left",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "set": {
+   "scale": 0.9825,
+   "match": 0.416,
+   "shift": [
+    14,
+    86
+   ],
+   "feetOffsetPx": -27,
+   "heightRatio": 0.955,
+   "heightFit": {
+    "scale": 1.0286,
+    "headScaleVsIdle": 1.047,
+    "shift": [
+     0,
+     87
+    ],
+    "headTopOffsetPx": -11
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 -27px (-4.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}
