@@ -10,10 +10,11 @@
 
 | 누구 | 하는 일 | 읽을 문서 |
 |---|---|---|
-| **아스트라** | 그림: 시안, 캐릭터 스프라이트, 맵 아트 | [docs/ASTRA-HANDOFF.md](docs/ASTRA-HANDOFF.md) → [docs/ASTRA-PLAN.md](docs/ASTRA-PLAN.md) |
+| **아스트라** | 그림: 시안, 캐릭터 스프라이트, 맵 아트 | **[docs/ASTRA-START.md](docs/ASTRA-START.md)** 입구 하나. 거기서 할 일 [PLAN](docs/ASTRA-PLAN.md) → 캐릭터 그림 [SPRITE](docs/ASTRA-SPRITE.md) / 맵 [MAP](docs/ASTRA-MAP.md) → 공통 규칙 [HANDOFF](docs/ASTRA-HANDOFF.md)로 이어진다 |
 | **오푸스** | 게임: 채택된 그림 적용, 충돌·출구·저장, UI, 코드, 검증 | [docs/OPUS-HANDOFF.md](docs/OPUS-HANDOFF.md) |
 
-- 두 문서에는 지금 기준만 있다. 지난 경과는 git 커밋 기록에만 남아 있다.
+- 아스트라 문서는 모두 맨 위에 길 안내(지금 여기 · 다음 볼 것)가 있다. 규칙은 한 문서에만, 할 일·상태는 PLAN에만 쓴다.
+- 인수인계 문서에는 지금 기준만 있다. 지난 경과는 git 커밋 기록에만 남아 있다.
 - 그 밖의 `docs/*.md`는 작업별 기록이다. 인수인계에서 링크할 때만 찾아본다.
 - 공통 규칙 요약은 [AGENTS.md](AGENTS.md)에 있다.
 
@@ -32,7 +33,7 @@
 | 육성 | 필사실 · 훈련장 · 제단 | 지혜 · 체력 · 신앙. 지혜로 기록 해독 |
 | 원정 | 두아트 문, 저녁과 밤 | 세트나 호루스와 갈림길, 턴 전투, 사건, 유물. 죽지 않아 |
 | 경영 | 신전 지도 탁자 | 수로, 밭, 배 정비. 며칠 뒤 지도가 바뀌어 |
-| 집 | 세트 신전 안채 | 옴보스 신전 문으로 걸어 들어가. 우물 마당, 부엌, 식사 공간, 세 사람 방, 성소, 열주 계단, 지붕. 낮밤이 바뀌어 |
+| 집 | 세트 신전 안채 | 옴보스 신전 문으로 걸어 들어가. 우물 마당, 부엌, 식사 공간, 세 사람 방, 성소, 열주 계단, 지붕. 낮밤이 바뀌어. 식탁·쉼터에 앉아 쉬고, 세트 침대에서 자면 새 하루 |
 | 탐험 | 마을 곳곳 | 밤에만, 계절에만, 동행과 함께일 때만 보이는 것 |
 | | 강 건너 무너진 신전 | 배 수리와 모험 등급 3. 비문, 사당, 발굴터 |
 | 작은 모험 | 마을 | 하루 하나. 첫 모험은 숨은 정원. 그다음은 AI가 쓰거나 무작위 조립 |
@@ -51,7 +52,8 @@
 
 ## 참고 문서
 
-- 현재 채택 캐릭터 그림·걷기GIF: [최종 베이스48장](docs/art/chibi-refresh/final/README.md)
+- 현재 채택 캐릭터 그림·걷기GIF: [최종 베이스48장](docs/art/chibi-refresh/final/README.md). 채택된 동작(말 걸기, 줍기, 앉기, 잠들기)은 [ASTRA-SPRITE](docs/ASTRA-SPRITE.md) D
+- 캐릭터 그림 검사: `python3 tools/art/sprite-review.py <동작 폴더> --out <폴더>/review` (피부색·머리·프레임·좌우·기준 그림·붙여넣기를 한 번에, [ASTRA-SPRITE](docs/ASTRA-SPRITE.md) ④)
 
 - 기획서: [SPEC.md](SPEC.md)
 - 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md)
