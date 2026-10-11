@@ -1,5 +1,14 @@
 # 모래와 깃털 (Sand and Feather)
 
+> # 🚨 ASTRA, STOP. READ THIS BEFORE YOU TOUCH ANY PICTURE. 🚨
+> ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. YOUR JOB IS TO MATCH THEM, NOT TO IMPROVE THEM.
+> - **OPEN `docs/art/chibi-refresh/final/<who>/idle/` AND `walk/` FIRST. EVERY TIME. SAME DIRECTION.**
+> - **TRACE ON THE GUIDES:** `tools/art/line-guide.py` (head and face lines), `head-check.py --guide`, `palette/palette.md`, `palette/eyes.png`, `notes/hair-reference.png`.
+> - **SAME FACE SHAPE. SAME HEAD SIZE. SAME LINE THICKNESS. SAME HAIR DETAIL. SAME COLOURS. SAME FACE MARK.** ONLY THE POSE CHANGES.
+> - **DO NOT ADD DETAIL. DO NOT REDESIGN. DO NOT "FIX" WHAT NOBODY ASKED YOU TO FIX.**
+> - **A PASSING CHECK IS NOT A FINISHED DRAWING.** PUT IT NEXT TO THE IDLE AND LOOK BEFORE YOU SEND.
+> - **THEN GO TO [docs/ASTRA-START.md](docs/ASTRA-START.md) AND READ IT. ALL OF IT.**
+
 세트·호루스 RP 채팅 옆에서 돌아가는 이집트 오픈월드 게임이다. SillyTavern 확장으로 동작한다.
 
 **현재 버전 0.9.33.** 버전별 변경 내역은 [CHANGELOG.md](CHANGELOG.md)에 있다.
