@@ -1,0 +1,166 @@
+{
+  "set-front": [
+    {
+      "rgb": [
+        60,
+        7,
+        24
+      ],
+      "hex": "#3c0718",
+      "pickedAt": [
+        249,
+        116
+      ],
+      "source": "docs/art/chibi-refresh/final/set/idle/set-front.png"
+    },
+    {
+      "rgb": [
+        111,
+        28,
+        47
+      ],
+      "hex": "#6f1c2f",
+      "pickedAt": [
+        476,
+        206
+      ],
+      "source": "docs/art/chibi-refresh/final/set/idle/set-front.png"
+    },
+    {
+      "rgb": [
+        144,
+        39,
+        59
+      ],
+      "hex": "#90273b",
+      "pickedAt": [
+        387,
+        116
+      ],
+      "source": "docs/art/chibi-refresh/final/set/idle/set-front.png"
+    }
+  ],
+  "set-right": [
+    {
+      "rgb": [
+        66,
+        14,
+        28
+      ],
+      "hex": "#420e1c",
+      "pickedAt": [
+        443,
+        210
+      ],
+      "source": "docs/art/chibi-refresh/final/set/idle/set-right.png"
+    },
+    {
+      "rgb": [
+        113,
+        31,
+        48
+      ],
+      "hex": "#711f30",
+      "pickedAt": [
+        265,
+        126
+      ],
+      "source": "docs/art/chibi-refresh/final/set/idle/set-right.png"
+    },
+    {
+      "rgb": [
+        140,
+        39,
+        58
+      ],
+      "hex": "#8c273a",
+      "pickedAt": [
+        317,
+        109
+      ],
+      "source": "docs/art/chibi-refresh/final/set/idle/set-right.png"
+    }
+  ],
+  "horus-front": [
+    {
+      "rgb": [
+        28,
+        29,
+        59
+      ],
+      "hex": "#1c1d3b",
+      "pickedAt": [
+        457,
+        184
+      ],
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-front.png"
+    },
+    {
+      "rgb": [
+        40,
+        43,
+        88
+      ],
+      "hex": "#282b58",
+      "pickedAt": [
+        356,
+        116
+      ],
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-front.png"
+    },
+    {
+      "rgb": [
+        42,
+        49,
+        112
+      ],
+      "hex": "#2a3170",
+      "pickedAt": [
+        301,
+        121
+      ],
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-front.png"
+    }
+  ],
+  "horus-right": [
+    {
+      "rgb": [
+        13,
+        13,
+        39
+      ],
+      "hex": "#0d0d27",
+      "pickedAt": [
+        256,
+        132
+      ],
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-right.png"
+    },
+    {
+      "rgb": [
+        38,
+        40,
+        75
+      ],
+      "hex": "#26284b",
+      "pickedAt": [
+        317,
+        145
+      ],
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-right.png"
+    },
+    {
+      "rgb": [
+        42,
+        45,
+        87
+      ],
+      "hex": "#2a2d57",
+      "pickedAt": [
+        392,
+        147
+      ],
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-right.png"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "revision": 194,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "runtimeOwner": "opus",
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 8,
+  "baseRevisions": {
+    "setFront": 193,
+    "setSide": 192,
+    "horusFrontAndSide": 191
+  },
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "files": [
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "ec84ec109640c387a53dc3e611ca78aaca25c1de9767ea5ed06446203d18825b"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "530e759946d2e64e7ed929d5a477cf9228b1e02b0299f00375b5bab394d17231"
+    },
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "15107dcb8c850acb5a665aa1d993d693e2578de91b4940458893f29e70e9f4d9"
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "199dad82758aaff4d04b4301ff4f11f044934290fee32e2deac7911c8e495e60"
+    },
+    {
+      "path": "png/set-sleep-side-0.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "013f0e0516e842aa3c2a227ee534d75ad5337ab557be5e5aec4a164723f1d7e9"
+    },
+    {
+      "path": "png/set-sleep-side-1.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "256a644a7445d8086a59d8c186b190ffb469ddff49581b271e3f9a45c511e97d"
+    },
+    {
+      "path": "png/horus-sleep-side-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "ff25e2b0a26444dfe357fe04e252b132948d154400101aad45b63e57b2dea497"
+    },
+    {
+      "path": "png/horus-sleep-side-1.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "920988d49f6f4a6d4e04463aea1672854699b9d09ee0532f7ac37e7b22a899fe"
+    }
+  ]
+}

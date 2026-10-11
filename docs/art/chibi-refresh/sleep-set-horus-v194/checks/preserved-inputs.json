@@ -1,0 +1,62 @@
+[
+  {
+    "path": "docs/art/chibi-refresh/sleep-set-front-v193/png/set-sleep-0.png",
+    "sha256": "dc784f6b31195fcd9800b4ae82aa68b98d2f327e8a211245dae12df3e8c9ef69"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-set-front-v193/png/set-sleep-1.png",
+    "sha256": "632f865af20e17e5ee87e05ad6231673c3169bba4393fbcd27f0d7218c4179f7"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-set-v192/png/set-sleep-0.png",
+    "sha256": "baf4f801fbc39a740ec837e23a4fde532e05e5442745235f153c6e65dd4532b0"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-set-v192/png/set-sleep-1.png",
+    "sha256": "0123ff9575d50b00873ff240b1a43adc98336ff35559807a7098cd99461386ea"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-set-v192/png/set-sleep-side-0.png",
+    "sha256": "b4b3ebbbf2e017f40892ac60bd2ea107b79aaf5aadcda5236632c030c78795f9"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-set-v192/png/set-sleep-side-1.png",
+    "sha256": "d6e13c087b7f92d8735a15ca6d79c54d80d108dd285c42ad1004ed6cfcad7220"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/horus-sleep-0.png",
+    "sha256": "ce0ce0a2204c66c6e88dfa7480eff71a80334495ef9771cf659694ca80446c9f"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/horus-sleep-1.png",
+    "sha256": "ccb79c6f0d2790d3f2d74b58d5b04ad2427eb5379173e42064e38343f05a7596"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/horus-sleep-side-0.png",
+    "sha256": "386979f1c7df95b1cc3d0d14effdf5bc88290c0b8ee21f939b29bcbb0621cab8"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/horus-sleep-side-1.png",
+    "sha256": "6b4e1f0ebd4a5a7ff83ac09d86926aa6920e5e67c4b75faa7de2db9e3c9c134d"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/set-sleep-0.png",
+    "sha256": "41c4e534806b29f02cdeea907c69eb153dca32ff13e4cae9f130ff352131c55d"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/set-sleep-1.png",
+    "sha256": "dbb76d845de86f67b64fbf595551f9739b33f94c8be9ff119dfcbf3771977abf"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/set-sleep-side-0.png",
+    "sha256": "316843c8b693391727f66c035bf234973cb0f2208afb6107ec27b284f06a8622"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-trio-v191/png/set-sleep-side-1.png",
+    "sha256": "6da90a401dc0518c06b84f7996872671fdc2a6e976354525fa3a147b806f378d"
+  },
+  {
+    "path": "docs/art/chibi-refresh/sleep-somang-v180/png/somang-sleep-0.png",
+    "sha256": "1ea2007da36e028a9f977ff6d3c357e15951c82210b28d4024834c0c86cb7eb7"
+  }
+]

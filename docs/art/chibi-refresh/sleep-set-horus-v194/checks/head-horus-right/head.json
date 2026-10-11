@@ -1,0 +1,24 @@
+[
+ {
+  "size": 0.92,
+  "angle": 10.0,
+  "match": 0.432,
+  "at": [
+   141,
+   68
+  ],
+  "verdict": "머리 크기 같음",
+  "file": "horus-sleep-side-0.png"
+ },
+ {
+  "size": 0.92,
+  "angle": 10.0,
+  "match": 0.432,
+  "at": [
+   141,
+   67
+  ],
+  "verdict": "머리 크기 같음",
+  "file": "horus-sleep-side-1.png"
+ }
+]

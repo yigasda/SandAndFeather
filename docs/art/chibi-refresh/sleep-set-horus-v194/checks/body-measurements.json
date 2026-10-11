@@ -1,0 +1,234 @@
+{
+  "references": {
+    "set-front": [
+      434,
+      578,
+      662
+    ],
+    "set-right": [
+      407,
+      577,
+      662
+    ],
+    "horus-front": [
+      426,
+      574,
+      657
+    ],
+    "horus-right": [
+      411,
+      570,
+      662
+    ]
+  },
+  "frames": [
+    {
+      "file": "set-sleep-0.png",
+      "landmarksY": [
+        394,
+        538,
+        625
+      ],
+      "projectedPx": [
+        144,
+        87
+      ],
+      "idleLandmarksY": [
+        434,
+        578,
+        662
+      ],
+      "vsOwnIdlePercent": [
+        100.0,
+        103.6
+      ],
+      "vsHorusIdlePercent": [
+        97.3,
+        104.8
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    },
+    {
+      "file": "set-sleep-1.png",
+      "landmarksY": [
+        393,
+        538,
+        625
+      ],
+      "projectedPx": [
+        145,
+        87
+      ],
+      "idleLandmarksY": [
+        434,
+        578,
+        662
+      ],
+      "vsOwnIdlePercent": [
+        100.7,
+        103.6
+      ],
+      "vsHorusIdlePercent": [
+        98.0,
+        104.8
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    },
+    {
+      "file": "horus-sleep-0.png",
+      "landmarksY": [
+        389,
+        538,
+        625
+      ],
+      "projectedPx": [
+        149,
+        87
+      ],
+      "idleLandmarksY": [
+        426,
+        574,
+        657
+      ],
+      "vsOwnIdlePercent": [
+        100.7,
+        104.8
+      ],
+      "vsHorusIdlePercent": [
+        100.7,
+        104.8
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    },
+    {
+      "file": "horus-sleep-1.png",
+      "landmarksY": [
+        388,
+        538,
+        625
+      ],
+      "projectedPx": [
+        150,
+        87
+      ],
+      "idleLandmarksY": [
+        426,
+        574,
+        657
+      ],
+      "vsOwnIdlePercent": [
+        101.4,
+        104.8
+      ],
+      "vsHorusIdlePercent": [
+        101.4,
+        104.8
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    },
+    {
+      "file": "set-sleep-side-0.png",
+      "landmarksY": [
+        391,
+        552,
+        645
+      ],
+      "projectedPx": [
+        161,
+        93
+      ],
+      "idleLandmarksY": [
+        407,
+        577,
+        662
+      ],
+      "vsOwnIdlePercent": [
+        94.7,
+        109.4
+      ],
+      "vsHorusIdlePercent": [
+        101.3,
+        101.1
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    },
+    {
+      "file": "set-sleep-side-1.png",
+      "landmarksY": [
+        390,
+        552,
+        645
+      ],
+      "projectedPx": [
+        162,
+        93
+      ],
+      "idleLandmarksY": [
+        407,
+        577,
+        662
+      ],
+      "vsOwnIdlePercent": [
+        95.3,
+        109.4
+      ],
+      "vsHorusIdlePercent": [
+        101.9,
+        101.1
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    },
+    {
+      "file": "horus-sleep-side-0.png",
+      "landmarksY": [
+        395,
+        553,
+        644
+      ],
+      "projectedPx": [
+        158,
+        91
+      ],
+      "idleLandmarksY": [
+        411,
+        570,
+        662
+      ],
+      "vsOwnIdlePercent": [
+        99.4,
+        98.9
+      ],
+      "vsHorusIdlePercent": [
+        99.4,
+        98.9
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    },
+    {
+      "file": "horus-sleep-side-1.png",
+      "landmarksY": [
+        394,
+        553,
+        644
+      ],
+      "projectedPx": [
+        159,
+        91
+      ],
+      "idleLandmarksY": [
+        411,
+        570,
+        662
+      ],
+      "vsOwnIdlePercent": [
+        100.0,
+        98.9
+      ],
+      "vsHorusIdlePercent": [
+        100.0,
+        98.9
+      ],
+      "method": "Manual outline landmarks at native 620x720 scale; projected vertical lengths, uncertainty ±2px. Foot is exclusive bottom bound."
+    }
+  ]
+}
