@@ -1,7 +1,7 @@
 {
   "revision": 187,
   "action": "sleep",
-  "status": "awaiting-user-review",
+  "status": "rejected-superseded",
   "artApproved": false,
   "runtimeEligible": false,
   "runtimeOwner": "opus",
@@ -263,5 +263,7 @@
     "목·어깨·팔·몸통·머리 끝을 밝고 어두운 배경에서 두 프레임 확대 비교",
     "31px GIF의 실제 저장 프레임을 비교해 머리 전체의 흔들림 없이 호흡부 변화 확인",
     "같이 자기에서 양쪽 베개를 향한 머리와 마주 보는 얼굴·침대 안 위치 및 두 프레임 겹침 확인"
-  ]
+  ],
+  "replacedBy": "../sleep-trio-v189/",
+  "reason": "사용자189 수정 요청: 세로 중심·팔 길이·호루스 머리/목·실제 들숨 윤곽"
 }

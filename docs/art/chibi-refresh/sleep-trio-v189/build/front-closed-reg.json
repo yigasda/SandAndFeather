@@ -1,0 +1,18 @@
+{
+  "source": "/workspace/actions189/front-closed-generated.png",
+  "ref": "docs/art/chibi-refresh/final/horus/idle/horus-front.png",
+  "matrix": [
+    [
+      0.5178350586130337,
+      -0.0023389429848855526,
+      14.801890249142215
+    ],
+    [
+      0.0023389429848855526,
+      0.5178350586130337,
+      55.22687166694788
+    ]
+  ],
+  "inliers": 25,
+  "good": 87
+}

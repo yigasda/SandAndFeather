@@ -1,0 +1,7 @@
+const sharp=require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.cjs'),fs=require('fs');
+(async()=>{for(const v of ['front','right']){const{data:orig,info}=await sharp('docs/art/chibi-refresh/final/horus/idle/horus-'+v+'.png').ensureAlpha().raw().toBuffer({resolveWithObject:true});const gen=await sharp('/workspace/actions189/'+v+'-closed-aligned.png').ensureAlpha().raw().toBuffer();let boxes=v==='front'?[[190,317,283,385],[325,316,421,381]]:[[363,317,443,379]];
+for(let y=0;y<720;y++)for(let x=0;x<620;x++){for(const[x0,y0,x1,y1]of boxes){if(x<x0||x>x1||y<y0||y>y1)continue;let k=(y*620+x)*4;const t=Math.min(1,(x-x0)/4,(x1-x)/4,(y-y0)/4,(y1-y)/4);for(let c=0;c<3;c++)orig[k+c]=Math.round(orig[k+c]*(1-t)+gen[k+c]*t);}}
+await sharp(orig,{raw:info}).png().toFile('/workspace/actions189/horus-'+v+'-closed-canonical.png');
+const name=v==='front'?'horus-sleep-0':'horus-sleep-side-0';let base=await sharp('docs/art/chibi-refresh/sleep-trio-v189/png/'+name+'.png').ensureAlpha().raw().toBuffer();const ox=v==='front'?7:-40,oy=v==='front'?-12:-13,cut=v==='front'?425:430;
+for(let y=0;y<720;y++)for(let x=0;x<620;x++){const k=(y*620+x)*4;if(y<cut+oy){base.fill(0,k,k+4);const sx=x-ox,sy=y-oy;if(sx>=0&&sx<620&&sy>=0&&sy<cut){let j=(sy*620+sx)*4;orig.copy(base,k,j,j+4);}}}
+await sharp(base,{raw:info}).png().toFile('docs/art/chibi-refresh/sleep-trio-v189/png/'+name+'.png');}})();

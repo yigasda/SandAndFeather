@@ -1,0 +1,22 @@
+[
+  {
+    "file": "set-sleep-0",
+    "scale": 0.65,
+    "offset": [
+      -82,
+      23
+    ],
+    "bodyBelowY": 418,
+    "foreshortening": 0.53
+  },
+  {
+    "file": "horus-sleep-0",
+    "scale": 0.58,
+    "offset": [
+      -27,
+      9
+    ],
+    "bodyBelowY": 417,
+    "foreshortening": 0.63
+  }
+]

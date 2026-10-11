@@ -1,0 +1,107 @@
+[
+  {
+    "file": "png/horus-back-floor-0.png",
+    "factor": 1.03,
+    "anchor": [
+      310,
+      638
+    ],
+    "paddingTop": 0,
+    "canvas": [
+      620,
+      720
+    ],
+    "sampling": "nearest; original RGBA values only",
+    "uniform": true
+  },
+  {
+    "file": "png/horus-back-stool-0.png",
+    "factor": 1.04,
+    "anchor": [
+      310,
+      554
+    ],
+    "paddingTop": 0,
+    "canvas": [
+      620,
+      720
+    ],
+    "sampling": "nearest; original RGBA values only",
+    "uniform": true
+  },
+  {
+    "file": "png/horus-left-floor-0.png",
+    "factor": 1.06,
+    "anchor": [
+      340,
+      652
+    ],
+    "paddingTop": 0,
+    "canvas": [
+      620,
+      720
+    ],
+    "sampling": "nearest; original RGBA values only",
+    "uniform": true
+  },
+  {
+    "file": "png/horus-right-bench-0.png",
+    "factor": 1.08,
+    "anchor": [
+      295,
+      559
+    ],
+    "paddingTop": 0,
+    "canvas": [
+      620,
+      720
+    ],
+    "sampling": "nearest; original RGBA values only",
+    "uniform": true
+  },
+  {
+    "file": "png/horus-right-floor-0.png",
+    "factor": 1.07,
+    "anchor": [
+      280,
+      652
+    ],
+    "paddingTop": 0,
+    "canvas": [
+      620,
+      720
+    ],
+    "sampling": "nearest; original RGBA values only",
+    "uniform": true
+  },
+  {
+    "file": "png/somang-back-floor-0.png",
+    "factor": 1.17,
+    "anchor": [
+      310,
+      651
+    ],
+    "paddingTop": 0,
+    "canvas": [
+      620,
+      720
+    ],
+    "sampling": "nearest; original RGBA values only",
+    "uniform": true
+  },
+  {
+    "file": "png/somang-back-stool-0.png",
+    "factor": 1.12,
+    "anchor": [
+      310,
+      553
+    ],
+    "paddingTop": 24,
+    "canvas": [
+      620,
+      744
+    ],
+    "sampling": "nearest; original RGBA values only",
+    "uniform": true
+  }
+]

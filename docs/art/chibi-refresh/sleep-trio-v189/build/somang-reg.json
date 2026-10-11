@@ -1,0 +1,18 @@
+{
+  "source": "/workspace/generated_images/exec-005decfa-07b6-4296-9865-0900252f0455.png",
+  "ref": "docs/art/chibi-refresh/sleep-somang-v180/png/somang-sleep-0.png",
+  "matrix": [
+    [
+      0.5433983263307421,
+      -4.15730206865404e-05,
+      -13.476725585604637
+    ],
+    [
+      4.15730206865404e-05,
+      0.5433983263307421,
+      -5.009847100582432
+    ]
+  ],
+  "inliers": 110,
+  "good": 193
+}

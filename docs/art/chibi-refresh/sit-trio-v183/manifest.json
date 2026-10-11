@@ -25,9 +25,14 @@
         ]
       },
       "expression": "calm",
-      "sha256": "e59e17894f56f9dafb93e535a6d3b131880131fb3c310b0521f8b35180227d72",
+      "sha256": "174f986678080fd560d31d98b210f83f2a980331e635245449d0414b9d31cf0c",
       "reviewStatus": "awaiting-user-review",
-      "correctionRevision": 186
+      "correctionRevision": 188,
+      "uniformScaleFrom183_186": 1.03,
+      "canvas": [
+        620,
+        720
+      ]
     },
     {
       "path": "png/horus-back-stool-0.png",
@@ -43,7 +48,13 @@
         ]
       },
       "expression": "calm",
-      "sha256": "eadb6de507a5c14c641e8a89bc0ba512c51f50dcb215231f1e8be549872fbd65"
+      "sha256": "542675199dec88aa8fbebeefa55b7654acaf4705e7632be17544457dd541925e",
+      "correctionRevision": 188,
+      "uniformScaleFrom183_186": 1.04,
+      "canvas": [
+        620,
+        720
+      ]
     },
     {
       "path": "png/horus-left-floor-0.png",
@@ -59,7 +70,13 @@
         ]
       },
       "expression": "calm",
-      "sha256": "fb73fad0f175d59dcae5a8ee077ca36ba9c5c7aff839470ceb809b48d4c1a263"
+      "sha256": "af7b137f9f027ab94c203b15d1464a5092a32feb79a9ff1b8b3bd8157672d77a",
+      "correctionRevision": 188,
+      "uniformScaleFrom183_186": 1.06,
+      "canvas": [
+        620,
+        720
+      ]
     },
     {
       "path": "png/horus-right-bench-0.png",
@@ -75,7 +92,13 @@
         ]
       },
       "expression": "calm",
-      "sha256": "a75f9ce4f97fed0ee9a51c62ba897e923d3406876949e038105b26a7c69df685"
+      "sha256": "4112a132484cc2d36df3fa9f2f5178e04322875d6fccdaf4a4fbb5864d4d9cfd",
+      "correctionRevision": 188,
+      "uniformScaleFrom183_186": 1.08,
+      "canvas": [
+        620,
+        720
+      ]
     },
     {
       "path": "png/horus-right-floor-0.png",
@@ -91,7 +114,13 @@
         ]
       },
       "expression": "calm",
-      "sha256": "376383b5c60a56e8b6d46b0243135a2cc53079fe0eab276bfce87882b932adff"
+      "sha256": "baa373f0379aa52873d4436c206a1ec86b52c5ca08226dd17cb3ad3fdea1aadc",
+      "correctionRevision": 188,
+      "uniformScaleFrom183_186": 1.07,
+      "canvas": [
+        620,
+        720
+      ]
     },
     {
       "path": "png/set-back-floor-0.png",
@@ -187,7 +216,13 @@
         ]
       },
       "expression": "approved179-basic-smile",
-      "sha256": "43f3016869bc700e793757dbaf08eb3d67f9273250ec8046d63e20761eb899a8"
+      "sha256": "bca1d71774f5b5767b969b890e722d9f6d005a570e1235911ac1735bbf0fd019",
+      "correctionRevision": 188,
+      "uniformScaleFrom183_186": 1.17,
+      "canvas": [
+        620,
+        720
+      ]
     },
     {
       "path": "png/somang-back-stool-0.png",
@@ -199,11 +234,17 @@
         "kind": "seat-bottom",
         "position": [
           310,
-          529
+          553
         ]
       },
       "expression": "approved179-basic-smile",
-      "sha256": "8500251439a89dffb0b56821f61b6ce1e7f5efc13bdfcaf9fd448598e2e08da1"
+      "sha256": "1165a05aa90c480b0cb93a9bea5c5f4945d76ab4c09c4c80f1eb5cb6db3a3755",
+      "correctionRevision": 188,
+      "uniformScaleFrom183_186": 1.12,
+      "canvas": [
+        620,
+        744
+      ]
     },
     {
       "path": "png/somang-right-bench-0.png",
@@ -258,6 +299,20 @@
     "밝고 어두운 배경에서 연결·남은 픽셀 확인"
   ],
   "fitNote": "앉은 자리 기준. 서 있는 발 기준 검사 비율 다름은 별도 결과로 보존. 머리 폭/얼굴 크기와 실제 그림 비교를 함께 확인.",
-  "correctionRevision": 186,
-  "correctionNote": "호루스 방석 뒤1장: 무릎 꿇고 접힌 다리·뒤꿈치, 무릎 앞으로 이어지는 굽힌 팔과 가려진 손. 머리·귀 픽셀 그대로."
+  "correctionRevision": 188,
+  "correctionNote": "호루스 방석 뒤1장: 무릎 꿇고 접힌 다리·뒤꿈치, 무릎 앞으로 이어지는 굽힌 팔과 가려진 손. 머리·귀 픽셀 그대로.",
+  "canvasExceptions": {
+    "png/somang-back-stool-0.png": {
+      "canvas": [
+        620,
+        744
+      ],
+      "paddingTop": 24,
+      "anchor": [
+        310,
+        553
+      ],
+      "reason": "12% uniform enlargement about original seat-bottom would crop crown; transparent top extension preserves complete head and identical world registration"
+    }
+  }
 }

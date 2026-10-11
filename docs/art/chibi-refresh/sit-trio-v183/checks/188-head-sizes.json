@@ -1,0 +1,65 @@
+[
+  {
+    "file": "png/horus-back-floor-0.png",
+    "headMatch": 1.005,
+    "requestedUniformScale": 1.03,
+    "anchor": [
+      310,
+      638
+    ]
+  },
+  {
+    "file": "png/horus-back-stool-0.png",
+    "headMatch": 1.705,
+    "requestedUniformScale": 1.04,
+    "anchor": [
+      310,
+      554
+    ]
+  },
+  {
+    "file": "png/horus-left-floor-0.png",
+    "headMatch": 0.998,
+    "requestedUniformScale": 1.06,
+    "anchor": [
+      340,
+      652
+    ]
+  },
+  {
+    "file": "png/horus-right-bench-0.png",
+    "headMatch": 0.998,
+    "requestedUniformScale": 1.08,
+    "anchor": [
+      295,
+      559
+    ]
+  },
+  {
+    "file": "png/horus-right-floor-0.png",
+    "headMatch": 0.998,
+    "requestedUniformScale": 1.07,
+    "anchor": [
+      280,
+      652
+    ]
+  },
+  {
+    "file": "png/somang-back-floor-0.png",
+    "headMatch": 0.965,
+    "requestedUniformScale": 1.17,
+    "anchor": [
+      310,
+      651
+    ]
+  },
+  {
+    "file": "png/somang-back-stool-0.png",
+    "headMatch": 0.968,
+    "requestedUniformScale": 1.12,
+    "anchor": [
+      310,
+      529
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "source": "final/horus/idle/horus-right.png",
+  "offset": [
+    -40,
+    -13
+  ],
+  "scale": 1.0,
+  "crownAndOuterHairPixels": 58504,
+  "changedCrownPixels": 0,
+  "excludes": "eye/eyebrow ROI and collar; comparison is actual approved crown/outer hair"
+}
