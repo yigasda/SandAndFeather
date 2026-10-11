@@ -1,0 +1,52 @@
+{
+  "revision": 153,
+  "status": "front-only review; not approved; runtime unchanged",
+  "idle": {
+    "size": [
+      620,
+      720
+    ],
+    "pivot": [
+      310,
+      662
+    ],
+    "referenceVisibleHeight": 576
+  },
+  "walk": {
+    "size": [
+      360,
+      400
+    ],
+    "pivot": [
+      180,
+      370
+    ],
+    "referenceVisibleHeight": 330,
+    "sequence": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "durationMs": 180
+  },
+  "scope": "One front idle and three front walks. Back and sides pending.",
+  "files": [
+    {
+      "path": "idle/horus-front.png",
+      "sha256": "6d3356a15227d32f4ca03f85398284c34899b16b8a96c40e85271517ed86850e"
+    },
+    {
+      "path": "walk/horus-front-0.png",
+      "sha256": "0bb3814d3973337c49d5091d5ff8e677566a4b8bc0848c7f1060e609dae5f995"
+    },
+    {
+      "path": "walk/horus-front-1.png",
+      "sha256": "e58cbe6b7b179c196ad3ed36521aafebe677de5265c133a1fb852db6394e07e4"
+    },
+    {
+      "path": "walk/horus-front-2.png",
+      "sha256": "98a419f78f3041a0db82e473123389f9430aec049f7fb1acb0ce909c83f64066"
+    }
+  ]
+}

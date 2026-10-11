@@ -1,0 +1,23 @@
+{
+  "hairSource": "user-edit.jpg",
+  "registration": "alignment.json",
+  "walkingBodyUnchanged": [
+    {
+      "frame": 0,
+      "unchangedBelowY": 204,
+      "differenceBelow204": 36
+    },
+    {
+      "frame": 1,
+      "unchangedBelowY": 204,
+      "differenceBelow204": 31
+    },
+    {
+      "frame": 2,
+      "unchangedBelowY": 204,
+      "differenceBelow204": 33
+    }
+  ],
+  "idleBodySource": "review-trio-walk-v4/idle-reference/horus-front.png",
+  "note": "Body of walk preserved at this stage. Forehead colors cleaned; User mask/positions retained; phone paint excluded. Original hair texture/palette used inside fixed outline."
+}
