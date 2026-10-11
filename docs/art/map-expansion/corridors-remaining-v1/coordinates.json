@@ -1,5 +1,5 @@
 {
-  "status": "review; art not approved; coordinates proposed; runtime not applied",
+  "status": "user-approved art; coordinates remain proposals; runtime not applied",
   "convention": "pixels, top-left origin; rectangles [x1,y1,x2,y2], exclusive end",
   "imageSize": [
     2492,

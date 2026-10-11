@@ -6,7 +6,7 @@
 
 1. `git fetch` 후 main을 받는다. 오푸스도 같은 main에 작업하므로 다른 작업을 덮어쓰지 않는다.
 2. 읽는 순서는 이 문서, [ASTRA-PLAN.md](ASTRA-PLAN.md)(단계별 할 일), 작업할 대상의 실제 원본 파일이다.
-3. 게임 코드와 적용은 오푸스 담당이고 [OPUS-HANDOFF.md](OPUS-HANDOFF.md)에 있다. 아스트라는 읽지 않아도 된다. 무엇이 게임에 들어가 있는지는 4절 표와 5절 기준 파일로 충분하다.
+3. 게임 코드와 적용은 오푸스 담당이고 [OPUS-HANDOFF.md](OPUS-HANDOFF.md)에 있다. 아스트라는 읽지 않아도 된다. 최종 채택 파일은 5절에서 확인하고, 게임 적용 여부는 해당 파일의 명세와 적용 기록에서 별도로 확인한다.
 
 ## 2. 일하는 방식
 
@@ -75,33 +75,66 @@
 
 **보고.** 확인한 항목과 확인하지 못한 항목을 그대로 적는다. 확인하지 않고 "완료", "동일", "승인"이라고 쓰지 않는다.
 
-## 4. 지금 할 일
+## 4. 지금 할 일 — 최종 채택 목록과 분리
 
-| 대상 | 파일 | 상태와 다음 |
-|---|---|---|
-| **긴 회랑 5장** | 새 안쪽 복도 `art/map-expansion/corridor-expand-v4/`(139번) | **137번 반려·적용 금지. 사용자 “다 채택”으로139번 채택(2026-10-11).** 원본의 좌우 끝부분을 각각 기준으로 바깥160px만 이어 그림. 2492×887, 원본(160,64) 영역 변경0. 확대/전체/셋소호 약2칸 키 정적 배치/폰폭 비교 확인. 인게임 이동·가림 미검증. 남은4장: `art/map-expansion/corridors-remaining-v1/`의140중앙·141동쪽·142서쪽·143방문, **새 검토본·미채택·게임 미적용**. 모두2492×887, 원본(160,64) 영역 변경0. 전후/입구 확대/셋소호·폰폭 정적 비교 및 좌표 동봉. 다음은 이4장 검토 결과 반영 |
-| **우물 마당** | 낮 `art/map-expansion/well-review-three-v3/option-3.png`(확정) / 밤 `art/map-expansion/well-option3-night-v1/`(138번) | 낮3안(동그란 문)과 밤138번 모두 채택(2026-10-11 사용자 “다 채택”). 게임 미적용 |
-| **셋소호 새 걷기** | `art/chibi-refresh/review-trio-walk-v5/` | 36장 모두 채택(사용자: "셋소호 다 합격"). 게임 미적용. 새 정지 12장은 아직 완성으로 보지 않는다 |
-| **호루스 정면** | 최종 외형 `art/chibi-refresh/review-horus-v13/horus-front.png`(131번) | 채택. 이마·헤어 경계 정리본 `horus-final-clean.png`(132번 폴더)는 검토 중 |
-| **소망 피부 소폭 밝힘** | `art/chibi-refresh/review-somang-skin-v3/`(121번) | 검토 대기 |
-
-그다음은 [ASTRA-PLAN.md](ASTRA-PLAN.md) 순서대로 간다. 2단계 셋소호 동작 바리에이션, 3단계 두아트 확장, 4단계 새 지역.
-
-**게임 적용은 오푸스가 한다.**
-- 사용자가 아스트라와 정리한 파일을 한꺼번에 넘기면, 오푸스가 맵 크기·충돌·출구·가림·밤 전환을 맞춘다.
-- 아스트라는 런타임 파일(`tools/maps/`, `data/`, `src/`)을 고치지 않는다.
-- 좌표는 제안만 하고, 걸어 본 것처럼 말하지 않는다.
-
-## 5. 기준 파일
-
-| 무엇 | 어디 |
+| 대상 | 다음 작업 |
 |---|---|
-| 셋소호 새 걷기(채택) | `art/chibi-refresh/review-trio-walk-v5/`와 그 안의 `manifest.json` |
-| 셋소호 이전 승인본(지금 게임에 쓰는 것, 동작 참고용) | `art/chibi-refresh/approved/`: 걷기 36장 `walk/`, 정지 12장 `idle/`(620×720), 시트 `sheets/`, 크기와 발 기준점 `manifest.json` |
-| 걷기 움직임 분석 | [walk-analysis/README.md](art/chibi-refresh/walk-analysis/README.md) |
-| 안채 세부맵(승인, 게임 사용 중) | `art/map-expansion/` 안의 파일. 방: `set-room-v6-single-window-day/-night`, `horus-room-v2-wide-day/-night`, `somang-room-v3-center(-night)` · 부엌: `temple-kitchen-v2-open-day/-night` · 식사: `temple-dining-v2-garden-day/-night` · 성소: `set-sanctuary-v6-neutral` · 계단: `colonnade-stairs-v1(-night)` · 지붕: `temple-roof-v1-day/-night` · 마당과 회랑: `exits-v2/` |
-| 안채 출구 좌표 | [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md). 실제 게임 값은 `tools/maps/residence.py` |
-| 두아트 경계 동굴 1차 시안 | `art/map-expansion/duat-boundary-v1-portrait.png`, [DUAT-EXPANSION-ART-V1.md](DUAT-EXPANSION-ART-V1.md) |
+| 긴 회랑5장 | 아트 전부 채택 완료. 적용 대상은5절의139~143번. 게임 적용과 이동·충돌·가림 확인은 오푸스 담당 |
+| 셋소호 새 그림체 정지 | 4방향12장 세트는 미완료. 채택된 새 걷기를 정지12장 완성으로 간주하지 않는다 |
+| 개별 수정 검토 | 소망 피부121번, 호루스 이마 경계132번은 별도 채택 확인 전. 최종 정지 시안을 자동 교체하지 않는다 |
+
+그다음은 [ASTRA-PLAN.md](ASTRA-PLAN.md) 순서대로 간다. 두아트 경계 동굴 첫 시안은 후속 작업의 검토 자료이며 최종 채택 목록에 포함하지 않는다.
+
+**게임 적용은 오푸스가 한다.** 사용자가 정리한 파일을 한꺼번에 넘기면 맵 크기·충돌·출구·가림·밤 전환을 맞춘다. 아스트라는 런타임 파일(`tools/maps/`, `data/`, `src/`)을 고치지 않는다. 좌표는 제안만 하고, 걸어 본 것처럼 말하지 않는다.
+
+## 5. 최종 채택 시안 — 사용자가 선택한 파일만
+
+**이 목록은 최종 선택본만 가리킨다.** 같은 대상의 이전 선택지, 반려본, 수정 중인 파일, 비교 이미지, 게임에 남아 있는 구버전은 함께 나열하지 않는다. 새 결과를 만들거나 main·Drive에 올렸다는 이유로 교체하지 않는다. 새 채택이 확인되면 해당 행을 교체한다. 부분 채택은 완성 세트 승인으로 확대하지 않는다.
+
+### 셋소호
+
+| 대상 | 최종 채택 원본 | 범위 |
+|---|---|---|
+| 정지4방향12장 | [approved/idle/](art/chibi-refresh/approved/idle/) — `{set,somang,horus}-{front,back,left,right}.png` | 완성·채택된 정지 세트.620×720. 새 그림체12장이 완성됐다는 뜻은 아님 |
+| 호루스 새 정면 외형 | [131번 horus-front.png](art/chibi-refresh/review-horus-v13/horus-front.png) | 정면 단독 채택. 사용자가 “이걸 바탕으로 … 걷기”를 요청한 기준 |
+| 새 걷기36장 | [review-trio-walk-v5/walk/](art/chibi-refresh/review-trio-walk-v5/walk/) — `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` | 소망·호루스135 + 세트136. 사용자 “셋소호 다 합격” |
+| 새 걷기 합본GIF | [136-trio-walk.gif](art/chibi-refresh/review-trio-walk-v5/previews/136-trio-walk.gif) | 위 채택36장의 확인용 합본. 편집은 개별PNG에서 시작 |
+
+정지 세트와 새 걷기의 실제 명세는 각각 [정지 manifest](art/chibi-refresh/approved/manifest.json), [새 걷기 manifest](art/chibi-refresh/review-trio-walk-v5/manifest.json)에 있다. 정지 manifest에 함께 있는 예전 걷기 항목은 최신 선택본이 아니다. 게임 적용 여부는 채택 여부와 별도로 판단한다.
+
+### 회랑·우물 마당
+
+아래 경로는 `docs/art/map-expansion/` 기준이다.
+
+| 대상 | 최종 채택 파일 | 선택 근거 |
+|---|---|---|
+| 안쪽 복도 | `corridor-expand-v4/inner-corridor-expanded-v4.png` |139번, 사용자 “다 채택”.2492×887, 원본 위치(160,64) |
+| 연못 회랑 낮·밤 | `exits-v2/courtyard-colonnade-v1.png`, `exits-v2/courtyard-colonnade-v1-night.png` | 오른쪽 확장본 채택.1932×1086 |
+| 중앙 회랑 | `corridors-remaining-v1/central-expanded.png` |140번, 사용자 “회랑 다 채택”.2492×887 |
+| 동쪽 회랑 | `corridors-remaining-v1/east-expanded.png` |141번, 사용자 “회랑 다 채택”.2492×887 |
+| 서쪽 회랑 | `corridors-remaining-v1/west-expanded.png` |142번, 사용자 “회랑 다 채택”.2492×887 |
+| 방문 회랑 | `corridors-remaining-v1/rooms-expanded.png` |143번, 사용자 “회랑 다 채택”.2492×887 |
+| 우물 마당 낮·밤 | `well-option3-night-v1/well-courtyard-option3-day.png`, `well-option3-night-v1/well-courtyard-option3-night.png` | 동그란 문3안 + 밤138번. 사용자 “다 채택”.2160×887 |
+
+긴 회랑139~143번 모두 원본 위치는(160,64)다. 아트는 전부 채택됐으며 게임 적용은 별도다. 좌표는 각 폴더의 `coordinates.json`을 따른다. 이전 작은 회랑과 반려 확장본으로 되돌리지 않는다.
+
+### 다른 채택 배경
+
+아래 경로도 `docs/art/map-expansion/` 기준이다. 낮밤 파일을 한 쌍으로 유지한다.
+
+| 대상 | 최종 채택 파일 |
+|---|---|
+| 옴보스 | `ombos-upgrade-v1-day.png`, `ombos-upgrade-v1-night.png` |
+| 세트 방 | `set-room-v6-single-window-day.png`, `set-room-v6-single-window-night.png` |
+| 호루스 방 | `horus-room-v2-wide-day.png`, `horus-room-v2-wide-night.png` |
+| 소망 방 | `somang-room-v3-center.png`, `somang-room-v3-center-night.png` |
+| 부엌 | `temple-kitchen-v2-open-day.png`, `temple-kitchen-v2-open-night.png` |
+| 식사 공간 | `temple-dining-v2-garden-day.png`, `temple-dining-v2-garden-night.png` |
+| 성소 | `set-sanctuary-v6-neutral.png` |
+| 열주 계단 | `colonnade-stairs-v1.png`, `colonnade-stairs-v1-night.png` |
+| 지붕 | `temple-roof-v1-day.png`, `temple-roof-v1-night.png` |
+
+**제작 참고 자료는 최종 시안 목록이 아니다.** 걷기 동작 분석은 [walk-analysis](art/chibi-refresh/walk-analysis/README.md), 게임에 쓰는 기존48장 파일별 명세는 [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md), 출구 좌표는 [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md)에서 필요할 때 확인한다. 실제 수정 베이스는 위 최종 채택 파일로 정한다.
 
 ## 6. 세부맵을 그리고 고칠 때
 

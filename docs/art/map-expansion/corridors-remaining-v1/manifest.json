@@ -1,5 +1,5 @@
 {
-  "status": "review-not-approved; runtime-not-applied",
+  "status": "user-approved; runtime-not-applied",
   "date": "2026-10-11",
   "approvedPrecedent": "../corridor-expand-v4/inner-corridor-expanded-v4.png (139, user approved)",
   "files": [
@@ -55,5 +55,10 @@
       "originalRegionChangedPixels": 0,
       "comparison": "previews/143-rooms-compare.png"
     }
-  ]
+  ],
+  "approval": {
+    "date": "2026-10-11",
+    "evidence": "회랑 다 채택",
+    "scope": "140 central, 141 east, 142 west, 143 rooms; all four final PNGs"
+  }
 }

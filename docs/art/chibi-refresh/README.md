@@ -1,17 +1,16 @@
-# 셋소호 최종 승인 아트
+# 셋소호 최종 채택 아트
 
-> 2026-10-11 상태 정정: 사용자는 호루스 가슴천을 게임 스프라이트에서 제외하기로 결정했다. `review-chest-cloth/`는 미채택 참고 기록이며 적용하지 않는다. 승인된 가슴천 없는 정지·걷기 원본을 유지한다.
+2026-10-11 정리. **사용자가 최종 선택한 원본만 이 목록에 둔다.** 폴더명 `review` 또는 `approved` 자체가 최신 채택의 증거는 아니다.
 
-2026-10-10. 호루스 피부·걷기 머리 전체 수정까지 승인. 현재 사용할 원본은 **[approved/](approved/)** 한 곳이다. 이전 반려·교체 시안과 시안 생성 스크립트는 사용자의 요청으로 제거했다. 최종 48개 PNG는 승인 파일을 바이트 그대로 이동했으며 다시 그리거나 압축하지 않았다. 이전 제작 과정은 Git 이력에만 남아 있다.
+| 대상 | 최종 파일 | 명세 |
+|---|---|---|
+| 정지4방향12장 | [approved/idle/](approved/idle/)의 `{set,somang,horus}-{front,back,left,right}.png` |620×720. [manifest](approved/manifest.json) |
+| 호루스 새 정면 단독 | [131번 horus-front.png](review-horus-v13/horus-front.png) | 사용자가 채택한 정면 외형. 새 정지4방향 세트와 구분 |
+| 새 걷기36장 | [review-trio-walk-v5/walk/](review-trio-walk-v5/walk/)의 `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` |360×400. 소망·호루스135 + 세트136. [manifest](review-trio-walk-v5/manifest.json) |
+| 새 걷기 확인용 합본 | [136-trio-walk.gif](review-trio-walk-v5/previews/136-trio-walk.gif) | 위36장으로 구성 |
 
-- 오푸스 적용 지시
-- [48장 파일별 목록](../../APPROVED-IDLE-WALK-FILES.md)
-- [프레임·방향·pivot·해시·재생 설정](approved/manifest.json)
-- [최종 정지 4방향](approved/previews/trio-idle.jpg)
-- [최종 걷기 합본](approved/previews/trio-walk-preview.gif)
+새 걷기는 사용자 **“셋소호 다 합격”**으로 전원 채택됐다. 0→1→2→1, 각180ms. 개별 PNG와 명세를 먼저 확인하고 편집한다. GIF나 시트에서 프레임을 다시 추출하지 않는다.
 
-`approved/idle/` 정지 12장, `approved/walk/` 걷기 36장, `approved/sheets/` 투명 합본, `approved/previews/` 확인용 JPG/GIF로 구성한다. 아트 승인과 게임 적용은 별개다. 이 48장의 **런타임 연결은 0.9.8에서 완료**됐다. [적용 기록](../../TRIO-MOTION-098.md)을 참고한다. `approved/manifest.json`의 적용 대기 상태는 최초 전달 당시 메타데이터이며 현재 런타임 상태를 나타내지 않는다.
+완성된 정지12장과 새 걷기36장은 서로 다른 제작 단계다. 새 그림체 정지12장 세트는 아직 미완료다. 정지 manifest에 포함된 예전 걷기와 현재 게임 적용본을 최신 선택본으로 혼동하지 않는다. 게임 적용은 오푸스 담당이다.
 
-걷기는 0→1→2→1, 각 180ms. 호루스 정면만 원본 360×400 셀 기준 (+1,0), (0,-1), (-1,0), (0,-1)을 적용한다. 추가 회전은 없다.
-
-다음 제작 범위: 달리기, 상호작용, 줍기/조사, 전투 대기, 기본 공격, 강한 공격/고유 기술, 주문 준비/발동, 방어, 회피, 피격, 부상, 넘어짐, 쓰러져 있음, 일어나기, 회복. 이 동작들은 아직 제작 전이며 이번 정지·걷기 적용을 막지 않는다.
+전체 배경을 포함한 선택 목록은 [아스트라 인수인계5절](../../ASTRA-HANDOFF.md#5-최종-채택-시안--사용자가-선택한-파일만), 후속 작업은 [아스트라 플랜](../../ASTRA-PLAN.md)을 따른다.
