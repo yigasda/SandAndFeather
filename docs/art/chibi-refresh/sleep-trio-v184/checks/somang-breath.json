@@ -1,0 +1,52 @@
+{
+  "source": "docs/art/chibi-refresh/sleep-somang-v180/png/somang-sleep-0.png",
+  "result": "docs/art/chibi-refresh/sleep-trio-v184/png/somang-sleep-1.png",
+  "amplitudePx": 3,
+  "polygon": [
+    [
+      271,
+      366
+    ],
+    [
+      313,
+      365
+    ],
+    [
+      350,
+      383
+    ],
+    [
+      374,
+      418
+    ],
+    [
+      374,
+      451
+    ],
+    [
+      347,
+      470
+    ],
+    [
+      299,
+      457
+    ],
+    [
+      269,
+      427
+    ],
+    [
+      256,
+      395
+    ]
+  ],
+  "changedPixels": 7307,
+  "changedBounds": [
+    259,
+    368,
+    373,
+    468
+  ],
+  "outsideMaskChangedPixels": 0,
+  "method": "Localized nearest-pixel chest/shoulder displacement; no new colors, face and all pixels outside mask preserved exactly."
+}

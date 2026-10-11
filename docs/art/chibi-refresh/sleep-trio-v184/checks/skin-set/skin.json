@@ -1,0 +1,49 @@
+[
+ {
+  "file": "set-sleep-0.png",
+  "who": "set",
+  "view": "all",
+  "skinPixels": 47082,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 0.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    250,
+    210,
+    190
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    250,
+    210,
+    190
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "character": "set",
+    "faceHeadRegion": [
+      0,
+      0,
+      620,
+      382
+    ],
+    "faceHeadChangedPixels": 0,
+    "outsideBreathMaskChangedPixels": 0,
+    "changedPixels": 9518,
+    "anchor": [
+      331,
+      445
+    ]
+  },
+  {
+    "character": "somang",
+    "faceHeadRegion": [
+      0,
+      0,
+      620,
+      365
+    ],
+    "faceHeadChangedPixels": 0,
+    "outsideBreathMaskChangedPixels": 0,
+    "changedPixels": 7307,
+    "anchor": [
+      310,
+      450
+    ]
+  },
+  {
+    "character": "horus",
+    "faceHeadRegion": [
+      0,
+      0,
+      620,
+      402
+    ],
+    "faceHeadChangedPixels": 0,
+    "outsideBreathMaskChangedPixels": 0,
+    "changedPixels": 3050,
+    "anchor": [
+      310,
+      458
+    ]
+  }
+]

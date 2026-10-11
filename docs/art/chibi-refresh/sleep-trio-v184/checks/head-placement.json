@@ -1,0 +1,54 @@
+[
+  {
+    "character": "set",
+    "source": "/workspace/generated_images/exec-6183455c-824d-42c2-9fee-5212301c7d8a.png",
+    "referenceFaceBox": [
+      233,
+      247,
+      420,
+      432
+    ],
+    "sourceFaceBox": [
+      444,
+      415,
+      753,
+      707
+    ],
+    "scale": 0.6192072063473003,
+    "offset": [
+      -58,
+      -54
+    ],
+    "visibleSize": [
+      572,
+      614
+    ],
+    "note": "Set: face area normalized to approved idle (187x185), not whole long-hair width. Tilted closed-eye sleeping image is not a valid standing-foot alignment."
+  },
+  {
+    "character": "horus",
+    "source": "/workspace/generated_images/exec-ebdc899d-301c-4759-8647-43da0bba80af.png",
+    "referenceFaceBox": [
+      181,
+      220,
+      424,
+      423
+    ],
+    "sourceFaceBox": [
+      321,
+      351,
+      933,
+      760
+    ],
+    "scale": 0.4443099273607748,
+    "offset": [
+      50,
+      62
+    ],
+    "visibleSize": [
+      368,
+      539
+    ],
+    "note": "Horus: original short-hair width368px retained; raised torso and hands belong to lying perspective."
+  }
+]

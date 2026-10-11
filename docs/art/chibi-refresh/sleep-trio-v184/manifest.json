@@ -1,0 +1,137 @@
+{
+  "revision": 184,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "runtimeOwner": "opus",
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 5,
+  "newFilesCount": 5,
+  "files": [
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "direction": "bed-oblique-head-up-feet-forward",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          458
+        ]
+      },
+      "expression": "closed-eyes-peaceful",
+      "sha256": "c81b57e17528f3be558d453641e121b6f6ff6d0a10fa7cd16fb693d05365f71b"
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "bed-oblique-head-up-feet-forward",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          458
+        ]
+      },
+      "expression": "closed-eyes-peaceful",
+      "sha256": "ce5dcc75e79a6a53a2a6fb2b987aaa70d114f1cdeaf8358973ea49d6bde49009"
+    },
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "bed-oblique-head-up-feet-forward",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          331,
+          445
+        ]
+      },
+      "expression": "closed-eyes-peaceful",
+      "sha256": "2fda0827b1ac34991605784b760b7040769ebd3f454589bdee6bfdc6a2ce1150"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "bed-oblique-head-up-feet-forward",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          331,
+          445
+        ]
+      },
+      "expression": "closed-eyes-peaceful",
+      "sha256": "1c7163db0d173f95ffab6d6ed3b5fe25bde08efd4bdafce1b032ca2ca30ec91e"
+    },
+    {
+      "path": "png/somang-sleep-1.png",
+      "character": "somang",
+      "direction": "bed-oblique-head-up-feet-forward",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "expression": "closed-eyes-peaceful",
+      "sha256": "d8d18bedc0d979fe632e3790734a8006974335a0a21be86e633663cf78da4fcc"
+    }
+  ],
+  "approvedReference": "../sleep-somang-v180/png/somang-sleep-0.png",
+  "approvedReferenceModified": false,
+  "animationFrames": {
+    "somang": [
+      "../sleep-somang-v180/png/somang-sleep-0.png",
+      "png/somang-sleep-1.png"
+    ],
+    "set": [
+      "png/set-sleep-0.png",
+      "png/set-sleep-1.png"
+    ],
+    "horus": [
+      "png/horus-sleep-0.png",
+      "png/horus-sleep-1.png"
+    ]
+  },
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "guide": "../pose-guides/",
+  "sourceIdle": "../final/",
+  "sourceWalk": "../final/",
+  "skinPalette": "same character final front idle + front walk; Somang approved180 colors preserved",
+  "bedReferences": [
+    "../../map-expansion/set-room-v6-single-window-day.png",
+    "../../map-expansion/horus-room-v2-wide-day.png"
+  ],
+  "occlusionNote": "Complete bodies, legs and shoes are drawn; no pillow, blanket, bed or effects baked into PNG. Runtime quilt occlusion belongs to Opus.",
+  "breathing": "Only localized chest/shoulder pixels shift up by maximum3 nativepx, nearest source colors. Head, eyes and other pixels outside polygon are identical in the two frames.",
+  "visualReview": [
+    "정지·걷기와 같은 크기로 나란히 놓아 얼굴·머리 크기와 팔레트를 확인",
+    "소망180의 옆으로 기댄 자세·얼굴은 그대로이며 가슴·어깨만 호흡",
+    "세트는 팔을 머리 위에, 호루스는 두 손을 배 위에 놓은 자세 구분",
+    "실제 침대 그림에 배 기준점을 맞춰 베개가 위·발이 화면 앞인지 확인",
+    "밝고 어두운 배경에서 목·어깨·팔·옷·신발 연결을 확대 확인",
+    "0.8초 호흡 프레임에서 얼굴·머리가 바뀌지 않고 가슴·어깨만 움직임"
+  ],
+  "fitNote": "Horus fit 맞음. Set/Somang fit 비율 다름 retained: lying tilt/foreshortening versus standing feet. Set face187x185 area and Horus hair368px normalize without shrinking heads; Somang approved180 unchanged."
+}

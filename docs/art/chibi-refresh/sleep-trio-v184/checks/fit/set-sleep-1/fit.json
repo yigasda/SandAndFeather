@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sleep-trio-v184/png/set-sleep-1.png",
+ "view": "front",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "set": {
+   "scale": 2.3525,
+   "match": 0.132,
+   "shift": [
+    -134,
+    26
+   ],
+   "feetOffsetPx": 57,
+   "heightRatio": 1.205,
+   "heightFit": {
+    "scale": 0.9381,
+    "headScaleVsIdle": 0.399,
+    "shift": [
+     42,
+     87
+    ],
+    "headTopOffsetPx": 13
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

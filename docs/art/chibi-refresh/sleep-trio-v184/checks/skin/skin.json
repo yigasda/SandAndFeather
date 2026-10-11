@@ -1,0 +1,237 @@
+[
+ {
+  "file": "horus-sleep-0.png",
+  "who": "horus",
+  "view": "all",
+  "skinPixels": 48876,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 2.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    254,
+    218,
+    218
+   ],
+   "shadow": [
+    250,
+    186,
+    182
+   ],
+   "light": [
+    254,
+    230,
+    222
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    218,
+    218
+   ],
+   "shadow": [
+    250,
+    182,
+    178
+   ],
+   "light": [
+    254,
+    230,
+    222
+   ]
+  },
+  "offPaletteShare": 0.001,
+  "verdict": "같음"
+ },
+ {
+  "file": "horus-sleep-1.png",
+  "who": "horus",
+  "view": "all",
+  "skinPixels": 48781,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 2.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    254,
+    218,
+    218
+   ],
+   "shadow": [
+    250,
+    186,
+    182
+   ],
+   "light": [
+    254,
+    230,
+    222
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    218,
+    218
+   ],
+   "shadow": [
+    250,
+    182,
+    178
+   ],
+   "light": [
+    254,
+    230,
+    222
+   ]
+  },
+  "offPaletteShare": 0.001,
+  "verdict": "같음"
+ },
+ {
+  "file": "set-sleep-0.png",
+  "who": "set",
+  "view": "all",
+  "skinPixels": 47082,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 0.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    250,
+    210,
+    190
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    250,
+    210,
+    190
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ },
+ {
+  "file": "set-sleep-1.png",
+  "who": "set",
+  "view": "all",
+  "skinPixels": 46979,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 0.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    250,
+    210,
+    190
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    202,
+    182
+   ],
+   "shadow": [
+    250,
+    182,
+    158
+   ],
+   "light": [
+    250,
+    210,
+    190
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-sleep-1.png",
+  "who": "somang",
+  "view": "all",
+  "skinPixels": 22822,
+  "toneDeltaE": {
+   "base": 1.4,
+   "shadow": 2.1,
+   "light": 1.9
+  },
+  "tones": {
+   "base": [
+    254,
+    218,
+    198
+   ],
+   "shadow": [
+    250,
+    182,
+    162
+   ],
+   "light": [
+    254,
+    226,
+    206
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    214,
+    194
+   ],
+   "shadow": [
+    250,
+    182,
+    166
+   ],
+   "light": [
+    254,
+    222,
+    202
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ }
+]

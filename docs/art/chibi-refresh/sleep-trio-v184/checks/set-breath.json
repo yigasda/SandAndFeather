@@ -1,0 +1,60 @@
+{
+  "source": "docs/art/chibi-refresh/sleep-trio-v184/png/set-sleep-0.png",
+  "result": "docs/art/chibi-refresh/sleep-trio-v184/png/set-sleep-1.png",
+  "amplitudePx": 3,
+  "polygon": [
+    [
+      235,
+      397
+    ],
+    [
+      272,
+      401
+    ],
+    [
+      315,
+      405
+    ],
+    [
+      351,
+      388
+    ],
+    [
+      389,
+      382
+    ],
+    [
+      402,
+      422
+    ],
+    [
+      391,
+      450
+    ],
+    [
+      351,
+      468
+    ],
+    [
+      294,
+      474
+    ],
+    [
+      266,
+      457
+    ],
+    [
+      237,
+      448
+    ]
+  ],
+  "changedPixels": 9518,
+  "changedBounds": [
+    238,
+    385,
+    400,
+    472
+  ],
+  "outsideMaskChangedPixels": 0,
+  "method": "Localized nearest-pixel chest/shoulder displacement; no new colors, face and all pixels outside mask preserved exactly."
+}

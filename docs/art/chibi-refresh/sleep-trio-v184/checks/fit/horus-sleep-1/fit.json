@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sleep-trio-v184/png/horus-sleep-1.png",
+ "view": "front",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "horus": {
+   "scale": 1.0775,
+   "match": 0.558,
+   "shift": [
+    109,
+    80
+   ],
+   "feetOffsetPx": -2,
+   "heightRatio": 1.01,
+   "heightFit": {
+    "scale": 1.0668,
+    "headScaleVsIdle": 0.99,
+    "shift": [
+     111,
+     88
+    ],
+    "headTopOffsetPx": -6
+   },
+   "verdict": "맞음 (발 -2px 보정)"
+  }
+ }
+}

@@ -1,0 +1,64 @@
+{
+  "source": "docs/art/chibi-refresh/sleep-trio-v184/png/horus-sleep-0.png",
+  "result": "docs/art/chibi-refresh/sleep-trio-v184/png/horus-sleep-1.png",
+  "amplitudePx": 3,
+  "polygon": [
+    [
+      252,
+      412
+    ],
+    [
+      277,
+      421
+    ],
+    [
+      310,
+      426
+    ],
+    [
+      341,
+      419
+    ],
+    [
+      363,
+      412
+    ],
+    [
+      377,
+      433
+    ],
+    [
+      368,
+      453
+    ],
+    [
+      349,
+      458
+    ],
+    [
+      316,
+      449
+    ],
+    [
+      279,
+      454
+    ],
+    [
+      249,
+      450
+    ],
+    [
+      235,
+      434
+    ]
+  ],
+  "changedPixels": 3050,
+  "changedBounds": [
+    238,
+    415,
+    375,
+    456
+  ],
+  "outsideMaskChangedPixels": 0,
+  "method": "Localized nearest-pixel chest/shoulder displacement; no new colors, face and all pixels outside mask preserved exactly."
+}

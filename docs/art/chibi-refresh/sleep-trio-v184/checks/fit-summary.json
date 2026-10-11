@@ -1,0 +1,212 @@
+[
+  {
+    "file": "horus-sleep-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sleep-trio-v184/png/horus-sleep-0.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0775,
+          "match": 0.558,
+          "shift": [
+            109,
+            80
+          ],
+          "feetOffsetPx": -2,
+          "heightRatio": 1.01,
+          "heightFit": {
+            "scale": 1.0668,
+            "headScaleVsIdle": 0.99,
+            "shift": [
+              111,
+              88
+            ],
+            "headTopOffsetPx": -6
+          },
+          "verdict": "맞음 (발 -2px 보정)"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-sleep-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sleep-trio-v184/png/horus-sleep-1.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0775,
+          "match": 0.558,
+          "shift": [
+            109,
+            80
+          ],
+          "feetOffsetPx": -2,
+          "heightRatio": 1.01,
+          "heightFit": {
+            "scale": 1.0668,
+            "headScaleVsIdle": 0.99,
+            "shift": [
+              111,
+              88
+            ],
+            "headTopOffsetPx": -6
+          },
+          "verdict": "맞음 (발 -2px 보정)"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-sleep-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sleep-trio-v184/png/set-sleep-0.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 2.3525,
+          "match": 0.132,
+          "shift": [
+            -134,
+            26
+          ],
+          "feetOffsetPx": 57,
+          "heightRatio": 1.205,
+          "heightFit": {
+            "scale": 0.9381,
+            "headScaleVsIdle": 0.399,
+            "shift": [
+              42,
+              87
+            ],
+            "headTopOffsetPx": 13
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-sleep-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sleep-trio-v184/png/set-sleep-1.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 2.3525,
+          "match": 0.132,
+          "shift": [
+            -134,
+            26
+          ],
+          "feetOffsetPx": 57,
+          "heightRatio": 1.205,
+          "heightFit": {
+            "scale": 0.9381,
+            "headScaleVsIdle": 0.399,
+            "shift": [
+              42,
+              87
+            ],
+            "headTopOffsetPx": 13
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "somang-sleep-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/sleep-trio-v184/png/somang-sleep-1.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "somang": {
+          "scale": 1.2525,
+          "match": 0.142,
+          "shift": [
+            78,
+            86
+          ],
+          "feetOffsetPx": 57,
+          "heightRatio": 1.101,
+          "heightFit": {
+            "scale": 1.1056,
+            "headScaleVsIdle": 0.883,
+            "shift": [
+              103,
+              87
+            ],
+            "headTopOffsetPx": 228
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  }
+]
