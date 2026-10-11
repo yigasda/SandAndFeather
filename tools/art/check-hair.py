@@ -291,7 +291,7 @@ def targets():
     out = os.path.join(GUIDE_DIR, 'targets'); os.makedirs(out, exist_ok=True)
     frames = [('walk-front-0', os.path.join(WALK, 'horus-front-0.png')), ('walk-front-1', os.path.join(WALK, 'horus-front-1.png')),
               ('walk-front-2', os.path.join(WALK, 'horus-front-2.png'))]
-    rows = []; tiles = []
+    rows = []; tiles = []; full = []
     for name, p in frames:
         rgb, body = load(p)
         e, top, H = eyes(rgb, body)
@@ -320,6 +320,14 @@ def targets():
         a = big(user).copy(); a[line] = (230, 0, 0)
         b = big(pic).copy(); b[line] = (230, 0, 0)
         tiles.append((Image.fromarray(a), Image.fromarray(b)))
+        # the whole adopted frame with the target line, one file a frame, to hand over as is
+        whole = np.asarray(Image.fromarray(pic).resize((pic.shape[1] * k, pic.shape[0] * k), Image.NEAREST)).copy()
+        kb = lambda m: np.kron(m, np.ones((k, k), bool))
+        whole[grow(edge(kb(target)) | (edge(kb(thead)) & kb(tears)), 2)] = (230, 0, 0)
+        ys_, xs_ = np.nonzero(body)
+        crop = Image.fromarray(whole).crop(((xs_.min() - 10) * k, (ys_.min() - 10) * k, (xs_.max() + 11) * k, (ys_.max() + 11) * k))
+        full.append(crop)
+        crop.save(os.path.join(out, f'{name}-target.png'))
     ref = [r for r in rows if r[0] == 'walk-front-1'][0]
     tw = max(t[0].width for t in tiles); th = max(t[0].height for t in tiles)
     sheet = Image.new('RGB', (tw * len(tiles), th * 2 + 60), (250, 248, 244))
@@ -329,6 +337,12 @@ def targets():
         d.text((i * tw + 8, 6), rows[i][0] + ' — 위: 네 수정본을 이 프레임 자리에 옮긴 것', fill=(40, 30, 20), font=FONT)
         d.text((i * tw + 8, 36 + th), '아래: 지금 채택 걷기 + 빨간 선(머리가 와야 할 자리)', fill=(40, 30, 20), font=FONT)
     sheet.save(os.path.join(out, 'walk-front-targets.png'))
+    # the walk played 0-1-2-1 with the line on, to see it follow the head
+    W_ = max(f.width for f in full); H_ = max(f.height for f in full)
+    seq = []
+    for i in (0, 1, 2, 1):
+        fr = Image.new('RGB', (W_, H_), (245, 239, 227)); fr.paste(full[i], (0, 0)); seq.append(fr)
+    seq[0].save(os.path.join(out, 'walk-front-target.gif'), save_all=True, append_images=seq[1:], duration=360, loop=0)
     L = ['| 프레임 | 원본 | 두 눈 가운데 (x, y) | 1번 대비 이동 (x, y) | 눈 사이 거리 | 사용자 수정본→프레임 배율 |', '|---|---|---|---|---|---|']
     data = []
     for name, mid, dist, tf, src in rows:
