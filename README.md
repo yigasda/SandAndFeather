@@ -51,7 +51,7 @@
 
 ## 참고 문서
 
-- 현재 채택 캐릭터 그림·걷기GIF: [최종 시안163](docs/art/chibi-refresh/final-trio-v163/README.md)
+- 현재 채택 캐릭터 그림·걷기GIF: [최종 베이스48장](docs/art/chibi-refresh/final/README.md)
 
 - 기획서: [SPEC.md](SPEC.md)
 - 다른 AI 상담용 소개서: [docs/CONSULT.md](docs/CONSULT.md)

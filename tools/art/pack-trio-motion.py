@@ -1,14 +1,13 @@
-# Packs the approved trio idle/walk frames (docs/art/chibi-refresh/approved, 48 PNG) into one runtime atlas,
+# Packs the approved trio idle/walk frames (docs/art/chibi-refresh/final, 48 PNG) into one runtime atlas,
 # data/art/characters/trio-motion.png, and writes the frame table into data/sprites.json (looks.<who>.motion).
 # Nothing is redrawn: each frame is the approved picture, scaled with one uniform factor per state so the
-# character's visible height is the same standing and walking (idle 628 source px, walk 330 → VISIBLE atlas px).
+# character's visible height is the same standing and walking (idle576 source px, walk 330 → VISIBLE atlas px).
 # The source files and the manifest are read only; the old pocket atlas (townsman) is left alone.
 import hashlib, json, os
 from PIL import Image
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
-SRC = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'approved')
-WALK = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'review-trio-walk-v5')
+SRC = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'final')
 OUT = os.path.join(ROOT, 'data', 'art', 'characters', 'trio-motion.png')
 VISIBLE = 256          # atlas pixels from the top of the head to the feet: ≥ HEIGHT × the largest zoom (8), so it only ever shrinks
 HEIGHT = 31.2         # in-game height in logical pixels (a tile is 16); 0.9.16 took it from 24 to 1.3×
@@ -72,11 +71,10 @@ def pack(frames, visible, out):
 def main():
     man = json.load(open(os.path.join(SRC, 'manifest.json')))
     if man.get('runtimeEligible') is False:
-        raise SystemExit('Reference-only sprite source: old idle is preserved for reference. Do not mix old idle with current walk. See docs/ASTRA-HANDOFF.md section 5.')
-    # Keep the current walk input; a reference-only idle manifest must never reach packing.
-    walk = json.load(open(os.path.join(WALK, 'manifest.json')))
-    cycle = walk['walkCycle']
-    frames = [f for f in man['frames'] if f['state'] == 'idle'] + [f for f in walk['frames'] if f['state'] == 'walk']
+        raise SystemExit('Final art is approved, but runtime integration is not enabled. Opus must review final/manifest.json and runtime packaging before enabling it.')
+    # Both states come from the same final selection.
+    cycle = man['walkCycle']
+    frames = man['frames']
     assert len(frames) == 48
     for f in frames:
         data = open(os.path.join(ROOT, f['path']), 'rb').read()

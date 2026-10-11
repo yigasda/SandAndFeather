@@ -1,14 +1,11 @@
-# 이전 정지·걷기48장 — 참고 전용
+# 셋소호 최종 정지·걷기48장
 
-2026-10-11 사용자 최신 지시: **구버전은 폐기하지 않고 참고 시안으로 보존한다.** 이전 정지12장과 시트·미리보기를 복구했다. 기존 최종 적용용 파일 목록으로 사용하지 않는다.
+사용자 최종 채택 완료. **[단일 최종 폴더](art/chibi-refresh/final/README.md)**만 사용한다.
 
-| 참고 자료 | 경로 | 쓰임 |
-|---|---|---|
-| 이전 정지12장 | [approved/idle/](art/chibi-refresh/approved/idle/) | 방향·자세·발 위치 참고.620×720 |
-| 이전 걷기36장 | [approved/walk/](art/chibi-refresh/approved/walk/) | 동작 분석 참고.360×400 |
-| 시트·미리보기 | [approved/sheets/](art/chibi-refresh/approved/sheets/), [approved/previews/](art/chibi-refresh/approved/previews/) | 위 원본 확인 |
-| 파일별 좌표·해시 | [참고 manifest](art/chibi-refresh/approved/manifest.json) |48개 원본의 규격. 런타임 사용 불가 표시 |
+- 세트: `final/set/idle/`4장 + `final/set/walk/`12장.
+- 소망: `final/somang/idle/`4장 + `final/somang/walk/`12장.
+- 호루스: `final/horus/idle/`4장 + `final/horus/walk/`12장.166 정면 정지·걷기105% 확대 포함.
+- 정지620×720, 발(310,662), 기준 키576. 걷기360×400, 발(180,370), 기준 키330.
+- [manifest](art/chibi-refresh/final/manifest.json)에 방향·원본 해시·좌표·재생 명세가 있다.
 
-현재 채택 걷기는 [163 최종 묶음](art/chibi-refresh/final-trio-v163/README.md)의36장이다. 호루스 앞뒤162와 소망 접합부144 보수가 포함된다. 현재 정지는 [164 최종 정지12장](art/chibi-refresh/final-trio-idle-v164/README.md)이다. 사용자 지정 세트148·소망151 네 방향과 호루스161정면·162뒤·148좌우를 사용한다.620×720·기준 키576·발(310,662).
-
-**오푸스: 이전 정지12장과 현재 걷기36장을 혼합 적용하지 않는다.** 이 문서는 참고 자료 목록이다. 현재 최종 선택 목록은 [아스트라 인수인계5절](ASTRA-HANDOFF.md#5-최종-채택-시안--사용자가-선택한-파일만)을 따른다.
+예전 시안과 중복 묶음은 사용자 요청으로 삭제했다. 이전의 “구버전 참고용 보존” 지시는 이번 삭제 지시로 대체됐다. 필요하면 manifest의 원본 커밋·경로로 git에서 복구한다. 현재 선택본과 섞지 않는다. 게임 적용은 오푸스 담당이다.

@@ -7,7 +7,7 @@ const label=(s,w)=>Buffer.from(`<svg width="${w}" height="50"><rect width="100%"
  const a=await sharp(full).resize(1495,532).png().toBuffer();
  const b=await sharp(now).resize(1495,532).png().toBuffer();
  await sharp({create:{width:1495,height:1164,channels:3,background:'#f5eddf'}}).composite([{input:label('ORIGINAL · 2172 × 724',1495),left:0,top:0},{input:a,left:0,top:50},{input:label('137 · INNER CORRIDOR · 2492 × 887',1495),left:0,top:582},{input:b,left:0,top:632}]).png().toFile(path.join(O,'previews/137-inner-before-after.png'));
- const sprite=await sharp(path.resolve(root,'../chibi-refresh/review-trio-walk-v5/walk/somang-back-1.png')).resize(100,111).png().toBuffer();
+ const sprite=await sharp(path.resolve(root,'../chibi-refresh/final/somang/walk/somang-back-1.png')).resize(100,111).png().toBuffer();
  const screen=await sharp(now).composite([{input:sprite,left:94,top:284},{input:sprite,left:2303,top:284}]).png().toBuffer();
  const left=await sharp(screen).extract({left:0,top:180,width:390,height:300}).resize(780,600).png().toBuffer();
  const right=await sharp(screen).extract({left:2102,top:180,width:390,height:300}).resize(780,600).png().toBuffer();

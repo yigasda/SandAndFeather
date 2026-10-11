@@ -84,7 +84,7 @@
 - 문으로 이어지는 이웃 장면과 바닥, 벽, 문틀이 이어지는지 본다.
 
 **캐릭터와 동작.**
-- **검사 도구 통과는 완성이 아니다.** check-sprite.py, check-hair.py는 큰 실수만 거르는 최소 기준이다. 귀 곡선과 선 맛, 이마 갈래 디자인, 도트 명암은 숫자로 못 잰다. 검사를 먼저 통과시키고 끝내지 말고, 사용자 예시와 나란히 놓고 그림으로 고친다. 보고에 "검사 통과"를 완성 근거로 쓰지 않는다.
+- **검사 도구 통과는 완성이 아니다.** check-sprite.py는 큰 실수만 거르는 최소 기준이다. 귀 곡선과 선 맛, 이마 갈래 디자인, 도트 명암은 숫자로 못 잰다. 검사를 먼저 통과시키고 끝내지 말고, 사용자 예시와 나란히 놓고 그림으로 고친다. 보고에 "검사 통과"를 완성 근거로 쓰지 않는다.
 - 모든 캐릭터 그림(정지, 걷기, 다른 바리에이션)은 보내기 전에 채택 시안과 [sprite-check](art/chibi-refresh/sprite-check/README.md) 도구로 비교한다: `python3 tools/art/check-sprite.py --ref <채택 시안> --cand <후보>`. 머리, 목, 다리, 신발 비율, 외곽선, 색, 합성 틈이 기준과 다르면 "다름"이 나온다. 의도하지 않은 "다름"은 고치고, 의도한 변경은 보고에 적는다. 리포트와 비교 그림을 결과와 함께 보낸다.
 - 걷기는 [walk-analysis](art/chibi-refresh/walk-analysis/README.md) 도구로 비교한다: `python3 tools/art/analyze-walk.py --candidate <폴더>`. 그리고 같은 속도로 재생해 눈으로도 본다.
 - 머리와 몸의 중심, 목 연결이 자연스러운지 본다. 부위가 하나하나 괜찮아도 전체가 어색하면 보내지 않는다.
@@ -97,35 +97,31 @@
 
 | 대상 | 상태·다음 작업 |
 |---|---|
-| 셋소호 걷기36장 | **전원 채택. [163 최종 묶음](art/chibi-refresh/final-trio-v163/README.md)**이 현재 전달 기준. 세트·소망 및 호루스 좌우는 기존 채택 원본, 호루스 앞뒤6장은162. PNG를 수정하지 않고 네 방향 GIF로 묶었다. |
-| 호루스 정지 | [166 크기 수정본](art/chibi-refresh/review-horus-size-v166/README.md): 정면 정지165의105% 크기에 맞춰 **정면 걷기3장도105% 확대**. 프레임별 발바닥 고정. 정지4장은165 그대로, 뒤·좌·우 걷기9장은163 그대로. 정지4+걷기12=16장과 네 방향GIF 전달. 시각 확인 전. 기존 정면161·뒷면162 채택. 사용자가 “뒷모습은 딱히 안 이상해. 이대로 채택”이라고 확정했으므로 뒷머리1~2px 추가 수정은 중단했다. 미적용 생성 초안으로 교체하지 않는다. |
-| 앞 걷기 검사 | 최신161 기준 검사키트로162 정면0·1·2 모두 수치 통과. 바깥선 최대 차이1·0·1px. 확대 비교 그림도 확인. 결과는163의 `checks/front-161/`에 보존. 검사 통과가 그림 검수를 대신하지 않는다. |
-| 정지 최종 버전 | 사용자 재확정: **세트 상하좌우는148, 소망 상하좌우는151 최종.** 소망151 좌우는 당시 묶음이 사용한148 원본이다. 호루스는 정면161·뒤162 유지, **좌우 재작화는 사용자가 취소했고 기존148 좌우를 유지한다.** 최종 정지12장은 [164 묶음](art/chibi-refresh/final-trio-idle-v164/README.md). |
-| 회랑·우물마당 | 5절 파일 전부 아트 채택. 게임 적용·충돌·가림은 오푸스 담당. |
+| 셋소호 베이스 스프라이트 | **전체48장 최종 채택 완료.** 사용자 “완벽해 고생했어! 이제 베이스 스프라이트는 끝났네”. [final/](art/chibi-refresh/final/README.md)만 사용한다. 캐릭터별 정지4+걷기12=16장. |
+| 세트 | 정지148·채택 걷기163. 원본 그대로 최종 폴더로 정리. |
+| 소망 | 정지151 네 방향·채택 걷기163(접합부144 보수 포함).150 정면으로 되돌리지 않는다. |
+| 호루스 |166 최종 채택. 정면 정지와 정면 걷기3장 모두105% 확대 반영 완료. 뒤162, 기존 좌우 유지. 추가 확대·재작화하지 않는다. |
+| 이전 시안 | 사용자 요청으로 구버전·반려본·중복 전달 폴더 삭제. 예전 보존 지시는 이번 삭제 지시로 대체. git 기록에 남아 있고, 최종 manifest에 원본 커밋·경로·해시가 있다. |
+| 게임 적용 | 이번 작업은 아트 정리만 했다. 게임 적용은 오푸스 담당. 적용 여부를 아트 채택과 혼동하지 않는다. |
+| 회랑·우물마당 | 아래 최종 파일 아트 채택. 게임 적용·충돌·가림은 오푸스 담당. |
 
-현재 채택된 얼굴·머리·몸을 추가 지시 없이 다시 고치지 않는다. 후속 아트는 [ASTRA-PLAN.md](ASTRA-PLAN.md) 순서와 사용자의 다음 요청을 따른다. 런타임 파일(`tools/maps/`, `data/`, `src/`)은 이번 작업에서 수정하지 않았다. 게임 적용 여부는 오푸스가 별도로 확인한다.
+후속 동작은 [ASTRA-PLAN.md](ASTRA-PLAN.md)와 사용자 다음 요청에 따른다. 베이스 정지·걷기를 다시 만들지 않는다.
 
 ## 5. 최종 채택 시안 — 사용자가 선택한 파일만
 
-**이 목록은 최종 선택본만 가리킨다.** 같은 대상의 이전 선택지, 반려본, 수정 중인 파일, 비교 이미지, 게임에 남아 있는 구버전은 함께 나열하지 않는다. 새 결과를 만들거나 main·Drive에 올렸다는 이유로 교체하지 않는다. 새 채택이 확인되면 해당 행을 교체한다. 부분 채택은 완성 세트 승인으로 확대하지 않는다.
+### 셋소호 — 단일 최종 폴더
 
-### 셋소호
+**[final/README.md](art/chibi-refresh/final/README.md) · [manifest.json](art/chibi-refresh/final/manifest.json)**
 
-**걷기는163, 정지12장은 [164 묶음](art/chibi-refresh/final-trio-idle-v164/README.md)이 현재 전달 기준이다.** 원본360×400은 바이트 그대로,620×720은 공통 배율로 출력했다.
-
-**걷기 파일은 [163 최종 묶음](art/chibi-refresh/final-trio-v163/README.md)과 [manifest](art/chibi-refresh/final-trio-v163/manifest.json)에서 가져온다.** 파일마다 실제 채택 원본 경로·해시·크기를 기록했다. 복사본은 원본과 바이트가 같다.
-
-| 대상 | 최종 채택 파일 | 범위 |
+| 캐릭터 | 투명 정지4장 | 투명 걷기12장 |
 |---|---|---|
-| 세트 네 방향 정지 | `review-trio-idle-v1/idle/set-{front,back,left,right}.png` | **148 최종**, 사용자 네 방향 명시 확정.151 세트 정면으로 교체하지 않는다. |
-| 소망 네 방향 정지 | `review-somang-back-v151/idle/somang-{front,back}.png` 및 `review-trio-idle-v1/idle/somang-{left,right}.png` | **151 네 방향 묶음 최종**, 사용자가 해당 미리보기를 제시해 확정.151 묶음의 좌우 원본은148.150 정면으로 되돌리지 않는다. |
-| 호루스 좌우 정지 | `review-trio-idle-v1/native/horus-{left,right}.png` |148 기존 정지, 사용자 재작화 취소·그대로 사용 확정 |
-| 호루스 정면·뒤 정지 | `final-trio-v163/idle/horus-front.png`, `horus-back.png` |161 정면·162 뒷면, 각각360×400. 뒤 다리12px, 신발 위326px, 치마 끝312px·발바닥369px 유지 |
-| 셋소호 걷기36장 | [final-trio-v163/walk/](art/chibi-refresh/final-trio-v163/walk/) | 각3명×4방향×3프레임. 호루스 앞뒤162, 나머지는135/136 및 소망144 접합 보수 포함한 채택 원본 |
-| 네 방향 합본GIF | [163-trio-four-directions.gif](art/chibi-refresh/final-trio-v163/gifs/163-trio-four-directions.gif) | 위부터 상·하·좌·우, 왼쪽부터 세트·소망·호루스 |
-| 캐릭터별·방향별GIF | [gifs/](art/chibi-refresh/final-trio-v163/gifs/) | 캐릭터별3개·방향별4개·합본1개.0→1→2→1,180ms. 호루스 정면 기존 전체 스프라이트 보정값 유지 |
+| 세트 | [set/idle/](art/chibi-refresh/final/set/idle/) | [set/walk/](art/chibi-refresh/final/set/walk/) |
+| 소망 | [somang/idle/](art/chibi-refresh/final/somang/idle/) | [somang/walk/](art/chibi-refresh/final/somang/walk/) |
+| 호루스 | [horus/idle/](art/chibi-refresh/final/horus/idle/) | [horus/walk/](art/chibi-refresh/final/horus/walk/) |
 
-**정지 최종12장: 세트148 네 장 + 소망151 네 장 + 호루스161 정면·162 뒤·148 좌우.** 사용자 마지막 지시로 호루스 좌우 재작화 취소. 게임 전달용은 [164 투명PNG 묶음](art/chibi-refresh/final-trio-idle-v164/README.md),620×720·기준 키576·발(310,662).163 묶음의 소망 정면150은 이번151 확정으로 최신 정지 기준에서 제외한다. 걷기36장은163 그대로 유지한다. 이전 그림체 `approved/idle/`와 `approved/walk/`는 참고 자료이며 삭제하지 않는다. 이전 호루스 정면131·148 및 반려본을 현행 최종 목록에 섞지 않는다.
+정지620×720·발(310,662)·기준 키576. 걷기360×400·발(180,370)·기준 키330. `back`=상, `front`=하. 걷기0→1→2→1,180ms. 호루스 정면 전체 위치 보정은 manifest를 따른다. 호루스 정면105% 확대는 파일에 반영되어 있으므로 다시 확대하지 않는다.
+
+[downloads/](art/chibi-refresh/final/downloads/)에 캐릭터별16장 ZIP과 전체48장 ZIP, [previews/](art/chibi-refresh/final/previews/)에 캐릭터별 네 방향 정지→걷기GIF가 있다. 이전 그림체를 현행 베이스에 섞지 않는다. 이번 정리에서 모든48장은 선택 원본과 바이트 동일함을 확인했다.
 
 ### 회랑·우물 마당
 
@@ -159,7 +155,7 @@
 | 열주 계단 | `colonnade-stairs-v1.png`, `colonnade-stairs-v1-night.png` |
 | 지붕 | `temple-roof-v1-day.png`, `temple-roof-v1-night.png` |
 
-**제작 참고 자료는 최종 시안 목록이 아니다.** 걷기 동작 분석은 [walk-analysis](art/chibi-refresh/walk-analysis/README.md), 이전 그림체 참고 목록은 [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md), 출구 좌표는 [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md)에서 필요할 때 확인한다. 실제 수정 베이스는 위 최종 채택 파일로 정한다.
+**제작 참고 자료는 최종 시안 목록이 아니다.** 걷기 동작 분석은 [walk-analysis](art/chibi-refresh/walk-analysis/README.md), 현재 캐릭터 목록은 [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md), 출구 좌표는 [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md)에서 필요할 때 확인한다. 실제 수정 베이스는 위 최종 채택 파일로 정한다.
 
 ## 6. 세부맵을 그리고 고칠 때
 

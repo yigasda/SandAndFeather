@@ -1,5 +1,5 @@
 # Measures how the approved trio walk frames move, frame by frame, so a redraw can be checked against them by numbers
-# and by eye. Read-only on the approved art (docs/art/chibi-refresh/approved/walk/<who>-<view>-<0|1|2>.png).
+# and by eye. Read-only on the approved art (docs/art/chibi-refresh/final/<who>/walk/<who>-<view>-<0|1|2>.png).
 #
 #   python3 tools/art/analyze-walk.py                 → docs/art/chibi-refresh/walk-analysis/ (sheets, analysis.json, table)
 #   python3 tools/art/analyze-walk.py --candidate DIR → DIR/walk-check/ : the same measures for DIR/<who>-<view>-<i>.png,
@@ -13,7 +13,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
-APPROVED = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'approved', 'walk')
+APPROVED = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'final')
 OUT = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'walk-analysis')
 WHO = ['set', 'somang', 'horus']
 VIEWS = ['front', 'back', 'left', 'right']
@@ -143,7 +143,8 @@ def analyse(folder):
     res = {}
     for who in WHO:
         for view in VIEWS:
-            paths = [os.path.join(folder, f'{who}-{view}-{i}.png') for i in range(3)]
+            base = os.path.join(folder, who, 'walk') if os.path.isdir(os.path.join(folder, who, 'walk')) else folder
+            paths = [os.path.join(base, f'{who}-{view}-{i}.png') for i in range(3)]
             if not all(os.path.exists(p) for p in paths): continue
             got = [measure(p, who, view) for p in paths]
             fr = [g[0] for g in got]
