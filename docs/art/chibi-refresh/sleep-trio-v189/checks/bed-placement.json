@@ -1,0 +1,158 @@
+[
+  {
+    "scene": "alone",
+    "character": "set-sleep",
+    "room": "set-room-v6-single-window-day.png",
+    "scale": 0.2777777777777778,
+    "headAt": [
+      1266,
+      233
+    ],
+    "spriteOffset": [
+      1180,
+      164
+    ],
+    "bellyAnchor": [
+      310,
+      450
+    ],
+    "bellyOnRoom": [
+      1266,
+      289
+    ]
+  },
+  {
+    "scene": "alone",
+    "character": "horus-sleep",
+    "room": "horus-room-v2-wide-day.png",
+    "scale": 0.2777777777777778,
+    "headAt": [
+      290,
+      248
+    ],
+    "spriteOffset": [
+      204,
+      179
+    ],
+    "bellyAnchor": [
+      310,
+      450
+    ],
+    "bellyOnRoom": [
+      290,
+      304
+    ]
+  },
+  {
+    "scene": "together",
+    "character": "set-sleep-side",
+    "room": "set-room-v6-single-window-day.png",
+    "scale": 0.2777777777777778,
+    "headAt": [
+      1266,
+      233
+    ],
+    "spriteOffset": [
+      1169,
+      164
+    ],
+    "bellyAnchor": [
+      270,
+      463
+    ],
+    "bellyOnRoom": [
+      1244,
+      293
+    ]
+  },
+  {
+    "scene": "together",
+    "character": "somang-sleep",
+    "room": "set-room-v6-single-window-day.png",
+    "scale": 0.2777777777777778,
+    "headAt": [
+      1410,
+      233
+    ],
+    "spriteOffset": [
+      1337,
+      164
+    ],
+    "bellyAnchor": [
+      310,
+      450
+    ],
+    "bellyOnRoom": [
+      1423,
+      289
+    ]
+  },
+  {
+    "scene": "together",
+    "room": "set-room-v6-single-window-day.png",
+    "frame": 0,
+    "opaqueOverlapPixels": 0
+  },
+  {
+    "scene": "together",
+    "character": "horus-sleep-side",
+    "room": "horus-room-v2-wide-day.png",
+    "scale": 0.2777777777777778,
+    "headAt": [
+      290,
+      248
+    ],
+    "spriteOffset": [
+      215,
+      180
+    ],
+    "bellyAnchor": [
+      260,
+      460
+    ],
+    "bellyOnRoom": [
+      287,
+      308
+    ]
+  },
+  {
+    "scene": "together",
+    "character": "somang-sleep",
+    "room": "horus-room-v2-wide-day.png",
+    "scale": 0.2777777777777778,
+    "headAt": [
+      425,
+      248
+    ],
+    "spriteOffset": [
+      352,
+      179
+    ],
+    "bellyAnchor": [
+      310,
+      450
+    ],
+    "bellyOnRoom": [
+      438,
+      304
+    ]
+  },
+  {
+    "scene": "together",
+    "room": "horus-room-v2-wide-day.png",
+    "frame": 0,
+    "opaqueOverlapPixels": 0
+  },
+  {
+    "scene": "together",
+    "room": "set-room-v6-single-window-day.png",
+    "frame": 1,
+    "opaqueOverlapPixels": 0
+  },
+  {
+    "scene": "together",
+    "room": "horus-room-v2-wide-day.png",
+    "frame": 1,
+    "opaqueOverlapPixels": 0
+  }
+]

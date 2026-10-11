@@ -1,0 +1,107 @@
+[
+  {
+    "variant": "set-sleep",
+    "changedPixels": 72219,
+    "exteriorChangedPixels": 1761,
+    "game31ExteriorPixels": 3,
+    "closedEyeROI": [
+      195,
+      319,
+      425,
+      365
+    ],
+    "closedEyeChangedPixels": 0,
+    "pillowAboveY300ChangedPixels": 0,
+    "legsROI": [
+      220,
+      519,
+      422,
+      720
+    ],
+    "legsChangedPixels": 0
+  },
+  {
+    "variant": "somang-sleep",
+    "changedPixels": 39022,
+    "exteriorChangedPixels": 1496,
+    "game31ExteriorPixels": 5,
+    "closedEyeROI": [
+      169,
+      264,
+      309,
+      341
+    ],
+    "closedEyeChangedPixels": 0,
+    "pillowAboveY300ChangedPixels": 0,
+    "legsROI": [
+      0,
+      474,
+      620,
+      720
+    ],
+    "legsChangedPixels": 0
+  },
+  {
+    "variant": "horus-sleep",
+    "changedPixels": 14302,
+    "exteriorChangedPixels": 929,
+    "game31ExteriorPixels": 4,
+    "closedEyeROI": [
+      192,
+      316,
+      428,
+      367
+    ],
+    "closedEyeChangedPixels": 0,
+    "pillowAboveY300ChangedPixels": 0,
+    "legsROI": [
+      0,
+      503,
+      620,
+      720
+    ],
+    "legsChangedPixels": 0
+  },
+  {
+    "variant": "set-sleep-side",
+    "changedPixels": 39129,
+    "exteriorChangedPixels": 4718,
+    "game31ExteriorPixels": 13,
+    "closedEyeROI": [
+      304,
+      312,
+      442,
+      375
+    ],
+    "closedEyeChangedPixels": 0,
+    "pillowAboveY300ChangedPixels": 0,
+    "legsROI": [
+      145,
+      511,
+      342,
+      720
+    ],
+    "legsChangedPixels": 0
+  },
+  {
+    "variant": "horus-sleep-side",
+    "changedPixels": 15383,
+    "exteriorChangedPixels": 1878,
+    "game31ExteriorPixels": 8,
+    "closedEyeROI": [
+      311,
+      305,
+      413,
+      369
+    ],
+    "closedEyeChangedPixels": 0,
+    "pillowAboveY300ChangedPixels": 0,
+    "legsROI": [
+      0,
+      502,
+      620,
+      720
+    ],
+    "legsChangedPixels": 0
+  }
+]

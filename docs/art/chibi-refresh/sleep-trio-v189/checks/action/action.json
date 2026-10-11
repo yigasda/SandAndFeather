@@ -1,0 +1,114 @@
+[
+ {
+  "who": "horus",
+  "view": "front",
+  "idleHeight": 575,
+  "frames": [
+   {
+    "frame": 0,
+    "height": 0.925,
+    "head": 1.0
+   },
+   {
+    "frame": 1,
+    "height": 0.925,
+    "head": 1.0,
+    "changedFromPrev": 0.007
+   }
+  ],
+  "notes": [
+   "0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+  ],
+  "verdict": "0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+ },
+ {
+  "who": "horus",
+  "view": "right",
+  "idleHeight": 562,
+  "frames": [
+   {
+    "frame": 0,
+    "height": 0.972,
+    "head": 1.0
+   },
+   {
+    "frame": 1,
+    "height": 0.972,
+    "head": 1.0,
+    "changedFromPrev": 0.015
+   }
+  ],
+  "notes": [],
+  "verdict": "볼 것 없음"
+ },
+ {
+  "who": "set",
+  "view": "front",
+  "idleHeight": 576,
+  "frames": [
+   {
+    "frame": 0,
+    "height": 0.95,
+    "head": 1.11
+   },
+   {
+    "frame": 1,
+    "height": 0.95,
+    "head": 0.927,
+    "changedFromPrev": 0.01
+   }
+  ],
+  "notes": [
+   "0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+  ],
+  "verdict": "0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+ },
+ {
+  "who": "set",
+  "view": "right",
+  "idleHeight": 576,
+  "frames": [
+   {
+    "frame": 0,
+    "height": 0.917,
+    "head": 2.473
+   },
+   {
+    "frame": 1,
+    "height": 0.917,
+    "head": 2.342,
+    "changedFromPrev": 0.027
+   }
+  ],
+  "notes": [
+   "0: 머리 측정 안 됨 (×2.47, 눈으로 볼 것)",
+   "1: 머리 측정 안 됨 (×2.34, 눈으로 볼 것)",
+   "0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+  ],
+  "verdict": "0: 머리 측정 안 됨 (×2.47, 눈으로 볼 것) · 1: 머리 측정 안 됨 (×2.34, 눈으로 볼 것) · 0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+ },
+ {
+  "who": "somang",
+  "view": "front",
+  "idleHeight": 574,
+  "frames": [
+   {
+    "frame": 0,
+    "height": 0.906,
+    "head": 1.252
+   },
+   {
+    "frame": 1,
+    "height": 0.906,
+    "head": 1.252,
+    "changedFromPrev": 0.01
+   }
+  ],
+  "notes": [
+   "0: 머리 작음 (머리 맞춤 ×1.25)",
+   "1: 머리 작음 (머리 맞춤 ×1.25)",
+   "0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+  ],
+  "verdict": "0: 머리 작음 (머리 맞춤 ×1.25) · 1: 머리 작음 (머리 맞춤 ×1.25) · 0이 끝과 같음 (정지→0이 전체 내려감의 100%)"
+ }
+]

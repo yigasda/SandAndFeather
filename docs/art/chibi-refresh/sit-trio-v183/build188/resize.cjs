@@ -1,0 +1,7 @@
+const sharp=require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.cjs');
+const fs=require('fs');
+const root='docs/art/chibi-refresh/sit-trio-v183';
+const factors={'horus-right-floor-0':1.07,'horus-left-floor-0':1.06,'horus-back-floor-0':1.03,'horus-back-stool-0':1.04,'horus-right-bench-0':1.08,'somang-back-floor-0':1.17,'somang-back-stool-0':1.12};
+(async()=>{const m=JSON.parse(fs.readFileSync(root+'/manifest.json'));const report=[];
+for(const f of m.files){const name=f.path.split('/').pop().replace('.png','');const s=factors[name];if(!s)continue;const [ax,ay]=f.anchor.position;const {data,info}=await sharp('/workspace/actions188/before/'+name+'.png').ensureAlpha().raw().toBuffer({resolveWithObject:true});const pad=name==='somang-back-stool-0'?24:0;const oh=info.height+pad;const out=Buffer.alloc(info.width*oh*4);for(let y=0;y<oh;y++)for(let x=0;x<info.width;x++){const sx=Math.round(ax+(x-ax)/s),sy=Math.round(ay+(y-pad-ay)/s);if(sx>=0&&sy>=0&&sx<info.width&&sy<info.height)data.copy(out,(y*info.width+x)*4,(sy*info.width+sx)*4,(sy*info.width+sx)*4+4);}await sharp(out,{raw:{...info,height:oh}}).png().toFile(root+'/'+f.path);report.push({file:f.path,factor:s,anchor:[ax,ay+pad],paddingTop:pad,canvas:[info.width,oh],sampling:'nearest; original RGBA values only',uniform:true});}
+fs.writeFileSync(root+'/checks/188-resize.json',JSON.stringify(report,null,2)+'\n');console.log(report);})();

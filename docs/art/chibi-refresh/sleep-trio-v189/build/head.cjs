@@ -1,0 +1,3 @@
+const sharp=require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.cjs');
+(async()=>{const{data:a,info}=await sharp('docs/art/chibi-refresh/sleep-trio-v187/png/horus-sleep-side-0.png').ensureAlpha().raw().toBuffer({resolveWithObject:true});const b=await sharp('/workspace/actions189/horus-side-fit.png').ensureAlpha().raw().toBuffer();const points=[[0,419],[204,419],[245,380],[285,382],[337,414],[430,414],[620,414]];
+for(let x=0;x<620;x++){let i=1;while(points[i][0]<x)i++;const [x0,y0]=points[i-1],[x1,y1]=points[i];const cy=y0+(y1-y0)*(x-x0)/(x1-x0);for(let y=0;y<cy;y++){const k=(y*620+x)*4;b.copy(a,k,k,k+4);}}await sharp(a,{raw:info}).png().toFile('docs/art/chibi-refresh/sleep-trio-v189/png/horus-sleep-side-0.png');})();
