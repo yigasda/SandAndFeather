@@ -1,7 +1,7 @@
 {
-  "status": "batch-awaiting-user-review",
-  "artApproved": false,
-  "runtimeEligible": false,
+  "status": "user-approved",
+  "artApproved": true,
+  "runtimeEligible": true,
   "action": "interact",
   "characters": [
     "set"
@@ -133,5 +133,13 @@
   ],
   "alphaExport": "Near-opaque alpha>=0.85 exported as fully opaque; RGB and lower-alpha edge values unchanged.",
   "revision": 175,
-  "revisionNote": "오른쪽0·1 팔·손을 왼쪽0·1 기준으로 짧고 둥글게 수정. 나머지6장 동일. 사용자 확인 대기."
+  "revisionNote": "오른쪽0·1 팔·손을 왼쪽0·1 기준으로 짧고 둥글게 수정. 나머지6장 동일. 사용자 확인 대기.",
+  "runtimeIntegrated": "0.9.30",
+  "approvalEvidence": "세트 상호작용 업뎃됐어 핏 스케일 돌리고 인겜 적용해줭 (175 오른팔 수정본)",
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  }
 }

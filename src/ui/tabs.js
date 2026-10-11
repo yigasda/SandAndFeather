@@ -16,7 +16,7 @@ import { picture } from './portraits.js';
 import { FEATHER } from './icon.js';
 import { HEROES, HERO_NAME, leadOf, setLead, setWith, statsOf, withOf } from '../core/heroes.js';
 
-// one of the three: picture (Set's and Horus's three illustrations, Somang's standing sprite), 모험 등급, abilities and learning. Learning is picked by whoever walks in front.
+// one of the three: picture (their illustrations), 모험 등급, abilities and learning. Learning is picked by whoever walks in front.
 export function characterCard(ui, id = 'somang', onClose = null) {
     const s = getState();
     let close = () => {};

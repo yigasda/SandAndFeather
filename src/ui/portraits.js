@@ -1,8 +1,8 @@
-// Pictures of the trio on their cards: Somang's standing sprite, Set's and Horus's three illustrations.
+// Pictures of the trio on their cards: their illustrations (data/art/portraits/gallery), else the standing sprite.
 const base = new URL('../../data/art/portraits/', import.meta.url);
 export const CHARACTER_NAMES = {somang:'소망', set:'세트', horus:'호루스'};
 
-// The approved standing sprite (front): the picture on Somang's card.
+// The approved standing sprite (front), for anyone without illustrations.
 export function portrait(id) {
     const box = document.createElement('figure');
     box.className = 'sf_portrait sf_portrait_full';
@@ -14,9 +14,9 @@ export function portrait(id) {
     return box;
 }
 
-// Set and Horus each have three illustrations (data/art/portraits/gallery), one at a time with
-// ‹ › buttons, dots, arrow keys and a sideways swipe. Anyone else shows the standing sprite.
-const GALLERY = { set: 3, horus: 3 };
+// Illustrations per character, one at a time with ‹ › buttons, dots, arrow keys and a sideways swipe
+// (a single picture shows without them). Anyone not listed shows the standing sprite.
+const GALLERY = { somang: 1, set: 3, horus: 3 };
 export const picture = id => (GALLERY[id] ? gallery(id) : portrait(id));
 function gallery(id) {
     const n = GALLERY[id];
@@ -47,6 +47,6 @@ function gallery(id) {
     box.addEventListener('keydown', e => {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); show(at + (e.key === 'ArrowRight' ? 1 : -1)); }
     });
-    nav.append(prev, dots, next); box.append(figure, nav); show(0);
+    nav.append(prev, dots, next); box.append(figure); if (n > 1) box.append(nav); show(0);
     return box;
 }

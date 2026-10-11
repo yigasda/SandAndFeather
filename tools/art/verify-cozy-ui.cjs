@@ -39,7 +39,7 @@ assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.with),'set');
 await last().locator('[data-lead="set"]').click();await p.waitForTimeout(100);assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.lead),'set');
 await last().locator('[data-lead="somang"]').click();await p.waitForTimeout(100);assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.lead),'somang');
 await close();passed.push('일행 shows 현재 동행, 자세히 shows the Set and Horus three-picture gallery; companion and 앞장 selection work');
-await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();assert((await last().locator('.sf_portrait img').getAttribute('src')).includes('somang-idle-full'));
+await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();assert((await last().locator('.sf_portrait img').getAttribute('src')).includes('gallery/somang-1.webp'));
 await capture('05-somang-character');await bounds();await close();await close();passed.push('Somang character screen retains stats/lessons and shows her standing sprite');
 await p.evaluate(async()=>{cozyTest.state.getState().party.with='';await cozyTest.win.travel('ombos',{x:24,y:13});});
 await p.waitForTimeout(150);await p.locator('.sf_talk').click();assert.equal(await last().getAttribute('data-kind'),'conversation');await images();await capture('06-conversation-calm');
