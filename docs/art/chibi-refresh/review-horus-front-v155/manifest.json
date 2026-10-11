@@ -1,6 +1,6 @@
 {
   "revision": 155,
-  "status": "front-only review; not approved; runtime unchanged",
+  "status": "REJECTED — do not use for art baseline or runtime",
   "idle": {
     "size": [
       620,
@@ -122,5 +122,11 @@
     }
   ],
   "frontBodySource": "review-trio-walk-v5/walk/horus-front-{0,1,2}.png",
-  "nativeAndIdleNote": "Body reference preview using walk front phase 1. Not an approved idle pose."
+  "nativeAndIdleNote": "Body reference preview using walk front phase 1. Not an approved idle pose.",
+  "rejectionReasons": [
+    "Idle-only leg shortening was incorrectly applied to walking front frames.",
+    "Outer hair contour does not match the user edit.",
+    "Hair-only patches ignored each walking frame’s whole-head movement and broke joins.",
+    "Walking phase 1 was incorrectly presented as the requested idle front."
+  ]
 }
