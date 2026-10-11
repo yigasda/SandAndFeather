@@ -1,0 +1,102 @@
+{
+  "all-light.png": {
+    "accepted_input": "file_uri",
+    "success": true,
+    "id": "1-qWBwfeE4IpJV13dn1tqfQcVLuuqChev",
+    "title": "195_잠들기_머리얼굴_재작화_8장.png",
+    "file_name": "195_잠들기_머리얼굴_재작화_8장.png",
+    "mime_type": "image/png",
+    "url": "https://drive.google.com/file/d/1-qWBwfeE4IpJV13dn1tqfQcVLuuqChev/view?usp=drivesdk",
+    "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+    "structuredContent": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1-qWBwfeE4IpJV13dn1tqfQcVLuuqChev",
+      "title": "195_잠들기_머리얼굴_재작화_8장.png",
+      "file_name": "195_잠들기_머리얼굴_재작화_8장.png",
+      "mime_type": "image/png",
+      "url": "https://drive.google.com/file/d/1-qWBwfeE4IpJV13dn1tqfQcVLuuqChev/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+    }
+  },
+  "chain-front.gif": {
+    "accepted_input": "file_uri",
+    "success": true,
+    "id": "18hj2YUsPJUbWkTdu8_uLepqNVao4cmNF",
+    "title": "195_정면_정지걷기잠들기.gif",
+    "file_name": "195_정면_정지걷기잠들기.gif",
+    "mime_type": "image/gif",
+    "url": "https://drive.google.com/file/d/18hj2YUsPJUbWkTdu8_uLepqNVao4cmNF/view?usp=drivesdk",
+    "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+    "structuredContent": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "18hj2YUsPJUbWkTdu8_uLepqNVao4cmNF",
+      "title": "195_정면_정지걷기잠들기.gif",
+      "file_name": "195_정면_정지걷기잠들기.gif",
+      "mime_type": "image/gif",
+      "url": "https://drive.google.com/file/d/18hj2YUsPJUbWkTdu8_uLepqNVao4cmNF/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+    }
+  },
+  "chain-side.gif": {
+    "accepted_input": "file_uri",
+    "success": true,
+    "id": "1lWFwvftHB0ynL8BgrrJYD1DCpIM2p0Ny",
+    "title": "195_옆모습_정지걷기잠들기.gif",
+    "file_name": "195_옆모습_정지걷기잠들기.gif",
+    "mime_type": "image/gif",
+    "url": "https://drive.google.com/file/d/1lWFwvftHB0ynL8BgrrJYD1DCpIM2p0Ny/view?usp=drivesdk",
+    "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+    "structuredContent": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1lWFwvftHB0ynL8BgrrJYD1DCpIM2p0Ny",
+      "title": "195_옆모습_정지걷기잠들기.gif",
+      "file_name": "195_옆모습_정지걷기잠들기.gif",
+      "mime_type": "image/gif",
+      "url": "https://drive.google.com/file/d/1lWFwvftHB0ynL8BgrrJYD1DCpIM2p0Ny/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+    }
+  },
+  "hair-idle-rejected-redraw.png": {
+    "accepted_input": "file_uri",
+    "success": true,
+    "id": "1N7pbZScsiyu_M1Vuz6ozAxuCEM5m-Iqx",
+    "title": "195_머리얼굴_정지비교.png",
+    "file_name": "195_머리얼굴_정지비교.png",
+    "mime_type": "image/png",
+    "url": "https://drive.google.com/file/d/1N7pbZScsiyu_M1Vuz6ozAxuCEM5m-Iqx/view?usp=drivesdk",
+    "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+    "structuredContent": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1N7pbZScsiyu_M1Vuz6ozAxuCEM5m-Iqx",
+      "title": "195_머리얼굴_정지비교.png",
+      "file_name": "195_머리얼굴_정지비교.png",
+      "mime_type": "image/png",
+      "url": "https://drive.google.com/file/d/1N7pbZScsiyu_M1Vuz6ozAxuCEM5m-Iqx/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+    }
+  },
+  "png-review.zip": {
+    "accepted_input": "file_uri",
+    "success": true,
+    "id": "1PA7CT0cF11PPqXUg4O_m7mup9Tf7RQ2v",
+    "title": "195_세트호루스_잠들기_PNG8장_검토자료.zip",
+    "file_name": "195_세트호루스_잠들기_PNG8장_검토자료.zip",
+    "mime_type": "application/zip",
+    "url": "https://drive.google.com/file/d/1PA7CT0cF11PPqXUg4O_m7mup9Tf7RQ2v/view?usp=drivesdk",
+    "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+    "structuredContent": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1PA7CT0cF11PPqXUg4O_m7mup9Tf7RQ2v",
+      "title": "195_세트호루스_잠들기_PNG8장_검토자료.zip",
+      "file_name": "195_세트호루스_잠들기_PNG8장_검토자료.zip",
+      "mime_type": "application/zip",
+      "url": "https://drive.google.com/file/d/1PA7CT0cF11PPqXUg4O_m7mup9Tf7RQ2v/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+    }
+  }
+}

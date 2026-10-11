@@ -1,7 +1,7 @@
 {
   "revision": 194,
   "action": "sleep",
-  "status": "awaiting-user-review",
+  "status": "user-rejected",
   "artApproved": false,
   "runtimeEligible": false,
   "runtimeOwner": "opus",
@@ -139,5 +139,10 @@
       },
       "sha256": "920988d49f6f4a6d4e04463aea1672854699b9d09ee0532f7ac37e7b22a899fe"
     }
+  ],
+  "rejectionEvidence": [
+    "세트랑 호루스 머리 픽셀깨진 거 안 보이냐",
+    "피부색이 다르잖아 호루스가",
+    "다시 그려"
   ]
 }
