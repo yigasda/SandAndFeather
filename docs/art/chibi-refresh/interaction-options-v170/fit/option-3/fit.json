@@ -1,0 +1,75 @@
+{
+ "sheet": "docs/art/chibi-refresh/interaction-options-v170/sources/option-3.png",
+ "view": "front",
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "set": {
+   "scale": 0.935,
+   "match": 0.453,
+   "shift": [
+    25,
+    84
+   ],
+   "feetOffsetPx": 49,
+   "heightRatio": 1.09,
+   "heightFit": {
+    "scale": 0.8571,
+    "headScaleVsIdle": 0.917,
+    "shift": [
+     60,
+     87
+    ],
+    "headTopOffsetPx": 17
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +49px (+8.5% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  },
+  "somang": {
+   "scale": 0.8925,
+   "match": 0.347,
+   "shift": [
+    62,
+    86
+   ],
+   "feetOffsetPx": 20,
+   "heightRatio": 1.036,
+   "heightFit": {
+    "scale": 0.861,
+    "headScaleVsIdle": 0.965,
+    "shift": [
+     81,
+     87
+    ],
+    "headTopOffsetPx": -576
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +20px (+3.5% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  },
+  "horus": {
+   "scale": 0.9675,
+   "match": 0.287,
+   "shift": [
+    103,
+    86
+   ],
+   "feetOffsetPx": 49,
+   "heightRatio": 1.096,
+   "heightFit": {
+    "scale": 0.8825,
+    "headScaleVsIdle": 0.912,
+    "shift": [
+     -259,
+     92
+    ],
+    "headTopOffsetPx": 7
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +49px (+8.6% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}
