@@ -1,5 +1,4 @@
-# Compares Horus's front hair with the shape the user drew (docs/art/chibi-refresh/horus-hair-guide/: the whole-front
-# edit, with the user's later left-side edit laid on its left).
+# Compares Horus's front hair with the shape the user drew (docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg).
 # The user's drawing is a phone edit: its outline, spikes, width, height and hairline are the target; its brush marks
 # and colours are not. Every frame is matched by the eyes, so the target follows the head wherever a walk frame
 # moves it.
@@ -16,7 +15,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 ART = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh')
 GUIDE_DIR = os.path.join(ART, 'horus-hair-guide')
-GUIDE = os.path.join(GUIDE_DIR, 'user-edit-combined.png')  # user-edit.jpg with user-edit-left.jpg on its left (combine.json)
+GUIDE = os.path.join(GUIDE_DIR, 'user-edit-final.jpg')
 WALK = os.path.join(ART, 'review-trio-walk-v5', 'walk')
 try:
     FONT = ImageFont.truetype('/usr/share/fonts/opentype/unifont/unifont.otf', 16)
@@ -70,26 +69,36 @@ def load(path):
     if im.mode == 'RGBA':
         body = np.asarray(im)[..., 3] > 128
     else:
-        # a flat paper background: anything clearly away from the corner colour is the drawing
-        bg = rgb[3, 3]
-        body = np.abs(rgb - bg).max(-1) > 0.08
+        # a flat paper background (a screenshot may add a white band): anything clearly away from both the corner
+        # colour and the left edge's usual colour is the drawing
+        body = np.ones(rgb.shape[:2], bool)
+        for bg in (rgb[3, 3], np.median(rgb[:, 2], 0)):
+            body &= np.abs(rgb - bg).max(-1) > 0.08
     return rgb, body
 
 
 def eyes(rgb, body):
-    # the two golden irises: the biggest gold blobs in the head (the armbands and cheek mark are lower or smaller)
+    # the two golden irises: a pair of gold blobs of like size, side by side, the highest such pair in the picture
+    # (armbands are lower; the cheek mark is small). Works on a whole figure or a head crop.
     h, s, v = hsv(rgb)
     ys = np.nonzero(body.any(1))[0]
     top, H = ys.min(), ys.max() - ys.min() + 1
-    rows = np.arange(rgb.shape[0])[:, None]
-    gold = (h > 0.08) & (h < 0.15) & (s > 0.55) & (v > 0.6) & body & (rows > top + 0.2 * H) & (rows < top + 0.5 * H)
-    blobs = components(gold)[:3]
-    blobs = sorted(blobs[:2], key=lambda p: p[:, 1].mean())
-    if len(blobs) < 2: raise SystemExit('눈을 못 찾음')
-    return [(float(b[:, 1].mean()), float(b[:, 0].mean())) for b in blobs], top, H
+    gold = (h > 0.08) & (h < 0.15) & (s > 0.55) & (v > 0.6) & body
+    blobs = [b for b in components(gold)[:8] if len(b) >= 30]
+    cs = [(float(b[:, 1].mean()), float(b[:, 0].mean()), len(b)) for b in blobs]
+    best = None
+    for i in range(len(cs)):
+        for j in range(i + 1, len(cs)):
+            a, b = cs[i], cs[j]
+            d = abs(a[0] - b[0])
+            if d < 10 or abs(a[1] - b[1]) > 0.15 * d or max(a[2], b[2]) > 1.8 * min(a[2], b[2]): continue
+            key = (a[1] + b[1]) / 2
+            if best is None or key < best[0]: best = (key, sorted([a, b]))
+    if best is None: raise SystemExit('눈을 못 찾음')
+    return [(x, y) for x, y, _ in best[1]], top, H
 
 
-def hair_mask(rgb, body, eye_y):
+def hair_mask(rgb, body, e):
     # the hair silhouette: the blue mass (the brows are separate blue blobs and are left out) plus the dark outline
     # drawn round it, down to eye level (below that the dark line is the face and ears)
     h, s, v = hsv(rgb)
@@ -98,17 +107,18 @@ def hair_mask(rgb, body, eye_y):
     main = components(blue)[0]
     m = np.zeros_like(blue); m[main[:, 0], main[:, 1]] = True
     m = shrink(grow(m, 2), 2)  # pinholes left by highlights
-    eh = rgb.shape[0] / 400  # outline thickness scales with the picture
+    eye_y = min(e[0][1], e[1][1])
+    eye_d = abs(e[1][0] - e[0][0])  # the outline's thickness goes with the head's size
     rows = np.arange(rgb.shape[0])[:, None]
-    dark = (v < 0.45) & (s < 0.6) & body & (rows < eye_y)
+    dark = (v < 0.5) & (s < 0.6) & body & (rows < eye_y)
     ring = m.copy()
-    for _ in range(max(3, int(round(9 * eh)))):
+    for _ in range(max(3, int(round(0.13 * eye_d)))):
         ring = ring | (grow(ring, 1) & dark)
     return ring, m
 
 
-def place(mask, src_eyes, dst_eyes, shape):
-    # similarity transform from the guide's eyes onto the candidate's, nearest-neighbour resample of the mask
+def place(mask, src_eyes, dst_eyes, shape, fill=0):
+    # similarity transform from the guide's eyes onto the candidate's, nearest-neighbour resample (a mask or a picture)
     (sx0, sy0), (sx1, sy1) = src_eyes; (dx0, dy0), (dx1, dy1) = dst_eyes
     sv = np.array([sx1 - sx0, sy1 - sy0]); dv = np.array([dx1 - dx0, dy1 - dy0])
     k = np.linalg.norm(dv) / np.linalg.norm(sv)
@@ -123,9 +133,9 @@ def place(mask, src_eyes, dst_eyes, shape):
     sx, sy = Ai @ pts
     sx = np.round(sx).astype(int); sy = np.round(sy).astype(int)
     ok = (sx >= 0) & (sx < mask.shape[1]) & (sy >= 0) & (sy < mask.shape[0])
-    out = np.zeros(shape[0] * shape[1], bool)
+    out = np.full((shape[0] * shape[1],) + mask.shape[2:], fill, mask.dtype)
     out[ok] = mask[sy[ok], sx[ok]]
-    return out.reshape(shape), {'scale': round(float(k), 4), 'rotationDeg': round(float(np.degrees(ang)), 2),
+    return out.reshape(tuple(shape[:2]) + mask.shape[2:]), {'scale': round(float(k), 4), 'rotationDeg': round(float(np.degrees(ang)), 2),
                                 'shift': [round(float(t[0]), 1), round(float(t[1]), 1)]}
 
 
@@ -152,13 +162,14 @@ def guide():
     if not GUIDE_CACHE:
         rgb, body = load(GUIDE)
         e, top, H = eyes(rgb, body)
-        sil, blue = hair_mask(rgb, body, min(e[0][1], e[1][1]))
+        sil, blue = hair_mask(rgb, body, e)
         h, s, v = hsv(rgb)
         skin = (h < 0.12) & (s > 0.05) & (s < 0.5) & (v > 0.7) & body
         # the outline that faces the paper, and the hairline where the blue meets the forehead and temples
-        outer = edge(sil) & grow(~body, 2)
-        hairline = edge(blue) & grow(skin & ~sil, 3)
-        GUIDE_CACHE.update(rgb=rgb, sil=sil, blue=blue, eyes=e, outer=outer, hairline=hairline)
+        k = max(2, int(round(0.03 * abs(e[1][0] - e[0][0]))))
+        outer = edge(sil) & grow(~body, k)
+        hairline = edge(blue) & grow(skin & ~sil, k + 1)
+        GUIDE_CACHE.update(rgb=rgb, body=body, sil=sil, blue=blue, eyes=e, outer=outer, hairline=hairline)
     return GUIDE_CACHE
 
 
@@ -168,7 +179,7 @@ def compare(path):
     e, top, H = eyes(rgb, body)
     target, tf = place(g['sil'], g['eyes'], e, body.shape)
     target_blue, _ = place(g['blue'], g['eyes'], e, body.shape)
-    sil, blue = hair_mask(rgb, body, min(e[0][1], e[1][1]))
+    sil, blue = hair_mask(rgb, body, e)
     outer, _ = place(g['outer'], g['eyes'], e, body.shape)
     hairline, _ = place(g['hairline'], g['eyes'], e, body.shape)
     ce = edge(sil); cbe = edge(blue)
@@ -216,7 +227,7 @@ def verdict(r):
 
 def report(results, out):
     L = ['# 호루스 머리 — 사용자 수정본과 비교', '',
-         '기준: 사용자 수정본(`docs/art/chibi-refresh/horus-hair-guide/user-edit-combined.png`)의 머리 외곽선과 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
+         '기준: 사용자 수정본(`docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg`)의 머리 외곽선과 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
          '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 평균/최대, 2px 안 | 모자람/넘침 px | 판정 |', '|---|---|---|---|---|']
     for r in results:
         o, h = r['outer'], r['hairline']
@@ -245,14 +256,27 @@ def targets():
         rows.append((name, mid, np.hypot(e[1][0] - e[0][0], e[1][1] - e[0][1]), tf, os.path.relpath(p, ROOT)))
         pic = np.ones((*rgb.shape[:2], 3)) * np.array([245, 239, 227]) / 255
         pic[body] = rgb[body]; pic = (pic * 255).astype(np.uint8)
-        pic[edge(target)] = (230, 0, 0)
-        for x, y in e: pic[int(y) - 1:int(y) + 2, int(x) - 1:int(x) + 2] = (0, 160, 0)
-        tiles.append(Image.fromarray(pic).resize((720, 800), Image.NEAREST))
+        # the user's drawing itself, moved and scaled onto this frame by the eyes
+        user, _ = place((g['rgb'] * 255).astype(np.uint8), g['eyes'], e, body.shape, fill=0)
+        user[~place(g['body'], g['eyes'], e, body.shape)[0]] = (245, 239, 227)
+        Image.fromarray(user).save(os.path.join(out, f'{name}-user-placed.png'))
+        # head crop, enlarged 3×, with a 2 px red line drawn at the enlarged size
+        y0, y1 = int(max(0, top - 8)), int(e[0][1] + 0.9 * abs(e[1][0] - e[0][0]))
+        xs = np.nonzero(body[y0:y1].any(0))[0]; x0, x1 = int(max(0, xs.min() - 8)), int(min(body.shape[1], xs.max() + 9))
+        k = 3
+        big = lambda a: np.kron(a[y0:y1, x0:x1], np.ones((k, k), bool)) if a.dtype == bool else np.asarray(Image.fromarray(a[y0:y1, x0:x1]).resize(((x1 - x0) * k, (y1 - y0) * k), Image.NEAREST))
+        line = edge(big(target)); line = grow(line, 1)
+        a = big(user).copy(); a[line] = (230, 0, 0)
+        b = big(pic).copy(); b[line] = (230, 0, 0)
+        tiles.append((Image.fromarray(a), Image.fromarray(b)))
     ref = [r for r in rows if r[0] == 'walk-front-1'][0]
-    sheet = Image.new('RGB', (720 * len(tiles), 830), (250, 248, 244))
-    for i, t in enumerate(tiles):
-        sheet.paste(t, (i * 720, 30))
-        ImageDraw.Draw(sheet).text((i * 720 + 8, 6), rows[i][0] + ' — 빨간 선이 이 프레임에서 머리가 있어야 할 자리', fill=(40, 30, 20), font=FONT)
+    tw = max(t[0].width for t in tiles); th = max(t[0].height for t in tiles)
+    sheet = Image.new('RGB', (tw * len(tiles), th * 2 + 60), (250, 248, 244))
+    d = ImageDraw.Draw(sheet)
+    for i, (a, b) in enumerate(tiles):
+        sheet.paste(a, (i * tw, 30)); sheet.paste(b, (i * tw, 60 + th))
+        d.text((i * tw + 8, 6), rows[i][0] + ' — 위: 네 수정본을 이 프레임 자리에 옮긴 것', fill=(40, 30, 20), font=FONT)
+        d.text((i * tw + 8, 36 + th), '아래: 지금 채택 걷기 + 빨간 선(머리가 와야 할 자리)', fill=(40, 30, 20), font=FONT)
     sheet.save(os.path.join(out, 'walk-front-targets.png'))
     L = ['| 프레임 | 원본 | 두 눈 가운데 (x, y) | 1번 대비 이동 (x, y) | 눈 사이 거리 | 사용자 수정본→프레임 배율 |', '|---|---|---|---|---|---|']
     data = []
