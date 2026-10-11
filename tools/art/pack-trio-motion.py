@@ -76,7 +76,7 @@ def pack(frames, visible, out):
 
 
 # approved action sets packed beside the base 48 (same canvas, pivot and reference height as the idle)
-ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174')]
+ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176')]
 
 
 def action_frames():

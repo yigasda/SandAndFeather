@@ -134,6 +134,13 @@
   ],
   "revision": 177,
   "revisionNote": "오른쪽0·1 피부를 최종 원본 팔레트로 보정. 왼쪽0·1 배→치마 외곽선 복구.",
-  "approvalEvidence": "아 스발ㅋㅋ 비포 애프터라고 써진 걸 못 봤네\n고마워 채택!!",
-  "approvalNote": "177 좌우 수정 포함 상호작용4방향×2프레임8장 채택. 게임 적용은 별도."
+  "approvalEvidence": "아 스발ㅋㅋ 비포 애프터라고 써진 걸 못 봤네\n고마워 채택!!\n(게임 적용 요청) 지금 메인에 채택이라고 된 호루스 8장 fit scale 돌리고 인겜 적용해쥬",
+  "approvalNote": "177 좌우 수정 포함 상호작용4방향×2프레임8장 채택. 게임 적용은 별도.",
+  "runtimeIntegrated": "0.9.31",
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  }
 }
