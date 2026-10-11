@@ -88,7 +88,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 ## 동작 넣는 법 (아스트라 동작 묶음이 채택됐을 때)
 
 1. main을 받고 동작 폴더(`docs/art/chibi-refresh/<동작>-<누구>-v<번호>/`)의 README와 `manifest.json`을 본다. 수정본(예: 175)이 같은 폴더에 덮여 있을 수 있다. git log로 최신을 확인한다.
-2. 8장(4방향×프레임) 모두 `fit-scale.py`를 돌린다. 결과 시트를 `<폴더>/opus-fit/fit-all.png`와 표가 있는 README로 남긴다(`interaction-horus-v176/opus-fit/` 참고).
+2. 8장(4방향×프레임) 모두 `fit-scale.py`를 돌린다. 결과 시트를 `<폴더>/opus-fit/fit-all.png`와 표가 있는 README로 남긴다(`interaction-horus-v176/opus-fit/` 참고). 같이 눈으로 본다: 피부색·톤이 같은 방향 최종 정지·걷기와 같은지(얼굴·팔·다리 확대), 왼쪽을 반전해 오른쪽에 겹쳤을 때 팔 길이·굵기·손이 같은지. 다르면 사용자에게 짚어 준다(아스트라 규칙: ASTRA-PLAN 2단계 공통 규칙).
 3. 사용자가 채택했으면 manifest에 `status: user-approved`, `artApproved: true`, `runtimeEligible: true`, `runtimeIntegrated: <버전>`, `approvalEvidence: <사용자 말>`, `directionMap: {front:down, back:up, left:left, right:right}`를 넣는다(파일 sha256은 그대로 둔다, 패킹 때 검사함).
 4. `pack-trio-motion.py`의 `ACTIONS` 목록에 폴더를 더하고 돌린다 → `looks.<who>.motion.acts[동작][방향][프레임]`, `actPlay`.
 5. 새 동작 이름이면 어디서 부를지 연결한다(`playAct(name, x, y)`).
