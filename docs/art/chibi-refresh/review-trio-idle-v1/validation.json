@@ -254,7 +254,7 @@
         0,
         0,
         360,
-        329
+        324
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
@@ -263,13 +263,13 @@
         46,
         40,
         321,
-        370
+        369
       ],
       "alphaBounds": [
         76,
         86,
         556,
-        662
+        660
       ],
       "clipping": false
     },
@@ -279,7 +279,7 @@
         0,
         0,
         360,
-        220
+        400
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
@@ -304,7 +304,7 @@
         0,
         0,
         360,
-        220
+        224
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
@@ -329,7 +329,7 @@
         0,
         0,
         360,
-        220
+        224
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
@@ -354,21 +354,21 @@
         0,
         0,
         360,
-        0
+        320
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
       "recoloredToApprovedPalette": 0,
       "nativeBounds": [
-        78,
-        72,
-        282,
+        71,
+        50,
+        289,
         370
       ],
       "alphaBounds": [
-        132,
-        142,
-        488,
+        120,
+        103,
+        500,
         662
       ],
       "clipping": false
@@ -449,69 +449,14 @@
       "clipping": false
     }
   ],
-  "revision147": {
-    "baseline": "5c0987c",
-    "changedFrames": [
-      {
-        "name": "set-front",
-        "changedPixels": 3616
-      },
-      {
-        "name": "set-back",
-        "changedPixels": 3190
-      },
-      {
-        "name": "set-left",
-        "changedPixels": 0
-      },
-      {
-        "name": "set-right",
-        "changedPixels": 0
-      },
-      {
-        "name": "somang-front",
-        "changedPixels": 2851
-      },
-      {
-        "name": "somang-back",
-        "changedPixels": 20
-      },
-      {
-        "name": "somang-left",
-        "changedPixels": 31
-      },
-      {
-        "name": "somang-right",
-        "changedPixels": 86
-      },
-      {
-        "name": "horus-front",
-        "changedPixels": 44510
-      },
-      {
-        "name": "horus-back",
-        "changedPixels": 2971
-      },
-      {
-        "name": "horus-left",
-        "changedPixels": 0
-      },
-      {
-        "name": "horus-right",
-        "changedPixels": 0
-      }
+  "revision": 148,
+  "rejectedRevision": 147,
+  "horusRollback": {
+    "sourceCommit": "5c0987c",
+    "faceTranslation": [
+      0,
+      0
     ],
-    "horusFace": {
-      "pixelsChecked": 14374,
-      "changedPixels": 0,
-      "translation": [
-        0,
-        7
-      ],
-      "scale": 1,
-      "repainted": false
-    },
-    "bodySource": "review-trio-walk-v4/idle-reference/horus-front.png (approved Set-based body)",
-    "inspection": "Light and dark backgrounds, full sheets and enlarged junctions. Review pending."
+    "headAndBodyRescaled": false
   }
 }

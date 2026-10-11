@@ -47,7 +47,7 @@
         610,
         662
       ],
-      "sha256": "2df8b152bb3b8e526bdb3dec22a68f61f2b5021e91cc11852cac8ec01f44efbd",
+      "sha256": "9ccdf3d1985c3d386bd54b56d4accd37ad8c672f880f5a2d56434ac3c54f8fc6",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/set-front.png",
       "nativeSize": [
         360,
@@ -89,7 +89,7 @@
         565,
         662
       ],
-      "sha256": "4bbd11e9f47d819beb4321e4e43e3034f7492fedb868c829d37be3212f6c9375",
+      "sha256": "57e80dc35ee4bf80cf54f43b63cdd53376dd0c482d1d5ea40d61b0d11c5b93a5",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/set-back.png",
       "nativeSize": [
         360,
@@ -213,9 +213,9 @@
         76,
         86,
         556,
-        662
+        660
       ],
-      "sha256": "50e03d397a5e55f4c6da3e2195cb099194b619f7086f349d8eea4ce721c8d79f",
+      "sha256": "ee2cf9b1ba90d776709095ac26db2b59c651f89cfb2cfda4f641ba42ee5b8bf1",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/somang-front.png",
       "nativeSize": [
         360,
@@ -257,7 +257,7 @@
         532,
         662
       ],
-      "sha256": "1f80fc78ab05bed553451ee091c6b0525c74631d0f7fdff936ff93c5e2b40d6e",
+      "sha256": "328a6d2b445cd15e5bfdb794fe1035a677cf7054822da544ca773c4f1d6f8277",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/somang-back.png",
       "nativeSize": [
         360,
@@ -299,7 +299,7 @@
         554,
         662
       ],
-      "sha256": "29d727641f54ebec651a24bfe7af0c6a5823ae699510973bb79a2b43fd125893",
+      "sha256": "c8cc686e619cd757e1426abed704f4ff0cb36a83260e8ff3e191598996ae79e4",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/somang-left.png",
       "nativeSize": [
         360,
@@ -341,7 +341,7 @@
         526,
         662
       ],
-      "sha256": "35e85251ad039bab4e791ae0d7faa5134ecec076b51749f3e4ae692f0eae8548",
+      "sha256": "7dd74ecee98e10846ff23f4d2313c1ea73964cb90d955e621c7d6e409e414d74",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/somang-right.png",
       "nativeSize": [
         360,
@@ -378,12 +378,12 @@
       ],
       "referenceVisibleHeight": 576,
       "alphaBounds": [
-        132,
-        142,
-        488,
+        120,
+        103,
+        500,
         662
       ],
-      "sha256": "2653bb1e7b27103e601659f2cf33e1061434322c21265f3b05100ad7c7e116de",
+      "sha256": "f0e22bf918cf324122a85d7f35236a80b201de1e345e72e15020710132855ef9",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/horus-front.png",
       "nativeSize": [
         360,
@@ -425,7 +425,7 @@
         490,
         662
       ],
-      "sha256": "f4b8e0722ffd6ee06543f2cc6c56cf35ac002b041c794db0823cf95c0cdd7a51",
+      "sha256": "8e7fda24aa054c071df048689ed97d75bf72716bbe793353566ac15a2fc3ba88",
       "nativePath": "docs/art/chibi-refresh/review-trio-idle-v1/native/horus-back.png",
       "nativeSize": [
         360,
