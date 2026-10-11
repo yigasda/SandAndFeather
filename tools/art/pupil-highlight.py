@@ -49,7 +49,7 @@ def find(im, box=None):
     solid = a[..., 3] > 200
     ys = np.nonzero(solid.any(1))[0]
     head = np.zeros_like(solid); head[ys.min():ys.min() + int(0.6 * (ys.max() - ys.min()))] = True
-    white = solid & head & (v > 0.86) & (s < 0.28)
+    white = solid & head & (v > 0.82) & (s < 0.36)  # a highlight can be a pale cream, not pure white
     gold = solid & (h > 0.06) & (h < 0.15) & (s > 0.55) & (v > 0.6)
     iris = solid & (((h > 0.05) & (h < 0.16) & (s > 0.45) & (v > 0.35)) | ((v < 0.45) & (h > 0.02) & (h < 0.12) & (s > 0.4)))
     spots = []
@@ -67,7 +67,7 @@ def find(im, box=None):
         cy = np.mean([y for y, _ in pts]); cx = np.mean([x for _, x in pts])
         y0, x0 = int(max(0, cy - 30)), int(max(0, cx - 22))
         iy = np.nonzero(gold[y0:int(cy) + 30, x0:int(cx) + 22].any(1))[0] + y0
-        if len(iy) and cy < (iy.min() + iy.max()) / 2:
+        if len(iy) and cy < iy.min() + 0.45 * (iy.max() - iy.min()):
             spots.append((pts, ring & iris))
     return a, spots
 
@@ -96,20 +96,21 @@ def grow(a, pts):
 
 
 def fix(a, spots):
-    """fill the spot and its light edge from the colours just outside it: each pixel is the distance-weighted mix of
-    the nearest outside pixel up, down, left and right, so the iris shading runs on through it with no ring"""
+    """fill the spot and its light edge with the nearest iris pixel: every pixel of the patch takes the colour of the
+    closest plain-gold pixel outside it (not the black eyelid, the dark pupil or the shadowed band under the lid),
+    copied as it is, so the fill keeps the pixel-art look with no blend, blot or ring"""
     b = a.copy()
-    H, W = a.shape[:2]
+    h, s, v = hsv(a[..., :3] / 255)
+    gold = (a[..., 3] > 200) & (h > 0.05) & (h < 0.16) & (s > 0.4) & (v > 0.5)
     for pts, _ in spots:
         m = grow(a, pts)
-        for y, x in zip(*np.nonzero(m)):
-            acc, wsum = np.zeros(3), 0.0
-            for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                yy, xx, d = y + dy, x + dx, 1
-                while 0 <= yy < H and 0 <= xx < W and m[yy, xx]: yy += dy; xx += dx; d += 1
-                if 0 <= yy < H and 0 <= xx < W and a[yy, xx, 3] > 200:
-                    acc += a[yy, xx, :3] / d; wsum += 1 / d
-            if wsum: b[y, x, :3] = acc / wsum
+        ys, xs = np.nonzero(m)
+        y0, y1, x0, x1 = max(0, ys.min() - 12), ys.max() + 13, max(0, xs.min() - 12), xs.max() + 13
+        gy, gx = np.nonzero(gold[y0:y1, x0:x1] & ~m[y0:y1, x0:x1]); gy += y0; gx += x0
+        if not len(gy): continue
+        for y, x in zip(ys, xs):
+            i = np.argmin((gy - y) ** 2 + (gx - x) ** 2)
+            b[y, x, :3] = a[gy[i], gx[i], :3]
     return b
 
 
