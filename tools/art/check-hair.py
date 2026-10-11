@@ -237,6 +237,14 @@ def compare(path):
         res[name] = {'points': int(len(ys)), 'mean': round(float(d.mean()), 2), 'max': round(float(d.max()), 1),
                      'within2px': round(float((d <= 2).mean()), 3)}
         res[name + '_far'] = (xs[d > 3], ys[d > 3]) if len(ys) else ([], [])
+    # the hair's own outline: the outermost hair pixels should be the dark line, at least 2 px thick. Hair cut
+    # along the target with no line drawn back shows blue at its edge.
+    h_, s_, v_ = hsv(rgb)
+    dark = (v_ < 0.22) & body
+    rim = edge(sil) & grow(~body, 1)
+    lined = rim & dark & grow(dark & sil & ~rim, 1)
+    res['outlineCover'] = round(float(lined.sum() / max(rim.sum(), 1)), 3)
+    res['_bare'] = rim & ~lined
     extra = sil & ~grow(target, 2); missing = target & ~grow(sil, 2)
     res['extraPx'] = int(extra.sum()); res['missingPx'] = int(missing.sum())
     res['_draw'] = (rgb, body, target, sil, extra, missing, top, H)
@@ -253,6 +261,7 @@ def draw(res, path):
     over[missing] = (over[missing] * 0.4 + np.array([255, 40, 40]) * 0.6).astype(np.uint8)
     over[extra] = (over[extra] * 0.4 + np.array([40, 120, 255]) * 0.6).astype(np.uint8)
     over[edge(target)] = (230, 0, 0)
+    over[grow(res['_bare'], 1) & ~edge(target)] = (255, 150, 0)  # orange: hair edge with no dark outline
     y1 = int(top + 0.55 * H)
     k = 3
     a = Image.fromarray(pic[:y1]).resize((W * k, y1 * k), Image.NEAREST)
@@ -263,25 +272,30 @@ def draw(res, path):
     d.text((8, 6), os.path.basename(res['path']) + ' — 후보 그대로 | 빨간 선 = 사용자 머리 외곽선, 빨강 칠 = 모자람, 파랑 칠 = 넘침', fill=(40, 30, 20), font=FONT)
     d.text((8, 28), f"바깥 외곽선: 평균 {res['outer']['mean']}px, 최대 {res['outer']['max']}px, 2px 안 {res['outer']['within2px'] * 100:.0f}%   "
                     f"이마선: 평균 {res['hairline']['mean']}px, 최대 {res['hairline']['max']}px, 2px 안 {res['hairline']['within2px'] * 100:.0f}%", fill=(120, 0, 60), font=FONT)
-    d.text((8, 48), f"모자란 머리 {res['missingPx']}px · 넘친 머리 {res['extraPx']}px (360×400 셀 기준 픽셀)", fill=(120, 0, 60), font=FONT)
+    d.text((8, 48), f"모자란 머리 {res['missingPx']}px · 넘친 머리 {res['extraPx']}px · 머리 가장자리 검은 외곽선 {res['outlineCover'] * 100:.0f}% (주황 = 외곽선 없는 가장자리)", fill=(120, 0, 60), font=FONT)
     cv.save(path)
+
+
+OUTLINE_MIN = 0.8  # adopted walk frames measure 86-88%; hair only cut along the line measures ~44%
 
 
 def verdict(r):
     ok = r['outer']['within2px'] >= 0.9 and r['outer']['max'] <= 4 and r['hairline']['within2px'] >= 0.85 and r['hairline']['max'] <= 5
+    if r['outlineCover'] < OUTLINE_MIN: return '**외곽선 없음 (잘라만 냄)**'
     return '사용자 모양과 같음' if ok else '**다름**'
 
 
 def report(results, out):
     L = ['# 호루스 머리 — 사용자 수정본과 비교', '',
          '기준: 사용자 수정본(`docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg`)의 머리 외곽선과 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
-         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 평균/최대, 2px 안 | 모자람/넘침 px | 판정 |', '|---|---|---|---|---|']
+         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 평균/최대, 2px 안 | 모자람/넘침 px | 가장자리 검은 외곽선 | 판정 |', '|---|---|---|---|---|---|']
     for r in results:
         o, h = r['outer'], r['hairline']
         L.append(f"| [{os.path.basename(r['path'])}]({os.path.splitext(os.path.basename(r['path']))[0]}-hair.png) | "
                  f"{o['mean']}/{o['max']}px, {o['within2px'] * 100:.0f}% | {h['mean']}/{h['max']}px, {h['within2px'] * 100:.0f}% | "
-                 f"{r['missingPx']}/{r['extraPx']} | {verdict(r)} |")
+                 f"{r['missingPx']}/{r['extraPx']} | {r['outlineCover'] * 100:.0f}% | {verdict(r)} |")
     L += ['', '통과 기준: 바깥 외곽선 90% 이상이 2px 안, 최대 4px. 이마선 85% 이상이 2px 안, 최대 5px.',
+          f'머리 가장자리 {OUTLINE_MIN * 100:.0f}% 이상이 2px 넘는 검은 외곽선이어야 한다. 빨간 선에 맞춰 잘라만 내면 가장자리가 파란 머리색이라 여기서 걸린다(비교 그림의 주황).',
           '숫자를 통과해도 비교 그림을 직접 본다. 최종 판단은 사용자가 한다.']
     open(os.path.join(out, 'report.md'), 'w').write('\n'.join(L) + '\n')
 
