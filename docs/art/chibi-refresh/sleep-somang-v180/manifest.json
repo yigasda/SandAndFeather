@@ -1,9 +1,9 @@
 {
   "revision": 180,
   "action": "sleep",
-  "status": "representative-awaiting-user-review",
-  "artApproved": false,
-  "runtimeEligible": false,
+  "status": "user-approved",
+  "artApproved": true,
+  "runtimeEligible": true,
   "characters": [
     "somang"
   ],
@@ -49,5 +49,24 @@
     "../../map-expansion/set-room-v6-single-window-day.png",
     "../../map-expansion/horus-room-v2-wide-day.png"
   ],
-  "occlusionNote": "몸 전체와 의상을 그렸고 이불·침대는 PNG에 없음. 게임 적용 시 원본 침대 이불로 가림."
+  "occlusionNote": "몸 전체와 의상을 그렸고 이불·침대는 PNG에 없음. 게임 적용 시 원본 침대 이불로 가림.",
+  "runtimeIntegrated": "0.9.32",
+  "approvalEvidence": "앉기 잠들기 맘에 들어",
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right",
+    "bed-oblique-head-up-feet-forward": "down"
+  },
+  "playback": {
+    "sequence": [
+      0
+    ],
+    "durationMs": [
+      800
+    ],
+    "loop": true,
+    "note": "호흡 프레임1이 오면 [0,1] 800ms씩 반복"
+  }
 }

@@ -15,7 +15,7 @@ export const freshState = () => ({
     pos: { map: 'ombos', x: null, y: null, dir: 'down' },
     sync: { at: -1, raw: '', ok: false, when: 0 }, // the last tracker read: message index, its text
     linked: false,                                 // a tracker was read or the date was set by hand at least once
-    ledger: { lastDay: -1, acts: {} },             // ledger.js: the newest day already handled, once-a-day actions done
+    ledger: { lastDay: -1, acts: {}, gday: -1 },   // ledger.js: the newest day already handled, once-a-day actions done, the game day slept to
     bag: { items: [], deben: 60, seq: 0 },         // bag.js
     news: [],                                      // news.js: what the chat should hear about
     recent: { finds: [] },                         // what came up lately, so it does not come up again at once
@@ -38,6 +38,7 @@ export const freshState = () => ({
     dayFirst: -1,                                  // daylog.js: the first game day counted (생존 D+N)
     fest: {},                                      // packs/life/festival.js: { 'opet:2': { preps, done } }
     codex: { items: {}, secrets: {} },             // codex.js: 도감, every kind ever had and the first day
+    wake: null,                                    // rest.js: { part, raw } the time of day after sleeping, until the chat's tracker moves
     started: Date.now(),
 });
 

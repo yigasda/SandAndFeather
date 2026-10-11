@@ -37,8 +37,8 @@ addThings((mapId, s) => {
     const T = (o, act) => ({ id: `adv:${c.step}:${o.x}:${o.y}`, ...o, act });
     switch (st.kind) {
         case 'follow': { const p = st.path[c.sub || 0], g = guideOf(st.guide); return [T({ x: p.x, y: p.y, label: g.ko, sprite: g.sprite }, ui => hop(ui))]; }
-        case 'touch': return st.marks.map((m, k) => (c.touched?.includes(k) ? null : T({ x: m.x, y: m.y, label: m.label, sprite: m.sprite || 'sparkle' }, ui => touch(ui, k))));
-        case 'find': return [T({ x: st.x, y: st.y, label: st.label, sprite: st.sprite || 'chest' }, ui => findIt(ui))];
+        case 'touch': return st.marks.map((m, k) => (c.touched?.includes(k) ? null : T({ x: m.x, y: m.y, label: m.label, sprite: m.sprite || 'sparkle', pose: 'pickup' }, ui => touch(ui, k))));
+        case 'find': return [T({ x: st.x, y: st.y, label: st.label, sprite: st.sprite || 'chest', pose: 'pickup' }, ui => findIt(ui))];
         case 'bring': { const n = merchant(); return n ? [T({ x: n.x + 1, y: n.y, label: `${n.label}에게 가져가기`, sprite: 'sparkle' }, ui => bring(ui))] : []; }
         case 'choice': return [T({ x: st.x, y: st.y, label: st.label || '어떻게 할까', sprite: 'sparkle' }, ui => choose(ui))];
         default: return [];

@@ -13,10 +13,11 @@ import { addThings } from '../../world/things.js';
 import { onSpot, travel } from '../../ui/window.js';
 import { leadOf, withOf } from '../../core/heroes.js';
 import { josa } from '../../core/ko.js';
+import { partNow } from '../../core/rest.js';
 
 const shows = (sec, s) => {
     const w = sec.when || {};
-    if (w.parts && !w.parts.includes(s.part)) return false;
+    if (w.parts && !w.parts.includes(partNow(s))) return false;
     if (w.seasons && !w.seasons.includes(seasonOf(s.date.month))) return false;
     if (w.with && leadOf(s) !== w.with && withOf(s) !== w.with) return false; // Set or Horus in the group, leading or behind
     return sec.daily ? canDo(s, `secret:${sec.id}`) : !s.flags[`secret:${sec.id}`];
@@ -24,6 +25,7 @@ const shows = (sec, s) => {
 
 addThings((mapId, s) => (DATA.maps[mapId]?.secrets || []).filter(sec => shows(sec, s)).map(sec => ({
     id: `secret:${sec.id}`, x: sec.x, y: sec.y, label: sec.ko, sprite: sec.id.includes('mural') ? 'mural' : 'sparkle',
+    pose: sec.id.includes('mural') ? 'interact' : 'pickup', // a mural is looked at; anything else is on the ground
     act: async ui => {
         const st = getState();
         if (sec.daily) markDone(st, `secret:${sec.id}`); else st.flags[`secret:${sec.id}`] = true;

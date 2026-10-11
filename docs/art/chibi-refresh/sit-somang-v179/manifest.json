@@ -1,9 +1,9 @@
 {
   "revision": 179,
   "action": "sit-floor",
-  "status": "representative-awaiting-user-review",
-  "artApproved": false,
-  "runtimeEligible": false,
+  "status": "user-approved",
+  "artApproved": true,
+  "runtimeEligible": true,
   "characters": [
     "somang"
   ],
@@ -40,5 +40,13 @@
     "loop": false,
     "hold": true
   },
-  "scopeNote": "소망 방석 왼쪽 대표1장만. 사용자 오케이 후 나머지 대상·방향 및 걸상 자세 제작."
+  "scopeNote": "소망 방석 왼쪽 대표1장만. 사용자 오케이 후 나머지 대상·방향 및 걸상 자세 제작.",
+  "runtimeIntegrated": "0.9.32",
+  "approvalEvidence": "앉기 잠들기 맘에 들어",
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  }
 }

@@ -12,12 +12,13 @@ import { spend, sunLeft } from '../../core/sun.js';
 import { itemCard } from '../../ui/items.js';
 import { onSpot } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
+import { partNow } from '../../core/rest.js';
 
 const KEY = 'dock:pull';
 
 export function pickFrom(table, s, recent = []) {
     const season = seasonOf(s.date.month);
-    const pool = (table || []).filter(f => (!f.parts?.length || f.parts.includes(s.part)) && (!f.seasons?.length || f.seasons.includes(season)));
+    const pool = (table || []).filter(f => (!f.parts?.length || f.parts.includes(partNow(s))) && (!f.seasons?.length || f.seasons.includes(season)));
     const w = pool.map(f => Number(f.weight) * (recent.includes(f.item) ? 0.25 : 1));
     let r = Math.random() * w.reduce((a, b) => a + b, 0);
     for (let k = 0; k < pool.length; k++) { r -= w[k]; if (r <= 0) return pool[k].item; }

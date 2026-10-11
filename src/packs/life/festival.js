@@ -13,6 +13,7 @@ import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { list, para, stack } from '../../ui/kit.js';
 import { addThings } from '../../world/things.js';
+import { partNow } from '../../core/rest.js';
 
 const F = () => DATA.festivals || {};
 const NIGHT = ['evening', 'night'];
@@ -47,7 +48,7 @@ addThings((mapId, s) => {
     const x = mapId === 'ombos' ? festivalNow(s) : null;
     if (!x || x.entry.done) return [];
     const p = F().at || { x: 24, y: 16 };
-    const tonight = x.left === 0 && NIGHT.includes(s.part);
+    const tonight = x.left === 0 && NIGHT.includes(partNow(s));
     return [{ id: 'festival', x: p.x, y: p.y, label: tonight ? '축제의 밤' : '축제 준비', sprite: 'banner', act: ui => card(ui) }];
 });
 
@@ -55,7 +56,7 @@ function card(ui) {
     const s = getState(), x = festivalNow(s);
     if (!x) return;
     const { f, entry } = x;
-    const tonight = x.left === 0 && NIGHT.includes(s.part);
+    const tonight = x.left === 0 && NIGHT.includes(partNow(s));
     const when = x.left === 0 ? (tonight ? '오늘 밤이야. 광장에 불이 켜졌어.' : '오늘이야. 저녁이 되면 시작돼.') : `${x.left}일 뒤 · ${monthName(f.month)} ${f.day}일 무렵`;
     const rows = (f.preps || []).map(pr => {
         const done = entry.preps.includes(pr.id);

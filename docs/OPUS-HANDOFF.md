@@ -42,7 +42,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 ## 버전과 검증
 
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.31**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.32**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄도 고친다. README에는 버전 내역을 쌓지 않는다.
 - **검증 스크립트 세 개**(`tools/art/`, ST가 떠 있고 확장이 들어가 있어야 함). 출력 폴더를 인자로 준다. 셋 다 exit 0이어야 한다:
   ```sh
   export NODE_PATH=/opt/node-tools/node_modules
@@ -60,7 +60,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
   - `solo.js`: 세트 앞장 솔로, 호루스+소망 동행
   - 폰 크기는 412×900. 안채나 맵을 고치면 출구 걷기·낮밤도 본다.
 
-## 게임 지금 상태 — 0.9.31
+## 게임 지금 상태 — 0.9.32
 
 | 영역 | 내용 | 자세한 기록 |
 |---|---|---|
@@ -73,7 +73,8 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 | 일행 탭 UI | `src/ui/tabs.js partyCard`: 줄마다 `자세히`(`data-detail`)와 `앞장`(`data-lead`), 아래에 동행 고르기(`data-companion`). 하단 탭은 세계·일행·임무·지도 넷 | |
 | 자세히 카드 | `tabs.js characterCard(ui, id)`: 그림, 모험 등급, 능력치, 배움(앞장일 때만 고름). 그림은 `portraits.js picture(id)` → `data/art/portraits/gallery/` 일러스트(`GALLERY = {somang:1, set:3, horus:3}`, 한 장이면 ‹ › 숨김). 소망 일러스트는 원본 704×1216을 위쪽 2:3으로 잘라 512×768 WebP. 원본은 `docs/art/portraits-illust/gallery/`. 대화 카드 상반신과 미소 버튼은 뺐다(다시 넣지 않는다) | CHANGELOG 0.9.29·0.9.30 |
 | 셋소호 스프라이트 | 최종 48장(`docs/art/chibi-refresh/final/`: 정지 12장 620×720 발 기준점(310,662) 기준 키 576, 걷기 36장 360×400 기준점(180,370) 기준 키 330)을 `tools/art/pack-trio-motion.py`로 패킹한다. `final/manifest.json`의 `runtimeEligible`이 true여야 한다. 결과 `data/art/characters/trio-motion.png`(256px)·`-small.png`(폰 125px), 연결은 `data/sprites.json`의 `looks.<who>.motion`. 표시 높이 31.2 논리 px, 걷기 0-1-2-1 180ms. 호루스는 173 비율 수정본 | [TRIO-MOTION-098.md](TRIO-MOTION-098.md) |
-| 동작(상호작용) | 소망 172(0.9.26), 세트 174·오른팔 175(0.9.30), 호루스 176·좌우 177(0.9.31). 셋 다 있다. 말 걸기(`window.js talk`)가 `player.playAct('interact', x, y)`로 대상 쪽으로 돌아 한 번 재생(각 150ms, 마지막 장 220ms 머묾), 260ms 뒤 카드가 열린다. 그리는 쪽은 `render.js motionPerson`의 `anim.act` | 아래 "동작 넣는 법" |
+| 동작 | 소망 172(0.9.26), 세트 174·오른팔 175(0.9.30), 호루스 176·좌우 177(0.9.31). 셋 다 있다. 줍기는 소망 181(0.9.32): 땅의 것(모험 touch·find, 벽화 아닌 비밀)은 thing에 `pose: 'pickup'`, 그 캐릭터에게 그림이 없으면 손 뻗기(`window.js talk`, 대기 시간 `ACT_MS`). 앉기 `sit-floor`(소망 방석 왼쪽 보기 179, hold), 잠들기 `sleep`(소망 180, loop, 방향 down) — 재생 정보는 `actPlay {frameMs, loop, hold}`, 그리는 쪽은 hold·loop면 마지막 장 유지·반복하고 그림자를 안 그림. 말 걸기(`window.js talk`)가 `player.playAct('interact', x, y)`로 대상 쪽으로 돌아 한 번 재생(각 150ms, 마지막 장 220ms 머묾), 260ms 뒤 카드가 열린다. 그리는 쪽은 `render.js motionPerson`의 `anim.act` | 아래 "동작 넣는 법" |
+| 게임 하루·쉬기 | `src/core/rest.js`, `src/packs/life/rest.js`. 게임 하루 = `ledger.today(s)` = 챗 날짜와 `s.ledger.gday` 중 늦은 쪽. 침대(`set_bed`)에서 `sleepNow`: 태양 기운이 절반 이하일 때만, `gday = today+1` → `newDays` → `day:started`(태양 기운·의뢰·결산이 기존 흐름대로). 챗이 그 날짜에 오면 새 날이 아니라 두 번 안 센다. 자고 나면 `s.wake = {part:'dawn', raw}`로 화면 시간대만 아침(`partNow(s)`, 챗 트래커 raw가 바뀌면 해제). 게임 판정(비밀, 두아트 문, 선착장, 축제, HUD, 그림)은 `partNow`, 챗 주입·모험 생성은 `s.part` 그대로. 앉아 쉬기(`temple_table`, `colonnade_seat`)는 태양 기운 +1, 게임 하루 2번(`ledger.acts rest:sit:1/2`), 가득 차 있으면 횟수를 안 씀. 자리 좌표는 `packs/life/rest.js SEATS/BEDS`(자세 기준점이 놓이는 칸 좌표, 방향, 동작 이름). 그 캐릭터·방향 그림이 있을 때만 앉은·누운 그림(`player.holdPose`), 없으면 선 채로 효과만. 움직이거나 말 걸기를 누르면 원래 자리에서 일어남(`getUp`) | CHANGELOG 0.9.32 |
 | 카드(팝업) | `src/ui/popups.js`의 `showCard`. 테두리와 제목은 고정, 안쪽 `.sf_pop_scroll`만 스크롤 | CHANGELOG 0.9.22 |
 | 성능 | 지도는 보이는 부분만 그린다. 이동은 실제 시간 기준 0.05초 단위. 지도 그림은 그 지도에 있을 때만 풀어 둔다(`lazy`) | [PERF-0917.md](PERF-0917.md) |
 | 상인 | 옛 `pocket-chibi.png`(townsman) 그대로. `pack-pocket-sprites.cjs`는 돌리지 않는다 | |
@@ -99,7 +100,9 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 | 무엇 | 지금 | 할 일 |
 |---|---|---|
-| 생활 동작(줍기·잠자기·앉기·낚시·요리…) | ASTRA-PLAN 2단계에 동작별 명세. 0.9.28부터 생활 동작은 **셋 다** 그린다 | 채택되면 넣고, 동작마다 부를 곳(낚시터, 부엌, 침대 등)을 연결 |
+| 생활 동작(세트·호루스 줍기, 앉기·잠들기 나머지, 낚시·요리…) | ASTRA-PLAN 2단계에 동작별 명세. 0.9.28부터 생활 동작은 **셋 다** 그린다 | 채택되면 넣고, 동작마다 부를 곳(낚시터, 부엌, 침대 등)을 연결 |
+| 줍기·앉기·잠들기 묶음 | 아스트라가 세트·호루스 줍기 16장, 앉기 14장(셋 다 방석 3방향 + 걸상 뒷모습 + 긴 의자 오른쪽), 잠들기 5장(소망 호흡 1 + 세트·호루스 2씩) 진행 중 | 채택되면 폴더를 `ACTIONS`에 더하고 패킹. 앉기 방향마다 `rest.js SEATS`에 자리 좌표를 더한다(식탁 3자리는 이미 있음, 걸상·긴 의자·세트 방 낮은 탁자는 spot과 좌표를 새로). 잠들기는 세트 침대 오른쪽 베개 자리·호루스 방 침대(spot 없음)를 더하고, 소망 호흡 프레임이 오면 sleep manifest playback을 [0,1]로 |
+| 소망 줍기 표정 | 나중에 | 프레임1 앞·옆 6장 눈 동그랗게(ASTRA-PLAN 표정 칸). 오면 다시 패킹 |
 | 전투 동작 7종 | ASTRA-PLAN 2단계(대기·기본 공격·고유 기술·주문·피격·회복·지침, 한 방향) | 두아트 전투 화면에 붙일 자리 설계가 필요 |
 | 소망 일러스트 추가 | 지금 한 장 | 파일을 `gallery/somang-N.webp`(512×768, 2:3 크롭)로 넣고 `GALLERY.somang` 숫자만 올린다 |
 

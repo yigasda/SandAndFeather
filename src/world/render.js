@@ -88,13 +88,18 @@ export class Renderer {
         if (!a) a = spriteFile(m.file) ? m : small ? m.small : null;
         if (!a) return false;
         const image = DATA.spriteArt[a.file];
-        let r = a.idle[dir] || a.idle.down, ox = 0, oy = 0;
-        // an action (anim.act = { name, t } seconds since it started) plays its frames once, then the idle shows
+        let r = a.idle[dir] || a.idle.down, ox = 0, oy = 0, posed = false;
+        // an action (anim.act = { name, t } seconds since it started) plays its frames once, then the idle shows;
+        // a pose that stays (play.hold: sitting) keeps its last frame and a looping one (play.loop: sleeping) cycles,
+        // both until she moves
         const act = anim?.act && a.acts?.[anim.act.name]?.[dir], play = m.actPlay?.[anim?.act?.name];
         if (act && play) {
+            const total = play.frameMs.reduce((x, y) => x + y, 0);
             let t = anim.act.t * 1000, i = 0;
+            if (play.loop) t %= total;
             while (i < act.length - 1 && t >= play.frameMs[i]) t -= play.frameMs[i++];
-            if (anim.act.t * 1000 < play.frameMs.reduce((x, y) => x + y, 0) + HOLD_MS) r = act[i];
+            posed = !!(play.hold || play.loop);
+            if (posed || anim.act.t * 1000 < total + HOLD_MS) r = act[i];
         } else if (anim?.moving) {
             const k = Math.floor((anim.walkT || 0) * 1000 / m.frameMs) % m.sequence.length;
             r = (a.walk[dir] || a.walk.down)[m.sequence[k]];
@@ -104,8 +109,10 @@ export class Renderer {
         if (Math.abs(k - 1) < 0.03) k = 1; // drawn pixel for pixel: no resampling at all
         const step = m.height * z / m.offsetRef;
         const fx = x + 8 * z, fy = y + 16 * z;
-        g.fillStyle = 'rgba(40,25,10,.22)';
-        g.beginPath(); g.ellipse(fx, fy - 0.6 * z, 5.5 * z, 1.6 * z, 0, 0, Math.PI * 2); g.fill();
+        if (!posed) { // sitting or lying, the seat or the bed is under her, not a shadow on the floor
+            g.fillStyle = 'rgba(40,25,10,.22)';
+            g.beginPath(); g.ellipse(fx, fy - 0.6 * z, 5.5 * z, 1.6 * z, 0, 0, Math.PI * 2); g.fill();
+        }
         g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
         // whole device pixels, so a 1:1 picture is not smeared by a half-pixel shift
         g.drawImage(image, r[0], r[1], r[2], r[3], Math.round(fx + ox * step - r[4] * k), Math.round(fy + oy * step - r[5] * k), Math.round(r[2] * k), Math.round(r[3] * k));

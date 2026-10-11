@@ -17,6 +17,7 @@ import { bar, list, para, stack } from '../../ui/kit.js';
 import { onSpot } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
 import { HERO_NAME, leadOf, withOf } from '../../core/heroes.js';
+import { partNow } from '../../core/rest.js';
 
 const D = () => DATA.duat || {};
 const FEAR_MAX = 10;
@@ -42,7 +43,7 @@ onSpot('duat', (spot, u) => {
     ui = u;
     const s = getState();
     if (s.duat) { step(); return; }
-    if (!['evening', 'night'].includes(s.part)) { u.showCard({ tag: '원정', title: spot.title, text: `${spot.text}\n문은 저녁과 밤에만 열려. 지금은 닫혀 있어.` }); return; }
+    if (!['evening', 'night'].includes(partNow(s))) { u.showCard({ tag: '원정', title: spot.title, text: `${spot.text}\n문은 저녁과 밤에만 열려. 지금은 닫혀 있어.` }); return; }
     if (!canDo(s, 'duat')) { u.showCard({ tag: '원정', title: spot.title, text: '오늘 밤은 이미 다녀왔어. 다음 날 밤에 다시.' }); return; }
     const C = D().companions || {};
     prep(withOf(s) || Object.keys(C).find(id => id !== leadOf(s)), []);

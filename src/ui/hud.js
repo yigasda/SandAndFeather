@@ -8,6 +8,7 @@ import { rankInfo } from '../core/progress.js';
 import { sunLeft, sunMax } from '../core/sun.js';
 import { hint } from '../packs/adventure/engine.js';
 import { esc } from './popups.js';
+import { partNow } from '../core/rest.js';
 
 export const TABS = [
     { id: 'world', label: '세계', icon: 'fa-house' },
@@ -61,7 +62,7 @@ export function buildHud(root) {
 }
 
 // "Hathyr 9 · 낮"
-export const shortDate = s => `${dateLabel(s.date)} · ${partInfo(s.part).ko}`;
+export const shortDate = s => `${dateLabel(s.date)} · ${partInfo(partNow(s)).ko}`;
 
 export function updateHud(h, s) {
     if (!s) return;
@@ -108,7 +109,7 @@ export function todayBody(s) {
     const rows = [
         ['날짜', `${dateLabel(s.date)}${s.date.year ? ` · ${s.date.year}년` : ''}`],
         ['계절', `${seasonName(s.date.month)} · ${seasonAbout(s.date.month)}`],
-        ['시간대', partInfo(s.part).ko],
+        ['시간대', partInfo(partNow(s)).ko],
         ['장소', `${pl?.ko || s.place}${s.room ? ` → ${s.room}` : ''}`],
         ...(s.weather ? [['날씨', (DATA.calendar.weather || []).find(w => w.id === s.weather)?.ko || '']] : []),
     ];

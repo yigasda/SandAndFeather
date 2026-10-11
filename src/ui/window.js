@@ -10,7 +10,8 @@ import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
 import { bindPad, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
-import { feet, follower, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
+import { feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
+import { partNow } from '../core/rest.js';
 import { thingsOn } from '../world/things.js';
 import { MODE, Renderer } from '../world/render.js';
 import { buildHud, placeBubble, setTab, shortDate, todayBody, updateHud } from './hud.js';
@@ -267,7 +268,7 @@ function draw(t) {
     // the one walking with the leader follows behind
     const w = withOf(s);
     if (w) { const f = follower(); people.push({ look: w, x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT }); }
-    renderer.draw({ player, people, things, part: s?.part || 'day', time: t / 1000, near });
+    renderer.draw({ player, people, things, part: partNow(s), time: t / 1000, near });
     placeBubble(hud, renderer, cardOpen() ? null : near);
     // ^ by the stairs (v on the roof): shown only where the stairs are, pressed to go
     const c = !cardOpen() && near?.climb;
@@ -291,7 +292,7 @@ function frame(t) {
         }
     } else stand();
     // the battery: draw only as often as something on screen changes
-    const acting = player.act && performance.now() - player.act.at < 800;
+    const acting = player.act && (performance.now() - player.act.at < 800 || player.act.name === 'sleep'); // sleeping breathes
     const fps = cardOpen() ? FPS.card : player.moving || acting ? FPS.walk : FPS.still;
     if (t - drawnAt >= 1000 / fps - 2) { drawnAt = t; draw(t); }
     raf = requestAnimationFrame(frame);
@@ -302,19 +303,23 @@ function talk() {
     if (mode !== 'open') return;
     if (cardOpen()) { closeTopCard(); return; }
     lookAround();
+    // sitting or lying down, 말 걸기 stands her up first
+    if (getUp()) return;
     if (!near) { toast(root, '가까이에 말 걸 곳이 없어'); return; }
-    // she turns to it and reaches out (the interaction picture), and what it does follows once her hand is there
-    if (player.act && performance.now() - player.act.at < ACT_MS) return;
+    // she turns to it and reaches out (the interaction picture) or crouches for something on the ground (pickup),
+    // and what it does follows once her hand is there. Without that picture for her yet, she reaches out.
+    if (player.act && performance.now() - player.act.at < (ACT_MS[player.act.name] || 260)) return;
     const target = near;
-    playAct('interact', target.x + 0.5, target.y + 0.8);
-    setTimeout(() => { if (mode === 'open' && !cardOpen()) use(target); }, ACT_MS);
+    const pose = target.pose && DATA.sprites?.looks?.[player.look]?.motion?.acts?.[target.pose] ? target.pose : 'interact';
+    playAct(pose, target.x + 0.5, target.y + 0.8);
+    setTimeout(() => { if (mode === 'open' && !cardOpen()) use(target); }, ACT_MS[pose] || 260);
 }
-const ACT_MS = 260;
+const ACT_MS = { interact: 260, pickup: 380 };
 function use(near) {
     if (near.kind === 'spot') {
         const act = spotActs.get(near.id);
         if (act) { act(near, ui, map); return; }
-        const text = (getState()?.part === 'night' && near.textNight) || near.text || '';
+        const text = (partNow(getState()) === 'night' && near.textNight) || near.text || '';
         const c = near.climb;
         showCard(root, { tag: MODE[near.mode] || '', title: near.title || near.label, text,
             buttons: c ? [{ label: '닫기' }, { label: c.name, primary: true, onClick: () => { travel(c.to, c.at); } }] : null });

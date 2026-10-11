@@ -76,7 +76,7 @@ def pack(frames, visible, out):
 
 
 # approved action sets packed beside the base 48 (same canvas, pivot and reference height as the idle)
-ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176')]
+ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'sit-somang-v179', 'sleep-somang-v180')]
 
 
 def action_frames():
@@ -94,7 +94,10 @@ def action_frames():
                            'state': am['action'], 'gameDirection': dmap[f['direction']], 'phase': f['frame'],
                            'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': am['referenceVisibleHeight'],
                            'alphaBounds': list(bb), 'pivot': am['anchor']['position']})
-        playback[am['action']] = {'frameMs': am['playback']['durationMs'], 'loop': am['playback']['loop']}
+        pb = am['playback']
+        # a pose that stays (sitting) holds its last frame until she moves; a looping one (sleeping) cycles
+        playback[am['action']] = {'frameMs': pb.get('durationMs') or [800] * len(pb['sequence']), 'loop': bool(pb.get('loop')),
+                                  **({'hold': True} if pb.get('hold') else {})}
     return frames, playback
 
 

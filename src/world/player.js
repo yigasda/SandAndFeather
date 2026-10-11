@@ -27,6 +27,7 @@ export function placePlayer(map) {
     const p = s?.pos;
     if (p && p.map === map.id && Number.isFinite(p.x) && Number.isFinite(p.y) && !blocked(map, p.x, p.y)) Object.assign(player, { map: map.id, x: p.x, y: p.y, dir: p.dir || 'down' });
     else Object.assign(player, { map: map.id, x: map.d.spawn.x, y: map.d.spawn.y, dir: 'down' });
+    player.seat = null; player.act = null;
     stand();
     trail.length = 0;
 }
@@ -40,10 +41,22 @@ export function playAct(name, tx, ty) {
     if (Math.hypot(dx, dy) > 0.05) player.dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
     player.act = { name, at: performance.now() };
 }
+// a pose that stays (sitting, lying down): she is put where the pose's anchor goes (sx, sy: the seat, or the
+// middle of the bed), facing dir; the first step (or getUp) stands her up where she was
+export function holdPose(name, sx, sy, dir) {
+    if (!player.seat) player.seat = { x: player.x, y: player.y, dir: player.dir };
+    Object.assign(player, { x: sx - 0.5, y: sy - 1, dir, moving: false, walkT: 0, act: { name, at: performance.now() } });
+}
+export function getUp() {
+    if (!player.seat) return false;
+    Object.assign(player, { x: player.seat.x, y: player.seat.y, dir: player.seat.dir, act: null, seat: null });
+    return true;
+}
 // one frame of movement; dx, dy in -1…1. Slides along walls instead of sticking.
 export function stepPlayer(map, dx, dy, dt) {
     const len = Math.hypot(dx, dy);
     if (len <= 0.15) { stand(); return; }
+    getUp();
     const k = Math.min(1, len) * SPEED * dt / len;
     const nx = player.x + dx * k, ny = player.y + dy * k, x0 = player.x, y0 = player.y;
     if (!blocked(map, nx, player.y)) player.x = nx;
@@ -66,6 +79,7 @@ export function rememberPosition() {
     if (!s) return false;
     const r = v => Math.round(v * 100) / 100;
     const before = JSON.stringify(s.pos);
-    s.pos = { map: player.map, x: r(player.x), y: r(player.y), dir: player.dir };
+    const at = player.seat || player; // seated or lying, she is kept where she stood
+    s.pos = { map: player.map, x: r(at.x), y: r(at.y), dir: at.dir };
     return JSON.stringify(s.pos) !== before;
 }

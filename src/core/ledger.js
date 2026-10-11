@@ -9,7 +9,8 @@ import { dayNumber } from './clock.js';
 
 const KEEP_DAYS = 90; // older once-a-day marks are dropped
 
-export const today = s => dayNumber(s.date);
+// the game's day: the chat's date, or later once she has slept in the game (rest.js) — never behind the chat's
+export const today = s => Math.max(dayNumber(s.date), s.ledger?.gday ?? -1);
 
 // called after the date changed: which day numbers are new. The first time a chat is read nothing is "new".
 export function newDays(s) {
