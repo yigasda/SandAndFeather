@@ -69,6 +69,58 @@ def lower_body_back(path):
             'legRows': y - legs, 'sandalRows': bottom - y + 1}, im
 
 
+def collar(rgba):
+    # the gold collar's top row and middle: the same on the front and the back, so it anchors one to the other
+    a = rgba[..., 3] > 128
+    h, s, v = ch.hsv(rgba[..., :3].astype(float) / 255)
+    gold = (h > 0.08) & (h < 0.15) & (s > 0.45) & (v > 0.35) & a
+    ys = np.nonzero(a.any(1))[0]; top, H = ys.min(), ys.max() - ys.min() + 1
+    for y in range(int(top + 0.55 * H), int(top + 0.75 * H)):  # below the eyes, which are gold too
+        if gold[y].sum() > 15:
+            xs = np.nonzero(gold[y:y + 6].any(0))[0]
+            return y, (xs.min() + xs.max()) / 2
+    raise SystemExit('목걸이를 못 찾음')
+
+
+def shift(mask, dy, dx):
+    out = np.zeros_like(mask)
+    H, W = mask.shape
+    ys, xs = np.nonzero(mask)
+    ys = ys + dy; xs = xs + dx
+    ok = (ys >= 0) & (ys < H) & (xs >= 0) & (xs < W)
+    out[ys[ok], xs[ok]] = True
+    return out
+
+
+def back_head(front_path, back_rgba):
+    # the user's front head, hair and ears, turned round: mirrored about the collar's middle and set on the back
+    # picture by the collar's top. From behind there is no hairline; the outer outline and the ears carry over.
+    g = ch.guide()
+    rgb, b = ch.load(front_path)
+    e, _, _ = ch.eyes(rgb, b)
+    head, _ = ch.place(g['head'], g['eyes'], e, b.shape)
+    hair, _ = ch.place(g['sil'], g['eyes'], e, b.shape)
+    ears, _ = ch.place(g['ears'], g['eyes'], e, b.shape)
+    fy, fx = collar(np.asarray(Image.open(front_path).convert('RGBA')))
+    by, bx = collar(back_rgba)
+    W = b.shape[1]
+    s_ = int(round(fx + bx - (W - 1)))
+    turn = lambda m: shift(m[:, ::-1], int(by - fy), s_)
+    return turn(head), turn(hair), turn(ears)
+
+
+def head_offset(ref, rgba, cut):
+    # how far a walk frame's head sits from the reference's: best overlap of the opaque head above the collar
+    a = ref[..., 3] > 128; b = rgba[..., 3] > 128
+    a = a[:cut]; best = (0, 0, -1)
+    for dy in range(-8, 9):
+        for dx in range(-10, 11):
+            m = shift(b[:cut + 10], dy, dx)[:cut]
+            sc = (a & m).sum() - 0.5 * (a ^ m).sum()
+            if sc > best[2]: best = (dy, dx, sc)
+    return best[0], best[1]
+
+
 def back(o):
     I, idle = lower_body_back(o.idle)
     W, walk = lower_body_back(o.walk)
@@ -88,18 +140,28 @@ def back(o):
     k = 3
     st = I['legsStart'] + legs_n
     y0, y1 = I['top'] - 12, I['sole'] + 6
-    def tile(rgba, line):
+    front = os.path.join(ART, 'review-horus-idle-v156', 'horus-front.png')
+    bhead, bhair, bears = back_head(front, idle)
+    Image.fromarray((bhead * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-back-head-mask.png'))
+    kb = lambda m: np.kron(m, np.ones((k, k), bool))
+    def head_line(hd, hr, er):
+        # the hair's outer outline and the ears' outline; the nape is left as drawn
+        hd, hr, er = kb(hd), kb(hr), kb(er)
+        return ch.edge(hd) & (ch.grow(hr, k) & ~er | er & ~ch.grow(hr, k))
+    def tile(rgba, line, heads_=None):
         base = Image.new('RGBA', (rgba.shape[1], rgba.shape[0]), (245, 239, 227, 255))
         base.alpha_composite(Image.fromarray(rgba))
         big = np.asarray(base.convert('RGB').resize((rgba.shape[1] * k, rgba.shape[0] * k), Image.NEAREST)).copy()
         if line:
-            # the lower body only: from the kilt down; everything above stays as drawn
-            m = np.kron(body, np.ones((k, k), bool)); ln = ch.edge(m)
+            # the lower body from the kilt down, and the head turned round from the user's front
+            m = kb(body); ln = ch.edge(m)
             ln[:(I['kiltEnd'] - 4) * k] = False
             big[ch.grow(ln, 1)] = (230, 0, 0)
+        if heads_ is not None:
+            big[ch.grow(head_line(*heads_), 1)] = (230, 0, 0)
         return Image.fromarray(big[y0 * k:y1 * k, 50 * k:310 * k])
-    tiles = [tile(walk, False), tile(idle, True), tile(new, True)]
-    heads = ['채택 걷기 뒤 1 (비율 기준)', '지금 정지 뒤(148) + 빨간 목표선', '목표 모양 미리보기 (기계로 자르고 늘린 것, 그림 아님)']
+    tiles = [tile(walk, False), tile(idle, True, (bhead, bhair, bears)), tile(new, True, (bhead, bhair, bears))]
+    heads = ['채택 걷기 뒤 1 (다리 비율 기준)', '지금 정지 뒤(148) + 빨간 목표선(머리는 정면을 돌린 것)', '다리 모양 미리보기 (기계로 자르고 늘린 것, 그림 아님)']
     tw, th = tiles[0].size
     sheet = Image.new('RGB', (tw * 3, th + 30), (250, 248, 244))
     d = ImageDraw.Draw(sheet)
@@ -112,6 +174,18 @@ def back(o):
             d.line([(x0, y), (x1, y)], fill=(230, 0, 0), width=3)
             d.text((x1 + 6, y - 10), '신발 위는 여기', fill=(230, 0, 0), font=ch.FONT)
     sheet.save(os.path.join(OUT, 'idle-back-target.png'))
+    cut = collar(idle)[0]
+    frames = []
+    for i in range(3):
+        wp = os.path.join(ch.WALK, f'horus-back-{i}.png')
+        wr = np.asarray(Image.open(wp).convert('RGBA'))
+        dy, dx = head_offset(idle, wr, cut)
+        hd, hr, er = (shift(m, -dy, -dx) for m in (bhead, bhair, bears))
+        Image.fromarray((hd * 255).astype(np.uint8)).save(os.path.join(OUT, f'walk-back-{i}-head-mask.png'))
+        t = tile(wr, False, (hd, hr, er))
+        t.save(os.path.join(OUT, f'walk-back-{i}-target.png')); frames.append(t)
+    seq = [frames[j] for j in (0, 1, 2, 1)]
+    seq[0].save(os.path.join(OUT, 'walk-back-target.gif'), save_all=True, append_images=seq[1:], duration=360, loop=0)
     info = {'idle': os.path.relpath(o.idle, ch.ROOT), 'walk': os.path.relpath(o.walk, ch.ROOT), 'idleNow': I, 'walkFrame': W,
             'target': {'kiltEnd': I['kiltEnd'], 'legRows': legs_n, 'sandalTop': st, 'sandalRows': sandal_n, 'sole': I['sole']}}
     json.dump(info, open(os.path.join(OUT, 'idle-back-target.json'), 'w'), ensure_ascii=False, indent=1, default=int)
