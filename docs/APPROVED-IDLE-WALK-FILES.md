@@ -9,6 +9,6 @@
 | 시트·미리보기 | [approved/sheets/](art/chibi-refresh/approved/sheets/), [approved/previews/](art/chibi-refresh/approved/previews/) | 위 원본 확인 |
 | 파일별 좌표·해시 | [참고 manifest](art/chibi-refresh/approved/manifest.json) |48개 원본의 규격. 런타임 사용 불가 표시 |
 
-현재 채택 걷기는 [163 최종 묶음](art/chibi-refresh/final-trio-v163/README.md)의36장이다. 호루스 앞뒤162와 소망 접합부144 보수가 포함된다. 명시적으로 채택된 정지4장도 같은 묶음에 있으며, 정지12장 전체 승인을 뜻하지 않는다.
+현재 채택 걷기는 [163 최종 묶음](art/chibi-refresh/final-trio-v163/README.md)의36장이다. 호루스 앞뒤162와 소망 접합부144 보수가 포함된다. 현재 정지는 [164 최종 정지12장](art/chibi-refresh/final-trio-idle-v164/README.md)이다. 사용자 지정 세트148·소망151 네 방향과 호루스161정면·162뒤·148좌우를 사용한다.620×720·기준 키576·발(310,662).
 
 **오푸스: 이전 정지12장과 현재 걷기36장을 혼합 적용하지 않는다.** 이 문서는 참고 자료 목록이다. 현재 최종 선택 목록은 [아스트라 인수인계5절](ASTRA-HANDOFF.md#5-최종-채택-시안--사용자가-선택한-파일만)을 따른다.

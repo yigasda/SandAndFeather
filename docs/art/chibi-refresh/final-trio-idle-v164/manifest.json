@@ -1,0 +1,593 @@
+{
+  "revision": 164,
+  "status": "user-selected-art-packaged-for-integration",
+  "runtimeModified": false,
+  "idleFrameCount": 12,
+  "directionOrder": [
+    "back",
+    "front",
+    "left",
+    "right"
+  ],
+  "gameDirectionOrder": [
+    "up",
+    "down",
+    "left",
+    "right"
+  ],
+  "size": [
+    620,
+    720
+  ],
+  "pivot": [
+    310,
+    662
+  ],
+  "referenceVisibleHeight": 576,
+  "nativeSize": [
+    360,
+    400
+  ],
+  "nativePivot": [
+    180,
+    370
+  ],
+  "nativeReferenceVisibleHeight": 330,
+  "drawingEdits": false,
+  "frames": [
+    {
+      "id": "set.idle.up",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "path": "idle/set-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        57,
+        86,
+        565,
+        662
+      ],
+      "sha256": "1c8034c7d8a516314b658bcb8ccb07fedd15a99b0337f6c38eff2be7c0f6e0a1",
+      "selectedRevision": 148,
+      "source": "review-trio-idle-v1/native/set-back.png",
+      "sourceSha256": "a8dc900ba864922060e5021930d8413739a7ebf752d597e56e33a3b1f14c9644",
+      "nativePath": "native/set-back.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "set.idle.down",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "path": "idle/set-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        57,
+        86,
+        610,
+        662
+      ],
+      "sha256": "4dc0d64afb225a91dd07f515c2828751b81de0f58fd8e5ead9d931d1fb2604fc",
+      "selectedRevision": 148,
+      "source": "review-trio-idle-v1/native/set-front.png",
+      "sourceSha256": "b9df861208f16cafae37e63b4999647c232e962fb81800b71fa7490753394736",
+      "nativePath": "native/set-front.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "set.idle.left",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "path": "idle/set-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        95,
+        86,
+        601,
+        662
+      ],
+      "sha256": "07facfb9e53dfe6931001894274926570bf62fa4e2ce7387c3b34487712927c0",
+      "selectedRevision": 148,
+      "source": "review-trio-idle-v1/native/set-left.png",
+      "sourceSha256": "847f665459843ea453d54c5faad7dfd13c77abd7b8a26d5abff71f2d3448e53e",
+      "nativePath": "native/set-left.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "set.idle.right",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "path": "idle/set-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        3,
+        86,
+        528,
+        662
+      ],
+      "sha256": "06610f4183bd623d0c8be512d9282859633f125f943f6f7a8710f9d531b0517d",
+      "selectedRevision": 148,
+      "source": "review-trio-idle-v1/native/set-right.png",
+      "sourceSha256": "9a7c729a985a54c1e4212d96119e3612f56be52063d909e2b92b786456fa9662",
+      "nativePath": "native/set-right.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "somang.idle.up",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "path": "idle/somang-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        83,
+        84,
+        537,
+        662
+      ],
+      "sha256": "7b4722c6783fdadbc5b4b954202fd6d9e3fc178ebf7ca66ad19347ad0067bcb1",
+      "selectedRevision": 151,
+      "source": "review-somang-back-v151/native/somang-back.png",
+      "sourceSha256": "04636c3aed5e74bf564c4664c0b8437a093c73a45e83fb69f2b487b3cfc134e3",
+      "nativePath": "native/somang-back.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "somang.idle.down",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "path": "idle/somang-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        83,
+        86,
+        539,
+        662
+      ],
+      "sha256": "b27aa1a5fd7ff15e8b5ade08e65bdb1e7e1515b8dcbf0686cd321c3d56e68cad",
+      "selectedRevision": 151,
+      "source": "review-somang-back-v151/native/somang-front.png",
+      "sourceSha256": "cfe1b04b5c8d4cad8da81b26f3405fd711733a4f8e633043fa9c7b43423f8c4e",
+      "nativePath": "native/somang-front.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "somang.idle.left",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "path": "idle/somang-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        109,
+        86,
+        554,
+        662
+      ],
+      "sha256": "443a4bfec45cbadd805d20dfa61e83fb46a8a3c066b294ef48cc15b2d87f2b2a",
+      "selectedRevision": 151,
+      "source": "review-trio-idle-v1/native/somang-left.png",
+      "sourceSha256": "7bb85baa18e124325cb51b6207fadd4556d0a8d3d55eb119d7c74b03820024fe",
+      "nativePath": "native/somang-left.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "somang.idle.right",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "path": "idle/somang-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        60,
+        86,
+        526,
+        662
+      ],
+      "sha256": "8cab5225ae864d13cecd1777b4349d7366a51d1368b33ea3028f021bae374833",
+      "selectedRevision": 151,
+      "source": "review-trio-idle-v1/native/somang-right.png",
+      "sourceSha256": "d2b7aa1d5438cb733ef05f3995756cc32ae04a42901ac4ee9f318edec26fe80b",
+      "nativePath": "native/somang-right.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "horus.idle.up",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "path": "idle/horus-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        127,
+        89,
+        481,
+        662
+      ],
+      "sha256": "a4bb5de002ccaf3bd36333f6c9b3e109077e6c30eb11db13bead8da334bcc8e6",
+      "selectedRevision": 162,
+      "source": "final-trio-v163/idle/horus-back.png",
+      "sourceSha256": "0eb0458f110b7ebd4062ff4c0707210ccf2d90f8df189956a657ed5c46673ec1",
+      "nativePath": "native/horus-back.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "horus.idle.down",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "path": "idle/horus-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        132,
+        114,
+        485,
+        657
+      ],
+      "sha256": "4c75891f13aa583551411741eae2fca50e8d3935349c86901bc9f92ed5374c27",
+      "selectedRevision": 161,
+      "source": "final-trio-v163/idle/horus-front.png",
+      "sourceSha256": "bdd7446691dcf88c3f051c7dc8ecccda0c1d60f9ead9ad4cf28e30bff809f1ea",
+      "nativePath": "native/horus-front.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "horus.idle.left",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "path": "idle/horus-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        118,
+        102,
+        495,
+        662
+      ],
+      "sha256": "3dc079ce53eb645a10c7bd0e5447fc9794c5ab9e92a398bf57d9844366f3b3b2",
+      "selectedRevision": 148,
+      "source": "review-trio-idle-v1/native/horus-left.png",
+      "sourceSha256": "f1287886057af5c966468d700a6722db3430eda121805853d83187af894b7a0e",
+      "nativePath": "native/horus-left.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    },
+    {
+      "id": "horus.idle.right",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "path": "idle/horus-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        123,
+        102,
+        502,
+        662
+      ],
+      "sha256": "c382ce03943d8975b338949cc75ddff01961cca23fe8b1cb90fc95c9f7231c47",
+      "selectedRevision": 148,
+      "source": "review-trio-idle-v1/native/horus-right.png",
+      "sourceSha256": "65d4931635b52560d6f291b96037323428b17ff1d2603735757534eb4a0c848a",
+      "nativePath": "native/horus-right.png",
+      "nativeSize": [
+        360,
+        400
+      ],
+      "nativePivot": [
+        180,
+        370
+      ],
+      "nativeReferenceVisibleHeight": 330,
+      "nativeCopiedUnchanged": true,
+      "approvalStatus": "user-selected-existing-art",
+      "exportMethod": "nearest-neighbor, uniform scale 576/330; no drawing edits"
+    }
+  ],
+  "approval": "User explicitly selected Set148 four directions, Somang151 four directions, latest approved Horus including front161/back162; canceled side redraw and retained existing148 sides.",
+  "integrationNote": "Use idle/ at referenceVisibleHeight576 and pivot(310,662), or native/ at330 and(180,370). Do not use legacy reference628 for these normalized620 exports. Walk remains final-trio-v163."
+}
