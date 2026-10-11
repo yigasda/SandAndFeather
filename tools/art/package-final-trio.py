@@ -79,4 +79,4 @@ with zipfile.ZipFile(O/'downloads/trio-48-transparent-png.zip','w',zipfile.ZIP_D
  for name in ['manifest.json','README.md']:z.write(O/name,name)
 with zipfile.ZipFile(O/'downloads/trio-48-transparent-png.zip') as z:
  assert len([n for n in z.namelist() if n.endswith('.png')])==48
-print('48 exact approved RGBA PNGs verified; character ZIPs16 each, combined ZIP48; three four-direction idle/walk GIFs.')
+print('48 current manifest RGBA PNGs verified; character ZIPs16 each, combined ZIP48; three four-direction idle/walk GIFs.')

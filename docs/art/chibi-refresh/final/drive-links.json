@@ -14,13 +14,27 @@
   {
     "character": "horus",
     "file": "horus-16-transparent-png.zip",
-    "id": "1oLUIyYkFG_4JzMCrOUSyn4ds-Hzwtl57",
-    "url": "https://drive.google.com/file/d/1oLUIyYkFG_4JzMCrOUSyn4ds-Hzwtl57/view?usp=drivesdk"
+    "id": "1UPMLJK2X4Hr295HJyJFIfVL4qpXbbVH_",
+    "url": "https://drive.google.com/file/d/1UPMLJK2X4Hr295HJyJFIfVL4qpXbbVH_/view",
+    "skinPaletteRevision": 168
   },
   {
     "character": "trio",
     "file": "trio-48-transparent-png.zip",
-    "id": "1Jw1LvXJutCcTGFxg0L9UUig1NagHCEem",
-    "url": "https://drive.google.com/file/d/1Jw1LvXJutCcTGFxg0L9UUig1NagHCEem/view?usp=drivesdk"
+    "id": "1bueNEfqb1Bvk1VLsceIwkeR0F8_CjJ4u",
+    "url": "https://drive.google.com/file/d/1bueNEfqb1Bvk1VLsceIwkeR0F8_CjJ4u/view",
+    "skinPaletteRevision": 168
+  },
+  {
+    "file": "previews/horus-skin-comparison.png",
+    "id": "1zi5L5iPOyheoGSJTDe7bZC31dtoS7GH1",
+    "url": "https://drive.google.com/file/d/1zi5L5iPOyheoGSJTDe7bZC31dtoS7GH1/view",
+    "skinPaletteRevision": 168
+  },
+  {
+    "file": "previews/horus-idle-walk.gif",
+    "id": "1J0kip_0_y94mVeJv17Jc6oTJ_sitc2Cj",
+    "url": "https://drive.google.com/file/d/1J0kip_0_y94mVeJv17Jc6oTJ_sitc2Cj/view",
+    "skinPaletteRevision": 168
   }
 ]
