@@ -312,19 +312,27 @@ def ear_sheet(res, path):
 
 
 def forehead_sheet(res, path):
-    # the hairline and the hair round it, candidate beside the user's drawing on the same frame, 5×
+    # the forehead, 5×: the candidate, the adopted walk frame (the finish to reach: a drawn hairline outline and
+    # locks), and the user's drawing (only for how far down the hair comes)
     rgb, body = res['_draw'][0], res['_draw'][1]
     e = res['_eyesRaw']; d = abs(e[1][0] - e[0][0]); cx = (e[0][0] + e[1][0]) / 2; ey = min(e[0][1], e[1][1])
     box = (int(cx - 0.95 * d), int(ey - 1.25 * d), int(cx + 0.95 * d), int(ey - 0.05 * d))
-    pic = np.ones((*rgb.shape[:2], 3)) * np.array([245, 239, 227]) / 255
-    pic[body] = rgb[body]; pic = Image.fromarray((pic * 255).astype(np.uint8))
+    def paper(r_, b_):
+        p_ = np.ones((*r_.shape[:2], 3)) * np.array([245, 239, 227]) / 255
+        p_[b_] = r_[b_]; return Image.fromarray((p_ * 255).astype(np.uint8))
+    wr, wb = load(os.path.join(WALK, 'horus-front-1.png'))
+    we, _, _ = eyes(wr, wb)
+    wd = abs(we[1][0] - we[0][0]); wcx = (we[0][0] + we[1][0]) / 2; wey = min(we[0][1], we[1][1])
+    wbox = (int(wcx - 0.95 * wd), int(wey - 1.25 * wd), int(wcx + 0.95 * wd), int(wey - 0.05 * wd))
     k = 5
-    tiles = [(n, im.crop(box).resize(((box[2] - box[0]) * k, (box[3] - box[1]) * k), Image.NEAREST))
-             for n, im in (('후보', pic), ('사용자 그림 (같은 자리에 옮김)', Image.fromarray(res['_user'])))]
-    w = tiles[0][1].width
-    cv = Image.new('RGB', (w * 2 + 30, tiles[0][1].height + 28), (250, 248, 244)); d_ = ImageDraw.Draw(cv)
-    for i, (n, t) in enumerate(tiles):
-        cv.paste(t, (i * (w + 30), 26)); d_.text((i * (w + 30) + 6, 4), n + ' 이마선·머리 외곽선', fill=(40, 30, 20), font=FONT)
+    size = ((box[2] - box[0]) * k, (box[3] - box[1]) * k)
+    tiles = [('후보', paper(rgb, body).crop(box).resize(size, Image.NEAREST)),
+             ('채택 걷기 (이마 마감 퀄리티 기준)', paper(wr, wb).crop(wbox).resize(size, Image.NEAREST)),
+             ('사용자 그림 (이마 높이만 참고)', Image.fromarray(res['_user']).crop(box).resize(size, Image.NEAREST))]
+    w = size[0]
+    cv = Image.new('RGB', (w * 3 + 60, size[1] + 28), (250, 248, 244)); d_ = ImageDraw.Draw(cv)
+    for i_, (n, t) in enumerate(tiles):
+        cv.paste(t, (i_ * (w + 30), 26)); d_.text((i_ * (w + 30) + 6, 4), n, fill=(40, 30, 20), font=FONT)
     cv.save(path)
 
 
@@ -427,7 +435,6 @@ def draw(res, path):
     over[grow(off, 1)] = (200, 0, 200)  # magenta: the candidate's ear outline where it leaves the user's ear
     over[grow(res['_earBare'], 1)] = (255, 150, 0)  # orange: ear edge with no dark outline
     over[T] = (230, 0, 0)
-    over[grow(res['_ink'], 1)] = (0, 200, 255)  # cyan: black rim along the hairline
     y1 = int(top + 0.62 * H)  # down past the ears
     k = 3
     a = Image.fromarray(pic[:y1]).resize((W * k, y1 * k), Image.NEAREST)
@@ -439,8 +446,8 @@ def draw(res, path):
     d.text((8, 28), f"바깥 외곽선: 평균 {res['outer']['mean']}px, 최대 {res['outer']['max']}px, 2px 안 {res['outer']['within2px'] * 100:.0f}%   "
                     f"이마선 높이: 사용자보다 {res['hairlineHeight']:+.1f}px (+는 아래)", fill=(120, 0, 60), font=FONT)
     d.text((8, 48), f"모자람 {res['missingPx']}px · 넘침 {res['extraPx']}px · 머리 외곽선 {res['outlineCover'] * 100:.0f}%, 굵기 {res['hairWeight']}(사용자 {res['hairWeightUser']}) · "
-                    f"이마선 검은 테두리 {res['hairlineInk'] * 100:.0f}%(사용자 {res['hairlineInkUser'] * 100:.0f}%) · 귀 2px 안 {res['ears']['within2px'] * 100:.0f}%", fill=(120, 0, 60), font=FONT)
-    d.text((8, 68), '주황 = 외곽선 없는 가장자리, 하늘색 = 이마선 검은 테두리, 보라 = 귀 어긋남', fill=(120, 0, 60), font=FONT)
+                    f"귀 2px 안 {res['ears']['within2px'] * 100:.0f}%", fill=(120, 0, 60), font=FONT)
+    d.text((8, 68), '주황 = 외곽선 없는 가장자리, 보라 = 귀 어긋남, 빨간 가로선 = 이마선 높이', fill=(120, 0, 60), font=FONT)
     cv.save(path)
 
 
@@ -454,7 +461,6 @@ def verdict(r):
     if abs(r['hairlineHeight']) > 3: bad.append('이마선 높이 다름')
     if r['outlineCover'] < OUTLINE_MIN: bad.append('머리 외곽선 없음 (잘라만 냄)')
     if r['hairWeight'] < 0.75 * r['hairWeightUser']: bad.append('머리 외곽선 얇음')
-    if r['hairlineInk'] > r['hairlineInkUser'] + 0.1: bad.append('이마선에 검은 테두리 (오려 붙인 선)')
     if r['ears']['within2px'] < 0.85 or r['ears']['max'] > 4: bad.append('귀 모양 다름')
     if r['earOutline'] < OUTLINE_MIN: bad.append('귀 외곽선 깨짐')
     if r['earThick'] < 0.8 * r['earThickRef']: bad.append('귀 외곽선 얇음')
@@ -464,16 +470,16 @@ def verdict(r):
 def report(results, out):
     L = ['# 호루스 머리 — 사용자 수정본과 비교', '',
          '기준: 사용자 수정본(`docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg`)의 머리 외곽선과 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
-         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 높이 차이 | 모자람/넘침 px | 머리 외곽선, 굵기 (사용자) | 이마선 검은 테두리 (사용자) | 귀 모양 2px 안, 최대 | 귀 외곽선, 두께 | 판정 |', '|---|---|---|---|---|---|---|---|---|']
+         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 높이 차이 | 모자람/넘침 px | 머리 외곽선, 굵기 (사용자)  귀 모양 2px 안, 최대 | 귀 외곽선, 두께 | 판정 |', '|---|---|---|---|---|---|---|---|']
     for r in results:
         o = r['outer']
         L.append(f"| [{os.path.basename(r['path'])}]({os.path.splitext(os.path.basename(r['path']))[0]}-hair.png) | "
                  f"{o['mean']}/{o['max']}px, {o['within2px'] * 100:.0f}% | {r['hairlineHeight']:+.1f}px | "
-                 f"{r['missingPx']}/{r['extraPx']} | {r['outlineCover'] * 100:.0f}%, {r['hairWeight']} ({r['hairWeightUser']}) | {r['hairlineInk'] * 100:.0f}% ({r['hairlineInkUser'] * 100:.0f}%) | {r['ears']['within2px'] * 100:.0f}%, {r['ears']['max']}px | {r['earOutline'] * 100:.0f}%, 굵기 {r['earThick'] * 100:.1f}/{r['earThickRef'] * 100:.1f} | {verdict(r)} |")
+                 f"{r['missingPx']}/{r['extraPx']} | {r['outlineCover'] * 100:.0f}%, {r['hairWeight']} ({r['hairWeightUser']}) | {r['ears']['within2px'] * 100:.0f}%, {r['ears']['max']}px | {r['earOutline'] * 100:.0f}%, 굵기 {r['earThick'] * 100:.1f}/{r['earThickRef'] * 100:.1f} | {verdict(r)} |")
     L += ['', '통과 기준: 바깥 외곽선 90% 이상이 2px 안, 최대 4px. 이마선은 높이만 본다: 이마 가운데에서 머리가 내려오는 평균 높이가 사용자 그림과 3px 안. 이마선 모양(갈래)은 화가가 머리 모양에 어울리게 새로 그린다.',
           '귀: 사용자 귀 윤곽(동그란 윗부분, 머리카락과 틈)과 후보 귀 윤곽이 서로 85% 이상 2px 안, 최대 4px. 들쭉날쭉하거나 찌그러진 귀는 보라로 표시된다. 귀 가장자리도 머리처럼 검은 외곽선이 80% 이상이어야 하고(흰 점, 끊긴 선은 주황), 굵기(눈 사이 거리 대비)가 사용자 그림 귀 선의 80% 이상이어야 한다. 선 맛(필압, 매끈함)은 숫자로 못 잰다: <이름>-ears.png에서 사용자 그림 귀와 나란히 보고 맞춘다.',
           '머리 외곽선 굵기: 같은 자리에 옮긴 사용자 그림 머리 외곽선 굵기의 75% 이상. 얇은 남색 테두리는 실패한다.',
-          '이마선 검은 테두리: 이마와 머리가 만나는 곳의 검은 픽셀 비율이 사용자 그림보다 10%p 넘게 많으면 실패한다. 사용자 이마선은 검은 테두리 없이 머리 갈래가 이마로 내려온다.',
+          '이마선: 높이만 사용자 그림을 따른다. 모양과 마감은 채택 걷기(예전 그림)의 이마 퀄리티를 기준으로 새로 그린다: 이마 외곽선이 있고, 머리 갈래 모양이 있다. 예전 그림을 그대로 갖다 쓰지 않는다. <이름>-forehead.png에서 세 그림을 나란히 본다.',
           '이마선과 귀의 선 맛(필압, 잔털 갈래, 매끈함)은 숫자로 못 잰다. <이름>-forehead.png, <이름>-ears.png에서 사용자 그림과 나란히 보고 맞춘다.',
           f'머리 가장자리 {OUTLINE_MIN * 100:.0f}% 이상이 2px 넘는 검은 외곽선이어야 한다. 빨간 선에 맞춰 잘라만 내면 가장자리가 파란 머리색이라 여기서 걸린다(비교 그림의 주황).',
           '**숫자 통과는 완성이 아니다.** 큰 실수만 거르는 최소 기준이다. 귀 곡선과 선 맛, 이마 갈래 디자인, 도트 명암은 숫자로 못 잰다.',
