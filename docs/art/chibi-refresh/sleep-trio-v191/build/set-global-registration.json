@@ -1,0 +1,16 @@
+{
+  "source": "/workspace/actions191/set-inhale-before-global-registration.png",
+  "matrix": [
+    [
+      0.992,
+      0,
+      2.480000000000002
+    ],
+    [
+      0,
+      0.992,
+      1.4400000000000013
+    ]
+  ],
+  "purpose": "Whole-frame uniform registration to equalize head scale and foot placement; no part compositing"
+}

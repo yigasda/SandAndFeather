@@ -1,0 +1,82 @@
+[
+  {
+    "variant": "set-sleep",
+    "silhouetteChange": 0.04931,
+    "bbox0": [
+      8,
+      27,
+      591,
+      664
+    ],
+    "bbox1": [
+      6,
+      26,
+      607,
+      664
+    ],
+    "bboxChanged": true,
+    "exteriorPixels": 12403,
+    "game31ExteriorPixels": 37,
+    "changedPixels": 250701
+  },
+  {
+    "variant": "horus-sleep",
+    "silhouetteChange": 0.06645,
+    "bbox0": [
+      124,
+      33,
+      507,
+      656
+    ],
+    "bbox1": [
+      124,
+      35,
+      507,
+      656
+    ],
+    "bboxChanged": true,
+    "exteriorPixels": 10038,
+    "game31ExteriorPixels": 32,
+    "changedPixels": 149819
+  },
+  {
+    "variant": "set-sleep-side",
+    "silhouetteChange": 0.04907,
+    "bbox0": [
+      26,
+      55,
+      603,
+      647
+    ],
+    "bbox1": [
+      29,
+      56,
+      605,
+      645
+    ],
+    "bboxChanged": true,
+    "exteriorPixels": 9504,
+    "game31ExteriorPixels": 26,
+    "changedPixels": 193319
+  },
+  {
+    "variant": "horus-sleep-side",
+    "silhouetteChange": 0.04649,
+    "bbox0": [
+      104,
+      59,
+      498,
+      666
+    ],
+    "bbox1": [
+      106,
+      55,
+      498,
+      660
+    ],
+    "bboxChanged": true,
+    "exteriorPixels": 6142,
+    "game31ExteriorPixels": 15,
+    "changedPixels": 130490
+  }
+]

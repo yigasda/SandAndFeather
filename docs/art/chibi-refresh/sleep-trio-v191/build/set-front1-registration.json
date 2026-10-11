@@ -1,0 +1,18 @@
+{
+  "source": "/workspace/generated_images/exec-7c9c71db-0aba-4f81-86de-31e99577bd41.png",
+  "ref": "docs/art/chibi-refresh/sleep-trio-v191/png/set-sleep-0.png",
+  "matrix": [
+    [
+      0.5393235881495422,
+      0.0028409761360138385,
+      -8.69764647909376
+    ],
+    [
+      -0.0028409761360138385,
+      0.5393235881495422,
+      -2.060114481071332
+    ]
+  ],
+  "inliers": 59,
+  "good": 120
+}

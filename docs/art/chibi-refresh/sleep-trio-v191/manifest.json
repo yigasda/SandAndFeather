@@ -1,0 +1,154 @@
+{
+  "revision": 191,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "runtimeOwner": "opus",
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 8,
+  "files": [
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "direction": "front",
+      "pose": "sleep-supine",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "ce0ce0a2204c66c6e88dfa7480eff71a80334495ef9771cf659694ca80446c9f"
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "front",
+      "pose": "sleep-supine",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "ccb79c6f0d2790d3f2d74b58d5b04ad2427eb5379173e42064e38343f05a7596"
+    },
+    {
+      "path": "png/horus-sleep-side-0.png",
+      "character": "horus",
+      "direction": "right",
+      "pose": "sleep-side",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "386979f1c7df95b1cc3d0d14effdf5bc88290c0b8ee21f939b29bcbb0621cab8"
+    },
+    {
+      "path": "png/horus-sleep-side-1.png",
+      "character": "horus",
+      "direction": "right",
+      "pose": "sleep-side",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "6b4e1f0ebd4a5a7ff83ac09d86926aa6920e5e67c4b75faa7de2db9e3c9c134d"
+    },
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "pose": "sleep-supine",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "41c4e534806b29f02cdeea907c69eb153dca32ff13e4cae9f130ff352131c55d"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "pose": "sleep-supine",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "dbb76d845de86f67b64fbf595551f9739b33f94c8be9ff119dfcbf3771977abf"
+    },
+    {
+      "path": "png/set-sleep-side-0.png",
+      "character": "set",
+      "direction": "right",
+      "pose": "sleep-side",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "316843c8b693391727f66c035bf234973cb0f2208afb6107ec27b284f06a8622"
+    },
+    {
+      "path": "png/set-sleep-side-1.png",
+      "character": "set",
+      "direction": "right",
+      "pose": "sleep-side",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "6da90a401dc0518c06b84f7996872671fdc2a6e976354525fa3a147b806f378d"
+    }
+  ],
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "preservedReference": "references/somang-sleep-0.png and somang-sleep-1.png are byte-identical to189; excluded from new8",
+  "method": "Each full sprite drawn by image generator. Uniform whole-image registration and same-direction skin palette normalization only; no idle head/face/limb cutout compositing.",
+  "review": {
+    "report": "review/report.md",
+    "visualNotes": "review/visual-notes.md",
+    "toolRevision": "c1ad33f4fa7dbe74c9ca2a49eb29e8db99f63c10",
+    "lookCount": 0
+  }
+}

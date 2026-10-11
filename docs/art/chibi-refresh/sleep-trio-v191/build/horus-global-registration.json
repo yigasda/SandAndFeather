@@ -1,0 +1,16 @@
+{
+  "source": "/workspace/actions191/horus-inhale-before-global-registration.png",
+  "matrix": [
+    [
+      0.985,
+      0,
+      4.650000000000004
+    ],
+    [
+      0,
+      0.985,
+      2.8500000000000023
+    ]
+  ],
+  "purpose": "Whole-frame uniform registration to equalize head scale and foot placement; no part compositing"
+}

@@ -1,0 +1,18 @@
+{
+  "source": "/workspace/generated_images/exec-0fc35bbf-74df-44f4-9166-51be682c7164.png",
+  "ref": "docs/art/chibi-refresh/sleep-trio-v191/png/horus-sleep-side-0.png",
+  "matrix": [
+    [
+      0.5265125413506277,
+      0.0003481361981354598,
+      -2.393531538714853
+    ],
+    [
+      -0.0003481361981354598,
+      0.5265125413506277,
+      10.589494109340018
+    ]
+  ],
+  "inliers": 45,
+  "good": 82
+}
