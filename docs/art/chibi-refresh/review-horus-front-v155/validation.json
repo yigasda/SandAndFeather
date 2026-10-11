@@ -1,0 +1,68 @@
+[
+  {
+    "file": "horus-front-0.png",
+    "bodySource": "review-trio-walk-v5/walk/horus-front-0.png",
+    "shorteningPx": 2,
+    "protectedFaceDifference": 0
+  },
+  {
+    "file": "horus-front-1.png",
+    "bodySource": "review-trio-walk-v5/walk/horus-front-1.png",
+    "shorteningPx": 2,
+    "protectedFaceDifference": 0
+  },
+  {
+    "file": "horus-front-2.png",
+    "bodySource": "review-trio-walk-v5/walk/horus-front-2.png",
+    "shorteningPx": 2,
+    "protectedFaceDifference": 0
+  },
+  {
+    "file": "horus-back-0.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-back-1.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-back-2.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-left-0.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-left-1.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-left-2.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-right-0.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-right-1.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-right-2.png",
+    "unchangedFromApproved": true
+  },
+  {
+    "file": "horus-front-0.png",
+    "leftHairEarAlphaHoles": []
+  },
+  {
+    "file": "horus-front-1.png",
+    "leftHairEarAlphaHoles": []
+  },
+  {
+    "file": "horus-front-2.png",
+    "leftHairEarAlphaHoles": []
+  }
+]
