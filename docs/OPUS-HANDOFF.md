@@ -38,6 +38,7 @@
 | 출구 표지 | 출구 근처 2.2칸 안에서만 뜬다. 소망과 겹치면 발밑으로 내려간다 | 같은 곳 |
 | 셋소호 스프라이트 | 이전 승인 48장(`docs/art/chibi-refresh/approved/`)을 `tools/art/pack-trio-motion.py`로 패킹한다. 결과는 `data/art/characters/trio-motion.png`(256px)와 `-small.png`(폰용 125px), 연결은 `sprites.json`의 `looks.*.motion`. 표시 높이 31.2 논리 px, 걷기 0-1-2-1 180ms | [TRIO-MOTION-098.md](TRIO-MOTION-098.md) |
 | 인물 그림 | 파티와 소망 카드의 전신은 정지 스프라이트 `data/art/portraits/*-idle-full.png`. `인물 보기`는 세트·호루스 일러스트 세 장씩. 대화 카드 상반신과 미소 버튼은 뺐다(다시 넣지 않는다) | TRIO-MOTION-098 |
+| 카드(팝업) | `src/ui/popups.js`의 `showCard`. 테두리(`.sf_pop::before`)와 제목은 고정이고, 안쪽 `.sf_pop_scroll`만 스크롤된다. 카드 자체를 스크롤 상자로 되돌리면 테두리가 내용과 같이 밀려 올라간다(0.9.22에서 고침) | CHANGELOG 0.9.22 |
 | 성능 | 지도는 보이는 부분만 그린다. 이동은 실제 시간 기준 0.05초 단위. 지도 그림은 그 지도에 있을 때만 풀어 둔다(`lazy`) | [PERF-0917.md](PERF-0917.md) |
 | 상인 | 옛 `pocket-chibi.png`(townsman) 그대로. `pack-pocket-sprites.cjs`는 돌리지 않는다 | |
 
