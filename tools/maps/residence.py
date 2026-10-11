@@ -26,25 +26,71 @@ FRONT_ENDS = [(4.12, [[0, 0], [1.72, 0], [1.72, 4.12], [0.6, 4.12], [0.6, 1.0], 
 COL_W, COL_E = [0.65, 0, 1.7, 4.1], [25.3, 0, 26.35, 4.1]  # the last column's base at each end
 # back out in the village, on the carpet just below the temple door (ombos.json's exit walks in through that door)
 OMBOS_TEMPLE = {'x': 24.9, 'y': 9.75, 'dir': 'down'}
+# The long corridors, widened (0.9.23, Astra 139-143): each old 2172×724 picture sits untouched at (160, 64) in a
+# 2492×887 one, 31×11 tiles. Their old interiors keep their pixels, so the old tile coordinates below are moved
+# across (WIDE); the new end passages, wider and deeper, are laid out on the new picture (WIDE_END_*).
+WIDE = 'corridors-remaining-v1/'
+OLD_K, NEW_KX, NEW_KY = 2172 / 27, 2492 / 31, 887 / 11
+def wx(x): return round(0 if x <= 0 else 31 if x >= 27 else (x * OLD_K + 160) / NEW_KX, 2)
+def wy(y): return round(0 if y <= 0 else (y * OLD_K + 64) / NEW_KY, 2)
+def wrect(r): return [wx(r[0]), wy(r[1]), wx(r[2]), wy(r[3])]
+WIDE_END_SOLID = [[0, 0, 0.98, 4.8], [30.02, 0, 31, 4.8],          # the wall blocks at the very ends
+                  [2.62, 0, 3.7, 4.88], [27.27, 0, 28.38, 4.88]]   # the last columns
+# each end passage: walked into from the corridor floor; its far half is the way out
+WIDE_END_OPEN = [[0.98, 3.5, 2.62, 4.7], [28.38, 3.5, 30.02, 4.7]]
+WIDE_END_W, WIDE_END_E = [0.98, 3.5, 2.62, 4.0], [28.38, 3.5, 30.02, 4.0]
+WIDE_AT_W, WIDE_AT_E = [1.8, 4.45, 'right'], [29.2, 4.45, 'left']
+WIDE_END_FRONT = [(4.88, [[2.6, 1.2], [3.72, 1.2], [3.72, 4.88], [2.6, 4.88]]),          # the columns
+                  (4.88, [[27.25, 1.2], [28.4, 1.2], [28.4, 4.88], [27.25, 4.88]]),
+                  (4.8, [[0, 1.15], [2.65, 1.15], [2.65, 1.85], [0.98, 1.85], [0.98, 4.8], [0, 4.8]]),   # end wall and lintel
+                  (4.8, [[31, 1.15], [28.35, 1.15], [28.35, 1.85], [30.02, 1.85], [30.02, 4.8], [31, 4.8]])]
+
+
+def widen(sc, file, bottom=None):
+    # move a corridor written in the old 27×9 tiles onto the widened picture
+    old_end = lambda r: r is END_W or r is END_E or r is COL_W or r is COL_E or r in OPEN_ENDS
+    sc['day'] = file if '/' in file else WIDE + file
+    sc['size'] = [31, 11]
+    sc['solid'] = [wrect(r) for r in sc['solid'] if not old_end(r)] + WIDE_END_SOLID + ([[0, bottom, 31, 11]] if bottom else [])
+    ex = []
+    for r, to, at in sc['exits']:
+        if r is END_W: ex.append([WIDE_END_W, to, at]); continue
+        if r is END_E: ex.append([WIDE_END_E, to, at]); continue
+        n = wrect(r)
+        if r[3] >= 9 and bottom: n[3] = bottom  # a way out at the old bottom edge now ends at the new floor's edge
+        ex.append([n, to, at])
+    sc['exits'] = ex
+    sc['entry'] = {k: (WIDE_AT_W if v is AT_W else WIDE_AT_E if v is AT_E else [wx(v[0]), wy(v[1]), v[2]]) for k, v in sc['entry'].items()}
+    sc['open'] = WIDE_END_OPEN + [wrect(r) for r in sc.get('open', []) if not old_end(r)]
+    sc['front'] = WIDE_END_FRONT + [(wy(f), [[wx(x), wy(y)] for x, y in pts]) for f, pts in sc.get('front', []) if (f, pts) not in FRONT_ENDS]
+    return sc
+
 
 SCENES = {
     'temple_courtyard': {
-        'name': '우물 마당', 'day': V2 + 'well-courtyard-v1.png', 'night': V2 + 'well-courtyard-v1-night.png', 'size': [22, 11],
-        'solid': [[0, 0, 22, 2.75], [2.8, 2.75, 16.2, 3.35], [17.8, 2.75, 22, 3.35], [0, 0, 2.45, 3.95], [0, 0, 0.6, 6.2],
-                  [0.5, 3.95, 2.9, 6.45], [18.9, 0, 22, 3.65], [21.45, 0, 22, 6.2], [19.2, 4.0, 21.3, 6.8],
-                  [9.4, 4.3, 12.4, 6.3], [12.4, 5.0, 13.6, 6.8], [0, 7.6, 1.5, 11], [20.6, 7.6, 22, 11],  # the corner ferns: their pots, under the leaves
-                 
-                  [0, 8.6, 8.1, 11], [13.9, 8.6, 22, 11], [4.7, 8.2, 5.6, 11], [16.4, 8.2, 17.3, 11]],
-        'exits': [[[8.3, 10.25, 13.7, 11], 'ombos', OMBOS_TEMPLE], [[16.2, 1.6, 17.7, 2.0], 'courtyard_colonnade', 'south'],
-                  [[0, 6.63, 0.56, 7.42], 'temple_kitchen', 'door'], [[21.44, 6.88, 22, 7.44], 'temple_dining', 'door']],
-        'entry': {'south': [11, 9.6, 'up'], 'north': [16.95, 2.95, 'down'], 'west': [1.18, 7.19, 'right'], 'east': [20.77, 7.4, 'left']},
-        'open': [[16.2, 1.6, 17.7, 3.35]],
-        'front': [(4.5, [[9.36, 3.2], [12.6, 3.2], [12.6, 3.8], [12.4, 3.8], [12.4, 5.1], [12.12, 5.1], [12.12, 3.8], [9.88, 3.8],
-                         [9.88, 5.1], [9.58, 5.1], [9.58, 3.8], [9.36, 3.8]]),  # the well's posts and bar
-                  (3.3, [[14.95, 0], [16.1, 0], [16.1, 3.3], [14.95, 3.3]]),  # the column left of the north passage
-                  (3.35, [[17.75, 1.5], [18.7, 1.5], [18.7, 3.35], [17.75, 3.35]])],  # the planter right of it
+        # Astra's round-door option 3 (0.9.23): 2160×887, 27×11 tiles, laid out afresh on this picture
+        'name': '우물 마당', 'day': 'well-option3-night-v1/well-courtyard-option3-day.png',
+        'night': 'well-option3-night-v1/well-courtyard-option3-night.png', 'size': [27, 11],
+        'solid': [[5.0, 0, 27, 3.45],                                                     # back ledge and planters
+                  [0, 0, 2.0, 6.45], [2.0, 0, 5.0, 4.0], [2.0, 4.0, 2.9, 6.3],           # left arcade: kitchen wall, inner wall, column
+                  [2.9, 4.0, 5.1, 5.05], [2.9, 5.0, 4.05, 6.1], [5.0, 3.7, 5.6, 4.8],    # basin, stool, potted fern
+                  [22.4, 0, 27, 3.95], [23.3, 3.95, 24.95, 5.7], [24.1, 5.6, 24.95, 6.3], [24.95, 0, 27, 6.45],  # right arcade
+                  [22.25, 4.7, 23.9, 6.75], [21.65, 4.0, 22.6, 5.2],                      # bench, potted fern
+                  [11.5, 4.35, 14.3, 6.55], [14.4, 5.0, 15.75, 6.85],                     # the well, jar and basket
+                  [0, 8.0, 1.0, 11], [0, 9.3, 9.15, 11], [1.8, 9.0, 3.8, 11], [6.85, 8.6, 7.8, 11], [9.15, 9.0, 10.2, 11],  # front wall, left
+                  [16.05, 9.0, 27, 11], [18.45, 8.6, 19.45, 11], [25.5, 8.3, 27, 11]],    # front wall, right
+        'exits': [[[10.2, 10.44, 16.05, 11], 'ombos', OMBOS_TEMPLE], [[18.6, 2.35, 20.15, 2.75], 'courtyard_colonnade', 'south'],
+                  [[0.55, 6.5, 2.1, 6.95], 'temple_kitchen', 'door'], [[24.7, 6.5, 26.4, 6.95], 'temple_dining', 'door']],
+        'entry': {'south': [13.09, 9.86, 'up'], 'north': [19.35, 3.2, 'down'], 'west': [1.35, 7.45, 'down'], 'east': [25.6, 7.45, 'down']},
+        'open': [[18.6, 2.35, 20.15, 3.45]],  # the passage under the arch, toward the pond
+        'front': [(4.55, [[11.45, 3.15], [14.75, 3.15], [14.75, 3.75], [14.5, 3.75], [14.5, 4.9], [14.2, 4.9], [14.2, 3.75], [12.0, 3.75],
+                          [12.0, 4.9], [11.65, 4.9], [11.65, 3.75], [11.45, 3.75]]),  # the well's posts and bar
+                  (3.5, [[17.2, 0], [18.45, 0], [18.45, 3.5], [17.2, 3.5]]),            # the column left of the arch
+                  (3.5, [[20.45, 1.3], [21.85, 1.3], [21.85, 3.5], [20.45, 3.5]]),      # the planter right of it
+                  (3.45, [[18.3, 0], [20.45, 0], [20.45, 3.45], [20.15, 3.45], [20.15, 0.9], [19.9, 0.55], [19.35, 0.4], [18.8, 0.55],
+                          [18.6, 0.9], [18.6, 3.45], [18.3, 3.45]])],                    # the arch
         'spawn': 'south',
-        'spots': [{'id': 'temple_well', 'x': 10.5, 'y': 6.6, 'label': '우물', 'title': '우물', 'text': '두레박 줄이 축축하다. 마당 사람들이 여기서 물을 긷고 빨래를 한다.'}],
+        'spots': [{'id': 'temple_well', 'x': 12.9, 'y': 7.1, 'label': '우물', 'title': '우물', 'text': '두레박 줄이 축축하다. 마당 사람들이 여기서 물을 긷고 빨래를 한다.'}],
     },
     'courtyard_colonnade': {
         'name': '열린 연못 회랑', 'day': V2 + 'courtyard-colonnade-v1.png', 'night': V2 + 'courtyard-colonnade-v1-night.png', 'size': [24, 14],
@@ -58,7 +104,7 @@ SCENES = {
         'spawn': 'south',
         'spots': [{'id': 'colonnade_pond', 'x': 8.49, 'y': 7.1, 'title': '연못', 'text': '기둥 사이로 연꽃이 떠 있다. 물빛이 천장에 어른거린다.'}],
     },
-    'temple_inner_corridor': {
+    'temple_inner_corridor': widen({
         'name': '안쪽 복도', 'day': V2 + 'inner-corridor-wide-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 27, 3.9], [4.5, 0, 8.4, 4.2], [18.9, 0, 21.9, 4.2], COL_W, COL_E],
         'exits': [[END_W, 'courtyard_colonnade', 'east'], [END_E, 'temple_central_gallery', 'south']],
@@ -66,8 +112,8 @@ SCENES = {
         'front': FRONT_ENDS,
         'open': OPEN_ENDS,
         'spawn': 'west',
-    },
-    'temple_central_gallery': {
+    }, 'corridor-expand-v4/inner-corridor-expanded-v4.png', None),
+    'temple_central_gallery': widen({
         'name': '중앙 회랑', 'day': V2 + 'central-gallery-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 12.45, 3.9], [14.35, 0, 27, 3.9], [12.3, 0, 12.6, 3.95], [14.2, 0, 14.5, 3.95], [4.5, 0, 7.5, 4.2],
                   [19.1, 0, 22.2, 4.2], [0, 7.0, 11.9, 9], [15.1, 7.0, 27, 9], [10.8, 6.9, 11.9, 9], [15.1, 6.9, 16.1, 9], COL_W, COL_E],
@@ -77,8 +123,8 @@ SCENES = {
         'front': FRONT_ENDS + [(3.95, [[11.9, 0.3], [14.95, 0.3], [14.95, 3.95], [14.25, 3.95], [14.25, 1.45], [14.0, 0.95], [13.4, 0.65], [12.8, 0.95], [12.55, 1.45], [12.55, 3.95], [11.9, 3.95]])],
         'open': OPEN_ENDS,
         'spawn': 'south',
-    },
-    'temple_east_gallery': {
+    }, 'central-expanded.png', 10.2),
+    'temple_east_gallery': widen({
         'name': '동쪽 회랑', 'day': V2 + 'east-gallery-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 14.9, 3.9], [16.6, 0, 27, 3.9], [4.5, 0, 7.6, 4.2], COL_W, COL_E],
         'exits': [[END_W, 'temple_central_gallery', 'east'], [END_E, 'room_entrances_wide', 'west'],
@@ -87,8 +133,8 @@ SCENES = {
         'front': FRONT_ENDS + [(3.95, [[14.4, 0.5], [17.05, 0.5], [17.05, 3.95], [16.5, 3.95], [16.5, 1.6], [15.0, 1.6], [15.0, 3.95], [14.4, 3.95]])],
         'open': OPEN_ENDS,
         'spawn': 'west',
-    },
-    'temple_west_gallery': {
+    }, 'east-expanded.png', None),
+    'temple_west_gallery': widen({
         'name': '서쪽 회랑', 'day': V2 + 'west-gallery-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 6.65, 3.9], [8.55, 0, 27, 3.9], [1.9, 0, 4.2, 4.2], [17.8, 0, 21.0, 4.2], COL_W, COL_E, [6.6, 0, 7.0, 2.95], [8.25, 0, 8.6, 2.95]],  # + the passage's front posts
         'exits': [[END_E, 'temple_central_gallery', 'west'], [END_W, 'room_entrances_wide', 'east'],
@@ -97,8 +143,8 @@ SCENES = {
         'front': FRONT_ENDS + [(3.95, [[5.95, 0.2], [9.2, 0.2], [9.2, 3.95], [8.55, 3.95], [8.55, 1.05], [6.6, 1.05], [6.6, 3.95], [5.95, 3.95]])],
         'open': OPEN_ENDS,
         'spawn': 'east',
-    },
-    'room_entrances_wide': {
+    }, 'west-expanded.png', None),
+    'room_entrances_wide': widen({
         'name': '방문 회랑', 'day': V2 + 'room-entrances-wide-v1.png', 'size': [27, 9],
         'solid': [[0, 0, 2.25, 3.9], [3.55, 0, 12.55, 3.9], [13.85, 0, 23.35, 3.9], [24.65, 0, 27, 3.9],
                   [6.3, 0, 8.6, 4.2], [18.7, 0, 19.7, 4.25], COL_W, COL_E,
@@ -111,7 +157,7 @@ SCENES = {
         'front': FRONT_ENDS,
         'open': OPEN_ENDS,
         'spawn': 'arch',
-    },
+    }, 'rooms-expanded.png', 10.2),
     'set_room': {
         'name': '세트 방', 'day': 'set-room-v6-single-window-day.png', 'night': 'set-room-v6-single-window-night.png', 'size': [22, 11],
         'solid': [[0, 0, 22, 3.6], [0, 0, 0.8, 11], [21.2, 0, 22, 11], [0.8, 0, 2.5, 4.4], [2.8, 0, 6.0, 4.9], [3.6, 4.0, 4.7, 5.2],
@@ -206,9 +252,9 @@ def signs(sc, w, h):
         name = '옴보스' if to == 'ombos' else SCENES[to]['name']
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
         box = [x0, y0, x1, y1]
-        if x0 <= 0: out.append((2.4, cy, f'← {name}', box))
-        elif x1 >= w: out.append((w - 2.4, cy, f'{name} →', box))
-        elif y1 >= h - 0.01: out.append((cx, h - 0.75, f'↓ {name}', box))
+        if x0 <= 1 and x1 <= 3: out.append((2.4, cy, f'← {name}', box))
+        elif x1 >= w - 1 and x0 >= w - 3: out.append((w - 2.4, cy, f'{name} →', box))
+        elif y0 >= h * 0.75: out.append((cx, h - 0.75, f'↓ {name}', box))
         else: out.append((cx, max(0.75, y0 + 0.6), f'↑ {name}', box))
     return out
 

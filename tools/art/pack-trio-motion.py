@@ -8,6 +8,7 @@ from PIL import Image
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 SRC = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'approved')
+WALK = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'review-trio-walk-v5')
 OUT = os.path.join(ROOT, 'data', 'art', 'characters', 'trio-motion.png')
 VISIBLE = 256          # atlas pixels from the top of the head to the feet: ≥ HEIGHT × the largest zoom (8), so it only ever shrinks
 HEIGHT = 31.2         # in-game height in logical pixels (a tile is 16); 0.9.16 took it from 24 to 1.3×
@@ -70,8 +71,11 @@ def pack(frames, visible, out):
 
 def main():
     man = json.load(open(os.path.join(SRC, 'manifest.json')))
-    cycle = man['walkCycle']
-    frames = man['frames']
+    # 0.9.23: the walk is the newer approved set (Astra 135/136, "셋소호 다 합격"); standing stays the approved idle 12
+    walk = json.load(open(os.path.join(WALK, 'manifest.json')))
+    cycle = walk['walkCycle']
+    frames = [f for f in man['frames'] if f['state'] == 'idle'] + [f for f in walk['frames'] if f['state'] == 'walk']
+    assert len(frames) == 48
     for f in frames:
         data = open(os.path.join(ROOT, f['path']), 'rb').read()
         assert hashlib.sha256(data).hexdigest() == f['sha256'], f['id']
@@ -87,7 +91,7 @@ def main():
             'file': b['file'], 'visible': b['visible'], 'height': HEIGHT,
             'idle': b['idle'], 'walk': b['walk'], 'sequence': cycle['sequence'], 'frameMs': cycle['previewFrameDurationMs'],
             # whole-sprite shifts while walking, in source walk-cell pixels (330 = the walk cell's visible height)
-            'offsets': offsets, 'offsetRef': man['frames'][1]['referenceVisibleHeight'],
+            'offsets': offsets, 'offsetRef': [f for f in frames if f['state'] == 'walk'][0]['referenceVisibleHeight'],
             # the same frames packed at phone size: drawn nearly 1:1 at a phone's zoom, so they stay crisp
             'small': small[who],
         }
