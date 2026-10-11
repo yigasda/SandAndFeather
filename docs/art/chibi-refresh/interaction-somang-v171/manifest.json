@@ -1,0 +1,39 @@
+{
+  "status": "representative-awaiting-user-approval",
+  "runtimeEligible": false,
+  "character": "somang",
+  "action": "interaction",
+  "view": "front",
+  "gameDirection": "down",
+  "phase": 1,
+  "meaning": "손이 닿음",
+  "file": "somang-front-contact-1.png",
+  "canvas": [
+    620,
+    720
+  ],
+  "pivot": [
+    310,
+    662
+  ],
+  "referenceVisibleHeight": 576,
+  "sha256": "6464a18d52d5ee4e6e9303ce99877bf2546734aa5454e107a24344a6ac494850",
+  "guide": "../pose-guides/somang-front-guide.png",
+  "base": "../final/somang/idle/somang-front.png",
+  "sourceCommit": "78740a3",
+  "plannedSequence": {
+    "directions": [
+      "front",
+      "back",
+      "left",
+      "right"
+    ],
+    "framesPerDirection": 2,
+    "frameDurationMs": 150,
+    "loop": false,
+    "after": "idle"
+  },
+  "deliveredFrames": 1,
+  "fitVerdict": "맞음 (발 +3px 보정)",
+  "next": "사용자 확인 후 해당 방향 프레임0, 다음 나머지 방향. 세트·호루스는 이후."
+}

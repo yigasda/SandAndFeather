@@ -1,0 +1,35 @@
+{
+ "sheet": "../interaction171/repaired-input.png",
+ "view": "front",
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "somang": {
+   "scale": 1.0725,
+   "match": 0.685,
+   "shift": [
+    81,
+    86
+   ],
+   "feetOffsetPx": 1,
+   "heightRatio": 1.003,
+   "heightFit": {
+    "scale": 1.0686,
+    "headScaleVsIdle": 0.996,
+    "shift": [
+     82,
+     87
+    ],
+    "headTopOffsetPx": 0
+   },
+   "verdict": "맞음 (발 +1px 보정)"
+  }
+ }
+}
