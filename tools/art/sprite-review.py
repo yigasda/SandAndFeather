@@ -11,6 +11,8 @@
 #   좌우        onion.py — the left view against the flipped right view of the same pose (arms, hands, legs: by eye)
 #   기준 그림    onion.py — each picture on the approved reference of the same action (REFERENCES) at their anchors
 #   머리        head-check.py — lying pictures: the idle head's outline laid on the drawing (by eye)
+#   붙여넣기     poses that are not standing: is the final idle's head pasted in unchanged (90 %+ of its pixels
+#               identical) instead of drawn for the pose? Drawn heads score under 20 %.
 # and writes <out>/report.md: 볼 것 at the top, then one line per character and pose with the sheets beside it.
 # Every line is a hint to look at; "볼 것 없음" is not a pass and the sheets are what to judge by.
 #
@@ -62,6 +64,30 @@ def action_of(folder, names):
         if a.startswith(k) or k in a: return k
     if any('sleep' in n for n in names): return 'sleep'
     return ''
+
+
+def pasted(path, who, view):
+    """share of the final idle head's opaque pixels found unchanged somewhere in the picture: a head cut from the idle
+    and pasted on scores 90 % and more, a head drawn for the pose under 20 %"""
+    import numpy as np
+    from PIL import Image
+    idle = os.path.join(ART, 'final', who, 'idle', f'{who}-{view}.png')
+    a = np.asarray(Image.open(path).convert('RGBA')).astype(np.int16)
+    b = np.asarray(Image.open(idle).convert('RGBA')).astype(np.int16)
+    x0, y0, x1, y1 = Image.open(idle).getbbox()
+    head = b[y0:y0 + int(0.45 * (y1 - y0)), x0:x1]; m = head[..., 3] > 200; n = m.sum()
+    H, W = a.shape[:2]; h, w = head.shape[:2]
+    def score(dx, dy):
+        return ((np.abs(a[dy:dy + h, dx:dx + w] - head).max(-1) <= 2) & m).sum() / n
+    best, at = 0.0, (0, 0)
+    for dy in range(0, H - h + 1, 6):
+        for dx in range(0, W - w + 1, 6):
+            s = score(dx, dy)
+            if s > best: best, at = s, (dx, dy)
+    for dy in range(max(0, at[1] - 5), min(H - h, at[1] + 5) + 1):
+        for dx in range(max(0, at[0] - 5), min(W - w, at[0] + 5) + 1):
+            best = max(best, score(dx, dy))
+    return float(best)
 
 
 def label(s):
@@ -142,6 +168,11 @@ def main():
             hr['verdict'] = headc.verdict(hr)
             headc.sheet(p, who, 'right' if side else 'front', hr, o.out)
             sheets.append(os.path.splitext(os.path.basename(p))[0] + '-head.png')
+        # a head cut out of the idle and pasted on (Horus sleep 189): only for poses that are not standing
+        if lying or act in ('sit', 'pickup', 'sleep') or any(x['height'] < 0.95 for x in r['frames']):
+            for k, p in fr:
+                s = pasted(p, who, view if view in VIEWS and not side else ('right' if side else 'front'))
+                if s > 0.5: notes.append(f'{k}: 정지 머리를 잘라 붙임 (정지 머리 픽셀 {s:.0%}가 그대로)')
         verdict = '볼 것 없음' if not notes else ' · '.join(notes)
         if notes: look += [f'{who} {key} — {n}' for n in notes]
         heights = ' / '.join(f"{x['frame']}: 키 {x['height']:.0%}" + ('' if lying else f" 머리 ×{x['head']:.2f}") for x in r['frames'])
