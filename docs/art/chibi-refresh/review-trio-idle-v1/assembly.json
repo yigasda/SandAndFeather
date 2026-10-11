@@ -1,0 +1,181 @@
+{
+  "set-front": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 320,
+    "gy": 549,
+    "bottom": 639,
+    "cx": 187,
+    "top": 322,
+    "sx": 0.6,
+    "x0": 138,
+    "x1": 233,
+    "sy": 0.5333333333333333,
+    "protectedRows": [
+      0,
+      322
+    ]
+  },
+  "set-back": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 847,
+    "gy": 549,
+    "bottom": 639,
+    "cx": 177,
+    "top": 317,
+    "sx": 0.6,
+    "x0": 135,
+    "x1": 220,
+    "sy": 0.5888888888888889,
+    "protectedRows": [
+      0,
+      317
+    ]
+  },
+  "set-left": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 1320,
+    "gy": 549,
+    "bottom": 639,
+    "cx": 171,
+    "top": 319,
+    "sx": 0.56,
+    "x0": 110,
+    "x1": 231,
+    "sy": 0.5666666666666667,
+    "protectedRows": [
+      0,
+      319
+    ]
+  },
+  "set-right": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 1890,
+    "gy": 549,
+    "bottom": 639,
+    "cx": 177,
+    "top": 319,
+    "sx": 0.56,
+    "x0": 119,
+    "x1": 231,
+    "sy": 0.5666666666666667,
+    "protectedRows": [
+      0,
+      319
+    ]
+  },
+  "horus-front": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 347,
+    "gy": 570,
+    "bottom": 667,
+    "cx": 178,
+    "top": 320,
+    "sx": 0.48,
+    "x0": 133,
+    "x1": 225,
+    "sy": 0.5154639175257731,
+    "protectedRows": [
+      0,
+      320
+    ]
+  },
+  "horus-back": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 828,
+    "gy": 569,
+    "bottom": 667,
+    "cx": 180,
+    "top": 314,
+    "sx": 0.48,
+    "x0": 130,
+    "x1": 229,
+    "sy": 0.5714285714285714,
+    "protectedRows": [
+      0,
+      314
+    ]
+  },
+  "horus-left": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 1275,
+    "gy": 571,
+    "bottom": 667,
+    "cx": 163,
+    "top": 316,
+    "sx": 0.52,
+    "x0": 110,
+    "x1": 222,
+    "sy": 0.5625,
+    "protectedRows": [
+      0,
+      316
+    ]
+  },
+  "horus-right": {
+    "method": "preserve approved neutral walk except planted legs; retain Set hair behind legs",
+    "gx": 1850,
+    "gy": 570,
+    "bottom": 667,
+    "cx": 184,
+    "top": 316,
+    "sx": 0.52,
+    "x0": 122,
+    "x1": 244,
+    "sy": 0.5567010309278351,
+    "protectedRows": [
+      0,
+      316
+    ]
+  },
+  "somang-back": {
+    "method": "approved head, hair, torso and arms preserved; settled lower dress and planted legs",
+    "dir": "back",
+    "gx": 429,
+    "gy": 444,
+    "cx": 180,
+    "top": 249,
+    "sx": 0.55,
+    "mode": "back",
+    "cut": 249,
+    "limit": 258,
+    "sy": 0.5260869565217391,
+    "protectedRows": [
+      0,
+      249
+    ]
+  },
+  "somang-left": {
+    "method": "approved head, hair, torso and arms preserved; settled lower dress and planted legs",
+    "dir": "left",
+    "gx": 1050,
+    "gy": 382,
+    "cx": 165,
+    "top": 225,
+    "sx": 0.54,
+    "mode": "side",
+    "cut": 225,
+    "limit": 270,
+    "sy": 0.4965753424657534,
+    "protectedRows": [
+      0,
+      225
+    ]
+  },
+  "somang-right": {
+    "method": "approved head, hair, torso and arms preserved; settled lower dress and planted legs",
+    "dir": "right",
+    "gx": 1764,
+    "gy": 382,
+    "cx": 201,
+    "top": 226,
+    "sx": 0.54,
+    "mode": "side",
+    "cut": 226,
+    "limit": 270,
+    "sy": 0.4931506849315068,
+    "protectedRows": [
+      0,
+      226
+    ]
+  }
+}
