@@ -1,0 +1,194 @@
+[
+  {
+    "direction": "front",
+    "frame": 0,
+    "report": {
+      "scale": 1.06,
+      "match": 0.365,
+      "shift": [
+        75,
+        85
+      ],
+      "feetOffsetPx": -64,
+      "heightRatio": 0.892,
+      "heightFit": {
+        "scale": 1.1876,
+        "headScaleVsIdle": 1.12,
+        "shift": [
+          46,
+          87
+        ],
+        "headTopOffsetPx": 5
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -64px (-11.1% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  },
+  {
+    "direction": "front",
+    "frame": 1,
+    "report": {
+      "scale": 1.04,
+      "match": 0.347,
+      "shift": [
+        78,
+        86
+      ],
+      "feetOffsetPx": -123,
+      "heightRatio": 0.788,
+      "heightFit": {
+        "scale": 1.3181,
+        "headScaleVsIdle": 1.267,
+        "shift": [
+          14,
+          87
+        ],
+        "headTopOffsetPx": -47
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -123px (-21.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  },
+  {
+    "direction": "back",
+    "frame": 0,
+    "report": {
+      "scale": 1.08,
+      "match": 0.291,
+      "shift": [
+        49,
+        80
+      ],
+      "feetOffsetPx": -48,
+      "heightRatio": 0.926,
+      "heightFit": {
+        "scale": 1.1677,
+        "headScaleVsIdle": 1.081,
+        "shift": [
+          29,
+          85
+        ],
+        "headTopOffsetPx": -5
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -48px (-8.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  },
+  {
+    "direction": "back",
+    "frame": 1,
+    "report": {
+      "scale": 1.0475,
+      "match": 0.284,
+      "shift": [
+        64,
+        83
+      ],
+      "feetOffsetPx": -149,
+      "heightRatio": 0.746,
+      "heightFit": {
+        "scale": 1.4063,
+        "headScaleVsIdle": 1.343,
+        "shift": [
+          -17,
+          85
+        ],
+        "headTopOffsetPx": -23
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -149px (-25.8% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  },
+  {
+    "direction": "left",
+    "frame": 0,
+    "report": {
+      "scale": 1.08,
+      "match": 0.368,
+      "shift": [
+        102,
+        86
+      ],
+      "feetOffsetPx": -66,
+      "heightRatio": 0.887,
+      "heightFit": {
+        "scale": 1.2178,
+        "headScaleVsIdle": 1.128,
+        "shift": [
+          70,
+          87
+        ],
+        "headTopOffsetPx": -10
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -66px (-11.5% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  },
+  {
+    "direction": "left",
+    "frame": 1,
+    "report": {
+      "scale": 1.0725,
+      "match": 0.411,
+      "shift": [
+        104,
+        86
+      ],
+      "feetOffsetPx": -153,
+      "heightRatio": 0.736,
+      "heightFit": {
+        "scale": 1.4582,
+        "headScaleVsIdle": 1.36,
+        "shift": [
+          18,
+          87
+        ],
+        "headTopOffsetPx": -371
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -153px (-26.6% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  },
+  {
+    "direction": "right",
+    "frame": 0,
+    "report": {
+      "scale": 1.065,
+      "match": 0.454,
+      "shift": [
+        28,
+        84
+      ],
+      "feetOffsetPx": -77,
+      "heightRatio": 0.872,
+      "heightFit": {
+        "scale": 1.2229,
+        "headScaleVsIdle": 1.148,
+        "shift": [
+          -9,
+          87
+        ],
+        "headTopOffsetPx": -37
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -77px (-13.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  },
+  {
+    "direction": "right",
+    "frame": 1,
+    "report": {
+      "scale": 1.045,
+      "match": 0.418,
+      "shift": [
+        37,
+        84
+      ],
+      "feetOffsetPx": -142,
+      "heightRatio": 0.759,
+      "heightFit": {
+        "scale": 1.378,
+        "headScaleVsIdle": 1.319,
+        "shift": [
+          -42,
+          87
+        ],
+        "headTopOffsetPx": 34
+      },
+      "verdict": "비율 다름: 머리를 맞추면 발이 -142px (-24.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+    }
+  }
+]

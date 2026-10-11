@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sit-somang-v179/png/somang-left-0.png",
+ "view": "left",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "somang": {
+   "scale": 1.0075,
+   "match": 0.606,
+   "shift": [
+    109,
+    86
+   ],
+   "feetOffsetPx": -25,
+   "heightRatio": 0.958,
+   "heightFit": {
+    "scale": 1.0511,
+    "headScaleVsIdle": 1.043,
+    "shift": [
+     99,
+     87
+    ],
+    "headTopOffsetPx": -9
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 -25px (-4.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "direction": "front",
+    "frame": 0,
+    "referenceHairWidth": 442,
+    "sourceHairWidth": 614,
+    "uniformScale": 0.7198697068403909,
+    "outputHeadWidth": 440,
+    "visibleHeight": 484,
+    "standingHeightRatio": 0.84,
+    "placement": [
+      4,
+      20
+    ]
+  },
+  {
+    "direction": "front",
+    "frame": 1,
+    "referenceHairWidth": 442,
+    "sourceHairWidth": 598,
+    "uniformScale": 0.7391304347826086,
+    "outputHeadWidth": 447,
+    "visibleHeight": 437,
+    "standingHeightRatio": 0.759,
+    "placement": [
+      4,
+      -2
+    ]
+  },
+  {
+    "direction": "back",
+    "frame": 0,
+    "referenceHairWidth": 438,
+    "sourceHairWidth": 377,
+    "uniformScale": 1.1618037135278514,
+    "outputHeadWidth": 442,
+    "visibleHeight": 495,
+    "standingHeightRatio": 0.859,
+    "placement": [
+      25,
+      64
+    ]
+  },
+  {
+    "direction": "back",
+    "frame": 1,
+    "referenceHairWidth": 438,
+    "sourceHairWidth": 375,
+    "uniformScale": 1.168,
+    "outputHeadWidth": 438,
+    "visibleHeight": 411,
+    "standingHeightRatio": 0.714,
+    "placement": [
+      32,
+      54
+    ]
+  },
+  {
+    "direction": "left",
+    "frame": 0,
+    "referenceHairWidth": 439,
+    "sourceHairWidth": 397,
+    "uniformScale": 1.105793450881612,
+    "outputHeadWidth": 439,
+    "visibleHeight": 473,
+    "standingHeightRatio": 0.821,
+    "placement": [
+      20,
+      94
+    ]
+  },
+  {
+    "direction": "left",
+    "frame": 1,
+    "referenceHairWidth": 439,
+    "sourceHairWidth": 401,
+    "uniformScale": 1.0947630922693268,
+    "outputHeadWidth": 433,
+    "visibleHeight": 395,
+    "standingHeightRatio": 0.686,
+    "placement": [
+      29,
+      102
+    ]
+  },
+  {
+    "direction": "right",
+    "frame": 0,
+    "referenceHairWidth": 457,
+    "sourceHairWidth": 400,
+    "uniformScale": 1.1425,
+    "outputHeadWidth": 454,
+    "visibleHeight": 471,
+    "standingHeightRatio": 0.818,
+    "placement": [
+      32,
+      132
+    ]
+  },
+  {
+    "direction": "right",
+    "frame": 1,
+    "referenceHairWidth": 457,
+    "sourceHairWidth": 405,
+    "uniformScale": 1.128395061728395,
+    "outputHeadWidth": 457,
+    "visibleHeight": 418,
+    "standingHeightRatio": 0.726,
+    "placement": [
+      57,
+      139
+    ]
+  }
+]

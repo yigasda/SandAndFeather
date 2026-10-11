@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/sleep-somang-v180/png/somang-sleep-0.png",
+ "view": "front",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "somang": {
+   "scale": 1.2525,
+   "match": 0.142,
+   "shift": [
+    78,
+    86
+   ],
+   "feetOffsetPx": 57,
+   "heightRatio": 1.101,
+   "heightFit": {
+    "scale": 1.1056,
+    "headScaleVsIdle": 0.883,
+    "shift": [
+     103,
+     87
+    ],
+    "headTopOffsetPx": 228
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 +57px (+9.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

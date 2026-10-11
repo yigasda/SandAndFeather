@@ -1,0 +1,18 @@
+{
+  "referenceHairWidth": 439,
+  "sourceHairWidth": 853,
+  "uniformScale": 0.5146541617819461,
+  "translation": [
+    -38,
+    66
+  ],
+  "anchor": {
+    "kind": "seat",
+    "position": [
+      330,
+      642
+    ]
+  },
+  "reference": "docs/art/chibi-refresh/final/somang/idle/somang-left.png",
+  "headWidthAfter": 439
+}

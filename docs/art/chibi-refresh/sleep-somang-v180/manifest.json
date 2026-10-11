@@ -1,0 +1,53 @@
+{
+  "revision": 180,
+  "action": "sleep",
+  "status": "representative-awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "characters": [
+    "somang"
+  ],
+  "frameCount": 1,
+  "canvas": [
+    620,
+    720
+  ],
+  "referenceVisibleHeight": 576,
+  "sourceRevision": "4d4db564c03c3e065c1aecae554496d3c559213a",
+  "sourceIdle": "../final/somang/idle/",
+  "sourceWalk": "../final/somang/walk/",
+  "guide": "../pose-guides/",
+  "anchor": {
+    "kind": "body-center",
+    "position": [
+      310,
+      450
+    ]
+  },
+  "files": [
+    {
+      "path": "png/somang-sleep-0.png",
+      "character": "somang",
+      "direction": "bed-oblique-head-up-feet-forward",
+      "frame": 0,
+      "sha256": "1ea2007da36e028a9f977ff6d3c357e15951c82210b28d4024834c0c86cb7eb7"
+    }
+  ],
+  "plannedPlayback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "scopeNote": "대표 프레임0 한 장만. 아직 호흡2프레임 애니메이션 아님. 사용자 오케이 후 소망 호흡 프레임과 세트·호루스 진행.",
+  "bedReferences": [
+    "../../map-expansion/set-room-v6-single-window-day.png",
+    "../../map-expansion/horus-room-v2-wide-day.png"
+  ],
+  "occlusionNote": "몸 전체와 의상을 그렸고 이불·침대는 PNG에 없음. 게임 적용 시 원본 침대 이불로 가림."
+}

@@ -1,0 +1,126 @@
+{
+  "revision": 178,
+  "action": "pickup",
+  "status": "batch-awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "characters": [
+    "somang"
+  ],
+  "frameCount": 8,
+  "canvas": [
+    620,
+    720
+  ],
+  "referenceVisibleHeight": 576,
+  "sourceRevision": "4d4db564c03c3e065c1aecae554496d3c559213a",
+  "sourceIdle": "../final/somang/idle/",
+  "sourceWalk": "../final/somang/walk/",
+  "guide": "../pose-guides/",
+  "anchor": {
+    "kind": "feet",
+    "position": [
+      310,
+      662
+    ]
+  },
+  "files": [
+    {
+      "path": "png/somang-back-0.png",
+      "character": "somang",
+      "direction": "back",
+      "frame": 0,
+      "sha256": "6eb10cb7aa421995825972f6f0e77346e96c57161bb725d4d6bba11240e5c00a"
+    },
+    {
+      "path": "png/somang-back-1.png",
+      "character": "somang",
+      "direction": "back",
+      "frame": 1,
+      "sha256": "b34c2e62c31c6387456dbf912ebbf13950ced4db88c7b21c96488684b5c88fee"
+    },
+    {
+      "path": "png/somang-front-0.png",
+      "character": "somang",
+      "direction": "front",
+      "frame": 0,
+      "sha256": "1aced5aab8a98e556e4df5069c52f069a1930113ee2df27c68557df6dc9e98e1"
+    },
+    {
+      "path": "png/somang-front-1.png",
+      "character": "somang",
+      "direction": "front",
+      "frame": 1,
+      "sha256": "3f12a098efcf05bb3f932cf63354f46c77b573cadc7ee88f9a4679710ee44001"
+    },
+    {
+      "path": "png/somang-left-0.png",
+      "character": "somang",
+      "direction": "left",
+      "frame": 0,
+      "sha256": "2ede70a45219928274b67c8faec7395ad22c7e25570ba994a751d8d0476c563f"
+    },
+    {
+      "path": "png/somang-left-1.png",
+      "character": "somang",
+      "direction": "left",
+      "frame": 1,
+      "sha256": "ab630beefb6743f3525c78082cbfe097b62eb7e93cf509fc2c37da7cd96ecb45"
+    },
+    {
+      "path": "png/somang-right-0.png",
+      "character": "somang",
+      "direction": "right",
+      "frame": 0,
+      "sha256": "4e0143c53e77233fcbecb5c2c0f1bd61f97cb8f361538bc8a316188f865f17ee"
+    },
+    {
+      "path": "png/somang-right-1.png",
+      "character": "somang",
+      "direction": "right",
+      "frame": 1,
+      "sha256": "7fdc227cb72698919bc806b1d02ddcf7106ba56bb48269240448b450839ac6fa"
+    }
+  ],
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      200,
+      200
+    ],
+    "loop": false,
+    "after": "idle-same-direction"
+  },
+  "previewPlayback": {
+    "sequence": [
+      "idle",
+      0,
+      1,
+      "idle"
+    ],
+    "durationMs": [
+      1000,
+      200,
+      200,
+      800
+    ],
+    "loop": true
+  },
+  "scopeNote": "사용자 이번 요청은 소망4방향8장. 세트·호루스 줍기는 이번 묶음에 포함하지 않음.",
+  "heightReview": {
+    "targetFullSquatRatio": [
+      0.65,
+      0.7
+    ],
+    "actualFrame1Ratios": {
+      "front": 0.759,
+      "back": 0.714,
+      "left": 0.686,
+      "right": 0.726
+    },
+    "note": "완성 프레임의 정면 높이는 목표보다 높게 남음. 검사 통과나 목표 완전 충족으로 표현하지 않음."
+  }
+}

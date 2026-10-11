@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/pickup-somang-v178/png/somang-front-1.png",
+ "view": "front",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "somang": {
+   "scale": 1.04,
+   "match": 0.347,
+   "shift": [
+    78,
+    86
+   ],
+   "feetOffsetPx": -123,
+   "heightRatio": 0.788,
+   "heightFit": {
+    "scale": 1.3181,
+    "headScaleVsIdle": 1.267,
+    "shift": [
+     14,
+     87
+    ],
+    "headTopOffsetPx": -47
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 -123px (-21.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

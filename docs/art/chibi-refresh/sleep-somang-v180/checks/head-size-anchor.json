@@ -1,0 +1,18 @@
+{
+  "referenceHairWidth": 442,
+  "sourceHairWidth": 1005,
+  "uniformScale": 0.43980099502487563,
+  "translation": [
+    9,
+    61
+  ],
+  "anchor": {
+    "kind": "body-center",
+    "position": [
+      310,
+      450
+    ]
+  },
+  "reference": "docs/art/chibi-refresh/final/somang/idle/somang-front.png",
+  "headWidthAfter": 440
+}

@@ -1,0 +1,44 @@
+{
+  "revision": 179,
+  "action": "sit-floor",
+  "status": "representative-awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "characters": [
+    "somang"
+  ],
+  "frameCount": 1,
+  "canvas": [
+    620,
+    720
+  ],
+  "referenceVisibleHeight": 576,
+  "sourceRevision": "4d4db564c03c3e065c1aecae554496d3c559213a",
+  "sourceIdle": "../final/somang/idle/",
+  "sourceWalk": "../final/somang/walk/",
+  "guide": "../pose-guides/",
+  "anchor": {
+    "kind": "seat",
+    "position": [
+      330,
+      642
+    ]
+  },
+  "files": [
+    {
+      "path": "png/somang-left-0.png",
+      "character": "somang",
+      "direction": "left",
+      "frame": 0,
+      "sha256": "eeeb3dee19bb0057eb92f0b32a0d507c1e3c5c99975708a3d7480c4f304dac53"
+    }
+  ],
+  "playback": {
+    "sequence": [
+      0
+    ],
+    "loop": false,
+    "hold": true
+  },
+  "scopeNote": "소망 방석 왼쪽 대표1장만. 사용자 오케이 후 나머지 대상·방향 및 걸상 자세 제작."
+}
