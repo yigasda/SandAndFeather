@@ -1,0 +1,674 @@
+[
+  {
+    "file": "horus-back-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-back-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.065,
+          "match": 0.244,
+          "shift": [
+            104,
+            85
+          ],
+          "feetOffsetPx": -119,
+          "heightRatio": 0.798,
+          "heightFit": {
+            "scale": 1.3341,
+            "headScaleVsIdle": 1.253,
+            "shift": [
+              54,
+              88
+            ],
+            "headTopOffsetPx": 247
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -119px (-20.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-back-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-back-1.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0425,
+          "match": 0.239,
+          "shift": [
+            110,
+            84
+          ],
+          "feetOffsetPx": -171,
+          "heightRatio": 0.71,
+          "heightFit": {
+            "scale": 1.4706,
+            "headScaleVsIdle": 1.411,
+            "shift": [
+              32,
+              88
+            ],
+            "headTopOffsetPx": -420
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -171px (-29.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-front-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-front-0.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0675,
+          "match": 0.492,
+          "shift": [
+            112,
+            75
+          ],
+          "feetOffsetPx": -105,
+          "heightRatio": 0.84,
+          "heightFit": {
+            "scale": 1.2721,
+            "headScaleVsIdle": 1.192,
+            "shift": [
+              74,
+              88
+            ],
+            "headTopOffsetPx": -422
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -105px (-18.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-front-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-front-1.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.0775,
+          "match": 0.306,
+          "shift": [
+            110,
+            74
+          ],
+          "feetOffsetPx": -157,
+          "heightRatio": 0.751,
+          "heightFit": {
+            "scale": 1.4339,
+            "headScaleVsIdle": 1.331,
+            "shift": [
+              44,
+              88
+            ],
+            "headTopOffsetPx": 154
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -157px (-27.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-left-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-left-0.png",
+      "view": "left",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.075,
+          "match": 0.331,
+          "shift": [
+            111,
+            97
+          ],
+          "feetOffsetPx": -76,
+          "heightRatio": 0.872,
+          "heightFit": {
+            "scale": 1.2325,
+            "headScaleVsIdle": 1.146,
+            "shift": [
+              80,
+              101
+            ],
+            "headTopOffsetPx": -33
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -76px (-13.5% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-left-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-left-1.png",
+      "view": "left",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.1,
+          "match": 0.396,
+          "shift": [
+            111,
+            95
+          ],
+          "feetOffsetPx": -152,
+          "heightRatio": 0.74,
+          "heightFit": {
+            "scale": 1.4868,
+            "headScaleVsIdle": 1.352,
+            "shift": [
+              35,
+              101
+            ],
+            "headTopOffsetPx": -60
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -152px (-27.0% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-right-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-right-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.1025,
+          "match": 0.366,
+          "shift": [
+            75,
+            89
+          ],
+          "feetOffsetPx": -83,
+          "heightRatio": 0.874,
+          "heightFit": {
+            "scale": 1.2629,
+            "headScaleVsIdle": 1.146,
+            "shift": [
+              43,
+              101
+            ],
+            "headTopOffsetPx": -44
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -83px (-14.8% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "horus-right-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-right-1.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "horus": {
+          "scale": 1.115,
+          "match": 0.353,
+          "shift": [
+            70,
+            88
+          ],
+          "feetOffsetPx": -136,
+          "heightRatio": 0.781,
+          "heightFit": {
+            "scale": 1.4264,
+            "headScaleVsIdle": 1.279,
+            "shift": [
+              8,
+              101
+            ],
+            "headTopOffsetPx": -53
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -136px (-24.2% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-back-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-back-0.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.2075,
+          "match": 0.235,
+          "shift": [
+            10,
+            84
+          ],
+          "feetOffsetPx": -139,
+          "heightRatio": 0.764,
+          "heightFit": {
+            "scale": 1.5824,
+            "headScaleVsIdle": 1.31,
+            "shift": [
+              -87,
+              87
+            ],
+            "headTopOffsetPx": -41
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -139px (-24.1% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-back-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-back-1.png",
+      "view": "back",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.2025,
+          "match": 0.229,
+          "shift": [
+            17,
+            83
+          ],
+          "feetOffsetPx": -134,
+          "heightRatio": 0.774,
+          "heightFit": {
+            "scale": 1.5526,
+            "headScaleVsIdle": 1.291,
+            "shift": [
+              -76,
+              87
+            ],
+            "headTopOffsetPx": -28
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -134px (-23.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-front-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-front-0.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.31,
+          "match": 0.331,
+          "shift": [
+            -27,
+            84
+          ],
+          "feetOffsetPx": -56,
+          "heightRatio": 0.908,
+          "heightFit": {
+            "scale": 1.4436,
+            "headScaleVsIdle": 1.102,
+            "shift": [
+              -89,
+              87
+            ],
+            "headTopOffsetPx": -27
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -56px (-9.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-front-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-front-1.png",
+      "view": "front",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.115,
+          "match": 0.272,
+          "shift": [
+            30,
+            82
+          ],
+          "feetOffsetPx": -106,
+          "heightRatio": 0.825,
+          "heightFit": {
+            "scale": 1.3521,
+            "headScaleVsIdle": 1.213,
+            "shift": [
+              -49,
+              87
+            ],
+            "headTopOffsetPx": -33
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -106px (-18.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-left-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-left-0.png",
+      "view": "left",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.2875,
+          "match": 0.368,
+          "shift": [
+            70,
+            86
+          ],
+          "feetOffsetPx": -84,
+          "heightRatio": 0.856,
+          "heightFit": {
+            "scale": 1.5039,
+            "headScaleVsIdle": 1.168,
+            "shift": [
+              -36,
+              87
+            ],
+            "headTopOffsetPx": -114
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -84px (-14.6% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-left-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-left-1.png",
+      "view": "left",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.275,
+          "match": 0.334,
+          "shift": [
+            73,
+            86
+          ],
+          "feetOffsetPx": -86,
+          "heightRatio": 0.852,
+          "heightFit": {
+            "scale": 1.4961,
+            "headScaleVsIdle": 1.173,
+            "shift": [
+              -32,
+              87
+            ],
+            "headTopOffsetPx": -30
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -86px (-14.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-right-0.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-right-0.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.235,
+          "match": 0.28,
+          "shift": [
+            -105,
+            86
+          ],
+          "feetOffsetPx": -93,
+          "heightRatio": 0.84,
+          "heightFit": {
+            "scale": 1.4694,
+            "headScaleVsIdle": 1.19,
+            "shift": [
+              -114,
+              87
+            ],
+            "headTopOffsetPx": -44
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -93px (-16.1% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  },
+  {
+    "file": "set-right-1.png",
+    "report": {
+      "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-right-1.png",
+      "view": "right",
+      "finalRevision": {
+        "proportion": 173,
+        "skin": 168
+      },
+      "canvas": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "characters": {
+        "set": {
+          "scale": 1.3575,
+          "match": 0.319,
+          "shift": [
+            -156,
+            56
+          ],
+          "feetOffsetPx": -71,
+          "heightRatio": 0.931,
+          "heightFit": {
+            "scale": 1.4582,
+            "headScaleVsIdle": 1.074,
+            "shift": [
+              -104,
+              87
+            ],
+            "headTopOffsetPx": -39
+          },
+          "verdict": "비율 다름: 머리를 맞추면 발이 -71px (-12.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+        }
+      }
+    }
+  }
+]

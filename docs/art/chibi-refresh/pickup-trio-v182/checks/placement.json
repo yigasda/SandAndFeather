@@ -1,0 +1,242 @@
+[
+  {
+    "file": "set-front-0.png",
+    "character": "set",
+    "direction": "front",
+    "frame": 0,
+    "referenceHairWidth": 553,
+    "sourceHairWidth": 377,
+    "uniformScale": 1.46684350132626,
+    "visibleHeight": 399,
+    "heightRatio": 0.693,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "set-front-1.png",
+    "character": "set",
+    "direction": "front",
+    "frame": 1,
+    "referenceHairWidth": 553,
+    "sourceHairWidth": 366,
+    "uniformScale": 1.510928961748634,
+    "visibleHeight": 426,
+    "heightRatio": 0.74,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "set-back-0.png",
+    "character": "set",
+    "direction": "back",
+    "frame": 0,
+    "referenceHairWidth": 508,
+    "sourceHairWidth": 393,
+    "uniformScale": 1.2926208651399491,
+    "visibleHeight": 364,
+    "heightRatio": 0.632,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "set-back-1.png",
+    "character": "set",
+    "direction": "back",
+    "frame": 1,
+    "referenceHairWidth": 508,
+    "sourceHairWidth": 386,
+    "uniformScale": 1.3160621761658031,
+    "visibleHeight": 371,
+    "heightRatio": 0.644,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "set-left-0.png",
+    "character": "set",
+    "direction": "left",
+    "frame": 0,
+    "referenceHairWidth": 506,
+    "sourceHairWidth": 385,
+    "uniformScale": 1.3142857142857143,
+    "visibleHeight": 383,
+    "heightRatio": 0.665,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "set-left-1.png",
+    "character": "set",
+    "direction": "left",
+    "frame": 1,
+    "referenceHairWidth": 506,
+    "sourceHairWidth": 380,
+    "uniformScale": 1.331578947368421,
+    "visibleHeight": 385,
+    "heightRatio": 0.668,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "set-right-0.png",
+    "character": "set",
+    "direction": "right",
+    "frame": 0,
+    "referenceHairWidth": 525,
+    "sourceHairWidth": 396,
+    "uniformScale": 1.3257575757575757,
+    "visibleHeight": 392,
+    "heightRatio": 0.681,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "set-right-1.png",
+    "character": "set",
+    "direction": "right",
+    "frame": 1,
+    "referenceHairWidth": 525,
+    "sourceHairWidth": 398,
+    "uniformScale": 1.3190954773869348,
+    "visibleHeight": 395,
+    "heightRatio": 0.686,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-front-0.png",
+    "character": "horus",
+    "direction": "front",
+    "frame": 0,
+    "referenceHairWidth": 367,
+    "sourceHairWidth": 269,
+    "uniformScale": 1.3643122676579926,
+    "visibleHeight": 452,
+    "heightRatio": 0.785,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-front-1.png",
+    "character": "horus",
+    "direction": "front",
+    "frame": 1,
+    "referenceHairWidth": 367,
+    "sourceHairWidth": 273,
+    "uniformScale": 1.3443223443223444,
+    "visibleHeight": 401,
+    "heightRatio": 0.696,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-back-0.png",
+    "character": "horus",
+    "direction": "back",
+    "frame": 0,
+    "referenceHairWidth": 368,
+    "sourceHairWidth": 279,
+    "uniformScale": 1.3189964157706093,
+    "visibleHeight": 431,
+    "heightRatio": 0.748,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-back-1.png",
+    "character": "horus",
+    "direction": "back",
+    "frame": 1,
+    "referenceHairWidth": 368,
+    "sourceHairWidth": 282,
+    "uniformScale": 1.3049645390070923,
+    "visibleHeight": 391,
+    "heightRatio": 0.679,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-left-0.png",
+    "character": "horus",
+    "direction": "left",
+    "frame": 0,
+    "referenceHairWidth": 392,
+    "sourceHairWidth": 295,
+    "uniformScale": 1.3288135593220338,
+    "visibleHeight": 456,
+    "heightRatio": 0.792,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-left-1.png",
+    "character": "horus",
+    "direction": "left",
+    "frame": 1,
+    "referenceHairWidth": 392,
+    "sourceHairWidth": 307,
+    "uniformScale": 1.276872964169381,
+    "visibleHeight": 378,
+    "heightRatio": 0.656,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-right-0.png",
+    "character": "horus",
+    "direction": "right",
+    "frame": 0,
+    "referenceHairWidth": 394,
+    "sourceHairWidth": 300,
+    "uniformScale": 1.3133333333333332,
+    "visibleHeight": 445,
+    "heightRatio": 0.773,
+    "anchor": [
+      310,
+      662
+    ]
+  },
+  {
+    "file": "horus-right-1.png",
+    "character": "horus",
+    "direction": "right",
+    "frame": 1,
+    "referenceHairWidth": 394,
+    "sourceHairWidth": 306,
+    "uniformScale": 1.2875816993464053,
+    "visibleHeight": 394,
+    "heightRatio": 0.684,
+    "anchor": [
+      310,
+      662
+    ]
+  }
+]

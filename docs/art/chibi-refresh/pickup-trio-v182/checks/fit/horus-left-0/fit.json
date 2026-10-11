@@ -1,0 +1,39 @@
+{
+ "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-left-0.png",
+ "view": "left",
+ "finalRevision": {
+  "proportion": 173,
+  "skin": 168
+ },
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "horus": {
+   "scale": 1.075,
+   "match": 0.331,
+   "shift": [
+    111,
+    97
+   ],
+   "feetOffsetPx": -76,
+   "heightRatio": 0.872,
+   "heightFit": {
+    "scale": 1.2325,
+    "headScaleVsIdle": 1.146,
+    "shift": [
+     80,
+     101
+    ],
+    "headTopOffsetPx": -33
+   },
+   "verdict": "비율 다름: 머리를 맞추면 발이 -76px (-13.5% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+  }
+ }
+}

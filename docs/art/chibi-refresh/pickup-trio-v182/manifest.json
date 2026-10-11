@@ -1,0 +1,298 @@
+{
+  "revision": 182,
+  "action": "pickup",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "runtimeOwner": "opus",
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 16,
+  "characters": [
+    "set",
+    "horus"
+  ],
+  "approvedPoseReference": "../pickup-somang-v178/manifest.json",
+  "standingReferences": "../final/",
+  "guideReferences": "../pose-guides/",
+  "files": [
+    {
+      "path": "png/horus-back-0.png",
+      "character": "horus",
+      "direction": "back",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "3627dbcb00d95608009affb0bec1852f14aa02614012c731e418570979ba5c2a"
+    },
+    {
+      "path": "png/horus-back-1.png",
+      "character": "horus",
+      "direction": "back",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "no-visible-face",
+      "sha256": "c6a75507c0301516f4d258b4f8b4849853114a81cb7f756376ba09b3c14d131d"
+    },
+    {
+      "path": "png/horus-front-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "c7fb198667f2e8c43c8a1a3bf7f686680a5377a0a1bbabaf72958d1f180662f0"
+    },
+    {
+      "path": "png/horus-front-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "narrow-inspecting-eyes",
+      "sha256": "b86c5381d9afd8a3696a9af4858bcc62ebdab92f07d8afdd5aba4c6f76c6d966"
+    },
+    {
+      "path": "png/horus-left-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "bd016228b0601b6f58145e5d03d4c7996e19de184ecee0f3a9f51ed23e517b56"
+    },
+    {
+      "path": "png/horus-left-1.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "narrow-inspecting-eyes",
+      "sha256": "5e857dbf4271d2257df832264890ba5aa63f7632e5331360f260946ab1d769b7"
+    },
+    {
+      "path": "png/horus-right-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "b3cf5a03dc0082f23947aa3cbcde70f48f0e43aaeafc8b08c7e7e27a73e5bdf4"
+    },
+    {
+      "path": "png/horus-right-1.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "narrow-inspecting-eyes",
+      "sha256": "5d514b24b4db4a9aff50d37424ca730861b6777ed354d74ef52ae2ad5f16211d"
+    },
+    {
+      "path": "png/set-back-0.png",
+      "character": "set",
+      "direction": "back",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "8b3b35b81f0a36271044d9c46fd6f190e6fa3e8f1adaa89f894a6f6d47196a13"
+    },
+    {
+      "path": "png/set-back-1.png",
+      "character": "set",
+      "direction": "back",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "no-visible-face",
+      "sha256": "beef75ffd98e561cdad3d7c3f30ad951a11e2628f68df363034083c4ca49108b"
+    },
+    {
+      "path": "png/set-front-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "3ddeab0a0e7190595fc8b49603ac85153db0e168cfb6a667578eaa949776cb6b"
+    },
+    {
+      "path": "png/set-front-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "subtle-questioning-lids",
+      "sha256": "3da960f944c947d32242f2f90ad99cab8fec2628fbc17dcd56b68ef45f563ce7"
+    },
+    {
+      "path": "png/set-left-0.png",
+      "character": "set",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "dd8a109c73e8cbf2ca32e2908bc4bd6b368050821ee55e997604855500f97e1c"
+    },
+    {
+      "path": "png/set-left-1.png",
+      "character": "set",
+      "direction": "left",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "subtle-questioning-lids",
+      "sha256": "8d7783cc4f3a24f914e6d6e39af22f48cbda8b53f58fecdfd0562a2768841ea6"
+    },
+    {
+      "path": "png/set-right-0.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "basic",
+      "sha256": "5920e675da7032aee6f4d769f71b2bb8857dc5b9a0d2ff581714244449f6b24e"
+    },
+    {
+      "path": "png/set-right-1.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "feet",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "expression": "subtle-questioning-lids",
+      "sha256": "b648197904eed1fb2b2673fdbe1cdd60bd974536d6115a835e5f58d27cf1db15"
+    }
+  ],
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      200,
+      200
+    ],
+    "loop": false,
+    "after": "same-direction-idle"
+  },
+  "previewPlayback": {
+    "sequence": [
+      "idle",
+      0,
+      1,
+      "idle"
+    ],
+    "durationMs": [
+      1000,
+      200,
+      200,
+      800
+    ],
+    "loop": true
+  },
+  "heightReview": {
+    "targetFullSquatRatio": [
+      0.65,
+      0.7
+    ],
+    "measured": "checks/placement.json",
+    "note": "호루스 완성 자세 약66~70%, 세트 완성 자세 약64~74%. 세트의 바닥에 닿는 긴 머리는 접히도록 다시 그렸음. 방향별 수치는 placement.json에 기록."
+  },
+  "mirrorPolicy": "Left and right drawn separately. Mirrors used only in comparison preview."
+}
