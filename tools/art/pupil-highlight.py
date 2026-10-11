@@ -1,11 +1,12 @@
 # Horus has no white highlight over his pupils (his final idle shows only the lower glow). This finds small white
 # spots sitting inside his gold irises and, with --fix, paints each spot pixel with the iris colour around it.
 #
-#   python3 tools/art/pupil-highlight.py <png>... [--fix] [--out <folder>]
+#   python3 tools/art/pupil-highlight.py <png>... [--box x0,y0,x1,y1] [--fix] [--out <folder>]
 #
 # A spot is a group of near-white pixels (bright, unsaturated) of at most MAX_SPOT pixels whose ring (the pixels
 # around it) is mostly iris: gold or the dark pupil. The white of the eye is big and lies against the black
-# eyelid line and the skin, so it is never taken. Only the upper part of the figure is searched (the head), and only
+# eyelid line and the skin, so it is never taken. The fix takes the spot's paler edge too and fills it from the pixels
+# just outside (no hole, no leftover ring). Only the upper part of the figure is searched (the head), and only
 # spots in the upper half of their iris: the lower glow (his own, in the idle) stays. Back views and closed eyes have
 # no iris to search: pass only pictures with open eyes.
 # --out writes <name>-pupil.png: before | after, the eyes enlarged, found pixels in magenta.
@@ -42,7 +43,7 @@ def components(mask):
     return out
 
 
-def find(im):
+def find(im, box=None):
     a = np.asarray(im.convert('RGBA')).astype(np.float32)
     h, s, v = hsv(a[..., :3] / 255)
     solid = a[..., 3] > 200
@@ -54,6 +55,7 @@ def find(im):
     spots = []
     for pts in components(white):
         if len(pts) > MAX_SPOT: continue
+        if box and not all(box[0] <= x <= box[2] and box[1] <= y <= box[3] for y, x in pts): continue
         m = np.zeros_like(white)
         for y, x in pts: m[y, x] = True
         ring = np.zeros_like(m)
@@ -70,20 +72,50 @@ def find(im):
     return a, spots
 
 
+def grow(a, pts):
+    """the spot plus its light edge: the core is white, but the pixels around it are a paler gold that would stay as a
+    faint ring. Neighbours lighter than the iris further out are taken in, up to 3 pixels."""
+    H, W = a.shape[:2]
+    L = a[..., :3].mean(-1)
+    m = np.zeros((H, W), bool)
+    for y, x in pts: m[y, x] = True
+    core = m.copy()
+    far = np.zeros_like(m)
+    for dy in range(-6, 7):
+        for dx in range(-6, 7):
+            if 4 <= max(abs(dy), abs(dx)): far |= np.roll(np.roll(core, dy, 0), dx, 1)
+    far &= ~core & (a[..., 3] > 200)
+    ref = np.median(L[far]) if far.any() else L[core].min()
+    for _ in range(3):
+        ring = np.zeros_like(m)
+        for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)): ring |= np.roll(np.roll(m, dy, 0), dx, 1)
+        ring &= ~m & (a[..., 3] > 200) & (L > ref + 12)
+        if not ring.any(): break
+        m |= ring
+    return m
+
+
 def fix(a, spots):
+    """fill the spot and its light edge from the colours just outside it: each pixel is the distance-weighted mix of
+    the nearest outside pixel up, down, left and right, so the iris shading runs on through it with no ring"""
     b = a.copy()
-    for pts, ring in spots:
-        ry, rx = np.nonzero(ring)
-        for y, x in pts:
-            d = (ry - y) ** 2 + (rx - x) ** 2
-            near = np.argsort(d)[:6]
-            b[y, x, :3] = np.median(a[ry[near], rx[near], :3], 0)
+    H, W = a.shape[:2]
+    for pts, _ in spots:
+        m = grow(a, pts)
+        for y, x in zip(*np.nonzero(m)):
+            acc, wsum = np.zeros(3), 0.0
+            for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                yy, xx, d = y + dy, x + dx, 1
+                while 0 <= yy < H and 0 <= xx < W and m[yy, xx]: yy += dy; xx += dx; d += 1
+                if 0 <= yy < H and 0 <= xx < W and a[yy, xx, 3] > 200:
+                    acc += a[yy, xx, :3] / d; wsum += 1 / d
+            if wsum: b[y, x, :3] = acc / wsum
     return b
 
 
 def sheet(a, b, spots, out):
-    pts = [p for s in spots for p in s[0]]
-    if not pts: return
+    if not spots: return
+    pts = [tuple(p) for s in spots for p in zip(*np.nonzero(grow(a, s[0])))]
     ys, xs = zip(*pts)
     x0, y0, x1, y1 = max(0, min(xs) - 40), max(0, min(ys) - 30), min(a.shape[1], max(xs) + 40), min(a.shape[0], max(ys) + 30)
     def crop(arr, mark):
@@ -95,17 +127,18 @@ def sheet(a, b, spots, out):
     t = [crop(a, False), crop(a, True), crop(b, False)]
     S = Image.new('RGB', (sum(i.width for i in t) + 20, t[0].height + 24), (245, 239, 227)); d = ImageDraw.Draw(S)
     x = 0
-    for lab, i in zip(('전', '찾은 점(분홍)', '후'), t):
+    for lab, i in zip(('before', 'filled (magenta)', 'after'), t):
         S.paste(i, (x, 24)); d.text((x + 4, 4), lab, fill=(40, 30, 20)); x += i.width + 10
     S.save(out)
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('png', nargs='+'); ap.add_argument('--fix', action='store_true'); ap.add_argument('--out')
+    ap.add_argument('--box', help='x0,y0,x1,y1: only spots inside (the eyes), so a shine on the gold collar is left alone')
     o = ap.parse_args()
     if o.out: os.makedirs(o.out, exist_ok=True)
     for p in o.png:
-        a, spots = find(Image.open(p))
+        a, spots = find(Image.open(p), tuple(int(v) for v in o.box.split(',')) if o.box else None)
         n = sum(len(s[0]) for s in spots)
         print(f'{p}: 점 {len(spots)}개, {n}px')
         if not spots: continue
