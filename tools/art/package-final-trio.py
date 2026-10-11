@@ -74,6 +74,27 @@ for who in M['characters']:
  with zipfile.ZipFile(O/'downloads'/f'{who}-16-transparent-png.zip') as z:
   assert len([n for n in z.namelist() if n.endswith('.png')])==16
 
+# All three characters stay visible: direction rows, character columns.
+pages=[]
+for phase,k in [(None,0)]+[(p,k%4) for k,p in enumerate(seq*2)]:
+ cv=Image.new('RGBA',(1080,1720),'#f5efe3');dr=ImageDraw.Draw(cv)
+ for r,d in enumerate(dirs):
+  for c,who in enumerate(M['characters']):
+   x,y=c*360,r*430
+   cv.alpha_composite(sprite(who,d,phase,k),(x,y+30))
+   direction={'back':'UP / BACK','front':'DOWN / FRONT','left':'LEFT','right':'RIGHT'}[d]
+   dr.text((x+12,y+7),f'{who.upper()} / {direction} / '+('IDLE' if phase is None else 'WALK'),font=font,fill='#45392f')
+ pages.append(cv.convert('RGB'))
+atlas=Image.new('RGB',(1080,1720*len(pages)))
+for i,im in enumerate(pages):atlas.paste(im,(0,i*1720))
+pal=atlas.quantize(colors=256,method=Image.Quantize.MEDIANCUT)
+pg=[im.quantize(palette=pal,dither=Image.Dither.NONE) for im in pages]
+dst=O/'previews/trio-four-directions-idle-walk.gif'
+durations=[1200]+[180]*8
+pg[0].save(dst,save_all=True,append_images=pg[1:],duration=durations,loop=0,disposal=2,optimize=False)
+g=Image.open(dst);assert g.n_frames==9
+for i,dur in enumerate(durations):g.seek(i);assert g.info['duration']==dur
+
 with zipfile.ZipFile(O/'downloads/trio-48-transparent-png.zip','w',zipfile.ZIP_DEFLATED) as z:
  for f in frames:z.write(O/f['relativePath'],f['relativePath'])
  for name in ['manifest.json','README.md']:z.write(O/name,name)

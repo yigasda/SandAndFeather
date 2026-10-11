@@ -10,7 +10,7 @@
 
 각 캐릭터의 `idle/`와 `walk/`에 투명RGBA PNG 원본을 넣었다. 기본 형태·크기·도트 배치는 채택본 그대로다. **168에서 사용자 요청으로 호루스16장의 피부 팔레트만 변경했다.** 세트·소망은 원본과 바이트 동일하다. `back`=상, `front`=하, `left`=좌, `right`=우. 걷기 파일 끝0·1·2가 프레임 번호다.
 
-## 피부색 마이너 수정168
+## 피부색 마이너 수정168 — 사용자 최종 채택
 
 첨부 시안과 동일한 과거 승인 원본에서 피부 기본색 RGB(252,228,223)을 채취했다. 호루스16장의 피부 밝은 면·도트 그림자·그라데이션에 같은 팔레트 변환을 적용하고, 알파 및 선택 영역 밖 픽셀 변경0을 확인했다. 결과·참조·검증은 `checks/horus-skin168.json`. 모양·크기·모션 변경 없음.
 
@@ -26,6 +26,8 @@
 
 ## 다운로드와 확인
 
-`downloads/`에 캐릭터별16장 ZIP3개와 전체48장 ZIP이 있다. ZIP의 `manifest.json`에 적용 명세가 포함된다. `previews/`는 확인용 정지→걷기GIF와 밝은/어두운 배경PNG이며 게임 스프라이트로 사용하지 않는다.
+`downloads/`에 캐릭터별16장 ZIP3개와 전체48장 ZIP이 있다. ZIP의 `manifest.json`에 적용 명세가 포함된다. `previews/trio-four-directions-idle-walk.gif`는 세트·소망·호루스를 세 열에, 상·하·좌·우를 네 행에 함께 배치한다. 정지1.2초 뒤 걷기 두 주기를 반복한다.
+
+`previews/`는 확인용 정지→걷기GIF와 밝은/어두운 배경PNG이며 게임 스프라이트로 사용하지 않는다.
 
 이전 버전 복구: manifest의 `sourceGitCommit`·`sourceGitPath`로 `git show <commit>:<path>`를 사용한다. 이전 자료를 현행 최종 폴더에 섞지 않는다. 전달물 재생성은 `python3 tools/art/package-final-trio.py`.

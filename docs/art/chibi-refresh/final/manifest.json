@@ -1849,5 +1849,7 @@
     }
   ],
   "skinPaletteRevision": 168,
-  "skinPaletteNote": "User requested skin color matching old approved Horus reference; base253,229,213 maps to sampled252,228,223; shaded/highlight tones adjusted with same per-pixel transform. Geometry unchanged."
+  "skinPaletteNote": "User requested skin color matching old approved Horus reference; base253,229,213 maps to sampled252,228,223; shaded/highlight tones adjusted with same per-pixel transform. Geometry unchanged.",
+  "skinPaletteApproved": true,
+  "skinPaletteApprovalQuote": "오키 좋아 / 채택"
 }
