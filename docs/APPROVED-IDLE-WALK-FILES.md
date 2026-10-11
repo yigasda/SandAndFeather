@@ -1,70 +1,11 @@
-# 게임 적용 원본48장 — 정지 및 이전 걷기 참고
+# 이전 정지·걷기 목록 폐기 안내
 
-**최신 선택 목록은 [아스트라 인수인계5절](ASTRA-HANDOFF.md#5-최종-채택-시안--사용자가-선택한-파일만)을 따른다. 이 문서의 걷기36장은 이전 승인·게임 적용본이며, 현재 최종 채택 걷기는 [135·136번36장](art/chibi-refresh/review-trio-walk-v5/README.md)이다.**
+2026-10-11 사용자 지시: 이전 그림체 정지는 폐기한다. 이 문서가 구버전 정지12장을 최종 선택본처럼 전달한 것이 혼용의 원인이었다. 잘못된 파일별 적용 목록을 제거했다.
 
-정지 12장 + 이전 걷기 36장, 총 48장. 경로는 저장소 루트 기준이다. 파일 ID와 해시는 [JSON 명세](art/chibi-refresh/approved/manifest.json)에 있다. 모든 파일은 투명 RGBA PNG다.
+- 이전 정지12장, 정지 시트3장, 정지 포함 미리보기2장을 삭제했다. 원본은 git 이력에만 남는다.
+- 현재 채택 걷기는 [review-trio-walk-v5](art/chibi-refresh/review-trio-walk-v5/README.md)의36장이다. 소망 접합부144 보수가 포함된다.
+- **새 그림체 정지12장은 미완성. 구버전과 혼합 적용 금지.** 걷기 중간 포즈를 별도 승인 없이 완성된 정지 세트로 표시하지 않는다.
+- `approved/walk/`는 기존 동작 분석 참고만 한다. 그 폴더의 manifest는 런타임 사용 불가로 표시했고, 예전 패커도 해당 입력에서는 중단한다.
+- 오푸스: 이미 만든 혼합 아틀라스는 최종본으로 전달하지 않는다. 정지 원본이 빠져 있으면 구버전으로 채우지 않고 미완성으로 남긴다. 현재 게임 아틀라스와 연결 변경은 별도 적용 작업이다.
 
-정지 셀은 620×720, 기준점 310,662, 기준 캐릭터 높이 628이다. 걷기 셀은 360×400, 기준점 180,370, 기준 캐릭터 높이 330이다. 크기와 기준점은 원본 픽셀 단위이며 실제 게임 표시 크기가 아니다.
-
-## 세트
-
-| 상태 | 게임 방향 | 포즈 | 정확한 원본 파일 |
-|---|---|---|---|
-| idle | down | 정지 | [docs/art/chibi-refresh/approved/idle/set-front.png](art/chibi-refresh/approved/idle/set-front.png) |
-| walk | down | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/set-front-0.png](art/chibi-refresh/approved/walk/set-front-0.png) |
-| walk | down | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/set-front-1.png](art/chibi-refresh/approved/walk/set-front-1.png) |
-| walk | down | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/set-front-2.png](art/chibi-refresh/approved/walk/set-front-2.png) |
-| idle | up | 정지 | [docs/art/chibi-refresh/approved/idle/set-back.png](art/chibi-refresh/approved/idle/set-back.png) |
-| walk | up | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/set-back-0.png](art/chibi-refresh/approved/walk/set-back-0.png) |
-| walk | up | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/set-back-1.png](art/chibi-refresh/approved/walk/set-back-1.png) |
-| walk | up | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/set-back-2.png](art/chibi-refresh/approved/walk/set-back-2.png) |
-| idle | left | 정지 | [docs/art/chibi-refresh/approved/idle/set-left.png](art/chibi-refresh/approved/idle/set-left.png) |
-| walk | left | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/set-left-0.png](art/chibi-refresh/approved/walk/set-left-0.png) |
-| walk | left | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/set-left-1.png](art/chibi-refresh/approved/walk/set-left-1.png) |
-| walk | left | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/set-left-2.png](art/chibi-refresh/approved/walk/set-left-2.png) |
-| idle | right | 정지 | [docs/art/chibi-refresh/approved/idle/set-right.png](art/chibi-refresh/approved/idle/set-right.png) |
-| walk | right | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/set-right-0.png](art/chibi-refresh/approved/walk/set-right-0.png) |
-| walk | right | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/set-right-1.png](art/chibi-refresh/approved/walk/set-right-1.png) |
-| walk | right | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/set-right-2.png](art/chibi-refresh/approved/walk/set-right-2.png) |
-
-## 소망
-
-| 상태 | 게임 방향 | 포즈 | 정확한 원본 파일 |
-|---|---|---|---|
-| idle | down | 정지 | [docs/art/chibi-refresh/approved/idle/somang-front.png](art/chibi-refresh/approved/idle/somang-front.png) |
-| walk | down | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/somang-front-0.png](art/chibi-refresh/approved/walk/somang-front-0.png) |
-| walk | down | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/somang-front-1.png](art/chibi-refresh/approved/walk/somang-front-1.png) |
-| walk | down | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/somang-front-2.png](art/chibi-refresh/approved/walk/somang-front-2.png) |
-| idle | up | 정지 | [docs/art/chibi-refresh/approved/idle/somang-back.png](art/chibi-refresh/approved/idle/somang-back.png) |
-| walk | up | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/somang-back-0.png](art/chibi-refresh/approved/walk/somang-back-0.png) |
-| walk | up | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/somang-back-1.png](art/chibi-refresh/approved/walk/somang-back-1.png) |
-| walk | up | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/somang-back-2.png](art/chibi-refresh/approved/walk/somang-back-2.png) |
-| idle | left | 정지 | [docs/art/chibi-refresh/approved/idle/somang-left.png](art/chibi-refresh/approved/idle/somang-left.png) |
-| walk | left | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/somang-left-0.png](art/chibi-refresh/approved/walk/somang-left-0.png) |
-| walk | left | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/somang-left-1.png](art/chibi-refresh/approved/walk/somang-left-1.png) |
-| walk | left | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/somang-left-2.png](art/chibi-refresh/approved/walk/somang-left-2.png) |
-| idle | right | 정지 | [docs/art/chibi-refresh/approved/idle/somang-right.png](art/chibi-refresh/approved/idle/somang-right.png) |
-| walk | right | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/somang-right-0.png](art/chibi-refresh/approved/walk/somang-right-0.png) |
-| walk | right | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/somang-right-1.png](art/chibi-refresh/approved/walk/somang-right-1.png) |
-| walk | right | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/somang-right-2.png](art/chibi-refresh/approved/walk/somang-right-2.png) |
-
-## 호루스
-
-| 상태 | 게임 방향 | 포즈 | 정확한 원본 파일 |
-|---|---|---|---|
-| idle | down | 정지 | [docs/art/chibi-refresh/approved/idle/horus-front.png](art/chibi-refresh/approved/idle/horus-front.png) |
-| walk | down | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/horus-front-0.png](art/chibi-refresh/approved/walk/horus-front-0.png) |
-| walk | down | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/horus-front-1.png](art/chibi-refresh/approved/walk/horus-front-1.png) |
-| walk | down | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/horus-front-2.png](art/chibi-refresh/approved/walk/horus-front-2.png) |
-| idle | up | 정지 | [docs/art/chibi-refresh/approved/idle/horus-back.png](art/chibi-refresh/approved/idle/horus-back.png) |
-| walk | up | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/horus-back-0.png](art/chibi-refresh/approved/walk/horus-back-0.png) |
-| walk | up | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/horus-back-1.png](art/chibi-refresh/approved/walk/horus-back-1.png) |
-| walk | up | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/horus-back-2.png](art/chibi-refresh/approved/walk/horus-back-2.png) |
-| idle | left | 정지 | [docs/art/chibi-refresh/approved/idle/horus-left.png](art/chibi-refresh/approved/idle/horus-left.png) |
-| walk | left | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/horus-left-0.png](art/chibi-refresh/approved/walk/horus-left-0.png) |
-| walk | left | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/horus-left-1.png](art/chibi-refresh/approved/walk/horus-left-1.png) |
-| walk | left | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/horus-left-2.png](art/chibi-refresh/approved/walk/horus-left-2.png) |
-| idle | right | 정지 | [docs/art/chibi-refresh/approved/idle/horus-right.png](art/chibi-refresh/approved/idle/horus-right.png) |
-| walk | right | 0 · 발 A | [docs/art/chibi-refresh/approved/walk/horus-right-0.png](art/chibi-refresh/approved/walk/horus-right-0.png) |
-| walk | right | 1 · 가운데 | [docs/art/chibi-refresh/approved/walk/horus-right-1.png](art/chibi-refresh/approved/walk/horus-right-1.png) |
-| walk | right | 2 · 발 B | [docs/art/chibi-refresh/approved/walk/horus-right-2.png](art/chibi-refresh/approved/walk/horus-right-2.png) |
+최종 선택 목록은 [아스트라 인수인계5절](ASTRA-HANDOFF.md#5-최종-채택-시안--사용자가-선택한-파일만)만 따른다.

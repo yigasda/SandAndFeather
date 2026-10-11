@@ -32,6 +32,7 @@
 6. **지시는 그 지시가 나온 작업에만 적용한다.** 예를 들어 정지 얼굴을 고칠 때의 "머리 복사, 재작화 금지"를 걷기에 옮기지 않는다. 지난 지시가 새 작업과 부딪치면 사용자의 최신 의도를 따르고, 애매하면 제작 전에 묻는다.
 7. **최신 파일, 채택 파일, 게임 파일은 서로 다르다.**
    - main 커밋이나 Drive 업로드는 채택의 증거가 아니다.
+   - 새 세트가 미완성이라고 이전 그림체를 최종 목록에 남기거나 대체 파일로 연결하지 않는다. 같은 캐릭터의 정지와 걷기에 서로 다른 그림체를 섞지 않는다.
    - 사용자가 채택한다고 한 말은 그대로 기록한다.
    - 부분 채택(예: 얼굴형만 채택)은 부분별로 적는다.
 8. **같은 반려가 두 번 나오면 멈춘다.** 추가 생성을 멈추고 원본, 방법, 검수 기준부터 다시 본다. 지적받은 부분만 땜질하지 않는다.
@@ -80,7 +81,7 @@
 | 대상 | 다음 작업 |
 |---|---|
 | 긴 회랑5장 | 아트 전부 채택 완료. 적용 대상은5절의139~143번. 게임 적용과 이동·충돌·가림 확인은 오푸스 담당 |
-| 셋소호 새 그림체 정지 | 4방향12장 세트는 미완료. 채택된 새 걷기를 정지12장 완성으로 간주하지 않는다 |
+| 셋소호 새 그림체 정지 | 4방향12장 세트는 미완료. 이전 그림체 정지는 폐기·혼용 금지. 현재 채택 외형에 맞는 새 정지 제작이 남아 있다 |
 | 개별 수정 검토 | 소망 피부121번, 호루스 이마 경계132번은 별도 채택 확인 전. 최종 정지 시안을 자동 교체하지 않는다 |
 
 그다음은 [ASTRA-PLAN.md](ASTRA-PLAN.md) 순서대로 간다. 두아트 경계 동굴 첫 시안은 후속 작업의 검토 자료이며 최종 채택 목록에 포함하지 않는다.
@@ -95,12 +96,11 @@
 
 | 대상 | 최종 채택 원본 | 범위 |
 |---|---|---|
-| 정지4방향12장 | [approved/idle/](art/chibi-refresh/approved/idle/) — `{set,somang,horus}-{front,back,left,right}.png` | 완성·채택된 정지 세트.620×720. 새 그림체12장이 완성됐다는 뜻은 아님 |
 | 호루스 새 정면 외형 | [131번 horus-front.png](art/chibi-refresh/review-horus-v13/horus-front.png) | 정면 단독 채택. 사용자가 “이걸 바탕으로 … 걷기”를 요청한 기준 |
 | 새 걷기36장 | [review-trio-walk-v5/walk/](art/chibi-refresh/review-trio-walk-v5/walk/) — `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` | 소망·호루스135 + 세트136 외형·동작 채택. 소망12장 접합부는 사용자 요청144 보수 반영. 사용자 “셋소호 다 합격” |
 | 새 걷기 합본GIF | [144-trio-walk.gif](art/chibi-refresh/review-trio-walk-v5/previews/144-trio-walk.gif) | 위 채택36장의 확인용 합본. 편집은 개별PNG에서 시작 |
 
-정지 세트와 새 걷기의 실제 명세는 각각 [정지 manifest](art/chibi-refresh/approved/manifest.json), [새 걷기 manifest](art/chibi-refresh/review-trio-walk-v5/manifest.json)에 있다. 정지 manifest에 함께 있는 예전 걷기 항목은 최신 선택본이 아니다. 게임 적용 여부는 채택 여부와 별도로 판단한다.
+**이전 그림체 정지12장은 폐기했다.** PNG·정지 시트·미리보기까지 삭제했으며 최종 선택본이 아니다. 새 그림체 정지12장은 미완성이다. 구버전 정지로 빈자리를 채우거나 새 걷기와 섞어 적용하지 않는다. 걷기 중간 프레임을 승인된 새 정지 세트라고 부르지도 않는다. 현재 명세는 [새 걷기 manifest](art/chibi-refresh/review-trio-walk-v5/manifest.json) 하나를 따른다.
 
 ### 회랑·우물 마당
 
@@ -134,7 +134,7 @@
 | 열주 계단 | `colonnade-stairs-v1.png`, `colonnade-stairs-v1-night.png` |
 | 지붕 | `temple-roof-v1-day.png`, `temple-roof-v1-night.png` |
 
-**제작 참고 자료는 최종 시안 목록이 아니다.** 걷기 동작 분석은 [walk-analysis](art/chibi-refresh/walk-analysis/README.md), 게임에 쓰는 기존48장 파일별 명세는 [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md), 출구 좌표는 [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md)에서 필요할 때 확인한다. 실제 수정 베이스는 위 최종 채택 파일로 정한다.
+**제작 참고 자료는 최종 시안 목록이 아니다.** 걷기 동작 분석은 [walk-analysis](art/chibi-refresh/walk-analysis/README.md), 이전 그림체 폐기 안내는 [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md), 출구 좌표는 [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md)에서 필요할 때 확인한다. 실제 수정 베이스는 위 최종 채택 파일로 정한다.
 
 ## 6. 세부맵을 그리고 고칠 때
 

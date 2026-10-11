@@ -71,7 +71,9 @@ def pack(frames, visible, out):
 
 def main():
     man = json.load(open(os.path.join(SRC, 'manifest.json')))
-    # 0.9.23: the walk is the newer approved set (Astra 135/136, "셋소호 다 합격"); standing stays the approved idle 12
+    if man.get('runtimeEligible') is False:
+        raise SystemExit('Retired sprite source: old idle art was removed. Do not mix old idle with current walk. See docs/ASTRA-HANDOFF.md section 5.')
+    # Keep the current walk input; a retired idle manifest must never reach packing.
     walk = json.load(open(os.path.join(WALK, 'manifest.json')))
     cycle = walk['walkCycle']
     frames = [f for f in man['frames'] if f['state'] == 'idle'] + [f for f in walk['frames'] if f['state'] == 'walk']
