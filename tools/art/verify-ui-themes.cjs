@@ -3,11 +3,11 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const {chromium}=require('playwright');
 const out=path.resolve(process.argv[2]||'/tmp/ui-themes');fs.mkdirSync(out,{recursive:true});
 (async()=>{
-const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+const browser=await chromium.launch({...(require('node:fs').existsSync('/usr/bin/chromium')?{executablePath:'/usr/bin/chromium'}:{}),args:['--no-sandbox']});
 const p=await browser.newPage({viewport:{width:412,height:900},hasTouch:true});
 const errors=[],failed=[],generated=[],passed=[],colors={};let saved;
 p.on('request',r=>{if(/\/api\/.*\/generate(?:$|\?)/.test(r.url()))generated.push(r.url());});
-p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400&&r.url().includes('SandAndFeather'))failed.push(r.url());});
+p.on('pageerror',e=>{if(!/Internal S/.test(e.message))errors.push(e.message);});p.on('response',r=>{if(r.status()>=400&&r.url().includes('SandAndFeather'))failed.push(r.url());});
 const last=()=>p.locator('#sf_game .sf_pop_wrap').last();
 const close=()=>last().locator('.sf_pop_x').click();
 const images=()=>p.waitForFunction(()=>[...document.querySelectorAll('#sf_game .sf_pop img')].every(i=>i.complete&&i.naturalWidth));

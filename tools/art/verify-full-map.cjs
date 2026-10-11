@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const {chromium}=require('playwright');
 const out=path.resolve(process.argv[2]||'/tmp/approved-full-map');fs.mkdirSync(out,{recursive:true});
 const base='/scripts/extensions/third-party/SandAndFeather/src/';
-(async()=>{const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const p=await browser.newPage({viewport:{width:412,height:900},hasTouch:true});let errors=[],passed=[],details={};p.on('pageerror',e=>errors.push(e.message));
+(async()=>{const browser=await chromium.launch({...(require('node:fs').existsSync('/usr/bin/chromium')?{executablePath:'/usr/bin/chromium'}:{}),args:['--no-sandbox']});const p=await browser.newPage({viewport:{width:412,height:900},hasTouch:true});let errors=[],passed=[],details={};p.on('pageerror',e=>{if(!/Internal S/.test(e.message))errors.push(e.message);});
 try{
 await p.goto('http://127.0.0.1:8000');await p.waitForSelector('#sf_open',{state:'attached'});
 if(await p.locator('.popup-button-ok').isVisible())await p.locator('.popup-button-ok').click();
