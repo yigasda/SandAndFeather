@@ -81,7 +81,7 @@
 | 대상 | 다음 작업 |
 |---|---|
 | 긴 회랑5장 | 아트 전부 채택 완료. 적용 대상은5절의139~143번. 게임 적용과 이동·충돌·가림 확인은 오푸스 담당 |
-| 셋소호 새 그림체 정지 | 별도4방향12장 패키지는 없음. `review-trio-walk-v4/idle-reference/`에는 걷기 제작 당시 정면 참고3장만 있다. 이것은 최신 걷기36장과도 별개다. 이전 그림체 정지는 폐기·혼용 금지. |
+| 셋소호 새 그림체 정지 | 별도4방향12장 패키지는 없음. `review-trio-walk-v4/idle-reference/`에는 걷기 제작 당시 정면 참고3장만 있다. 이것은 최신 걷기36장과도 별개다. 이전 그림체 정지는 참고용 보존·게임 혼용 금지. |
 | 개별 수정 검토 | 소망 피부121번, 호루스 이마 경계132번은 별도 채택 확인 전. 최종 정지 시안을 자동 교체하지 않는다 |
 
 그다음은 [ASTRA-PLAN.md](ASTRA-PLAN.md) 순서대로 간다. 두아트 경계 동굴 첫 시안은 후속 작업의 검토 자료이며 최종 채택 목록에 포함하지 않는다.
@@ -100,7 +100,7 @@
 | 새 걷기36장 | [review-trio-walk-v5/walk/](art/chibi-refresh/review-trio-walk-v5/walk/) — `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` | 소망·호루스135 + 세트136 외형·동작 채택. 소망12장 접합부는 사용자 요청144 보수 반영. 사용자 “셋소호 다 합격” |
 | 새 걷기 합본GIF | [144-trio-walk.gif](art/chibi-refresh/review-trio-walk-v5/previews/144-trio-walk.gif) | 위 채택36장의 확인용 합본. 편집은 개별PNG에서 시작 |
 
-**이전 그림체 정지12장은 폐기했다.** PNG·정지 시트·미리보기까지 삭제했으며 최종 선택본이 아니다. 새 그림체 정지12장은 미완성이다. 구버전 정지로 빈자리를 채우거나 새 걷기와 섞어 적용하지 않는다. 걷기 중간 프레임을 승인된 새 정지 세트라고 부르지도 않는다. 현재 명세는 [새 걷기 manifest](art/chibi-refresh/review-trio-walk-v5/manifest.json) 하나를 따른다.
+**이전 그림체 정지12장은 참고용으로 보존한다.** 사용자 최신 지시 “구버전 폐기하지 마 참고 시안으로 써야지”에 따라 PNG·정지 시트·미리보기를 모두 복구했다. 최종 적용 선택본은 아니다. 새 그림체 정지12장은 미완성이다. 구버전 정지로 빈자리를 채우거나 새 걷기와 섞어 적용하지 않는다. 걷기 중간 프레임을 승인된 새 정지 세트라고 부르지도 않는다. 현재 명세는 [새 걷기 manifest](art/chibi-refresh/review-trio-walk-v5/manifest.json) 하나를 따른다.
 
 ### 회랑·우물 마당
 
@@ -134,7 +134,7 @@
 | 열주 계단 | `colonnade-stairs-v1.png`, `colonnade-stairs-v1-night.png` |
 | 지붕 | `temple-roof-v1-day.png`, `temple-roof-v1-night.png` |
 
-**제작 참고 자료는 최종 시안 목록이 아니다.** 걷기 동작 분석은 [walk-analysis](art/chibi-refresh/walk-analysis/README.md), 이전 그림체 폐기 안내는 [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md), 출구 좌표는 [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md)에서 필요할 때 확인한다. 실제 수정 베이스는 위 최종 채택 파일로 정한다.
+**제작 참고 자료는 최종 시안 목록이 아니다.** 걷기 동작 분석은 [walk-analysis](art/chibi-refresh/walk-analysis/README.md), 이전 그림체 참고 목록은 [APPROVED-IDLE-WALK-FILES.md](APPROVED-IDLE-WALK-FILES.md), 출구 좌표는 [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md)에서 필요할 때 확인한다. 실제 수정 베이스는 위 최종 채택 파일로 정한다.
 
 ## 6. 세부맵을 그리고 고칠 때
 

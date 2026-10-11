@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "retired-style-motion-reference-only-not-for-runtime",
+  "status": "previous-style-reference-only-not-for-runtime",
   "artBaselineCommit": "401cb5d",
   "approvalDate": "2026-10-10",
   "walkReviewNumber": 97,
@@ -16,9 +16,9 @@
     "somang",
     "horus"
   ],
-  "idleFrameCount": 0,
+  "idleFrameCount": 12,
   "walkFrameCount": 36,
-  "frameCount": 36,
+  "frameCount": 48,
   "walkCycle": {
     "sequence": [
       0,
@@ -70,6 +70,37 @@
   },
   "runtimeApplied": false,
   "frames": [
+    {
+      "id": "set.idle.down",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/set-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        55,
+        34,
+        565,
+        662
+      ],
+      "sha256": "2e6bb5a19e402ec629ec43c13d4bb93b8e2d6537d104459127caf5f1f415402d"
+    },
     {
       "id": "set.walk.down.0",
       "character": "set",
@@ -162,6 +193,37 @@
         370
       ],
       "sha256": "61b4e647794bc6b4fd32db6f08489e8b8976e8ff4a8589bdb475120a09a94d79"
+    },
+    {
+      "id": "set.idle.up",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/set-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        70,
+        34,
+        550,
+        662
+      ],
+      "sha256": "20a88710fce0157ac66d26a38d83946479fb960e5fe9b77f441557a83bbc0697"
     },
     {
       "id": "set.walk.up.0",
@@ -257,6 +319,37 @@
       "sha256": "c997375774d844c07011aee4f19fcf50fecf0d74e0ac6e8a0530ac2a36e17b14"
     },
     {
+      "id": "set.idle.left",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/set-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        59,
+        34,
+        560,
+        662
+      ],
+      "sha256": "48d172cf13e9a183c0abedab29e38dc590a8cd79213983c5f01281466e5a83ab"
+    },
+    {
       "id": "set.walk.left.0",
       "character": "set",
       "state": "walk",
@@ -348,6 +441,37 @@
         370
       ],
       "sha256": "ca6f6e58e8de78c5afad923c9daa92eb87fb5948cab86959f1418e97c3c5ccca"
+    },
+    {
+      "id": "set.idle.right",
+      "character": "set",
+      "state": "idle",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/set-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        48,
+        34,
+        571,
+        662
+      ],
+      "sha256": "d83ebb32faa6679688b9c45f46ba4b659186801afedab46a4239ab347b11f7ab"
     },
     {
       "id": "set.walk.right.0",
@@ -443,6 +567,37 @@
       "sha256": "ee858d24b18dee8b18840ee444a1558d8ea6aef3b50a8a9851e6a62a8be86f45"
     },
     {
+      "id": "somang.idle.down",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/somang-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        54,
+        34,
+        566,
+        662
+      ],
+      "sha256": "8a61e008d602d55dda23ee5ab95133c59598b44c916b2272ad0cccdae802df7f"
+    },
+    {
       "id": "somang.walk.down.0",
       "character": "somang",
       "state": "walk",
@@ -534,6 +689,37 @@
         370
       ],
       "sha256": "43bab58c5c9ea2441835fb3b4096970a1a926372c14df3eed468677d082c0345"
+    },
+    {
+      "id": "somang.idle.up",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/somang-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        65,
+        34,
+        554,
+        662
+      ],
+      "sha256": "43e92364685b99cfcad06f36247b957cb5c9caecf7e7b6d7eb128124b184d5c7"
     },
     {
       "id": "somang.walk.up.0",
@@ -629,6 +815,37 @@
       "sha256": "c91b6544f228a6701ba73277f0d66daf00f44ac7241844aaaae20f2e79f1c1bf"
     },
     {
+      "id": "somang.idle.left",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/somang-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        80,
+        35,
+        540,
+        662
+      ],
+      "sha256": "4a6f336f09261937c4083c902c8fec6d00d8a8c3153614d8f3e67dd3855da544"
+    },
+    {
       "id": "somang.walk.left.0",
       "character": "somang",
       "state": "walk",
@@ -720,6 +937,37 @@
         370
       ],
       "sha256": "0617b00b3d2a54d6ef0b242031d5771eb0d4884c7c40ef17bcb59959be9f1c03"
+    },
+    {
+      "id": "somang.idle.right",
+      "character": "somang",
+      "state": "idle",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/somang-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        81,
+        35,
+        539,
+        662
+      ],
+      "sha256": "7dc8b905795d0757392ab3580756e222c86facc3a1e84a84575a3ed85bb7a336"
     },
     {
       "id": "somang.walk.right.0",
@@ -815,6 +1063,37 @@
       "sha256": "c9b4b68c869066a3be96410036f314ecdf153bc499cda4b4a1c675abca8b0e98"
     },
     {
+      "id": "horus.idle.down",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/horus-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        114,
+        34,
+        506,
+        662
+      ],
+      "sha256": "ced191decfd67b69a8f4e0d35c4a45f4d16d892d51fcfdb1ccba1c70af1ef0a8"
+    },
+    {
       "id": "horus.walk.down.0",
       "character": "horus",
       "state": "walk",
@@ -906,6 +1185,37 @@
         370
       ],
       "sha256": "934a6325794db21f472f2843fe17dd7583a81364463fa5ae43cc11008abae2fe"
+    },
+    {
+      "id": "horus.idle.up",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/horus-back.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        110,
+        34,
+        509,
+        662
+      ],
+      "sha256": "08942f03551b0f57aa58e27436fb182da7e2862764493f58d8dd813ea12974df"
     },
     {
       "id": "horus.walk.up.0",
@@ -1001,6 +1311,37 @@
       "sha256": "9edf3bfc719af2f57c523a41c6fa81aff2f458336382a79496bf913004adffbd"
     },
     {
+      "id": "horus.idle.left",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/horus-left.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        116,
+        34,
+        504,
+        662
+      ],
+      "sha256": "b67b2f5ce0bc736fa69579d2892255e591ddfb1ef8b7cdddf1e50a2e2301b69f"
+    },
+    {
       "id": "horus.walk.left.0",
       "character": "horus",
       "state": "walk",
@@ -1092,6 +1433,37 @@
         370
       ],
       "sha256": "d8f304a9ad8651480665b8bf42fffc06a6de903cb1e5cd85683c50c1416f6139"
+    },
+    {
+      "id": "horus.idle.right",
+      "character": "horus",
+      "state": "idle",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": null,
+      "path": "docs/art/chibi-refresh/approved/idle/horus-right.png",
+      "size": [
+        620,
+        720
+      ],
+      "rect": [
+        0,
+        0,
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        112,
+        34,
+        508,
+        662
+      ],
+      "sha256": "b6f805de81be758978c5942805f13e7f9341e4408f5b25285d16e5be31c857a2"
     },
     {
       "id": "horus.walk.right.0",
@@ -1188,7 +1560,7 @@
     }
   ],
   "runtimeEligible": false,
-  "retiredOn": "2026-10-11",
-  "retirementReason": "User retired the old idle style; do not mix old idle with current approved walk.",
-  "currentWalkManifest": "docs/art/chibi-refresh/review-trio-walk-v5/manifest.json"
+  "referenceOnly": true,
+  "currentWalkManifest": "docs/art/chibi-refresh/review-trio-walk-v5/manifest.json",
+  "usageNote": "User explicitly requested preservation as references. Do not combine these old idle frames with current walk for runtime."
 }
