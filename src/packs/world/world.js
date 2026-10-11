@@ -11,13 +11,14 @@ import { getState, saveState } from '../../core/state.js';
 import { spend } from '../../core/sun.js';
 import { addThings } from '../../world/things.js';
 import { onSpot, travel } from '../../ui/window.js';
+import { leadOf, withOf } from '../../core/heroes.js';
 import { josa } from '../../core/ko.js';
 
 const shows = (sec, s) => {
     const w = sec.when || {};
     if (w.parts && !w.parts.includes(s.part)) return false;
     if (w.seasons && !w.seasons.includes(seasonOf(s.date.month))) return false;
-    if (w.with && s.party.with !== w.with) return false;
+    if (w.with && leadOf(s) !== w.with && withOf(s) !== w.with) return false; // Set or Horus in the group, leading or behind
     return sec.daily ? canDo(s, `secret:${sec.id}`) : !s.flags[`secret:${sec.id}`];
 };
 
@@ -61,4 +62,4 @@ addThings((mapId, s) => (mapId === 'ombos' && s.works.boat?.done ? [{
 onSpot('ruins_dock', (spot, ui) => ui.showCard({ title: '배', text: '옴보스로 돌아갈까?', buttons: [{ label: '닫기' }, { label: '돌아가기', primary: true, onClick: () => { travel('ombos', { x: 25, y: 28 }); } }] }));
 
 // the companion's name for the prompt-free parts of the game
-export const companion = s => (s.party.with ? DATA.duat?.companions?.[s.party.with] : null);
+export const companion = s => (withOf(s) ? DATA.duat?.companions?.[withOf(s)] : null);

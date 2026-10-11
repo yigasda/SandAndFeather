@@ -14,36 +14,40 @@ import { codexCard } from './codexcard.js';
 import { showEvent } from './talk.js';
 import { portrait, characterDetail } from './portraits.js';
 import { FEATHER } from './icon.js';
+import { HEROES, HERO_NAME, leadOf, setLead, setWith, statsOf, withOf } from '../core/heroes.js';
 
-export function somangCard(ui, onClose) {
+// one of the three: picture, 모험 등급, abilities and learning. Learning is picked by whoever walks in front.
+export function characterCard(ui, id = 'somang', onClose = null) {
     const s = getState();
     let close = () => {};
-    const r = rankInfo(s.stats.xp);
+    const st = statsOf(s, id), mine = id === leadOf(s);
+    const lessons = mine ? s.lessons : (s.chars?.[id]?.lessons || { cur: '', prog: {}, done: [] });
+    const r = rankInfo(st.xp);
     const opens = { wisdom: '기록 해독, 강 건너 비문', strength: '두아트에서 버티는 체력, 공격', faith: '두아트의 주문' };
     const hero = document.createElement('div'); hero.className = 'sf_character_summary';
-    hero.append(portrait('somang'),stack(para('소망','sf_character_name'),para(`모험 등급 ${r.rank}`),
-        ...Object.entries(STATS).map(([k,ko])=>para(`${ko} ${s.stats[k]}`,'sf_character_stat'))));
-    close = ui.showCard({ title: '소망', onClose, kind:'character-stats', wide:true,
+    hero.append(portrait(id),stack(para(HERO_NAME[id],'sf_character_name'),para(`모험 등급 ${r.rank}`),
+        ...Object.entries(STATS).map(([k,ko])=>para(`${ko} ${st[k]}`,'sf_character_stat'))));
+    close = ui.showCard({ title: HERO_NAME[id], onClose, kind:'character-stats', wide:true,
         body: stack(
             hero,
-            bar(`모험 등급 ${r.rank} · ${r.next ? `${s.stats.xp}/${r.next}` : '최고'}`, r.frac, 'sf_rank'),
-            para(r.rank < 2 ? '등급 2: 두아트 길이 하나 더 길어져' : r.rank < 3 ? '등급 3: 고친 배로 강 건너 신전에 갈 수 있어' : '등급이 오를수록 모험에서 유물이 나와'),
-            list(Object.entries(STATS).map(([k, ko]) => ({ icon: { wisdom: '📜', strength: '💪', faith: '🔆' }[k], name: `${ko} ${s.stats[k]}`, sub: opens[k] }))),
-            para('배움 목표 · 하나를 골라 이어서 익혀. 날을 건너뛰어도 그대로야', 'sf_sub_head'),
+            bar(`모험 등급 ${r.rank} · ${r.next ? `${st.xp}/${r.next}` : '최고'}`, r.frac, 'sf_rank'),
+            para(r.rank < 2 ? '등급 2: 두아트 길이 하나 더 길어져' : r.rank < 3 ? '등급 3: 고친 배로 강 건너 신전에 갈 수 있어' : '등급이 오를수록 모험에서 유리해'),
+            list(Object.entries(STATS).map(([k, ko]) => ({ icon: { wisdom: '📜', strength: '💪', faith: '🔆' }[k], name: `${ko} ${st[k]}`, sub: opens[k] }))),
+            para(mine ? '배움 목표 · 하나를 골라 이어서 익혀. 날을 건너뛰어도 그대로야' : `배움 목표 · ${HERO_NAME[id]}이(가) 앞장서면 고르고 익힐 수 있어`, 'sf_sub_head'),
             list(lessonList().map(L => {
-                const done = s.lessons.done.includes(L.id), cur = s.lessons.cur === L.id;
-                const x = cur ? lessonState(s) : null;
+                const done = lessons.done.includes(L.id), cur = lessons.cur === L.id;
+                const x = cur && mine ? lessonState(s) : null;
                 return { icon: done ? '✅' : cur ? '▶️' : '◻️', name: `${L.ko}${done ? ` · ${L.skill}` : ''}`,
-                    sub: done ? '익혔어' : cur ? `지금: ${x.st.ko} ${x.p.n}/${x.st.n}` : `${L.about}\n${L.steps.map(t => t.ko).join(' → ')}`,
-                    buttons: done || cur ? [] : [{ label: '이걸 익히기', onClick: async () => { pickLesson(s, L.id); dropLessonPicks(s); await saveState(); close(); somangCard(ui, onClose); } }] };
+                    sub: done ? '익혔어' : cur ? (x ? `지금: ${x.st.ko} ${x.p.n}/${x.st.n}` : '익히는 중') : `${L.about}\n${L.steps.map(t => t.ko).join(' → ')}`,
+                    buttons: done || cur || !mine ? [] : [{ label: '이걸 익히기', onClick: async () => { pickLesson(s, L.id); dropLessonPicks(s); await saveState(); close(); characterCard(ui, id, onClose); } }] };
             })),
             para(`태양 기운 ${sunLeft(s)}/${sunMax()} · 데벤 ${s.bag.deben}`)),
         buttons: [{ label: '도감', onClick: () => { codexCard(ui, onClose); } }, { label: '닫기', primary: true }] });
 }
+export const somangCard = (ui, onClose) => characterCard(ui, 'somang', onClose);
 
-// 일행: Somang (her rank and abilities, 자세히 for the full card), who walks in front, then one card each for
-// 혼자 / 세트 / 호루스 — the name, what walking together does, 고르기. A god's card has his mark and 인물 보기.
-// Whoever is in front is the one moved on the map; the other follows. Somang stays the one who grows.
+// 일행: who walks in front (the one played: moved on the map, fights, grows) — each with their 모험 등급 and
+// abilities and 자세히 for the full card — then who walks behind: 혼자 or one of the other two.
 const SIGIL = {
     '': FEATHER,
     // was-scepter: Set-animal head on a staff, forked foot
@@ -51,73 +55,61 @@ const SIGIL = {
     // wedjat: the eye of Horus
     horus: '<svg class="sf_sigil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11c3-3.5 6.5-4.5 9-4.5s5.5 1 8.5 4.5c-3 2.6-6 3.5-8.5 3.5S6 13.6 3 11z"/><circle cx="12" cy="10.8" r="2.1" fill="currentColor"/><path d="M4 6.6c3-2.2 6-3 8.5-3s5.5.8 7.5 2.4"/><path d="M10.6 14.4 9.2 20"/><path d="M13.6 14.2c1 2.2 2.6 3.6 4.6 3.6 1.4 0 2.2-.9 2-1.9-.2-1-1.3-1.2-1.9-.6"/></svg>',
 };
-// who walks in front: Somang, or the companion when one is chosen and put in front
-export const leadOf = s => (s?.party.lead && s.party.lead === s.party.with ? s.party.lead : 'somang');
+SIGIL.somang = FEATHER;
 
 export function partyCard(ui, onClose) {
     const s = getState();
     const C = DATA.duat?.companions || {};
-    const options = [['', { ko: '혼자', about: '조용히 다니기. 어디든 소망 혼자 걸어.' }], ...Object.entries(C)];
     const now = para('', 'sf_party_now');
-    const lead = document.createElement('div'); lead.className = 'sf_party_lead';
+    const heroes = document.createElement('div'); heroes.className = 'sf_party_choices sf_party_heroes';
     const box = document.createElement('div'); box.className = 'sf_party_choices';
     let changing = false;
-    // Somang: who she is now, and her full card
-    const r = rankInfo(s.stats.xp);
-    const hero = document.createElement('div'); hero.className = 'sf_character_summary';
-    const more = document.createElement('button'); more.type = 'button'; more.className = 'sf_btn sf_small'; more.textContent = '소망 자세히';
-    more.addEventListener('click', () => somangCard(ui, null)); // on top of 일행; closing it shows 일행 again
-    hero.append(portrait('somang'), stack(para('소망', 'sf_character_name'), para(`모험 등급 ${r.rank}`),
-        ...Object.entries(STATS).map(([k, ko]) => para(`${ko} ${s.stats[k]}`, 'sf_character_stat')), more));
-    const draw = () => {
-        const w = s.party.with, inFront = leadOf(s);
-        now.textContent = `현재 동행: ${options.find(([id]) => id === w)?.[1].ko || '혼자'} · 앞장: ${inFront === 'somang' ? '소망' : C[inFront]?.ko || inFront}`;
-        lead.replaceChildren();
-        if (w) {
-            lead.append(para('누가 앞장설까? 앞장선 사람을 움직이고, 나머지는 뒤따라와.', 'sf_sub_head'));
-            for (const [id, ko] of [['somang', '소망'], [w, C[w]?.ko || w]]) {
-                const b = document.createElement('button'); b.type = 'button';
-                b.className = `sf_btn sf_small sf_lead_pick${inFront === id ? ' sf_primary' : ''}`;
-                b.dataset.lead = id; b.textContent = inFront === id ? `${ko} 앞장 중` : `${ko} 앞장`;
-                b.disabled = changing || inFront === id;
-                b.addEventListener('click', () => setLead(id));
-                lead.append(b);
-            }
+    const row = (id, title, about, buttons) => {
+        const el = document.createElement('div');
+        el.className = 'sf_list_row sf_party_choice';
+        el.innerHTML = `<span class="sf_list_icon sf_party_sigil">${SIGIL[id] || ''}</span><span class="sf_list_main"><span class="sf_party_name"><b></b></span><small></small></span><span class="sf_list_btns"></span>`;
+        el.querySelector('b').textContent = title;
+        el.querySelector('small').textContent = about;
+        for (const b of buttons) {
+            const btn = document.createElement('button'); btn.type = 'button';
+            btn.className = `sf_btn sf_small${b.primary ? ' sf_primary' : ''}${b.cls ? ` ${b.cls}` : ''}`;
+            btn.textContent = b.label; btn.disabled = !!b.disabled;
+            if (b.aria) btn.setAttribute('aria-label', b.aria);
+            for (const [k, v] of Object.entries(b.data || {})) btn.dataset[k] = v;
+            btn.addEventListener('click', b.onClick);
+            (b.inName ? el.querySelector('.sf_party_name') : el.querySelector('.sf_list_btns')).append(btn);
         }
-        box.replaceChildren(...options.map(([id, c]) => {
-            const on = s.party.with === id;
-            const row = document.createElement('div');
-            row.className = `sf_list_row sf_party_choice${on ? ' sf_on' : ''}`;
-            row.dataset.companion = id || 'alone';
-            row.innerHTML = `<span class="sf_list_icon sf_party_sigil">${SIGIL[id] || ''}</span><span class="sf_list_main"><span class="sf_party_name"><b></b></span><small></small></span><span class="sf_list_btns"></span>`;
-            row.querySelector('b').textContent = c.ko;
-            row.querySelector('small').textContent = c.about;
-            if (id) {
-                const look = document.createElement('button');
-                look.type = 'button'; look.className = 'sf_btn sf_small sf_party_look'; look.textContent = '인물 보기';
-                look.dataset.character = id; look.setAttribute('aria-label', `${c.ko} 인물 보기`);
-                look.addEventListener('click', () => characterDetail(ui, id));
-                row.querySelector('.sf_party_name').append(look);
-            }
-            const pick = document.createElement('button');
-            pick.type = 'button'; pick.className = `sf_btn sf_small${on ? ' sf_primary' : ''}`;
-            pick.textContent = on ? '함께하는 중' : '고르기'; pick.disabled = changing || on;
-            pick.addEventListener('click', () => choose(id));
-            row.querySelector('.sf_list_btns').append(pick);
-            return row;
+        return el;
+    };
+    const draw = () => {
+        const lead = leadOf(s), w = withOf(s);
+        now.textContent = `앞장: ${HERO_NAME[lead]} · 동행: ${w ? HERO_NAME[w] : '없음(혼자)'}`;
+        heroes.replaceChildren(para('누가 앞장설까? 앞장선 사람을 움직이고, 그 사람이 싸우고 성장해.', 'sf_sub_head'), ...HEROES.map(id => {
+            const st = statsOf(s, id), on = id === lead;
+            const el = row(id, HERO_NAME[id], `모험 등급 ${rankInfo(st.xp).rank} · ${Object.entries(STATS).map(([k, ko]) => `${ko} ${st[k]}`).join(' · ')}`, [
+                { label: '자세히', inName: true, cls: 'sf_party_look', aria: `${HERO_NAME[id]} 자세히`, data: { detail: id }, onClick: () => characterCard(ui, id, null) },
+                ...(id !== 'somang' ? [{ label: '인물 보기', inName: true, cls: 'sf_party_look', aria: `${HERO_NAME[id]} 인물 보기`, data: { character: id }, onClick: () => characterDetail(ui, id) }] : []),
+                { label: on ? '앞장 중' : '앞장', primary: on, disabled: changing || on, cls: 'sf_lead_pick', data: { lead: id }, onClick: () => update(() => setLead(s, id)) },
+            ]);
+            if (on) el.classList.add('sf_on');
+            return el;
+        }));
+        box.replaceChildren(para('누구와 같이 걸을까?', 'sf_sub_head'), ...[['', '혼자', '조용히 다니기. 어디든 혼자 걸어.'], ...HEROES.filter(id => id !== lead).map(id => [id, HERO_NAME[id], C[id]?.about || ''])].map(([id, ko, about]) => {
+            const on = w === id;
+            const el = row(id, ko, about, [{ label: on ? '함께하는 중' : '고르기', primary: on, disabled: changing || on, data: { companion: id || 'alone' }, onClick: () => update(() => setWith(s, id)) }]);
+            el.dataset.companion = id || 'alone';
+            if (on) el.classList.add('sf_on');
+            return el;
         }));
     };
-    const commit = async () => {
-        changing = true; draw();
+    const update = async fn => {
+        if (changing) return; fn(); changing = true; draw();
         try { await saveState(); emit('world:changed', { map: s.pos.map }); }
         finally { changing = false; draw(); }
     };
-    // a new companion walks behind her; whoever led before steps back
-    const choose = async id => { if (changing) return; s.party.with = id; s.party.lead = 'somang'; await commit(); };
-    const setLead = async id => { if (changing) return; s.party.lead = id; await commit(); };
     draw();
     ui.showCard({ title: '일행', onClose, kind: 'party', wide: true,
-        body: stack(hero, now, lead, para('함께 걸으면 혼자는 못 보는 것이 보여. 두아트에도 기본으로 같이 가. 성장은 소망이 해.'), box) });
+        body: stack(now, heroes, box, para('함께 걸으면 혼자는 못 보는 것이 보여. 두아트에도 기본으로 같이 가.')) });
 }
 
 export function questsCard(ui, onClose) {

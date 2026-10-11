@@ -33,7 +33,7 @@ assert.equal(await p.locator('.sf_inventory_detail button,.sf_inventory_detail s
 assert.equal(await p.locator('.sf_inventory_icon_frame > *').count(),1);
 await p.locator('.sf_inventory_slot[aria-pressed="true"]').click();assert((await last().innerText()).includes('지금 꺼내기'));await close();passed.push('inventory groups/filter/detail retain individual UID/history and existing item actions');
 await p.locator('[data-tab="party"]').click();await capture('03-party-mobile');await bounds();
-assert((await last().locator('.sf_party_now').innerText()).includes('현재 동행'));for(const id of ['set','horus']){await p.locator(`[data-character="${id}"]`).click();await images();assert.equal(await last().locator('.sf_portrait_full').count(),1);assert.equal(await last().locator('.sf_gallery_dot').count(),3);await bounds();if(id==='set')await capture('04-set-full');await close();}
+assert((await last().locator('.sf_party_now').innerText()).includes('동행'));for(const id of ['set','horus']){await p.locator(`[data-character="${id}"]`).click();await images();assert.equal(await last().locator('.sf_portrait_full').count(),1);assert.equal(await last().locator('.sf_gallery_dot').count(),3);await bounds();if(id==='set')await capture('04-set-full');await close();}
 const setRow=last().locator('.sf_list_row').filter({has:p.locator('b',{hasText:/^세트$/})});await setRow.getByRole('button',{name:'고르기'}).click();
 assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.with),'set');
 await last().locator('[data-lead="set"]').click();await p.waitForTimeout(100);assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.lead),'set');

@@ -111,6 +111,12 @@
     "star_shard"
   ],
   "companions": {
+    "somang": {
+      "ko": "소망",
+      "en": "Somang",
+      "skill": "곁을 지킨다",
+      "about": "곁에서 지켜. 적을 살짝 치고, 다음 공격을 막아 줘."
+    },
     "set": {
       "ko": "세트",
       "en": "Set",

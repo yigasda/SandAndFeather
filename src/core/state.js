@@ -21,7 +21,8 @@ export const freshState = () => ({
     recent: { finds: [] },                         // what came up lately, so it does not come up again at once
     sun: { day: -1, left: 0 },                     // sun.js: today's 태양 기운
     stats: { wisdom: 0, strength: 0, faith: 0, xp: 0 }, // progress.js: 지혜 · 체력 · 신앙, 모험 경험치
-    party: { with: '', lead: 'somang' },           // the companion walking with her: '' | 'set' | 'horus'; who walks in front (she or the companion)
+    party: { with: '', lead: 'somang' },           // heroes.js: who walks in front ('somang' | 'set' | 'horus') and who walks behind ('' or another)
+    chars: {},                                     // heroes.js: the abilities and learning of those not in front
     garden: { plots: [] },                         // garden.js: [{ seed, day }] or null per plot
     works: {},                                     // works.js: { canal: { start, ready, done } }
     flags: {},                                     // one-time things: secrets found, overlays opened, hints read
@@ -60,7 +61,7 @@ const STEPS = {
 function fill(s) {
     const f = freshState();
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
-    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest', 'codex'];
+    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'chars', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest', 'codex'];
     for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
     for (const k of ['news', 'journal', 'picks', 'days']) if (!Array.isArray(s[k])) s[k] = [];
     for (const k of objs) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);
