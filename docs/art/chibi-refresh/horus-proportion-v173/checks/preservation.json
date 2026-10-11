@@ -1,0 +1,181 @@
+{
+  "base48HashesUnchanged": true,
+  "frames": [
+    {
+      "file": "horus/idle/horus-back.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        120,
+        87,
+        488,
+        662
+      ]
+    },
+    {
+      "file": "horus/idle/horus-front.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        116,
+        82,
+        500,
+        657
+      ]
+    },
+    {
+      "file": "horus/idle/horus-left.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        111,
+        100,
+        503,
+        662
+      ]
+    },
+    {
+      "file": "horus/idle/horus-right.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        115,
+        100,
+        509,
+        662
+      ]
+    },
+    {
+      "file": "horus/walk/horus-back-0.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        71,
+        42,
+        282,
+        370
+      ]
+    },
+    {
+      "file": "horus/walk/horus-back-1.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        71,
+        41,
+        282,
+        370
+      ]
+    },
+    {
+      "file": "horus/walk/horus-back-2.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        71,
+        40,
+        282,
+        370
+      ]
+    },
+    {
+      "file": "horus/walk/horus-front-0.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        65,
+        38,
+        285,
+        369
+      ]
+    },
+    {
+      "file": "horus/walk/horus-front-1.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        69,
+        38,
+        289,
+        367
+      ]
+    },
+    {
+      "file": "horus/walk/horus-front-2.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        70,
+        41,
+        286,
+        369
+      ]
+    },
+    {
+      "file": "horus/walk/horus-left-0.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        70,
+        48,
+        291,
+        368
+      ]
+    },
+    {
+      "file": "horus/walk/horus-left-1.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        66,
+        48,
+        291,
+        369
+      ]
+    },
+    {
+      "file": "horus/walk/horus-left-2.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        67,
+        48,
+        289,
+        368
+      ]
+    },
+    {
+      "file": "horus/walk/horus-right-0.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        69,
+        50,
+        292,
+        370
+      ]
+    },
+    {
+      "file": "horus/walk/horus-right-1.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        68,
+        48,
+        294,
+        370
+      ]
+    },
+    {
+      "file": "horus/walk/horus-right-2.png",
+      "newColors": 0,
+      "lowerBodyUnchanged": true,
+      "alphaBounds": [
+        67,
+        48,
+        292,
+        370
+      ]
+    }
+  ]
+}

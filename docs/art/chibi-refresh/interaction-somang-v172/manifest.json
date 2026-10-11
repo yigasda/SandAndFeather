@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "status": "batch-awaiting-user-review",
-  "artApproved": false,
+  "status": "user-approved",
+  "artApproved": true,
   "runtimeEligible": false,
   "action": "interact",
   "characters": [
@@ -126,5 +126,6 @@
       "guide": "../pose-guides/somang-right-guide.png",
       "fitReport": "checks/delivery/right-1/fit.json"
     }
-  ]
+  ],
+  "approvalEvidence": "합격!!!"
 }

@@ -1,0 +1,366 @@
+{
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "frameCount": 16,
+  "method": "continuous inverse nearest-neighbour coordinate mapping; no generation, no repaint",
+  "frames": [
+    {
+      "path": "horus/idle/horus-back.png",
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-back.png",
+      "sourceSha256": "e9c45ff716338006e8929247b02880c947d801f131b100fb2b4b7f70eac89212",
+      "sha256": "bebf2a1157152397f515031a834f957f49062fda568336975f0baebf9d9af810",
+      "neck": [
+        303,
+        391
+      ],
+      "hemY": 562,
+      "newNeckY": 401.26,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        620,
+        720
+      ]
+    },
+    {
+      "path": "horus/idle/horus-front.png",
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-front.png",
+      "sourceSha256": "487a0ca3ca42a0b521527cb6404f4c0b1641b9667e77b9ea0e3989a8962352e9",
+      "sha256": "c883f0f3cc6af5fedbca1c755bd117cde6749db73e540360ffc0e77592d56890",
+      "neck": [
+        307,
+        417
+      ],
+      "hemY": 570,
+      "newNeckY": 426.18,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        620,
+        720
+      ]
+    },
+    {
+      "path": "horus/idle/horus-left.png",
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-left.png",
+      "sourceSha256": "6b9db3f7c00c7cd31174180c1cb9a499fc02d21644a8536f31404597cea095fe",
+      "sha256": "b548a49534b363056a9ad4027b9e65c86e73fb03af649152feeb18f422ebc426",
+      "neck": [
+        286,
+        398
+      ],
+      "hemY": 565,
+      "newNeckY": 408.02,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        620,
+        720
+      ]
+    },
+    {
+      "path": "horus/idle/horus-right.png",
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-right.png",
+      "sourceSha256": "9c6dde8fc7d4484efa428c13d0623e3cb6214bc7091c2e000e435f1f8acb17ee",
+      "sha256": "3b6a92bea4cc22bbcefc7c07ee87b0b0712dabb742f30f96b3be27057f5de065",
+      "neck": [
+        317,
+        396
+      ],
+      "hemY": 563,
+      "newNeckY": 406.02,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        620,
+        720
+      ]
+    },
+    {
+      "path": "horus/walk/horus-back-0.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-back-0.png",
+      "sourceSha256": "6522341afb6f335482dab4eb0f86546f326944d33d6678dce0b9805297ce3db7",
+      "sha256": "5c64d4cecfe0e6d3d3ce2bb5f212bdc74a31cdbd355fde38d7b458798360149d",
+      "neck": [
+        180,
+        214
+      ],
+      "hemY": 315,
+      "newNeckY": 220.06,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-back-1.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-back-1.png",
+      "sourceSha256": "26d60b6718e22290761e7660172ba692e61ded85031fa732c4afbc2f9b7c7d6c",
+      "sha256": "260828fd6d03387ec64bc110747df4ba85aa0090dfc89edc735368acdda8a285",
+      "neck": [
+        180,
+        214
+      ],
+      "hemY": 316,
+      "newNeckY": 220.12,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-back-2.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-back-2.png",
+      "sourceSha256": "7c0976e420584391decb8f1d1036b6c6fb140b9229de7cab41fb2492b664952c",
+      "sha256": "e7dfda575e585b71f369e194ff6268bb091cfad05a790fb2ec5908361031b08c",
+      "neck": [
+        180,
+        214
+      ],
+      "hemY": 316,
+      "newNeckY": 220.12,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-front-0.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-front-0.png",
+      "sourceSha256": "40ff1c45d53bceca7192b0253c6d1f7b9e46cef1598b50866003f426981f38c0",
+      "sha256": "21969177de721e83ae43ff50f801dea56a67debac3440ee2b4102e0206868fee",
+      "neck": [
+        179,
+        229
+      ],
+      "hemY": 319,
+      "newNeckY": 234.4,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-front-1.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-front-1.png",
+      "sourceSha256": "1b68320fa2a11f0a79803d13bb1ebb544237240b535de02806fb65af6fe305c5",
+      "sha256": "2302b9cab6019464841fa40d4108fa504cd2d68212a8c9bcb30804f5f480fbb2",
+      "neck": [
+        181,
+        229
+      ],
+      "hemY": 321,
+      "newNeckY": 234.52,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-front-2.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-front-2.png",
+      "sourceSha256": "346024a8db94b31b594e5f3b820874f03a63576eea293161eb7145797d0d148e",
+      "sha256": "8df7b158072bbe832aef68c14f7125ac92c2eb55074a610dae0b1b517c1c8ccd",
+      "neck": [
+        182,
+        229
+      ],
+      "hemY": 320,
+      "newNeckY": 234.46,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-left-0.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-left-0.png",
+      "sourceSha256": "6a502523b0d0d9e75c5c53014dd77b780370c44a7cf601068cb561e10ec3aed2",
+      "sha256": "d488f9044b211c4a06fafa5875746135aea23bc95c10c7a8653937f59295d6da",
+      "neck": [
+        167,
+        218
+      ],
+      "hemY": 310,
+      "newNeckY": 223.52,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-left-1.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-left-1.png",
+      "sourceSha256": "ba387f69222b558303baa2890426dd83bf66ba874d9a40c6df45be63e6aaa381",
+      "sha256": "c7c33d933c81f46a4545d39c4c166dfda0b2d026374ad2b080ea6144c52abe4d",
+      "neck": [
+        168,
+        217
+      ],
+      "hemY": 313,
+      "newNeckY": 222.76,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-left-2.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-left-2.png",
+      "sourceSha256": "c5793543c7a95673f47b7fd8f0e6f9891f67c05f2955ee17595621276cb4e1c4",
+      "sha256": "f249cd105ac588ad4ff4bd364baad3612c7bcb2c4747d2f6197a7e7bc79ad67d",
+      "neck": [
+        168,
+        218
+      ],
+      "hemY": 311,
+      "newNeckY": 223.57999999999998,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-right-0.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-right-0.png",
+      "sourceSha256": "93fcfc025bcb15f749b8d801fc36985ad8aeed1774a2fe3b6ed4abd86bf1e0df",
+      "sha256": "622dc5c902a366b41451be42d51886c98dd9a539c9449ee3beb24bda72d736db",
+      "neck": [
+        186,
+        218
+      ],
+      "hemY": 310,
+      "newNeckY": 223.52,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-right-1.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-right-1.png",
+      "sourceSha256": "86b583e4768c0feda158760012047de418d8af4fa1437ee6056f3a068f495286",
+      "sha256": "00831f386335c3d8161e60ea9007ca1e7269c74b1450f4726353f39c283dbc07",
+      "neck": [
+        185,
+        216
+      ],
+      "hemY": 313,
+      "newNeckY": 221.82,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    },
+    {
+      "path": "horus/walk/horus-right-2.png",
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-right-2.png",
+      "sourceSha256": "d41e9fc446c5eccbb08f3547c879d0df38e209c55a975c165c330bddcdae7dee",
+      "sha256": "f30b080e70568b5924d082b34d44e54de64edf9c4d21a17ac65b3ad0f1aeec84",
+      "neck": [
+        186,
+        217
+      ],
+      "hemY": 310,
+      "newNeckY": 222.57999999999998,
+      "headScale": 1.04,
+      "torsoWidthScale": 0.96,
+      "torsoHeightScale": 0.94,
+      "lowerBodyVisiblePixelsUnchanged": true,
+      "size": [
+        360,
+        400
+      ]
+    }
+  ],
+  "walkSequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "walkFrameDurationMs": 180,
+  "idleAnchor": [
+    310,
+    662
+  ],
+  "walkAnchor": [
+    180,
+    370
+  ],
+  "referenceVisibleHeight": {
+    "idle": 576,
+    "walk": 330
+  },
+  "horusFrontOffsets": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      0,
+      -1
+    ]
+  ]
+}
