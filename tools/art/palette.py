@@ -1,7 +1,7 @@
 # The colour table of the final idle and walk: every part's base colour and its shading steps, picked once from the
 # approved pixels so nobody has to eyedrop them again.
 #
-#   python3 tools/art/palette.py            → docs/art/chibi-refresh/palette/{palette.json, palette.md, palette-<who>.png}
+#   python3 tools/art/palette.py            → docs/art/chibi-refresh/palette/{palette.json, palette.md, palette-<who>.png, eyes.png}
 #
 # For each character, direction and part (피부, 머리, 외곽선, 신발, 금장, 옷) it takes the opaque pixels of that
 # direction's final idle and 3 walks, rounds them a little (4 levels), and names:
@@ -116,7 +116,7 @@ def main():
           '스포이트로 다시 뽑지 않는다. 누운 그림처럼 방향이 애매하면 정면 표. 표에 없는 단계가 필요하면 새로 만들지 말고 사용자에게 묻는다.', '',
           '- 기본 = 가장 많이 쓴 색(평평한 면). 그림자 1 = 기본보다 조금 어두운 색, 그림자 2 = 더 어두운 색(외곽선 제외), 밝은 쪽 = 하이라이트.',
           '- 괄호 안 % = 그 부위에서 그 색이 차지하는 비율. 작은 %는 작은 점·선에만 쓴다.',
-          '- 볼 홍조, 눈동자, 입, 리본처럼 작은 곳은 표에 없다. 그 방향 최종 정지에서 그대로 가져온다.',
+          '- **눈은 표에 없다**(작은 칸에 색이 너무 많다). [eyes.png](eyes.png)의 정지 눈을 쓴다: 뜬 눈은 같은 방향 정지 눈 픽셀을 그대로 옮겨도 된다, 표정이 바뀐 눈은 그 그림에 있는 색만. 볼 홍조, 입, 리본도 그 방향 최종 정지에서 그대로.',
           '- 같은 캐릭터라도 방향마다 조금 다르게 칠해져 있다(채택본 그대로). 다른 방향 색을 섞지 않는다.', '']
     for who, ko in WHO.items():
         md += [f'## {ko}', '', f'![{ko} 색 표](palette-{who}.png)', '']
@@ -151,7 +151,31 @@ def main():
                     txt = (255, 255, 255) if cs.lab(np.array([c['rgb']], np.float32))[0][0] < 55 else (20, 20, 20)
                     d.text((x + 3, y + ch - 20), c['hex'], fill=txt, font=FONT)
         img.save(os.path.join(OUT, f'palette-{who}.png'))
+    eyes()
     print('→', os.path.relpath(OUT))
+
+
+def eyes():
+    """eyes.png: each character's face band (brows, eyes, ears) from the final idle, front / left / right, enlarged
+    without smoothing. Eyes have too many colours for the table: an open eye is taken from here as it is."""
+    cell_w, cell_h, lab_h = 420, 300, 30
+    img = Image.new('RGB', (cell_w * 3 + 20, (cell_h + lab_h) * len(WHO) + 10), (245, 239, 227)); d = ImageDraw.Draw(img)
+    for r, (who, ko) in enumerate(WHO.items()):
+        for c, v in enumerate(('front', 'left', 'right')):
+            I = Image.open(os.path.join(FINAL, who, 'idle', f'{who}-{v}.png')).convert('RGBA')
+            im = np.asarray(I).astype(np.float32); P = cs.parts(im, who)
+            sk = P['skin'].copy(); sk[P['top'] + int(0.55 * P['H']):] = False
+            ys, xs = np.nonzero(sk)
+            pad = int(0.25 * (ys.max() - ys.min()))  # the face band can stop at the eyes: show a little below
+            cr = I.crop((int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1 + pad))
+            k = max(1, min(cell_w // cr.width, cell_h // cr.height)) if min(cell_w // cr.width, cell_h // cr.height) >= 1 else 1
+            cr = cr.resize((cr.width * k, cr.height * k), Image.NEAREST)
+            if cr.width > cell_w or cr.height > cell_h: cr.thumbnail((cell_w, cell_h), Image.NEAREST)
+            x, y = 10 + c * cell_w, r * (cell_h + lab_h) + lab_h
+            bg = Image.new('RGBA', cr.size, (245, 239, 227, 255)); bg.alpha_composite(cr)
+            img.paste(bg.convert('RGB'), (x, y))
+            d.text((x, y - 24), f'{ko} {KO_VIEW[v]}', fill=(40, 30, 20), font=FONT)
+    img.save(os.path.join(OUT, 'eyes.png'))
 
 
 if __name__ == '__main__':
