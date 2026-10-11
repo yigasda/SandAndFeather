@@ -4,7 +4,7 @@
 
 2026-10-10. 호루스 피부·걷기 머리 전체 수정까지 승인. 현재 사용할 원본은 **[approved/](approved/)** 한 곳이다. 이전 반려·교체 시안과 시안 생성 스크립트는 사용자의 요청으로 제거했다. 최종 48개 PNG는 승인 파일을 바이트 그대로 이동했으며 다시 그리거나 압축하지 않았다. 이전 제작 과정은 Git 이력에만 남아 있다.
 
-- [오푸스 적용 지시](../../OPUS-IDLE-WALK-INTEGRATION.md)
+- 오푸스 적용 지시
 - [48장 파일별 목록](../../APPROVED-IDLE-WALK-FILES.md)
 - [프레임·방향·pivot·해시·재생 설정](approved/manifest.json)
 - [최종 정지 4방향](approved/previews/trio-idle.jpg)

@@ -13,7 +13,7 @@
 | **아스트라** | 그림: 시안, 캐릭터 스프라이트, 맵 아트 | [docs/ASTRA-HANDOFF.md](docs/ASTRA-HANDOFF.md) → [docs/ASTRA-PLAN.md](docs/ASTRA-PLAN.md) |
 | **오푸스** | 게임: 채택된 그림 적용, 충돌·출구·저장, UI, 코드, 검증 | [docs/OPUS-HANDOFF.md](docs/OPUS-HANDOFF.md) |
 
-- 두 문서에는 지금 기준만 있다. 지난 경과는 [docs/archive/](docs/archive/)에 있다.
+- 두 문서에는 지금 기준만 있다. 지난 경과는 git 커밋 기록에만 남아 있다.
 - 그 밖의 `docs/*.md`는 작업별 기록이다. 인수인계에서 링크할 때만 찾아본다.
 - 공통 규칙 요약은 [AGENTS.md](AGENTS.md)에 있다.
 

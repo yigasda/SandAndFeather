@@ -1,6 +1,6 @@
 # 0.9.8 셋소호 정지·걷기 적용
 
-[적용 지시](OPUS-IDLE-WALK-INTEGRATION.md)를 따라 승인된 48장을 게임에 연결했다. 그림은 `docs/art/chibi-refresh/approved/`에서 읽기만 하고 다시 그리지 않았다. 상인과 초상화는 그대로다.
+적용 지시를 따라 승인된 48장을 게임에 연결했다. 그림은 `docs/art/chibi-refresh/approved/`에서 읽기만 하고 다시 그리지 않았다. 상인과 초상화는 그대로다.
 
 ## 무엇이 바뀌나
 

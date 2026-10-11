@@ -1,6 +1,6 @@
 # 0.9.7 옴보스 전체맵 새 낮밤 적용
 
-사용자가 아스트라의 옴보스 개선 시안 낮 v1과 밤 v1을 둘 다 승인했다. 게임 배경을 이 두 장으로 바꿨다. 그림은 [OMBOS-UPGRADE-HANDOFF.md](OMBOS-UPGRADE-HANDOFF.md)에 등록된 PNG를 그대로 읽는다. 복사하거나 다시 그리지 않았다.
+사용자가 아스트라의 옴보스 개선 시안 낮 v1과 밤 v1을 둘 다 승인했다. 게임 배경을 이 두 장으로 바꿨다. 그림은 OMBOS-UPGRADE-HANDOFF.md에 등록된 PNG를 그대로 읽는다. 복사하거나 다시 그리지 않았다.
 
 - 낮: `docs/art/map-expansion/ombos-upgrade-v1-day.png`
 - 밤: `docs/art/map-expansion/ombos-upgrade-v1-night.png`. 밤에는 이 그림을 그대로 보여주고, 마을 전체에 덮던 남색 밤 필터는 쓰지 않는다. 다 지은 수로와 밭처럼 코드로 그리는 칸에만 밤 색을 입힌다.
