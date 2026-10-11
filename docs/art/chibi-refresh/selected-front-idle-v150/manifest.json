@@ -1,0 +1,145 @@
+{
+  "revision": 150,
+  "selection": "User selected original final Somang front and existing148 Set/Horus fronts. No drawing edits.",
+  "runtimeIntegrated": false,
+  "frames": [
+    {
+      "character": "set",
+      "path": "set-front.png",
+      "source": "review-trio-idle-v1/idle/set-front.png",
+      "sha256": "9ccdf3d1985c3d386bd54b56d4accd37ad8c672f880f5a2d56434ac3c54f8fc6",
+      "copyUnchanged": true,
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576
+    },
+    {
+      "character": "somang",
+      "path": "somang-front.png",
+      "source": "review-trio-walk-v4/idle-reference/somang-front.png",
+      "sha256": "e2c531a709cd7d3641bf4e05728f54736afc56bc2e3e1d6d54fe1436352d973d",
+      "copyUnchanged": true,
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628
+    },
+    {
+      "character": "horus",
+      "path": "horus-front.png",
+      "source": "review-trio-idle-v1/idle/horus-front.png",
+      "sha256": "f0e22bf918cf324122a85d7f35236a80b201de1e345e72e15020710132855ef9",
+      "copyUnchanged": true,
+      "size": [
+        620,
+        720
+      ],
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576
+    }
+  ],
+  "gif": {
+    "path": "150-trio-front-idle-walk.gif",
+    "size": [
+      1080,
+      436
+    ],
+    "phases": [
+      "idle",
+      0,
+      1,
+      2,
+      1,
+      0,
+      1,
+      2,
+      1
+    ],
+    "delays": [
+      1200,
+      180,
+      180,
+      180,
+      180,
+      180,
+      180,
+      180,
+      180
+    ],
+    "renderPivot": [
+      180,
+      370
+    ],
+    "renderReferenceHeight": 330,
+    "walkSources": [
+      {
+        "path": "review-trio-walk-v5/walk/set-front-0.png",
+        "sha256": "ef014edc468297c3cd6d09dd9defc7eed7e2f5c22a1ab99843cf2a5488a78917"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/somang-front-0.png",
+        "sha256": "a0517e42749b0083ffb96d14fe2c5bfd9ca2340c765cdcef34600fc78d7854f3"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/horus-front-0.png",
+        "sha256": "108f42ac73f7269890d71330b444866a9272fc9386984ec97fe655097c69bb97"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/set-front-1.png",
+        "sha256": "d4ecf0aaf1199dfaa5a762a1b3e901535a11ad15cea5b3eef888cf6f80219936"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/somang-front-1.png",
+        "sha256": "2fb224d8fe0453f81240d70290e39cbe8a1bb72fe53c0e1beaceb8ae46ce9895"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/horus-front-1.png",
+        "sha256": "87283c06f3b2025880cd42e11ab8d9c9fbe8b537053bba89a379fb9d6f1a15a6"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/set-front-2.png",
+        "sha256": "e4df5d5109700488bb3fa266c2e49ae3309aab2b6d163078564365277d6bc8b2"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/somang-front-2.png",
+        "sha256": "2757f0e0b5c009aa0cd59e6c95e655d19a48c4a9acdb9c3fbb579b82e8101a7a"
+      },
+      {
+        "path": "review-trio-walk-v5/walk/horus-front-2.png",
+        "sha256": "705f8fc715746401a5b0700be6f225cce43be8ea8535362864a715c21f3d987c"
+      }
+    ],
+    "horusExistingWalkOffsets": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        -1
+      ]
+    ]
+  }
+}
