@@ -1,5 +1,5 @@
 {
-  "revision": 182,
+  "revision": 185,
   "action": "pickup",
   "status": "awaiting-user-review",
   "artApproved": false,
@@ -151,7 +151,7 @@
         ]
       },
       "expression": "basic",
-      "sha256": "8b3b35b81f0a36271044d9c46fd6f190e6fa3e8f1adaa89f894a6f6d47196a13"
+      "sha256": "e099f2b795f5d9e0134aa6a64271aa7bcd07e1a49570c15296db02b83d4a6647"
     },
     {
       "path": "png/set-back-1.png",
@@ -166,7 +166,7 @@
         ]
       },
       "expression": "no-visible-face",
-      "sha256": "beef75ffd98e561cdad3d7c3f30ad951a11e2628f68df363034083c4ca49108b"
+      "sha256": "752623533e46925a7f7f35ceed88e43604d3d69ef0de07820ef9a0fd9a82a13f"
     },
     {
       "path": "png/set-front-0.png",
@@ -181,7 +181,7 @@
         ]
       },
       "expression": "basic",
-      "sha256": "3ddeab0a0e7190595fc8b49603ac85153db0e168cfb6a667578eaa949776cb6b"
+      "sha256": "f59ab8b736039cca9daa58498a22394f38255774d7815406dfe46816ba24d8fc"
     },
     {
       "path": "png/set-front-1.png",
@@ -196,7 +196,7 @@
         ]
       },
       "expression": "subtle-questioning-lids",
-      "sha256": "3da960f944c947d32242f2f90ad99cab8fec2628fbc17dcd56b68ef45f563ce7"
+      "sha256": "c5adc2e6411567d4c31d5a8a8e7d1fb0b426c434e97e2078010646b721fc1c1a"
     },
     {
       "path": "png/set-left-0.png",
@@ -211,7 +211,7 @@
         ]
       },
       "expression": "basic",
-      "sha256": "dd8a109c73e8cbf2ca32e2908bc4bd6b368050821ee55e997604855500f97e1c"
+      "sha256": "8a4291ed7f138598ac5733e4546429cf0726f81ee8505c8c93cb3b3e34783fe2"
     },
     {
       "path": "png/set-left-1.png",
@@ -226,7 +226,7 @@
         ]
       },
       "expression": "subtle-questioning-lids",
-      "sha256": "8d7783cc4f3a24f914e6d6e39af22f48cbda8b53f58fecdfd0562a2768841ea6"
+      "sha256": "e36ed3f246721a3fb5c5211a07744aa835baf738a7bd009b5ed325e737ac9f3f"
     },
     {
       "path": "png/set-right-0.png",
@@ -241,7 +241,7 @@
         ]
       },
       "expression": "basic",
-      "sha256": "5920e675da7032aee6f4d769f71b2bb8857dc5b9a0d2ff581714244449f6b24e"
+      "sha256": "e45614361b3e66faaf67e704586bfb8bf3e133ea05e9be3357c2aad71b370f09"
     },
     {
       "path": "png/set-right-1.png",
@@ -256,7 +256,7 @@
         ]
       },
       "expression": "subtle-questioning-lids",
-      "sha256": "b648197904eed1fb2b2673fdbe1cdd60bd974536d6115a835e5f58d27cf1db15"
+      "sha256": "7ec78f1354f66dab47e3058a5a62945840a14e2f52d8088142ed3823f3274c5f"
     }
   ],
   "playback": {
@@ -291,8 +291,25 @@
       0.65,
       0.7
     ],
-    "measured": "checks/placement.json",
-    "note": "호루스 완성 자세 약66~70%, 세트 완성 자세 약64~74%. 세트의 바닥에 닿는 긴 머리는 접히도록 다시 그렸음. 방향별 수치는 placement.json에 기록."
+    "measured": "checks/185-final-geometry.json",
+    "note": "머리·얼굴을 정지 크기로 복원한 뒤 세트 완성 자세 전체 높이는 약75~83%. 목표 높이에 맞추기 위한 머리 축소 금지.0은1보다 높게 구분."
   },
-  "mirrorPolicy": "Left and right drawn separately. Mirrors used only in comparison preview."
+  "mirrorPolicy": "Left and right drawn separately. Mirrors used only in comparison preview.",
+  "characterReviewStatus": {
+    "set": "awaiting-user-review",
+    "horus": "awaiting-user-review"
+  },
+  "reviewNote": "세트182는 머리 축소와0·1 차이 부족으로 반려.185에서 정지 얼굴 크기를 기준으로 맞추고 중간 자세와 바닥 접촉 자세를 구분. 호루스8장 변경 없음.",
+  "headSizeReview": {
+    "method": "face-region size, back ear span; NOT full floor-hair width",
+    "frontReference": [
+      187,
+      185
+    ],
+    "frontCandidate": [
+      189,
+      183
+    ],
+    "measurements": "checks/185-head-placement.json"
+  }
 }

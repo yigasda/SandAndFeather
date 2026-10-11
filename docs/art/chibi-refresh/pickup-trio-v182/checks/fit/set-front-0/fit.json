@@ -1,5 +1,5 @@
 {
- "sheet": "docs/art/chibi-refresh/pickup-trio-v182/png/set-front-0.png",
+ "sheet": "../actions185/review/png/set-front-0.png",
  "view": "front",
  "finalRevision": {
   "proportion": 173,
@@ -16,24 +16,24 @@
  "referenceVisibleHeight": 576,
  "characters": {
   "set": {
-   "scale": 1.31,
-   "match": 0.331,
+   "scale": 0.9875,
+   "match": 0.447,
    "shift": [
-    -27,
-    84
+    53,
+    86
    ],
-   "feetOffsetPx": -56,
-   "heightRatio": 0.908,
+   "feetOffsetPx": -51,
+   "heightRatio": 0.913,
    "heightFit": {
-    "scale": 1.4436,
-    "headScaleVsIdle": 1.102,
+    "scale": 1.0807,
+    "headScaleVsIdle": 1.094,
     "shift": [
-     -89,
+     26,
      87
     ],
-    "headTopOffsetPx": -27
+    "headTopOffsetPx": -23
    },
-   "verdict": "비율 다름: 머리를 맞추면 발이 -56px (-9.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+   "verdict": "비율 다름: 머리를 맞추면 발이 -51px (-8.9% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
   }
  }
 }
