@@ -14,6 +14,8 @@
 #   이어 보기    the final walk 0·1·2, the idle, the new frames and the idle again side by side at one scale (feet line
 #               drawn), and the same as a GIF at game size and at full size: do the proportions and the motion carry on
 #               from walking and standing without a jump? (by eye; sleeping is special, look only)
+#   머리색      the hair's dark, middle and light tones against the same direction's final idle and walk (the closest
+#               one), ΔE: up to 3 같음, up to 6 조금 다름, beyond 다름 (Set front sleep 193 measured 7.7, its walk 0.4)
 #   붙여넣기     poses that are not standing: is the final idle's head pasted in unchanged (90 %+ of its pixels
 #               identical) instead of drawn for the pose? Drawn heads score under 20 %.
 # and writes <out>/report.md: 볼 것 at the top, then one line per character and pose with the sheets beside it.
@@ -136,6 +138,51 @@ def chain(who, view, fr, out, key):
     return name + '.png'
 
 
+def hair_tones(path, who):
+    import numpy as np
+    from PIL import Image
+    im = np.asarray(Image.open(path).convert('RGBA')).astype(np.float32)
+    m = skin.cs.parts(im, who)['hair'] & (im[..., 3] >= 250)
+    lab = skin.cs.lab(im[..., :3][m]); L = lab[:, 0]
+    out = []
+    for q in (15, 50, 85):  # dark, middle, light: the median colour around that lightness percentile
+        lo, hi = np.percentile(L, [max(0, q - 7), min(100, q + 7)])
+        out.append(np.median(lab[(L >= lo) & (L <= hi)], 0))
+    return np.array(out)
+
+
+def hair(path, who, view, out):
+    """hair tones against the closest final idle / walk frame of the same direction (all directions for lying)"""
+    import numpy as np
+    from PIL import Image, ImageDraw
+    F = os.path.join(ART, 'final', who)
+    views = [view] if view in VIEWS else list(VIEWS)
+    refs = [os.path.join(F, 'idle', f'{who}-{v}.png') for v in views] + \
+           [os.path.join(F, 'walk', f'{who}-{v}-{i}.png') for v in views for i in (0, 1, 2)]
+    t = hair_tones(path, who)
+    best = min(((np.sqrt(((hair_tones(r, who) - t) ** 2).sum(-1)), r) for r in refs if os.path.exists(r)), key=lambda x: x[0].max())
+    de, ref = best
+    worst = float(de.max())
+    verdict = '같음' if worst <= 3 else '조금 다름' if worst <= 6 else '다름'
+    # swatches: reference tones above, the picture's below
+    rt = hair_tones(ref, who)
+    def rgb(lab):
+        L, a, b = lab; fy = (L + 16) / 116; fx = fy + a / 500; fz = fy - b / 200
+        f = lambda v: v ** 3 if v ** 3 > 0.008856 else (v - 16 / 116) / 7.787
+        X, Y, Z = 0.95047 * f(fx), f(fy), 1.08883 * f(fz)
+        r, g, b_ = 3.2406 * X - 1.5372 * Y - 0.4986 * Z, -0.9689 * X + 1.8758 * Y + 0.0415 * Z, 0.0557 * X - 0.2040 * Y + 1.0570 * Z
+        c = lambda v: 255 * (12.92 * v if v <= 0.0031308 else 1.055 * v ** (1 / 2.4) - 0.055)
+        return tuple(int(max(0, min(255, c(v)))) for v in (r, g, b_))
+    sw = Image.new('RGB', (3 * 170, 2 * 60 + 30), (245, 239, 227)); d = ImageDraw.Draw(sw)
+    for i in range(3):
+        d.rectangle([i * 170, 30, i * 170 + 169, 89], fill=rgb(rt[i])); d.rectangle([i * 170, 90, i * 170 + 169, 149], fill=rgb(t[i]))
+    d.text((4, 6), f'머리색 위 정지·걷기 / 아래 새 그림 · ΔE {de.round(1).tolist()}', fill=(40, 30, 20), font=onion.FONT)
+    name = os.path.splitext(os.path.basename(path))[0] + '-hair.png'
+    sw.save(os.path.join(out, name))
+    return {'file': os.path.basename(path), 'verdict': verdict, 'deltaE': [round(float(x), 1) for x in de],
+            'ref': os.path.basename(ref), 'sheet': name}
+
+
 def label(s):
     for k, ko in (('-chain', '이어 보기'), ('-action', '동작'), ('-onion-', '0↔1'), ('-mirror-', '좌우'), ('-reference', '기준'), ('-head', '머리')):
         if k in s: return ko
@@ -170,6 +217,15 @@ def main():
         r = skin.check(p, m.group(1), view, os.path.join(o.out, 'skin'))
         skins.append(r)
         if r['verdict'] != '같음': look.append(f"피부색 {r['file']}: {r['verdict']}")
+
+    # 머리색
+    hairs = []
+    for p in pngs:
+        m = NAME.match(os.path.basename(p))
+        if not m: continue
+        view = next((v for v in m.group(2).split('-') if v in VIEWS), 'all')
+        r = hair(p, m.group(1), view, o.out); hairs.append(r)
+        if r['verdict'] != '같음': look.append(f"머리색 {r['file']}: {r['verdict']} (어둠·중간·밝음 ΔE {r['deltaE']}, 기준 {r['ref']})")
 
     for (who, key), fr in sorted(groups.items()):
         fr.sort()
@@ -235,6 +291,8 @@ def main():
            '', '## 캐릭터·자세별', '', '| 그림 | 프레임별 키·머리 맞춤 | 판정 | 시트 |', '|---|---|---|---|'] + lines + [
            '', '## 피부색', '', '| 파일 | 판정 | 기본 / 그림자 / 밝은 쪽 ΔE |', '|---|---|---|'] + [
            f"| {r['file']} | {r['verdict']} | " + (' / '.join(str(r['toneDeltaE'][k]) for k in ('base', 'shadow', 'light')) if 'toneDeltaE' in r else '') + ' |' for r in skins] + [
+           '', '## 머리색', '', '| 파일 | 판정 | 어둠 / 중간 / 밝음 ΔE | 기준 | 견본 |', '|---|---|---|---|---|'] + [
+           f"| {r['file']} | {r['verdict']} | {' / '.join(map(str, r['deltaE']))} | {r['ref']} | [견본]({r['sheet']}) |" for r in hairs] + [
            '', '시트 읽는 법: chain = 걷기 0·1·2 → 정지 → 새 프레임 → 정지(같은 배율, 파란 선 = 발), 같은 이름의 .gif(큰 크기)와 -game.gif(게임 크기)로 이어 재생해 비율·동작이 툭 끊기지 않는지 본다. action = 정지 | 0 | 1(파란 선 = 발 기준선), onion = 겹친 윤곽(빨강 A, 파랑 B) · 바뀐 픽셀 · 윤곽만 다른 곳, '
            'mirror = 왼쪽과 뒤집은 오른쪽(팔 길이·손 크기), reference = 채택된 기준 그림과 겹침(구도·원근·머리 위치), head = 정지 머리 윤곽(빨강).',
            '머리 맞춤 ×1.00 = 정지와 같은 크기. 채택된 쪼그린·앉은 그림도 ×1.03~1.11로 재진다.']
