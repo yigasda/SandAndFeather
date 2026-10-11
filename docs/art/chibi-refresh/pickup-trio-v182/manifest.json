@@ -1,9 +1,9 @@
 {
   "revision": 185,
   "action": "pickup",
-  "status": "awaiting-user-review",
-  "artApproved": false,
-  "runtimeEligible": false,
+  "status": "user-approved",
+  "artApproved": true,
+  "runtimeEligible": true,
   "runtimeOwner": "opus",
   "canvas": [
     620,
@@ -296,8 +296,8 @@
   },
   "mirrorPolicy": "Left and right drawn separately. Mirrors used only in comparison preview.",
   "characterReviewStatus": {
-    "set": "awaiting-user-review",
-    "horus": "awaiting-user-review"
+    "set": "user-approved (185)",
+    "horus": "user-approved (182)"
   },
   "reviewNote": "세트182는 머리 축소와0·1 차이 부족으로 반려.185에서 정지 얼굴 크기를 기준으로 맞추고 중간 자세와 바닥 접촉 자세를 구분. 호루스8장 변경 없음.",
   "headSizeReview": {
@@ -311,5 +311,21 @@
       183
     ],
     "measurements": "checks/185-head-placement.json"
-  }
+  },
+  "runtimeIntegrated": "0.9.33",
+  "approvalEvidence": "호루스: \"호루스 줍기는 채택이야\" / 세트 185: \"세트 호루스 둘 다 이제 인겜에 넣어도 되지 아늘가\"",
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  },
+  "anchor": {
+    "kind": "feet",
+    "position": [
+      310,
+      662
+    ]
+  },
+  "referenceVisibleHeight": 576
 }

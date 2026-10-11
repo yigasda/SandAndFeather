@@ -1,15 +1,15 @@
-# Packs the approved trio idle/walk frames (docs/art/chibi-refresh/final, 48 PNG) into one runtime atlas,
-# data/art/characters/trio-motion.png, and writes the frame table into data/sprites.json (looks.<who>.motion).
+# Packs the approved trio idle/walk frames (docs/art/chibi-refresh/final, 48 PNG) into one runtime atlas per character,
+# data/art/characters/trio-motion-<who>.png (+ -small for phones), and writes the frame table into data/sprites.json
+# (looks.<who>.motion).
 # Nothing is redrawn: each frame is the approved picture, scaled with one uniform factor per state so the
 # character's visible height is the same standing and walking (idle576 source px, walk 330 → VISIBLE atlas px).
-# Approved action sets (ACTIONS) go into the same atlas as looks.<who>.motion.acts[action][dir][frame].
+# Approved action sets (ACTIONS) go into the character's atlas as looks.<who>.motion.acts[action][dir][frame].
 # The source files and the manifest are read only; the old pocket atlas (townsman) is left alone.
 import hashlib, json, os
 from PIL import Image
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 SRC = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'final')
-OUT = os.path.join(ROOT, 'data', 'art', 'characters', 'trio-motion.png')
 VISIBLE = 256          # atlas pixels from the top of the head to the feet: ≥ HEIGHT × the largest zoom (8), so it only ever shrinks
 HEIGHT = 31.2         # in-game height in logical pixels (a tile is 16); 0.9.16 took it from 24 to 1.3×
 SMALL = 125            # the phone atlas: HEIGHT × 4 (a 2x phone screen's zoom), rounded up
@@ -76,7 +76,7 @@ def pack(frames, visible, out):
 
 
 # approved action sets packed beside the base 48 (same canvas, pivot and reference height as the idle)
-ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'sit-somang-v179', 'sleep-somang-v180')]
+ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'pickup-trio-v182', 'sit-somang-v179', 'sleep-somang-v180')]
 
 
 def action_frames():
@@ -113,8 +113,12 @@ def main():
         data = open(os.path.join(ROOT, f['path']), 'rb').read()
         assert hashlib.sha256(data).hexdigest() == f['sha256'], f['id']
     extra, playback = action_frames()
-    big = pack(frames + extra, VISIBLE, 'art/characters/trio-motion.png')
-    small = pack(frames + extra, SMALL, 'art/characters/trio-motion-small.png')
+    # one atlas per character: with every action in one picture it would pass 4096 px, past what some phones draw
+    big, small = {}, {}
+    for who in ['set', 'somang', 'horus']:
+        mine = [f for f in frames + extra if f['character'] == who]
+        big[who] = pack(mine, VISIBLE, f'art/characters/trio-motion-{who}.png')[who]
+        small[who] = pack(mine, SMALL, f'art/characters/trio-motion-{who}-small.png')[who]
     sprites_path = os.path.join(ROOT, 'data', 'sprites.json')
     sprites = json.load(open(sprites_path))
     for who in ['set', 'somang', 'horus']:
