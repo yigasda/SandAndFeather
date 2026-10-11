@@ -1,0 +1,593 @@
+{
+  "status": "review; art not approved; coordinates proposed; runtime not applied",
+  "convention": "pixels, top-left origin; rectangles [x1,y1,x2,y2], exclusive end",
+  "imageSize": [
+    2492,
+    887
+  ],
+  "originalSize": [
+    2172,
+    724
+  ],
+  "originalOffset": [
+    160,
+    64
+  ],
+  "addedMargins": {
+    "left": 160,
+    "right": 160,
+    "top": 64,
+    "bottom": 99
+  },
+  "runtimeReference": "tools/maps/residence.py at cbad20b; 27x9 logical units, 2172x724 source pixels",
+  "scenes": [
+    {
+      "scene": "temple_central_gallery",
+      "file": "central-expanded.png",
+      "endExits": [
+        {
+          "entryKey": "west",
+          "destinationScene": "temple_west_gallery",
+          "destinationEntry": "east",
+          "thresholdPx": [
+            75,
+            369,
+            215,
+            395
+          ],
+          "frontClearFloorPx": [
+            75,
+            365,
+            215,
+            460
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              65,
+              380
+            ],
+            [
+              215,
+              380
+            ],
+            [
+              220,
+              259
+            ],
+            [
+              201,
+              274
+            ]
+          ],
+          "suggestedTriggerPx": [
+            115,
+            333,
+            210,
+            375
+          ],
+          "suggestedArrivalPx": [
+            145,
+            420
+          ]
+        },
+        {
+          "entryKey": "east",
+          "destinationScene": "temple_east_gallery",
+          "destinationEntry": "west",
+          "thresholdPx": [
+            2277,
+            369,
+            2427,
+            395
+          ],
+          "frontClearFloorPx": [
+            2277,
+            365,
+            2427,
+            460
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              2277,
+              380
+            ],
+            [
+              2427,
+              380
+            ],
+            [
+              2291,
+              274
+            ],
+            [
+              2272,
+              259
+            ]
+          ],
+          "suggestedTriggerPx": [
+            2282,
+            333,
+            2377,
+            375
+          ],
+          "suggestedArrivalPx": [
+            2352,
+            420
+          ]
+        }
+      ],
+      "interiorDoorsAndStairs": [
+        {
+          "entryKey": "arch",
+          "destinationScene": "room_entrances_wide",
+          "destinationEntry": "arch",
+          "visualThresholdPxApprox": [
+            1173,
+            354,
+            1303,
+            378
+          ],
+          "translatedExistingTriggerPx": [
+            1173.6,
+            64.0,
+            1302.31,
+            232.93
+          ],
+          "translatedExistingArrivalPx": [
+            1237.96,
+            337.51
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        },
+        {
+          "entryKey": "south",
+          "destinationScene": "temple_inner_corridor",
+          "destinationEntry": "east",
+          "visualThresholdPxApprox": [
+            1117,
+            768,
+            1375,
+            802
+          ],
+          "translatedExistingTriggerPx": [
+            1117.29,
+            755.82,
+            1374.71,
+            788.0
+          ],
+          "translatedExistingArrivalPx": [
+            1246.0,
+            699.51
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        }
+      ]
+    },
+    {
+      "scene": "temple_east_gallery",
+      "file": "east-expanded.png",
+      "endExits": [
+        {
+          "entryKey": "west",
+          "destinationScene": "temple_central_gallery",
+          "destinationEntry": "east",
+          "thresholdPx": [
+            75,
+            369,
+            215,
+            395
+          ],
+          "frontClearFloorPx": [
+            75,
+            365,
+            215,
+            460
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              65,
+              380
+            ],
+            [
+              215,
+              380
+            ],
+            [
+              220,
+              259
+            ],
+            [
+              201,
+              274
+            ]
+          ],
+          "suggestedTriggerPx": [
+            115,
+            333,
+            210,
+            375
+          ],
+          "suggestedArrivalPx": [
+            145,
+            420
+          ]
+        },
+        {
+          "entryKey": "east",
+          "destinationScene": "room_entrances_wide",
+          "destinationEntry": "west",
+          "thresholdPx": [
+            2277,
+            369,
+            2427,
+            395
+          ],
+          "frontClearFloorPx": [
+            2277,
+            365,
+            2427,
+            460
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              2277,
+              380
+            ],
+            [
+              2427,
+              380
+            ],
+            [
+              2291,
+              274
+            ],
+            [
+              2272,
+              259
+            ]
+          ],
+          "suggestedTriggerPx": [
+            2282,
+            333,
+            2377,
+            375
+          ],
+          "suggestedArrivalPx": [
+            2352,
+            420
+          ]
+        }
+      ],
+      "interiorDoorsAndStairs": [
+        {
+          "entryKey": "shrine",
+          "destinationScene": "temple_sanctuary",
+          "destinationEntry": "door",
+          "visualThresholdPxApprox": [
+            1363,
+            361,
+            1491,
+            387
+          ],
+          "translatedExistingTriggerPx": [
+            1362.64,
+            64.0,
+            1491.36,
+            273.16
+          ],
+          "translatedExistingArrivalPx": [
+            1427.0,
+            365.67
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        }
+      ]
+    },
+    {
+      "scene": "temple_west_gallery",
+      "file": "west-expanded.png",
+      "endExits": [
+        {
+          "entryKey": "west",
+          "destinationScene": "room_entrances_wide",
+          "destinationEntry": "east",
+          "thresholdPx": [
+            75,
+            369,
+            215,
+            395
+          ],
+          "frontClearFloorPx": [
+            75,
+            365,
+            215,
+            460
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              65,
+              380
+            ],
+            [
+              215,
+              380
+            ],
+            [
+              220,
+              259
+            ],
+            [
+              201,
+              274
+            ]
+          ],
+          "suggestedTriggerPx": [
+            115,
+            333,
+            210,
+            375
+          ],
+          "suggestedArrivalPx": [
+            145,
+            420
+          ]
+        },
+        {
+          "entryKey": "east",
+          "destinationScene": "temple_central_gallery",
+          "destinationEntry": "west",
+          "thresholdPx": [
+            2277,
+            369,
+            2427,
+            395
+          ],
+          "frontClearFloorPx": [
+            2277,
+            365,
+            2427,
+            460
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              2277,
+              380
+            ],
+            [
+              2427,
+              380
+            ],
+            [
+              2291,
+              274
+            ],
+            [
+              2272,
+              259
+            ]
+          ],
+          "suggestedTriggerPx": [
+            2282,
+            333,
+            2377,
+            375
+          ],
+          "suggestedArrivalPx": [
+            2352,
+            420
+          ]
+        }
+      ],
+      "interiorDoorsAndStairs": [
+        {
+          "entryKey": "stairs",
+          "destinationScene": "temple_colonnade",
+          "destinationEntry": "door",
+          "visualThresholdPxApprox": [
+            700,
+            355,
+            844,
+            380
+          ],
+          "translatedExistingTriggerPx": [
+            698.98,
+            64.0,
+            843.78,
+            265.11
+          ],
+          "translatedExistingArrivalPx": [
+            771.38,
+            365.67
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        }
+      ]
+    },
+    {
+      "scene": "room_entrances_wide",
+      "file": "rooms-expanded.png",
+      "endExits": [
+        {
+          "entryKey": "west",
+          "destinationScene": "temple_east_gallery",
+          "destinationEntry": "east",
+          "thresholdPx": [
+            48,
+            377,
+            195,
+            399
+          ],
+          "frontClearFloorPx": [
+            48,
+            375,
+            195,
+            470
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              48,
+              386
+            ],
+            [
+              195,
+              386
+            ],
+            [
+              199,
+              265
+            ],
+            [
+              183,
+              282
+            ]
+          ],
+          "suggestedTriggerPx": [
+            105,
+            339,
+            190,
+            377
+          ],
+          "suggestedArrivalPx": [
+            125,
+            425
+          ]
+        },
+        {
+          "entryKey": "east",
+          "destinationScene": "temple_west_gallery",
+          "destinationEntry": "west",
+          "thresholdPx": [
+            2295,
+            377,
+            2442,
+            399
+          ],
+          "frontClearFloorPx": [
+            2295,
+            375,
+            2442,
+            470
+          ],
+          "recedingFloorPolygonPx": [
+            [
+              2295,
+              386
+            ],
+            [
+              2442,
+              386
+            ],
+            [
+              2310,
+              282
+            ],
+            [
+              2293,
+              265
+            ]
+          ],
+          "suggestedTriggerPx": [
+            2300,
+            339,
+            2385,
+            377
+          ],
+          "suggestedArrivalPx": [
+            2367,
+            425
+          ]
+        }
+      ],
+      "interiorDoorsAndStairs": [
+        {
+          "entryKey": "set",
+          "destinationScene": "set_room",
+          "destinationEntry": "door",
+          "visualThresholdPxApprox": [
+            345,
+            365,
+            442,
+            395
+          ],
+          "translatedExistingTriggerPx": [
+            345.02,
+            64.0,
+            441.56,
+            405.89
+          ],
+          "translatedExistingArrivalPx": [
+            393.29,
+            458.18
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        },
+        {
+          "entryKey": "somang",
+          "destinationScene": "somang_room",
+          "destinationEntry": "door",
+          "visualThresholdPxApprox": [
+            1174,
+            365,
+            1270,
+            395
+          ],
+          "translatedExistingTriggerPx": [
+            1173.6,
+            64.0,
+            1270.13,
+            405.89
+          ],
+          "translatedExistingArrivalPx": [
+            1221.87,
+            458.18
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        },
+        {
+          "entryKey": "horus",
+          "destinationScene": "horus_room",
+          "destinationEntry": "door",
+          "visualThresholdPxApprox": [
+            2042,
+            365,
+            2139,
+            395
+          ],
+          "translatedExistingTriggerPx": [
+            2042.4,
+            64.0,
+            2138.93,
+            405.89
+          ],
+          "translatedExistingArrivalPx": [
+            2090.67,
+            458.18
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        },
+        {
+          "entryKey": "arch",
+          "destinationScene": "temple_central_gallery",
+          "destinationEntry": "arch",
+          "visualThresholdPxApprox": [
+            1016,
+            805,
+            1420,
+            831
+          ],
+          "translatedExistingTriggerPx": [
+            1060.17,
+            754.21,
+            1390.0,
+            788.0
+          ],
+          "translatedExistingArrivalPx": [
+            1225.08,
+            664.12
+          ],
+          "note": "Existing internal geometry preserved. These are coordinate references, not validated collision/trigger settings."
+        }
+      ]
+    }
+  ]
+}

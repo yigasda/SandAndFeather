@@ -1,0 +1,59 @@
+{
+  "status": "review-not-approved; runtime-not-applied",
+  "date": "2026-10-11",
+  "approvedPrecedent": "../corridor-expand-v4/inner-corridor-expanded-v4.png (139, user approved)",
+  "files": [
+    {
+      "number": 140,
+      "name": "중앙 회랑",
+      "file": "central-expanded.png",
+      "source": "../exits-v2/central-gallery-v1.png",
+      "size": [
+        2492,
+        887
+      ],
+      "sha256": "a683858cc0e42f88690d1bec60d2a7a410989b45bff70d85deb0a829c1eddedc",
+      "originalRegionChangedPixels": 0,
+      "comparison": "previews/140-central-compare.png"
+    },
+    {
+      "number": 141,
+      "name": "동쪽 회랑",
+      "file": "east-expanded.png",
+      "source": "../exits-v2/east-gallery-v1.png",
+      "size": [
+        2492,
+        887
+      ],
+      "sha256": "25ab7e8d1ebc4c69ee1871871b96a3d09faf94e9a672c4be1a1d2d0dd3d5b610",
+      "originalRegionChangedPixels": 0,
+      "comparison": "previews/141-east-compare.png"
+    },
+    {
+      "number": 142,
+      "name": "서쪽 회랑",
+      "file": "west-expanded.png",
+      "source": "../exits-v2/west-gallery-v1.png",
+      "size": [
+        2492,
+        887
+      ],
+      "sha256": "9e5c8073f8f6217016f979358ed6098c23e3958b6e654ad239f6b086f722412e",
+      "originalRegionChangedPixels": 0,
+      "comparison": "previews/142-west-compare.png"
+    },
+    {
+      "number": 143,
+      "name": "방문 회랑",
+      "file": "rooms-expanded.png",
+      "source": "../exits-v2/room-entrances-wide-v1.png",
+      "size": [
+        2492,
+        887
+      ],
+      "sha256": "00d1a1a2f934fee400a9880fecc41e41b03b57ad3d6acbd85368d6a62246583a",
+      "originalRegionChangedPixels": 0,
+      "comparison": "previews/143-rooms-compare.png"
+    }
+  ]
+}

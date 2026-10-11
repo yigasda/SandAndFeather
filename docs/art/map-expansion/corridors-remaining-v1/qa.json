@@ -1,0 +1,47 @@
+{
+  "originalPixelComparison": [
+    {
+      "file": "central-expanded.png",
+      "size": [
+        2492,
+        887
+      ],
+      "originalChangedPixels": 0
+    },
+    {
+      "file": "east-expanded.png",
+      "size": [
+        2492,
+        887
+      ],
+      "originalChangedPixels": 0
+    },
+    {
+      "file": "west-expanded.png",
+      "size": [
+        2492,
+        887
+      ],
+      "originalChangedPixels": 0
+    },
+    {
+      "file": "rooms-expanded.png",
+      "size": [
+        2492,
+        887
+      ],
+      "originalChangedPixels": 0
+    }
+  ],
+  "visualChecks": [
+    "same-scale whole comparisons",
+    "2x entrance boundary crops",
+    "static trio at approximately160px visible height",
+    "960px phone-width crops"
+  ],
+  "notVerified": [
+    "runtime collision",
+    "runtime foreground occlusion",
+    "live movement and transition"
+  ]
+}

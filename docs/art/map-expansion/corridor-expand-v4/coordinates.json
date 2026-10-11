@@ -1,5 +1,5 @@
 {
-  "status": "139 review-only; replaces rejected137; not applied to runtime",
+  "status": "user-approved art; runtime coordinates remain proposals; not applied",
   "coordinateConvention": "image pixels, top-left origin, rectangles [x1,y1,x2,y2]; proposals require in-game collision/occlusion check",
   "scene": "temple_inner_corridor",
   "imageSize": [

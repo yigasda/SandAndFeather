@@ -1,9 +1,5 @@
 {
-  "status": {
-    "day": "user-approved option 3",
-    "night": "review-only",
-    "runtime": "not applied"
-  },
+  "status": "user-approved art; runtime coordinates remain proposals; not applied",
   "imageSize": [
     2160,
     887

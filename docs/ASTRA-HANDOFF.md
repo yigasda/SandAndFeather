@@ -79,8 +79,8 @@
 
 | 대상 | 파일 | 상태와 다음 |
 |---|---|---|
-| **긴 회랑 5장** | 새 안쪽 복도 `art/map-expansion/corridor-expand-v4/`(139번) | **137번 반려·적용 금지. 139번 양끝 재확장 검토 대기.** 원본의 좌우 끝부분을 각각 기준으로 바깥160px만 이어 그림. 2492×887, 원본(160,64) 영역 변경0. 확대/전체/셋소호 약2칸 키 정적 배치/폰폭 비교 확인. 인게임 이동·가림 미검증. 이 한 장 확인 후 나머지4회랑 |
-| **우물 마당** | 낮 `art/map-expansion/well-review-three-v3/option-3.png`(확정) / 밤 `art/map-expansion/well-option3-night-v1/`(138번) | 낮은 3안(동그란 문)으로 확정. 밤은 검토 대기 |
+| **긴 회랑 5장** | 새 안쪽 복도 `art/map-expansion/corridor-expand-v4/`(139번) | **137번 반려·적용 금지. 사용자 “다 채택”으로139번 채택(2026-10-11).** 원본의 좌우 끝부분을 각각 기준으로 바깥160px만 이어 그림. 2492×887, 원본(160,64) 영역 변경0. 확대/전체/셋소호 약2칸 키 정적 배치/폰폭 비교 확인. 인게임 이동·가림 미검증. 남은4장: `art/map-expansion/corridors-remaining-v1/`의140중앙·141동쪽·142서쪽·143방문, **새 검토본·미채택·게임 미적용**. 모두2492×887, 원본(160,64) 영역 변경0. 전후/입구 확대/셋소호·폰폭 정적 비교 및 좌표 동봉. 다음은 이4장 검토 결과 반영 |
+| **우물 마당** | 낮 `art/map-expansion/well-review-three-v3/option-3.png`(확정) / 밤 `art/map-expansion/well-option3-night-v1/`(138번) | 낮3안(동그란 문)과 밤138번 모두 채택(2026-10-11 사용자 “다 채택”). 게임 미적용 |
 | **셋소호 새 걷기** | `art/chibi-refresh/review-trio-walk-v5/` | 36장 모두 채택(사용자: "셋소호 다 합격"). 게임 미적용. 새 정지 12장은 아직 완성으로 보지 않는다 |
 | **호루스 정면** | 최종 외형 `art/chibi-refresh/review-horus-v13/horus-front.png`(131번) | 채택. 이마·헤어 경계 정리본 `horus-final-clean.png`(132번 폴더)는 검토 중 |
 | **소망 피부 소폭 밝힘** | `art/chibi-refresh/review-somang-skin-v3/`(121번) | 검토 대기 |

@@ -1,0 +1,2 @@
+const s=require('sharp'),path=require('path'),O=__dirname;
+(async()=>{for(const n of ['east','west','rooms']){const f=n==='rooms'?'room-entrances-wide-v1':n+'-gallery-v1';for(const side of ['left','right']){const a=await s(path.join(O,'../exits-v2',f+'.png')).extract({left:side==='left'?0:1612,top:0,width:560,height:724}).png().toBuffer();await s({create:{width:720,height:887,channels:3,background:'#ead2a5'}}).composite([{input:a,left:side==='left'?160:0,top:64}]).png().toFile(path.join(O,'sources',n+'-'+side+'-guide.png'));}}})();

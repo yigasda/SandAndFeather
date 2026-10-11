@@ -1,0 +1,2 @@
+const s=require('sharp'),path=require('path'),O=__dirname;
+(async()=>{const n=process.argv[2],parts=[];for(const side of ['left','right']){const image=await s(path.join(O,'sources',n+'-'+side+'-edit.png')).resize(720,887,{fit:'fill'}).png().toBuffer();const b=await s(image).extract({left:0,top:64,width:720,height:724}).png().toBuffer();parts.push({input:b,left:side==='left'?0:1772,top:64});}await s(path.join(O,'../corridor-expand-v4/inner-corridor-expanded-v4.png')).composite(parts).png().toFile(path.join(O,'sources',n+'-outpaint.png'));})();
