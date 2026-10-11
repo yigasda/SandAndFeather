@@ -1,0 +1,65 @@
+[
+ {
+  "frame": "walk-front-0",
+  "source": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-front-0.png",
+  "eyeMid": [
+   171.4,
+   201.4
+  ],
+  "fromFrame1": [
+   -4.3,
+   -0.2
+  ],
+  "eyeDistance": 62.0,
+  "guideTransform": {
+   "scale": 0.4284,
+   "rotationDeg": 0.44,
+   "shift": [
+    30.8,
+    43.7
+   ]
+  }
+ },
+ {
+  "frame": "walk-front-1",
+  "source": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-front-1.png",
+  "eyeMid": [
+   175.8,
+   201.6
+  ],
+  "fromFrame1": [
+   0.0,
+   0.0
+  ],
+  "eyeDistance": 62.3,
+  "guideTransform": {
+   "scale": 0.4304,
+   "rotationDeg": 0.07,
+   "shift": [
+    33.4,
+    44.1
+   ]
+  }
+ },
+ {
+  "frame": "walk-front-2",
+  "source": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-front-2.png",
+  "eyeMid": [
+   175.5,
+   201.9
+  ],
+  "fromFrame1": [
+   -0.3,
+   0.3
+  ],
+  "eyeDistance": 60.8,
+  "guideTransform": {
+   "scale": 0.4201,
+   "rotationDeg": -0.17,
+   "shift": [
+    35.9,
+    48.7
+   ]
+  }
+ }
+]
