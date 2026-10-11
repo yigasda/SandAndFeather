@@ -134,7 +134,7 @@
    [
     "몸 안 반투명 픽셀",
     "0px",
-    "2px",
+    "0px",
     "",
     "정상"
    ],
@@ -268,7 +268,7 @@
      23
     ]
    },
-   "semiInside": 2,
+   "semiInside": 0,
    "holes": 0,
    "seams": [],
    "lightEdge": 0.0,

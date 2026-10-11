@@ -148,7 +148,7 @@
     0,
     {
       "scale": 0.9975,
-      "match": 0.645,
+      "match": 0.647,
       "shift": [
         109,
         100
@@ -162,7 +162,7 @@
           112,
           101
         ],
-        "headTopOffsetPx": 2
+        "headTopOffsetPx": -563
       },
       "verdict": "맞음 (발 +7px 보정)"
     }
@@ -172,7 +172,7 @@
     1,
     {
       "scale": 0.9975,
-      "match": 0.683,
+      "match": 0.684,
       "shift": [
         111,
         100

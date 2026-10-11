@@ -99,7 +99,7 @@
 
 | 대상 | 상태·다음 작업 |
 |---|---|
-| 상호작용 | [소망172](art/chibi-refresh/interaction-somang-v172/README.md)8장과 [세트174/175](art/chibi-refresh/interaction-set-v174/README.md)8장 채택 완료. 세트는 오른쪽 팔·손 길이175 수정 포함 사용자 채택,0.9.30 게임 적용 완료. [호루스176](art/chibi-refresh/interaction-horus-v176/README.md)4방향×2프레임·fit8/8 맞음·정지/걷기 비교·재생GIF 제작, 사용자 확인 대기. 게임 적용은 별도. |
+| 상호작용 | [소망172](art/chibi-refresh/interaction-somang-v172/README.md)8장과 [세트174/175](art/chibi-refresh/interaction-set-v174/README.md)8장 채택 완료. 세트는 오른쪽 팔·손 길이175 수정 포함 사용자 채택,0.9.30 게임 적용 완료. [호루스176/177](art/chibi-refresh/interaction-horus-v176/README.md)4방향×2프레임.177에서 오른쪽0·1 피부 팔레트와 왼쪽0·1 배·치마 외곽선 수정, fit8/8 맞음·비교·GIF 갱신, 사용자 확인 대기. 게임 적용은 별도. |
 | 셋소호 베이스 스프라이트 | **전체48장 최종 채택 완료.** 사용자 “완벽해 고생했어! 이제 베이스 스프라이트는 끝났네”. [final/](art/chibi-refresh/final/README.md)만 사용한다. 캐릭터별 정지4+걷기12=16장. |
 | 세트 | 정지148·채택 걷기163. 원본 그대로 최종 폴더로 정리. |
 | 소망 | 정지151 네 방향·채택 걷기163(접합부144 보수 포함).150 정면으로 되돌리지 않는다. |

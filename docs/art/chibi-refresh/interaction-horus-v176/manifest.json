@@ -90,7 +90,7 @@
       "gameDirection": "left",
       "frame": 0,
       "phase": "reach-start",
-      "sha256": "a4032783d89a52acde05a165837403082c8a3d50bd2d9d2852c936fa71787f6e",
+      "sha256": "ec2c7b3f29e8a9a2cd2ebe6e9a898ef9b406c00e8c2f16e85d2c6c72d7199dfd",
       "sourceIdle": "../final/horus/idle/horus-left.png",
       "guide": "../pose-guides/horus-left-guide.png",
       "fitReport": "checks/delivery/left-0/fit.json"
@@ -102,7 +102,7 @@
       "gameDirection": "left",
       "frame": 1,
       "phase": "contact",
-      "sha256": "a1a5c66e6ad28b621d29bc34710bd011b771e63a411bf0440b5c76023e66e69d",
+      "sha256": "e86a24134893351e27269df51e91a3a160941e97a87aa5e96dfd5f1b16fca063",
       "sourceIdle": "../final/horus/idle/horus-left.png",
       "guide": "../pose-guides/horus-left-guide.png",
       "fitReport": "checks/delivery/left-1/fit.json"
@@ -114,7 +114,7 @@
       "gameDirection": "right",
       "frame": 0,
       "phase": "reach-start",
-      "sha256": "53588aa2b36208a982fa540941e2c11016c9b1048f3145bd40cf9f96223a167c",
+      "sha256": "cfa047c0792fb13d641b839d643d5376c51ea93b6fe0ee527205fd92288556a5",
       "sourceIdle": "../final/horus/idle/horus-right.png",
       "guide": "../pose-guides/horus-right-guide.png",
       "fitReport": "checks/delivery/right-0/fit.json"
@@ -126,10 +126,12 @@
       "gameDirection": "right",
       "frame": 1,
       "phase": "contact",
-      "sha256": "ef4b83f1fc09e13708ae3c8718cd6fef133616576c74291bf7263825e0b474ce",
+      "sha256": "46f3dc9dbf0db2ed6a6bc91ace985ba3d792c7267fd609b80ed51c8416eead60",
       "sourceIdle": "../final/horus/idle/horus-right.png",
       "guide": "../pose-guides/horus-right-guide.png",
       "fitReport": "checks/delivery/right-1/fit.json"
     }
-  ]
+  ],
+  "revision": 177,
+  "revisionNote": "오른쪽0·1 피부를 최종 원본 팔레트로 보정. 왼쪽0·1 배→치마 외곽선 복구."
 }

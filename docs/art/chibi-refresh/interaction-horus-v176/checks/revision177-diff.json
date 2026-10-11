@@ -1,0 +1,47 @@
+{
+  "left-0": {
+    "changedPixels": 975,
+    "changeBounds": [
+      211,
+      476,
+      250,
+      552
+    ],
+    "outsideOutlineMaskChanges": 0
+  },
+  "left-1": {
+    "changedPixels": 1103,
+    "changeBounds": [
+      211,
+      448,
+      263,
+      548
+    ],
+    "outsideOutlineMaskChanges": 1,
+    "outsideMaskException": {
+      "pixel": [
+        217,
+        526
+      ],
+      "reason": "기존 복부 외곽선 옆 독립된 갈색 점 제거"
+    }
+  },
+  "right-0": {
+    "changedPixels": 25974,
+    "changeBounds": [
+      245,
+      232,
+      451,
+      640
+    ]
+  },
+  "right-1": {
+    "changedPixels": 26672,
+    "changeBounds": [
+      246,
+      234,
+      496,
+      640
+    ]
+  }
+}
