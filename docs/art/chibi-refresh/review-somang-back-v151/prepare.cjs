@@ -1,0 +1,13 @@
+const s=require('sharp'),fs=require('fs'),p=require('path'),crypto=require('crypto');const O=__dirname,P=p.dirname(O);
+function inside(x,y,v){let c=false;for(let i=0,j=v.length-1;i<v.length;j=i++){let[a,b]=v[i],[d,e]=v[j];if((b>y)!=(e>y)&&x<(d-a)*(y-b)/(e-b)+a)c=!c;}return c;}
+(async()=>{
+const src=P+'/selected-front-idle-v150/somang-front.png';let{data:a,info}=await s(src).ensureAlpha().raw().toBuffer({resolveWithObject:true}),d=Buffer.from(a),mask=Buffer.alloc(a.length);
+// Garment only; shape, alpha, face, hair, skin, shoes, and dark outlines remain unchanged.
+const poly=[[231,413],[276,406],[295,419],[323,417],[340,410],[366,420],[392,464],[425,487],[433,510],[413,520],[394,510],[382,510],[443,586],[438,608],[408,615],[384,608],[236,607],[211,613],[186,606],[186,584],[229,513],[210,503],[201,516],[182,512],[176,497],[196,479]];
+let count=0;for(let y=406;y<617;y++)for(let x=170;x<449;x++){let k=(y*620+x)*4,r=a[k],g=a[k+1],b=a[k+2];if(!inside(x+.5,y+.5,poly)||!a[k+3]||r<145||r-g>22||g-b>25||r-g<0||g-b<0)continue;
+// Eyedropper: source dress mode 247/238/230 -> approved walking mode 245/233/225.
+let weight=Math.min(1,(r-145)/60);d[k]=Math.round(r-2*weight);d[k+1]=Math.round(g-5*weight);d[k+2]=Math.round(b-5*weight);mask[k]=255;mask[k+3]=255;count++;}
+await s(d,{raw:{width:620,height:720,channels:4}}).png().toFile(O+'/idle/somang-front.png');await s(mask,{raw:{width:620,height:720,channels:4}}).png().toFile(O+'/sources/front-color-mask.png');
+fs.copyFileSync(P+'/review-trio-walk-v4/idle-reference/set-front.png',O+'/idle/set-front.png');fs.copyFileSync(P+'/selected-front-idle-v150/horus-front.png',O+'/idle/horus-front.png');
+for(const who of ['somang','set','horus']){const q=O+'/idle/'+who+'-front.png',raw=await s(q).ensureAlpha().raw().toBuffer(),out=Buffer.alloc(360*400*4),scale=330/(who==='horus'?576:628);for(let y=0;y<400;y++)for(let x=0;x<360;x++){let sx=Math.floor((x+.5-180)/scale+310),sy=Math.floor((y+.5-370)/scale+662);if(sx>=0&&sx<620&&sy>=0&&sy<720)raw.copy(out,(y*360+x)*4,(sy*620+sx)*4,(sy*620+sx)*4+4);}await s(out,{raw:{width:360,height:400,channels:4}}).png().toFile(O+'/native/'+who+'-front.png');}
+let outside=0,alpha=0;for(let k=0;k<a.length;k+=4){if(a[k+3]!==d[k+3])alpha++;if(!mask[k+3]&&a.subarray(k,k+4).compare(d.subarray(k,k+4)))outside++;}fs.writeFileSync(O+'/sources/front-color-validation.json',JSON.stringify({changedPixels:count,changedOutsideMask:outside,alphaChanges:alpha,sourceDressMode:[247,238,230],targetWalkDressMode:[245,233,225],source:'selected-front-idle-v150/somang-front.png',paletteReference:'review-trio-walk-v5/walk/somang-front-0.png'},null,2));console.log({changedPixels:count,changedOutsideMask:outside,alphaChanges:alpha});})();
