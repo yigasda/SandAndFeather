@@ -1,0 +1,135 @@
+{
+  "status": "batch-awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "action": "interact",
+  "characters": [
+    "set"
+  ],
+  "frameCount": 8,
+  "canvas": [
+    620,
+    720
+  ],
+  "anchor": {
+    "kind": "feet",
+    "position": [
+      310,
+      662
+    ]
+  },
+  "referenceVisibleHeight": 576,
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      150,
+      150
+    ],
+    "loop": false,
+    "after": "idle-same-direction"
+  },
+  "previewNote": "GIF는 정지1200ms 뒤0→1을 보여 주고 반복하는 확인용. 실제 동작은1회 재생.",
+  "userScope": "이제 세트 상호작용8장 하자",
+  "files": [
+    {
+      "path": "png/set-front-0.png",
+      "character": "set",
+      "direction": "front",
+      "gameDirection": "down",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "ef104898a5576e4e92756aa6351a131a78545d8d0cc214726583dc18672b12a3",
+      "sourceIdle": "../final/set/idle/set-front.png",
+      "guide": "../pose-guides/set-front-guide.png",
+      "fitReport": "checks/delivery/front-0/fit.json"
+    },
+    {
+      "path": "png/set-front-1.png",
+      "character": "set",
+      "direction": "front",
+      "gameDirection": "down",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "e6680901a07f8e0c7d96b7c02870d023be5cba0a1912f0be4877f54c11bb676d",
+      "sourceIdle": "../final/set/idle/set-front.png",
+      "guide": "../pose-guides/set-front-guide.png",
+      "fitReport": "checks/delivery/front-1/fit.json"
+    },
+    {
+      "path": "png/set-back-0.png",
+      "character": "set",
+      "direction": "back",
+      "gameDirection": "up",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "a3e2fd0bb2d79be47f019a14e20e9798b8216beb7d35afabfd8768ffb0734a93",
+      "sourceIdle": "../final/set/idle/set-back.png",
+      "guide": "../pose-guides/set-back-guide.png",
+      "fitReport": "checks/delivery/back-0/fit.json"
+    },
+    {
+      "path": "png/set-back-1.png",
+      "character": "set",
+      "direction": "back",
+      "gameDirection": "up",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "8cf40068a50173e50e4870ce3e4ed475fcade935a57d408e364537ca4356e4d0",
+      "sourceIdle": "../final/set/idle/set-back.png",
+      "guide": "../pose-guides/set-back-guide.png",
+      "fitReport": "checks/delivery/back-1/fit.json"
+    },
+    {
+      "path": "png/set-left-0.png",
+      "character": "set",
+      "direction": "left",
+      "gameDirection": "left",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "27c3c6a24773afa2dd40b2a54905f6a5d8b267c59eb9a5057f4de82aad6e739f",
+      "sourceIdle": "../final/set/idle/set-left.png",
+      "guide": "../pose-guides/set-left-guide.png",
+      "fitReport": "checks/delivery/left-0/fit.json"
+    },
+    {
+      "path": "png/set-left-1.png",
+      "character": "set",
+      "direction": "left",
+      "gameDirection": "left",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "0fffb7429063157fc79fce4a047ec70a635240d1498a61307805c937b29367a2",
+      "sourceIdle": "../final/set/idle/set-left.png",
+      "guide": "../pose-guides/set-left-guide.png",
+      "fitReport": "checks/delivery/left-1/fit.json"
+    },
+    {
+      "path": "png/set-right-0.png",
+      "character": "set",
+      "direction": "right",
+      "gameDirection": "right",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "5ef3637aef1e4cdcc04c561f9117b9fb8e7d55554d7cf398cf6ef121a0065899",
+      "sourceIdle": "../final/set/idle/set-right.png",
+      "guide": "../pose-guides/set-right-guide.png",
+      "fitReport": "checks/delivery/right-0/fit.json"
+    },
+    {
+      "path": "png/set-right-1.png",
+      "character": "set",
+      "direction": "right",
+      "gameDirection": "right",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "65a963b7b112f609395e8c4ddc48c3d262f6c91eb72d8add544fad267ddc20bb",
+      "sourceIdle": "../final/set/idle/set-right.png",
+      "guide": "../pose-guides/set-right-guide.png",
+      "fitReport": "checks/delivery/right-1/fit.json"
+    }
+  ],
+  "alphaExport": "Near-opaque alpha>=0.85 exported as fully opaque; RGB and lower-alpha edge values unchanged."
+}

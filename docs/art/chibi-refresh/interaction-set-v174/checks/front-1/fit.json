@@ -1,0 +1,35 @@
+{
+ "sheet": "docs/art/chibi-refresh/interaction-set-v174/sources/set-front-1-input.png",
+ "view": "front",
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "set": {
+   "scale": 0.99,
+   "match": 0.585,
+   "shift": [
+    53,
+    86
+   ],
+   "feetOffsetPx": 5,
+   "heightRatio": 1.01,
+   "heightFit": {
+    "scale": 0.9796,
+    "headScaleVsIdle": 0.989,
+    "shift": [
+     55,
+     87
+    ],
+    "headTopOffsetPx": 2
+   },
+   "verdict": "맞음 (발 +5px 보정)"
+  }
+ }
+}

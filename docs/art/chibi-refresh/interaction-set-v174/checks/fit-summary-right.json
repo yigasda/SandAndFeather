@@ -1,0 +1,50 @@
+[
+  [
+    "right",
+    0,
+    {
+      "scale": 1.03,
+      "match": 0.6,
+      "shift": [
+        1,
+        85
+      ],
+      "feetOffsetPx": -2,
+      "heightRatio": 1.0,
+      "heightFit": {
+        "scale": 1.0304,
+        "headScaleVsIdle": 1.0,
+        "shift": [
+          0,
+          87
+        ],
+        "headTopOffsetPx": -2
+      },
+      "verdict": "맞음 (발 -2px 보정)"
+    }
+  ],
+  [
+    "right",
+    1,
+    {
+      "scale": 1.0325,
+      "match": 0.595,
+      "shift": [
+        -1,
+        85
+      ],
+      "feetOffsetPx": -1,
+      "heightRatio": 1.002,
+      "heightFit": {
+        "scale": 1.0304,
+        "headScaleVsIdle": 0.998,
+        "shift": [
+          0,
+          87
+        ],
+        "headTopOffsetPx": -2
+      },
+      "verdict": "맞음 (발 -1px 보정)"
+    }
+  ]
+]
