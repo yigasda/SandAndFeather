@@ -1,0 +1,194 @@
+{
+ "set-front": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 576,
+  "top": 86,
+  "bottom": 661,
+  "hem": 577,
+  "hemShare": 0.852
+ },
+ "set-back": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 576,
+  "top": 86,
+  "bottom": 661,
+  "hem": 574,
+  "hemShare": 0.847
+ },
+ "set-left": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 576,
+  "top": 86,
+  "bottom": 661,
+  "hem": 575,
+  "hemShare": 0.849
+ },
+ "set-right": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 576,
+  "top": 86,
+  "bottom": 661,
+  "hem": 575,
+  "hemShare": 0.849
+ },
+ "somang-front": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 574,
+  "top": 86,
+  "bottom": 659,
+  "hem": 598,
+  "hemShare": 0.892
+ },
+ "somang-back": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 576,
+  "top": 84,
+  "bottom": 659,
+  "hem": 595,
+  "hemShare": 0.887
+ },
+ "somang-left": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 576,
+  "top": 86,
+  "bottom": 661,
+  "hem": 586,
+  "hemShare": 0.868
+ },
+ "somang-right": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 576,
+  "top": 86,
+  "bottom": 661,
+  "hem": 584,
+  "hemShare": 0.865
+ },
+ "horus-front": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 571,
+  "top": 86,
+  "bottom": 656,
+  "hem": 609,
+  "hemShare": 0.916
+ },
+ "horus-back": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 573,
+  "top": 89,
+  "bottom": 661,
+  "hem": 609,
+  "hemShare": 0.908
+ },
+ "horus-left": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 560,
+  "top": 102,
+  "bottom": 661,
+  "hem": 623,
+  "hemShare": 0.93
+ },
+ "horus-right": {
+  "canvas": [
+   620,
+   720
+  ],
+  "pivot": [
+   310,
+   662
+  ],
+  "referenceVisibleHeight": 576,
+  "heightPx": 560,
+  "top": 102,
+  "bottom": 661,
+  "hem": 567,
+  "hemShare": 0.83
+ }
+}
