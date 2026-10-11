@@ -82,6 +82,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 - `fit-scale.py <png> --who <set|somang|horus> --view <front|back|left|right> --out <폴더>`: 새 동작 그림을 최종 정지와 머리로 맞춰 배율·발 위치를 재고 "맞음 / 비율 다름"을 낸다(허용 12px). `fit-sheet.png`가 정지 / 머리 맞춤 / 키 맞춤 비교. 가이드가 최종 정지와 안 맞으면 경고한다.
 - `pose-guide.py`: 최종 정지를 흐리게 깐 그리기 가이드(`docs/art/chibi-refresh/pose-guides/`). 최종 정지가 바뀌면 다시 돌린다.
+- `skin-check.py <png들> [--who] [--view] --out <폴더>`: 피부색 검사. 같은 방향 최종 정지·걷기 4장 중 가장 가까운 장과 기본·그림자·밝은 쪽 색을 ΔE로 비교해 같음 / 조금 다름(ΔE 3~6) / 다름. 파일 이름에 방향이 없으면(잠자기) 네 방향 전체와 비교. 최종 48장은 모두 "같음"이 나온다. 앉기·눕기처럼 자세가 크게 다르면 fit-scale의 "비율 다름"은 당연하고 머리 크기(머리 맞춤 배율·일치도, 머리카락 폭)만 본다.
 - `check-sprite.py`: 비율·색·투명 보조 검사(아스트라용. 통과가 완성은 아님).
 - `pack-trio-motion.py`: 최종 48장 + 채택 동작 → 아틀라스와 `sprites.json`.
 

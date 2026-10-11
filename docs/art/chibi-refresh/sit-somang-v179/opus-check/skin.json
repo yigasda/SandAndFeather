@@ -1,0 +1,49 @@
+[
+ {
+  "file": "somang-left-0.png",
+  "who": "somang",
+  "view": "left",
+  "skinPixels": 17121,
+  "toneDeltaE": {
+   "base": 2.1,
+   "shadow": 2.7,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    254,
+    218,
+    198
+   ],
+   "shadow": [
+    250,
+    194,
+    174
+   ],
+   "light": [
+    254,
+    226,
+    210
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    218,
+    202
+   ],
+   "shadow": [
+    250,
+    190,
+    174
+   ],
+   "light": [
+    254,
+    226,
+    210
+   ]
+  },
+  "offPaletteShare": 0.004,
+  "verdict": "같음"
+ }
+]

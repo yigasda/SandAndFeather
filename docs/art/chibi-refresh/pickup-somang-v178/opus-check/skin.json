@@ -1,0 +1,378 @@
+[
+ {
+  "file": "somang-back-0.png",
+  "who": "somang",
+  "view": "back",
+  "skinPixels": 9319,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 2.9,
+   "light": 1.4
+  },
+  "tones": {
+   "base": [
+    250,
+    214,
+    194
+   ],
+   "shadow": [
+    250,
+    194,
+    174
+   ],
+   "light": [
+    250,
+    222,
+    206
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    214,
+    194
+   ],
+   "shadow": [
+    242,
+    186,
+    166
+   ],
+   "light": [
+    254,
+    226,
+    210
+   ]
+  },
+  "offPaletteShare": 0.002,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-back-1.png",
+  "who": "somang",
+  "view": "back",
+  "skinPixels": 5573,
+  "toneDeltaE": {
+   "base": 1.9,
+   "shadow": 2.4,
+   "light": 1.9
+  },
+  "tones": {
+   "base": [
+    250,
+    210,
+    190
+   ],
+   "shadow": [
+    250,
+    190,
+    170
+   ],
+   "light": [
+    254,
+    218,
+    198
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    214,
+    194
+   ],
+   "shadow": [
+    242,
+    186,
+    166
+   ],
+   "light": [
+    254,
+    222,
+    202
+   ]
+  },
+  "offPaletteShare": 0.009,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-front-0.png",
+  "who": "somang",
+  "view": "front",
+  "skinPixels": 23232,
+  "toneDeltaE": {
+   "base": 1.9,
+   "shadow": 2.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    254,
+    222,
+    206
+   ],
+   "shadow": [
+    254,
+    198,
+    178
+   ],
+   "light": [
+    254,
+    230,
+    214
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    218,
+    202
+   ],
+   "shadow": [
+    254,
+    194,
+    174
+   ],
+   "light": [
+    254,
+    230,
+    214
+   ]
+  },
+  "offPaletteShare": 0.003,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-front-1.png",
+  "who": "somang",
+  "view": "front",
+  "skinPixels": 20910,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 2.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    254,
+    222,
+    202
+   ],
+   "shadow": [
+    254,
+    198,
+    178
+   ],
+   "light": [
+    254,
+    230,
+    214
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    222,
+    202
+   ],
+   "shadow": [
+    254,
+    194,
+    174
+   ],
+   "light": [
+    254,
+    230,
+    214
+   ]
+  },
+  "offPaletteShare": 0.003,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-left-0.png",
+  "who": "somang",
+  "view": "left",
+  "skinPixels": 17045,
+  "toneDeltaE": {
+   "base": 0.0,
+   "shadow": 4.0,
+   "light": 1.6
+  },
+  "tones": {
+   "base": [
+    250,
+    218,
+    202
+   ],
+   "shadow": [
+    250,
+    198,
+    182
+   ],
+   "light": [
+    250,
+    226,
+    210
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    218,
+    202
+   ],
+   "shadow": [
+    250,
+    190,
+    174
+   ],
+   "light": [
+    254,
+    226,
+    210
+   ]
+  },
+  "offPaletteShare": 0.001,
+  "verdict": "조금 다름 (그림자 ΔE 4.0)"
+ },
+ {
+  "file": "somang-left-1.png",
+  "who": "somang",
+  "view": "left",
+  "skinPixels": 13644,
+  "toneDeltaE": {
+   "base": 1.4,
+   "shadow": 2.0,
+   "light": 1.4
+  },
+  "tones": {
+   "base": [
+    250,
+    214,
+    198
+   ],
+   "shadow": [
+    250,
+    194,
+    178
+   ],
+   "light": [
+    250,
+    222,
+    206
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    218,
+    202
+   ],
+   "shadow": [
+    250,
+    190,
+    174
+   ],
+   "light": [
+    254,
+    226,
+    210
+   ]
+  },
+  "offPaletteShare": 0.001,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-right-0.png",
+  "who": "somang",
+  "view": "right",
+  "skinPixels": 16989,
+  "toneDeltaE": {
+   "base": 1.4,
+   "shadow": 2.0,
+   "light": 1.5
+  },
+  "tones": {
+   "base": [
+    250,
+    218,
+    202
+   ],
+   "shadow": [
+    250,
+    186,
+    170
+   ],
+   "light": [
+    250,
+    226,
+    214
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    222,
+    206
+   ],
+   "shadow": [
+    250,
+    190,
+    174
+   ],
+   "light": [
+    254,
+    226,
+    214
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ },
+ {
+  "file": "somang-right-1.png",
+  "who": "somang",
+  "view": "right",
+  "skinPixels": 13982,
+  "toneDeltaE": {
+   "base": 1.4,
+   "shadow": 0.0,
+   "light": 1.4
+  },
+  "tones": {
+   "base": [
+    250,
+    214,
+    198
+   ],
+   "shadow": [
+    250,
+    190,
+    174
+   ],
+   "light": [
+    250,
+    222,
+    210
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    218,
+    202
+   ],
+   "shadow": [
+    250,
+    190,
+    174
+   ],
+   "light": [
+    254,
+    226,
+    214
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ }
+]

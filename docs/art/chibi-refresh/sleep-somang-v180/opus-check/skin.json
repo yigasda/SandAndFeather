@@ -1,0 +1,49 @@
+[
+ {
+  "file": "somang-sleep-0.png",
+  "who": "somang",
+  "view": "all",
+  "skinPixels": 22830,
+  "toneDeltaE": {
+   "base": 1.4,
+   "shadow": 2.1,
+   "light": 1.9
+  },
+  "tones": {
+   "base": [
+    254,
+    218,
+    198
+   ],
+   "shadow": [
+    250,
+    182,
+    162
+   ],
+   "light": [
+    254,
+    226,
+    206
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    250,
+    214,
+    194
+   ],
+   "shadow": [
+    250,
+    182,
+    166
+   ],
+   "light": [
+    254,
+    222,
+    202
+   ]
+  },
+  "offPaletteShare": 0.0,
+  "verdict": "같음"
+ }
+]
