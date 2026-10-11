@@ -1,0 +1,20 @@
+{
+  "source": "/workspace/generated_images/exec-0afc269a-f540-4263-a7e0-cd74a7183205.png",
+  "ref": "docs/art/chibi-refresh/sleep-set-v192/png/set-sleep-1.png",
+  "matrix": [
+    [
+      0.5581706996925265,
+      0.007441590866016232,
+      -28.01926119244865
+    ],
+    [
+      -0.007441590866016232,
+      0.5581706996925265,
+      -38.298495184285024
+    ]
+  ],
+  "inliers": 44,
+  "good": 120,
+  "wholeFrameOnly": true,
+  "featureRegions": "body"
+}

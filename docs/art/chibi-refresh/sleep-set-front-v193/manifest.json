@@ -1,0 +1,59 @@
+{
+  "revision": 193,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "runtimeOwner": "opus",
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 2,
+  "scope": "Entire front hair redraw only; preserve each corresponding 192 frame face/body. Side192 approved and unchanged.",
+  "requestEvidence": [
+    "정면 머리카락 다시 그리란 말임 싹다",
+    "너무 세세해 날카로워졌고"
+  ],
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "files": [
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "dc784f6b31195fcd9800b4ae82aa68b98d2f327e8a211245dae12df3e8c9ef69"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "632f865af20e17e5ee87e05ad6231673c3169bba4393fbcd27f0d7218c4179f7"
+    }
+  ]
+}

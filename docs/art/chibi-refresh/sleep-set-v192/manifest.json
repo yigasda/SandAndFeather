@@ -1,7 +1,7 @@
 {
   "revision": 192,
   "action": "sleep",
-  "status": "awaiting-user-review",
+  "status": "partially-user-approved",
   "artApproved": false,
   "runtimeEligible": false,
   "canvas": [
@@ -23,7 +23,10 @@
           450
         ]
       },
-      "sha256": "baf4f801fbc39a740ec837e23a4fde532e05e5442745235f153c6e65dd4532b0"
+      "sha256": "baf4f801fbc39a740ec837e23a4fde532e05e5442745235f153c6e65dd4532b0",
+      "status": "revision-requested",
+      "artApproved": false,
+      "revisionReason": "정면 머리카락 전체 재작화: 정지·걷기보다 너무 세세하고 날카로움"
     },
     {
       "path": "png/set-sleep-1.png",
@@ -38,7 +41,10 @@
           450
         ]
       },
-      "sha256": "0123ff9575d50b00873ff240b1a43adc98336ff35559807a7098cd99461386ea"
+      "sha256": "0123ff9575d50b00873ff240b1a43adc98336ff35559807a7098cd99461386ea",
+      "status": "revision-requested",
+      "artApproved": false,
+      "revisionReason": "정면 머리카락 전체 재작화: 정지·걷기보다 너무 세세하고 날카로움"
     },
     {
       "path": "png/set-sleep-side-0.png",
@@ -53,7 +59,10 @@
           445
         ]
       },
-      "sha256": "b4b3ebbbf2e017f40892ac60bd2ea107b79aaf5aadcda5236632c030c78795f9"
+      "sha256": "b4b3ebbbf2e017f40892ac60bd2ea107b79aaf5aadcda5236632c030c78795f9",
+      "status": "user-approved",
+      "artApproved": true,
+      "approvalEvidence": "옆모습은 채택"
     },
     {
       "path": "png/set-sleep-side-1.png",
@@ -68,7 +77,10 @@
           445
         ]
       },
-      "sha256": "d6e13c087b7f92d8735a15ca6d79c54d80d108dd285c42ad1004ed6cfcad7220"
+      "sha256": "d6e13c087b7f92d8735a15ca6d79c54d80d108dd285c42ad1004ed6cfcad7220",
+      "status": "user-approved",
+      "artApproved": true,
+      "approvalEvidence": "옆모습은 채택"
     }
   ],
   "playback": {
@@ -92,5 +104,10 @@
     "set-sleep-side-1-generated.png": "944bec4fa70d66bea6a626324f4b84650eff34ffc21a70ec41b11fde89031d6c",
     "set-sleep-side-0-generated.png": "c43ca1422eddb8eeaa3aeb629e1d31e8813c1f9dabbf4a8cf7ff85dc6c144a8c",
     "set-sleep-1-generated.png": "3fefe5b68297d486181ef6258c9d9ee69586c19cc18f1bcbec7c14dcf9b118f6"
-  }
+  },
+  "approvalEvidence": "옆모습은 채택",
+  "approvedFiles": [
+    "png/set-sleep-side-0.png",
+    "png/set-sleep-side-1.png"
+  ]
 }

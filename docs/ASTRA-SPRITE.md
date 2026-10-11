@@ -236,7 +236,7 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 | 상호작용 | 소망 [172](art/chibi-refresh/interaction-somang-v172/README.md), 세트 [174·175](art/chibi-refresh/interaction-set-v174/README.md), 호루스 [176·177](art/chibi-refresh/interaction-horus-v176/README.md) | 셋 × 4방향 × 2 |
 | 줍기 | 소망 [181](art/chibi-refresh/pickup-somang-v178/README.md), 호루스 182·세트 185 [pickup-trio-v182](art/chibi-refresh/pickup-trio-v182/README.md) | 셋 × 4방향 × 2 |
 | 앉기 | 소망 방석 왼쪽 [179](art/chibi-refresh/sit-somang-v179/README.md) | 대표 1장 |
-| 잠들기 | 소망 프레임 0 [180](art/chibi-refresh/sleep-somang-v180/README.md) | 대표 1장 |
+| 잠들기 | 소망 프레임 0 [180](art/chibi-refresh/sleep-somang-v180/README.md), 세트 옆0·1 [192](art/chibi-refresh/sleep-set-v192/README.md) | 소망 대표1장, 세트 옆2장 사용자 “옆모습은 채택”. 정면193은 검토 전 |
 
 검사 도구를 하나만 다시 돌릴 때: `skin-check.py`(피부색), `action-check.py`(머리·키·외곽선·쏠림), `onion.py A B [--flip-b]`(두 장 겹치기), `head-check.py`(정지 머리 겹치기·가이드), `fit-scale.py`(서 있는 자세의 머리·발 맞춤). 보통은 `sprite-review.py` 한 줄이면 된다.
 

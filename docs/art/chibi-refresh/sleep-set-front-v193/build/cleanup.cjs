@@ -1,0 +1,2 @@
+const sharp=require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.cjs'),fs=require('fs');
+(async()=>{for(let n=0;n<2;n++){let p='docs/art/chibi-refresh/sleep-set-front-v193/png/set-sleep-'+n+'.png',a=await sharp(p).ensureAlpha().raw().toBuffer(),s=Buffer.from(a),c=JSON.parse(fs.readFileSync('/workspace/actions193/cleanup'+n+'.json'));for(let [k,j] of c.copies)s.copy(a,k*4,j*4,j*4+4);for(let k of c.remove)a.fill(0,k*4,k*4+4);let b=await sharp(a,{raw:{width:620,height:720,channels:4}}).png().toBuffer();fs.writeFileSync(p,b)}})();

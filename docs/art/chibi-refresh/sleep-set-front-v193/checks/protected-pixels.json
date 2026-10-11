@@ -1,0 +1,28 @@
+[
+  {
+    "frame": 0,
+    "protectedPixels": 81614,
+    "changedProtectedPixels": 0,
+    "changedTotal": 158266,
+    "alphaComponents": 1,
+    "bbox": [
+      14,
+      44,
+      607,
+      658
+    ]
+  },
+  {
+    "frame": 1,
+    "protectedPixels": 81475,
+    "changedProtectedPixels": 0,
+    "changedTotal": 164560,
+    "alphaComponents": 1,
+    "bbox": [
+      11,
+      41,
+      608,
+      653
+    ]
+  }
+]
