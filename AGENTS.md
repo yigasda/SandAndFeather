@@ -4,7 +4,7 @@
 
 | 누구 | 하는 일 | 읽을 문서 |
 |---|---|---|
-| **아스트라** | 그림: 시안, 스프라이트, 맵 아트 | [`docs/ASTRA-HANDOFF.md`](docs/ASTRA-HANDOFF.md), 단계별 할 일 [`docs/ASTRA-PLAN.md`](docs/ASTRA-PLAN.md) |
+| **아스트라** | 그림: 시안, 스프라이트, 맵 아트 | [`docs/ASTRA-HANDOFF.md`](docs/ASTRA-HANDOFF.md), 단계별 할 일 [`docs/ASTRA-PLAN.md`](docs/ASTRA-PLAN.md), **캐릭터 그림은 매번 [`docs/ASTRA-SPRITE.md`](docs/ASTRA-SPRITE.md) 작업 카드 순서대로** |
 | **오푸스** | 게임: 채택된 그림 적용, 충돌·출구·가림·저장, UI, 코드, 검증 | [`docs/OPUS-HANDOFF.md`](docs/OPUS-HANDOFF.md) |
 
 두 에이전트 모두 main에 작업한다. 받아서 합치고, 다른 작업을 덮어쓰지 않는다.
