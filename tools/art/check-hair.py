@@ -1,6 +1,6 @@
 # Compares Horus's front hair with the shape the user drew (docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg).
-# The user's drawing is a phone edit: its outline, spikes, width, height and hairline are the target; its brush marks
-# and colours are not. Every frame is matched by the eyes, so the target follows the head wherever a walk frame
+# The user's drawing is a phone edit: its outline, spikes, width, height and the hairline's height are the target; the
+# hairline's own drawing, the brush marks and the colours are not. Every frame is matched by the eyes, so the target follows the head wherever a walk frame
 # moves it.
 #
 #   python3 tools/art/check-hair.py CAND.png [CAND.png ...] [--out DIR]
@@ -244,6 +244,29 @@ def hair_line_weight(rgb, body, e, sil):
     return float((dark & band).sum() / max(rim.sum(), 1) / d)
 
 
+def hairline_height(sil, e):
+    # how far down the hair comes over the forehead: the mean of the lowest hair row in each column across the
+    # middle of the forehead. Only the height is the user's; the hairline's drawing is the artist's.
+    d = abs(e[1][0] - e[0][0]); cx = (e[0][0] + e[1][0]) / 2; ey = min(e[0][1], e[1][1])
+    lows = []
+    for x in range(int(cx - 0.45 * d), int(cx + 0.45 * d) + 1):
+        col = np.nonzero(sil[:int(ey - 0.35 * d), x])[0]
+        if len(col): lows.append(col.max())
+    return float(np.mean(lows)) if lows else float('nan')
+
+
+def forehead_lines(target, e, shape):
+    # for the forehead there is no hairline shape to trace, only its height: the face's side of the hair edge is left
+    # out of the target line, and a level marks how far down the hair comes
+    d = abs(e[1][0] - e[0][0]); cx = (e[0][0] + e[1][0]) / 2; ey = min(e[0][1], e[1][1])
+    rows = np.arange(shape[0])[:, None]; cols = np.arange(shape[1])[None, :]
+    face_side = (np.abs(cols - cx) < 0.85 * d) & (rows < ey + 0.1 * d) & (rows > ey - 1.3 * d)
+    level = np.zeros(shape, bool)
+    y = int(round(hairline_height(target, e)))
+    level[y, int(cx - 0.45 * d):int(cx + 0.45 * d) + 1] = True
+    return face_side, level
+
+
 def hairline_ink(rgb, body, e, sil, blue):
     # how much near-black sits where the hair meets the forehead. The user's hairline has none to speak of: hair
     # tufts run into skin. A black rim there reads as hair cut out and stuck on.
@@ -376,6 +399,8 @@ def compare(path):
     res['hairWeight'] = round(hair_line_weight(rgb, body, e, sil) * 100, 1)
     res['hairWeightUser'] = round(hair_line_weight(user.astype(float) / 255, ub, e, usil) * 100, 1)
     res['_user'] = user
+    tsil_ = target
+    res['hairlineHeight'] = round(hairline_height(sil, e) - hairline_height(tsil_, e), 1)
     ink, inkm = hairline_ink(rgb, body, e, sil, blue)
     uink, _ = hairline_ink(user.astype(float) / 255, ub, e, usil, hair_mask(user.astype(float) / 255, ub, e)[1])
     res['hairlineInk'] = round(ink, 3); res['hairlineInkUser'] = round(uink, 3); res['_ink'] = inkm
@@ -394,7 +419,9 @@ def draw(res, path):
     over = pic.copy()
     over[missing] = (over[missing] * 0.4 + np.array([255, 40, 40]) * 0.6).astype(np.uint8)
     over[extra] = (over[extra] * 0.4 + np.array([40, 120, 255]) * 0.6).astype(np.uint8)
-    over[edge(target)] = (230, 0, 0)
+    face_side, level = forehead_lines(target, res['_eyesRaw'], target.shape)
+    over[edge(target) & ~(face_side & ~grow(~body, 3))] = (230, 0, 0)
+    over[level] = (230, 0, 0)
     over[grow(res['_bare'], 1) & ~edge(target)] = (255, 150, 0)  # orange: hair edge with no dark outline
     T, off = res['_ears']
     over[grow(off, 1)] = (200, 0, 200)  # magenta: the candidate's ear outline where it leaves the user's ear
@@ -410,7 +437,7 @@ def draw(res, path):
     d = ImageDraw.Draw(cv)
     d.text((8, 6), os.path.basename(res['path']) + ' — 후보 그대로 | 빨간 선 = 사용자 머리 외곽선, 빨강 칠 = 모자람, 파랑 칠 = 넘침', fill=(40, 30, 20), font=FONT)
     d.text((8, 28), f"바깥 외곽선: 평균 {res['outer']['mean']}px, 최대 {res['outer']['max']}px, 2px 안 {res['outer']['within2px'] * 100:.0f}%   "
-                    f"이마선: 평균 {res['hairline']['mean']}px, 최대 {res['hairline']['max']}px, 2px 안 {res['hairline']['within2px'] * 100:.0f}%", fill=(120, 0, 60), font=FONT)
+                    f"이마선 높이: 사용자보다 {res['hairlineHeight']:+.1f}px (+는 아래)", fill=(120, 0, 60), font=FONT)
     d.text((8, 48), f"모자람 {res['missingPx']}px · 넘침 {res['extraPx']}px · 머리 외곽선 {res['outlineCover'] * 100:.0f}%, 굵기 {res['hairWeight']}(사용자 {res['hairWeightUser']}) · "
                     f"이마선 검은 테두리 {res['hairlineInk'] * 100:.0f}%(사용자 {res['hairlineInkUser'] * 100:.0f}%) · 귀 2px 안 {res['ears']['within2px'] * 100:.0f}%", fill=(120, 0, 60), font=FONT)
     d.text((8, 68), '주황 = 외곽선 없는 가장자리, 하늘색 = 이마선 검은 테두리, 보라 = 귀 어긋남', fill=(120, 0, 60), font=FONT)
@@ -424,7 +451,7 @@ def verdict(r):
     # every check that fails, not only the first
     bad = []
     if not (r['outer']['within2px'] >= 0.9 and r['outer']['max'] <= 4): bad.append('머리 모양 다름')
-    if not (r['hairline']['within2px'] >= 0.85 and r['hairline']['max'] <= 5): bad.append('이마선 위치 다름')
+    if abs(r['hairlineHeight']) > 3: bad.append('이마선 높이 다름')
     if r['outlineCover'] < OUTLINE_MIN: bad.append('머리 외곽선 없음 (잘라만 냄)')
     if r['hairWeight'] < 0.75 * r['hairWeightUser']: bad.append('머리 외곽선 얇음')
     if r['hairlineInk'] > r['hairlineInkUser'] + 0.1: bad.append('이마선에 검은 테두리 (오려 붙인 선)')
@@ -437,13 +464,13 @@ def verdict(r):
 def report(results, out):
     L = ['# 호루스 머리 — 사용자 수정본과 비교', '',
          '기준: 사용자 수정본(`docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg`)의 머리 외곽선과 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
-         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 평균/최대, 2px 안 | 모자람/넘침 px | 머리 외곽선, 굵기 (사용자) | 이마선 검은 테두리 (사용자) | 귀 모양 2px 안, 최대 | 귀 외곽선, 두께 | 판정 |', '|---|---|---|---|---|---|---|---|---|']
+         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 높이 차이 | 모자람/넘침 px | 머리 외곽선, 굵기 (사용자) | 이마선 검은 테두리 (사용자) | 귀 모양 2px 안, 최대 | 귀 외곽선, 두께 | 판정 |', '|---|---|---|---|---|---|---|---|---|']
     for r in results:
-        o, h = r['outer'], r['hairline']
+        o = r['outer']
         L.append(f"| [{os.path.basename(r['path'])}]({os.path.splitext(os.path.basename(r['path']))[0]}-hair.png) | "
-                 f"{o['mean']}/{o['max']}px, {o['within2px'] * 100:.0f}% | {h['mean']}/{h['max']}px, {h['within2px'] * 100:.0f}% | "
+                 f"{o['mean']}/{o['max']}px, {o['within2px'] * 100:.0f}% | {r['hairlineHeight']:+.1f}px | "
                  f"{r['missingPx']}/{r['extraPx']} | {r['outlineCover'] * 100:.0f}%, {r['hairWeight']} ({r['hairWeightUser']}) | {r['hairlineInk'] * 100:.0f}% ({r['hairlineInkUser'] * 100:.0f}%) | {r['ears']['within2px'] * 100:.0f}%, {r['ears']['max']}px | {r['earOutline'] * 100:.0f}%, 굵기 {r['earThick'] * 100:.1f}/{r['earThickRef'] * 100:.1f} | {verdict(r)} |")
-    L += ['', '통과 기준: 바깥 외곽선 90% 이상이 2px 안, 최대 4px. 이마선 85% 이상이 2px 안, 최대 5px.',
+    L += ['', '통과 기준: 바깥 외곽선 90% 이상이 2px 안, 최대 4px. 이마선은 높이만 본다: 이마 가운데에서 머리가 내려오는 평균 높이가 사용자 그림과 3px 안. 이마선 모양(갈래)은 화가가 머리 모양에 어울리게 새로 그린다.',
           '귀: 사용자 귀 윤곽(동그란 윗부분, 머리카락과 틈)과 후보 귀 윤곽이 서로 85% 이상 2px 안, 최대 4px. 들쭉날쭉하거나 찌그러진 귀는 보라로 표시된다. 귀 가장자리도 머리처럼 검은 외곽선이 80% 이상이어야 하고(흰 점, 끊긴 선은 주황), 굵기(눈 사이 거리 대비)가 사용자 그림 귀 선의 80% 이상이어야 한다. 선 맛(필압, 매끈함)은 숫자로 못 잰다: <이름>-ears.png에서 사용자 그림 귀와 나란히 보고 맞춘다.',
           '머리 외곽선 굵기: 같은 자리에 옮긴 사용자 그림 머리 외곽선 굵기의 75% 이상. 얇은 남색 테두리는 실패한다.',
           '이마선 검은 테두리: 이마와 머리가 만나는 곳의 검은 픽셀 비율이 사용자 그림보다 10%p 넘게 많으면 실패한다. 사용자 이마선은 검은 테두리 없이 머리 갈래가 이마로 내려온다.',
@@ -483,14 +510,18 @@ def targets():
         k = 3
         big = lambda a: np.kron(a[y0:y1, x0:x1], np.ones((k, k), bool)) if a.dtype == bool else np.asarray(Image.fromarray(a[y0:y1, x0:x1]).resize(((x1 - x0) * k, (y1 - y0) * k), Image.NEAREST))
         # the hair (its edge against face and ears too) and the ears' outline; not the jaw, which the user left as it was
-        line = grow(edge(big(target)) | (edge(big(thead)) & big(tears)), 1)
+        # the hair's outline without the hairline's shape (only its height, as a level), and the ears
+        face_side, level = forehead_lines(target, e, body.shape)
+        hair_line = edge(target) & ~(face_side & ~grow(~(body | target), 3))
+        keep = hair_line | level
+        line = grow(edge(big(target)) & big(keep) | big(level) | (edge(big(thead)) & big(tears)), 1)
         a = big(user).copy(); a[line] = (230, 0, 0)
         b = big(pic).copy(); b[line] = (230, 0, 0)
         tiles.append((Image.fromarray(a), Image.fromarray(b)))
         # the whole adopted frame with the target line, one file a frame, to hand over as is
         whole = np.asarray(Image.fromarray(pic).resize((pic.shape[1] * k, pic.shape[0] * k), Image.NEAREST)).copy()
         kb = lambda m: np.kron(m, np.ones((k, k), bool))
-        whole[grow(edge(kb(target)) | (edge(kb(thead)) & kb(tears)), 2)] = (230, 0, 0)
+        whole[grow(edge(kb(target)) & kb(keep) | kb(level) | (edge(kb(thead)) & kb(tears)), 2)] = (230, 0, 0)
         ys_, xs_ = np.nonzero(body)
         crop = Image.fromarray(whole).crop(((xs_.min() - 10) * k, (ys_.min() - 10) * k, (xs_.max() + 11) * k, (ys_.max() + 11) * k))
         full.append(crop)
@@ -539,7 +570,7 @@ def main():
         ear_sheet(r, os.path.join(out, os.path.splitext(os.path.basename(p))[0] + '-ears.png'))
         forehead_sheet(r, os.path.join(out, os.path.splitext(os.path.basename(p))[0] + '-forehead.png'))
         res.append(r)
-        print(os.path.basename(p), '→', verdict(r).strip('*'), f"(바깥 2px 안 {r['outer']['within2px'] * 100:.0f}%, 최대 {r['outer']['max']}px · 이마선 2px 안 {r['hairline']['within2px'] * 100:.0f}%, 최대 {r['hairline']['max']}px)")
+        print(os.path.basename(p), '→', verdict(r).strip('*'), f"(바깥 2px 안 {r['outer']['within2px'] * 100:.0f}%, 최대 {r['outer']['max']}px · 이마선 높이 {r['hairlineHeight']:+.1f}px)")
     report(res, out)
     print('→', os.path.relpath(out))
 

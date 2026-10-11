@@ -248,7 +248,10 @@ def main():
     # line; they stay as drawn.
     rows = np.arange(body.shape[0])[:, None]
     below = np.broadcast_to(rows > np.nonzero(head.any(1))[0].max(), body.shape)
-    lines = [(hair, red, None), (head, red, ears), (body, red, below)]
+    # the hair without the hairline's shape: only its height, as a level
+    face_side, level = ch.forehead_lines(hair, e, hair.shape)
+    not_hairline = ~(face_side & ~ch.grow(~(b | hair), 3))
+    lines = [(hair, red, not_hairline), (head, red, ears), (body, red, below), (level, red, None)]
     tiles = [tile(walk, []), tile(idle, lines), tile(new, lines)]
     heads = ['채택 걷기 정면 1 (비율 기준)', '지금 정지 정면(156) + 빨간 목표선', '목표 모양 미리보기 (기계로 자르고 늘린 것, 그림 아님)']
     tw, th = tiles[0].size
