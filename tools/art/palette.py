@@ -27,7 +27,7 @@ except OSError:
     FONT = ImageFont.load_default()
 WHO = {'set': '세트', 'horus': '호루스', 'somang': '소망'}
 VIEWS = ('front', 'back', 'left', 'right')
-PARTS = [('skin', '피부'), ('hair', '머리'), ('outline', '외곽선'), ('shoe', '신발'), ('gold', '금장'), ('cloth', '옷')]
+PARTS = [('skin', '피부'), ('hair', '머리'), ('brow', '눈썹'), ('outline', '외곽선'), ('shoe', '신발'), ('gold', '금장'), ('cloth', '옷')]
 STEPS = [('base', '기본'), ('shadow1', '그림자 1'), ('shadow2', '그림자 2'), ('light', '밝은 쪽')]
 
 
@@ -52,6 +52,38 @@ def masks(path, who):
     cloth &= ((s < 0.35) & (v < 0.4)) if who == 'set' else ((s < 0.2) & (v > 0.6))
     m = {'skin': skin, 'hair': p['hair'], 'outline': p['outline'], 'shoe': p['shoe'], 'gold': gold, 'cloth': cloth}
     return im, {k: x & solid for k, x in m.items()}
+
+
+# eyebrows: Horus's thick navy brows sit in these boxes of the final idle (x0, y0, x1, y1); Set's are found as the
+# first dark band inside the face; Somang's are hidden under her see-through bangs (see the table note)
+HORUS_BROWS = {'front': [(190, 288, 280, 313), (325, 288, 412, 313)], 'left': [(180, 288, 258, 310)], 'right': [(365, 288, 442, 310)]}
+
+
+def brows(who, v):
+    path = os.path.join(FINAL, who, 'idle', f'{who}-{v}.png')
+    if who == 'somang' or v == 'back' or not os.path.exists(path): return None
+    im = np.asarray(Image.open(path).convert('RGBA')).astype(np.float32)
+    P = cs.parts(im, who); solid = im[..., 3] >= 250
+    skin = P['skin'] & (np.arange(im.shape[0])[:, None] < P['top'] + 0.55 * P['H'])
+    M = np.zeros_like(skin)
+    if who == 'horus':
+        L = cs.lab(im[..., :3].reshape(-1, 3)).reshape(im.shape[:2] + (3,))[..., 0]
+        for x0, y0, x1, y1 in HORUS_BROWS[v]: M[y0:y1, x0:x1] = True
+        M &= solid & ~skin & (L < 50)
+    else:
+        ys, _ = np.nonzero(skin); y0, y1 = ys.min(), ys.max()
+        up = np.zeros_like(skin); dn = np.zeros_like(skin)
+        for d in range(1, 14): up |= np.roll(skin, d, 0); dn |= np.roll(skin, -d, 0)
+        E = solid & ~skin & up & dn; E[:y0] = False; E[y0 + int(0.6 * (y1 - y0)):] = False
+        rows = np.nonzero(E.sum(1) > 3)[0]
+        if not len(rows): return None
+        band = [rows[0]]
+        for r in rows[1:]:
+            if r - band[-1] > 2: break
+            band.append(r)
+        M[band[0]:band[-1] + 1] = E[band[0]:band[-1] + 1]
+    px = im[..., :3][M]
+    return px if len(px) >= 40 else None
 
 
 def steps(rgb):
@@ -100,14 +132,20 @@ def main():
         pix = {v: {k: [] for k, _ in PARTS} for v in VIEWS}
         for v, path in files(who):
             im, m = masks(path, who)
-            for k, _ in PARTS: pix[v][k].append(im[..., :3][m[k]])
+            for k, _ in PARTS:
+                if k != 'brow': pix[v][k].append(im[..., :3][m[k]])
+        for v in VIEWS:
+            b = brows(who, v)
+            pix[v]['brow'].append(b if b is not None else np.zeros((0, 3), np.float32))
         table[who] = {}
         for v in VIEWS:
             table[who][v] = {}
             for k, _ in PARTS:
                 px = np.concatenate(pix[v][k])
-                if len(px) < 150: continue
-                table[who][v][k] = {s: {'hex': hexc(c), 'rgb': [int(x) for x in c], 'share': round(float(f), 3)} for s, (c, f) in steps(px).items()}
+                if len(px) < (40 if k == 'brow' else 150): continue
+                st = steps(px)
+                if k == 'brow': st.pop('light', None)  # a brow's lighter pixels are its edge blending into the skin
+                table[who][v][k] = {s: {'hex': hexc(c), 'rgb': [int(x) for x in c], 'share': round(float(f), 3)} for s, (c, f) in st.items()}
     json.dump({'source': 'final idle 1 + walk 3 per character and direction', 'steps': dict(STEPS), 'parts': dict(PARTS),
                'colours': table}, open(os.path.join(OUT, 'palette.json'), 'w'), ensure_ascii=False, indent=1)
 
@@ -116,6 +154,7 @@ def main():
           '스포이트로 다시 뽑지 않는다. 누운 그림처럼 방향이 애매하면 정면 표. 표에 없는 단계가 필요하면 새로 만들지 말고 사용자에게 묻는다.', '',
           '- 기본 = 가장 많이 쓴 색(평평한 면). 그림자 1 = 기본보다 조금 어두운 색, 그림자 2 = 더 어두운 색(외곽선 제외), 밝은 쪽 = 하이라이트.',
           '- 괄호 안 % = 그 부위에서 그 색이 차지하는 비율. 작은 %는 작은 점·선에만 쓴다.',
+          '- **눈썹:** 세트·호루스는 표에 있다(정지에서 뽑음). **소망 눈썹은 시스루뱅에 가려 표에 없다:** 앞머리 사이로 비치는 가는 선으로, 소망 머리의 그림자 1색으로 그린다. 눈썹 색을 머리 기본색이나 검정으로 칠하지 않는다.',
           '- **눈은 표에 없다**(작은 칸에 색이 너무 많다). [eyes.png](eyes.png)의 정지 눈을 쓴다: 뜬 눈은 같은 방향 정지 눈 픽셀을 그대로 옮겨도 된다, 표정이 바뀐 눈은 그 그림에 있는 색만. 볼 홍조, 입, 리본도 그 방향 최종 정지에서 그대로.',
           '- 같은 캐릭터라도 방향마다 조금 다르게 칠해져 있다(채택본 그대로). 다른 방향 색을 섞지 않는다.', '']
     for who, ko in WHO.items():
