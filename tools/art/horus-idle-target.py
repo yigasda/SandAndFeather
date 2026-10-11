@@ -141,7 +141,7 @@ def back(o):
     k = 3
     st = I['legsStart'] + legs_n
     y0, y1 = I['top'] - 12, I['sole'] + 6
-    front = os.path.join(ART, 'review-horus-idle-v156', 'horus-front.png')
+    front = ch.GUIDE  # the approved front
     bhead, bhair, bears = back_head(front, idle)
     Image.fromarray((bhead * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-back-head-mask.png'))
     kb = lambda m: np.kron(m, np.ones((k, k), bool))

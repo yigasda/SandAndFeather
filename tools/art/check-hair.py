@@ -15,7 +15,12 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 ART = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh')
 GUIDE_DIR = os.path.join(ART, 'horus-hair-guide')
-GUIDE = os.path.join(GUIDE_DIR, 'user-edit-final.jpg')
+# The reference head. It started as the user's phone edit (user-edit-final.jpg: outline, ears and the hairline's
+# height only). Once the user passed a drawn front (161), that front is the reference, hairline included, so the walk
+# frames take the same head the user approved.
+GUIDE = os.path.join(ART, 'review-horus-front-v161', 'horus-idle-front.png')
+GUIDE_LABEL = '통과 정면 161'
+GUIDE_TRACE_HAIRLINE = True  # the approved front's hairline is the design to keep; the phone edit's was not
 WALK = os.path.join(ART, 'review-trio-walk-v5', 'walk')
 try:
     FONT = ImageFont.truetype('/usr/share/fonts/opentype/unifont/unifont.otf', 16)
@@ -298,7 +303,7 @@ def ear_sheet(res, path):
     user = res['_user']
     pic = np.ones((*rgb.shape[:2], 3)) * np.array([245, 239, 227]) / 255
     pic[body] = rgb[body]; pic = Image.fromarray((pic * 255).astype(np.uint8))
-    rows = [('후보', pic), ('사용자 그림 (같은 자리에 옮김)', Image.fromarray(user))]
+    rows = [('후보', pic), (GUIDE_LABEL + ' (같은 자리에 옮김)', Image.fromarray(user))]
     boxes = [b for b in res['_earBoxes'] if b]
     tiles = [(name, [im.crop(b).resize(((b[2] - b[0]) * 6, (b[3] - b[1]) * 6), Image.NEAREST) for b in boxes]) for name, im in rows]
     w = sum(t.width for _, ts in tiles for t in ts) + 10 * len(boxes) * 2 + 40
@@ -328,7 +333,7 @@ def forehead_sheet(res, path):
     size = ((box[2] - box[0]) * k, (box[3] - box[1]) * k)
     tiles = [('후보', paper(rgb, body).crop(box).resize(size, Image.NEAREST)),
              ('채택 걷기 (이마 마감 퀄리티 기준)', paper(wr, wb).crop(wbox).resize(size, Image.NEAREST)),
-             ('사용자 그림 (이마 높이만 참고)', Image.fromarray(res['_user']).crop(box).resize(size, Image.NEAREST))]
+             (GUIDE_LABEL + (' (이마까지 기준)' if GUIDE_TRACE_HAIRLINE else ' (이마 높이만 참고)'), Image.fromarray(res['_user']).crop(box).resize(size, Image.NEAREST))]
     w = size[0]
     cv = Image.new('RGB', (w * 3 + 60, size[1] + 28), (250, 248, 244)); d_ = ImageDraw.Draw(cv)
     for i_, (n, t) in enumerate(tiles):
@@ -428,8 +433,11 @@ def draw(res, path):
     over[missing] = (over[missing] * 0.4 + np.array([255, 40, 40]) * 0.6).astype(np.uint8)
     over[extra] = (over[extra] * 0.4 + np.array([40, 120, 255]) * 0.6).astype(np.uint8)
     face_side, level = forehead_lines(target, res['_eyesRaw'], target.shape)
-    over[edge(target) & ~(face_side & ~grow(~body, 3))] = (230, 0, 0)
-    over[level] = (230, 0, 0)
+    if GUIDE_TRACE_HAIRLINE:
+        over[edge(target)] = (230, 0, 0)
+    else:
+        over[edge(target) & ~(face_side & ~grow(~body, 3))] = (230, 0, 0)
+        over[level] = (230, 0, 0)
     over[grow(res['_bare'], 1) & ~edge(target)] = (255, 150, 0)  # orange: hair edge with no dark outline
     T, off = res['_ears']
     over[grow(off, 1)] = (200, 0, 200)  # magenta: the candidate's ear outline where it leaves the user's ear
@@ -442,9 +450,9 @@ def draw(res, path):
     cv = Image.new('RGB', (W * k * 2, y1 * k + 92), (250, 248, 244))
     cv.paste(a, (0, 92)); cv.paste(b, (W * k, 92))
     d = ImageDraw.Draw(cv)
-    d.text((8, 6), os.path.basename(res['path']) + ' — 후보 그대로 | 빨간 선 = 사용자 머리 외곽선, 빨강 칠 = 모자람, 파랑 칠 = 넘침', fill=(40, 30, 20), font=FONT)
+    d.text((8, 6), os.path.basename(res['path']) + ' — 후보 그대로 | 빨간 선 = ' + GUIDE_LABEL + ' 머리 외곽선, 빨강 칠 = 모자람, 파랑 칠 = 넘침', fill=(40, 30, 20), font=FONT)
     d.text((8, 28), f"바깥 외곽선: 평균 {res['outer']['mean']}px, 최대 {res['outer']['max']}px, 2px 안 {res['outer']['within2px'] * 100:.0f}%   "
-                    f"이마선 높이: 사용자보다 {res['hairlineHeight']:+.1f}px (+는 아래)", fill=(120, 0, 60), font=FONT)
+                    f"이마선 높이: " + GUIDE_LABEL + f"보다 {res['hairlineHeight']:+.1f}px (+는 아래)", fill=(120, 0, 60), font=FONT)
     d.text((8, 48), f"모자람 {res['missingPx']}px · 넘침 {res['extraPx']}px · 머리 외곽선 {res['outlineCover'] * 100:.0f}%, 굵기 {res['hairWeight']}(사용자 {res['hairWeightUser']}) · "
                     f"귀 2px 안 {res['ears']['within2px'] * 100:.0f}%", fill=(120, 0, 60), font=FONT)
     d.text((8, 68), '주황 = 외곽선 없는 가장자리, 보라 = 귀 어긋남, 빨간 가로선 = 이마선 높이', fill=(120, 0, 60), font=FONT)
@@ -454,22 +462,35 @@ def draw(res, path):
 OUTLINE_MIN = 0.8  # adopted walk frames measure 86-88%; hair only cut along the line measures ~44%
 
 
+SELF = {}
+
+
+def guide_self():
+    # the reference measured against itself: a drawn reference sets its own outline levels (its anti-aliased ear
+    # line reads lighter than a hard pixel line), so a candidate is held to what the reference itself reaches
+    if not SELF:
+        r = compare(GUIDE)
+        SELF.update(outlineCover=r['outlineCover'], earOutline=r['earOutline'])
+    return SELF
+
+
 def verdict(r):
     # every check that fails, not only the first
     bad = []
     if not (r['outer']['within2px'] >= 0.9 and r['outer']['max'] <= 4): bad.append('머리 모양 다름')
     if abs(r['hairlineHeight']) > 3: bad.append('이마선 높이 다름')
-    if r['outlineCover'] < OUTLINE_MIN: bad.append('머리 외곽선 없음 (잘라만 냄)')
+    ref = guide_self()
+    if r['outlineCover'] < min(OUTLINE_MIN, 0.9 * ref['outlineCover']): bad.append('머리 외곽선 없음 (잘라만 냄)')
     if r['hairWeight'] < 0.75 * r['hairWeightUser']: bad.append('머리 외곽선 얇음')
     if r['ears']['within2px'] < 0.85 or r['ears']['max'] > 4: bad.append('귀 모양 다름')
-    if r['earOutline'] < OUTLINE_MIN: bad.append('귀 외곽선 깨짐')
+    if r['earOutline'] < min(OUTLINE_MIN, 0.9 * ref['earOutline']): bad.append('귀 외곽선 깨짐')
     if r['earThick'] < 0.8 * r['earThickRef']: bad.append('귀 외곽선 얇음')
     return '숫자 기준만 통과 — 완성 아님, 그림 비교 필요' if not bad else '**' + ', '.join(bad) + '**'
 
 
 def report(results, out):
-    L = ['# 호루스 머리 — 사용자 수정본과 비교', '',
-         '기준: 사용자 수정본(`docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg`)의 머리 외곽선과 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
+    L = ['# 호루스 머리 — ' + GUIDE_LABEL + '과 비교', '',
+         f'기준: `{os.path.relpath(GUIDE, ROOT)}`({GUIDE_LABEL})의 머리 외곽선, 귀, 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
          '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 높이 차이 | 모자람/넘침 px | 머리 외곽선, 굵기 (사용자)  귀 모양 2px 안, 최대 | 귀 외곽선, 두께 | 판정 |', '|---|---|---|---|---|---|---|---|']
     for r in results:
         o = r['outer']
@@ -519,7 +540,8 @@ def targets():
         # the hair (its edge against face and ears too) and the ears' outline; not the jaw, which the user left as it was
         # the hair's outline without the hairline's shape (only its height, as a level), and the ears
         face_side, level = forehead_lines(target, e, body.shape)
-        hair_line = edge(target) & ~(face_side & ~grow(~(body | target), 3))
+        hair_line = edge(target) if GUIDE_TRACE_HAIRLINE else edge(target) & ~(face_side & ~grow(~(body | target), 3))
+        if GUIDE_TRACE_HAIRLINE: level = np.zeros_like(level)
         keep = hair_line | level
         line = grow(edge(big(target)) & big(keep) | big(level) | (edge(big(thead)) & big(tears)), 1)
         a = big(user).copy(); a[line] = (230, 0, 0)
@@ -539,7 +561,7 @@ def targets():
     d = ImageDraw.Draw(sheet)
     for i, (a, b) in enumerate(tiles):
         sheet.paste(a, (i * tw, 30)); sheet.paste(b, (i * tw, 60 + th))
-        d.text((i * tw + 8, 6), rows[i][0] + ' — 위: 네 수정본을 이 프레임 자리에 옮긴 것', fill=(40, 30, 20), font=FONT)
+        d.text((i * tw + 8, 6), rows[i][0] + ' — 위: ' + GUIDE_LABEL + '을 이 프레임 자리에 옮긴 것', fill=(40, 30, 20), font=FONT)
         d.text((i * tw + 8, 36 + th), '아래: 지금 채택 걷기 + 빨간 선(머리가 와야 할 자리)', fill=(40, 30, 20), font=FONT)
     sheet.save(os.path.join(out, 'walk-front-targets.png'))
     # the walk played 0-1-2-1 with the line on, to see it follow the head
@@ -548,7 +570,7 @@ def targets():
     for i in (0, 1, 2, 1):
         fr = Image.new('RGB', (W_, H_), (245, 239, 227)); fr.paste(full[i], (0, 0)); seq.append(fr)
     seq[0].save(os.path.join(out, 'walk-front-target.gif'), save_all=True, append_images=seq[1:], duration=360, loop=0)
-    L = ['| 프레임 | 원본 | 두 눈 가운데 (x, y) | 1번 대비 이동 (x, y) | 눈 사이 거리 | 사용자 수정본→프레임 배율 |', '|---|---|---|---|---|---|']
+    L = ['| 프레임 | 원본 | 두 눈 가운데 (x, y) | 1번 대비 이동 (x, y) | 눈 사이 거리 | 기준→프레임 배율 |', '|---|---|---|---|---|---|']
     data = []
     for name, mid, dist, tf, src in rows:
         dx, dy = mid[0] - ref[1][0], mid[1] - ref[1][1]

@@ -12,11 +12,11 @@
   ],
   "eyeDistance": 62.0,
   "guideTransform": {
-   "scale": 0.3024,
-   "rotationDeg": 0.35,
+   "scale": 0.9955,
+   "rotationDeg": 0.37,
    "shift": [
-    50.9,
-    34.5
+    -2.2,
+    -0.4
    ]
   }
  },
@@ -33,11 +33,11 @@
   ],
   "eyeDistance": 62.3,
   "guideTransform": {
-   "scale": 0.3038,
-   "rotationDeg": -0.02,
+   "scale": 1.0,
+   "rotationDeg": 0.0,
    "shift": [
-    53.6,
-    34.7
+    0.0,
+    0.0
    ]
   }
  },
@@ -54,11 +54,11 @@
   ],
   "eyeDistance": 60.8,
   "guideTransform": {
-   "scale": 0.2966,
-   "rotationDeg": -0.27,
+   "scale": 0.9762,
+   "rotationDeg": -0.24,
    "shift": [
-    55.5,
-    39.4
+    3.1,
+    5.8
    ]
   }
  }
