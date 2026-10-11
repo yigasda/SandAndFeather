@@ -1,0 +1,122 @@
+{
+  "status": "139 review-only; replaces rejected137; not applied to runtime",
+  "coordinateConvention": "image pixels, top-left origin, rectangles [x1,y1,x2,y2]; proposals require in-game collision/occlusion check",
+  "scene": "temple_inner_corridor",
+  "imageSize": [
+    2492,
+    887
+  ],
+  "originalSize": [
+    2172,
+    724
+  ],
+  "originalOffset": [
+    160,
+    64
+  ],
+  "addedMargins": {
+    "left": 160,
+    "right": 160,
+    "top": 64,
+    "bottom": 99
+  },
+  "originalRegionChangedPixels": 0,
+  "exits": [
+    {
+      "entryKey": "west",
+      "destinationScene": "courtyard_colonnade",
+      "destinationEntry": "east",
+      "thresholdPx": [
+        75,
+        369,
+        215,
+        395
+      ],
+      "frontClearFloorPx": [
+        75,
+        365,
+        215,
+        460
+      ],
+      "recedingFloorPolygonPx": [
+        [
+          65,
+          380
+        ],
+        [
+          215,
+          380
+        ],
+        [
+          220,
+          259
+        ],
+        [
+          201,
+          274
+        ]
+      ],
+      "suggestedTriggerPx": [
+        115,
+        333,
+        210,
+        375
+      ],
+      "suggestedArrivalPx": [
+        145,
+        420
+      ]
+    },
+    {
+      "entryKey": "east",
+      "destinationScene": "temple_central_gallery",
+      "destinationEntry": "south",
+      "thresholdPx": [
+        2277,
+        369,
+        2427,
+        395
+      ],
+      "frontClearFloorPx": [
+        2277,
+        365,
+        2427,
+        460
+      ],
+      "recedingFloorPolygonPx": [
+        [
+          2277,
+          380
+        ],
+        [
+          2427,
+          380
+        ],
+        [
+          2291,
+          274
+        ],
+        [
+          2272,
+          259
+        ]
+      ],
+      "suggestedTriggerPx": [
+        2282,
+        333,
+        2377,
+        375
+      ],
+      "suggestedArrivalPx": [
+        2352,
+        420
+      ]
+    }
+  ],
+  "notes": [
+    "Clear front width approximately140px left and150px right; passage narrows with perspective.",
+    "Floor depth from front to recessed end approximately 120px.",
+    "No other doors in this map. Unchanged interior coordinates translate by (+160,+64).",
+    "Do not treat static avatar preview as runtime collision or occlusion validation."
+  ]
+}

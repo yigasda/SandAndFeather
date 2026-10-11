@@ -1,5 +1,5 @@
 {
-  "status": "review-only; not applied to runtime",
+  "status": "REJECTED: overlapping perspective; DO NOT APPLY. See corridor-expand-v4.",
   "coordinateConvention": "image pixels, top-left origin, rectangles [x1,y1,x2,y2]; proposals require in-game collision/occlusion check",
   "scene": "temple_inner_corridor",
   "imageSize": [

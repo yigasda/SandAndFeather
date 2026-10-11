@@ -32,5 +32,6 @@
       ],
       "sha256": "8ddb04e9104e7d4fe99ebfb20dda6c3f6fc33a8a17e0aeaff1bf4c02b9dc5170"
     }
-  ]
+  ],
+  "status": "REJECTED: overlapping perspective; DO NOT APPLY. See corridor-expand-v4."
 }
