@@ -68,5 +68,11 @@
     ],
     "loop": true,
     "note": "호흡 프레임1이 오면 [0,1] 800ms씩 반복"
-  }
+  },
+  "approval": {
+    "quote": "앉기 잠들기 맘에 들어",
+    "date": "2026-10-12",
+    "scope": "representative frame only"
+  },
+  "runtimeOwner": "opus"
 }

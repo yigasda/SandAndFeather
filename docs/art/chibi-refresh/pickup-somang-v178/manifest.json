@@ -139,5 +139,11 @@
     "back": "up",
     "left": "left",
     "right": "right"
-  }
+  },
+  "approval": {
+    "quote": "줍기는 괜찮아! 만족",
+    "date": "2026-10-12",
+    "scope": "8 pickup PNGs"
+  },
+  "runtimeOwner": "opus"
 }

@@ -48,5 +48,11 @@
     "back": "up",
     "left": "left",
     "right": "right"
-  }
+  },
+  "approval": {
+    "quote": "앉기 잠들기 맘에 들어",
+    "date": "2026-10-12",
+    "scope": "representative frame only"
+  },
+  "runtimeOwner": "opus"
 }
