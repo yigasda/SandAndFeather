@@ -1,0 +1,29 @@
+{
+ "idle": "docs/art/chibi-refresh/review-trio-idle-v1/native/horus-back.png",
+ "walk": "docs/art/chibi-refresh/review-trio-walk-v5/walk/horus-back-1.png",
+ "idleNow": {
+  "top": 49,
+  "kiltEnd": 312,
+  "legsStart": 314,
+  "sandalTop": 332,
+  "sole": 369,
+  "legRows": 18,
+  "sandalRows": 38
+ },
+ "walkFrame": {
+  "top": 49,
+  "kiltEnd": 312,
+  "legsStart": 314,
+  "sandalTop": 326,
+  "sole": 369,
+  "legRows": 12,
+  "sandalRows": 44
+ },
+ "target": {
+  "kiltEnd": 312,
+  "legRows": 12,
+  "sandalTop": 326,
+  "sandalRows": 44,
+  "sole": 369
+ }
+}

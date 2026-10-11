@@ -73,6 +73,28 @@
 
 다시 만들기: `python3 tools/art/horus-idle-target.py [정지 PNG] [--walk 걷기 PNG]`
 
+## 뒤 정지 목표선 — `targets/idle-back-*`
+
+뒷모습도 같은 문제다(360×400 셀 픽셀).
+
+| | 치마 끝 | 치마 아래 다리 | 신발 위끝 | 발바닥 |
+|---|---|---|---|---|
+| 채택 걷기 뒤 1 | 312 | **12** | 326 | 369 |
+| 지금 정지 뒤(148, `review-trio-idle-v1/native/horus-back.png`) | 312 | **18** | 332 | 369 |
+| **목표** | 312 그대로 | **12** | 326 | 369 그대로 |
+
+**목표.**
+- 다리를 6px 줄인다.
+- 신발은 걷기 뒤 신발 높이로 키운다.
+- 치마 끝과 발바닥은 그대로 둔다. 머리와 몸 위쪽은 손대지 않는다.
+
+| 파일 | 내용 |
+|---|---|
+| `idle-back-target.png` | 왼쪽은 걷기 뒤 1. 가운데는 지금 정지 뒤 + 빨간 목표선(치마 아래만). 오른쪽은 모양 미리보기(그림 아님) |
+| `idle-back-body-mask.png`, `idle-back-shape-preview.png`, `idle-back-target.json` | 목표 몸 실루엣, 기계로 만든 모양 확인용, 수치 |
+
+다시 만들기: `python3 tools/art/horus-idle-target.py --back`
+
 ## 결과 검사
 
 ```
