@@ -67,7 +67,7 @@ def find(im, box=None):
         cy = np.mean([y for y, _ in pts]); cx = np.mean([x for _, x in pts])
         y0, x0 = int(max(0, cy - 30)), int(max(0, cx - 22))
         iy = np.nonzero(gold[y0:int(cy) + 30, x0:int(cx) + 22].any(1))[0] + y0
-        if len(iy) and cy < iy.min() + 0.45 * (iy.max() - iy.min()):
+        if len(iy) and cy < iy.min() + 0.45 * (iy.max() - iy.min()):  # the upper part: the lower glow stays
             spots.append((pts, ring & iris))
     return a, spots
 
@@ -96,21 +96,32 @@ def grow(a, pts):
 
 
 def fix(a, spots):
-    """fill the spot and its light edge with the nearest iris pixel: every pixel of the patch takes the colour of the
-    closest plain-gold pixel outside it (not the black eyelid, the dark pupil or the shadowed band under the lid),
-    copied as it is, so the fill keeps the pixel-art look with no blend, blot or ring"""
+    """fill the spot and its light edge so the pupil and the iris carry on under it, copying real pixels, no blend:
+    - the pupil slit is upright, so a pixel whose column continues into the pupil just below the patch takes that
+      pupil pixel (the slit keeps its width and runs straight up to the lid);
+    - every other pixel takes the nearest iris gold on its own row (each row keeps its own shade), or the gold just
+      below when the row has none. The black eyelid and the white of the eye are never used."""
     b = a.copy()
+    H, W = a.shape[:2]
     h, s, v = hsv(a[..., :3] / 255)
-    gold = (a[..., 3] > 200) & (h > 0.05) & (h < 0.16) & (s > 0.4) & (v > 0.5)
+    solid = a[..., 3] > 200
+    gold = solid & (h > 0.05) & (h < 0.16) & (s > 0.4) & (v > 0.5)
+    pupil = solid & (h > 0.0) & (h < 0.12) & (s > 0.4) & (v > 0.14) & (v <= 0.5)
     for pts, _ in spots:
         m = grow(a, pts)
-        ys, xs = np.nonzero(m)
-        y0, y1, x0, x1 = max(0, ys.min() - 12), ys.max() + 13, max(0, xs.min() - 12), xs.max() + 13
-        gy, gx = np.nonzero(gold[y0:y1, x0:x1] & ~m[y0:y1, x0:x1]); gy += y0; gx += x0
-        if not len(gy): continue
-        for y, x in zip(ys, xs):
-            i = np.argmin((gy - y) ** 2 + (gx - x) ** 2)
-            b[y, x, :3] = a[gy[i], gx[i], :3]
+        for y, x in zip(*np.nonzero(m)):
+            yy = y + 1
+            while yy < H and m[yy, x]: yy += 1
+            if yy < H and yy - y <= 10 and pupil[yy, x]:
+                b[y, x, :3] = a[yy, x, :3]; continue
+            best = None
+            for dx in (-1, 1):
+                xx, d = x + dx, 1
+                while 0 <= xx < W and (m[y, xx] or pupil[y, xx]) and d <= 12:
+                    xx += dx; d += 1
+                if 0 <= xx < W and gold[y, xx] and d <= 12 and (best is None or d < best[0]): best = (d, xx)
+            if best: b[y, x, :3] = a[y, best[1], :3]
+            elif yy < H and gold[yy, x]: b[y, x, :3] = a[yy, x, :3]
     return b
 
 
