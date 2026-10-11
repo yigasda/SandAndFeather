@@ -190,5 +190,23 @@
   "bottom": 661,
   "hem": 567,
   "hemShare": 0.831
+ },
+ "_source": {
+  "proportionRevision": 173,
+  "skinPaletteRevision": 168,
+  "idleSha256": {
+   "set-back": "1c8034c7d8a516314b658bcb8ccb07fedd15a99b0337f6c38eff2be7c0f6e0a1",
+   "set-front": "4dc0d64afb225a91dd07f515c2828751b81de0f58fd8e5ead9d931d1fb2604fc",
+   "set-left": "07facfb9e53dfe6931001894274926570bf62fa4e2ce7387c3b34487712927c0",
+   "set-right": "06610f4183bd623d0c8be512d9282859633f125f943f6f7a8710f9d531b0517d",
+   "somang-back": "7b4722c6783fdadbc5b4b954202fd6d9e3fc178ebf7ca66ad19347ad0067bcb1",
+   "somang-front": "b27aa1a5fd7ff15e8b5ade08e65bdb1e7e1515b8dcbf0686cd321c3d56e68cad",
+   "somang-left": "443a4bfec45cbadd805d20dfa61e83fb46a8a3c066b294ef48cc15b2d87f2b2a",
+   "somang-right": "8cab5225ae864d13cecd1777b4349d7366a51d1368b33ea3028f021bae374833",
+   "horus-back": "bebf2a1157152397f515031a834f957f49062fda568336975f0baebf9d9af810",
+   "horus-front": "c883f0f3cc6af5fedbca1c755bd117cde6749db73e540360ffc0e77592d56890",
+   "horus-left": "b548a49534b363056a9ad4027b9e65c86e73fb03af649152feeb18f422ebc426",
+   "horus-right": "3b6a92bea4cc22bbcefc7c07ee87b0b0712dabb742f30f96b3be27057f5de065"
+  }
  }
 }

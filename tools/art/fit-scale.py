@@ -136,6 +136,16 @@ def fit(cand, ref):
     return out, out2, info
 
 
+def stale_guides():
+    # the drawing guides are made from the final idles; if an idle has been replaced since, they are out of date
+    g = os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', 'pose-guides', 'guides.json')
+    if not os.path.exists(g): return []
+    src = json.load(open(g)).get('_source', {}).get('idleSha256', {})
+    man = json.load(open(os.path.join(FINAL, 'manifest.json')))
+    now = {f'{f["character"]}-{f["sourceView"]}': f['sha256'] for f in man['frames'] if f['state'] == 'idle'}
+    return sorted(k for k in now if src.get(k) != now[k])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('sheet')
@@ -144,6 +154,9 @@ def main():
     ap.add_argument('--out')
     o = ap.parse_args()
     who = o.who.split(',')
+    old = stale_guides()
+    if old:
+        print('주의: pose-guides가 지금 최종 정지와 다르다(' + ', '.join(old) + '). python3 tools/art/pose-guide.py로 다시 만든다.')
     sheet = Image.open(o.sheet).convert('RGBA')
     parts = split(sheet, len(who)) if len(who) > 1 else [sheet.crop(sheet.getbbox())]
     out = o.out or os.path.join(os.path.dirname(o.sheet), 'fit-' + os.path.splitext(os.path.basename(o.sheet))[0])
@@ -185,7 +198,9 @@ def main():
         for i, pair in enumerate(frames): f.paste(pair[k].convert('RGB').resize((tw, th)), (i * tw, 0))
         seq.append(f)
     seq[0].save(os.path.join(out, 'fit.gif'), save_all=True, append_images=seq[1:], duration=700, loop=0)
-    json.dump({'sheet': os.path.relpath(o.sheet, ROOT), 'view': o.view, 'canvas': CANVAS, 'pivot': PIVOT,
+    man = json.load(open(os.path.join(FINAL, 'manifest.json')))
+    json.dump({'sheet': os.path.relpath(o.sheet, ROOT), 'view': o.view,
+               'finalRevision': {'proportion': man.get('proportionRevision'), 'skin': man.get('skinPaletteRevision')}, 'canvas': CANVAS, 'pivot': PIVOT,
                'referenceVisibleHeight': 576, 'characters': report}, open(os.path.join(out, 'fit.json'), 'w'),
               ensure_ascii=False, indent=1)
     print('→', os.path.relpath(out))

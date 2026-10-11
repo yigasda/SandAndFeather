@@ -60,6 +60,10 @@ def main():
         d.text((x + 6, y + 2), f"{KO[who]} {KO[view]} 키 {info['heightPx']}px", fill=(40, 30, 20), font=FONT)
         d.text((x + 6, y + 20), f"머리 위끝 y{info['top']} · 발끝 y{info['bottom']}", fill=(90, 60, 40), font=FONT)
     sheet.save(os.path.join(OUT, 'guides-sheet.png'))
+    # which final idles these guides were made from: fit-scale.py warns when the final set has changed since
+    man = json.load(open(os.path.join(FINAL, 'manifest.json')))
+    data['_source'] = {'proportionRevision': man.get('proportionRevision'), 'skinPaletteRevision': man.get('skinPaletteRevision'),
+                       'idleSha256': {f'{f["character"]}-{f["sourceView"]}': f['sha256'] for f in man['frames'] if f['state'] == 'idle'}}
     json.dump(data, open(os.path.join(OUT, 'guides.json'), 'w'), ensure_ascii=False, indent=1)
     print('→', os.path.relpath(OUT))
 

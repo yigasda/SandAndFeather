@@ -18,7 +18,7 @@
 ## 저장소, 버전, 검증
 
 - 저장소 https://github.com/yigasda/SandAndFeather, 작업 브랜치 `main`. 아스트라도 main에 올리므로 커밋 전에 받아서 합친다. 남의 작업을 강제 푸시로 덮지 않는다.
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.24**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄을 추가하고, README의 "현재 버전" 줄도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.25**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄을 추가하고, README의 "현재 버전" 줄도 고친다. README에는 버전 내역을 쌓지 않는다.
 - 검증 스크립트는 `tools/art/`에 있다.
   - `verify-full-map.cjs`: 옴보스 전체맵 낮밤 픽셀 일치와 이동
   - `verify-cozy-ui.cjs`: 포근한 테마 UI
@@ -36,7 +36,7 @@
 | 깊은 입구 | 아치, 통로, 회랑 끝, 성소 문, 계단 통로는 안으로 걸어 들어가 깊이 절반쯤에서 넘어간다. 도착은 입구 안쪽이다. 생성기의 `open`이 벽 충돌에서 입구 바닥을 잘라 낸다 | RESIDENCE-096 0.9.20·0.9.21 절 |
 | 가림 | 생성기 `front`가 scene-art `occluders`가 된다. 문틀, 기둥, 우물이 소망 위에 다시 그려진다 | 같은 곳 |
 | 출구 표지 | 출구 근처 2.2칸 안에서만 뜬다. 소망과 겹치면 발밑으로 내려간다 | 같은 곳 |
-| 셋소호 스프라이트 | 최종 48장(`docs/art/chibi-refresh/final/`, 파티·소망 카드 전신 `data/art/portraits/*-idle-full.png`도 같은 정면 정지에서 잘라 씀: 정지 12장 620×720 기준 키 576, 걷기 36장 360×400 기준 키 330)을 `tools/art/pack-trio-motion.py`로 패킹한다. `final/manifest.json`의 `runtimeEligible`이 true여야 패킹된다(0.9.24에 검토 후 켬). 결과는 `data/art/characters/trio-motion.png`(256px)와 `-small.png`(폰용 125px), 연결은 `sprites.json`의 `looks.*.motion`. 표시 높이 31.2 논리 px, 걷기 0-1-2-1 180ms | [TRIO-MOTION-098.md](TRIO-MOTION-098.md) |
+| 셋소호 스프라이트 | 최종 48장(`docs/art/chibi-refresh/final/`, 파티·소망 카드 전신 `data/art/portraits/*-idle-full.png`도 같은 정면 정지에서 잘라 씀: 정지 12장 620×720 기준 키 576, 걷기 36장 360×400 기준 키 330)을 `tools/art/pack-trio-motion.py`로 패킹한다. `final/manifest.json`의 `runtimeEligible`이 true여야 패킹된다(0.9.24에 검토 후 켬). 0.9.25에 호루스 173 비율 수정본으로 다시 패킹했다. 최종 정지가 바뀌면 `tools/art/pose-guide.py`도 다시 돌린다(`fit-scale.py`가 낡은 가이드를 알려 준다). 결과는 `data/art/characters/trio-motion.png`(256px)와 `-small.png`(폰용 125px), 연결은 `sprites.json`의 `looks.*.motion`. 표시 높이 31.2 논리 px, 걷기 0-1-2-1 180ms | [TRIO-MOTION-098.md](TRIO-MOTION-098.md) |
 | 인물 그림 | 파티와 소망 카드의 전신은 정지 스프라이트 `data/art/portraits/*-idle-full.png`. `인물 보기`는 세트·호루스 일러스트 세 장씩. 대화 카드 상반신과 미소 버튼은 뺐다(다시 넣지 않는다) | TRIO-MOTION-098 |
 | 카드(팝업) | `src/ui/popups.js`의 `showCard`. 테두리(`.sf_pop::before`)와 제목은 고정이고, 안쪽 `.sf_pop_scroll`만 스크롤된다. 카드 자체를 스크롤 상자로 되돌리면 테두리가 내용과 같이 밀려 올라간다(0.9.22에서 고침) | CHANGELOG 0.9.22 |
 | 성능 | 지도는 보이는 부분만 그린다. 이동은 실제 시간 기준 0.05초 단위. 지도 그림은 그 지도에 있을 때만 풀어 둔다(`lazy`) | [PERF-0917.md](PERF-0917.md) |
