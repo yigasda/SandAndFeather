@@ -1,0 +1,1352 @@
+{
+  "revision": 163,
+  "status": "user-approved-art-awaiting-runtime-integration",
+  "runtimeModified": false,
+  "walkFrameCount": 36,
+  "walkCycle": {
+    "sequence": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "durationMs": 180,
+    "horusFrontWholeSpriteOffsets": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        -1
+      ]
+    ]
+  },
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  },
+  "frames": [
+    {
+      "path": "walk/set-back-0.png",
+      "source": "review-trio-walk-v5/walk/set-back-0.png",
+      "sha256": "ae5493baee54bc1f0f69c97a97192fd6d169883e532cf15621b12269cd7e2b84",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.up.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        40,
+        40,
+        334,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-back-1.png",
+      "source": "review-trio-walk-v5/walk/set-back-1.png",
+      "sha256": "aa1c499eb661787f82a8473b26f368178594911fec2d19364485fd438f36b74e",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.up.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        326,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-back-2.png",
+      "source": "review-trio-walk-v5/walk/set-back-2.png",
+      "sha256": "e6ec9134c2abf52347a1242c6babf433dece3be2a157a00e740b5705acb9366a",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.up.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        328,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-front-0.png",
+      "source": "review-trio-walk-v5/walk/set-front-0.png",
+      "sha256": "ef014edc468297c3cd6d09dd9defc7eed7e2f5c22a1ab99843cf2a5488a78917",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.down.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        32,
+        40,
+        352,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-front-1.png",
+      "source": "review-trio-walk-v5/walk/set-front-1.png",
+      "sha256": "d4ecf0aaf1199dfaa5a762a1b3e901535a11ad15cea5b3eef888cf6f80219936",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.down.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        352,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-front-2.png",
+      "source": "review-trio-walk-v5/walk/set-front-2.png",
+      "sha256": "e4df5d5109700488bb3fa266c2e49ae3309aab2b6d163078564365277d6bc8b2",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.down.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        35,
+        40,
+        355,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-left-0.png",
+      "source": "review-trio-walk-v5/walk/set-left-0.png",
+      "sha256": "aaf6837d008b6732e63f6496b668cf9b5ccb86b15791fe403c3f5c45901c1db4",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.left.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        59,
+        40,
+        348,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-left-1.png",
+      "source": "review-trio-walk-v5/walk/set-left-1.png",
+      "sha256": "f7ddef6c33487acae8f260883fb6701168c6c5830d06a9d0f1ce750ca36eca84",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.left.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        57,
+        40,
+        347,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-left-2.png",
+      "source": "review-trio-walk-v5/walk/set-left-2.png",
+      "sha256": "a9c27e393a99051588805b8611f2604482866968a7b3dc80db769f27802b4b2a",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.left.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        59,
+        40,
+        344,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-right-0.png",
+      "source": "review-trio-walk-v5/walk/set-right-0.png",
+      "sha256": "942b63dc698172c50754e4f7f31a5f2186003b388f219ebdd239f88dc4736df7",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.right.0",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        10,
+        40,
+        300,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-right-1.png",
+      "source": "review-trio-walk-v5/walk/set-right-1.png",
+      "sha256": "d0439460dfd18da58c8e4b597bc1102f5c0202702cba0d14c11b7e151b048014",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.right.1",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        4,
+        40,
+        305,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/set-right-2.png",
+      "source": "review-trio-walk-v5/walk/set-right-2.png",
+      "sha256": "0e5da5717e0dfa1e589a4bbdbb7ac1838bbc880ca360a6faec25e5c8545d3a7f",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "set.walk.right.2",
+      "character": "set",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        4,
+        40,
+        302,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-back-0.png",
+      "source": "review-trio-walk-v5/walk/somang-back-0.png",
+      "sha256": "c568dacdceb59aed913f78062c58d33957dcf8240b67502a1ad58901ef2b0e61",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.up.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        53,
+        40,
+        303,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-back-1.png",
+      "source": "review-trio-walk-v5/walk/somang-back-1.png",
+      "sha256": "b4b67519643abe8f3e73bffd8c11595974c4e9be2af8492863a85766cded94c3",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.up.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        48,
+        40,
+        307,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-back-2.png",
+      "source": "review-trio-walk-v5/walk/somang-back-2.png",
+      "sha256": "353b62bd637bd32089628b37602129a1072e35af51f5b51ac68f2927d7bd8821",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.up.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        51,
+        40,
+        303,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-front-0.png",
+      "source": "review-trio-walk-v5/walk/somang-front-0.png",
+      "sha256": "a0517e42749b0083ffb96d14fe2c5bfd9ca2340c765cdcef34600fc78d7854f3",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.down.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        46,
+        40,
+        321,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-front-1.png",
+      "source": "review-trio-walk-v5/walk/somang-front-1.png",
+      "sha256": "2fb224d8fe0453f81240d70290e39cbe8a1bb72fe53c0e1beaceb8ae46ce9895",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.down.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        46,
+        40,
+        321,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-front-2.png",
+      "source": "review-trio-walk-v5/walk/somang-front-2.png",
+      "sha256": "2757f0e0b5c009aa0cd59e6c95e655d19a48c4a9acdb9c3fbb579b82e8101a7a",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.down.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        47,
+        40,
+        322,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-left-0.png",
+      "source": "review-trio-walk-v5/walk/somang-left-0.png",
+      "sha256": "3d1d9dd4c8a16d90cad3132467fe24060e1ca42d531a341d7e3a0e5e7031314b",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.left.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        63,
+        40,
+        319,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-left-1.png",
+      "source": "review-trio-walk-v5/walk/somang-left-1.png",
+      "sha256": "66367b6ec66f28deb9e473433391ebf2c787af00f9d048844beabc36fcb2332e",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.left.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        65,
+        40,
+        320,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-left-2.png",
+      "source": "review-trio-walk-v5/walk/somang-left-2.png",
+      "sha256": "1e2c8bec849959d222535ba26633724d182ea0eee024f948ffbf893db1ec4b81",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.left.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        64,
+        40,
+        316,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-right-0.png",
+      "source": "review-trio-walk-v5/walk/somang-right-0.png",
+      "sha256": "fb81fce8cd7bc3ed106456c1161496b5cd08d02174a085e2fc379fe6bbbabcb7",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.right.0",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        43,
+        40,
+        304,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-right-1.png",
+      "source": "review-trio-walk-v5/walk/somang-right-1.png",
+      "sha256": "531763ebc2b10428c35fc2eeb00a43406858b9f323146c716e4fac820541017d",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.right.1",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        37,
+        40,
+        304,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/somang-right-2.png",
+      "source": "review-trio-walk-v5/walk/somang-right-2.png",
+      "sha256": "e4426a75fc86ede927c935f6f5a859b138a16180a9632ea4738140d693a1ec5f",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "somang.walk.right.2",
+      "character": "somang",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        31,
+        40,
+        305,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-back-0.png",
+      "source": "review-horus-motion-v162/native/horus-back-0.png",
+      "sha256": "aebc9eeff5290ba5fe1c2917409c39b6cbcc876c303e5a4908a82c2dd99b67b2",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.up.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        75,
+        43,
+        278,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-back-1.png",
+      "source": "review-horus-motion-v162/native/horus-back-1.png",
+      "sha256": "0add769b01b8cf792966278a7c081544e0a2a1b805b35c7e79e8a02c00bb6378",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.up.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        75,
+        42,
+        278,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-back-2.png",
+      "source": "review-horus-motion-v162/native/horus-back-2.png",
+      "sha256": "efe2a8d6cf79ee044fd3deffa02d5206f4d013c3bf9c1d9708b7c82e74c231de",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.up.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "back",
+      "gameDirection": "up",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        75,
+        41,
+        278,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-front-0.png",
+      "source": "review-horus-motion-v162/native/horus-front-0.png",
+      "sha256": "5a6c2d6b79f7f85cc8877c8067962855328b35c7931894e2fbfabba31cd8623b",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.down.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        74,
+        56,
+        276,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-front-1.png",
+      "source": "review-horus-motion-v162/native/horus-front-1.png",
+      "sha256": "dfb35837dbf9338c74f443baf8b2a26bbfc908c3cba559a43dbc91bca024c463",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.down.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        78,
+        56,
+        280,
+        367
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-front-2.png",
+      "source": "review-horus-motion-v162/native/horus-front-2.png",
+      "sha256": "bee9d5733207372c54d998c66dacffa84ed6ef3d28a512d9bb45491db4b85cb0",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.down.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "front",
+      "gameDirection": "down",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        79,
+        59,
+        277,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-left-0.png",
+      "source": "review-trio-walk-v5/walk/horus-left-0.png",
+      "sha256": "6ca02c258ccc5f1db5c898fe10a0d3873845533d380116e71db712beb881f397",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.left.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        74,
+        49,
+        286,
+        368
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-left-1.png",
+      "source": "review-trio-walk-v5/walk/horus-left-1.png",
+      "sha256": "1b71e124ee12d788b4594bc3f15d52dd6b4de650690a9d0031807fa254564ee2",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.left.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        70,
+        49,
+        286,
+        369
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-left-2.png",
+      "source": "review-trio-walk-v5/walk/horus-left-2.png",
+      "sha256": "9776050f0c2d7af786086704bcc4fbf5988a83ddd30eda19fc309ab8384a82e4",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.left.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "left",
+      "gameDirection": "left",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        71,
+        49,
+        284,
+        368
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-right-0.png",
+      "source": "review-trio-walk-v5/walk/horus-right-0.png",
+      "sha256": "2dc0c1416d9ade80fda6669316fcff420bffc7aff4a24de84e0114eda738041b",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.right.0",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 0,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        74,
+        51,
+        288,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-right-1.png",
+      "source": "review-trio-walk-v5/walk/horus-right-1.png",
+      "sha256": "cc239f107322326dc6f9fdc20b84c28315aedaa554101c4db6f8834965426215",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.right.1",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 1,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        73,
+        49,
+        290,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    },
+    {
+      "path": "walk/horus-right-2.png",
+      "source": "review-trio-walk-v5/walk/horus-right-2.png",
+      "sha256": "f1609774c67a7a4db3eaa47c0afa97f8e982b41d34a910865370ecb7989a101e",
+      "size": [
+        360,
+        400
+      ],
+      "copiedUnchanged": true,
+      "id": "horus.walk.right.2",
+      "character": "horus",
+      "state": "walk",
+      "sourceView": "right",
+      "gameDirection": "right",
+      "phase": 2,
+      "rect": [
+        0,
+        0,
+        360,
+        400
+      ],
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        72,
+        49,
+        288,
+        370
+      ],
+      "approvalStatus": "user-approved"
+    }
+  ],
+  "idle": [
+    {
+      "path": "idle/set-front.png",
+      "source": "selected-front-idle-v150/set-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "sha256": "9ccdf3d1985c3d386bd54b56d4accd37ad8c672f880f5a2d56434ac3c54f8fc6",
+      "copiedUnchanged": true,
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 576,
+      "alphaBounds": [
+        57,
+        86,
+        610,
+        662
+      ]
+    },
+    {
+      "path": "idle/somang-front.png",
+      "source": "selected-front-idle-v150/somang-front.png",
+      "size": [
+        620,
+        720
+      ],
+      "sha256": "e2c531a709cd7d3641bf4e05728f54736afc56bc2e3e1d6d54fe1436352d973d",
+      "copiedUnchanged": true,
+      "pivot": [
+        310,
+        662
+      ],
+      "referenceVisibleHeight": 628,
+      "alphaBounds": [
+        62,
+        34,
+        559,
+        662
+      ]
+    },
+    {
+      "path": "idle/horus-front.png",
+      "source": "review-horus-front-v161/horus-idle-front.png",
+      "size": [
+        360,
+        400
+      ],
+      "sha256": "bdd7446691dcf88c3f051c7dc8ecccda0c1d60f9ead9ad4cf28e30bff809f1ea",
+      "copiedUnchanged": true,
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        78,
+        56,
+        280,
+        367
+      ]
+    },
+    {
+      "path": "idle/horus-back.png",
+      "source": "review-horus-motion-v162/native/horus-idle-back.png",
+      "size": [
+        360,
+        400
+      ],
+      "sha256": "0eb0458f110b7ebd4062ff4c0707210ccf2d90f8df189956a657ed5c46673ec1",
+      "copiedUnchanged": true,
+      "pivot": [
+        180,
+        370
+      ],
+      "referenceVisibleHeight": 330,
+      "alphaBounds": [
+        75,
+        42,
+        278,
+        370
+      ]
+    }
+  ],
+  "approval": "User accepted 162 front/back and explicitly kept rear view unchanged; bundle with previously accepted Set/Somang and Horus side frames."
+}
