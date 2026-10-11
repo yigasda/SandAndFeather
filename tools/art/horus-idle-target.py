@@ -94,7 +94,8 @@ def shift(mask, dy, dx):
 
 def back_head(front_path, back_rgba):
     # the user's front head, hair and ears, turned round: mirrored about the collar's middle and set on the back
-    # picture by the collar's top. From behind there is no hairline; the outer outline and the ears carry over.
+    # picture by the collar's top. From behind only the hair's outer outline carries over: no hairline, and the
+    # user keeps the back's own ears.
     g = ch.guide()
     rgb, b = ch.load(front_path)
     e, _, _ = ch.eyes(rgb, b)
@@ -145,9 +146,9 @@ def back(o):
     Image.fromarray((bhead * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-back-head-mask.png'))
     kb = lambda m: np.kron(m, np.ones((k, k), bool))
     def head_line(hd, hr, er):
-        # the hair's outer outline and the ears' outline; the nape is left as drawn
+        # the hair's outer outline only: the back's ears and the nape stay as drawn
         hd, hr, er = kb(hd), kb(hr), kb(er)
-        return ch.edge(hd) & (ch.grow(hr, k) & ~er | er & ~ch.grow(hr, k))
+        return ch.edge(hd) & ch.grow(hr, k) & ~ch.grow(er, 2 * k)
     def tile(rgba, line, heads_=None):
         base = Image.new('RGBA', (rgba.shape[1], rgba.shape[0]), (245, 239, 227, 255))
         base.alpha_composite(Image.fromarray(rgba))
