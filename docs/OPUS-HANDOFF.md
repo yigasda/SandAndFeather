@@ -18,7 +18,7 @@
 ## 저장소, 버전, 검증
 
 - 저장소 https://github.com/yigasda/SandAndFeather, 작업 브랜치 `main`. 아스트라도 main에 올리므로 커밋 전에 받아서 합친다. 남의 작업을 강제 푸시로 덮지 않는다.
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.21**이다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.21**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄을 추가하고, README의 "현재 버전" 줄도 고친다. README에는 버전 내역을 쌓지 않는다.
 - 검증 스크립트는 `tools/art/`에 있다.
   - `verify-full-map.cjs`: 옴보스 전체맵 낮밤 픽셀 일치와 이동
   - `verify-cozy-ui.cjs`: 포근한 테마 UI
