@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "status": "batch-awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "action": "interact",
+  "characters": [
+    "somang"
+  ],
+  "frameCount": 8,
+  "canvas": [
+    620,
+    720
+  ],
+  "anchor": {
+    "kind": "feet",
+    "position": [
+      310,
+      662
+    ]
+  },
+  "referenceVisibleHeight": 576,
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  },
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      150,
+      150
+    ],
+    "loop": false,
+    "after": "idle-same-direction"
+  },
+  "previewNote": "GIF는 확인용으로 정지1200ms → 시작150ms → 닿음150ms를 반복한다. 동작 자체는 1회 재생한다.",
+  "approvedRepresentative": {
+    "path": "png/somang-front-1.png",
+    "source": "../interaction-somang-v171/somang-front-contact-1.png",
+    "userEvidence": "개굿",
+    "unchanged": true
+  },
+  "files": [
+    {
+      "path": "png/somang-front-0.png",
+      "character": "somang",
+      "direction": "front",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "1eab91ebab3a662dbdbf5a73e10dae5b82f715554ffdf3efae7a8fd1149d5805",
+      "guide": "../pose-guides/somang-front-guide.png",
+      "fitReport": "checks/delivery/front-0/fit.json"
+    },
+    {
+      "path": "png/somang-front-1.png",
+      "character": "somang",
+      "direction": "front",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "6464a18d52d5ee4e6e9303ce99877bf2546734aa5454e107a24344a6ac494850",
+      "guide": "../pose-guides/somang-front-guide.png",
+      "fitReport": "checks/delivery/front-1/fit.json"
+    },
+    {
+      "path": "png/somang-back-0.png",
+      "character": "somang",
+      "direction": "back",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "3c7096cba1d771ffe45fe56b6a5862d90aae50d449876fdd3ccef596e723f281",
+      "guide": "../pose-guides/somang-back-guide.png",
+      "fitReport": "checks/delivery/back-0/fit.json"
+    },
+    {
+      "path": "png/somang-back-1.png",
+      "character": "somang",
+      "direction": "back",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "67c96e86c312202c33fe567c0ded722794c4a37eae7c1ce45b7e9a81ab00800a",
+      "guide": "../pose-guides/somang-back-guide.png",
+      "fitReport": "checks/delivery/back-1/fit.json"
+    },
+    {
+      "path": "png/somang-left-0.png",
+      "character": "somang",
+      "direction": "left",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "481aea296241a0a51f87d95d87ee477f5b00f8bb568f0e3f46b0a434052c110a",
+      "guide": "../pose-guides/somang-left-guide.png",
+      "fitReport": "checks/delivery/left-0/fit.json"
+    },
+    {
+      "path": "png/somang-left-1.png",
+      "character": "somang",
+      "direction": "left",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "f7dd75bf5e86cdccb967e8fb0d0824b012ebddaaa5fb4408efe108c78eb4424c",
+      "guide": "../pose-guides/somang-left-guide.png",
+      "fitReport": "checks/delivery/left-1/fit.json"
+    },
+    {
+      "path": "png/somang-right-0.png",
+      "character": "somang",
+      "direction": "right",
+      "frame": 0,
+      "phase": "reach-start",
+      "sha256": "a2877167f58e353c2d3ff979a968317cc6ab5a8d31addf260fabec732ceba19a",
+      "guide": "../pose-guides/somang-right-guide.png",
+      "fitReport": "checks/delivery/right-0/fit.json"
+    },
+    {
+      "path": "png/somang-right-1.png",
+      "character": "somang",
+      "direction": "right",
+      "frame": 1,
+      "phase": "contact",
+      "sha256": "a20aebc52ab7891d1ca309f8328dfabe054ce005a390ccf099acb6e3b9b5753c",
+      "guide": "../pose-guides/somang-right-guide.png",
+      "fitReport": "checks/delivery/right-1/fit.json"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+ "sheet": "docs/art/chibi-refresh/interaction-somang-v172/sources/somang-right-1-fixed-input.png",
+ "view": "right",
+ "canvas": [
+  620,
+  720
+ ],
+ "pivot": [
+  310,
+  662
+ ],
+ "referenceVisibleHeight": 576,
+ "characters": {
+  "somang": {
+   "scale": 1.03,
+   "match": 0.528,
+   "shift": [
+    58,
+    85
+   ],
+   "feetOffsetPx": 2,
+   "heightRatio": 1.007,
+   "heightFit": {
+    "scale": 1.0231,
+    "headScaleVsIdle": 0.993,
+    "shift": [
+     61,
+     87
+    ],
+    "headTopOffsetPx": -2
+   },
+   "verdict": "맞음 (발 +2px 보정)"
+  }
+ }
+}
