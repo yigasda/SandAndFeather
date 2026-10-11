@@ -116,5 +116,6 @@ let report=fs.existsSync(path.join(O,'assembly.json'))?JSON.parse(fs.readFileSyn
   }
  }
 }
+if(!process.argv.slice(2).length||process.argv.slice(2).includes('somang'))require('child_process').execFileSync(process.execPath,[path.join(O,'repair-somang-seams.cjs')]);
 fs.writeFileSync(path.join(O,'assembly.json'),JSON.stringify(report,null,2));
 })();

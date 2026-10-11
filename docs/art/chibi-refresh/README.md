@@ -6,8 +6,8 @@
 |---|---|---|
 | 정지4방향12장 | [approved/idle/](approved/idle/)의 `{set,somang,horus}-{front,back,left,right}.png` |620×720. [manifest](approved/manifest.json) |
 | 호루스 새 정면 단독 | [131번 horus-front.png](review-horus-v13/horus-front.png) | 사용자가 채택한 정면 외형. 새 정지4방향 세트와 구분 |
-| 새 걷기36장 | [review-trio-walk-v5/walk/](review-trio-walk-v5/walk/)의 `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` |360×400. 소망·호루스135 + 세트136. [manifest](review-trio-walk-v5/manifest.json) |
-| 새 걷기 확인용 합본 | [136-trio-walk.gif](review-trio-walk-v5/previews/136-trio-walk.gif) | 위36장으로 구성 |
+| 새 걷기36장 | [review-trio-walk-v5/walk/](review-trio-walk-v5/walk/)의 `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` |360×400. 소망·호루스135 + 세트136 외형·동작 채택. 소망12장 접합부는 사용자 요청144 보수 반영. [manifest](review-trio-walk-v5/manifest.json) |
+| 새 걷기 확인용 합본 | [144-trio-walk.gif](review-trio-walk-v5/previews/144-trio-walk.gif) | 위36장으로 구성 |
 
 새 걷기는 사용자 **“셋소호 다 합격”**으로 전원 채택됐다. 0→1→2→1, 각180ms. 개별 PNG와 명세를 먼저 확인하고 편집한다. GIF나 시트에서 프레임을 다시 추출하지 않는다.
 
