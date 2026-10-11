@@ -137,11 +137,11 @@
    662
   ],
   "referenceVisibleHeight": 576,
-  "heightPx": 571,
-  "top": 86,
+  "heightPx": 575,
+  "top": 82,
   "bottom": 656,
   "hem": 609,
-  "hemShare": 0.916
+  "hemShare": 0.917
  },
  "horus-back": {
   "canvas": [
@@ -153,8 +153,8 @@
    662
   ],
   "referenceVisibleHeight": 576,
-  "heightPx": 573,
-  "top": 89,
+  "heightPx": 575,
+  "top": 87,
   "bottom": 661,
   "hem": 609,
   "hemShare": 0.908
@@ -169,11 +169,11 @@
    662
   ],
   "referenceVisibleHeight": 576,
-  "heightPx": 560,
-  "top": 102,
+  "heightPx": 562,
+  "top": 100,
   "bottom": 661,
   "hem": 623,
-  "hemShare": 0.93
+  "hemShare": 0.931
  },
  "horus-right": {
   "canvas": [
@@ -185,10 +185,10 @@
    662
   ],
   "referenceVisibleHeight": 576,
-  "heightPx": 560,
-  "top": 102,
+  "heightPx": 562,
+  "top": 100,
   "bottom": 661,
   "hem": 567,
-  "hemShare": 0.83
+  "hemShare": 0.831
  }
 }

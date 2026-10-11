@@ -896,87 +896,87 @@
  "horus-front": {
   "frames": [
    {
-    "top": 40,
+    "top": 38,
     "bottom": 368,
-    "height": 329,
+    "height": 331,
     "headCut": 220,
     "hair": {
-     "area": 13928,
-     "cx": 175.3,
-     "cy": 108.4,
-     "left": 75,
-     "right": 275,
-     "lowest": 216
+     "area": 15136,
+     "cx": 175.2,
+     "cy": 109.0,
+     "left": 71,
+     "right": 279,
+     "lowest": 220
     },
     "face": {
-     "area": 7529,
-     "cx": 174.4,
-     "cy": 167.9,
-     "left": 80,
-     "right": 264,
-     "top": 117,
+     "area": 7779,
+     "cx": 174.0,
+     "cy": 168.6,
+     "left": 76,
+     "right": 267,
+     "top": 118,
      "bottom": 219
     },
     "bodyCx": 175.5,
-    "faceMinusBody": -1.1,
+    "faceMinusBody": -1.5,
     "feet": {
      "left": 138,
      "right": 215
     }
    },
    {
-    "top": 40,
+    "top": 38,
     "bottom": 366,
-    "height": 327,
-    "headCut": 219,
+    "height": 329,
+    "headCut": 218,
     "hair": {
-     "area": 13908,
-     "cx": 179.5,
-     "cy": 108.4,
-     "left": 78,
-     "right": 279,
-     "lowest": 217
+     "area": 15038,
+     "cx": 179.4,
+     "cy": 108.9,
+     "left": 74,
+     "right": 283,
+     "lowest": 218
     },
     "face": {
-     "area": 7723,
-     "cx": 177.5,
-     "cy": 167.1,
-     "left": 84,
-     "right": 269,
-     "top": 116,
-     "bottom": 218
+     "area": 7814,
+     "cx": 177.0,
+     "cy": 166.4,
+     "left": 80,
+     "right": 273,
+     "top": 117,
+     "bottom": 217
     },
     "bodyCx": 177.0,
-    "faceMinusBody": 0.5,
+    "faceMinusBody": 0.0,
     "feet": {
      "left": 137,
      "right": 218
     }
    },
    {
-    "top": 45,
+    "top": 43,
     "bottom": 368,
-    "height": 324,
-    "headCut": 223,
+    "height": 326,
+    "headCut": 222,
     "hair": {
-     "area": 13076,
-     "cx": 179.1,
-     "cy": 109.5,
-     "left": 79,
-     "right": 276,
-     "lowest": 223
+     "area": 14126,
+     "cx": 178.9,
+     "cy": 110.2,
+     "left": 75,
+     "right": 280,
+     "lowest": 219
     },
     "face": {
-     "area": 7689,
-     "cx": 177.0,
-     "cy": 168.4,
-     "left": 85,
-     "right": 267,
-     "top": 116,
-     "bottom": 222
+     "area": 7973,
+     "cx": 176.5,
+     "cy": 169.1,
+     "left": 81,
+     "right": 270,
+     "top": 117,
+     "bottom": 221
     },
     "bodyCx": 178.5,
-    "faceMinusBody": -1.5,
+    "faceMinusBody": -2.0,
     "feet": {
      "left": 138,
      "right": 216
@@ -987,47 +987,47 @@
    "0": {
     "topDy": 0,
     "hairCX": -4.2,
-    "hairCY": 0.0,
+    "hairCY": 0.1,
     "hairLeft": -3,
     "hairRight": -4,
-    "hairLowest": -1,
-    "faceCX": -3.1,
-    "faceCY": 0.8,
-    "faceWidth": -1,
+    "hairLowest": 2,
+    "faceCX": -3.0,
+    "faceCY": 2.2,
+    "faceWidth": -2,
     "bodyCX": -1.5
    },
    "2": {
     "topDy": 5,
-    "hairCX": -0.4,
-    "hairCY": 1.1,
+    "hairCX": -0.5,
+    "hairCY": 1.3,
     "hairLeft": 1,
     "hairRight": -3,
-    "hairLowest": 6,
+    "hairLowest": 1,
     "faceCX": -0.5,
-    "faceCY": 1.3,
-    "faceWidth": -3,
+    "faceCY": 2.7,
+    "faceWidth": -4,
     "bodyCX": 1.5
    }
   },
   "headChange": {
-   "0": 0.209,
-   "2": 0.128
+   "0": 0.207,
+   "2": 0.131
   }
  },
  "horus-back": {
   "frames": [
    {
-    "top": 43,
+    "top": 42,
     "bottom": 369,
-    "height": 327,
+    "height": 328,
     "headCut": 222,
     "hair": {
-     "area": 24212,
-     "cx": 175.9,
-     "cy": 129.0,
-     "left": 75,
-     "right": 277,
-     "lowest": 215
+     "area": 26207,
+     "cx": 175.7,
+     "cy": 131.8,
+     "left": 71,
+     "right": 281,
+     "lowest": 221
     },
     "bodyCx": 176.5,
     "feet": {
@@ -1036,17 +1036,17 @@
     }
    },
    {
-    "top": 42,
+    "top": 41,
     "bottom": 369,
-    "height": 328,
-    "headCut": 222,
+    "height": 329,
+    "headCut": 221,
     "hair": {
-     "area": 24400,
-     "cx": 175.9,
-     "cy": 128.6,
-     "left": 75,
-     "right": 277,
-     "lowest": 215
+     "area": 26410,
+     "cx": 175.7,
+     "cy": 131.4,
+     "left": 71,
+     "right": 281,
+     "lowest": 221
     },
     "bodyCx": 178.5,
     "feet": {
@@ -1055,17 +1055,17 @@
     }
    },
    {
-    "top": 41,
+    "top": 40,
     "bottom": 369,
-    "height": 329,
+    "height": 330,
     "headCut": 221,
     "hair": {
-     "area": 24707,
-     "cx": 175.9,
-     "cy": 128.4,
-     "left": 75,
-     "right": 277,
-     "lowest": 215
+     "area": 26736,
+     "cx": 175.8,
+     "cy": 131.2,
+     "left": 71,
+     "right": 281,
+     "lowest": 221
     },
     "bodyCx": 177.0,
     "feet": {
@@ -1086,7 +1086,7 @@
    },
    "2": {
     "topDy": -1,
-    "hairCX": 0.0,
+    "hairCX": 0.1,
     "hairCY": -0.2,
     "hairLeft": 0,
     "hairRight": 0,
@@ -1095,94 +1095,94 @@
    }
   },
   "headChange": {
-   "0": 0.047,
-   "2": 0.06
+   "0": 0.045,
+   "2": 0.059
   }
  },
  "horus-left": {
   "frames": [
    {
-    "top": 49,
+    "top": 48,
     "bottom": 367,
-    "height": 319,
+    "height": 320,
     "headCut": 224,
     "hair": {
-     "area": 19629,
-     "cx": 191.2,
-     "cy": 126.7,
-     "left": 74,
-     "right": 285,
-     "lowest": 221
+     "area": 21173,
+     "cx": 192.2,
+     "cy": 128.2,
+     "left": 70,
+     "right": 290,
+     "lowest": 223
     },
     "face": {
-     "area": 3158,
-     "cx": 140.6,
-     "cy": 178.0,
-     "left": 103,
-     "right": 201,
-     "top": 128,
-     "bottom": 220
+     "area": 3412,
+     "cx": 139.6,
+     "cy": 181.3,
+     "left": 100,
+     "right": 202,
+     "top": 130,
+     "bottom": 223
     },
-    "bodyCx": 166.8,
-    "faceMinusBody": -26.2,
+    "bodyCx": 167.0,
+    "faceMinusBody": -27.4,
     "feet": {
      "left": 76,
      "right": 232
     }
    },
    {
-    "top": 49,
+    "top": 48,
     "bottom": 368,
-    "height": 320,
-    "headCut": 225,
+    "height": 321,
+    "headCut": 224,
     "hair": {
-     "area": 19267,
-     "cx": 188.2,
-     "cy": 125.7,
-     "left": 70,
-     "right": 285,
-     "lowest": 221
+     "area": 20802,
+     "cx": 189.0,
+     "cy": 127.7,
+     "left": 66,
+     "right": 290,
+     "lowest": 224
     },
     "face": {
-     "area": 3317,
-     "cx": 141.3,
-     "cy": 177.3,
-     "left": 102,
-     "right": 199,
-     "top": 128,
-     "bottom": 220
+     "area": 3605,
+     "cx": 140.1,
+     "cy": 181.5,
+     "left": 99,
+     "right": 200,
+     "top": 130,
+     "bottom": 223
     },
-    "bodyCx": 164.2,
-    "faceMinusBody": -22.9,
+    "bodyCx": 165.5,
+    "faceMinusBody": -25.4,
     "feet": {
      "left": 115,
      "right": 218
     }
    },
    {
-    "top": 49,
+    "top": 48,
     "bottom": 367,
-    "height": 319,
+    "height": 320,
     "headCut": 224,
     "hair": {
-     "area": 19398,
-     "cx": 187.2,
-     "cy": 126.7,
-     "left": 71,
-     "right": 283,
-     "lowest": 222
+     "area": 20841,
+     "cx": 187.8,
+     "cy": 128.0,
+     "left": 67,
+     "right": 288,
+     "lowest": 223
     },
     "face": {
-     "area": 3402,
-     "cx": 141.6,
-     "cy": 179.6,
-     "left": 103,
-     "right": 201,
-     "top": 129,
-     "bottom": 220
+     "area": 3660,
+     "cx": 140.5,
+     "cy": 183.2,
+     "left": 100,
+     "right": 202,
+     "top": 131,
+     "bottom": 223
     },
     "bodyCx": 170.0,
-    "faceMinusBody": -28.4,
+    "faceMinusBody": -29.5,
     "feet": {
      "left": 87,
      "right": 250
@@ -1192,118 +1192,118 @@
   "motion": {
    "0": {
     "topDy": 0,
-    "hairCX": 3.0,
-    "hairCY": 1.0,
+    "hairCX": 3.2,
+    "hairCY": 0.5,
     "hairLeft": 4,
     "hairRight": 0,
-    "hairLowest": 0,
-    "faceCX": -0.7,
-    "faceCY": 0.7,
+    "hairLowest": -1,
+    "faceCX": -0.5,
+    "faceCY": -0.2,
     "faceWidth": 1,
-    "bodyCX": 2.6
+    "bodyCX": 1.5
    },
    "2": {
     "topDy": 0,
-    "hairCX": -1.0,
-    "hairCY": 1.0,
+    "hairCX": -1.2,
+    "hairCY": 0.3,
     "hairLeft": 1,
     "hairRight": -2,
-    "hairLowest": 1,
-    "faceCX": 0.3,
-    "faceCY": 2.3,
+    "hairLowest": -1,
+    "faceCX": 0.4,
+    "faceCY": 1.7,
     "faceWidth": 1,
-    "bodyCX": 5.8
+    "bodyCX": 4.5
    }
   },
   "headChange": {
-   "0": 0.123,
-   "2": 0.126
+   "0": 0.116,
+   "2": 0.11
   }
  },
  "horus-right": {
   "frames": [
    {
-    "top": 51,
+    "top": 50,
     "bottom": 369,
-    "height": 319,
+    "height": 320,
     "headCut": 226,
     "hair": {
-     "area": 19443,
-     "cx": 171.1,
-     "cy": 126.0,
-     "left": 74,
-     "right": 287,
-     "lowest": 220
+     "area": 20987,
+     "cx": 170.5,
+     "cy": 127.7,
+     "left": 69,
+     "right": 291,
+     "lowest": 225
     },
     "face": {
-     "area": 3428,
-     "cx": 215.1,
-     "cy": 176.5,
-     "left": 154,
-     "right": 256,
-     "top": 128,
-     "bottom": 217
+     "area": 3728,
+     "cx": 216.2,
+     "cy": 180.0,
+     "left": 153,
+     "right": 259,
+     "top": 130,
+     "bottom": 222
     },
-    "bodyCx": 184.5,
-    "faceMinusBody": 30.6,
+    "bodyCx": 184.2,
+    "faceMinusBody": 32.0,
     "feet": {
      "left": 109,
      "right": 270
     }
    },
    {
-    "top": 49,
+    "top": 48,
     "bottom": 369,
-    "height": 321,
+    "height": 322,
     "headCut": 225,
     "hair": {
-     "area": 19968,
-     "cx": 171.3,
-     "cy": 125.5,
-     "left": 73,
-     "right": 289,
-     "lowest": 220
+     "area": 21595,
+     "cx": 171.0,
+     "cy": 127.7,
+     "left": 68,
+     "right": 293,
+     "lowest": 225
     },
     "face": {
-     "area": 3586,
-     "cx": 213.6,
-     "cy": 178.8,
-     "left": 153,
-     "right": 256,
-     "top": 128,
-     "bottom": 217
+     "area": 3878,
+     "cx": 214.9,
+     "cy": 183.2,
+     "left": 152,
+     "right": 259,
+     "top": 130,
+     "bottom": 223
     },
-    "bodyCx": 187.0,
-    "faceMinusBody": 26.6,
+    "bodyCx": 186.5,
+    "faceMinusBody": 28.4,
     "feet": {
      "left": 124,
      "right": 237
     }
    },
    {
-    "top": 49,
+    "top": 48,
     "bottom": 369,
-    "height": 321,
+    "height": 322,
     "headCut": 225,
     "hair": {
-     "area": 19937,
-     "cx": 169.1,
-     "cy": 124.9,
-     "left": 72,
-     "right": 287,
-     "lowest": 220
+     "area": 21537,
+     "cx": 168.3,
+     "cy": 126.8,
+     "left": 67,
+     "right": 291,
+     "lowest": 225
     },
     "face": {
-     "area": 3515,
-     "cx": 213.6,
-     "cy": 176.2,
-     "left": 154,
-     "right": 254,
-     "top": 125,
-     "bottom": 217
+     "area": 3822,
+     "cx": 214.9,
+     "cy": 179.8,
+     "left": 153,
+     "right": 257,
+     "top": 127,
+     "bottom": 223
     },
     "bodyCx": 184.0,
-    "faceMinusBody": 29.6,
+    "faceMinusBody": 30.9,
     "feet": {
      "left": 108,
      "right": 269
@@ -1313,32 +1313,32 @@
   "motion": {
    "0": {
     "topDy": 2,
-    "hairCX": -0.2,
-    "hairCY": 0.5,
+    "hairCX": -0.5,
+    "hairCY": 0.0,
     "hairLeft": 1,
     "hairRight": -2,
     "hairLowest": 0,
-    "faceCX": 1.5,
-    "faceCY": -2.3,
+    "faceCX": 1.3,
+    "faceCY": -3.2,
     "faceWidth": -1,
-    "bodyCX": -2.5
+    "bodyCX": -2.3
    },
    "2": {
     "topDy": 0,
-    "hairCX": -2.2,
-    "hairCY": -0.6,
+    "hairCX": -2.7,
+    "hairCY": -0.9,
     "hairLeft": -1,
     "hairRight": -2,
     "hairLowest": 0,
     "faceCX": 0.0,
-    "faceCY": -2.6,
+    "faceCY": -3.4,
     "faceWidth": -3,
-    "bodyCX": -3.0
+    "bodyCX": -2.5
    }
   },
   "headChange": {
-   "0": 0.075,
-   "2": 0.118
+   "0": 0.081,
+   "2": 0.128
   }
  }
 }
