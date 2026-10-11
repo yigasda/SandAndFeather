@@ -1,7 +1,7 @@
 {
   "revision": 189,
   "action": "sleep",
-  "status": "awaiting-user-review",
+  "status": "rejected-partially",
   "artApproved": false,
   "runtimeEligible": false,
   "runtimeOwner": "opus",
@@ -244,5 +244,6 @@
     "originals": "checks/protected-originals.json",
     "headOverlay": "checks/canonical-hair.json",
     "bed": "checks/bed-placement.json"
-  }
+  },
+  "rejectionEvidence": "사용자: 세트·호루스8장 전부 다시 그려. 앉은 듯한 바로 눕기, 세트 웨이브, 호루스 머리 붙이기 반려. 소망0·1은 그대로."
 }

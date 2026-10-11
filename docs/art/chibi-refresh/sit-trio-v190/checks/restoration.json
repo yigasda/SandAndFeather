@@ -1,0 +1,86 @@
+[
+  {
+    "file": "png/horus-back-floor-0.png",
+    "restored": true,
+    "source": "/workspace/actions188/before/horus-back-floor-0.png",
+    "sha256": "e59e17894f56f9dafb93e535a6d3b131880131fb3c310b0521f8b35180227d72"
+  },
+  {
+    "file": "png/horus-back-stool-0.png",
+    "restored": true,
+    "source": "/workspace/actions188/before/horus-back-stool-0.png",
+    "sha256": "eadb6de507a5c14c641e8a89bc0ba512c51f50dcb215231f1e8be549872fbd65"
+  },
+  {
+    "file": "png/horus-left-floor-0.png",
+    "restored": true,
+    "source": "/workspace/actions188/before/horus-left-floor-0.png",
+    "sha256": "fb73fad0f175d59dcae5a8ee077ca36ba9c5c7aff839470ceb809b48d4c1a263"
+  },
+  {
+    "file": "png/horus-right-bench-0.png",
+    "restored": true,
+    "source": "/workspace/actions188/before/horus-right-bench-0.png",
+    "sha256": "a75f9ce4f97fed0ee9a51c62ba897e923d3406876949e038105b26a7c69df685"
+  },
+  {
+    "file": "png/horus-right-floor-0.png",
+    "restored": true,
+    "source": "/workspace/actions188/before/horus-right-floor-0.png",
+    "sha256": "376383b5c60a56e8b6d46b0243135a2cc53079fe0eab276bfce87882b932adff"
+  },
+  {
+    "file": "png/set-back-floor-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/set-back-floor-0.png",
+    "sha256": "0b1e31048397e9288fd895002e6e6b94db72c8e5a91c20bc9ce00030d0fa1fdf"
+  },
+  {
+    "file": "png/set-back-stool-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/set-back-stool-0.png",
+    "sha256": "b6b240845b146dab6dbf6d62148f45d1eca82a5dede78709133a2f59821329e8"
+  },
+  {
+    "file": "png/set-left-floor-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/set-left-floor-0.png",
+    "sha256": "c30ed03632a7673f3026d368b167a5c922112c4b0396b097e7e184313ca178a9"
+  },
+  {
+    "file": "png/set-right-bench-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/set-right-bench-0.png",
+    "sha256": "8babf28af993ecf084dc159b3c91b7e6e32d8f816c8908aed5b53ef604f054f5"
+  },
+  {
+    "file": "png/set-right-floor-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/set-right-floor-0.png",
+    "sha256": "e970b015ca42c1f3cd8186f7e5bc14a7f04455259874a1055eea8301c617ac68"
+  },
+  {
+    "file": "png/somang-back-floor-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/somang-back-floor-0.png",
+    "sha256": "bca1d71774f5b5767b969b890e722d9f6d005a570e1235911ac1735bbf0fd019"
+  },
+  {
+    "file": "png/somang-back-stool-0.png",
+    "restored": true,
+    "source": "/workspace/actions188/before/somang-back-stool-0.png",
+    "sha256": "8500251439a89dffb0b56821f61b6ce1e7f5efc13bdfcaf9fd448598e2e08da1"
+  },
+  {
+    "file": "png/somang-right-bench-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/somang-right-bench-0.png",
+    "sha256": "16e17b8a5c3bc64af1a9e83ee458e4a53e49b831d036eddb25d5e7c9d736efe6"
+  },
+  {
+    "file": "png/somang-right-floor-0.png",
+    "restored": false,
+    "source": "docs/art/chibi-refresh/sit-trio-v183/png/somang-right-floor-0.png",
+    "sha256": "f6816838cd26ecd43b692b5721ffbda7c96d660e188f34a281ee86a8cb6b84c5"
+  }
+]
