@@ -120,6 +120,8 @@ def fit(cand, ref):
     out2 = Image.new('RGBA', CANVAS, (0, 0, 0, 0))
     b2 = c2.getbbox()
     ox2 = head_box[0] - (r[1] - pw); oy2 = PIVOT[1] + 1 - b2[3]
+    # sideways: centred where the head-matched picture is (a second head search at this scale can land far off)
+    ox2 = round((ob[0] + ob[2]) / 2 - (b2[0] + b2[2]) / 2)
     r = (r[0], r[1] - pw, r[2] - ph)
     out2.paste(c2, (ox2, oy2), c2)
     info['heightFit'] = {'scale': round(sh, 4), 'headScaleVsIdle': round(sh / s, 3), 'shift': [ox2, oy2],
