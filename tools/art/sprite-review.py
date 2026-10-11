@@ -11,6 +11,9 @@
 #   좌우        onion.py — the left view against the flipped right view of the same pose (arms, hands, legs: by eye)
 #   기준 그림    onion.py — each picture on the approved reference of the same action (REFERENCES) at their anchors
 #   머리        head-check.py — lying pictures: the idle head's outline laid on the drawing (by eye)
+#   이어 보기    the final walk 0·1·2, the idle, the new frames and the idle again side by side at one scale (feet line
+#               drawn), and the same as a GIF at game size and at full size: do the proportions and the motion carry on
+#               from walking and standing without a jump? (by eye; sleeping is special, look only)
 #   붙여넣기     poses that are not standing: is the final idle's head pasted in unchanged (90 %+ of its pixels
 #               identical) instead of drawn for the pose? Drawn heads score under 20 %.
 # and writes <out>/report.md: 볼 것 at the top, then one line per character and pose with the sheets beside it.
@@ -90,8 +93,51 @@ def pasted(path, who, view):
     return float(best)
 
 
+def chain(who, view, fr, out, key):
+    """walk 0·1·2 → idle → the new frames → idle, as one sheet and two GIFs (game size, full size)"""
+    from PIL import Image, ImageDraw
+    F = os.path.join(ART, 'final', who)
+    walk = [os.path.join(F, 'walk', f'{who}-{view}-{i}.png') for i in (0, 1, 2)]
+    idle = os.path.join(F, 'idle', f'{who}-{view}.png')
+    seq = [(f'걷기 {i}', p) for i, p in enumerate(walk) if os.path.exists(p)] + [('정지', idle)] + \
+          [(f'새 {k}', p) for k, p in fr] + [('정지', idle)]
+    def canvas(p):
+        # walks are drawn smaller (360×400, feet 180,370, figure 330 px): put them on the idle's scale and feet
+        im = Image.open(p).convert('RGBA')
+        if im.size == (620, 720): return im
+        k = 576 / 330
+        im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
+        out = Image.new('RGBA', (620, 720), (0, 0, 0, 0))
+        out.alpha_composite(im, (310 - round(180 * k), 662 - round(370 * k)))
+        return out
+    pics = [(t, canvas(p)) for t, p in seq if os.path.exists(p)]
+    W, H = pics[0][1].size
+    s = Image.new('RGB', (W * len(pics), H + 40), (245, 239, 227)); d = ImageDraw.Draw(s)
+    for i, (t, im) in enumerate(pics):
+        s.paste(im, (i * W, 40), im)
+        d.line([(i * W, 40 + 662), ((i + 1) * W, 40 + 662)], fill=(0, 110, 230), width=2)
+        d.text((i * W + 8, 10), t, fill=(150, 30, 20) if t.startswith('새') else (40, 30, 20), font=onion.FONT)
+    name = f'{who}-{key}-chain'
+    s.save(os.path.join(out, name + '.png'))
+    # GIF: walk cycle twice, idle, the new frames (held a little longer), idle
+    frames = [im for t, im in pics if t.startswith('걷기')]
+    frames = (frames + frames[1:2]) * 2 if len(frames) == 3 else frames
+    idle_im = next(im for t, im in pics if t == '정지')
+    news = [im for t, im in pics if t.startswith('새')]
+    frames += [idle_im] + news + [idle_im]
+    ms = [180] * (len(frames) - len(news) - 2) + [400] + [500] * len(news) + [600]
+    def flat(im, k):
+        bg = Image.new('RGBA', im.size, (245, 239, 227, 255)); bg.alpha_composite(im)
+        bg = bg.convert('RGB')
+        return bg.resize((max(1, W * k // H), k), Image.NEAREST) if k else bg
+    for suf, k in (('', 0), ('-game', 39)):  # a 39px tall canvas puts the 576px figure at the game's 31px
+        fs = [flat(im, k) for im in frames]
+        fs[0].save(os.path.join(out, name + suf + '.gif'), save_all=True, append_images=fs[1:], duration=ms, loop=0)
+    return name + '.png'
+
+
 def label(s):
-    for k, ko in (('-action', '동작'), ('-onion-', '0↔1'), ('-mirror-', '좌우'), ('-reference', '기준'), ('-head', '머리')):
+    for k, ko in (('-chain', '이어 보기'), ('-action', '동작'), ('-onion-', '0↔1'), ('-mirror-', '좌우'), ('-reference', '기준'), ('-head', '머리')):
         if k in s: return ko
     return s
 
@@ -134,6 +180,9 @@ def main():
         r = action.check(who, view, fr, lying=lying, side=side or (who, key) in CURLED); r['key'] = key
         action.sheet(r, fr, o.out); sheets.append(f'{who}-{key}-action.png')
         notes = list(r['notes'])
+        # 이어 보기: walking and standing into the new frames
+        if view in VIEWS and not side:
+            sheets.append(chain(who, view, fr, o.out, key))
         # 0↔1
         for (k1, p1), (k2, p2) in zip(fr, fr[1:]):
             name = f'{who}-{key}-onion-{k1}{k2}.png'
@@ -186,7 +235,7 @@ def main():
            '', '## 캐릭터·자세별', '', '| 그림 | 프레임별 키·머리 맞춤 | 판정 | 시트 |', '|---|---|---|---|'] + lines + [
            '', '## 피부색', '', '| 파일 | 판정 | 기본 / 그림자 / 밝은 쪽 ΔE |', '|---|---|---|'] + [
            f"| {r['file']} | {r['verdict']} | " + (' / '.join(str(r['toneDeltaE'][k]) for k in ('base', 'shadow', 'light')) if 'toneDeltaE' in r else '') + ' |' for r in skins] + [
-           '', '시트 읽는 법: action = 정지 | 0 | 1(파란 선 = 발 기준선), onion = 겹친 윤곽(빨강 A, 파랑 B) · 바뀐 픽셀 · 윤곽만 다른 곳, '
+           '', '시트 읽는 법: chain = 걷기 0·1·2 → 정지 → 새 프레임 → 정지(같은 배율, 파란 선 = 발), 같은 이름의 .gif(큰 크기)와 -game.gif(게임 크기)로 이어 재생해 비율·동작이 툭 끊기지 않는지 본다. action = 정지 | 0 | 1(파란 선 = 발 기준선), onion = 겹친 윤곽(빨강 A, 파랑 B) · 바뀐 픽셀 · 윤곽만 다른 곳, '
            'mirror = 왼쪽과 뒤집은 오른쪽(팔 길이·손 크기), reference = 채택된 기준 그림과 겹침(구도·원근·머리 위치), head = 정지 머리 윤곽(빨강).',
            '머리 맞춤 ×1.00 = 정지와 같은 크기. 채택된 쪼그린·앉은 그림도 ×1.03~1.11로 재진다.']
     open(os.path.join(o.out, 'report.md'), 'w').write('\n'.join(rep) + '\n')
