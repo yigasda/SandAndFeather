@@ -1,0 +1,68 @@
+[
+  {
+    "variant": "set-sleep",
+    "silhouette": 0.09264582832810028,
+    "bbox0": [
+      18,
+      52,
+      611,
+      658
+    ],
+    "bbox1": [
+      4,
+      57,
+      616,
+      653
+    ],
+    "outlinePixels": 22366,
+    "alphaComponents": [
+      1,
+      1
+    ],
+    "sandalBrownBboxHorus": [
+      202,
+      535,
+      419,
+      656
+    ],
+    "sandalBrownBboxSet": [
+      204,
+      535,
+      415,
+      658
+    ]
+  },
+  {
+    "variant": "set-sleep-side",
+    "silhouette": 0.06806767586821015,
+    "bbox0": [
+      15,
+      45,
+      546,
+      668
+    ],
+    "bbox1": [
+      1,
+      42,
+      551,
+      671
+    ],
+    "outlinePixels": 13377,
+    "alphaComponents": [
+      1,
+      1
+    ],
+    "sandalBrownBboxHorus": [
+      281,
+      565,
+      426,
+      666
+    ],
+    "sandalBrownBboxSet": [
+      284,
+      565,
+      430,
+      668
+    ]
+  }
+]

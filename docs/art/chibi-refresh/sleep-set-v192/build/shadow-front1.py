@@ -1,0 +1,5 @@
+from pathlib import Path
+import importlib.util,json,numpy as np
+from scipy.spatial import cKDTree
+s=importlib.util.spec_from_file_location('sk','tools/art/skin-check.py');sk=importlib.util.module_from_spec(s);s.loader.exec_module(sk)
+f=Path('docs/art/chibi-refresh/sleep-set-v192/png/set-sleep-1.png');a,m,rgb=sk.skin_pixels(f,'set');_,rt,pal=sk.reference('set','front');target=np.array([250,182,158],float);L=sk.cs.lab(target[None])[0,0];r,g,b,al=a.transpose(2,0,1);m &= (r>180)&(r-g>25)&(r-g<130)&(g-b<40)&(g-b>-15);cols=np.unique(a[:,:,:3][m].astype('uint8'),axis=0);lab=sk.cs.lab(cols.astype(float));st=sk.cs.lab(target[None])[0];mix=np.clip((L+1-lab[:,0])/3,0,1);goal=lab*(1-mix[:,None])+st*mix[:,None];tree=cKDTree(sk.cs.lab(pal));_,ix=tree.query(goal);out=Path('/workspace/actions192/palette');(out/(f.stem+'.json')).write_text(json.dumps({str(int(c[0])*65536+int(c[1])*256+int(c[2])):v.tolist() for c,v in zip(cols,pal[ix].astype('uint8'))}));(out/(f.stem+'.mask')).write_bytes(m.astype('uint8').tobytes())

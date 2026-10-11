@@ -1,0 +1,96 @@
+{
+  "revision": 192,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 4,
+  "files": [
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "pose": "sleep-supine",
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "baf4f801fbc39a740ec837e23a4fde532e05e5442745235f153c6e65dd4532b0"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "pose": "sleep-supine",
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "0123ff9575d50b00873ff240b1a43adc98336ff35559807a7098cd99461386ea"
+    },
+    {
+      "path": "png/set-sleep-side-0.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 0,
+      "pose": "sleep-side",
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "b4b3ebbbf2e017f40892ac60bd2ea107b79aaf5aadcda5236632c030c78795f9"
+    },
+    {
+      "path": "png/set-sleep-side-1.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 1,
+      "pose": "sleep-side",
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "d6e13c087b7f92d8735a15ca6d79c54d80d108dd285c42ad1004ed6cfcad7220"
+    }
+  ],
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "runtimeOwner": "opus",
+  "notes": [
+    "Whole-image fresh drawings; idle fragments are not composited.",
+    "Small redraw differences remain in eyes, pillow hair and feet between breathing frames; see review/visual-notes.md."
+  ],
+  "sourceHashes": {
+    "set-sleep-0-generated.png": "033631cacbdb4aa8c1947b07b4120b3110192813c5f4305d3e5a333d41c680b3",
+    "set-sleep-side-1-generated.png": "944bec4fa70d66bea6a626324f4b84650eff34ffc21a70ec41b11fde89031d6c",
+    "set-sleep-side-0-generated.png": "c43ca1422eddb8eeaa3aeb629e1d31e8813c1f9dabbf4a8cf7ff85dc6c144a8c",
+    "set-sleep-1-generated.png": "3fefe5b68297d486181ef6258c9d9ee69586c19cc18f1bcbec7c14dcf9b118f6"
+  }
+}
