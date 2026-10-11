@@ -1,0 +1,67 @@
+{
+  "status": "concepts-awaiting-user-selection",
+  "runtimeEligible": false,
+  "reference": "../final/manifest.json",
+  "referenceCommit": "958fdae",
+  "referenceCount": 48,
+  "skinPaletteRevision": 168,
+  "options": [
+    {
+      "number": 1,
+      "name": "한 손 내밀기",
+      "file": "sources/option-1.png",
+      "characters": [
+        "set",
+        "somang",
+        "horus"
+      ],
+      "direction": "front"
+    },
+    {
+      "number": 2,
+      "name": "양손 받기",
+      "file": "sources/option-2.png",
+      "characters": [
+        "set",
+        "somang",
+        "horus"
+      ],
+      "direction": "front"
+    },
+    {
+      "number": 3,
+      "name": "한 손 건네기",
+      "file": "sources/option-3.png",
+      "characters": [
+        "set",
+        "somang",
+        "horus"
+      ],
+      "direction": "front"
+    },
+    {
+      "number": 4,
+      "name": "문·장치 누르기",
+      "file": "sources/option-4.png",
+      "characters": [
+        "set",
+        "somang",
+        "horus"
+      ],
+      "direction": "front"
+    },
+    {
+      "number": 5,
+      "name": "대화 손짓",
+      "file": "sources/option-5.png",
+      "characters": [
+        "set",
+        "somang",
+        "horus"
+      ],
+      "direction": "front"
+    }
+  ],
+  "generation": "Image editing with adopted front idle PNGs and final48 reference sheet; local tools only assemble previews/crop check inputs.",
+  "validation": "Visual light/dark sheets and hands-neck closeups inspected. check-sprite free-pose comparison15 included; not all measurements pass. Concepts are not pixel-identical replacements for canonical48."
+}

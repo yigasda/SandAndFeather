@@ -1,0 +1,142 @@
+[
+  {
+    "option": 1,
+    "source": "docs/art/chibi-refresh/interaction-options-v170/sources/option-1.png",
+    "size": [
+      2073,
+      758
+    ],
+    "characterBounds": [
+      [
+        82,
+        42,
+        713,
+        719
+      ],
+      [
+        737,
+        54,
+        1323,
+        723
+      ],
+      [
+        1446,
+        48,
+        1907,
+        720
+      ]
+    ]
+  },
+  {
+    "option": 2,
+    "source": "docs/art/chibi-refresh/interaction-options-v170/sources/option-2.png",
+    "size": [
+      1983,
+      793
+    ],
+    "characterBounds": [
+      [
+        27,
+        100,
+        605,
+        724
+      ],
+      [
+        748,
+        107,
+        1249,
+        724
+      ],
+      [
+        1472,
+        101,
+        1891,
+        724
+      ]
+    ]
+  },
+  {
+    "option": 3,
+    "source": "docs/art/chibi-refresh/interaction-options-v170/sources/option-3.png",
+    "size": [
+      2172,
+      724
+    ],
+    "characterBounds": [
+      [
+        139,
+        25,
+        771,
+        692
+      ],
+      [
+        815,
+        34,
+        1354,
+        695
+      ],
+      [
+        1493,
+        52,
+        1922,
+        693
+      ]
+    ]
+  },
+  {
+    "option": 4,
+    "source": "docs/art/chibi-refresh/interaction-options-v170/sources/option-4.png",
+    "size": [
+      1942,
+      809
+    ],
+    "characterBounds": [
+      [
+        51,
+        60,
+        707,
+        754
+      ],
+      [
+        700,
+        65,
+        1263,
+        754
+      ],
+      [
+        1353,
+        70,
+        1819,
+        754
+      ]
+    ]
+  },
+  {
+    "option": 5,
+    "source": "docs/art/chibi-refresh/interaction-options-v170/sources/option-5.png",
+    "size": [
+      2172,
+      724
+    ],
+    "characterBounds": [
+      [
+        67,
+        75,
+        618,
+        654
+      ],
+      [
+        851,
+        75,
+        1339,
+        654
+      ],
+      [
+        1659,
+        65,
+        2058,
+        654
+      ]
+    ]
+  }
+]
