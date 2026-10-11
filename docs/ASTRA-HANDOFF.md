@@ -102,7 +102,7 @@
 | 대상 | 상태·다음 작업 |
 |---|---|
 | 상호작용 | [소망172](art/chibi-refresh/interaction-somang-v172/README.md)8장과 [세트174/175](art/chibi-refresh/interaction-set-v174/README.md)8장 채택 완료. 세트는 오른쪽 팔·손 길이175 수정 포함 사용자 채택,0.9.30 게임 적용 완료. [호루스176/177](art/chibi-refresh/interaction-horus-v176/README.md)4방향×2프레임.177에서 오른쪽0·1 피부 팔레트와 왼쪽0·1 배·치마 외곽선 수정, fit8/8 맞음·비교·GIF 갱신. 사용자 “고마워 채택!!”으로8장 채택 완료, 0.9.31 게임 적용 완료. |
-| 줍기·앉기·잠들기 | 사용자 이번 요청으로 소망 [줍기178](art/chibi-refresh/pickup-somang-v178/README.md)4방향8장·비교·GIF 제작, 채택 대기. 완성 정면 높이75.9%로 목표65~70%보다 높은 차이 기록. [앉기179](art/chibi-refresh/sit-somang-v179/README.md)는 방석 왼쪽 대표1장, [잠들기180](art/chibi-refresh/sleep-somang-v180/README.md)는 누움 대표1장만. 두 대표는 사용자 오케이 후 확대. |
+| 줍기·앉기·잠들기 | 사용자 이번 요청으로 소망 [줍기181](art/chibi-refresh/pickup-somang-v178/README.md)4방향8장. 178에서 정면 무릎·발 간격과 전8장 피부 팔레트 수정, 비교·GIF 갱신, 수정본 채택 대기. 완성 정면 높이75.9%로 목표65~70%보다 높은 차이 기록. [앉기179](art/chibi-refresh/sit-somang-v179/README.md)는 방석 왼쪽 대표1장, [잠들기180](art/chibi-refresh/sleep-somang-v180/README.md)는 누움 대표1장만. 두 대표는 사용자 오케이 후 확대. |
 | 셋소호 베이스 스프라이트 | **전체48장 최종 채택 완료.** 사용자 “완벽해 고생했어! 이제 베이스 스프라이트는 끝났네”. [final/](art/chibi-refresh/final/README.md)만 사용한다. 캐릭터별 정지4+걷기12=16장. |
 | 세트 | 정지148·채택 걷기163. 원본 그대로 최종 폴더로 정리. |
 | 소망 | 정지151 네 방향·채택 걷기163(접합부144 보수 포함).150 정면으로 되돌리지 않는다. |

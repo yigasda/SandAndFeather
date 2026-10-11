@@ -17,23 +17,23 @@
  "characters": {
   "somang": {
    "scale": 1.04,
-   "match": 0.347,
+   "match": 0.348,
    "shift": [
     78,
     86
    ],
-   "feetOffsetPx": -123,
-   "heightRatio": 0.788,
+   "feetOffsetPx": -124,
+   "heightRatio": 0.786,
    "heightFit": {
-    "scale": 1.3181,
-    "headScaleVsIdle": 1.267,
+    "scale": 1.3211,
+    "headScaleVsIdle": 1.27,
     "shift": [
      14,
      87
     ],
     "headTopOffsetPx": -47
    },
-   "verdict": "비율 다름: 머리를 맞추면 발이 -123px (-21.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+   "verdict": "비율 다름: 머리를 맞추면 발이 -124px (-21.5% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
   }
  }
 }

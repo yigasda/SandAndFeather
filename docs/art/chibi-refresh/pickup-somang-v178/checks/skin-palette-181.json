@@ -1,0 +1,170 @@
+[
+  {
+    "direction": "front",
+    "frame": 0,
+    "sourceSkin85": [
+      253,
+      216,
+      194
+    ],
+    "referenceSkin85": [
+      255,
+      223,
+      205
+    ],
+    "delta": [
+      2,
+      7,
+      11
+    ],
+    "skinPixels": 20967,
+    "referencePaletteColors": 7264
+  },
+  {
+    "direction": "front",
+    "frame": 1,
+    "sourceSkin85": [
+      253,
+      214,
+      193
+    ],
+    "referenceSkin85": [
+      255,
+      223,
+      205
+    ],
+    "delta": [
+      2,
+      9,
+      12
+    ],
+    "skinPixels": 19086,
+    "referencePaletteColors": 7264
+  },
+  {
+    "direction": "back",
+    "frame": 0,
+    "sourceSkin85": [
+      253,
+      214,
+      197
+    ],
+    "referenceSkin85": [
+      252,
+      217,
+      200
+    ],
+    "delta": [
+      -1,
+      3,
+      3
+    ],
+    "skinPixels": 5880,
+    "referencePaletteColors": 2646
+  },
+  {
+    "direction": "back",
+    "frame": 1,
+    "sourceSkin85": [
+      253,
+      216,
+      200
+    ],
+    "referenceSkin85": [
+      252,
+      217,
+      200
+    ],
+    "delta": [
+      -1,
+      1,
+      0
+    ],
+    "skinPixels": 3523,
+    "referencePaletteColors": 2646
+  },
+  {
+    "direction": "left",
+    "frame": 0,
+    "sourceSkin85": [
+      253,
+      214,
+      197
+    ],
+    "referenceSkin85": [
+      252,
+      219,
+      204
+    ],
+    "delta": [
+      -1,
+      5,
+      7
+    ],
+    "skinPixels": 15048,
+    "referencePaletteColors": 4652
+  },
+  {
+    "direction": "left",
+    "frame": 1,
+    "sourceSkin85": [
+      253,
+      214,
+      197
+    ],
+    "referenceSkin85": [
+      252,
+      219,
+      204
+    ],
+    "delta": [
+      -1,
+      5,
+      7
+    ],
+    "skinPixels": 12221,
+    "referencePaletteColors": 4652
+  },
+  {
+    "direction": "right",
+    "frame": 0,
+    "sourceSkin85": [
+      253,
+      214,
+      197
+    ],
+    "referenceSkin85": [
+      252,
+      219,
+      205
+    ],
+    "delta": [
+      -1,
+      5,
+      8
+    ],
+    "skinPixels": 14811,
+    "referencePaletteColors": 4581
+  },
+  {
+    "direction": "right",
+    "frame": 1,
+    "sourceSkin85": [
+      253,
+      214,
+      197
+    ],
+    "referenceSkin85": [
+      252,
+      219,
+      205
+    ],
+    "delta": [
+      -1,
+      5,
+      8
+    ],
+    "skinPixels": 12777,
+    "referencePaletteColors": 4581
+  }
+]

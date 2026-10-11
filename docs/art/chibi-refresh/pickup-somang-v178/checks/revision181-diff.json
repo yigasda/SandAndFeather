@@ -1,0 +1,74 @@
+[
+  {
+    "file": "somang-back-0.png",
+    "changedPixels": 5815,
+    "changedAlphaPixels": 0,
+    "dimensions": [
+      620,
+      720
+    ]
+  },
+  {
+    "file": "somang-back-1.png",
+    "changedPixels": 3252,
+    "changedAlphaPixels": 0,
+    "dimensions": [
+      620,
+      720
+    ]
+  },
+  {
+    "file": "somang-front-0.png",
+    "changedPixels": 58671,
+    "changedAlphaPixels": 7357,
+    "dimensions": [
+      620,
+      720
+    ]
+  },
+  {
+    "file": "somang-front-1.png",
+    "changedPixels": 44113,
+    "changedAlphaPixels": 2011,
+    "dimensions": [
+      620,
+      720
+    ]
+  },
+  {
+    "file": "somang-left-0.png",
+    "changedPixels": 15000,
+    "changedAlphaPixels": 0,
+    "dimensions": [
+      620,
+      720
+    ]
+  },
+  {
+    "file": "somang-left-1.png",
+    "changedPixels": 12189,
+    "changedAlphaPixels": 0,
+    "dimensions": [
+      620,
+      720
+    ]
+  },
+  {
+    "file": "somang-right-0.png",
+    "changedPixels": 14784,
+    "changedAlphaPixels": 0,
+    "dimensions": [
+      620,
+      720
+    ]
+  },
+  {
+    "file": "somang-right-1.png",
+    "changedPixels": 12744,
+    "changedAlphaPixels": 0,
+    "dimensions": [
+      620,
+      720
+    ]
+  }
+]

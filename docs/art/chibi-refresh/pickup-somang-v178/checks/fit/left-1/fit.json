@@ -31,7 +31,7 @@
      18,
      87
     ],
-    "headTopOffsetPx": -371
+    "headTopOffsetPx": -76
    },
    "verdict": "비율 다름: 머리를 맞추면 발이 -153px (-26.6% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
   }

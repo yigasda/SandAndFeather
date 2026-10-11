@@ -17,7 +17,7 @@
  "characters": {
   "somang": {
    "scale": 1.065,
-   "match": 0.454,
+   "match": 0.453,
    "shift": [
     28,
     84
@@ -31,7 +31,7 @@
      -9,
      87
     ],
-    "headTopOffsetPx": -37
+    "headTopOffsetPx": -414
    },
    "verdict": "비율 다름: 머리를 맞추면 발이 -77px (-13.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
   }

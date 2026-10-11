@@ -1,6 +1,85 @@
 {
-  "metadataVerified": true,
-  "pickupGif": "https://drive.google.com/file/d/1A0lYJ1juKcEztaHZ5UOEXZK-goAqMwT5/view?usp=drivesdk",
-  "pickupCompare": "https://drive.google.com/file/d/1kAV_8SQI5MXoEMBAXr-cOHLlNvuIjB7n/view?usp=drivesdk",
-  "pickupZip": "https://drive.google.com/file/d/1hLNnK9r6SN8EmR8L5pOKyfTDc_4-JtG0/view?usp=drivesdk"
+  "revision": 181,
+  "files": {
+    "front": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1lpWR4O2l8CnujzezVki9CBIoHnxY0cdB",
+      "title": "181_소망_줍기_정면_무릎수정.png",
+      "file_name": "181_소망_줍기_정면_무릎수정.png",
+      "mime_type": "image/png",
+      "url": "https://drive.google.com/file/d/1lpWR4O2l8CnujzezVki9CBIoHnxY0cdB/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1lpWR4O2l8CnujzezVki9CBIoHnxY0cdB",
+        "title": "181_소망_줍기_정면_무릎수정.png",
+        "file_name": "181_소망_줍기_정면_무릎수정.png",
+        "mime_type": "image/png",
+        "url": "https://drive.google.com/file/d/1lpWR4O2l8CnujzezVki9CBIoHnxY0cdB/view?usp=drivesdk",
+        "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+      }
+    },
+    "comparison": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1kAeWYT1pwBLWCdFgd8r-z2U4SIRrkH7o",
+      "title": "181_소망_정지_줍기_걷기_피부색비교.png",
+      "file_name": "181_소망_정지_줍기_걷기_피부색비교.png",
+      "mime_type": "image/png",
+      "url": "https://drive.google.com/file/d/1kAeWYT1pwBLWCdFgd8r-z2U4SIRrkH7o/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1kAeWYT1pwBLWCdFgd8r-z2U4SIRrkH7o",
+        "title": "181_소망_정지_줍기_걷기_피부색비교.png",
+        "file_name": "181_소망_정지_줍기_걷기_피부색비교.png",
+        "mime_type": "image/png",
+        "url": "https://drive.google.com/file/d/1kAeWYT1pwBLWCdFgd8r-z2U4SIRrkH7o/view?usp=drivesdk",
+        "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+      }
+    },
+    "gif": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1W0mYsJ6YE1Kz0e_lpmQIS8RpkE0yiA8c",
+      "title": "181_소망_줍기_상하좌우.gif",
+      "file_name": "181_소망_줍기_상하좌우.gif",
+      "mime_type": "image/gif",
+      "url": "https://drive.google.com/file/d/1W0mYsJ6YE1Kz0e_lpmQIS8RpkE0yiA8c/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1W0mYsJ6YE1Kz0e_lpmQIS8RpkE0yiA8c",
+        "title": "181_소망_줍기_상하좌우.gif",
+        "file_name": "181_소망_줍기_상하좌우.gif",
+        "mime_type": "image/gif",
+        "url": "https://drive.google.com/file/d/1W0mYsJ6YE1Kz0e_lpmQIS8RpkE0yiA8c/view?usp=drivesdk",
+        "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+      }
+    },
+    "zip": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1bwJHUKrwqnh-78EkJtTQSsFSBZvM5iYI",
+      "title": "181_소망_줍기_투명PNG8장.zip",
+      "file_name": "181_소망_줍기_투명PNG8장.zip",
+      "mime_type": "application/zip",
+      "url": "https://drive.google.com/file/d/1bwJHUKrwqnh-78EkJtTQSsFSBZvM5iYI/view?usp=drivesdk",
+      "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1bwJHUKrwqnh-78EkJtTQSsFSBZvM5iYI",
+        "title": "181_소망_줍기_투명PNG8장.zip",
+        "file_name": "181_소망_줍기_투명PNG8장.zip",
+        "mime_type": "application/zip",
+        "url": "https://drive.google.com/file/d/1bwJHUKrwqnh-78EkJtTQSsFSBZvM5iYI/view?usp=drivesdk",
+        "parent_id": "1W-BsWZO0IM5I6mhhfOzy1BjPAzllRoh0"
+      }
+    }
+  }
 }

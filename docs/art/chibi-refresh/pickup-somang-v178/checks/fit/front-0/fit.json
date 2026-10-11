@@ -22,18 +22,18 @@
     75,
     85
    ],
-   "feetOffsetPx": -64,
-   "heightRatio": 0.892,
+   "feetOffsetPx": -65,
+   "heightRatio": 0.891,
    "heightFit": {
-    "scale": 1.1876,
-    "headScaleVsIdle": 1.12,
+    "scale": 1.1901,
+    "headScaleVsIdle": 1.123,
     "shift": [
-     46,
+     45,
      87
     ],
     "headTopOffsetPx": 5
    },
-   "verdict": "비율 다름: 머리를 맞추면 발이 -64px (-11.1% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+   "verdict": "비율 다름: 머리를 맞추면 발이 -65px (-11.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
   }
  }
 }

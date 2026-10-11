@@ -9,18 +9,18 @@
         75,
         85
       ],
-      "feetOffsetPx": -64,
-      "heightRatio": 0.892,
+      "feetOffsetPx": -65,
+      "heightRatio": 0.891,
       "heightFit": {
-        "scale": 1.1876,
-        "headScaleVsIdle": 1.12,
+        "scale": 1.1901,
+        "headScaleVsIdle": 1.123,
         "shift": [
-          46,
+          45,
           87
         ],
         "headTopOffsetPx": 5
       },
-      "verdict": "비율 다름: 머리를 맞추면 발이 -64px (-11.1% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+      "verdict": "비율 다름: 머리를 맞추면 발이 -65px (-11.3% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
     }
   },
   {
@@ -28,23 +28,23 @@
     "frame": 1,
     "report": {
       "scale": 1.04,
-      "match": 0.347,
+      "match": 0.348,
       "shift": [
         78,
         86
       ],
-      "feetOffsetPx": -123,
-      "heightRatio": 0.788,
+      "feetOffsetPx": -124,
+      "heightRatio": 0.786,
       "heightFit": {
-        "scale": 1.3181,
-        "headScaleVsIdle": 1.267,
+        "scale": 1.3211,
+        "headScaleVsIdle": 1.27,
         "shift": [
           14,
           87
         ],
         "headTopOffsetPx": -47
       },
-      "verdict": "비율 다름: 머리를 맞추면 발이 -123px (-21.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+      "verdict": "비율 다름: 머리를 맞추면 발이 -124px (-21.5% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
     }
   },
   {
@@ -52,7 +52,7 @@
     "frame": 0,
     "report": {
       "scale": 1.08,
-      "match": 0.291,
+      "match": 0.29,
       "shift": [
         49,
         80
@@ -138,7 +138,7 @@
           18,
           87
         ],
-        "headTopOffsetPx": -371
+        "headTopOffsetPx": -76
       },
       "verdict": "비율 다름: 머리를 맞추면 발이 -153px (-26.6% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
     }
@@ -148,7 +148,7 @@
     "frame": 0,
     "report": {
       "scale": 1.065,
-      "match": 0.454,
+      "match": 0.453,
       "shift": [
         28,
         84
@@ -162,7 +162,7 @@
           -9,
           87
         ],
-        "headTopOffsetPx": -37
+        "headTopOffsetPx": -414
       },
       "verdict": "비율 다름: 머리를 맞추면 발이 -77px (-13.4% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
     }
@@ -172,7 +172,7 @@
     "frame": 1,
     "report": {
       "scale": 1.045,
-      "match": 0.418,
+      "match": 0.417,
       "shift": [
         37,
         84
