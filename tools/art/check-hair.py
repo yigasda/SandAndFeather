@@ -108,12 +108,17 @@ def hair_mask(rgb, body, e):
     m = np.zeros_like(blue); m[main[:, 0], main[:, 1]] = True
     m = shrink(grow(m, 2), 2)  # pinholes left by highlights
     eye_y = min(e[0][1], e[1][1])
-    eye_d = abs(e[1][0] - e[0][0])  # the outline's thickness goes with the head's size
     rows = np.arange(rgb.shape[0])[:, None]
-    dark = (v < 0.5) & (s < 0.6) & body & (rows < eye_y)
+    # the outline round the hair, however thick: dark pixels reached from the blue through dark pixels. Dark lines
+    # that hug skin and not the hair (ears, jaw) are a different outline and are not crossed.
+    skin = (h < 0.12) & (s > 0.12) & (s < 0.5) & (v > 0.7) & body  # paper is a pale tint; skin is pinker
+    near = max(4, int(round(0.1 * abs(e[1][0] - e[0][0]))))
+    dark = (v < 0.5) & (s < 0.6) & body & (rows < eye_y) & ~(grow(skin, near) & ~grow(m, near // 2))
     ring = m.copy()
-    for _ in range(max(3, int(round(0.13 * eye_d)))):
-        ring = ring | (grow(ring, 1) & dark)
+    while True:
+        nxt = ring | (grow(ring, 1) & dark)
+        if nxt.sum() == ring.sum(): break
+        ring = nxt
     return ring, m
 
 
