@@ -182,6 +182,25 @@ def head_mask(rgb, body, e):
     return ~reach
 
 
+def ear_zone(rgb, body, e):
+    # the columns beside the face, where the ears are. The jaw and chin between them were not part of the user's
+    # edit, so the target line leaves them to the frame's own drawing.
+    h, s, v = hsv(rgb)
+    eye_d = abs(e[1][0] - e[0][0])
+    y = int(max(e[0][1], e[1][1]) + 0.3 * eye_d)
+    cx = (e[0][0] + e[1][0]) / 2
+    dark = v[y] < 0.3
+    x = int(cx)
+    while x > 0 and not dark[x]: x -= 1
+    left = x
+    x = int(cx)
+    while x < len(dark) - 1 and not dark[x]: x += 1
+    right = x
+    cols = np.arange(rgb.shape[1])[None, :]
+    rows = np.arange(rgb.shape[0])[:, None]
+    return ((cols < left) | (cols > right)) & (rows > min(e[0][1], e[1][1]) - 0.6 * eye_d)
+
+
 GUIDE_CACHE = {}
 
 
@@ -197,7 +216,7 @@ def guide():
         outer = edge(sil) & grow(~body, k)
         hairline = edge(blue) & grow(skin & ~sil, k + 1)
         GUIDE_CACHE.update(rgb=rgb, body=body, sil=sil, blue=blue, eyes=e, outer=outer, hairline=hairline,
-                           head=head_mask(rgb, body, e))
+                           head=head_mask(rgb, body, e), ears=ear_zone(rgb, body, e))
     return GUIDE_CACHE
 
 
@@ -279,6 +298,7 @@ def targets():
         target, tf = place(g['sil'], g['eyes'], e, body.shape)
         tblue, _ = place(g['blue'], g['eyes'], e, body.shape)
         thead, _ = place(g['head'], g['eyes'], e, body.shape)
+        tears, _ = place(g['ears'], g['eyes'], e, body.shape)
         Image.fromarray((target * 255).astype(np.uint8)).save(os.path.join(out, f'{name}-hair-mask.png'))
         Image.fromarray((thead * 255).astype(np.uint8)).save(os.path.join(out, f'{name}-head-mask.png'))
         Image.fromarray((tblue * 255).astype(np.uint8)).save(os.path.join(out, f'{name}-hair-blue-mask.png'))
@@ -295,8 +315,8 @@ def targets():
         xs = np.nonzero(body[y0:y1].any(0))[0]; x0, x1 = int(max(0, xs.min() - 8)), int(min(body.shape[1], xs.max() + 9))
         k = 3
         big = lambda a: np.kron(a[y0:y1, x0:x1], np.ones((k, k), bool)) if a.dtype == bool else np.asarray(Image.fromarray(a[y0:y1, x0:x1]).resize(((x1 - x0) * k, (y1 - y0) * k), Image.NEAREST))
-        # the hair (its edge against face and ears too) and the whole head's outline, ears included
-        line = grow(edge(big(target)) | edge(big(thead)), 1)
+        # the hair (its edge against face and ears too) and the ears' outline; not the jaw, which the user left as it was
+        line = grow(edge(big(target)) | (edge(big(thead)) & big(tears)), 1)
         a = big(user).copy(); a[line] = (230, 0, 0)
         b = big(pic).copy(); b[line] = (230, 0, 0)
         tiles.append((Image.fromarray(a), Image.fromarray(b)))

@@ -71,6 +71,7 @@ def main():
     e, top, H = ch.eyes(rgb, b)
     hair, tf = ch.place(g['sil'], g['eyes'], e, b.shape)
     head, _ = ch.place(g['head'], g['eyes'], e, b.shape)
+    ears, _ = ch.place(g['ears'], g['eyes'], e, b.shape)
     Image.fromarray((head * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-front-head-mask.png'))
     Image.fromarray((body * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-front-body-mask.png'))
     Image.fromarray((hair * 255).astype(np.uint8)).save(os.path.join(OUT, 'idle-front-hair-mask.png'))
@@ -81,13 +82,19 @@ def main():
         base = Image.new('RGBA', (rgba.shape[1], rgba.shape[0]), (245, 239, 227, 255))
         base.alpha_composite(Image.fromarray(rgba))
         big = np.asarray(base.convert('RGB').resize((rgba.shape[1] * k, rgba.shape[0] * k), Image.NEAREST)).copy()
-        for m, col in lines:
+        for m, col, keep in lines:
             mb = np.kron(m, np.ones((k, k), bool))
-            big[ch.grow(ch.edge(mb), 1)] = col
+            ln = ch.edge(mb)
+            if keep is not None: ln &= np.kron(keep, np.ones((k, k), bool))
+            big[ch.grow(ln, 1)] = col
         return Image.fromarray(big[(I["top"] - 12) * k:(I["sole"] + 6) * k, 50 * k:310 * k])
     red = (230, 0, 0)
-    # the body from the target, the head (ears included) and hair from the user's drawing
-    tiles = [tile(walk, []), tile(idle, [(body & ~head | head, red), (hair, red)]), tile(new, [(body & ~head | head, red), (hair, red)])]
+    # lines: the user's hair, the ears beside the face, and the target body below the collar. The face and jaw get no
+    # line; they stay as drawn.
+    rows = np.arange(body.shape[0])[:, None]
+    below = np.broadcast_to(rows > np.nonzero(head.any(1))[0].max(), body.shape)
+    lines = [(hair, red, None), (head, red, ears), (body, red, below)]
+    tiles = [tile(walk, []), tile(idle, lines), tile(new, lines)]
     heads = ['채택 걷기 정면 1 (비율 기준)', '지금 정지 정면(156) + 빨간 목표선', '목표 모양 미리보기 (기계로 자르고 늘린 것, 그림 아님)']
     tw, th = tiles[0].size
     sheet = Image.new('RGB', (tw * 3, th + 30), (250, 248, 244))
