@@ -3,7 +3,7 @@
     "file": "horus-back-floor-0.png",
     "who": "horus",
     "view": "back",
-    "skinPixels": 18471,
+    "skinPixels": 17121,
     "toneDeltaE": {
       "base": 2.0,
       "shadow": 0.0,
@@ -43,7 +43,7 @@
         222
       ]
     },
-    "offPaletteShare": 0.017,
+    "offPaletteShare": 0.011,
     "verdict": "같음"
   },
   {

@@ -16,24 +16,24 @@
  "referenceVisibleHeight": 576,
  "characters": {
   "horus": {
-   "scale": 1.0325,
+   "scale": 1.03,
    "match": 0.222,
    "shift": [
-    119,
+    120,
     80
    ],
-   "feetOffsetPx": -33,
-   "heightRatio": 0.957,
+   "feetOffsetPx": -39,
+   "heightRatio": 0.946,
    "heightFit": {
-    "scale": 1.0788,
-    "headScaleVsIdle": 1.045,
+    "scale": 1.089,
+    "headScaleVsIdle": 1.057,
     "shift": [
-     110,
+     109,
      88
     ],
-    "headTopOffsetPx": -378
+    "headTopOffsetPx": -377
    },
-   "verdict": "비율 다름: 머리를 맞추면 발이 -33px (-5.7% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
+   "verdict": "비율 다름: 머리를 맞추면 발이 -39px (-6.8% 키). 몸 길이를 정지에 맞춰 다시 그려야 함"
   }
  }
 }

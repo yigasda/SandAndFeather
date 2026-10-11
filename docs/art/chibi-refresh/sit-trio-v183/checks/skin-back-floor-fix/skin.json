@@ -1,0 +1,49 @@
+[
+ {
+  "file": "horus-back-floor-0.png",
+  "who": "horus",
+  "view": "back",
+  "skinPixels": 17121,
+  "toneDeltaE": {
+   "base": 2.0,
+   "shadow": 0.0,
+   "light": 0.0
+  },
+  "tones": {
+   "base": [
+    254,
+    230,
+    226
+   ],
+   "shadow": [
+    250,
+    198,
+    178
+   ],
+   "light": [
+    254,
+    246,
+    222
+   ]
+  },
+  "referenceTones": {
+   "base": [
+    254,
+    230,
+    222
+   ],
+   "shadow": [
+    250,
+    198,
+    178
+   ],
+   "light": [
+    254,
+    246,
+    222
+   ]
+  },
+  "offPaletteShare": 0.011,
+  "verdict": "같음"
+ }
+]

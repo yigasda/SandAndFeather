@@ -25,7 +25,9 @@
         ]
       },
       "expression": "calm",
-      "sha256": "89f3b922f9a2ff138ac8d989a5f10b902165024ccb3c4e80aa2050b7bebb9090"
+      "sha256": "e59e17894f56f9dafb93e535a6d3b131880131fb3c310b0521f8b35180227d72",
+      "reviewStatus": "awaiting-user-review",
+      "correctionRevision": 186
     },
     {
       "path": "png/horus-back-stool-0.png",
@@ -255,5 +257,7 @@
     "정지·걷기와 나란히 크기·팔레트 확인",
     "밝고 어두운 배경에서 연결·남은 픽셀 확인"
   ],
-  "fitNote": "앉은 자리 기준. 서 있는 발 기준 검사 비율 다름은 별도 결과로 보존. 머리 폭/얼굴 크기와 실제 그림 비교를 함께 확인."
+  "fitNote": "앉은 자리 기준. 서 있는 발 기준 검사 비율 다름은 별도 결과로 보존. 머리 폭/얼굴 크기와 실제 그림 비교를 함께 확인.",
+  "correctionRevision": 186,
+  "correctionNote": "호루스 방석 뒤1장: 무릎 꿇고 접힌 다리·뒤꿈치, 무릎 앞으로 이어지는 굽힌 팔과 가려진 손. 머리·귀 픽셀 그대로."
 }
