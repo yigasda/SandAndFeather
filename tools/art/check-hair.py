@@ -220,6 +220,77 @@ def guide():
     return GUIDE_CACHE
 
 
+def ear_thickness(dark, rim, head, zone, sil):
+    # dark pixels within 5 px inside the ear's edge, per pixel of edge: the outline's average thickness
+    band = grow(rim, 5) & head & zone & ~grow(sil, 2)
+    return round(float((dark & band).sum() / max(rim.sum(), 1)), 2)
+
+
+def ear_boxes(ears, e):
+    # a box round each ear, from the ear pixels left and right of the eyes' middle
+    cx = (e[0][0] + e[1][0]) / 2; d = abs(e[1][0] - e[0][0])
+    out = []
+    for side in (np.arange(ears.shape[1]) < cx, np.arange(ears.shape[1]) >= cx):
+        m = ears & side[None, :]
+        ys, xs = np.nonzero(m)
+        if not len(ys): out.append(None); continue
+        y0, y1 = int(np.percentile(ys, 2)), int(ys.max()); x0, x1 = int(xs.min()), int(xs.max())
+        pad = int(0.12 * d)
+        out.append((max(0, x0 - pad), max(0, y0 - pad), x1 + pad, y1 + pad))
+    return out
+
+
+def ear_sheet(res, path):
+    # the candidate's ears beside the adopted walk frame's, 6×, to see line thickness and shape
+    rgb = res['_draw'][0]; body = res['_draw'][1]
+    ref = compare_ref()
+    rows = []
+    for name, (r_rgb, r_body, boxes) in (('후보', (rgb, body, res['_earBoxes'])), ('채택 걷기 정면 1', ref)):
+        pic = np.ones((*r_rgb.shape[:2], 3)) * np.array([245, 239, 227]) / 255
+        pic[r_body] = r_rgb[r_body]; pic = Image.fromarray((pic * 255).astype(np.uint8))
+        tiles = [pic.crop(b).resize(((b[2] - b[0]) * 6, (b[3] - b[1]) * 6), Image.NEAREST) for b in boxes if b]
+        rows.append((name, tiles))
+    w = sum(t.width for t in rows[0][1]) + sum(t.width for t in rows[1][1]) + 60
+    h = max(t.height for _, ts in rows for t in ts) + 30
+    cv = Image.new('RGB', (w, h), (250, 248, 244)); d = ImageDraw.Draw(cv); x = 0
+    for name, ts in rows:
+        d.text((x + 6, 4), name + ' 귀 (왼쪽, 오른쪽)', fill=(40, 30, 20), font=FONT)
+        for t in ts: cv.paste(t, (x, 26)); x += t.width + 10
+        x += 40
+    cv.save(path)
+
+
+REF_CACHE = {}
+
+
+def compare_ref():
+    if 'v' not in REF_CACHE:
+        p = os.path.join(WALK, 'horus-front-1.png')
+        rgb, body = load(p); e, _, _ = eyes(rgb, body)
+        g = guide(); sil, _ = hair_mask(rgb, body, e)
+        zone, _ = place(g['ears'], g['eyes'], e, body.shape)
+        REF_CACHE['v'] = (rgb, body, ear_boxes(head_mask(rgb, body, e) & zone & ~grow(sil, 1), e))
+    return REF_CACHE['v']
+
+
+EAR_REF = {}
+
+
+def ear_ref():
+    # the adopted front walk frame's ear line, measured the same way
+    if 'v' not in EAR_REF:
+        g = guide()
+        rgb, body = load(os.path.join(WALK, 'horus-front-1.png'))
+        e, _, _ = eyes(rgb, body)
+        sil, _ = hair_mask(rgb, body, e)
+        zone, _ = place(g['ears'], g['eyes'], e, body.shape)
+        head = head_mask(rgb, body, e)
+        dark = (hsv(rgb)[2] < 0.22) & body
+        rim = edge(head) & zone & grow(~body, 1) & ~grow(sil, 2)
+        EAR_REF['v'] = ear_thickness(dark, rim, head, zone, sil)
+    return EAR_REF['v']
+
+
 def compare(path):
     g = guide()
     rgb, body = load(path)
@@ -245,6 +316,30 @@ def compare(path):
     lined = rim & dark & grow(dark & sil & ~rim, 1)
     res['outlineCover'] = round(float(lined.sum() / max(rim.sum(), 1)), 3)
     res['_bare'] = rim & ~lined
+    # ears: the user's ear outline (round, with a gap under the hair) against the candidate's, both ways, so a
+    # jagged or squashed ear shows up as well as a misplaced one
+    thead, _ = place(g['head'], g['eyes'], e, body.shape)
+    tears, _ = place(g['ears'], g['eyes'], e, body.shape)
+    chead = head_mask(rgb, body, e)
+    T = edge(thead) & tears & ~grow(target, 1)
+    Cc = edge(chead) & tears & ~grow(sil, 1)
+    ty, tx = np.nonzero(T); cy, cx = np.nonzero(Cc)
+    d1 = dist_to(Cc, np.stack([tx, ty], 1).astype(float)) if len(ty) else np.array([0.0])
+    d2 = dist_to(T, np.stack([cx, cy], 1).astype(float)) if len(cy) else np.array([0.0])
+    res['ears'] = {'within2px': round(float(min((d1 <= 2).mean(), (d2 <= 2).mean())), 3),
+                   'max': round(float(max(d1.max(), d2.max())), 1)}
+    # the ear's own line: like the hair, the ear's edge should be the thick dark outline, not pale or broken pixels
+    erim = edge(chead) & tears & grow(~body, 1) & ~grow(sil, 2)
+    elined = erim & dark & grow(dark & chead & ~erim, 1)
+    res['earOutline'] = round(float(elined.sum() / max(erim.sum(), 1)), 3)
+    # and as thick as the adopted ears' line (a thin, stair-stepped line reads as a scratched-in ear)
+    res['earThick'] = ear_thickness(dark, erim, chead, tears, sil)
+    res['earThickRef'] = ear_ref()
+    res['_earBare'] = erim & ~elined
+    off = np.zeros_like(body)
+    if len(cy): off[cy[d2 > 2], cx[d2 > 2]] = True
+    res['_ears'] = (T, off)
+    res['_earBoxes'] = ear_boxes(chead & tears & ~grow(sil, 1), e)
     extra = sil & ~grow(target, 2); missing = target & ~grow(sil, 2)
     res['extraPx'] = int(extra.sum()); res['missingPx'] = int(missing.sum())
     res['_draw'] = (rgb, body, target, sil, extra, missing, top, H)
@@ -262,7 +357,11 @@ def draw(res, path):
     over[extra] = (over[extra] * 0.4 + np.array([40, 120, 255]) * 0.6).astype(np.uint8)
     over[edge(target)] = (230, 0, 0)
     over[grow(res['_bare'], 1) & ~edge(target)] = (255, 150, 0)  # orange: hair edge with no dark outline
-    y1 = int(top + 0.55 * H)
+    T, off = res['_ears']
+    over[grow(off, 1)] = (200, 0, 200)  # magenta: the candidate's ear outline where it leaves the user's ear
+    over[grow(res['_earBare'], 1)] = (255, 150, 0)  # orange: ear edge with no dark outline
+    over[T] = (230, 0, 0)
+    y1 = int(top + 0.62 * H)  # down past the ears
     k = 3
     a = Image.fromarray(pic[:y1]).resize((W * k, y1 * k), Image.NEAREST)
     b = Image.fromarray(over[:y1]).resize((W * k, y1 * k), Image.NEAREST)
@@ -282,19 +381,23 @@ OUTLINE_MIN = 0.8  # adopted walk frames measure 86-88%; hair only cut along the
 def verdict(r):
     ok = r['outer']['within2px'] >= 0.9 and r['outer']['max'] <= 4 and r['hairline']['within2px'] >= 0.85 and r['hairline']['max'] <= 5
     if r['outlineCover'] < OUTLINE_MIN: return '**외곽선 없음 (잘라만 냄)**'
+    if r['ears']['within2px'] < 0.85 or r['ears']['max'] > 4: return '**귀 모양 다름**'
+    if r['earOutline'] < OUTLINE_MIN: return '**귀 외곽선 깨짐**'
+    if r['earThick'] < 0.85 * r['earThickRef']: return '**귀 외곽선 얇음**'
     return '사용자 모양과 같음' if ok else '**다름**'
 
 
 def report(results, out):
     L = ['# 호루스 머리 — 사용자 수정본과 비교', '',
          '기준: 사용자 수정본(`docs/art/chibi-refresh/horus-hair-guide/user-edit-final.jpg`)의 머리 외곽선과 이마선. 눈 위치로 프레임마다 맞춘 뒤 잰다.', '',
-         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 평균/최대, 2px 안 | 모자람/넘침 px | 가장자리 검은 외곽선 | 판정 |', '|---|---|---|---|---|---|']
+         '| 파일 | 바깥 외곽선 평균/최대, 2px 안 | 이마선 평균/최대, 2px 안 | 모자람/넘침 px | 머리 외곽선 | 귀 모양 2px 안, 최대 | 귀 외곽선, 두께 | 판정 |', '|---|---|---|---|---|---|---|---|']
     for r in results:
         o, h = r['outer'], r['hairline']
         L.append(f"| [{os.path.basename(r['path'])}]({os.path.splitext(os.path.basename(r['path']))[0]}-hair.png) | "
                  f"{o['mean']}/{o['max']}px, {o['within2px'] * 100:.0f}% | {h['mean']}/{h['max']}px, {h['within2px'] * 100:.0f}% | "
-                 f"{r['missingPx']}/{r['extraPx']} | {r['outlineCover'] * 100:.0f}% | {verdict(r)} |")
+                 f"{r['missingPx']}/{r['extraPx']} | {r['outlineCover'] * 100:.0f}% | {r['ears']['within2px'] * 100:.0f}%, {r['ears']['max']}px | {r['earOutline'] * 100:.0f}%, {r['earThick']}px | {verdict(r)} |")
     L += ['', '통과 기준: 바깥 외곽선 90% 이상이 2px 안, 최대 4px. 이마선 85% 이상이 2px 안, 최대 5px.',
+          '귀: 사용자 귀 윤곽(동그란 윗부분, 머리카락과 틈)과 후보 귀 윤곽이 서로 85% 이상 2px 안, 최대 4px. 들쭉날쭉하거나 찌그러진 귀는 보라로 표시된다. 귀 가장자리도 머리처럼 검은 외곽선이 80% 이상이어야 하고(흰 점, 끊긴 선은 주황), 두께가 채택 걷기 귀 선의 85% 이상이어야 한다.',
           f'머리 가장자리 {OUTLINE_MIN * 100:.0f}% 이상이 2px 넘는 검은 외곽선이어야 한다. 빨간 선에 맞춰 잘라만 내면 가장자리가 파란 머리색이라 여기서 걸린다(비교 그림의 주황).',
           '숫자를 통과해도 비교 그림을 직접 본다. 최종 판단은 사용자가 한다.']
     open(os.path.join(out, 'report.md'), 'w').write('\n'.join(L) + '\n')
@@ -383,6 +486,7 @@ def main():
     for p in o.cands:
         r = compare(p)
         draw(r, os.path.join(out, os.path.splitext(os.path.basename(p))[0] + '-hair.png'))
+        ear_sheet(r, os.path.join(out, os.path.splitext(os.path.basename(p))[0] + '-ears.png'))
         res.append(r)
         print(os.path.basename(p), '→', verdict(r).strip('*'), f"(바깥 2px 안 {r['outer']['within2px'] * 100:.0f}%, 최대 {r['outer']['max']}px · 이마선 2px 안 {r['hairline']['within2px'] * 100:.0f}%, 최대 {r['hairline']['max']}px)")
     report(res, out)
