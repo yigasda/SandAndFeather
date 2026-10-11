@@ -458,7 +458,7 @@ def verdict(r):
     if r['ears']['within2px'] < 0.85 or r['ears']['max'] > 4: bad.append('귀 모양 다름')
     if r['earOutline'] < OUTLINE_MIN: bad.append('귀 외곽선 깨짐')
     if r['earThick'] < 0.8 * r['earThickRef']: bad.append('귀 외곽선 얇음')
-    return '사용자 모양과 같음' if not bad else '**' + ', '.join(bad) + '**'
+    return '숫자 기준만 통과 — 완성 아님, 그림 비교 필요' if not bad else '**' + ', '.join(bad) + '**'
 
 
 def report(results, out):
@@ -476,7 +476,8 @@ def report(results, out):
           '이마선 검은 테두리: 이마와 머리가 만나는 곳의 검은 픽셀 비율이 사용자 그림보다 10%p 넘게 많으면 실패한다. 사용자 이마선은 검은 테두리 없이 머리 갈래가 이마로 내려온다.',
           '이마선과 귀의 선 맛(필압, 잔털 갈래, 매끈함)은 숫자로 못 잰다. <이름>-forehead.png, <이름>-ears.png에서 사용자 그림과 나란히 보고 맞춘다.',
           f'머리 가장자리 {OUTLINE_MIN * 100:.0f}% 이상이 2px 넘는 검은 외곽선이어야 한다. 빨간 선에 맞춰 잘라만 내면 가장자리가 파란 머리색이라 여기서 걸린다(비교 그림의 주황).',
-          '숫자를 통과해도 비교 그림을 직접 본다. 최종 판단은 사용자가 한다.']
+          '**숫자 통과는 완성이 아니다.** 큰 실수만 거르는 최소 기준이다. 귀 곡선과 선 맛, 이마 갈래 디자인, 도트 명암은 숫자로 못 잰다.',
+          '보고할 때 "검사 통과"를 완성 근거로 쓰지 않는다. 사용자 그림과 나란히 놓고 그림으로 확인한 것과 직접 고친 것을 적는다.']
     open(os.path.join(out, 'report.md'), 'w').write('\n'.join(L) + '\n')
 
 
