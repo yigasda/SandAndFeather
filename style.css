@@ -1646,6 +1646,10 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme='walnut'] .sf_gallery_dot { border-color: #d9b27a; }
 #sf_game[data-ui-theme='walnut'] .sf_gallery_dot[aria-current='true'] { background: #e7c485; border-color: #e7c485; }
 #sf_game .sf_character_detail .sf_gallery .sf_portrait_full { height: min(58dvh, 560px); }
+/* 0.9.29: the three illustrations sit on Set's and Horus's own card (자세히), where the standing sprite was */
+#sf_game .sf_character_summary .sf_gallery_pic { height: auto; aspect-ratio: 2 / 3; }
+#sf_game .sf_character_summary .sf_gallery_nav { gap: 6px; }
+#sf_game .sf_character_summary .sf_gallery_step { min-width: 36px; min-height: 34px; font-size: 20px; padding: 0 6px; }
 
 /* A long card: the frame and the title stay put, only the inside scrolls (the frame used to scroll off with the list). */
 :is(#sf_game, #sf_pick) .sf_pop { overflow: hidden; }

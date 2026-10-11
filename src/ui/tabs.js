@@ -12,11 +12,11 @@ import { festivalLine } from '../packs/life/festival.js';
 import { bar, list, para, stack } from './kit.js';
 import { codexCard } from './codexcard.js';
 import { showEvent } from './talk.js';
-import { portrait, characterDetail } from './portraits.js';
+import { picture } from './portraits.js';
 import { FEATHER } from './icon.js';
 import { HEROES, HERO_NAME, leadOf, setLead, setWith, statsOf, withOf } from '../core/heroes.js';
 
-// one of the three: picture, 모험 등급, abilities and learning. Learning is picked by whoever walks in front.
+// one of the three: picture (Set's and Horus's three illustrations, Somang's standing sprite), 모험 등급, abilities and learning. Learning is picked by whoever walks in front.
 export function characterCard(ui, id = 'somang', onClose = null) {
     const s = getState();
     let close = () => {};
@@ -25,7 +25,7 @@ export function characterCard(ui, id = 'somang', onClose = null) {
     const r = rankInfo(st.xp);
     const opens = { wisdom: '기록 해독, 강 건너 비문', strength: '두아트에서 버티는 체력, 공격', faith: '두아트의 주문' };
     const hero = document.createElement('div'); hero.className = 'sf_character_summary';
-    hero.append(portrait(id),stack(para(HERO_NAME[id],'sf_character_name'),para(`모험 등급 ${r.rank}`),
+    hero.append(picture(id),stack(para(HERO_NAME[id],'sf_character_name'),para(`모험 등급 ${r.rank}`),
         ...Object.entries(STATS).map(([k,ko])=>para(`${ko} ${st[k]}`,'sf_character_stat'))));
     close = ui.showCard({ title: HERO_NAME[id], onClose, kind:'character-stats', wide:true,
         body: stack(
@@ -33,7 +33,7 @@ export function characterCard(ui, id = 'somang', onClose = null) {
             bar(`모험 등급 ${r.rank} · ${r.next ? `${st.xp}/${r.next}` : '최고'}`, r.frac, 'sf_rank'),
             para(r.rank < 2 ? '등급 2: 두아트 길이 하나 더 길어져' : r.rank < 3 ? '등급 3: 고친 배로 강 건너 신전에 갈 수 있어' : '등급이 오를수록 모험에서 유리해'),
             list(Object.entries(STATS).map(([k, ko]) => ({ icon: { wisdom: '📜', strength: '💪', faith: '🔆' }[k], name: `${ko} ${st[k]}`, sub: opens[k] }))),
-            para(mine ? '배움 목표 · 하나를 골라 이어서 익혀. 날을 건너뛰어도 그대로야' : `배움 목표 · ${HERO_NAME[id]}이(가) 앞장서면 고르고 익힐 수 있어`, 'sf_sub_head'),
+            para(mine ? '배움 목표 · 하나를 골라 이어서 익혀. 날을 건너뛰어도 그대로야' : `배움 목표 · ${HERO_NAME[id]}${(HERO_NAME[id].charCodeAt(HERO_NAME[id].length - 1) - 0xac00) % 28 ? '이' : '가'} 앞장서면 고르고 익힐 수 있어`, 'sf_sub_head'),
             list(lessonList().map(L => {
                 const done = lessons.done.includes(L.id), cur = lessons.cur === L.id;
                 const x = cur && mine ? lessonState(s) : null;
@@ -88,7 +88,6 @@ export function partyCard(ui, onClose) {
             const st = statsOf(s, id), on = id === lead;
             const el = row(id, HERO_NAME[id], `모험 등급 ${rankInfo(st.xp).rank} · ${Object.entries(STATS).map(([k, ko]) => `${ko} ${st[k]}`).join(' · ')}`, [
                 { label: '자세히', inName: true, cls: 'sf_party_look', aria: `${HERO_NAME[id]} 자세히`, data: { detail: id }, onClick: () => characterCard(ui, id, null) },
-                ...(id !== 'somang' ? [{ label: '인물 보기', inName: true, cls: 'sf_party_look', aria: `${HERO_NAME[id]} 인물 보기`, data: { character: id }, onClick: () => characterDetail(ui, id) }] : []),
                 { label: on ? '앞장 중' : '앞장', primary: on, disabled: changing || on, cls: 'sf_lead_pick', data: { lead: id }, onClick: () => update(() => setLead(s, id)) },
             ]);
             if (on) el.classList.add('sf_on');

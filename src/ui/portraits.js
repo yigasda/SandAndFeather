@@ -1,10 +1,8 @@
-// Pictures of the trio: the approved standing sprites, large.
-import { stack } from './kit.js';
-
+// Pictures of the trio on their cards: Somang's standing sprite, Set's and Horus's three illustrations.
 const base = new URL('../../data/art/portraits/', import.meta.url);
 export const CHARACTER_NAMES = {somang:'소망', set:'세트', horus:'호루스'};
 
-// The approved standing sprite (front), shown large from 인물 보기 and on the Somang card.
+// The approved standing sprite (front): the picture on Somang's card.
 export function portrait(id) {
     const box = document.createElement('figure');
     box.className = 'sf_portrait sf_portrait_full';
@@ -16,9 +14,10 @@ export function portrait(id) {
     return box;
 }
 
-// 인물 보기: Set and Horus each have three illustrations (data/art/portraits/gallery), one at a time with
+// Set and Horus each have three illustrations (data/art/portraits/gallery), one at a time with
 // ‹ › buttons, dots, arrow keys and a sideways swipe. Anyone else shows the standing sprite.
 const GALLERY = { set: 3, horus: 3 };
+export const picture = id => (GALLERY[id] ? gallery(id) : portrait(id));
 function gallery(id) {
     const n = GALLERY[id];
     const box = document.createElement('div'); box.className = 'sf_gallery';
@@ -50,10 +49,4 @@ function gallery(id) {
     });
     nav.append(prev, dots, next); box.append(figure, nav); show(0);
     return box;
-}
-
-export function characterDetail(ui,id) {
-    const body=stack(GALLERY[id] ? gallery(id) : portrait(id));
-    body.classList.add('sf_character_detail');
-    return ui.showCard({title:CHARACTER_NAMES[id],kind:'character',body,buttons:[{label:'돌아가기'}]});
 }
