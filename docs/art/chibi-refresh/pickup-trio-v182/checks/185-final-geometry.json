@@ -1,0 +1,98 @@
+[
+  {
+    "file": "horus-back-0.png",
+    "height": 431,
+    "heightRatio": 0.748,
+    "headTop": 232
+  },
+  {
+    "file": "horus-back-1.png",
+    "height": 391,
+    "heightRatio": 0.679,
+    "headTop": 272
+  },
+  {
+    "file": "horus-front-0.png",
+    "height": 452,
+    "heightRatio": 0.785,
+    "headTop": 211
+  },
+  {
+    "file": "horus-front-1.png",
+    "height": 401,
+    "heightRatio": 0.696,
+    "headTop": 262
+  },
+  {
+    "file": "horus-left-0.png",
+    "height": 456,
+    "heightRatio": 0.792,
+    "headTop": 207
+  },
+  {
+    "file": "horus-left-1.png",
+    "height": 378,
+    "heightRatio": 0.656,
+    "headTop": 285
+  },
+  {
+    "file": "horus-right-0.png",
+    "height": 445,
+    "heightRatio": 0.773,
+    "headTop": 218
+  },
+  {
+    "file": "horus-right-1.png",
+    "height": 394,
+    "heightRatio": 0.684,
+    "headTop": 269
+  },
+  {
+    "file": "set-back-0.png",
+    "height": 490,
+    "heightRatio": 0.851,
+    "headTop": 173
+  },
+  {
+    "file": "set-back-1.png",
+    "height": 447,
+    "heightRatio": 0.776,
+    "headTop": 216
+  },
+  {
+    "file": "set-front-0.png",
+    "height": 533,
+    "heightRatio": 0.925,
+    "headTop": 130
+  },
+  {
+    "file": "set-front-1.png",
+    "height": 477,
+    "heightRatio": 0.828,
+    "headTop": 186
+  },
+  {
+    "file": "set-left-0.png",
+    "height": 498,
+    "heightRatio": 0.865,
+    "headTop": 165
+  },
+  {
+    "file": "set-left-1.png",
+    "height": 431,
+    "heightRatio": 0.748,
+    "headTop": 232
+  },
+  {
+    "file": "set-right-0.png",
+    "height": 516,
+    "heightRatio": 0.896,
+    "headTop": 147
+  },
+  {
+    "file": "set-right-1.png",
+    "height": 444,
+    "heightRatio": 0.771,
+    "headTop": 219
+  }
+]

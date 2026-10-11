@@ -1,0 +1,266 @@
+[
+  {
+    "file": "set-front-0.png",
+    "sourceBox": [
+      16,
+      89,
+      409,
+      490
+    ],
+    "referenceFaceBox": [
+      233,
+      247,
+      420,
+      432
+    ],
+    "rawFaceBox": [
+      126,
+      115,
+      256,
+      240
+    ],
+    "uniformScale": 1.4590829575192348,
+    "visibleHeight": 585,
+    "visibleWidth": 573,
+    "faceSizeNative": [
+      189,
+      183
+    ],
+    "headTop": 78,
+    "offset": [
+      45,
+      78
+    ]
+  },
+  {
+    "file": "set-front-1.png",
+    "sourceBox": [
+      421,
+      139,
+      797,
+      500
+    ],
+    "referenceFaceBox": [
+      233,
+      247,
+      420,
+      432
+    ],
+    "rawFaceBox": [
+      117,
+      112,
+      244,
+      235
+    ],
+    "uniformScale": 1.4881689922919046,
+    "visibleHeight": 537,
+    "visibleWidth": 560,
+    "faceSizeNative": [
+      189,
+      183
+    ],
+    "headTop": 126,
+    "offset": [
+      57,
+      126
+    ]
+  },
+  {
+    "file": "set-back-0.png",
+    "sourceBox": [
+      22,
+      554,
+      390,
+      924
+    ],
+    "referenceFaceBox": [
+      151,
+      299,
+      479,
+      353
+    ],
+    "rawFaceBox": [
+      71,
+      143,
+      306,
+      179
+    ],
+    "uniformScale": 1.3957446808510638,
+    "visibleHeight": 516,
+    "visibleWidth": 514,
+    "faceSizeNative": [
+      328,
+      51
+    ],
+    "headTop": 147,
+    "offset": [
+      51,
+      147
+    ]
+  },
+  {
+    "file": "set-back-1.png",
+    "sourceBox": [
+      410,
+      589,
+      777,
+      934
+    ],
+    "referenceFaceBox": [
+      151,
+      299,
+      479,
+      353
+    ],
+    "rawFaceBox": [
+      69,
+      141,
+      306,
+      176
+    ],
+    "uniformScale": 1.3839662447257384,
+    "visibleHeight": 477,
+    "visibleWidth": 508,
+    "faceSizeNative": [
+      329,
+      49
+    ],
+    "headTop": 186,
+    "offset": [
+      56,
+      186
+    ]
+  },
+  {
+    "file": "set-left-0.png",
+    "sourceBox": [
+      34,
+      991,
+      405,
+      1366
+    ],
+    "referenceFaceBox": [
+      177,
+      206,
+      289,
+      397
+    ],
+    "rawFaceBox": [
+      68,
+      90,
+      149,
+      213
+    ],
+    "uniformScale": 1.465313766538521,
+    "visibleHeight": 549,
+    "visibleWidth": 544,
+    "faceSizeNative": [
+      118,
+      180
+    ],
+    "headTop": 114,
+    "offset": [
+      74,
+      114
+    ]
+  },
+  {
+    "file": "set-left-1.png",
+    "sourceBox": [
+      434,
+      1042,
+      797,
+      1366
+    ],
+    "referenceFaceBox": [
+      177,
+      206,
+      289,
+      397
+    ],
+    "rawFaceBox": [
+      66,
+      91,
+      146,
+      210
+    ],
+    "uniformScale": 1.4990192872439674,
+    "visibleHeight": 486,
+    "visibleWidth": 544,
+    "faceSizeNative": [
+      119,
+      179
+    ],
+    "headTop": 177,
+    "offset": [
+      74,
+      177
+    ]
+  },
+  {
+    "file": "set-right-0.png",
+    "sourceBox": [
+      5,
+      1418,
+      381,
+      1806
+    ],
+    "referenceFaceBox": [
+      327,
+      212,
+      450,
+      402
+    ],
+    "rawFaceBox": [
+      224,
+      95,
+      312,
+      218
+    ],
+    "uniformScale": 1.4693845341131466,
+    "visibleHeight": 570,
+    "visibleWidth": 552,
+    "faceSizeNative": [
+      128,
+      180
+    ],
+    "headTop": 93,
+    "offset": [
+      2,
+      93
+    ]
+  },
+  {
+    "file": "set-right-1.png",
+    "sourceBox": [
+      391,
+      1455,
+      784,
+      1806
+    ],
+    "referenceFaceBox": [
+      327,
+      212,
+      450,
+      402
+    ],
+    "rawFaceBox": [
+      237,
+      100,
+      329,
+      223
+    ],
+    "uniformScale": 1.4370864244381225,
+    "visibleHeight": 504,
+    "visibleWidth": 565,
+    "faceSizeNative": [
+      133,
+      177
+    ],
+    "headTop": 159,
+    "offset": [
+      2,
+      159
+    ]
+  }
+]

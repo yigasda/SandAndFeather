@@ -379,63 +379,16 @@
     "file": "set-back-0.png",
     "who": "set",
     "view": "back",
-    "skinPixels": 6260,
+    "skinPixels": 7582,
     "toneDeltaE": {
-      "base": 1.6,
+      "base": 0.0,
       "shadow": 0.0,
-      "light": 2.4
+      "light": 0.0
     },
     "tones": {
       "base": [
         250,
-        210,
-        190
-      ],
-      "shadow": [
-        250,
-        186,
-        166
-      ],
-      "light": [
-        250,
-        222,
-        206
-      ]
-    },
-    "referenceTones": {
-      "base": [
-        254,
-        210,
-        190
-      ],
-      "shadow": [
-        250,
-        186,
-        166
-      ],
-      "light": [
-        254,
-        226,
-        206
-      ]
-    },
-    "offPaletteShare": 0.014,
-    "verdict": "같음"
-  },
-  {
-    "file": "set-back-1.png",
-    "who": "set",
-    "view": "back",
-    "skinPixels": 5593,
-    "toneDeltaE": {
-      "base": 1.4,
-      "shadow": 0.0,
-      "light": 1.4
-    },
-    "tones": {
-      "base": [
-        250,
-        210,
+        206,
         186
       ],
       "shadow": [
@@ -445,15 +398,15 @@
       ],
       "light": [
         250,
-        222,
-        202
+        214,
+        194
       ]
     },
     "referenceTones": {
       "base": [
-        254,
-        214,
-        190
+        250,
+        206,
+        186
       ],
       "shadow": [
         250,
@@ -461,22 +414,22 @@
         166
       ],
       "light": [
-        254,
-        226,
-        206
+        250,
+        214,
+        194
       ]
     },
-    "offPaletteShare": 0.012,
+    "offPaletteShare": 0.018,
     "verdict": "같음"
   },
   {
     "file": "set-front-0.png",
     "who": "set",
     "view": "front",
-    "skinPixels": 23925,
+    "skinPixels": 36197,
     "toneDeltaE": {
       "base": 0.0,
-      "shadow": 2.1,
+      "shadow": 0.0,
       "light": 0.0
     },
     "tones": {
@@ -488,7 +441,7 @@
       "shadow": [
         250,
         182,
-        162
+        158
       ],
       "light": [
         250,
@@ -513,14 +466,14 @@
         190
       ]
     },
-    "offPaletteShare": 0.001,
+    "offPaletteShare": 0.0,
     "verdict": "같음"
   },
   {
     "file": "set-front-1.png",
     "who": "set",
     "view": "front",
-    "skinPixels": 25491,
+    "skinPixels": 32297,
     "toneDeltaE": {
       "base": 0.0,
       "shadow": 0.0,
@@ -560,14 +513,14 @@
         190
       ]
     },
-    "offPaletteShare": 0.001,
+    "offPaletteShare": 0.0,
     "verdict": "같음"
   },
   {
     "file": "set-left-0.png",
     "who": "set",
     "view": "left",
-    "skinPixels": 16490,
+    "skinPixels": 24542,
     "toneDeltaE": {
       "base": 0.0,
       "shadow": 0.0,
@@ -581,8 +534,8 @@
       ],
       "shadow": [
         250,
-        178,
-        154
+        186,
+        162
       ],
       "light": [
         254,
@@ -598,8 +551,8 @@
       ],
       "shadow": [
         250,
-        178,
-        154
+        186,
+        162
       ],
       "light": [
         254,
@@ -607,14 +560,14 @@
         194
       ]
     },
-    "offPaletteShare": 0.001,
+    "offPaletteShare": 0.0,
     "verdict": "같음"
   },
   {
     "file": "set-left-1.png",
     "who": "set",
     "view": "left",
-    "skinPixels": 17209,
+    "skinPixels": 20426,
     "toneDeltaE": {
       "base": 0.0,
       "shadow": 0.0,
@@ -628,8 +581,8 @@
       ],
       "shadow": [
         250,
-        178,
-        154
+        186,
+        162
       ],
       "light": [
         254,
@@ -645,8 +598,8 @@
       ],
       "shadow": [
         250,
-        178,
-        154
+        186,
+        162
       ],
       "light": [
         254,
@@ -654,14 +607,14 @@
         194
       ]
     },
-    "offPaletteShare": 0.001,
+    "offPaletteShare": 0.0,
     "verdict": "같음"
   },
   {
     "file": "set-right-0.png",
     "who": "set",
     "view": "right",
-    "skinPixels": 16398,
+    "skinPixels": 22978,
     "toneDeltaE": {
       "base": 0.0,
       "shadow": 0.0,
@@ -675,13 +628,13 @@
       ],
       "shadow": [
         250,
-        182,
-        158
+        178,
+        154
       ],
       "light": [
-        250,
+        254,
         210,
-        190
+        186
       ]
     },
     "referenceTones": {
@@ -692,13 +645,13 @@
       ],
       "shadow": [
         250,
-        182,
-        158
+        178,
+        154
       ],
       "light": [
-        250,
+        254,
         210,
-        190
+        186
       ]
     },
     "offPaletteShare": 0.0,
@@ -708,7 +661,7 @@
     "file": "set-right-1.png",
     "who": "set",
     "view": "right",
-    "skinPixels": 16667,
+    "skinPixels": 21113,
     "toneDeltaE": {
       "base": 0.0,
       "shadow": 0.0,
@@ -722,8 +675,8 @@
       ],
       "shadow": [
         250,
-        182,
-        158
+        178,
+        154
       ],
       "light": [
         250,
@@ -739,8 +692,8 @@
       ],
       "shadow": [
         250,
-        182,
-        158
+        178,
+        154
       ],
       "light": [
         250,
@@ -749,6 +702,53 @@
       ]
     },
     "offPaletteShare": 0.0,
+    "verdict": "같음"
+  },
+  {
+    "file": "set-back-1.png",
+    "who": "set",
+    "view": "back",
+    "skinPixels": 4408,
+    "toneDeltaE": {
+      "base": 0.0,
+      "shadow": 0.0,
+      "light": 0.0
+    },
+    "tones": {
+      "base": [
+        250,
+        206,
+        186
+      ],
+      "shadow": [
+        250,
+        186,
+        166
+      ],
+      "light": [
+        254,
+        230,
+        206
+      ]
+    },
+    "referenceTones": {
+      "base": [
+        250,
+        206,
+        186
+      ],
+      "shadow": [
+        250,
+        186,
+        166
+      ],
+      "light": [
+        254,
+        230,
+        206
+      ]
+    },
+    "offPaletteShare": 0.011,
     "verdict": "같음"
   }
 ]

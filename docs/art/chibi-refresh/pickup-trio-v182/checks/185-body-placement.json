@@ -1,0 +1,194 @@
+[
+  {
+    "file": "set-front-0.png",
+    "headTranslation": [
+      0,
+      52
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      438
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      438,
+      600
+    ],
+    "bodyFoldHeight": 110
+  },
+  {
+    "file": "set-front-1.png",
+    "headTranslation": [
+      0,
+      60
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      480
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      480,
+      600
+    ],
+    "bodyFoldHeight": 60
+  },
+  {
+    "file": "set-back-0.png",
+    "headTranslation": [
+      0,
+      26
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      520
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      520,
+      600
+    ],
+    "bodyFoldHeight": 54
+  },
+  {
+    "file": "set-back-1.png",
+    "headTranslation": [
+      0,
+      30
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      540
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      540,
+      600
+    ],
+    "bodyFoldHeight": 30
+  },
+  {
+    "file": "set-left-0.png",
+    "headTranslation": [
+      0,
+      51
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      442
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      442,
+      600
+    ],
+    "bodyFoldHeight": 107
+  },
+  {
+    "file": "set-left-1.png",
+    "headTranslation": [
+      0,
+      55
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      490
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      490,
+      600
+    ],
+    "bodyFoldHeight": 55
+  },
+  {
+    "file": "set-right-0.png",
+    "headTranslation": [
+      0,
+      54
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      430
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      430,
+      600
+    ],
+    "bodyFoldHeight": 116
+  },
+  {
+    "file": "set-right-1.png",
+    "headTranslation": [
+      0,
+      60
+    ],
+    "unscaledHeadRegion": [
+      0,
+      0,
+      620,
+      480
+    ],
+    "unchangedFeetRegion": [
+      0,
+      600,
+      620,
+      720
+    ],
+    "bodyFoldRegion": [
+      480,
+      600
+    ],
+    "bodyFoldHeight": 60
+  }
+]
