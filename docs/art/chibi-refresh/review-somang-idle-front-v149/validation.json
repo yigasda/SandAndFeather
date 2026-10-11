@@ -1,0 +1,36 @@
+{
+  "reviewRevision": 149,
+  "status": "review-pending",
+  "scope": "Somang front neck and legs only",
+  "outsideMaskChangedPixels": 0,
+  "other11IdleFilesModified": false,
+  "walk36Modified": false,
+  "legRectangles": [
+    [
+      156,
+      324,
+      22,
+      25
+    ],
+    [
+      185,
+      324,
+      22,
+      25
+    ]
+  ],
+  "calfGap": 7,
+  "faceAndHairPreserved": true,
+  "delivery": {
+    "size": [
+      620,
+      720
+    ],
+    "pivot": [
+      310,
+      662
+    ],
+    "referenceVisibleHeight": 576,
+    "sha256": "9aff09c82ca9a4e3e5b73608940fd29e6626b68592af95d48695ae4605636d3e"
+  }
+}
