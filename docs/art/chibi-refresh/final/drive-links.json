@@ -26,15 +26,16 @@
     "skinPaletteRevision": 168
   },
   {
-    "file": "previews/horus-skin-comparison.png",
-    "id": "1zi5L5iPOyheoGSJTDe7bZC31dtoS7GH1",
-    "url": "https://drive.google.com/file/d/1zi5L5iPOyheoGSJTDe7bZC31dtoS7GH1/view",
-    "skinPaletteRevision": 168
-  },
-  {
     "file": "previews/horus-idle-walk.gif",
     "id": "1J0kip_0_y94mVeJv17Jc6oTJ_sitc2Cj",
     "url": "https://drive.google.com/file/d/1J0kip_0_y94mVeJv17Jc6oTJ_sitc2Cj/view",
+    "skinPaletteRevision": 168
+  },
+  {
+    "character": "trio",
+    "file": "previews/trio-four-directions-idle-walk.gif",
+    "id": "179WCNp2oDBeXbLLe8atR4jZWlhUedgrA",
+    "url": "https://drive.google.com/file/d/179WCNp2oDBeXbLLe8atR4jZWlhUedgrA/view",
     "skinPaletteRevision": 168
   }
 ]
