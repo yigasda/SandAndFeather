@@ -1,0 +1,62 @@
+[
+  {
+    "file": "somang-front-0.png",
+    "filledTransparentPixels": 370,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-front-1.png",
+    "filledTransparentPixels": 401,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-front-2.png",
+    "filledTransparentPixels": 344,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-back-0.png",
+    "filledTransparentPixels": 7,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-back-1.png",
+    "filledTransparentPixels": 49,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-back-2.png",
+    "filledTransparentPixels": 21,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-left-0.png",
+    "filledTransparentPixels": 73,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-left-1.png",
+    "filledTransparentPixels": 49,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-left-2.png",
+    "filledTransparentPixels": 89,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-right-0.png",
+    "filledTransparentPixels": 363,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-right-1.png",
+    "filledTransparentPixels": 330,
+    "existingOpaquePixelsChanged": 0
+  },
+  {
+    "file": "somang-right-2.png",
+    "filledTransparentPixels": 458,
+    "existingOpaquePixelsChanged": 0
+  }
+]

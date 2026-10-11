@@ -498,10 +498,11 @@
         321,
         370
       ],
-      "sha256": "c4b726c6310efe332396e98b2ee89e9ff66da337b20b6db5a70496233ae1a09d",
+      "sha256": "a0517e42749b0083ffb96d14fe2c5bfd9ca2340c765cdcef34600fc78d7854f3",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-front-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-front-0.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.down.1",
@@ -532,10 +533,11 @@
         321,
         370
       ],
-      "sha256": "bf255fe1dcec21dda8d4fcb8f0856961ffd9e91faa419b3b17e441019590b3d8",
+      "sha256": "2fb224d8fe0453f81240d70290e39cbe8a1bb72fe53c0e1beaceb8ae46ce9895",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-front-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-front-1.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.down.2",
@@ -566,10 +568,11 @@
         322,
         370
       ],
-      "sha256": "1c7eedb90dc38dd4b6f513ba816c117be1f977fdfd41769d40c2b8a8e87f4095",
+      "sha256": "2757f0e0b5c009aa0cd59e6c95e655d19a48c4a9acdb9c3fbb579b82e8101a7a",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-front-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-front-2.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.up.0",
@@ -600,10 +603,11 @@
         303,
         370
       ],
-      "sha256": "7e08c5b06aabb772b23889552f921627c9a105daaf5ca12c80e28404066b94c5",
+      "sha256": "c568dacdceb59aed913f78062c58d33957dcf8240b67502a1ad58901ef2b0e61",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-back-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-back-0.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.up.1",
@@ -634,10 +638,11 @@
         307,
         370
       ],
-      "sha256": "20db7319d3888616d749818e8ceadc0866d4381d9c27ef435e23aa070000e5c3",
+      "sha256": "b4b67519643abe8f3e73bffd8c11595974c4e9be2af8492863a85766cded94c3",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-back-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-back-1.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.up.2",
@@ -668,10 +673,11 @@
         303,
         370
       ],
-      "sha256": "4950effd1c23903abd4154632a33c4ec108e358c3eb33ebd76d1cb2e10ef517f",
+      "sha256": "353b62bd637bd32089628b37602129a1072e35af51f5b51ac68f2927d7bd8821",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-back-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-back-2.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.left.0",
@@ -702,10 +708,11 @@
         319,
         369
       ],
-      "sha256": "51dea5825a48c3ca811d02c4079f6d0abc8ac44d92181a136cfee03a860f7386",
+      "sha256": "3d1d9dd4c8a16d90cad3132467fe24060e1ca42d531a341d7e3a0e5e7031314b",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-left-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-left-0.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.left.1",
@@ -736,10 +743,11 @@
         320,
         369
       ],
-      "sha256": "0954837433336cdda702b78069b589d91eec751adb45a534ef9aa8692650029d",
+      "sha256": "66367b6ec66f28deb9e473433391ebf2c787af00f9d048844beabc36fcb2332e",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-left-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-left-1.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.left.2",
@@ -770,10 +778,11 @@
         316,
         370
       ],
-      "sha256": "470dca34ce9a956cd0c8b279c264aa362d86d9cd708fc86d9fbf04e421ffd714",
+      "sha256": "1e2c8bec849959d222535ba26633724d182ea0eee024f948ffbf893db1ec4b81",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-left-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-left-2.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.right.0",
@@ -804,10 +813,11 @@
         304,
         369
       ],
-      "sha256": "15f62d4deeaa14ad3dccf3b83e83d134cb8e3220a205662760566f995c110cce",
+      "sha256": "fb81fce8cd7bc3ed106456c1161496b5cd08d02174a085e2fc379fe6bbbabcb7",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-right-0.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-right-0.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.right.1",
@@ -838,10 +848,11 @@
         304,
         370
       ],
-      "sha256": "3d0c979889baf12fe851a32f31d0efcd998ecabaee339c6b5292638919f0588d",
+      "sha256": "531763ebc2b10428c35fc2eeb00a43406858b9f323146c716e4fac820541017d",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-right-1.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-right-1.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "somang.walk.right.2",
@@ -872,10 +883,11 @@
         305,
         370
       ],
-      "sha256": "8dc20b5fdbc0e9fe87a0b346a50fe0186ab4cfba1c951eae61f11720d73dcb6f",
+      "sha256": "e4426a75fc86ede927c935f6f5a859b138a16180a9632ea4738140d693a1ec5f",
       "motionReference": "docs/art/chibi-refresh/approved/walk/somang-right-2.png",
       "bodyReference": "docs/art/chibi-refresh/review-trio-walk-v4/walk/somang-right-2.png",
-      "approvalStatus": "user-approved"
+      "approvalStatus": "user-approved",
+      "correction": "144 user-requested transparent seam repair; original design and motion retained"
     },
     {
       "id": "horus.walk.down.0",
@@ -1288,9 +1300,16 @@
   ],
   "characterStatus": {
     "set": "136 user approved",
-    "somang": "135 user approved",
+    "somang": "135 user approved design + 144 requested seam repair",
     "horus": "135 user approved"
   },
   "approvalDate": "2026-10-11",
-  "approvalEvidence": "사용자: 셋소호 다 합격"
+  "approvalEvidence": "사용자: 셋소호 다 합격",
+  "seamRepair": {
+    "number": 144,
+    "date": "2026-10-11",
+    "scope": "Somang 12 frames only; transparent hair/body seams",
+    "separateApprovalClaimed": false,
+    "validation": "seam-repair/validation.json"
+  }
 }

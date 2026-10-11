@@ -54,7 +54,7 @@
 - **투시가 하나인가.** 바닥선, 벽선, 천장선을 연장하면 원본과 같은 방향으로 모여야 한다. 다른 각도로 그린 조각이 섞이면 실패다.
 - **접합부가 이어지는가.** 색, 밝기, 도트 밀도, 선 굵기가 끊김 없이 이어지고, 사각 패치 자국이 없어야 한다.
 - **보존 영역이 그대로인가.** 원본을 보존하기로 한 영역은 픽셀 차이 0을 수치로 확인한다.
-- **투명 PNG는 배경을 바꿔 본다.** 밝은 배경과 어두운 배경 둘 다에 올려서 틈, 후광, 남은 픽셀을 확인한다.
+- **투명 PNG는 배경을 바꿔 본다.** 모든 캐릭터·방향·프레임을 밝은 배경과 어두운 배경 둘 다에 올려서 틈, 후광, 남은 픽셀을 확인한다. 특히 목·어깨·머리 아래 접합부를 확대한다. 한 캐릭터에서 합성 틈을 발견하면 같은 합성 방식을 쓴 다른 캐릭터도 전 프레임 확인한다. 흰 선이 투명 틈인지 불투명 색인지 먼저 구분한다.
 - **AI 생성 흔적이 없는가.** 의미 없는 글자나 깨진 상형문자, 녹은 가구, 다리 수가 이상한 의자, 끊긴 기둥, 반복 무늬 이음새, 어긋난 대칭이 없어야 한다.
 - **파일이 맞는가.**
   - 크기가 정확한가.
@@ -97,8 +97,8 @@
 |---|---|---|
 | 정지4방향12장 | [approved/idle/](art/chibi-refresh/approved/idle/) — `{set,somang,horus}-{front,back,left,right}.png` | 완성·채택된 정지 세트.620×720. 새 그림체12장이 완성됐다는 뜻은 아님 |
 | 호루스 새 정면 외형 | [131번 horus-front.png](art/chibi-refresh/review-horus-v13/horus-front.png) | 정면 단독 채택. 사용자가 “이걸 바탕으로 … 걷기”를 요청한 기준 |
-| 새 걷기36장 | [review-trio-walk-v5/walk/](art/chibi-refresh/review-trio-walk-v5/walk/) — `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` | 소망·호루스135 + 세트136. 사용자 “셋소호 다 합격” |
-| 새 걷기 합본GIF | [136-trio-walk.gif](art/chibi-refresh/review-trio-walk-v5/previews/136-trio-walk.gif) | 위 채택36장의 확인용 합본. 편집은 개별PNG에서 시작 |
+| 새 걷기36장 | [review-trio-walk-v5/walk/](art/chibi-refresh/review-trio-walk-v5/walk/) — `{set,somang,horus}-{front,back,left,right}-{0,1,2}.png` | 소망·호루스135 + 세트136 외형·동작 채택. 소망12장 접합부는 사용자 요청144 보수 반영. 사용자 “셋소호 다 합격” |
+| 새 걷기 합본GIF | [144-trio-walk.gif](art/chibi-refresh/review-trio-walk-v5/previews/144-trio-walk.gif) | 위 채택36장의 확인용 합본. 편집은 개별PNG에서 시작 |
 
 정지 세트와 새 걷기의 실제 명세는 각각 [정지 manifest](art/chibi-refresh/approved/manifest.json), [새 걷기 manifest](art/chibi-refresh/review-trio-walk-v5/manifest.json)에 있다. 정지 manifest에 함께 있는 예전 걷기 항목은 최신 선택본이 아니다. 게임 적용 여부는 채택 여부와 별도로 판단한다.
 

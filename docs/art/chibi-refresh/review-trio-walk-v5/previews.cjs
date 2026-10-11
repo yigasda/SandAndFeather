@@ -25,7 +25,7 @@ function gif(name,files){cp.execFileSync('convert',['-delay','18','-dispose','ba
    let f=path.join(T,`${who}-${k}.png`),c=path.join(T,`${who}-compare-${k}.png`);
    await blank(720,836).composite(layers).png().toFile(f);await blank(720,1636).composite(cmp).png().toFile(c);files.push(f);compare.push(c);
   }
-  gif(`${who==='set'?136:135}-${who}-walk.gif`,files);gif(`${who==='set'?136:135}-${who}-original-comparison.gif`,compare);
+  gif(`${who==='set'?136:who==='somang'?144:135}-${who}-walk.gif`,files);gif(`${who==='set'?136:who==='somang'?144:135}-${who}-original-comparison.gif`,compare);
  }
  let all=[],front=[];
  for(let k=0;k<4;k++){
@@ -39,6 +39,6 @@ function gif(name,files){cp.execFileSync('convert',['-delay','18','-dispose','ba
   let f=path.join(T,`all-${k}.png`),ff=path.join(T,`front-${k}.png`);
   await blank(720,1104).composite(layers).png().toFile(f);await blank(1080,436).composite(fl).png().toFile(ff);all.push(f);front.push(ff);
  }
- gif('136-trio-walk.gif',all);gif('136-trio-front.gif',front);
+ gif('144-trio-walk.gif',all);gif('144-trio-front.gif',front);
  console.log('36-frame sheets and 8 GIFs assembled from individual PNGs');
 })();
