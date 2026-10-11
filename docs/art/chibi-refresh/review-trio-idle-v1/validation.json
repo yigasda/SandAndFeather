@@ -158,7 +158,7 @@
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 2997,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         35,
         40,
@@ -179,11 +179,11 @@
         0,
         0,
         360,
-        317
+        318
       ],
       "protectedChangedPixels": 0,
-      "removedDetachedPixels": 2,
-      "recoloredToApprovedPalette": 3336,
+      "removedDetachedPixels": 0,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         35,
         40,
@@ -204,11 +204,11 @@
         0,
         0,
         360,
-        319
+        400
       ],
       "protectedChangedPixels": 0,
-      "removedDetachedPixels": 1,
-      "recoloredToApprovedPalette": 2992,
+      "removedDetachedPixels": 0,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         57,
         40,
@@ -229,11 +229,11 @@
         0,
         0,
         360,
-        319
+        400
       ],
       "protectedChangedPixels": 0,
-      "removedDetachedPixels": 4,
-      "recoloredToApprovedPalette": 2965,
+      "removedDetachedPixels": 0,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         4,
         40,
@@ -254,7 +254,7 @@
         0,
         0,
         360,
-        282
+        329
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
@@ -263,13 +263,13 @@
         46,
         40,
         321,
-        369
+        370
       ],
       "alphaBounds": [
         76,
         86,
         556,
-        660
+        662
       ],
       "clipping": false
     },
@@ -279,11 +279,11 @@
         0,
         0,
         360,
-        249
+        220
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 12436,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         48,
         40,
@@ -304,11 +304,11 @@
         0,
         0,
         360,
-        225
+        220
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 10328,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         65,
         40,
@@ -329,11 +329,11 @@
         0,
         0,
         360,
-        226
+        220
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 10097,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         37,
         40,
@@ -354,21 +354,21 @@
         0,
         0,
         360,
-        320
+        0
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 3400,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
-        71,
-        50,
-        289,
+        78,
+        72,
+        282,
         370
       ],
       "alphaBounds": [
-        120,
-        103,
-        500,
+        132,
+        142,
+        488,
         662
       ],
       "clipping": false
@@ -383,7 +383,7 @@
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 3797,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         75,
         49,
@@ -404,11 +404,11 @@
         0,
         0,
         360,
-        316
+        400
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 3469,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         70,
         49,
@@ -429,11 +429,11 @@
         0,
         0,
         360,
-        316
+        400
       ],
       "protectedChangedPixels": 0,
       "removedDetachedPixels": 0,
-      "recoloredToApprovedPalette": 3478,
+      "recoloredToApprovedPalette": 0,
       "nativeBounds": [
         73,
         49,
@@ -448,5 +448,70 @@
       ],
       "clipping": false
     }
-  ]
+  ],
+  "revision147": {
+    "baseline": "5c0987c",
+    "changedFrames": [
+      {
+        "name": "set-front",
+        "changedPixels": 3616
+      },
+      {
+        "name": "set-back",
+        "changedPixels": 3190
+      },
+      {
+        "name": "set-left",
+        "changedPixels": 0
+      },
+      {
+        "name": "set-right",
+        "changedPixels": 0
+      },
+      {
+        "name": "somang-front",
+        "changedPixels": 2851
+      },
+      {
+        "name": "somang-back",
+        "changedPixels": 20
+      },
+      {
+        "name": "somang-left",
+        "changedPixels": 31
+      },
+      {
+        "name": "somang-right",
+        "changedPixels": 86
+      },
+      {
+        "name": "horus-front",
+        "changedPixels": 44510
+      },
+      {
+        "name": "horus-back",
+        "changedPixels": 2971
+      },
+      {
+        "name": "horus-left",
+        "changedPixels": 0
+      },
+      {
+        "name": "horus-right",
+        "changedPixels": 0
+      }
+    ],
+    "horusFace": {
+      "pixelsChecked": 14374,
+      "changedPixels": 0,
+      "translation": [
+        0,
+        7
+      ],
+      "scale": 1,
+      "repainted": false
+    },
+    "bodySource": "review-trio-walk-v4/idle-reference/horus-front.png (approved Set-based body)",
+    "inspection": "Light and dark backgrounds, full sheets and enlarged junctions. Review pending."
+  }
 }
