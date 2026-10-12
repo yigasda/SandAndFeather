@@ -7,6 +7,7 @@ const SP = process.argv[2]; require('fs').mkdirSync(SP, { recursive: true });
 // [name, room, where to stand (feet), facing]
 const SEATS = [
   ['dining', 'temple_dining', [15.6, 7.0], 'up'],          // the table's one spot is at its right end: the right cushion
+  ['dining_mid', 'temple_dining', [11.0, 7.8], 'up'],
   ['set_table_l', 'set_room', [9.6, 6.8], 'up'],
   ['set_table_r', 'set_room', [10.9, 6.8], 'up'],
   ['set_desk', 'set_room', [4.15, 6.0], 'up'],

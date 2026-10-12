@@ -204,7 +204,8 @@ SCENES = {
         'solid': [[0, 0, 22, 3.9], [0, 0, 0.8, 11], [21.2, 0, 22, 11], [0.8, 0, 6.2, 4.2], [15.8, 0, 21.2, 4.5],
                   [7.0, 4.1, 15.0, 6.4], [10.2, 6.0, 11.8, 7.1], [0, 9.1, 9.3, 11], [12.6, 9.1, 22, 11]],
         'exits': [[ROOM_DOOR, 'temple_courtyard', 'east']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
-        'spots': [{'id': 'temple_table', 'x': 15.6, 'y': 6.6, 'title': '식탁', 'text': '낮은 식탁에 방석 세 자리. 나눠 먹을 음식이 놓여 있다.'}],
+        'spots': [{'id': 'temple_table', 'x': 15.6, 'y': 6.6, 'title': '식탁', 'text': '낮은 식탁에 방석 세 자리. 나눠 먹을 음식이 놓여 있다.'},
+                  {'id': 'temple_table_mid', 'x': 10.45, 'y': 7.2, 'title': '식탁 가운데 방석', 'text': '식탁 앞 가운데 방석. 음식이 한눈에 보인다.'}],
     },
     'temple_sanctuary': {
         'name': '성소', 'day': 'set-sanctuary-v6-neutral.png', 'size': [22, 11],

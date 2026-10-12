@@ -6,6 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 BOXES = {
     'dining': (250, 700, 550, 960),
+    'dining_mid': (260, 790, 560, 1050),
     'set_table_l': (330, 700, 630, 960),
     'set_table_r': (180, 700, 480, 960),
     'set_desk': (120, 620, 420, 880),
@@ -13,7 +14,7 @@ BOXES = {
     'somang_mirror': (70, 640, 370, 900),
     'somang_chair': (0, 800, 300, 1060),
 }
-LABELS = {'dining': '식탁 오른쪽', 'set_table_l': '세트 방 탁자\n왼쪽 방석', 'set_table_r': '세트 방 탁자\n오른쪽 방석', 'set_desk': '세트 책상\n걸상',
+LABELS = {'dining': '식탁 오른쪽', 'dining_mid': '식탁 가운데', 'set_table_l': '세트 방 탁자\n왼쪽 방석', 'set_table_r': '세트 방 탁자\n오른쪽 방석', 'set_desk': '세트 책상\n걸상',
           'horus_desk': '호루스 책상\n걸상', 'somang_mirror': '소망 화장대\n걸상', 'somang_chair': '소망 방\n긴 의자'}
 WHO = [('somang', '소망'), ('set', '세트'), ('horus', '호루스')]
 

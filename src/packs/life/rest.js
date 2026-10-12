@@ -16,8 +16,9 @@ const SEATS = {
     temple_table: [
         { x: 14.25, y: 5.4, dir: 'left', pose: 'sit-floor' },
         { x: 7.65, y: 5.4, dir: 'right', pose: 'sit-floor' },
-        { x: 10.95, y: 6.75, dir: 'up', pose: 'sit-floor' },
     ],
+    // the front cushion has its own place: from the table's one spot (its right end) it was never the nearest
+    temple_table_mid: [{ x: 10.95, y: 6.75, dir: 'up', pose: 'sit-floor' }],
     // Set's room: the low table has a cushion on each side; the desk has a stool (sitting there she faces the desk)
     set_table: [
         { x: 8.4, y: 5.35, dir: 'right', pose: 'sit-floor' },
