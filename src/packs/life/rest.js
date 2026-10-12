@@ -27,8 +27,8 @@ const BEDS = {
     set_bed: {
         somang: { x: 17.45, y: 3.85, dir: 'down', pose: 'sleep' },
         set: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' },
-        horus: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' },
-        right: { x: 17.3, y: 3.85, dir: 'down', pose: 'sleep' },     // Set or Horus on the right pillow
+        horus: { x: 15.7, y: 4.15, dir: 'down', pose: 'sleep' },        // his picture sits higher on its canvas
+        right: { x: 17.3, y: 4.15, dir: 'down', pose: 'sleep' },     // Horus on the right pillow (with Set)
         side: { x: 15.7, y: 3.85, dir: 'right', pose: 'sleep' },
     },
 };
