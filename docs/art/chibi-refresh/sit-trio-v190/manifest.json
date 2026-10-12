@@ -25,7 +25,7 @@
         ]
       },
       "expression": "calm",
-      "sha256": "e59e17894f56f9dafb93e535a6d3b131880131fb3c310b0521f8b35180227d72",
+      "sha256": "3e71ac0146452383279997a561afa898f23af9389120d2028286595844c38fc9",
       "reviewStatus": "user-approved",
       "correctionRevision": 186,
       "restoredFrom": "183/186 original bytes",
@@ -48,7 +48,7 @@
         ]
       },
       "expression": "calm",
-      "sha256": "eadb6de507a5c14c641e8a89bc0ba512c51f50dcb215231f1e8be549872fbd65",
+      "sha256": "9d19f2a8d06362d7a1d9e87901e959629ff6f2dd1c6194c19314c43d443ba8e8",
       "restoredFrom": "183/186 original bytes",
       "canvas": [
         620,
@@ -70,7 +70,7 @@
         ]
       },
       "expression": "calm",
-      "sha256": "fb73fad0f175d59dcae5a8ee077ca36ba9c5c7aff839470ceb809b48d4c1a263",
+      "sha256": "103691356fa9d65148b3662da1035ddf0beff7bf7a1912e42b31e5f68d705720",
       "restoredFrom": "183/186 original bytes",
       "canvas": [
         620,
@@ -92,7 +92,7 @@
         ]
       },
       "expression": "calm",
-      "sha256": "a75f9ce4f97fed0ee9a51c62ba897e923d3406876949e038105b26a7c69df685",
+      "sha256": "f3c7870344ca392e528d6db0d5d8340acef9dc3ca865d50ede7ebb2df2a6be33",
       "restoredFrom": "183/186 original bytes",
       "canvas": [
         620,
@@ -114,7 +114,7 @@
         ]
       },
       "expression": "calm",
-      "sha256": "376383b5c60a56e8b6d46b0243135a2cc53079fe0eab276bfce87882b932adff",
+      "sha256": "31868b6e9c2a4134949232b326c24c8af4adfe7e6b40558142d9f8c4b66c9c05",
       "restoredFrom": "183/186 original bytes",
       "canvas": [
         620,
@@ -346,5 +346,36 @@
     "right": "right"
   },
   "referenceVisibleHeight": 576,
-  "runtimeActionNames": "sit-<seatType>: sit-floor(방석), sit-stool(걸상), sit-bench(긴 의자)"
+  "runtimeActionNames": "sit-<seatType>: sit-floor(방석), sit-stool(걸상), sit-bench(긴 의자)",
+  "edits": [
+    {
+      "revision": "opus-0.9.43",
+      "files": "horus 5장 (방석 뒤·왼·오, 걸상 뒤, 긴 의자)",
+      "what": "목 위 머리 ×1.12, 목 아래 몸 ×1.10 (30행에 걸쳐 바뀜), 앉은 자리 기준점 그대로(머리가 위로 이동). tools/art/fix/bodyscale.py <png> <out> 1.10 <목x> <목y> 30 <기준점x> <기준점y> 1.12",
+      "neck": {
+        "back-floor": [
+          309,
+          447
+        ],
+        "back-stool": [
+          309,
+          417
+        ],
+        "left-floor": [
+          285,
+          461
+        ],
+        "right-bench": [
+          332,
+          430
+        ],
+        "right-floor": [
+          334,
+          461
+        ]
+      },
+      "before": "sources/horus-<자세>-0-before-d.png",
+      "user": "호루스는 다른 애들보다 몸이 작다 → (분홍 동그라미) 소망 세트는 동그라미 크기가 비슷한데 호루스만 작음 → D가 낫다"
+    }
+  ]
 }
