@@ -166,7 +166,9 @@ SCENES = {
         'exits': [[ROOM_DOOR, 'room_entrances_wide', 'set']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
         'spots': [{'id': 'set_bed', 'x': 18.6, 'y': 7.4, 'title': '세트의 침대', 'text': '붉은 양모가 침대 끝에 걸쳐 있다. 두 사람이 누워도 넉넉하다.'},
                   {'id': 'set_window', 'x': 10.5, 'y': 3.7, 'title': '창밖', 'text': '붉은 사막이 지평선까지 이어진다.'},
-                  {'id': 'set_brazier', 'x': 2.6, 'y': 8.2, 'title': '화로', 'text': '석재 받침 위에서 불이 조용히 탄다.'}],
+                  {'id': 'set_brazier', 'x': 2.6, 'y': 8.2, 'title': '화로', 'text': '석재 받침 위에서 불이 조용히 탄다.'},
+                  {'id': 'set_desk', 'x': 3.65, 'y': 5.5, 'title': '세트의 책상', 'text': '두루마리와 등잔이 놓인 책상. 걸상이 하나 있다.'},
+                  {'id': 'set_table', 'x': 9.7, 'y': 6.3, 'title': '낮은 탁자', 'text': '술병과 잔이 놓인 낮은 탁자. 양쪽에 방석이 있다.'}],
     },
     'horus_room': {
         'name': '호루스의 서쪽 방', 'day': 'horus-room-v2-wide-day.png', 'night': 'horus-room-v2-wide-night.png', 'size': [22, 11],
@@ -185,8 +187,9 @@ SCENES = {
                   [13.4, 0, 16.6, 4.8], [17.0, 0, 20.4, 5.0], [20.3, 0, 21.2, 5.0], [8.6, 4.4, 12.2, 6.4],
                   [0.7, 5.6, 3.2, 9.0], [3.2, 7.0, 4.7, 8.6], [19.0, 7.4, 21.2, 9.1], [0, 9.1, 9.3, 11], [12.6, 9.1, 22, 11]],
         'exits': [[ROOM_DOOR, 'room_entrances_wide', 'somang']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
-        'spots': [{'id': 'somang_mirror', 'x': 3.4, 'y': 5.6, 'title': '거울과 화장대', 'text': '거울 앞에 화장 도구가 놓여 있다.'},
-                  {'id': 'somang_table', 'x': 10.4, 'y': 6.8, 'title': '작업 탁자', 'text': '천과 리본, 작은 물건 상자가 펼쳐져 있다.'}],
+        'spots': [{'id': 'somang_mirror', 'x': 2.75, 'y': 4.9, 'title': '거울과 화장대', 'text': '거울 앞에 화장 도구가 놓여 있다.'},
+                  {'id': 'somang_table', 'x': 10.4, 'y': 6.8, 'title': '작업 탁자', 'text': '천과 리본, 작은 물건 상자가 펼쳐져 있다.'},
+                  {'id': 'somang_chair', 'x': 3.5, 'y': 6.3, 'title': '긴 의자', 'text': '푹신한 쿠션이 놓인 긴 의자. 옆 탁자에 꽃병이 있다.'}],
     },
     'temple_kitchen': {
         'name': '부엌', 'day': 'temple-kitchen-v2-open-day.png', 'night': 'temple-kitchen-v2-open-night.png', 'size': [22, 11],

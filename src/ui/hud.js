@@ -90,7 +90,7 @@ export function placeBubble(h, r, near) {
     // over a person's head: the approved standing pictures are taller than the tile they stand on
     const head = near.kind === 'npc' ? 6 + Math.max(0, (r.motion?.get(near.look)?.height ?? 16) - 16) * r.zoom / dpr : 18;
     const x = ((near.x + 0.5) * ts - r.cam.x) / dpr, y = (near.y * ts - r.cam.y) / dpr - head;
-    const text = `${near.kind === 'npc' ? '말 걸기' : '살펴보기'} · ${near.label}`;
+    const text = `${near.kind === 'npc' ? '말 걸기' : '살펴보기'} · ${near.label || near.title}`;
     if (h.bubble.textContent !== text) h.bubble.textContent = text;
     h.bubble.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px) translate(-50%, -100%)`;
     h.bubble.hidden = false;

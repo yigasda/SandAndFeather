@@ -1,9 +1,9 @@
 {
   "revision": 190,
   "action": "sit",
-  "status": "awaiting-user-review",
-  "artApproved": false,
-  "runtimeEligible": false,
+  "status": "user-approved",
+  "artApproved": true,
+  "runtimeEligible": true,
   "runtimeOwner": "opus",
   "canvas": [
     620,
@@ -26,7 +26,7 @@
       },
       "expression": "calm",
       "sha256": "e59e17894f56f9dafb93e535a6d3b131880131fb3c310b0521f8b35180227d72",
-      "reviewStatus": "awaiting-user-review",
+      "reviewStatus": "user-approved",
       "correctionRevision": 186,
       "restoredFrom": "183/186 original bytes",
       "canvas": [
@@ -53,7 +53,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/horus-left-floor-0.png",
@@ -74,7 +75,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/horus-right-bench-0.png",
@@ -95,7 +97,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/horus-right-floor-0.png",
@@ -116,7 +119,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/set-back-floor-0.png",
@@ -136,7 +140,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/set-back-stool-0.png",
@@ -156,7 +161,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/set-left-floor-0.png",
@@ -176,7 +182,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/set-right-bench-0.png",
@@ -196,7 +203,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/set-right-floor-0.png",
@@ -216,7 +224,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/somang-back-floor-0.png",
@@ -238,7 +247,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/somang-back-stool-0.png",
@@ -259,7 +269,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/somang-right-bench-0.png",
@@ -279,7 +290,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     },
     {
       "path": "png/somang-right-floor-0.png",
@@ -299,7 +311,8 @@
       "canvas": [
         620,
         720
-      ]
+      ],
+      "reviewStatus": "user-approved"
     }
   ],
   "playback": {
@@ -323,5 +336,15 @@
   ],
   "fitNote": "앉은 자리 기준. 서 있는 발 기준 검사 비율 다름은 별도 결과로 보존. 머리 폭/얼굴 크기와 실제 그림 비교를 함께 확인.",
   "correctionRevision": 190,
-  "correctionNote": "호루스5장·소망 걸상 뒤를183/186원본 바이트로 복구. 소망 방석 뒤만188유지. 나머지7장 변경없음."
+  "correctionNote": "호루스5장·소망 걸상 뒤를183/186원본 바이트로 복구. 소망 방석 뒤만188유지. 나머지7장 변경없음.",
+  "runtimeIntegrated": "0.9.41",
+  "approvalEvidence": "앉기는 여깄어! (구글 드라이브 전달, main 190과 같은 파일로 확인)",
+  "directionMap": {
+    "front": "down",
+    "back": "up",
+    "left": "left",
+    "right": "right"
+  },
+  "referenceVisibleHeight": 576,
+  "runtimeActionNames": "sit-<seatType>: sit-floor(방석), sit-stool(걸상), sit-bench(긴 의자)"
 }

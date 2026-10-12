@@ -18,6 +18,16 @@ const SEATS = {
         { x: 7.65, y: 5.4, dir: 'right', pose: 'sit-floor' },
         { x: 10.95, y: 6.75, dir: 'up', pose: 'sit-floor' },
     ],
+    // Set's room: the low table has a cushion on each side; the desk has a stool (sitting there she faces the desk)
+    set_table: [
+        { x: 8.4, y: 5.35, dir: 'right', pose: 'sit-floor' },
+        { x: 12.3, y: 5.35, dir: 'left', pose: 'sit-floor' },
+    ],
+    set_desk: [{ x: 4.15, y: 4.45, dir: 'up', pose: 'sit-stool' }],
+    horus_desk: [{ x: 18.3, y: 5.95, dir: 'up', pose: 'sit-stool' }],
+    somang_mirror: [{ x: 3.1, y: 4.3, dir: 'up', pose: 'sit-stool' }],
+    // the long cushioned chair against the left wall of her room: sitting there she looks right, into the room
+    somang_chair: [{ x: 1.7, y: 7.0, dir: 'right', pose: 'sit-bench' }],
     colonnade_seat: [],
 };
 // the middle of the body lying in bed. Set's bed (and Horus's, the same bed) is wide enough for two: Somang takes the right pillow, Set and Horus

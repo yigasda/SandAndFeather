@@ -76,7 +76,7 @@ def pack(frames, visible, out):
 
 
 # approved action sets packed beside the base 48 (same canvas, pivot and reference height as the idle)
-ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'pickup-trio-v182', 'sit-somang-v179', 'sleep-trio-v220')]
+ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'pickup-trio-v182', 'sit-somang-v179', 'sit-trio-v190', 'sleep-trio-v220')]
 
 
 def action_frames():
@@ -85,19 +85,24 @@ def action_frames():
         am = json.load(open(mp))
         if not am.get('artApproved'): raise SystemExit(f'not approved: {mp}')
         base = os.path.dirname(mp); dmap = am['directionMap']
+        names = set()
         for f in am['files']:
             path = os.path.join(base, f['path'])
             data = open(path, 'rb').read()
             assert hashlib.sha256(data).hexdigest() == f['sha256'], path
             bb = Image.open(path).getchannel('A').getbbox()
-            frames.append({'id': f"{f['character']}.{am['action']}.{dmap[f['direction']]}.{f['frame']}", 'character': f['character'],
-                           'state': am['action'], 'gameDirection': dmap[f['direction']], 'phase': f['frame'],
+            # one sitting batch holds several seats (floor, stool, bench): each is its own action, sit-<seat>
+            name = f"{am['action']}-{f['seatType']}" if f.get('seatType') else am['action']
+            names.add(name)
+            frames.append({'id': f"{f['character']}.{name}.{dmap[f['direction']]}.{f['frame']}", 'character': f['character'],
+                           'state': name, 'gameDirection': dmap[f['direction']], 'phase': f['frame'],
                            'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': f.get('referenceVisibleHeight', am['referenceVisibleHeight']),
                            'alphaBounds': list(bb), 'pivot': (f.get('anchor') or am['anchor'])['position']})
         pb = am['playback']
         # a pose that stays (sitting) holds its last frame until she moves; a looping one (sleeping) cycles
-        playback[am['action']] = {'frameMs': pb.get('durationMs') or [800] * len(pb['sequence']), 'loop': bool(pb.get('loop')),
-                                  **({'hold': True} if pb.get('hold') else {})}
+        for name in names:
+            playback[name] = {'frameMs': pb.get('durationMs') or [800] * len(pb['sequence']), 'loop': bool(pb.get('loop')),
+                              **({'hold': True} if pb.get('hold') else {})}
     return frames, playback
 
 

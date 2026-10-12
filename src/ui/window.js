@@ -272,7 +272,7 @@ function draw(t) {
     if (w && mate) people.push({ look: w, x: mate.x, y: mate.y, dir: mate.dir, step: 0, moving: false, act: { name: mate.name, t: (performance.now() - mate.at) / 1000 } });
     else if (w) { const f = follower(); people.push({ look: w, x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT }); }
     renderer.draw({ player, people, things, part: partNow(s), time: t / 1000, near });
-    placeBubble(hud, renderer, cardOpen() ? null : near);
+    placeBubble(hud, renderer, cardOpen() || player.seat ? null : near);  // sitting or lying down: no bubble over her head
     // ^ by the stairs (v on the roof): shown only where the stairs are, pressed to go
     const c = !cardOpen() && near?.climb;
     hud.climb.hidden = !c;
