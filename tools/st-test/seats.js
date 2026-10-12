@@ -1,5 +1,6 @@
 // every seat with each of the three in front, through the real seat card ("앉아 쉬기"): where they sit, which picture.
-//   node tools/st-test/seats.js <out folder> [seat names, comma separated]
+//   node tools/st-test/seats.js <out folder> [seat names, comma separated] [--with]
+// --with: each one leads with a companion (somang+set, set+horus, horus+somang); the companion sits too
 // Saves seat_<name>_<who>.png (whole phone screen, dpr 2) and prints the pose each got. Then make a sheet with
 //   python3 tools/art/fix/seat-sheet.py <out folder> <sheet.png>
 const { open, sleep, T } = require('./common.js');
@@ -26,7 +27,10 @@ const SEATS = [
   ['rooms_bench', 'room_entrances_wide', [9.1, 5.6], 'up'],
   ['ombos_bench', 'ombos', [20.0, 9.9], 'down'],
 ];
-const ONLY = process.argv[3] ? process.argv[3].split(',') : null;
+const WITH = process.argv.includes('--with');
+const ARGS = process.argv.slice(3).filter(a => a !== '--with');
+const ONLY = ARGS[0] ? ARGS[0].split(',') : null;
+const MATE = { somang: 'set', set: 'horus', horus: 'somang' };
 (async () => {
   const { b, p, errs, slash } = await open({ dpr: 2 });
   const base = '/scripts/extensions/third-party/SandAndFeather/';
@@ -38,14 +42,14 @@ const ONLY = process.argv[3] ? process.argv[3].split(',') : null;
     if (ONLY && !ONLY.includes(name)) continue;
     for (const who of ['somang', 'set', 'horus']) {
       await sleep(300);
-      await p.evaluate(async ([base, who, room, x, y, dir]) => { const s = (await import(base + 'src/core/state.js')).getState(); s.party = { ...(s.party || {}), lead: who, with: '' }; s.sun.left = 3; const W = await import(base + 'src/ui/window.js'); await W.travel(room, { x: x - 0.5, y: y - 0.8, dir }); }, [base, who, room, x, y, dir]); await sleep(900);
+      await p.evaluate(async ([base, who, room, x, y, dir, mate]) => { const s = (await import(base + 'src/core/state.js')).getState(); s.party = { ...(s.party || {}), lead: who, with: mate }; s.sun.left = 3; const W = await import(base + 'src/ui/window.js'); await W.travel(room, { x: x - 0.5, y: y - 0.8, dir }); }, [base, who, room, x, y, dir, WITH ? MATE[who] : '']); await sleep(900);
       await p.keyboard.press('e'); await sleep(700);
       const title = await p.evaluate(() => [...document.querySelectorAll('#sf_game .sf_pop')].pop()?.innerText.split('\n').slice(0, 2).join(' / '));
       const btn = p.locator('#sf_game .sf_pop button', { hasText: '앉아 쉬기' });
       if (!(await btn.count())) { console.log(name, who, 'NO SEAT CARD:', title); await close(); continue; }
       await btn.click(); await sleep(900);
       await p.screenshot({ path: `${SP}/seat_${name}_${who}.png` });
-      const r = await p.evaluate(async base => { const pl = (await import(base + 'src/world/player.js')).player; return { act: pl.act?.name, dir: pl.dir, x: +pl.x.toFixed(2), y: +pl.y.toFixed(2), seat: !!pl.seat }; }, base);
+      const r = await p.evaluate(async base => { const pl = (await import(base + 'src/world/player.js')).player; return { act: pl.act?.name, dir: pl.dir, x: +pl.x.toFixed(2), y: +pl.y.toFixed(2), seat: !!pl.seat, mate: pl.mate && [pl.mate.name, pl.mate.dir, +(pl.mate.x + 0.5).toFixed(2), +(pl.mate.y + 1).toFixed(2)] }; }, base);
       console.log(name, who, JSON.stringify(r), '|', title);
       await close(); await sleep(200);
       await p.keyboard.down('ArrowDown'); await sleep(300); await p.keyboard.up('ArrowDown'); await sleep(200);

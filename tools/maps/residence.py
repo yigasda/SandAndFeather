@@ -179,7 +179,7 @@ SCENES = {
         # the hair, which stays over the table
         # Set on the left cushion also reaches over the table's left end higher up (knee, the end of a lock of hair): there
         # the table covers right of its left outline, up to the line the user drew along the hair over the corner cap
-        'front': [(5.9, [[9.0282, 4.87], [11.3597, 4.87], [11.3597, 6.2], [9.0282, 6.2]], {'act': 'sit-floor'}),
+        'front': [(5.9, [[9.0282, 4.87], [11.3597, 4.87], [11.3597, 6.2], [9.0282, 6.2]], {'act': 'sit-floor', 'dir': ['left', 'right']}),
                   (5.9, [[9.0282, 4.88], [9.0282, 4.48], [9.055, 4.48], [9.083, 4.461], [9.134, 4.423], [9.169, 4.384], [9.202, 4.327],
                          [9.6, 4.327], [9.6, 4.88]], {'act': 'sit-floor', 'look': 'set'})],
         'exits': [[ROOM_DOOR, 'room_entrances_wide', 'set']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
@@ -228,7 +228,7 @@ SCENES = {
                   [7.0, 4.1, 15.0, 6.4], [10.2, 6.0, 11.8, 7.1], [0, 9.1, 9.3, 11], [12.6, 9.1, 22, 11]],
         # whoever sits on the left or right cushion: the table over what reaches onto it, its sides on the table's outline
         # (art px 684 and 1088), the top under the hair (as in Set's room)
-        'front': [(6.3, [[8.4826, 4.87], [13.4927, 4.87], [13.4927, 6.55], [8.4826, 6.55]], {'act': 'sit-floor'})],
+        'front': [(6.3, [[8.4826, 4.87], [13.4927, 4.87], [13.4927, 6.55], [8.4826, 6.55]], {'act': 'sit-floor', 'dir': ['left', 'right']})],
         'exits': [[ROOM_DOOR, 'temple_courtyard', 'east']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
         'spots': [{'id': 'temple_table_left', 'x': 6.4, 'y': 6.6, 'title': '식탁 왼쪽 방석', 'text': '식탁 왼쪽 방석. 창으로 정원이 보인다.'},
                   {'id': 'temple_table', 'x': 15.6, 'y': 6.6, 'title': '식탁', 'text': '낮은 식탁에 방석 세 자리. 나눠 먹을 음식이 놓여 있다.'},
@@ -349,7 +349,7 @@ def main():
         art[sid] = {'file': ART + sc['day'], 'fullMap': True, 'lazy': True, 'origin': [0, 0], 'scale': [w * 16 / iw, h * 16 / ih],
                     'day': [0, 0, iw, ih], 'night': [0, 0, iw, ih], 'clip': [[0, 0], [iw, 0], [iw, ih], [0, ih]]}
         if sc.get('front'):
-            # a third item {'act'[, 'look']} limits it to whoever is in that pose (only they go behind it)
+            # a third item {'act'[, 'look'][, 'dir': [...]]} limits it to whoever is in that pose (only they go behind it)
             art[sid]['occluders'] = [{'foot': round(fr[0] * ky, 1), 'polygon': [[round(x * kx, 1), round(y * ky, 1)] for x, y in fr[1]],
                                       **({'only': fr[2]} if len(fr) > 2 else {})} for fr in sc['front']]
         if sc.get('night'):

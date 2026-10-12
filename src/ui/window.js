@@ -269,7 +269,7 @@ function draw(t) {
     const people = map.npcs.filter(n => !away.includes(n.id)).map(n => ({ look: n.look, x: n.x, y: n.y, dir: 'down', step: 0, moving: false }));
     // the one walking with the leader follows behind
     const w = withOf(s);
-    // ... or lies beside her when they sleep together (player.mate, set by the bed)
+    // ... or sits or lies beside her (player.mate, set by a seat or the bed)
     const mate = player.mate;
     if (w && mate) people.push({ look: w, x: mate.x, y: mate.y, dir: mate.dir, step: 0, moving: false, act: { name: mate.name, t: (performance.now() - mate.at) / 1000 } });
     else if (w) { const f = follower(); people.push({ look: w, x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT }); }

@@ -101,6 +101,17 @@ function seatFor(id) {
     const free = (SEATS[id] || []).filter(p => (!p.who || p.who === player.look) && hasPose(p.pose, p.dir));
     return free.sort((a, b) => Math.hypot(a.x - f.x, a.y - f.y) - Math.hypot(b.x - f.x, b.y - f.y))[0] || null;
 }
+// the one walking with her sits too: the nearest other seat place of this room (the set places, nothing new), one
+// they have the picture for and not where she sits; none within a few tiles and they stay standing
+const MATE_REACH = 8;
+function mateSeat(spotId, mine, mate) {
+    const room = Object.values(DATA.maps || {}).find(m => (m.spots || []).some(s => s.id === spotId));
+    const ids = room ? room.spots.map(s => s.id).filter(id => SEATS[id]) : [spotId];
+    const places = ids.flatMap(id => SEATS[id]).filter(p => (!p.who || p.who === mate) && hasPoseOf(mate, p.pose, p.dir)
+        && Math.hypot(p.x - mine.x, p.y - mine.y) > 0.6);
+    const d = p => Math.hypot(p.x - mine.x, p.y - mine.y);
+    return places.sort((a, b) => d(a) - d(b)).find(p => d(p) <= MATE_REACH) || null;
+}
 
 function seatCard(spot, ui) {
     const s = getState();
@@ -114,6 +125,8 @@ function seatCard(spot, ui) {
             await saveState();
             const p = seatFor(spot.id);
             if (p) holdPose(p.pose, p.x, p.y, p.dir);
+            const mate = withOf(st), m = p && mate ? mateSeat(spot.id, p, mate) : null;
+            if (m) holdMate(m.pose, m.x, m.y, m.dir);
             ui.toast(r === 'rested' ? `잠깐 쉬었어. 태양 기운 ${sunLeft(st)}/${sunMax()}` : r === 'full' ? '태양 기운이 가득해. 그냥 앉아 있자' : '오늘은 충분히 쉬었어');
         } }],
     });
