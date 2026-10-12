@@ -6,7 +6,8 @@ import { DATA } from '../../core/data.js';
 import { SIT_PER_DAY, sitRest, sitsLeft, sleepNow, tired } from '../../core/rest.js';
 import { getState, saveState } from '../../core/state.js';
 import { sunLeft, sunMax } from '../../core/sun.js';
-import { feet, holdPose, player } from '../../world/player.js';
+import { feet, holdMate, holdPose, player } from '../../world/player.js';
+import { leadOf, withOf } from '../../core/heroes.js';
 import { onSpot } from '../../ui/window.js';
 
 // where a pose's anchor goes (tiles), which way she faces there, and which picture. The dining table has a cushion
@@ -19,19 +20,30 @@ const SEATS = {
     ],
     colonnade_seat: [],
 };
-// the middle of the body lying in bed, per who lies down: Set's bed is wide enough for two, Somang takes the right
-// pillow, Set and Horus the left. `side`: lying on the side, facing her (the right), for when two sleep together
+// the middle of the body lying in bed. Set's bed is wide enough for two: Somang takes the right pillow, Set and Horus
+// the left. Sleeping together, the one on the left lies on the side facing the other (the right); the right one
+// lies on the back. Set and Horus together: Set on the left on the side, Horus on the right pillow.
 const BEDS = {
     set_bed: {
         somang: { x: 17.45, y: 3.85, dir: 'down', pose: 'sleep' },
         set: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' },
         horus: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' },
+        right: { x: 17.3, y: 3.85, dir: 'down', pose: 'sleep' },     // Set or Horus on the right pillow
         side: { x: 15.7, y: 3.85, dir: 'right', pose: 'sleep' },
     },
 };
 export const bedPlace = (id, who, side = false) => (side ? BEDS[id]?.side : BEDS[id]?.[who]) || BEDS[id]?.set;
+// two in the bed: where each lies. The right pillow is Somang's; without her, Horus's
+export function bedPair(id, lead, mate) {
+    const b = BEDS[id];
+    if (!b || !mate) return { lead: bedPlace(id, lead) };
+    const right = lead === 'somang' || mate === 'somang' ? 'somang' : 'horus';
+    const at = who => (who === right ? (who === 'somang' ? b.somang : b.right) : b.side);
+    return { lead: at(lead), mate: at(mate) };
+}
 
-const hasPose = (pose, dir) => !!DATA.sprites?.looks?.[player.look]?.motion?.acts?.[pose]?.[dir];
+const hasPoseOf = (look, pose, dir) => !!DATA.sprites?.looks?.[look]?.motion?.acts?.[pose]?.[dir];
+const hasPose = (pose, dir) => hasPoseOf(player.look, pose, dir);
 
 function seatFor(id) {
     const f = feet();
@@ -63,8 +75,11 @@ function bedCard(spot, ui) {
         tag: '잠', title: spot.title,
         text: `${spot.text}\n태양 기운이 절반 이하로 남으면 잘 수 있어(지금 ${sunLeft(s)}/${sunMax()}). 자고 나면 새 하루야. 채팅의 날짜는 그대로야.`,
         buttons: [{ label: '닫기' }, { label: ok ? '잠자기' : '아직 졸리지 않아', primary: ok, disabled: !ok, onClick: () => {
-            const b = bedPlace(spot.id, player.look);
+            // the one walking with her lies down beside her, if both have the picture for where they lie
+            const st0 = getState(), pair = bedPair(spot.id, leadOf(st0), withOf(st0));
+            const b = pair.lead, m = pair.mate;
             if (b && hasPose(b.pose, b.dir)) holdPose(b.pose, b.x, b.y, b.dir);
+            if (m && hasPoseOf(withOf(st0), m.pose, m.dir)) holdMate(m.pose, m.x, m.y, m.dir);
             ui.toast('잘 자…');
             setTimeout(async () => {
                 const st = getState();

@@ -27,7 +27,7 @@ export function placePlayer(map) {
     const p = s?.pos;
     if (p && p.map === map.id && Number.isFinite(p.x) && Number.isFinite(p.y) && !blocked(map, p.x, p.y)) Object.assign(player, { map: map.id, x: p.x, y: p.y, dir: p.dir || 'down' });
     else Object.assign(player, { map: map.id, x: map.d.spawn.x, y: map.d.spawn.y, dir: 'down' });
-    player.seat = null; player.act = null;
+    player.seat = null; player.act = null; player.mate = null;
     stand();
     trail.length = 0;
 }
@@ -47,7 +47,10 @@ export function holdPose(name, sx, sy, dir) {
     if (!player.seat) player.seat = { x: player.x, y: player.y, dir: player.dir };
     Object.assign(player, { x: sx - 0.5, y: sy - 1, dir, moving: false, walkT: 0, act: { name, at: performance.now() } });
 }
+// the companion lying down beside her (sleeping together): { x, y, dir, name, at }, the same anchor rules as holdPose
+export function holdMate(name, sx, sy, dir) { player.mate = { x: sx - 0.5, y: sy - 1, dir, name, at: performance.now() }; }
 export function getUp() {
+    player.mate = null;
     if (!player.seat) return false;
     Object.assign(player, { x: player.seat.x, y: player.seat.y, dir: player.seat.dir, act: null, seat: null });
     return true;
