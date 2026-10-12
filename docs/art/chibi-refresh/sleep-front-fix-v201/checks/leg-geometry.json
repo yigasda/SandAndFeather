@@ -1,0 +1,24 @@
+[
+  {
+    "frame": 0,
+    "region": [
+      205,
+      535,
+      421,
+      635
+    ],
+    "metric": "actual ankle/shoe silhouette pixels after excluding burgundy hair",
+    "differentPixels": 0
+  },
+  {
+    "frame": 1,
+    "region": [
+      205,
+      535,
+      421,
+      635
+    ],
+    "metric": "actual ankle/shoe silhouette pixels after excluding burgundy hair",
+    "differentPixels": 0
+  }
+]

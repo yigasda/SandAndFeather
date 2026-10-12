@@ -1,0 +1,94 @@
+{
+  "revision": 201,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 4,
+  "playback": {
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "files": [
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "sha256": "b278565417afcdd01968a3a2db17c6b12f4847f9b706102e8c9779234e2a77ef"
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "sha256": "c51ab06a84832c94c8d04c0eaed49cd4548fdeb5c70c1e189c0c309c17567e79"
+    },
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "sha256": "c29ae826d40439c61385a08c248b38b78aa14d3dd5f3f66040591d63b83111cb"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "sha256": "953b4c48f19da32c73ae0f00472b0833514eca4067341a28c539e4d8053f5a2e"
+    }
+  ],
+  "review": {
+    "issueCount": 2,
+    "issues": [
+      "horus sleep frame similarity 58%",
+      "set sleep frame similarity 50%"
+    ],
+    "skin": "all same",
+    "hair": "all same"
+  }
+}
