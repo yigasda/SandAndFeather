@@ -34,7 +34,7 @@
      450
     ]
    },
-   "sha256": "00ab255b11ce3f6866f4234ce248dcf8f28ee26b88c77d70087d969f1127dd21"
+   "sha256": "6c199c2dc65ccc585b64ae4551c405f6bb80c97ae9cbfa4b2ad155a74fb87a9f"
   },
   {
    "path": "png/horus-sleep-1.png",
@@ -47,7 +47,7 @@
      450
     ]
    },
-   "sha256": "38fa72c2fd62ff5e0498e51c8d730edf0603ab1254cabaab3fd1ec215453a5b6"
+   "sha256": "b07795ab1ad7aed6e28af321e545b8c5b5e815147ab786958e23fc3b5f0698d1"
   },
   {
    "path": "png/horus-sleep-side-0.png",
@@ -183,6 +183,6 @@
  "edits": {
   "set side": "머리(목 위)를 목(338,370) 기준 93 %로 줄이고 아래 70행에 걸쳐 원래 크기로(사용자: 세트 옆면 대가리 너무 큼). 원본 sources/*-210.png",
   "somang": "게임에서 10 % 크게(referenceVisibleHeight 523.6, 사용자: 소망 전체 크기 좀 더); 머리 112 %·몸 85 % (목 (255,355) 기준, 아래 70행에 걸쳐 바뀜, 사용자: 소망 혼자 비율이 달라 → 2번 채택). 원본 sources/somang-sleep-*-orig.png",
-  "horus front": "얼굴(사용자 수정본 기준): 전 그림 sources/horus-sleep-*-before-face.png에서 눈 높이 폭 98 %, 턱 폭 95 %(x 308 기준, y 230부터 425까지 서서히), 턱 3 px 길게, 귀 폭 90 %·높이 94 %(얼굴선 쪽으로, 옆머리가 채움). 그다음 턱선을 사용자가 그린 선(sources/horus-sleep-user-jaw-edit.jpg, 이 1번 시안 위에 그림)에 맞춤: (308,345) 기준 아래 반원에서 각도마다 얼굴선 안쪽 가장자리를 옮김(안쪽 15 px 띠와 바깥 22 px만, 눈·문양·코 그대로). 사용자: \"내꺼가 젤 낫다\". 비교 horus-face-user-jaw.png"
+  "horus front": "얼굴(사용자 수정본 기준): 전 그림 sources/horus-sleep-*-before-face.png에서 눈 높이 폭 98 %, 턱 폭 95 %(x 308 기준, y 230부터 425까지 서서히), 턱 3 px 길게, 귀 폭 90 %·높이 94 %(얼굴선 쪽으로, 옆머리가 채움). 그다음 턱선을 사용자가 그린 선(sources/horus-sleep-user-jaw-edit.jpg, 이 1번 시안 위에 그림)에 맞춤: (308,345) 기준 아래 반원에서 각도마다 얼굴선 안쪽 가장자리를 옮김(안쪽 15 px 띠와 바깥 22 px만, 눈·문양·코 그대로). 사용자: \"내꺼가 젤 낫다\". 비교 horus-face-user-jaw.png / 0.9.39: 사용자 \"내 에딧으로\": 턱 아래 반원(14~166°)의 얼굴선 띠를 사용자 그림 픽셀 그대로 넣음(선 안쪽 4 px부터 바깥 가장자리까지). 우리 쪽 두꺼운 선은 사용자 그림대로 목 또는 배경으로, 배경 쪽 가장자리는 잉크색+투명도(크림색 테두리 없음)."
  }
 }
