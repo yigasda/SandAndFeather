@@ -1,0 +1,26 @@
+[
+  {
+    "file": "set-sleep-0.png",
+    "changedPixels": 4261,
+    "editBounds": [
+      111,
+      326,
+      187,
+      420
+    ],
+    "outsideEditUnchanged": true,
+    "description": "Elbow moved inward below ear; shortened forearm and cuff; hair restored behind old extended arm. Face/ear/front hair lock/torso/legs unchanged."
+  },
+  {
+    "file": "set-sleep-1.png",
+    "changedPixels": 4267,
+    "editBounds": [
+      111,
+      326,
+      187,
+      420
+    ],
+    "outsideEditUnchanged": true,
+    "description": "Elbow moved inward below ear; shortened forearm and cuff; hair restored behind old extended arm. Face/ear/front hair lock/torso/legs unchanged."
+  }
+]

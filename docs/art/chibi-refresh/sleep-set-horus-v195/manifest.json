@@ -1,7 +1,7 @@
 {
   "revision": 195,
   "action": "sleep",
-  "status": "user-rejected",
+  "status": "partially-user-approved",
   "artApproved": false,
   "runtimeEligible": false,
   "runtimeOwner": "opus",
@@ -39,7 +39,10 @@
           450
         ]
       },
-      "sha256": "c084757fbd0f7479e1fc46af9b5d360be70fe78f531103ed0f036142a35be803"
+      "sha256": "c084757fbd0f7479e1fc46af9b5d360be70fe78f531103ed0f036142a35be803",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/set-sleep-1.png",
@@ -53,7 +56,10 @@
           450
         ]
       },
-      "sha256": "8d0977de0c80ee07059b7dc71fa93472f8418a5df78b8c3c2b503911c38406b0"
+      "sha256": "8d0977de0c80ee07059b7dc71fa93472f8418a5df78b8c3c2b503911c38406b0",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/horus-sleep-0.png",
@@ -67,7 +73,10 @@
           450
         ]
       },
-      "sha256": "d4fb2d940dc7ca2678fa6f4d9c284c3a9037117a909b6d4ae0b3ee40085ff4ca"
+      "sha256": "d4fb2d940dc7ca2678fa6f4d9c284c3a9037117a909b6d4ae0b3ee40085ff4ca",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/horus-sleep-1.png",
@@ -81,7 +90,10 @@
           450
         ]
       },
-      "sha256": "444f1c9efe5110983fc30101f9e4925d5868f87440d1ffe3fffdd0dbe860cec2"
+      "sha256": "444f1c9efe5110983fc30101f9e4925d5868f87440d1ffe3fffdd0dbe860cec2",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/set-sleep-side-0.png",
@@ -95,7 +107,10 @@
           445
         ]
       },
-      "sha256": "f2d64fe558bc4b03c7c7b4d511540fa2e2fbcb02002e5e91498c676aa6613c92"
+      "sha256": "f2d64fe558bc4b03c7c7b4d511540fa2e2fbcb02002e5e91498c676aa6613c92",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true
     },
     {
       "path": "png/set-sleep-side-1.png",
@@ -109,7 +124,10 @@
           445
         ]
       },
-      "sha256": "ffc044b592c363bd9774cc0641673a216c48876087b231797a73a0300cc11c4a"
+      "sha256": "ffc044b592c363bd9774cc0641673a216c48876087b231797a73a0300cc11c4a",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true
     },
     {
       "path": "png/horus-sleep-side-0.png",
@@ -123,7 +141,10 @@
           445
         ]
       },
-      "sha256": "7a078a7fc99fa0b7f784444f6101ce51f575c118cfc9f2cd65a73d97740591fd"
+      "sha256": "7a078a7fc99fa0b7f784444f6101ce51f575c118cfc9f2cd65a73d97740591fd",
+      "status": "revision-requested",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/horus-sleep-side-1.png",
@@ -137,15 +158,12 @@
           445
         ]
       },
-      "sha256": "7ade6d789b0d23ae975eb7e8f6adbdbb1eab0ac39e9a051679b3e3a140bdc5fa"
+      "sha256": "7ade6d789b0d23ae975eb7e8f6adbdbb1eab0ac39e9a051679b3e3a140bdc5fa",
+      "status": "revision-requested",
+      "artApproved": false,
+      "runtimeEligible": false
     }
   ],
-  "reviewStatusByCharacter": {
-    "set": "user-rejected",
-    "horus": "user-rejected"
-  },
-  "rejectionEvidence": "사용자: 8장 싹 다 다시 그려라. 후속 지시: 몸 비율은195 맞춰, 얼굴형은195를 따르지 말 것.",
-  "supersededHorusReview": "../sleep-horus-v196/manifest.json",
   "bodyProportionsReference": true,
-  "supersededBy": "../sleep-set-horus-v197/manifest.json"
+  "approvalEvidence": "197 정면만 채택 / 195 세트 옆모습으로 채택 / 195 호루스 외곽선만 기본 정지/걷기 수준으로 수정"
 }

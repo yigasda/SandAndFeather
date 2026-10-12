@@ -1,0 +1,18 @@
+[
+  {
+    "file": "horus-sleep-side-0.png",
+    "changedPixels": 6411,
+    "changedOutsideContourBand": 0,
+    "protectedInterior": "unchanged byte-for-byte",
+    "maxInnerBandPx": 2.65,
+    "maxOutwardPx": 1
+  },
+  {
+    "file": "horus-sleep-side-1.png",
+    "changedPixels": 6512,
+    "changedOutsideContourBand": 0,
+    "protectedInterior": "unchanged byte-for-byte",
+    "maxInnerBandPx": 2.65,
+    "maxOutwardPx": 1
+  }
+]

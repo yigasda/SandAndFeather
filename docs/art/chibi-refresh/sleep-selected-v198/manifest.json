@@ -1,0 +1,181 @@
+{
+  "revision": 198,
+  "action": "sleep",
+  "status": "partially-user-approved",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "runtimeOwner": "opus",
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 8,
+  "playback": {
+    "sequence": [
+      0,
+      1
+    ],
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "approvalEvidence": "197 정면만 채택 / 195 세트 옆모습으로 채택 / 195 호루스 외곽선만 기본 정지/걷기 수준으로 수정 / 추가: 197 세트 정면 두 장의 올라간 왼쪽 팔이 지나치게 길어 수정",
+  "files": [
+    {
+      "path": "png/set-sleep-side-0.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "f2d64fe558bc4b03c7c7b4d511540fa2e2fbcb02002e5e91498c676aa6613c92",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true,
+      "sourceRevision": 195,
+      "sourcePath": "sleep-set-horus-v195/png/set-sleep-side-0.png"
+    },
+    {
+      "path": "png/set-sleep-side-1.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "ffc044b592c363bd9774cc0641673a216c48876087b231797a73a0300cc11c4a",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true,
+      "sourceRevision": 195,
+      "sourcePath": "sleep-set-horus-v195/png/set-sleep-side-1.png"
+    },
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "11498a739fd20c5617017e8dcc4b8d1c2b924b5f055e586f9f47390362f99428",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true,
+      "sourceRevision": 197,
+      "sourcePath": "sleep-set-horus-v197/png/horus-sleep-0.png"
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "d9f37c02146491726c1605e8e685efd00c43cbc963f6b62838a0ec6e73706e2c",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true,
+      "sourceRevision": 197,
+      "sourcePath": "sleep-set-horus-v197/png/horus-sleep-1.png"
+    },
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "cb8cedd0f74581e8e3805b8c002dd328366fcef28f16c7a2538d283310f2bc8a",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "runtimeEligible": false,
+      "sourceRevision": 197,
+      "sourcePath": "sleep-set-horus-v197/png/set-sleep-0.png",
+      "edit": "raised screen-left arm shortened locally"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "9ef996994f51ea6f5962784e5efa49144a5ae5ea9bc466c7fc2f19352dc4f3aa",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "runtimeEligible": false,
+      "sourceRevision": 197,
+      "sourcePath": "sleep-set-horus-v197/png/set-sleep-1.png",
+      "edit": "raised screen-left arm shortened locally"
+    },
+    {
+      "path": "png/horus-sleep-side-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "0624d5634e909724ab4c58321a82f3a062fbf518b5e3941d2bb353141b94492c",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "runtimeEligible": false,
+      "sourceRevision": 195,
+      "edit": "outer contour thickness only"
+    },
+    {
+      "path": "png/horus-sleep-side-1.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "4ae350e710eb2197de35aedd990491e3fe5e7459afe8135d70b7293a31928f21",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "runtimeEligible": false,
+      "sourceRevision": 195,
+      "edit": "outer contour thickness only"
+    }
+  ]
+}

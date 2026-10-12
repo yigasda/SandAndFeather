@@ -1,7 +1,7 @@
 {
   "revision": 197,
   "action": "sleep",
-  "status": "awaiting-user-review",
+  "status": "partially-user-approved",
   "artApproved": false,
   "runtimeEligible": false,
   "canvas": [
@@ -31,7 +31,10 @@
           450
         ]
       },
-      "sha256": "11498a739fd20c5617017e8dcc4b8d1c2b924b5f055e586f9f47390362f99428"
+      "sha256": "11498a739fd20c5617017e8dcc4b8d1c2b924b5f055e586f9f47390362f99428",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true
     },
     {
       "path": "png/horus-sleep-1.png",
@@ -45,7 +48,10 @@
           450
         ]
       },
-      "sha256": "d9f37c02146491726c1605e8e685efd00c43cbc963f6b62838a0ec6e73706e2c"
+      "sha256": "d9f37c02146491726c1605e8e685efd00c43cbc963f6b62838a0ec6e73706e2c",
+      "status": "user-approved",
+      "artApproved": true,
+      "runtimeEligible": true
     },
     {
       "path": "png/horus-sleep-side-0.png",
@@ -59,7 +65,10 @@
           450
         ]
       },
-      "sha256": "aa633dec5e5fbff7ec5234e68559bd18515bb2b9554650a9fb3227b0f3f9e765"
+      "sha256": "aa633dec5e5fbff7ec5234e68559bd18515bb2b9554650a9fb3227b0f3f9e765",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/horus-sleep-side-1.png",
@@ -73,7 +82,10 @@
           450
         ]
       },
-      "sha256": "cffb3706ea8bf0c3962ce9ffa95395ea3920f8c30779077270f5f07979d92ffe"
+      "sha256": "cffb3706ea8bf0c3962ce9ffa95395ea3920f8c30779077270f5f07979d92ffe",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/set-sleep-0.png",
@@ -87,7 +99,10 @@
           450
         ]
       },
-      "sha256": "775d80c1855473b65e9d7686b96fa8d951539ef79826d672d2619f42edbd8a45"
+      "sha256": "775d80c1855473b65e9d7686b96fa8d951539ef79826d672d2619f42edbd8a45",
+      "status": "revision-requested",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/set-sleep-1.png",
@@ -101,7 +116,10 @@
           450
         ]
       },
-      "sha256": "e636a617e4e5034e1e92707261f91ee193729943c4d8fbfa2e5ba83f5f059730"
+      "sha256": "e636a617e4e5034e1e92707261f91ee193729943c4d8fbfa2e5ba83f5f059730",
+      "status": "revision-requested",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/set-sleep-side-0.png",
@@ -115,7 +133,10 @@
           450
         ]
       },
-      "sha256": "6988c715c1511b31078505366ac6e73eec291d1ae61cd8ed1fb2d8550c0fde3d"
+      "sha256": "6988c715c1511b31078505366ac6e73eec291d1ae61cd8ed1fb2d8550c0fde3d",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     },
     {
       "path": "png/set-sleep-side-1.png",
@@ -129,7 +150,11 @@
           450
         ]
       },
-      "sha256": "99a8ca7b05c75de14c62b3b15d9c43a75a57562cc645549c0f5ecb189587949a"
+      "sha256": "99a8ca7b05c75de14c62b3b15d9c43a75a57562cc645549c0f5ecb189587949a",
+      "status": "not-selected",
+      "artApproved": false,
+      "runtimeEligible": false
     }
-  ]
+  ],
+  "approvalEvidence": "197 정면만 채택 / 195 세트 옆모습으로 채택 / 195 호루스 외곽선만 기본 정지/걷기 수준으로 수정 / 추가: 197 세트 정면 두 장의 올라간 왼쪽 팔이 지나치게 길어 수정"
 }
