@@ -19,8 +19,17 @@ const SEATS = {
     ],
     colonnade_seat: [],
 };
-// the middle of the body lying in bed (her head on the left pillow of Set's bed, which is wide enough for two)
-const BEDS = { set_bed: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' } };
+// the middle of the body lying in bed, per who lies down: Set's bed is wide enough for two, Somang takes the right
+// pillow, Set and Horus the left. `side`: lying on the side, facing her (the right), for when two sleep together
+const BEDS = {
+    set_bed: {
+        somang: { x: 17.45, y: 3.85, dir: 'down', pose: 'sleep' },
+        set: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' },
+        horus: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' },
+        side: { x: 15.7, y: 3.85, dir: 'right', pose: 'sleep' },
+    },
+};
+export const bedPlace = (id, who, side = false) => (side ? BEDS[id]?.side : BEDS[id]?.[who]) || BEDS[id]?.set;
 
 const hasPose = (pose, dir) => !!DATA.sprites?.looks?.[player.look]?.motion?.acts?.[pose]?.[dir];
 
@@ -54,7 +63,7 @@ function bedCard(spot, ui) {
         tag: '잠', title: spot.title,
         text: `${spot.text}\n태양 기운이 절반 이하로 남으면 잘 수 있어(지금 ${sunLeft(s)}/${sunMax()}). 자고 나면 새 하루야. 채팅의 날짜는 그대로야.`,
         buttons: [{ label: '닫기' }, { label: ok ? '잠자기' : '아직 졸리지 않아', primary: ok, disabled: !ok, onClick: () => {
-            const b = BEDS[spot.id];
+            const b = bedPlace(spot.id, player.look);
             if (b && hasPose(b.pose, b.dir)) holdPose(b.pose, b.x, b.y, b.dir);
             ui.toast('잘 자…');
             setTimeout(async () => {
