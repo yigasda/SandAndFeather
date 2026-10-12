@@ -1,0 +1,32 @@
+{
+  "revision": 202,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "canvas": [
+    620,
+    720
+  ],
+  "files": [
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "410cdc20761a1bd9e6d4e887582f1831aac359cb15914dd04fb81b5b97d5e645"
+    }
+  ],
+  "unchangedFiles": [
+    "sleep-front-fix-v201/png/horus-sleep-0.png",
+    "sleep-front-fix-v201/png/set-sleep-0.png",
+    "sleep-front-fix-v201/png/set-sleep-1.png"
+  ]
+}
