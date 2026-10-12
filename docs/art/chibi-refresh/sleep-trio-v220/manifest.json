@@ -34,7 +34,7 @@
      450
     ]
    },
-   "sha256": "317405fae7dadc457b48ac24a48473a96389ef6211b469fa85926ff337c81f12"
+   "sha256": "ab1280abf7d6c5a4ed0f49c1556562e641b780779c126cad74ad4fd06193ed53"
   },
   {
    "path": "png/horus-sleep-1.png",
@@ -47,7 +47,7 @@
      450
     ]
    },
-   "sha256": "7277424a38e4cf037b9d69fd5a2b972c70e499230919e1d7317df21ba2d6ccbe"
+   "sha256": "930bc6c7ada80d9c54133db7dacf8b9b420123ace490481b2aad3598df7bd68a"
   },
   {
    "path": "png/horus-sleep-side-0.png",
@@ -182,6 +182,7 @@
  "occlusionNote": "이불·침대는 PNG에 없음. 원본 침대 위에 눕힘.",
  "edits": {
   "set side": "머리(목 위)를 목(338,370) 기준 93 %로 줄이고 아래 70행에 걸쳐 원래 크기로(사용자: 세트 옆면 대가리 너무 큼). 원본 sources/*-210.png",
-  "somang": "게임에서 10 % 크게(referenceVisibleHeight 523.6, 사용자: 소망 전체 크기 좀 더); 머리 112 %·몸 85 % (목 (255,355) 기준, 아래 70행에 걸쳐 바뀜, 사용자: 소망 혼자 비율이 달라 → 2번 채택). 원본 sources/somang-sleep-*-orig.png"
+  "somang": "게임에서 10 % 크게(referenceVisibleHeight 523.6, 사용자: 소망 전체 크기 좀 더); 머리 112 %·몸 85 % (목 (255,355) 기준, 아래 70행에 걸쳐 바뀜, 사용자: 소망 혼자 비율이 달라 → 2번 채택). 원본 sources/somang-sleep-*-orig.png",
+  "horus front": "얼굴: 눈 높이 폭 96 %, 턱 폭 92 %(x 308 기준, y 230부터 425까지 서서히), 턱 4 px 길게, 귀 폭 85 %·높이 90 %(얼굴선 쪽으로, 옆머리가 채움). 사용자: 넓적하고 네모남 → 중간 2번 채택. 전 그림 sources/horus-sleep-*-before-face.png, 시안 horus-face-options.png"
  }
 }
