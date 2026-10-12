@@ -47,7 +47,7 @@ export function holdPose(name, sx, sy, dir) {
     if (!player.seat) player.seat = { x: player.x, y: player.y, dir: player.dir };
     Object.assign(player, { x: sx - 0.5, y: sy - 1, dir, moving: false, walkT: 0, act: { name, at: performance.now() } });
 }
-// the companion lying down beside her (sleeping together): { x, y, dir, name, at }, the same anchor rules as holdPose
+// the companion sitting or lying down beside her: { x, y, dir, name, at }, the same anchor rules as holdPose
 export function holdMate(name, sx, sy, dir) { player.mate = { x: sx - 0.5, y: sy - 1, dir, name, at: performance.now() }; }
 export function getUp() {
     player.mate = null;
