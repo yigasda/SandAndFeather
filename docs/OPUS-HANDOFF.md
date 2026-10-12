@@ -1,6 +1,6 @@
 # 오푸스 인수인계 — 게임 적용과 코드 (지금 기준만)
 
-**오푸스용 문서다.** 갱신 2026-10-12, **0.9.34** 기준. 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
+**오푸스용 문서다.** 갱신 2026-10-12, **0.9.35** 기준. 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
 
 ## 이 게임
 
@@ -47,7 +47,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 ## 버전과 검증
 
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.34**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.35**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
 - **검증 스크립트 세 개**(`tools/art/`, ST가 떠 있고 확장이 들어가 있어야 함). 출력 폴더를 인자로 준다. 셋 다 exit 0이어야 한다:
   ```sh
   export NODE_PATH=/opt/node-tools/node_modules
@@ -67,7 +67,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
   - `solo.js`: 세트 앞장 솔로, 호루스+소망 동행
   - 폰 크기는 412×900. 안채나 맵을 고치면 출구 걷기·낮밤도 본다.
 
-## 게임 지금 상태 — 0.9.34
+## 게임 지금 상태 — 0.9.35
 
 | 영역 | 내용 | 자세한 기록 |
 |---|---|---|
@@ -79,7 +79,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 | 자세히 카드 | `tabs.js characterCard(ui, id)`: 그림, 모험 등급, 능력치, 배움(앞장일 때만 고름). 그림은 `portraits.js picture(id)` → `data/art/portraits/gallery/` 일러스트(`GALLERY = {somang:1, set:3, horus:3}`, 한 장이면 ‹ › 숨김). 소망 일러스트는 원본 704×1216을 위쪽 2:3으로 잘라 512×768 WebP. 원본은 `docs/art/portraits-illust/gallery/`. 대화 카드 상반신과 미소 버튼은 뺐다(다시 넣지 않는다) | CHANGELOG 0.9.29·0.9.30 |
 | 셋소호 스프라이트 | 최종 48장(`docs/art/chibi-refresh/final/`: 정지 12장 620×720 발 기준점(310,662) 기준 키 576, 걷기 36장 360×400 기준점(180,370) 기준 키 330)과 채택 동작을 `tools/art/pack-trio-motion.py`로 패킹한다. `final/manifest.json`의 `runtimeEligible`이 true여야 한다. 결과는 캐릭터마다 한 장: `data/art/characters/trio-motion-<누구>.png`(256px, 0.9.34 기준 가장 큰 세트 2866×1297)·`-small.png`(폰 125px), 연결은 `data/sprites.json`의 `looks.<who>.motion`(`file`, `small.file`). 표시 높이 31.2 논리 px(폰에서 얼굴이 손톱만 함), 걷기 0-1-2-1 180ms. **아틀라스가 4096px을 넘으면 폰에서 안 그려질 수 있다.** 그래서 0.9.33에 캐릭터별로 나눴다. 동작이 더 늘어 한 캐릭터 것이 4096에 가까워지면 동작을 그 캐릭터의 두 번째 아틀라스로 나눈다(렌더러는 `motion.file`/`small.file` 하나만 읽으므로 그때 프레임마다 파일을 가리키게 바꿔야 한다) | [TRIO-MOTION-098.md](TRIO-MOTION-098.md) |
 | 동작 | `motion.acts[동작][방향][프레임]` + `actPlay[동작] = {frameMs, loop, hold}`. 그리는 쪽 `render.js motionPerson`의 `anim.act`: 보통은 한 번 재생 후 마지막 장 220ms 머물고 정지, `hold`(앉기)는 마지막 장 유지, `loop`(잠들기)는 반복. hold·loop일 땐 발 그림자를 안 그린다. 프레임의 기준점은 manifest `anchor`(발 / 앉은 자리 / 몸 가운데)가 그대로 pivot이 된다. **말 걸기**(`interact`): 셋 다 4방향(소망 172, 세트 174·175, 호루스 176·177). **줍기**(`pickup`): 셋 다 4방향(소망 181, 호루스 182, 세트 185; 세트·호루스는 `pickup-trio-v182` 한 폴더). 땅의 것(모험 touch·find, 벽화 아닌 비밀)은 thing에 `pose: 'pickup'`, 그 캐릭터에게 그림이 없으면 손 뻗기(`window.js talk`, 카드가 열리기까지 `ACT_MS` = interact 260 / pickup 380ms). **앉기**(`sit-floor`): 소망 방석 왼쪽 보기 179. **잠들기**(`sleep`): 소망 180, 방향 `down`, 800ms loop(호흡 프레임 오기 전이라 지금은 한 장) | 아래 "동작 넣는 법" |
-| 게임 하루·쉬기 | `src/core/rest.js`, `src/packs/life/rest.js`. 게임 하루 = `ledger.today(s)` = 챗 날짜와 `s.ledger.gday` 중 늦은 쪽(태양 기운·매일 의뢰·결산·텃밭·하루 한 번 행동이 전부 이걸 씀). 침대(`set_bed`)에서 `sleepNow`: 태양 기운이 절반 이하일 때만, `gday = today+1` → `newDays` → `day:started`(태양 기운·의뢰·결산이 기존 흐름대로). 챗이 그 날짜에 오면 새 날이 아니라 두 번 안 센다. 자고 나면 `s.wake = {part:'dawn', raw}`로 화면 시간대만 아침(`partNow(s)`, 챗 트래커 raw가 바뀌면 해제). 게임 판정(비밀, 두아트 문, 선착장, 축제, HUD, 그림)은 `partNow`, **챗 주입·모험 생성·서랍은 `s.part` 그대로.** 화면 위 날짜도 챗 날짜 그대로다. 앉아 쉬기(`temple_table`, `colonnade_seat`)는 태양 기운 +1, 게임 하루 2번(`ledger.acts rest:sit:1/2`), 가득 차 있으면 횟수를 안 씀. 자리 좌표는 `packs/life/rest.js SEATS/BEDS`: 자세 기준점이 놓이는 칸 좌표·방향·동작 이름. 그 캐릭터·방향 그림이 있을 때만 앉은·누운 그림(`player.holdPose`, 원래 자리는 `player.seat`에 보관, 저장 위치도 원래 자리), 없으면 선 채로 효과만. 움직이거나 말 걸기를 누르면 원래 자리에서 일어남(`getUp`). 침대 이불로 몸을 가리는 occluder는 아직 없다(누운 그림이 이불 위에 보임). 0.9.34부터 셋 다 잠들기 2프레임(숨쉬기, `sleep-trio-v220`): 바로 눕기 `sleep.down`, 세트·호루스 옆으로 눕기 `sleep.right`(패킹만, 같이 자기용, 아직 안 씀). 자리는 `BEDS.set_bed`에 사람별: 소망 오른쪽 베개(17.45), 세트·호루스 왼쪽(15.7), `side`(옆으로, 왼쪽 베개, 오른쪽을 봄). `bedPlace(id, who, side)`. 같이 자기: `bedPair(id, lead, mate)` → 오른쪽 베개는 소망(없으면 호루스, `BEDS.right`), 왼쪽은 옆잠(`side`). 동행 자세는 `player.mate`(`holdMate`, `getUp`·`placePlayer`가 지움), `window.js draw()`가 동행을 따라오는 대신 그 자리에 눕혀 그린다. 호루스 방 침대 spot은 다음 일 | CHANGELOG 0.9.32 |
+| 게임 하루·쉬기 | `src/core/rest.js`, `src/packs/life/rest.js`. 게임 하루 = `ledger.today(s)` = 챗 날짜와 `s.ledger.gday` 중 늦은 쪽(태양 기운·매일 의뢰·결산·텃밭·하루 한 번 행동이 전부 이걸 씀). 침대(`set_bed`)에서 `sleepNow`: 태양 기운이 절반 이하일 때만, `gday = today+1` → `newDays` → `day:started`(태양 기운·의뢰·결산이 기존 흐름대로). 챗이 그 날짜에 오면 새 날이 아니라 두 번 안 센다. 자고 나면 `s.wake = {part:'dawn', raw}`로 화면 시간대만 아침(`partNow(s)`, 챗 트래커 raw가 바뀌면 해제). 게임 판정(비밀, 두아트 문, 선착장, 축제, HUD, 그림)은 `partNow`, **챗 주입·모험 생성·서랍은 `s.part` 그대로.** 화면 위 날짜도 챗 날짜 그대로다. 앉아 쉬기(`temple_table`, `colonnade_seat`)는 태양 기운 +1, 게임 하루 2번(`ledger.acts rest:sit:1/2`), 가득 차 있으면 횟수를 안 씀. 자리 좌표는 `packs/life/rest.js SEATS/BEDS`: 자세 기준점이 놓이는 칸 좌표·방향·동작 이름. 그 캐릭터·방향 그림이 있을 때만 앉은·누운 그림(`player.holdPose`, 원래 자리는 `player.seat`에 보관, 저장 위치도 원래 자리), 없으면 선 채로 효과만. 움직이거나 말 걸기를 누르면 원래 자리에서 일어남(`getUp`). 침대 이불로 몸을 가리는 occluder는 아직 없다(누운 그림이 이불 위에 보임). 0.9.34부터 셋 다 잠들기 2프레임(숨쉬기, `sleep-trio-v220`): 바로 눕기 `sleep.down`, 세트·호루스 옆으로 눕기 `sleep.right`(패킹만, 같이 자기용, 아직 안 씀). 자리는 `BEDS.set_bed`에 사람별: 소망 오른쪽 베개(17.45; 0.9.35 머리 112 %·몸 85 %로 바꾼 뒤 y 3.98), 세트·호루스 왼쪽(15.7), `side`(옆으로, 왼쪽 베개, 오른쪽을 봄). `bedPlace(id, who, side)`. 같이 자기: `bedPair(id, lead, mate)` → 오른쪽 베개는 소망(없으면 호루스, `BEDS.right`), 왼쪽은 옆잠(`side`). 동행 자세는 `player.mate`(`holdMate`, `getUp`·`placePlayer`가 지움), `window.js draw()`가 동행을 따라오는 대신 그 자리에 눕혀 그린다. 호루스 방 침대 spot은 다음 일 | CHANGELOG 0.9.32 |
 | 카드(팝업) | `src/ui/popups.js`의 `showCard`. 테두리와 제목은 고정, 안쪽 `.sf_pop_scroll`만 스크롤 | CHANGELOG 0.9.22 |
 | 성능 | 지도는 보이는 부분만 그린다. 이동은 실제 시간 기준 0.05초 단위. 지도 그림은 그 지도에 있을 때만 풀어 둔다(`lazy`). 잠든 동안만 걷기 fps로 그린다(호흡) | [PERF-0917.md](PERF-0917.md) |
 | 상인 | 옛 `pocket-chibi.png`(townsman) 그대로. `pack-pocket-sprites.cjs`는 돌리지 않는다 | |

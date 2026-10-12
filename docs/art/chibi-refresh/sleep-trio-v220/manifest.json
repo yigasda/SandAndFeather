@@ -138,7 +138,7 @@
      450
     ]
    },
-   "sha256": "f978455238883bc9eebdfe09275311b70f412ed46d1db74147e36a1976284feb",
+   "sha256": "fb36c262f63cbcc02edfd855bb812884f7d4226ecb97f0c821ce1c8ae097ea46",
    "referenceVisibleHeight": 523.6
   },
   {
@@ -152,7 +152,7 @@
      450
     ]
    },
-   "sha256": "a18fca3af96d68e97f3fff5eedf08a2ed70e0bdba08dcf76f2827c3c308fd878",
+   "sha256": "9e931f24fc6178fad5c950c87e7cab3308f83a25c6e0455f77eabd144ef8beb0",
    "referenceVisibleHeight": 523.6
   }
  ],
@@ -182,6 +182,6 @@
  "occlusionNote": "이불·침대는 PNG에 없음. 원본 침대 위에 눕힘.",
  "edits": {
   "set side": "머리(목 위)를 목(338,370) 기준 93 %로 줄이고 아래 70행에 걸쳐 원래 크기로(사용자: 세트 옆면 대가리 너무 큼). 원본 sources/*-210.png",
-  "somang": "게임에서 10 % 크게(referenceVisibleHeight 523.6, 사용자: 소망 전체 크기 좀 더)"
+  "somang": "게임에서 10 % 크게(referenceVisibleHeight 523.6, 사용자: 소망 전체 크기 좀 더); 머리 112 %·몸 85 % (목 (255,355) 기준, 아래 70행에 걸쳐 바뀜, 사용자: 소망 혼자 비율이 달라 → 2번 채택). 원본 sources/somang-sleep-*-orig.png"
  }
 }
