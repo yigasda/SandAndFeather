@@ -214,9 +214,6 @@
        ],
        "left": [
         [109, 381, 107, 139, 53.06, 115.1]
-       ],
-       "down": [
-        [218, 381, 104, 110, 52.27, 107.66]
        ]
       },
       "sit-floor": {
@@ -286,9 +283,6 @@
       ],
       "left": [
        [215, 760, 213, 280, 106.33, 232.78]
-      ],
-      "down": [
-       [430, 760, 208, 220, 103.78, 217.22]
       ]
      },
      "sit-floor": {
@@ -328,12 +322,12 @@
       "loop": false,
       "hold": true
      },
-     "sit-stool": {
+     "sit-bench": {
       "frameMs": [800],
       "loop": false,
       "hold": true
      },
-     "sit-bench": {
+     "sit-stool": {
       "frameMs": [800],
       "loop": false,
       "hold": true
@@ -557,9 +551,6 @@
        ],
        "left": [
         [127, 387, 125, 131, 64.88, 105.01]
-       ],
-       "down": [
-        [254, 387, 128, 120, 60.27, 117.66]
        ]
       },
       "sit-floor": {
@@ -633,9 +624,6 @@
       ],
       "left": [
        [252, 772, 251, 263, 131.11, 211.78]
-      ],
-      "down": [
-       [505, 772, 258, 242, 119.78, 239.22]
       ]
      },
      "sit-floor": {
@@ -679,12 +667,12 @@
       "loop": false,
       "hold": true
      },
-     "sit-stool": {
+     "sit-bench": {
       "frameMs": [800],
       "loop": false,
       "hold": true
      },
-     "sit-bench": {
+     "sit-stool": {
       "frameMs": [800],
       "loop": false,
       "hold": true
@@ -911,9 +899,6 @@
        ],
        "left": [
         [103, 370, 101, 135, 54.31, 107.31]
-       ],
-       "down": [
-        [206, 370, 85, 103, 42.27, 100.66]
        ]
       },
       "sit-floor": {
@@ -987,9 +972,6 @@
       ],
       "left": [
        [203, 735, 202, 270, 108.0, 216.44]
-      ],
-      "down": [
-       [407, 735, 168, 206, 83.78, 203.22]
       ]
      },
      "sit-floor": {
@@ -1033,12 +1015,12 @@
       "loop": false,
       "hold": true
      },
-     "sit-stool": {
+     "sit-bench": {
       "frameMs": [800],
       "loop": false,
       "hold": true
      },
-     "sit-bench": {
+     "sit-stool": {
       "frameMs": [800],
       "loop": false,
       "hold": true

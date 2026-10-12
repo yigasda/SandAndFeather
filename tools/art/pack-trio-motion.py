@@ -118,13 +118,6 @@ def main():
         data = open(os.path.join(ROOT, f['path']), 'rb').read()
         assert hashlib.sha256(data).hexdigest() == f['sha256'], f['id']
     extra, playback = action_frames()
-    # until a front-facing sitting picture comes, the front pickup's first frame (crouched, knees up) stands in for
-    # sitting on a bench facing the room (user's call, 0.9.51): the same picture again as sit-bench/down. A real
-    # sit-bench front frame, once packed, takes over by itself
-    for who in ['set', 'somang', 'horus']:
-        if not any(f['character'] == who and f['state'] == 'sit-bench' and f['gameDirection'] == 'down' for f in extra):
-            src = next(f for f in extra if f['character'] == who and f['state'] == 'pickup' and f['gameDirection'] == 'down' and f['phase'] == 0)
-            extra.append({**src, 'id': f'{who}.sit-bench.down.0', 'state': 'sit-bench'})
     # one atlas per character: with every action in one picture it would pass 4096 px, past what some phones draw
     big, small = {}, {}
     for who in ['set', 'somang', 'horus']:
