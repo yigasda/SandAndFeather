@@ -1,0 +1,93 @@
+{
+  "revision": 199,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 4,
+  "playback": {
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "files": [
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "bdb768e9c0ae238c965e3e6c6df0f8a074e41491268bf882559fe7203fb23339",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "baseRevision": 198,
+      "bodyReference": "195 Horus front; Set retains left-up/right-down arm gesture"
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "ebe9e7a484ea6482f4dbf3556430d4298a9783b4892cac3741fc829b9075d8ff",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "baseRevision": 198,
+      "bodyReference": "195 Horus front; Set retains left-up/right-down arm gesture"
+    },
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "352cbd99fef6f52fde39e6f634263223631e38653ff5dc40e0756bdceb8f0888",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "baseRevision": 198,
+      "bodyReference": "195 Horus front; Set retains left-up/right-down arm gesture"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "d9f9fa2e1bb11989698118b88847480ff6c2179fc6bf6d60312137e0df0dc733",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "baseRevision": 198,
+      "bodyReference": "195 Horus front; Set retains left-up/right-down arm gesture"
+    }
+  ]
+}

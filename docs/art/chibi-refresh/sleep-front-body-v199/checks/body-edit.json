@@ -1,0 +1,34 @@
+[
+  {
+    "file": "horus-sleep-0.png",
+    "changedPixels": 40998,
+    "bodySource": "new image edit",
+    "bodyGeometryReference": "sleep-set-horus-v195/png/horus-sleep-0.png",
+    "base": "sleep-selected-v198/png/horus-sleep-0.png",
+    "headAboveY350Unchanged": true
+  },
+  {
+    "file": "horus-sleep-1.png",
+    "changedPixels": 43357,
+    "bodySource": "new image edit",
+    "bodyGeometryReference": "sleep-set-horus-v195/png/horus-sleep-1.png",
+    "base": "sleep-selected-v198/png/horus-sleep-1.png",
+    "headAboveY350Unchanged": true
+  },
+  {
+    "file": "set-sleep-0.png",
+    "changedPixels": 42375,
+    "bodySource": "new image edit",
+    "bodyGeometryReference": "sleep-set-horus-v195/png/horus-sleep-0.png",
+    "base": "sleep-selected-v198/png/set-sleep-0.png",
+    "headAboveY350Unchanged": true
+  },
+  {
+    "file": "set-sleep-1.png",
+    "changedPixels": 44696,
+    "bodySource": "new image edit",
+    "bodyGeometryReference": "sleep-set-horus-v195/png/horus-sleep-1.png",
+    "base": "sleep-selected-v198/png/set-sleep-1.png",
+    "headAboveY350Unchanged": true
+  }
+]

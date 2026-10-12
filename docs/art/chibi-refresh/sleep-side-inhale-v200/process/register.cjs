@@ -1,0 +1,2 @@
+const sharp=require('sharp'),fs=require('fs');
+(async()=>{let p='/workspace/SandAndFeather-git/docs/art/chibi-refresh/sleep-side-inhale-v200/png/horus-sleep-side-1.png';let buf=await sharp(p).extract({left:0,top:0,width:620,height:705}).toBuffer();await sharp({create:{width:620,height:720,channels:4,background:'#00000000'}}).composite([{input:buf,left:0,top:15}]).png().toFile(p+'.tmp.png');fs.renameSync(p+'.tmp.png',p);})();

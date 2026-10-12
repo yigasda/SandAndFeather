@@ -55,11 +55,12 @@
         ]
       },
       "sha256": "ffc044b592c363bd9774cc0641673a216c48876087b231797a73a0300cc11c4a",
-      "status": "user-approved",
-      "artApproved": true,
-      "runtimeEligible": true,
+      "status": "revision-requested",
+      "artApproved": false,
+      "runtimeEligible": false,
       "sourceRevision": 195,
-      "sourcePath": "sleep-set-horus-v195/png/set-sleep-side-1.png"
+      "sourcePath": "sleep-set-horus-v195/png/set-sleep-side-1.png",
+      "inhaleRevision": "../sleep-side-inhale-v200/manifest.json"
     },
     {
       "path": "png/horus-sleep-0.png",
@@ -74,11 +75,12 @@
         ]
       },
       "sha256": "11498a739fd20c5617017e8dcc4b8d1c2b924b5f055e586f9f47390362f99428",
-      "status": "user-approved",
-      "artApproved": true,
-      "runtimeEligible": true,
+      "status": "revision-requested",
+      "artApproved": false,
+      "runtimeEligible": false,
       "sourceRevision": 197,
-      "sourcePath": "sleep-set-horus-v197/png/horus-sleep-0.png"
+      "sourcePath": "sleep-set-horus-v197/png/horus-sleep-0.png",
+      "bodyRevision": "../sleep-front-body-v199/manifest.json"
     },
     {
       "path": "png/horus-sleep-1.png",
@@ -93,11 +95,12 @@
         ]
       },
       "sha256": "d9f37c02146491726c1605e8e685efd00c43cbc963f6b62838a0ec6e73706e2c",
-      "status": "user-approved",
-      "artApproved": true,
-      "runtimeEligible": true,
+      "status": "revision-requested",
+      "artApproved": false,
+      "runtimeEligible": false,
       "sourceRevision": 197,
-      "sourcePath": "sleep-set-horus-v197/png/horus-sleep-1.png"
+      "sourcePath": "sleep-set-horus-v197/png/horus-sleep-1.png",
+      "bodyRevision": "../sleep-front-body-v199/manifest.json"
     },
     {
       "path": "png/set-sleep-0.png",
@@ -112,12 +115,13 @@
         ]
       },
       "sha256": "cb8cedd0f74581e8e3805b8c002dd328366fcef28f16c7a2538d283310f2bc8a",
-      "status": "awaiting-user-review",
+      "status": "revision-requested",
       "artApproved": false,
       "runtimeEligible": false,
       "sourceRevision": 197,
       "sourcePath": "sleep-set-horus-v197/png/set-sleep-0.png",
-      "edit": "raised screen-left arm shortened locally"
+      "edit": "raised screen-left arm shortened locally",
+      "bodyRevision": "../sleep-front-body-v199/manifest.json"
     },
     {
       "path": "png/set-sleep-1.png",
@@ -132,12 +136,13 @@
         ]
       },
       "sha256": "9ef996994f51ea6f5962784e5efa49144a5ae5ea9bc466c7fc2f19352dc4f3aa",
-      "status": "awaiting-user-review",
+      "status": "revision-requested",
       "artApproved": false,
       "runtimeEligible": false,
       "sourceRevision": 197,
       "sourcePath": "sleep-set-horus-v197/png/set-sleep-1.png",
-      "edit": "raised screen-left arm shortened locally"
+      "edit": "raised screen-left arm shortened locally",
+      "bodyRevision": "../sleep-front-body-v199/manifest.json"
     },
     {
       "path": "png/horus-sleep-side-0.png",
@@ -171,11 +176,13 @@
         ]
       },
       "sha256": "4ae350e710eb2197de35aedd990491e3fe5e7459afe8135d70b7293a31928f21",
-      "status": "awaiting-user-review",
+      "status": "revision-requested",
       "artApproved": false,
       "runtimeEligible": false,
       "sourceRevision": 195,
-      "edit": "outer contour thickness only"
+      "edit": "outer contour thickness only",
+      "inhaleRevision": "../sleep-side-inhale-v200/manifest.json"
     }
-  ]
+  ],
+  "latestInstruction": "정면 몸4장은195 호루스 몸에 대고 새로 그림(199); 옆잠1 두 장은각0을 밑에 깔고 새로 그림(200), 세트 머리 갈래도 움직임. 옆잠0 원본 유지."
 }

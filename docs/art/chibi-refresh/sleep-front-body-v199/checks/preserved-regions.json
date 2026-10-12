@@ -1,0 +1,26 @@
+[
+  {
+    "file": "set-sleep-0.png",
+    "headTop350ChangedPixels": 0,
+    "faceBoxChangedPixels": 0,
+    "changedPixels": 42375
+  },
+  {
+    "file": "set-sleep-1.png",
+    "headTop350ChangedPixels": 0,
+    "faceBoxChangedPixels": 0,
+    "changedPixels": 44696
+  },
+  {
+    "file": "horus-sleep-0.png",
+    "headTop350ChangedPixels": 0,
+    "faceBoxChangedPixels": 0,
+    "changedPixels": 40998
+  },
+  {
+    "file": "horus-sleep-1.png",
+    "headTop350ChangedPixels": 0,
+    "faceBoxChangedPixels": 0,
+    "changedPixels": 43357
+  }
+]

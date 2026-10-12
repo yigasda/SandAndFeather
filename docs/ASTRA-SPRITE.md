@@ -266,7 +266,7 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 | 상호작용 | 소망 [172](art/chibi-refresh/interaction-somang-v172/README.md), 세트 [174·175](art/chibi-refresh/interaction-set-v174/README.md), 호루스 [176·177](art/chibi-refresh/interaction-horus-v176/README.md) | 셋 × 4방향 × 2 |
 | 줍기 | 소망 [181](art/chibi-refresh/pickup-somang-v178/README.md), 호루스 182·세트 185 [pickup-trio-v182](art/chibi-refresh/pickup-trio-v182/README.md) | 셋 × 4방향 × 2 |
 | 앉기 | 소망 방석 왼쪽 [179](art/chibi-refresh/sit-somang-v179/README.md) | 대표 1장 |
-| 잠들기 | 소망 프레임0 [180](art/chibi-refresh/sleep-somang-v180/README.md), 호루스 정면0·1 [197](art/chibi-refresh/sleep-set-horus-v197/README.md), 세트 옆0·1 [195](art/chibi-refresh/sleep-set-horus-v195/README.md) | 최신 사용자: “197 정면만 채택 / 195 세트 옆모습으로 채택”. [198 선택 묶음](art/chibi-refresh/sleep-selected-v198/README.md)에 채택4장 원본 보존. 세트 정면2장 올린 왼쪽 팔 길이 + 호루스 옆2장 외곽선 수정 검토 중 |
+| 잠들기 | 소망 프레임0 [180](art/chibi-refresh/sleep-somang-v180/README.md), 세트 옆0 [195](art/chibi-refresh/sleep-set-horus-v195/README.md) | 197 정면은 채택 후 몸 수정 요청으로[199](art/chibi-refresh/sleep-front-body-v199/README.md)4장 검토 중. 세트 옆1은 이후 재작화 요청으로[200](art/chibi-refresh/sleep-side-inhale-v200/README.md) 검토 중. 호루스 옆0은198 외곽선 수정본 유지, 옆1은200 새 그림. 새 버전을 채택 처리하지 않는다 |
 
 검사 도구를 하나만 다시 돌릴 때: `skin-check.py`(피부색), `action-check.py`(머리·키·외곽선·쏠림), `onion.py A B [--flip-b]`(두 장 겹치기), `head-check.py`(정지 머리 겹치기·가이드), `fit-scale.py`(서 있는 자세의 머리·발 맞춤). 보통은 `sprite-review.py` 한 줄이면 된다.
 

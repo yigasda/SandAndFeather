@@ -1,0 +1,90 @@
+{
+  "revision": 200,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 4,
+  "changedFrameCount": 2,
+  "playback": {
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "files": [
+    {
+      "path": "png/horus-sleep-side-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "0624d5634e909724ab4c58321a82f3a062fbf518b5e3941d2bb353141b94492c",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "source": "sleep-selected-v198 frame0 unchanged"
+    },
+    {
+      "path": "png/horus-sleep-side-1.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "d7c1484fcaf0f31a64bb4ba50b74ddf459e71ee16178c992b042af1c8fbfc2a5",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "source": "Newly drawn inhale using its own frame0 underdrawing; no torso resize or warp"
+    },
+    {
+      "path": "png/set-sleep-side-0.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "f2d64fe558bc4b03c7c7b4d511540fa2e2fbcb02002e5e91498c676aa6613c92",
+      "status": "user-approved",
+      "artApproved": true,
+      "source": "sleep-selected-v198 frame0 unchanged"
+    },
+    {
+      "path": "png/set-sleep-side-1.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          315,
+          445
+        ]
+      },
+      "sha256": "cd7cc9f89a4706fd5f9971051aed7a278314d6893fb8cd552067364bf258a783",
+      "status": "awaiting-user-review",
+      "artApproved": false,
+      "source": "Newly drawn inhale using its own frame0 underdrawing; no torso resize or warp"
+    }
+  ]
+}

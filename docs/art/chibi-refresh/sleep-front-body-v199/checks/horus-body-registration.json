@@ -1,0 +1,14 @@
+[
+  {
+    "frame": 0,
+    "bodySilhouetteIoU": 1.0,
+    "sameBodyRGBFraction": 0.0014862390190822474,
+    "note": "195 used for contour geometry, new painted RGB and new edge stroke"
+  },
+  {
+    "frame": 1,
+    "bodySilhouetteIoU": 1.0,
+    "sameBodyRGBFraction": 0.00151882609441219,
+    "note": "195 used for contour geometry, new painted RGB and new edge stroke"
+  }
+]

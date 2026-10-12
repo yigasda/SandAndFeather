@@ -1,0 +1,16 @@
+[
+  {
+    "character": "set",
+    "frame0ByteIdentical": true,
+    "frame0sha256": "f2d64fe558bc4b03c7c7b4d511540fa2e2fbcb02002e5e91498c676aa6613c92",
+    "silhouetteChangedPixels": 11115,
+    "changedPixels": 201035
+  },
+  {
+    "character": "horus",
+    "frame0ByteIdentical": true,
+    "frame0sha256": "0624d5634e909724ab4c58321a82f3a062fbf518b5e3941d2bb353141b94492c",
+    "silhouetteChangedPixels": 9441,
+    "changedPixels": 138522
+  }
+]
