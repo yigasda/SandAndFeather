@@ -1,0 +1,181 @@
+{
+ "revision": 220,
+ "action": "sleep",
+ "status": "user-approved",
+ "artApproved": true,
+ "runtimeEligible": true,
+ "characters": [
+  "set",
+  "somang",
+  "horus"
+ ],
+ "frameCount": 2,
+ "canvas": [
+  620,
+  720
+ ],
+ "referenceVisibleHeight": 576,
+ "anchor": {
+  "kind": "body-center",
+  "position": [
+   310,
+   450
+  ]
+ },
+ "files": [
+  {
+   "path": "png/horus-sleep-0.png",
+   "character": "horus",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "position": [
+     310,
+     450
+    ]
+   },
+   "sha256": "317405fae7dadc457b48ac24a48473a96389ef6211b469fa85926ff337c81f12"
+  },
+  {
+   "path": "png/horus-sleep-1.png",
+   "character": "horus",
+   "direction": "front",
+   "frame": 1,
+   "anchor": {
+    "position": [
+     310,
+     450
+    ]
+   },
+   "sha256": "7277424a38e4cf037b9d69fd5a2b972c70e499230919e1d7317df21ba2d6ccbe"
+  },
+  {
+   "path": "png/horus-sleep-side-0.png",
+   "character": "horus",
+   "direction": "side-right",
+   "frame": 0,
+   "anchor": {
+    "position": [
+     315,
+     445
+    ]
+   },
+   "sha256": "b3689539853cd90e4199ace4c514de9333829a58bdcff3616b306792f4235f08"
+  },
+  {
+   "path": "png/horus-sleep-side-1.png",
+   "character": "horus",
+   "direction": "side-right",
+   "frame": 1,
+   "anchor": {
+    "position": [
+     315,
+     445
+    ]
+   },
+   "sha256": "63a6be301167fe90e80c60384111dd7d2090a37aca8180d0245335e53249b0cd"
+  },
+  {
+   "path": "png/set-sleep-0.png",
+   "character": "set",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "position": [
+     310,
+     450
+    ]
+   },
+   "sha256": "68a22272db65ef8b97afe294d0c7ac6959ba4d8b092818e91d231a144ec43fe3"
+  },
+  {
+   "path": "png/set-sleep-1.png",
+   "character": "set",
+   "direction": "front",
+   "frame": 1,
+   "anchor": {
+    "position": [
+     310,
+     450
+    ]
+   },
+   "sha256": "726e8b44b317063bb10075793ec6b5ac96936eae8c5004ee21e070b257d7ceab"
+  },
+  {
+   "path": "png/set-sleep-side-0.png",
+   "character": "set",
+   "direction": "side-right",
+   "frame": 0,
+   "anchor": {
+    "position": [
+     315,
+     445
+    ]
+   },
+   "sha256": "3a8fcd66d2ce936b1d75574b8e651c2b315009b4cd9941a2922c82440cc81068"
+  },
+  {
+   "path": "png/set-sleep-side-1.png",
+   "character": "set",
+   "direction": "side-right",
+   "frame": 1,
+   "anchor": {
+    "position": [
+     315,
+     445
+    ]
+   },
+   "sha256": "7c3c6f1d8419c5259cdaed3bdba6bc9db8c09db17cbe64e4ad18d7010c5aebb8"
+  },
+  {
+   "path": "png/somang-sleep-0.png",
+   "character": "somang",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "position": [
+     310,
+     450
+    ]
+   },
+   "sha256": "f978455238883bc9eebdfe09275311b70f412ed46d1db74147e36a1976284feb"
+  },
+  {
+   "path": "png/somang-sleep-1.png",
+   "character": "somang",
+   "direction": "front",
+   "frame": 1,
+   "anchor": {
+    "position": [
+     310,
+     450
+    ]
+   },
+   "sha256": "a18fca3af96d68e97f3fff5eedf08a2ed70e0bdba08dcf76f2827c3c308fd878"
+  }
+ ],
+ "playback": {
+  "sequence": [
+   0,
+   1
+  ],
+  "durationMs": [
+   800,
+   800
+  ],
+  "loop": true
+ },
+ "directionMap": {
+  "front": "down",
+  "side-right": "right"
+ },
+ "sources": {
+  "somang": "Drive somang-sleep-0/1 (사용자 전달)",
+  "set front": "Drive 210_세트_정면_채택",
+  "set side": "Drive 210_세트_옆면_채택",
+  "horus side": "Drive 210_호루스_옆면_채택",
+  "horus front": "../sleep-horus-front-v219 (0: 218에서 문양 교체, 1: 0프레임 상체 20 % 넓혀 만든 숨쉬기, 오푸스, 사용자 채택)"
+ },
+ "approvalEvidence": "잠들기 끝.. / 아 저거 맞아 / (호루스 1프레임) 채택",
+ "occlusionNote": "이불·침대는 PNG에 없음. 원본 침대 위에 눕힘."
+}
