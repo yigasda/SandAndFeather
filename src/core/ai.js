@@ -4,6 +4,7 @@
 // Settings live in settings().conn; the key and the JSON stay in this browser's SillyTavern settings.
 
 import { settings, saveSettings } from './settings.js';
+import { ctx } from './st.js';
 
 export function connSettings() {
     const st = settings();
@@ -13,10 +14,13 @@ export function connSettings() {
     if (!t.mode) t.mode = st.advAI === 'off' ? 'off' : st.advAI === 'ai' ? 'archive-ai' : 'archive-draft';
     t.url ??= ''; t.key ??= ''; t.model ??= ''; t.fmt ??= ''; t.effort ??= '';
     t.vxJson ??= ''; t.vxLocation ??= 'global'; t.vxModel ??= 'gemini-2.5-flash';
+    // where the Vertex key comes from: the one saved in SillyTavern's own Vertex AI connection ('st'), or a JSON
+    // pasted here ('own'). Someone who already pasted one keeps it
+    t.vxSource ??= t.vxJson ? 'own' : 'st';
     t.max ??= 6000;
     return t;
 }
-export const ownReady = (t = connSettings()) => (t.mode === 'custom' ? !!(t.url && t.model) : t.mode === 'vertex' ? !!(t.vxJson && t.vxModel) : false);
+export const ownReady = (t = connSettings()) => (t.mode === 'custom' ? !!(t.url && t.model) : t.mode === 'vertex' ? !!((t.vxSource === 'st' || t.vxJson) && t.vxModel) : false);
 
 // one request through the game's own connection
 export async function callConn(t, system, prompt, maxTokens, effort = '') {
@@ -230,7 +234,48 @@ export async function vertexToken(sa) {
     return j.access_token;
 }
 
-export async function callVertex({ vxJson, vxLocation, vxModel }, system, prompt, maxTokens) {
+// --- Vertex AI through SillyTavern: its server holds the key (a service account JSON or an Express API key, saved in
+// its own Vertex AI connection) and makes the call; the key never reaches this page.
+// which Vertex keys SillyTavern has saved: { full, express } (the secret names are SillyTavern's)
+export async function stVertexKeys() {
+    try {
+        const r = await fetch('/api/secrets/read', { method: 'POST', headers: ctx().getRequestHeaders() });
+        const j = r.ok ? await r.json() : {};
+        const has = v => Array.isArray(v) ? v.length > 0 : !!v;
+        return { full: has(j.vertexai_service_account_json), express: has(j.api_key_vertexai) };
+    } catch { return { full: false, express: false }; }
+}
+async function callVertexST({ vxLocation, vxModel }, system, prompt, maxTokens) {
+    const keys = await stVertexKeys();
+    const oai = ctx().chatCompletionSettings || {};
+    // SillyTavern's own choice when it has that key, else whichever key it has
+    const mode = keys[oai.vertexai_auth_mode] ? oai.vertexai_auth_mode : keys.full ? 'full' : keys.express ? 'express' : '';
+    if (!mode) throw new Error('실리에 저장된 Vertex 키가 없어요. 실리 API 연결에서 Vertex AI 키를 먼저 저장하거나, 여기서 JSON을 붙여넣어 주세요.');
+    const model = String(vxModel || '').trim();
+    if (!model) throw new Error('Vertex 모델 이름을 넣어 주세요 (예: gemini-2.5-flash)');
+    const r = await fetch('/api/backends/chat-completions/generate', {
+        method: 'POST',
+        headers: ctx().getRequestHeaders(),
+        body: JSON.stringify({
+            chat_completion_source: 'vertexai', vertexai_auth_mode: mode,
+            vertexai_region: String(vxLocation || 'global').trim(), vertexai_express_project_id: oai.vertexai_express_project_id || '',
+            model, max_tokens: maxTokens, temperature: 0.8, stream: false, use_sysprompt: true,
+            messages: [...(system ? [{ role: 'system', content: system }] : []), ...turnsOf(prompt)],
+        }),
+    });
+    const body = await r.text();
+    let j = null; try { j = JSON.parse(body); } catch { /* not JSON */ }
+    if (!r.ok || j?.error) throw new Error(`Vertex(실리 경유) 오류 ${r.status}: ${j?.error?.message || j?.message || body.slice(0, 200) || '실리 서버 로그를 봐 주세요'}`);
+    const cand = j?.candidates?.[0];
+    const out = (cand?.content?.parts || []).filter(p => !p.thought).map(p => p.text || '').join('');
+    if (!out && cand?.finishReason) throw new Error(`Vertex가 답을 막았어요 (${cand.finishReason})`);
+    if (!out && j?.promptFeedback?.blockReason) throw new Error(`Vertex가 요청을 막았어요 (${j.promptFeedback.blockReason})`);
+    return out;
+}
+
+export async function callVertex(t, system, prompt, maxTokens) {
+    if (t.vxSource === 'st') return callVertexST(t, system, prompt, maxTokens);
+    const { vxJson, vxLocation, vxModel } = t;
     const sa = parseServiceAccount(vxJson);
     const loc = String(vxLocation || 'global').trim();
     const model = String(vxModel || '').trim();

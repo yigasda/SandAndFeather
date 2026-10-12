@@ -2,6 +2,8 @@
 
 README에서 옮긴 버전별 변경 내역이다. 위가 최신이다. 지금 상태는 [README](README.md)와 [오푸스 인수인계](docs/OPUS-HANDOFF.md)를 본다.
 
+**0.9.55:** 작은 모험 Vertex AI에서 "실리에 저장된 Vertex 키 쓰기"를 고를 수 있다(기본). 실리 API 연결에 저장한 서비스 계정 JSON(또는 익스프레스 키)을 실리 서버가 그대로 써서 부르고, 키는 페이지로 오지 않는다(`/api/backends/chat-completions/generate`, `chat_completion_source: vertexai`). 전처럼 JSON을 붙여넣는 방식도 남겨 뒀다.
+
 **0.9.54:** 최적화. ① 설치용 `release` 브랜치(`tools/release.sh`): 게임이 쓰는 파일만 담아 설치 폴더가 약 1.3 GB → 약 200 MB(.git 포함). main으로 깔면 SillyTavern이 켤 때마다 auto_update로 그림 작업 기록까지 git pull 해서 실리 전체가 느려졌다. ② 캐릭터 그림(아틀라스)을 페이지 열 때가 아니라 게임 창을 처음 열 때 불러온다(실리 첫 화면에서 이미지 디코딩 없음).
 
 **0.9.53:** 앉는 자리 다듬기(사용자): 작업 탁자 걸상은 호루스만 오른쪽으로(무릎이 걸상 앞 끝에, 소망·세트는 그대로). 우물 마당 돌 벤치는 사용자가 고른 의자 가운데 자리(22.95, 5.38, 셋 다 같음).

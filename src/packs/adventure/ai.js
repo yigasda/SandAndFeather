@@ -26,7 +26,7 @@ export async function aiLabel() {
     const t = connSettings();
     if (t.mode === 'off') return '꺼짐 · 무작위만';
     if (t.mode === 'custom') return ownReady(t) ? `커스텀 · ${t.model}` : '커스텀 · 주소와 모델을 넣어 줘';
-    if (t.mode === 'vertex') return ownReady(t) ? `Vertex · ${t.vxModel}` : 'Vertex · JSON과 모델을 넣어 줘';
+    if (t.mode === 'vertex') return ownReady(t) ? `Vertex · ${t.vxModel}${t.vxSource === 'st' ? ' · 실리 키' : ''}` : 'Vertex · JSON과 모델을 넣어 줘';
     const m = await archive();
     if (!m) return '아카이브 확장을 못 찾았어';
     if (t.mode === 'archive-draft' && m.draftReady?.()) return `아카이브 초안 모델 · ${m.drLabel?.() || ''}`;

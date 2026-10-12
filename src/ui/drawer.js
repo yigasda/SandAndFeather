@@ -10,7 +10,7 @@ import { ctx, hasChat } from '../core/st.js';
 import { getState, resetState, saveState } from '../core/state.js';
 import { lastTracker, placeInfo, readPlace, setByHand, syncFromChat, trackerRegex, weatherOf } from '../core/tracker.js';
 import { dropNews, newsStatus, pending, prepared } from '../core/news.js';
-import { connSettings, listModels, parseServiceAccount, vxTokens } from '../core/ai.js';
+import { connSettings, listModels, parseServiceAccount, stVertexKeys, vxTokens } from '../core/ai.js';
 import { aiLabel, testConn } from '../packs/adventure/ai.js';
 import { ensureAdventure } from '../packs/adventure/gen.js';
 import { sunLeft } from '../core/sun.js';
@@ -95,7 +95,9 @@ export function renderDrawer(problems = []) {
                 <div class="sf_line_btns"><button type="button" class="sf_btn sf_small" id="sf_conn_list">모델 불러오기</button></div>
               </div>
               <div class="sf_conn" data-for="vertex">
-                <label class="sf_field">서비스 계정 JSON<textarea class="sf_ta" id="sf_conn_vxjson" rows="3" spellcheck="false" placeholder="${connSettings().vxJson ? '저장됨 · 바꾸려면 새 JSON을 붙여넣기' : '키 파일 내용을 통째로 붙여넣기'}"></textarea></label>
+                <label class="sf_field">키<select id="sf_conn_vxsrc">${opt([['st', '실리에 저장된 Vertex 키 쓰기'], ['own', '여기에 JSON 붙여넣기']], connSettings().vxSource)}</select></label>
+                <div class="sf_sub" id="sf_conn_vxst"></div>
+                <label class="sf_field" id="sf_conn_vxjson_row">서비스 계정 JSON<textarea class="sf_ta" id="sf_conn_vxjson" rows="3" spellcheck="false" placeholder="${connSettings().vxJson ? '저장됨 · 바꾸려면 새 JSON을 붙여넣기' : '키 파일 내용을 통째로 붙여넣기'}"></textarea></label>
                 <div class="sf_sub" id="sf_conn_vxinfo"></div>
                 <div class="sf_grid">
                   <label>위치<input type="text" id="sf_conn_vxloc" value="${esc(connSettings().vxLocation)}" spellcheck="false"></label>
@@ -171,6 +173,7 @@ function bind() {
     $id('sf_conn_fmt').addEventListener('change', e => conn('fmt', e.target.value));
     $id('sf_conn_model').addEventListener('change', e => conn('model', e.target.value.trim()));
     $id('sf_conn_max').addEventListener('change', e => conn('max', Math.max(1024, Number(e.target.value) || 6000)));
+    $id('sf_conn_vxsrc').addEventListener('change', e => { conn('vxSource', e.target.value); refreshDrawer(); });
     $id('sf_conn_vxloc').addEventListener('change', e => conn('vxLocation', e.target.value.trim() || 'global'));
     $id('sf_conn_vxmodel').addEventListener('change', e => conn('vxModel', e.target.value.trim()));
     $id('sf_conn_vxjson').addEventListener('change', e => { const v = e.target.value.trim(); if (!v) return; connSettings().vxJson = v; vxTokens.clear(); e.target.value = ''; e.target.placeholder = '저장됨 · 바꾸려면 새 JSON을 붙여넣기'; saveSettings(); refreshDrawer(); });
@@ -274,8 +277,13 @@ export function refreshDrawer() {
     // only the fields of the chosen connection
     const mode = connSettings().mode;
     document.querySelectorAll('#sf_settings .sf_conn').forEach(el => { el.hidden = !el.dataset.for.split(' ').includes(mode); });
+    const own = connSettings().vxSource !== 'st';
+    const row = $id('sf_conn_vxjson_row'); if (row) row.hidden = !own;
+    const stInfo = $id('sf_conn_vxst');
+    if (stInfo) { stInfo.hidden = own; if (!own) stVertexKeys().then(k => { stInfo.textContent = k.full ? '실리에 서비스 계정 JSON이 저장돼 있어. 키는 실리 서버가 쓰고 여기로 오지 않아.' : k.express ? '실리에 Vertex 익스프레스 키가 저장돼 있어.' : '실리에 저장된 Vertex 키가 없어. 실리 API 연결에서 Vertex AI 키를 저장해 줘.'; }); }
     const vx = $id('sf_conn_vxinfo');
-    if (vx) { const j = connSettings().vxJson; try { vx.textContent = j ? (sa => `프로젝트 ${sa.project_id} · ${sa.client_email}`)(parseServiceAccount(j)) : ''; } catch (e) { vx.textContent = e.message; } }
+    if (vx) vx.hidden = !own;
+    if (vx && own) { const j = connSettings().vxJson; try { vx.textContent = j ? (sa => `프로젝트 ${sa.project_id} · ${sa.client_email}`)(parseServiceAccount(j)) : ''; } catch (e) { vx.textContent = e.message; } }
 
     // what the tracker pattern reads from the newest message that has one
     const test = $id('sf_tracker_test');
