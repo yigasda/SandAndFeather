@@ -112,7 +112,7 @@
      445
     ]
    },
-   "sha256": "53d04798f9ebe25e2714d42aae430305141904f9342e29d6c38b7f246647ab0a"
+   "sha256": "34b7bfd78d4c5cb1af03d90a692899be5ef5e8cc3e146b1b57926929d5d6d892"
   },
   {
    "path": "png/set-sleep-side-1.png",
@@ -125,7 +125,7 @@
      445
     ]
    },
-   "sha256": "4dd1aca2d64a2758a59c49fef096e70193b548f186c032718c2e23a2aa6c9b12"
+   "sha256": "05d769c1a6340552d421a1c101bfc48a965091863be9990e7ba9cabd1c94b54a"
   },
   {
    "path": "png/somang-sleep-0.png",
@@ -181,7 +181,7 @@
  "approvalEvidence": "잠들기 끝.. / 아 저거 맞아 / (호루스 1프레임) 채택",
  "occlusionNote": "이불·침대는 PNG에 없음. 원본 침대 위에 눕힘.",
  "edits": {
-  "set side": "머리(목 위)를 목(338,370) 기준 85 %로 줄이고 아래 70행에 걸쳐 원래 크기로(사용자: 세트 옆면 대가리 너무 큼). 원본 sources/*-210.png",
+  "set side": "머리(목 위)를 목(338,370) 기준 93 %로 줄이고 아래 70행에 걸쳐 원래 크기로(사용자: 세트 옆면 대가리 너무 큼). 원본 sources/*-210.png",
   "somang": "게임에서 10 % 크게(referenceVisibleHeight 523.6, 사용자: 소망 전체 크기 좀 더)"
  }
 }
