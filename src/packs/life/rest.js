@@ -20,7 +20,7 @@ const SEATS = {
     ],
     colonnade_seat: [],
 };
-// the middle of the body lying in bed. Set's bed is wide enough for two: Somang takes the right pillow, Set and Horus
+// the middle of the body lying in bed. Set's bed (and Horus's, the same bed) is wide enough for two: Somang takes the right pillow, Set and Horus
 // the left. Sleeping together, the one on the left lies on the side facing the other (the right); the right one
 // lies on the back. Set and Horus together: Set on the left on the side, Horus on the right pillow.
 // y: set so every head sits at the same height on the pillows (the pictures stand differently on their canvases;
@@ -33,6 +33,16 @@ const BEDS = {
         right: { x: 17.3, y: 3.9, dir: 'down', pose: 'sleep' },     // Horus on the right pillow (with Set)
         side: { x: 15.7, y: 3.85, dir: 'right', pose: 'sleep' },     // Set on the side
         sideHorus: { x: 15.7, y: 3.9, dir: 'right', pose: 'sleep' },
+    },
+    // Horus's bed is the same bed drawn at 91 % (matched on the headboard and pillows): Set's places carried over,
+    // heads kept the same distance above the anchor (0.75 tile) so they land on the smaller pillows
+    horus_bed: {
+        somang: { x: 5.32, y: 4.15, dir: 'down', pose: 'sleep' },
+        set: { x: 3.56, y: 4.03, dir: 'down', pose: 'sleep' },
+        horus: { x: 3.56, y: 4.08, dir: 'down', pose: 'sleep' },
+        right: { x: 5.02, y: 4.08, dir: 'down', pose: 'sleep' },
+        side: { x: 3.56, y: 4.03, dir: 'right', pose: 'sleep' },
+        sideHorus: { x: 3.56, y: 4.08, dir: 'right', pose: 'sleep' },
     },
 };
 export const bedPlace = (id, who, side = false) => (side ? (who === 'horus' ? BEDS[id]?.sideHorus : BEDS[id]?.side) : BEDS[id]?.[who]) || BEDS[id]?.set;

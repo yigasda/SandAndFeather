@@ -176,6 +176,7 @@ SCENES = {
         'exits': [[[9.7, 10.3, 12.3, 11], 'room_entrances_wide', 'horus']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
         'spots': [{'id': 'horus_window', 'x': 11.5, 'y': 3.7, 'title': '큰 창', 'text': '낮에는 하늘이, 밤에는 별이 창을 가득 채운다.',
                    'textNight': '창 가득 별이 떠 있다.'},
+                  {'id': 'horus_bed', 'x': 6.2, 'y': 7.2, 'title': '호루스의 침대', 'text': '푸른 리넨 이불이 반듯하게 펴져 있다. 두 사람이 누워도 넉넉하다.'},
                   {'id': 'horus_desk', 'x': 18.2, 'y': 7.1, 'title': '기록 책상', 'text': '파피루스와 갈대 펜, 깃털이 가지런히 놓여 있다.'}],
     },
     'somang_room': {
