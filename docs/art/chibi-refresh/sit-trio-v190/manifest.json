@@ -264,7 +264,7 @@
         ]
       },
       "expression": "approved179-basic-smile",
-      "sha256": "8500251439a89dffb0b56821f61b6ce1e7f5efc13bdfcaf9fd448598e2e08da1",
+      "sha256": "601662a24095550da6e39126dffc1a493c91a9078eff0a12284b15c50644b013",
       "restoredFrom": "183/186 original bytes",
       "canvas": [
         620,
@@ -376,6 +376,13 @@
       },
       "before": "sources/horus-<자세>-0-before-d.png",
       "user": "호루스는 다른 애들보다 몸이 작다 → (분홍 동그라미) 소망 세트는 동그라미 크기가 비슷한데 호루스만 작음 → D가 낫다"
+    },
+    {
+      "revision": "opus-0.9.44",
+      "files": "걸상 뒷모습 소망 1장 (세트·호루스는 사용자 확인 중)",
+      "what": "뒤에서 보면 다리가 앞으로 내려가 안 보이므로 다리·신발을 지움. tools/art/fix/skirtcut-somang.py — 아래 주름단을 바깥 치마 끝선과 나란히(양옆에서 잰 폭 19~24px), 다리가 가렸던 주름단 아랫부분은 다리 옆 주름단 명암으로 채움, 그 아래(다리·신발·양옆 안감) 지우고 드레스 외곽선(7px) 이음",
+      "before": "sources/somang-back-stool-0-before-legcut.png",
+      "user": "걸상 자세가 다리가 그대로 보여서 가장 이상함 다리는 안 보여야하잖아 → (여러 번 정정) → 잘했어"
     }
   ]
 }

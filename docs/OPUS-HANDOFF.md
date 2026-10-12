@@ -1,6 +1,6 @@
 # 오푸스 인수인계 — 게임 적용과 코드 (지금 기준만)
 
-**오푸스용 문서다.** 갱신 2026-10-12, **0.9.43** 기준. 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
+**오푸스용 문서다.** 갱신 2026-10-12, **0.9.44** 기준. 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
 
 ## 이 게임
 
@@ -50,7 +50,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 ## 버전과 검증
 
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.43**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.44**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
 - **검증 스크립트 세 개**(`tools/art/`, ST가 떠 있고 확장이 들어가 있어야 함). 출력 폴더를 인자로 준다. 셋 다 exit 0이어야 한다:
   ```sh
   export NODE_PATH=/opt/node-tools/node_modules
@@ -73,7 +73,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
   - `bed-measure.js <폴더> '<[누구,[x,y,방향],이름] 목록>' [방]`: 한 사람만 침대 자리에 눕힌 화면과 뺀 화면. 두 장 차이의 박스가 그 사람(머리 위끝·턱 높이 재기)
   - 폰 크기는 412×900. 안채나 맵을 고치면 출구 걷기·낮밤도 본다.
 
-## 게임 지금 상태 — 0.9.43
+## 게임 지금 상태 — 0.9.44
 
 | 영역 | 내용 | 자세한 기록 |
 |---|---|---|
@@ -84,7 +84,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 | 일행 탭 UI | `src/ui/tabs.js partyCard`: 줄마다 `자세히`(`data-detail`)와 `앞장`(`data-lead`), 아래에 동행 고르기(`data-companion`). 하단 탭은 세계·일행·임무·지도 넷 | |
 | 자세히 카드 | `tabs.js characterCard(ui, id)`: 그림, 모험 등급, 능력치, 배움(앞장일 때만 고름). 그림은 `portraits.js picture(id)` → `data/art/portraits/gallery/` 일러스트(`GALLERY = {somang:1, set:3, horus:3}`, 한 장이면 ‹ › 숨김). 소망 일러스트는 원본 704×1216을 위쪽 2:3으로 잘라 512×768 WebP. 원본은 `docs/art/portraits-illust/gallery/`. 대화 카드 상반신과 미소 버튼은 뺐다(다시 넣지 않는다) | CHANGELOG 0.9.29·0.9.30 |
 | 셋소호 스프라이트 | 최종 48장(`docs/art/chibi-refresh/final/`: 정지 12장 620×720 발 기준점(310,662) 기준 키 576, 걷기 36장 360×400 기준점(180,370) 기준 키 330)과 채택 동작을 `tools/art/pack-trio-motion.py`로 패킹한다. `final/manifest.json`의 `runtimeEligible`이 true여야 한다. 결과는 캐릭터마다 한 장: `data/art/characters/trio-motion-<누구>.png`(256px, 0.9.34 기준 가장 큰 세트 2866×1297)·`-small.png`(폰 125px), 연결은 `data/sprites.json`의 `looks.<who>.motion`(`file`, `small.file`). 표시 높이 31.2 논리 px(폰에서 얼굴이 손톱만 함), 걷기 0-1-2-1 180ms. **아틀라스가 4096px을 넘으면 폰에서 안 그려질 수 있다.** 그래서 0.9.33에 캐릭터별로 나눴다. 동작이 더 늘어 한 캐릭터 것이 4096에 가까워지면 동작을 그 캐릭터의 두 번째 아틀라스로 나눈다(렌더러는 `motion.file`/`small.file` 하나만 읽으므로 그때 프레임마다 파일을 가리키게 바꿔야 한다) | [TRIO-MOTION-098.md](TRIO-MOTION-098.md) |
-| 동작 | `motion.acts[동작][방향][프레임]` + `actPlay[동작] = {frameMs, loop, hold}`. 그리는 쪽 `render.js motionPerson`의 `anim.act`: 보통은 한 번 재생 후 마지막 장 220ms 머물고 정지, `hold`(앉기)는 마지막 장 유지, `loop`(잠들기)는 반복. hold·loop일 땐 발 그림자를 안 그린다. 프레임의 기준점은 manifest `anchor`(발 / 앉은 자리 / 몸 가운데)가 그대로 pivot이 된다. **말 걸기**(`interact`): 셋 다 4방향(소망 172, 세트 174·175, 호루스 176·177). **줍기**(`pickup`): 셋 다 4방향(소망 181, 호루스 182, 세트 185; 세트·호루스는 `pickup-trio-v182` 한 폴더). 땅의 것(모험 touch·find, 벽화 아닌 비밀)은 thing에 `pose: 'pickup'`, 그 캐릭터에게 그림이 없으면 손 뻗기(`window.js talk`, 카드가 열리기까지 `ACT_MS` = interact 260 / pickup 380ms). **앉기**: 셋 다(소망 방석 왼쪽 179 + `sit-trio-v190` 14장, 호루스 5장은 0.9.43에 머리 ×1.12·몸 ×1.10). 한 묶음 안의 자리별 그림은 패커가 파일의 `seatType`으로 동작 이름을 나눈다: `sit-floor`(방석 왼·오·위), `sit-stool`(걸상, 위), `sit-bench`(긴 의자, 오른쪽). 기준점은 파일마다 manifest의 엉덩이 아래(seat-bottom). **잠들기**(`sleep`): 셋 다 2프레임 숨쉬기 800ms loop(`sleep-trio-v220`), 바로 눕기 `down`, 세트·호루스 옆잠 `right` | 아래 "동작 넣는 법" |
+| 동작 | `motion.acts[동작][방향][프레임]` + `actPlay[동작] = {frameMs, loop, hold}`. 그리는 쪽 `render.js motionPerson`의 `anim.act`: 보통은 한 번 재생 후 마지막 장 220ms 머물고 정지, `hold`(앉기)는 마지막 장 유지, `loop`(잠들기)는 반복. hold·loop일 땐 발 그림자를 안 그린다. 프레임의 기준점은 manifest `anchor`(발 / 앉은 자리 / 몸 가운데)가 그대로 pivot이 된다. **말 걸기**(`interact`): 셋 다 4방향(소망 172, 세트 174·175, 호루스 176·177). **줍기**(`pickup`): 셋 다 4방향(소망 181, 호루스 182, 세트 185; 세트·호루스는 `pickup-trio-v182` 한 폴더). 땅의 것(모험 touch·find, 벽화 아닌 비밀)은 thing에 `pose: 'pickup'`, 그 캐릭터에게 그림이 없으면 손 뻗기(`window.js talk`, 카드가 열리기까지 `ACT_MS` = interact 260 / pickup 380ms). **앉기**: 셋 다(소망 방석 왼쪽 179 + `sit-trio-v190` 14장, 호루스 5장은 0.9.43에 머리 ×1.12·몸 ×1.10, 소망 걸상 뒷모습은 0.9.44에 다리를 뺌, 세트·호루스 것은 확인 중). 한 묶음 안의 자리별 그림은 패커가 파일의 `seatType`으로 동작 이름을 나눈다: `sit-floor`(방석 왼·오·위), `sit-stool`(걸상, 위), `sit-bench`(긴 의자, 오른쪽). 기준점은 파일마다 manifest의 엉덩이 아래(seat-bottom). **잠들기**(`sleep`): 셋 다 2프레임 숨쉬기 800ms loop(`sleep-trio-v220`), 바로 눕기 `down`, 세트·호루스 옆잠 `right` | 아래 "동작 넣는 법" |
 | 게임 하루·쉬기 | `src/core/rest.js`, `src/packs/life/rest.js`. 게임 하루 = `ledger.today(s)` = 챗 날짜와 `s.ledger.gday` 중 늦은 쪽(태양 기운·매일 의뢰·결산·텃밭·하루 한 번 행동이 전부 이걸 씀). 침대(`set_bed`)에서 `sleepNow`: 태양 기운이 절반 이하일 때만, `gday = today+1` → `newDays` → `day:started`(태양 기운·의뢰·결산이 기존 흐름대로). 챗이 그 날짜에 오면 새 날이 아니라 두 번 안 센다. 자고 나면 `s.wake = {part:'dawn', raw}`로 화면 시간대만 아침(`partNow(s)`, 챗 트래커 raw가 바뀌면 해제). 게임 판정(비밀, 두아트 문, 선착장, 축제, HUD, 그림)은 `partNow`, **챗 주입·모험 생성·서랍은 `s.part` 그대로.** 화면 위 날짜도 챗 날짜 그대로다. 앉아 쉬기(`temple_table`, `colonnade_seat`)는 태양 기운 +1, 게임 하루 2번(`ledger.acts rest:sit:1/2`), 가득 차 있으면 횟수를 안 씀. 자리 좌표는 `packs/life/rest.js SEATS/BEDS`: 자세 기준점이 놓이는 칸 좌표·방향·동작 이름. 앉을 곳(0.9.41): 식사 공간 `temple_table`(식탁 오른쪽 끝 장소, 오른쪽 방석)·`temple_table_mid`(앞 가운데 방석, 뒷모습. 0.9.42), 세트 방 `set_table`(낮은 탁자 왼쪽 8.4·오른쪽 12.3 방석, 선 자리에 가까운 쪽), `set_desk`·`horus_desk`·`somang_mirror`(걸상 뒷모습), `somang_chair`(소망 방 긴 의자, 오른쪽 보기). `colonnade_seat`(열주 계단 긴 의자)는 정면으로 앉는 그림이 없어 아직 비어 있다. 앉거나 누워 있는 동안 머리 위 "살펴보기" 표시는 숨긴다(`window.js draw`). 그 캐릭터·방향 그림이 있을 때만 앉은·누운 그림(`player.holdPose`, 원래 자리는 `player.seat`에 보관, 저장 위치도 원래 자리), 없으면 선 채로 효과만. 움직이거나 말 걸기를 누르면 원래 자리에서 일어남(`getUp`). 침대 이불로 몸을 가리는 occluder는 아직 없다(누운 그림이 이불 위에 보임). 0.9.34부터 셋 다 잠들기 2프레임(숨쉬기, `sleep-trio-v220`): 바로 눕기 `sleep.down`, 세트·호루스 옆으로 눕기 `sleep.right`(패킹만, 같이 자기용, 아직 안 씀). 자리는 `BEDS.set_bed`에 사람별: 소망 오른쪽 베개(x 17.55, y 3.98; 0.9.35 머리 112 %·몸 85 %로 바꾼 뒤), 세트·호루스 왼쪽(15.7), `side`(옆으로, 왼쪽 베개, 오른쪽을 봄). `bedPlace(id, who, side)`. 같이 자기: `bedPair(id, lead, mate)` → 오른쪽 베개는 소망(없으면 호루스, `BEDS.right`), 왼쪽은 옆잠(`side`). 동행 자세는 `player.mate`(`holdMate`, `getUp`·`placePlayer`가 지움), `window.js draw()`가 동행을 따라오는 대신 그 자리에 눕혀 그린다. 0.9.40부터 호루스 방 침대(`horus_bed`, 스팟 6.2,7.2)도 같다: 같은 침대 그림이 91 % 크기라(머리판·베개로 맞춤, 상관 0.95) 세트 침대 자리를 그대로 옮겼다(머리는 기준점 0.75칸 위로 두고 베개에 맞춤, 소망만 x 5.32로 세트 머리와 안 겹치게) | CHANGELOG 0.9.32 |
 | 카드(팝업) | `src/ui/popups.js`의 `showCard`. 테두리와 제목은 고정, 안쪽 `.sf_pop_scroll`만 스크롤 | CHANGELOG 0.9.22 |
 | 성능 | 지도는 보이는 부분만 그린다. 이동은 실제 시간 기준 0.05초 단위. 지도 그림은 그 지도에 있을 때만 풀어 둔다(`lazy`). 잠든 동안만 걷기 fps로 그린다(호흡) | [PERF-0917.md](PERF-0917.md) |
@@ -117,6 +117,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 |---|---|---|
 | `headbody.py in out h b nx ny R` | 목(nx,ny) 위는 h배, 아래 R행에 걸쳐 b배(머리 키우고 몸 줄이기) | 소망 잠 1.12 / 0.85 (목 255,355, 70행) |
 | `bodyscale.py in out b nx ny R ax ay [h]` | 목 위 머리 h배(기본 1, 1이면 픽셀 그대로 옮김), 목 아래 몸 b배, 그다음 기준점(앉은 자리·발)이 제자리에 오게 전체를 옮김 | 호루스 앉기 5장 몸 1.10·머리 1.12 (0.9.43, 사용자 "분홍 동그라미": 뒷모습 머리통이 세트·소망보다 작았음) |
+| `legcut.py`, `skirtcut-somang.py` | 걸상 뒷모습에서 다리·신발 빼기. legcut: 다리 있는 열만, 치마 끝선(어두운 선 최대 5 px 남김) 아래를 지움. skirtcut-somang: 소망 드레스는 아래 주름단을 바깥 치마 끝선과 나란히(양옆에서 잰 폭 19~24 px) 다시 맺고, 다리가 가렸던 주름단은 다리 옆 주름단 명암으로 채운 뒤 7 px 외곽선 | 0.9.44. **사용자에게 배운 것:** 지운 픽셀을 원본 위에 빨갛게 겹쳐 보고 보낸다. 자른 자리는 반드시 원래 외곽선 굵기·색으로 닫는다. 새 끝선은 원래 옷 라인(위 끝선과 나란함)을 따라야 한다. 다리가 가리던 옷 부분은 비워 두지 말고 옷으로 잇는다 |
 | `headshrink.py in out s nx ny R` | 목 위 머리만 s배, R행에 걸쳐 1로 | 세트 옆잠 0.93 (목 338,370) |
 | `faceslim.py in out cx top eye chin neck mid low L` | 얼굴 폭을 눈높이 mid·턱 low배로(top부터 neck까지 서서히), 턱을 L px 길게(눈 위가 L만큼 올라감) | 호루스 정면 잠: 308 230 340 395 425 0.98 0.95 3 |
 | `earwarp.py in out L\|R s sv E F ay hy 얼굴선점…` | 귀를 얼굴선 쪽으로 폭 s·높이 sv로 누르고, 비는 곳은 옆머리·배경이 늘어나 채운다(구멍 없음). 얼굴선 안쪽은 안 움직임 | 호루스 귀 0.90 / 0.94. **귀를 지우고 작게 붙이는 방식은 잔선·구멍·끊긴 턱선이 남아 버렸다** |
