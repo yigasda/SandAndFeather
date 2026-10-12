@@ -14,6 +14,8 @@
 **매번 [`docs/ASTRA-START.md`](docs/ASTRA-START.md)부터 연다.**
 
 > **⚠️ ASTRA: THE FINAL IDLE/WALK SPRITES ARE THE ANSWER. OPEN THEM, TRACE ON THE GUIDES (`head-check.py --guide`, `palette/`), COPY THEIR FACE, HEAD SIZE, LINES, HAIR DETAIL AND COLOURS EXACTLY. ONLY THE POSE CHANGES.**
+>
+> **🛑 ASTRA: DO EXACTLY WHAT THE USER SAID. DO NOT REINTERPRET, NARROW OR "OPTIMISE" THE ORDER. "TRACE THE BODY AND REDRAW" MEANS THE WHOLE BODY, NOT THE OUTER WIDTH. UNSURE? ASK BEFORE DRAWING. CHANGING THE TASK = REJECTED.**
 
 1. **원본부터 연다.** 원본 파일이 있는 그림은 그 원본을 직접 열어 확인한 뒤 작업한다.
 2. **생각하고, 계획을 확인받고 만든다.** 요청 단어만 처리하지 않는다. 결과가 원래 그 그림의 일부처럼 보일지(투시·크기·화풍·동작) 먼저 생각한다. 새 장면, 새 동작, 여러 장 생성은 이미지 생성·편집 전에 계획을 사용자에게 확인받는다.

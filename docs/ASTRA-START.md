@@ -1,5 +1,12 @@
 # 아스트라 입구 — 여기서 시작한다
 
+> # 🛑 DO EXACTLY WHAT THE USER SAID. NOT YOUR VERSION OF IT. 🛑
+> - **THE USER'S WORDS ARE THE ORDER. DO NOT REINTERPRET, NARROW, SOFTEN OR "OPTIMISE" THEM.** "Trace Horus's body and redraw" means **TRACE THE WHOLE BODY AND REDRAW IT** — not "match the outer width", not "fix only the outline", not "adjust a few pixels".
+> - **IF YOU THINK A SMALLER OR EASIER VERSION IS ENOUGH, YOU ARE WRONG. DO THE WHOLE THING.**
+> - **IF YOU ARE UNSURE WHAT THE USER MEANT, ASK BEFORE YOU DRAW. NEVER GUESS AND NEVER PICK THE CHEAPER READING.**
+> - **BEFORE YOU START, WRITE BACK THE USER'S ORDER WORD FOR WORD, THEN WHAT YOU WILL DO FOR EACH PART OF IT.** If your plan drops or shrinks any part, it is wrong.
+> - **CHANGING THE TASK YOU WERE GIVEN INTO A DIFFERENT TASK = REJECTED. EVERY TIME.**
+
 > # ⚠️ READ THIS FIRST — NON-NEGOTIABLE
 > ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. COPY THEIR LOOK EXACTLY. DO NOT REDESIGN ANYTHING.
 > 1. **OPEN THE ORIGINAL FILES BEFORE YOU DRAW** — `docs/art/chibi-refresh/final/<who>/idle/` and `walk/`, same direction. Not from memory, not from a description, not from your last attempt.
