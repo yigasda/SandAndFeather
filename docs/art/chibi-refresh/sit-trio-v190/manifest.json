@@ -44,11 +44,11 @@
         "kind": "seat-bottom",
         "position": [
           310,
-          554
+          585
         ]
       },
       "expression": "calm",
-      "sha256": "9d19f2a8d06362d7a1d9e87901e959629ff6f2dd1c6194c19314c43d443ba8e8",
+      "sha256": "bc2bb674e94dbe16aaa0612889e3932430602d5f0770356d234168c263286539",
       "restoredFrom": "183/186 original bytes",
       "canvas": [
         620,
@@ -157,7 +157,7 @@
         ]
       },
       "expression": "relaxed-half-lids",
-      "sha256": "b6b240845b146dab6dbf6d62148f45d1eca82a5dede78709133a2f59821329e8",
+      "sha256": "4e04e87f3a9daba6c4f0f46e43775525a7d9de18bd44faa6c65e39a12c9f77cc",
       "canvas": [
         620,
         720
@@ -383,6 +383,13 @@
       "what": "뒤에서 보면 다리가 앞으로 내려가 안 보이므로 다리·신발을 지움. tools/art/fix/skirtcut-somang.py — 아래 주름단을 바깥 치마 끝선과 나란히(양옆에서 잰 폭 19~24px), 다리가 가렸던 주름단 아랫부분은 다리 옆 주름단 명암으로 채움, 그 아래(다리·신발·양옆 안감) 지우고 드레스 외곽선(7px) 이음",
       "before": "sources/somang-back-stool-0-before-legcut.png",
       "user": "걸상 자세가 다리가 그대로 보여서 가장 이상함 다리는 안 보여야하잖아 → (여러 번 정정) → 잘했어"
+    },
+    {
+      "revision": "opus-0.9.45",
+      "files": "걸상 뒷모습 세트·호루스",
+      "what": "다리·신발을 지움. tools/art/fix/legcut.py(세트 238 370 520 552 dark, 호루스 228 392 555 590 pale) 뒤: 세트는 다리 외곽선 자국 3곳(238-244, 299-308, 362-369)을 양옆 끝선 높이로 맞추고 붉은 다리 외곽선을 치마 외곽선 색으로, 양옆 처진 덩어리를 옆 외곽선과 잇는 선(왼 545→541, 오 540→544)으로 자름. 호루스는 tools/art/fix/hemline-horus.py로 치마 끝선 아래 외곽선을 옆과 같은 5px로(226~378열) / 호루스 걸상 뒤 기준점 y 554→585: 치마 끝이 걸상 앞 모서리에 걸려 걸상 뒤에 선 것처럼 보였음. 화면에서 치마 끝을 소망 830·세트 832와 같은 831로 올림",
+      "before": "sources/<누구>-back-stool-0-before-legcut.png",
+      "user": "세트 치마 제대로 안 자를래 → 옆 라인이랑 이어지게 → 인겜에 넣어 / 호루스만 의자 뒤쪽이라 이상해 다른애들처럼 의자 앞쪽으로 맞춰"
     }
   ]
 }
