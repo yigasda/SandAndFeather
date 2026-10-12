@@ -16,7 +16,8 @@ F = np.asarray(fb.convert('RGB')).astype(int)
 Uimg = Image.open(user).convert('RGB'); R = np.asarray(Uimg).astype(int)
 U = np.asarray(Uimg.filter(ImageFilter.MedianFilter(3))).astype(float)
 d = np.clip(np.abs(F - R).sum(2), 0, 255).astype(np.uint8)
-ch = np.asarray(Image.fromarray(d).filter(ImageFilter.GaussianBlur(1.5))) > 60
+ch = (np.asarray(Image.fromarray(d).filter(ImageFilter.GaussianBlur(1.5))) > 60)
+raw = d > 60                                     # single pixels the user fixed (broken pixels) count too
 def grow(m, k):
     for _ in range(k):
         n = m.copy(); n[1:] |= m[:-1]; n[:-1] |= m[1:]; n[:, 1:] |= m[:, :-1]; n[:, :-1] |= m[:, 1:]; m = n
@@ -37,7 +38,7 @@ for y, x in zip(*np.where(ch)):
         for cy, cx in comp: ch[cy, cx] = False
 inb = np.zeros((H, W), bool)
 for x0, y0, x1, y1 in boxes: inb[y0:y1, x0:x1] = True
-ch &= inb
+ch = (ch | raw) & inb
 # what the user did not touch stays ours even if the registration is a px or two off there: --keep-gold keeps every
 # pixel of the base's gold (and the 2 px around it)
 if '--keep-gold' in sys.argv:
@@ -58,16 +59,19 @@ if '--keep-gold' in sys.argv:
     for _ in range(2):
         n = gold.copy(); n[1:] |= gold[:-1]; n[:-1] |= gold[1:]; n[:, 1:] |= gold[:, :-1]; n[:, :-1] |= gold[:, 1:]; gold = n
     ch &= ~gold
-bgv = np.array(bg, float)
-a = np.clip(np.abs(U - bgv).sum(2) / 250.0, 0, 1)
-# partial alpha only on a real edge (next to the drawing's background); inside, a dark pixel is a solid dark pixel
-bgcls = np.abs(U - bgv).sum(2) < 50
-near_bg = grow(bgcls, 2)
-a = np.where(near_bg, a, np.maximum(a, 1.0))
+# as jawpaste.py: inside a changed area the user's pixels; against the background the edge is our ink with alpha
+# from how dark the user's pixel is (never the sheet colour); the user's background there -> transparent
+bgv = np.array(bg, float); C = np.asarray(Uimg).astype(float)
+ink = np.array([12, 3, 2], float)
+d_bg = np.linalg.norm(C - bgv, axis=-1)
+isbg = d_bg < 30
+f = np.clip(d_bg / np.linalg.norm(ink - bgv), 0, 1)
+nbr = grow(isbg, 1) & ~isbg
 for y, x in zip(*np.where(ch)):
-    al = a[y, x]
-    if al < 0.2: Bn[y, x, 3] = 0; continue
-    c = np.clip((U[y, x] - (1 - al) * bgv) / al, 0, 255)
-    Bn[y, x, :3] = np.round(c).astype(np.uint8); Bn[y, x, 3] = 255 if al >= 0.85 else int(round(al * 255))
+    if isbg[y, x]: Bn[y, x, 3] = 0
+    elif nbr[y, x] and f[y, x] < 0.9:
+        Bn[y, x, :3] = ink.astype(np.uint8); Bn[y, x, 3] = int(255 * np.clip(f[y, x] * 1.2, 0, 1)) if f[y, x] > 0.3 else 0
+    else:
+        Bn[y, x, :3] = C[y, x].astype(np.uint8); Bn[y, x, 3] = 255
 Image.fromarray(Bn, 'RGBA').save(out)
 print(f'{ch.sum()} px from the drawing, the rest the base as is')
