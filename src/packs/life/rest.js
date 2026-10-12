@@ -43,9 +43,14 @@ const SEATS = {
     // the stool left of her round work table: Horus's thighs are shorter, so he sits further right to put his knees on
     // the stool's front edge (user: his legs hung in the middle of the stool)
     somang_table: bench(9.25, 5.75, 'right').map(p => (p.who === 'horus' ? { ...p, x: 9.4 } : p)),
-    // the stone bench by the courtyard's right wall, seen at an angle: the seat on the middle of its top, the thighs
-    // over its long left edge and the legs hanging down its side (user: thighs must sit where the bench's top is)
-    temple_well_bench: ['somang', 'set', 'horus'].map(who => ({ x: 23.15, y: 5.35, dir: 'left', pose: 'sit-bench', who })),
+    // the stone bench by the courtyard's right wall, seen at an angle: placed on the user's sketch over the picture
+    // (docs/consult/residence-096/0953-user-well-bench.png): the feet on the sketch's feet, the head over its head, so
+    // the seat is on the bench's top and the shins hang down its long left side. One place each (the pictures differ)
+    temple_well_bench: [
+        { x: 23.09, y: 5.76, dir: 'left', pose: 'sit-bench', who: 'somang' },
+        { x: 23.19, y: 5.73, dir: 'left', pose: 'sit-bench', who: 'set' },
+        { x: 23.06, y: 5.71, dir: 'left', pose: 'sit-bench', who: 'horus' },
+    ],
     roof_rug: [                                         // the roof's rug: the long cushions and the red pouf by the low table
         { x: 3.9, y: 6.1, dir: 'right', pose: 'sit-floor' },
         { x: 6.4, y: 6.55, dir: 'up', pose: 'sit-floor' },
