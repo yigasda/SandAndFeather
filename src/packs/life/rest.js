@@ -23,22 +23,25 @@ const SEATS = {
 // the middle of the body lying in bed. Set's bed is wide enough for two: Somang takes the right pillow, Set and Horus
 // the left. Sleeping together, the one on the left lies on the side facing the other (the right); the right one
 // lies on the back. Set and Horus together: Set on the left on the side, Horus on the right pillow.
+// y: set so every head sits at the same height on the pillows (the pictures stand differently on their canvases;
+// measured in the game: the middle of the head, hair top to chin, lined up with Set's)
 const BEDS = {
     set_bed: {
-        somang: { x: 17.45, y: 3.85, dir: 'down', pose: 'sleep' },
+        somang: { x: 17.45, y: 3.925, dir: 'down', pose: 'sleep' },
         set: { x: 15.7, y: 3.85, dir: 'down', pose: 'sleep' },
-        horus: { x: 15.7, y: 4.15, dir: 'down', pose: 'sleep' },        // his picture sits higher on its canvas
-        right: { x: 17.3, y: 4.15, dir: 'down', pose: 'sleep' },     // Horus on the right pillow (with Set)
-        side: { x: 15.7, y: 3.85, dir: 'right', pose: 'sleep' },
+        horus: { x: 15.7, y: 3.9, dir: 'down', pose: 'sleep' },
+        right: { x: 17.3, y: 3.9, dir: 'down', pose: 'sleep' },     // Horus on the right pillow (with Set)
+        side: { x: 15.7, y: 3.85, dir: 'right', pose: 'sleep' },     // Set on the side
+        sideHorus: { x: 15.7, y: 3.9, dir: 'right', pose: 'sleep' },
     },
 };
-export const bedPlace = (id, who, side = false) => (side ? BEDS[id]?.side : BEDS[id]?.[who]) || BEDS[id]?.set;
+export const bedPlace = (id, who, side = false) => (side ? (who === 'horus' ? BEDS[id]?.sideHorus : BEDS[id]?.side) : BEDS[id]?.[who]) || BEDS[id]?.set;
 // two in the bed: where each lies. The right pillow is Somang's; without her, Horus's
 export function bedPair(id, lead, mate) {
     const b = BEDS[id];
     if (!b || !mate) return { lead: bedPlace(id, lead) };
     const right = lead === 'somang' || mate === 'somang' ? 'somang' : 'horus';
-    const at = who => (who === right ? (who === 'somang' ? b.somang : b.right) : b.side);
+    const at = who => (who === right ? (who === 'somang' ? b.somang : b.right) : who === 'horus' ? b.sideHorus : b.side);
     return { lead: at(lead), mate: at(mate) };
 }
 
