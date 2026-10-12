@@ -1,0 +1,18 @@
+[
+  {
+    "stem": "horus-sleep",
+    "silhouetteDifference": 0.03149024029520728
+  },
+  {
+    "stem": "horus-sleep-side",
+    "silhouetteDifference": 0.03318457580281422
+  },
+  {
+    "stem": "set-sleep",
+    "silhouetteDifference": 0.03232429895576675
+  },
+  {
+    "stem": "set-sleep-side",
+    "silhouetteDifference": 0.06696155965625605
+  }
+]

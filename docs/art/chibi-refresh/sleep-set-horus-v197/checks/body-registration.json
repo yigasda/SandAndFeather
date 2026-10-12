@@ -1,0 +1,154 @@
+[
+  {
+    "file": "set-sleep-0.png",
+    "source": "exec-30da1655-bcdd-4c9b-9195-0835e213d004.png",
+    "sourceLandmarks": [
+      503,
+      725,
+      869
+    ],
+    "landmarksY": [
+      394,
+      538,
+      625
+    ],
+    "bodyLengths": [
+      144,
+      87
+    ],
+    "headUniformScale": 0.78
+  },
+  {
+    "file": "set-sleep-1.png",
+    "source": "exec-30da1655-bcdd-4c9b-9195-0835e213d004.png",
+    "sourceLandmarks": [
+      500,
+      725,
+      869
+    ],
+    "landmarksY": [
+      393,
+      538,
+      625
+    ],
+    "bodyLengths": [
+      145,
+      87
+    ],
+    "headUniformScale": 0.78
+  },
+  {
+    "file": "set-sleep-side-0.png",
+    "source": "exec-6b759947-80fd-4f57-8f3e-0aadd93712e5.png",
+    "sourceLandmarks": [
+      524,
+      750,
+      867
+    ],
+    "landmarksY": [
+      395,
+      554,
+      645
+    ],
+    "bodyLengths": [
+      159,
+      91
+    ],
+    "headUniformScale": 0.77
+  },
+  {
+    "file": "set-sleep-side-1.png",
+    "source": "exec-6b759947-80fd-4f57-8f3e-0aadd93712e5.png",
+    "sourceLandmarks": [
+      516,
+      750,
+      867
+    ],
+    "landmarksY": [
+      394,
+      554,
+      645
+    ],
+    "bodyLengths": [
+      160,
+      91
+    ],
+    "headUniformScale": 0.77
+  },
+  {
+    "file": "horus-sleep-0.png",
+    "source": "exec-11d3babe-6f85-42fd-bf16-df969960f976.png",
+    "sourceLandmarks": [
+      583,
+      794,
+      919
+    ],
+    "landmarksY": [
+      390,
+      538,
+      625
+    ],
+    "bodyLengths": [
+      148,
+      87
+    ],
+    "headUniformScale": 0.622
+  },
+  {
+    "file": "horus-sleep-1.png",
+    "source": "exec-11d3babe-6f85-42fd-bf16-df969960f976.png",
+    "sourceLandmarks": [
+      580,
+      786,
+      919
+    ],
+    "landmarksY": [
+      389,
+      538,
+      625
+    ],
+    "bodyLengths": [
+      149,
+      87
+    ],
+    "headUniformScale": 0.622
+  },
+  {
+    "file": "horus-sleep-side-0.png",
+    "source": "exec-fada29f4-f118-474e-8eca-2c25cb33910c.png",
+    "sourceLandmarks": [
+      536,
+      780,
+      904
+    ],
+    "landmarksY": [
+      395,
+      554,
+      645
+    ],
+    "bodyLengths": [
+      159,
+      91
+    ],
+    "headUniformScale": 0.691
+  },
+  {
+    "file": "horus-sleep-side-1.png",
+    "source": "exec-fada29f4-f118-474e-8eca-2c25cb33910c.png",
+    "sourceLandmarks": [
+      533,
+      778,
+      903
+    ],
+    "landmarksY": [
+      394,
+      554,
+      645
+    ],
+    "bodyLengths": [
+      160,
+      91
+    ],
+    "headUniformScale": 0.691
+  }
+]

@@ -1,0 +1,14 @@
+const sharp=require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.cjs'),fs=require('fs');
+const B='/workspace/SandAndFeather-git/docs/art/chibi-refresh/sleep-set-horus-v197';
+const jobs=[
+{stem:'set-sleep',file:'exec-30da1655-bcdd-4c9b-9195-0835e213d004.png',scale:.78,x:[433,1233],tx:310,ys:[[503,725,869],[500,725,869]],target:[394,538,625]},
+{stem:'set-sleep-side',file:'exec-6b759947-80fd-4f57-8f3e-0aadd93712e5.png',scale:.77,x:[570,1357],tx:392,ys:[[524,750,867],[516,750,867]],target:[395,554,645]},
+{stem:'horus-sleep',file:'exec-11d3babe-6f85-42fd-bf16-df969960f976.png',scale:.622,x:[451,1193],tx:310,ys:[[583,794,919],[580,786,919]],target:[390,538,625]},
+{stem:'horus-sleep-side',file:'exec-fada29f4-f118-474e-8eca-2c25cb33910c.png',scale:.691,x:[467,1182],tx:350,ys:[[536,780,904],[533,778,903]],target:[395,554,645]}
+];
+function components(a,w,h){const lab=new Int32Array(w*h),q=new Int32Array(w*h),cs=[];let k=0;for(let i=0;i<w*h;i++){if(lab[i]||a[i*4+3]<30)continue;k++;let n=1,s=0;q[0]=i;lab[i]=k;let sumX=0;while(s<n){let p=q[s++];sumX+=p%w;for(const v of [p-w,p+w,...(p%w>0?[p-1]:[]),...(p%w<w-1?[p+1]:[])])if(v>=0&&v<w*h&&!lab[v]&&a[v*4+3]>=30){lab[v]=k;q[n++]=v;}}cs.push({k,n,x:sumX/n});}return {lab,cs:cs.sort((a,b)=>b.n-a.n).slice(0,2).sort((a,b)=>a.x-b.x)}}
+(async()=>{let log=[];for(const j of jobs){const path='/workspace/generated_images/'+j.file;fs.copyFileSync(path,B+'/sources/'+j.stem+'-pair.png');const {data:a,info:m}=await sharp(path).ensureAlpha().raw().toBuffer({resolveWithObject:true});const {lab,cs}=components(a,m.width,m.height);for(let f=0;f<2;f++){let out=Buffer.alloc(620*720*4),[chin,hem,foot]=j.ys[f],t=[j.target[0]-(f?1:0),j.target[1],j.target[2]],sc=j.scale;
+function sourceY(y){if(y<=t[0])return chin+(y-t[0])/sc;if(y<=t[1])return chin+(y-t[0])*(hem-chin)/(t[1]-t[0]);return hem+(y-t[1])*(foot-hem)/(t[2]-t[1]);}
+for(let y=0;y<720;y++)for(let x=0;x<620;x++){let sy=sourceY(y),sx=(x-j.tx)/sc+j.x[f],xx=Math.floor(sx),yy=Math.floor(sy);let rgba=[0,0,0,0];for(let dy=0;dy<2;dy++)for(let dx=0;dx<2;dx++){let nx=xx+dx,ny=yy+dy;if(nx<0||ny<0||nx>=m.width||ny>=m.height)continue;let p=ny*m.width+nx;if(lab[p]!==cs[f].k)continue;const weight=(dx?sx-xx:1-(sx-xx))*(dy?sy-yy:1-(sy-yy)),al=a[p*4+3]/255;rgba[3]+=al*weight;for(let c=0;c<3;c++)rgba[c]+=a[p*4+c]*al*weight;}let q=(y*620+x)*4;if(rgba[3]>.03){for(let c=0;c<3;c++)out[q+c]=Math.round(rgba[c]/rgba[3]);out[q+3]=Math.round(rgba[3]*255);}}
+const name=j.stem+'-'+f+'.png';await sharp(out,{raw:{width:620,height:720,channels:4}}).png().toFile(B+'/png/'+name);log.push({file:name,source:j.file,sourceLandmarks:j.ys[f],landmarksY:t,bodyLengths:[t[1]-t[0],t[2]-t[1]],headUniformScale:sc});}}
+fs.writeFileSync(B+'/checks/body-registration.json',JSON.stringify(log,null,2));})();

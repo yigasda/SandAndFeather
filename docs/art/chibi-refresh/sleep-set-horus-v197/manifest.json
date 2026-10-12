@@ -1,0 +1,135 @@
+{
+  "revision": 197,
+  "action": "sleep",
+  "status": "awaiting-user-review",
+  "artApproved": false,
+  "runtimeEligible": false,
+  "canvas": [
+    620,
+    720
+  ],
+  "frameCount": 8,
+  "bodyReference": "sleep-set-horus-v195",
+  "redrawMethod": "All eight figures newly painted in four animation pairs; full-figure proportion registration and palette matching. No idle artwork pasted. No line-guide.",
+  "playback": {
+    "durationMs": [
+      800,
+      800
+    ],
+    "loop": true
+  },
+  "files": [
+    {
+      "path": "png/horus-sleep-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "11498a739fd20c5617017e8dcc4b8d1c2b924b5f055e586f9f47390362f99428"
+    },
+    {
+      "path": "png/horus-sleep-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "d9f37c02146491726c1605e8e685efd00c43cbc963f6b62838a0ec6e73706e2c"
+    },
+    {
+      "path": "png/horus-sleep-side-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          350,
+          450
+        ]
+      },
+      "sha256": "aa633dec5e5fbff7ec5234e68559bd18515bb2b9554650a9fb3227b0f3f9e765"
+    },
+    {
+      "path": "png/horus-sleep-side-1.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          350,
+          450
+        ]
+      },
+      "sha256": "cffb3706ea8bf0c3962ce9ffa95395ea3920f8c30779077270f5f07979d92ffe"
+    },
+    {
+      "path": "png/set-sleep-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "775d80c1855473b65e9d7686b96fa8d951539ef79826d672d2619f42edbd8a45"
+    },
+    {
+      "path": "png/set-sleep-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          310,
+          450
+        ]
+      },
+      "sha256": "e636a617e4e5034e1e92707261f91ee193729943c4d8fbfa2e5ba83f5f059730"
+    },
+    {
+      "path": "png/set-sleep-side-0.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          350,
+          450
+        ]
+      },
+      "sha256": "6988c715c1511b31078505366ac6e73eec291d1ae61cd8ed1fb2d8550c0fde3d"
+    },
+    {
+      "path": "png/set-sleep-side-1.png",
+      "character": "set",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "kind": "body-center",
+        "position": [
+          350,
+          450
+        ]
+      },
+      "sha256": "99a8ca7b05c75de14c62b3b15d9c43a75a57562cc645549c0f5ecb189587949a"
+    }
+  ]
+}

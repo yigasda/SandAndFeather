@@ -1,7 +1,7 @@
 {
   "revision": 195,
   "action": "sleep",
-  "status": "awaiting-user-review",
+  "status": "user-rejected",
   "artApproved": false,
   "runtimeEligible": false,
   "runtimeOwner": "opus",
@@ -139,5 +139,13 @@
       },
       "sha256": "7ade6d789b0d23ae975eb7e8f6adbdbb1eab0ac39e9a051679b3e3a140bdc5fa"
     }
-  ]
+  ],
+  "reviewStatusByCharacter": {
+    "set": "user-rejected",
+    "horus": "user-rejected"
+  },
+  "rejectionEvidence": "사용자: 8장 싹 다 다시 그려라. 후속 지시: 몸 비율은195 맞춰, 얼굴형은195를 따르지 말 것.",
+  "supersededHorusReview": "../sleep-horus-v196/manifest.json",
+  "bodyProportionsReference": true,
+  "supersededBy": "../sleep-set-horus-v197/manifest.json"
 }
