@@ -374,6 +374,23 @@
     "day": [0, 0, 1774, 887],
     "night": [0, 0, 1774, 887],
     "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "occluders": [
+      {
+        "foot": 475.8,
+        "polygon": [[728.0, 392.7], [916.0, 392.7], [916.0, 499.9], [728.0, 499.9]],
+        "only": {
+          "act": "sit-floor"
+        }
+      },
+      {
+        "foot": 475.8,
+        "polygon": [[728.0, 393.5], [728.0, 361.3], [730.2, 361.3], [732.4, 359.7], [736.5, 356.7], [739.4, 353.5], [742.0, 348.9], [774.1, 348.9], [774.1, 393.5]],
+        "only": {
+          "act": "sit-floor",
+          "look": "set"
+        }
+      }
+    ],
     "nightFile": "../docs/art/map-expansion/set-room-v6-single-window-night.png"
   },
   "horus_room": {
@@ -418,6 +435,15 @@
     "day": [0, 0, 1774, 887],
     "night": [0, 0, 1774, 887],
     "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "occluders": [
+      {
+        "foot": 508.0,
+        "polygon": [[684.0, 392.7], [1088.0, 392.7], [1088.0, 528.2], [684.0, 528.2]],
+        "only": {
+          "act": "sit-floor"
+        }
+      }
+    ],
     "nightFile": "../docs/art/map-expansion/temple-dining-v2-garden-night.png"
   },
   "temple_sanctuary": {

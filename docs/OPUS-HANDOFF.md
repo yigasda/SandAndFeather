@@ -1,6 +1,6 @@
 # 오푸스 인수인계 — 게임 적용과 코드 (지금 기준만)
 
-**오푸스용 문서다.** 갱신 2026-10-12, **0.9.46** 기준. 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
+**오푸스용 문서다.** 갱신 2026-10-12, **0.9.47** 기준. 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
 
 ## 이 게임
 
@@ -50,7 +50,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 ## 버전과 검증
 
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.46**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.47**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
 - **검증 스크립트 세 개**(`tools/art/`, ST가 떠 있고 확장이 들어가 있어야 함). 출력 폴더를 인자로 준다. 셋 다 exit 0이어야 한다:
   ```sh
   export NODE_PATH=/opt/node-tools/node_modules
@@ -73,13 +73,13 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
   - `bed-measure.js <폴더> '<[누구,[x,y,방향],이름] 목록>' [방]`: 한 사람만 침대 자리에 눕힌 화면과 뺀 화면. 두 장 차이의 박스가 그 사람(머리 위끝·턱 높이 재기)
   - 폰 크기는 412×900. 안채나 맵을 고치면 출구 걷기·낮밤도 본다.
 
-## 게임 지금 상태 — 0.9.46
+## 게임 지금 상태 — 0.9.47
 
 | 영역 | 내용 | 자세한 기록 |
 |---|---|---|
 | 옴보스 전체맵 | 낮 `ombos-upgrade-v1-day.png`, 밤 `ombos-upgrade-v1-night.png`(`docs/art/map-expansion/`), 둘 다 `data/scene-art.json` fullMap. 신전 문으로 걸어 들어가면 안채 | [OMBOS-097.md](OMBOS-097.md) |
 | 안채 15장면 | `tools/maps/residence.py`가 `data/maps/<장면>.json`과 scene-art 항목을 만든다. **데이터를 손으로 고치지 않는다.** 방 그림은 1774×887, 한 칸 = 그림 80.6px(scene-art scale 0.1984 × 16). 우물 마당 3안(27×11칸), 긴 회랑 5장 넓힌 그림(31×11칸, 옛 좌표는 `widen()`), 연못 회랑 24×14칸 | [RESIDENCE-096.md](RESIDENCE-096.md) |
-| 깊은 입구·가림·출구 표지 | 입구는 안으로 걸어 들어가 절반쯤에서 넘어간다(생성기 `open`). 생성기 `front` → scene-art `occluders`(문틀, 기둥, 우물이 캐릭터 위). 출구 표지는 2.2칸 안에서만 | RESIDENCE-096 0.9.20·0.9.21 절 |
+| 깊은 입구·가림·출구 표지 | 입구는 안으로 걸어 들어가 절반쯤에서 넘어간다(생성기 `open`). 생성기 `front` → scene-art `occluders`(문틀, 기둥, 우물이 캐릭터 위). 출구 표지는 2.2칸 안에서만. **자세별 가림(0.9.47):** `front`의 세 번째 값 `{'act'[, 'look']}` → scene-art `only`: 그 자세(와 그 사람)만 뒤로 가고 나머지는 그대로 다시 그린다(`reference-scene.js`, `paintActors`의 `skip`). 방석 옆자리(세트 방 낮은 탁자, 식탁): 테이블 외곽선 픽셀(낮은 탁자 728·916px, 식탁 684·1088px ÷ 80.636)에 맞춰 다리·발·치마 끝만 테이블 밑으로, 윗선 4.87칸은 머리카락 아래. 세트 왼쪽 방석은 탁자 모서리 위 무릎·머리 끝을 사용자가 그린 선(`0947-user-hair-line.jpg`, register.py로 맞춤)까지 따로. **가림 경계는 칸 어림이 아니라 그림 외곽선 픽셀로 잡고, 가린 픽셀(전후 차이)과 외곽선을 겹친 시트로 확인한다**(`docs/consult/residence-096/0947-*.png`) | RESIDENCE-096 0.9.20·0.9.21 절 |
 | 일행·앞장 (솔로) | `src/core/heroes.js`. `state.party = { lead, with }`. `lead`는 셋 중 누구나, `with`는 `''`(혼자) 또는 나머지 둘 중 하나. 앞장의 능력치·배움은 `s.stats`·`s.lessons`(다른 코드는 그대로 읽음), 나머지는 `s.chars[id]`에 보관했다가 `setLead`에서 바꿔 넣는다. 시작 능력치 `START`(세트 체력3, 호루스 지혜2·신앙2). 맵 그림 `player.look = leadOf(s)`, 뒤따르는 그림 `withOf(s)`, 둘 다 맵 NPC에서 빠진다(`window.js onMap`). 생활 활동은 누가 앞장이든 된다. 두아트는 앞장이 싸우고 `companions.somang`(곁을 지킨다)이 있다. **채팅 주입·페르소나는 소망 그대로.** 일부 이야기 문구에 "소망"이 이름으로 남아 있을 수 있다(보이면 앞장 이름으로) | CHANGELOG 0.9.27·0.9.28 |
 | 일행 탭 UI | `src/ui/tabs.js partyCard`: 줄마다 `자세히`(`data-detail`)와 `앞장`(`data-lead`), 아래에 동행 고르기(`data-companion`). 하단 탭은 세계·일행·임무·지도 넷 | |
 | 자세히 카드 | `tabs.js characterCard(ui, id)`: 그림, 모험 등급, 능력치, 배움(앞장일 때만 고름). 그림은 `portraits.js picture(id)` → `data/art/portraits/gallery/` 일러스트(`GALLERY = {somang:1, set:3, horus:3}`, 한 장이면 ‹ › 숨김). 소망 일러스트는 원본 704×1216을 위쪽 2:3으로 잘라 512×768 WebP. 원본은 `docs/art/portraits-illust/gallery/`. 대화 카드 상반신과 미소 버튼은 뺐다(다시 넣지 않는다) | CHANGELOG 0.9.29·0.9.30 |

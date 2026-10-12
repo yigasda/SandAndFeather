@@ -84,15 +84,15 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
         };
         // People are painted straight onto the screen; only a shade (evening, night) needs them on their own
         // layer first, and then only the box is cleared, shaded and copied.
-        const liveActors = (minimumFoot, box) => {
-            if (!actorShade) { paintActors(g, minimumFoot); return; }
+        const liveActors = (minimumFoot, box, skip) => {
+            if (!actorShade) { paintActors(g, minimumFoot, skip); return; }
             const cv = renderer.referenceActors;
             if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
             const ag = cv.getContext('2d');
             const [x0, y0, x1, y1] = [Math.floor(box[0]), Math.floor(box[1]), Math.ceil(box[2]), Math.ceil(box[3])];
             ag.clearRect(x0, y0, x1 - x0, y1 - y0); ag.imageSmoothingEnabled = false;
             ag.save(); ag.beginPath(); ag.rect(x0, y0, x1 - x0, y1 - y0); ag.clip();
-            paintActors(ag, minimumFoot);
+            paintActors(ag, minimumFoot, skip);
             ag.globalCompositeOperation = 'source-atop';
             ag.fillStyle = actorShade; ag.fillRect(x0, y0, x1 - x0, y1 - y0);
             ag.restore();
@@ -108,11 +108,14 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
             const foot = oy + o.foot * ky;
             const xs = o.polygon.map(p => ox + p[0]*kx), ys = o.polygon.map(p => oy + p[1]*ky);
             const left = Math.min(...xs), right = Math.max(...xs), top = Math.min(...ys), bottom = Math.max(...ys);
-            if (!actors.some(a => (a.y + 1)*16 < foot && (a.x + 2)*16 > left &&
+            // `only`: just whoever is in that pose (and look, if given) goes behind it (legs under a low table);
+            // everyone else inside it is painted again as they were
+            const only = o.only && (a => (!o.only.look || a.look === o.only.look) && a.act?.name === o.only.act);
+            if (!actors.some(a => (!only || only(a)) && (a.y + 1)*16 < foot && (a.x + 2)*16 > left &&
                 (a.x - 1)*16 < right && (a.y + 1)*16 > top && (a.y - 2)*16 < bottom)) continue;
             const box = inter(view, [left*z - cx - 1, top*z - cy - 1, right*z - cx + 1, bottom*z - cy + 1]);
             if (!box) continue;
-            g.save(); clip(o.polygon); background(box); liveActors(foot, box); g.restore();
+            g.save(); clip(o.polygon); background(box); liveActors(only ? -Infinity : foot, box, only); g.restore();
         }
         g.restore();
     }

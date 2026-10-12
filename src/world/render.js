@@ -213,11 +213,11 @@ export class Renderer {
         const tint = TINT[part];
         if (tint && !fullScene) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
         drawReferenceScenes(this, {part, tint, cx, cy, z, actors:ppl,
-            paintActors: (target, minimumFoot) => {
+            paintActors: (target, minimumFoot, skip) => {
                 if (minimumFoot === -Infinity) for (const t of things) if (FLAT.has(t.sprite))
                     this.sprite(target, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
                 for (const p of ppl) {
-                    if ((p.y + 1) * T < minimumFoot) continue;
+                    if ((p.y + 1) * T < minimumFoot || (skip && skip(p))) continue;
                     if (p.thing) this.sprite(target, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
                     else this.person(target, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z, p);
                 }

@@ -163,6 +163,14 @@ SCENES = {
         'solid': [[0, 0, 22, 3.6], [0, 0, 0.8, 11], [21.2, 0, 22, 11], [0.8, 0, 2.5, 4.4], [2.8, 0, 6.0, 4.9], [3.6, 4.0, 4.7, 5.2],
                   [5.9, 0, 6.9, 4.7], [7.8, 4.3, 12.6, 6.0], [14.3, 0, 19.4, 6.9], [15.5, 6.0, 17.5, 7.6], [18.9, 0, 21.2, 4.5],
                   [0.8, 7.1, 2.3, 8.8], [0, 9.0, 9.4, 11], [12.6, 9.0, 22, 11]],
+        # whoever sits on a side cushion: the low table is drawn again over what reaches onto it (legs, feet, skirt edge).
+        # Its sides are the table's own outline in the picture (art px 728 and 916, / 80.636 a tile); the top is under
+        # the hair, which stays over the table
+        # Set on the left cushion also reaches over the table's left end higher up (knee, the end of a lock of hair): there
+        # the table covers right of its left outline, up to the line the user drew along the hair over the corner cap
+        'front': [(5.9, [[9.0282, 4.87], [11.3597, 4.87], [11.3597, 6.2], [9.0282, 6.2]], {'act': 'sit-floor'}),
+                  (5.9, [[9.0282, 4.88], [9.0282, 4.48], [9.055, 4.48], [9.083, 4.461], [9.134, 4.423], [9.169, 4.384], [9.202, 4.327],
+                         [9.6, 4.327], [9.6, 4.88]], {'act': 'sit-floor', 'look': 'set'})],
         'exits': [[ROOM_DOOR, 'room_entrances_wide', 'set']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
         'spots': [{'id': 'set_bed', 'x': 18.6, 'y': 7.4, 'title': '세트의 침대', 'text': '붉은 양모가 침대 끝에 걸쳐 있다. 두 사람이 누워도 넉넉하다.'},
                   {'id': 'set_window', 'x': 10.5, 'y': 3.7, 'title': '창밖', 'text': '붉은 사막이 지평선까지 이어진다.'},
@@ -203,6 +211,9 @@ SCENES = {
         'name': '식사 공간', 'day': 'temple-dining-v2-garden-day.png', 'night': 'temple-dining-v2-garden-night.png', 'size': [22, 11],
         'solid': [[0, 0, 22, 3.9], [0, 0, 0.8, 11], [21.2, 0, 22, 11], [0.8, 0, 6.2, 4.2], [15.8, 0, 21.2, 4.5],
                   [7.0, 4.1, 15.0, 6.4], [10.2, 6.0, 11.8, 7.1], [0, 9.1, 9.3, 11], [12.6, 9.1, 22, 11]],
+        # whoever sits on the left or right cushion: the table over what reaches onto it, its sides on the table's outline
+        # (art px 684 and 1088), the top under the hair (as in Set's room)
+        'front': [(6.3, [[8.4826, 4.87], [13.4927, 4.87], [13.4927, 6.55], [8.4826, 6.55]], {'act': 'sit-floor'})],
         'exits': [[ROOM_DOOR, 'temple_courtyard', 'east']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
         'spots': [{'id': 'temple_table', 'x': 15.6, 'y': 6.6, 'title': '식탁', 'text': '낮은 식탁에 방석 세 자리. 나눠 먹을 음식이 놓여 있다.'},
                   {'id': 'temple_table_mid', 'x': 10.45, 'y': 7.2, 'title': '식탁 가운데 방석', 'text': '식탁 앞 가운데 방석. 음식이 한눈에 보인다.'}],
@@ -321,8 +332,9 @@ def main():
         art[sid] = {'file': ART + sc['day'], 'fullMap': True, 'lazy': True, 'origin': [0, 0], 'scale': [w * 16 / iw, h * 16 / ih],
                     'day': [0, 0, iw, ih], 'night': [0, 0, iw, ih], 'clip': [[0, 0], [iw, 0], [iw, ih], [0, ih]]}
         if sc.get('front'):
-            art[sid]['occluders'] = [{'foot': round(f * ky, 1), 'polygon': [[round(x * kx, 1), round(y * ky, 1)] for x, y in pts]}
-                                     for f, pts in sc['front']]
+            # a third item {'act'[, 'look']} limits it to whoever is in that pose (only they go behind it)
+            art[sid]['occluders'] = [{'foot': round(fr[0] * ky, 1), 'polygon': [[round(x * kx, 1), round(y * ky, 1)] for x, y in fr[1]],
+                                      **({'only': fr[2]} if len(fr) > 2 else {})} for fr in sc['front']]
         if sc.get('night'):
             art[sid]['nightFile'] = ART + sc['night']  # an authored night: no dark filter over it
         else:
