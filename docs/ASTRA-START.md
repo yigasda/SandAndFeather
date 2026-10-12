@@ -6,6 +6,7 @@
 > 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `head-check.py --guide` (the idle's own head, faded, at the right place and size). Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
 > 3. **SAME FACE SHAPE, SAME HEAD SIZE, SAME LINE THICKNESS, SAME HAIR DETAIL, SAME COLOURS, SAME FACE MARK as the idle.** Only the pose changes. Never narrower, pointier, longer, thinner-lined, more detailed, paler or greyer.
 > 4. **NO EXTRA DETAIL.** Never draw hair or shading finer than the idle/walk.
+> 4-1. **DRAW EVERY FRAME NEW.** Frame 0 and frame 1 are two separate drawings. **NEVER copy frame 0 and stretch, shift, warp or recolour it into frame 1.** No frame tricks. `sprite-review` flags copied frames.
 > 5. **"sprite-review 0 issues" IS NOT "DONE".** Before sending, put your picture next to the idle at the same scale and look. If anything differs from the idle, fix it first.
 > 6. **If you did not open the idle and trace on a guide, the drawing is rejected.**
 

@@ -16,6 +16,9 @@
 #               from walking and standing without a jump? (by eye; sleeping is special, look only)
 #   머리색      the hair's dark, middle and light tones against the same direction's final idle and walk (the closest
 #               one), ΔE: up to 3 같음, up to 6 조금 다름, beyond 다름 (Set front sleep 193 measured 7.7, its walk 0.4)
+#   새로 그림    frame 1 made from frame 0 (copied, then stretched, shifted or recoloured) instead of drawn again: the share
+#               of the figure's pixels identical in both (best of small shifts). Over 50 % is a copied frame (sleep
+#               194/195: 67-83 %); frames drawn separately share under 30 % (sleep 191: 21-27 %, pickup 182: 6-12 %)
 #   붙여넣기     poses that are not standing: is the final idle's head pasted in unchanged (90 %+ of its pixels
 #               identical) instead of drawn for the pose? Drawn heads score under 20 %.
 # and writes <out>/report.md: 볼 것 at the top, then one line per character and pose with the sheets beside it.
@@ -183,6 +186,21 @@ def hair(path, who, view, out):
             'ref': os.path.basename(ref), 'sheet': name}
 
 
+def copied(p0, p1):
+    """share of the two frames' figure pixels that are identical, at the best shift of up to 4 px"""
+    import numpy as np
+    from PIL import Image
+    a = np.asarray(Image.open(p0).convert('RGBA')).astype(np.int16)
+    b = np.asarray(Image.open(p1).convert('RGBA')).astype(np.int16)
+    if a.shape != b.shape: return 0.0
+    m = (a[..., 3] > 200) | (b[..., 3] > 200); n = max(1, m.sum()); best = 0.0
+    for dy in range(-4, 5):
+        for dx in range(-4, 5):
+            bb = np.roll(np.roll(b, dy, 0), dx, 1)
+            best = max(best, float(((np.abs(a - bb).max(-1) <= 3) & m).sum() / n))
+    return best
+
+
 def label(s):
     for k, ko in (('-chain', '이어 보기'), ('-action', '동작'), ('-onion-', '0↔1'), ('-mirror-', '좌우'), ('-reference', '기준'), ('-head', '머리')):
         if k in s: return ko
@@ -239,6 +257,10 @@ def main():
         # 이어 보기: walking and standing into the new frames
         if view in VIEWS and not side:
             sheets.append(chain(who, view, fr, o.out, key))
+        # 새로 그림: a frame copied from the one before and only warped or recoloured
+        for (k1, p1), (k2, p2) in zip(fr, fr[1:]):
+            c = copied(p1, p2)
+            if c > 0.5: notes.append(f'{k2}: {k1}에서 복사해 변형한 프레임 (같은 픽셀 {c:.0%}, 새로 그린 프레임은 30 % 아래)')
         # 0↔1
         for (k1, p1), (k2, p2) in zip(fr, fr[1:]):
             name = f'{who}-{key}-onion-{k1}{k2}.png'

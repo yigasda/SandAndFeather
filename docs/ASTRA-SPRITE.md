@@ -6,6 +6,7 @@
 > 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `head-check.py --guide` (the idle's own head, faded, at the right place and size). Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
 > 3. **SAME FACE SHAPE, SAME HEAD SIZE, SAME LINE THICKNESS, SAME HAIR DETAIL, SAME COLOURS, SAME FACE MARK as the idle.** Only the pose changes. Never narrower, pointier, longer, thinner-lined, more detailed, paler or greyer.
 > 4. **NO EXTRA DETAIL.** Never draw hair or shading finer than the idle/walk.
+> 4-1. **DRAW EVERY FRAME NEW.** Frame 0 and frame 1 are two separate drawings. **NEVER copy frame 0 and stretch, shift, warp or recolour it into frame 1.** No frame tricks. `sprite-review` flags copied frames.
 > 5. **"sprite-review 0 issues" IS NOT "DONE".** Before sending, put your picture next to the idle at the same scale and look. If anything differs from the idle, fix it first.
 > 6. **If you did not open the idle and trace on a guide, the drawing is rejected.**
 
@@ -70,6 +71,7 @@
 - ❌ **머리를 줄이거나 늘리기.** 머리 크기·모양은 어떤 자세에서도 정지와 같다. 그림을 캔버스에 맞추려고 전체를 줄이지 않는다.
 - ❌ **머리 결 바꾸기.** 세트 웨이브, 호루스 긴 머리·뒷머리, 소망 생머리 — 전부 실패.
 - ❌ **팔다리를 길게.** 굽히거나 올린 팔도 정지 길이·굵기 그대로. 좌우 팔·손도 같은 길이.
+- ❌ **프레임 장난질.** 0프레임을 복사해서 늘리거나 옮기거나 비틀거나 색만 바꿔 1프레임을 만들지 않는다. **0과 1은 항상 각각 새로 그린다.** (잠들기 194·195: 1이 0과 픽셀 67~83 % 같음. 새로 그린 프레임은 30 % 아래.) `sprite-review`가 "복사해 변형한 프레임"으로 잡는다.
 - ❌ **다음 프레임을 안쪽만 고쳐 만들기.** 움직이는 부분의 **바깥 외곽선**이 움직여야 한다.
 - ❌ **누운 정면에서 발바닥을 지나치게 크게.** 발이 보는 쪽을 향하니 원근으로 **정지 신발보다 조금 큰 게 정상**이다. 다만 머리보다 눈에 띌 만큼 커지면 실패. 채택된 소망 180의 발 비율을 기준으로 맞춘다.
 - ❌ **몸통·다리를 길게.** 눕든 앉든 머리 아래 몸 길이는 정지와 같다(세 명 모두 호루스 정지 비율이 기준). 이어 보기 시트에서 정지 옆에 놓고 턱~치마단, 치마단~발끝 길이를 비교한다. **한 방향을 고치면 같은 동작의 다른 방향(정면이면 옆모습도)도 같이 고친다.** 정면만 줄이면 방향을 바꿀 때 몸이 늘었다 줄었다 한다.
@@ -233,6 +235,7 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 | 정면 잠자기를 무릎 세운 다리로 그림(앉은 것처럼 보임) | 잠들기 184·187·189 | 잠들기 명세 · [사용자 예시](art/chibi-refresh/notes/sleep-front-pose-sketch.jpg) |
 | 세트 생머리를 굵은 웨이브로 바꿈 / 빗으로 그은 듯 일정한 직모로 바꿈 | 잠들기 189 / 191 | B 머리 기준, [hair-reference.png](art/chibi-refresh/notes/hair-reference.png) |
 | 머리카락 가닥·명암을 정지·걷기보다 훨씬 잘게 그려 그림체가 달라짐 | 세트 잠들기 192 | ③ 이어 보기 "세밀함", [나쁜 예](art/chibi-refresh/notes/bad-too-detailed.jpg) · chain 시트에서 같은 배율로 비교 |
+| 0프레임을 복사해 늘리고 변형해서 1프레임을 만듦 | 잠들기 194·195 (같은 픽셀 67~83 %) | ③ 프레임 장난질 · `sprite-review` "복사해 변형한 프레임" |
 | 호루스 동공 위에 흰 하이라이트를 넣음(정지에는 아래 안광만) | — (사용자 미리 지시) | B 호루스 · [눈 견본](art/chibi-refresh/palette/eyes.png) |
 | 머리색이 정지·걷기보다 밝고 분홍·형광 쪽으로 뜸 | 세트 잠들기 정면 193, 호루스 잠들기 정면 191 | A 머리색 · `sprite-review` "머리색" |
 | 색을 강하게 나눠 하이라이트가 사라지고 머리가 얼룩으로 뭉개짐 | 세트·호루스 잠들기194 반려 | 원본의 밝은 결·큰 하이라이트를 유지. 피부 기준색은 얼굴에서 확인하고 치마색과 혼동하지 않기 |
