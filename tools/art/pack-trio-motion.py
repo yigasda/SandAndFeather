@@ -92,7 +92,7 @@ def action_frames():
             bb = Image.open(path).getchannel('A').getbbox()
             frames.append({'id': f"{f['character']}.{am['action']}.{dmap[f['direction']]}.{f['frame']}", 'character': f['character'],
                            'state': am['action'], 'gameDirection': dmap[f['direction']], 'phase': f['frame'],
-                           'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': am['referenceVisibleHeight'],
+                           'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': f.get('referenceVisibleHeight', am['referenceVisibleHeight']),
                            'alphaBounds': list(bb), 'pivot': (f.get('anchor') or am['anchor'])['position']})
         pb = am['playback']
         # a pose that stays (sitting) holds its last frame until she moves; a looping one (sleeping) cycles

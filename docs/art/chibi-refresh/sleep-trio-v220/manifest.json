@@ -112,7 +112,7 @@
      445
     ]
    },
-   "sha256": "3a8fcd66d2ce936b1d75574b8e651c2b315009b4cd9941a2922c82440cc81068"
+   "sha256": "53d04798f9ebe25e2714d42aae430305141904f9342e29d6c38b7f246647ab0a"
   },
   {
    "path": "png/set-sleep-side-1.png",
@@ -125,7 +125,7 @@
      445
     ]
    },
-   "sha256": "7c3c6f1d8419c5259cdaed3bdba6bc9db8c09db17cbe64e4ad18d7010c5aebb8"
+   "sha256": "4dd1aca2d64a2758a59c49fef096e70193b548f186c032718c2e23a2aa6c9b12"
   },
   {
    "path": "png/somang-sleep-0.png",
@@ -138,7 +138,8 @@
      450
     ]
    },
-   "sha256": "f978455238883bc9eebdfe09275311b70f412ed46d1db74147e36a1976284feb"
+   "sha256": "f978455238883bc9eebdfe09275311b70f412ed46d1db74147e36a1976284feb",
+   "referenceVisibleHeight": 523.6
   },
   {
    "path": "png/somang-sleep-1.png",
@@ -151,7 +152,8 @@
      450
     ]
    },
-   "sha256": "a18fca3af96d68e97f3fff5eedf08a2ed70e0bdba08dcf76f2827c3c308fd878"
+   "sha256": "a18fca3af96d68e97f3fff5eedf08a2ed70e0bdba08dcf76f2827c3c308fd878",
+   "referenceVisibleHeight": 523.6
   }
  ],
  "playback": {
@@ -177,5 +179,9 @@
   "horus front": "../sleep-horus-front-v219 (0: 218에서 문양 교체, 1: 0프레임 상체 20 % 넓혀 만든 숨쉬기, 오푸스, 사용자 채택)"
  },
  "approvalEvidence": "잠들기 끝.. / 아 저거 맞아 / (호루스 1프레임) 채택",
- "occlusionNote": "이불·침대는 PNG에 없음. 원본 침대 위에 눕힘."
+ "occlusionNote": "이불·침대는 PNG에 없음. 원본 침대 위에 눕힘.",
+ "edits": {
+  "set side": "머리(목 위)를 목(338,370) 기준 85 %로 줄이고 아래 70행에 걸쳐 원래 크기로(사용자: 세트 옆면 대가리 너무 큼). 원본 sources/*-210.png",
+  "somang": "게임에서 10 % 크게(referenceVisibleHeight 523.6, 사용자: 소망 전체 크기 좀 더)"
+ }
 }
