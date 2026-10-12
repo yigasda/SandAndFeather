@@ -3,7 +3,7 @@
 > # ⚠️ READ THIS FIRST — NON-NEGOTIABLE
 > ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. COPY THEIR LOOK EXACTLY. DO NOT REDESIGN ANYTHING.
 > 1. **OPEN THE ORIGINAL FILES BEFORE YOU DRAW** — `docs/art/chibi-refresh/final/<who>/idle/` and `walk/`, same direction. Not from memory, not from a description, not from your last attempt.
-> 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `python3 tools/art/line-guide.py` (the idle's own head lines in red, at the right place and size) and `head-check.py --guide`. Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
+> 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `head-check.py --guide` (the idle's own head, faded, at the right place and size). Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
 > 3. **SAME FACE SHAPE, SAME HEAD SIZE, SAME LINE THICKNESS, SAME HAIR DETAIL, SAME COLOURS, SAME FACE MARK as the idle.** Only the pose changes. Never narrower, pointier, longer, thinner-lined, more detailed, paler or greyer.
 > 4. **NO EXTRA DETAIL.** Never draw hair or shading finer than the idle/walk.
 > 5. **"sprite-review 0 issues" IS NOT "DONE".** Before sending, put your picture next to the idle at the same scale and look. If anything differs from the idle, fix it first.
@@ -15,7 +15,7 @@
 > ## 🪜 THE LADDER — EVERY CHARACTER DRAWING, EVERY TIME. SKIP ONE STEP AND IT IS REJECTED.
 > **① READ THE DOCS. ACTUALLY READ THEM.** The PLAN spec, the SPRITE rules, hair, expressions. **OPEN** the idle, the walk and the reference pictures. Opening a file list is NOT opening a picture.
 > **② SEND THE PROPOSAL AND WAIT FOR OK.** The pre-drawing form (SPRITE ②). **NO OK, NO DRAWING.**
-> **③ DRAW ON TOP OF THE IDLE AND WALK.** Same direction, laid underneath, plus `line-guide.py` for the head. Draw it new — **DO NOT CUT AND PASTE. DO NOT FREEHAND. DO NOT REDESIGN.**
+> **③ DRAW ON TOP OF THE IDLE AND WALK.** Same direction, laid underneath. Draw it new — **DO NOT CUT AND PASTE. DO NOT FREEHAND. DO NOT REDESIGN.**
 > **④ RUN THE CHECK.** `sprite-review.py` must say 0. **0 IS THE MINIMUM, NOT THE FINISH.**
 > **⑤ LOOK AT IT YOURSELF.** Walk → idle → your frames, as the chain GIF, next to the idle at the same scale. **DOES IT LOOK LIKE THE SAME CHARACTER IN A REAL GAME? IF NOT, FIX IT. DO NOT SEND IT.**
 > **⑥ REPORT.** What you checked AND what you did not. Never write "done" for something you did not look at.

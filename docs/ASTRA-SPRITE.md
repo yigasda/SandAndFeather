@@ -3,7 +3,7 @@
 > # ⚠️ READ THIS FIRST — NON-NEGOTIABLE
 > ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. COPY THEIR LOOK EXACTLY. DO NOT REDESIGN ANYTHING.
 > 1. **OPEN THE ORIGINAL FILES BEFORE YOU DRAW** — `docs/art/chibi-refresh/final/<who>/idle/` and `walk/`, same direction. Not from memory, not from a description, not from your last attempt.
-> 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `python3 tools/art/line-guide.py` (the idle's own head lines in red, at the right place and size) and `head-check.py --guide`. Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
+> 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `head-check.py --guide` (the idle's own head, faded, at the right place and size). Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
 > 3. **SAME FACE SHAPE, SAME HEAD SIZE, SAME LINE THICKNESS, SAME HAIR DETAIL, SAME COLOURS, SAME FACE MARK as the idle.** Only the pose changes. Never narrower, pointier, longer, thinner-lined, more detailed, paler or greyer.
 > 4. **NO EXTRA DETAIL.** Never draw hair or shading finer than the idle/walk.
 > 5. **"sprite-review 0 issues" IS NOT "DONE".** Before sending, put your picture next to the idle at the same scale and look. If anything differs from the idle, fix it first.
@@ -15,7 +15,7 @@
 > ## 🪜 THE LADDER — EVERY CHARACTER DRAWING, EVERY TIME. SKIP ONE STEP AND IT IS REJECTED.
 > **① READ THE DOCS. ACTUALLY READ THEM.** The PLAN spec, the SPRITE rules, hair, expressions. **OPEN** the idle, the walk and the reference pictures. Opening a file list is NOT opening a picture.
 > **② SEND THE PROPOSAL AND WAIT FOR OK.** The pre-drawing form (SPRITE ②). **NO OK, NO DRAWING.**
-> **③ DRAW ON TOP OF THE IDLE AND WALK.** Same direction, laid underneath, plus `line-guide.py` for the head. Draw it new — **DO NOT CUT AND PASTE. DO NOT FREEHAND. DO NOT REDESIGN.**
+> **③ DRAW ON TOP OF THE IDLE AND WALK.** Same direction, laid underneath. Draw it new — **DO NOT CUT AND PASTE. DO NOT FREEHAND. DO NOT REDESIGN.**
 > **④ RUN THE CHECK.** `sprite-review.py` must say 0. **0 IS THE MINIMUM, NOT THE FINISH.**
 > **⑤ LOOK AT IT YOURSELF.** Walk → idle → your frames, as the chain GIF, next to the idle at the same scale. **DOES IT LOOK LIKE THE SAME CHARACTER IN A REAL GAME? IF NOT, FIX IT. DO NOT SEND IT.**
 > **⑥ REPORT.** What you checked AND what you did not. Never write "done" for something you did not look at.
@@ -34,7 +34,7 @@
 | 이 동작의 **채택 기준 그림** | 상호작용 소망 172 · 줍기 소망 181 · 앉기 소망 179 · 잠들기 소망 180 (아래 D) |
 | 사용자가 준 **예시·수정도** | `docs/art/chibi-refresh/notes/` (잠들기 정면 [sleep-front-pose-sketch.jpg](art/chibi-refresh/notes/sleep-front-pose-sketch.jpg), 호루스 머리 [horus-hair-short.jpg](art/chibi-refresh/notes/horus-hair-short.jpg)) |
 | 이 동작 **명세 표** | ASTRA-PLAN 2단계의 해당 동작 |
-| 그리기 **가이드** | `pose-guides/<누구>-<방향>-guide.png`, 기울거나 누운 머리는 `head-check.py --guide`, **얼굴·머리 선은 `python3 tools/art/line-guide.py <그림> --out <폴더>`의 `-lines.png` 위에 대고 그린다**(정지 머리 선을 같은 크기로 그 자리에 깐 것) |
+| 그리기 **가이드** | `pose-guides/<누구>-<방향>-guide.png`, 기울거나 누운 머리는 `head-check.py --guide`|
 
 ## ② 그리기 전 확인서 — 채워서 사용자에게 먼저 보낸다 (OK 받고 그린다)
 

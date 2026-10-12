@@ -3,7 +3,7 @@
 > # 🚨 ASTRA, STOP. READ THIS BEFORE YOU TOUCH ANY PICTURE. 🚨
 > ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. YOUR JOB IS TO MATCH THEM, NOT TO IMPROVE THEM.
 > - **OPEN `docs/art/chibi-refresh/final/<who>/idle/` AND `walk/` FIRST. EVERY TIME. SAME DIRECTION.**
-> - **TRACE ON THE GUIDES:** `tools/art/line-guide.py` (head and face lines), `head-check.py --guide`, `palette/palette.md`, `palette/eyes.png`, `notes/hair-reference.png`.
+> - **TRACE ON THE GUIDES:** `head-check.py --guide`, `palette/palette.md`, `palette/eyes.png`, `notes/hair-reference.png`.
 > - **SAME FACE SHAPE. SAME HEAD SIZE. SAME LINE THICKNESS. SAME HAIR DETAIL. SAME COLOURS. SAME FACE MARK.** ONLY THE POSE CHANGES.
 > - **DO NOT ADD DETAIL. DO NOT REDESIGN. DO NOT "FIX" WHAT NOBODY ASKED YOU TO FIX.**
 > - **A PASSING CHECK IS NOT A FINISHED DRAWING.** PUT IT NEXT TO THE IDLE AND LOOK BEFORE YOU SEND.
