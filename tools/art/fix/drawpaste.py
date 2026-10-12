@@ -70,8 +70,14 @@ if '--direct' in sys.argv:
     # the drawing's own pixels, un-mixed from the sheet background: alpha from how far a pixel is from the background
     # colour, colour = (pixel - (1 - alpha) * background) / alpha. Soft edges stay soft, no green fringe, no stairs.
     Bd = src_all.copy()
-    bgv = np.array(bg, float); C = U.astype(float)
+    bgv = np.array(bg, float); C = np.asarray(Uimg).astype(float)   # the drawing's own pixels, not filtered
     a = np.clip(np.abs(C - bgv).sum(2) / 250.0, 0, 1)
+    # partial alpha only on a real edge (next to the drawing's background); inside, a dark pixel is solid
+    bgcls = np.abs(C - bgv).sum(2) < 50
+    nb = bgcls.copy()
+    for _ in range(2):
+        n = nb.copy(); n[1:] |= nb[:-1]; n[:-1] |= nb[1:]; n[:, 1:] |= nb[:, :-1]; n[:, :-1] |= nb[:, 1:]; nb = n
+    a = np.where(nb, a, 1.0)
     for y in range(y0, y1):
         for x in range(x0, x1):
             al = a[y, x]
