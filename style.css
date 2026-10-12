@@ -553,7 +553,7 @@
     padding: 6px 8px; font-size: 13px; width: 100%; box-sizing: border-box; margin: 0;
 }
 #sf_settings .sf_conn { display: flex; flex-direction: column; gap: 8px; }
-#sf_settings .sf_conn[hidden] { display: none; }
+#sf_settings .sf_conn[hidden], #sf_settings .sf_field[hidden], #sf_settings .sf_sub[hidden] { display: none; }
 
 /* ---------- 게임에 반영하기: the card over the chat ---------- */
 /* fixed like the game window: SillyTavern's <html> has no height, so the size is given outright */
