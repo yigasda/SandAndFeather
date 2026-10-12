@@ -31,12 +31,13 @@ export async function loadData() {
     const all = await Promise.all([...FILES.map(f => loadJson(`${f}.json`)), ...MAPS.map(m => loadJson(`maps/${m}.json`))]);
     FILES.forEach((f, k) => { DATA[f] = all[k]; });
     MAPS.forEach((m, k) => { DATA.maps[m] = all[FILES.length + k]; });
-    await Promise.all([loadSceneArt(), loadSpriteArt()]);
+    // the character pictures (several MB once decoded) wait until the game window opens: ensureSpriteArt()
+    await loadSceneArt();
     return DATA;
 }
 
 let spriteArtPromise;
-function loadSpriteArt() {
+export function ensureSpriteArt() {
     return spriteArtPromise ||= (async () => {
         // the large walking atlas (wide screens) waits until a screen needs it: see spriteFile()
         const files = [...new Set(Object.values(DATA.sprites?.looks || {}).flatMap(d => [d.atlas?.file, d.motion?.small?.file || d.motion?.file]).filter(Boolean))];

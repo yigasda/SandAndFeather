@@ -46,7 +46,7 @@ export function checkData() {
     for (const [look, d] of Object.entries(DATA.sprites?.looks || {})) for (const v of ['down', 'up', 'side']) pic(`${look} ${v}`, d[v], d.colors);
     for (const [look, d] of Object.entries(DATA.sprites?.looks || {})) if (d.atlas) {
         const a = d.atlas, image = DATA.spriteArt?.[a.file];
-        if (!image) bad('sprites.json', `${look}: atlas.file 이미지를 불러오지 못했어`);
+        if (DATA.spriteArt && !image) bad('sprites.json', `${look}: atlas.file 이미지를 불러오지 못했어`);
         if (!(Number.isFinite(a.scale) && a.scale > 0)) bad('sprites.json', `${look}: atlas.scale은 양수여야 해`);
         for (const dir of ['down', 'left', 'right', 'up']) {
             const f = a.frames?.[dir];
@@ -60,7 +60,7 @@ export function checkData() {
     // three walk poses a direction, a cycle of known poses, a positive frame time and an offset a cycle step
     for (const [look, d] of Object.entries(DATA.sprites?.looks || {})) if (d.motion) {
         const m = d.motion, where = `${look} motion`;
-        if (!m.small || !DATA.spriteArt?.[m.small.file]) bad('sprites.json', `${where}: small.file 이미지를 불러오지 못했어`);
+        if (!m.small || (DATA.spriteArt && !DATA.spriteArt[m.small.file])) bad('sprites.json', `${where}: small.file 이미지를 불러오지 못했어`);
         for (const k of ['visible', 'height', 'frameMs', 'offsetRef']) if (!(Number.isFinite(m[k]) && m[k] > 0)) bad('sprites.json', `${where}: ${k}는 양수여야 해`);
         let image = null;
         const rect = (r, at) => {

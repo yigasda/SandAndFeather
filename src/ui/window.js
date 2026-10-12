@@ -2,7 +2,7 @@
 // The frame loop runs only while it is open. Where she stands is saved to the chat when the window closes or folds.
 
 import { on } from '../core/bus.js';
-import { DATA, ensureSceneArt } from '../core/data.js';
+import { DATA, ensureSceneArt, ensureSpriteArt } from '../core/data.js';
 import { seasonOf } from '../core/clock.js';
 import { settings } from '../core/settings.js';
 import { hasChat } from '../core/st.js';
@@ -176,6 +176,8 @@ function refreshSoon() { clearTimeout(soon); soon = setTimeout(refresh, 60); }
 
 export async function openGame() {
     if (!hasChat()) { window.toastr?.info?.('채팅을 먼저 열어 줘', '모래와 깃털'); return; }
+    // the character pictures load on the first opening, not with SillyTavern's page
+    try { await ensureSpriteArt(); } catch (e) { console.error('[SandAndFeather] sprites', e); window.toastr?.error?.(String(e.message || e), '모래와 깃털'); return; }
     build();
     applyTheme();
     document.activeElement?.blur?.();
