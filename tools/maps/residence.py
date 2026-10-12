@@ -194,6 +194,10 @@ SCENES = {
         'solid': [[0, 0, 22, 3.6], [0, 0, 0.8, 11], [21.2, 0, 22, 11], [0.8, 0, 1.7, 4.2], [1.7, 0, 5.0, 4.8], [2.6, 4.0, 3.9, 5.1],
                   [13.4, 0, 16.6, 4.8], [17.0, 0, 20.4, 5.0], [20.3, 0, 21.2, 5.0], [8.6, 4.4, 12.2, 6.4],
                   [0.7, 5.6, 3.2, 9.0], [3.2, 7.0, 4.7, 8.6], [19.0, 7.4, 21.2, 9.1], [0, 9.1, 9.3, 11], [12.6, 9.1, 22, 11]],
+        # whoever sits on the long chair: the little side table is drawn again over the legs and feet that reach onto it,
+        # along its own outline in the picture (left edge art px 272 at the top slanting to 266 at the front, top row 568,
+        # front bottom 655; / 80.636 a tile)
+        'front': [(8.0, [[3.3732, 7.0440], [4.2165, 7.0440], [4.2165, 8.1229], [3.2988, 8.1229], [3.2988, 7.9369], [3.3112, 7.7880], [3.3236, 7.6268], [3.3360, 7.4408], [3.3732, 7.2548]], {'act': 'sit-bench'})],
         'exits': [[ROOM_DOOR, 'room_entrances_wide', 'somang']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
         'spots': [{'id': 'somang_mirror', 'x': 2.75, 'y': 4.9, 'title': '거울과 화장대', 'text': '거울 앞에 화장 도구가 놓여 있다.'},
                   {'id': 'somang_table', 'x': 10.4, 'y': 6.8, 'title': '작업 탁자', 'text': '천과 리본, 작은 물건 상자가 펼쳐져 있다.'},
