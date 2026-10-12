@@ -12,8 +12,13 @@
 > **길 안내** — 입구 [START](ASTRA-START.md) · 할 일 [PLAN](ASTRA-PLAN.md) · 캐릭터 그림 [SPRITE](ASTRA-SPRITE.md) · 맵 [MAP](ASTRA-MAP.md) · 공통 규칙 [HANDOFF](ASTRA-HANDOFF.md)
 > **지금 여기: 입구.** 매번 이 문서부터 열고, 아래 순서대로 다음 문서로 간다.
 
-> **지시 사다리 — 캐릭터 그림은 한 칸도 건너뛰지 않는다**
-> **① 문서 자세히 확인** (PLAN 명세, SPRITE 규칙·머리·표정, 정지·걷기·기준 그림을 실제로 연다) → **② 제안서**(그리기 전 확인서를 보내 OK) → **③ 대고 그리기**(같은 방향 정지·걷기를 밑에 깔고 새로 그린다, 잘라 붙이지 않는다) → **④ 검사**(`sprite-review.py` 볼 것 0) → **⑤ 직접 검수**(걷기→정지→새 그림 이어 보기 GIF로, 실제 게임 스프라이트처럼 자연스러운지 눈으로) → 보고
+> ## 🪜 THE LADDER — EVERY CHARACTER DRAWING, EVERY TIME. SKIP ONE STEP AND IT IS REJECTED.
+> **① READ THE DOCS. ACTUALLY READ THEM.** The PLAN spec, the SPRITE rules, hair, expressions. **OPEN** the idle, the walk and the reference pictures. Opening a file list is NOT opening a picture.
+> **② SEND THE PROPOSAL AND WAIT FOR OK.** The pre-drawing form (SPRITE ②). **NO OK, NO DRAWING.**
+> **③ DRAW ON TOP OF THE IDLE AND WALK.** Same direction, laid underneath, plus `line-guide.py` for the head. Draw it new — **DO NOT CUT AND PASTE. DO NOT FREEHAND. DO NOT REDESIGN.**
+> **④ RUN THE CHECK.** `sprite-review.py` must say 0. **0 IS THE MINIMUM, NOT THE FINISH.**
+> **⑤ LOOK AT IT YOURSELF.** Walk → idle → your frames, as the chain GIF, next to the idle at the same scale. **DOES IT LOOK LIKE THE SAME CHARACTER IN A REAL GAME? IF NOT, FIX IT. DO NOT SEND IT.**
+> **⑥ REPORT.** What you checked AND what you did not. Never write "done" for something you did not look at.
 
 **아스트라 문서는 다섯 개다. 각 문서 맨 위의 길 안내에 "다음에 볼 것"이 있다.** 현재 대화에서 사용자가 내린 지시가 문서보다 우선한다.
 
