@@ -6,6 +6,7 @@
 > - **IF YOU ARE UNSURE WHAT THE USER MEANT, ASK BEFORE YOU DRAW. NEVER GUESS AND NEVER PICK THE CHEAPER READING.**
 > - **BEFORE YOU START, WRITE BACK THE USER'S ORDER WORD FOR WORD, THEN WHAT YOU WILL DO FOR EACH PART OF IT.** If your plan drops or shrinks any part, it is wrong.
 > - **CHANGING THE TASK YOU WERE GIVEN INTO A DIFFERENT TASK = REJECTED. EVERY TIME.**
+> - **IF YOU CANNOT OPEN OR READ A PICTURE THE USER GAVE YOU, SAY SO RIGHT AWAY AND ASK FOR THE FILE (PNG in the repo or a Drive link). NEVER GUESS WHAT IT SHOWS. NEVER SAY "I MATCHED IT" ABOUT A PICTURE YOU DID NOT SEE.** Claiming you followed something you never read is a lie, and it is worse than asking.
 
 > **길 안내** — 입구 [START](ASTRA-START.md) · 할 일 [PLAN](ASTRA-PLAN.md) · 캐릭터 그림 [SPRITE](ASTRA-SPRITE.md) · 맵 [MAP](ASTRA-MAP.md) · 공통 규칙 [HANDOFF](ASTRA-HANDOFF.md)
 > **지금 여기: 맵·배경.** 앞: 할 일은 [PLAN](ASTRA-PLAN.md)(두아트·새 지역 명세 포함). 공통 규칙은 [HANDOFF](ASTRA-HANDOFF.md).

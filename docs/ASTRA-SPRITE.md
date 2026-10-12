@@ -6,6 +6,7 @@
 > - **IF YOU ARE UNSURE WHAT THE USER MEANT, ASK BEFORE YOU DRAW. NEVER GUESS AND NEVER PICK THE CHEAPER READING.**
 > - **BEFORE YOU START, WRITE BACK THE USER'S ORDER WORD FOR WORD, THEN WHAT YOU WILL DO FOR EACH PART OF IT.** If your plan drops or shrinks any part, it is wrong.
 > - **CHANGING THE TASK YOU WERE GIVEN INTO A DIFFERENT TASK = REJECTED. EVERY TIME.**
+> - **IF YOU CANNOT OPEN OR READ A PICTURE THE USER GAVE YOU, SAY SO RIGHT AWAY AND ASK FOR THE FILE (PNG in the repo or a Drive link). NEVER GUESS WHAT IT SHOWS. NEVER SAY "I MATCHED IT" ABOUT A PICTURE YOU DID NOT SEE.** Claiming you followed something you never read is a lie, and it is worse than asking.
 
 > # ⚠️ READ THIS FIRST — NON-NEGOTIABLE
 > ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. COPY THEIR LOOK EXACTLY. DO NOT REDESIGN ANYTHING.
@@ -242,6 +243,7 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 | 정면 잠자기를 무릎 세운 다리로 그림(앉은 것처럼 보임) | 잠들기 184·187·189 | 잠들기 명세 · [사용자 예시](art/chibi-refresh/notes/sleep-front-pose-sketch.jpg) |
 | 세트 생머리를 굵은 웨이브로 바꿈 / 빗으로 그은 듯 일정한 직모로 바꿈 | 잠들기 189 / 191 | B 머리 기준, [hair-reference.png](art/chibi-refresh/notes/hair-reference.png) |
 | 머리카락 가닥·명암을 정지·걷기보다 훨씬 잘게 그려 그림체가 달라짐 | 세트 잠들기 192 | ③ 이어 보기 "세밀함", [나쁜 예](art/chibi-refresh/notes/bad-too-detailed.jpg) · chain 시트에서 같은 배율로 비교 |
+| 사용자 수정본을 읽지 못했는데 그대로 맞췄다고 보고, 추측으로 턱선을 굽히고 어깨까지 지움 | 호루스 202 턱 | HANDOFF 3절: 못 읽으면 바로 말하고 파일 요청 |
 | 0프레임을 복사해 늘리고 변형해서 1프레임을 만듦 | 잠들기 194·195 (같은 픽셀 67~83 %) | ③ 프레임 장난질 · `sprite-review` "복사해 변형한 프레임" |
 | 호루스 동공 위에 흰 하이라이트를 넣음(정지에는 아래 안광만) | — (사용자 미리 지시) | B 호루스 · [눈 견본](art/chibi-refresh/palette/eyes.png) |
 | 머리색이 정지·걷기보다 밝고 분홍·형광 쪽으로 뜸 | 세트 잠들기 정면 193, 호루스 잠들기 정면 191 | A 머리색 · `sprite-review` "머리색" |

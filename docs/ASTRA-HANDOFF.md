@@ -6,6 +6,7 @@
 > - **IF YOU ARE UNSURE WHAT THE USER MEANT, ASK BEFORE YOU DRAW. NEVER GUESS AND NEVER PICK THE CHEAPER READING.**
 > - **BEFORE YOU START, WRITE BACK THE USER'S ORDER WORD FOR WORD, THEN WHAT YOU WILL DO FOR EACH PART OF IT.** If your plan drops or shrinks any part, it is wrong.
 > - **CHANGING THE TASK YOU WERE GIVEN INTO A DIFFERENT TASK = REJECTED. EVERY TIME.**
+> - **IF YOU CANNOT OPEN OR READ A PICTURE THE USER GAVE YOU, SAY SO RIGHT AWAY AND ASK FOR THE FILE (PNG in the repo or a Drive link). NEVER GUESS WHAT IT SHOWS. NEVER SAY "I MATCHED IT" ABOUT A PICTURE YOU DID NOT SEE.** Claiming you followed something you never read is a lie, and it is worse than asking.
 
 > **길 안내** — 입구 [START](ASTRA-START.md) · 할 일 [PLAN](ASTRA-PLAN.md) · 캐릭터 그림 [SPRITE](ASTRA-SPRITE.md) · 맵 [MAP](ASTRA-MAP.md) · 공통 규칙 [HANDOFF](ASTRA-HANDOFF.md)
 > **지금 여기: 공통 규칙.** 다음: 할 일은 [PLAN](ASTRA-PLAN.md), 캐릭터면 [SPRITE](ASTRA-SPRITE.md), 맵이면 [MAP](ASTRA-MAP.md).
@@ -47,6 +48,7 @@
 - 결과 폴더: 바로 아래 `png/`는 전달용, `sources/`는 제작용, `previews/`는 확인용, `review/`는 `sprite-review.py` 결과. 반려본은 적용 목록에 섞지 않는다. 채택 원본은 지우지 않는다. 채택된 PNG는 사용자 지시 없이 다시 쓰지 않는다.
 - manifest: 파일마다 캐릭터, 방향, 프레임, 기준점, sha256. 채택은 사용자 말 그대로(`approvalEvidence`). 게임 적용은 오푸스가 기록한다.
 - 이미지는 Google Drive 링크로 보낸다. 사용자는 폰에서 본다. 진행 메시지는 짧은 한국어.
+- **사용자가 준 그림(수정도·예시)을 열 수 없거나 픽셀을 읽지 못하면 바로 말하고 파일(저장소의 PNG 또는 Drive 링크)을 요청한다.** 보지 못한 그림을 추측으로 따라 그리지 않고, "그대로 맞췄다"고 쓰지 않는다(호루스 202 턱: 수정본을 못 읽고 맞췄다고 보고함).
 - **보고:** 확인한 것과 확인하지 못한 것을 그대로 적는다. 확인하지 않고 "완료", "동일", "승인"이라고 쓰지 않는다. "검사 통과"를 완성 근거로 쓰지 않는다.
 - 맵 전달: PNG 경로, 크기, 낮/밤, 출구·문턱 좌표(px).
 - **문서 관리:** 공통 규칙은 이 문서, 캐릭터 그림 규칙·외형·실수 표·채택 스프라이트는 ASTRA-SPRITE, 맵 규칙·채택 배경은 ASTRA-MAP, 할 일·상태는 ASTRA-PLAN에만 쓴다. 같은 내용을 두 곳에 쓰지 않는다. 경과는 쌓지 않는다.
