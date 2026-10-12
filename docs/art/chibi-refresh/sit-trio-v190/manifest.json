@@ -286,12 +286,13 @@
         ]
       },
       "expression": "approved179-basic-smile",
-      "sha256": "16e17b8a5c3bc64af1a9e83ee458e4a53e49b831d036eddb25d5e7c9d736efe6",
+      "sha256": "3267f57cd765dcde84c03fb2f0476bdbe1695dd24ab0c9977809aadba1298603",
       "canvas": [
         620,
         720
       ],
-      "reviewStatus": "user-approved"
+      "reviewStatus": "user-approved",
+      "edit": "0.9.49 종아리 28px 짧게(허벅지 아래 533행~발목 끈 580행만, 끈·샌들은 그대로 위로; tools/art/fix/legshorten.py 533 580 28 436 400 558). 사용자: 긴 의자 소망 다리가 다른 애들보다 길다 → 3번(-28). 원본 sources/somang-right-bench-0-before-legs.png"
     },
     {
       "path": "png/somang-right-floor-0.png",
