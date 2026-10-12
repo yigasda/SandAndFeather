@@ -18,7 +18,8 @@
 #               one), ΔE: up to 3 같음, up to 6 조금 다름, beyond 다름 (Set front sleep 193 measured 7.7, its walk 0.4)
 #   새로 그림    frame 1 made from frame 0 (copied, then stretched, shifted or recoloured) instead of drawn again: the share
 #               of the figure's pixels identical in both (best of small shifts). Over 50 % is a copied frame (sleep
-#               194/195: 67-83 %); frames drawn separately share under 30 % (sleep 191: 21-27 %, pickup 182: 6-12 %)
+#               194/195: 67-83 %); frames drawn separately share under 30 % (sleep 191: 21-27 %, pickup 182: 6-12 %).
+#               Not for actions where only a hand or foot moves (HAND_ONLY: interact)
 #   붙여넣기     poses that are not standing: is the final idle's head pasted in unchanged (90 %+ of its pixels
 #               identical) instead of drawn for the pose? Drawn heads score under 20 %.
 # and writes <out>/report.md: 볼 것 at the top, then one line per character and pose with the sheets beside it.
@@ -49,6 +50,8 @@ REFERENCES = {
 }
 # poses that lean by design (a curled sleeper): no 몸 쏠림 line
 CURLED = {('somang', 'sleep')}
+# actions where only a hand or foot moves between frames: the rest of the body may stay pixel for pixel
+HAND_ONLY = {'interact'}
 NAME = re.compile(r'(set|somang|horus)-([a-z-]+?)-(\d+)\.png$')
 VIEWS = ('front', 'back', 'left', 'right')
 
@@ -259,6 +262,7 @@ def main():
             sheets.append(chain(who, view, fr, o.out, key))
         # 새로 그림: a frame copied from the one before and only warped or recoloured
         for (k1, p1), (k2, p2) in zip(fr, fr[1:]):
+            if act in HAND_ONLY: break  # only a hand or foot moves: the body stays the same by design
             c = copied(p1, p2)
             if c > 0.5: notes.append(f'{k2}: {k1}에서 복사해 변형한 프레임 (같은 픽셀 {c:.0%}, 새로 그린 프레임은 30 % 아래)')
         # 0↔1

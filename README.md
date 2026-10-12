@@ -6,7 +6,7 @@
 > - **TRACE ON THE GUIDES:** `head-check.py --guide`, `palette/palette.md`, `palette/eyes.png`, `notes/hair-reference.png`.
 > - **SAME FACE SHAPE. SAME HEAD SIZE. SAME LINE THICKNESS. SAME HAIR DETAIL. SAME COLOURS. SAME FACE MARK.** ONLY THE POSE CHANGES.
 > - **DO NOT ADD DETAIL. DO NOT REDESIGN. DO NOT "FIX" WHAT NOBODY ASKED YOU TO FIX.**
-> - **DRAW EVERY FRAME NEW. FRAME 1 IS A NEW DRAWING, NOT FRAME 0 COPIED AND THEN STRETCHED, SHIFTED, WARPED OR RECOLOURED.** No frame tricks. `sprite-review` catches copied frames (over 50 % identical pixels).
+> - **DRAW EVERY FRAME NEW. FRAME 1 IS A NEW DRAWING, NOT FRAME 0 COPIED AND THEN STRETCHED, SHIFTED, WARPED OR RECOLOURED.** No frame tricks. `sprite-review` catches copied frames (over 50 % identical pixels). Only exception: an action where only a hand or foot moves.
 > - **A PASSING CHECK IS NOT A FINISHED DRAWING.** PUT IT NEXT TO THE IDLE AND LOOK BEFORE YOU SEND.
 > - **THEN GO TO [docs/ASTRA-START.md](docs/ASTRA-START.md) AND READ IT. ALL OF IT.**
 

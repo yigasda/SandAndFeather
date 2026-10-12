@@ -6,7 +6,7 @@
 > 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `head-check.py --guide` (the idle's own head, faded, at the right place and size). Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
 > 3. **SAME FACE SHAPE, SAME HEAD SIZE, SAME LINE THICKNESS, SAME HAIR DETAIL, SAME COLOURS, SAME FACE MARK as the idle.** Only the pose changes. Never narrower, pointier, longer, thinner-lined, more detailed, paler or greyer.
 > 4. **NO EXTRA DETAIL.** Never draw hair or shading finer than the idle/walk.
-> 4-1. **DRAW EVERY FRAME NEW.** Frame 0 and frame 1 are two separate drawings. **NEVER copy frame 0 and stretch, shift, warp or recolour it into frame 1.** No frame tricks. `sprite-review` flags copied frames.
+> 4-1. **DRAW EVERY FRAME NEW.** Frame 0 and frame 1 are two separate drawings. **NEVER copy frame 0 and stretch, shift, warp or recolour it into frame 1.** No frame tricks. `sprite-review` flags copied frames. (Only exception: an action where only a hand or foot moves — keep the body, redraw just that hand or foot.)
 > 5. **"sprite-review 0 issues" IS NOT "DONE".** Before sending, put your picture next to the idle at the same scale and look. If anything differs from the idle, fix it first.
 > 6. **If you did not open the idle and trace on a guide, the drawing is rejected.**
 
@@ -71,7 +71,7 @@
 - ❌ **머리를 줄이거나 늘리기.** 머리 크기·모양은 어떤 자세에서도 정지와 같다. 그림을 캔버스에 맞추려고 전체를 줄이지 않는다.
 - ❌ **머리 결 바꾸기.** 세트 웨이브, 호루스 긴 머리·뒷머리, 소망 생머리 — 전부 실패.
 - ❌ **팔다리를 길게.** 굽히거나 올린 팔도 정지 길이·굵기 그대로. 좌우 팔·손도 같은 길이.
-- ❌ **프레임 장난질.** 0프레임을 복사해서 늘리거나 옮기거나 비틀거나 색만 바꿔 1프레임을 만들지 않는다. **0과 1은 항상 각각 새로 그린다.** (잠들기 194·195: 1이 0과 픽셀 67~83 % 같음. 새로 그린 프레임은 30 % 아래.) `sprite-review`가 "복사해 변형한 프레임"으로 잡는다.
+- ❌ **프레임 장난질.** 0프레임을 복사해서 늘리거나 옮기거나 비틀거나 색만 바꿔 1프레임을 만들지 않는다. **0과 1은 항상 각각 새로 그린다.** (잠들기 194·195: 1이 0과 픽셀 67~83 % 같음. 새로 그린 프레임은 30 % 아래.) `sprite-review`가 "복사해 변형한 프레임"으로 잡는다. **예외:** 손·발만 움직이는 동작(상호작용 손 뻗기처럼 명세에 그렇게 적힌 것)은 몸을 그대로 두고 움직이는 손·발만 새로 그린다. 이때도 손·발을 늘리거나 비틀어 만들지 않는다.
 - ❌ **다음 프레임을 안쪽만 고쳐 만들기.** 움직이는 부분의 **바깥 외곽선**이 움직여야 한다.
 - ❌ **누운 정면에서 발바닥을 지나치게 크게.** 발이 보는 쪽을 향하니 원근으로 **정지 신발보다 조금 큰 게 정상**이다. 다만 머리보다 눈에 띌 만큼 커지면 실패. 채택된 소망 180의 발 비율을 기준으로 맞춘다.
 - ❌ **몸통·다리를 길게.** 눕든 앉든 머리 아래 몸 길이는 정지와 같다(세 명 모두 호루스 정지 비율이 기준). 이어 보기 시트에서 정지 옆에 놓고 턱~치마단, 치마단~발끝 길이를 비교한다. **한 방향을 고치면 같은 동작의 다른 방향(정면이면 옆모습도)도 같이 고친다.** 정면만 줄이면 방향을 바꿀 때 몸이 늘었다 줄었다 한다.
