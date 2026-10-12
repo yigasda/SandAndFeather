@@ -44,11 +44,11 @@
         "kind": "seat-bottom",
         "position": [
           310,
-          585
+          572
         ]
       },
       "expression": "calm",
-      "sha256": "bc2bb674e94dbe16aaa0612889e3932430602d5f0770356d234168c263286539",
+      "sha256": "cea998a3cf4708b3a7e3e8e8181a2677829232b76e1f78c5d1e9e645112868c8",
       "restoredFrom": "183/186 original bytes",
       "canvas": [
         620,
@@ -390,6 +390,13 @@
       "what": "다리·신발을 지움. tools/art/fix/legcut.py(세트 238 370 520 552 dark, 호루스 228 392 555 590 pale) 뒤: 세트는 다리 외곽선 자국 3곳(238-244, 299-308, 362-369)을 양옆 끝선 높이로 맞추고 붉은 다리 외곽선을 치마 외곽선 색으로, 양옆 처진 덩어리를 옆 외곽선과 잇는 선(왼 545→541, 오 540→544)으로 자름. 호루스는 tools/art/fix/hemline-horus.py로 치마 끝선 아래 외곽선을 옆과 같은 5px로(226~378열) / 호루스 걸상 뒤 기준점 y 554→585: 치마 끝이 걸상 앞 모서리에 걸려 걸상 뒤에 선 것처럼 보였음. 화면에서 치마 끝을 소망 830·세트 832와 같은 831로 올림",
       "before": "sources/<누구>-back-stool-0-before-legcut.png",
       "user": "세트 치마 제대로 안 자를래 → 옆 라인이랑 이어지게 → 인겜에 넣어 / 호루스만 의자 뒤쪽이라 이상해 다른애들처럼 의자 앞쪽으로 맞춰"
+    },
+    {
+      "revision": "opus-0.9.46",
+      "files": "걸상 뒷모습 호루스",
+      "what": "허리 10px 내리고 치마 70%(b안, tools/art/fix/kilt-horus.py 10 0.70, 줄 섞기). 팔은 사용자가 그린 수정본(sources/horus-back-stool-user-drawing.jpg): register.py로 맞추고 왼팔은 금장 기준 0.75px 더 맞춤, 사용자가 고친 픽셀만 그림에서(tools/art/fix/drawdiff.py, 가장자리는 jawpaste처럼 잉크+진하기 투명도), 나머지는 b안 원본. 치마 끝 568, 기준점 y 585->572(치마 끝이 걸상 판 위)",
+      "before": "sources/horus-back-stool-0-before-0946.png",
+      "user": "b안 그대로 → 팔이 앞에 있다는 걸 이렇게 보여줘(직접 그림) → 넣어"
     }
   ]
 }
