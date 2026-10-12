@@ -46,8 +46,16 @@ lay=np.zeros_like(o)
 for y in range(470,H):
     sy=srcy(y)
     if sy is None: continue
-    yy=min(H-1,int(round(sy)))
-    m=bodyg[yy]; lay[y,m]=o[yy,m]
+    # blend the two source rows (alpha-premultiplied), so squeezed rows do not drop or double pixels
+    ya=int(np.floor(sy)); yb=min(H-1,ya+1); f=sy-ya
+    m=bodyg[ya]|bodyg[yb]
+    pa=o[ya].astype(float)*bodyg[ya][:,None]; pb=o[yb].astype(float)*bodyg[yb][:,None]
+    pa[:,:3]*=pa[:,3:4]/255; pb[:,:3]*=pb[:,3:4]/255
+    v=pa*(1-f)+pb*f; al=v[:,3]
+    rgb=np.where(al[:,None]>0,v[:,:3]*255/np.maximum(al[:,None],1e-3),0)
+    row=np.dstack([rgb,al[:,None]])[0] if False else np.concatenate([rgb,al[:,None]],1)
+    row[:,3]=np.where(row[:,3]>=128,255,np.where(row[:,3]<40,0,row[:,3]))
+    lay[y,m]=np.clip(np.round(row[m]),0,255).astype(np.uint8)
 put=(lay[...,3]>0)&~armg                     # arms stay on top
 res[put]=lay[put]
 # below the arm line, anything that is neither arm nor moved body (old kilt outline at the corners) goes
