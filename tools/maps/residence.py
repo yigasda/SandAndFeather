@@ -90,7 +90,8 @@ SCENES = {
                   (3.45, [[18.3, 0], [20.45, 0], [20.45, 3.45], [20.15, 3.45], [20.15, 0.9], [19.9, 0.55], [19.35, 0.4], [18.8, 0.55],
                           [18.6, 0.9], [18.6, 3.45], [18.3, 3.45]])],                    # the arch
         'spawn': 'south',
-        'spots': [{'id': 'temple_well', 'x': 12.9, 'y': 7.1, 'label': '우물', 'title': '우물', 'text': '두레박 줄이 축축하다. 마당 사람들이 여기서 물을 긷고 빨래를 한다.'}],
+        'spots': [{'id': 'temple_well_bench', 'x': 22.5, 'y': 6.4, 'title': '돌 벤치', 'text': '오른쪽 벽 그늘 아래 돌 벤치. 우물 마당이 한눈에 보인다.'},
+                  {'id': 'temple_well', 'x': 12.9, 'y': 7.1, 'label': '우물', 'title': '우물', 'text': '두레박 줄이 축축하다. 마당 사람들이 여기서 물을 긷고 빨래를 한다.'}],
     },
     'courtyard_colonnade': {
         'name': '열린 연못 회랑', 'day': V2 + 'courtyard-colonnade-v1.png', 'night': V2 + 'courtyard-colonnade-v1-night.png', 'size': [24, 14],
@@ -111,6 +112,8 @@ SCENES = {
         'entry': {'west': AT_W, 'east': AT_E},
         'front': FRONT_ENDS,
         'open': OPEN_ENDS,
+        # spot in the widened tiles (31x11), not the old ones
+        'spots': [{'id': 'inner_bench', 'x': 8.0, 'y': 5.2, 'title': '긴 의자', 'text': '벽 앞 긴 의자. 벽등 불빛이 따뜻하다.'}],
         'spawn': 'west',
     }, 'corridor-expand-v4/inner-corridor-expanded-v4.png', None),
     'temple_central_gallery': widen({
@@ -122,6 +125,8 @@ SCENES = {
         'entry': {'south': [13.5, 7.9, 'up'], 'west': AT_W, 'east': AT_E, 'arch': [13.4, 3.4, 'down']},
         'front': FRONT_ENDS + [(3.95, [[11.9, 0.3], [14.95, 0.3], [14.95, 3.95], [14.25, 3.95], [14.25, 1.45], [14.0, 0.95], [13.4, 0.65], [12.8, 0.95], [12.55, 1.45], [12.55, 3.95], [11.9, 3.95]])],
         'open': OPEN_ENDS,
+        # spot in the widened tiles (31x11), not the old ones
+        'spots': [{'id': 'central_bench', 'x': 8.0, 'y': 5.2, 'title': '긴 의자', 'text': '해 부조 아래 긴 의자.'}],
         'spawn': 'south',
     }, 'central-expanded.png', 10.2),
     'temple_east_gallery': widen({
@@ -132,6 +137,8 @@ SCENES = {
         'entry': {'west': AT_W, 'east': AT_E, 'shrine': [15.75, 3.75, 'down']},
         'front': FRONT_ENDS + [(3.95, [[14.4, 0.5], [17.05, 0.5], [17.05, 3.95], [16.5, 3.95], [16.5, 1.6], [15.0, 1.6], [15.0, 3.95], [14.4, 3.95]])],
         'open': OPEN_ENDS,
+        # spot in the widened tiles (31x11), not the old ones
+        'spots': [{'id': 'east_bench', 'x': 8.0, 'y': 5.2, 'title': '긴 의자', 'text': '붉은 천이 덮인 긴 의자.'}],
         'spawn': 'west',
     }, 'east-expanded.png', None),
     'temple_west_gallery': widen({
@@ -142,6 +149,8 @@ SCENES = {
         'entry': {'east': AT_E, 'west': AT_W, 'stairs': [7.6, 3.75, 'down']},
         'front': FRONT_ENDS + [(3.95, [[5.95, 0.2], [9.2, 0.2], [9.2, 3.95], [8.55, 3.95], [8.55, 1.05], [6.6, 1.05], [6.6, 3.95], [5.95, 3.95]])],
         'open': OPEN_ENDS,
+        # spot in the widened tiles (31x11), not the old ones
+        'spots': [{'id': 'west_bench', 'x': 21.0, 'y': 5.1, 'title': '긴 의자', 'text': '별 휘장 사이의 긴 의자.'}],
         'spawn': 'east',
     }, 'west-expanded.png', None),
     'room_entrances_wide': widen({
@@ -156,6 +165,8 @@ SCENES = {
                   'west': AT_W, 'east': AT_E, 'arch': [13.24, 7.46, 'up']},
         'front': FRONT_ENDS,
         'open': OPEN_ENDS,
+        # spot in the widened tiles (31x11), not the old ones
+        'spots': [{'id': 'rooms_bench', 'x': 9.1, 'y': 5.2, 'title': '긴 의자', 'text': '방문 앞 줄무늬 긴 의자.'}],
         'spawn': 'arch',
     }, 'rooms-expanded.png', 10.2),
     'set_room': {
@@ -219,7 +230,8 @@ SCENES = {
         # (art px 684 and 1088), the top under the hair (as in Set's room)
         'front': [(6.3, [[8.4826, 4.87], [13.4927, 4.87], [13.4927, 6.55], [8.4826, 6.55]], {'act': 'sit-floor'})],
         'exits': [[ROOM_DOOR, 'temple_courtyard', 'east']], 'entry': {'door': [11, 8.6, 'up']}, 'spawn': 'door',
-        'spots': [{'id': 'temple_table', 'x': 15.6, 'y': 6.6, 'title': '식탁', 'text': '낮은 식탁에 방석 세 자리. 나눠 먹을 음식이 놓여 있다.'},
+        'spots': [{'id': 'temple_table_left', 'x': 6.4, 'y': 6.6, 'title': '식탁 왼쪽 방석', 'text': '식탁 왼쪽 방석. 창으로 정원이 보인다.'},
+                  {'id': 'temple_table', 'x': 15.6, 'y': 6.6, 'title': '식탁', 'text': '낮은 식탁에 방석 세 자리. 나눠 먹을 음식이 놓여 있다.'},
                   {'id': 'temple_table_mid', 'x': 10.45, 'y': 7.2, 'title': '식탁 가운데 방석', 'text': '식탁 앞 가운데 방석. 음식이 한눈에 보인다.'}],
     },
     'temple_sanctuary': {
@@ -245,7 +257,8 @@ SCENES = {
         'solid': [[0, 0, 22, 4.4], [1.5, 0, 2.5, 4.7], [14.9, 0, 16.7, 4.7], [16.7, 0, 21.1, 5.8], [0, 0, 1.2, 11], [21.1, 0, 22, 11],
                   [1.6, 4.8, 4.9, 6.6], [4.5, 4.6, 6.8, 5.6], [5.8, 5.9, 7.1, 6.9], [0, 8.7, 22, 11]],
         'exits': [], 'entry': {'stairs': [19.0, 6.6, 'down']}, 'spawn': 'stairs',
-        'spots': [{'id': 'roof_stars', 'x': 9.5, 'y': 7.0, 'title': '지붕 난간', 'text': '낮은 난간 너머로 마을과 강이 내려다보인다.', 'textNight': '난간에 기대면 별이 쏟아질 듯 가깝다.'},
+        'spots': [{'id': 'roof_rug', 'x': 5.2, 'y': 7.3, 'title': '양탄자 자리', 'text': '긴 방석과 붉은 쿠션이 낮은 탁자를 둘러싸고 있다. 바람이 시원하다.'},
+                  {'id': 'roof_stars', 'x': 9.5, 'y': 7.0, 'title': '지붕 난간', 'text': '낮은 난간 너머로 마을과 강이 내려다보인다.', 'textNight': '난간에 기대면 별이 쏟아질 듯 가깝다.'},
                   {'id': 'stairs_down', 'x': 18.6, 'y': 6.0, 'label': '계단', 'title': '계단실', 'text': '아래 열주 계단으로 내려가는 문이다.',
                    'climb': {'to': 'temple_colonnade', 'at': 'stairs', 'glyph': 'v', 'name': '아래로 내려가기'}}],
     },

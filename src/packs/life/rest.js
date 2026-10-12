@@ -12,11 +12,14 @@ import { onSpot } from '../../ui/window.js';
 
 // where a pose's anchor goes (tiles), which way she faces there, and which picture. The dining table has a cushion
 // on its left, right and front; sitting on the right one she faces left (the table), and so on.
+// a long-seat place for each of the three: the pictures stand differently (Set's sits a little further back on the
+// seat), so Somang's and Horus's place is given and Set's is moved by the measured difference (0.9.48 long chair)
+const bench = (x, y, dir) => ['somang', 'set', 'horus'].map(who => ({ x: who === 'set' ? +(x + (dir === 'left' ? 0.16 : -0.16)).toFixed(2) : x,
+    y: who === 'set' ? +(y - 0.04).toFixed(2) : y, dir, pose: 'sit-bench', who }));
 const SEATS = {
-    temple_table: [
-        { x: 14.25, y: 5.4, dir: 'left', pose: 'sit-floor' },
-        { x: 7.65, y: 5.4, dir: 'right', pose: 'sit-floor' },
-    ],
+    temple_table: [{ x: 14.25, y: 5.4, dir: 'left', pose: 'sit-floor' }],
+    // the left cushion has its own spot: from the table's one spot (its right end) it was never the nearest
+    temple_table_left: [{ x: 7.65, y: 5.4, dir: 'right', pose: 'sit-floor' }],
     // the front cushion has its own place: from the table's one spot (its right end) it was never the nearest
     temple_table_mid: [{ x: 10.95, y: 6.75, dir: 'up', pose: 'sit-floor' }],
     // Set's room: the low table has a cushion on each side; the desk has a stool (sitting there she faces the desk)
@@ -34,7 +37,22 @@ const SEATS = {
         { x: 2.52, y: 7.12, dir: 'right', pose: 'sit-bench', who: 'set' },
         { x: 2.68, y: 7.16, dir: 'right', pose: 'sit-bench', who: 'horus' },
     ],
-    colonnade_seat: [],
+    // 0.9.50: every other seat in the pictures. Low stools and benches take the long-chair picture (side on); the
+    // benches along the corridor walls face the room, but until a front-facing sitting picture comes she sits on them
+    // side on, looking along the corridor
+    somang_table: bench(9.25, 5.75, 'right'),          // the stool left of her round work table
+    temple_well_bench: bench(23.2, 5.35, 'left'),       // the stone bench by the courtyard's right wall
+    roof_rug: [                                         // the roof's rug: the long cushions and the red pouf by the low table
+        { x: 3.9, y: 6.1, dir: 'right', pose: 'sit-floor' },
+        { x: 6.4, y: 6.55, dir: 'up', pose: 'sit-floor' },
+    ],
+    colonnade_seat: bench(6.2, 4.9, 'right'),
+    inner_bench: bench(7.3, 4.55, 'right'),
+    central_bench: bench(7.3, 4.5, 'right'),
+    east_bench: bench(7.3, 4.55, 'right'),
+    west_bench: bench(20.6, 4.4, 'right'),
+    rooms_bench: bench(8.85, 4.55, 'right'),
+    ombos_bench: bench(19.8, 10.6, 'right'),            // the little bench inside the temple's front yard
 };
 // the middle of the body lying in bed. Set's bed (and Horus's, the same bed) is wide enough for two: Somang takes the right pillow, Set and Horus
 // the left. Sleeping together, the one on the left lies on the side facing the other (the right); the right one

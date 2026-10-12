@@ -235,9 +235,11 @@ export class Renderer {
             const wt = tag ? g.measureText(tag + ' ').width : 0, wl = g.measureText(sp.label).width, w = wt + wl + 9 * z;
             const x = (sp.x + 0.5) * ts - cx - w / 2;
             let y = (sp.y - 0.55) * ts - cy;
-            // a sign never covers her: where it would (she stands right by the door), it goes under her feet instead
-            if (sp.near && Math.abs(sp.x + 0.5 - fx) * ts < w / 2 + 0.45 * ts && sp.y - 0.55 > fy - 2.15 && sp.y - 0.55 < fy + 0.3)
-                y = (fy + 0.45) * ts - cy;
+            // a sign never covers her: where it would (she stands right by the door), it goes under her feet instead;
+            // a place's name over her while she sits (Ombos's little bench under the altar's name) waits until she stands
+            const over = Math.abs(sp.x + 0.5 - fx) * ts < w / 2 + 0.45 * ts && sp.y - 0.55 > fy - 2.15 && sp.y - 0.55 < fy + 0.3;
+            if (over && player.seat && !sp.near) continue;
+            if (over && sp.near) y = (fy + 0.45) * ts - cy;
             if (x + w < 0 || x > W || y < -10 * z || y > H + 10 * z) continue;
             g.fillStyle = 'rgba(43,32,24,.62)';
             g.beginPath(); g.roundRect ? g.roundRect(x, y - 5 * z, w, 10 * z, 5 * z) : g.rect(x, y - 5 * z, w, 10 * z); g.fill();
@@ -245,8 +247,8 @@ export class Renderer {
             if (tag) { g.fillStyle = '#F2A36E'; g.fillText(tag, x + 4.5 * z, y + 0.5 * z); }
             g.fillStyle = '#FBF3EA'; g.fillText(sp.label, x + 4.5 * z + wt, y + 0.5 * z);
         }
-        // a soft ring under what she can talk to
-        if (near) {
+        // a soft ring under what she can talk to (not while she sits: the ring would be on her)
+        if (near && !player.seat) {
             g.strokeStyle = 'rgba(184,84,31,.85)'; g.lineWidth = Math.max(2, z);
             g.beginPath(); g.ellipse((near.x + 0.5) * ts - cx, (near.y + 0.95) * ts - cy, 6 * z, 2.5 * z, 0, 0, Math.PI * 2); g.stroke();
         }

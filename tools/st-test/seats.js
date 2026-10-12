@@ -14,6 +14,17 @@ const SEATS = [
   ['horus_desk', 'horus_room', [18.3, 7.4], 'up'],
   ['somang_mirror', 'somang_room', [3.2, 5.3], 'up'],
   ['somang_chair', 'somang_room', [4.0, 6.8], 'left'],
+  ['dining_left', 'temple_dining', [6.4, 7.0], 'up'],
+  ['somang_table', 'somang_room', [9.3, 6.9], 'up'],
+  ['well_bench', 'temple_courtyard', [21.6, 7.1], 'up'],
+  ['roof_rug', 'temple_roof', [5.2, 7.6], 'up'],
+  ['colonnade_seat', 'temple_colonnade', [7.0, 6.2], 'up'],
+  ['inner_bench', 'temple_inner_corridor', [8.0, 5.6], 'up'],
+  ['central_bench', 'temple_central_gallery', [8.0, 5.6], 'up'],
+  ['east_bench', 'temple_east_gallery', [8.0, 5.6], 'up'],
+  ['west_bench', 'temple_west_gallery', [21.0, 5.5], 'up'],
+  ['rooms_bench', 'room_entrances_wide', [9.1, 5.6], 'up'],
+  ['ombos_bench', 'ombos', [20.0, 9.9], 'down'],
 ];
 const ONLY = process.argv[3] ? process.argv[3].split(',') : null;
 (async () => {

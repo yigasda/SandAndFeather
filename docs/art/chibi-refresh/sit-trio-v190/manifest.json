@@ -9,7 +9,7 @@
     620,
     720
   ],
-  "frameCount": 14,
+  "frameCount": 17,
   "files": [
     {
       "path": "png/horus-back-floor-0.png",
@@ -314,6 +314,72 @@
         720
       ],
       "reviewStatus": "user-approved"
+    },
+    {
+      "path": "png/somang-left-bench-0.png",
+      "character": "somang",
+      "direction": "left",
+      "seatType": "bench",
+      "frame": 0,
+      "anchor": {
+        "kind": "seat-bottom",
+        "position": [
+          309,
+          535
+        ]
+      },
+      "expression": "approved179-basic-smile",
+      "canvas": [
+        620,
+        720
+      ],
+      "reviewStatus": "user-approved",
+      "sha256": "576a98f8c0e91ab66d1e851c7130a96c3519f2e8afd1afcc653368d6a7a398c3",
+      "derivedFrom": "png/somang-right-bench-0.png 좌우 반전(오푸스, 사용자: 긴의자 형태 앉기는 좌우만 반전)"
+    },
+    {
+      "path": "png/set-left-bench-0.png",
+      "character": "set",
+      "direction": "left",
+      "seatType": "bench",
+      "frame": 0,
+      "anchor": {
+        "kind": "seat-bottom",
+        "position": [
+          322,
+          553
+        ]
+      },
+      "expression": "relaxed-half-lids",
+      "canvas": [
+        620,
+        720
+      ],
+      "reviewStatus": "user-approved",
+      "sha256": "2952f97746fc6a5d97c3c5a0a104928c1192c2b5747de77af800c8aa0f59301f",
+      "derivedFrom": "png/set-right-bench-0.png 좌우 반전(오푸스, 사용자: 긴의자 형태 앉기는 좌우만 반전)"
+    },
+    {
+      "path": "png/horus-left-bench-0.png",
+      "character": "horus",
+      "direction": "left",
+      "seatType": "bench",
+      "frame": 0,
+      "anchor": {
+        "kind": "seat-bottom",
+        "position": [
+          324,
+          559
+        ]
+      },
+      "expression": "calm",
+      "canvas": [
+        620,
+        720
+      ],
+      "reviewStatus": "user-approved",
+      "sha256": "dc168364b2d949dc7a81f4960ea54beddd11d14aab11a346a9a4181448c5d9d4",
+      "derivedFrom": "png/horus-right-bench-0.png 좌우 반전(오푸스, 사용자: 긴의자 형태 앉기는 좌우만 반전) + 눈 아래 문양을 final/horus/idle/horus-left.png에서 옮김(tools/art/fix/horusmark.py, 눈 아래끝 358, 100 %)"
     }
   ],
   "playback": {
