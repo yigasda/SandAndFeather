@@ -40,8 +40,12 @@ const SEATS = {
     // 0.9.50: every other seat in the pictures. Low stools and benches take the long-chair picture (side on); the
     // benches along the corridor walls face the room, but until a front-facing sitting picture comes she sits on them
     // side on, looking along the corridor
-    somang_table: bench(9.25, 5.75, 'right'),          // the stool left of her round work table
-    temple_well_bench: bench(23.2, 5.35, 'left'),       // the stone bench by the courtyard's right wall
+    // the stool left of her round work table: Horus's thighs are shorter, so he sits further right to put his knees on
+    // the stool's front edge (user: his legs hung in the middle of the stool)
+    somang_table: bench(9.25, 5.75, 'right').map(p => (p.who === 'horus' ? { ...p, x: 9.4 } : p)),
+    // the stone bench by the courtyard's right wall, seen at an angle: the seat on the middle of its top, the thighs
+    // over its long left edge and the legs hanging down its side (user: thighs must sit where the bench's top is)
+    temple_well_bench: ['somang', 'set', 'horus'].map(who => ({ x: 23.15, y: 5.35, dir: 'left', pose: 'sit-bench', who })),
     roof_rug: [                                         // the roof's rug: the long cushions and the red pouf by the low table
         { x: 3.9, y: 6.1, dir: 'right', pose: 'sit-floor' },
         { x: 6.4, y: 6.55, dir: 'up', pose: 'sit-floor' },
