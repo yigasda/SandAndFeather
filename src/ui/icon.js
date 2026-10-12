@@ -1,0 +1,2 @@
+// The extension's mark: Maat's feather, drawn as an outline like NarrativeArchive's icons. Sized by the text around it.
+export const FEATHER = `<svg class="sf_mark" viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21c0-5 .5-11 3.5-16.5 1.2-2.2 3.8-1.8 3.8.6 0 4.6-2.6 9.4-7.3 12.4"/><path d="M10.2 14.5l3.6-2M11 10.8l3.4-1.8M12.3 7.3l2.6-1.3"/></svg>`;

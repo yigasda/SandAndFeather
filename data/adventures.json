@@ -1,0 +1,262 @@
+{
+  "_about": "작은 모험 조각. 확장이 이 조각들로 모험을 조립하고, AI 생성을 켜면 AI도 같은 형식으로 써. 단계 kind: follow 따라가기, touch 여러 곳 살피기, find 한 곳에서 발견, bring 물건 가져가기, choice 갈림길. at은 지도 anchors의 id.",
+  "guides": {
+    "beetle": {
+      "ko": "푸른 풍뎅이",
+      "sprite": "beetle",
+      "verb": "날아간다"
+    },
+    "falcon": {
+      "ko": "작은 매",
+      "sprite": "falcon",
+      "verb": "앞으로 날아가 앉는다"
+    },
+    "cat": {
+      "ko": "얼룩 고양이",
+      "sprite": "cat",
+      "verb": "꼬리를 세우고 걸어간다"
+    },
+    "prints": {
+      "ko": "모래 위 발자국",
+      "sprite": "prints",
+      "verb": "이어진다"
+    }
+  },
+  "finds": [
+    "sealed_jar",
+    "sealed_letter",
+    "faience_scarab",
+    "bronze_mirror",
+    "ushabti",
+    "ostracon",
+    "croc_tooth",
+    "toy_boat"
+  ],
+  "rewards": {
+    "materials": [
+      "reed_bundle",
+      "limestone",
+      "pitch",
+      "black_sand"
+    ],
+    "relics": [
+      "was_shard",
+      "wedjat",
+      "heart_scarab",
+      "ka_statue",
+      "ancient_seal"
+    ]
+  },
+  "endings": [
+    {
+      "id": "owner",
+      "ko": "주인을 찾아 준다",
+      "text": "{물건}의 주인을 찾아 돌려준다.",
+      "a": {
+        "label": "상인에게 맡긴다",
+        "deben": 15,
+        "xp": 4,
+        "memory": "left_with_merchant",
+        "journal": "{물건}을 시장 상인에게 맡겼다. 주인을 찾아 주겠다고 했다."
+      },
+      "b": {
+        "label": "직접 간직한다",
+        "keep": true,
+        "xp": 3,
+        "memory": "kept_find",
+        "journal": "{물건}을 직접 간직하기로 했다."
+      }
+    },
+    {
+      "id": "offer",
+      "ko": "신전에 바친다",
+      "text": "{물건}을 어떻게 할까.",
+      "a": {
+        "label": "제단에 바친다",
+        "faith": 1,
+        "xp": 4,
+        "journal": "{물건}을 신전 제단에 바쳤다."
+      },
+      "b": {
+        "label": "가방에 넣는다",
+        "keep": true,
+        "xp": 3,
+        "journal": "{물건}을 가방에 넣었다."
+      }
+    },
+    {
+      "id": "open",
+      "ko": "열어 본다",
+      "text": "봉해진 {물건}. 지금 열까.",
+      "a": {
+        "label": "지금 연다",
+        "open": true,
+        "xp": 4,
+        "journal": "{물건}을 그 자리에서 열었다."
+      },
+      "b": {
+        "label": "봉한 채 가져간다",
+        "keep": true,
+        "xp": 3,
+        "memory": "kept_sealed",
+        "journal": "{물건}을 봉한 채로 가져왔다."
+      }
+    }
+  ],
+  "templates": [
+    {
+      "id": "follow",
+      "ko": "따라가기",
+      "steps": [
+        {
+          "kind": "follow",
+          "hops": 3
+        },
+        {
+          "kind": "find"
+        },
+        {
+          "kind": "choice"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "ko": "살피기",
+      "steps": [
+        {
+          "kind": "touch",
+          "count": 3
+        },
+        {
+          "kind": "find"
+        },
+        {
+          "kind": "choice"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "ko": "운반",
+      "steps": [
+        {
+          "kind": "find"
+        },
+        {
+          "kind": "bring",
+          "to": "merchant"
+        },
+        {
+          "kind": "choice"
+        }
+      ]
+    },
+    {
+      "id": "trade",
+      "ko": "거래",
+      "steps": [
+        {
+          "kind": "bring",
+          "need": "food",
+          "to": "merchant"
+        },
+        {
+          "kind": "find"
+        }
+      ]
+    }
+  ],
+  "seeds": {
+    "left_with_merchant": {
+      "ko": "맡긴 물건의 소식",
+      "intro": "시장 상인이 손짓한다. 며칠 전 맡긴 물건의 주인을 찾았다고 한다.",
+      "steps": [
+        {
+          "kind": "bring",
+          "to": "merchant",
+          "talk": true
+        },
+        {
+          "kind": "find",
+          "item": "ancient_seal"
+        }
+      ]
+    },
+    "kept_sealed": {
+      "ko": "봉인의 문양",
+      "intro": "가방 속 봉인과 같은 문양이 마을 어딘가에 새겨져 있다는 소문을 들었다.",
+      "steps": [
+        {
+          "kind": "touch",
+          "count": 2
+        },
+        {
+          "kind": "find",
+          "item": "map_scrap"
+        }
+      ]
+    }
+  },
+  "handmade": [
+    {
+      "id": "hidden_garden",
+      "title": "숨은 정원",
+      "intro": "신전 옆에서 푸른 풍뎅이 한 마리가 날개를 반짝인다.",
+      "steps": [
+        {
+          "kind": "follow",
+          "guide": "beetle",
+          "path": [
+            "palm_shade",
+            "by_scriptorium",
+            "garden_wall"
+          ],
+          "text": "푸른 풍뎅이를 따라가 보자."
+        },
+        {
+          "kind": "touch",
+          "marks": [
+            {
+              "x": 2,
+              "y": 26,
+              "label": "강가 수문",
+              "text": "녹슨 나무 수문을 들어 올리자 물이 도랑으로 흘러든다."
+            },
+            {
+              "x": 7,
+              "y": 5,
+              "label": "정원 수문",
+              "text": "담 아래 작은 수문을 열자 물소리가 담 안쪽으로 이어진다."
+            }
+          ],
+          "text": "물길이 끊겨 있다. 수문 두 개를 열어 보자."
+        },
+        {
+          "kind": "overlay",
+          "id": "garden",
+          "text": "마른 연못에 물이 차오르고, 연꽃이 피고, 닫혀 있던 정원 문이 열린다."
+        },
+        {
+          "kind": "find",
+          "x": 1,
+          "y": 3,
+          "label": "정원 안 상자",
+          "item": "heart_scarab",
+          "text": "연못가 돌 밑에 작은 상자가 묻혀 있다."
+        }
+      ],
+      "end": {
+        "xp": 10,
+        "deben": 10,
+        "journal": "옴보스 북서쪽 옛 정원에 물길을 되살렸다. 연못가에서 심장 스카라베를 찾았다.",
+        "en": "Somang brought water back to the old walled garden in the northwest of Ombos and found a heart scarab by its pond.",
+        "say": "옛 정원에 다시 물이 흐르게 했던 일을 꺼낸다.",
+        "marks": [
+          "정원",
+          "스카라베"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "_about": "신전 집무실 지도 탁자에서 고르는 마을 정비. needs는 물건과 개수, deben은 돈, days는 끝나기까지 게임 속 날 수, after는 먼저 끝나 있어야 하는 정비, rank는 필요한 모험 등급.",
+  "works": [
+    {
+      "id": "canal",
+      "ko": "수로 정비",
+      "about": "텃밭 옆 마른 도랑에 다시 나일 물을 끌어온다. 끝나면 텃밭 칸이 둘 늘어.",
+      "needs": {
+        "limestone": 2,
+        "reed_bundle": 2
+      },
+      "deben": 10,
+      "energy": 2,
+      "days": 2,
+      "overlay": "canal",
+      "plots": 2
+    },
+    {
+      "id": "field",
+      "ko": "밭 넓히기",
+      "about": "수로 옆 빈 땅을 갈아 밭으로 만든다. 텃밭 칸이 둘 더 늘어.",
+      "needs": {
+        "reed_bundle": 1,
+        "limestone": 1
+      },
+      "deben": 10,
+      "energy": 2,
+      "days": 2,
+      "overlay": "field",
+      "after": "canal",
+      "plots": 2
+    },
+    {
+      "id": "boat",
+      "ko": "선착장 배 수리",
+      "about": "선착장에 버려진 배를 고친다. 끝나면 강 건너 무너진 신전에 갈 수 있어. 모험 등급 3부터 건널 수 있어.",
+      "needs": {
+        "cedar_plank": 1,
+        "pitch": 1,
+        "reed_bundle": 2
+      },
+      "deben": 20,
+      "energy": 2,
+      "days": 3,
+      "overlay": "boat"
+    }
+  ]
+}
