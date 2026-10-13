@@ -1669,3 +1669,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 /* bag tabs: each label on one line (at 320px they broke into one letter per line); the theme's button look stays */
 #sf_game .sf_inventory_tabs .sf_btn { white-space: nowrap; word-break: keep-all; min-width: 0; overflow: hidden; text-overflow: clip; }
 @media (max-width: 360px) { #sf_game[data-ui-theme] .sf_inventory_tabs .sf_btn { padding-left: 0; padding-right: 0; letter-spacing: -0.02em; } }
+/* 0.9.60 market: the category tabs scroll sideways instead of squeezing (up to eight) */
+#sf_game .sf_market_tabs { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; padding-bottom: 6px; margin-bottom: 6px; }
+#sf_game .sf_market_tabs::-webkit-scrollbar { display: none; }
+#sf_game .sf_market_tabs .sf_btn { flex: 0 0 auto; padding-left: 10px; padding-right: 10px; }

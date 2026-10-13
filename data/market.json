@@ -1,17 +1,248 @@
 {
-  "_about": "시장에서 파는 것. 사는 값은 items.json의 price, 파는 값은 그 절반이야. 기록은 못 팔아.",
-  "sells": [
-    "bread",
-    "honey",
-    "onion",
-    "salt",
-    "dates",
-    "lotus_seed",
-    "barley_seed",
-    "fig_seed",
-    "reed_bundle",
-    "pitch",
-    "limestone",
-    "cedar_plank"
-  ]
+  "_about": "시장. goods는 진열하는 것: cat 분류, mul 사는 값 배율(items.json price × mul, 반올림), stock 하루 수량(없으면 무제한). 조건: parts 그 시간대에만 보임(재고는 하루 한 번 정하고 시간대는 보여 줄 때만 봄), rank 모험 등급 이상, chance 그날 들어올 확률, found 한 번 직접 얻어 본 것(시장에서 산 것 말고, 도감 found), festival 축제 준비 기간에만, stall 골동품 좌판(그날 stallPerDay개만 뽑아 둠). 파는 값은 언제나 items.json price의 절반, 기록은 못 팔아. daily: 특가 수는 그날 진열 수 / per를 min~max로, 할인 discount %(내림, 실제 할인율이 이 범위를 넘지 않게, 값이 너무 낮아 1데벤도 25% 넘으면 특가에서 뺌), 품절은 하루 최대 하나 chance 확률로 never에 없는 것 중에서. 같은 것이 이틀 잇달아 특가나 품절이 되지 않아.",
+  "categories": [
+    {
+      "id": "ingredient",
+      "ko": "식재료"
+    },
+    {
+      "id": "food",
+      "ko": "요리"
+    },
+    {
+      "id": "fish",
+      "ko": "생선"
+    },
+    {
+      "id": "garden",
+      "ko": "텃밭"
+    },
+    {
+      "id": "material",
+      "ko": "자재"
+    },
+    {
+      "id": "festival",
+      "ko": "축제"
+    },
+    {
+      "id": "antique",
+      "ko": "골동품 좌판"
+    }
+  ],
+  "goods": [
+    {
+      "id": "bread",
+      "cat": "ingredient"
+    },
+    {
+      "id": "honey",
+      "cat": "ingredient"
+    },
+    {
+      "id": "onion",
+      "cat": "ingredient"
+    },
+    {
+      "id": "salt",
+      "cat": "ingredient"
+    },
+    {
+      "id": "dates",
+      "cat": "ingredient"
+    },
+    {
+      "id": "grilled_fish",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "honey_bread",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "fig_cake",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "barley_porridge",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "lotus_tea",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "fish_stew",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "tilapia",
+      "cat": "fish"
+    },
+    {
+      "id": "nile_perch",
+      "cat": "fish"
+    },
+    {
+      "id": "catfish",
+      "cat": "fish"
+    },
+    {
+      "id": "eel",
+      "cat": "fish",
+      "parts": [
+        "evening",
+        "night"
+      ],
+      "stock": 2
+    },
+    {
+      "id": "golden_carp",
+      "cat": "fish",
+      "parts": [
+        "dawn"
+      ],
+      "rank": 2,
+      "chance": 0.2,
+      "stock": 1,
+      "mul": 1.5
+    },
+    {
+      "id": "barley",
+      "cat": "garden"
+    },
+    {
+      "id": "fig",
+      "cat": "garden"
+    },
+    {
+      "id": "blue_lotus",
+      "cat": "garden"
+    },
+    {
+      "id": "lotus_seed",
+      "cat": "garden"
+    },
+    {
+      "id": "barley_seed",
+      "cat": "garden"
+    },
+    {
+      "id": "fig_seed",
+      "cat": "garden"
+    },
+    {
+      "id": "reed_bundle",
+      "cat": "material"
+    },
+    {
+      "id": "pitch",
+      "cat": "material"
+    },
+    {
+      "id": "limestone",
+      "cat": "material"
+    },
+    {
+      "id": "cedar_plank",
+      "cat": "material"
+    },
+    {
+      "id": "black_sand",
+      "cat": "material",
+      "found": true,
+      "stock": 1,
+      "mul": 2
+    },
+    {
+      "id": "duat_reed",
+      "cat": "material",
+      "found": true,
+      "stock": 1,
+      "mul": 2
+    },
+    {
+      "id": "feast_garland",
+      "cat": "festival",
+      "festival": true,
+      "stock": 3
+    },
+    {
+      "id": "faience_scarab",
+      "cat": "antique",
+      "found": true,
+      "stock": 1,
+      "mul": 2,
+      "stall": true
+    },
+    {
+      "id": "bronze_mirror",
+      "cat": "antique",
+      "found": true,
+      "stock": 1,
+      "mul": 2,
+      "stall": true
+    },
+    {
+      "id": "toy_boat",
+      "cat": "antique",
+      "found": true,
+      "stock": 1,
+      "mul": 2,
+      "stall": true
+    },
+    {
+      "id": "croc_tooth",
+      "cat": "antique",
+      "found": true,
+      "stock": 1,
+      "mul": 2,
+      "stall": true
+    },
+    {
+      "id": "ushabti",
+      "cat": "antique",
+      "found": true,
+      "stock": 1,
+      "mul": 2,
+      "stall": true
+    }
+  ],
+  "daily": {
+    "deals": {
+      "per": 8,
+      "min": 3,
+      "max": 5
+    },
+    "discount": [
+      10,
+      25
+    ],
+    "soldOut": {
+      "chance": 0.3,
+      "never": [
+        "lotus_seed",
+        "barley_seed",
+        "fig_seed",
+        "reed_bundle",
+        "limestone",
+        "pitch",
+        "cedar_plank",
+        "bread",
+        "honey",
+        "onion",
+        "salt"
+      ]
+    },
+    "stallPerDay": [
+      1,
+      2
+    ]
+  }
 }

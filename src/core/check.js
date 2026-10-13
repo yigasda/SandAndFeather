@@ -26,7 +26,17 @@ export function checkData() {
         });
     }
     const known = (file, where, id) => { if (id && !items[id]) bad(file, `${where}: ${id}가 items.json에 없어`); };
-    for (const id of DATA.market?.sells || []) known('market.json', '파는 것', id);
+    const M = DATA.market || {}, cats = new Set((M.categories || []).map(c => c.id));
+    for (const g of M.goods || []) {
+        known('market.json', '진열', g.id);
+        if (!cats.has(g.cat)) bad('market.json', `${g.id}: 없는 분류 ${g.cat}`);
+        if (items[g.id]?.kind === 'record') bad('market.json', `${g.id}: 기록은 팔지 않아`);
+        if (g.mul !== undefined && !(g.mul >= 1 && g.mul <= 3)) bad('market.json', `${g.id}: mul은 1~3`);
+        if (g.stock !== undefined && !(Number.isInteger(g.stock) && g.stock >= 1)) bad('market.json', `${g.id}: stock은 1 이상 정수`);
+    }
+    const dd = M.daily || {};
+    if (dd.discount && !(dd.discount[0] >= 1 && dd.discount[1] <= 50 && dd.discount[0] <= dd.discount[1])) bad('market.json', 'daily.discount는 1~50 사이 [작은 값, 큰 값]');
+    for (const id of dd.soldOut?.never || []) known('market.json', '품절 안 되는 것', id);
     for (const r of DATA.recipes?.recipes || []) { known('recipes.json', '요리', r.id); for (const n of r.needs || []) known('recipes.json', `${r.id} 재료`, n.id); }
     for (const w of DATA.works?.works || []) for (const id of Object.keys(w.needs || {})) known('works.json', w.id, id);
     for (const id of [...(DATA.duat?.relics || []), ...(DATA.duat?.materials || [])]) known('duat.json', '보상', id);
