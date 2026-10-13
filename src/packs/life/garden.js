@@ -36,7 +36,7 @@ function card(ui) {
         const out = itemInfo(g.gives);
         return left > 0
             ? { icon: '🌱', name: `${k + 1}번 칸 · ${itemInfo(p.seed)?.ko}`, sub: `${left}일 뒤에 ${out?.ko || ''} 수확` }
-            : { icon: out?.icon || '🌾', name: `${k + 1}번 칸 · ${out?.ko} 다 자랐어`, sub: `${out?.ko} ${g.count || 1}개`, buttons: [{ label: '수확', primary: true, onClick: async () => {
+            : { icon: out?.icon || '🌾', item: g.gives, name: `${k + 1}번 칸 · ${out?.ko} 다 자랐어`, sub: `${out?.ko} ${g.count || 1}개`, buttons: [{ label: '수확', primary: true, onClick: async () => {
                 give(s, g.gives, g.count || 1, 'garden'); s.garden.plots[k] = null; addXP(s, 1); await saveState();
                 ui.toast(`${out?.ko} ${g.count || 1}개 수확했어`); close(); card(ui);
             } }] };

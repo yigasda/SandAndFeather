@@ -25,7 +25,7 @@ function card(ui) {
     const rows = (DATA.recipes?.recipes || []).map(r => {
         const out = itemInfo(r.id) || {}, use = pickFor(s, r);
         const f = out.food || {};
-        return { icon: out.icon, name: out.ko, dim: !use,
+        return { icon: out.icon, item: r.id, name: out.ko, dim: !use,
             sub: `${r.needs.map(needText).join(' + ')} · ${[f.heal ? `회복 ${f.heal}` : '', f.fear ? `공포 −${f.fear}` : ''].filter(Boolean).join(' ')}`,
             buttons: [{ label: '만들기', primary: !!use, disabled: !use || sunLeft(s) < 1, onClick: async () => {
                 const u = pickFor(s, r); if (!u || !spend(s, 1)) return;

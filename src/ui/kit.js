@@ -1,5 +1,8 @@
 // Small building blocks for the cards packs show: a list of rows with buttons, a line of chips.
-//   list([{ icon, name, sub, buttons: [{ label, onClick, disabled, primary }] }]) → element
+//   list([{ icon, item, name, sub, buttons: [{ label, onClick, disabled, primary }] }]) → element
+//   item: an item id; its picture (itemart.js) shows instead of the icon text
+
+import { itemArt } from './itemart.js';
 
 export function list(rows, empty = '') {
     const box = document.createElement('div');
@@ -9,7 +12,8 @@ export function list(rows, empty = '') {
         const row = document.createElement('div');
         row.className = `sf_list_row${r.dim ? ' sf_dim' : ''}`;
         row.innerHTML = '<span class="sf_list_icon"></span><span class="sf_list_main"><b></b><small></small></span><span class="sf_list_btns"></span>';
-        row.querySelector('.sf_list_icon').textContent = r.icon || '';
+        if (r.item) row.querySelector('.sf_list_icon').append(itemArt(r.item, 'sf_list_art'));
+        else row.querySelector('.sf_list_icon').textContent = r.icon || '';
         row.querySelector('b').textContent = r.name || '';
         row.querySelector('small').textContent = r.sub || '';
         for (const b of r.buttons || []) {

@@ -54,7 +54,7 @@ function prep(comp, packed) {
     const foods = ofKind(s, 'food');
     const C = D().companions || {};
     const rows = foods.map(f => { const on = packed.includes(f.uid), fd = itemInfo(f.id).food || {}; return {
-        icon: itemInfo(f.id).icon, name: nameOf(f), sub: [fd.heal ? `회복 ${fd.heal}` : '', fd.fear ? `공포 −${fd.fear}` : ''].filter(Boolean).join(' '),
+        icon: itemInfo(f.id).icon, item: f.id, name: nameOf(f), sub: [fd.heal ? `회복 ${fd.heal}` : '', fd.fear ? `공포 −${fd.fear}` : ''].filter(Boolean).join(' '),
         buttons: [{ label: on ? '빼기' : '챙기기', primary: on, disabled: !on && packed.length >= 2, onClick: () => prep(comp, on ? packed.filter(x => x !== f.uid) : [...packed, f.uid]) }] }; });
     show({
         body: stack(
@@ -231,7 +231,7 @@ function endCard() {
     const comp = D().companions?.[r.comp]?.ko;
     show({
         body: stack(para(rescued ? `더는 버틸 수 없었다. ${josa(comp, '가')} ${josa(HERO_NAME[leadOf(s)], '을')} 안고 올라왔다. 가져온 것의 절반만 남았다.` : r.won ? '마지막 문이 열렸다. 새벽빛이 들기 전에 올라왔다.' : '발걸음을 돌려 올라왔다.', 'sf_pop_text'),
-            list(keep.map(id => ({ icon: itemInfo(id)?.icon, name: itemInfo(id)?.ko, sub: '가방에 넣었어' })), '가져온 건 없어.'),
+            list(keep.map(id => ({ icon: itemInfo(id)?.icon, item: id, name: itemInfo(id)?.ko, sub: '가방에 넣었어' })), '가져온 건 없어.'),
             para(`모험 경험치 +${xp} · 이 일은 임무 탭 일지에서 챗에 꺼낼 수 있어.`)),
         buttons: [{ label: '닫기', primary: true, onClick: () => { const st = getState(); st.duat = null; save(); } }],
         onClose: () => { const st = getState(); if (st.duat?.phase === 'end') { st.duat = null; save(); } },

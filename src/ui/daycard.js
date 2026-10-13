@@ -25,7 +25,7 @@ function summaryBody(rec, skipped = 0) {
     const sums = [rec.deben ? `데벤 ${rec.deben > 0 ? '+' : ''}${rec.deben}` : '', rec.xp > 0 ? `모험 경험치 +${rec.xp}` : '', rec.rankUp ? `모험 등급 ${rec.rankUp}` : ''].filter(Boolean);
     return stack(head,
         acts.length ? para(`한 일 · ${acts.join(', ')}`, 'sf_pop_text') : para('한 일 없이 지나간 하루.', 'sf_pop_text'),
-        Object.keys(got).length ? list(Object.entries(got).map(([id, n]) => ({ icon: itemInfo(id)?.icon || '', name: `${itemInfo(id)?.ko || id}${n > 1 ? ` ${n}` : ''}` }))) : null,
+        Object.keys(got).length ? list(Object.entries(got).map(([id, n]) => ({ icon: itemInfo(id)?.icon || '', item: id, name: `${itemInfo(id)?.ko || id}${n > 1 ? ` ${n}` : ''}` }))) : null,
         sums.length ? para(sums.join(' · ')) : null,
         rec.lines?.length ? para(rec.lines.join('\n'), 'sf_pop_text') : null,
         skipped ? para(`그 뒤 ${skipped}일은 챗에서 지나갔어.`) : null);

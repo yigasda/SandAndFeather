@@ -1660,3 +1660,12 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 /* 일행: who walks in front */
 #sf_game .sf_party_lead { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 #sf_game .sf_party_lead .sf_sub_head { flex: 1 0 100%; margin: 0; }
+
+/* 0.9.59 item icons (data/art/items, 128px): drawn small in list rows and codex cells; an emoji fallback keeps the text size */
+:is(#sf_game, #sf_pick) img.sf_list_art { display: block; width: 30px; height: 30px; object-fit: contain; margin: 0 auto; }
+:is(#sf_game, #sf_pick) span.sf_list_art { font-size: 20px; }
+#sf_game img.sf_codex_art { display: block; width: 78%; height: 78%; object-fit: contain; }
+#sf_game span.sf_codex_art { font-size: 22px; }
+/* bag tabs: each label on one line (at 320px they broke into one letter per line); the theme's button look stays */
+#sf_game .sf_inventory_tabs .sf_btn { white-space: nowrap; word-break: keep-all; min-width: 0; overflow: hidden; text-overflow: clip; }
+@media (max-width: 360px) { #sf_game[data-ui-theme] .sf_inventory_tabs .sf_btn { padding-left: 0; padding-right: 0; letter-spacing: -0.02em; } }
