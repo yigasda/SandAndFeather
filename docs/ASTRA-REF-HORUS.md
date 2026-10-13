@@ -27,5 +27,6 @@
 ## 이번 동작·표정과 그리기
 
 - [현재 작업](ASTRA-DRAW-STATE.md) → [동작별 자세·표정](ASTRA-PLAN.md). 해당 캐릭터·동작 칸을 읽는다.
+- 전투 동세 한눈에: [239 비교표](art/chibi-refresh/combat-reference-sheets/239-combat-latest-54.png) · [240 정지 정면과 나란히](art/chibi-refresh/combat-reference-sheets/240-combat-54-vs-idle-front.png). 동세·표정 의도만, 잘라 쓰지 않는다.
 - [전투 동세 파일·해시 목록](ASTRA-COMBAT-POSE-SOURCES.json): 외형 기준이 아니다. 파일이 로컬에만 있을 수 있으므로 실제 존재와 해시를 확인한다.
 - 기준을 확인했으면 **[그리기·비교](ASTRA-DRAW-CHECK.md)**로 진행한다. 추가 문서 순회를 반복하지 않는다.

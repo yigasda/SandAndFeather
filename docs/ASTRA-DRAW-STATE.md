@@ -26,6 +26,7 @@
 - 상세 재작화 인수인계: `/workspace/bond-work/docs/ASTRA-COMBAT-REDRAW-HANDOFF.md`
 - 전투 54개 출처표: [저장소 출처·해시 목록](ASTRA-COMBAT-POSE-SOURCES.json). 각 항목의 로컬 경로와 main 포함 여부를 분리해 기록했다. 로컬 파일을 찾았을 때 SHA256으로 확인한다.
 - 비교표 3장 Drive: https://drive.google.com/drive/folders/1nVPia6ysifiC3AAO6Y8zgrVX9zjvQxpE
+- **저장소에 있는 비교표 2장**(사용자가 Drive로 준 원본 그대로, 2026-10-14): [239 전투 최신 동작 54장](art/chibi-refresh/combat-reference-sheets/239-combat-latest-54.png) · [240 전투 54장 + 정지 정면](art/chibi-refresh/combat-reference-sheets/240-combat-54-vs-idle-front.png). 54장 동세·표정 의도를 어느 환경에서나 볼 수 있다. 배경 있는 한 장짜리 시트라 **개별 원본이 아니다**(투명 PNG 54장은 여전히 main에 없음, 위 출처표의 `available_in_this_main: false`).
 
 다른 환경에서 로컬 파일이 없으면 저장소 원본·가이드 도구로 준비한다. 전투 동세 원본이 없으면 확인 가능한 기존 자료 위치부터 찾고, 못 찾은 자료를 기억으로 재현하지 않는다. 비교표 이미지를 개별 원본의 대체물로 잘라 쓰지 않는다.
 
