@@ -3,7 +3,7 @@
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 8;
+export const STATE_VERSION = 9;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -37,7 +37,10 @@ export const freshState = () => ({
     summary: null,                                 // daylog.js: a closed day whose 하루 결산 is still to be shown
     dayFirst: -1,                                  // daylog.js: the first game day counted (생존 D+N)
     fest: {},                                      // packs/life/festival.js: { 'opet:2': { preps, done } }
-    codex: { items: {}, secrets: {} },             // codex.js: 도감, every kind ever had and the first day
+    codex: { items: {}, secrets: {}, found: {} },  // codex.js: 도감, every kind ever had and the first day; found: got by herself (not bought)
+    market: null,                                  // packs/life/market.js: today's stock, deals, sold out, what is left
+    facts: [],                                     // facts.js: the latest done actions in detail
+    tally: {},                                     // facts.js: lifetime counts, never cut
     wake: null,                                    // rest.js: { part, raw } the time of day after sleeping, until the chat's tracker moves
     started: Date.now(),
 });
@@ -57,6 +60,16 @@ const STEPS = {
     6: () => {},  // 6 → 7: fest is new (축제의 밤); filled below
     // 7 → 8: 도감. Secrets found before it count
     7: s => { s.codex = { items: {}, secrets: {} }; for (const k of [...Object.keys(s.flags || {}), ...Object.keys(s.ledger?.acts || {})]) if (k.startsWith('secret:')) s.codex.secrets[k.slice(7)] = -1; },
+    // 8 → 9: the bigger market, facts and tally are new. codex.found = kinds she got herself; before 0.9.60 the
+    // market sold none of the finds, relics, fish, crops, food or Duat materials, so every kind in the 도감 that the old
+    // market did not sell was got by herself
+    8: s => {
+        const oldMarket = ['bread', 'honey', 'onion', 'salt', 'dates', 'lotus_seed', 'barley_seed', 'fig_seed', 'reed_bundle', 'pitch', 'limestone', 'cedar_plank'];
+        s.codex ||= { items: {}, secrets: {} };
+        s.codex.found = {};
+        for (const [id, day] of Object.entries(s.codex.items || {})) if (!oldMarket.includes(id)) s.codex.found[id] = day;
+        for (const it of s.bag?.items || []) if (it.from !== 'market' && !(it.id in s.codex.found)) s.codex.found[it.id] = it.got ?? -1;
+    },
 };
 
 function fill(s) {
@@ -64,7 +77,8 @@ function fill(s) {
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
     const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'chars', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest', 'codex'];
     for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
-    for (const k of ['news', 'journal', 'picks', 'days']) if (!Array.isArray(s[k])) s[k] = [];
+    for (const k of ['news', 'journal', 'picks', 'days', 'facts']) if (!Array.isArray(s[k])) s[k] = [];
+    if (!s.tally || typeof s.tally !== 'object' || Array.isArray(s.tally)) s.tally = {};
     for (const k of objs) for (const [kk, v] of Object.entries(f[k])) if (!Object.hasOwn(s[k], kk)) s[k][kk] = structuredClone(v);
 }
 
