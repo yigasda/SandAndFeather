@@ -11,7 +11,7 @@ import { itemArt } from './itemart.js';
 const art = new URL('../../data/art/ui/bond/', import.meta.url);
 const redrawn = new URL('../../data/art/ui/bond/redrawn/', import.meta.url);
 // only the icons the theme has no match for (the user's marked set); frames, cards, buttons and lines are the UI theme's
-const REDRAWN = {title_lotus:'20-lotus-symbol',section_book:'27-section-book',section_plant:'28-section-sprout',section_gift:'29-section-gift',section_branch:'30-section-branch',bond_heart:'31-heart',reward_gift_red:'34-reward-red',reward_gift_gold:'36-reward-chest',reward_gift_open:'35-reward-gold',reward_80:'35-reward-gold',gift_icon_bow:'64-gift-cream',activity_fishing_icon:'43-fishing',activity_cooking_icon:'44-cooking',activity_study_icon:'45-study',activity_explore_icon:'46-exploration',footer_feather:'47-feather',memory_book_icon:'48-memory-book'};
+const REDRAWN = {section_book:'27-section-book',section_plant:'28-section-sprout',section_gift:'29-section-gift',section_branch:'30-section-branch',bond_heart:'31-heart',reward_gift_red:'34-reward-red',reward_gift_gold:'36-reward-chest',reward_gift_open:'35-reward-gold',reward_80:'35-reward-gold',gift_icon_bow:'64-gift-cream',activity_fishing_icon:'43-fishing',activity_cooking_icon:'44-cooking',activity_study_icon:'45-study',activity_explore_icon:'46-exploration',footer_feather:'47-feather',memory_book_icon:'48-memory-book'};
 const node = (tag, cls = '', text = '') => { const e = document.createElement(tag); e.className = cls; e.textContent = text; return e; };
 function img(name, cls = '') { const e = node('img', cls); e.src = new URL(`${REDRAWN[name] || name}.png`, REDRAWN[name] ? redrawn : art).href; e.alt = ''; e.decoding = 'async'; return e; }
 function button(text, fn, cls = 'sf_btn sf_small') {
@@ -57,10 +57,8 @@ export function bondCard(ui, initial = 'set', onBack = null) {
     const content = node('div', 'sf_bond_columns');
     box.append(tabs, content);
     const close = ui.showCard({ title: '인연과 유대', body: box, kind: 'bond', wide: true, buttons: [], onClose: () => { closed = true; off(); change(); onBack?.(); } });
-    const wrap = box.closest('.sf_pop_wrap'), header = wrap.querySelector('.sf_pop_head');
-    // the theme's own title bar; the lotuses sit right beside the words, the line under it opens the window
-    const title = header.querySelector('.sf_pop_title'), words = node('span', 'sf_bond_title_words', title.textContent);
-    title.replaceChildren(img('title_lotus', 'sf_bond_title_lotus'), words, img('title_lotus', 'sf_bond_title_lotus'));
+    const wrap = box.closest('.sf_pop_wrap');
+    // the theme's own title bar, plain words; the line under it opens the window
     box.prepend(node('p', 'sf_bond_subtitle', '함께한 시간이, 더 특별한 내일을 만듭니다.'));
     const off = on('bond:changed', () => { if (!closed && getState() === s) draw(); });
     const change = on('game:loaded', () => { if (getState() !== s) { close(); change(); } });

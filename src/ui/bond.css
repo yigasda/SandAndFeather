@@ -1,10 +1,11 @@
 /* 인연과 유대: the window is the UI theme's own card (frame, paper, title bar, close, tabs, rows, slots, buttons, lines),
    so it changes with the theme like every other card. Only the layout is this window's, and only the icons the theme
-   has nothing for are pictures (data/art/ui/bond/redrawn: lotus, section icons, heart and pink gauge, step boxes,
+   has nothing for are pictures (data/art/ui/bond/redrawn: section icons, heart and pink gauge, step boxes,
    white gift, activity pictures, feather, notebook book; the tab animals). */
 #sf_game .sf_pop_wrap[data-kind="bond"] .sf_pop_btns { display:none; }
-#sf_game .sf_pop_wrap[data-kind="bond"] .sf_pop_title { display:inline-flex; align-items:center; justify-content:center; gap:6px; white-space:nowrap; }
-#sf_game .sf_bond_title_lotus { width:22px; height:18px; object-fit:contain; flex:none; }
+#sf_game .sf_pop_wrap[data-kind="bond"] .sf_pop_title { white-space:nowrap; }
+/* Korean lines break between words, never inside one */
+#sf_game .sf_bond { word-break:keep-all; overflow-wrap:break-word; }
 #sf_game .sf_bond_subtitle { margin:0 0 8px; font-size:11px; text-align:center; color:var(--sf-dim); }
 #sf_game .sf_bond img { object-fit:contain; }
 #sf_game .sf_bond button { cursor:pointer; }
@@ -25,7 +26,7 @@
 #sf_game .sf_bond_records { display:flex; flex-direction:column; gap:6px; }
 #sf_game .sf_bond .sf_list_row.sf_bond_record { display:block; min-height:0; }
 #sf_game .sf_bond_record_text { min-width:0; overflow-wrap:anywhere; }
-#sf_game .sf_bond_record small { font-size:10px; color:var(--sf-dim); }
+#sf_game .sf_bond_record small { display:block; font-size:10px; line-height:1.3; color:var(--sf-dim); }
 #sf_game .sf_bond_record b { display:block; font-size:13px; line-height:1.45; }
 #sf_game .sf_bond_record p { font-size:12px; margin:4px 0; }
 #sf_game .sf_bond_record details { font-size:11px; color:var(--sf-dim); }
@@ -56,11 +57,12 @@
 #sf_game .sf_bond_give img { width:20px; height:20px; }
 /* activities: theme rows with the four pictures */
 #sf_game .sf_bond_activity_grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; }
-#sf_game .sf_bond .sf_list_row.sf_bond_activity { min-width:0; display:grid; grid-template-columns:28px 1fr 8px; grid-template-rows:auto auto; align-items:center; gap:1px 3px; padding:5px 4px; text-align:left; color:inherit; cursor:pointer; }
-#sf_game .sf_bond_activity img { grid-row:1/3; width:28px; height:32px; }
-#sf_game .sf_bond_activity b { font-size:11.5px; white-space:nowrap; }
-#sf_game .sf_bond_activity small { grid-column:1/4; font-size:8.5px; color:var(--sf-dim); }
-#sf_game .sf_bond_arrow { font-size:16px; color:var(--sf-dim); }
+/* the picture, the name and the arrow on one centred line; the line under it centred across the card */
+#sf_game .sf_bond .sf_list_row.sf_bond_activity { min-width:0; display:grid; grid-template-columns:28px minmax(0,1fr) 8px; grid-template-areas:"pic name arrow" "sub sub sub"; align-items:center; gap:2px 3px; padding:5px 4px; text-align:left; color:inherit; cursor:pointer; }
+#sf_game .sf_bond_activity img { grid-area:pic; width:28px; height:30px; }
+#sf_game .sf_bond_activity b { grid-area:name; font-size:11.5px; line-height:1.2; white-space:nowrap; text-align:center; }
+#sf_game .sf_bond_arrow { grid-area:arrow; font-size:16px; line-height:1; color:var(--sf-dim); }
+#sf_game .sf_bond_activity small { grid-area:sub; font-size:9px; line-height:1.25; text-align:center; color:var(--sf-dim); }
 /* foot: a theme row with the feather, a theme button with the notebook */
 #sf_game .sf_bond_footer { display:grid; grid-template-columns:minmax(0,1fr) 140px; gap:6px; padding-top:8px; }
 #sf_game .sf_bond .sf_list_row.sf_bond_motto { display:flex; align-items:center; gap:6px; padding:5px 8px; font-size:10.5px; min-height:0; }
@@ -74,14 +76,12 @@
  #sf_game .sf_bond_section_head small { max-width:none; flex-basis:100%; text-align:left; }
  #sf_game .sf_bond .sf_btn.sf_bond_give { min-width:86px; font-size:12.5px; }
  #sf_game .sf_bond_activity_grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
- #sf_game .sf_bond .sf_list_row.sf_bond_activity { grid-template-columns:32px 1fr 10px; }
- #sf_game .sf_bond_activity small { grid-column:2/4; }
+ #sf_game .sf_bond .sf_list_row.sf_bond_activity { grid-template-columns:32px minmax(0,1fr) 10px; }
  #sf_game .sf_bond_footer { grid-template-columns:minmax(0,1fr); }
 }
 @media(min-width:900px){
  #sf_game .sf_pop_wrap[data-kind="bond"] .sf_pop { width:min(980px,100%); }
  #sf_game .sf_bond_subtitle { font-size:13px; }
- #sf_game .sf_bond_title_lotus { width:30px; height:26px; }
  #sf_game .sf_bond .sf_btn.sf_bond_tab { min-height:64px; font-size:24px; gap:12px; }
  #sf_game .sf_bond_tab img.sf_bond_portrait { height:62px; width:82px; }
  #sf_game .sf_bond_columns { grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:10px 16px; padding-top:8px; }
@@ -94,7 +94,7 @@
  #sf_game .sf_bond .sf_btn.sf_bond_give { min-height:60px; font-size:17px; min-width:140px; }
  #sf_game .sf_bond_stage img { width:38px; height:38px; } #sf_game .sf_bond_stage:last-child img { width:44px; height:41px; } #sf_game .sf_bond_stages::before { top:19px; }
  #sf_game .sf_bond_track { height:24px; } #sf_game .sf_bond_track b { font-size:14px; line-height:22px; }
- #sf_game .sf_bond .sf_list_row.sf_bond_activity { grid-template-columns:40px 1fr 8px; min-height:64px; }
+ #sf_game .sf_bond .sf_list_row.sf_bond_activity { grid-template-columns:40px minmax(0,1fr) 8px; min-height:64px; }
  #sf_game .sf_bond_activity img { width:40px; height:42px; } #sf_game .sf_bond_activity b { font-size:13px; } #sf_game .sf_bond_activity small { font-size:10px; }
  #sf_game .sf_bond_footer { grid-column:1/-1; grid-template-columns:minmax(0,1fr) 260px; }
  #sf_game .sf_bond .sf_list_row.sf_bond_motto { font-size:13px; } #sf_game .sf_bond .sf_btn.sf_bond_memory { font-size:20px; min-height:56px; } #sf_game .sf_bond_memory img { width:36px; height:32px; }
