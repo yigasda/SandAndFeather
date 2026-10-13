@@ -51,7 +51,8 @@ const out = path.resolve(process.argv[2] || 'docs/bond-ui/screenshots'); fs.mkdi
    assert(bounds.x>=-1&&bounds.right<=size.width+1&&bounds.overflow<=2&&bounds.scrollOverflow<=2,JSON.stringify({theme,brightness,size,bounds}));
    assert.equal(bounds.columns.split(' ').length,size.width>=900?2:1);
    assert(await modal().locator('.sf_bond_tab>span').evaluateAll(es=>es.every(e=>e.getBoundingClientRect().height<=parseFloat(getComputedStyle(e).lineHeight)+2)), 'Character names must stay on one line');
-   assert.equal(await modal().evaluate(e=>getComputedStyle(e,'::before').clipPath),'none','Outer corners must not inherit another popup clipping mask');
+   // 0.9.66: the window is the UI theme's own card, so its frame (and the theme's clip under the title bar) is the theme's
+   assert.equal((await modal().evaluate(e=>getComputedStyle(e).borderImageSource+getComputedStyle(e,'::before').borderImageSource)).includes('redrawn'),false,'The frame must be the theme frame, not a bond picture');
    measurements.push({theme,brightness,width:size.width,...bounds});
    if(theme==='cozy'){
     await modal().locator('.sf_pop_scroll').evaluate(e=>e.scrollTop=0);

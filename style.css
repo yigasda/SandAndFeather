@@ -1682,3 +1682,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
         grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; justify-content: flex-end;
     }
 }
+
+/* 0.9.66: 하단 탭 「인연과 유대」 — the two birds (data/art/ui/bond/redrawn/22-birds-symbol.png), like the other menu icons */
+#sf_game[data-ui-theme] .sf_tab[data-tab='bond'] i { background-image:url('data/art/ui/bond/redrawn/22-birds-symbol.png'); width:38px; height:26px; }
+#sf_game .sf_tab[data-tab='bond'] span { white-space:nowrap; }
