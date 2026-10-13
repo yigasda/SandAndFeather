@@ -65,7 +65,7 @@ const { open, sleep, T } = require('./common.js');
     const old = JSON.parse(JSON.stringify(s)); old.v = 8; delete old.market; delete old.facts; delete old.tally; old.codex = { items: { faience_scarab: 5, honey: 6, nile_perch: 7 }, secrets: {} };
     old.bag.items = [{ uid: 'i1', id: 'toy_boat', from: 'adventure', got: 9 }, { uid: 'i2', id: 'salt', from: 'market', got: 9 }];
     md[key] = old; const up = st.getState();
-    ok(up.v === 9 && Array.isArray(up.facts) && up.tally && 'faience_scarab' in up.codex.found && 'nile_perch' in up.codex.found && !('honey' in up.codex.found) && 'toy_boat' in up.codex.found && !('salt' in up.codex.found), 'v8 save → v9, found filled from 도감 and bag');
+    ok(up.v === st.STATE_VERSION && Array.isArray(up.facts) && up.tally && 'faience_scarab' in up.codex.found && 'nile_perch' in up.codex.found && !('honey' in up.codex.found) && 'toy_boat' in up.codex.found && !('salt' in up.codex.found), `v8 save → v${up.v}, found filled from 도감 and bag`);
     return res;
   }, base);
   out.forEach(l => console.log(l));

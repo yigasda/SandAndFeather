@@ -4,6 +4,7 @@
 // so when the chat's date moves on to a night already slept it is not counted again.
 // Sitting down to rest gives 태양 기운 1, twice a game day.
 
+import { itemInfo } from './bag.js';
 import { emit } from './bus.js';
 import { fromDayNumber } from './clock.js';
 import { canDo, markDone, newDays, today } from './ledger.js';
@@ -36,13 +37,15 @@ export const SIT_PER_DAY = 2;
 const sitKeys = () => Array.from({ length: SIT_PER_DAY }, (_, k) => `rest:sit:${k + 1}`);
 export const sitsLeft = s => sitKeys().filter(k => canDo(s, k)).length;
 // 태양 기운 +1 → 'rested', or 'full' (nothing to give back, the rest is kept), or 'used' (today's rests are spent);
-// the caller saves
+// a fan in the bag (items.json rest.sun, kept, one of each kind) gives that much more, never past the day's full.
+// The caller saves
+export const restMore = s => [...new Set(s.bag.items.map(it => it.id))].reduce((a, id) => a + (itemInfo(id)?.rest?.sun || 0), 0);
 export function sitRest(s) {
     const k = sitKeys().find(key => canDo(s, key));
     if (!k) return 'used';
     if (sunLeft(s) >= sunMax()) return 'full';
     markDone(s, k);
-    s.sun.left += 1;
+    s.sun.left = Math.min(sunMax(), s.sun.left + 1 + restMore(s));
     emit('sun:changed', {});
     return 'rested';
 }

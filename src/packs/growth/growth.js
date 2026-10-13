@@ -2,7 +2,8 @@
 // Across the river: the fallen temple's inscription (a rubbing, with 지혜 2), its shrine (→ 신앙), a dig site.
 // What each ability opens: 지혜 reads records, 체력 is staying power in the Duat, 신앙 is the spell there.
 
-import { give, itemInfo, nameOf } from '../../core/bag.js';
+import { give, itemInfo, nameOf, takeUid } from '../../core/bag.js';
+import { record } from '../../core/facts.js';
 import { DATA } from '../../core/data.js';
 import { canDo, markDone } from '../../core/ledger.js';
 import { STATS, addStat, addXP, didAct, hasSkill, journal, lessonState } from '../../core/progress.js';
@@ -12,20 +13,31 @@ import { list, para, stack } from '../../ui/kit.js';
 import { onSpot } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
 
-async function practise(ui, stat, kind, cost, line) {
+// one practice: costs `cost`, +1 to the stat, 경험치 2 + more. `use` is an item id that goes into it (a blank papyrus,
+// a cake of incense): it is checked and taken on the state as it is now, together with the sun, or nothing happens
+async function practise(ui, stat, kind, cost, line, { more = 0, use = '' } = {}) {
     const s = getState();
+    const it = use ? s.bag.items.find(x => x.id === use) : null;
+    if (use && !it) { ui.toast('가방에 없어'); return; }
     if (!spend(s, cost)) { ui.toast('태양 기운이 모자라'); return; }
-    addStat(s, stat, 1); addXP(s, 2);
+    if (it) takeUid(s, it.uid);
+    addStat(s, stat, 1); addXP(s, 2 + more);
+    record(s, kind, { itemId: use, itemUid: it?.uid || '', source: kind });
     const d = didAct(s, kind);
     await saveState();
-    ui.toast(`${line} ${STATS[stat]} ${s.stats[stat]}${d ? ` · ${d}` : ''}`);
+    ui.toast(`${line} ${STATS[stat]} ${s.stats[stat]}${more ? ` · 경험치 +${2 + more}` : ''}${d ? ` · ${d}` : ''}`);
 }
+
+// 필사실 tools in the bag: study { xp } ones help every time and are kept (one of each kind counts), study { use }
+// ones (a blank papyrus) are used up for a cheaper study
+const toolXP = s => [...new Set(s.bag.items.map(x => x.id))].reduce((a, id) => a + (itemInfo(id)?.study?.use ? 0 : itemInfo(id)?.study?.xp || 0), 0);
+const sheet = s => s.bag.items.find(x => itemInfo(x.id)?.study?.use);
 
 // records in the bag that are not read yet
 const unread = s => s.bag.items.filter(it => itemInfo(it.id)?.read && !it.opened);
 
 function scriptorium(ui) {
-    const s = getState();
+    const s = getState(), xp = toolXP(s), sh = sheet(s);
     const rows = unread(s).map(it => { const r = itemInfo(it.id).read; return {
         icon: itemInfo(it.id).icon, item: it.id, name: nameOf(it), sub: s.stats.wisdom >= r.need ? '해독할 수 있어' : `지혜 ${josa(r.need, '이')} 있어야 읽혀`,
         buttons: [{ label: '해독', primary: true, disabled: s.stats.wisdom < r.need, onClick: async () => {
@@ -35,8 +47,12 @@ function scriptorium(ui) {
         } }] }; });
     const close = ui.showCard({
         tag: '육성', title: '필사실', wide: true,
-        body: stack(para(`지혜 ${s.stats.wisdom} · 공부는 태양 기운 2`), list(rows, '해독할 기록이 없어. 젖은 파피루스, 도기 조각, 지도 조각, 두루마리를 찾으면 여기서 읽어.')),
-        buttons: [{ label: '공부하기', primary: true, disabled: sunLeft(s) < 2, onClick: () => { practise(ui, 'wisdom', 'study', 2, '갈대 펜이 손에 익는다.'); } }],
+        body: stack(para(`지혜 ${s.stats.wisdom} · 공부는 태양 기운 2${xp ? ` · 필기구 덕에 경험치 +${xp}` : ''}${sh ? ` · ${josa(itemInfo(sh.id).ko, '을')} 쓰면 기운 ${2 + (itemInfo(sh.id).study.sun || 0)}` : ''}`),
+            list(rows, '해독할 기록이 없어. 젖은 파피루스, 도기 조각, 지도 조각, 두루마리를 찾으면 여기서 읽어.')),
+        buttons: [
+            ...(sh ? [{ label: `${itemInfo(sh.id).ko}에 공부 · 기운 ${2 + (itemInfo(sh.id).study.sun || 0)}`, disabled: sunLeft(s) < 2 + (itemInfo(sh.id).study.sun || 0),
+                onClick: () => { practise(ui, 'wisdom', 'study', 2 + (itemInfo(sh.id).study.sun || 0), '새 파피루스에 또박또박 옮겨 썼다.', { more: toolXP(getState()), use: sh.id }); } }] : []),
+            { label: '공부하기', primary: true, disabled: sunLeft(s) < 2, onClick: () => { practise(ui, 'wisdom', 'study', 2, '갈대 펜이 손에 익는다.', { more: toolXP(getState()) }); } }],
     });
 }
 
@@ -59,8 +75,43 @@ const shrine = (spot, ui) => {
                 const d = didAct(s, 'seal'); await saveState();
                 ui.showCard({ tag: '육성', title: '봉인 안정', text: `향 연기 속에서 봉인이 조용히 풀렸다. ${info.open.ko}${d ? `\n${d}` : ''}` });
             } }] : []),
+            ...(kindsOf(s, 'incense').length ? [{ label: '향 피우고 돕기', onClick: () => { incenseCard(spot, ui); } }] : []),
+            ...(kindsOf(s, 'jewelry').length ? [{ label: canDo(s, 'altar:offer') ? '장신구 바치기' : '오늘은 바쳤어', disabled: !canDo(s, 'altar:offer'), onClick: () => { offerCard(spot, ui); } }] : []),
             { label: '신전 일 돕기', primary: true, disabled: sunLeft(s) < 2, onClick: () => { practise(ui, 'faith', 'pray', 2, '향을 갈고 제단을 닦았다.'); } }] });
 };
+// the kinds of a sort of item in the bag, each once
+const kindsOf = (s, kind) => [...new Set(s.bag.items.filter(x => itemInfo(x.id)?.kind === kind).map(x => x.id))];
+const countIn = (s, id) => s.bag.items.filter(x => x.id === id).length;
+// 향 피우기: the temple work with a cake of incense burning costs less (offer.sun) and teaches more (offer.xp)
+function incenseCard(spot, ui) {
+    const s = getState();
+    const close = ui.showCard({ tag: '육성', title: `${spot.title} · 향`, wide: true,
+        body: stack(para('향을 하나 피우고 신전 일을 도우면 태양 기운이 덜 들어. 향은 타서 없어져.'), list(kindsOf(s, 'incense').map(id => {
+            const i = itemInfo(id), o = i.offer || {}, cost = o.sun ?? 2;
+            return { icon: i.icon, item: id, name: `${i.ko} · ${countIn(s, id)}개`, sub: `태양 기운 ${cost} · 신앙 +1 · 경험치 +${2 + (o.xp || 0)}`,
+                buttons: [{ label: '피우기', primary: true, disabled: sunLeft(s) < cost, onClick: () => { close(); practise(ui, 'faith', 'pray', cost, `${josa(i.ko, '을')} 피우고 제단을 닦았다.`, { more: o.xp || 0, use: id }); } }] };
+        }), '향이 없어')),
+        buttons: [{ label: '돌아가기', onClick: () => { shrine(spot, ui); } }] });
+}
+// 바치기: one piece of jewelry a day goes to the god; 신앙 + offer.faith, 경험치 + offer.xp. Free, but once a game day
+function offerCard(spot, ui) {
+    const s = getState();
+    const close = ui.showCard({ tag: '육성', title: `${spot.title} · 바치기`, wide: true,
+        body: stack(para('장신구 하나를 제단에 바쳐. 하루 한 번, 태양 기운은 안 들어. 바친 것은 돌아오지 않아.'), list(kindsOf(s, 'jewelry').map(id => {
+            const i = itemInfo(id), o = i.offer || {};
+            return { icon: i.icon, item: id, name: `${i.ko} · ${countIn(s, id)}개`, sub: `신앙 +${o.faith || 1}${o.xp ? ` · 경험치 +${o.xp}` : ''} · 값 ${i.price} 데벤`,
+                buttons: [{ label: '바치기', primary: true, disabled: !canDo(s, 'altar:offer'), onClick: async () => {
+                    const st = getState(), it = st.bag.items.find(x => x.id === id);
+                    if (!it || !canDo(st, 'altar:offer')) return;
+                    takeUid(st, it.uid); markDone(st, 'altar:offer');
+                    addStat(st, 'faith', o.faith || 1); if (o.xp) addXP(st, o.xp);
+                    record(st, 'offer', { itemId: id, itemUid: it.uid, source: 'altar' });
+                    await saveState(); close();
+                    ui.toast(`${josa(i.ko, '을')} 바쳤어. ${STATS.faith} ${st.stats.faith}`);
+                } }] };
+        }), '바칠 장신구가 없어')),
+        buttons: [{ label: '돌아가기', onClick: () => { shrine(spot, ui); } }] });
+}
 onSpot('altar', shrine);
 onSpot('ruins_shrine', shrine);
 

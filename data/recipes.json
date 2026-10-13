@@ -1,5 +1,5 @@
 {
-  "_about": "부엌 요리법. needs의 id는 그 물건, kind는 그 종류 아무거나. 태양 기운 1을 써.",
+  "_about": "부엌 요리법. needs 하나는 { \"id\": 물건 } 그 물건, { \"kind\": 종류 } 그 종류 아무거나, { \"any\": [물건, …] } 그중 하나(앞의 것부터 써). 태양 기운 1을 써.",
   "recipes": [
     {
       "id": "grilled_fish",
@@ -8,7 +8,10 @@
           "kind": "fish"
         },
         {
-          "id": "salt"
+          "any": [
+            "salt",
+            "cumin"
+          ]
         }
       ]
     },
@@ -19,7 +22,11 @@
           "kind": "fish"
         },
         {
-          "id": "onion"
+          "any": [
+            "onion",
+            "coriander",
+            "garlic"
+          ]
         }
       ]
     },
@@ -30,7 +37,10 @@
           "id": "bread"
         },
         {
-          "id": "honey"
+          "any": [
+            "honey",
+            "sesame"
+          ]
         }
       ]
     },
@@ -38,10 +48,16 @@
       "id": "fig_cake",
       "needs": [
         {
-          "id": "fig"
+          "any": [
+            "fig",
+            "pomegranate"
+          ]
         },
         {
-          "id": "honey"
+          "any": [
+            "honey",
+            "carob"
+          ]
         }
       ]
     },
@@ -49,10 +65,18 @@
       "id": "barley_porridge",
       "needs": [
         {
-          "id": "barley"
+          "any": [
+            "barley",
+            "lentils",
+            "chickpeas"
+          ]
         },
         {
-          "id": "onion"
+          "any": [
+            "onion",
+            "garlic",
+            "leek"
+          ]
         }
       ]
     },
@@ -64,6 +88,76 @@
         },
         {
           "id": "honey"
+        }
+      ]
+    },
+    {
+      "id": "lentil_soup",
+      "needs": [
+        {
+          "id": "lentils"
+        },
+        {
+          "any": [
+            "onion",
+            "garlic",
+            "leek"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sesame_bread",
+      "needs": [
+        {
+          "id": "barley"
+        },
+        {
+          "id": "sesame"
+        }
+      ]
+    },
+    {
+      "id": "pomegranate_sweets",
+      "needs": [
+        {
+          "id": "pomegranate"
+        },
+        {
+          "any": [
+            "dates",
+            "doum_fruit",
+            "carob"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cucumber_salad",
+      "needs": [
+        {
+          "id": "cucumber"
+        },
+        {
+          "any": [
+            "cheese",
+            "milk",
+            "garlic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "watermelon_punch",
+      "needs": [
+        {
+          "id": "watermelon"
+        },
+        {
+          "any": [
+            "honey",
+            "grapes"
+          ]
         }
       ]
     }

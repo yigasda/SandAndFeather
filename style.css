@@ -1673,3 +1673,11 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_market_tabs { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; padding-bottom: 6px; margin-bottom: 6px; }
 #sf_game .sf_market_tabs::-webkit-scrollbar { display: none; }
 #sf_game .sf_market_tabs .sf_btn { flex: 0 0 auto; padding-left: 10px; padding-right: 10px; }
+
+/* 0.9.61: a row with two or more buttons (festival prep and the things that stand in for it) on a narrow screen:
+   the buttons go under the text, side by side, so the text keeps its width */
+@media (max-width: 380px) {
+    :is(#sf_game, #sf_pick) .sf_list_row:has(.sf_list_btns > button:nth-child(2)) .sf_list_btns {
+        grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; justify-content: flex-end;
+    }
+}

@@ -3,7 +3,7 @@
 // seat; without one yet they rest where they stand.
 
 import { DATA } from '../../core/data.js';
-import { SIT_PER_DAY, sitRest, sitsLeft, sleepNow, tired } from '../../core/rest.js';
+import { SIT_PER_DAY, restMore, sitRest, sitsLeft, sleepNow, tired } from '../../core/rest.js';
 import { getState, saveState } from '../../core/state.js';
 import { sunLeft, sunMax } from '../../core/sun.js';
 import { feet, holdMate, holdPose, player } from '../../world/player.js';
@@ -161,7 +161,7 @@ function seatCard(spot, ui) {
     const left = sitsLeft(s);
     ui.showCard({
         tag: '쉬기', title: spot.title,
-        text: `${spot.text}\n앉아 쉬면 태양 기운 1을 되찾아. 하루 ${SIT_PER_DAY}번까지(오늘 ${left}번 남음).`,
+        text: `${spot.text}\n앉아 쉬면 태양 기운이 ${1 + restMore(s)} 돌아와${restMore(s) ? '(부채 덕에 더)' : ''}. 하루 ${SIT_PER_DAY}번까지(오늘 ${left}번 남음).`,
         buttons: [{ label: '닫기' }, { label: '앉아 쉬기', primary: true, onClick: async () => {
             const st = getState();
             const r = sitRest(st);
@@ -178,7 +178,7 @@ function seatCard(spot, ui) {
             if (p && mate && !m) m = mateSeat(spot.id, p, mate);
             if (m) holdMate(m.pose, m.x, m.y, m.dir);
             else if (p && mate) standMate(p);
-            ui.toast(r === 'rested' ? `잠깐 쉬었어. 태양 기운 ${sunLeft(st)}/${sunMax()}` : r === 'full' ? '태양 기운이 가득해. 그냥 앉아 있자' : '오늘은 충분히 쉬었어');
+            ui.toast(r === 'rested' ? `${restMore(st) ? '부채질하며 ' : '잠깐 '}쉬었어. 태양 기운 ${sunLeft(st)}/${sunMax()}` : r === 'full' ? '태양 기운이 가득해. 그냥 앉아 있자' : '오늘은 충분히 쉬었어');
         } }],
     });
 }

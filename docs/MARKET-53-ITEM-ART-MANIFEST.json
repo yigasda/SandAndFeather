@@ -1,0 +1,1538 @@
+{
+ "about": "시장 새 아이템 53종 그림 의뢰서. 값·쓰임·시장 조건은 게임 데이터에서 뽑음(tools/art/market53-docs.py). 그림이 오기 전까지 게임은 이모지로 보인다.",
+ "spec": {
+  "size": "128×128 PNG RGBA, 투명 배경",
+  "style": "기존 승인 아이콘 47종(data/art/items/)과 같은 도트풍: 진한 윤곽선, 왼쪽 위 빛, 3~4단 명암, 테두리·배경 없음",
+  "file": "data/art/items/<id>.png, 받으면 오푸스가 src/ui/itemart.js OWN과 provenance.json에 넣는다"
+ },
+ "batches": [
+  {
+   "name": "1차-1 향·화장품·장신구",
+   "ids": [
+    "kyphi",
+    "frankincense",
+    "myrrh",
+    "lotus_oil",
+    "lily_oil",
+    "kohl",
+    "faience_beads",
+    "carnelian_ring",
+    "copper_bangle"
+   ]
+  },
+  {
+   "name": "1차-2 식재료",
+   "ids": [
+    "cumin",
+    "coriander",
+    "garlic",
+    "leek",
+    "lentils",
+    "chickpeas",
+    "sesame",
+    "cucumber",
+    "watermelon",
+    "pomegranate"
+   ]
+  },
+  {
+   "name": "1차-3 생활 잡화",
+   "ids": [
+    "linen",
+    "oil_lamp",
+    "clay_bowl",
+    "reed_pen",
+    "blank_papyrus"
+   ]
+  },
+  {
+   "name": "2차-1 식재료·음료",
+   "ids": [
+    "doum_fruit",
+    "carob",
+    "grapes",
+    "milk",
+    "cheese",
+    "beer_jar",
+    "wine_jar"
+   ]
+  },
+  {
+   "name": "2차-2 씨앗·직물·잡화",
+   "ids": [
+    "garlic_seed",
+    "cucumber_seed",
+    "watermelon_seed",
+    "grape_vine",
+    "fine_linen",
+    "reed_mat",
+    "papyrus_sandals",
+    "scribe_palette",
+    "wooden_comb",
+    "palm_fan"
+   ]
+  },
+  {
+   "name": "2차-3 장신구·진귀품",
+   "ids": [
+    "lapis_beads",
+    "gold_ornament",
+    "bes_amulet",
+    "taweret_amulet",
+    "senet_board",
+    "lotus_vase",
+    "small_chest"
+   ]
+  },
+  {
+   "name": "2차-4 새 요리",
+   "ids": [
+    "lentil_soup",
+    "sesame_bread",
+    "pomegranate_sweets",
+    "cucumber_salad",
+    "watermelon_punch"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "kyphi",
+   "filename": "kyphi.png",
+   "ko": "키피 향",
+   "en": "a cake of kyphi incense",
+   "kind": "incense",
+   "price": 14,
+   "about": "꿀과 건포도, 수지를 뭉쳐 빚은 향 덩이. 밤 제사에 피운다.",
+   "appearance": "손바닥만 한 짙은 갈색 원뿔형 향 덩이 셋이 작은 도기 받침 접시 위에 놓였다. 한 덩이 끝에서 가는 연기 한 줄.",
+   "colors": [
+    "#4a2c1a 짙은 갈색",
+    "#7a4a2a 적갈색",
+    "#c8a070 접시 황토",
+    "#e8e0d0 연기"
+   ],
+   "details": [
+    "덩이 표면에 건포도 알갱이 점",
+    "접시 테두리 검은 선 한 줄",
+    "연기는 위로 S자 한 줄만"
+   ],
+   "usage": [
+    "제단 향 피우고 신전 일 돕기: 태양 기운 2→1, 신앙 +1, 경험치 +4",
+    "도감 수집(향·화장품)",
+    "팔기 7 데벤"
+   ],
+   "market": "향·화장품 · 14 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "frankincense",
+   "filename": "frankincense.png",
+   "ko": "유향",
+   "en": "a handful of frankincense resin",
+   "kind": "incense",
+   "price": 12,
+   "about": "반투명한 노란 수지 알갱이. 태우면 하얀 연기가 곧게 오른다.",
+   "appearance": "반투명한 노란 수지 알갱이 대여섯 개가 작은 천 조각 위에 모여 있다. 빛이 비치는 호박색 결정.",
+   "colors": [
+    "#f2c94c 밝은 노랑",
+    "#d9a520 호박",
+    "#fff4c0 반사광",
+    "#b89a70 천"
+   ],
+   "details": [
+    "알갱이마다 흰 하이라이트 한 점",
+    "모양은 눈물방울·덩어리 섞임",
+    "연기 없음(몰약·키피와 구별)"
+   ],
+   "usage": [
+    "제단 향 피우고 신전 일 돕기: 태양 기운 2→1, 신앙 +1, 경험치 +2",
+    "도감 수집(향·화장품)",
+    "팔기 6 데벤"
+   ],
+   "market": "향·화장품 · 12 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "myrrh",
+   "filename": "myrrh.png",
+   "ko": "몰약",
+   "en": "a lump of myrrh resin",
+   "kind": "incense",
+   "price": 16,
+   "about": "붉은 갈색 수지 덩이. 쌉싸름하고 깊은 향.",
+   "appearance": "붉은 갈색의 울퉁불퉁한 수지 덩이 두 개. 표면이 거칠고 군데군데 반짝인다.",
+   "colors": [
+    "#8a3a1a 적갈",
+    "#b5562a 주황 갈색",
+    "#e09060 밝은 면",
+    "#3a1a0a 그림자"
+   ],
+   "details": [
+    "유향보다 크고 어둡고 불투명",
+    "깨진 단면이 매끈하게 반짝임"
+   ],
+   "usage": [
+    "제단 향 피우고 신전 일 돕기: 태양 기운 2→1, 신앙 +1, 경험치 +3",
+    "도감 수집(향·화장품)",
+    "팔기 8 데벤"
+   ],
+   "market": "향·화장품 · 16 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "lotus_oil",
+   "filename": "lotus_oil.png",
+   "ko": "연꽃 향유",
+   "en": "a small alabaster jar of blue lotus oil",
+   "kind": "cosmetic",
+   "price": 18,
+   "about": "푸른 연꽃을 우린 기름. 설화석고 작은 병에 담겼다.",
+   "appearance": "흰 설화석고(알라바스터) 작은 병. 목이 짧고 입구가 넓으며, 병 몸에 푸른 연꽃이 그려졌다. 마개는 천을 감아 묶음.",
+   "colors": [
+    "#f3ede0 설화석고",
+    "#d9cfb8 결무늬",
+    "#3a6fb0 연꽃 파랑",
+    "#c99a5a 끈"
+   ],
+   "details": [
+    "병에 옅은 줄무늬 결",
+    "연꽃 그림은 꽃 하나",
+    "푸른 연꽃(작물) 그림과 달리 병이 주인공"
+   ],
+   "usage": [
+    "두아트 챙김, 싸움 중 바르기: 공포 −2",
+    "도감 수집(향·화장품)",
+    "팔기 9 데벤"
+   ],
+   "market": "향·화장품 · 18 데벤 · 하루 2개",
+   "phase": 1
+  },
+  {
+   "id": "lily_oil",
+   "filename": "lily_oil.png",
+   "ko": "백합 향유",
+   "en": "a flask of white lily oil",
+   "kind": "cosmetic",
+   "price": 20,
+   "about": "흰 백합 향을 우린 기름. 오래 남는 단 향.",
+   "appearance": "키 큰 유리질 파이앙스 향유병(목이 가늘고 길다). 병 앞에 흰 백합 한 송이가 기대 있다.",
+   "colors": [
+    "#7fc4c0 청록 유약",
+    "#ffffff 백합",
+    "#f2d36b 꽃술",
+    "#2a5a58 윤곽"
+   ],
+   "details": [
+    "연꽃 향유 병과 모양이 다름(가늘고 김)",
+    "병 어깨에 노란 띠"
+   ],
+   "usage": [
+    "두아트 챙김, 싸움 중 바르기: 체력 +1 공포 −1",
+    "도감 수집(향·화장품)",
+    "팔기 10 데벤"
+   ],
+   "market": "향·화장품 · 20 데벤 · 하루 2개",
+   "phase": 1
+  },
+  {
+   "id": "kohl",
+   "filename": "kohl.png",
+   "ko": "콜 눈화장",
+   "en": "a little pot of black kohl",
+   "kind": "cosmetic",
+   "price": 10,
+   "about": "방연석 가루를 갠 검은 눈화장. 뜨거운 볕과 나쁜 눈길을 막는다고 한다.",
+   "appearance": "손가락만 한 검은 돌 콜 단지와 끝이 둥근 나무 막대. 단지 입구에 검은 가루.",
+   "colors": [
+    "#1a1a1a 콜 검정",
+    "#5a5a60 회색 돌",
+    "#9a6a3a 막대",
+    "#c0c0c8 반사"
+   ],
+   "details": [
+    "단지는 원통형, 뚜껑 없음",
+    "막대는 단지에 꽂힌 채 비스듬히"
+   ],
+   "usage": [
+    "두아트 챙김, 싸움 중 바르기: 공포 −1",
+    "도감 수집(향·화장품)",
+    "팔기 5 데벤"
+   ],
+   "market": "향·화장품 · 10 데벤 · 하루 2개",
+   "phase": 1
+  },
+  {
+   "id": "cumin",
+   "filename": "cumin.png",
+   "ko": "쿠민",
+   "en": "a pouch of cumin seeds",
+   "kind": "spice",
+   "price": 5,
+   "about": "작은 천 주머니에 담긴 갈색 씨. 볶으면 고소하다.",
+   "appearance": "목을 끈으로 묶은 작은 마대 주머니가 열려 갈색 길쭉한 씨가 쏟아져 나온다.",
+   "colors": [
+    "#8a6a3a 쿠민 갈색",
+    "#c9b089 마대",
+    "#5a3f20 그림자",
+    "#e0cfa0 밝은 면"
+   ],
+   "details": [
+    "씨는 쌀알처럼 길쭉하고 줄무늬",
+    "주머니 끈은 붉은 실"
+   ],
+   "usage": [
+    "구운 생선 재료 (소금/쿠민 중 하나)",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 5 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "coriander",
+   "filename": "coriander.png",
+   "ko": "고수 씨",
+   "en": "a handful of coriander seeds",
+   "kind": "spice",
+   "price": 4,
+   "about": "둥근 연둣빛 씨 한 줌. 상큼한 향.",
+   "appearance": "작은 도기 접시에 담긴 둥근 연둣빛 씨 한 줌과 고수 잎 두 장.",
+   "colors": [
+    "#a8b860 연두 씨",
+    "#5f8f3a 잎",
+    "#b5754a 접시",
+    "#d9e0a0 하이라이트"
+   ],
+   "details": [
+    "씨는 동그랗고 세로 줄",
+    "잎은 톱니 있는 고수잎"
+   ],
+   "usage": [
+    "생선 스튜 재료 (양파/고수 씨/마늘 중 하나)",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 4 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "garlic",
+   "filename": "garlic.png",
+   "ko": "마늘",
+   "en": "three heads of garlic",
+   "kind": "ingredient",
+   "price": 3,
+   "about": "흰 마늘 세 통. 일꾼들이 즐겨 먹는다.",
+   "appearance": "흰 마늘 세 통을 줄기째 묶은 다발. 껍질에 연보라 줄.",
+   "colors": [
+    "#f4efe4 흰 껍질",
+    "#c9b6d6 연보라 줄",
+    "#b8a27a 줄기",
+    "#8a7a5a 뿌리"
+   ],
+   "details": [
+    "양파(둥글고 갈색)와 구별되게 쪽 나뉨선",
+    "뿌리털 짧게"
+   ],
+   "usage": [
+    "생선 스튜 재료 (양파/고수 씨/마늘 중 하나)",
+    "보리죽 재료 (양파/마늘/리크 중 하나)",
+    "렌틸 수프 재료 (양파/마늘/리크 중 하나)",
+    "오이 냉채 재료 (치즈/우유/마늘 중 하나)",
+    "텃밭 수확(마늘 씨앗)",
+    "팔기 1 데벤"
+   ],
+   "market": "식재료 · 3 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "leek",
+   "filename": "leek.png",
+   "ko": "리크",
+   "en": "a bunch of leeks",
+   "kind": "ingredient",
+   "price": 3,
+   "about": "긴 초록 대파.",
+   "appearance": "흰 밑동에서 초록 잎이 부채처럼 갈라지는 긴 리크 두 대를 끈으로 묶음.",
+   "colors": [
+    "#f0f0e0 흰 밑동",
+    "#7fbf5a 연두",
+    "#3f7f3a 짙은 초록",
+    "#c9a060 끈"
+   ],
+   "details": [
+    "대각선으로 길게 배치",
+    "뿌리 수염 조금"
+   ],
+   "usage": [
+    "보리죽 재료 (양파/마늘/리크 중 하나)",
+    "렌틸 수프 재료 (양파/마늘/리크 중 하나)",
+    "팔기 1 데벤"
+   ],
+   "market": "식재료 · 3 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "lentils",
+   "filename": "lentils.png",
+   "ko": "렌틸콩",
+   "en": "a bowl of red lentils",
+   "kind": "ingredient",
+   "price": 4,
+   "about": "붉은 렌틸 한 그릇.",
+   "appearance": "넓은 도기 그릇에 수북한 붉은 주황 렌틸, 앞에 몇 알 흘림.",
+   "colors": [
+    "#d9663a 렌틸 주황",
+    "#b5452a 그림자",
+    "#8a5a3a 그릇",
+    "#f0a070 하이라이트"
+   ],
+   "details": [
+    "알은 납작한 원반",
+    "그릇은 낮고 넓음(보리죽 그릇과 다르게 빈 그릇 테두리 보임)"
+   ],
+   "usage": [
+    "보리죽 재료 (보리/렌틸콩/병아리콩 중 하나)",
+    "렌틸 수프 재료",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 4 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "chickpeas",
+   "filename": "chickpeas.png",
+   "ko": "병아리콩",
+   "en": "a bowl of chickpeas",
+   "kind": "ingredient",
+   "price": 4,
+   "about": "동글동글한 노란 콩 한 그릇.",
+   "appearance": "작은 바구니에 담긴 둥글고 울퉁불퉁한 노란 병아리콩.",
+   "colors": [
+    "#e0c070 병아리콩",
+    "#b89a50 그림자",
+    "#a0763a 바구니",
+    "#f5e0a0 밝은 면"
+   ],
+   "details": [
+    "콩마다 뾰족한 부리 하나",
+    "바구니 엮음 무늬"
+   ],
+   "usage": [
+    "보리죽 재료 (보리/렌틸콩/병아리콩 중 하나)",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 4 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "sesame",
+   "filename": "sesame.png",
+   "ko": "참깨",
+   "en": "a small pouch of sesame seeds",
+   "kind": "spice",
+   "price": 5,
+   "about": "깨알이 든 작은 주머니.",
+   "appearance": "작은 흰 천 주머니가 열려 아이보리 깨알이 쏟아졌다. 옆에 마른 참깨 꼬투리 하나.",
+   "colors": [
+    "#f2ead2 깨",
+    "#e0d6b8 천",
+    "#9a8a60 꼬투리",
+    "#6a5a3a 윤곽"
+   ],
+   "details": [
+    "쿠민 주머니(마대·갈색)와 다르게 흰 천·흰 깨",
+    "깨알은 아주 작은 점"
+   ],
+   "usage": [
+    "꿀빵 재료 (꿀/참깨 중 하나)",
+    "참깨빵 재료",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 5 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "cucumber",
+   "filename": "cucumber.png",
+   "ko": "오이",
+   "en": "a striped cucumber",
+   "kind": "ingredient",
+   "price": 3,
+   "about": "줄무늬 오이. 아삭하고 시원하다.",
+   "appearance": "줄무늬가 있는 길쭉한 초록 오이 하나와 동그랗게 썬 조각 하나.",
+   "colors": [
+    "#4f8f3a 초록",
+    "#9fd07a 줄무늬",
+    "#e6f2c8 속살",
+    "#2f5f2a 그림자"
+   ],
+   "details": [
+    "단면에 씨 동그라미",
+    "꼭지 끝에 노란 꽃 자국"
+   ],
+   "usage": [
+    "오이 냉채 재료",
+    "텃밭 수확(오이 씨앗)",
+    "날로 먹기(두아트 챙김): 회복 2 · 거래 모험의 \"음식 하나\"",
+    "팔기 1 데벤"
+   ],
+   "market": "식재료 · 3 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "watermelon",
+   "filename": "watermelon.png",
+   "ko": "수박",
+   "en": "half a red watermelon",
+   "kind": "ingredient",
+   "price": 6,
+   "about": "반으로 자른 붉은 수박.",
+   "appearance": "반으로 자른 수박. 붉은 속살과 검은 씨, 두꺼운 초록 줄무늬 껍질.",
+   "colors": [
+    "#e0404a 속살",
+    "#2f6f2a 껍질",
+    "#8fcf6a 줄무늬",
+    "#1a1a1a 씨"
+   ],
+   "details": [
+    "껍질 안쪽 흰 띠",
+    "앞에 한 조각 썰어 둠"
+   ],
+   "usage": [
+    "수박 화채 재료",
+    "텃밭 수확(수박 씨앗)",
+    "날로 먹기(두아트 챙김): 회복 3 공포 −1 · 거래 모험의 \"음식 하나\"",
+    "팔기 3 데벤"
+   ],
+   "market": "식재료 · 6 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "pomegranate",
+   "filename": "pomegranate.png",
+   "ko": "석류",
+   "en": "a split pomegranate",
+   "kind": "ingredient",
+   "price": 7,
+   "about": "껍질이 갈라져 붉은 알이 보이는 석류.",
+   "appearance": "붉은 석류 하나, 위쪽이 갈라져 루비색 알이 보인다. 꼭지에 왕관 모양 꽃받침.",
+   "colors": [
+    "#b0202a 껍질",
+    "#e04050 알",
+    "#ffb0b8 반사",
+    "#6a1a1a 그림자"
+   ],
+   "details": [
+    "알은 반짝이는 각진 점",
+    "꽃받침 뾰족 다섯"
+   ],
+   "usage": [
+    "무화과 과자 재료 (무화과/석류 중 하나)",
+    "석류 과자 재료",
+    "날로 먹기(두아트 챙김): 공포 −1 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 웨페트 렌페트 새해 단 것",
+    "팔기 3 데벤"
+   ],
+   "market": "식재료 · 7 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "linen",
+   "filename": "linen.png",
+   "ko": "아마포",
+   "en": "a bolt of white linen",
+   "kind": "goods",
+   "price": 12,
+   "about": "곱게 짠 흰 아마천 한 필.",
+   "appearance": "둘둘 만 흰 아마천 한 필, 끝이 조금 풀려 늘어진다. 가장자리에 가는 파란 줄 두 개.",
+   "colors": [
+    "#f2efe6 흰 천",
+    "#d6d0c0 접힘 그림자",
+    "#3a6fb0 가장자리 줄",
+    "#a09a8a 윤곽"
+   ],
+   "details": [
+    "천 결이 보이는 가는 가로선",
+    "고운 아마천보다 두껍고 불투명"
+   ],
+   "usage": [
+    "두아트 챙김, 싸움 중 감기: 체력 +3",
+    "축제 준비 대신 내기: 오페트 축제 연꽃과 등불, 코이악 축제 보리 싹 모형",
+    "팔기 6 데벤"
+   ],
+   "market": "잡화 · 12 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "oil_lamp",
+   "filename": "oil_lamp.png",
+   "ko": "기름 등잔",
+   "en": "a small clay oil lamp",
+   "kind": "goods",
+   "price": 7,
+   "about": "손바닥만 한 도기 등잔. 심지에 기름이 배어 있다.",
+   "appearance": "손바닥만 한 붉은 흙 등잔(앞이 뾰족한 신발 모양). 주둥이 끝 심지에 작은 불꽃.",
+   "colors": [
+    "#b5603a 도기",
+    "#7a3a1a 그림자",
+    "#ffb030 불꽃",
+    "#fff0a0 불빛"
+   ],
+   "details": [
+    "기름 고인 윗면 반짝임",
+    "손잡이 고리 하나"
+   ],
+   "usage": [
+    "두아트 챙김, 들어갈 때 씀: 처음 갈림길 1곳 공포 안 오름",
+    "축제 준비 대신 내기: 웨페트 렌페트 새 등불",
+    "팔기 3 데벤"
+   ],
+   "market": "잡화 · 7 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "clay_bowl",
+   "filename": "clay_bowl.png",
+   "ko": "도기 그릇",
+   "en": "a red clay bowl",
+   "kind": "goods",
+   "price": 3,
+   "about": "붉은 흙으로 구운 그릇.",
+   "appearance": "비어 있는 붉은 흙 그릇 하나, 입구 테두리에 검은 띠. 위에서 비스듬히 본 모습.",
+   "colors": [
+    "#c0603a 붉은 흙",
+    "#8a3a20 안쪽 그림자",
+    "#2a1a10 검은 띠",
+    "#e08a5a 하이라이트"
+   ],
+   "details": [
+    "안이 비어 있음(요리 그릇과 구별)",
+    "바닥 굽 보임"
+   ],
+   "usage": [
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 1 데벤"
+   ],
+   "market": "잡화 · 3 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "reed_pen",
+   "filename": "reed_pen.png",
+   "ko": "갈대 붓",
+   "en": "a reed pen cut at a slant",
+   "kind": "goods",
+   "price": 4,
+   "about": "끝을 비스듬히 깎은 갈대 붓.",
+   "appearance": "끝을 비스듬히 깎은 가는 갈대 붓 두 자루가 X자로 겹쳤다. 한 자루 끝에 검은 먹.",
+   "colors": [
+    "#c9b070 갈대",
+    "#8a7040 마디",
+    "#1a1a1a 먹",
+    "#e8d8a0 하이라이트"
+   ],
+   "details": [
+    "마디 선 두세 개",
+    "붓끝 비스듬한 단면"
+   ],
+   "usage": [
+    "필사실 공부: 가방에 있으면 경험치 +1(안 닳음)",
+    "팔기 2 데벤"
+   ],
+   "market": "잡화 · 4 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "blank_papyrus",
+   "filename": "blank_papyrus.png",
+   "ko": "빈 파피루스",
+   "en": "a blank papyrus roll",
+   "kind": "goods",
+   "price": 6,
+   "about": "아무것도 쓰지 않은 흰 파피루스 두루마리.",
+   "appearance": "반쯤 펼친 깨끗한 연노랑 파피루스 두루마리. 글씨 없음, 가로세로 섬유 결만.",
+   "colors": [
+    "#efe0b0 파피루스",
+    "#d6c38a 결",
+    "#b89a5a 말린 끝",
+    "#8a7040 윤곽"
+   ],
+   "details": [
+    "젖은 파피루스·저승 두루마리와 달리 얼룩·글씨 없음",
+    "끈 없이 말림"
+   ],
+   "usage": [
+    "필사실 공부: 한 장 쓰면 태양 기운 2→1",
+    "팔기 3 데벤"
+   ],
+   "market": "잡화 · 6 데벤 · 늘 있음",
+   "phase": 1
+  },
+  {
+   "id": "faience_beads",
+   "filename": "faience_beads.png",
+   "ko": "파이앙스 구슬 목걸이",
+   "en": "a necklace of blue faience beads",
+   "kind": "jewelry",
+   "price": 16,
+   "about": "푸른 유약 구슬을 꿴 목걸이.",
+   "appearance": "푸른 유약 원통 구슬과 동그란 구슬을 번갈아 꿴 목걸이를 둥글게 놓았다.",
+   "colors": [
+    "#2fa0b0 파이앙스 청록",
+    "#1f6f80 그림자",
+    "#bfeef0 반사",
+    "#c9a060 실"
+   ],
+   "details": [
+    "풍뎅이 부적(한 개)과 달리 여러 구슬이 고리 모양",
+    "가운데 큰 구슬 하나"
+   ],
+   "usage": [
+    "제단 바치기(하루 한 번): 신앙 +1",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "도감 수집(장신구)",
+    "팔기 8 데벤"
+   ],
+   "market": "장신구 · 16 데벤 · 장신구 묶음: 하루 50% 확률로 1~2종만, 하루 1개",
+   "phase": 1
+  },
+  {
+   "id": "carnelian_ring",
+   "filename": "carnelian_ring.png",
+   "ko": "홍옥수 반지",
+   "en": "a carnelian ring",
+   "kind": "jewelry",
+   "price": 22,
+   "about": "붉은 홍옥수가 박힌 반지.",
+   "appearance": "굵은 금빛 고리 위에 타원형 붉은 홍옥수가 박힌 반지.",
+   "colors": [
+    "#c03a2a 홍옥수",
+    "#ff8a6a 반사",
+    "#d4a020 금",
+    "#8a6a10 그림자"
+   ],
+   "details": [
+    "돌 안쪽이 반투명하게 밝음",
+    "고리 옆면 보이게 비스듬히"
+   ],
+   "usage": [
+    "제단 바치기(하루 한 번): 신앙 +1",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "도감 수집(장신구)",
+    "팔기 11 데벤"
+   ],
+   "market": "장신구 · 22 데벤 · 장신구 묶음: 하루 50% 확률로 1~2종만, 하루 1개",
+   "phase": 1
+  },
+  {
+   "id": "copper_bangle",
+   "filename": "copper_bangle.png",
+   "ko": "구리 팔찌",
+   "en": "a copper bangle",
+   "kind": "jewelry",
+   "price": 10,
+   "about": "녹빛이 살짝 도는 구리 고리.",
+   "appearance": "녹색 녹이 살짝 슨 굵은 구리 팔찌 고리. 겉에 새김 줄 세 개.",
+   "colors": [
+    "#c06a3a 구리",
+    "#e09a6a 반사",
+    "#5fa08a 녹",
+    "#6a3a1a 그림자"
+   ],
+   "details": [
+    "완전한 원이 아니라 끝이 살짝 벌어진 고리",
+    "녹은 아래쪽에만"
+   ],
+   "usage": [
+    "제단 바치기(하루 한 번): 신앙 +1",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "도감 수집(장신구)",
+    "팔기 5 데벤"
+   ],
+   "market": "장신구 · 10 데벤 · 장신구 묶음: 하루 50% 확률로 1~2종만, 하루 1개",
+   "phase": 1
+  },
+  {
+   "id": "doum_fruit",
+   "filename": "doum_fruit.png",
+   "ko": "둠야자 열매",
+   "en": "a doum palm fruit",
+   "kind": "ingredient",
+   "price": 3,
+   "about": "단단한 갈색 껍질 속이 생강빵처럼 달큰하다. 무덤에도 넣던 열매.",
+   "appearance": "반들반들한 적갈색 둠야자 열매 둘, 하나는 깨져 속의 황갈색 섬유질이 보인다.",
+   "colors": [
+    "#8a4a2a 껍질",
+    "#c08040 반사",
+    "#d9b070 속",
+    "#4a2a1a 그림자"
+   ],
+   "details": [
+    "열매는 둥근 사각형",
+    "대추야자(송이·작은 알)와 구별"
+   ],
+   "usage": [
+    "석류 과자 재료 (대추야자/둠야자 열매/캐럽 꼬투리 중 하나)",
+    "날로 먹기(두아트 챙김): 회복 1 공포 −1 · 거래 모험의 \"음식 하나\"",
+    "팔기 1 데벤"
+   ],
+   "market": "식재료 · 3 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "carob",
+   "filename": "carob.png",
+   "ko": "캐럽 꼬투리",
+   "en": "a few carob pods",
+   "kind": "ingredient",
+   "price": 3,
+   "about": "검붉은 꼬투리. 씹으면 꿀처럼 달아 단맛을 낼 때 쓴다.",
+   "appearance": "검붉은 납작한 캐럽 꼬투리 세 개, 하나는 휘어 있다.",
+   "colors": [
+    "#4a2018 꼬투리",
+    "#7a3a28 반사",
+    "#2a100a 그림자",
+    "#a06040 씨 자국"
+   ],
+   "details": [
+    "꼬투리 표면에 씨 자리 볼록",
+    "반질한 광택"
+   ],
+   "usage": [
+    "무화과 과자 재료 (꿀/캐럽 꼬투리 중 하나)",
+    "석류 과자 재료 (대추야자/둠야자 열매/캐럽 꼬투리 중 하나)",
+    "날로 먹기(두아트 챙김): 회복 1 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 웨페트 렌페트 새해 단 것",
+    "팔기 1 데벤"
+   ],
+   "market": "식재료 · 3 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "grapes",
+   "filename": "grapes.png",
+   "ko": "포도",
+   "en": "a bunch of dark grapes",
+   "kind": "ingredient",
+   "price": 4,
+   "about": "알이 짙은 보랏빛으로 익은 포도 한 송이.",
+   "appearance": "짙은 보랏빛 포도 한 송이, 위에 초록 포도잎 한 장과 덩굴손.",
+   "colors": [
+    "#4a2a6a 포도",
+    "#7a5aa0 반사",
+    "#4f8f3a 잎",
+    "#2a1a3a 그림자"
+   ],
+   "details": [
+    "알마다 흰 분 하이라이트",
+    "무화과(보라 단일 열매)와 구별되는 송이 모양"
+   ],
+   "usage": [
+    "수박 화채 재료 (꿀/포도 중 하나)",
+    "텃밭 수확(포도 묘목)",
+    "날로 먹기(두아트 챙김): 회복 2 공포 −1 · 거래 모험의 \"음식 하나\"",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 4 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "milk",
+   "filename": "milk.png",
+   "ko": "우유",
+   "en": "a jug of fresh milk",
+   "kind": "ingredient",
+   "price": 4,
+   "about": "아침에 짠 우유 한 주전자.",
+   "appearance": "목이 좁은 흰 우유 주전자(도기)와 앞에 작은 우유 대접. 대접 안은 하얀 우유.",
+   "colors": [
+    "#e8e0d0 도기",
+    "#ffffff 우유",
+    "#a08a6a 그림자",
+    "#c9b6a0 무늬"
+   ],
+   "details": [
+    "주전자 입에 우유 한 방울",
+    "주전자 몸에 가는 갈색 띠"
+   ],
+   "usage": [
+    "오이 냉채 재료 (치즈/우유/마늘 중 하나)",
+    "날로 먹기(두아트 챙김): 회복 2 · 거래 모험의 \"음식 하나\"",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 4 데벤 · 시간대 새벽·낮",
+   "phase": 2
+  },
+  {
+   "id": "cheese",
+   "filename": "cheese.png",
+   "ko": "치즈",
+   "en": "a round of white cheese",
+   "kind": "ingredient",
+   "price": 7,
+   "about": "천에 걸러 굳힌 흰 치즈 한 덩이. 짭짤하다.",
+   "appearance": "천 위에 놓인 둥근 흰 치즈 한 덩이, 한 조각을 잘라 단면이 보인다.",
+   "colors": [
+    "#f2ecd8 치즈",
+    "#d6ccb0 껍질",
+    "#b89a70 천",
+    "#8a7a5a 그림자"
+   ],
+   "details": [
+    "천 자국이 남은 겉면 결",
+    "단면 작은 구멍 없음(염소 치즈)"
+   ],
+   "usage": [
+    "오이 냉채 재료 (치즈/우유/마늘 중 하나)",
+    "날로 먹기(두아트 챙김): 회복 3 · 거래 모험의 \"음식 하나\"",
+    "팔기 3 데벤"
+   ],
+   "market": "식재료 · 7 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "beer_jar",
+   "filename": "beer_jar.png",
+   "ko": "보리 맥주",
+   "en": "a jar of barley beer",
+   "kind": "ingredient",
+   "price": 5,
+   "about": "걸쭉한 보리 맥주 한 단지. 일꾼의 하루 몫.",
+   "appearance": "어깨가 둥근 붉은 흙 단지에 진흙 마개를 대충 덮었다. 입구에 거품.",
+   "colors": [
+    "#b5603a 단지",
+    "#7a3a1a 그림자",
+    "#e8d8a0 거품",
+    "#9a7a5a 진흙 마개"
+   ],
+   "details": [
+    "봉인된 항아리(봉인 문양)와 달리 마개가 엉성하고 거품",
+    "단지 옆에 빨대 하나"
+   ],
+   "usage": [
+    "날로 먹기(두아트 챙김): 회복 2 공포 −1 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 2 데벤"
+   ],
+   "market": "식재료 · 5 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "wine_jar",
+   "filename": "wine_jar.png",
+   "ko": "포도주 단지",
+   "en": "a sealed jar of wine",
+   "kind": "ingredient",
+   "price": 16,
+   "about": "포도밭 이름과 해가 적힌 진흙 마개 단지. 잔치와 제물에 쓴다.",
+   "appearance": "목이 길고 바닥이 뾰족한 암포라형 포도주 단지. 진흙 마개에 둥근 인장 자국, 몸에 검은 글씨 두 줄.",
+   "colors": [
+    "#c08a5a 단지",
+    "#8a2a3a 포도주 얼룩",
+    "#4a2a1a 글씨",
+    "#d9b08a 하이라이트"
+   ],
+   "details": [
+    "바닥 뾰족해서 받침대에 기대 세움",
+    "봉인된 항아리보다 길쭉함"
+   ],
+   "usage": [
+    "날로 먹기(두아트 챙김): 공포 −2 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "팔기 8 데벤"
+   ],
+   "market": "식재료 · 16 데벤 · 하루 2개",
+   "phase": 2
+  },
+  {
+   "id": "garlic_seed",
+   "filename": "garlic_seed.png",
+   "ko": "마늘 씨앗",
+   "en": "garlic cloves for planting",
+   "kind": "seed",
+   "price": 3,
+   "about": "심으려고 떼어 둔 마늘 쪽.",
+   "appearance": "흙 묻은 마늘 쪽 다섯 개를 작은 바구니에 담음. 쪽 끝에 초록 싹이 살짝.",
+   "colors": [
+    "#efe6d6 마늘 쪽",
+    "#7fbf5a 싹",
+    "#8a6a4a 흙",
+    "#a0763a 바구니"
+   ],
+   "details": [
+    "통마늘(마늘)과 달리 낱쪽",
+    "흙 알갱이 몇 개"
+   ],
+   "usage": [
+    "텃밭: 심고 2일 뒤 마늘 3개",
+    "팔기 1 데벤"
+   ],
+   "market": "텃밭 · 3 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "cucumber_seed",
+   "filename": "cucumber_seed.png",
+   "ko": "오이 씨앗",
+   "en": "cucumber seeds",
+   "kind": "seed",
+   "price": 3,
+   "about": "납작하고 하얀 오이 씨.",
+   "appearance": "작은 천 위에 흩어진 납작한 흰 오이 씨와 씨앗 봉지 역할의 접은 잎.",
+   "colors": [
+    "#f2ecd0 씨",
+    "#c9b089 천",
+    "#5f8f3a 잎",
+    "#8a7a5a 그림자"
+   ],
+   "details": [
+    "씨는 길쭉 타원, 아주 작게 여러 개"
+   ],
+   "usage": [
+    "텃밭: 심고 2일 뒤 오이 3개",
+    "팔기 1 데벤"
+   ],
+   "market": "텃밭 · 3 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "watermelon_seed",
+   "filename": "watermelon_seed.png",
+   "ko": "수박 씨앗",
+   "en": "watermelon seeds",
+   "kind": "seed",
+   "price": 5,
+   "about": "까만 수박 씨 한 줌.",
+   "appearance": "작은 도기 종지에 담긴 까만 수박 씨 한 줌.",
+   "colors": [
+    "#1a1a1a 씨",
+    "#5a5a5a 반사",
+    "#b5754a 종지",
+    "#7a4a2a 그림자"
+   ],
+   "details": [
+    "씨는 납작 물방울 모양",
+    "종지는 손바닥보다 작음"
+   ],
+   "usage": [
+    "텃밭: 심고 3일 뒤 수박 2개",
+    "팔기 2 데벤"
+   ],
+   "market": "텃밭 · 5 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "grape_vine",
+   "filename": "grape_vine.png",
+   "ko": "포도 묘목",
+   "en": "a young grapevine",
+   "kind": "seed",
+   "price": 9,
+   "about": "뿌리를 흙에 싼 어린 포도나무.",
+   "appearance": "뿌리를 젖은 흙덩이와 천으로 싼 어린 포도나무 묘목. 잎 세 장과 덩굴손.",
+   "colors": [
+    "#6a4a2a 줄기",
+    "#5f9f3a 잎",
+    "#8a6a4a 흙",
+    "#c9b089 천"
+   ],
+   "details": [
+    "무화과 묘목(넓은 잎·곧은 줄기)과 달리 구불한 덩굴",
+    "포도알 없음"
+   ],
+   "usage": [
+    "텃밭: 심고 4일 뒤 포도 3개",
+    "팔기 4 데벤"
+   ],
+   "market": "텃밭 · 9 데벤 · 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "fine_linen",
+   "filename": "fine_linen.png",
+   "ko": "고운 아마천",
+   "en": "a bolt of fine royal linen",
+   "kind": "goods",
+   "price": 24,
+   "about": "빛이 비칠 만큼 얇게 짠 고급 아마천. 신전 옷과 장식에 쓴다.",
+   "appearance": "빛이 비칠 만큼 얇은 흰 천을 접어 쌓았다. 끝단에 금실 술 장식.",
+   "colors": [
+    "#fbf8f0 고운 천",
+    "#e6dfcc 비침 그림자",
+    "#d4a020 금실",
+    "#a8a090 윤곽"
+   ],
+   "details": [
+    "아마포(두루마리)와 달리 반듯이 접힌 더미",
+    "뒤 배경이 비치는 반투명 표현"
+   ],
+   "usage": [
+    "두아트 챙김, 싸움 중 감기: 체력 +5",
+    "축제 준비 대신 내기: 오페트 축제 연꽃과 등불, 코이악 축제 보리 싹 모형",
+    "팔기 12 데벤"
+   ],
+   "market": "잡화 · 24 데벤 · 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "reed_mat",
+   "filename": "reed_mat.png",
+   "ko": "갈대 돗자리",
+   "en": "a woven reed mat",
+   "kind": "goods",
+   "price": 5,
+   "about": "갈대를 엮은 돗자리. 둘둘 말아 들고 다닌다.",
+   "appearance": "갈대를 엮은 노란 돗자리를 반쯤 말아 끈으로 묶었다.",
+   "colors": [
+    "#e0c060 갈대",
+    "#b89a40 엮음 그림자",
+    "#7a5a2a 끈",
+    "#f5e090 하이라이트"
+   ],
+   "details": [
+    "엮음 격자무늬",
+    "갈대 묶음(재료)과 달리 평평하게 엮인 판"
+   ],
+   "usage": [
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 2 데벤"
+   ],
+   "market": "잡화 · 5 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "papyrus_sandals",
+   "filename": "papyrus_sandals.png",
+   "ko": "파피루스 샌들",
+   "en": "a pair of papyrus sandals",
+   "kind": "goods",
+   "price": 6,
+   "about": "파피루스 줄기를 엮은 가벼운 샌들.",
+   "appearance": "파피루스 줄기를 엮은 샌들 한 켤레, 앞 끝이 위로 살짝 말렸다.",
+   "colors": [
+    "#d9c080 파피루스",
+    "#a08a50 엮음",
+    "#6a5a30 끈",
+    "#f0e0a0 하이라이트"
+   ],
+   "details": [
+    "엄지 끈 하나와 발등 끈",
+    "한 짝은 옆, 한 짝은 바닥 보이게"
+   ],
+   "usage": [
+    "두아트 챙김, 들어갈 때 씀: 체력 최대·현재 +2",
+    "팔기 3 데벤"
+   ],
+   "market": "잡화 · 6 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "scribe_palette",
+   "filename": "scribe_palette.png",
+   "ko": "필경사 팔레트",
+   "en": "a scribe's palette",
+   "kind": "goods",
+   "price": 14,
+   "about": "검정·빨강 먹 홈 둘과 붓 넣는 홈이 있는 나무 팔레트.",
+   "appearance": "길쭉한 나무 필경사 팔레트. 위쪽에 검정·빨강 먹 홈 둘, 가운데 홈에 갈대 붓 두 자루.",
+   "colors": [
+    "#c9a070 나무",
+    "#1a1a1a 검정 먹",
+    "#c0302a 빨강 먹",
+    "#8a6a3a 그림자"
+   ],
+   "details": [
+    "팔레트에 작은 상형문자 새김",
+    "갈대 붓(낱개 아이템)과 구별되게 팔레트가 주인공"
+   ],
+   "usage": [
+    "필사실 공부: 가방에 있으면 경험치 +2(안 닳음)",
+    "팔기 7 데벤"
+   ],
+   "market": "잡화 · 14 데벤 · 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "wooden_comb",
+   "filename": "wooden_comb.png",
+   "ko": "나무 빗",
+   "en": "a wooden comb",
+   "kind": "goods",
+   "price": 4,
+   "about": "등에 작은 영양이 새겨진 나무 빗.",
+   "appearance": "한쪽은 굵은 빗살, 등에는 누운 영양이 새겨진 나무 빗.",
+   "colors": [
+    "#a0703a 나무",
+    "#6a4a20 새김",
+    "#d9a060 하이라이트",
+    "#3a2a10 윤곽"
+   ],
+   "details": [
+    "빗살 촘촘",
+    "영양 실루엣은 단순하게"
+   ],
+   "usage": [
+    "축제의 밤: 경험치 +2(안 닳음)",
+    "팔기 2 데벤"
+   ],
+   "market": "잡화 · 4 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "palm_fan",
+   "filename": "palm_fan.png",
+   "ko": "야자잎 부채",
+   "en": "a palm-leaf fan",
+   "kind": "goods",
+   "price": 8,
+   "about": "야자잎을 엮어 자루를 단 부채. 한낮에 부치면 숨이 돌아온다.",
+   "appearance": "야자잎을 반원으로 엮어 짧은 나무 자루를 단 부채.",
+   "colors": [
+    "#7fa040 야자잎",
+    "#c9b060 마른 잎",
+    "#8a5a2a 자루",
+    "#4a6a2a 그림자"
+   ],
+   "details": [
+    "잎맥 방사선",
+    "대추야자 나무(🌴)와 달리 손에 드는 부채"
+   ],
+   "usage": [
+    "앉아 쉬기: 태양 기운 +1 더(안 닳음)",
+    "팔기 4 데벤"
+   ],
+   "market": "잡화 · 8 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "lapis_beads",
+   "filename": "lapis_beads.png",
+   "ko": "청금석 구슬",
+   "en": "a string of lapis lazuli beads",
+   "kind": "jewelry",
+   "price": 30,
+   "about": "금빛 점이 박힌 짙은 파란 돌 구슬. 먼 산에서 온다.",
+   "appearance": "짙은 파란 청금석 구슬 줄, 사이사이 작은 금 구슬. 금빛 점이 박힌 돌.",
+   "colors": [
+    "#1f3f9a 청금석",
+    "#3a5fc0 반사",
+    "#d4a020 금 구슬·점",
+    "#0f1f50 그림자"
+   ],
+   "details": [
+    "파이앙스 구슬(청록 유약)보다 진한 남색 돌",
+    "돌 속 금색 점 몇 개"
+   ],
+   "usage": [
+    "제단 바치기(하루 한 번): 신앙 +1, 경험치 +2",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "도감 수집(장신구)",
+    "팔기 15 데벤"
+   ],
+   "market": "장신구 · 30 데벤 · 장신구 묶음: 하루 50% 확률로 1~2종만, 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "gold_ornament",
+   "filename": "gold_ornament.png",
+   "ko": "황금 장식",
+   "en": "a gold ornament",
+   "kind": "jewelry",
+   "price": 45,
+   "about": "얇게 두드린 금판에 날개 편 새를 새긴 장식.",
+   "appearance": "얇게 두드린 금판 펜던트, 날개를 편 새(독수리) 문양. 작은 고리에 걸었다.",
+   "colors": [
+    "#f0c030 금",
+    "#c08a10 그림자",
+    "#fff0a0 반사",
+    "#3a6fb0 눈 상감"
+   ],
+   "details": [
+    "날개 깃 선 새김",
+    "우제트·풍뎅이와 다른 넓은 날개 형태"
+   ],
+   "usage": [
+    "제단 바치기(하루 한 번): 신앙 +2",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "도감 수집(장신구)",
+    "팔기 22 데벤"
+   ],
+   "market": "장신구 · 45 데벤 · 모험 등급 2 이상, 그날 15% 확률, 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "bes_amulet",
+   "filename": "bes_amulet.png",
+   "ko": "베스 부적",
+   "en": "a Bes amulet",
+   "kind": "jewelry",
+   "price": 18,
+   "about": "혀를 내민 난쟁이 신 베스. 집과 잠을 지켜 준다고 한다.",
+   "appearance": "파이앙스로 만든 베스 신 부적: 혀를 내민 둥근 얼굴, 깃털 관, 짧은 다리. 위에 매다는 고리.",
+   "colors": [
+    "#4fb0a0 청록 파이앙스",
+    "#2a6a60 그림자",
+    "#f0d060 깃털 끝",
+    "#1a3a38 윤곽"
+   ],
+   "details": [
+    "정면, 손을 무릎에",
+    "무섭기보다 귀엽게"
+   ],
+   "usage": [
+    "제단 바치기(하루 한 번): 신앙 +1, 경험치 +1",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "도감 수집(장신구)",
+    "팔기 9 데벤"
+   ],
+   "market": "장신구 · 18 데벤 · 장신구 묶음: 하루 50% 확률로 1~2종만, 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "taweret_amulet",
+   "filename": "taweret_amulet.png",
+   "ko": "타와렛 부적",
+   "en": "a Taweret amulet",
+   "kind": "jewelry",
+   "price": 18,
+   "about": "하마 모습의 여신 타와렛. 아이와 어머니를 지킨다.",
+   "appearance": "하마 몸에 사자 다리, 불룩한 배로 선 타와렛 여신 부적. 파이앙스 연녹색.",
+   "colors": [
+    "#8fc0a0 연녹",
+    "#4a7a5a 그림자",
+    "#c9a060 고리",
+    "#2a4a3a 윤곽"
+   ],
+   "details": [
+    "옆모습, 두 발로 섬",
+    "배에 둥근 하이라이트"
+   ],
+   "usage": [
+    "제단 바치기(하루 한 번): 신앙 +1, 경험치 +1",
+    "축제 준비 대신 내기: 오페트 축제 신전 제물, 코이악 축제 신전 제물, 웨페트 렌페트 신전 제물",
+    "도감 수집(장신구)",
+    "팔기 9 데벤"
+   ],
+   "market": "장신구 · 18 데벤 · 장신구 묶음: 하루 50% 확률로 1~2종만, 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "senet_board",
+   "filename": "senet_board.png",
+   "ko": "세네트 놀이판",
+   "en": "a senet game board",
+   "kind": "decor",
+   "price": 26,
+   "about": "서른 칸이 새겨진 나무 놀이판과 말. 서랍에 말이 들어 있다.",
+   "appearance": "나무 상자 모양 세네트 놀이판, 위에 3×10 칸과 둥근·원뿔 말, 옆 서랍이 조금 열림.",
+   "colors": [
+    "#a0703a 나무",
+    "#e8d8a0 칸",
+    "#1a3a7a 파란 말",
+    "#f2ece0 흰 말"
+   ],
+   "details": [
+    "칸 몇 개에 작은 기호",
+    "던지는 막대 두 개"
+   ],
+   "usage": [
+    "도감 수집(진귀품)",
+    "팔기 13 데벤"
+   ],
+   "market": "진귀품 · 26 데벤 · 그날 25% 확률, 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "lotus_vase",
+   "filename": "lotus_vase.png",
+   "ko": "연꽃 화병",
+   "en": "a lotus-shaped faience vase",
+   "kind": "decor",
+   "price": 20,
+   "about": "연꽃 봉오리 모양 푸른 파이앙스 화병.",
+   "appearance": "연꽃 봉오리 모양의 푸른 파이앙스 화병에 흰·푸른 연꽃 두 송이가 꽂혔다.",
+   "colors": [
+    "#2f7fb0 화병",
+    "#9fd0f0 반사",
+    "#ffffff 흰 연꽃",
+    "#3a6fb0 푸른 연꽃"
+   ],
+   "details": [
+    "화병 몸에 꽃잎 무늬 새김",
+    "봉인된 항아리와 달리 입구 열린 꽃병"
+   ],
+   "usage": [
+    "축제 준비 대신 내기: 오페트 축제 연꽃과 등불",
+    "도감 수집(진귀품)",
+    "팔기 10 데벤"
+   ],
+   "market": "진귀품 · 20 데벤 · 축제 준비 기간에만, 하루 2개",
+   "phase": 2
+  },
+  {
+   "id": "small_chest",
+   "filename": "small_chest.png",
+   "ko": "작은 보물상자",
+   "en": "a small inlaid chest",
+   "kind": "decor",
+   "price": 40,
+   "about": "흑단과 상아를 박아 넣은 작은 상자. 뚜껑에 손잡이 단추가 있다.",
+   "appearance": "흑단 틀에 상아 마름모 무늬를 박은 작은 상자, 둥근 뚜껑에 손잡이 단추와 끈.",
+   "colors": [
+    "#2a1a10 흑단",
+    "#f2ead2 상아",
+    "#c9a060 끈",
+    "#d4a020 금 단추"
+   ],
+   "details": [
+    "네 다리가 짧게",
+    "뚜껑 살짝 열려 금빛 반짝임"
+   ],
+   "usage": [
+    "도감 수집(진귀품)",
+    "팔기 20 데벤"
+   ],
+   "market": "진귀품 · 40 데벤 · 모험 등급 2 이상, 그날 10% 확률, 하루 1개",
+   "phase": 2
+  },
+  {
+   "id": "lentil_soup",
+   "filename": "lentil_soup.png",
+   "ko": "렌틸 수프",
+   "en": "a bowl of lentil soup",
+   "kind": "food",
+   "price": 12,
+   "about": "렌틸콩을 푹 끓여 마늘이나 양파로 맛을 낸 수프.",
+   "appearance": "김이 오르는 깊은 그릇에 담긴 주황빛 렌틸 수프, 위에 초록 잎과 마늘 조각.",
+   "colors": [
+    "#d9763a 수프",
+    "#8a5a3a 그릇",
+    "#5f9f3a 잎",
+    "#f0f0e0 김"
+   ],
+   "details": [
+    "보리죽(흰 죽)·생선 스튜와 색이 다른 주황",
+    "숟가락 없음"
+   ],
+   "usage": [
+    "부엌 요리: 렌틸콩 + 양파/마늘/리크",
+    "두아트 음식: 회복 5 공포 −1 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 6 데벤"
+   ],
+   "market": "요리 · 18 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "sesame_bread",
+   "filename": "sesame_bread.png",
+   "ko": "참깨빵",
+   "en": "a sesame flatbread",
+   "kind": "food",
+   "price": 10,
+   "about": "보릿가루 반죽에 참깨를 뿌려 구운 납작빵.",
+   "appearance": "둥글넓적한 갈색 납작빵 위에 흰 참깨가 촘촘히 뿌려졌다. 한쪽 조각을 찢음.",
+   "colors": [
+    "#c08040 빵",
+    "#8a5020 구운 자국",
+    "#f2ead2 참깨",
+    "#e0b070 속"
+   ],
+   "details": [
+    "빵(🍞 덩어리)·꿀빵과 달리 납작",
+    "참깨 점이 잘 보이게"
+   ],
+   "usage": [
+    "부엌 요리: 보리 + 참깨",
+    "두아트 음식: 회복 4 공포 −1 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 5 데벤"
+   ],
+   "market": "요리 · 15 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "pomegranate_sweets",
+   "filename": "pomegranate_sweets.png",
+   "ko": "석류 과자",
+   "en": "pomegranate sweets",
+   "kind": "food",
+   "price": 14,
+   "about": "석류알과 대추야자를 졸여 굳힌 과자.",
+   "appearance": "작은 접시에 석류알이 박힌 붉은 사각 과자 세 조각과 대추야자 하나.",
+   "colors": [
+    "#b0303a 과자",
+    "#e04050 석류알",
+    "#7a4a2a 대추야자",
+    "#c9a070 접시"
+   ],
+   "details": [
+    "무화과 과자(갈색 둥근)와 구별되게 붉은 사각",
+    "윗면 윤기"
+   ],
+   "usage": [
+    "부엌 요리: 석류 + 대추야자/둠야자 열매/캐럽 꼬투리",
+    "두아트 음식: 회복 2 공포 −3 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 7 데벤"
+   ],
+   "market": "요리 · 21 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "cucumber_salad",
+   "filename": "cucumber_salad.png",
+   "ko": "오이 냉채",
+   "en": "a cold cucumber salad",
+   "kind": "food",
+   "price": 10,
+   "about": "얇게 썬 오이에 치즈나 우유, 마늘을 버무린 냉채.",
+   "appearance": "얕은 그릇에 얇게 썬 오이 동그라미와 흰 치즈 덩이, 초록 고명.",
+   "colors": [
+    "#7fbf5a 오이",
+    "#e6f2c8 단면",
+    "#f2ecd8 치즈",
+    "#5a8ab0 그릇"
+   ],
+   "details": [
+    "시원해 보이게 파란 그릇",
+    "물방울 하이라이트"
+   ],
+   "usage": [
+    "부엌 요리: 오이 + 치즈/우유/마늘",
+    "두아트 음식: 회복 3 공포 −2 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 5 데벤"
+   ],
+   "market": "요리 · 15 데벤 · 늘 있음",
+   "phase": 2
+  },
+  {
+   "id": "watermelon_punch",
+   "filename": "watermelon_punch.png",
+   "ko": "수박 화채",
+   "en": "a bowl of watermelon punch",
+   "kind": "food",
+   "price": 14,
+   "about": "수박을 떠서 꿀물이나 포도와 함께 담은 시원한 화채.",
+   "appearance": "투명한 물빛 그릇에 동그랗게 뜬 수박 알과 포도알이 떠 있는 화채.",
+   "colors": [
+    "#e0404a 수박 알",
+    "#4a2a6a 포도",
+    "#bfe6f0 물",
+    "#d9cfb8 그릇"
+   ],
+   "details": [
+    "얼음처럼 반짝이는 하이라이트",
+    "그릇은 낮은 대접"
+   ],
+   "usage": [
+    "부엌 요리: 수박 + 꿀/포도",
+    "두아트 음식: 회복 4 공포 −2 · 거래 모험의 \"음식 하나\"",
+    "축제 준비 대신 내기: 오페트 축제 잔치 음식, 코이악 축제 잔치 음식",
+    "팔기 7 데벤"
+   ],
+   "market": "요리 · 21 데벤 · 늘 있음",
+   "phase": 2
+  }
+ ]
+}

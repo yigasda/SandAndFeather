@@ -8,7 +8,9 @@ import { getState } from '../core/state.js';
 import { itemArt } from './itemart.js';
 import { para, stack } from './kit.js';
 
-const KINDS = [['fish', '물고기'], ['food', '요리'], ['crop', '작물'], ['find', '발견한 물건'], ['relic', '유물'], ['record', '기록']];
+// a row is one kind, or several shown together (향과 화장품)
+const KINDS = [['fish', '물고기'], ['food', '요리'], ['crop', '작물'], ['find', '발견한 물건'], ['relic', '유물'], ['record', '기록'],
+    [['incense', 'cosmetic'], '향·화장품'], ['jewelry', '장신구'], ['decor', '진귀품']];
 
 export function codexCard(ui, onClose = null) {
     const s = getState();
@@ -35,7 +37,7 @@ export function codexCard(ui, onClose = null) {
     const parts = [];
     let got = 0, total = 0;
     for (const [kind, ko] of KINDS) {
-        const list = Object.entries(all).filter(([, x]) => x.kind === kind);
+        const list = Object.entries(all).filter(([, x]) => [kind].flat().includes(x.kind));
         if (!list.length) continue;
         const n = list.filter(([id]) => id in had).length;
         got += n; total += list.length;

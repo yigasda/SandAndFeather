@@ -1,6 +1,6 @@
 // 시장: what is on sale comes from data/market.json goods, at the item's price × the good's mul. Each game day the
 // stock is settled once, the first time the market is looked at that day (s.market): what came in today (a rare fish,
-// the festival garlands, a few things on the 골동품 좌판), today's deals, at most one thing sold out, and how many
+// the festival garlands, a few things on the 골동품 좌판, some jewelry on some days), today's deals, at most one thing sold out, and how many
 // are left of the goods sold by the piece. Opening the card again, reloading or regenerating the chat never draws
 // it again. The hour only decides what shows (eels in the evening), never what was drawn.
 // Selling: anything but records, at half the item's price (never the market's price, so a deal bought cannot be sold
@@ -30,22 +30,45 @@ export function offRange(price, [p0, p1] = M().daily?.discount || [10, 25]) {
     return lo <= hi ? [lo, hi] : null;
 }
 
-// today's market, settled once per game day. Mutates s.market; the caller saves
-export function marketToday(s) {
-    const t = today(s);
-    if (s.market?.day === t) return s.market;
-    const prev = s.market || {};
-    const d = M().daily || {}, goods = M().goods || [];
+// which goods come in today, of `goods` (the hour is not looked at here) → { stock, left }
+function comeIn(s, goods) {
+    const d = M().daily || {};
     const found = s.codex?.found || {};
     const fest = !!festivalNow(s);
-    // what came in today (the hour is not looked at here)
+    const ok = g => (!g.found || g.stall || found[g.id] !== undefined) && (!g.rank || rank(s) >= g.rank) && (!g.festival || fest)
+        && (g.chance === undefined || Math.random() < g.chance);
+    // the 골동품 좌판: a few of what she has found; a pool (jewelry): on some days, a few of them
     const stall = goods.filter(g => g.stall && found[g.id] !== undefined);
     const [lo, hi] = d.stallPerDay || [1, 2];
-    const onStall = new Set(pick(stall, Math.min(stall.length, rint(lo, hi))).map(g => g.id));
-    const stock = goods.filter(g => (!g.stall || onStall.has(g.id)) && (!g.found || g.stall || found[g.id] !== undefined)
-        && (!g.rank || rank(s) >= g.rank) && (!g.festival || fest) && (g.chance === undefined || Math.random() < g.chance)).map(g => g.id);
+    const picked = new Set(pick(stall, Math.min(stall.length, rint(lo, hi))).map(g => g.id));
+    for (const [name, p] of Object.entries(d.pools || {})) {
+        const all = goods.filter(g => g.pool === name && ok(g));
+        if (Math.random() < (p.chance ?? 1)) for (const g of pick(all, rint(...(p.n || [1, 1])))) picked.add(g.id);
+    }
+    const stock = goods.filter(g => (g.stall || g.pool ? picked.has(g.id) : ok(g))).map(g => g.id);
     const left = {};
     for (const g of goods) if (g.stock && stock.includes(g.id)) left[g.id] = g.stock;
+    return { stock, left };
+}
+
+// today's market, settled once per game day. Mutates s.market; the caller saves
+export function marketToday(s) {
+    const t = today(s), goods = M().goods || [];
+    if (s.market?.day === t) {
+        // goods added to market.json since today was settled (an update) come in now, by the same rules; nothing
+        // already settled changes
+        const m = s.market, known = new Set(m.ids || goods.map(g => g.id));
+        const fresh = goods.filter(g => !known.has(g.id));
+        if (fresh.length) {
+            const x = comeIn(s, fresh);
+            m.stock.push(...x.stock); Object.assign(m.left, x.left);
+        }
+        m.ids = goods.map(g => g.id);
+        return m;
+    }
+    const prev = s.market || {};
+    const d = M().daily || {};
+    const { stock, left } = comeIn(s, goods);
     // deals: about one in eight of what is in, 3 to 5, never yesterday's, only where a whole-deben discount fits the range
     const D = d.deals || { per: 8, min: 3, max: 5 };
     const priceOfId = id => basePrice(goods.find(g => g.id === id));
@@ -59,7 +82,7 @@ export function marketToday(s) {
     const so = d.soldOut || {};
     const out = Math.random() < (so.chance ?? 0.3)
         ? pick(stock.filter(id => !(so.never || []).includes(id) && !(id in deals) && id !== prev.out), 1)[0] || '' : '';
-    s.market = { day: t, stock, deals, out, left };
+    s.market = { day: t, stock, deals, out, left, ids: goods.map(g => g.id) };
     return s.market;
 }
 
