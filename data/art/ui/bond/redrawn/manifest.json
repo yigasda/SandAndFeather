@@ -1,0 +1,529 @@
+{
+  "status": "user-approved for game integration",
+  "approval": "잘 할 수 있었잖냐 하아 자 바꾸렴",
+  "source": "newly drawn UI assets referenced to mobile-a.jpg and mobile-b.jpg",
+  "assets": [
+    {
+      "file": "01-paper-panel.png",
+      "size": [
+        237,
+        101
+      ],
+      "sha256": "98045915865f7b0e1e3db5efae4a591f4eeb43f52c6766da21f49d3ce10d8aa7"
+    },
+    {
+      "file": "02-wood-panel.png",
+      "size": [
+        237,
+        110
+      ],
+      "sha256": "395c8fd2393fa270d9e9e2b0c1d61e5a0b9520961cf01d37a0fe0ea49cbdb747"
+    },
+    {
+      "file": "03-window-frame.png",
+      "size": [
+        189,
+        104
+      ],
+      "sha256": "d7552f9ff6815832966856d32cf017d7c50892de01ca37c6b18eca60f4e6c6b8"
+    },
+    {
+      "file": "04-title-banner.png",
+      "size": [
+        330,
+        86
+      ],
+      "sha256": "9a8f9092172f4d6444c3abe3ce9a0780613d34806f542f40dc87a4aa386defbd"
+    },
+    {
+      "file": "05-tab-selected.png",
+      "size": [
+        182,
+        89
+      ],
+      "sha256": "810d73beab069e71ff674759b9c18e6a05fdd0509da3a7e621c66ceae0f7dde9"
+    },
+    {
+      "file": "06-tab-idle.png",
+      "size": [
+        184,
+        88
+      ],
+      "sha256": "98320ee6ded66439a13aaeb1e655c9fb4439e6986fc2eb91fa4b84d6d22ea8a6"
+    },
+    {
+      "file": "07-record-card.png",
+      "size": [
+        346,
+        102
+      ],
+      "sha256": "2622ffb4b033e321f0fd7586a2b8b56dbc5d2250f8a0669d9782405ab559bd13"
+    },
+    {
+      "file": "08-activity-card.png",
+      "size": [
+        212,
+        102
+      ],
+      "sha256": "6c2899be82a6d31f3acd8a7a869d73f74def02f02fecb2264ccc335557498ef8"
+    },
+    {
+      "file": "09-gift-button.png",
+      "size": [
+        234,
+        102
+      ],
+      "sha256": "f0ed682e667db02d027db98c47efdb220dbc5e153190e1563333e80f1f5a5761"
+    },
+    {
+      "file": "10-memory-button.png",
+      "size": [
+        259,
+        101
+      ],
+      "sha256": "94575aad145902d8a06a1b5f4ab1a2c79f1937156d2818c2e61b5cf6c5b8319f"
+    },
+    {
+      "file": "11-item-slot.png",
+      "size": [
+        114,
+        110
+      ],
+      "sha256": "304583f5b6b9d628048b9cdbe0241ecd9a4f0a94410a553bcea019938ff52caf"
+    },
+    {
+      "file": "12-item-slot-selected.png",
+      "size": [
+        128,
+        116
+      ],
+      "sha256": "35ad260e5e35af11c73b1be12c28641dd4c3e62f956e3d825dbe0be89926e967"
+    },
+    {
+      "file": "13-corner-tl.png",
+      "size": [
+        114,
+        104
+      ],
+      "sha256": "6bbef870934bb7f8d5cd60921605d431f502aee393d925f9637e5156a9f0762b"
+    },
+    {
+      "file": "14-corner-tr.png",
+      "size": [
+        109,
+        105
+      ],
+      "sha256": "e959c0f5a7280f726b07a12e30ac60bf3259b3aaa3cfafc41470c969f713d0ea"
+    },
+    {
+      "file": "15-corner-bl.png",
+      "size": [
+        111,
+        107
+      ],
+      "sha256": "ca97c354a3c02da3c87a95e0d28e732b322af81085d91a20d16c8902cb1ee6be"
+    },
+    {
+      "file": "16-corner-br.png",
+      "size": [
+        112,
+        107
+      ],
+      "sha256": "3105ac2cd0acee07bc4809d183afb5e02fa8ba6a2ad9b0ef044f88cd0508bb05"
+    },
+    {
+      "file": "17-rail-horizontal.png",
+      "size": [
+        295,
+        50
+      ],
+      "sha256": "69a303d4067c70dfade2205332f1050cc60604a7bdc3da9fd27a731c12609b6b"
+    },
+    {
+      "file": "18-rail-vertical.png",
+      "size": [
+        40,
+        124
+      ],
+      "sha256": "f1ffcaa16dec79452f3a0058a3aab87e237750cee07d3d687d1450d16c930041"
+    },
+    {
+      "file": "19-close-button.png",
+      "size": [
+        133,
+        121
+      ],
+      "sha256": "8d1ca8e7be856446ea86028aca41210a9b447f89bd978f2fa3fa9ffe10a8f361"
+    },
+    {
+      "file": "20-lotus-symbol.png",
+      "size": [
+        164,
+        114
+      ],
+      "sha256": "b9840c1e5a07f97e1a861d5b160b8f2b3daca18b6769a982398c75629c31d6ed"
+    },
+    {
+      "file": "21-ankh-symbol.png",
+      "size": [
+        105,
+        125
+      ],
+      "sha256": "dd5c6ad78a08525001828a64ccea6eab02bad6d6ad7faffb8dff70d7c9ec80a9"
+    },
+    {
+      "file": "22-birds-symbol.png",
+      "size": [
+        254,
+        115
+      ],
+      "sha256": "fc0d0175bc5db5344a4df5e58570758aa0a448fe53980f52db7814de143cf34e"
+    },
+    {
+      "file": "23-paw-symbol.png",
+      "size": [
+        124,
+        109
+      ],
+      "sha256": "7418a5e54c9b28d31e9df4b64b31b0efb30089dedd0c91a8adb5ad607f70332f"
+    },
+    {
+      "file": "24-falcon-symbol.png",
+      "size": [
+        116,
+        96
+      ],
+      "sha256": "9ac3b4eea6d3f59161cd87bbc7e3f57731fd1b3d5ea60292e41f029c1fa8153c"
+    },
+    {
+      "file": "25-set-symbol.png",
+      "size": [
+        172,
+        140
+      ],
+      "sha256": "3be47baadb43c0c2904bbdc5db7ee007ec3b8ffbdf89fabebccf4c3a3fad7bd7"
+    },
+    {
+      "file": "26-horus-symbol.png",
+      "size": [
+        204,
+        136
+      ],
+      "sha256": "8d76731a7f0700534a6469221c84274ade5dd49ce55048388ee95265be14aad4"
+    },
+    {
+      "file": "27-section-book.png",
+      "size": [
+        139,
+        105
+      ],
+      "sha256": "899841ef9c5c207e84c6102acf8526deba65ec75cba15943b7c06489fd173aa1"
+    },
+    {
+      "file": "28-section-sprout.png",
+      "size": [
+        140,
+        117
+      ],
+      "sha256": "64f6d798af1da87f7b19c8b0d303b203ce5bdc01f2c32bff5aeaec1b9c1bd2fd"
+    },
+    {
+      "file": "29-section-gift.png",
+      "size": [
+        106,
+        111
+      ],
+      "sha256": "9b2395892ed07aacab37a25313b23f3435890a73e4533178b364b704e8a06b56"
+    },
+    {
+      "file": "30-section-branch.png",
+      "size": [
+        129,
+        102
+      ],
+      "sha256": "8b0b08a7e63c79c28f82dddde235817c63f43698a8445fa08addbf0841d906cc"
+    },
+    {
+      "file": "31-heart.png",
+      "size": [
+        93,
+        80
+      ],
+      "sha256": "3c7c754212bba8e8eedebdb0e67f8f11d8feed65f9bc0f71545478b447b86ab1"
+    },
+    {
+      "file": "32-gauge-empty.png",
+      "size": [
+        298,
+        52
+      ],
+      "sha256": "0990ba07a6792f87f33b130d810d62a72356e6585fb919709ad6c369ee2bbece"
+    },
+    {
+      "file": "33-gauge-fill.png",
+      "size": [
+        212,
+        51
+      ],
+      "sha256": "87546506dfb516ce45cdc88f90dcaa72684cc06030e320d9885e7e36a706d711"
+    },
+    {
+      "file": "34-reward-red.png",
+      "size": [
+        113,
+        105
+      ],
+      "sha256": "6ae436155717e60b80c171bbd8d8949bec402c4e3982cb22ec4c5cd5a1762bf5"
+    },
+    {
+      "file": "35-reward-gold.png",
+      "size": [
+        109,
+        104
+      ],
+      "sha256": "cc9592cf4e6acdc32bb93876addbb952bb85f598a65dba38626c02c7c103d91d"
+    },
+    {
+      "file": "36-reward-chest.png",
+      "size": [
+        124,
+        105
+      ],
+      "sha256": "7de88e4fbd833dbd1201158473872d36ab80838a77bed0052c90aa07e46852f1"
+    },
+    {
+      "file": "37-bracelet.png",
+      "size": [
+        159,
+        113
+      ],
+      "sha256": "e194b6f02d79d257956bc8caa2a862c92ea3d6d878c03ca458a28f38e2f68a1c"
+    },
+    {
+      "file": "38-bread.png",
+      "size": [
+        199,
+        116
+      ],
+      "sha256": "3e57a07f3f46295710bcd79508fb3ffd19f9b17d7234547f6bbc91959ca39fe2"
+    },
+    {
+      "file": "39-flower-wreath.png",
+      "size": [
+        145,
+        118
+      ],
+      "sha256": "487af755b98e3a4673fe32d19e8233bb1655bf00f566ed016f9ee8c24d1dd062"
+    },
+    {
+      "file": "40-pie.png",
+      "size": [
+        143,
+        110
+      ],
+      "sha256": "f4c5c1357e1451bf1c61ddf57c741e3dbd0cba8f6df86fbdec1875636a129c01"
+    },
+    {
+      "file": "41-ankh-book.png",
+      "size": [
+        149,
+        126
+      ],
+      "sha256": "fd060feae5a2b44cccc99afa482db8bbb6cf378a8343bbf9f33acb045e6b2e60"
+    },
+    {
+      "file": "42-blue-lotus.png",
+      "size": [
+        150,
+        119
+      ],
+      "sha256": "c3cc2ff17d116e45a1e0fb4767d190986a2e579142da721370f3e727c8b1ae57"
+    },
+    {
+      "file": "43-fishing.png",
+      "size": [
+        149,
+        124
+      ],
+      "sha256": "7bf12e39ec706be8a60db7663b4f4d2c58548be356bc20117b0db3da10c39974"
+    },
+    {
+      "file": "44-cooking.png",
+      "size": [
+        155,
+        121
+      ],
+      "sha256": "a9ee2670cbc3e8383939a7dd12e6e369b5465834168e165478d255c26db5224e"
+    },
+    {
+      "file": "45-study.png",
+      "size": [
+        156,
+        126
+      ],
+      "sha256": "d48fc2d97458ddc440f493b89b06d9212a3909a1308acbcbe1a2d521f1ee60a4"
+    },
+    {
+      "file": "46-exploration.png",
+      "size": [
+        209,
+        125
+      ],
+      "sha256": "96d8dcfc2cd96beb42454246ed16a09b49f4ba91ef6c2a8d54a76d6195a71dd8"
+    },
+    {
+      "file": "47-feather.png",
+      "size": [
+        144,
+        127
+      ],
+      "sha256": "67748ed0fbcaf1d6977c5d10460011ce2f24628dd0a953ebde0111a4a0804ac4"
+    },
+    {
+      "file": "48-memory-book.png",
+      "size": [
+        170,
+        114
+      ],
+      "sha256": "7827002b38bfcd05b82cc97fd7733f3f0c85fe629d07242a20d6643d16f63c4d"
+    },
+    {
+      "file": "49-paper-texture.png",
+      "size": [
+        323,
+        170
+      ],
+      "sha256": "4baaced3e63130d0e67d9a196fbb0f941318a23210cd26178e1357ed754ff2e1"
+    },
+    {
+      "file": "50-wood-texture.png",
+      "size": [
+        330,
+        170
+      ],
+      "sha256": "e55f8237f24acb56fa058fdc5b182628ca81ba46827aec870edcf3cfdee9daec"
+    },
+    {
+      "file": "51-arrow-brown.png",
+      "size": [
+        104,
+        157
+      ],
+      "sha256": "37315ed1f08dfea27611a8b176c0f9c2c102d6b5c5885aa7afcc79efb5ccbd77"
+    },
+    {
+      "file": "52-arrow-gold.png",
+      "size": [
+        105,
+        157
+      ],
+      "sha256": "2c108f84e3858b244055c7968ce2eddcc1771d47740c89b9f1f35a7b55d6c5a1"
+    },
+    {
+      "file": "53-section-divider.png",
+      "size": [
+        484,
+        65
+      ],
+      "sha256": "a8585077a6c875298b6263d30f136ad8e5aee45b768be6df87b8cd16d65d89c7"
+    },
+    {
+      "file": "54-card-divider.png",
+      "size": [
+        53,
+        173
+      ],
+      "sha256": "842a42daaac88d93369a3ec4b67cfc86f53e26bfc84a8d3c5a0347391913610c"
+    },
+    {
+      "file": "55-junction-left.png",
+      "size": [
+        112,
+        174
+      ],
+      "sha256": "05b5bc7ffe1f8a9b485398b5ea492456646ad6540c750a598c72bdbf93287a73"
+    },
+    {
+      "file": "56-junction-right.png",
+      "size": [
+        112,
+        174
+      ],
+      "sha256": "c9613132331eb83390c4d6378950df4e070193f7760f4cc5cdcc0a199acf180b"
+    },
+    {
+      "file": "57-quantity-badge.png",
+      "size": [
+        170,
+        161
+      ],
+      "sha256": "1a3ebe6df4132f30da57e51c52826b6cb76abc9a24c815e01046dcc16d6b0d0c"
+    },
+    {
+      "file": "58-milestone-node.png",
+      "size": [
+        121,
+        123
+      ],
+      "sha256": "cb72d3d95e0b28e8814da563779a110e828c8ae785e2de35ff0d5a1f9d2e03dc"
+    },
+    {
+      "file": "59-milestone-rail.png",
+      "size": [
+        355,
+        63
+      ],
+      "sha256": "f01128730e1084ed2a08a3ad0a922d3ff2efe6ce5026881cdc45e7d14e0430c1"
+    },
+    {
+      "file": "60-footer-panel.png",
+      "size": [
+        434,
+        168
+      ],
+      "sha256": "52f3b61e50b5c8e476dcf2a3937f04b43e6792c4adbea0afecd1b3a17e9e375a"
+    },
+    {
+      "file": "61-starry-memory.png",
+      "size": [
+        349,
+        220
+      ],
+      "sha256": "c910bbca7a57c7dde5faa1e670b3e278fe52470ab3ff9eaf857e1cec212dab43"
+    },
+    {
+      "file": "62-scrollbar-track.png",
+      "size": [
+        62,
+        256
+      ],
+      "sha256": "2036b1ab050fd2387a0601c1512a4ee33d71fc216dfe85f8333645a1ed8d90a5"
+    },
+    {
+      "file": "63-scrollbar-thumb.png",
+      "size": [
+        60,
+        155
+      ],
+      "sha256": "9ed9cb6c5ba47a1ba9594899622e135ef62dff61932384a7306071ef6ec79183"
+    },
+    {
+      "file": "64-gift-cream.png",
+      "size": [
+        183,
+        188
+      ],
+      "sha256": "6184455de7dd3a37aa82c44b0ab69ab8f0588d937bbcd922896f26558a07e8c4"
+    },
+    {
+      "file": "paper-tile.png",
+      "source": "49-paper-texture.png",
+      "method": "inner plain paper crop for seamless tiling; illustration unchanged",
+      "size": [
+        299,
+        146
+      ],
+      "sha256": "6bb271cae6fa768c99940d4a6e541e62ca2b9855e5c2290aafafb19db5e58c95"
+    }
+  ]
+}
