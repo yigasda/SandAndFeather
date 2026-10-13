@@ -17,7 +17,10 @@ import { sunLeft } from '../core/sun.js';
 import { FEATHER } from './icon.js';
 import { today as gameDay } from '../core/ledger.js';
 import { esc } from './popups.js';
-import { applyTheme, openGame } from './window.js';
+import { bondCard, bondOptionsCard } from './bondcard.js';
+import { rpMessages } from '../core/bond-scan.js';
+import { fillBond } from '../core/bond-state.js';
+import { applyTheme, openGame, gameUi } from './window.js';
 
 const $id = id => document.getElementById(id);
 
@@ -69,6 +72,13 @@ export function renderDrawer(problems = []) {
               <div class="sf_sub">지금 들어가는 블록</div>
               <pre class="sf_pre" id="sf_preview"></pre>
               <div class="sf_news" id="sf_news"></div>
+            </div>
+
+            <div class="sf_box">
+              <div class="sf_box_head"><b>인연과 유대</b></div>
+              <div class="sf_sub" id="sf_bond_status"></div>
+              <div class="sf_line_btns"><button type="button" class="sf_btn sf_small" id="sf_bond_open">인연과 유대 열기</button><button type="button" class="sf_btn sf_small" id="sf_bond_options">분석 설정 · 별칭</button></div>
+              <div class="sf_sub">AI 연결은 아래 작은 모험과 함께 써. 분석은 직접 시작할 때만 해.</div>
             </div>
 
             <details class="sf_box">
@@ -148,6 +158,8 @@ function bind() {
     const st = settings();
     const set = (k, v) => { st[k] = v; saveSettings(); applyInjection(); refreshDrawer(); };
     $id('sf_open').addEventListener('click', openGame);
+    $id('sf_bond_open').addEventListener('click', async () => { if (!hasChat()) return; await openGame(); bondCard(gameUi()); });
+    $id('sf_bond_options').addEventListener('click', async () => { if (!hasChat()) return; await openGame(); bondOptionsCard(gameUi(), getState()); });
     $id('sf_resync').addEventListener('click', async () => { await syncFromChat({ force: true }); applyInjection(); refreshDrawer(); });
     $id('sf_enabled').addEventListener('change', e => set('enabled', e.target.checked));
     $id('sf_inject').addEventListener('change', e => set('inject', e.target.checked));
@@ -244,6 +256,9 @@ export function refreshDrawer() {
     if (!$id('sf_settings')) return;
     const s = hasChat() ? getState() : null;
     const today = $id('sf_today'), sync = $id('sf_today_sync');
+    $id('sf_bond_open').disabled = $id('sf_bond_options').disabled = !s;
+    const b = s && fillBond(s);
+    $id('sf_bond_status').textContent = !b ? '채팅을 열면 사용할 수 있어.' : b.options.notify && rpMessages().filter(m => m.at > b.scan.upTo).length >= 40 ? '새 RP 메시지가 40개 이상 쌓였어. 새로운 인연을 찾아볼 수 있어.' : `기록 ${b.ties.length}개 · 검토할 후보 ${b.cand.length + b.scan.pending.length}개`;
     if (!s) {
         today.innerHTML = '<span class="sf_hint">채팅을 열면 보여.</span>';
         sync.textContent = '';

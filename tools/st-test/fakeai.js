@@ -1,4 +1,5 @@
 const http = require('http'), fs = require('fs');
+const { bondReply } = require('../bond/fake-responses.cjs');
 const adv = { title: '젖은 두루마리', steps: [
   { kind: 'touch', marks: [{ at: 'palm_shade', label: '젖은 자국', text: '물방울이 떨어져 있다.' }, { at: 'west_road', label: '찢긴 끈', text: '끈 조각이 걸려 있다.' }], text: '물 자국을 따라가 보자.' },
   { kind: 'find', at: 'meadow', item: 'sealed_letter', label: '봉인된 편지', text: '풀 사이에 편지가 있다.' },
@@ -10,6 +11,8 @@ http.createServer((q, r) => {
   let b = ''; q.on('data', c => b += c); q.on('end', () => {
     if (q.url.endsWith('/models')) { r.writeHead(200, h); return r.end(JSON.stringify({ data: [{ id: 'fake' }] })); }
     fs.writeFileSync(__dirname + '/last_req.json', b);
-    r.writeHead(200, h); r.end(JSON.stringify({ choices: [{ message: { role: 'assistant', content: JSON.stringify(adv) } }] }));
+    let reply = adv;
+    try { reply = bondReply(JSON.parse(b)) || adv; } catch { /* malformed test request: existing adventure fallback */ }
+    r.writeHead(200, h); r.end(JSON.stringify({ choices: [{ message: { role: 'assistant', content: JSON.stringify(reply) } }] }));
   });
 }).listen(8111);

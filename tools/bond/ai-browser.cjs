@@ -1,0 +1,61 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict'),fs=require('fs');
+(async()=>{
+ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+ const p=await browser.newPage({viewport:{width:1280,height:1000}});
+ let saved;const errors=[],passed=[],requests=[];
+ p.on('pageerror',e=>errors.push(e.message));
+ p.on('request',r=>{if(r.url().includes(':8111/')&&r.method()==='POST')requests.push(JSON.parse(r.postData()));});
+ try{
+  await p.route('**/api/horde/text-models',r=>r.fulfill({status:200,contentType:'application/json',body:'[]'}));
+  await p.goto('http://127.0.0.1:8000');await p.waitForSelector('#sf_open',{state:'attached',timeout:60000});
+  if(await p.locator('.popup-button-ok').isVisible())await p.locator('.popup-button-ok').click();
+  await p.waitForSelector('.character_select[data-chid]',{state:'attached'});
+  await p.evaluate(async()=>{const{selectCharacterById}=await import('/script.js');await selectCharacterById(Number(document.querySelector('.character_select[data-chid]').dataset.chid));});
+  await p.waitForFunction(()=>!!SillyTavern.getContext().chatId);
+  saved=await p.evaluate(()=>{const c=SillyTavern.getContext();return{state:structuredClone(c.chatMetadata.sand_feather),settings:structuredClone(c.extensionSettings.sand_feather),chat:structuredClone(c.chat)};});
+  await p.evaluate(async()=>{
+   window.bt={};for(const[k,f]of Object.entries({win:'ui/window',state:'core/state',settings:'core/settings',ui:'ui/bondcard',scan:'core/bond-scan',bond:'core/bond'}))bt[k]=await import(`/scripts/extensions/third-party/SandAndFeather/src/${f}.js`);
+   bt.settings.settings().conn={mode:'custom',url:'http://127.0.0.1:8111/v1',model:'fake-bond',fmt:'openai'};
+   const c=SillyTavern.getContext();c.chat.splice(0,c.chat.length,...Array.from({length:75},(_,i)=>({name:'소망',is_user:true,mes:`소망은 세트에게 ${i}번 선물을 건넸다.`,send_date:`fixture-${i}`})));
+   const s=bt.state.resetState();s.party.with='set';await bt.win.openGame();bt.ui.bondCard(bt.win.gameUi());
+  });
+  const bond=p.locator('[data-kind="bond"]');
+  await bond.getByRole('button',{name:'AI로 인연 찾아오기',exact:true}).click();
+  assert.equal(requests.length,0,'Opening analysis must never start a provider request');
+  const start=p.getByRole('button',{name:'시작',exact:true});await start.click();
+  await p.waitForFunction(()=>{const s=bt.state.getState();return!bt.scan.isScanning(s)&&s.bond.cand.length+s.bond.scan.pending.length===75;},{},{timeout:20000});
+  assert.equal(requests.length,2,'One extraction and one precise check request');
+  let state=await p.evaluate(()=>bt.state.getState().bond);assert.equal(state.cand.length,60);assert.equal(state.scan.pending.length,15);assert.equal(state.ties.length,0);assert.equal(state.set.pts,0);
+  passed.push('Real callConn to localhost fake AI; explicit start; extraction + precise request; 60 visible + 15 persisted pending');
+  await p.getByRole('dialog',{name:'AI로 인연 찾아오기',exact:true}).getByRole('button',{name:'후보 검토 75개',exact:true}).click();
+  let review=p.locator('[data-kind="bond-review"]');
+  assert.equal(await review.locator('.sf_bond_candidate').count(),60);
+  await review.getByRole('button',{name:'체크한 후보 승인',exact:true}).click();
+  await p.waitForFunction(()=>bt.state.getState().bond.ties.length===60);
+  await p.waitForFunction(()=>document.querySelectorAll('[data-kind="bond-review"] .sf_bond_candidate').length===15);
+  assert.equal(await review.locator('.sf_bond_candidate').count(),15);
+  await review.getByRole('button',{name:'체크한 후보 승인',exact:true}).click();
+  await p.waitForFunction(()=>bt.state.getState().bond.ties.length===75);
+  await p.waitForFunction(()=>document.querySelectorAll('[data-kind="bond-review"] .sf_bond_candidate').length===0);
+  state=await p.evaluate(()=>bt.state.getState().bond);assert.equal(state.set.pts,0);assert.equal(state.scan.pending.length,0);
+  passed.push('Two explicit bulk approvals keep every one of 75 records; RP approval never changes points');
+  await p.screenshot({path:'docs/bond-ui/screenshots/ai-reviewed-75.png'});
+  await review.locator('.sf_pop_x').click();
+  await p.evaluate(()=>{document.querySelectorAll('.sf_pop_wrap').forEach(e=>e.sfClose?.());const c=SillyTavern.getContext();c.chat.push({name:'소망',is_user:true,mes:'소망과 호루스가 함께 강을 바라보았다.',send_date:'manual-fixture'});bt.ui.manualTieCard(bt.win.gameUi(),'both',()=>{},{at:75,quote:c.chat[75].mes});});
+  await p.getByRole('button',{name:'인연의 기록에 남기기',exact:true}).click();
+  await p.waitForFunction(()=>bt.state.getState().bond.ties.length===76);
+  state=await p.evaluate(()=>bt.state.getState().bond);assert.equal(state.ties.at(-1).origin,'manual');assert.equal(state.ties.at(-1).who,'both');assert.equal(state.horus.pts,0);
+  passed.push('Manual source selection creates one both record with zero points');
+  await p.evaluate(()=>{bt.settings.settings().conn.mode='off';bt.ui.bondCard(bt.win.gameUi());});
+  await p.waitForTimeout(100);
+  assert(await p.locator('[data-kind="bond"]').getByRole('button',{name:'AI로 인연 찾아오기',exact:true}).isDisabled());
+  passed.push('AI off disables analysis, existing approved records remain');
+  assert.deepEqual(errors,[]);
+  fs.writeFileSync('docs/bond-ui/screenshots/ai-verification.json',JSON.stringify({passed,requestCount:requests.length,errors,provider:'localhost fake AI only; no real RP or live API'},null,2));
+  console.log(JSON.stringify({passed,errors}));
+ }finally{
+  if(saved)await p.evaluate(async saved=>{await bt.win.closeGame();const c=SillyTavern.getContext();c.chat.splice(0,c.chat.length,...saved.chat);c.chatMetadata.sand_feather=saved.state;c.extensionSettings.sand_feather=saved.settings;await c.saveMetadata();},saved).catch(()=>{});
+  await browser.close();
+ }
+})().catch(e=>{console.error(e);process.exitCode=1;});

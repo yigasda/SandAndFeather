@@ -11,6 +11,7 @@ import { syncFromChat } from './src/core/tracker.js';
 import { addWandMenu, refreshDrawer, renderDrawer } from './src/ui/drawer.js';
 import { applyTheme, refresh } from './src/ui/window.js';
 import { armPrepared } from './src/core/news.js';
+import { syncBondSources } from './src/core/bond.js';
 import { syncPicks } from './src/core/picks.js';
 import { addMesButtons, markChat } from './src/ui/mesbtn.js';
 import './src/ui/daycard.js';
@@ -36,7 +37,7 @@ import './src/packs/adventure/gen.js';
     // a chat was opened (or the page loaded with one): read its game, its newest tracker, set the prompt block
     const onChat = async () => {
         if (!ready) return;
-        if (hasChat()) { await syncFromChat({ force: true }); await syncPicks(); }
+        if (hasChat()) { await syncFromChat({ force: true }); await syncPicks(); await syncBondSources(); }
         emit('game:loaded', {});
         applyInjection();
         refreshDrawer();
@@ -50,7 +51,7 @@ import './src/packs/adventure/gen.js';
         timer = setTimeout(async () => {
             await syncFromChat();
             // what was taken from a reply goes away with it, and comes back with a swipe back to it
-            await syncPicks();
+            await syncPicks(); await syncBondSources();
             applyInjection();
             refreshDrawer();
             refresh();

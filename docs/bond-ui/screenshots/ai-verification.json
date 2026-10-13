@@ -1,0 +1,11 @@
+{
+  "passed": [
+    "Real callConn to localhost fake AI; explicit start; extraction + precise request; 60 visible + 15 persisted pending",
+    "Two explicit bulk approvals keep every one of 75 records; RP approval never changes points",
+    "Manual source selection creates one both record with zero points",
+    "AI off disables analysis, existing approved records remain"
+  ],
+  "requestCount": 2,
+  "errors": [],
+  "provider": "localhost fake AI only; no real RP or live API"
+}

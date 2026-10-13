@@ -1,0 +1,1415 @@
+{
+  "source_file": "1000482501.png",
+  "source_size": [
+    1448,
+    1086
+  ],
+  "source_sha256": "fbf5ab33538fd6e24d0d0359aa616940c962d56d93de6947199a4af9e22c2b80",
+  "method": "exact original pixel selection by connected components and optional coordinate separation; NO generated or repainted art",
+  "invisible_alpha_cleanup": "alpha<=8 omitted, original visible RGBA unchanged",
+  "assets": [
+    {
+      "name": "main_window_frame",
+      "file": "data/art/ui/bond/main_window_frame.png",
+      "width": 389,
+      "height": 389,
+      "source_xyxy": [
+        23,
+        48,
+        412,
+        437
+      ],
+      "source_component_ids": [
+        10,
+        5,
+        6,
+        4,
+        11,
+        12,
+        25,
+        26,
+        28
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "a2d8fc887d37f1bd05fe86543c371635dd12b7d43eed9d2f9995e87bca72d4af",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "header_lotus_banner",
+      "file": "data/art/ui/bond/header_lotus_banner.png",
+      "width": 606,
+      "height": 119,
+      "source_xyxy": [
+        431,
+        46,
+        1037,
+        165
+      ],
+      "source_component_ids": [
+        3
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "100b8caa033c8867eb8d9493d9bcfd269b92561a922adbbe3327bf1b289bc29e",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "papyrus_pattern_panel",
+      "file": "data/art/ui/bond/papyrus_pattern_panel.png",
+      "width": 235,
+      "height": 236,
+      "source_xyxy": [
+        432,
+        194,
+        667,
+        430
+      ],
+      "source_component_ids": [
+        17
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "b68881e1b66c2390555a0384294042c4b3585af6c1e98752c4666d26a4d201ff",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "parchment_record_frame",
+      "file": "data/art/ui/bond/parchment_record_frame.png",
+      "width": 348,
+      "height": 171,
+      "source_xyxy": [
+        680,
+        197,
+        1028,
+        368
+      ],
+      "source_component_ids": [
+        18
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "6e23a83324a413bc86ba095b1a92f5a5cf71ed6c89a74912ddc2cf7711229702",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "parchment_record_long",
+      "file": "data/art/ui/bond/parchment_record_long.png",
+      "width": 390,
+      "height": 120,
+      "source_xyxy": [
+        1043,
+        235,
+        1433,
+        355
+      ],
+      "source_component_ids": [
+        20
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "41e06e980b27275b642d91da6219c14b0d9ba05ec1d605455e01f83e5d7b77f3",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "ornament_lotus",
+      "file": "data/art/ui/bond/ornament_lotus.png",
+      "width": 131,
+      "height": 113,
+      "source_xyxy": [
+        1057,
+        63,
+        1188,
+        176
+      ],
+      "source_component_ids": [
+        8
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "5a4a44260bb800ea82a7014f37cbac1987a07772b6e7a15c768c042fbded5f0c",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "ornament_feather",
+      "file": "data/art/ui/bond/ornament_feather.png",
+      "width": 93,
+      "height": 150,
+      "source_xyxy": [
+        1191,
+        38,
+        1284,
+        188
+      ],
+      "source_component_ids": [
+        2
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "c5f4c362588241182e9f7cf8b3b2e50c815b70c14833010988bbac8ab264462f",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "ornament_ankh",
+      "file": "data/art/ui/bond/ornament_ankh.png",
+      "width": 99,
+      "height": 153,
+      "source_xyxy": [
+        1301,
+        24,
+        1400,
+        177
+      ],
+      "source_component_ids": [
+        1
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "db995cadfcb01b631ccbe29f75a166d99ff83ad9987af5f3279147c10476e554",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "ornament_winged_sun",
+      "file": "data/art/ui/bond/ornament_winged_sun.png",
+      "width": 191,
+      "height": 58,
+      "source_xyxy": [
+        1245,
+        173,
+        1436,
+        231
+      ],
+      "source_component_ids": [
+        1
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "1bc0ae9db995552d67178f69c8d9b06cbd5b3c0fac57ea052c2e5bdfd7005416",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "divider_gold_diamond",
+      "file": "data/art/ui/bond/divider_gold_diamond.png",
+      "width": 340,
+      "height": 46,
+      "source_xyxy": [
+        683,
+        380,
+        1023,
+        426
+      ],
+      "source_component_ids": [
+        27
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "35e6d6ba24d9c4b65ef6db5fcb181424e2c254a0e8e234cf9a7000b0d6e8b30b",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "divider_gold_lotus",
+      "file": "data/art/ui/bond/divider_gold_lotus.png",
+      "width": 198,
+      "height": 56,
+      "source_xyxy": [
+        1045,
+        370,
+        1243,
+        426
+      ],
+      "source_component_ids": [
+        24
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "a7b1b0c6e1b6b57678f006cdebf930605a7943c2657fb808a2b02e3eed64bb59",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "divider_gold_ankh",
+      "file": "data/art/ui/bond/divider_gold_ankh.png",
+      "width": 170,
+      "height": 66,
+      "source_xyxy": [
+        1256,
+        367,
+        1426,
+        433
+      ],
+      "source_component_ids": [
+        23
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "30d4190d7542b3957b62cd9d7db37dab01166cd7188394d9178c5ac0bc92b556",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "character_tab_brown",
+      "file": "data/art/ui/bond/character_tab_brown.png",
+      "width": 262,
+      "height": 88,
+      "source_xyxy": [
+        19,
+        456,
+        281,
+        544
+      ],
+      "source_component_ids": [
+        41
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "38bf34bf008e6c89ea07545e7a30d4aa373da5d966e5ce3301efbf2813e47b0e",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "character_tab_papyrus",
+      "file": "data/art/ui/bond/character_tab_papyrus.png",
+      "width": 250,
+      "height": 84,
+      "source_xyxy": [
+        281,
+        460,
+        531,
+        544
+      ],
+      "source_component_ids": [
+        42
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "62ac60f6c895e3e5a4410965f063e5e3db971b7d2d5f2bb092e721959954f26b",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "character_tab_set_desert",
+      "file": "data/art/ui/bond/character_tab_set_desert.png",
+      "width": 279,
+      "height": 102,
+      "source_xyxy": [
+        560,
+        449,
+        839,
+        551
+      ],
+      "source_component_ids": [
+        40
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "66d570db71aae6ae77dc7c96df789fcdba983ab9ceb5354373e26c35535500bb",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "character_tab_horus_wings",
+      "file": "data/art/ui/bond/character_tab_horus_wings.png",
+      "width": 272,
+      "height": 100,
+      "source_xyxy": [
+        835,
+        452,
+        1107,
+        552
+      ],
+      "source_component_ids": [
+        40
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "675122eedb31eb846037609464a0de5ecba8e8bd2f55a98cde270f7fab1ade6e",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "bond_bar_cream_frame",
+      "file": "data/art/ui/bond/bond_bar_cream_frame.png",
+      "width": 352,
+      "height": 65,
+      "source_xyxy": [
+        33,
+        563,
+        385,
+        628
+      ],
+      "source_component_ids": [
+        44
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "7fb329709ab5cc91b0079bae5e9b4865419d41ea309721a700e924799c0e23f9",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "bond_bar_gray_frame",
+      "file": "data/art/ui/bond/bond_bar_gray_frame.png",
+      "width": 305,
+      "height": 45,
+      "source_xyxy": [
+        400,
+        574,
+        705,
+        619
+      ],
+      "source_component_ids": [
+        51
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "427e30b2736bc934cf4b3e1cef54a66fd4dffccb69355fcd0c53317565157486",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "bond_bar_pink_small",
+      "file": "data/art/ui/bond/bond_bar_pink_small.png",
+      "width": 131,
+      "height": 51,
+      "source_xyxy": [
+        722,
+        571,
+        853,
+        622
+      ],
+      "source_component_ids": [
+        48
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "8bd94e5c6e46388556f3d630d9f08e0fe4bd3d3f038ff36e5299aa17649eaf3e",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "bond_bar_pink_fill",
+      "file": "data/art/ui/bond/bond_bar_pink_fill.png",
+      "width": 304,
+      "height": 46,
+      "source_xyxy": [
+        401,
+        620,
+        705,
+        666
+      ],
+      "source_component_ids": [
+        56
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "91f5b0e65aa8d9adb848303708b530a9c85f90463b79d1dea2b6518c84a2e710",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "bond_heart",
+      "file": "data/art/ui/bond/bond_heart.png",
+      "width": 65,
+      "height": 61,
+      "source_xyxy": [
+        47,
+        620,
+        112,
+        681
+      ],
+      "source_component_ids": [
+        44
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "b48c0306857fd32728d904a91de3921a3157612ccb145be54979aafa55301ec8",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "bond_milestone_diamond",
+      "file": "data/art/ui/bond/bond_milestone_diamond.png",
+      "width": 41,
+      "height": 41,
+      "source_xyxy": [
+        966,
+        583,
+        1007,
+        624
+      ],
+      "source_component_ids": [
+        52
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "cab2b499e792aae3764a0fc5c622371838184ab9dfa000e307875e5cb51a0a8b",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "bond_milestone_ticks",
+      "file": "data/art/ui/bond/bond_milestone_ticks.png",
+      "width": 232,
+      "height": 30,
+      "source_xyxy": [
+        868,
+        630,
+        1100,
+        660
+      ],
+      "source_component_ids": [
+        57
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "5f5e2331cbefcd816a2ff09fba0410fdf03021ae82ecd10926b34996c5b2bf03",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "reward_gift_red",
+      "file": "data/art/ui/bond/reward_gift_red.png",
+      "width": 97,
+      "height": 101,
+      "source_xyxy": [
+        1111,
+        571,
+        1208,
+        672
+      ],
+      "source_component_ids": [
+        50
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "1fd69c4c62c3891c67cd4a62a639403415ef514f52e13a9e3877ab20bcd4d198",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "reward_gift_open",
+      "file": "data/art/ui/bond/reward_gift_open.png",
+      "width": 93,
+      "height": 113,
+      "source_xyxy": [
+        1219,
+        561,
+        1312,
+        674
+      ],
+      "source_component_ids": [
+        45
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "6aaec9a166d4e2fe48f712c192a38d5def5669ca3d8ed84f948040cc304c9fd3",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "reward_gift_gold",
+      "file": "data/art/ui/bond/reward_gift_gold.png",
+      "width": 97,
+      "height": 114,
+      "source_xyxy": [
+        1326,
+        555,
+        1423,
+        669
+      ],
+      "source_component_ids": [
+        43
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "0a331454506c5b1e72d964b7539ad4b2cbce2a338e5513a592e32c8790778ddf",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "gift_slot_normal",
+      "file": "data/art/ui/bond/gift_slot_normal.png",
+      "width": 128,
+      "height": 121,
+      "source_xyxy": [
+        33,
+        684,
+        161,
+        805
+      ],
+      "source_component_ids": [
+        63
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "f56944c1c3d43ba360ce09133e8233fdb7dfbaaea9c58e71aeb96dfda2ca1a2e",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "gift_slot_selected",
+      "file": "data/art/ui/bond/gift_slot_selected.png",
+      "width": 127,
+      "height": 127,
+      "source_xyxy": [
+        171,
+        682,
+        298,
+        809
+      ],
+      "source_component_ids": [
+        61
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "93f24295d1a6041f1073d43a7b760221d97286d868aa458e4220ed15ddb7072e",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "gift_slot_disabled",
+      "file": "data/art/ui/bond/gift_slot_disabled.png",
+      "width": 128,
+      "height": 121,
+      "source_xyxy": [
+        303,
+        683,
+        431,
+        804
+      ],
+      "source_component_ids": [
+        62
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "339746fcdda64a93479d6a1af1f4f7ba47b9c0eb24a7380dd2defe5dd5e6236f",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "gift_icon_bow",
+      "file": "data/art/ui/bond/gift_icon_bow.png",
+      "width": 96,
+      "height": 94,
+      "source_xyxy": [
+        466,
+        705,
+        562,
+        799
+      ],
+      "source_component_ids": [
+        67
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "9a912d75d5d59ec14f350b945e126fda8d1b620d415c0447370b4b2817e632f7",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "button_brown",
+      "file": "data/art/ui/bond/button_brown.png",
+      "width": 255,
+      "height": 95,
+      "source_xyxy": [
+        607,
+        699,
+        862,
+        794
+      ],
+      "source_component_ids": [
+        66
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "34358c0378e9223f7ca986637a6ba8d370576b9852a820fcc896c7606f0cd5c5",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "button_gold",
+      "file": "data/art/ui/bond/button_gold.png",
+      "width": 275,
+      "height": 95,
+      "source_xyxy": [
+        867,
+        699,
+        1142,
+        794
+      ],
+      "source_component_ids": [
+        64
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "cfaf98556bed8d91b5443086244e27b3c4bf7045ad552d7f0c1184f86d319955",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "button_disabled",
+      "file": "data/art/ui/bond/button_disabled.png",
+      "width": 267,
+      "height": 94,
+      "source_xyxy": [
+        1148,
+        699,
+        1415,
+        793
+      ],
+      "source_component_ids": [
+        65
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "f5f156491dad02d0eb026546e6aad788bd518d635cdb7401c21b4cea10f548e6",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "activity_card_fishing",
+      "file": "data/art/ui/bond/activity_card_fishing.png",
+      "width": 249,
+      "height": 121,
+      "source_xyxy": [
+        32,
+        821,
+        281,
+        942
+      ],
+      "source_component_ids": [
+        68
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "8d256e4ed07bd56733e843d25b5a1f4ea73b349f2acb8f038db7102c116fc72a",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "activity_card_cooking",
+      "file": "data/art/ui/bond/activity_card_cooking.png",
+      "width": 253,
+      "height": 121,
+      "source_xyxy": [
+        287,
+        821,
+        540,
+        942
+      ],
+      "source_component_ids": [
+        69
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "525ee08b1b3e73ef4e560c6306cede10c037a93aa4763d5fa50f0adc81ef20df",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "activity_card_study",
+      "file": "data/art/ui/bond/activity_card_study.png",
+      "width": 243,
+      "height": 121,
+      "source_xyxy": [
+        548,
+        821,
+        791,
+        942
+      ],
+      "source_component_ids": [
+        70
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "5b02db383b3b8de9a10e03b4350392af29e9f9b3143de8991d67238a12cfa7ce",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "activity_card_explore",
+      "file": "data/art/ui/bond/activity_card_explore.png",
+      "width": 253,
+      "height": 121,
+      "source_xyxy": [
+        794,
+        821,
+        1047,
+        942
+      ],
+      "source_component_ids": [
+        71
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "58cab14f917ec37174cd2f88eb87125dbba836d0cf057c228d2dbc65c18eb8f0",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "button_memory_book",
+      "file": "data/art/ui/bond/button_memory_book.png",
+      "width": 352,
+      "height": 120,
+      "source_xyxy": [
+        1063,
+        823,
+        1415,
+        943
+      ],
+      "source_component_ids": [
+        72
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "9f780fda614b50cabecfb2dc25d2db1dddc4608efbf9de1cd817ee520e89158f",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "ornament_desert_landscape",
+      "file": "data/art/ui/bond/ornament_desert_landscape.png",
+      "width": 457,
+      "height": 101,
+      "source_xyxy": [
+        156,
+        962,
+        613,
+        1063
+      ],
+      "source_component_ids": [
+        74,
+        73,
+        75,
+        76,
+        87,
+        88,
+        89,
+        90
+      ],
+      "exact_source_visible_rgba": true,
+      "sha256": "516f30e37d451de6598e7514c5e8c6a316633f0f239afa1adaaba698bbf1cce1",
+      "source_type": "sprite-sheet (provided extraction)",
+      "source_file": "SOURCE_ORIGINAL_UNCHANGED.png (not supplied)",
+      "verification": "provided file SHA256 checked; full source unavailable",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "section_book",
+      "file": "data/art/ui/bond/section_book.png",
+      "width": 50,
+      "height": 42,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        79,
+        428,
+        129,
+        470
+      ],
+      "alpha_mask": "dark",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "af188444f807f149e84e3f878b2264323fb20595cf89c6f93f8989d2455d0638",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "section_plant",
+      "file": "data/art/ui/bond/section_plant.png",
+      "width": 47,
+      "height": 42,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        77,
+        711,
+        124,
+        753
+      ],
+      "alpha_mask": "dark",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "47ada54262a6d77d2501416169fa10e210d8d58528c1208af4f7f6a1ff0a118f",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "section_gift",
+      "file": "data/art/ui/bond/section_gift.png",
+      "width": 43,
+      "height": 44,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        81,
+        916,
+        124,
+        960
+      ],
+      "alpha_mask": "dark",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "bec3543cc4b01ae7a01d15730e7473a725bad00c8abe58e5a71a756a95d69815",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "section_branch",
+      "file": "data/art/ui/bond/section_branch.png",
+      "width": 55,
+      "height": 48,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        78,
+        1097,
+        133,
+        1145
+      ],
+      "alpha_mask": "dark",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "7a599ffdaa0e44d5e762f94df002023d53cc9bf4f43efe1addc882af53b47b4b",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "footer_feather",
+      "file": "data/art/ui/bond/footer_feather.png",
+      "width": 47,
+      "height": 65,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        91,
+        1271,
+        138,
+        1336
+      ],
+      "alpha_mask": "dark",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "64b92ca8f6eefadc1f9ea9749ab771b15ce78342ddc3f2ba4c1d14532090724e",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "header_birds",
+      "file": "data/art/ui/bond/header_birds.png",
+      "width": 124,
+      "height": 76,
+      "source_type": "preview",
+      "source_file": "mobile-a.jpg",
+      "source_xyxy": [
+        85,
+        200,
+        209,
+        276
+      ],
+      "alpha_mask": "gold",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "c6f665257985340091679e7ee3006991263e19fb5e0f90674bf5ea5a06bb5532",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "tab_paw",
+      "file": "data/art/ui/bond/tab_paw.png",
+      "width": 48,
+      "height": 43,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        249,
+        339,
+        297,
+        382
+      ],
+      "alpha_mask": "cream",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "fd850e082c1de08f8b485eb915bdee749c49ce853371976a188516ab8f928614",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "title_lotus",
+      "file": "data/art/ui/bond/title_lotus.png",
+      "width": 93,
+      "height": 69,
+      "source_type": "provided PNG subcrop",
+      "source_file": "header_lotus_banner.png",
+      "source_xyxy": [
+        57,
+        27,
+        150,
+        96
+      ],
+      "alpha_mask": "gold",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "54b89947c420e733f52fc4ccf55d3e1363144b5cec2df8a0837dc5b09cd8ea85",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "tab_bird",
+      "file": "data/art/ui/bond/tab_bird.png",
+      "width": 54,
+      "height": 44,
+      "source_type": "preview",
+      "source_file": "mobile-a.jpg",
+      "source_xyxy": [
+        595,
+        328,
+        649,
+        372
+      ],
+      "alpha_mask": "dark",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "a6d5d48e61f0bb1aea3498a3a2c7655cddbb7304dab25f8833e695423050bbba",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "header_close",
+      "file": "data/art/ui/bond/header_close.png",
+      "width": 67,
+      "height": 69,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        778,
+        152,
+        845,
+        221
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "575aa9817a408715b02c4e6fdfaba6444de38c354d4526ad0f7f698fe1a75a47",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "record_paper",
+      "file": "data/art/ui/bond/record_paper.png",
+      "width": 370,
+      "height": 14,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        209,
+        486,
+        579,
+        500
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "656a86fcc7444f1e3ef57c9e94ede9d0adef37c03f008d9dc755cf98558fea0b",
+      "used_in_verified_ui": false
+    },
+    {
+      "name": "record_corner_tl",
+      "file": "data/art/ui/bond/record_corner_tl.png",
+      "width": 18,
+      "height": 18,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        69,
+        479,
+        87,
+        497
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "76c79e9ba24188078a4499245d2d97d32a8d31b8a0e03c638ee9b37813630f2c",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "record_corner_tr",
+      "file": "data/art/ui/bond/record_corner_tr.png",
+      "width": 18,
+      "height": 18,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        777,
+        479,
+        795,
+        497
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "f39ba044a6af1590b855c819ce7347f5adb601b2bd7f642ec70bb282eebd4c20",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "record_corner_bl",
+      "file": "data/art/ui/bond/record_corner_bl.png",
+      "width": 18,
+      "height": 18,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        69,
+        557,
+        87,
+        575
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "bc4d1678b0ca9e66993fd46f8a244fad196704fad23a17fa10322349ebb02341",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "record_corner_br",
+      "file": "data/art/ui/bond/record_corner_br.png",
+      "width": 18,
+      "height": 18,
+      "source_type": "preview",
+      "source_file": "mobile-b.jpg",
+      "source_xyxy": [
+        777,
+        557,
+        795,
+        575
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "17b685ab900a462db2b78c7c5c74b23d06ef7baa9ee89eb8bcaaa31a2df2bc6c",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "activity_fishing_icon",
+      "file": "data/art/ui/bond/activity_fishing_icon.png",
+      "width": 94,
+      "height": 89,
+      "source_type": "provided PNG subcrop",
+      "source_file": "activity_card_fishing.png",
+      "source_xyxy": [
+        43,
+        16,
+        137,
+        105
+      ],
+      "alpha_mask": "foreground mask; enclosed source colors preserved",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "cd67ae99d2b8d89652c12a2ea902f4cc73c59e4ac0efb7f9e75767ab6153e66d",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "activity_cooking_icon",
+      "file": "data/art/ui/bond/activity_cooking_icon.png",
+      "width": 99,
+      "height": 89,
+      "source_type": "provided PNG subcrop",
+      "source_file": "activity_card_cooking.png",
+      "source_xyxy": [
+        79,
+        16,
+        178,
+        105
+      ],
+      "alpha_mask": "foreground mask; enclosed source colors preserved",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "f3fcde77cb7f740ab2d21aaf40823ac70085c33a430103ded1978c743d1bbe09",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "activity_study_icon",
+      "file": "data/art/ui/bond/activity_study_icon.png",
+      "width": 108,
+      "height": 92,
+      "source_type": "provided PNG subcrop",
+      "source_file": "activity_card_study.png",
+      "source_xyxy": [
+        72,
+        15,
+        180,
+        107
+      ],
+      "alpha_mask": "foreground mask; enclosed source colors preserved",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "3d21e8e8f94356882e12bc097e35cd391785d5a7668e35db96ded57a6a32f654",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "activity_explore_icon",
+      "file": "data/art/ui/bond/activity_explore_icon.png",
+      "width": 135,
+      "height": 100,
+      "source_type": "provided PNG subcrop",
+      "source_file": "activity_card_explore.png",
+      "source_xyxy": [
+        72,
+        12,
+        207,
+        112
+      ],
+      "alpha_mask": "foreground mask; enclosed source colors preserved",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "6215ec554d7ca9fe1f17cbc1b4b0aae4762f321f1c7d0e5de5954cd5f23ca6c6",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "memory_book_icon",
+      "file": "data/art/ui/bond/memory_book_icon.png",
+      "width": 101,
+      "height": 76,
+      "source_type": "provided PNG subcrop",
+      "source_file": "button_memory_book.png",
+      "source_xyxy": [
+        56,
+        22,
+        157,
+        98
+      ],
+      "alpha_mask": "foreground mask; enclosed source colors preserved",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "10dbf63fe57d6e4d42e9e75736c50c1c498352af1d61b9e69cff2da257dea7fa",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "paper_tile",
+      "file": "data/art/ui/bond/paper_tile.png",
+      "width": 180,
+      "height": 180,
+      "source_type": "provided PNG subcrop",
+      "source_file": "main_window_frame.png",
+      "source_xyxy": [
+        100,
+        100,
+        280,
+        280
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "2e6e7c3a62a41084e4f1add29b78b9adf8f2c1af8073b50df0be6973f189ee26",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "header_texture",
+      "file": "data/art/ui/bond/header_texture.png",
+      "width": 86,
+      "height": 71,
+      "source_type": "provided PNG subcrop",
+      "source_file": "header_lotus_banner.png",
+      "source_xyxy": [
+        260,
+        24,
+        346,
+        95
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "bfba5d9971e5a1895a9d5f747846621c2349637f3440615510873137ef7c7638",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "record_texture",
+      "file": "data/art/ui/bond/record_texture.png",
+      "width": 170,
+      "height": 60,
+      "source_type": "provided PNG subcrop",
+      "source_file": "parchment_record_frame.png",
+      "source_xyxy": [
+        90,
+        60,
+        260,
+        120
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "83eb3c4e4466726e8e96b54a1241bb8cddbee1f51abdfb7dd7f6a5c1b034840d",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "memory_texture",
+      "file": "data/art/ui/bond/memory_texture.png",
+      "width": 120,
+      "height": 64,
+      "source_type": "provided PNG subcrop",
+      "source_file": "button_memory_book.png",
+      "source_xyxy": [
+        180,
+        28,
+        300,
+        92
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "ba9b6165faeb707dd9a180303ae15e63f4d5627d2f914adc264899243df2d57b",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "tab_active_frame",
+      "file": "data/art/ui/bond/tab_active_frame.png",
+      "width": 262,
+      "height": 88,
+      "source_type": "provided PNG subcrop",
+      "source_file": "character_tab_brown.png",
+      "source_xyxy": [
+        0,
+        0,
+        262,
+        88
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "7d64bcac6461fb5b33c4b8dc3ade44ac5f64847a52d2ad6628b274c2dfcc85f4",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "tab_idle_frame",
+      "file": "data/art/ui/bond/tab_idle_frame.png",
+      "width": 250,
+      "height": 84,
+      "source_type": "provided PNG subcrop",
+      "source_file": "character_tab_papyrus.png",
+      "source_xyxy": [
+        0,
+        0,
+        250,
+        84
+      ],
+      "alpha_mask": "unchanged",
+      "rgb_preserved": true,
+      "derived": true,
+      "sha256": "ab172c180df7d6be0a7dd7d2dfa5d7c707c60ccc746dbcc81a459ff7c91dc9c3",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "header_border",
+      "file": "data/art/ui/bond/header_border.png",
+      "width": 606,
+      "height": 119,
+      "derived": true,
+      "source_type": "provided PNG subcrop",
+      "source_file": "header_lotus_banner.png",
+      "alpha_mask": "interior removed for separate texture/ornaments",
+      "rgb_preserved": true,
+      "sha256": "89a5a769bb8a26a68dfeee05342f599557400991faaabd8a4985909af9ccfe02",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "memory_border",
+      "file": "data/art/ui/bond/memory_border.png",
+      "width": 352,
+      "height": 120,
+      "derived": true,
+      "source_type": "provided PNG subcrop",
+      "source_file": "button_memory_book.png",
+      "alpha_mask": "interior removed for separate texture/ornaments",
+      "rgb_preserved": true,
+      "sha256": "d799e4f17529c97104ff60627bf1fad36f5ab1836ebea99f78bb26babe116eab",
+      "used_in_verified_ui": true
+    },
+    {
+      "name": "window_border",
+      "file": "data/art/ui/bond/window_border.png",
+      "width": 389,
+      "height": 389,
+      "derived": true,
+      "source_type": "provided PNG assembly",
+      "source_file": "main_window_frame.png",
+      "source_rectangles": [
+        [
+          90,
+          0,
+          120,
+          38
+        ],
+        [
+          90,
+          351,
+          120,
+          389
+        ],
+        [
+          0,
+          90,
+          38,
+          120
+        ],
+        [
+          351,
+          90,
+          389,
+          120
+        ]
+      ],
+      "method": "original strips tiled under original corner pixels; no resizing or painting",
+      "sha256": "20d21fd45e969da4c5bc89bb4bb967e2f1e8d7d49f58d73075d368e58965fc6e",
+      "used_in_verified_ui": true
+    }
+  ],
+  "references": {
+    "desktop.jpg": "https://drive.google.com/file/d/1IJz97PWR1LsuOvjy4Dia0tkHEx9jh4ZS/view",
+    "mobile-a.jpg": "https://drive.google.com/file/d/131O_SuhA6cLGgyQhXwFAN5MvyTLKcah2/view",
+    "mobile-b.jpg": "https://drive.google.com/file/d/1oTqJWlPJh2Ks8O6l6IO7hbPWBeFcS0Lz/view"
+  },
+  "limitations": [
+    "Full original sprite sheet was absent from the ZIP and was not found in Drive by filename.",
+    "Drive previews are JPEG files despite .png names; small extracted ornaments retain source antialiasing/compression.",
+    "No AI image generation, repainting, color quantization or synthetic sharpening."
+  ],
+  "runtime_used_png_count": 39
+}
