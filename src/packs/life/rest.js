@@ -13,9 +13,16 @@ import { onSpot } from '../../ui/window.js';
 // where a pose's anchor goes (tiles), which way she faces there, and which picture. The dining table has a cushion
 // on its left, right and front; sitting on the right one she faces left (the table), and so on.
 // a long-seat place for each of the three: the pictures stand differently (Set's sits a little further back on the
-// seat), so Somang's and Horus's place is given and Set's is moved by the measured difference (0.9.48 long chair)
-const bench = (x, y, dir) => ['somang', 'set', 'horus'].map(who => ({ x: who === 'set' ? +(x + (dir === 'left' ? 0.16 : -0.16)).toFixed(2) : x,
-    y: who === 'set' ? +(y - 0.04).toFixed(2) : y, dir, pose: 'sit-bench', who }));
+// seat, 0.9.48 long chair). Every one sits with the fold behind the knee right on the seat's front outline (`edge`,
+// tiles: the line where the cushion's top meets its front, measured on the room picture; the user drew it), so the
+// thigh lies on the seat and the shins hang down its front. FOLD: how far that fold is below the anchor on each
+// sit-bench picture (measured, tiles)
+const FOLD = { somang: -0.023, set: 0.023, horus: 0.061 };
+// `seat`: [left, right] of the cushion (tiles) when it is long enough for two; then the one walking with her sits on
+// it too, facing her (user: on a long seat they face each other), see pairOn
+// `y`: the anchor's height (Set's 0.04 higher); with `edge` it is not used: each one's fold goes on the edge
+const bench = (x, y, dir, edge = null, seat = null) => ['somang', 'set', 'horus'].map(who => ({ x: who === 'set' ? +(x + (dir === 'left' ? 0.16 : -0.16)).toFixed(2) : x,
+    y: edge != null ? +(edge - FOLD[who]).toFixed(2) : who === 'set' ? +(y - 0.04).toFixed(2) : y, dir, pose: 'sit-bench', who, edge, seat }));
 const SEATS = {
     temple_table: [{ x: 14.25, y: 5.4, dir: 'left', pose: 'sit-floor' }],
     // the left cushion has its own spot: from the table's one spot (its right end) it was never the nearest
@@ -42,7 +49,7 @@ const SEATS = {
     // side on, looking along the corridor
     // the stool left of her round work table: Horus's thighs are shorter, so he sits further right to put his knees on
     // the stool's front edge (user: his legs hung in the middle of the stool)
-    somang_table: bench(9.25, 5.75, 'right').map(p => (p.who === 'horus' ? { ...p, x: 9.4 } : p)),
+    somang_table: bench(9.25, 5.75, 'right').map(p => (p.who === 'horus' ? { ...p, x: 9.4 } : p)),   // a stool: one only
     // the stone bench by the courtyard's right wall, seen at an angle: the seat on the middle of its top, picked by the
     // user from preview sheets over her sketch (0953-user-well-bench.png). All three in the same place
     temple_well_bench: ['somang', 'set', 'horus'].map(who => ({ x: 22.95, y: 5.38, dir: 'left', pose: 'sit-bench', who })),
@@ -50,13 +57,16 @@ const SEATS = {
         { x: 3.9, y: 6.1, dir: 'right', pose: 'sit-floor' },
         { x: 6.4, y: 6.55, dir: 'up', pose: 'sit-floor' },
     ],
-    colonnade_seat: bench(6.2, 4.9, 'right'),
-    inner_bench: bench(7.3, 4.55, 'right'),
-    central_bench: bench(7.3, 4.5, 'right'),
-    east_bench: bench(7.3, 4.55, 'right'),
-    west_bench: bench(20.6, 4.4, 'right'),
-    rooms_bench: bench(8.85, 4.55, 'right'),
-    ombos_bench: bench(19.8, 10.6, 'right'),            // the little bench inside the temple's front yard
+    colonnade_seat: bench(6.2, 4.9, 'right', 4.69, [5.75, 8.55]),
+    inner_bench: bench(7.3, 4.55, 'right', 4.36, [6.92, 9.12]),
+    central_bench: bench(7.3, 4.5, 'right', 4.36, [6.92, 9.15]),
+    east_bench: bench(7.3, 4.55, 'right', 4.36, [6.88, 9.28]),
+    // too short for two facing each other (their knees would meet): the one walking with her stands by
+    west_bench: bench(20.6, 4.4, 'right', 4.17),          // the line: where the blue cushion's top turns to its front (user)
+    rooms_bench: bench(8.85, 4.55, 'right', 4.48),
+    // the little bench inside the temple's front yard; the one walking with her stands on the paving right of the stall
+    // (user), not behind it
+    ombos_bench: bench(19.8, 10.6, 'right', 10.46).map(p => ({ ...p, stand: [22.0, 11.5] })),
 };
 // the middle of the body lying in bed. Set's bed (and Horus's, the same bed) is wide enough for two: Somang takes the right pillow, Set and Horus
 // the left. Sleeping together, the one on the left lies on the side facing the other (the right); the right one
@@ -101,9 +111,42 @@ function seatFor(id) {
     const free = (SEATS[id] || []).filter(p => (!p.who || p.who === player.look) && hasPose(p.pose, p.dir));
     return free.sort((a, b) => Math.hypot(a.x - f.x, a.y - f.y) - Math.hypot(b.x - f.x, b.y - f.y))[0] || null;
 }
+// two on the courtyard's stone bench (user's sketch, 0957-user-well-pair.jpg): seen at an angle, the one who sat down
+// lower and nearer, the companion up and behind. Each one sits on the seat's front edge like on the long chair: the
+// fold behind the knee (measured on each picture) right on the top's front outline (22.26, 4.717)-(22.988, 5.833), the
+// thigh on the stone, the shins down the front. [lead, companion] anchors by `${lead}+${companion}`, set pair by pair
+const WELL_DUO = {
+    'somang+set': [[23.24, 5.59], [22.9, 4.98]],
+    'somang+horus': [[23.24, 5.59], [22.71, 4.94]],
+    'set+somang': [[23.27, 5.55], [22.87, 5.02]],
+    'set+horus': [[23.27, 5.55], [22.71, 4.94]],
+    'horus+somang': [[23.07, 5.51], [22.9, 5.07]],
+    'horus+set': [[23.07, 5.51], [22.93, 5.03]],
+};
+const DUO = { temple_well_bench: WELL_DUO };
+const MATE_REACH = 8;
+// facing each other on a long seat: each one at their own height (the fold behind the knee on the front outline) and
+// as close as their legs allow: how far each one's knees and feet reach in front of the anchor (measured on the
+// sit-bench pictures, tiles) and a little room between the two pairs of feet. The two are put in the middle of the
+// cushion, she on the side she faces from; each one's seat stays at least SEAT_IN from the cushion's ends
+const LEGS = { somang: 0.79, set: 0.98, horus: 0.64 }, KNEE_GAP = 0.12, SEAT_IN = 0.15;
+function pairOn(p, lead, mate) {
+    const gap = LEGS[lead] + LEGS[mate] + KNEE_GAP, [a, b] = p.seat, mid = (a + b) / 2, s = p.dir === 'right' ? 1 : -1;
+    if (b - a - 2 * SEAT_IN < gap || !hasPoseOf(mate, 'sit-bench', p.dir === 'right' ? 'left' : 'right')) return null;
+    return [{ ...p, x: +(mid - s * gap / 2).toFixed(2) },
+        { ...p, who: mate, dir: p.dir === 'right' ? 'left' : 'right', x: +(mid + s * gap / 2).toFixed(2), y: +(p.edge - FOLD[mate]).toFixed(2) }];
+}
+// no seat for them: they stand a step away, turned toward her, never right in front of her. At a desk (she faces up)
+// beside it; on a seat she sits on side on, on the floor ahead of her knees and a little nearer the viewer
+const STAND_SIDE = 1.6, STAND_AHEAD = 1.5, STAND_DOWN = 0.9;
+function standMate(p) {
+    if (p.stand) return holdMate(null, p.stand[0], p.stand[1], p.dir === 'right' ? 'left' : 'right');   // a place set for that seat
+    if (p.dir === 'up' || p.dir === 'down') return holdMate(null, p.x + STAND_SIDE, p.y + 0.7, 'left');   // anchor: feet 0.2 above
+    const s = p.dir === 'right' ? 1 : -1;
+    holdMate(null, p.x + s * STAND_AHEAD, p.y + STAND_DOWN + 0.2, p.dir === 'right' ? 'left' : 'right');
+}
 // the one walking with her sits too: the nearest other seat place of this room (the set places, nothing new), one
 // they have the picture for and not where she sits; none within a few tiles and they stay standing
-const MATE_REACH = 8;
 function mateSeat(spotId, mine, mate) {
     const room = Object.values(DATA.maps || {}).find(m => (m.spots || []).some(s => s.id === spotId));
     const ids = room ? room.spots.map(s => s.id).filter(id => SEATS[id]) : [spotId];
@@ -123,10 +166,18 @@ function seatCard(spot, ui) {
             const st = getState();
             const r = sitRest(st);
             await saveState();
-            const p = seatFor(spot.id);
+            const mate = withOf(st);
+            let p = seatFor(spot.id), m = null;
+            const duo = p && mate && DUO[spot.id]?.[`${player.look}+${mate}`];
+            if (duo && hasPoseOf(mate, p.pose, p.dir)) {         // a seat for two: both places set for this pair
+                m = { ...p, who: mate, x: duo[1][0], y: duo[1][1] }; p = { ...p, x: duo[0][0], y: duo[0][1] };
+            }
+            const two = p?.seat && mate && pairOn(p, p.who, mate);
+            if (two) [p, m] = two;
             if (p) holdPose(p.pose, p.x, p.y, p.dir);
-            const mate = withOf(st), m = p && mate ? mateSeat(spot.id, p, mate) : null;
+            if (p && mate && !m) m = mateSeat(spot.id, p, mate);
             if (m) holdMate(m.pose, m.x, m.y, m.dir);
+            else if (p && mate) standMate(p);
             ui.toast(r === 'rested' ? `잠깐 쉬었어. 태양 기운 ${sunLeft(st)}/${sunMax()}` : r === 'full' ? '태양 기운이 가득해. 그냥 앉아 있자' : '오늘은 충분히 쉬었어');
         } }],
     });
