@@ -58,11 +58,11 @@
 /* activities: theme rows with the four pictures */
 #sf_game .sf_bond_activity_grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; }
 /* the picture, the name and the arrow on one centred line; the line under it centred across the card */
-#sf_game .sf_bond .sf_list_row.sf_bond_activity { min-width:0; display:grid; grid-template-columns:28px minmax(0,1fr) 8px; grid-template-areas:"pic name arrow" "sub sub sub"; align-items:center; gap:2px 3px; padding:5px 4px; text-align:left; color:inherit; cursor:pointer; }
-#sf_game .sf_bond_activity img { grid-area:pic; width:28px; height:30px; }
+#sf_game .sf_bond .sf_list_row.sf_bond_activity { min-width:0; display:grid; grid-template-columns:26px minmax(0,1fr) 7px; grid-template-areas:"pic name arrow" "sub sub sub"; align-items:center; gap:2px 2px; padding:3px 1px; text-align:left; color:inherit; cursor:pointer; }
+#sf_game .sf_bond_activity img { grid-area:pic; width:26px; height:28px; }
 #sf_game .sf_bond_activity b { grid-area:name; font-size:11.5px; line-height:1.2; white-space:nowrap; text-align:center; }
 #sf_game .sf_bond_arrow { grid-area:arrow; font-size:16px; line-height:1; color:var(--sf-dim); }
-#sf_game .sf_bond_activity small { grid-area:sub; font-size:9px; line-height:1.25; text-align:center; color:var(--sf-dim); }
+#sf_game .sf_bond_activity small { grid-area:sub; font-size:8.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.25; text-align:center; color:var(--sf-dim); }
 /* foot: a theme row with the feather, a theme button with the notebook */
 #sf_game .sf_bond_footer { display:grid; grid-template-columns:minmax(0,1fr) 140px; gap:6px; padding-top:8px; }
 #sf_game .sf_bond .sf_list_row.sf_bond_motto { display:flex; align-items:center; gap:6px; padding:5px 8px; font-size:10.5px; min-height:0; }
