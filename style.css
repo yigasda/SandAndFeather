@@ -1727,3 +1727,10 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  clip-path:polygon(6.23px .78px,calc(100% - 7.01px) .78px,calc(100% - 3.11px) 4.68px,calc(100% - 3.11px) calc(100% - 5.46px),calc(100% - 7.01px) calc(100% - 1.56px),6.23px calc(100% - 1.56px),2.33px calc(100% - 5.46px),2.33px 4.68px);
 }
 #sf_game[data-ui-theme='cozy'] .sf_bond .sf_bond_cell:has(> .sf_bond_slot[aria-pressed='true']) { filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc); }
+/* classic and journal have the same kind of light rim outside their dark line, so the same cut and cell glow:
+   classic src px left 3, top 3, right 4, bottom 3, corners 4 (×7/9); journal left 2, top 2, right 1, bottom 2, corners 4 (×7/10) */
+#sf_game[data-ui-theme='classic'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] { filter:none; clip-path:polygon(5.44px 2.33px,calc(100% - 6.22px) 2.33px,calc(100% - 3.11px) 5.44px,calc(100% - 3.11px) calc(100% - 5.44px),calc(100% - 6.22px) calc(100% - 2.33px),5.44px calc(100% - 2.33px),2.33px calc(100% - 5.44px),2.33px 5.44px); }
+#sf_game[data-ui-theme='journal'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] { filter:none; clip-path:polygon(4.2px 1.4px,calc(100% - 3.5px) 1.4px,calc(100% - 0.7px) 4.2px,calc(100% - 0.7px) calc(100% - 4.2px),calc(100% - 3.5px) calc(100% - 1.4px),4.2px calc(100% - 1.4px),1.4px calc(100% - 4.2px),1.4px 4.2px); }
+#sf_game:is([data-ui-theme='classic'],[data-ui-theme='journal']) .sf_bond .sf_bond_cell:has(> .sf_bond_slot[aria-pressed='true']) { filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc); }
+/* walnut's outer brown line is its edge (nothing to cut); on the dark paper the widest glow layer stood off it, so only the two tight ones */
+#sf_game[data-ui-theme='walnut'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] { filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c); }
