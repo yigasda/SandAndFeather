@@ -34,7 +34,9 @@ await p.setViewportSize(size);
 const overlap=await p.evaluate(()=>{const a=document.querySelector('.sf_appearance').getBoundingClientRect(),b=document.querySelector('.sf_chips').getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;});assert(!overlap,`${id} ${size.width} HUD`);
 if(size.width===412)await shot(`${i+1}-${id}-world`);
 // Verify every approved glyph in its live selected and inactive menu states.
-for(const tab of ['world','party','quests','map']){
+// 0.9.66: 「인연과 유대」 (bond) sits between 일행 and 임무; its glyph is the birds picture used as a mask in the theme's menu ink
+const TABS=['world','party','bond','quests','map'];
+for(const tab of TABS){
  await p.locator(`.sf_tab[data-tab="${tab}"]`).click();await bounds();
  assert.equal(await p.locator('.sf_tabs .sf_on').getAttribute('data-tab'),tab);
  const glyphs=await p.locator('.sf_tab i').evaluateAll(async els=>{
@@ -45,9 +47,10 @@ for(const tab of ['world','party','quests','map']){
    return{url,width:img.naturalWidth,height:img.naturalHeight,inside:a.left>=b.left&&a.right<=b.right&&a.top>=b.top&&a.bottom<=b.bottom};
   }));
  });
- assert.equal(glyphs.length,4);
+ assert.equal(glyphs.length,TABS.length);
  for(const [j,g]of glyphs.entries()){
-  assert(g.url.includes(`/menu-icons/${id}/${['world','party','quests','map'][j]}.png`),g.url);
+  if(TABS[j]==='bond'){assert(g.url.includes('/bond/redrawn/22-birds-symbol.png'),g.url);assert(g.inside,`${id} ${size.width} ${tab}: clipped bond icon`);continue;}
+  assert(g.url.includes(`/menu-icons/${id}/${TABS[j]}.png`),g.url);
   assert(g.width===48&&g.height===48&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong icon`);
  }
  if(size.width===412)await p.locator('.sf_tabs').screenshot({path:path.join(out,`${i+1}-${id}-menu-${tab}.png`)});
