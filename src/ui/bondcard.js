@@ -125,7 +125,8 @@ export function bondCard(ui, initial = 'set', onBack = null) {
         for (const [id, items] of groups) {
             const slot = button('', () => { selected = items[0].uid; draw(); }, `sf_inventory_slot sf_bond_slot${items.some(it => it.uid === selected) ? ' sf_on' : ''}`);
             const icon = itemArt(id);
-            slot.append(icon, node('span', 'sf_bond_count', String(items.length))); slot.title = itemInfo(id).ko; slot.setAttribute('aria-label', `${itemInfo(id).ko} ${items.length}개`); slot.setAttribute('aria-pressed', String(items.some(it => it.uid === selected))); slots.append(slot);
+            slot.append(icon, node('span', 'sf_bond_count', String(items.length))); slot.title = itemInfo(id).ko; slot.setAttribute('aria-label', `${itemInfo(id).ko} ${items.length}개`); slot.setAttribute('aria-pressed', String(items.some(it => it.uid === selected)));
+            const cell = node('span', 'sf_bond_cell'); cell.append(slot); slots.append(cell);
         }
         if (!groups.size) for (let n = 0; n < 4; n++) slots.append(node('div', 'sf_inventory_slot sf_empty_slot sf_bond_slot sf_empty'));
         const gift = button('선물하기', async () => {

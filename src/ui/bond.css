@@ -51,6 +51,9 @@
 #sf_game .sf_bond_giftrow { display:flex; gap:6px; align-items:center; }
 #sf_game .sf_bond_slots { display:flex; gap:4px; overflow-x:auto; flex:1; min-width:0; scrollbar-width:thin; padding:1px; }
 #sf_game .sf_bond .sf_inventory_slot.sf_bond_slot { position:relative; flex:1 0 48px; max-width:60px; width:48px; height:48px; min-height:0; padding:5px; }
+/* each filled slot sits in a cell (it carries cozy's glow, see style.css) */
+#sf_game .sf_bond_cell { display:flex; flex:1 0 48px; max-width:60px; min-width:0; }
+#sf_game .sf_bond .sf_bond_cell > .sf_inventory_slot.sf_bond_slot { flex:1 1 auto; width:100%; max-width:none; }
 #sf_game .sf_bond_slot img, #sf_game .sf_bond_slot .sf_item_art { width:100%; height:100%; max-width:none; max-height:none; object-fit:contain; }
 #sf_game .sf_bond_count { position:absolute; bottom:2px; right:4px; font-weight:800; font-size:10.5px; color:var(--sf-ink); }
 #sf_game .sf_bond .sf_btn.sf_bond_give { display:flex; align-items:center; justify-content:center; gap:5px; font-size:14px; min-height:48px; min-width:104px; }
@@ -90,7 +93,7 @@
  #sf_game .sf_bond_record b { font-size:14px; } #sf_game .sf_bond_record small { font-size:11px; }
  #sf_game .sf_bond_section_head h3 { font-size:19px; } #sf_game .sf_bond_section_head img { width:26px; height:26px; }
  #sf_game .sf_bond_section_head small { font-size:11px; }
- #sf_game .sf_bond .sf_inventory_slot.sf_bond_slot { flex-basis:60px; width:60px; height:60px; }
+ #sf_game .sf_bond .sf_inventory_slot.sf_bond_slot { flex-basis:60px; width:60px; height:60px; } #sf_game .sf_bond_cell { flex-basis:60px; }
  #sf_game .sf_bond .sf_btn.sf_bond_give { min-height:60px; font-size:17px; min-width:140px; }
  #sf_game .sf_bond_stage img { width:38px; height:38px; } #sf_game .sf_bond_stage:last-child img { width:44px; height:41px; } #sf_game .sf_bond_stages::before { top:19px; }
  #sf_game .sf_bond_track { height:24px; } #sf_game .sf_bond_track b { font-size:14px; line-height:22px; }

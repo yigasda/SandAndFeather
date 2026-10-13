@@ -1720,3 +1720,10 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme] .sf_bond .sf_bond_slot[aria-pressed='true']::before {
  content:''; position:absolute; inset:0; z-index:-1; pointer-events:none; background:#ffd46a; opacity:.38;
 }
+/* cozy only: its button picture has a pale rim outside the brown line (src px left 3, top 1, right 4, bottom 2, corners cut 5; ×7/9 on
+   screen), so the glow stood off the box. The chosen slot is cut to the brown line and its cell glows, so the glow sits on the box. */
+#sf_game[data-ui-theme='cozy'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] {
+ filter:none;
+ clip-path:polygon(6.23px .78px,calc(100% - 7.01px) .78px,calc(100% - 3.11px) 4.68px,calc(100% - 3.11px) calc(100% - 5.46px),calc(100% - 7.01px) calc(100% - 1.56px),6.23px calc(100% - 1.56px),2.33px calc(100% - 5.46px),2.33px 4.68px);
+}
+#sf_game[data-ui-theme='cozy'] .sf_bond .sf_bond_cell:has(> .sf_bond_slot[aria-pressed='true']) { filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc); }
