@@ -1,5 +1,8 @@
 # 아스트라 공통 규칙 — 모든 그림 작업에
 
+> **작화 실행 절차 (2026-10-14):** 새 그림·부분 수정·재시도 전 [현재 작업](ASTRA-DRAW-STATE.md)과 [작화 시작표](ASTRA-DRAW-CHECK.md)를 확인한다. 상세 지침과 실제 원본·가이드를 확인한 뒤, 각 생성의 참고 파일·가이드 사용·지시문·결과 비교를 작업 폴더에 기록한다. 파일 목록 확인이나 기억만으로 읽음/검수 완료를 선언하지 않는다.
+> **승인 범위:** 이미 승인된 계획은 반복 승인받지 않는다. 아래의 계획 확인 규칙은 아직 승인되지 않은 새 범위에 적용한다. 최신 사용자 지시가 우선한다. 이 시작표는 아래 상세 지침을 생략하는 허가가 아니다.
+
 > # 🛑 DO EXACTLY WHAT THE USER SAID. NOT YOUR VERSION OF IT. 🛑
 > - **THE USER'S WORDS ARE THE ORDER. DO NOT REINTERPRET, NARROW, SOFTEN OR "OPTIMISE" THEM.** "Trace Horus's body and redraw" means **TRACE THE WHOLE BODY AND REDRAW IT** — not "match the outer width", not "fix only the outline", not "adjust a few pixels".
 > - **IF YOU THINK A SMALLER OR EASIER VERSION IS ENOUGH, YOU ARE WRONG. DO THE WHOLE THING.**
