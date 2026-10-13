@@ -1682,3 +1682,55 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
         grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; justify-content: flex-end;
     }
 }
+
+/* 0.9.66: 하단 탭 「인연과 유대」 — the two birds (data/art/ui/bond/redrawn/22-birds-symbol.png) as a shape, painted in each theme's own menu-icon ink */
+#sf_game[data-ui-theme] .sf_tab[data-tab='bond'] i { background-image:none; background-color:var(--menu-ink,#4d321e); mask:url('data/art/ui/bond/redrawn/22-birds-symbol.png') center/contain no-repeat; -webkit-mask:url('data/art/ui/bond/redrawn/22-birds-symbol.png') center/contain no-repeat; width:38px; height:24px; }
+#sf_game[data-ui-theme='classic'] { --menu-ink:#462d1c; }
+#sf_game[data-ui-theme='walnut'] { --menu-ink:#f9c86f; }
+#sf_game[data-ui-theme='journal'] { --menu-ink:#503622; }
+#sf_game[data-ui-theme='temple'] { --menu-ink:#4d321e; }
+#sf_game[data-ui-theme='cozy'] { --menu-ink:#fbd48f; }
+#sf_game .sf_tab[data-tab='bond'] span { white-space:nowrap; }
+/* 0.9.66 인연과 유대: every plain box in the window wears the theme's own unpressed button (the 호루스 tab): its frame, its fill, its ink (here, so the skin urls resolve from the root like every other skin rule) */
+#sf_game[data-ui-theme] .sf_bond .sf_list_row:is(.sf_bond_record,.sf_bond_empty,.sf_bond_progress_panel,.sf_bond_activity,.sf_bond_motto) {
+ border:7px solid transparent; border-image:var(--skin-button) var(--slice-button) stretch; border-radius:0; box-shadow:none;
+ background:#ebd3ae var(--skin-button-fill) repeat; background-clip:padding-box; color:#362518;
+}
+#sf_game[data-ui-theme='walnut'] .sf_bond .sf_list_row:is(.sf_bond_record,.sf_bond_empty,.sf_bond_progress_panel,.sf_bond_activity,.sf_bond_motto) { color:#f9e3b8; }
+/* the gift slots wear the same 호루스 button; the chosen one keeps it and only lights up: a gold glow round the frame's own shape, a warm fill */
+#sf_game[data-ui-theme] .sf_bond .sf_inventory_slot.sf_bond_slot {
+ border:7px solid transparent; border-image:var(--skin-button) var(--slice-button) stretch; border-radius:0; box-shadow:none;
+ background:#ebd3ae var(--skin-button-fill) repeat; background-clip:padding-box; color:#362518; padding:1px;
+ display:flex; align-items:center; justify-content:center; aspect-ratio:auto;
+}
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot .sf_item_art { width:100%; height:100%; max-width:none; max-height:none; font-size:28px; }
+#sf_game[data-ui-theme='walnut'] .sf_bond .sf_inventory_slot.sf_bond_slot { color:#f9e3b8; }
+#sf_game[data-ui-theme] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] {
+ border-image:var(--skin-button) var(--slice-button) stretch;
+ z-index:0; isolation:isolate;
+ filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc);
+}
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot .sf_bond_count { color:inherit; right:1px; bottom:0; }
+/* the warm light fills the whole button in its own shape, under the item: ::after over the frame (masked by the frame itself),
+   ::before over the open middle the frame picture leaves */
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot[aria-pressed='true']::after {
+ content:''; position:absolute; inset:-7px; z-index:-1; pointer-events:none; background:#ffd46a; opacity:.38;
+ -webkit-mask-box-image:var(--skin-button) var(--slice-button) fill / 7px stretch;
+}
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot[aria-pressed='true']::before {
+ content:''; position:absolute; inset:0; z-index:-1; pointer-events:none; background:#ffd46a; opacity:.38;
+}
+/* cozy only: its button picture has a pale rim outside the brown line (src px left 3, top 1, right 4, bottom 2, corners cut 5; ×7/9 on
+   screen), so the glow stood off the box. The chosen slot is cut to the brown line and its cell glows, so the glow sits on the box. */
+#sf_game[data-ui-theme='cozy'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] {
+ filter:none;
+ clip-path:polygon(6.23px .78px,calc(100% - 7.01px) .78px,calc(100% - 3.11px) 4.68px,calc(100% - 3.11px) calc(100% - 5.46px),calc(100% - 7.01px) calc(100% - 1.56px),6.23px calc(100% - 1.56px),2.33px calc(100% - 5.46px),2.33px 4.68px);
+}
+#sf_game[data-ui-theme='cozy'] .sf_bond .sf_bond_cell:has(> .sf_bond_slot[aria-pressed='true']) { filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc); }
+/* classic and journal have the same kind of light rim outside their dark line, so the same cut and cell glow:
+   classic src px left 3, top 3, right 4, bottom 3, corners 4 (×7/9); journal left 2, top 2, right 1, bottom 2, corners 4 (×7/10) */
+#sf_game[data-ui-theme='classic'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] { filter:none; clip-path:polygon(5.44px 2.33px,calc(100% - 6.22px) 2.33px,calc(100% - 3.11px) 5.44px,calc(100% - 3.11px) calc(100% - 5.44px),calc(100% - 6.22px) calc(100% - 2.33px),5.44px calc(100% - 2.33px),2.33px calc(100% - 5.44px),2.33px 5.44px); }
+#sf_game[data-ui-theme='journal'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] { filter:none; clip-path:polygon(4.2px 1.4px,calc(100% - 3.5px) 1.4px,calc(100% - 0.7px) 4.2px,calc(100% - 0.7px) calc(100% - 4.2px),calc(100% - 3.5px) calc(100% - 1.4px),4.2px calc(100% - 1.4px),1.4px calc(100% - 4.2px),1.4px 4.2px); }
+#sf_game:is([data-ui-theme='classic'],[data-ui-theme='journal']) .sf_bond .sf_bond_cell:has(> .sf_bond_slot[aria-pressed='true']) { filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc); }
+/* walnut's outer brown line is its edge (nothing to cut); on the dark paper the widest glow layer stood off it, so only the two tight ones */
+#sf_game[data-ui-theme='walnut'] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] { filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c); }

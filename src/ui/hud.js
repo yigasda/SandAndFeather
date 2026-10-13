@@ -13,6 +13,7 @@ import { partNow } from '../core/rest.js';
 export const TABS = [
     { id: 'world', label: '세계', icon: 'fa-house' },
     { id: 'party', label: '일행', icon: 'fa-users' },
+    { id: 'bond', label: '인연과 유대', icon: 'fa-dove' },
     { id: 'quests', label: '임무', icon: 'fa-scroll' },
     { id: 'map', label: '지도', icon: 'fa-map' },
 ];

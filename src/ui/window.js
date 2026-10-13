@@ -19,6 +19,7 @@ import { FEATHER } from './icon.js';
 import { bagCard } from './items.js';
 import { personCard } from './talk.js';
 import { partyCard, questsCard } from './tabs.js';
+import { bondCard } from './bondcard.js';
 import { leadOf, withOf } from '../core/heroes.js';
 import { cardOpen, closeCards, showCard, toast } from './popups.js';
 import { appearanceCard } from './appearance.js';
@@ -379,5 +380,6 @@ function pickTab(id) {
     if (id === 'world') return;
     if (id === 'map') { openMap(); return; }
     const back = () => setTab(hud, 'world');
+    if (id === 'bond') { const s = getState(); const w = s ? withOf(s) : ''; bondCard(ui, ['set', 'horus'].includes(w) ? w : ['set', 'horus'].includes(s?.party?.lead) ? s.party.lead : 'set', back); return; }
     ({ party: partyCard, quests: questsCard })[id]?.(ui, back);
 }

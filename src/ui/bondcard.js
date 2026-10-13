@@ -10,10 +10,11 @@ import { itemArt } from './itemart.js';
 
 const art = new URL('../../data/art/ui/bond/', import.meta.url);
 const redrawn = new URL('../../data/art/ui/bond/redrawn/', import.meta.url);
-const REDRAWN = {header_birds:'22-birds-symbol',ornament_ankh:'21-ankh-symbol',title_lotus:'20-lotus-symbol',tab_paw:'23-paw-symbol',tab_bird:'24-falcon-symbol',section_book:'27-section-book',section_plant:'28-section-sprout',section_gift:'29-section-gift',section_branch:'30-section-branch',bond_heart:'31-heart',reward_gift_red:'34-reward-red',reward_gift_gold:'36-reward-chest',reward_gift_open:'35-reward-gold',reward_80:'35-reward-gold',gift_icon_bow:'64-gift-cream',activity_fishing_icon:'43-fishing',activity_cooking_icon:'44-cooking',activity_study_icon:'45-study',activity_explore_icon:'46-exploration',footer_feather:'47-feather',memory_book_icon:'48-memory-book',record_bracelet:'37-bracelet',record_bread:'38-bread',record_stars:'61-starry-memory'};
+// only the icons the theme has no match for (the user's marked set); frames, cards, buttons and lines are the UI theme's
+const REDRAWN = {section_book:'27-section-book',section_plant:'28-section-sprout',section_gift:'29-section-gift',section_branch:'30-section-branch',bond_heart:'31-heart',reward_gift_red:'34-reward-red',reward_gift_gold:'36-reward-chest',reward_gift_open:'35-reward-gold',reward_80:'35-reward-gold',gift_icon_bow:'64-gift-cream',activity_fishing_icon:'43-fishing',activity_cooking_icon:'44-cooking',activity_study_icon:'45-study',activity_explore_icon:'46-exploration',footer_feather:'47-feather',memory_book_icon:'48-memory-book'};
 const node = (tag, cls = '', text = '') => { const e = document.createElement(tag); e.className = cls; e.textContent = text; return e; };
 function img(name, cls = '') { const e = node('img', cls); e.src = new URL(`${REDRAWN[name] || name}.png`, REDRAWN[name] ? redrawn : art).href; e.alt = ''; e.decoding = 'async'; return e; }
-function button(text, fn, cls = 'sf_bond_small') {
+function button(text, fn, cls = 'sf_btn sf_small') {
     const b = node('button', cls, text); b.type = 'button';
     b.addEventListener('click', async () => { if (b.disabled) return; b.disabled = true; try { await fn(); } catch (e) { window.toastr?.error?.(e.message, '인연과 유대'); } finally { b.disabled = false; b.refreshDisabled?.(); } });
     return b;
@@ -48,20 +49,17 @@ function sourceView(ui, src) {
     return block;
 }
 
-export function bondCard(ui, initial = 'set') {
+export function bondCard(ui, initial = 'set', onBack = null) {
     const s = getState(); if (!s) return;
     const b = fillBond(s), box = node('div', 'sf_bond'), tabs = node('div', 'sf_bond_tabs');
     let who = ['set', 'horus'].includes(initial) ? initial : 'set', selected = '', closed = false, ready = false;
     tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', '인물 선택');
     const content = node('div', 'sf_bond_columns');
     box.append(tabs, content);
-    const close = ui.showCard({ title: '인연과 유대', body: box, kind: 'bond', wide: true, buttons: [], onClose: () => { closed = true; off(); change(); } });
-    const wrap = box.closest('.sf_pop_wrap'), header = wrap.querySelector('.sf_pop_head');
-    header.prepend(img('header_birds', 'sf_bond_header_birds'));
-    header.querySelector('.sf_pop_title').before(img('title_lotus', 'sf_bond_title_lotus'));
-    header.querySelector('.sf_pop_title').after(img('title_lotus', 'sf_bond_title_lotus'));
-    header.querySelector('.sf_pop_title').append(node('small', '', '함께한 시간이, 더 특별한 내일을 만듭니다.'));
-    header.append(img('ornament_ankh', 'sf_bond_header_ankh'));
+    const close = ui.showCard({ title: '인연과 유대', body: box, kind: 'bond', wide: true, buttons: [], onClose: () => { closed = true; off(); change(); onBack?.(); } });
+    const wrap = box.closest('.sf_pop_wrap');
+    // the theme's own title bar, plain words; the line under it opens the window
+    box.prepend(node('p', 'sf_bond_subtitle', '함께한 시간이, 더 특별한 내일을 만듭니다.'));
     const off = on('bond:changed', () => { if (!closed && getState() === s) draw(); });
     const change = on('game:loaded', () => { if (getState() !== s) { close(); change(); } });
     const originalClose = wrap.querySelector('.sf_pop_x'); originalClose.addEventListener('click', change, { once: true });
@@ -70,20 +68,18 @@ export function bondCard(ui, initial = 'set') {
     function draw() {
         tabs.replaceChildren(); content.replaceChildren();
         for (const id of ['set', 'horus']) {
-            const tab = button('', () => { who = id; selected = ''; draw(); }, `sf_bond_tab${who === id ? ' sf_on' : ''}`);
+            const tab = button('', () => { who = id; selected = ''; draw(); }, `sf_btn sf_bond_tab${who === id ? ' sf_on' : ''}`);
+            tab.setAttribute('aria-pressed', String(who === id));
             const portrait = node('img', 'sf_bond_portrait'); portrait.src = new URL(id === 'set' ? '25-set-symbol.png' : '26-horus-symbol.png', redrawn).href; portrait.alt = '';
-            tab.append(portrait, img(id === 'set' ? 'tab_paw' : 'tab_bird', 'sf_bond_tab_symbol'), node('span', '', BOND_NAMES[id])); tab.setAttribute('role', 'tab'); tab.setAttribute('aria-selected', String(who === id)); tab.dataset.bondWho = id; tabs.append(tab);
+            tab.append(portrait, node('span', '', BOND_NAMES[id])); tab.setAttribute('role', 'tab'); tab.setAttribute('aria-selected', String(who === id)); tab.dataset.bondWho = id; tabs.append(tab);
         }
         const left = node('div', 'sf_bond_left'), right = node('div', 'sf_bond_right');
         const records = section('인연의 기록', 'section_book', '함께한 순간들이, 소중한 이야기가 됩니다.');
         const recordsBox = node('div', 'sf_bond_records');
         const ties = b.ties.filter(t => t.who === who || t.who === 'both').slice().reverse();
-        if (!ties.length) recordsBox.append(node('p', 'sf_bond_empty', 'RP에서 이어 온 인연을 기록해 보세요. 직접 고르거나, AI가 찾은 후보를 확인한 뒤 남길 수 있어요.'));
+        if (!ties.length) recordsBox.append(node('p', 'sf_list_row sf_bond_empty', 'RP에서 이어 온 인연을 기록해 보세요. 직접 고르거나, AI가 찾은 후보를 확인한 뒤 남길 수 있어요.'));
         for (const tie of ties) {
-            const card = node('article', 'sf_bond_record');
-            const description = `${tie.title} ${tie.summary}`;
-            const illustration = /팔찌|홍옥수/.test(description) ? 'record_bracelet' : /빵/.test(description) ? 'record_bread' : /별|밤하늘/.test(description) ? 'record_stars' : 'section_book';
-            card.append(img(illustration, 'sf_bond_record_icon'));
+            const card = node('article', 'sf_list_row sf_bond_record');
             const text = node('div', 'sf_bond_record_text');
             text.append(node('small', '', [tie.when, tie.where].filter(Boolean).join(' · ') || '인연의 기록'), node('b', '', tie.summary || tie.title));
             const details = node('details'); details.append(node('summary', '', '원문 · 관리'), sourceView(ui, tie.src));
@@ -106,7 +102,7 @@ export function bondCard(ui, initial = 'set') {
         left.append(records);
 
         const bond = section('오늘부터 쌓는 유대', 'section_plant', '작은 마음도, 언젠가 큰 인연이 됩니다.');
-        const panel = node('div', 'sf_bond_paper sf_bond_progress_panel'), progress = node('div', 'sf_bond_progress');
+        const panel = node('div', 'sf_list_row sf_bond_progress_panel'), progress = node('div', 'sf_bond_progress');
         const track = node('div', 'sf_bond_track'), fill = node('div', 'sf_bond_fill'); fill.style.width = `${b[who].pts}%`;
         track.setAttribute('role', 'progressbar'); track.setAttribute('aria-label', `${BOND_NAMES[who]} 유대`); track.setAttribute('aria-valuemin', '0'); track.setAttribute('aria-valuemax', '100'); track.setAttribute('aria-valuenow', String(b[who].pts));
         track.append(fill, node('b', '', `${b[who].pts} / 100`)); progress.append(img('bond_heart'), track);
@@ -127,12 +123,12 @@ export function bondCard(ui, initial = 'set') {
         }
         if (!selected || !s.bag.items.some(it => it.uid === selected)) selected = groups.values().next().value?.[0]?.uid || '';
         for (const [id, items] of groups) {
-            const slot = button('', () => { selected = items[0].uid; draw(); }, `sf_bond_slot${items.some(it => it.uid === selected) ? ' sf_on' : ''}`);
-            const giftArt = {feast_garland:'39-flower-wreath',bread:'38-bread',blue_lotus:'42-blue-lotus'}[id];
-            const icon = giftArt ? node('img') : itemArt(id); if (giftArt) { icon.src = new URL(`${giftArt}.png`, redrawn).href; icon.alt = ''; }
-            slot.append(icon, node('span', 'sf_bond_count', String(items.length))); slot.title = itemInfo(id).ko; slot.setAttribute('aria-label', `${itemInfo(id).ko} ${items.length}개`); slot.setAttribute('aria-pressed', String(items.some(it => it.uid === selected))); slots.append(slot);
+            const slot = button('', () => { selected = items[0].uid; draw(); }, `sf_inventory_slot sf_bond_slot${items.some(it => it.uid === selected) ? ' sf_on' : ''}`);
+            const icon = itemArt(id);
+            slot.append(icon, node('span', 'sf_bond_count', String(items.length))); slot.title = itemInfo(id).ko; slot.setAttribute('aria-label', `${itemInfo(id).ko} ${items.length}개`); slot.setAttribute('aria-pressed', String(items.some(it => it.uid === selected)));
+            const cell = node('span', 'sf_bond_cell'); cell.append(slot); slots.append(cell);
         }
-        if (!groups.size) for (let n = 0; n < 4; n++) slots.append(node('div', 'sf_bond_slot sf_empty'));
+        if (!groups.size) for (let n = 0; n < 4; n++) slots.append(node('div', 'sf_inventory_slot sf_empty_slot sf_bond_slot sf_empty'));
         const gift = button('선물하기', async () => {
             assertState(s);
             const uid = selected, recipient = who;
@@ -141,10 +137,10 @@ export function bondCard(ui, initial = 'set') {
             if (result.confirm) {
                 const controls = node('div'); let busy = false;
                 let dismiss;
-                controls.append(button('선물하기', async () => { if (busy) return; busy = true; try { assertState(s); const r = await giveBondGiftNow(s, recipient, uid, true); ui.toast(r.line); dismiss(); } finally { busy = false; draw(); } }, 'sf_bond_button'));
+                controls.append(button('선물하기', async () => { if (busy) return; busy = true; try { assertState(s); const r = await giveBondGiftNow(s, recipient, uid, true); ui.toast(r.line); dismiss(); } finally { busy = false; draw(); } }, 'sf_btn sf_primary'));
                 dismiss = ui.showCard({ title: '오늘의 두 번째 선물', text: '오늘은 이미 유대를 쌓았어. 선물은 소모되지만 유대는 오르지 않아.', body: controls });
             } else { ui.toast(result.line); draw(); }
-        }, 'sf_bond_button sf_bond_give');
+        }, 'sf_btn sf_primary sf_bond_give');
         gift.prepend(img('gift_icon_bow'));
         gift.disabled = giftBusy(s) || !selected || !bondMembers(s).includes(who) || !!s.duat;
         giftrow.append(slots, gift); gifts.append(giftrow);
@@ -154,13 +150,13 @@ export function bondCard(ui, initial = 'set') {
         const activities = section('함께하는 활동', 'section_branch', '함께하는 시간을 더 많이 만들어 보세요.');
         const activityGrid = node('div', 'sf_bond_activity_grid');
         for (const [id, title, sub, help] of [['fishing', '낚시', '강가에서 여유를', '소망과 함께 선착장에서 낚시를 마치면 하루 한 번 유대 +2.'], ['cooking', '요리', '맛있는 걸 함께', '소망과 함께 부엌에서 요리를 마치면 하루 한 번 유대 +2.'], ['study', '공부', '새로운 걸 배워요', '소망과 함께 필사실에서 공부를 마치면 하루 한 번 유대 +2.'], ['explore', '탐험', '낯선 곳을 함께', '소망과 함께 작은 모험을 완료하면 하루 한 번 유대 +3.']]) {
-            const act = button('', () => ui.showCard({ title, text: help }), 'sf_bond_activity');
+            const act = button('', () => ui.showCard({ title, text: help }), 'sf_list_row sf_bond_activity');
             act.append(img(`activity_${id}_icon`), node('b', '', title), node('span', 'sf_bond_arrow', '›'), node('small', '', sub)); activityGrid.append(act);
         }
         activities.append(activityGrid); right.append(activities);
-        const footer = node('div', 'sf_bond_footer'); const note = node('div', 'sf_bond_paper sf_bond_motto');
+        const footer = node('div', 'sf_bond_footer'); const note = node('div', 'sf_list_row sf_bond_motto');
         note.append(img('footer_feather'), node('span', '', '인연은 이어지고, 유대는 오늘부터 쌓입니다.'));
-        const memory = button('', () => memoryCard(ui, s, who), 'sf_bond_memory'); memory.append(img('memory_book_icon'), node('span', '', '추억 수첩'), node('span', '', '›'));
+        const memory = button('', () => memoryCard(ui, s, who), 'sf_btn sf_primary sf_bond_memory'); memory.append(img('memory_book_icon'), node('span', '', '추억 수첩'), node('span', '', '›'));
         footer.append(note, memory); content.append(left, right, footer);
     }
     draw(); return close;
@@ -170,7 +166,7 @@ function memoryCard(ui, s, who) {
     const box = node('div', 'sf_bond_form');
     const logs = fillBond(s).log.filter(l => l.who === who).slice().reverse();
     box.append(node('p', '', '이 게임에서 함께한 사실만 기록돼. RP 인연 기록은 유대 점수를 바꾸지 않아.'));
-    for (const l of logs) box.append(node('p', 'sf_bond_paper', `${l.day + 1}일 · ${l.line}`));
+    for (const l of logs) box.append(node('p', 'sf_list_row sf_bond_log', `${l.day + 1}일 · ${l.line}`));
     if (!logs.length) box.append(node('p', '', '아직 함께 쌓은 기록이 없어.'));
     ui.showCard({ title: `${BOND_NAMES[who]} · 추억 수첩`, body: box, wide: true });
 }
@@ -205,7 +201,7 @@ export function manualTieCard(ui, initial = 'set', done = () => {}, picked = nul
         if (!visibleMessage(now[choice.at]) || now[choice.at]?.mes !== chat[choice.at]?.mes || !plainText(now[choice.at].mes).includes(choice.quote)) throw new Error('원문이 바뀌었어. 다시 골라 줘.');
         const added = addTie(s, { who: who.input.value, title: title.input.value, summary: summary.input.value, when: when.input.value, where: where.input.value, src: [sourceRef(now, choice.at, choice.quote)], origin: 'manual', certainty: 'clear', edited: true, kind: 'event' });
         await saveState(); ui.toast(added ? '인연의 기록에 남겼어. 유대 점수는 그대로야.' : '이미 기록한 원문이야.'); close(); done();
-    }, 'sf_bond_button'); box.append(save);
+    }, 'sf_btn sf_primary'); box.append(save);
     const close = ui.showCard({ title: '직접 기록하기', body: box, wide: true });
 }
 
@@ -215,7 +211,7 @@ export function bondOptionsCard(ui, s) {
     const size = select('묶음 크기', [['12000', '작게 · 약 1만 2천 자'], ['24000', '보통 · 약 2만 4천 자'], ['48000', '크게 · 약 4만 8천 자']], String(b.options.chunkSize));
     const a = field('세트 별칭 · 쉼표로 구분', b.alias.set.join(', ')), h = field('호루스 별칭 · 쉼표로 구분', b.alias.horus.join(', '));
     box.append(precise.wrap, notify.wrap, size.wrap, a.wrap, h.wrap, node('p', '', '별칭에는 이름만 적어 줘. 그·그녀 같은 대명사는 사용할 수 없어. AI 연결은 기존 작은 모험의 연결을 사용해.'));
-    box.append(button('저장', async () => { assertState(s); const draft = structuredClone(s); setAliases(draft, 'set', a.input.value.split(',')); setAliases(draft, 'horus', h.input.value.split(',')); b.alias = draft.bond.alias; b.options = { precise: precise.input.checked, notify: notify.input.checked, chunkSize: Number(size.input.value) }; await saveState(); close(); }, 'sf_bond_button'));
+    box.append(button('저장', async () => { assertState(s); const draft = structuredClone(s); setAliases(draft, 'set', a.input.value.split(',')); setAliases(draft, 'horus', h.input.value.split(',')); b.alias = draft.bond.alias; b.options = { precise: precise.input.checked, notify: notify.input.checked, chunkSize: Number(size.input.value) }; await saveState(); close(); }, 'sf_btn sf_primary'));
     const close = ui.showCard({ title: '인연 분석 설정', body: box, wide: true });
 }
 
