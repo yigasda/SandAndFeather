@@ -1,0 +1,60 @@
+{
+  "_about": "0.9.68 기록 놀이: 낚시 최고 기록(fish), 업적·칭호(achievements), 지역 탐사율(exploration), 보물지도(treasure). 진행은 채팅별 세이브(state.js v12: fishing, achieve, explore, treasure). 숫자만 고치면 게임이 따라간다. 업적 need: tally(행동 누적, 0.9.60부터, kind 이름은 facts.js record), codex(도감 kind의 개수: secrets, 또는 found + itemKind), bestCm(물고기 최고 길이), explore(지역 100%), flag. 보상 deben·xp는 받기 버튼으로 한 번.",
+  "fish": {
+    "_about": "낚시로 건진 물고기 한 마리마다 cm가 한 번 붙는다. min~max, skew가 클수록 작은 것이 흔하다. 물고기가 아닌 것(봉인된 항아리)은 여기 없으니 길이도 기록도 없다.",
+    "sizes": {
+      "tilapia": { "min": 15, "max": 42, "skew": 1.6 },
+      "nile_perch": { "min": 40, "max": 125, "skew": 2.0 },
+      "catfish": { "min": 30, "max": 95, "skew": 1.8 },
+      "eel": { "min": 40, "max": 110, "skew": 1.7 },
+      "golden_carp": { "min": 25, "max": 62, "skew": 1.5 }
+    }
+  },
+  "achievements": [
+    { "id": "first_catch", "ko": "첫 낚시", "about": "물고기를 한 마리 낚았다.", "need": { "tally": "catch", "n": 1 }, "reward": { "deben": 10 }, "title": "초보 낚시꾼" },
+    { "id": "fish_five", "ko": "나일의 물고기", "about": "물고기 다섯 종류를 직접 잡거나 건졌다.", "need": { "codex": "found", "itemKind": "fish", "n": 5 }, "reward": { "deben": 30, "xp": 5 }, "title": "나일의 낚시꾼" },
+    { "id": "big_fish", "ko": "월척", "about": "80cm가 넘는 물고기를 낚았다.", "need": { "bestCm": 80 }, "reward": { "deben": 20, "xp": 3 }, "title": "월척 낚시꾼" },
+    { "id": "cook_ten", "ko": "부엌의 손", "about": "부엌에서 요리를 열 번 했다.", "need": { "tally": "cook", "n": 10 }, "reward": { "deben": 20, "xp": 3 }, "title": "부엌의 손" },
+    { "id": "secrets_five", "ko": "비밀을 찾는 눈", "about": "숨은 비밀을 다섯 가지 찾았다.", "need": { "codex": "secrets", "n": 5 }, "reward": { "xp": 8 }, "title": "비밀을 찾는 눈" },
+    { "id": "market_regular", "ko": "시장 단골", "about": "시장에서 스무 번 샀다.", "need": { "tally": "buy", "n": 20 }, "reward": { "deben": 15 }, "title": "시장 단골" },
+    { "id": "harvest_ten", "ko": "텃밭지기", "about": "텃밭에서 열 번 거뒀다.", "need": { "tally": "harvest", "n": 10 }, "reward": { "deben": 15, "xp": 2 }, "title": "텃밭지기" },
+    { "id": "festival_three", "ko": "축제의 사람", "about": "축제의 밤을 세 번 즐겼다.", "need": { "tally": "festival_night", "n": 3 }, "reward": { "deben": 25, "xp": 4 }, "title": "축제의 사람" },
+    { "id": "duat_return", "ko": "무사 귀환", "about": "두아트에서 제 발로 걸어 올라왔다.", "need": { "tally": "duat_return:safe", "n": 1 }, "reward": { "xp": 6 }, "title": "두아트에서 돌아온 이" },
+    { "id": "explore_ombos", "ko": "옴보스 탐사 완료", "about": "옴보스를 구석구석 다 걸었다.", "need": { "explore": "ombos" }, "title": "옴보스의 길잡이" },
+    { "id": "explore_ruins", "ko": "무너진 신전 탐사 완료", "about": "강 건너 무너진 신전을 다 살폈다.", "need": { "explore": "ruins" }, "title": "무너진 신전의 탐사가" },
+    { "id": "explore_temple", "ko": "신전 안채 탐사 완료", "about": "신전 안채의 방과 회랑을 모두 지나 봤다.", "need": { "explore": "temple" }, "title": "신전 안채의 안내자" },
+    { "id": "treasure", "ko": "숨겨진 길의 발견자", "about": "지도 조각과 세 단서를 따라 모래 아래 잠든 보물을 찾았다.", "need": { "flag": "treasure:found" }, "title": "숨겨진 길의 발견자" }
+  ],
+  "exploration": {
+    "_about": "지역마다 센다: points(맵의 anchors·spots id, 처음 radius 칸 안에 들어가면 본 것), rooms(그 맵에 처음 들어가면 본 것), 그 지역 맵의 secrets(도감)와 obelisks(깨움). 25·50%는 받기 버튼으로 한 번, 100%는 업적과 칭호.",
+    "radius": 2.5,
+    "steps": { "25": { "deben": 10, "xp": 2 }, "50": { "deben": 25, "xp": 4 } },
+    "regions": [
+      { "id": "ombos", "ko": "옴보스", "maps": ["ombos"],
+        "points": ["temple_hall", "scriptorium", "training", "market", "garden", "kitchen", "dock", "duat", "altar", "ombos_bench"],
+        "anchors": true },
+      { "id": "ruins", "ko": "강 건너 무너진 신전", "maps": ["ruins"], "locked": "ruins",
+        "points": ["ruins_dock", "inscription", "dig", "ruins_shrine"],
+        "anchors": true },
+      { "id": "temple", "ko": "신전 안채", "maps": [],
+        "rooms": ["temple_courtyard", "courtyard_colonnade", "temple_inner_corridor", "temple_central_gallery", "temple_east_gallery", "temple_west_gallery", "room_entrances_wide", "set_room", "horus_room", "somang_room", "temple_kitchen", "temple_dining", "temple_sanctuary", "temple_colonnade", "temple_roof"] }
+    ]
+  },
+  "treasure": {
+    "_about": "모래 아래 잠든 보물. 지도 조각 해독(flags.garden_hint)이 첫 단서, 세 단서(river 낚시 성공, stone 무너진 신전의 사암벽, sun 작은 모험 마침)를 다 모으면 map·anchor에 반짝이가 뜬다. 한 세이브에 한 번. 유물은 relics 순서(값 높은 것부터)로 도감에 없는 첫 것, 다 있으면 instead.",
+    "ko": "모래 아래 잠든 보물",
+    "map": "ruins", "anchor": "ruin_south",
+    "stoneAnchor": "ruin_rubble",
+    "clues": [
+      { "id": "scrap", "ko": "지도 조각", "text": "강줄기 표시가 옴보스 북서쪽의 끊긴 물길을 가리킨다. 지도 가장자리에 세 가지 표시가 더 그려져 있다: 물결, 돌벽, 해." },
+      { "id": "river", "ko": "강줄기", "text": "낚싯줄에 걸려 올라온 갈대 묶음에 붉은 끈이 매여 있었다. 끈을 따라가면 강이 꺾여 무너진 신전 뒤로 흐른다." },
+      { "id": "stone", "ko": "사암벽", "text": "무너진 신전 돌무더기의 사암벽에 지도와 같은 표시가 새겨져 있다. 화살표가 신전 뒤 모래를 가리킨다." },
+      { "id": "sun", "ko": "태양 그림자", "text": "모험 끝에 들은 이야기: 해가 기울 때 무너진 신전의 그림자가 닿는 모래 아래에 무언가 묻혀 있다." }
+    ],
+    "relics": ["heart_scarab", "ka_statue", "was_shard", "wedjat", "ancient_seal"],
+    "instead": { "star_shard": 2 },
+    "deben": 120,
+    "gives": { "gold_ornament": 1 },
+    "xp": 10
+  }
+}

@@ -13,6 +13,10 @@ import { itemCard } from '../../ui/items.js';
 import { onSpot } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
 import { partNow } from '../../core/rest.js';
+import { noteCatch, fishSizes } from '../../core/fishing.js';
+import { clueFound } from '../../core/treasure.js';
+import { list, para, stack } from '../../ui/kit.js';
+import { dateLabel, fromDayNumber } from '../../core/clock.js';
 
 const KEY = 'dock:pull';
 
@@ -33,6 +37,7 @@ onSpot('dock', (spot, ui, map) => {
         text: `${spot.text}\n낚시는 태양 기운 1로 세 번 던져. 갈대 사이 건지기는 하루 한 번 공짜야.`,
         buttons: [
             { label: free ? '갈대 사이 건지기' : '오늘은 건졌어', disabled: !free, onClick: () => { pull(ui, map); } },
+            { label: '낚시 기록', onClick: () => { recordsCard(ui); } },
             { label: '낚시하기', primary: true, disabled: sunLeft(s) < 1, onClick: () => { fish(ui, map); } },
         ],
     });
@@ -58,7 +63,7 @@ async function fish(ui, map) {
     const s = getState();
     if (!spend(s, 1)) { ui.toast('태양 기운이 모자라'); return; }
     await saveState();
-    let casts = 3, caught = [];
+    let casts = 3, caught = [], clueLine = ''; // clueLine: the 보물지도 clue, kept on screen through the next casts
     const box = document.createElement('div');
     box.className = 'sf_fish';
     box.innerHTML = '<div class="sf_fish_bar"><i class="sf_fish_zone"></i><b class="sf_fish_mark"></b></div><div class="sf_note sf_fish_msg">찌가 흔들릴 때 당겨.</div>';
@@ -79,8 +84,11 @@ async function fish(ui, map) {
         casts--;
         if (pos >= zx && pos <= zx + zw) {
             const id = pickFrom(DATA.finds?.fish, s);
-            give(s, id, 1, 'dock'); caught.push(id);
-            msg.textContent = `${itemInfo(id)?.icon || ''} ${josa(itemInfo(id)?.ko || id, '을')} 낚았어! 남은 던지기 ${casts}`;
+            const [uid] = give(s, id, 1, 'dock'); caught.push(id);
+            const n = noteCatch(s, id, uid);
+            msg.textContent = `${itemInfo(id)?.icon || ''} ${josa(itemInfo(id)?.ko || id, '을')} 낚았어!${n ? ` ${n.cm}cm${n.first ? ' · 첫 기록' : n.best ? ' · 새 기록!' : ''}` : ''} 남은 던지기 ${casts}`;
+            if (n) { const c = clueFound(s, 'river'); if (c) clueLine = `✦ 보물지도 단서 「${c.ko}」: ${c.text}`; }
+            if (clueLine) msg.textContent += `\n${clueLine}`;
         } else msg.textContent = `놓쳤어. 남은 던지기 ${casts}`;
         newZone();
         if (casts <= 0) {
@@ -97,4 +105,21 @@ async function fish(ui, map) {
         buttons: [{ label: '닫기', onClick: () => { cancelAnimationFrame(raf); } }, { label: '당기기', primary: true, onClick: () => { pullLine(); return false; } }],
         onClose: () => cancelAnimationFrame(raf),
     });
+}
+
+// 낚시 기록: each kind of fish, its best length, how many and when; kept when the fish are sold or eaten
+export function recordsCard(ui) {
+    const s = getState(), recs = s.fishing.records;
+    const ids = Object.keys(fishSizes());
+    const got = ids.filter(id => recs[id]);
+    ui.showCard({ tag: '생활', title: '낚시 기록', kind: 'fish-records',
+        body: stack(
+            para(`잡은 물고기 ${got.length}/${ids.length}종 · 모두 ${got.reduce((a, id) => a + recs[id].count, 0)}마리`),
+            list(ids.map(id => {
+                const r = recs[id], info = itemInfo(id);
+                return r ? { item: id, icon: info?.icon, name: `${info?.ko} · 최고 ${r.best}cm`, sub: `${r.count}마리 · 처음 ${dateLabel(fromDayNumber(r.first))} · 마지막 ${dateLabel(fromDayNumber(r.last))}` }
+                    : { icon: '❔', name: '???', sub: '아직 낚아 본 적 없어', dim: true };
+            })),
+            para('낚시로 건진 물고기만 기록돼. 팔거나 요리해도 기록은 남아.', 'sf_note')),
+        buttons: [{ label: '닫기', primary: true }] });
 }

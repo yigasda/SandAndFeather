@@ -20,7 +20,7 @@ export function itemCard(ui, map, uid, { fresh = false } = {}) {
     ui.showCard({
         tag: fresh ? '발견' : '',
         title: `${info.icon || ''} ${nameOf(it)}`.trim(),
-        text: `${it.opened && info.open?.ko ? info.open.ko : info.about || ''}${fresh ? '\n가방에 넣었어.' : `\n${dateLabel(fromDayNumber(it.got))}${fromKo(it) ? ` · ${fromKo(it)}` : ''}`}`,
+        text: `${it.opened && info.open?.ko ? info.open.ko : info.about || ''}${it.cm ? `\n길이 ${it.cm}cm` : ''}${fresh ? '\n가방에 넣었어.' : `\n${dateLabel(fromDayNumber(it.got))}${fromKo(it) ? ` · ${fromKo(it)}` : ''}`}`,
         buttons,
     });
 }
@@ -66,7 +66,10 @@ export function bagCard(ui, map) {
         count.append('보유 수량 ');const quantity=document.createElement('strong');quantity.textContent=String(group.length);count.append(quantity);
         identity.append(title,count);head.append(icon,identity);
         const about=document.createElement('p');about.className='sf_inventory_description';about.textContent=it.opened&&info.open?.ko?info.open.ko:info.about||'';
-        detail.replaceChildren(head,about);
+        // 낚시 기록: the length of each fish caught on the line, biggest first
+        const cms=group.map(x=>x.cm).filter(Boolean).sort((p,q)=>q-p);
+        const size=cms.length?Object.assign(document.createElement('p'),{className:'sf_inventory_description sf_fish_cm',textContent:`길이 ${cms.map(c=>`${c}cm`).join(', ')}`}):null;
+        detail.replaceChildren(head,about,...(size?[size]:[]));
     };
     const materials=new Set(['material','ingredient','spice','crop','seed']);
     const categories=[['all','전체'],['material','재료'],['food','음식'],['other','기타']];

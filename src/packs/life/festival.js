@@ -114,6 +114,7 @@ async function night(ui) {
     if (n.deben) s.bag.deben += n.deben;
     if (n.give && itemInfo(n.give)) give(s, n.give, 1, 'festival');
     const d = didAct(s, 'festival');
+    record(s, 'festival_night', { source: x.key }); // 업적 축제의 사람: one a festival a year (done is set above, so never twice)
     journal(s, { ko: `${x.f.ko}: ${n.ko}`, say: `${x.f.ko} 밤 이야기를 꺼낸다.`, en: String(n.en || '').replace('{fest}', x.f.en), marks: [x.f.ko.split(' ')[0]], kind: 'festival' });
     await saveState();
     ui.showCard({ tag: '축제의 밤', title: x.f.ko, text: `${n.ko}${more ? `\n${josa(extra.map(id => itemInfo(id).ko).join('·'), '로')} 단장하고 나갔다. 경험치 +${more}` : ''}${n.give && itemInfo(n.give) ? `\n${josa(itemInfo(n.give).ko, '을')} 받았어.` : ''}${n.deben ? `\n데벤 ${n.deben}` : ''}${d ? `\n${d}` : ''}\n임무 탭 일지에서 이 밤을 챗에 꺼낼 수 있어.` });

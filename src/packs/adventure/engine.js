@@ -10,6 +10,7 @@ import { DATA } from '../../core/data.js';
 import { josa } from '../../core/ko.js';
 import { today } from '../../core/ledger.js';
 import { addStat, addXP, didAct, hasSkill, journal } from '../../core/progress.js';
+import { clueFound } from '../../core/treasure.js';
 import { getState, saveState } from '../../core/state.js';
 import { addThings } from '../../world/things.js';
 import { getMap } from '../../world/map.js';
@@ -133,6 +134,7 @@ async function finish(ui) {
     if (e.deben) s.bag.deben += Math.min(40, e.deben);
     if (e.give) give(s, e.give, 1, 'adventure');
     const d = didAct(s, 'adventure');
+    const clue = clueFound(s, 'sun'); // 보물지도: the third mark, heard at the end of an adventure (once, after the scrap is read)
     const line = c.chosen?.journal || e.journal || `${josa(c.title, '을')} 마쳤다.`;
     if (e.en) journal(s, { ko: line, say: e.say || `${c.title} 이야기를 꺼낸다.`, en: e.en, marks: e.marks?.length ? e.marks : [c.title.split(' ').pop()], kind: 'adventure' });
     // what it was about, how it went and how she ended it, so the next one is a different kind of day
@@ -142,7 +144,7 @@ async function finish(ui) {
     if (c.hand) s.adv.done.push(c.id);
     s.adv.cur = null;
     await save();
-    ui.showCard({ tag: '모험', title: `${c.title} · 끝`, text: `${line}${d ? `\n${d}` : ''}\n임무 탭 일지에서 이 일을 챗에 꺼낼 수 있어.` });
+    ui.showCard({ tag: '모험', title: `${c.title} · 끝`, text: `${line}${d ? `\n${d}` : ''}${clue ? `\n✦ 보물지도 단서 「${clue.ko}」: ${clue.text}` : ''}\n임무 탭 일지에서 이 일을 챗에 꺼낼 수 있어.` });
 }
 
 // a definition → positions on the map; returns null when something in it does not exist
