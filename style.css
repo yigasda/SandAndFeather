@@ -1766,3 +1766,8 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
  #sf_game .sf_treasure *, #sf_game .sf_treasure_rewards li { animation-duration:.01s !important; animation-delay:0s !important; }
 }
+/* 0.9.68: temple's title sits fixed between the winged sun, so a card's tag (생활, 발견, 보물 발견…) went over it.
+   There the tag moves to its own line at the top of the card, under the title bar; other themes keep it in the bar. */
+:is(#sf_game,#sf_pick) .sf_pop_tagline { display:none; }
+:is(#sf_game,#sf_pick)[data-ui-theme='temple'] .sf_pop_head .sf_tag { display:none; }
+:is(#sf_game,#sf_pick)[data-ui-theme='temple'] .sf_pop_tagline { display:flex; justify-content:center; padding:8px 12px 0; }

@@ -31,6 +31,7 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
           <button type="button" class="sf_icon_btn sf_pop_x" aria-label="닫기"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="sf_pop_scroll">
+          ${tag ? `<div class="sf_pop_tagline"><span class="sf_tag">${esc(tag)}</span></div>` : ''}
           ${text ? `<div class="sf_pop_text">${esc(text)}</div>` : ''}
           <div class="sf_pop_body"></div>
           <div class="sf_pop_btns"></div>
