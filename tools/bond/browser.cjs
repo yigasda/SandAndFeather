@@ -50,7 +50,7 @@ const out = path.resolve(process.argv[2] || 'docs/bond-ui/screenshots'); fs.mkdi
    const bounds=await modal().evaluate(e=>{const b=e.getBoundingClientRect(),scroll=e.querySelector('.sf_pop_scroll'),cols=e.querySelector('.sf_bond_columns');return{x:b.x,right:b.right,width:innerWidth,overflow:e.scrollWidth-e.clientWidth,scrollOverflow:scroll.scrollWidth-scroll.clientWidth,columns:getComputedStyle(cols).gridTemplateColumns,scrollable:scroll.scrollHeight>scroll.clientHeight};});
    assert(bounds.x>=-1&&bounds.right<=size.width+1&&bounds.overflow<=2&&bounds.scrollOverflow<=2,JSON.stringify({theme,brightness,size,bounds}));
    assert.equal(bounds.columns.split(' ').length,size.width>=900?2:1);
-   assert(await modal().locator('.sf_bond_tab>span').evaluateAll(es=>es.every(e=>e.getBoundingClientRect().height<35)), 'Character names must stay on one line');
+   assert(await modal().locator('.sf_bond_tab>span').evaluateAll(es=>es.every(e=>e.getBoundingClientRect().height<=parseFloat(getComputedStyle(e).lineHeight)+2)), 'Character names must stay on one line');
    assert.equal(await modal().evaluate(e=>getComputedStyle(e,'::before').clipPath),'none','Outer corners must not inherit another popup clipping mask');
    measurements.push({theme,brightness,width:size.width,...bounds});
    if(theme==='cozy'){

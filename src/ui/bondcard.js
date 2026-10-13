@@ -9,7 +9,7 @@ import { itemInfo } from '../core/bag.js';
 import { itemArt } from './itemart.js';
 
 const art = new URL('../../data/art/ui/bond/', import.meta.url);
-const portraits = new URL('../../data/art/portraits/', import.meta.url);
+const symbols = new URL('../../data/art/ui/bond/exact/', import.meta.url);
 const node = (tag, cls = '', text = '') => { const e = document.createElement(tag); e.className = cls; e.textContent = text; return e; };
 function img(name, cls = '') { const e = node('img', cls); e.src = new URL(`${name}.png`, art).href; e.alt = ''; e.decoding = 'async'; return e; }
 function button(text, fn, cls = 'sf_bond_small') {
@@ -56,7 +56,7 @@ export function bondCard(ui, initial = 'set') {
     box.append(tabs, content);
     const close = ui.showCard({ title: '인연과 유대', body: box, kind: 'bond', wide: true, buttons: [], onClose: () => { closed = true; off(); change(); } });
     const wrap = box.closest('.sf_pop_wrap'), header = wrap.querySelector('.sf_pop_head');
-    header.prepend(img('header_birds', 'sf_bond_header_birds'));
+    header.prepend(img('ornament_ankh', 'sf_bond_header_birds'));
     header.querySelector('.sf_pop_title').before(img('title_lotus', 'sf_bond_title_lotus'));
     header.querySelector('.sf_pop_title').after(img('title_lotus', 'sf_bond_title_lotus'));
     header.querySelector('.sf_pop_title').append(node('small', '', '함께한 시간이, 더 특별한 내일을 만듭니다.'));
@@ -70,7 +70,7 @@ export function bondCard(ui, initial = 'set') {
         tabs.replaceChildren(); content.replaceChildren();
         for (const id of ['set', 'horus']) {
             const tab = button('', () => { who = id; selected = ''; draw(); }, `sf_bond_tab${who === id ? ' sf_on' : ''}`);
-            const portrait = node('img', 'sf_bond_portrait'); portrait.src = new URL(`${id}-bust.png`, portraits).href; portrait.alt = '';
+            const portrait = node('img', 'sf_bond_portrait'); portrait.src = new URL(`${id}-symbol.png`, symbols).href; portrait.alt = '';
             tab.append(portrait, img(id === 'set' ? 'tab_paw' : 'tab_bird', 'sf_bond_tab_symbol'), node('span', '', BOND_NAMES[id])); tab.setAttribute('role', 'tab'); tab.setAttribute('aria-selected', String(who === id)); tab.dataset.bondWho = id; tabs.append(tab);
         }
         const left = node('div', 'sf_bond_left'), right = node('div', 'sf_bond_right');
@@ -94,11 +94,12 @@ export function bondCard(ui, initial = 'set') {
         records.append(recordsBox);
         const ai = button('AI로 인연 찾아오기', () => scanCard(ui, s)); ai.disabled = !ready;
         const sync = button('새로운 인연 동기화', () => scanCard(ui, s, 'sync')); sync.disabled = !ready;
-        records.append(row(ai, sync, button('직접 기록하기', () => manualTieCard(ui, who, draw))));
+        const management = node('details', 'sf_bond_management'); management.append(node('summary', '', '기록 추가 · AI 분석'));
+        management.append(row(ai, sync, button('직접 기록하기', () => manualTieCard(ui, who, draw))));
         const count = b.cand.length + b.scan.pending.length;
-        if (count) records.append(button(`후보 검토 ${count}개`, () => reviewCard(ui, s, draw)));
+        if (count) management.append(button(`후보 검토 ${count}개`, () => reviewCard(ui, s, draw)));
         if (b.options.notify && rpMessages().filter(m => m.at > b.scan.upTo).length >= 40) records.append(node('p', 'sf_bond_notice', '새 RP 메시지가 40개 이상 쌓였어. 새로운 인연을 찾아볼 수 있어.'));
-        records.append(button('분석 설정 · 별칭', () => bondOptionsCard(ui, s)));
+        management.append(button('분석 설정 · 별칭', () => bondOptionsCard(ui, s))); records.append(management);
         left.append(records);
 
         const bond = section('오늘부터 쌓는 유대', 'section_plant', '작은 마음도, 언젠가 큰 인연이 됩니다.');

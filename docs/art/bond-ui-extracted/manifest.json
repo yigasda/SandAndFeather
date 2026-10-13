@@ -1,0 +1,838 @@
+{
+  "source": "../../bond-ui/reference/mobile-b.jpg",
+  "status": "extraction and code-text assembly proposal; not deployed",
+  "assets": [
+    {
+      "name": "close",
+      "rect": [
+        777,
+        154,
+        841,
+        220
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "ankh-left",
+      "rect": [
+        93,
+        201,
+        153,
+        282
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "ankh-right",
+      "rect": [
+        710,
+        201,
+        765,
+        282
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "lotus-left",
+      "rect": [
+        234,
+        201,
+        301,
+        254
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "lotus-right",
+      "rect": [
+        558,
+        201,
+        623,
+        254
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "set-symbol",
+      "rect": [
+        102,
+        308,
+        213,
+        400
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "horus-symbol",
+      "rect": [
+        452,
+        323,
+        578,
+        400
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "paw",
+      "rect": [
+        249,
+        343,
+        294,
+        382
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "falcon-symbol",
+      "rect": [
+        601,
+        343,
+        650,
+        384
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "book",
+      "rect": [
+        79,
+        428,
+        130,
+        469
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "sprout",
+      "rect": [
+        77,
+        710,
+        125,
+        755
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "gift-symbol",
+      "rect": [
+        80,
+        925,
+        127,
+        964
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "branch",
+      "rect": [
+        78,
+        1098,
+        129,
+        1143
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "heart",
+      "rect": [
+        90,
+        769,
+        140,
+        813
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "record-bracelet",
+      "rect": [
+        95,
+        489,
+        204,
+        570
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "record-bread",
+      "rect": [
+        95,
+        592,
+        204,
+        669
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "gauge",
+      "rect": [
+        146,
+        767,
+        771,
+        808
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "reward-20",
+      "rect": [
+        172,
+        817,
+        223,
+        870
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "reward-40",
+      "rect": [
+        310,
+        817,
+        363,
+        870
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "reward-60",
+      "rect": [
+        449,
+        817,
+        501,
+        870
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "reward-80",
+      "rect": [
+        586,
+        817,
+        640,
+        870
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "reward-100",
+      "rect": [
+        707,
+        807,
+        766,
+        870
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "gift-flowers",
+      "rect": [
+        82,
+        974,
+        186,
+        1073
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "gift-pie-selected",
+      "rect": [
+        190,
+        974,
+        293,
+        1073
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "gift-book",
+      "rect": [
+        296,
+        974,
+        402,
+        1073
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "gift-lotus",
+      "rect": [
+        403,
+        974,
+        509,
+        1073
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "gift-button",
+      "rect": [
+        525,
+        973,
+        784,
+        1074
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "activity-fishing",
+      "rect": [
+        76,
+        1150,
+        244,
+        1249
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "activity-cooking",
+      "rect": [
+        250,
+        1150,
+        422,
+        1249
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "activity-study",
+      "rect": [
+        425,
+        1150,
+        608,
+        1249
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "activity-explore",
+      "rect": [
+        612,
+        1150,
+        789,
+        1249
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "feather",
+      "rect": [
+        86,
+        1268,
+        132,
+        1331
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "memory-button",
+      "rect": [
+        519,
+        1259,
+        794,
+        1343
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "corner-tl",
+      "rect": [
+        35,
+        173,
+        90,
+        218
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "corner-tr",
+      "rect": [
+        778,
+        269,
+        830,
+        310
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "corner-bl",
+      "rect": [
+        35,
+        1332,
+        87,
+        1375
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "corner-br",
+      "rect": [
+        782,
+        1332,
+        830,
+        1375
+      ],
+      "backing": "original backing preserved"
+    },
+    {
+      "name": "title-plate",
+      "rect": [
+        35,
+        154,
+        841,
+        308
+      ],
+      "backing": "paper/wood opaque; extracted objects removed with alpha"
+    },
+    {
+      "name": "tabs-plate",
+      "rect": [
+        35,
+        308,
+        830,
+        420
+      ],
+      "backing": "paper/wood opaque; extracted objects removed with alpha"
+    },
+    {
+      "name": "records-plate",
+      "rect": [
+        35,
+        420,
+        830,
+        702
+      ],
+      "backing": "paper/wood opaque; extracted objects removed with alpha"
+    },
+    {
+      "name": "bond-plate",
+      "rect": [
+        35,
+        702,
+        830,
+        910
+      ],
+      "backing": "paper/wood opaque; extracted objects removed with alpha"
+    },
+    {
+      "name": "gifts-plate",
+      "rect": [
+        35,
+        910,
+        830,
+        1090
+      ],
+      "backing": "paper/wood opaque; extracted objects removed with alpha"
+    },
+    {
+      "name": "activities-plate",
+      "rect": [
+        35,
+        1090,
+        830,
+        1255
+      ],
+      "backing": "paper/wood opaque; extracted objects removed with alpha"
+    },
+    {
+      "name": "footer-plate",
+      "rect": [
+        35,
+        1255,
+        830,
+        1375
+      ],
+      "backing": "paper/wood opaque; extracted objects removed with alpha"
+    }
+  ],
+  "text": [
+    [
+      315,
+      201,
+      237,
+      55,
+      "인연과 유대",
+      44,
+      "#fff1cf",
+      true
+    ],
+    [
+      217,
+      258,
+      432,
+      30,
+      "함께한 시간이, 더 특별한 내일을 만듭니다.",
+      22,
+      "#f6e3bd",
+      false
+    ],
+    [
+      298,
+      339,
+      76,
+      43,
+      "세트",
+      32,
+      "#fff1d5",
+      true
+    ],
+    [
+      659,
+      341,
+      94,
+      43,
+      "호루스",
+      31,
+      "#80634d",
+      true
+    ],
+    [
+      137,
+      428,
+      157,
+      39,
+      "인연의 기록",
+      29,
+      "#29140e",
+      true
+    ],
+    [
+      485,
+      438,
+      306,
+      30,
+      "함께한 순간들이, 소중한 이야기가 됩니다.",
+      17,
+      "#66513a",
+      false
+    ],
+    [
+      214,
+      495,
+      360,
+      29,
+      "Hathyr 5 · 해질녘",
+      20,
+      "#65513f",
+      false
+    ],
+    [
+      214,
+      528,
+      367,
+      34,
+      "붉은 홍옥수를 팔찌에 꿰어 주었다.",
+      21,
+      "#29140e",
+      true
+    ],
+    [
+      624,
+      504,
+      145,
+      65,
+      "네가 건넨 마음이\n따스했다.",
+      18,
+      "#65513f",
+      false
+    ],
+    [
+      214,
+      598,
+      360,
+      29,
+      "Hathyr 3 · 낮",
+      20,
+      "#65513f",
+      false
+    ],
+    [
+      214,
+      631,
+      367,
+      34,
+      "직접 구운 빵을 건넸다.",
+      21,
+      "#29140e",
+      true
+    ],
+    [
+      624,
+      607,
+      145,
+      65,
+      "맛있다며 환하게\n웃어주었다.",
+      18,
+      "#65513f",
+      false
+    ],
+    [
+      135,
+      715,
+      223,
+      39,
+      "오늘부터 쌓는 유대",
+      28,
+      "#29140e",
+      true
+    ],
+    [
+      515,
+      721,
+      275,
+      32,
+      "작은 마음도, 언젠가 큰 인연이 됩니다.",
+      17,
+      "#65513f",
+      false
+    ],
+    [
+      425,
+      772,
+      112,
+      30,
+      "12 / 100",
+      23,
+      "#29140e",
+      true
+    ],
+    [
+      179,
+      867,
+      55,
+      29,
+      "20",
+      20,
+      "#29140e",
+      true
+    ],
+    [
+      316,
+      867,
+      55,
+      29,
+      "40",
+      20,
+      "#29140e",
+      true
+    ],
+    [
+      454,
+      867,
+      55,
+      29,
+      "60",
+      20,
+      "#29140e",
+      true
+    ],
+    [
+      593,
+      867,
+      55,
+      29,
+      "80",
+      20,
+      "#29140e",
+      true
+    ],
+    [
+      714,
+      867,
+      55,
+      29,
+      "100",
+      20,
+      "#29140e",
+      true
+    ],
+    [
+      135,
+      922,
+      130,
+      38,
+      "선물하기",
+      29,
+      "#29140e",
+      true
+    ],
+    [
+      488,
+      933,
+      300,
+      30,
+      "마음을 담은 선물은 유대를 깊게 합니다.",
+      17,
+      "#65513f",
+      false
+    ],
+    [
+      157,
+      1045,
+      20,
+      29,
+      "1",
+      19,
+      "#29140e",
+      true
+    ],
+    [
+      267,
+      1045,
+      20,
+      29,
+      "1",
+      19,
+      "#29140e",
+      true
+    ],
+    [
+      373,
+      1045,
+      20,
+      29,
+      "1",
+      19,
+      "#29140e",
+      true
+    ],
+    [
+      482,
+      1045,
+      20,
+      29,
+      "1",
+      19,
+      "#29140e",
+      true
+    ],
+    [
+      634,
+      1001,
+      131,
+      46,
+      "선물하기",
+      29,
+      "#fff1d5",
+      true
+    ],
+    [
+      134,
+      1102,
+      166,
+      38,
+      "함께하는 활동",
+      27,
+      "#29140e",
+      true
+    ],
+    [
+      508,
+      1113,
+      280,
+      31,
+      "함께하는 시간을 더 많이 만들어 보세요.",
+      16,
+      "#65513f",
+      false
+    ],
+    [
+      155,
+      1175,
+      55,
+      31,
+      "낚시",
+      23,
+      "#29140e",
+      true
+    ],
+    [
+      151,
+      1208,
+      84,
+      26,
+      "강가에서 여유를",
+      13,
+      "#66513f",
+      false
+    ],
+    [
+      333,
+      1175,
+      55,
+      31,
+      "요리",
+      23,
+      "#29140e",
+      true
+    ],
+    [
+      329,
+      1208,
+      84,
+      26,
+      "맛있는 걸 함께",
+      13,
+      "#66513f",
+      false
+    ],
+    [
+      510,
+      1175,
+      55,
+      31,
+      "공부",
+      23,
+      "#29140e",
+      true
+    ],
+    [
+      506,
+      1208,
+      84,
+      26,
+      "새로운 걸 배워요",
+      13,
+      "#66513f",
+      false
+    ],
+    [
+      710,
+      1175,
+      55,
+      31,
+      "탐험",
+      23,
+      "#29140e",
+      true
+    ],
+    [
+      706,
+      1208,
+      84,
+      26,
+      "낯선 곳을 함께",
+      13,
+      "#66513f",
+      false
+    ],
+    [
+      137,
+      1285,
+      346,
+      38,
+      "인연은 이어지고, 유대는 오늘부터 쌓입니다.",
+      20,
+      "#56351e",
+      false
+    ],
+    [
+      620,
+      1276,
+      126,
+      49,
+      "추억 수첩",
+      29,
+      "#fff1d5",
+      true
+    ]
+  ]
+}

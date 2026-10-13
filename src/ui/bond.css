@@ -170,3 +170,82 @@
  #sf_game .sf_bond_tab img.sf_bond_portrait{width:33px;height:43px;}
  #sf_game .sf_bond_tab img.sf_bond_tab_symbol{width:14px;height:19px;}
 }
+
+/* 0.9.64: user-selected screenshot crops; no flattened screen or baked game values. */
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop {
+ padding:11px; background:#f5e4c6 url('../../data/art/ui/bond/exact/paper.png') repeat;
+}
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop::before {
+ border-image-source:url('../../data/art/ui/bond/exact/window-border.png');border-image-slice:43;border-image-width:14px;
+}
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop_head {
+ background:#412819 url('../../data/art/ui/bond/exact/wood.png') repeat;
+ min-height:77px;padding:12px 24px;border-width:3px 0;
+ border-image:url('../../data/art/ui/bond/exact/header-line.png') 5 / 3px 0 stretch;
+}
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop_title{font-size:23px;white-space:nowrap;}
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop_title small{font-size:10px;white-space:normal;}
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_bond_title_lotus{width:25px;margin:0 6px;}
+#sf_game .sf_bond_header_birds,#sf_game .sf_bond_header_ankh{width:20px;height:36px;left:5px;}
+#sf_game .sf_bond_header_ankh{left:auto;right:5px;}
+#sf_game .sf_bond_tabs{gap:4px;padding:5px 3px 0;border-bottom:9px solid transparent;border-image:url('../../data/art/ui/bond/exact/tab-line.png') 8 / 0 0 9px stretch;}
+#sf_game .sf_bond_tab{height:58px;justify-content:flex-start;gap:8px;font-size:21px;background:url('../../data/art/ui/bond/exact/tab-off-fill.png') repeat;border-image:url('../../data/art/ui/bond/exact/tab-off-border.png') 15 / 7px stretch;}
+#sf_game .sf_bond_tab.sf_on{background-image:url('../../data/art/ui/bond/exact/tab-on-fill.png');border-image-source:url('../../data/art/ui/bond/exact/tab-on-border.png');}
+#sf_game .sf_bond_tab img.sf_bond_portrait{height:54px;width:62px;image-rendering:auto;margin-left:2px;}
+#sf_game .sf_bond_tab img.sf_bond_tab_symbol{width:18px;height:23px;}
+#sf_game .sf_bond_columns{gap:0;padding:4px 5px;}
+#sf_game .sf_bond_section{padding:9px 0 11px;border-bottom:3px double #c7a16c;}
+#sf_game .sf_bond_section_head{gap:5px;margin-bottom:7px;}
+#sf_game .sf_bond_section_head h3{font-size:18px;}
+#sf_game .sf_bond_section_head small{font-size:10px;line-height:1.4;}
+#sf_game .sf_bond_record,#sf_game .sf_bond_paper{border:8px solid transparent;border-image:url('../../data/art/ui/bond/exact/record-border.png') 17 19 / 8px stretch;background:#f7e7cb url('../../data/art/ui/bond/exact/paper.png') repeat;border-radius:0;}
+#sf_game .sf_bond_record{padding:5px;gap:8px;min-height:85px;}
+#sf_game .sf_bond_record_icon{height:43px;width:43px;}
+#sf_game .sf_bond_record b{font-size:13px;}
+#sf_game .sf_bond_record p{font-size:12px;}
+#sf_game .sf_bond_record details summary{font-size:10px;color:#82694d;}
+#sf_game .sf_bond_management{margin-top:7px;font-size:11px;color:#725439;}
+#sf_game .sf_bond_management>summary{cursor:pointer;}
+#sf_game .sf_bond_progress_panel{padding:5px 3px;}
+#sf_game .sf_bond_track{height:22px;border-image:url('../../data/art/ui/bond/exact/gauge.png') 5 9 fill / 3px stretch;}
+#sf_game .sf_bond_stages{margin-top:9px;}
+#sf_game .sf_bond_slot{background:#f3dfb9 url('../../data/art/ui/bond/exact/slot-fill.png') repeat;border:6px solid transparent;border-image:url('../../data/art/ui/bond/exact/slot-border.png') 13 / 6px stretch;padding:1px;flex-basis:48px;width:48px;height:52px;}
+#sf_game .sf_bond_slot.sf_on{background-image:url('../../data/art/ui/bond/exact/slot-fill.png');border-image-source:url('../../data/art/ui/bond/exact/slot-selected-border.png');}
+#sf_game .sf_bond_count{bottom:-2px;right:0;}
+#sf_game .sf_bond_giftrow{flex-wrap:nowrap;gap:4px;}
+#sf_game .sf_bond_give{background:#92430f url('../../data/art/ui/bond/exact/give-fill.png') repeat;border-image:url('../../data/art/ui/bond/exact/give-border.png') 15 17 / 7px stretch;font-size:14px;padding:4px 1px;min-width:97px;min-height:50px;}
+#sf_game .sf_bond_give img{width:17px;height:20px;margin-right:3px;}
+#sf_game .sf_bond_activity{background:#f5e3c2 url('../../data/art/ui/bond/exact/paper.png') repeat;border:6px solid transparent;border-image:url('../../data/art/ui/bond/exact/activity-border.png') 12 / 6px stretch;box-shadow:none;border-radius:0;padding:4px 2px;}
+#sf_game .sf_bond_activity_grid{gap:3px;}
+#sf_game .sf_bond_activity img{image-rendering:auto;}
+#sf_game .sf_bond_footer{padding-top:8px;}
+#sf_game .sf_bond_memory{background:#382114 url('../../data/art/ui/bond/exact/memory-fill.png') repeat;border-image:url('../../data/art/ui/bond/exact/memory-border.png') 16 / 8px stretch;}
+@media(max-width:379px){
+ #sf_game .sf_bond_tab{gap:4px;font-size:17px;}
+ #sf_game .sf_bond_tab img.sf_bond_portrait{width:43px;}
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop_title{font-size:19px;}
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_bond_title_lotus{width:18px;margin:0 3px;}
+ #sf_game .sf_bond_header_birds,#sf_game .sf_bond_header_ankh{width:13px;}
+}
+@media(min-width:900px){
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop{width:min(1000px,100%);padding:17px;}
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop::before{border-image-width:20px;}
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop_head{min-height:102px;}
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop_title{font-size:33px;}
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_pop_title small{font-size:14px;}
+ #sf_game[data-ui-theme] .sf_pop_wrap[data-kind="bond"] .sf_bond_title_lotus{width:43px;margin:0 15px;}
+ #sf_game .sf_bond_header_birds,#sf_game .sf_bond_header_ankh{width:37px;height:62px;left:38px;}
+ #sf_game .sf_bond_header_ankh{left:auto;right:38px;}
+ #sf_game .sf_bond_tab{height:76px;font-size:29px;justify-content:center;gap:15px;}
+ #sf_game .sf_bond_tab img.sf_bond_portrait{height:74px;width:94px;}
+ #sf_game .sf_bond_columns{padding:9px;gap:14px;}
+ #sf_game .sf_bond_section_head h3{font-size:21px;}
+ #sf_game .sf_bond_record{min-height:110px;padding:9px;}
+ #sf_game .sf_bond_record b{font-size:16px;}
+ #sf_game .sf_bond_record_icon{width:52px;height:52px;}
+ #sf_game .sf_bond_slot{width:61px;height:65px;flex-basis:61px;}
+ #sf_game .sf_bond_give{min-width:127px;min-height:62px;font-size:18px;}
+ #sf_game .sf_bond_activity{grid-template-columns:40px 1fr 10px;}
+ #sf_game .sf_bond_activity img{grid-row:1/3;grid-column:1;width:40px;height:43px;}
+ #sf_game .sf_bond_activity small{grid-column:2/4;font-size:10px;}
+}
