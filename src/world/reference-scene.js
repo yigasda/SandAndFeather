@@ -109,8 +109,8 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
             const xs = o.polygon.map(p => ox + p[0]*kx), ys = o.polygon.map(p => oy + p[1]*ky);
             const left = Math.min(...xs), right = Math.max(...xs), top = Math.min(...ys), bottom = Math.max(...ys);
             // `only`: just whoever is in that pose (and look, and facing one of `dir`, if given) goes behind it (legs under a low table);
-            // everyone else inside it is painted again as they were
-            const only = o.only && (a => (!o.only.look || a.look === o.only.look) && (!o.only.dir || o.only.dir.includes(a.dir)) && a.act?.name === o.only.act);
+            // act null: whoever is not sitting or lying (standing or walking). Everyone else inside it is painted again as they were
+            const only = o.only && (a => (!o.only.look || a.look === o.only.look) && (!o.only.dir || o.only.dir.includes(a.dir)) && (a.act?.name ?? null) === o.only.act);
             if (!actors.some(a => (!only || only(a)) && (a.y + 1)*16 < foot && (a.x + 2)*16 > left &&
                 (a.x - 1)*16 < right && (a.y + 1)*16 > top && (a.y - 2)*16 < bottom)) continue;
             const box = inter(view, [left*z - cx - 1, top*z - cy - 1, right*z - cx + 1, bottom*z - cy + 1]);
