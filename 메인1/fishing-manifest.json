@@ -1,0 +1,162 @@
+{
+  "action": "fishing",
+  "status": "incomplete-uploaded-at-user-request",
+  "canvas": [
+    620,
+    720
+  ],
+  "files": [
+    {
+      "path": "set-fishing-front-0.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "seat-bottom",
+        "position": [
+          340,
+          550
+        ]
+      },
+      "scale": 1.18,
+      "offset": [
+        32,
+        116
+      ],
+      "sourceBox": [
+        9,
+        62,
+        493,
+        511
+      ],
+      "sha256": "1cb545120f1c021e4a6151922ae1f3f1b603ee19b92b9d6186f4fbcf7c93f7e1"
+    },
+    {
+      "path": "horus-fishing-front-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 0,
+      "anchor": {
+        "kind": "seat-bottom",
+        "position": [
+          340,
+          550
+        ]
+      },
+      "scale": 1.18,
+      "offset": [
+        100,
+        98
+      ],
+      "sourceBox": [
+        534,
+        68,
+        910,
+        517
+      ],
+      "sha256": "65aeef6b948e03d3e91a86107a07fc71d98b14dcc69a2b905656f7ff6a69c9a2"
+    },
+    {
+      "path": "set-fishing-front-1.png",
+      "character": "set",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "seat-bottom",
+        "position": [
+          340,
+          550
+        ]
+      },
+      "scale": 1.18,
+      "offset": [
+        44,
+        142
+      ],
+      "sourceBox": [
+        24,
+        604,
+        500,
+        1050
+      ],
+      "sha256": "d92a17d267ee92e66f6e190876bdb2ec459a5b86ebf80634c54e9abb69a98281"
+    },
+    {
+      "path": "horus-fishing-front-1.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": 1,
+      "anchor": {
+        "kind": "seat-bottom",
+        "position": [
+          340,
+          550
+        ]
+      },
+      "scale": 1.18,
+      "offset": [
+        44,
+        126
+      ],
+      "sourceBox": [
+        501,
+        596,
+        957,
+        1060
+      ],
+      "sha256": "e6eb4b15b4c08920e91746f89c5cdadcab7c5996323dd7c32a075176437bc843"
+    },
+    {
+      "path": "bucket-0.png",
+      "state": "empty",
+      "anchor": {
+        "kind": "ground-bottom",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "sha256": "3f35e6ae5a59dc7c8bd117ec78df5dab3896a6fc47dd341b39a9c56f59dddcec"
+    },
+    {
+      "path": "bucket-1.png",
+      "state": "few",
+      "anchor": {
+        "kind": "ground-bottom",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "sha256": "6fa4dc059a4fd38360aae1a8ebab70cdbc76ea3897bd56c8c8eb92072a8a66f4"
+    },
+    {
+      "path": "bucket-2.png",
+      "state": "full",
+      "anchor": {
+        "kind": "ground-bottom",
+        "position": [
+          310,
+          662
+        ]
+      },
+      "sha256": "a27fd8a3cae738899b39720afb30445a2824b22e7e6aa3555fd4c5848b28153a"
+    }
+  ],
+  "artApproved": false,
+  "runtimeEligible": false,
+  "review": {
+    "report": "fishing-review.md",
+    "warnings": 12,
+    "visualIssues": [
+      "Face/head proportions still differ from approved idle guides, especially Set.",
+      "Skin/hair tones differ.",
+      "Horus neck has thin stray edge artifacts."
+    ],
+    "limitations": [
+      "Generic review includes rod in silhouette and assumes frame 0 is a standing-to-action intermediate; fishing frame 0 is waiting.",
+      "No claim of complete playback or in-game dock-placement review."
+    ]
+  },
+  "uploadEvidence": "소망 빼고 낚시 깃헙 메인1폴더에 올려"
+}
