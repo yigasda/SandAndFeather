@@ -268,7 +268,8 @@ const NEW = ['kyphi', 'frankincense', 'myrrh', 'lotus_oil', 'lily_oil', 'kohl', 
     const old = JSON.parse(JSON.stringify(s)); old.v = 9; old.market = { day: IT.ledger.today(s), stock: ['bread'], deals: {}, out: '', left: {} };
     md.sand_feather = old;
     const s2 = IT.st.getState();
-    return s2.v === 10 && s2.market.ids?.length === 34 && s2.bag.items.map(x => x.uid).join() === old.bag.items.map(x => x.uid).join() && s2.bag.deben === old.bag.deben;
+    // 0.9.63 added v11 (인연과 유대) after v10, so an old v9 save now goes on past 10
+    return s2.v >= 10 && s2.market.ids?.length === 34 && s2.bag.items.map(x => x.uid).join() === old.bag.items.map(x => x.uid).join() && s2.bag.deben === old.bag.deben;
   });
   ok(sv, '세이브 v9 → v10: 시장 ids 채움, 가방 uid·데벤 그대로');
 
