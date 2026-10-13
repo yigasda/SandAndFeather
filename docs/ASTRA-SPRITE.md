@@ -1,133 +1,12 @@
-# 아스트라 캐릭터 그림 — 작업 카드와 규칙
+# 아스트라 스프라이트 — 외형·작화 상세 기준
 
-> **작화 실행 절차 (2026-10-14):** 새 그림·부분 수정·재시도 전 [현재 작업](ASTRA-DRAW-STATE.md)과 [작화 시작표](ASTRA-DRAW-CHECK.md)를 확인한다. 상세 지침과 실제 원본·가이드를 확인한 뒤, 각 생성의 참고 파일·가이드 사용·지시문·결과 비교를 작업 폴더에 기록한다. 파일 목록 확인이나 기억만으로 읽음/검수 완료를 선언하지 않는다.
-> **승인 범위:** 이미 승인된 계획은 반복 승인받지 않는다. 아래의 계획 확인 규칙은 아직 승인되지 않은 새 범위에 적용한다. 최신 사용자 지시가 우선한다. 이 시작표는 아래 상세 지침을 생략하는 허가가 아니다.
-
-> # 🛑 DO EXACTLY WHAT THE USER SAID. NOT YOUR VERSION OF IT. 🛑
-> - **THE USER'S WORDS ARE THE ORDER. DO NOT REINTERPRET, NARROW, SOFTEN OR "OPTIMISE" THEM.** "Trace Horus's body and redraw" means **TRACE THE WHOLE BODY AND REDRAW IT** — not "match the outer width", not "fix only the outline", not "adjust a few pixels".
-> - **IF YOU THINK A SMALLER OR EASIER VERSION IS ENOUGH, YOU ARE WRONG. DO THE WHOLE THING.**
-> - **IF YOU ARE UNSURE WHAT THE USER MEANT, ASK BEFORE YOU DRAW. NEVER GUESS AND NEVER PICK THE CHEAPER READING.**
-> - **BEFORE YOU START, WRITE BACK THE USER'S ORDER WORD FOR WORD, THEN WHAT YOU WILL DO FOR EACH PART OF IT.** If your plan drops or shrinks any part, it is wrong.
-> - **CHANGING THE TASK YOU WERE GIVEN INTO A DIFFERENT TASK = REJECTED. EVERY TIME.**
-> - **IF YOU CANNOT OPEN OR READ A PICTURE THE USER GAVE YOU, SAY SO RIGHT AWAY AND ASK FOR THE FILE (PNG in the repo or a Drive link). NEVER GUESS WHAT IT SHOWS. NEVER SAY "I MATCHED IT" ABOUT A PICTURE YOU DID NOT SEE.** Claiming you followed something you never read is a lie, and it is worse than asking.
-
-> # ⚠️ READ THIS FIRST — NON-NEGOTIABLE
-> ## THE FINAL IDLE AND WALK SPRITES ARE THE ANSWER. COPY THEIR LOOK EXACTLY. DO NOT REDESIGN ANYTHING.
-> 1. **OPEN THE ORIGINAL FILES BEFORE YOU DRAW** — `docs/art/chibi-refresh/final/<who>/idle/` and `walk/`, same direction. Not from memory, not from a description, not from your last attempt.
-> 2. **TRACE ON THE GUIDES. DO NOT DRAW FREEHAND.** Head and face: `head-check.py --guide` (the idle's own head, faded, at the right place and size). Colours: `palette/palette.md` + `palette/eyes.png` only. Hair: `notes/hair-reference.png`.
-> 3. **SAME FACE SHAPE, SAME HEAD SIZE, SAME LINE THICKNESS, SAME HAIR DETAIL, SAME COLOURS, SAME FACE MARK as the idle.** Only the pose changes. Never narrower, pointier, longer, thinner-lined, more detailed, paler or greyer.
-> 4. **NO EXTRA DETAIL.** Never draw hair or shading finer than the idle/walk.
-> 4-1. **DRAW EVERY FRAME NEW.** Frame 0 and frame 1 are two separate drawings. **NEVER copy frame 0 and stretch, shift, warp or recolour it into frame 1.** No frame tricks. `sprite-review` flags copied frames. (Only exception: an action where only a hand or foot moves — keep the body, redraw just that hand or foot.)
-> 5. **"sprite-review 0 issues" IS NOT "DONE".** Before sending, put your picture next to the idle at the same scale and look. If anything differs from the idle, fix it first.
-> 6. **If you did not open the idle and trace on a guide, the drawing is rejected.**
-
-> **길 안내** — 입구 [START](ASTRA-START.md) · 할 일 [PLAN](ASTRA-PLAN.md) · 캐릭터 그림 [SPRITE](ASTRA-SPRITE.md) · 맵 [MAP](ASTRA-MAP.md) · 공통 규칙 [HANDOFF](ASTRA-HANDOFF.md)
-> **지금 여기: 캐릭터 그림.** 앞: 할 일과 동작 명세는 [PLAN](ASTRA-PLAN.md). 공통 규칙은 [HANDOFF](ASTRA-HANDOFF.md).
-
-> ## 🪜 THE LADDER — EVERY CHARACTER DRAWING, EVERY TIME. SKIP ONE STEP AND IT IS REJECTED.
-> **① READ THE DOCS. ACTUALLY READ THEM.** The PLAN spec, the SPRITE rules, hair, expressions. **OPEN** the idle, the walk and the reference pictures. Opening a file list is NOT opening a picture.
-> **② SEND THE PROPOSAL AND WAIT FOR OK.** The pre-drawing form (SPRITE ②). **NO OK, NO DRAWING.**
-> **③ DRAW ON TOP OF THE IDLE AND WALK.** Same direction, laid underneath. Draw it new — **DO NOT CUT AND PASTE. DO NOT FREEHAND. DO NOT REDESIGN.**
-> **④ RUN THE CHECK.** `sprite-review.py` must say 0. **0 IS THE MINIMUM, NOT THE FINISH.**
-> **⑤ LOOK AT IT YOURSELF.** Walk → idle → your frames, as the chain GIF, next to the idle at the same scale. **DOES IT LOOK LIKE THE SAME CHARACTER IN A REAL GAME? IF NOT, FIX IT. DO NOT SEND IT.**
-> **⑥ REPORT.** What you checked AND what you did not. Never write "done" for something you did not look at.
-
-**캐릭터 그림(새 동작, 수정, 말풍선·효과 모두)은 아래 작업 카드 ①~⑤ 순서대로만 한다.** 카드 아래에 규칙 설명(A), 외형 메모(B), 지금까지의 실수(C), 채택 스프라이트(D)가 있다. 동작별 명세는 [ASTRA-PLAN](ASTRA-PLAN.md). 카드를 건너뛰고 그린 그림은 보내지 않는다.
-
----
-
-## ① 그리기 전에 연다 (파일을 실제로 열어 본다)
-
-| 열 것 | 경로 |
-|---|---|
-| 같은 캐릭터·같은 방향의 **최종 정지와 걷기** | `docs/art/chibi-refresh/final/<누구>/idle/`, `walk/` |
-| **색 표** (캐릭터·방향마다 피부·머리·눈썹·외곽선·신발·금장·옷의 기본·그림자1·그림자2·밝은 쪽) | [palette.md](art/chibi-refresh/palette/palette.md) — 그리는 방향의 표 색만 쓴다. 스포이트로 다시 뽑지 않는다. 눈은 [eyes.png](art/chibi-refresh/palette/eyes.png) |
-| **머리 기준** (세 명 4방향 정지 한 장) | [hair-reference.png](art/chibi-refresh/notes/hair-reference.png) + 아래 B "머리 기준" — 그리는 방향과 같은 방향을 본다 |
-| 이 동작의 **채택 기준 그림** | 상호작용 소망 172 · 줍기 소망 181 · 앉기 소망 179 · 잠들기 소망 180 (아래 D) |
-| 사용자가 준 **예시·수정도** | `docs/art/chibi-refresh/notes/` (잠들기 정면 [sleep-front-pose-sketch.jpg](art/chibi-refresh/notes/sleep-front-pose-sketch.jpg), 호루스 머리 [horus-hair-short.jpg](art/chibi-refresh/notes/horus-hair-short.jpg)) |
-| 이 동작 **명세 표** | ASTRA-PLAN 2단계의 해당 동작 |
-| 그리기 **가이드** | `pose-guides/<누구>-<방향>-guide.png`, 기울거나 누운 머리는 `head-check.py --guide`|
-
-## ② 그리기 전 확인서 — 채워서 사용자에게 먼저 보낸다 (OK 받고 그린다)
-
-**묶음이면 묶음 전체를 한 장에** 쓴다: 아래 칸을 동작마다 한 줄씩. 확인서는 묶음당 한 번, OK도 한 번이다.
-
-```
-[그리기 전 확인서]
-동작 / 캐릭터 / 방향 / 프레임 수:
-열어 본 파일: (정지·걷기, 기준 그림, 예시 — 경로로)
-기준 그림에서 따를 것: (시점, 기울기, 원근, 머리 위치)
-캐릭터마다 다른 것: (자세, 결 — 명세 표대로)
-프레임별 핵심 자세: 0 = … / 1 = …   (0은 정지와 끝 자세의 중간, 1과 외곽선이 눈에 띄게 다름)
-지킬 외형: 세트 = 부드러운 스트레이트 / 소망 = 곱슬 / 호루스 = 짧은 삐죽머리·뒷머리 없음
-머리: 방향마다 연 정지 파일, 맞출 것 세 가지(길이 끝 위치, 가닥 흐름, 하이라이트 위치)
-기준점: 발 (310,662) / 앉은 자리 / 몸 가운데 — 몇 px
-정지·걷기에서 이어지는지: 걷기·정지 다음에 이 프레임이 오면 무엇이 그대로이고(머리 크기, 몸통·팔다리 길이, 옷·머리 결) 무엇이 바뀌는지(자세) 한 줄
-표정: (PLAN 표정 표의 이 동작·캐릭터 칸 + SPRITE A 눈 그리는 법 — 캐릭터마다 한 줄)
-이번에 특히 조심할 실수: (아래 C 실수 표에서 이 동작에 해당하는 줄)
-```
-
-## ③ 그리는 동안 — 하지 말 것
-
-**필수: 정지·걷기와 이어 보기.** 한 장 그릴 때마다 같은 방향의 최종 걷기 0·1·2와 정지를 **같은 배율로 옆에 놓고**, 걷기 → 정지 → 이 그림 → 정지 순서로 넘겨 본다. 걷다가 이 동작으로 넘어가는 게 같은 캐릭터의 다음 움직임처럼 보여야 한다:
-- **비율:** 머리 크기, 몸통 길이, 팔다리 길이·굵기, 손발 크기, 옷 길이가 정지·걷기와 같다. 갑자기 길쭉하거나 작아지거나 머리만 커지면 실패.
-- **동작:** 관절이 꺾이는 방향, 무게중심, 발이 땅을 디딘 위치가 정지·걷기에서 자연스럽게 이어진다. 정지에서 툭 튀어 다른 사람처럼 보이면 실패.
-- **결:** 머리카락·옷자락의 흔들림 방향과 명암·외곽선 굵기가 걷기와 같은 그림체.
-- **세밀함:** 머리카락 가닥 수, 명암 단계 수, 하이라이트 크기가 정지·걷기와 같다. **더 세밀하게 그리지 않는다**([나쁜 예: 세트 잠들기 192](art/chibi-refresh/notes/bad-too-detailed.jpg), 오른쪽이 가닥·명암이 너무 잘다). 정지·걷기는 큰 덩어리 몇 개 + 명암 2~3단계다. 가닥을 퍼지게 하라는 말은 큰 갈래를 나누라는 뜻이지 잔 가닥을 늘리라는 뜻이 아니다. 같은 배율로 나란히 놓았을 때 새 그림만 촘촘해 보이면 실패.
-- 잠들기처럼 누운 그림은 특수하니 자세 이음은 보지 않되, 머리 크기·팔다리 길이·결은 똑같이 맞춘다.
-- `sprite-review.py`가 이것을 `chain` 시트와 GIF 두 개(큰 크기, 게임 크기)로 만들어 준다. **그리는 중에도 돌려 본다.**
-
-
-- ❌ **정지·채택 그림 조각을 잘라 붙이기.** 머리·얼굴·팔을 오려 붙이지 않는다. 정지는 **밑에 깔고 보는 기준**이고, 그 자세에 맞게 **새로 그린다**. **예외는 뜬 눈 하나:** 같은 방향 정지의 눈(흰자·홍채·안광·속눈썹)은 픽셀 그대로 옮겨도 된다([눈 견본](art/chibi-refresh/palette/eyes.png)). 머리통·얼굴 윤곽·머리카락은 계속 새로 그린다.
-- ❌ **머리를 줄이거나 늘리기.** 머리 크기·모양은 어떤 자세에서도 정지와 같다. 그림을 캔버스에 맞추려고 전체를 줄이지 않는다.
-- ❌ **머리 결 바꾸기.** 세트 웨이브, 호루스 긴 머리·뒷머리, 소망 생머리 — 전부 실패.
-- ❌ **팔다리를 길게.** 굽히거나 올린 팔도 정지 길이·굵기 그대로. 좌우 팔·손도 같은 길이.
-- ❌ **프레임 장난질.** 0프레임을 복사해서 늘리거나 옮기거나 비틀거나 색만 바꿔 1프레임을 만들지 않는다. **0과 1은 항상 각각 새로 그린다.** (잠들기 194·195: 1이 0과 픽셀 67~83 % 같음. 새로 그린 프레임은 30 % 아래.) `sprite-review`가 "복사해 변형한 프레임"으로 잡는다. **예외:** 손·발만 움직이는 동작(상호작용 손 뻗기처럼 명세에 그렇게 적힌 것)은 몸을 그대로 두고 움직이는 손·발만 새로 그린다. 이때도 손·발을 늘리거나 비틀어 만들지 않는다.
-- ❌ **다음 프레임을 안쪽만 고쳐 만들기.** 움직이는 부분의 **바깥 외곽선**이 움직여야 한다.
-- ❌ **누운 정면에서 발바닥을 지나치게 크게.** 발이 보는 쪽을 향하니 원근으로 **정지 신발보다 조금 큰 게 정상**이다. 다만 머리보다 눈에 띌 만큼 커지면 실패. 채택된 소망 180의 발 비율을 기준으로 맞춘다.
-- ❌ **몸통·다리를 길게.** 눕든 앉든 머리 아래 몸 길이는 정지와 같다(세 명 모두 호루스 정지 비율이 기준). 이어 보기 시트에서 정지 옆에 놓고 턱~치마단, 치마단~발끝 길이를 비교한다. **한 방향을 고치면 같은 동작의 다른 방향(정면이면 옆모습도)도 같이 고친다.** 정면만 줄이면 방향을 바꿀 때 몸이 늘었다 줄었다 한다.
-- ❌ **누운 정면을 무릎 세워 그리기.** 다리는 곧게 아래로(사용자 예시).
-- ❌ **몸이 한쪽으로 쏠리기.** 정면·뒷모습은 머리·배·발 가운데가 한 세로줄.
-- ❌ **정지·걷기보다 세밀하게.** 잔 가닥을 늘리거나 명암 단계를 더 쪼개지 않는다. 같은 그림체, 같은 밀도.
-- ❌ **색을 생성 결과대로 두거나 새로 만들기.** 색 표의 색으로 다시 칠한다.
-- ❌ **피부색을 생성 결과대로 두기.** 정지·걷기에서 뽑은 색만.
-- ❌ **좌우를 뒤집어 쓰기.** 왼쪽·오른쪽은 각각 그린다.
-- ❌ **효과(씨앗, 물, 김, 줄)를 캐릭터 PNG에 그리기.** 효과는 따로.
-- ❌ **어색하거나 민망한 자세.** 실제 게임 스프라이트처럼 자연스럽게 그린다. 특히 **쩍벌 다리**([나쁜 예](art/chibi-refresh/notes/bad-wide-legs.jpg)): 쪼그리거나 앉을 때 무릎은 모으거나 한쪽으로 기울이고, 드레스·치마는 무릎을 덮는다. 사용자가 지적하지 않아도 스스로 알아서 피한다.
-
-## ④ 보내기 전 — 이 줄을 돌리고 결과를 같이 보낸다
-
-```
-python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out docs/art/chibi-refresh/<동작 폴더>/review
-```
-
-- 묶음이면 묶음 폴더 전체(동작별 하위 폴더 여러 개면 각각)에 돌린다.
-- `review/report.md`의 **"볼 것"이 0개가 될 때까지** 고치고 다시 돌린다. 0개가 아니면 보내지 않는다. 검사 항목: 피부색, 머리색, 머리 크기, 걷기·정지와 이어 보기(chain), 정지 머리를 잘라 붙였는지, 프레임별 키 흐름, 0↔1 외곽선, 몸 쏠림, 좌우, 기준 그림 겹치기, 누운 머리.
-- 그 다음 **눈으로** 본다(볼 것 0개는 통과가 아니다):
-  - [ ] 정지와 같은 배율로 나란히: 머리 크기·머리 결·팔다리 길이가 같다
-  - [ ] 기준 그림·사용자 예시와 나란히: 구도와 자세가 맞다
-  - [ ] **이어 보기(필수)** `review/<누구>-<자세>-chain.gif`·`-chain-game.gif`(걷기 → 정지 → 새 프레임 → 정지): 비율이 같고, 동작이 툭 끊기지 않고, 프레임이 달라 보인다. 보고에 이 GIF를 같이 보낸다
-  - [ ] 밝은·어두운 배경에서: 틈, 후광, 남은 픽셀, 깨진 경계가 없다
-- `review/` 폴더를 같이 main에 올린다.
-- 모든 그림 공통 검수(밝은·어두운 배경, 이중선, 경계)는 [HANDOFF](ASTRA-HANDOFF.md) 2절.
-
-## ⑤ 보고 형식
-
-```
-[전달] <동작> <리비전> — <캐릭터·방향·프레임> N장
-파일: docs/art/chibi-refresh/<폴더>/png/  (review/report.md 볼 것 0개)
-눈으로 확인한 것: …
-확인 못 한 것 / 남은 차이: …
-```
-
-"검사 통과"를 완성 근거로 쓰지 않는다. 확인하지 않은 것을 "완료", "동일", "승인"이라고 쓰지 않는다. 사용자가 이 카드에 없는 실수를 찾으면 아래 C 실수 표와 이 카드 ③에 한 줄 더한다.
-
----
+실행 순서는 [DRAW-CHECK](ASTRA-DRAW-CHECK.md)의 작업 카드, 현재 작업은 [STATE](ASTRA-DRAW-STATE.md), 자세·표정은 [PLAN](ASTRA-PLAN.md). 이 문서의 A~D는 생략하지 않는다.
 
 ## A. 스프라이트 규칙 설명
 
 **캔버스와 기준점**
-- 투명 PNG, 정지와 같은 캔버스 620×720, 같은 배율(기준 키 576px). 발 기준점 (310, 662). 걷기만 360×400·(180, 370)·기준 키 330.
+- 전투 전달 캔버스는 1600×720, 지면 기준점 (800,662). 신체 배율은 해당 캐릭터 정지·걷기와 같게 유지한다. 긴 무기는 투명 여백을 확장하고 좌표를 기록하며, 신체를 축소하지 않는다.
+- 일반 동작은 투명 PNG, 정지와 같은 캔버스 620×720, 같은 배율(기준 키 576px). 발 기준점 (310, 662). 걷기만 360×400·(180, 370)·기준 키 330.
 - 서 있지 않는 자세는 기준점을 manifest에 적는다: 앉기는 엉덩이 아래(앉은 자리), 잠들기는 몸 가운데(배꼽 근처). 게임이 그 점을 방석·걸상·침대 가운데에 놓는다.
 - 그리기 전에 [pose-guides](art/chibi-refresh/pose-guides/README.md)의 같은 캐릭터·방향 가이드를 깔고 그린다.
 
@@ -144,8 +23,8 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 - **같은 동작의 다른 캐릭터는 채택된 기준 그림의 구도를 따른다.** 시점, 기울기, 원근으로 줄어드는 정도, 머리 위치를 기준 그림과 같게 하고 팔다리 자세와 느낌만 캐릭터대로. 기준: 상호작용 소망 172, 줍기 소망 181, 앉기 소망 179, 잠들기 소망 180.
 
 **색**
-- **색은 [색 표](art/chibi-refresh/palette/palette.md)에서 그대로 쓴다.** 캐릭터·방향마다 피부·머리·눈썹·외곽선·신발·금장·옷의 기본, 그림자 1·2, 밝은 쪽이 hex로 있다(최종 정지·걷기 픽셀에서 `tools/art/palette.py`가 뽑음). 매번 스포이트로 뽑지 않는다. 누운 그림처럼 방향이 애매하면 정면 표. **눈은 표에 없다**(작은 칸에 색이 너무 많다): [눈 견본](art/chibi-refresh/palette/eyes.png)을 쓴다. 뜬 눈은 같은 방향 정지 눈 픽셀을 그대로 옮기고(호루스는 동공 위 흰 하이라이트가 없다, 넣지 않는다), 표정이 바뀐 눈(반눈, 동그란 눈, ^^, 찡그림)은 그 견본에 있는 색으로만 다시 그린다. 감은 눈은 외곽선 색. **눈썹은 표의 눈썹 색**(세트 짙은 적갈, 호루스 남색). 소망 눈썹은 앞머리에 가려 표에 없으니 소망 머리 그림자 1색으로 가늘게. 눈썹을 검정이나 머리 기본색으로 칠하지 않는다. 볼 홍조, 입, 리본도 그 방향 최종 정지에서. 표에 없는 단계를 새로 만들지 않는다. **피부색·피부톤은 같은 캐릭터·같은 방향의 최종 정지·걷기에서 스포이트로 뽑은 색만 쓴다.** 기본색, 그림자, 볼 홍조, 외곽선 색, 명암 단계 수와 위치가 모두 같아야 한다. 생성 결과의 피부색을 그대로 두지 않는다.
-- **머리색도 같은 방향의 최종 정지·걷기에서 스포이트로 뽑은 색만 쓴다.** 어두운 쪽·중간·밝은 쪽 세 단계가 정지·걷기와 같아야 한다. 더 밝거나 분홍·형광으로 뜨면 실패(세트 잠들기 정면 193, 호루스 잠들기 정면 191). `sprite-review.py`가 "머리색"으로 잰다.
+- **색은 [색 표](art/chibi-refresh/palette/palette.md)에서 그대로 쓴다.** 캐릭터·방향마다 피부·머리·눈썹·외곽선·신발·금장·옷의 기본, 그림자 1·2, 밝은 쪽이 hex로 있다(최종 정지·걷기 픽셀에서 `tools/art/palette.py`가 뽑음). 매번 스포이트로 뽑지 않는다. 누운 그림처럼 방향이 애매하면 정면 표. **눈은 표에 없다**(작은 칸에 색이 너무 많다): [눈 견본](art/chibi-refresh/palette/eyes.png)을 쓴다. 뜬 눈은 같은 방향 정지 눈 픽셀을 그대로 옮기고(호루스는 동공 위 흰 하이라이트가 없다, 넣지 않는다), 표정이 바뀐 눈(반눈, 동그란 눈, ^^, 찡그림)은 그 견본에 있는 색으로만 다시 그린다. 감은 눈은 외곽선 색. **눈썹은 표의 눈썹 색**(세트 짙은 적갈, 호루스 남색). 소망 눈썹은 앞머리에 가려 표에 없으니 소망 머리 그림자 1색으로 가늘게. 눈썹을 검정이나 머리 기본색으로 칠하지 않는다. 볼 홍조, 입, 리본도 그 방향 최종 정지에서. 표에 없는 단계를 새로 만들지 않는다. **피부색·피부톤은 같은 캐릭터·같은 방향의 최종 정지·걷기에서 추출해 둔 색 표와 원본 견본의 색만 쓴다.** 기본색, 그림자, 볼 홍조, 외곽선 색, 명암 단계 수와 위치가 모두 같아야 한다. 생성 결과의 피부색을 그대로 두지 않는다.
+- **머리색도 같은 방향의 최종 정지·걷기에서 추출해 둔 색 표와 원본 견본의 색만 쓴다.** 어두운 쪽·중간·밝은 쪽 세 단계가 정지·걷기와 같아야 한다. 더 밝거나 분홍·형광으로 뜨면 실패(세트 잠들기 정면 193, 호루스 잠들기 정면 191). `sprite-review.py`가 "머리색"으로 잰다.
 - **머리통·얼굴 윤곽은 정지 그대로.** 정수리·뒤통수의 둥근 머리통 모양, 둥근 볼, 좁아지는 턱선, 이목구비 간격을 지킨다. 눕거나 눈을 감아도 머리통이 찌그러지거나 얼굴이 네모나게 각지거나 넓어지지 않는다. 정지보다 못생겨 보이면 실패. 정지 머리 윤곽을 겹쳐 확인한다(`head-check.py --guide`).
 
 **프레임**
@@ -162,8 +41,8 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 - 명세에 적히지 않은 부분도 이 기준으로 스스로 정한다. 지적받기 전에 고친다.
 
 **표정**
-- 게임에서 캐릭터 키는 약 31px라 입 모양·눈썹 변화는 거의 안 보인다. 바꾸는 것은 **눈 모양**과 **볼 홍조 진하기**다. 입은 정지 그대로 두고, 표에 "씩 웃음"이 있어도 눈으로 보인다(입꼬리는 작게 덤). **전투는 예외:** 입·눈썹도 바꾸고 장마다 표정이 달라야 한다(PLAN 전투 절 "전투 표정"). 동작별·캐릭터별 표정은 [ASTRA-PLAN](ASTRA-PLAN.md) "표정 — 동작 × 캐릭터 한눈에" 표.
-- **어느 표정이든 정지 그대로:** 눈 위치·크기·색, 얼굴 윤곽, 눈 사이 간격, 호루스 왼쪽 눈 아래 문양. 표정은 눈꺼풀·눈 모양·동공 크기만 바꾼다. 결: 세트는 변화가 적고 여유롭게, 호루스는 가장 작게·단정하게, 소망은 가장 크게.
+- 게임에서 캐릭터 키는 약 31px라 입 모양·눈썹 변화는 거의 안 보인다. 바꾸는 것은 **눈 모양**과 **볼 홍조 진하기**다. 입은 정지 그대로 두고, 표에 "씩 웃음"이 있어도 눈으로 보인다(입꼬리는 작게 덤). **전투는 예외:** 입·눈썹도 바꾸며 동작별 표정을 구분한다. 호루스 대기 0·1·2는 같은 차분한 표정 유지(PLAN 전투 절 "전투 표정"). 동작별·캐릭터별 표정은 [ASTRA-PLAN](ASTRA-PLAN.md) "표정 — 동작 × 캐릭터 한눈에" 표.
+- **어느 표정이든 정지 그대로:** 눈 위치·크기·색, 얼굴 윤곽, 눈 사이 간격, 호루스 오른쪽 눈 아래 문양(캐릭터 기준; 왼쪽 눈에는 없음). 표정은 눈꺼풀·눈 모양·동공 크기만 바꾼다. 결: 세트는 변화가 적고 여유롭게, 호루스는 가장 작게·단정하게, 소망은 가장 크게.
 - **기본 눈(최종 정지):** 세트 = 붉은 눈, 눈꼬리가 올라간 짙은 아이라인, 살짝 내리깐 윗눈꺼풀. 호루스 = 금빛 눈, 작은 동공과 아래 안광(**동공 위 흰 하이라이트 없음**), 굵은 남색 눈썹. 소망 = 큰 둥근 갈색 눈, 처진 눈매, 볼 홍조, 작은 미소.
 
 | 눈 | 세트 | 호루스 | 소망 |
@@ -173,7 +52,7 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 | 동그란 눈 | 아이라인은 유지하고 위아래로 조금 더 뜸, 동공 작게 | 쓰지 않는다(놀라도 가늘게) | 위아래로 크게, 흰자가 보이게, 동공 작게 |
 | 반눈 | 윗눈꺼풀이 동공 위 1/3을 덮는 나른한 눈 | 윗눈꺼풀이 1/4 덮는 차분한 눈 | 윗눈꺼풀이 절반 덮는 졸린 눈 |
 | 가는 눈 | 위아래가 좁아진 노려보는 눈 | 위아래가 좁아지고 아래 안광은 남김 | 쓰지 않는다 |
-| 찡그린 눈 / 질끈 | 눈머리 쪽으로 기운 날카로운 찡그림 | 쓰지 않는다(반눈으로) | 질끈 감은 > < |
+| 찡그린 눈 / 질끈 | 눈머리 쪽으로 기운 날카로운 찡그림 | 일상은 반눈으로. 전투 피격은 PLAN대로 한쪽 눈을 순간 찡그림 | 질끈 감은 > < |
 | 홍조 진하게 | 귀 쪽으로 옅게 번짐(작게) | 아주 옅게, 거의 안 보임 | 볼 전체, 가장 진하게 |
 
 - 표정 장도 피부색 검사 대상이다: 진한 홍조 외의 피부는 정지와 같은 색.
@@ -182,10 +61,10 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 
 설명만 보고 다시 그리지 않는다. 근거는 D의 실제 파일이다.
 
-- **세 명 공통:** 몸은 호루스 비율이 기준이다. 세트 옆모습에서 배가 불룩해지거나 하체가 길어지지 않게 한다.
+- **세 명 공통:** 공통 설계는 호루스 비율을 따른다. 실제 재작화에서는 각 캐릭터의 채택 정지·걷기를 직접 대조하며, 전투 시안의 몸 비율을 기준으로 삼지 않는다. 세트 옆모습에서 배가 불룩해지거나 하체가 길어지지 않게 한다.
 - **세트:** 붉은 눈매, 곧은 옆선, 짧은 차콜 치마, 금장. 앞머리가 좌우 비대칭이라 좌우를 각각 그린다. 머리는 아래 머리 기준.
 - **소망:** 처진 눈매, 흰 드레스와 흰 끈리본. 머리는 아래 머리 기준.
-- **호루스:** 밝은 뉴트럴 쿨톤 피부, 작은 동공과 아래 안광. **동공 위에 흰 하이라이트(반짝이 점)를 그리지 않는다:** 정지처럼 빛은 눈 아래쪽 안광만 있다. 다른 둘처럼 동공 위 흰 점을 넣으면 인상이 달라진다. 캐릭터 왼쪽 눈 아래 문양은 방향이 바뀌어도 미러하지 않는다. 가슴천과 날개는 없다. 머리는 아래 머리 기준.
+- **호루스:** 밝은 뉴트럴 쿨톤 피부, 작은 동공과 아래 안광. **동공 위에 흰 하이라이트(반짝이 점)를 그리지 않는다:** 정지처럼 빛은 눈 아래쪽 안광만 있다. 다른 둘처럼 동공 위 흰 점을 넣으면 인상이 달라진다. 캐릭터 오른쪽 눈 아래 문양(왼쪽 눈에는 없음)은 방향이 바뀌어도 미러하지 않는다. **문양 모양이 헷갈리면 채택된 호루스 잠자기 정면을 직접 열어 확인한다.** 기억이나 새로 그린 전투 문양으로 추정하지 않는다. 문양 모양은 잠자기 정면, 좌우 위치는 해당 방향 원본을 함께 확인한다. 가슴천과 날개는 없다. 머리는 아래 머리 기준.
 
 ### 머리 기준 — 세 명 모두, 어떤 자세든
 
@@ -245,16 +124,16 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 | 피부색이 정지·걷기와 다름 | 여러 번 | 색 · `skin-check` |
 | 정면 잠자기를 무릎 세운 다리로 그림(앉은 것처럼 보임) | 잠들기 184·187·189 | 잠들기 명세 · [사용자 예시](art/chibi-refresh/notes/sleep-front-pose-sketch.jpg) |
 | 세트 생머리를 굵은 웨이브로 바꿈 / 빗으로 그은 듯 일정한 직모로 바꿈 | 잠들기 189 / 191 | B 머리 기준, [hair-reference.png](art/chibi-refresh/notes/hair-reference.png) |
-| 머리카락 가닥·명암을 정지·걷기보다 훨씬 잘게 그려 그림체가 달라짐 | 세트 잠들기 192 | ③ 이어 보기 "세밀함", [나쁜 예](art/chibi-refresh/notes/bad-too-detailed.jpg) · chain 시트에서 같은 배율로 비교 |
+| 머리카락 가닥·명암을 정지·걷기보다 훨씬 잘게 그려 그림체가 달라짐 | 세트 잠들기 192 | DRAW-CHECK ③ 이어 보기 "세밀함", [나쁜 예](art/chibi-refresh/notes/bad-too-detailed.jpg) · chain 시트에서 같은 배율로 비교 |
 | 사용자 수정본을 읽지 못했는데 그대로 맞췄다고 보고, 추측으로 턱선을 굽히고 어깨까지 지움 | 호루스 202 턱 | HANDOFF 3절: 못 읽으면 바로 말하고 파일 요청 |
-| 0프레임을 복사해 늘리고 변형해서 1프레임을 만듦 | 잠들기 194·195 (같은 픽셀 67~83 %) | ③ 프레임 장난질 · `sprite-review` "복사해 변형한 프레임" |
+| 0프레임을 복사해 늘리고 변형해서 1프레임을 만듦 | 잠들기 194·195 (같은 픽셀 67~83 %) | DRAW-CHECK ③ 프레임 장난질 · `sprite-review` "복사해 변형한 프레임" |
 | 호루스 동공 위에 흰 하이라이트를 넣음(정지에는 아래 안광만) | — (사용자 미리 지시) | B 호루스 · [눈 견본](art/chibi-refresh/palette/eyes.png) |
 | 머리색이 정지·걷기보다 밝고 분홍·형광 쪽으로 뜸 | 세트 잠들기 정면 193, 호루스 잠들기 정면 191 | A 머리색 · `sprite-review` "머리색" |
 | 색을 강하게 나눠 하이라이트가 사라지고 머리가 얼룩으로 뭉개짐 | 세트·호루스 잠들기194 반려 | 원본의 밝은 결·큰 하이라이트를 유지. 피부 기준색은 얼굴에서 확인하고 치마색과 혼동하지 않기 |
-| 턱을 지나치게 좁혀 뾰족하게 만들고, 정지보다 가는 선·다른 문양을 그림 | 호루스 잠들기194·195 | 최종 정지 실물의 볼·턱·귀·선 굵기·문양을 직접 비교. 사용자 최신 지시로 라인 가이드를 사용하지 않음 |
+| 턱을 지나치게 좁혀 뾰족하게 만들고, 정지보다 가는 선·다른 문양을 그림 | 호루스 잠들기194·195 | 최종 정지 실물의 볼·턱·귀·선 굵기·문양을 직접 비교. 당시 잠들기 수정의 국소 지시. 현재 전투 재작화는 오푸스 전신·머리 가이드를 사용 |
 | 머리통이 정지보다 못생겨지고 얼굴이 네모나게 각짐 | 세트 잠들기 정면 193, 호루스 잠들기 정면 191 | A 얼굴 윤곽 · `head-check --guide`로 정지 얼굴 겹치기 |
-| 몸이 정지보다 길쭉함 | 세트·호루스 잠들기 정면 191·193, 옆 192 | ③ 몸통·다리 길이 · chain 시트 |
-| 누운 정면의 발바닥이 너무 큼 | 세트·호루스 잠들기 정면 191·193 | ③ 발바닥(원근으로 정지보다 조금 큰 건 정상, 지나치면 실패) · 소망 180 |
+| 몸이 정지보다 길쭉함 | 세트·호루스 잠들기 정면 191·193, 옆 192 | DRAW-CHECK ③ 몸통·다리 길이 · chain 시트 |
+| 누운 정면의 발바닥이 너무 큼 | 세트·호루스 잠들기 정면 191·193 | DRAW-CHECK ③ 발바닥(원근으로 정지보다 조금 큰 건 정상, 지나치면 실패) · 소망 180 |
 | 드레스 입고 쩍벌로 쪼그려 앉음 | 소망 줍기([나쁜 예](art/chibi-refresh/notes/bad-wide-legs.jpg)) | 자연스러움·단정함(A) |
 | 정지 머리를 잘라 그대로 붙여 경계가 깨짐 | 호루스 잠들기 189 (정지 머리 픽셀 95~97%가 그대로) | 정지 그림 조각을 붙이지 말고 자세에 맞춰 그린다 · `sprite-review` "정지 머리를 잘라 붙임"(새로 그린 머리는 20% 아래) |
 | 목·다리를 사각형으로 바꿔 비율·연결을 잃음 | 소망 149(반려) | HANDOFF 1절 6 · 전체 인상 비교 |
@@ -278,8 +157,8 @@ python3 tools/art/sprite-review.py docs/art/chibi-refresh/<동작 폴더> --out 
 | 상호작용 | 소망 [172](art/chibi-refresh/interaction-somang-v172/README.md), 세트 [174·175](art/chibi-refresh/interaction-set-v174/README.md), 호루스 [176·177](art/chibi-refresh/interaction-horus-v176/README.md) | 셋 × 4방향 × 2 |
 | 줍기 | 소망 [181](art/chibi-refresh/pickup-somang-v178/README.md), 호루스 182·세트 185 [pickup-trio-v182](art/chibi-refresh/pickup-trio-v182/README.md) | 셋 × 4방향 × 2 |
 | 앉기 | 소망 방석 왼쪽 [179](art/chibi-refresh/sit-somang-v179/README.md) | 대표 1장 |
-| 잠들기 | 소망 프레임0 [180](art/chibi-refresh/sleep-somang-v180/README.md), 세트 옆0 [195](art/chibi-refresh/sleep-set-horus-v195/README.md) | 197 정면은 채택 후 몸 수정 요청으로[199](art/chibi-refresh/sleep-front-body-v199/README.md)4장 검토 중. 세트 옆1은 이후 재작화 요청으로[200](art/chibi-refresh/sleep-side-inhale-v200/README.md) 검토 중. 호루스 옆0은198 외곽선 수정본 유지, 옆1은200 새 그림. 새 버전을 채택 처리하지 않는다 |
+| 잠들기 | 소망 프레임0 [180](art/chibi-refresh/sleep-somang-v180/README.md), 세트 옆0 [195](art/chibi-refresh/sleep-set-horus-v195/README.md) | 이 행은 이전 수정 경과다. 최신 잠들기 기준은 PLAN의 완료 기록(sleep-trio-v220, 호루스 정면 오푸스 219)을 확인하며 아래 구버전으로 되돌리지 않는다. 197 정면은 채택 후 몸 수정 요청으로[199](art/chibi-refresh/sleep-front-body-v199/README.md)4장 검토 중. 세트 옆1은 이후 재작화 요청으로[200](art/chibi-refresh/sleep-side-inhale-v200/README.md) 검토 중. 호루스 옆0은198 외곽선 수정본 유지, 옆1은200 새 그림. 새 버전을 채택 처리하지 않는다 |
 
 검사 도구를 하나만 다시 돌릴 때: `skin-check.py`(피부색), `action-check.py`(머리·키·외곽선·쏠림), `onion.py A B [--flip-b]`(두 장 겹치기), `head-check.py`(정지 머리 겹치기·가이드), `fit-scale.py`(서 있는 자세의 머리·발 맞춤). 보통은 `sprite-review.py` 한 줄이면 된다.
 
-> **다음:** 보고까지 끝났으면 [PLAN](ASTRA-PLAN.md)의 "지금" 표로 돌아가 다음 작업을 본다.
+> **다음:** [현재 작업](ASTRA-DRAW-STATE.md)을 갱신한다. 실행·검수는 [DRAW-CHECK](ASTRA-DRAW-CHECK.md).

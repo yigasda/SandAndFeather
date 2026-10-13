@@ -1,15 +1,6 @@
 # 아스트라 맵·배경 — 순서와 규칙
 
-> # 🛑 DO EXACTLY WHAT THE USER SAID. NOT YOUR VERSION OF IT. 🛑
-> - **THE USER'S WORDS ARE THE ORDER. DO NOT REINTERPRET, NARROW, SOFTEN OR "OPTIMISE" THEM.** "Trace Horus's body and redraw" means **TRACE THE WHOLE BODY AND REDRAW IT** — not "match the outer width", not "fix only the outline", not "adjust a few pixels".
-> - **IF YOU THINK A SMALLER OR EASIER VERSION IS ENOUGH, YOU ARE WRONG. DO THE WHOLE THING.**
-> - **IF YOU ARE UNSURE WHAT THE USER MEANT, ASK BEFORE YOU DRAW. NEVER GUESS AND NEVER PICK THE CHEAPER READING.**
-> - **BEFORE YOU START, WRITE BACK THE USER'S ORDER WORD FOR WORD, THEN WHAT YOU WILL DO FOR EACH PART OF IT.** If your plan drops or shrinks any part, it is wrong.
-> - **CHANGING THE TASK YOU WERE GIVEN INTO A DIFFERENT TASK = REJECTED. EVERY TIME.**
-> - **IF YOU CANNOT OPEN OR READ A PICTURE THE USER GAVE YOU, SAY SO RIGHT AWAY AND ASK FOR THE FILE (PNG in the repo or a Drive link). NEVER GUESS WHAT IT SHOWS. NEVER SAY "I MATCHED IT" ABOUT A PICTURE YOU DID NOT SEE.** Claiming you followed something you never read is a lie, and it is worse than asking.
-
-> **길 안내** — 입구 [START](ASTRA-START.md) · 할 일 [PLAN](ASTRA-PLAN.md) · 캐릭터 그림 [SPRITE](ASTRA-SPRITE.md) · 맵 [MAP](ASTRA-MAP.md) · 공통 규칙 [HANDOFF](ASTRA-HANDOFF.md)
-> **지금 여기: 맵·배경.** 앞: 할 일은 [PLAN](ASTRA-PLAN.md)(두아트·새 지역 명세 포함). 공통 규칙은 [HANDOFF](ASTRA-HANDOFF.md).
+입구 [START](ASTRA-START.md) · 명세 [PLAN](ASTRA-PLAN.md) · 공통 규칙과 승인 [HANDOFF](ASTRA-HANDOFF.md). 이미 승인된 범위는 반복 승인받지 않는다.
 
 **맵·배경 작업(새 세부맵, 장면 수정, 두아트, 새 지역)은 이 순서대로 한다.**
 
@@ -67,4 +58,4 @@ PNG 경로, 크기, 낮/밤, 출구·문턱·통로 바닥·도착점 좌표(px)
 
 좌표는 각 폴더의 `coordinates.json`을 따른다. 이전 작은 회랑과 반려본으로 되돌리지 않는다. 제작 참고 자료(walk-analysis, [RESIDENCE-EXITS-V2.md](RESIDENCE-EXITS-V2.md))는 최종 목록이 아니다.
 
-> **다음:** 보고까지 끝났으면 [PLAN](ASTRA-PLAN.md)의 "지금" 표로 돌아간다.
+> **다음:** 보고까지 끝났으면 [STATE](ASTRA-DRAW-STATE.md)를 갱신한다.

@@ -1,34 +1,12 @@
 # SandAndFeather 작업 안내
 
-> **작화 실행 절차 (2026-10-14):** 새 그림·부분 수정·재시도 전 [현재 작업](docs/ASTRA-DRAW-STATE.md)과 [작화 시작표](docs/ASTRA-DRAW-CHECK.md)를 확인한다. 상세 지침과 실제 원본·가이드를 확인한 뒤, 각 생성의 참고 파일·가이드 사용·지시문·결과 비교를 작업 폴더에 기록한다. 파일 목록 확인이나 기억만으로 읽음/검수 완료를 선언하지 않는다.
-> **승인 범위:** 이미 승인된 계획은 반복 승인받지 않는다. 아래의 계획 확인 규칙은 아직 승인되지 않은 새 범위에 적용한다. 최신 사용자 지시가 우선한다. 이 시작표는 아래 상세 지침을 생략하는 허가가 아니다.
-
-이 저장소는 두 에이전트가 함께 작업한다. **자기 역할의 인수인계만 읽는다.** 두 문서 모두 지금 기준만 담고 있고, 지난 경과는 git 커밋 기록에만 남아 있다. 현재 대화에서 사용자가 내린 지시가 문서보다 우선한다.
-
-| 누구 | 하는 일 | 읽을 문서 |
-|---|---|---|
-| **아스트라** | 그림: 시안, 스프라이트, 맵 아트 | **[`docs/ASTRA-START.md`](docs/ASTRA-START.md) 입구 하나만 열면 된다.** 거기서 할 일(PLAN) → 캐릭터 그림(SPRITE) / 맵(MAP) → 공통 규칙(HANDOFF)으로 이어진다 |
-| **오푸스** | 게임: 채택된 그림 적용, 충돌·출구·가림·저장, UI, 코드, 검증 | [`docs/OPUS-HANDOFF.md`](docs/OPUS-HANDOFF.md) |
-
-두 에이전트 모두 main에 작업한다. 받아서 합치고, 다른 작업을 덮어쓰지 않는다.
+현재 사용자 지시가 저장소 문서보다 우선한다. 자기 역할의 문서를 읽는다. 두 역할은 main에 반영하며 최신 변경을 받아 합치고 다른 작업을 덮어쓰거나 강제 푸시하지 않는다.
 
 ## 아스트라
 
-**매번 [`docs/ASTRA-START.md`](docs/ASTRA-START.md)부터 연다.**
+**매 작업과 컨텍스트 압축 후 [ASTRA-START](docs/ASTRA-START.md)부터 연다.** 현재 상태 → 해당 명세 → 작화 시작표와 상세 지침 → 실제 원본·가이드 확인 순으로 진행한다. 생성·부분 수정·재시도마다 사용한 자료와 결과 비교를 기록한다. 기억만으로 준수했다고 선언하지 않는다.
 
-> **⚠️ ASTRA: THE FINAL IDLE/WALK SPRITES ARE THE ANSWER. OPEN THEM, TRACE ON THE GUIDES (`head-check.py --guide`, `palette/`), COPY THEIR FACE, HEAD SIZE, LINES, HAIR DETAIL AND COLOURS EXACTLY. ONLY THE POSE CHANGES.**
->
-> **🛑 ASTRA: DO EXACTLY WHAT THE USER SAID. DO NOT REINTERPRET, NARROW OR "OPTIMISE" THE ORDER. "TRACE THE BODY AND REDRAW" MEANS THE WHOLE BODY, NOT THE OUTER WIDTH. UNSURE? ASK BEFORE DRAWING. CHANGING THE TASK = REJECTED.**
->
-> **🛑 ASTRA: CAN'T READ A PICTURE THE USER GAVE YOU? SAY SO AND ASK FOR THE FILE. NEVER GUESS, NEVER CLAIM YOU MATCHED WHAT YOU DID NOT SEE.**
-
-1. **원본부터 연다.** 원본 파일이 있는 그림은 그 원본을 직접 열어 확인한 뒤 작업한다.
-2. **생각하고, 계획을 확인받고 만든다.** 요청 단어만 처리하지 않는다. 결과가 원래 그 그림의 일부처럼 보일지(투시·크기·화풍·동작) 먼저 생각한다. 새 장면, 새 동작, 여러 장 생성은 이미지 생성·편집 전에 계획을 사용자에게 확인받는다.
-3. **채택된 실제 파일을 베이스로, 요청한 부분만 고친다.** 최신 수정본, 사용자 채택본, 게임 적용본은 서로 다르다.
-4. **보내기 전에 스스로 검수한다.** 이중선, 겹친 그림, 투시 두 개, 접합 자국, 크기 오류를 사용자가 먼저 찾게 하지 않는다. 캐릭터 그림은 ASTRA-SPRITE 작업 카드(그리기 전 확인서, `sprite-review.py`, 실수 표), 맵은 ASTRA-MAP, 공통 검수는 ASTRA-HANDOFF 2절.
-5. **지시는 그 지시가 나온 작업에만 적용한다.**
-6. **한 번에 하나씩 하고, 할당량을 아낀다.**
-7. 런타임 파일(`tools/maps/`, `data/`, `src/`)은 고치지 않는다. 게임 적용은 오푸스가 한다.
+역할은 그림 제작이다. 런타임 변경과 게임 적용은 오푸스 담당이다. 공통 작업 규칙은 [HANDOFF](docs/ASTRA-HANDOFF.md), 캐릭터 실행은 [DRAW-CHECK](docs/ASTRA-DRAW-CHECK.md)에 있다.
 
 ## 오푸스
 

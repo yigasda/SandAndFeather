@@ -1,38 +1,29 @@
-# 아스트라 공통 규칙 — 모든 그림 작업에
+# 아스트라 공통 규칙 — 작업 범위·승인·검수·전달
 
-> **작화 실행 절차 (2026-10-14):** 새 그림·부분 수정·재시도 전 [현재 작업](ASTRA-DRAW-STATE.md)과 [작화 시작표](ASTRA-DRAW-CHECK.md)를 확인한다. 상세 지침과 실제 원본·가이드를 확인한 뒤, 각 생성의 참고 파일·가이드 사용·지시문·결과 비교를 작업 폴더에 기록한다. 파일 목록 확인이나 기억만으로 읽음/검수 완료를 선언하지 않는다.
-> **승인 범위:** 이미 승인된 계획은 반복 승인받지 않는다. 아래의 계획 확인 규칙은 아직 승인되지 않은 새 범위에 적용한다. 최신 사용자 지시가 우선한다. 이 시작표는 아래 상세 지침을 생략하는 허가가 아니다.
-
-> # 🛑 DO EXACTLY WHAT THE USER SAID. NOT YOUR VERSION OF IT. 🛑
-> - **THE USER'S WORDS ARE THE ORDER. DO NOT REINTERPRET, NARROW, SOFTEN OR "OPTIMISE" THEM.** "Trace Horus's body and redraw" means **TRACE THE WHOLE BODY AND REDRAW IT** — not "match the outer width", not "fix only the outline", not "adjust a few pixels".
-> - **IF YOU THINK A SMALLER OR EASIER VERSION IS ENOUGH, YOU ARE WRONG. DO THE WHOLE THING.**
-> - **IF YOU ARE UNSURE WHAT THE USER MEANT, ASK BEFORE YOU DRAW. NEVER GUESS AND NEVER PICK THE CHEAPER READING.**
-> - **BEFORE YOU START, WRITE BACK THE USER'S ORDER WORD FOR WORD, THEN WHAT YOU WILL DO FOR EACH PART OF IT.** If your plan drops or shrinks any part, it is wrong.
-> - **CHANGING THE TASK YOU WERE GIVEN INTO A DIFFERENT TASK = REJECTED. EVERY TIME.**
-> - **IF YOU CANNOT OPEN OR READ A PICTURE THE USER GAVE YOU, SAY SO RIGHT AWAY AND ASK FOR THE FILE (PNG in the repo or a Drive link). NEVER GUESS WHAT IT SHOWS. NEVER SAY "I MATCHED IT" ABOUT A PICTURE YOU DID NOT SEE.** Claiming you followed something you never read is a lie, and it is worse than asking.
-
-> **길 안내** — 입구 [START](ASTRA-START.md) · 할 일 [PLAN](ASTRA-PLAN.md) · 캐릭터 그림 [SPRITE](ASTRA-SPRITE.md) · 맵 [MAP](ASTRA-MAP.md) · 공통 규칙 [HANDOFF](ASTRA-HANDOFF.md)
-> **지금 여기: 공통 규칙.** 다음: 할 일은 [PLAN](ASTRA-PLAN.md), 캐릭터면 [SPRITE](ASTRA-SPRITE.md), 맵이면 [MAP](ASTRA-MAP.md).
-
-**아스트라용 문서다.** 갱신 2026-10-12. 캐릭터 그림과 맵에 **공통인 규칙**만 있다. 캐릭터 그림만의 규칙은 [ASTRA-SPRITE](ASTRA-SPRITE.md), 맵만의 규칙은 [ASTRA-MAP](ASTRA-MAP.md). 게임 코드와 적용은 오푸스 담당이다([OPUS-HANDOFF.md](OPUS-HANDOFF.md), 읽지 않아도 된다).
+입구는 [START](ASTRA-START.md), 현재 작업은 [STATE](ASTRA-DRAW-STATE.md). 캐릭터별 실행은 [DRAW-CHECK](ASTRA-DRAW-CHECK.md), 상세 외형은 [SPRITE](ASTRA-SPRITE.md), 맵은 [MAP](ASTRA-MAP.md).
 
 ## 1. 일하는 방식
 
+**요청을 축소·재해석하지 않는다.** “몸을 대고 다시 그려”는 몸 전체를 뜻하며 외곽 폭만 맞추라는 뜻이 아니다. 시작 기록에 사용자 지시 원문과 각 요구의 수행 방법을 적는다. 실제로 불명확한 필수 사항만 묻고, 이미 정해진 범위를 더 쉬운 작업으로 바꾸지 않는다. 지시는 해당 작업 범위에만 적용한다.
+
+**게임 적용은 오푸스 담당이다.** 아스트라는 런타임 `src/`, `data/`, `tools/maps/`를 고치지 않는다. 한 생성·수정 결과를 검수한 뒤 다음으로 넘어가며, 전달 묶음의 크기와 한 번의 생성 장 수를 구분한다.
+
+
 1. **원본부터 연다.** 원본 파일이 있으면 그 파일을 직접 열어 본다. GIF·시트·스크린샷에서 다시 잘라내지 않는다. 파일 목록이나 해시만 본 것은 그림을 본 게 아니다.
 2. **생각하고 만든다.** 요청 단어만 처리하지 않는다. 시작 전에 정리한다: 사용자가 원하는 결과, 반드시 지킬 것(채택된 외형, 원본의 투시·크기·화풍, 기존 동작의 특징), 말하지 않아도 당연한 조건, 검수 방법. 예: "입구 추가"에는 원래 그 그림에 있던 것 같은 투시·크기·화풍이 들어 있다. "걷기"에는 기존 걷기의 발 방향, 다리 겹침, 치마·팔·머리카락 움직임이 들어 있다.
-3. **만들기 전에 계획을 확인받는다.** 새 장면, 새 동작, 전체 편집, 여러 장 생성은 생성·편집 전에 짧은 계획(베이스 파일, 바꿀 것, 지킬 것, 방법, 장 수, 검수 방법)을 보내 OK를 받는다. 범위가 정확한 작은 국소 수정은 바로 해도 된다.
-4. **동작은 한 묶음으로.** 한 동작의 모든 캐릭터·방향·프레임을 한 번에 그려 보낸다. 처음 그리는 자세 종류(앉기, 잠들기처럼)만 대표 1장을 먼저 확인받는다. 새 장면·맵은 대표 시안부터.
+3. **만들기 전에 계획을 확인받는다.** 아직 승인되지 않은 새 장면·동작·전체 편집·여러 장 생성 계획은 생성·편집 전에 짧은 계획(베이스 파일, 바꿀 것, 지킬 것, 방법, 장 수, 검수 방법)을 보내 OK를 받는다. 이미 승인된 계획은 매 장·소묶음마다 재승인받지 않는다. 범위가 정확한 작은 국소 수정은 바로 해도 된다.
+4. **동작은 한 묶음으로.** 묶음의 범위·전달 단위는 최신 사용자 계획을 따른다. 현재 전투 재작화의 캐릭터별 순서는 STATE에 있다. 대표 1장 확인은 승인된 계획에 포함된 경우에만 진행한다. 새 장면·맵은 대표 시안부터.
 5. **채택 파일만 베이스로, 요청한 부분만 고친다.** 설명만 보고 비슷하게 다시 그리지 않는다. 합쳐 보여 달라는 요청은 기존 파일 배치다. 요청 밖이 바뀐 결과는 다음 베이스로 쓰지 않는다. 실패한 새 버전을 최신이라는 이유로 기준으로 삼지 않는다.
 6. **수정 단어 하나에 매달려 전체를 망가뜨리지 않는다.** "곧게", "간격", "깊이" 같은 한 단어를 기계적으로 구현하지 않는다. 문장 전체, 앞선 요청, 실제 채택 그림을 함께 기준으로 삼는다. 국소 조건을 맞췄어도 캐릭터의 전체 인상(목 길이, 머리·몸 비율, 치마 실루엣, 다리 길이·굵기, 신발 크기, 도트 명암·외곽선)이 달라지면 실패다. 재작화 허용은 디자인 변경 허용이 아니다.
 7. **사용자 휴대폰 수정도의 구분.** 바깥 윤곽·부위 위치·폭·높이는 따른다. 거친 브러시 선·색, 내부 경계(예: "이마는 위치만 보고 다듬어"), 우발적 빈틈은 복사하지 않고 채택 도트 품질로 정리한다.
 8. **지시는 그 지시가 나온 작업에만 적용한다.** 지난 지시가 새 작업과 부딪치면 사용자의 최신 의도를 따르고, 애매하면 제작 전에 묻는다.
 9. **최신 파일, 채택 파일, 게임 파일은 서로 다르다.** main 커밋이나 Drive 업로드는 채택의 증거가 아니다. 사용자가 채택한다고 한 말은 그대로 기록한다. 부분 채택은 부분별로 적는다.
 10. **같은 반려가 두 번 나오면 멈춘다.** 추가 생성을 멈추고 원본, 방법, 검수 기준부터 다시 본다.
-11. **할당량을 아낀다.** 고칠 부분만 잘라 작업하고 확인도 크롭으로 한다. 복사·마스크·합성으로 되는 수정에 이미지 생성을 쓰지 않는다. 큰 PNG를 반복해서 다시 읽지 않는다.
+11. **할당량을 아낀다.** 고칠 부분만 잘라 작업하고 확인도 크롭으로 한다. 수정 방법은 사용자가 허용한 범위와 현재 도구 지침을 따른다. 새 작화와 기존 파일 배치·추출을 구분하고, 요청 밖의 전체 재생성을 반복하지 않는다. 큰 PNG를 반복해서 다시 읽지 않는다.
 
 ## 2. 보내기 전 공통 검수 — 사용자가 결함을 먼저 찾으면 안 된다
 
-캐릭터 그림은 [ASTRA-SPRITE](ASTRA-SPRITE.md) ④(`sprite-review.py`), 맵은 [ASTRA-MAP](ASTRA-MAP.md) 검수도 같이 한다. 아래는 모든 그림에 공통이다.
+캐릭터 그림은 [DRAW-CHECK](ASTRA-DRAW-CHECK.md) 상세 작업 카드 ④(`sprite-review.py`), 맵은 [ASTRA-MAP](ASTRA-MAP.md) 검수도 같이 한다. 아래는 모든 그림에 공통이다.
 
 **모든 그림에서 눈으로 볼 것.**
 - 원본과 결과를 같은 배율로 나란히 놓은 전체 비교 한 장, 수정 경계마다 2~3배 확대 크롭을 직접 본다. 사용자가 짚은 위치는 같은 좌표·같은 배율로 전후를 확대해 본다.
@@ -54,4 +45,4 @@
 - **사용자가 준 그림(수정도·예시)을 열 수 없거나 픽셀을 읽지 못하면 바로 말하고 파일(저장소의 PNG 또는 Drive 링크)을 요청한다.** 보지 못한 그림을 추측으로 따라 그리지 않고, "그대로 맞췄다"고 쓰지 않는다(호루스 202 턱: 수정본을 못 읽고 맞췄다고 보고함).
 - **보고:** 확인한 것과 확인하지 못한 것을 그대로 적는다. 확인하지 않고 "완료", "동일", "승인"이라고 쓰지 않는다. "검사 통과"를 완성 근거로 쓰지 않는다.
 - 맵 전달: PNG 경로, 크기, 낮/밤, 출구·문턱 좌표(px).
-- **문서 관리:** 공통 규칙은 이 문서, 캐릭터 그림 규칙·외형·실수 표·채택 스프라이트는 ASTRA-SPRITE, 맵 규칙·채택 배경은 ASTRA-MAP, 할 일·상태는 ASTRA-PLAN에만 쓴다. 같은 내용을 두 곳에 쓰지 않는다. 경과는 쌓지 않는다.
+- **문서 관리:** 공통 규칙은 이 문서, 캐릭터 그림 규칙·외형·실수 표·채택 스프라이트는 ASTRA-SPRITE, 맵 규칙·채택 배경은 ASTRA-MAP, 동작·표정 명세는 ASTRA-PLAN, 현재 상태는 ASTRA-DRAW-STATE, 실행 순서·기록 양식은 ASTRA-DRAW-CHECK에만 쓴다. 같은 내용을 두 곳에 쓰지 않는다. 경과는 쌓지 않는다.
