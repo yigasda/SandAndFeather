@@ -1,6 +1,7 @@
 // Growing: 지혜 · 체력 · 신앙, the 모험 등급 every activity feeds, the journal of things worth telling,
 // and the day's two commissions. All of it lives in the chat's game; nothing here goes to the prompt.
 
+import { bondActivity } from './bond.js';
 import { emit } from './bus.js';
 import { DATA } from './data.js';
 import { today } from './ledger.js';
@@ -55,7 +56,8 @@ export function dailyTasks(s = getState()) {
 }
 
 // an activity finished: counts for the commissions; returns a line to show if one was completed
-export function didAct(s, kind) {
+export function didAct(s, kind, options = {}) {
+    bondActivity(s, kind, options);
     emit('act:done', { kind });
     lessonStep(s, kind);
     const tasks = dailyTasks(s);

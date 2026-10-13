@@ -1,0 +1,9 @@
+{
+  "gifts": {
+    "set": { "love": [], "like": [], "dislike": [], "special": [] },
+    "horus": { "love": [], "like": [], "dislike": [], "special": [] }
+  },
+  "points": { "ordinary": 2, "like": 5, "special": 8, "dislike": 0 },
+  "activities": { "fish": 2, "cook": 2, "study": 2, "adventure": 3 },
+  "stages": [0, 20, 40, 60, 80, 100]
+}

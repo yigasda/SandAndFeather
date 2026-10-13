@@ -5,6 +5,7 @@
 // so the list stays the one place to see who says what. An unlisted name is refused with a warning.
 
 export const EVENTS = {
+    'bond:changed': 'bond points, ties or candidate review changed',
     'clock:synced': 'the date, hour and place were read from the chat or set by hand { ok, byHand, days, tr }',
     'day:started': 'days the ledger had never handled began { days: [dates], from, to }',
     'place:changed': 'the chat moved to another place { from, to }',

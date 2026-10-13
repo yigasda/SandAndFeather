@@ -56,6 +56,7 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
         el.addEventListener('click', () => { if (b.onClick?.() === false) return; close(); });
         btns.append(el);
     }
+    wrap.sfClose = close;
     wrap.querySelector('.sf_pop_x').addEventListener('click', close);
     wrap.addEventListener('pointerdown', e => { if (e.target === wrap) close(); });
     openCount++;
@@ -66,7 +67,7 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
 
 // closes every card (the window is closing)
 export function closeCards(root) {
-    root.querySelectorAll('.sf_pop_wrap').forEach(el => el.remove());
+    root.querySelectorAll('.sf_pop_wrap').forEach(el => el.sfClose ? el.sfClose() : el.remove());
     openCount = 0;
 }
 

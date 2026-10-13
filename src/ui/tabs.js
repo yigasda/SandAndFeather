@@ -1,6 +1,7 @@
 // The tabs under the map: 일행 (who walks with her, who walks in front, and her abilities and 모험 등급), 임무 (today's commissions,
 // the small adventure's next step, and the journal of things she can bring up in the chat).
 
+import { bondCard } from './bondcard.js';
 import { emit } from '../core/bus.js';
 import { DATA } from '../core/data.js';
 import { DAILY_NEED, STATS, dailyTasks, lessonList, lessonState, pickLesson, rankInfo } from '../core/progress.js';
@@ -42,7 +43,7 @@ export function characterCard(ui, id = 'somang', onClose = null) {
                     buttons: done || cur || !mine ? [] : [{ label: '이걸 익히기', onClick: async () => { pickLesson(s, L.id); dropLessonPicks(s); await saveState(); close(); characterCard(ui, id, onClose); } }] };
             })),
             para(`태양 기운 ${sunLeft(s)}/${sunMax()} · 데벤 ${s.bag.deben}`)),
-        buttons: [{ label: '도감', onClick: () => { codexCard(ui, onClose); } }, { label: '닫기', primary: true }] });
+        buttons: [...(id !== 'somang' ? [{ label: '인연', onClick: () => bondCard(ui, id) }] : []), { label: '도감', onClick: () => { codexCard(ui, onClose); } }, { label: '닫기', primary: true }] });
 }
 export const somangCard = (ui, onClose) => characterCard(ui, 'somang', onClose);
 
@@ -87,6 +88,7 @@ export function partyCard(ui, onClose) {
         heroes.replaceChildren(para('누가 앞장설까? 앞장선 사람을 움직이고, 그 사람이 싸우고 성장해.', 'sf_sub_head'), ...HEROES.map(id => {
             const st = statsOf(s, id), on = id === lead;
             const el = row(id, HERO_NAME[id], `모험 등급 ${rankInfo(st.xp).rank} · ${Object.entries(STATS).map(([k, ko]) => `${ko} ${st[k]}`).join(' · ')}`, [
+                ...(id !== 'somang' ? [{ label: '인연', inName: true, data: { bond: id }, onClick: () => bondCard(ui, id) }] : []),
                 { label: '자세히', inName: true, cls: 'sf_party_look', aria: `${HERO_NAME[id]} 자세히`, data: { detail: id }, onClick: () => characterCard(ui, id, null) },
                 { label: on ? '앞장 중' : '앞장', primary: on, disabled: changing || on, cls: 'sf_lead_pick', data: { lead: id }, onClick: () => update(() => setLead(s, id)) },
             ]);

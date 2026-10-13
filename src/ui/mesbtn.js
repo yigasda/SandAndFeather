@@ -4,6 +4,7 @@
 // The button goes into SillyTavern's message template (#message_template .extraMesButtons), so every message
 // rendered from now on carries it, and into the messages already on screen.
 
+import { manualTieCard } from './bondcard.js';
 import { on } from '../core/bus.js';
 import { DATA } from '../core/data.js';
 import { josa } from '../core/ko.js';
@@ -81,6 +82,7 @@ function openPick(at) {
     card({ tag: '게임에 반영하기', title: '문장 하나를 골라', wide: true,
         body: stack(box, edit, para('받은 건 하기로 한 일일 뿐이야. 이 답장이 재생성으로 사라지면 같이 사라져.')),
         buttons: [
+            { label: '인연의 기록', disabled: true, onClick: () => { manualTieCard({ showCard: card, toast: say }, 'set', () => {}, { at, quote: snip }); } },
             { label: '배움 목표', disabled: true, onClick: () => { lessonPick(at, snip, text()); } },
             { label: '모험 소재', disabled: true, onClick: () => { take('idea'); } },
             { label: '메모', primary: true, disabled: true, onClick: () => { take('note'); } },

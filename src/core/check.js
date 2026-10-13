@@ -12,6 +12,11 @@ export function checkData() {
         if (!it.ko || !it.en) bad('items.json', `${id}: ko와 en 이름이 다 있어야 해`);
         if (it.open?.gives && !items[it.open.gives]) bad('items.json', `${id}: 열면 나오는 ${it.open.gives}가 목록에 없어`);
     }
+    for (const who of ['set', 'horus']) for (const kind of ['love', 'like', 'dislike', 'special']) {
+        const ids = DATA.bond?.gifts?.[who]?.[kind];
+        if (!Array.isArray(ids)) bad('bond.json', `${who}.${kind}: 아이템 id 목록이어야 해`);
+        else for (const id of ids) if (!items[id]) bad('bond.json', `${who}.${kind}: 없는 아이템 ${id}`);
+    }
     const parts = new Set((DATA.calendar?.parts || []).map(p => p.id));
     const seasons = new Set(Object.keys(DATA.calendar?.seasons || {}));
     for (const [where, list] of Object.entries(DATA.finds || {})) {

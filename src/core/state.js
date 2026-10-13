@@ -1,12 +1,14 @@
 // The game, saved per chat in the chat's metadata. One object with a version, so later stages can move fields.
 
+import { freshBond, fillBond } from './bond-state.js';
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 10;
+export const STATE_VERSION = 11;
 
 export const freshState = () => ({
     v: STATE_VERSION,
+    bond: freshBond(),
     date: { year: 1, month: 0, day: 1 },          // month 0–11, or 12 for the five epagomenal days
     part: 'day',                                   // dawn | day | evening | night
     place: 'ombos',                                // places.json id
@@ -49,6 +51,7 @@ export const freshState = () => ({
 // A step only moves or renames what changed shape; new fields are filled from freshState() after the steps.
 // A save from a newer version of the extension is left as it is (never cut down to this version's shape).
 const STEPS = {
+    10: s => { fillBond(s); }, // blank bond only; existing RP never grants points
     1: () => {},  // 1 → 2: ledger, bag, news, recent are new; they are filled below
     // 2 → 3: 말 걸기 no longer moves the scene by itself. Talk lines made before that, still waiting, are dropped
     // so an ongoing scene is not pulled to the temple courtyard.
@@ -102,6 +105,7 @@ function migrate(s) {
         s.v = STATE_VERSION;
     }
     fill(s);
+    fillBond(s);
     checked.add(s);
     return s;
 }
