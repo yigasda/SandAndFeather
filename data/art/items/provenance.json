@@ -1,5 +1,5 @@
 {
- "about": "아이템 아이콘(128×128 RGBA). 사용자가 채택한 시안에서 뽑은 그림을 그대로 넣었다(다시 그리거나 고치지 않음). 원본 묶음: SandAndFeather_47_item_icons_128px_v3_star_fixed.zip. salt, dates, lotus_seed, barley_seed, fig_seed 5종은 보조 시안에서 가져온 것으로, 사용자가 따로 최종 승인했다.",
+ "about": "아이템 아이콘(128×128 RGBA). 사용자가 채택한 시안에서 뽑은 그림을 그대로 넣었다(다시 그리거나 고치지 않음). 원본 묶음: SandAndFeather_47_item_icons_128px_v3_star_fixed.zip. salt, dates, lotus_seed, barley_seed, fig_seed 5종은 보조 시안에서 가져온 것으로, 사용자가 따로 최종 승인했다. 0.9.67: 시장 새 아이템 53종은 SandAndFeather_Market_53_item_icons_128px.zip(사용자가 준 원본 시트 6장에서 다시 그리지 않고 뽑은 것)을 그대로 넣었다.",
  "items": {
   "ancient_seal": {
    "ko": "오래된 인장",
@@ -522,6 +522,589 @@
     665
    ],
    "sha256": "0abeca6af2e451b6358e46471ef7fef1324ae2d1f31be5d4db6e3495a0f6c302"
+  },
+  "kyphi": {
+   "ko": "키피 향",
+   "source": "1000482635.png",
+   "source_box": [
+    73,
+    65,
+    381,
+    407
+   ],
+   "sha256": "dd9908c8dbcd544286f8e18cfc14d27fd8262bab8c9fa73fc206115a435e412d"
+  },
+  "frankincense": {
+   "ko": "유향",
+   "source": "1000482635.png",
+   "source_box": [
+    451,
+    148,
+    801,
+    425
+   ],
+   "sha256": "a5f2a1087df5da9c226fdee40e06dfe4366d6f74dacb60652fd18ac6ebf6f55e"
+  },
+  "myrrh": {
+   "ko": "몰약",
+   "source": "1000482635.png",
+   "source_box": [
+    885,
+    160,
+    1196,
+    400
+   ],
+   "sha256": "a5a3f3d1c047f0157566f4b50f16fbd25378b21e72809c559d9233c883e7cf49"
+  },
+  "lotus_oil": {
+   "ko": "연꽃 향유",
+   "source": "1000482635.png",
+   "source_box": [
+    112,
+    479,
+    339,
+    810
+   ],
+   "sha256": "5d937b30ce3bddc8463f4c8ee3cca643b983d028eb98e4676ad0e333b63285b1"
+  },
+  "lily_oil": {
+   "ko": "백합 향유",
+   "source": "1000482635.png",
+   "source_box": [
+    545,
+    469,
+    804,
+    826
+   ],
+   "sha256": "d1a540448ddbd4936d74ab0b3436345aca4030a9f11644af036d4fb9cf41a312"
+  },
+  "kohl": {
+   "ko": "콜 눈화장",
+   "source": "1000482635.png",
+   "source_box": [
+    883,
+    546,
+    1213,
+    804
+   ],
+   "sha256": "548deb7080222eb985f43a3b0c62c0e5ec80c656793bc3eb0d379fc0c95cc903"
+  },
+  "faience_beads": {
+   "ko": "파이앙스 구슬 목걸이",
+   "source": "1000482635.png",
+   "source_box": [
+    73,
+    892,
+    384,
+    1159
+   ],
+   "sha256": "6ddad38c9dae77474d302da4a7100d0a732a30355cdedbc5f5915c0bfe401507"
+  },
+  "carnelian_ring": {
+   "ko": "홍옥수 반지",
+   "source": "1000482635.png",
+   "source_box": [
+    487,
+    902,
+    763,
+    1146
+   ],
+   "sha256": "4fa09820266a2c3e58a4b269f7e3ff6d4751048b0333d62c7eefc7f337df3159"
+  },
+  "copper_bangle": {
+   "ko": "구리 팔찌",
+   "source": "1000482635.png",
+   "source_box": [
+    877,
+    904,
+    1197,
+    1158
+   ],
+   "sha256": "4e9475be61d0b3011aef8193e992a5dc52db8fcba019139114ef287dfd2b509e"
+  },
+  "cumin": {
+   "ko": "쿠민",
+   "source": "1000482636.png",
+   "source_box": [
+    116,
+    73,
+    483,
+    382
+   ],
+   "sha256": "cd30c0eae554de32b55dcd2b77fdf84e51feed0167d399f04637723baabc2f27"
+  },
+  "coriander": {
+   "ko": "고수 씨",
+   "source": "1000482636.png",
+   "source_box": [
+    551,
+    110,
+    909,
+    369
+   ],
+   "sha256": "a59b34b564a7a45c7beb13f1b2a040f043d8aa010a544497360599039b3a06c0"
+  },
+  "garlic": {
+   "ko": "마늘",
+   "source": "1000482636.png",
+   "source_box": [
+    1007,
+    57,
+    1318,
+    372
+   ],
+   "sha256": "95b7e6fd36f012853412236675edff1767dce840d27fcfbc5aed48f72735dcf4"
+  },
+  "leek": {
+   "ko": "리크",
+   "source": "1000482636.png",
+   "source_box": [
+    104,
+    402,
+    485,
+    723
+   ],
+   "sha256": "e4ed8d97c50c07d3e8dbaa3ba279c902ed9bc7dd43f2a0ef36ce058d7b82e46d"
+  },
+  "lentils": {
+   "ko": "렌틸콩",
+   "source": "1000482636.png",
+   "source_box": [
+    547,
+    440,
+    901,
+    705
+   ],
+   "sha256": "8cca0aca4489f5533ebdb520e69fb2dc7514c60232957ea9df01dc371103dc63"
+  },
+  "chickpeas": {
+   "ko": "병아리콩",
+   "source": "1000482636.png",
+   "source_box": [
+    996,
+    441,
+    1320,
+    702
+   ],
+   "sha256": "57f68dc4226dc2aab564832e6c8bbef6ba698c3066331a4b3a3b30a44cc9e026"
+  },
+  "sesame": {
+   "ko": "참깨",
+   "source": "1000482636.png",
+   "source_box": [
+    44,
+    756,
+    377,
+    1039
+   ],
+   "sha256": "f05b96c208fc8f134e898845957526012e74006b0b2974575d4b2a0ba7d165e6"
+  },
+  "cucumber": {
+   "ko": "오이",
+   "source": "1000482636.png",
+   "source_box": [
+    412,
+    781,
+    721,
+    1027
+   ],
+   "sha256": "8f1ca5a8658c612f746965db40ebc4348119e80a453c935a0ff6ef358846105c"
+  },
+  "watermelon": {
+   "ko": "수박",
+   "source": "1000482636.png",
+   "source_box": [
+    751,
+    759,
+    1071,
+    1035
+   ],
+   "sha256": "b4f7d4dcae562bd14eec005abbde3522d5637223b2ceeae39d9cda4cf0090821"
+  },
+  "pomegranate": {
+   "ko": "석류",
+   "source": "1000482636.png",
+   "source_box": [
+    1122,
+    741,
+    1403,
+    1036
+   ],
+   "sha256": "c4b712de8dd4117fc7e04ac3b543288c69951f08ff45995f19e91e4814b522ed"
+  },
+  "linen": {
+   "ko": "아마포",
+   "source": "1000482637.png",
+   "source_box": [
+    76,
+    110,
+    433,
+    426
+   ],
+   "sha256": "cea60e0af5031585fc68e2b77c24441c9c8688d5e4426efa6be06f8294e662cc"
+  },
+  "oil_lamp": {
+   "ko": "기름 등잔",
+   "source": "1000482637.png",
+   "source_box": [
+    485,
+    133,
+    786,
+    379
+   ],
+   "sha256": "ae5d0c1d3e57846a34a3f1dd4a23b04f08b3645c2032780d5dc3ec7a0a6eb757"
+  },
+  "clay_bowl": {
+   "ko": "도기 그릇",
+   "source": "1000482637.png",
+   "source_box": [
+    876,
+    127,
+    1180,
+    389
+   ],
+   "sha256": "fce29b7eb80f294567bb23cded4af5477bc805ce2e70c30a12840e12480a646a"
+  },
+  "reed_pen": {
+   "ko": "갈대 붓",
+   "source": "1000482637.png",
+   "source_box": [
+    102,
+    475,
+    364,
+    779
+   ],
+   "sha256": "45e520cfeda08847cddfc32fe27d69681ffec49dc345593ea04de8f475615adf"
+  },
+  "blank_papyrus": {
+   "ko": "빈 파피루스",
+   "source": "1000482637.png",
+   "source_box": [
+    442,
+    462,
+    810,
+    778
+   ],
+   "sha256": "10878f27453e63946f14c2ab43e46ea4da818431e6932edb0dc046f34a385fc4"
+  },
+  "doum_fruit": {
+   "ko": "둠야자 열매",
+   "source": "1000482637.png",
+   "source_box": [
+    872,
+    492,
+    1185,
+    760
+   ],
+   "sha256": "2754fe135aee23f86192215054def493564ef313662cb3cce4307437782cbeae"
+  },
+  "carob": {
+   "ko": "캐럽 꼬투리",
+   "source": "1000482637.png",
+   "source_box": [
+    67,
+    868,
+    421,
+    1150
+   ],
+   "sha256": "4cb760cfeab58b473651da3ec29eb00042bffd230a652635aa44dc6ba5234f68"
+  },
+  "grapes": {
+   "ko": "포도",
+   "source": "1000482637.png",
+   "source_box": [
+    481,
+    826,
+    802,
+    1165
+   ],
+   "sha256": "e63a4ee8c05fbb3f0c6a99e554c75a892f13c3b6363adc353f171db157580c16"
+  },
+  "milk": {
+   "ko": "우유",
+   "source": "1000482637.png",
+   "source_box": [
+    854,
+    818,
+    1188,
+    1171
+   ],
+   "sha256": "60c562ea8e0b496ce265eef5c277d856dcf47c655918cb235b40c9bf131bbe34"
+  },
+  "cheese": {
+   "ko": "치즈",
+   "source": "1000482638.png",
+   "source_box": [
+    40,
+    110,
+    417,
+    395
+   ],
+   "sha256": "b7a717b975236414291121d87e5a308a8d343695614927d5c225c8c222029f9e"
+  },
+  "beer_jar": {
+   "ko": "보리 맥주",
+   "source": "1000482638.png",
+   "source_box": [
+    495,
+    46,
+    756,
+    400
+   ],
+   "sha256": "be06ed2309669179a1dd5685f159706b59a353ac1fe50807401283a01e5b318b"
+  },
+  "wine_jar": {
+   "ko": "포도주 단지",
+   "source": "1000482638.png",
+   "source_box": [
+    935,
+    24,
+    1160,
+    426
+   ],
+   "sha256": "45d9ab021ef9c2c59433dcc1eb50a9433319a2a6faa0bfa72e16bc859763bb2a"
+  },
+  "garlic_seed": {
+   "ko": "마늘 씨앗",
+   "source": "1000482638.png",
+   "source_box": [
+    44,
+    462,
+    382,
+    769
+   ],
+   "sha256": "120d1830b4d03c4324ef569d98484647455f78d53beec127621a1ec2fb991baa"
+  },
+  "cucumber_seed": {
+   "ko": "오이 씨앗",
+   "source": "1000482638.png",
+   "source_box": [
+    434,
+    489,
+    817,
+    790
+   ],
+   "sha256": "af15100083b679997485e1767597226717748199e0161257590016664fe5b1a9"
+  },
+  "watermelon_seed": {
+   "ko": "수박 씨앗",
+   "source": "1000482638.png",
+   "source_box": [
+    866,
+    521,
+    1208,
+    764
+   ],
+   "sha256": "e69ed288e1e0e10102b81dbbc158e0394d77dc3e59dac87660bffec5e1a046d9"
+  },
+  "grape_vine": {
+   "ko": "포도 묘목",
+   "source": "1000482638.png",
+   "source_box": [
+    63,
+    815,
+    352,
+    1198
+   ],
+   "sha256": "4a64170b994e60e2decdea8f34b8434370a6b7d951b3702116efd3669c58d9eb"
+  },
+  "fine_linen": {
+   "ko": "고운 아마천",
+   "source": "1000482638.png",
+   "source_box": [
+    434,
+    869,
+    817,
+    1164
+   ],
+   "sha256": "8ec0ca8243c1a89fb89ac36f8a4ab127e241a79dad91cedd005e7560bc2b5ca4"
+  },
+  "reed_mat": {
+   "ko": "갈대 돗자리",
+   "source": "1000482638.png",
+   "source_box": [
+    855,
+    865,
+    1228,
+    1183
+   ],
+   "sha256": "25b7c8ce4624de711caf2e12e0a0f06ec477b2dc9d2d59037b22522a27646392"
+  },
+  "papyrus_sandals": {
+   "ko": "파피루스 샌들",
+   "source": "1000482639.png",
+   "source_box": [
+    35,
+    277,
+    326,
+    535
+   ],
+   "sha256": "5d68bbd53d44b3ddd054fcfbcd27d3d4f8de42417463b0503ebe5da21dba4b95"
+  },
+  "scribe_palette": {
+   "ko": "필경사 팔레트",
+   "source": "1000482639.png",
+   "source_box": [
+    345,
+    206,
+    599,
+    538
+   ],
+   "sha256": "4eb1ea5229cca3714666a4e3f6059c3b83bf111f30643bc7e0147ff42c663e78"
+  },
+  "wooden_comb": {
+   "ko": "나무 빗",
+   "source": "1000482639.png",
+   "source_box": [
+    593,
+    273,
+    870,
+    517
+   ],
+   "sha256": "6cb43de6b9b71308373ada34c5b2e9eea70ff83e03b3b7a605f81e6be88072df"
+  },
+  "palm_fan": {
+   "ko": "야자잎 부채",
+   "source": "1000482639.png",
+   "source_box": [
+    869,
+    216,
+    1166,
+    535
+   ],
+   "sha256": "d43ad0227d1a73f44188615b5e405402659f43420fa2cf6e7e974f1d432a82fe"
+  },
+  "lapis_beads": {
+   "ko": "청금석 구슬",
+   "source": "1000482639.png",
+   "source_box": [
+    1174,
+    245,
+    1415,
+    531
+   ],
+   "sha256": "7ebe464cf096fef616dda35082b1da282caf95ecb09a72614336dca70c08681c"
+  },
+  "gold_ornament": {
+   "ko": "황금 장식",
+   "source": "1000482639.png",
+   "source_box": [
+    30,
+    656,
+    340,
+    953
+   ],
+   "sha256": "fba0dcbe619b6acc9b1a6f129ceb1f8be98b095cedb6a4ee62920b170a3b7e4f"
+  },
+  "bes_amulet": {
+   "ko": "베스 부적",
+   "source": "1000482639.png",
+   "source_box": [
+    354,
+    593,
+    550,
+    958
+   ],
+   "sha256": "28b270b1407b9530d5e589cfac640b67ba36411ddbfb25503f460cda508810cb"
+  },
+  "taweret_amulet": {
+   "ko": "타와렛 부적",
+   "source": "1000482639.png",
+   "source_box": [
+    611,
+    586,
+    801,
+    958
+   ],
+   "sha256": "bd05996bb642081a79879237b22be966c1abe98c543017b77085579430653ffe"
+  },
+  "senet_board": {
+   "ko": "세네트 놀이판",
+   "source": "1000482639.png",
+   "source_box": [
+    830,
+    661,
+    1165,
+    941
+   ],
+   "sha256": "1055acd3454901ebbca992b3abbfa822dcfb6a5111c664a8790c252638f19068"
+  },
+  "lotus_vase": {
+   "ko": "연꽃 화병",
+   "source": "1000482639.png",
+   "source_box": [
+    1183,
+    616,
+    1435,
+    958
+   ],
+   "sha256": "81442ef37deb4eabebd25b8487d6fc62f3ac89b99b71f3eee3bf18d2803d173a"
+  },
+  "small_chest": {
+   "ko": "작은 보물상자",
+   "source": "1000482633.png",
+   "source_box": [
+    77,
+    123,
+    495,
+    496
+   ],
+   "sha256": "5b82ea7ce63c57833c575280c3bf9b1a52c714d16d82229dee6e4ab5aa022d10"
+  },
+  "lentil_soup": {
+   "ko": "렌틸 수프",
+   "source": "1000482633.png",
+   "source_box": [
+    560,
+    49,
+    976,
+    492
+   ],
+   "sha256": "d7adfffbd2cd05fa659fcd8a5ff1fbda1ea6bf97e34a179ebf2d2da6e4d9d892"
+  },
+  "sesame_bread": {
+   "ko": "참깨빵",
+   "source": "1000482633.png",
+   "source_box": [
+    1031,
+    148,
+    1488,
+    477
+   ],
+   "sha256": "cad3984c92cd778993affbb18c08b23f4040421969a05073113951793b4e653a"
+  },
+  "pomegranate_sweets": {
+   "ko": "석류 과자",
+   "source": "1000482633.png",
+   "source_box": [
+    56,
+    580,
+    512,
+    908
+   ],
+   "sha256": "7ef0e1a5694cf5cb4bed5afff663acdfe36e07eb4891686c86afd0060ee75a45"
+  },
+  "cucumber_salad": {
+   "ko": "오이 냉채",
+   "source": "1000482633.png",
+   "source_box": [
+    545,
+    601,
+    989,
+    919
+   ],
+   "sha256": "2dd77a8d2fc84f54d42653611f39a4d595602580a7b469a8c3888df8186977e6"
+  },
+  "watermelon_punch": {
+   "ko": "수박 화채",
+   "source": "1000482633.png",
+   "source_box": [
+    1036,
+    568,
+    1488,
+    928
+   ],
+   "sha256": "f6672caaecf4d9ac62ee4b7b412e94a8b909569c58ced2acd5b1b81020e1858c"
   }
  }
 }

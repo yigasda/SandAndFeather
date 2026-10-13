@@ -6,13 +6,20 @@
 import { itemInfo } from '../core/bag.js';
 import { settings } from '../core/settings.js';
 
-// ids with their own icon (data/art/items/provenance.json): all 47 items
-const OWN = new Set(['ancient_seal', 'barley', 'barley_porridge', 'barley_seed', 'black_sand', 'blue_lotus', 'bread',
-    'bronze_mirror', 'catfish', 'cedar_plank', 'croc_tooth', 'dates', 'duat_reed', 'duat_scroll', 'eel',
-    'faience_scarab', 'feast_garland', 'fig', 'fig_cake', 'fig_seed', 'fish_stew', 'golden_carp', 'grilled_fish',
-    'heart_scarab', 'honey', 'honey_bread', 'ka_statue', 'limestone', 'lotus_seed', 'lotus_tea', 'map_scrap',
-    'nile_perch', 'onion', 'ostracon', 'pitch', 'reed_bundle', 'salt', 'sealed_jar', 'sealed_letter', 'star_shard',
-    'tilapia', 'tomb_rubbing', 'toy_boat', 'ushabti', 'was_shard', 'wedjat', 'wet_papyrus']);
+// ids with their own icon (data/art/items/provenance.json): all 100 items (47 + the market 53 from 0.9.67)
+const OWN = new Set(['ancient_seal', 'barley', 'barley_porridge', 'barley_seed', 'beer_jar', 'bes_amulet', 'black_sand',
+    'blank_papyrus', 'blue_lotus', 'bread', 'bronze_mirror', 'carnelian_ring', 'carob', 'catfish', 'cedar_plank',
+    'cheese', 'chickpeas', 'clay_bowl', 'copper_bangle', 'coriander', 'croc_tooth', 'cucumber', 'cucumber_salad',
+    'cucumber_seed', 'cumin', 'dates', 'doum_fruit', 'duat_reed', 'duat_scroll', 'eel', 'faience_beads',
+    'faience_scarab', 'feast_garland', 'fig', 'fig_cake', 'fig_seed', 'fine_linen', 'fish_stew', 'frankincense',
+    'garlic', 'garlic_seed', 'gold_ornament', 'golden_carp', 'grape_vine', 'grapes', 'grilled_fish', 'heart_scarab',
+    'honey', 'honey_bread', 'ka_statue', 'kohl', 'kyphi', 'lapis_beads', 'leek', 'lentil_soup', 'lentils', 'lily_oil',
+    'limestone', 'linen', 'lotus_oil', 'lotus_seed', 'lotus_tea', 'lotus_vase', 'map_scrap', 'milk', 'myrrh',
+    'nile_perch', 'oil_lamp', 'onion', 'ostracon', 'palm_fan', 'papyrus_sandals', 'pitch', 'pomegranate',
+    'pomegranate_sweets', 'reed_bundle', 'reed_mat', 'reed_pen', 'salt', 'scribe_palette', 'sealed_jar',
+    'sealed_letter', 'senet_board', 'sesame', 'sesame_bread', 'small_chest', 'star_shard', 'taweret_amulet', 'tilapia',
+    'tomb_rubbing', 'toy_boat', 'ushabti', 'was_shard', 'watermelon', 'watermelon_punch', 'watermelon_seed', 'wedjat',
+    'wet_papyrus', 'wine_jar', 'wooden_comb']);
 // before 0.9.59 several items shared one theme picture (skins/<theme>/item-*); an item added later without its own
 // icon can be given one of those here
 const SHARED = {};
