@@ -27,7 +27,7 @@
 
 ---
 
-## 2단계 — 셋소호 동작 (→ 그릴 때 [SPRITE](ASTRA-SPRITE.md) 작업 카드)
+## 2단계 — 셋소호 동작 (→ 그릴 때 [DRAW-CHECK](ASTRA-DRAW-CHECK.md))
 
 **제작·검수·전달 단위:** 현재 승인된 묶음은 STATE, 매 장 검수는 DRAW-CHECK를 따른다. 과거 생활 묶음의 “전부 그린 뒤 검사”나 “대표 확인 없음”을 현재 전투 재작화에 적용하지 않는다.
 
@@ -312,4 +312,4 @@
 
 ---
 
-전달·보고는 [DRAW-CHECK](ASTRA-DRAW-CHECK.md) ⑤, [MAP](ASTRA-MAP.md) ⑤, 공통은 [HANDOFF](ASTRA-HANDOFF.md) 3절. 게임 적용은 사용자가 파일을 넘길 때 오푸스가 한다(맵 크기, 충돌, 깊은 문 판정, 가림, 밤 전환, 저장 연결 포함).
+전달·보고는 [DRAW-CHECK](ASTRA-DRAW-CHECK.md)의 단일 기록, [MAP](ASTRA-MAP.md) ⑤, 공통은 [HANDOFF](ASTRA-HANDOFF.md) 3절. 게임 적용은 사용자가 파일을 넘길 때 오푸스가 한다(맵 크기, 충돌, 깊은 문 판정, 가림, 밤 전환, 저장 연결 포함).
