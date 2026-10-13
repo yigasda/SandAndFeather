@@ -20,7 +20,7 @@
 - 묶음 입구: `/workspace/bond-work/docs/art/chibi-refresh/combat-reference-kit/index.html`
 - 출처·해시: 같은 폴더의 `manifest.json`
 - 상세 재작화 인수인계: `/workspace/bond-work/docs/ASTRA-COMBAT-REDRAW-HANDOFF.md`
-- 전투 54개 출처표: `/workspace/bond-work/docs/ASTRA-COMBAT-REDRAW-SOURCES.json`
+- 전투 54개 출처표: [저장소 출처·해시 목록](ASTRA-COMBAT-POSE-SOURCES.json). 각 항목의 로컬 경로와 main 포함 여부를 분리해 기록했다. 로컬 파일을 찾았을 때 SHA256으로 확인한다.
 - 비교표 3장 Drive: https://drive.google.com/drive/folders/1nVPia6ysifiC3AAO6Y8zgrVX9zjvQxpE
 
 다른 환경에서 로컬 파일이 없으면 저장소 원본·가이드 도구로 준비한다. 전투 동세 원본이 없으면 확인 가능한 기존 자료 위치부터 찾고, 못 찾은 자료를 기억으로 재현하지 않는다. 비교표 이미지를 개별 원본의 대체물로 잘라 쓰지 않는다.
@@ -28,3 +28,5 @@
 캐릭터별 순서는 호루스 → 세트 → 소망. 18장은 대기 6 + 중간/기본 공격 4 + 고유 기술/주문 4 + 지침/피격 4. 이후 사용자의 변경 지시가 있으면 이 표부터 갱신한다.
 
 실행 절차와 기록 양식: [작화 시작표](ASTRA-DRAW-CHECK.md). 상세 지침은 삭제·축약하지 않는다.
+
+현재 보완 검증: 문서·출처 목록 점검은 완료. 실제 재작화 품질은 아직 검증되지 않았다. 첫 샘플 합격 기준과 가이드의 캔버스·투시 한계는 DRAW-CHECK 7절을 따른다.
