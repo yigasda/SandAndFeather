@@ -37,14 +37,43 @@ export function checkData() {
     const dd = M.daily || {};
     if (dd.discount && !(dd.discount[0] >= 1 && dd.discount[1] <= 50 && dd.discount[0] <= dd.discount[1])) bad('market.json', 'daily.discount는 1~50 사이 [작은 값, 큰 값]');
     for (const id of dd.soldOut?.never || []) known('market.json', '품절 안 되는 것', id);
-    for (const r of DATA.recipes?.recipes || []) { known('recipes.json', '요리', r.id); for (const n of r.needs || []) known('recipes.json', `${r.id} 재료`, n.id); }
+    for (const p of Object.keys(dd.pools || {})) if (!(M.goods || []).some(g => g.pool === p)) bad('market.json', `daily.pools ${p}: 그 pool인 진열이 없어`);
+    for (const g of M.goods || []) if (g.pool && !dd.pools?.[g.pool]) bad('market.json', `${g.id}: daily.pools에 ${g.pool}이 없어`);
+    for (const r of DATA.recipes?.recipes || []) {
+        known('recipes.json', '요리', r.id);
+        if (items[r.id] && items[r.id].kind !== 'food') bad('recipes.json', `${r.id}: 요리 결과는 kind food여야 해`);
+        for (const n of r.needs || []) {
+            if ([n.id, n.kind, n.any].filter(v => v !== undefined).length !== 1) bad('recipes.json', `${r.id} 재료: id, kind, any 중 하나만`);
+            known('recipes.json', `${r.id} 재료`, n.id);
+            if (n.any !== undefined && !(Array.isArray(n.any) && n.any.length)) bad('recipes.json', `${r.id} 재료: any는 물건 id 목록`);
+            for (const id of n.any || []) known('recipes.json', `${r.id} 재료`, id);
+        }
+    }
+    // what items do outside the bag: 두아트, 제단, 필사실, 쉬기, 축제
+    const num = (v, lo, hi) => v === undefined || (Number.isInteger(v) && v >= lo && v <= hi);
+    for (const [id, it] of Object.entries(items)) {
+        if (!Number.isInteger(it.price) || it.price < 0) bad('items.json', `${id}: price는 0 이상 정수`);
+        if (it.food && !(num(it.food.heal, 0, 10) && num(it.food.fear, 0, 10))) bad('items.json', `${id}: food heal·fear는 0~10 정수`);
+        if (it.duat && !(num(it.duat.heal, 0, 10) && num(it.duat.fear, 0, 10) && (it.duat.heal || it.duat.fear))) bad('items.json', `${id}: duat는 heal이나 fear(0~10 정수)`);
+        if (it.offer && it.kind === 'incense' && !num(it.offer.sun, 0, 2)) bad('items.json', `${id}: 향 offer.sun은 0~2`);
+        if (it.offer && !(num(it.offer.faith, 0, 3) && num(it.offer.xp, 0, 5))) bad('items.json', `${id}: offer faith 0~3, xp 0~5`);
+        if (it.offer && !['incense', 'jewelry'].includes(it.kind)) bad('items.json', `${id}: offer는 향(incense)이나 장신구(jewelry)만`);
+        if (it.study && !(it.study.use ? it.study.sun === -1 : num(it.study.xp, 1, 3))) bad('items.json', `${id}: study는 { xp: 1~3 } 또는 { sun: -1, use: true }`);
+        if (it.rest && !num(it.rest.sun, 1, 2)) bad('items.json', `${id}: rest.sun은 1~2`);
+        if (it.festival && !num(it.festival.xp, 1, 5)) bad('items.json', `${id}: festival.xp는 1~5`);
+        if (it.kind === 'seed' && !(it.grow && num(it.grow.days, 1, 10) && num(it.grow.count, 1, 5))) bad('items.json', `${id}: 씨앗은 grow { days 1~10, gives, count 1~5 }`);
+    }
     for (const w of DATA.works?.works || []) for (const id of Object.keys(w.needs || {})) known('works.json', w.id, id);
     for (const id of [...(DATA.duat?.relics || []), ...(DATA.duat?.materials || [])]) known('duat.json', '보상', id);
     for (const e of DATA.duat?.events || []) { known('duat.json', e.id, e.a?.loot); known('duat.json', e.id, e.b?.loot); }
     for (const id of DATA.adventures?.finds || []) known('adventures.json', 'finds', id);
     for (const f of DATA.festivals?.festivals || []) {
         if (!(f.month >= 0 && f.month <= 12 && f.day >= 1 && f.day <= 30)) bad('festivals.json', `${f.id}: month는 0~12, day는 1~30`);
-        for (const pr of f.preps || []) for (const id of Object.keys(pr.need?.items || {})) known('festivals.json', `${f.id} ${pr.id}`, id);
+        const kinds = new Set(Object.values(items).map(x => x.kind));
+        for (const pr of f.preps || []) for (const need of [pr.need || {}, ...(pr.or || [])]) {
+            for (const id of Object.keys(need.items || {})) known('festivals.json', `${f.id} ${pr.id}`, id);
+            for (const k of Object.keys(need.kind || {})) if (!kinds.has(k)) bad('festivals.json', `${f.id} ${pr.id}: 없는 갈래 ${k}`);
+        }
     }
     for (const n of DATA.festivals?.nights || []) known('festivals.json', 'nights', n.give);
     const pic = (where, rows, colors) => (rows || []).forEach((r, k) => {

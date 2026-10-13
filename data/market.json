@@ -1,5 +1,5 @@
 {
-  "_about": "시장. goods는 진열하는 것: cat 분류, mul 사는 값 배율(items.json price × mul, 반올림), stock 하루 수량(없으면 무제한). 조건: parts 그 시간대에만 보임(재고는 하루 한 번 정하고 시간대는 보여 줄 때만 봄), rank 모험 등급 이상, chance 그날 들어올 확률, found 한 번 직접 얻어 본 것(시장에서 산 것 말고, 도감 found), festival 축제 준비 기간에만, stall 골동품 좌판(그날 stallPerDay개만 뽑아 둠). 파는 값은 언제나 items.json price의 절반, 기록은 못 팔아. daily: 특가 수는 그날 진열 수 / per를 min~max로, 할인 discount %(내림, 실제 할인율이 이 범위를 넘지 않게, 값이 너무 낮아 1데벤도 25% 넘으면 특가에서 뺌), 품절은 하루 최대 하나 chance 확률로 never에 없는 것 중에서. 같은 것이 이틀 잇달아 특가나 품절이 되지 않아.",
+  "_about": "시장. goods는 진열하는 것: cat 분류, mul 사는 값 배율(items.json price × mul, 반올림), stock 하루 수량(없으면 무제한). 조건: parts 그 시간대에만 보임(재고는 하루 한 번 정하고 시간대는 보여 줄 때만 봄), rank 모험 등급 이상, chance 그날 들어올 확률, found 한 번 직접 얻어 본 것(시장에서 산 것 말고, 도감 found), festival 축제 준비 기간에만, stall 골동품 좌판(그날 stallPerDay개만 뽑아 둠), pool 묶음(daily.pools의 chance 확률로 그날 n개만 들어옴). 파는 값은 언제나 items.json price의 절반, 기록은 못 팔아. daily: 특가 수는 그날 진열 수 / per를 min~max로, 할인 discount %(내림, 실제 할인율이 이 범위를 넘지 않게, 값이 너무 낮아 1데벤도 25% 넘으면 특가에서 뺌), 품절은 하루 최대 하나 chance 확률로 never에 없는 것 중에서. 같은 것이 이틀 잇달아 특가나 품절이 되지 않아.",
   "categories": [
     {
       "id": "ingredient",
@@ -18,8 +18,24 @@
       "ko": "텃밭"
     },
     {
+      "id": "scent",
+      "ko": "향·화장품"
+    },
+    {
+      "id": "goods",
+      "ko": "잡화"
+    },
+    {
       "id": "material",
       "ko": "자재"
+    },
+    {
+      "id": "jewelry",
+      "ko": "장신구"
+    },
+    {
+      "id": "decor",
+      "ko": "진귀품"
     },
     {
       "id": "festival",
@@ -212,6 +228,256 @@
       "stock": 1,
       "mul": 2,
       "stall": true
+    },
+    {
+      "id": "cumin",
+      "cat": "ingredient"
+    },
+    {
+      "id": "coriander",
+      "cat": "ingredient"
+    },
+    {
+      "id": "garlic",
+      "cat": "ingredient"
+    },
+    {
+      "id": "leek",
+      "cat": "ingredient"
+    },
+    {
+      "id": "lentils",
+      "cat": "ingredient"
+    },
+    {
+      "id": "chickpeas",
+      "cat": "ingredient"
+    },
+    {
+      "id": "sesame",
+      "cat": "ingredient"
+    },
+    {
+      "id": "cucumber",
+      "cat": "ingredient"
+    },
+    {
+      "id": "watermelon",
+      "cat": "ingredient"
+    },
+    {
+      "id": "pomegranate",
+      "cat": "ingredient"
+    },
+    {
+      "id": "doum_fruit",
+      "cat": "ingredient"
+    },
+    {
+      "id": "carob",
+      "cat": "ingredient"
+    },
+    {
+      "id": "grapes",
+      "cat": "ingredient"
+    },
+    {
+      "id": "milk",
+      "cat": "ingredient",
+      "parts": [
+        "dawn",
+        "day"
+      ]
+    },
+    {
+      "id": "cheese",
+      "cat": "ingredient"
+    },
+    {
+      "id": "beer_jar",
+      "cat": "ingredient"
+    },
+    {
+      "id": "wine_jar",
+      "cat": "ingredient",
+      "stock": 2
+    },
+    {
+      "id": "lentil_soup",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "sesame_bread",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "pomegranate_sweets",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "cucumber_salad",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "watermelon_punch",
+      "cat": "food",
+      "mul": 1.5
+    },
+    {
+      "id": "garlic_seed",
+      "cat": "garden"
+    },
+    {
+      "id": "cucumber_seed",
+      "cat": "garden"
+    },
+    {
+      "id": "watermelon_seed",
+      "cat": "garden"
+    },
+    {
+      "id": "grape_vine",
+      "cat": "garden",
+      "stock": 1
+    },
+    {
+      "id": "kyphi",
+      "cat": "scent"
+    },
+    {
+      "id": "frankincense",
+      "cat": "scent"
+    },
+    {
+      "id": "myrrh",
+      "cat": "scent"
+    },
+    {
+      "id": "lotus_oil",
+      "cat": "scent",
+      "stock": 2
+    },
+    {
+      "id": "lily_oil",
+      "cat": "scent",
+      "stock": 2
+    },
+    {
+      "id": "kohl",
+      "cat": "scent",
+      "stock": 2
+    },
+    {
+      "id": "linen",
+      "cat": "goods"
+    },
+    {
+      "id": "oil_lamp",
+      "cat": "goods"
+    },
+    {
+      "id": "clay_bowl",
+      "cat": "goods"
+    },
+    {
+      "id": "reed_pen",
+      "cat": "goods"
+    },
+    {
+      "id": "blank_papyrus",
+      "cat": "goods"
+    },
+    {
+      "id": "fine_linen",
+      "cat": "goods",
+      "stock": 1
+    },
+    {
+      "id": "reed_mat",
+      "cat": "goods"
+    },
+    {
+      "id": "papyrus_sandals",
+      "cat": "goods"
+    },
+    {
+      "id": "scribe_palette",
+      "cat": "goods",
+      "stock": 1
+    },
+    {
+      "id": "wooden_comb",
+      "cat": "goods"
+    },
+    {
+      "id": "palm_fan",
+      "cat": "goods"
+    },
+    {
+      "id": "faience_beads",
+      "cat": "jewelry",
+      "stock": 1,
+      "pool": "jewelry"
+    },
+    {
+      "id": "carnelian_ring",
+      "cat": "jewelry",
+      "stock": 1,
+      "pool": "jewelry"
+    },
+    {
+      "id": "copper_bangle",
+      "cat": "jewelry",
+      "stock": 1,
+      "pool": "jewelry"
+    },
+    {
+      "id": "lapis_beads",
+      "cat": "jewelry",
+      "stock": 1,
+      "pool": "jewelry"
+    },
+    {
+      "id": "bes_amulet",
+      "cat": "jewelry",
+      "stock": 1,
+      "pool": "jewelry"
+    },
+    {
+      "id": "taweret_amulet",
+      "cat": "jewelry",
+      "stock": 1,
+      "pool": "jewelry"
+    },
+    {
+      "id": "gold_ornament",
+      "cat": "jewelry",
+      "stock": 1,
+      "rank": 2,
+      "chance": 0.15
+    },
+    {
+      "id": "senet_board",
+      "cat": "decor",
+      "stock": 1,
+      "chance": 0.25
+    },
+    {
+      "id": "lotus_vase",
+      "cat": "decor",
+      "stock": 2,
+      "festival": true
+    },
+    {
+      "id": "small_chest",
+      "cat": "decor",
+      "stock": 1,
+      "rank": 2,
+      "chance": 0.1
     }
   ],
   "daily": {
@@ -243,6 +509,15 @@
     "stallPerDay": [
       1,
       2
-    ]
+    ],
+    "pools": {
+      "jewelry": {
+        "chance": 0.5,
+        "n": [
+          1,
+          2
+        ]
+      }
+    }
   }
 }

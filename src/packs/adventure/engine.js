@@ -85,10 +85,13 @@ async function findIt(ui) {
     ui.showCard({ tag: '발견', title: `${i?.icon || ''} ${i?.ko}`.trim(), text: `${st.text || ''}\n가방에 넣었어.` });
     await next(ui);
 }
+// "음식 하나": a dish first, else the cheapest thing that can be eaten as it is (a cucumber, grapes, cheese)
+export const foodToBring = s => s.bag.items.find(i => itemInfo(i.id)?.kind === 'food')
+    || s.bag.items.filter(i => itemInfo(i.id)?.food && itemInfo(i.id).kind === 'ingredient').sort((a, b) => (itemInfo(a.id).price || 0) - (itemInfo(b.id).price || 0))[0];
 async function bring(ui) {
     const s = getState(), c = s.adv.cur, st = c.steps[c.step];
     const want = st.need === 'found' ? s.bag.items.find(i => i.uid === c.found)
-        : st.need === 'food' ? s.bag.items.find(i => itemInfo(i.id)?.kind === 'food')
+        : st.need === 'food' ? foodToBring(s)
             : st.need ? s.bag.items.find(i => i.id === st.need) : null;
     if (st.need && !want) { ui.showCard({ tag: '모험', title: c.title, text: `${st.text}\n${st.need === 'food' ? '음식이 하나 있어야 해. 부엌에서 만들 수 있어.' : '가방에 그게 없어.'}` }); return; }
     if (want) { c.gave = nameOf(want); takeUid(s, want.uid); }

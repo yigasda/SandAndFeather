@@ -3,7 +3,7 @@
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 9;
+export const STATE_VERSION = 10;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -69,6 +69,14 @@ const STEPS = {
         s.codex.found = {};
         for (const [id, day] of Object.entries(s.codex.items || {})) if (!oldMarket.includes(id)) s.codex.found[id] = day;
         for (const it of s.bag?.items || []) if (it.from !== 'market' && !(it.id in s.codex.found)) s.codex.found[it.id] = it.got ?? -1;
+    },
+    // 9 → 10: 53 new items (0.9.61). Today's market, if settled already, was drawn from the 34 goods of 0.9.60; the
+    // new goods come in today by the same rules (market.js marketToday) instead of waiting for tomorrow
+    9: s => {
+        if (s.market && !s.market.ids) s.market.ids = ['bread', 'honey', 'onion', 'salt', 'dates', 'grilled_fish', 'honey_bread', 'fig_cake',
+            'barley_porridge', 'lotus_tea', 'fish_stew', 'tilapia', 'nile_perch', 'catfish', 'eel', 'golden_carp', 'barley', 'fig', 'blue_lotus',
+            'lotus_seed', 'barley_seed', 'fig_seed', 'reed_bundle', 'pitch', 'limestone', 'cedar_plank', 'black_sand', 'duat_reed',
+            'feast_garland', 'faience_scarab', 'bronze_mirror', 'toy_boat', 'croc_tooth', 'ushabti'];
     },
 };
 

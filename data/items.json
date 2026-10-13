@@ -1,5 +1,5 @@
 {
-  "_about": "물건 종류. id는 저장과 이어져 있어서 바꾸면 안 돼. ko, en, about, icon, price는 마음대로 고쳐도 돼. en은 프롬프트에 들어가는 영어 이름. kind: find 발견물, fish 물고기, crop 작물, seed 씨앗, ingredient 재료, material 자재, food 음식, relic 유물, record 기록. food의 heal은 원정 체력 회복, fear는 공포 줄이기. read의 need는 해독에 필요한 지혜.",
+  "_about": "물건 종류. id는 저장과 이어져 있어서 바꾸면 안 돼. ko, en, about, icon, price는 마음대로 고쳐도 돼. en은 프롬프트에 들어가는 영어 이름. kind: find 발견물, fish 물고기, crop 작물, seed 씨앗, ingredient 재료, spice 향신료, material 자재, food 음식, relic 유물, record 기록, incense 향, cosmetic 화장품, goods 생활 잡화, jewelry 장신구, decor 장식품. food의 heal은 원정 체력 회복, fear는 공포 줄이기(kind가 food나 ingredient면 날로 먹을 수 있어: 두아트 챙김, 모험의 음식 하나. 작물 푸른 연꽃의 food는 예전처럼 쓰이지 않아). read의 need는 해독에 필요한 지혜. duat: 두아트에 챙겨 가서 쓰는 것 { heal, fear, verb } 또는 들어갈 때 쓰는 것 { onEnter: true, heal(체력 최대·현재 +), fear(처음 그만큼의 갈림길은 공포가 안 오름) }. offer: 제단 { sun, xp } 향(신전 일 돕기 태양 기운이 sun, 경험치 +xp) / { faith, xp } 장신구(바치기, 하루 한 번). study: 필사실 공부 { xp } 가방에 있으면(안 닳음) / { sun: -1, use: true } 한 장 쓰면 기운 하나 덜. rest: 앉아 쉬기 태양 기운 더(안 닳음). festival: 축제의 밤 경험치 더(안 닳음).",
   "items": {
     "sealed_jar": {
       "ko": "봉인된 항아리",
@@ -449,6 +449,584 @@
       "kind": "find",
       "price": 6,
       "about": "축제의 밤에 이웃이 씌워 준 꽃 화관. 시들어도 향이 남아."
+    },
+    "kyphi": {
+      "ko": "키피 향",
+      "en": "a cake of kyphi incense",
+      "icon": "🟤",
+      "about": "꿀과 건포도, 수지를 뭉쳐 빚은 향 덩이. 밤 제사에 피운다.",
+      "kind": "incense",
+      "price": 14,
+      "offer": {
+        "sun": 1,
+        "xp": 2
+      }
+    },
+    "frankincense": {
+      "ko": "유향",
+      "en": "a handful of frankincense resin",
+      "icon": "🟡",
+      "about": "반투명한 노란 수지 알갱이. 태우면 하얀 연기가 곧게 오른다.",
+      "kind": "incense",
+      "price": 12,
+      "offer": {
+        "sun": 1
+      }
+    },
+    "myrrh": {
+      "ko": "몰약",
+      "en": "a lump of myrrh resin",
+      "icon": "🟠",
+      "about": "붉은 갈색 수지 덩이. 쌉싸름하고 깊은 향.",
+      "kind": "incense",
+      "price": 16,
+      "offer": {
+        "sun": 1,
+        "xp": 1
+      }
+    },
+    "lotus_oil": {
+      "ko": "연꽃 향유",
+      "en": "a small alabaster jar of blue lotus oil",
+      "icon": "🪷",
+      "about": "푸른 연꽃을 우린 기름. 설화석고 작은 병에 담겼다.",
+      "kind": "cosmetic",
+      "price": 18,
+      "duat": {
+        "fear": 2,
+        "verb": "바르기"
+      }
+    },
+    "lily_oil": {
+      "ko": "백합 향유",
+      "en": "a flask of white lily oil",
+      "icon": "🌸",
+      "about": "흰 백합 향을 우린 기름. 오래 남는 단 향.",
+      "kind": "cosmetic",
+      "price": 20,
+      "duat": {
+        "heal": 1,
+        "fear": 1,
+        "verb": "바르기"
+      }
+    },
+    "kohl": {
+      "ko": "콜 눈화장",
+      "en": "a little pot of black kohl",
+      "icon": "🖤",
+      "about": "방연석 가루를 갠 검은 눈화장. 뜨거운 볕과 나쁜 눈길을 막는다고 한다.",
+      "kind": "cosmetic",
+      "price": 10,
+      "duat": {
+        "fear": 1,
+        "verb": "바르기"
+      }
+    },
+    "cumin": {
+      "ko": "쿠민",
+      "en": "a pouch of cumin seeds",
+      "icon": "🌰",
+      "about": "작은 천 주머니에 담긴 갈색 씨. 볶으면 고소하다.",
+      "kind": "spice",
+      "price": 5
+    },
+    "coriander": {
+      "ko": "고수 씨",
+      "en": "a handful of coriander seeds",
+      "icon": "🟢",
+      "about": "둥근 연둣빛 씨 한 줌. 상큼한 향.",
+      "kind": "spice",
+      "price": 4
+    },
+    "garlic": {
+      "ko": "마늘",
+      "en": "three heads of garlic",
+      "icon": "🧄",
+      "about": "흰 마늘 세 통. 일꾼들이 즐겨 먹는다.",
+      "kind": "ingredient",
+      "price": 3
+    },
+    "leek": {
+      "ko": "리크",
+      "en": "a bunch of leeks",
+      "icon": "🥬",
+      "about": "긴 초록 대파.",
+      "kind": "ingredient",
+      "price": 3
+    },
+    "lentils": {
+      "ko": "렌틸콩",
+      "en": "a bowl of red lentils",
+      "icon": "🫘",
+      "about": "붉은 렌틸 한 그릇.",
+      "kind": "ingredient",
+      "price": 4
+    },
+    "chickpeas": {
+      "ko": "병아리콩",
+      "en": "a bowl of chickpeas",
+      "icon": "🫛",
+      "about": "동글동글한 노란 콩 한 그릇.",
+      "kind": "ingredient",
+      "price": 4
+    },
+    "sesame": {
+      "ko": "참깨",
+      "en": "a small pouch of sesame seeds",
+      "icon": "⚪",
+      "about": "깨알이 든 작은 주머니.",
+      "kind": "spice",
+      "price": 5
+    },
+    "cucumber": {
+      "ko": "오이",
+      "en": "a striped cucumber",
+      "icon": "🥒",
+      "about": "줄무늬 오이. 아삭하고 시원하다.",
+      "kind": "ingredient",
+      "price": 3,
+      "food": {
+        "heal": 2
+      }
+    },
+    "watermelon": {
+      "ko": "수박",
+      "en": "half a red watermelon",
+      "icon": "🍉",
+      "about": "반으로 자른 붉은 수박.",
+      "kind": "ingredient",
+      "price": 6,
+      "food": {
+        "heal": 3,
+        "fear": 1
+      }
+    },
+    "pomegranate": {
+      "ko": "석류",
+      "en": "a split pomegranate",
+      "icon": "🍎",
+      "about": "껍질이 갈라져 붉은 알이 보이는 석류.",
+      "kind": "ingredient",
+      "price": 7,
+      "food": {
+        "fear": 1
+      }
+    },
+    "linen": {
+      "ko": "아마포",
+      "en": "a bolt of white linen",
+      "icon": "🧵",
+      "about": "곱게 짠 흰 아마천 한 필.",
+      "kind": "goods",
+      "price": 12,
+      "duat": {
+        "heal": 3,
+        "verb": "감기"
+      }
+    },
+    "oil_lamp": {
+      "ko": "기름 등잔",
+      "en": "a small clay oil lamp",
+      "icon": "🪔",
+      "about": "손바닥만 한 도기 등잔. 심지에 기름이 배어 있다.",
+      "kind": "goods",
+      "price": 7,
+      "duat": {
+        "onEnter": true,
+        "fear": 1
+      }
+    },
+    "clay_bowl": {
+      "ko": "도기 그릇",
+      "en": "a red clay bowl",
+      "icon": "🥣",
+      "about": "붉은 흙으로 구운 그릇.",
+      "kind": "goods",
+      "price": 3
+    },
+    "reed_pen": {
+      "ko": "갈대 붓",
+      "en": "a reed pen cut at a slant",
+      "icon": "🖌️",
+      "about": "끝을 비스듬히 깎은 갈대 붓.",
+      "kind": "goods",
+      "price": 4,
+      "study": {
+        "xp": 1
+      }
+    },
+    "blank_papyrus": {
+      "ko": "빈 파피루스",
+      "en": "a blank papyrus roll",
+      "icon": "📃",
+      "about": "아무것도 쓰지 않은 흰 파피루스 두루마리.",
+      "kind": "goods",
+      "price": 6,
+      "study": {
+        "sun": -1,
+        "use": true
+      }
+    },
+    "faience_beads": {
+      "ko": "파이앙스 구슬 목걸이",
+      "en": "a necklace of blue faience beads",
+      "icon": "📿",
+      "about": "푸른 유약 구슬을 꿴 목걸이.",
+      "kind": "jewelry",
+      "price": 16,
+      "offer": {
+        "faith": 1
+      }
+    },
+    "carnelian_ring": {
+      "ko": "홍옥수 반지",
+      "en": "a carnelian ring",
+      "icon": "💍",
+      "about": "붉은 홍옥수가 박힌 반지.",
+      "kind": "jewelry",
+      "price": 22,
+      "offer": {
+        "faith": 1
+      }
+    },
+    "copper_bangle": {
+      "ko": "구리 팔찌",
+      "en": "a copper bangle",
+      "icon": "⭕",
+      "about": "녹빛이 살짝 도는 구리 고리.",
+      "kind": "jewelry",
+      "price": 10,
+      "offer": {
+        "faith": 1
+      }
+    },
+    "doum_fruit": {
+      "ko": "둠야자 열매",
+      "en": "a doum palm fruit",
+      "icon": "🥥",
+      "about": "단단한 갈색 껍질 속이 생강빵처럼 달큰하다. 무덤에도 넣던 열매.",
+      "kind": "ingredient",
+      "price": 3,
+      "food": {
+        "heal": 1,
+        "fear": 1
+      }
+    },
+    "carob": {
+      "ko": "캐럽 꼬투리",
+      "en": "a few carob pods",
+      "icon": "🍫",
+      "about": "검붉은 꼬투리. 씹으면 꿀처럼 달아 단맛을 낼 때 쓴다.",
+      "kind": "ingredient",
+      "price": 3,
+      "food": {
+        "heal": 1
+      }
+    },
+    "grapes": {
+      "ko": "포도",
+      "en": "a bunch of dark grapes",
+      "icon": "🍇",
+      "about": "알이 짙은 보랏빛으로 익은 포도 한 송이.",
+      "kind": "ingredient",
+      "price": 4,
+      "food": {
+        "heal": 2,
+        "fear": 1
+      }
+    },
+    "milk": {
+      "ko": "우유",
+      "en": "a jug of fresh milk",
+      "icon": "🥛",
+      "about": "아침에 짠 우유 한 주전자.",
+      "kind": "ingredient",
+      "price": 4,
+      "food": {
+        "heal": 2
+      }
+    },
+    "cheese": {
+      "ko": "치즈",
+      "en": "a round of white cheese",
+      "icon": "🧀",
+      "about": "천에 걸러 굳힌 흰 치즈 한 덩이. 짭짤하다.",
+      "kind": "ingredient",
+      "price": 7,
+      "food": {
+        "heal": 3
+      }
+    },
+    "beer_jar": {
+      "ko": "보리 맥주",
+      "en": "a jar of barley beer",
+      "icon": "🍺",
+      "about": "걸쭉한 보리 맥주 한 단지. 일꾼의 하루 몫.",
+      "kind": "ingredient",
+      "price": 5,
+      "food": {
+        "heal": 2,
+        "fear": 1
+      }
+    },
+    "wine_jar": {
+      "ko": "포도주 단지",
+      "en": "a sealed jar of wine",
+      "icon": "🍷",
+      "about": "포도밭 이름과 해가 적힌 진흙 마개 단지. 잔치와 제물에 쓴다.",
+      "kind": "ingredient",
+      "price": 16,
+      "food": {
+        "fear": 2
+      }
+    },
+    "garlic_seed": {
+      "ko": "마늘 씨앗",
+      "en": "garlic cloves for planting",
+      "icon": "🪴",
+      "about": "심으려고 떼어 둔 마늘 쪽.",
+      "kind": "seed",
+      "price": 3,
+      "grow": {
+        "days": 2,
+        "gives": "garlic",
+        "count": 3
+      }
+    },
+    "cucumber_seed": {
+      "ko": "오이 씨앗",
+      "en": "cucumber seeds",
+      "icon": "🌿",
+      "about": "납작하고 하얀 오이 씨.",
+      "kind": "seed",
+      "price": 3,
+      "grow": {
+        "days": 2,
+        "gives": "cucumber",
+        "count": 3
+      }
+    },
+    "watermelon_seed": {
+      "ko": "수박 씨앗",
+      "en": "watermelon seeds",
+      "icon": "🍃",
+      "about": "까만 수박 씨 한 줌.",
+      "kind": "seed",
+      "price": 5,
+      "grow": {
+        "days": 3,
+        "gives": "watermelon",
+        "count": 2
+      }
+    },
+    "grape_vine": {
+      "ko": "포도 묘목",
+      "en": "a young grapevine",
+      "icon": "🌱",
+      "about": "뿌리를 흙에 싼 어린 포도나무.",
+      "kind": "seed",
+      "price": 9,
+      "grow": {
+        "days": 4,
+        "gives": "grapes",
+        "count": 3
+      }
+    },
+    "fine_linen": {
+      "ko": "고운 아마천",
+      "en": "a bolt of fine royal linen",
+      "icon": "🧶",
+      "about": "빛이 비칠 만큼 얇게 짠 고급 아마천. 신전 옷과 장식에 쓴다.",
+      "kind": "goods",
+      "price": 24,
+      "duat": {
+        "heal": 5,
+        "verb": "감기"
+      }
+    },
+    "reed_mat": {
+      "ko": "갈대 돗자리",
+      "en": "a woven reed mat",
+      "icon": "🟨",
+      "about": "갈대를 엮은 돗자리. 둘둘 말아 들고 다닌다.",
+      "kind": "goods",
+      "price": 5
+    },
+    "papyrus_sandals": {
+      "ko": "파피루스 샌들",
+      "en": "a pair of papyrus sandals",
+      "icon": "🩴",
+      "about": "파피루스 줄기를 엮은 가벼운 샌들.",
+      "kind": "goods",
+      "price": 6,
+      "duat": {
+        "onEnter": true,
+        "heal": 2
+      }
+    },
+    "scribe_palette": {
+      "ko": "필경사 팔레트",
+      "en": "a scribe's palette",
+      "icon": "🎨",
+      "about": "검정·빨강 먹 홈 둘과 붓 넣는 홈이 있는 나무 팔레트.",
+      "kind": "goods",
+      "price": 14,
+      "study": {
+        "xp": 2
+      }
+    },
+    "wooden_comb": {
+      "ko": "나무 빗",
+      "en": "a wooden comb",
+      "icon": "🪮",
+      "about": "등에 작은 영양이 새겨진 나무 빗.",
+      "kind": "goods",
+      "price": 4,
+      "festival": {
+        "xp": 2
+      }
+    },
+    "palm_fan": {
+      "ko": "야자잎 부채",
+      "en": "a palm-leaf fan",
+      "icon": "🪭",
+      "about": "야자잎을 엮어 자루를 단 부채. 한낮에 부치면 숨이 돌아온다.",
+      "kind": "goods",
+      "price": 8,
+      "rest": {
+        "sun": 1
+      }
+    },
+    "lapis_beads": {
+      "ko": "청금석 구슬",
+      "en": "a string of lapis lazuli beads",
+      "icon": "🔵",
+      "about": "금빛 점이 박힌 짙은 파란 돌 구슬. 먼 산에서 온다.",
+      "kind": "jewelry",
+      "price": 30,
+      "offer": {
+        "faith": 1,
+        "xp": 2
+      }
+    },
+    "gold_ornament": {
+      "ko": "황금 장식",
+      "en": "a gold ornament",
+      "icon": "🏅",
+      "about": "얇게 두드린 금판에 날개 편 새를 새긴 장식.",
+      "kind": "jewelry",
+      "price": 45,
+      "offer": {
+        "faith": 2
+      }
+    },
+    "bes_amulet": {
+      "ko": "베스 부적",
+      "en": "a Bes amulet",
+      "icon": "👹",
+      "about": "혀를 내민 난쟁이 신 베스. 집과 잠을 지켜 준다고 한다.",
+      "kind": "jewelry",
+      "price": 18,
+      "offer": {
+        "faith": 1,
+        "xp": 1
+      }
+    },
+    "taweret_amulet": {
+      "ko": "타와렛 부적",
+      "en": "a Taweret amulet",
+      "icon": "🦛",
+      "about": "하마 모습의 여신 타와렛. 아이와 어머니를 지킨다.",
+      "kind": "jewelry",
+      "price": 18,
+      "offer": {
+        "faith": 1,
+        "xp": 1
+      }
+    },
+    "senet_board": {
+      "ko": "세네트 놀이판",
+      "en": "a senet game board",
+      "icon": "🎲",
+      "about": "서른 칸이 새겨진 나무 놀이판과 말. 서랍에 말이 들어 있다.",
+      "kind": "decor",
+      "price": 26
+    },
+    "lotus_vase": {
+      "ko": "연꽃 화병",
+      "en": "a lotus-shaped faience vase",
+      "icon": "🌷",
+      "about": "연꽃 봉오리 모양 푸른 파이앙스 화병.",
+      "kind": "decor",
+      "price": 20
+    },
+    "small_chest": {
+      "ko": "작은 보물상자",
+      "en": "a small inlaid chest",
+      "icon": "🧰",
+      "about": "흑단과 상아를 박아 넣은 작은 상자. 뚜껑에 손잡이 단추가 있다.",
+      "kind": "decor",
+      "price": 40
+    },
+    "lentil_soup": {
+      "ko": "렌틸 수프",
+      "en": "a bowl of lentil soup",
+      "icon": "🍜",
+      "about": "렌틸콩을 푹 끓여 마늘이나 양파로 맛을 낸 수프.",
+      "kind": "food",
+      "price": 12,
+      "food": {
+        "heal": 5,
+        "fear": 1
+      }
+    },
+    "sesame_bread": {
+      "ko": "참깨빵",
+      "en": "a sesame flatbread",
+      "icon": "🥖",
+      "about": "보릿가루 반죽에 참깨를 뿌려 구운 납작빵.",
+      "kind": "food",
+      "price": 10,
+      "food": {
+        "heal": 4,
+        "fear": 1
+      }
+    },
+    "pomegranate_sweets": {
+      "ko": "석류 과자",
+      "en": "pomegranate sweets",
+      "icon": "🍬",
+      "about": "석류알과 대추야자를 졸여 굳힌 과자.",
+      "kind": "food",
+      "price": 14,
+      "food": {
+        "heal": 2,
+        "fear": 3
+      }
+    },
+    "cucumber_salad": {
+      "ko": "오이 냉채",
+      "en": "a cold cucumber salad",
+      "icon": "🥗",
+      "about": "얇게 썬 오이에 치즈나 우유, 마늘을 버무린 냉채.",
+      "kind": "food",
+      "price": 10,
+      "food": {
+        "heal": 3,
+        "fear": 2
+      }
+    },
+    "watermelon_punch": {
+      "ko": "수박 화채",
+      "en": "a bowl of watermelon punch",
+      "icon": "🍧",
+      "about": "수박을 떠서 꿀물이나 포도와 함께 담은 시원한 화채.",
+      "kind": "food",
+      "price": 14,
+      "food": {
+        "heal": 4,
+        "fear": 2
+      }
     }
   }
 }

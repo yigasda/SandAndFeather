@@ -4,8 +4,13 @@
 // at 0 체력 or full 공포 the companion carries the leader back up with half of what was found.
 // 체력 = 13 + 3 × 체력 stat. 신앙 gives a spell once a fight. Set hits hard and takes hits; Horus sees the road.
 // A run is saved in the chat's game, so closing the window mid-way picks it up again.
+// What can be packed (two at most): anything with food (dishes, and fruit eaten raw like a cucumber) or duat (an oil
+// rubbed on, linen wound round: used in a fight like food), and duat.onEnter things (a lamp, sandals) that are used
+// up on the way in. Packed things are kept whole in the run (r.pack: the bag items, same uid) and what is not used
+// goes back into the bag as it was.
 
-import { give, itemInfo, nameOf, ofKind, takeUid } from '../../core/bag.js';
+import { give, itemInfo, nameOf, takeUid } from '../../core/bag.js';
+import { record } from '../../core/facts.js';
 import { emit } from '../../core/bus.js';
 import { DATA } from '../../core/data.js';
 import { noteDay } from '../../core/daylog.js';
@@ -49,19 +54,31 @@ onSpot('duat', (spot, u) => {
     prep(withOf(s) || Object.keys(C).find(id => id !== leadOf(s)), []);
 });
 
+// what a packed thing does: its duat effect, or eating it
+export const useOf = id => { const i = itemInfo(id) || {}; return i.duat || i.food || null; };
+// food counts when it is a dish or eaten as it is (kind ingredient: cucumber, grapes, cheese…); the blue lotus (a crop)
+// keeps its old place and is not packed
+export const rawFood = id => { const i = itemInfo(id); return !!i?.food && (i.kind === 'food' || i.kind === 'ingredient'); };
+export const packable = id => rawFood(id) || !!itemInfo(id)?.duat;
+const pid = p => (typeof p === 'string' ? p : p.id);   // runs from before 0.9.61 packed ids
+const effText = u => (u?.onEnter
+    ? [u.heal ? `들어갈 때 체력 +${u.heal}` : '', u.fear ? `처음 갈림길 ${u.fear}곳 공포 안 오름` : ''].filter(Boolean).join(' · ')
+    : [u?.heal ? `회복 ${u.heal}` : '', u?.fear ? `공포 −${u.fear}` : ''].filter(Boolean).join(' '));
+
 function prep(comp, packed) {
     const s = getState();
-    const foods = ofKind(s, 'food');
+    packed = packed.filter(uid => s.bag.items.some(x => x.uid === uid));
+    const foods = s.bag.items.filter(x => packable(x.id));
     const C = D().companions || {};
-    const rows = foods.map(f => { const on = packed.includes(f.uid), fd = itemInfo(f.id).food || {}; return {
-        icon: itemInfo(f.id).icon, item: f.id, name: nameOf(f), sub: [fd.heal ? `회복 ${fd.heal}` : '', fd.fear ? `공포 −${fd.fear}` : ''].filter(Boolean).join(' '),
+    const rows = foods.map(f => { const on = packed.includes(f.uid); return {
+        icon: itemInfo(f.id).icon, item: f.id, name: nameOf(f), sub: effText(useOf(f.id)),
         buttons: [{ label: on ? '빼기' : '챙기기', primary: on, disabled: !on && packed.length >= 2, onClick: () => prep(comp, on ? packed.filter(x => x !== f.uid) : [...packed, f.uid]) }] }; });
     show({
         body: stack(
             para('누구와 내려갈까?'),
             list(Object.entries(C).filter(([id]) => id !== leadOf(s)).map(([id, c]) => ({ icon: id === comp ? '✔' : '', name: c.ko, sub: c.about, buttons: [{ label: id === comp ? '함께' : '고르기', primary: id === comp, onClick: () => prep(id, packed) }] }))),
-            para('음식은 두 개까지 챙길 수 있어.'),
-            list(rows, '챙길 음식이 없어. 부엌에서 만들 수 있어.'),
+            para('음식이나 쓸 것(향유, 아마포, 등잔…)을 두 개까지 챙길 수 있어.'),
+            list(rows, '챙길 것이 없어. 부엌에서 음식을 만들거나 시장에서 향유·아마포를 사 와.'),
             para(`체력 ${13 + 3 * s.stats.strength} · 신앙 ${s.stats.faith}${rank(s) >= 2 ? ' · 모험 등급 2라 길이 하나 더 길어' : ''}`)),
         buttons: [{ label: '그만두기' }, { label: '내려가기 · 태양 기운 3', primary: true, disabled: sunLeft(s) < 3, onClick: () => { start(comp, packed); } }],
     });
@@ -73,8 +90,16 @@ async function start(comp, packed) {
     markDone(s, 'duat');
     const layers = rank(s) >= 2 ? 4 : 3;
     const max = 13 + 3 * s.stats.strength;
-    const pack = packed.map(uid => takeUid(s, uid)?.id).filter(Boolean);
-    s.duat = { comp, hp: max, max, fear: 0, layer: 0, layers, pack, loot: [], phase: 'path', doors: doors(), fight: null, event: null, boss: false, won: false };
+    const taken = packed.map(uid => takeUid(s, uid)).filter(Boolean);
+    // things used on the way in (a lamp lit, sandals put on) are gone at once; the rest is carried
+    let hp = max, top = max, light = 0;
+    const pack = [];
+    for (const it of taken) {
+        const u = useOf(it.id);
+        if (u?.onEnter) { top += u.heal || 0; hp += u.heal || 0; light += u.fear || 0; record(s, 'use', { itemId: it.id, itemUid: it.uid, source: 'duat' }); }
+        else pack.push(it);
+    }
+    s.duat = { comp, hp, max: top, fear: 0, light, layer: 0, layers, pack, loot: [], phase: 'path', doors: doors(), fight: null, event: null, boss: false, won: false };
     await save();
     step();
 }
@@ -99,7 +124,8 @@ function step() {
 
 async function enter(kind) {
     const s = getState(), r = s.duat;
-    r.fear = Math.min(FEAR_MAX, r.fear + 1);
+    if (r.light > 0) r.light--;             // a lamp still burning: this turn of the road is not frightening
+    else r.fear = Math.min(FEAR_MAX, r.fear + 1);
     if (r.fear >= FEAR_MAX) return finish(true);
     if (kind === 'boss' || kind === 'fight') {
         const pool = (D().enemies || []).filter(e => e.id !== 'ammit' || r.layer >= 2);
@@ -133,7 +159,7 @@ function fightCard() {
         { label: '주문', disabled: f.spell || s.stats.faith < 1, onClick: () => { act('spell'); } },
         ...(hasSkill(s, 'carry') ? [{ label: '엄호', disabled: f.cover, onClick: () => { act('cover'); } }] : []),
         ...(hasSkill(s, 'seal') && !r.ward ? [{ label: '보호 주문', onClick: () => { act('ward'); } }] : []),
-        ...r.pack.map((id, k) => ({ label: `${itemInfo(id)?.ko} 먹기`, onClick: () => { act('eat', k); } })),
+        ...r.pack.map((p, k) => ({ label: `${itemInfo(pid(p))?.ko} ${itemInfo(pid(p))?.duat?.verb || '먹기'}`, onClick: () => { act('eat', k); } })),
     ];
     show({ body: stack(head(r), bar(`${f.ko} ${f.hp}/${f.max}`, f.hp / f.max, 'sf_enemy'), para(f.log, 'sf_pop_text')), buttons: acts });
 }
@@ -160,9 +186,13 @@ async function act(kind, k) {
     if (kind === 'cover') { f.cover = true; f.dodge = true; f.hp -= 2; log = `${josa(me, '가')} ${josa(C, '을')} 엄호했다. 2를 쳤고, 다음 공격은 막아.`; }
     if (kind === 'ward') { r.ward = true; r.hp = Math.min(r.max, r.hp + 4); r.fear = Math.max(0, r.fear - 2); log = '보호 주문이 둘을 감쌌다. 체력 +4, 공포 −2.'; }
     if (kind === 'eat') {
-        const id = r.pack.splice(k, 1)[0], fd = itemInfo(id)?.food || {};
+        const p = r.pack.splice(k, 1)[0];
+        if (!p) return;
+        const id = pid(p), fd = useOf(id) || {};
         r.hp = Math.min(r.max, r.hp + (fd.heal || 0)); r.fear = Math.max(0, r.fear - (fd.fear || 0));
-        log = `${josa(itemInfo(id)?.ko, '을')} 먹었다.${fd.heal ? ` 체력 +${fd.heal}` : ''}${fd.fear ? ` 공포 −${fd.fear}` : ''}`;
+        record(s, 'use', { itemId: id, itemUid: p.uid || '', source: 'duat' });
+        const verb = { 바르기: '발랐다', 감기: '감았다' }[itemInfo(id)?.duat?.verb] || '먹었다';
+        log = `${josa(itemInfo(id)?.ko, '을')} ${verb}.${fd.heal ? ` 체력 +${fd.heal}` : ''}${fd.fear ? ` 공포 −${fd.fear}` : ''}`;
     }
     if (f.hp <= 0) return win(log);
     // the enemy answers
@@ -209,7 +239,12 @@ async function finish(rescued) {
     if (!r) return;
     const keep = rescued ? r.loot.slice(0, Math.floor(r.loot.length / 2)) : r.loot;
     for (const id of keep) give(s, id, 1, 'duat');
-    for (const id of r.pack) give(s, id, 1, 'kitchen');
+    // what was packed and not used goes back as it was (same uid, where it came from)
+    for (const p of r.pack) {
+        if (typeof p === 'string') give(s, p, 1, 'kitchen');
+        else if (!s.bag.items.some(x => x.uid === p.uid)) { s.bag.items.push(p); emit('bag:changed', {}); }
+    }
+    r.pack = [];
     const xp = 4 + 2 * r.layer + (r.won ? 4 : 0);
     addXP(s, xp);
     const comp = D().companions?.[r.comp];

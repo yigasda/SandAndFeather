@@ -68,7 +68,7 @@ export function bagCard(ui, map) {
         const about=document.createElement('p');about.className='sf_inventory_description';about.textContent=it.opened&&info.open?.ko?info.open.ko:info.about||'';
         detail.replaceChildren(head,about);
     };
-    const materials=new Set(['material','ingredient','crop','seed']);
+    const materials=new Set(['material','ingredient','spice','crop','seed']);
     const categories=[['all','전체'],['material','재료'],['food','음식'],['other','기타']];
     const show=category=>{
         grid.replaceChildren();detail.replaceChildren();selected=null;

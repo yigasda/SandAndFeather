@@ -4,6 +4,7 @@
 import { give, itemInfo, ofKind, takeUid } from '../../core/bag.js';
 import { DATA } from '../../core/data.js';
 import { today } from '../../core/ledger.js';
+import { record } from '../../core/facts.js';
 import { addXP, didAct } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
@@ -16,31 +17,53 @@ export function plotCount(s) {
     return n;
 }
 
+// a plot ready to pick: its seed's grow { days, gives, count } and how many days are left
+const growOf = p => itemInfo(p.seed)?.grow || { days: 2 };
+const daysLeft = (s, p) => p.day + growOf(p).days - today(s);
+
 function card(ui) {
     const s = getState();
     const n = plotCount(s);
     while (s.garden.plots.length < n) s.garden.plots.push(null);
-    const t = today(s);
     const seeds = ofKind(s, 'seed');
     const rows = s.garden.plots.slice(0, n).map((p, k) => {
         if (!p) return {
             icon: '🟫', name: `${k + 1}번 칸 · 비어 있음`, sub: seeds.length ? '태양 기운 1로 심어' : '시장에서 씨앗을 사 와',
-            buttons: seeds.length ? [...new Map(seeds.map(x => [x.id, x])).values()].slice(0, 3).map(sd => ({
-                label: `${itemInfo(sd.id).ko} 심기`, disabled: sunLeft(s) < 1, onClick: async () => {
-                    if (!spend(s, 1)) return;
-                    takeUid(s, sd.uid); s.garden.plots[k] = { seed: sd.id, day: t };
-                    const d = didAct(s, 'plant'); await saveState(); if (d) ui.toast(d); close(); card(ui);
-                } })) : [] };
-        const g = itemInfo(p.seed)?.grow || { days: 2 };
-        const left = p.day + g.days - t;
+            buttons: seeds.length ? [{ label: '심기', disabled: sunLeft(s) < 1, onClick: () => { close(); pickSeed(ui, k); } }] : [] };
+        const g = growOf(p), left = daysLeft(s, p);
         const out = itemInfo(g.gives);
         return left > 0
-            ? { icon: '🌱', name: `${k + 1}번 칸 · ${itemInfo(p.seed)?.ko}`, sub: `${left}일 뒤에 ${out?.ko || ''} 수확` }
+            ? { icon: '🌱', item: p.seed, name: `${k + 1}번 칸 · ${itemInfo(p.seed)?.ko}`, sub: `${left}일 뒤에 ${out?.ko || ''} ${g.count || 1}개 수확` }
             : { icon: out?.icon || '🌾', item: g.gives, name: `${k + 1}번 칸 · ${out?.ko} 다 자랐어`, sub: `${out?.ko} ${g.count || 1}개`, buttons: [{ label: '수확', primary: true, onClick: async () => {
-                give(s, g.gives, g.count || 1, 'garden'); s.garden.plots[k] = null; addXP(s, 1); await saveState();
+                // again on the state as it is now: a second tap on the same card finds the plot empty
+                const st = getState(), q = st.garden.plots[k];
+                if (!q || q.seed !== p.seed || daysLeft(st, q) > 0) return;
+                st.garden.plots[k] = null;
+                const uids = give(st, g.gives, g.count || 1, 'garden'); addXP(st, 1);
+                record(st, 'harvest', { itemId: g.gives, itemUid: uids[0], source: 'garden', n: uids.length });
+                await saveState();
                 ui.toast(`${out?.ko} ${g.count || 1}개 수확했어`); close(); card(ui);
             } }] };
     });
     const close = ui.showCard({ tag: '생활', title: '텃밭', wide: true, body: stack(para('씨앗은 날이 지나야 자라. 챗에서 하루가 넘어가면 하루가 지나.'), list(rows)) });
+}
+
+// which seed goes into plot k: every kind in the bag, with how long it takes and what it gives
+function pickSeed(ui, k) {
+    const s = getState();
+    const kinds = [...new Map(ofKind(s, 'seed').map(x => [x.id, x])).keys()];
+    const rows = kinds.map(id => {
+        const i = itemInfo(id), g = i.grow || { days: 2 }, out = itemInfo(g.gives);
+        return { icon: i.icon, item: id, name: `${i.ko} · ${ofKind(s, 'seed').filter(x => x.id === id).length}개`, sub: `${g.days}일 뒤 ${out?.ko || ''} ${g.count || 1}개`,
+            buttons: [{ label: '심기', primary: true, disabled: sunLeft(s) < 1, onClick: async () => {
+                const st = getState(), sd = st.bag.items.find(x => x.id === id);
+                if (!sd || st.garden.plots[k] || !spend(st, 1)) return;
+                takeUid(st, sd.uid); st.garden.plots[k] = { seed: id, day: today(st) };
+                record(st, 'plant', { itemId: id, itemUid: sd.uid, source: 'garden' });
+                const d = didAct(st, 'plant'); await saveState(); if (d) ui.toast(d); close(); card(ui);
+            } }] };
+    });
+    const close = ui.showCard({ tag: '생활', title: `텃밭 · ${k + 1}번 칸`, wide: true, body: stack(para('무엇을 심을까? 태양 기운 1.'), list(rows, '씨앗이 없어')),
+        buttons: [{ label: '돌아가기', onClick: () => { card(ui); } }] });
 }
 onSpot('garden', (spot, ui) => card(ui));
