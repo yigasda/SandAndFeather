@@ -3,8 +3,8 @@
 import { find, itemInfo, items, nameOf, openItem } from '../core/bag.js';
 import { dateLabel, fromDayNumber } from '../core/clock.js';
 import { DATA } from '../core/data.js';
-import { settings } from '../core/settings.js';
 import { getState } from '../core/state.js';
+import { itemArt } from './itemart.js';
 import { josa, pickVisit, showItem } from './talk.js';
 
 const fromKo = it => DATA.talk?.from?.[it.from]?.ko || '';
@@ -41,17 +41,7 @@ async function opened(ui, map, uid) {
     });
 }
 
-const iconBase = new URL('../../data/art/ui/', import.meta.url);
-const ICONS = {blue_lotus:'lotus', lotus_seed:'lotus', bread:'bread', honey_bread:'bread', fig_cake:'bread',
-    nile_perch:'fish', tilapia:'fish', catfish:'fish', eel:'fish', golden_carp:'fish', grilled_fish:'fish', fish_stew:'fish',
-    faience_scarab:'scarab', heart_scarab:'scarab', wet_papyrus:'scroll', sealed_letter:'scroll', map_scrap:'scroll',
-    duat_scroll:'scroll', tomb_rubbing:'scroll', limestone:'stone', black_sand:'stone', star_shard:'stone', feast_garland:'flower'};
-function itemIcon(info, id) {
-    const el = document.createElement(ICONS[id] ? 'img' : 'span'); el.className='sf_item_art';
-    if(ICONS[id]){el.dataset.itemArt=ICONS[id];el.src=new URL(`skins/${settings().uiTheme}/item-${ICONS[id]}.png`,iconBase).href;el.alt='';}
-    else el.textContent=info.icon || '◆';
-    return el;
-}
+const itemIcon = (info, id) => itemArt(id);
 
 export function bagCard(ui, map) {
     // Retain each item's UID and history. Stacked display never merges saved items.

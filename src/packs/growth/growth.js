@@ -27,7 +27,7 @@ const unread = s => s.bag.items.filter(it => itemInfo(it.id)?.read && !it.opened
 function scriptorium(ui) {
     const s = getState();
     const rows = unread(s).map(it => { const r = itemInfo(it.id).read; return {
-        icon: itemInfo(it.id).icon, name: nameOf(it), sub: s.stats.wisdom >= r.need ? '해독할 수 있어' : `지혜 ${josa(r.need, '이')} 있어야 읽혀`,
+        icon: itemInfo(it.id).icon, item: it.id, name: nameOf(it), sub: s.stats.wisdom >= r.need ? '해독할 수 있어' : `지혜 ${josa(r.need, '이')} 있어야 읽혀`,
         buttons: [{ label: '해독', primary: true, disabled: s.stats.wisdom < r.need, onClick: async () => {
             it.opened = true; addXP(s, 3); if (r.flag) s.flags[r.flag] = true; didAct(s, 'read');
             journal(s, { ko: `${josa(nameOf(it), '을')} 해독했다.`, say: `${nameOf(it)}에 적힌 내용을 이야기한다.`, en: `Somang deciphered ${itemInfo(it.id).en}: ${r.ko}`.slice(0, 220), marks: [itemInfo(it.id).ko.split(' ').pop()], kind: 'read' });

@@ -1,0 +1,527 @@
+{
+ "about": "아이템 아이콘(128×128 RGBA). 사용자가 채택한 시안에서 뽑은 그림을 그대로 넣었다(다시 그리거나 고치지 않음). 원본 묶음: SandAndFeather_47_item_icons_128px_v3_star_fixed.zip. salt, dates, lotus_seed, barley_seed, fig_seed 5종은 보조 시안에서 가져온 것으로, 사용자가 따로 최종 승인했다.",
+ "items": {
+  "ancient_seal": {
+   "ko": "오래된 인장",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    1043,
+    420,
+    1285,
+    641
+   ],
+   "sha256": "32414bc7c9e8d187efcf40732f9a808c87d9d8ce3c38640e9f08b9e61fc30302"
+  },
+  "barley": {
+   "ko": "보리",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    634,
+    692,
+    940,
+    1062
+   ],
+   "sha256": "4f8d9dee79db2713203144f11ddbb21d3558c022c4dd9f0526da788645bf2eeb"
+  },
+  "barley_porridge": {
+   "ko": "보리죽",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    776,
+    728,
+    1012,
+    928
+   ],
+   "sha256": "4240e6e37457949157b7abff25685f1c5d323d75ffd78acc2ced037604ce0077"
+  },
+  "barley_seed": {
+   "ko": "보리 씨앗",
+   "source": "a_clean_graphic_sprite_sheet_style_image_on_a_tran.png",
+   "source_box": [
+    663,
+    291,
+    872,
+    444
+   ],
+   "sha256": "cf0114e03f982253ab6d1f0c5aecd141d95f762184c44f2454fcdc02ebbe7e38",
+   "note": "보조 시안에서 가져온 것, 사용자가 2026-10-13 최종 승인"
+  },
+  "black_sand": {
+   "ko": "두아트의 검은 모래",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    903,
+    104,
+    1098,
+    334
+   ],
+   "sha256": "0b111d01df6b4e0a62767e3c96b8126c1b40a452221634742d5dca7c22c8b45b"
+  },
+  "blue_lotus": {
+   "ko": "푸른 연꽃",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    318,
+    732,
+    634,
+    1053
+   ],
+   "sha256": "216465cdd6e86391c5df5579dd59b2cbf18317478ff80b73912e8a7988c7e967"
+  },
+  "bread": {
+   "ko": "빵",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    367,
+    707,
+    693,
+    961
+   ],
+   "sha256": "c91801da09468aa27b3d01b163a70f8d1d5e9083cdd18eb07d68670b2d316932"
+  },
+  "bronze_mirror": {
+   "ko": "녹슨 청동 거울",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    988,
+    270,
+    1213,
+    654
+   ],
+   "sha256": "6162bd4b34bb3fb8f0001de02cbadb18f0424c5b1617bc5bd279be4fd13d7b85"
+  },
+  "catfish": {
+   "ko": "메기",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    651,
+    347,
+    985,
+    631
+   ],
+   "sha256": "96023f7fc2b704c3b105e9a0600d47e2a15a3192af98daf6810097f89dea69de"
+  },
+  "cedar_plank": {
+   "ko": "삼나무 판자",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    660,
+    115,
+    885,
+    328
+   ],
+   "sha256": "9a1355e4143a8fdf17db0a2791d2c62371fa12fa7a69878b800b212ca6e86de7"
+  },
+  "croc_tooth": {
+   "ko": "악어 이빨",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    330,
+    739,
+    584,
+    1056
+   ],
+   "sha256": "9a3f561e75586469e27221f1117df2fb16e500c61436c5218d5307a5f90bd455"
+  },
+  "dates": {
+   "ko": "대추야자",
+   "source": "a_clean_graphic_sprite_sheet_style_image_on_a_tran.png",
+   "source_box": [
+    21,
+    266,
+    246,
+    444
+   ],
+   "sha256": "8ca6c6b083c18140194128991a945eaa038b01e1f73094f021c79a4f39aa5a30",
+   "note": "보조 시안에서 가져온 것, 사용자가 2026-10-13 최종 승인"
+  },
+  "duat_reed": {
+   "ko": "저승 갈대",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    1129,
+    49,
+    1320,
+    334
+   ],
+   "sha256": "f25669e0230e4b677257f512fc9e9522ab8832a57cd8f33617a1b8c42a68eea6"
+  },
+  "duat_scroll": {
+   "ko": "저승 두루마리",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    939,
+    294,
+    1243,
+    653
+   ],
+   "sha256": "58bba58949914657452a72e6da991dfc22c8fd06dc427bc236dfcb01f255d12a"
+  },
+  "eel": {
+   "ko": "뱀장어",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    982,
+    307,
+    1247,
+    605
+   ],
+   "sha256": "dc84a3fd95a85c7a8d9b41c3ecfdd1b6dd07bd3ca7d1f753d99aab5fb2ac5ce0"
+  },
+  "faience_scarab": {
+   "ko": "푸른 파이앙스 풍뎅이",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    350,
+    289,
+    596,
+    631
+   ],
+   "sha256": "71f2be9fe7227a82cf60aa90942dd15d17ba077726880ffb8c6c427513ff7aee"
+  },
+  "feast_garland": {
+   "ko": "축제 화관",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    939,
+    745,
+    1251,
+    1071
+   ],
+   "sha256": "ce09f0503093375fcc606b5c43fe0dab1b693fe130e051f2313f1ddc1989e21e"
+  },
+  "fig": {
+   "ko": "무화과",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    939,
+    729,
+    1246,
+    1051
+   ],
+   "sha256": "8bbaa354baf89c5a2fcca807147b6287f6fdeef1dcdd34c7bb63a4c62baa3d4f"
+  },
+  "fig_cake": {
+   "ko": "무화과 과자",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    536,
+    730,
+    774,
+    932
+   ],
+   "sha256": "0d12979b57a71ee0c09e39199c1c390d74c67ad32f2e0cd562b503f846d1133e"
+  },
+  "fig_seed": {
+   "ko": "무화과 묘목",
+   "source": "a_clean_graphic_sprite_sheet_style_image_on_a_tran.png",
+   "source_box": [
+    1007,
+    241,
+    1172,
+    451
+   ],
+   "sha256": "e51ce8921a2299edb96e6fbaeb275b246c0a6ee221c0fb29305a9c1b9dd7c72f",
+   "note": "보조 시안에서 가져온 것, 사용자가 2026-10-13 최종 승인"
+  },
+  "fish_stew": {
+   "ko": "생선 스튜",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    1247,
+    698,
+    1516,
+    935
+   ],
+   "sha256": "27d1b8a53d7e311bbba944f61bd7c632d7d61b9088b4ce83fa9ff91a86300d33"
+  },
+  "golden_carp": {
+   "ko": "금빛 잉어",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    11,
+    666,
+    391,
+    968
+   ],
+   "sha256": "32e9f04999e83bef4d9e72a225a5061273da2b4990744c31670b4b89ebd215a3"
+  },
+  "grilled_fish": {
+   "ko": "구운 생선",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    21,
+    707,
+    285,
+    935
+   ],
+   "sha256": "770203968bc78ce7c000b4c7efd81a0330c0fb71c3930c545a859288526788a2"
+  },
+  "heart_scarab": {
+   "ko": "심장 스카라베",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    528,
+    392,
+    754,
+    649
+   ],
+   "sha256": "2fbf0738975bd1571412217bb2af8fc0f03cacf39b910117034289db1668f53c"
+  },
+  "honey": {
+   "ko": "꿀",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    704,
+    687,
+    958,
+    982
+   ],
+   "sha256": "65aa900095bd4983ce7a6e0521400dd3d5f4746814fefad765abade5c28b401b"
+  },
+  "honey_bread": {
+   "ko": "꿀빵",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    272,
+    706,
+    520,
+    936
+   ],
+   "sha256": "124a5d574e49b3239077307aec43123b5a86aa6daf5243610bcb13d66f3b61df"
+  },
+  "ka_statue": {
+   "ko": "카 조각상",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    838,
+    372,
+    996,
+    652
+   ],
+   "sha256": "fb4ff83fff3fd0c3292067fdef60b44d0cd3c0879b9523074a63e00db3105d18"
+  },
+  "limestone": {
+   "ko": "석회석 덩이",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    450,
+    119,
+    652,
+    322
+   ],
+   "sha256": "700349fe0d379ce5e64efea5df1074b64a382ca614b22b494b61ccacd38b607f"
+  },
+  "lotus_seed": {
+   "ko": "연꽃 씨앗",
+   "source": "a_clean_graphic_sprite_sheet_style_image_on_a_tran.png",
+   "source_box": [
+    341,
+    270,
+    555,
+    451
+   ],
+   "sha256": "71b5accc075279a5b8fa82b450ddd87c3a12b9746377d0b46a1647e92d682271",
+   "note": "보조 시안에서 가져온 것, 사용자가 2026-10-13 최종 승인"
+  },
+  "lotus_tea": {
+   "ko": "연꽃차",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    1029,
+    690,
+    1244,
+    927
+   ],
+   "sha256": "38ee5b7ad97861c9897d34f870bf004782d34255c7b81e506c564153ac42b394"
+  },
+  "map_scrap": {
+   "ko": "지도 조각",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    642,
+    308,
+    925,
+    649
+   ],
+   "sha256": "a3101558fa7633cc8b34872d27577b5dbe7103966301075d311d6388d6e2319e"
+  },
+  "nile_perch": {
+   "ko": "나일 농어",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    5,
+    343,
+    385,
+    635
+   ],
+   "sha256": "209a7dc5a2f8a27481f35a91937830bfd18407ee610de8c708b25263f922a4e9"
+  },
+  "onion": {
+   "ko": "양파",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    985,
+    678,
+    1231,
+    985
+   ],
+   "sha256": "0a97f894ca547ac21a45566b5d27cb70c3b5e9e837a2767cbb96e9d55a21749f"
+  },
+  "ostracon": {
+   "ko": "글씨 긁힌 도기 조각",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    343,
+    308,
+    620,
+    640
+   ],
+   "sha256": "1945df4851f0fc85afd2dc548e54f1a14cb4e065793835597fa6358fa1d73a0d"
+  },
+  "pitch": {
+   "ko": "송진",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    264,
+    101,
+    437,
+    326
+   ],
+   "sha256": "27fe97bdb4c91f3dd91dc3d2851416dcda7dcc80bc84a5660bb8d7bf811db938"
+  },
+  "reed_bundle": {
+   "ko": "갈대 묶음",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    27,
+    48,
+    248,
+    333
+   ],
+   "sha256": "64973c5e4bc3e85a5826373ae132385f8817a012a4a442545433971259e772d8"
+  },
+  "salt": {
+   "ko": "소금",
+   "source": "a_clean_graphic_sprite_sheet_style_image_on_a_tran.png",
+   "source_box": [
+    1305,
+    27,
+    1496,
+    205
+   ],
+   "sha256": "edef175af149d2fb3b4b0d52f4d567d426155c45f8a89b11cbc3a22a7c8b49c0",
+   "note": "보조 시안에서 가져온 것, 사용자가 2026-10-13 최종 승인"
+  },
+  "sealed_jar": {
+   "ko": "봉인된 항아리",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    39,
+    314,
+    279,
+    634
+   ],
+   "sha256": "065d9002bf4acb64a64d94dc330cfd79aeaf4826adb7b2aceb72f2ed37b27186"
+  },
+  "sealed_letter": {
+   "ko": "밀랍 봉인 편지",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    620,
+    762,
+    940,
+    1056
+   ],
+   "sha256": "5b11cefd11a71451335785700c0b9f65dae411385da2981214292491010e2492"
+  },
+  "star_shard": {
+   "ko": "별 조각",
+   "source": "3d8f09f0-479f-59eb-9e00-e8cfc8967307.png",
+   "source_box": [
+    0,
+    700,
+    300,
+    1024
+   ],
+   "sha256": "ab35c1d93c2a4269ed03e005e3864d198a8e269165508bef6bbc558c987678fb"
+  },
+  "tilapia": {
+   "ko": "틸라피아",
+   "source": "어촌풍_픽셀_아트_아이템_아이콘_시트.png",
+   "source_box": [
+    358,
+    363,
+    647,
+    600
+   ],
+   "sha256": "a3a6c1272db5f5a84b4485be563798948bdad69fa452a9d1d645b8cea39aa83e"
+  },
+  "tomb_rubbing": {
+   "ko": "무덤 비문 탁본",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    4,
+    687,
+    326,
+    1062
+   ],
+   "sha256": "9192df701d74e83780c6d3547ae709254f358b904343861eaf8117691d8ed560"
+  },
+  "toy_boat": {
+   "ko": "갈대 장난감 배",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    634,
+    309,
+    954,
+    632
+   ],
+   "sha256": "54417d7e1edffd0eec8dbbcdf54255df0e890a7b4a5ef26b7c4c0bd5df48ceea"
+  },
+  "ushabti": {
+   "ko": "깨진 샤브티 인형",
+   "source": "고대_유물_픽셀_아트_아이콘_세트.png",
+   "source_box": [
+    32,
+    698,
+    242,
+    1066
+   ],
+   "sha256": "322820d6a1efe1194c6f3c04b00b565ef8aa4323e6a3196d1f66a74e16293c87"
+  },
+  "was_shard": {
+   "ko": "와스 지팡이 조각",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    31,
+    380,
+    250,
+    647
+   ],
+   "sha256": "2cc36bc189d37129b4e0aa3969b460012fa223e61ae77d4cdc2d55f6fd58abc9"
+  },
+  "wedjat": {
+   "ko": "우제트 부적",
+   "source": "a_clean_transparent_background_checkerboard_spri.png",
+   "source_box": [
+    275,
+    396,
+    492,
+    638
+   ],
+   "sha256": "500780e1911a77fd94efdf67a7e7cd89611a1dd09ec0f680e87cdaff338b79e4"
+  },
+  "wet_papyrus": {
+   "ko": "젖은 파피루스",
+   "source": "고대_이집트_유물_아이콘_세트.png",
+   "source_box": [
+    17,
+    287,
+    320,
+    665
+   ],
+   "sha256": "0abeca6af2e451b6358e46471ef7fef1324ae2d1f31be5d4db6e3495a0f6c302"
+  }
+ }
+}

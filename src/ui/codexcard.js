@@ -5,6 +5,7 @@ import { itemInfo } from '../core/bag.js';
 import { dateLabel, fromDayNumber } from '../core/clock.js';
 import { DATA } from '../core/data.js';
 import { getState } from '../core/state.js';
+import { itemArt } from './itemart.js';
 import { para, stack } from './kit.js';
 
 const KINDS = [['fish', '물고기'], ['food', '요리'], ['crop', '작물'], ['find', '발견한 물건'], ['relic', '유물'], ['record', '기록']];
@@ -22,7 +23,8 @@ export function codexCard(ui, onClose = null) {
             const b = document.createElement('button');
             b.type = 'button';
             b.className = `sf_codex_cell${known(id) ? '' : ' sf_dim'}`;
-            b.textContent = known(id) ? icon(x) : '?';
+            const pic = known(id) && icon(x, id);
+            if (pic instanceof Node) b.append(pic); else b.textContent = known(id) ? pic : '?';
             b.title = known(id) ? x.ko : '아직 몰라';
             b.addEventListener('click', () => show(known(id) ? x.ko : '아직 몰라', known(id) ? about(id, x) : '아직 만나지 못했어.'));
             g.append(b);
@@ -38,7 +40,7 @@ export function codexCard(ui, onClose = null) {
         const n = list.filter(([id]) => id in had).length;
         got += n; total += list.length;
         parts.push(para(`${ko} ${n}/${list.length}`, 'sf_sub_head'),
-            grid(list, id => id in had, x => x.icon || '·', (id, x) => [x.about, first(had[id])].filter(Boolean).join('\n')));
+            grid(list, id => id in had, (x, id) => itemArt(id, 'sf_codex_art'), (id, x) => [x.about, first(had[id])].filter(Boolean).join('\n')));
     }
     const secrets = Object.values(DATA.maps).flatMap(m => (m.secrets || []).map(sec => [sec.id, { ...sec, map: m.name }]));
     if (secrets.length) {

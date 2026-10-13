@@ -14,14 +14,14 @@ function card(ui, tab = 'buy') {
     const reopen = t => () => { close(); card(ui, t); };
     const rows = tab === 'buy'
         ? (DATA.market?.sells || []).map(id => { const i = itemInfo(id) || {}; return {
-            icon: i.icon, name: i.ko, sub: `${i.price} 데벤 · ${i.about || ''}`,
+            icon: i.icon, item: id, name: i.ko, sub: `${i.price} 데벤 · ${i.about || ''}`,
             buttons: [{ label: '사기', primary: true, disabled: s.bag.deben < i.price, onClick: async () => {
                 if (s.bag.deben < i.price) return;
                 s.bag.deben -= i.price; give(s, id, 1, 'market'); await saveState();
                 ui.toast(`${i.ko} 샀어 · 남은 데벤 ${s.bag.deben}`); reopen('buy')();
             } }] }; })
         : s.bag.items.filter(it => itemInfo(it.id)?.kind !== 'record' && sellPrice(it.id) > 0).slice().reverse().map(it => ({
-            icon: itemInfo(it.id)?.icon, name: nameOf(it), sub: `${sellPrice(it.id)} 데벤에 팔 수 있어`,
+            icon: itemInfo(it.id)?.icon, item: it.id, name: nameOf(it), sub: `${sellPrice(it.id)} 데벤에 팔 수 있어`,
             buttons: [{ label: '팔기', onClick: async () => {
                 const got = sellPrice(it.id);
                 takeUid(s, it.uid); s.bag.deben += got; const d = didAct(s, 'sell'); await saveState();
