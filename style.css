@@ -1697,3 +1697,26 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  background:#ebd3ae var(--skin-button-fill) repeat; background-clip:padding-box; color:#362518;
 }
 #sf_game[data-ui-theme='walnut'] .sf_bond .sf_list_row:is(.sf_bond_record,.sf_bond_empty,.sf_bond_progress_panel,.sf_bond_activity,.sf_bond_motto) { color:#f9e3b8; }
+/* the gift slots wear the same 호루스 button; the chosen one keeps it and only lights up: a gold glow round the frame's own shape, a warm fill */
+#sf_game[data-ui-theme] .sf_bond .sf_inventory_slot.sf_bond_slot {
+ border:7px solid transparent; border-image:var(--skin-button) var(--slice-button) stretch; border-radius:0; box-shadow:none;
+ background:#ebd3ae var(--skin-button-fill) repeat; background-clip:padding-box; color:#362518; padding:1px;
+ display:flex; align-items:center; justify-content:center; aspect-ratio:auto;
+}
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot .sf_item_art { width:100%; height:100%; max-width:none; max-height:none; font-size:28px; }
+#sf_game[data-ui-theme='walnut'] .sf_bond .sf_inventory_slot.sf_bond_slot { color:#f9e3b8; }
+#sf_game[data-ui-theme] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] {
+ border-image:var(--skin-button) var(--slice-button) stretch;
+ z-index:0; isolation:isolate;
+ filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc);
+}
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot .sf_bond_count { color:inherit; right:1px; bottom:0; }
+/* the warm light fills the whole button in its own shape, under the item: ::after over the frame (masked by the frame itself),
+   ::before over the open middle the frame picture leaves */
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot[aria-pressed='true']::after {
+ content:''; position:absolute; inset:-7px; z-index:-1; pointer-events:none; background:#ffd46a; opacity:.38;
+ -webkit-mask-box-image:var(--skin-button) var(--slice-button) fill / 7px stretch;
+}
+#sf_game[data-ui-theme] .sf_bond .sf_bond_slot[aria-pressed='true']::before {
+ content:''; position:absolute; inset:0; z-index:-1; pointer-events:none; background:#ffd46a; opacity:.38;
+}
