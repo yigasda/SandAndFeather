@@ -1697,7 +1697,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  background:#ebd3ae var(--skin-button-fill) repeat; background-clip:padding-box; color:#362518;
 }
 #sf_game[data-ui-theme='walnut'] .sf_bond .sf_list_row:is(.sf_bond_record,.sf_bond_empty,.sf_bond_progress_panel,.sf_bond_activity,.sf_bond_motto) { color:#f9e3b8; }
-/* the gift slots wear the same 호루스 button; the chosen one keeps it and only lights up: a 1px gold line hugging the frame's own outline, a warm fill */
+/* the gift slots wear the same 호루스 button; the chosen one keeps it and only lights up: a gold glow round the frame's own shape, a warm fill */
 #sf_game[data-ui-theme] .sf_bond .sf_inventory_slot.sf_bond_slot {
  border:7px solid transparent; border-image:var(--skin-button) var(--slice-button) stretch; border-radius:0; box-shadow:none;
  background:#ebd3ae var(--skin-button-fill) repeat; background-clip:padding-box; color:#362518; padding:1px;
@@ -1708,7 +1708,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] {
  border-image:var(--skin-button) var(--slice-button) stretch;
  z-index:0; isolation:isolate;
- filter:drop-shadow(1px 0 0 #eeb23a) drop-shadow(-1px 0 0 #eeb23a) drop-shadow(0 1px 0 #eeb23a) drop-shadow(0 -1px 0 #eeb23a);
+ filter:drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 1px #e9a72c) drop-shadow(0 0 2px #f6c55acc);
 }
 #sf_game[data-ui-theme] .sf_bond .sf_bond_slot .sf_bond_count { color:inherit; right:1px; bottom:0; }
 /* the warm light fills the whole button in its own shape, under the item: ::after over the frame (masked by the frame itself),
