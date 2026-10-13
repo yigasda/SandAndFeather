@@ -16,6 +16,8 @@ import { showEvent } from './talk.js';
 import { picture } from './portraits.js';
 import { FEATHER } from './icon.js';
 import { HEROES, HERO_NAME, leadOf, setLead, setWith, statsOf, withOf } from '../core/heroes.js';
+import { titleOf } from '../core/achieve.js';
+import { achieveCard } from './achievecard.js';
 
 // one of the three: picture (their illustrations), 모험 등급, abilities and learning. Learning is picked by whoever walks in front.
 export function characterCard(ui, id = 'somang', onClose = null) {
@@ -26,7 +28,7 @@ export function characterCard(ui, id = 'somang', onClose = null) {
     const r = rankInfo(st.xp);
     const opens = { wisdom: '기록 해독, 강 건너 비문', strength: '두아트에서 버티는 체력, 공격', faith: '두아트의 주문' };
     const hero = document.createElement('div'); hero.className = 'sf_character_summary';
-    hero.append(picture(id),stack(para(HERO_NAME[id],'sf_character_name'),para(`모험 등급 ${r.rank}`),
+    hero.append(picture(id),stack(para(HERO_NAME[id],'sf_character_name'),...(titleOf(s, id) ? [para(`「${titleOf(s, id)}」`,'sf_party_title')] : []),para(`모험 등급 ${r.rank}`),
         ...Object.entries(STATS).map(([k,ko])=>para(`${ko} ${st[k]}`,'sf_character_stat'))));
     close = ui.showCard({ title: HERO_NAME[id], onClose, kind:'character-stats', wide:true,
         body: stack(
@@ -93,6 +95,9 @@ export function partyCard(ui, onClose) {
                 { label: on ? '앞장 중' : '앞장', primary: on, disabled: changing || on, cls: 'sf_lead_pick', data: { lead: id }, onClick: () => update(() => setLead(s, id)) },
             ]);
             if (on) el.classList.add('sf_on');
+            // the title they wear (업적), right under the name; only shown, it changes nothing
+            const tl = titleOf(s, id);
+            if (tl) { const t = document.createElement('span'); t.className = 'sf_party_title'; t.textContent = `「${tl}」`; el.querySelector('.sf_party_name').after(t); }
             return el;
         }));
         box.replaceChildren(para('누구와 같이 걸을까?', 'sf_sub_head'), ...[['', '혼자', '조용히 다니기. 어디든 혼자 걸어.'], ...HEROES.filter(id => id !== lead).map(id => [id, HERO_NAME[id], C[id]?.about || ''])].map(([id, ko, about]) => {
@@ -119,7 +124,7 @@ export function questsCard(ui, onClose) {
     const r = DATA.daily?.reward || {};
     const told = s.journal.slice().reverse().slice(0, 12);
     const picks = livePicks(s).filter(p => p.kind !== 'lesson').reverse();
-    const close = ui.showCard({ title: '임무', wide: true, onClose,
+    const close = ui.showCard({ title: '임무', wide: true, onClose, buttons: [{ label: '업적', onClick: () => { achieveCard(ui); } }, { label: '닫기', primary: true }],
         body: stack(
             para('작은 모험', 'sf_sub_head'),
             para(hint(s) || '오늘 모험은 끝났어. 다음 날 새로 생겨.'),

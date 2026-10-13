@@ -16,7 +16,7 @@ const fresh = () => { const s = state.resetState(); s.party.with = 'set'; return
 let s = fresh();
 const original = structuredClone(s); delete original.bond; original.v = 10;
 context.chatMetadata.sand_feather = original;
-assert.equal(state.getState().v, 11); assert.equal(original.bond.set.pts, 0);
+assert.equal(state.getState().v, state.STATE_VERSION); assert.equal(original.bond.set.pts, 0); // v10 goes through v11 (bond) and on to the current version
 assert.deepEqual(original.bag, s.bag); assert.deepEqual(original.party, s.party);
 s = state.getState();
 didAct(s, 'fish'); didAct(s, 'fish'); assert.equal(s.bond.set.pts, 2);

@@ -54,6 +54,16 @@ export const addMapPart = fn => { mapParts.push(fn); };
 // marks on the big map: addMapMarks(mapId => [{ x, y, on }])
 const markers = [];
 export const addMapMarks = fn => { markers.push(fn); };
+// where she walks: onTile((mapId, x, y) => …) once each time her feet reach another tile (and on entering a map), never per frame
+const tileFns = [];
+export const onTile = fn => { tileFns.push(fn); };
+let lastTile = '';
+function tileCheck() {
+    const f = feet(), key = `${map.id}:${Math.floor(f.x)}:${Math.floor(f.y)}`;
+    if (key === lastTile) return;
+    lastTile = key;
+    for (const fn of tileFns) { try { fn(map.id, f.x, f.y, ui); } catch (e) { console.error('[SandAndFeather] tile', e); } }
+}
 // a pack takes over a place: onSpot('dock', (spot, ui, map) => …)
 const spotActs = new Map();
 export const onSpot = (id, fn) => { spotActs.set(id, fn); };
@@ -296,6 +306,7 @@ function frame(t) {
             if (!ex) doorArmed = true;
             else if (doorArmed) { doorArmed = false; useExit(ex); break; }
         }
+        if (!moving) tileCheck();
     } else stand();
     // the battery: draw only as often as something on screen changes
     const acting = player.act && (performance.now() - player.act.at < 800 || player.act.name === 'sleep'); // sleeping breathes

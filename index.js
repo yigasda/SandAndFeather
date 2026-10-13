@@ -27,6 +27,8 @@ import './src/packs/duat/duat.js';
 import './src/packs/realm/works.js';
 import './src/packs/world/world.js';
 import './src/packs/world/obelisk.js';
+import './src/packs/world/explore.js';
+import './src/packs/world/treasure.js';
 import './src/packs/adventure/gen.js';
 
 (function init() {

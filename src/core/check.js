@@ -151,5 +151,32 @@ export function checkData() {
             for (const sp of m.spots || []) if (sp.x === d.x && sp.y === d.y && (d.solid ?? true) && !['altar', 'stele', 'shrine', 'dig'].includes(d.k)) bad(file, `꾸밈 ${d.k}: 장소 ${sp.id} 위에 있어`);
         }
     }
+    // records.json (0.9.68): 낚시 기록 크기, 업적, 탐사 지역, 보물지도
+    const R = DATA.records || {}, F = 'records.json';
+    for (const [id, z] of Object.entries(R.fish?.sizes || {})) {
+        if (items[id]?.kind !== 'fish') bad(F, `fish.sizes.${id}: 물고기 아이템이 아니야`);
+        if (!(z.min > 0 && z.max > z.min)) bad(F, `fish.sizes.${id}: 0 < min < max 여야 해`);
+    }
+    const regionIds = new Set((R.exploration?.regions || []).map(r => r.id)), seenAch = new Set();
+    for (const a of R.achievements || []) {
+        if (!a.id || seenAch.has(a.id)) bad(F, `업적 ${a.id}: id가 없거나 겹쳐`); seenAch.add(a.id);
+        if (!a.ko) bad(F, `업적 ${a.id}: ko 이름이 있어야 해`);
+        const n = a.need || {};
+        if (!['tally', 'codex', 'bestCm', 'explore', 'flag'].some(k => k in n)) bad(F, `업적 ${a.id}: need가 tally·codex·bestCm·explore·flag 중 하나여야 해`);
+        if (n.explore && !regionIds.has(n.explore)) bad(F, `업적 ${a.id}: 없는 탐사 지역 ${n.explore}`);
+        for (const k of ['deben', 'xp']) if (a.reward?.[k] != null && !(a.reward[k] >= 0 && a.reward[k] <= 200)) bad(F, `업적 ${a.id}: 보상 ${k}는 0~200`);
+    }
+    for (const r of R.exploration?.regions || []) {
+        for (const m of [...(r.maps || []), ...(r.rooms || [])]) if (!DATA.maps[m]) bad(F, `탐사 ${r.id}: 없는 맵 ${m}`);
+        for (const id of r.points || []) if (!(r.maps || []).some(m => (DATA.maps[m]?.spots || []).some(sp => sp.id === id))) bad(F, `탐사 ${r.id}: 그 맵에 없는 장소 ${id}`);
+    }
+    const T = R.treasure;
+    if (T) {
+        const tm = DATA.maps[T.map];
+        if (!tm) bad(F, `treasure.map ${T.map}: 없는 맵`);
+        for (const k of ['anchor', 'stoneAnchor']) if (tm && !(tm.anchors || []).some(x => x.id === T[k])) bad(F, `treasure.${k} ${T[k]}: ${T.map}에 없는 지점`);
+        for (const id of [...(T.relics || []), ...Object.keys(T.instead || {}), ...Object.keys(T.gives || {})]) if (!items[id]) bad(F, `treasure: 없는 아이템 ${id}`);
+        for (const id of ['scrap', 'river', 'stone', 'sun']) if (!(T.clues || []).some(c => c.id === id)) bad(F, `treasure.clues: ${id}가 있어야 해`);
+    }
     return out;
 }

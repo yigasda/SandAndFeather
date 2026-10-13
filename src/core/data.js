@@ -19,8 +19,8 @@ export async function loadJson(name) {
     return j;
 }
 
-export const DATA = { bond: null, calendar: null, places: null, items: null, finds: null, talk: null, market: null, recipes: null, works: null, duat: null, daily: null, adventures: null, lessons: null, festivals: null, sprites: null, tiles: null, maps: {} };
-const FILES = ['bond', 'calendar', 'places', 'items', 'finds', 'talk', 'market', 'recipes', 'works', 'duat', 'daily', 'adventures', 'lessons', 'festivals', 'sprites', 'tiles'];
+export const DATA = { bond: null, calendar: null, places: null, items: null, finds: null, talk: null, market: null, recipes: null, works: null, duat: null, daily: null, adventures: null, lessons: null, festivals: null, records: null, sprites: null, tiles: null, maps: {} };
+const FILES = ['bond', 'calendar', 'places', 'items', 'finds', 'talk', 'market', 'recipes', 'works', 'duat', 'daily', 'adventures', 'lessons', 'festivals', 'records', 'sprites', 'tiles'];
 // the residence behind the Ombos temple door: one map a room or hall (tools/maps/residence.py)
 export const RESIDENCE = ['temple_courtyard', 'courtyard_colonnade', 'temple_inner_corridor', 'temple_central_gallery', 'temple_east_gallery',
     'temple_west_gallery', 'room_entrances_wide', 'set_room', 'horus_room', 'somang_room', 'temple_kitchen', 'temple_dining',

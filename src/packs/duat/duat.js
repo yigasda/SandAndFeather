@@ -255,6 +255,9 @@ async function finish(rescued) {
         en: `${{ somang: 'Somang', set: 'Set', horus: 'Horus' }[leadOf(s)]} went down into the Duat with ${comp?.en}${r.won ? ' and they got past the gatekeeper' : ''}; ${rescued ? `${comp?.en} carried them back up` : 'came back up on their own feet'}${names.length ? ` with ${names.slice(0, 3).join(', ')}` : ''}.`,
         marks: ['두아트'], kind: 'duat' });
     if (rescued) noteDay(s, 'close');
+    // 업적 무사 귀환: back up on her own feet (not carried up)
+    record(s, 'duat_return', { source: rescued ? 'rescued' : r.won ? 'won' : 'back' });
+    if (!rescued) record(s, 'duat_return:safe');
     r.phase = 'end'; r.result = { rescued, keep, xp };
     await save();
     endCard();

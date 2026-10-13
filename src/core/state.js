@@ -4,7 +4,7 @@ import { freshBond, fillBond } from './bond-state.js';
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 11;
+export const STATE_VERSION = 12;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -43,6 +43,10 @@ export const freshState = () => ({
     market: null,                                  // packs/life/market.js: today's stock, deals, sold out, what is left
     facts: [],                                     // facts.js: the latest done actions in detail
     tally: {},                                     // facts.js: lifetime counts, never cut
+    fishing: { records: {} },                      // fishing.js: { [fish id]: { best, count, first, last } }, kept when the fish is sold or eaten
+    achieve: { claimed: {}, worn: {} },            // achieve.js: { claimed: { [id]: day }, worn: { somang|set|horus: achievement id } }
+    explore: { seen: {}, claimed: {} },            // explore.js: seen { 'map:point' | 'room:map': day }, claimed { 'region:25': day }
+    treasure: { clues: {}, found: -1, got: null }, // packs/world/treasure.js: clues { id: day }, the day it was dug up and what came out
     wake: null,                                    // rest.js: { part, raw } the time of day after sleeping, until the chat's tracker moves
     started: Date.now(),
 });
@@ -52,6 +56,9 @@ export const freshState = () => ({
 // A save from a newer version of the extension is left as it is (never cut down to this version's shape).
 const STEPS = {
     10: s => { fillBond(s); }, // blank bond only; existing RP never grants points
+    // 11 → 12: 낚시 기록, 업적·칭호, 탐사율, 보물지도 are new (filled below). Secrets, woken obelisks, the 도감 and the map
+    // scrap read before count as they are (read from codex / flags, nothing copied)
+    11: () => {},
     1: () => {},  // 1 → 2: ledger, bag, news, recent are new; they are filled below
     // 2 → 3: 말 걸기 no longer moves the scene by itself. Talk lines made before that, still waiting, are dropped
     // so an ongoing scene is not pulled to the temple courtyard.
@@ -86,7 +93,7 @@ const STEPS = {
 function fill(s) {
     const f = freshState();
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
-    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'chars', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest', 'codex'];
+    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'chars', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest', 'codex', 'fishing', 'achieve', 'explore', 'treasure'];
     for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
     for (const k of ['news', 'journal', 'picks', 'days', 'facts']) if (!Array.isArray(s[k])) s[k] = [];
     if (!s.tally || typeof s.tally !== 'object' || Array.isArray(s.tally)) s.tally = {};
