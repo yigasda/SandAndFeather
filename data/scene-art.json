@@ -495,5 +495,16 @@
     "night": [0, 0, 1774, 887],
     "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
     "nightFile": "../docs/art/map-expansion/temple-roof-v1-night.png"
+  },
+  "dock_pier": {
+    "file": "../docs/art/map-expansion/dock-pier-v1-day.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.19791666666666666, 0.203125],
+    "day": [0, 0, 1536, 1024],
+    "night": [0, 0, 1536, 1024],
+    "clip": [[0, 0], [1536, 0], [1536, 1024], [0, 1024]],
+    "tintNight": true
   }
 }

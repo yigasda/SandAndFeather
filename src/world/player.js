@@ -41,6 +41,22 @@ export function playAct(name, tx, ty) {
     if (Math.hypot(dx, dy) > 0.05) player.dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
     player.act = { name, at: performance.now() };
 }
+// a short pose shown one way (the 생활 pictures: 기쁨, 놀람, 쑥스러움, 읽기, 요리): she turns to dir, shows it for ms (0: until
+// she moves), then turns back the way she was facing. frame: show that frame of it and stay there (낚시 0 / 1)
+export function showPose(name, dir, { ms = 1500, frame = null, bob = 0 } = {}) {
+    if (player.posePrev == null) player.posePrev = player.dir;
+    const now = performance.now();
+    Object.assign(player, { dir, moving: false, walkT: 0, act: { name, at: now, frame, bob, until: ms ? now + ms : 0 } });
+}
+// the pose's frame now; hop: a quick jump up (the line pulled)
+export function poseFrame(i, hop = false) { if (player.act) { player.act.frame = i; if (hop) player.act.hop = performance.now(); } }
+// a short pose over: her own idle again, facing the way she was
+export function endPose() {
+    if (player.posePrev != null) { player.dir = player.posePrev; player.posePrev = null; }
+    if (player.act?.until !== undefined) player.act = null;
+}
+// the one walking with her shows a pose too (they turn to dir for ms): { name, dir, at, until, frame }
+export function matePose(name, dir, ms = 1500) { const now = performance.now(); player.mateAct = { name, dir, at: now, until: now + ms, frame: null }; }
 // a pose that stays (sitting, lying down): she is put where the pose's anchor goes (sx, sy: the seat, or the
 // middle of the bed), facing dir; the first step (or getUp) stands her up where she was
 export function holdPose(name, sx, sy, dir) {
@@ -50,7 +66,8 @@ export function holdPose(name, sx, sy, dir) {
 // the companion sitting or lying down beside her: { x, y, dir, name, at }, the same anchor rules as holdPose
 export function holdMate(name, sx, sy, dir) { player.mate = { x: sx - 0.5, y: sy - 1, dir, name, at: performance.now() }; }
 export function getUp() {
-    player.mate = null;
+    player.mate = null; player.mateAct = null;
+    if (player.posePrev != null) { player.posePrev = null; }
     if (!player.seat) return false;
     Object.assign(player, { x: player.seat.x, y: player.seat.y, dir: player.seat.dir, act: null, seat: null });
     return true;
@@ -68,7 +85,7 @@ export function stepPlayer(map, dx, dy, dt) {
     // sliding along a wall still walks; pressed flat against it she stands, facing the way pressed
     player.moving = Math.hypot(player.x - x0, player.y - y0) > 1e-4;
     if (!player.moving) { player.walkT = 0; return; }
-    player.act = null;
+    player.act = null; player.posePrev = null;
     player.walkT += dt;
     player.step += dt * 8;
     const last = trail[trail.length - 1];

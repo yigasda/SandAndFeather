@@ -49,3 +49,16 @@ export function sitRest(s) {
     emit('sun:changed', {});
     return 'rested';
 }
+
+// eating at the table (0.9.70): one food from the bag is eaten; the first meal of a game day gives 태양 기운 1
+// → 'fed', or 'full' (nothing to give back, the day's meal is kept), or 'ate' (today's meal already gave it). The caller
+// has taken the food out of the bag and saves
+export const ATE_KEY = 'eat:meal';
+export function eatMeal(s) {
+    if (!canDo(s, ATE_KEY)) return 'ate';
+    if (sunLeft(s) >= sunMax()) return 'full';
+    markDone(s, ATE_KEY);
+    s.sun.left = Math.min(sunMax(), s.sun.left + 1);
+    emit('sun:changed', {});
+    return 'fed';
+}

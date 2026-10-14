@@ -10,6 +10,8 @@ import { TREASURE, clueFound, digTreasure, hasClue, isFound, ready, started } fr
 import { getState, saveState } from '../../core/state.js';
 import { itemArt } from '../../ui/itemart.js';
 import { addThings } from '../../world/things.js';
+import { feel } from '../life/poses.js';
+import { showFx } from '../../world/fx.js';
 
 const CHEST = new URL('../../../data/art/ui/bond/redrawn/36-reward-chest.png', import.meta.url).href;
 const anchorOf = (map, id) => (map?.anchors || []).find(a => a.id === id) || null;
@@ -43,6 +45,12 @@ async function dig(ui) {
         const s = getState(), got = digTreasure(s);
         if (!got) return;
         await saveState();
+        // 0.9.70: a start at what the sand gives up, then joy (both of them) behind the treasure card
+        const a = anchorOf(DATA.maps[TREASURE().map], TREASURE().anchor);
+        if (a) showFx('discover-0', { at: { x: a.x + 0.5, y: a.y + 0.9 }, ms: 1500, size: 1.35, rise: 0.3 });
+        feel('surprised', { ms: 650 });
+        await new Promise(r => setTimeout(r, 600));
+        feel('happy', { ms: 2600 });
         treasureCard(ui, got);
     } finally { digging = false; }
 }

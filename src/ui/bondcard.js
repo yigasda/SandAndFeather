@@ -7,6 +7,10 @@ import { changedChunks, createScanJob, isScanning, rpMessages, runScan, scanPrev
 import { plainText, sentences } from '../core/picks.js';
 import { itemInfo } from '../core/bag.js';
 import { itemArt } from './itemart.js';
+import { feel } from '../packs/life/poses.js';
+import { leadOf as leadNow, withOf as withNow } from '../core/heroes.js';
+// 0.9.70: the one who got the gift turns shy for a moment (쑥스러움 ♥) on the map behind the window
+const shyFor = (s, who) => { if (withNow(s) === who) feel('shy', { lead: false, ms: 2200 }); else if (leadNow(s) === who) feel('shy', { mate: false, ms: 2200 }); };
 
 const art = new URL('../../data/art/ui/bond/', import.meta.url);
 const redrawn = new URL('../../data/art/ui/bond/redrawn/', import.meta.url);
@@ -137,9 +141,9 @@ export function bondCard(ui, initial = 'set', onBack = null) {
             if (result.confirm) {
                 const controls = node('div'); let busy = false;
                 let dismiss;
-                controls.append(button('선물하기', async () => { if (busy) return; busy = true; try { assertState(s); const r = await giveBondGiftNow(s, recipient, uid, true); ui.toast(r.line); dismiss(); } finally { busy = false; draw(); } }, 'sf_btn sf_primary'));
+                controls.append(button('선물하기', async () => { if (busy) return; busy = true; try { assertState(s); const r = await giveBondGiftNow(s, recipient, uid, true); ui.toast(r.line); shyFor(s, recipient); dismiss(); } finally { busy = false; draw(); } }, 'sf_btn sf_primary'));
                 dismiss = ui.showCard({ title: '오늘의 두 번째 선물', text: '오늘은 이미 유대를 쌓았어. 선물은 소모되지만 유대는 오르지 않아.', body: controls });
-            } else { ui.toast(result.line); draw(); }
+            } else { ui.toast(result.line); shyFor(s, recipient); draw(); }
         }, 'sf_btn sf_primary sf_bond_give');
         gift.prepend(img('gift_icon_bow'));
         gift.disabled = giftBusy(s) || !selected || !bondMembers(s).includes(who) || !!s.duat;

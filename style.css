@@ -1771,3 +1771,14 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 :is(#sf_game,#sf_pick) .sf_pop_tagline { display:none; }
 :is(#sf_game,#sf_pick)[data-ui-theme='temple'] .sf_pop_head .sf_tag { display:none; }
 :is(#sf_game,#sf_pick)[data-ui-theme='temple'] .sf_pop_tagline { display:flex; justify-content:center; padding:8px 12px 0; }
+
+/* 0.9.70 낚시: the fishing card sits at the bottom of the game, over the pad, with no shade over the map, so the one
+   sitting on the pier (the line, the pull, the splash) stays in view while it is open */
+#sf_game .sf_pop_wrap[data-kind='fishing'],
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind='fishing'] { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: transparent; padding: 0 8px 194px; }
+#sf_game .sf_pop_wrap[data-kind='fishing'] .sf_pop { max-height: 40%; flex: 0 0 auto; }
+#sf_game .sf_pop_wrap[data-kind='fishing'] .sf_fish { gap: 4px; }
+#sf_game .sf_pop_wrap[data-kind='fishing'] .sf_pop_scroll { padding-top: 2px; padding-bottom: 2px; }
+#sf_game .sf_pop_wrap[data-kind='fishing'] .sf_pop_body { padding: 6px 12px 0; }
+#sf_game .sf_pop_wrap[data-kind='fishing'] .sf_pop_btns { padding-top: 4px; padding-bottom: 4px; }
+#sf_game .sf_pop_wrap[data-kind='fishing'] .sf_btn { min-height: 34px; }

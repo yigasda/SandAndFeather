@@ -32,7 +32,7 @@
     "regions": [
       { "id": "ombos", "ko": "옴보스", "maps": ["ombos"],
         "points": ["temple_hall", "scriptorium", "training", "market", "garden", "kitchen", "dock", "duat", "altar", "ombos_bench"],
-        "anchors": true },
+        "anchors": true, "rooms": ["dock_pier"] },
       { "id": "ruins", "ko": "강 건너 무너진 신전", "maps": ["ruins"], "locked": "ruins",
         "points": ["ruins_dock", "inscription", "dig", "ruins_shrine"],
         "anchors": true },

@@ -14,6 +14,8 @@ import { onSpot, travel } from '../../ui/window.js';
 import { leadOf, withOf } from '../../core/heroes.js';
 import { josa } from '../../core/ko.js';
 import { partNow } from '../../core/rest.js';
+import { feel } from '../life/poses.js';
+import { showFx } from '../../world/fx.js';
 
 const shows = (sec, s) => {
     const w = sec.when || {};
@@ -34,6 +36,11 @@ addThings((mapId, s) => (DATA.maps[mapId]?.secrets || []).filter(sec => shows(se
         addXP(st, sec.xp || 2);
         if (!sec.daily) journal(st, { ko: `${josa(sec.ko, '을')} 찾았다.`, say: `${sec.ko} 이야기를 꺼낸다.`, en: `Somang found ${sec.en || sec.ko}.`, marks: [sec.ko.split(' ').pop()], kind: 'secret' });
         await saveState();
+        // 0.9.70: a sparkle where it was, a start (놀람 !), then joy (기쁨 ♪) while the card opens
+        showFx('discover-0', { at: { x: sec.x + 0.5, y: sec.y + 0.9 }, ms: 1300, size: 1.25, rise: 0.3 });
+        feel('surprised', { ms: 650 });
+        await new Promise(r => setTimeout(r, 600));
+        feel('happy', { ms: 2000 });
         ui.showCard({ tag: '발견', title: sec.ko, text: `${sec.text}${sec.give ? `\n가방에 ${josa(itemInfo(sec.give)?.ko, '이')} 들어왔어.` : ''}` });
     },
 })));

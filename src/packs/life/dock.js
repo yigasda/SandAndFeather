@@ -10,7 +10,11 @@ import { addXP, didAct } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { itemCard } from '../../ui/items.js';
-import { onSpot } from '../../ui/window.js';
+import { onSpot, onTile, travel } from '../../ui/window.js';
+import { holdMate, holdPose, player, poseFrame } from '../../world/player.js';
+import { withOf } from '../../core/heroes.js';
+import { dropFx, fishLine, showFx } from '../../world/fx.js';
+import { hasAct } from './poses.js';
 import { josa } from '../../core/ko.js';
 import { partNow } from '../../core/rest.js';
 import { noteCatch, fishSizes } from '../../core/fishing.js';
@@ -30,6 +34,8 @@ export function pickFrom(table, s, recent = []) {
 }
 
 onSpot('dock', (spot, ui, map) => {
+    // 0.9.70: the village's pier only leads down to the dock's own map; fishing is done there
+    if (map?.id === 'ombos') { travel('dock_pier', 'path'); return; }
     const s = getState();
     const free = canDo(s, KEY);
     ui.showCard({
@@ -58,6 +64,17 @@ async function pull(ui, map) {
     itemCard(ui, map, uid, { fresh: true });
 }
 
+// 0.9.70 생활 묶음: fishing, whoever walks in front sits on the end of the pier (the approved fishing pictures: 0 waiting,
+// 1 pulling), the line runs from the rod's end to the bobber, the bucket stands beside on the boards and fills as they
+// catch (빈 → 조금 → 가득). Pulling: a little jump, a splash, "!" on a bite. Standing up takes the bucket away.
+// On the dock's own map (0.9.70, tools/maps/dock.py): the middle of the deck's front edge, the bucket on the boards to
+// the right, the bobber out in the water ahead and to the left; the one walking with them stands behind on the boards,
+// on the bucket's side, watching (MATE: their feet)
+const PIER = { x: 9.45, y: 6.9 }, BUCKET = { x: 10.25, y: 6.75 }, FLOAT = { x: 8.1, y: 7.85 }, MATE = { x: 10.35, y: 5.85 };
+const BUCKET_H = 720 / 576 * 1.95, BUCKET_DY = (720 - 662) / 576 * 1.95; // the bucket picture: 620×720, feet line 662, character scale
+const bucket = n => showFx(`bucket-${Math.min(2, n)}`, { at: { ...BUCKET }, ms: 0, size: BUCKET_H, dy: BUCKET_DY, fade: false, key: 'bucket' });
+onTile(() => { if (player.act?.name !== 'fish') { dropFx('bucket'); fishLine(null); } });
+
 // the fishing bar: a marker runs back and forth, the green part is where a pull catches
 async function fish(ui, map) {
     const s = getState();
@@ -79,12 +96,24 @@ async function fish(ui, map) {
     };
     raf = requestAnimationFrame(tick);
     let close;
+    const seated = map?.id === 'dock_pier' && hasAct(player.look, 'fish', 'down');
+    if (seated) {
+        holdPose('fish', PIER.x, PIER.y, 'down'); poseFrame(0); fishLine({ who: 'lead', to: { ...FLOAT } }); bucket(0);
+        if (withOf(s)) holdMate(null, MATE.x, MATE.y, 'down');
+    }
+    let back = 0;
     const pullLine = async () => {
         if (casts <= 0) return false;
         casts--;
-        if (pos >= zx && pos <= zx + zw) {
+        const hit = pos >= zx && pos <= zx + zw;
+        if (seated) {
+            poseFrame(1, true); clearTimeout(back); back = setTimeout(() => { if (player.act?.name === 'fish') poseFrame(0); }, 700);
+            if (hit) { showFx('splash-0', { at: { ...FLOAT }, ms: 750, size: 1.35, dy: 0.3, key: 'splash' }); showFx('bubble-exclaim', { who: 'lead', ms: 900, size: 0.95, key: 'bite' }); }
+        }
+        if (hit) {
             const id = pickFrom(DATA.finds?.fish, s);
             const [uid] = give(s, id, 1, 'dock'); caught.push(id);
+            if (seated) bucket(caught.length);
             const n = noteCatch(s, id, uid);
             msg.textContent = `${itemInfo(id)?.icon || ''} ${josa(itemInfo(id)?.ko || id, '을')} 낚았어!${n ? ` ${n.cm}cm${n.first ? ' · 첫 기록' : n.best ? ' · 새 기록!' : ''}` : ''} 남은 던지기 ${casts}`;
             if (n) { const c = clueFound(s, 'river'); if (c) clueLine = `✦ 보물지도 단서 「${c.ko}」: ${c.text}`; }
@@ -97,13 +126,14 @@ async function fish(ui, map) {
             await saveState();
             msg.textContent += caught.length ? `\n오늘 낚은 것: ${caught.map(id => itemInfo(id)?.ko).join(', ')}` : '\n오늘은 한 마리도 못 낚았어.';
             box.querySelector('.sf_fish_bar').classList.add('sf_off');
+            if (seated) fishLine(null);
         }
         return false; // keep the card open
     };
     close = ui.showCard({
-        tag: '생활', title: '낚시', body: box,
+        tag: '생활', title: '낚시', body: box, kind: 'fishing',   // sits low, so the one fishing on the pier stays in view
         buttons: [{ label: '닫기', onClick: () => { cancelAnimationFrame(raf); } }, { label: '당기기', primary: true, onClick: () => { pullLine(); return false; } }],
-        onClose: () => cancelAnimationFrame(raf),
+        onClose: () => { cancelAnimationFrame(raf); fishLine(null); },
     });
 }
 

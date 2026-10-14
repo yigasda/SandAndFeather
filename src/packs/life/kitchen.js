@@ -10,6 +10,7 @@ import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { list, para, stack } from '../../ui/kit.js';
 import { onSpot } from '../../ui/window.js';
+import { busyPose } from './poses.js';
 
 // which bag items a recipe would use, or null
 export function pickFor(s, r) {
@@ -36,7 +37,10 @@ function card(ui) {
                 const st = getState(), u = pickFor(st, r); if (!u || !spend(st, 1)) return;
                 st.bag.items = st.bag.items.filter(x => !u.includes(x)); const [uid] = give(st, r.id, 1, 'kitchen'); addXP(st, 1);
                 record(st, 'cook', { itemId: r.id, itemUid: uid, source: 'kitchen' });
-                const d = didAct(st, 'cook'); await saveState(); ui.toast(d || `${out.ko} 완성 · ${u.map(x => itemInfo(x.id)?.ko).join(', ')} 씀`); close(); card(ui);
+                const d = didAct(st, 'cook'); await saveState();
+                // 0.9.70: kneading at the board (the back-view cooking picture), flour for bread, steam for the rest
+                busyPose('cook', 'up', { ms: 2400, bob: 1, fx: [{ name: /bread|cake/.test(r.id) ? 'flour-0' : 'steam-0', at: 'head', dy: 0.8, size: 1.15, rise: 0.35 }] });
+                ui.toast(d || `${out.ko} 완성 · ${u.map(x => itemInfo(x.id)?.ko).join(', ')} 씀`); close(); card(ui);
             } }] };
     });
     const close = ui.showCard({ tag: '생활', title: '부엌', wide: true, body: stack(para('요리는 태양 기운 1. 음식은 두아트 원정에 챙겨 가거나 꺼내서 선물할 수 있어.'), list(rows)) });
