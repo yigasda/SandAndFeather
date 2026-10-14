@@ -1,0 +1,97 @@
+{
+  "approvalEvidence": "합격!!! 채택 10장",
+  "map": "고대장치",
+  "note": "채택 원본 그대로 보관. 게임 적용 및 프레임 기준점 정렬은 별도.",
+  "files": [
+    {
+      "file": "ring-idle.png",
+      "size": [
+        1374,
+        1145
+      ],
+      "sha256": "3b00b328d37eb6d3e9f674cbfb7803430db73daad197850e4ac7791c8d8c24c0",
+      "status": "approved"
+    },
+    {
+      "file": "ring-prepare.png",
+      "size": [
+        1374,
+        1145
+      ],
+      "sha256": "281d4ae663db83e0568a3cf68cd7c455ff45df476e2aca573578fe0725133b50",
+      "status": "approved"
+    },
+    {
+      "file": "ring-attack.png",
+      "size": [
+        1374,
+        1145
+      ],
+      "sha256": "eba27f22586b47a0cc33abb6fabef4a608e1e9359586baf8f237b22d49f4f976",
+      "status": "approved"
+    },
+    {
+      "file": "ring-hit.png",
+      "size": [
+        1374,
+        1145
+      ],
+      "sha256": "7cbe448df6a75a3fb1854e8cc2c8be0722ba6668145612b2f67182b955469223",
+      "status": "approved"
+    },
+    {
+      "file": "ring-disappear.png",
+      "size": [
+        1374,
+        1145
+      ],
+      "sha256": "197356a415192a656c126b4206c5fcf60485d61abe050e618ced5206c78fac2b",
+      "status": "approved"
+    },
+    {
+      "file": "hourglass-idle.png",
+      "size": [
+        1199,
+        1312
+      ],
+      "sha256": "574279f27d0c2f324e365114ba4f7ce624da2fbd83afc770a8f406300a4494e4",
+      "status": "approved"
+    },
+    {
+      "file": "hourglass-prepare.png",
+      "size": [
+        1199,
+        1312
+      ],
+      "sha256": "0638d12759de9e4237b951cbd5ebc872d97aa57034c1eda20db720cf65b25f22",
+      "status": "approved"
+    },
+    {
+      "file": "hourglass-attack.png",
+      "size": [
+        1199,
+        1312
+      ],
+      "sha256": "29506c802ab3a7b0fd3c9dd4a52c36cbdf534bad52efae6fe1afe9d0f16b7ae7",
+      "status": "approved"
+    },
+    {
+      "file": "hourglass-hit.png",
+      "size": [
+        1199,
+        1312
+      ],
+      "sha256": "f324523d4145247094114f6fea8cba91ad396e8b431fadf89ddc338373280257",
+      "status": "approved"
+    },
+    {
+      "file": "hourglass-disappear.png",
+      "size": [
+        1199,
+        1312
+      ],
+      "sha256": "b549dacb71d4077439b464ea1c443cad45cef9b8e4c18d884a66b78ff945679c",
+      "status": "approved"
+    }
+  ]
+}
