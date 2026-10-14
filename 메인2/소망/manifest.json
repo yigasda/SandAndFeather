@@ -1,0 +1,151 @@
+{
+  "request": "소망 전투 스프라이트들도 깃헙 메인에 올려줘",
+  "purpose": "기존 전투 PNG 보관; 재작화 및 게임 적용 없음",
+  "sourceSelection": "combat-latest-v239/selection.json",
+  "files": [
+    {
+      "number": 37,
+      "file": "somang-right-combat-idle-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-idle-0.png",
+      "revision": "combat-trio-v228",
+      "sha256": "a2020597e1126eebc7c3fd9e94e10e200bcc683e0b6b0c5f3feca52f9d092243",
+      "status": "existing-latest"
+    },
+    {
+      "number": 38,
+      "file": "somang-right-combat-idle-1.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-idle-1.png",
+      "revision": "combat-trio-v228",
+      "sha256": "5253e2dcd01163035125080e03cfa657e077fb1a8a598e326fbed5ec529f9316",
+      "status": "existing-latest"
+    },
+    {
+      "number": 39,
+      "file": "somang-right-combat-idle-2.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-idle-2.png",
+      "revision": "combat-trio-v228",
+      "sha256": "74a17c9a223b18840bfb3088b0e1137644c0c982fe07e59e0f702be0cf79d16d",
+      "status": "existing-latest"
+    },
+    {
+      "number": 40,
+      "file": "somang-right-combat-anticipation-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v229/png/somang-right-combat-anticipation-0.png",
+      "revision": "combat-trio-v229",
+      "sha256": "3d57c6093a57c9aa5042ef4a80533a400ca9dfff24afe3e19b5d32f82e5196be",
+      "status": "existing-latest"
+    },
+    {
+      "number": 41,
+      "file": "somang-right-combat-attack-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-attack-0.png",
+      "revision": "combat-trio-v228",
+      "sha256": "1d5d07e87674d998238ff7dd4a00d774b78a1a42cf90b506aada3d9249e79b7c",
+      "status": "existing-latest"
+    },
+    {
+      "number": 42,
+      "file": "somang-right-combat-skill-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-right-combat-skill-0.png",
+      "revision": "combat-trio-v233",
+      "sha256": "dcb44acdfebcf9b4118d2d2b3ec10e600463ff90d11f60f432f0dabd023696b1",
+      "status": "existing-latest"
+    },
+    {
+      "number": 43,
+      "file": "somang-right-combat-spell-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-right-combat-spell-0.png",
+      "revision": "combat-trio-v233",
+      "sha256": "18e53018d38e3f60889c2c9fe4aaee4dac5539de8a892ca05a45fd91dfaa8c85",
+      "status": "existing-latest"
+    },
+    {
+      "number": 44,
+      "file": "somang-right-combat-tired-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-right-combat-tired-0.png",
+      "revision": "combat-trio-v236",
+      "sha256": "729efbe0f1cfb3b2f700b630908d3e414d4db44383541be0f95430c722246601",
+      "status": "awaiting-approval"
+    },
+    {
+      "number": 45,
+      "file": "somang-right-combat-hit-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-right-combat-hit-0.png",
+      "revision": "combat-trio-v236",
+      "sha256": "a818b052e6ebb0aed62153e6f72cd2f900f11b3247ee318f0501ae1ff675610d",
+      "status": "awaiting-approval"
+    },
+    {
+      "number": 46,
+      "file": "somang-left-combat-idle-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-idle-0.png",
+      "revision": "combat-trio-v228",
+      "sha256": "9db5a471fef56a21f06c9f9c7d397853ed9ac0e1e25a5aed12d8403b59dbbacd",
+      "status": "existing-latest"
+    },
+    {
+      "number": 47,
+      "file": "somang-left-combat-idle-1.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-idle-1.png",
+      "revision": "combat-trio-v228",
+      "sha256": "43599014bfaf1399acd4e129ada38ee6080f9871aa57c73e7be0c8a221177c76",
+      "status": "existing-latest"
+    },
+    {
+      "number": 48,
+      "file": "somang-left-combat-idle-2.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-idle-2.png",
+      "revision": "combat-trio-v228",
+      "sha256": "e07e1961c29186338d14fb4c895965d8e188b6e8400c672bcaf8621d70985892",
+      "status": "existing-latest"
+    },
+    {
+      "number": 49,
+      "file": "somang-left-combat-anticipation-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v229/png/somang-left-combat-anticipation-0.png",
+      "revision": "combat-trio-v229",
+      "sha256": "5b69cb29b8f035c633560f8aa025bb0b5bad230229f40298e23b9c5ce5b66887",
+      "status": "existing-latest"
+    },
+    {
+      "number": 50,
+      "file": "somang-left-combat-attack-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-attack-0.png",
+      "revision": "combat-trio-v228",
+      "sha256": "0a26ae8cfddd10cc41fe68270d8dc67df00b4b356d68f515ae3394f229dcad2a",
+      "status": "existing-latest"
+    },
+    {
+      "number": 51,
+      "file": "somang-left-combat-skill-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-left-combat-skill-0.png",
+      "revision": "combat-trio-v233",
+      "sha256": "2005ac25f5621995605ba73e536fdad4c5eb1b6a2f5c382552f00b523e78fa91",
+      "status": "existing-latest"
+    },
+    {
+      "number": 52,
+      "file": "somang-left-combat-spell-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-left-combat-spell-0.png",
+      "revision": "combat-trio-v233",
+      "sha256": "c47a3c0d49e12a76974f0d3fda46c78727cf4e138be260da3ae6f2a20a7e91d0",
+      "status": "existing-latest"
+    },
+    {
+      "number": 53,
+      "file": "somang-left-combat-tired-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-left-combat-tired-0.png",
+      "revision": "combat-trio-v236",
+      "sha256": "8a560034602bedaa57d9b4582d230526c28e447a0cf1c8e2db14f69ca0f2b452",
+      "status": "awaiting-approval"
+    },
+    {
+      "number": 54,
+      "file": "somang-left-combat-hit-0.png",
+      "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-left-combat-hit-0.png",
+      "revision": "combat-trio-v236",
+      "sha256": "ab09e924f1e736d51d949411929f375ca13f9e9a03465889336827f8469ec690",
+      "status": "awaiting-approval"
+    }
+  ]
+}
