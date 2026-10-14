@@ -2,7 +2,7 @@
   "status": "user-approved-art-only",
   "runtimeApplied": false,
   "pixelProcessing": "Lossless extraction, no resizing/repainting; transparent padding 16 px",
-  "count": 43,
+  "count": 51,
   "sprites": [
     {
       "file": "png/horus-front-walk-0.png",
@@ -1206,6 +1206,230 @@
       "alphaExtrema": [
         0,
         255
+      ]
+    },
+    {
+      "file": "png/horus-left-idle-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "size": [
+        416,
+        510
+      ],
+      "anchor": [
+        208,
+        494
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 1,
+      "sourceBox": [
+        0,
+        18,
+        384,
+        496
+      ],
+      "sha256": "d2ae2ef0a5b460e92978453af658aac99c287ad2bbef98aa08cc03fe4e4ee012",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-left-walk-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "size": [
+        416,
+        517
+      ],
+      "anchor": [
+        208,
+        501
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 2,
+      "sourceBox": [
+        384,
+        23,
+        768,
+        508
+      ],
+      "sha256": "0b487551597be0078ab464fd53899ccb066b17d8e2b427ef390cebc443b406e6",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-left-walk-1.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": 1,
+      "size": [
+        416,
+        514
+      ],
+      "anchor": [
+        208,
+        498
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 3,
+      "sourceBox": [
+        768,
+        20,
+        1152,
+        502
+      ],
+      "sha256": "79a1b29955410b2aff8afb4a9ed4e99bd21fcb856c6fcedb05498761db45a8ee",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-left-walk-2.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": 2,
+      "size": [
+        403,
+        510
+      ],
+      "anchor": [
+        201,
+        494
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 4,
+      "sourceBox": [
+        1153,
+        18,
+        1524,
+        496
+      ],
+      "sha256": "1d43ad06915994163f95d8ccb62bbadf047c708b445a7f48dcfb1ae247f877c6",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-idle-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "size": [
+        416,
+        517
+      ],
+      "anchor": [
+        208,
+        501
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 5,
+      "sourceBox": [
+        0,
+        515,
+        384,
+        1000
+      ],
+      "sha256": "d89d0ebb2ae369d5a34f6b1e2ecbf0acfe00dbd29bbe53d14ecd3ca9c60435c0",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-walk-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "size": [
+        416,
+        509
+      ],
+      "anchor": [
+        208,
+        493
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 6,
+      "sourceBox": [
+        384,
+        515,
+        768,
+        992
+      ],
+      "sha256": "0af2ed8c7524c13b39602f8a2f8c85eae53278478b186fba8c859a3ff7a80ff1",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-walk-1.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 1,
+      "size": [
+        416,
+        515
+      ],
+      "anchor": [
+        208,
+        499
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 7,
+      "sourceBox": [
+        768,
+        513,
+        1152,
+        996
+      ],
+      "sha256": "b5a6b3222ec6a410dc743ad99e890fb7380a3f9f56ea21a03466d4d879a7b741",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-walk-2.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": 2,
+      "size": [
+        415,
+        510
+      ],
+      "anchor": [
+        207,
+        494
+      ],
+      "source": "sources/side-idle-walk.png",
+      "sourceCell": 8,
+      "sourceBox": [
+        1152,
+        512,
+        1535,
+        990
+      ],
+      "sha256": "2d7b4235237acc8a12687f10bcb5dede26515206cb39e5bf3c818065cf5ad6f3",
+      "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
+      "alphaExtrema": [
+        0,
+        254
       ]
     }
   ]
