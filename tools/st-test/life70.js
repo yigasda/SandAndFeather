@@ -23,7 +23,7 @@ const WHO = (process.argv[3] || 'somang,set,horus').split(',');
     window.closeAll = () => document.querySelectorAll('#sf_game .sf_pop_x').forEach(x => x.click());
     window.S = () => m.st.getState();
     window.prep = () => { const s = S(); s.sun.left = 8; for (const x of m.prog.dailyTasks(s)) x.done = true; s.lessons.cur = ''; };
-    window.mapOf = id => Object.entries(m.data.DATA.maps).find(([, mp]) => (mp.spots || []).some(s => s.id === id))?.[0];
+    window.mapOf = id => id === 'dock' ? 'dock_pier' : Object.entries(m.data.DATA.maps).find(([, mp]) => (mp.spots || []).some(s => s.id === id))?.[0];   // 0.9.70: fishing on the dock's own map
   }, base);
   await sleep(1000);
   const E = (fn, arg) => p.evaluate(fn, arg);

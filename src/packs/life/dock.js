@@ -10,7 +10,7 @@ import { addXP, didAct } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { itemCard } from '../../ui/items.js';
-import { onSpot, onTile } from '../../ui/window.js';
+import { onSpot, onTile, travel } from '../../ui/window.js';
 import { holdMate, holdPose, player, poseFrame } from '../../world/player.js';
 import { withOf } from '../../core/heroes.js';
 import { dropFx, fishLine, showFx } from '../../world/fx.js';
@@ -34,6 +34,8 @@ export function pickFrom(table, s, recent = []) {
 }
 
 onSpot('dock', (spot, ui, map) => {
+    // 0.9.70: the village's pier only leads down to the dock's own map; fishing is done there
+    if (map?.id === 'ombos') { travel('dock_pier', 'path'); return; }
     const s = getState();
     const free = canDo(s, KEY);
     ui.showCard({
@@ -65,8 +67,10 @@ async function pull(ui, map) {
 // 0.9.70 생활 묶음: fishing, whoever walks in front sits on the end of the pier (the approved fishing pictures: 0 waiting,
 // 1 pulling), the line runs from the rod's end to the bobber, the bucket stands beside on the boards and fills as they
 // catch (빈 → 조금 → 가득). Pulling: a little jump, a splash, "!" on a bite. Standing up takes the bucket away.
-// the one walking with them stands behind on the boards, on the bucket's side, watching (MATE: their feet)
-const PIER = { x: 25.3, y: 30.78 }, BUCKET = { x: 26.0, y: 30.6 }, FLOAT = { x: 23.55, y: 31.95 }, MATE = { x: 25.95, y: 29.8 };
+// On the dock's own map (0.9.70, tools/maps/dock.py): the middle of the deck's front edge, the bucket on the boards to
+// the right, the bobber out in the water ahead and to the left; the one walking with them stands behind on the boards,
+// on the bucket's side, watching (MATE: their feet)
+const PIER = { x: 9.45, y: 6.9 }, BUCKET = { x: 10.25, y: 6.75 }, FLOAT = { x: 8.1, y: 8.4 }, MATE = { x: 10.35, y: 5.85 };
 const BUCKET_H = 720 / 576 * 1.95, BUCKET_DY = (720 - 662) / 576 * 1.95; // the bucket picture: 620×720, feet line 662, character scale
 const bucket = n => showFx(`bucket-${Math.min(2, n)}`, { at: { ...BUCKET }, ms: 0, size: BUCKET_H, dy: BUCKET_DY, fade: false, key: 'bucket' });
 onTile(() => { if (player.act?.name !== 'fish') { dropFx('bucket'); fishLine(null); } });
@@ -92,7 +96,7 @@ async function fish(ui, map) {
     };
     raf = requestAnimationFrame(tick);
     let close;
-    const seated = map?.id === 'ombos' && hasAct(player.look, 'fish', 'down');
+    const seated = map?.id === 'dock_pier' && hasAct(player.look, 'fish', 'down');
     if (seated) {
         holdPose('fish', PIER.x, PIER.y, 'down'); poseFrame(0); fishLine({ who: 'lead', to: { ...FLOAT } }); bucket(0);
         if (withOf(s)) holdMate(null, MATE.x, MATE.y, 'down');
