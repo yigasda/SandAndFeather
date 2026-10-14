@@ -60,7 +60,7 @@ def main():
         image=Image.open(src).convert('RGB')
         if i == 2:
             boundary=json.loads((ROOT/'tools/maps/duat-boundaries/02.json').read_text())
-            floor=Polygon(boundary['outer'], boundary['holes'])
+            floor=Polygon(boundary['outer']).difference(union_all([Polygon(h).buffer(0) for h in boundary['holes']]))
             assert floor.is_valid, 'Approved corridor geometry invalid'
         mask=P.mask_from_geometry(floor,image)
         safe=P.safe_centres(mask,PX)
