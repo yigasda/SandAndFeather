@@ -64,9 +64,9 @@ export function drawReferenceScenes(renderer, { part, tint, cx, cy, z, paintActo
         // Dawn/evening retain the normal world lighting; night is authored.
         // a lamp-lit room keeps one picture and darkens less than the open village (tintNight: its own colour)
         const roomNight = part === 'night' && scene.tintNight && !scene.nightImage ? (typeof scene.tintNight === 'string' ? scene.tintNight : tint) : null;
-        const groundShade = part === 'night' ? roomNight : tint;
+        const groundShade = scene.tintWorld === false ? null : part === 'night' ? roomNight : tint;
         // people under an authored night get a lighter shade than the village's, to sit in its lamplight
-        const actorShade = part === 'night' && (scene.nightImage || typeof scene.tintNight === 'string') ? 'rgba(24,34,90,.28)' : tint;
+        const actorShade = scene.tintActors === false ? null : part === 'night' && (scene.nightImage || typeof scene.tintNight === 'string') ? 'rgba(24,34,90,.28)' : tint;
         const pw = picture.width || picture.naturalWidth, ph = picture.height || picture.naturalHeight;
         const background = box => {
             const [x0, y0, x1, y1] = box.map(Math.round);

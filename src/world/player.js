@@ -31,7 +31,7 @@ export function placePlayer(map) {
     stand();
     trail.length = 0;
 }
-const blocked = (map, x, y) => map.solidAt(x + FOOT.x0, y + FOOT.y0) || map.solidAt(x + FOOT.x1, y + FOOT.y0) || map.solidAt(x + FOOT.x0, y + FOOT.y1) || map.solidAt(x + FOOT.x1, y + FOOT.y1);
+const blocked = (m, x, y) => m.solidRect(x+FOOT.x0,y+FOOT.y0,x+FOOT.x1,y+FOOT.y1);
 
 // standing still: the idle picture, and the next walk starts on its first pose
 export function stand() { player.moving = false; player.walkT = 0; }
