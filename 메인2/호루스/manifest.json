@@ -1,0 +1,261 @@
+{
+  "approvalEvidence": "합격 — 사용자가 249 좌우 전체 GIF 전달 후 호루스 채택. 이후 메인2/호루스에 전투 채택 PNG 업로드 지시.",
+  "count": 18,
+  "leftIdle2": "249 피부 덧대기 159픽셀 수정본",
+  "leftTired": "246 수정본 반려, 245 이전 버전 복구본",
+  "gameIntegrated": false,
+  "files": [
+    {
+      "file": "horus-left-combat-anticipation-0.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "anticipation",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "7e8ac58e8b014e9f78a9ec0a7e3717db9acf865ee30806b10dc2b431bdb8c729"
+    },
+    {
+      "file": "horus-left-combat-attack-0.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "attack",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "943704c38d1f700beb6a779a3e4e0582a00ac740484a9c20d426d9fb3d408912"
+    },
+    {
+      "file": "horus-left-combat-hit-0.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "hit",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "a078982383efd910595111eff272cf70b10cf1ca236b3583f0d98e8a9f85a61e"
+    },
+    {
+      "file": "horus-left-combat-idle-0.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "idle",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "2df0583e041d386654a031bc5bf9593933b50629bc19622cb85a47fa8a500319"
+    },
+    {
+      "file": "horus-left-combat-idle-1.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "idle",
+      "frame": 1,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "99dd2e4488ae7c4f8b77f57c9772d9d96a1b59e79b1ad82251affb129a24db56"
+    },
+    {
+      "file": "horus-left-combat-idle-2.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "idle",
+      "frame": 2,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "76b8e8cf6127fa633948c5c2321b5e8fbe4dde5c458315c9326cd1736f34579b"
+    },
+    {
+      "file": "horus-left-combat-skill-0.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "skill",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "a05f709f838b81177748a6c2efcbe34499a94da3705b84b245a7a091ed238dbb"
+    },
+    {
+      "file": "horus-left-combat-spell-0.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "spell",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "0946b0947c724b9ff8bfcae8c26218b9573ccbe14ce1c0f686ca644a6a2b7c52"
+    },
+    {
+      "file": "horus-left-combat-tired-0.png",
+      "character": "horus",
+      "direction": "left",
+      "motion": "tired",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "7816a8d76246dbf6c9f8be4cffa5538f4e9a87c419fbb60cfe064b7aabc24168"
+    },
+    {
+      "file": "horus-right-combat-anticipation-0.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "anticipation",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "d82317994bc5a858d4daea37d5f161832fab2b32a4f78e3f1bd99da6ccd26d40"
+    },
+    {
+      "file": "horus-right-combat-attack-0.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "attack",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "f06757c165ca192e4f94bd1580df156cd9b37e8f5d757a95b5aa3c7e6726f1f8"
+    },
+    {
+      "file": "horus-right-combat-hit-0.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "hit",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "5c2350cf8a84c0a8d705866d2bb18cb5d1acdc463fe3ea6ee2a90f8d8930f2a1"
+    },
+    {
+      "file": "horus-right-combat-idle-0.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "idle",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "909c33ac2aa841acf417c4ea890078487bfc77c9afaaea20c58573ce681c1041"
+    },
+    {
+      "file": "horus-right-combat-idle-1.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "idle",
+      "frame": 1,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "f7ebd93bb6ca5af7239800f37d1dc20445045911c778a62c52db71bbbe8e64bd"
+    },
+    {
+      "file": "horus-right-combat-idle-2.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "idle",
+      "frame": 2,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "855b3c1778c17371a4bd6055255ce7552954a2fadd478dd269a945c9010b2fe8"
+    },
+    {
+      "file": "horus-right-combat-skill-0.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "skill",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "01d48afb9b7f6a1383f6e78637fbe86f2f4df080367d466a06d9156f39dd1b55"
+    },
+    {
+      "file": "horus-right-combat-spell-0.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "spell",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "d2db310fd8d81b97f8527e6d86a2a2a5d0dfe8a45e4744460b1538f06ac74cee"
+    },
+    {
+      "file": "horus-right-combat-tired-0.png",
+      "character": "horus",
+      "direction": "right",
+      "motion": "tired",
+      "frame": 0,
+      "size": [
+        1870,
+        841
+      ],
+      "anchor": null,
+      "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
+      "sha256": "c1d9f9f6289cd4df41f17687ba38d3db08f547de32aadf5d4b220cc216ef7b2b"
+    }
+  ]
+}
