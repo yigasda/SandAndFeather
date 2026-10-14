@@ -1,0 +1,26 @@
+{
+  "version": "0.9.74",
+  "source": "user-1000482831.jpg",
+  "approval": "ㄱㄱ",
+  "testedRelease": "8841fdbd0e7ed64f6353ed63d28cb403076b3027",
+  "changedSourcePixelBounds": [
+    88,
+    503,
+    422,
+    1240
+  ],
+  "otherBoundaries": "unchanged",
+  "checks": {
+    "duatExits": 14,
+    "residenceExits": 31,
+    "mandatoryScripts": 3,
+    "errors": 0,
+    "generator": "all seven maps connected",
+    "lighting": "day/dawn/evening/night unchanged",
+    "phoneWidths": [
+      412,
+      320
+    ]
+  },
+  "previousVersionRegression": "0.9.73 life37/dock10/records36/items44/bond passed; this boundary-only update repeats all mandatory map checks"
+}

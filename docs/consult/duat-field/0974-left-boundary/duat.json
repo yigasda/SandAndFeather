@@ -1,0 +1,338 @@
+{
+  "checks": [
+    {
+      "map": "duat_01",
+      "direction": "up",
+      "steps": 1156,
+      "exit": "top"
+    },
+    {
+      "map": "duat_02",
+      "direction": "up",
+      "steps": 1166,
+      "exit": "top"
+    },
+    {
+      "map": "duat_03",
+      "direction": "up",
+      "steps": 891,
+      "exit": "top"
+    },
+    {
+      "map": "duat_04",
+      "direction": "up",
+      "steps": 707,
+      "exit": "top"
+    },
+    {
+      "map": "duat_05",
+      "direction": "up",
+      "steps": 522,
+      "exit": "top"
+    },
+    {
+      "map": "duat_06",
+      "direction": "up",
+      "steps": 519,
+      "exit": "top"
+    },
+    {
+      "map": "duat_07",
+      "direction": "up",
+      "steps": 892,
+      "exit": "top"
+    },
+    {
+      "map": "duat_07",
+      "direction": "down",
+      "steps": 895,
+      "exit": "bottom"
+    },
+    {
+      "map": "duat_06",
+      "direction": "down",
+      "steps": 519,
+      "exit": "bottom"
+    },
+    {
+      "map": "duat_05",
+      "direction": "down",
+      "steps": 522,
+      "exit": "bottom"
+    },
+    {
+      "map": "duat_04",
+      "direction": "down",
+      "steps": 667,
+      "exit": "bottom"
+    },
+    {
+      "map": "duat_03",
+      "direction": "down",
+      "steps": 862,
+      "exit": "bottom"
+    },
+    {
+      "map": "duat_02",
+      "direction": "down",
+      "steps": 1154,
+      "exit": "bottom"
+    },
+    {
+      "map": "duat_01",
+      "direction": "down",
+      "steps": 1179,
+      "exit": "bottom"
+    }
+  ],
+  "lighting": [
+    {
+      "id": "duat_01",
+      "part": "day",
+      "changed": 0
+    },
+    {
+      "id": "duat_01",
+      "part": "dawn",
+      "changed": 0
+    },
+    {
+      "id": "duat_01",
+      "part": "evening",
+      "changed": 0
+    },
+    {
+      "id": "duat_01",
+      "part": "night",
+      "changed": 0
+    },
+    {
+      "id": "duat_02",
+      "part": "day",
+      "changed": 0
+    },
+    {
+      "id": "duat_02",
+      "part": "dawn",
+      "changed": 0
+    },
+    {
+      "id": "duat_02",
+      "part": "evening",
+      "changed": 0
+    },
+    {
+      "id": "duat_02",
+      "part": "night",
+      "changed": 0
+    },
+    {
+      "id": "duat_03",
+      "part": "day",
+      "changed": 0
+    },
+    {
+      "id": "duat_03",
+      "part": "dawn",
+      "changed": 0
+    },
+    {
+      "id": "duat_03",
+      "part": "evening",
+      "changed": 0
+    },
+    {
+      "id": "duat_03",
+      "part": "night",
+      "changed": 0
+    },
+    {
+      "id": "duat_04",
+      "part": "day",
+      "changed": 0
+    },
+    {
+      "id": "duat_04",
+      "part": "dawn",
+      "changed": 0
+    },
+    {
+      "id": "duat_04",
+      "part": "evening",
+      "changed": 0
+    },
+    {
+      "id": "duat_04",
+      "part": "night",
+      "changed": 0
+    },
+    {
+      "id": "duat_05",
+      "part": "day",
+      "changed": 0
+    },
+    {
+      "id": "duat_05",
+      "part": "dawn",
+      "changed": 0
+    },
+    {
+      "id": "duat_05",
+      "part": "evening",
+      "changed": 0
+    },
+    {
+      "id": "duat_05",
+      "part": "night",
+      "changed": 0
+    },
+    {
+      "id": "duat_06",
+      "part": "day",
+      "changed": 0
+    },
+    {
+      "id": "duat_06",
+      "part": "dawn",
+      "changed": 0
+    },
+    {
+      "id": "duat_06",
+      "part": "evening",
+      "changed": 0
+    },
+    {
+      "id": "duat_06",
+      "part": "night",
+      "changed": 0
+    },
+    {
+      "id": "duat_07",
+      "part": "day",
+      "changed": 0
+    },
+    {
+      "id": "duat_07",
+      "part": "dawn",
+      "changed": 0
+    },
+    {
+      "id": "duat_07",
+      "part": "evening",
+      "changed": 0
+    },
+    {
+      "id": "duat_07",
+      "part": "night",
+      "changed": 0
+    }
+  ],
+  "collision": [
+    {
+      "name": "upper water",
+      "expected": true,
+      "blocked": true
+    },
+    {
+      "name": "lower water",
+      "expected": true,
+      "blocked": true
+    },
+    {
+      "name": "bridge",
+      "expected": false,
+      "blocked": false
+    },
+    {
+      "name": "left stairs",
+      "expected": false,
+      "blocked": false
+    },
+    {
+      "name": "right stairs",
+      "expected": false,
+      "blocked": false
+    },
+    {
+      "name": "right pillar",
+      "expected": true,
+      "blocked": true
+    },
+    {
+      "name": "mural pots",
+      "expected": true,
+      "blocked": true
+    }
+  ],
+  "exploration": {
+    "r": {
+      "id": "duat",
+      "ko": "두아트",
+      "maps": [],
+      "rooms": [
+        "duat_01",
+        "duat_02",
+        "duat_03",
+        "duat_04",
+        "duat_05",
+        "duat_06",
+        "duat_07"
+      ]
+    },
+    "total": 7,
+    "done": 7,
+    "pct": 100,
+    "points": [
+      {
+        "key": "room:duat_01",
+        "kind": "room",
+        "map": "duat_01",
+        "ko": "경계 동굴",
+        "seen": true
+      },
+      {
+        "key": "room:duat_02",
+        "kind": "room",
+        "map": "duat_02",
+        "ko": "두아트 회랑",
+        "seen": true
+      },
+      {
+        "key": "room:duat_03",
+        "kind": "room",
+        "map": "duat_03",
+        "ko": "침수 신전",
+        "seen": true
+      },
+      {
+        "key": "room:duat_04",
+        "kind": "room",
+        "map": "duat_04",
+        "ko": "고대 장치",
+        "seen": true
+      },
+      {
+        "key": "room:duat_05",
+        "kind": "room",
+        "map": "duat_05",
+        "ko": "모래 성소",
+        "seen": true
+      },
+      {
+        "key": "room:duat_06",
+        "kind": "room",
+        "map": "duat_06",
+        "ko": "황금 태양전",
+        "seen": true
+      },
+      {
+        "key": "room:duat_07",
+        "kind": "room",
+        "map": "duat_07",
+        "ko": "귀환의 문",
+        "seen": true
+      }
+    ]
+  },
+  "errors": []
+}
