@@ -1,0 +1,127 @@
+{
+ "action": "fish",
+ "status": "user-approved",
+ "artApproved": true,
+ "runtimeEligible": true,
+ "runtimeOwner": "opus",
+ "canvas": [
+  1020,
+  1120
+ ],
+ "referenceVisibleHeight": 576,
+ "directionMap": {
+  "front": "down"
+ },
+ "playback": {
+  "sequence": [
+   0,
+   1
+  ],
+  "durationMs": [
+   800,
+   800
+  ],
+  "loop": false,
+  "hold": true
+ },
+ "approvalEvidence": "사용자: \"머리가 정지보다 작은 거랑 색 차이는 너가 수정해\" → 세트 B 선택(\"이거 뭐야? 이걸루 하고 시픈데\"), 1장 기울이기 \"9로 할까ㅋㅋ\"",
+ "note": "아스트라 작업본(메인1, 미완성 표시)을 오푸스가 픽셀 손질: 새로 그린 곳 없음. 남은 것: 몸 쏠림·호루스 목 잔선은 손대지 않음(사용자 지시 범위 밖).",
+ "files": [
+  {
+   "path": "png/set-front-fish-0.png",
+   "character": "set",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "kind": "seat-bottom",
+    "position": [
+     540,
+     750
+    ]
+   },
+   "sha256": "6a554b98b8f0cce171e06ad9ab36ac543291363a6d8382c52ec50b01e9d8a55a",
+   "source": "sources/set-fishing-front-0-원본.png (메인1/set-fishing-front-0.png와 같은 바이트)",
+   "edits": [
+    "캔버스 620×720 → 1020×1120(사방 200px 투명, 커져도 안 잘리게)",
+    "bodyscale.py 전체 1.16배·머리 1.16배, 목 (540,618) 앉은 자리 (540,750) 고정 (시안 B)",
+    "tonematch.py 머리카락 색을 세트 정지 정면 색으로"
+   ],
+   "tip": [
+    185,
+    847
+   ]
+  },
+  {
+   "path": "png/set-front-fish-1.png",
+   "character": "set",
+   "direction": "front",
+   "frame": 1,
+   "anchor": {
+    "kind": "seat-bottom",
+    "position": [
+     540,
+     750
+    ]
+   },
+   "sha256": "52349b87df5ededfa0ea2d32b056a4e02bf6ad0bcdceddb3364c42bbedb1f685",
+   "source": "sources/set-fishing-front-1-원본.png (메인1/set-fishing-front-1.png와 같은 바이트)",
+   "edits": [
+    "캔버스 620×720 → 1020×1120",
+    "bodyscale.py 전체 1.16배·머리 1.26배, 목 (542,655) 앉은 자리 (540,750) 고정 (시안 B)",
+    "tonematch.py 머리카락 색을 세트 정지 정면 색으로",
+    "lean.py 허리 위 9° 화면 오른쪽으로(대를 당기는 반대쪽으로 버팀), 축 (540,730), 170행에 걸쳐"
+   ],
+   "tip": [
+    237,
+    259
+   ]
+  },
+  {
+   "path": "png/horus-front-fish-0.png",
+   "character": "horus",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "kind": "seat-bottom",
+    "position": [
+     540,
+     750
+    ]
+   },
+   "sha256": "5497ed864dac5e90e94539ccc53b57b8baf1b4cee3aca12f1dded23bac5ea2fe",
+   "source": "sources/horus-fishing-front-0-원본.png (메인1/horus-fishing-front-0.png와 같은 바이트)",
+   "edits": [
+    "캔버스 620×720 → 1020×1120",
+    "tonematch.py 머리카락 색을 호루스 걷기 정면 2 색으로, 피부를 정지 정면 색으로"
+   ],
+   "tip": [
+    302,
+    815
+   ]
+  },
+  {
+   "path": "png/horus-front-fish-1.png",
+   "character": "horus",
+   "direction": "front",
+   "frame": 1,
+   "anchor": {
+    "kind": "seat-bottom",
+    "position": [
+     540,
+     750
+    ]
+   },
+   "sha256": "7051f8bb8911c494bf21ab5b1e946bd8c27e3324a99a7326bd5d481279476fbb",
+   "source": "sources/horus-fishing-front-1-원본.png (메인1/horus-fishing-front-1.png와 같은 바이트)",
+   "edits": [
+    "캔버스 620×720 → 1020×1120",
+    "tonematch.py 머리카락·피부 색 (0과 같게)",
+    "lean.py 허리 위 9° 화면 오른쪽으로, 축 (540,730), 170행에 걸쳐"
+   ],
+   "tip": [
+    302,
+    341
+   ]
+  }
+ ]
+}

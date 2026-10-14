@@ -71,12 +71,21 @@ def pack(frames, visible, out):
             rect = [*place[f['id']], piece.width, piece.height, *pivot]
             acts.setdefault(f['state'], {}).setdefault(f['gameDirection'], {})[f['phase']] = rect
         acts = {st: {d: [ph[i] for i in sorted(ph)] for d, ph in byd.items()} for st, byd in acts.items()}
-        tables[who] = {'file': out, 'visible': visible, 'idle': idle, 'walk': walk, **({'acts': acts} if acts else {})}
+        # where an effect hangs off a frame (the fishing rod's end): from the anchor, in character heights
+        tips = {}
+        for f, piece, pivot in pieces:
+            if f['character'] != who or not f.get('tip'): continue
+            h = f['referenceVisibleHeight']
+            tips.setdefault(f['state'], {}).setdefault(f['gameDirection'], {})[f['phase']] = [round((f['tip'][0] - f['pivot'][0]) / h, 4), round((f['tip'][1] - f['pivot'][1]) / h, 4)]
+        tips = {st: {d: [ph[i] for i in sorted(ph)] for d, ph in byd.items()} for st, byd in tips.items()}
+        tables[who] = {'file': out, 'visible': visible, 'idle': idle, 'walk': walk, **({'acts': acts} if acts else {}), **({'tips': tips} if tips else {})}
     return tables
 
 
 # approved action sets packed beside the base 48 (same canvas, pivot and reference height as the idle)
-ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ('interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'pickup-trio-v182', 'sit-somang-v179', 'sit-trio-v190', 'sleep-trio-v220')]
+ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ['interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'pickup-trio-v182', 'sit-somang-v179', 'sit-trio-v190', 'sleep-trio-v220',
+    # 0.9.70 생활 묶음 (메인1, life-pack.py) and Set/Horus fishing hand-fixed by Opus (fishing-fix)
+    'fishing-fix'] + [f'life-v1/{x}' for x in ('cook', 'read', 'happy', 'shy', 'surprised', 'eat', 'fish')]]
 
 
 def action_frames():
@@ -97,7 +106,8 @@ def action_frames():
             frames.append({'id': f"{f['character']}.{name}.{dmap[f['direction']]}.{f['frame']}", 'character': f['character'],
                            'state': name, 'gameDirection': dmap[f['direction']], 'phase': f['frame'],
                            'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': f.get('referenceVisibleHeight', am['referenceVisibleHeight']),
-                           'alphaBounds': list(bb), 'pivot': (f.get('anchor') or am['anchor'])['position']})
+                           'alphaBounds': list(bb), 'pivot': (f.get('anchor') or am['anchor'])['position'],
+                           **({'tip': f['tip']} if f.get('tip') else {})})
         pb = am['playback']
         # a pose that stays (sitting) holds its last frame until she moves; a looping one (sleeping) cycles
         for name in names:
@@ -141,6 +151,7 @@ def main():
         if b.get('acts'):
             sprites['looks'][who]['motion']['acts'] = b['acts']
             sprites['looks'][who]['motion']['actPlay'] = {k: v for k, v in playback.items() if k in b['acts']}
+            if b.get('tips'): sprites['looks'][who]['motion']['actTips'] = b['tips']
     with open(sprites_path, 'w') as fh:
         fh.write(compact(json.dumps(sprites, ensure_ascii=False, indent=1)) + '\n')
 

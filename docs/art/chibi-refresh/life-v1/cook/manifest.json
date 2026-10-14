@@ -1,0 +1,89 @@
+{
+ "action": "cook",
+ "status": "user-approved",
+ "artApproved": true,
+ "runtimeEligible": true,
+ "runtimeOwner": "opus",
+ "directionMap": {
+  "front": "down",
+  "back": "up",
+  "left": "left",
+  "right": "right"
+ },
+ "referenceVisibleHeight": 576,
+ "playback": {
+  "sequence": [
+   0
+  ],
+  "loop": false,
+  "hold": true
+ },
+ "approvalEvidence": {
+  "yellow": "bced46d \"add 15 yellow-approved life sprites to 메인1\"",
+  "blue": "a079fdc \"add 3 blue-approved life sprites\"",
+  "set-shy": "b2eb756 \"approved Set shy arm redraw v224\"",
+  "horus-happy": "de3ca31 \"keep approved Horus happy v226\""
+ },
+ "files": [
+  {
+   "path": "png/somang-back-cook-0.png",
+   "character": "somang",
+   "direction": "back",
+   "frame": 0,
+   "anchor": {
+    "kind": "feet",
+    "position": [
+     306,
+     693
+    ]
+   },
+   "referenceVisibleHeight": 576,
+   "sha256": "c07b6d09927d2be5f1dd66342844d049322717303fb609c338c8cf5b1c72564d",
+   "source": "메인1/somang-back-cook-0.png",
+   "canvas": [
+    620,
+    720
+   ]
+  },
+  {
+   "path": "png/set-back-cook-0.png",
+   "character": "set",
+   "direction": "back",
+   "frame": 0,
+   "anchor": {
+    "kind": "feet",
+    "position": [
+     311,
+     650
+    ]
+   },
+   "referenceVisibleHeight": 576,
+   "sha256": "1ae079b378c82d66703c03533b3180913681fcee9ae4fcfe0617a09d03971d16",
+   "source": "메인1/set-back-cook-0.png",
+   "canvas": [
+    620,
+    720
+   ]
+  },
+  {
+   "path": "png/horus-back-cook-0.png",
+   "character": "horus",
+   "direction": "back",
+   "frame": 0,
+   "anchor": {
+    "kind": "feet",
+    "position": [
+     306,
+     656
+    ]
+   },
+   "referenceVisibleHeight": 576,
+   "sha256": "edf45c3d5e930cfc960505819a4302a1bda71543c070a9438987e5b3d5975f07",
+   "source": "메인1/horus-back-cook-0.png",
+   "canvas": [
+    620,
+    720
+   ]
+  }
+ ]
+}

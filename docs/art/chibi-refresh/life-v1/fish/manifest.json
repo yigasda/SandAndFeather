@@ -1,0 +1,82 @@
+{
+ "action": "fish",
+ "status": "user-approved",
+ "artApproved": true,
+ "runtimeEligible": true,
+ "runtimeOwner": "opus",
+ "directionMap": {
+  "front": "down",
+  "back": "up",
+  "left": "left",
+  "right": "right"
+ },
+ "referenceVisibleHeight": 576,
+ "playback": {
+  "sequence": [
+   0,
+   1
+  ],
+  "durationMs": [
+   800,
+   800
+  ],
+  "loop": false,
+  "hold": true
+ },
+ "approvalEvidence": {
+  "yellow": "bced46d \"add 15 yellow-approved life sprites to 메인1\"",
+  "blue": "a079fdc \"add 3 blue-approved life sprites\"",
+  "set-shy": "b2eb756 \"approved Set shy arm redraw v224\"",
+  "horus-happy": "de3ca31 \"keep approved Horus happy v226\""
+ },
+ "files": [
+  {
+   "path": "png/somang-front-fish-0.png",
+   "character": "somang",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "kind": "seat-bottom",
+    "position": [
+     370,
+     600
+    ]
+   },
+   "referenceVisibleHeight": 527.2,
+   "sha256": "78bd98cdfa94b42667dade5713692f1887d0bab4f9d8a1b10902fc5cc3338000",
+   "source": "메인1/somang-front-fish-0.png",
+   "canvas": [
+    620,
+    720
+   ],
+   "tip": [
+    14,
+    691
+   ]
+  },
+  {
+   "path": "png/somang-front-fish-1.png",
+   "character": "somang",
+   "direction": "front",
+   "frame": 1,
+   "anchor": {
+    "kind": "seat-bottom",
+    "position": [
+     370,
+     600
+    ]
+   },
+   "referenceVisibleHeight": 527.2,
+   "sha256": "2518001f3085633bfdc3fbdec41c292966128bf1767e9df91de602aab1e03076",
+   "source": "메인1/somang-front-fish-1.png",
+   "canvas": [
+    620,
+    720
+   ],
+   "tip": [
+    29,
+    134
+   ]
+  }
+ ]
+}

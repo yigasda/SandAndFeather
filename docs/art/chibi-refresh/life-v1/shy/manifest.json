@@ -1,0 +1,89 @@
+{
+ "action": "shy",
+ "status": "user-approved",
+ "artApproved": true,
+ "runtimeEligible": true,
+ "runtimeOwner": "opus",
+ "directionMap": {
+  "front": "down",
+  "back": "up",
+  "left": "left",
+  "right": "right"
+ },
+ "referenceVisibleHeight": 576,
+ "playback": {
+  "sequence": [
+   0
+  ],
+  "loop": false,
+  "hold": true
+ },
+ "approvalEvidence": {
+  "yellow": "bced46d \"add 15 yellow-approved life sprites to 메인1\"",
+  "blue": "a079fdc \"add 3 blue-approved life sprites\"",
+  "set-shy": "b2eb756 \"approved Set shy arm redraw v224\"",
+  "horus-happy": "de3ca31 \"keep approved Horus happy v226\""
+ },
+ "files": [
+  {
+   "path": "png/somang-front-shy-0.png",
+   "character": "somang",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "kind": "feet",
+    "position": [
+     308,
+     663
+    ]
+   },
+   "referenceVisibleHeight": 576,
+   "sha256": "119753ee84de8d1fbdd6bd39f72958d6f0257089d9dd60a2a81dc5675f3996db",
+   "source": "메인1/somang-front-shy-0.png",
+   "canvas": [
+    620,
+    720
+   ]
+  },
+  {
+   "path": "png/horus-front-shy-0.png",
+   "character": "horus",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "kind": "feet",
+    "position": [
+     316,
+     642
+    ]
+   },
+   "referenceVisibleHeight": 576,
+   "sha256": "a55882c26d33f0f224449020c44b344d56cdac2c5cea15947c4a1cf9a4f261ac",
+   "source": "메인1/horus-front-shy-0.png",
+   "canvas": [
+    620,
+    720
+   ]
+  },
+  {
+   "path": "png/set-front-shy-0.png",
+   "character": "set",
+   "direction": "front",
+   "frame": 0,
+   "anchor": {
+    "kind": "feet",
+    "position": [
+     628,
+     1206
+    ]
+   },
+   "referenceVisibleHeight": 1081.6,
+   "sha256": "94ff1b965aa414884070041a2493279d53889f80f9f679cf02e1cdaa4f32c3d1",
+   "source": "메인1/set-front-shy-0.png",
+   "canvas": [
+    1163,
+    1352
+   ]
+  }
+ ]
+}
