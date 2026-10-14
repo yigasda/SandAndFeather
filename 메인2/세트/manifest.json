@@ -7,92 +7,165 @@
     {
       "file": "set-right-combat-idle-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "5fb2f3f5ef9ab95ce8f1bc5aa1cc89da109702f8a286e6d9d4e7fc5d40c7d6c8"
+      "sha256": "9cdb0e406168fb608f923ef80ebf8ebc40350c83044cb68f1588872d17a2511b",
+      "sourceSha256": "5fb2f3f5ef9ab95ce8f1bc5aa1cc89da109702f8a286e6d9d4e7fc5d40c7d6c8",
+      "edits": [
+        "0.9.72 비율: 목(822,361) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-idle-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-idle-1.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "bc1ff3255fc15625dce83dda02c499a317a06f0be3dd31deedf6165291c43749"
+      "sha256": "f3f9b2e3f7a39785f2e859bd0619b9176f93cde49c8f6b500ff6475b569736f5",
+      "sourceSha256": "bc1ff3255fc15625dce83dda02c499a317a06f0be3dd31deedf6165291c43749",
+      "edits": [
+        "0.9.72 비율: 목(820,368) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-idle-1-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-idle-2.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "29cabbb77feb01aeafce9d3ebaaa10e492206038d419685a16500ea787a5a4c7"
+      "sha256": "8b92f83ee5c869adc3422d627bf56b53fab42c17f6af08fdadac7af721cc3243",
+      "sourceSha256": "29cabbb77feb01aeafce9d3ebaaa10e492206038d419685a16500ea787a5a4c7",
+      "edits": [
+        "0.9.72 비율: 목(816,374) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-idle-2-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-anticipation-0.png",
       "source_revision": "combat-trio-v229",
-      "sha256": "b507fdeabeced99b26ebfb660bad04526be7af3abb9472f1c6d1cb1cffd506c5"
+      "sha256": "96c88aa1a6accd673fb89c70f589fa61decf820554d92ccf398546f2a5ac16b8",
+      "sourceSha256": "b507fdeabeced99b26ebfb660bad04526be7af3abb9472f1c6d1cb1cffd506c5",
+      "edits": [
+        "0.9.72 비율: 목(774,365) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-anticipation-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-attack-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "689095509f298f545ba7568a7daa7ce9ca7408e422322d276b980c81e14414c5"
+      "sha256": "93b583d08d8aa226a9bfa3af7886af1140106138d1c7dead452d5cdd9e5cdba5",
+      "sourceSha256": "689095509f298f545ba7568a7daa7ce9ca7408e422322d276b980c81e14414c5",
+      "edits": [
+        "0.9.72 비율: 목(829,346) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-attack-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-skill-0.png",
       "source_revision": "combat-set-v234",
-      "sha256": "a399cb215147e3fcffa9c4693447d3e75c71ef05a681eb6afa3f4c52ebfffc54"
+      "sha256": "30af2831397773d070f8d95dbe615e57870cba8827fcae94b2b8f80bd6609bfc",
+      "sourceSha256": "a399cb215147e3fcffa9c4693447d3e75c71ef05a681eb6afa3f4c52ebfffc54",
+      "edits": [
+        "0.9.72 비율: 목(873,526) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-skill-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-spell-0.png",
       "source_revision": "combat-trio-v233",
-      "sha256": "6e2d6e4151f2d7da7ded1727a3a26da19b2f6088762df54b178d39201273b08a"
+      "sha256": "89d7a0ffe76e8be16f4ac56def6df3ac563c26d8dd25bee6de1f0c93b09ded5c",
+      "sourceSha256": "6e2d6e4151f2d7da7ded1727a3a26da19b2f6088762df54b178d39201273b08a",
+      "edits": [
+        "0.9.72 비율: 목(797,376) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-spell-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-tired-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "16b292c67631a7c8952bd6d83d3559be73d4ba57c3eb396a2f39d84f272acdeb"
+      "sha256": "3a717c2a19ef6b67cfa71cf0b6f8898820d07b126bf848eddfd28d9e1feea2f2",
+      "sourceSha256": "16b292c67631a7c8952bd6d83d3559be73d4ba57c3eb396a2f39d84f272acdeb",
+      "edits": [
+        "0.9.72 비율: 목(892,529) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-tired-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-right-combat-hit-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "a5ac1beef1c191680b0ae7c783bff08b6443185af9c534db2fc1fc9ab441253c"
+      "sha256": "a12c86e689ca59ef3fa9d29295624dd55067cf64c4c66e15f4cdea882f85e6be",
+      "sourceSha256": "a5ac1beef1c191680b0ae7c783bff08b6443185af9c534db2fc1fc9ab441253c",
+      "edits": [
+        "0.9.72 비율: 목(718,541) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-hit-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-idle-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "4f80bdb2ee6159f366bfccef9be44ba618a32796cfa5acf448dd2307bff59096"
+      "sha256": "9291ec36e5656ada27fb0aec9af9455b5d6bb05d9e4cc4fc30b6ccaaebccde52",
+      "sourceSha256": "4f80bdb2ee6159f366bfccef9be44ba618a32796cfa5acf448dd2307bff59096",
+      "edits": [
+        "0.9.72 비율: 목(790,371) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-idle-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-idle-1.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "24e3ec4f5fa9d35d7c0c1360e2fe12e248cd07e372ddfdc445e1582bb83833a0"
+      "sha256": "55b10c2a437cbc6c2a6c86e4e25360116a35d2ebecda4ec6e286f8d6d54b6275",
+      "sourceSha256": "24e3ec4f5fa9d35d7c0c1360e2fe12e248cd07e372ddfdc445e1582bb83833a0",
+      "edits": [
+        "0.9.72 비율: 목(798,363) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-idle-1-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-idle-2.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "2b7a139ee084077951d374f789f288ad3b478ee09b705498c15fa1099c4654a4"
+      "sha256": "eed37c3e6aa4ce77ce06f7e226bf2b955fcbb9c2e50b894fe9a0eeaa8b14a9f6",
+      "sourceSha256": "2b7a139ee084077951d374f789f288ad3b478ee09b705498c15fa1099c4654a4",
+      "edits": [
+        "0.9.72 비율: 목(790,365) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-idle-2-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-anticipation-0.png",
       "source_revision": "combat-trio-v229",
-      "sha256": "b180546c5403c957366a72d75ddbea3afc6f24f272c14f6a5c75690d17e5f3bb"
+      "sha256": "06e17959b694f32caa3ff0e9d92dc54f0ceffa35c9acc6ada579e8e9d7ee27a6",
+      "sourceSha256": "b180546c5403c957366a72d75ddbea3afc6f24f272c14f6a5c75690d17e5f3bb",
+      "edits": [
+        "0.9.72 비율: 목(802,324) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-anticipation-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-attack-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "7cc2560473f8b707fd57ad04d73f8a6a5e43c9967f9ca91ce41137c60c14720b"
+      "sha256": "c333f35aeb7ae004bb71851684fd834af07c563c5b2cf1a6e4c9290950667870",
+      "sourceSha256": "7cc2560473f8b707fd57ad04d73f8a6a5e43c9967f9ca91ce41137c60c14720b",
+      "edits": [
+        "0.9.72 비율: 목(778,330) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-attack-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-skill-0.png",
       "source_revision": "combat-set-v234",
-      "sha256": "6239fdee282dd2596bb4ce89d8e0f37932d2fc48180bdadf07ebb1ea356285be"
+      "sha256": "7304def5b39fd0c8e9578e40abb9d2d2b122a25ed9d33f526ff1d90032d097a1",
+      "sourceSha256": "6239fdee282dd2596bb4ce89d8e0f37932d2fc48180bdadf07ebb1ea356285be",
+      "edits": [
+        "0.9.72 비율: 목(720,532) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-skill-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-spell-0.png",
       "source_revision": "combat-trio-v233",
-      "sha256": "af05b253de1eb01afb79f4133d983b575e58350273e0218860266a84479c2a76"
+      "sha256": "2a4e9b70b6c9f185d628cc322afcc576121cf28feb1e1996580ecb3c11060b7a",
+      "sourceSha256": "af05b253de1eb01afb79f4133d983b575e58350273e0218860266a84479c2a76",
+      "edits": [
+        "0.9.72 비율: 목(803,386) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-spell-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-tired-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "46708fc5c4654b310e6c23c77ea3cbfa8a5f5d420d831707955f9a0c1200b9d1"
+      "sha256": "ee1ab365f18f199f89831a01627039c90a6ff194b418d50f086d10ea29cd9e5b",
+      "sourceSha256": "46708fc5c4654b310e6c23c77ea3cbfa8a5f5d420d831707955f9a0c1200b9d1",
+      "edits": [
+        "0.9.72 비율: 목(738,523) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-tired-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     },
     {
       "file": "set-left-combat-hit-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "6eca01ae360297a1fd8a2de4593abccd0bdd70d13753934739f5dfbef0e03fea"
+      "sha256": "9cbbfc3e51461f2aa63e3062e7439be6a03957281bd35b5b280c5b3513987da1",
+      "sourceSha256": "6eca01ae360297a1fd8a2de4593abccd0bdd70d13753934739f5dfbef0e03fea",
+      "edits": [
+        "0.9.72 비율: 목(863,504) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-hit-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\""
+      ]
     }
-  ]
+  ],
+  "ratioFix": "0.9.72: 머리:몸을 정지·걷기에 맞춤. 서 있는 전투 그림에서 머리끝→턱 270 / 정지 310, 턱→발 305 / 정지 265. 몸을 위아래로만 줄여 머리카락 모양을 지킴. 18장 같은 값."
 }
