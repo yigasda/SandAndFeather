@@ -81,7 +81,7 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
     s.bag.items = []; s.bag.deben = 100; prep(); });
 
   // 2. 낚시: real casts. Hits give a length once, misses give nothing; 기록 keeps after the fish is gone
-  await spot('dock');
+  await spot('dock', 'dock_pier');
   if (!(await E(() => !!pop()))) { await p.screenshot({ path: `${OUT}/debug-dock.png` }); console.log('DEBUG', await E(() => JSON.stringify({ pos: S().pos, cards: document.querySelectorAll('#sf_game .sf_pop').length }))); }
   ok(await E(() => !!cardBtn('낚시 기록')), '선착장 카드에 「낚시 기록」 버튼');
   await E(() => cardBtn('낚시하기').click()); await sleep(500);
@@ -97,7 +97,7 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
   ok(/\d+cm/.test(f1.msg) || f1.n === 0, `결과 문구에 길이: ${f1.msg.split('\n')[0]}`);
   await E(() => closeAll()); await sleep(300);
   // all misses: nothing recorded
-  await E(() => prep()); await spot('dock'); await E(() => cardBtn('낚시하기').click()); await sleep(500);
+  await E(() => prep()); await spot('dock', 'dock_pier'); await E(() => cardBtn('낚시하기').click()); await sleep(500);
   const before = await E(() => S().tally.catch || 0);
   for (let k = 0; k < 3; k++) { await pull(false); await sleep(300); }
   ok(await E(b => (S().tally.catch || 0) === b && Object.values(S().fishing.records).reduce((a, r) => a + r.count, 0) === b, before), '세 번 다 놓치면 기록 없음');
@@ -113,7 +113,7 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
   ok(f2.again === null && f2.same && f2.best >= f2.cm, `같은 물고기에 다시 길이 안 붙음, 팔아도(가방에서 빠져도) 기록 그대로: ${f2.id} ${f2.cm}cm best ${f2.best}`);
   // a big one for 월척, then the 기록 card
   await E(() => { const s = S(); const [uid] = IT.bag.give(s, 'nile_perch', 1, 'dock'); const r = Math.random; Math.random = () => 0.99; IT.fish.noteCatch(s, 'nile_perch', uid); Math.random = r; });
-  await spot('dock'); await E(() => cardBtn('낚시 기록').click()); await sleep(600);
+  await spot('dock', 'dock_pier'); await E(() => cardBtn('낚시 기록').click()); await sleep(600);
   const rc = await E(() => [...pop().querySelectorAll('.sf_list_row b')].map(b => b.textContent));
   ok(rc.length === 5 && rc.some(t => /최고 \d+cm/.test(t)) && rc.some(t => t === '???'), `낚시 기록 카드: 5종, 잡은 건 최고 길이, 못 잡은 건 ??? (${rc.join(' / ')})`);
   await p.screenshot({ path: `${OUT}/fish-records.png` });
@@ -156,8 +156,8 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
     return bad;
   });
   ok(reach.length === 0, `탐사 장소가 모두 걸어서 닿는 곳 (못 닿는 곳: ${reach.join(', ') || '없음'})`);
-  await goTo('ombos', 25, 29); await sleep(600);
-  const e1 = await E(() => { const s = S(); return { seen: Object.keys(s.explore.seen).filter(k => k.startsWith('ombos:')), again: IT.ex.noteWhere(s, 'ombos', 25.5, 29.8) }; });
+  await goTo('ombos', 25, 26.6); await sleep(600);   // 0.9.70: the pier below leads into the dock's own map
+  const e1 = await E(() => { const s = S(); return { seen: Object.keys(s.explore.seen).filter(k => k.startsWith('ombos:')), again: IT.ex.noteWhere(s, 'ombos', 25.5, 27.4) }; });
   ok(e1.seen.includes('ombos:dock') && e1.again.length === 0, `선착장 근처를 걸으면 그 장소가 처음 한 번만 기록: ${e1.seen.join(', ')}`);
   await goTo('temple_kitchen', 9, 7); await sleep(600);
   ok(await E(() => Object.hasOwn(S().explore.seen, 'room:temple_kitchen')), '안채 방(부엌)에 들어가면 방 하나 기록');
@@ -179,7 +179,8 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
   ok(e3.got === 10 + 25 && e3.again.every(x => x === null), `옴보스 25·50% 보상 한 번씩, 두 번 눌러도 (데벤 +${e3.got})`);
   await p.screenshot({ path: `${OUT}/explore.png` });
   const e4 = await E(() => {
-    const s = S(); for (const sec of IT.data.DATA.maps.ombos.secrets) s.codex.secrets[sec.id] = 1; for (const o of IT.data.DATA.maps.ombos.obelisks) s.flags[`obelisk:${o.id}`] = true;
+    const s = S(); for (const pnt of IT.ex.pointsOf(IT.ex.regionInfo('ombos'))) if (pnt.kind === 'room') s.explore.seen[pnt.key] = 1;
+    for (const sec of IT.data.DATA.maps.ombos.secrets) s.codex.secrets[sec.id] = 1; for (const o of IT.data.DATA.maps.ombos.obelisks) s.flags[`obelisk:${o.id}`] = true;
     return { pct: IT.ex.regionPct(s, 'ombos'), ach: IT.ach.reached(s, IT.ach.achievement('explore_ombos')), wear: IT.ach.wear(s, 'horus', 'explore_ombos') };
   });
   ok(e4.pct === 100 && e4.ach && e4.wear, '옴보스 100% → 「옴보스 탐사 완료」 업적, 칭호 「옴보스의 길잡이」를 달 수 있음');
@@ -192,7 +193,7 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
   await spot('scriptorium'); await E(() => rowBtn('지도 조각', '해독').click()); await sleep(700);
   ok(await E(() => IT.tr.started(S())), '필사실에서 지도 조각 해독 → 보물지도 시작');
   await E(() => closeAll()); await sleep(300);
-  await E(() => prep()); await spot('dock'); await E(() => cardBtn('낚시하기').click()); await sleep(500);
+  await E(() => prep()); await spot('dock', 'dock_pier'); await E(() => cardBtn('낚시하기').click()); await sleep(500);
   for (let k = 0; k < 3; k++) { await pull(true); await sleep(300); }
   const r1 = await E(() => ({ msg: pop().querySelector('.sf_fish_msg').textContent, clue: S().treasure.clues.river }));
   ok(r1.clue >= 0 && (r1.msg.match(/보물지도 단서/g) || []).length === 1, `낚시 성공에서 「강줄기」 단서 한 번 (문구 ${(r1.msg.match(/보물지도 단서/g) || []).length}번)`);
