@@ -1,0 +1,132 @@
+{
+  "full": {
+    "passed": [
+      "extension data loads without validation errors",
+      "entire day/night background matches the approved day and night pictures",
+      "all places/NPCs/adventure anchors/secrets/obelisks reachable before and after works",
+      "real keyboard movement stops at illustrated kitchen wall",
+      "mobile touch-pad movement on wide road",
+      "market/kitchen/scriptorium/temple/training/dock/NPC interactions align with art",
+      "walking through the temple door enters the residence",
+      "Duat entry opens in all five time periods",
+      "walk to Duat and back; dock ends at visible water",
+      "approved building silhouette hides rear actor and preserves front actor; canvas release",
+      "completed canal/field overlays and repaired boat remain functional",
+      "saved position inside moved building safely returns to spawn",
+      "fold/reopen and context restoration restore map"
+    ],
+    "pixels": [
+      {
+        "part": "day",
+        "pixels": 1462272,
+        "mismatch": 0
+      },
+      {
+        "part": "night",
+        "pixels": 1462272,
+        "mismatch": 0
+      }
+    ],
+    "reachability": [
+      {
+        "open": [],
+        "tiles": 2979,
+        "unreachable": [],
+        "blockedNpcs": []
+      },
+      {
+        "open": [
+          "canal",
+          "field",
+          "garden"
+        ],
+        "tiles": 3016,
+        "unreachable": [],
+        "blockedNpcs": []
+      }
+    ],
+    "templeDoor": {
+      "before": "ombos",
+      "after": "temple_courtyard"
+    },
+    "approach": {
+      "atGate": 9.879999999999967,
+      "back": 19.680000000000007,
+      "dockEnd": 30.150000000000013
+    },
+    "occlusion": {
+      "samples": [
+        [
+          27,
+          21,
+          18,
+          255
+        ],
+        [
+          255,
+          0,
+          0,
+          255
+        ]
+      ],
+      "released": true
+    },
+    "works": {
+      "done": [
+        "canal",
+        "field",
+        "boat"
+      ],
+      "open": [
+        "canal",
+        "field"
+      ],
+      "changes": 766,
+      "boat": true
+    },
+    "pageErrors": []
+  },
+  "cozy": {
+    "passed": [
+      "cozy HUD loads, status rows do not overlap",
+      "inventory groups/filter/detail retain individual UID/history and existing item actions",
+      "일행 shows 현재 동행, 자세히 shows the Set and Horus three-picture gallery; companion and 앞장 selection work",
+      "Somang character screen retains stats/lessons and shows her standing sprite",
+      "conversation card has no portraits or expression buttons and sends no chat",
+      "mobile finger swipe scrolls the character screen",
+      "320/360 mobile, landscape, desktop: all tabs and bag stay within screen with scrolling",
+      "light and dark variants remain readable",
+      "visit prepares chat input and folds game without sending a message"
+    ],
+    "hud": {
+      "dateBottom": 76.6875,
+      "chipsTop": 81,
+      "chipsBottom": 110,
+      "hintTop": 114
+    },
+    "pageErrors": [],
+    "failedRequests": []
+  },
+  "themes": {
+    "passed": [
+      "missing/invalid theme falls back to cozy without modifying chat",
+      "classic: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+      "walnut: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+      "journal: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+      "temple: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+      "cozy: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+      "keyboard radio navigation wraps and supports Home/End",
+      "extension drawer applies immediately and selected theme survives full page reload"
+    ],
+    "colors": {
+      "classic": "rgb(246, 231, 201)",
+      "walnut": "rgb(60, 45, 35)",
+      "journal": "rgb(248, 237, 207)",
+      "temple": "rgb(241, 226, 195)",
+      "cozy": "rgb(248, 235, 211)"
+    },
+    "pageErrors": [],
+    "failedRequests": [],
+    "generationRequests": []
+  }
+}

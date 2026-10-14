@@ -80,10 +80,36 @@ fs.mkdirSync(OUT, { recursive: true });
             for (let i = 0; i < shots[0].length; i++) if (shots[0][i] !== shots[1][i]) changed++;
             renderer.release(); return { changed, tintNight: scene.tintNight ?? false };
         });
-        fs.writeFileSync(path.join(OUT, 'capture-checks.json'), JSON.stringify({ checks, background, errors, scope: 'A-2 scale preview only; collision, exits and combat not verified' }, null, 2));
+        const actorColors = await page.evaluate(() => {
+            const t = duatScale, id = t.previewId, scene = t.data.DATA.sceneArt[id];
+            if (scene.tintActors !== false) return null;
+            const map = new t.map.GameMap(t.data.DATA.maps[id]);
+            const cv = document.createElement('canvas'), renderer = new t.render.Renderer(cv);
+            renderer.setMap(map, 'akhet'); renderer.setSprites(t.data.DATA.sprites);
+            cv.width = 600; cv.height = 800; renderer.zoom = 2;
+            const capture = (look, part) => {
+                renderer.draw({ player: { look, x: 15, y: 22, dir: 'right', step: 0 },
+                    people: [], part, time: 0 });
+                return renderer.g.getImageData(0, 0, 600, 800).data.slice();
+            };
+            const diff = (a,b) => a.reduce((n,v,i) => n + (v !== b[i]), 0);
+            const results = ['somang','set','horus'].map(look => {
+                const day = capture(look,'day'), night = capture(look,'night');
+                scene.tintActors = true;
+                const shadedNight = capture(look,'night');
+                scene.tintActors = false;
+                return { look, dayNightChanged: diff(day,night), shadeControlChanged: diff(day,shadedNight) };
+            });
+            renderer.release(); return results;
+        });
+        if (actorColors) for (const c of actorColors) {
+            assert.equal(c.dayNightChanged, 0, c.look);
+            assert(c.shadeControlChanged > 0, `${c.look}: actor must be visible to test shading`);
+        }
+        fs.writeFileSync(path.join(OUT, 'capture-checks.json'), JSON.stringify({ checks, background, actorColors, errors, scope: 'A-2 scale preview only; collision, exits and combat not verified' }, null, 2));
         assert.equal(background.changed, 0);
         assert.deepEqual(errors, []);
-        console.log(JSON.stringify({ captures: checks.length, background, errors }));
+        console.log(JSON.stringify({ captures: checks.length, background, actorColors, errors }));
     } finally {
         await page.screenshot({ path: path.join(OUT, 'last-screen.png') }).catch(() => {});
         await page.evaluate(async () => {

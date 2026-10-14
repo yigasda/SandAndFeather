@@ -17,6 +17,7 @@ OUT = ROOT / 'docs/consult/duat-field/scale'
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', type=Path, default=OUT)
+    parser.add_argument('--original-actor-colors', action='store_true')
     parser.add_argument('--sizes', type=float, nargs='+', default=[52, 60])
     args = parser.parse_args()
     out = args.out.resolve()
@@ -53,6 +54,7 @@ def main():
             'scene': {
                 'file': '../' + (out / 'boundary-source.png').relative_to(ROOT).as_posix(),
                 'fullMap': True, 'lazy': True, 'origin': [0, 0],
+                **({'tintActors': False} if args.original_actor_colors else {}),
                 'scale': [16 / size, 16 / size],
                 'day': [0, 0, 1024, 1536], 'night': [0, 0, 1024, 1536],
                 'clip': [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
