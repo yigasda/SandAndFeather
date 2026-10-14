@@ -13,7 +13,11 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'
 KO = {'set': '세트', 'somang': '소망', 'horus': '호루스'}
 # the idle's neck (where the chin meets the neck, middle of the neck), on the final idle side pictures
 IDLE_NECK = {('set', 'right'): (330, 400), ('set', 'left'): (290, 400),
-             ('somang', 'right'): (360, 405), ('somang', 'left'): (262, 405)}
+             ('somang', 'right'): (360, 430), ('somang', 'left'): (262, 405)}
+# where head-check's match was weak the neck it gives is too high (on the face): moved down onto the neck (px, checked
+# on the zoomed neck sheet)
+NECK_DY = {'somang-right-combat-anticipation-0.png': 35, 'somang-right-combat-attack-0.png': 15, 'somang-right-combat-hit-0.png': 22,
+           'somang-right-combat-spell-0.png': 30, 'somang-right-combat-tired-0.png': 15}
 NECK_FIX = {}   # file → (x, y) where the found neck was off
 
 
@@ -39,7 +43,7 @@ def main():
     necks, thumbs = {}, []
     for f in files:
         view = 'left' if '-left-' in f else 'right'
-        nx, ny = NECK_FIX.get(f) or neck_of(who, view, res[f])
+        nx, ny = NECK_FIX.get(f) or neck_of(who, view, res[f]); ny += NECK_DY.get(f, 0)
         necks[f] = [nx, ny]
         im = Image.open(os.path.join(src, f)).convert('RGBA')
         bg = Image.new('RGBA', im.size, (233, 216, 180, 255)); bg.alpha_composite(im); d = ImageDraw.Draw(bg)
