@@ -51,7 +51,6 @@ const OUT = process.argv[2] || '/tmp/dock71'; fs.mkdirSync(OUT, { recursive: tru
   const card = await E(() => !!cardBtn('낚시하기'));
   ok(card, '부두 앞에서 말 걸기 → 선착장 카드');
   await E(() => cardBtn('낚시하기').click()); await sleep(700);
-  await E(() => { const c = document.querySelector('#sf_game .sf_pop_wrap'); if (c) c.style.opacity = '0.2'; });
   const f = await E(() => ({ act: IT.pl.player.act?.name, line: IT.fx.fxBusy() }));
   ok(f.act === 'fish' && f.line, `부두 끝에 앉아 낚시 ${JSON.stringify(f)}`);
   await shot('fish-day');

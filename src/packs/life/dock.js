@@ -70,7 +70,7 @@ async function pull(ui, map) {
 // On the dock's own map (0.9.70, tools/maps/dock.py): the middle of the deck's front edge, the bucket on the boards to
 // the right, the bobber out in the water ahead and to the left; the one walking with them stands behind on the boards,
 // on the bucket's side, watching (MATE: their feet)
-const PIER = { x: 9.45, y: 6.9 }, BUCKET = { x: 10.25, y: 6.75 }, FLOAT = { x: 8.1, y: 8.4 }, MATE = { x: 10.35, y: 5.85 };
+const PIER = { x: 9.45, y: 6.9 }, BUCKET = { x: 10.25, y: 6.75 }, FLOAT = { x: 8.1, y: 7.85 }, MATE = { x: 10.35, y: 5.85 };
 const BUCKET_H = 720 / 576 * 1.95, BUCKET_DY = (720 - 662) / 576 * 1.95; // the bucket picture: 620×720, feet line 662, character scale
 const bucket = n => showFx(`bucket-${Math.min(2, n)}`, { at: { ...BUCKET }, ms: 0, size: BUCKET_H, dy: BUCKET_DY, fade: false, key: 'bucket' });
 onTile(() => { if (player.act?.name !== 'fish') { dropFx('bucket'); fishLine(null); } });
@@ -131,7 +131,7 @@ async function fish(ui, map) {
         return false; // keep the card open
     };
     close = ui.showCard({
-        tag: '생활', title: '낚시', body: box,
+        tag: '생활', title: '낚시', body: box, kind: 'fishing',   // sits low, so the one fishing on the pier stays in view
         buttons: [{ label: '닫기', onClick: () => { cancelAnimationFrame(raf); } }, { label: '당기기', primary: true, onClick: () => { pullLine(); return false; } }],
         onClose: () => { cancelAnimationFrame(raf); fishLine(null); },
     });
