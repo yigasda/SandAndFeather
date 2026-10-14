@@ -1,0 +1,86 @@
+{
+  "approvalEvidence": "메인에 올려줘! 다 채택",
+  "route": [
+    "01_경계동굴.png",
+    "02_두아트회랑.png",
+    "03_침수신전.png",
+    "04_고대장치.png",
+    "05_모래성소.png",
+    "06_황금태양전.png",
+    "07_귀환의문.png"
+  ],
+  "scope": "채택 배경 원본 보관. 게임 적용 및 충돌 판정 변경 없음.",
+  "excluded": "반려된 대각선 배치 수정본, 교체된 입구 및 계단 수정 전 버전, 별빛 봉인전",
+  "files": [
+    {
+      "file": "01_경계동굴.png",
+      "source": "duat-boundary-v1-portrait.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f42e0de2a187eeb249e66f10cf49faf7c5ab15be21a12ff01f0fbd823055c9e8",
+      "status": "approved"
+    },
+    {
+      "file": "02_두아트회랑.png",
+      "source": "duat-corridor-v1/duat-corridor-v2-wide-landing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7f42e13af61154eb30323cd18c7c68708ccdc1fa7f157c36f9d39f0d86ba3138",
+      "status": "approved"
+    },
+    {
+      "file": "03_침수신전.png",
+      "source": "duat-connected-v3/01-flooded-stairs.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8ba9388357467631a89c597ff354a38fa6fb6e6a7aa90eb43b8172227a7bab59",
+      "status": "approved"
+    },
+    {
+      "file": "04_고대장치.png",
+      "source": "duat-connected-v3/02-mechanism-entry.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "9a0a9c949b21f0a8d4a0e240589ebcdfec7d40fe9b5fc843adb141d427fdcdee",
+      "status": "approved"
+    },
+    {
+      "file": "05_모래성소.png",
+      "source": "duat-hidden-temple-options-v1/png/03-buried.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "bf2ab61a250e3606cfc82232cb85e93c30282f909fec2b78cd41c38c4e9ba891",
+      "status": "approved"
+    },
+    {
+      "file": "06_황금태양전.png",
+      "source": "duat-hidden-temple-options-v1/png/06-amber.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "bba03bb504ec265cb18203dcc6cd9a98f23bc2b4e0dbf8aa438a8ef4556aa28c",
+      "status": "approved"
+    },
+    {
+      "file": "07_귀환의문.png",
+      "source": "duat-connected-v2/03-return.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e24f5bcc70e0085884aabcc377d7226f9a153bf9d1830954fe695f2db11e154d",
+      "status": "approved"
+    }
+  ]
+}
