@@ -15,7 +15,9 @@ def k_of(ys):
 # build inverse map for rows numerically: source y for each output y
 ys_src=np.linspace(-200,H+400,20000); dy=ys_src[1]-ys_src[0]
 kk=k_of(ys_src); yo=np.cumsum(kk)*dy; yo-=np.interp(cy,ys_src,yo)-cy     # output y of each source y, neck fixed
-sy=np.interp(yy,yo,ys_src); ks=1+(k_of(sy)-1)*wide; sx=cx+(xx-cx)/ks
+sy=np.interp(yy,yo,ys_src)
+# across: the head keeps its own scale both ways (its shape stays); below the neck only `width` of the body's change
+tt=np.clip((sy-cy)/R,0,1); tt=tt*tt*(3-2*tt); ks=h+((1+(b-1)*wide)-h)*tt; sx=cx+(xx-cx)/ks
 x0=np.floor(sx).astype(int); y0=np.floor(sy).astype(int); fx=sx-x0; fy=sy-y0
 def g(y,x):
     ok=(y>=0)&(y<H)&(x>=0)&(x<W); v=np.zeros((H,W,4),np.float32); v[ok]=pm[y[ok],x[ok]]; return v
