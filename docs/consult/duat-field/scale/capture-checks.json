@@ -1,0 +1,178 @@
+{
+  "checks": [
+    {
+      "width": 412,
+      "pixelsPerTile": 52,
+      "spot": "entry",
+      "sourceFoot": [
+        550,
+        1180
+      ],
+      "actual": {
+        "map": "duat_scale_52",
+        "x": 10.076923076923077,
+        "y": 21.892307692307693
+      }
+    },
+    {
+      "width": 412,
+      "pixelsPerTile": 52,
+      "spot": "stairs",
+      "sourceFoot": [
+        410,
+        780
+      ],
+      "actual": {
+        "map": "duat_scale_52",
+        "x": 7.384615384615385,
+        "y": 14.2
+      }
+    },
+    {
+      "width": 412,
+      "pixelsPerTile": 52,
+      "spot": "door",
+      "sourceFoot": [
+        550,
+        270
+      ],
+      "actual": {
+        "map": "duat_scale_52",
+        "x": 10.076923076923077,
+        "y": 4.392307692307693
+      }
+    },
+    {
+      "width": 412,
+      "pixelsPerTile": 60,
+      "spot": "entry",
+      "sourceFoot": [
+        550,
+        1180
+      ],
+      "actual": {
+        "map": "duat_scale_60",
+        "x": 8.666666666666666,
+        "y": 18.866666666666667
+      }
+    },
+    {
+      "width": 412,
+      "pixelsPerTile": 60,
+      "spot": "stairs",
+      "sourceFoot": [
+        410,
+        780
+      ],
+      "actual": {
+        "map": "duat_scale_60",
+        "x": 6.333333333333333,
+        "y": 12.2
+      }
+    },
+    {
+      "width": 412,
+      "pixelsPerTile": 60,
+      "spot": "door",
+      "sourceFoot": [
+        550,
+        270
+      ],
+      "actual": {
+        "map": "duat_scale_60",
+        "x": 8.666666666666666,
+        "y": 3.7
+      }
+    },
+    {
+      "width": 320,
+      "pixelsPerTile": 52,
+      "spot": "entry",
+      "sourceFoot": [
+        550,
+        1180
+      ],
+      "actual": {
+        "map": "duat_scale_52",
+        "x": 10.076923076923077,
+        "y": 21.892307692307693
+      }
+    },
+    {
+      "width": 320,
+      "pixelsPerTile": 52,
+      "spot": "stairs",
+      "sourceFoot": [
+        410,
+        780
+      ],
+      "actual": {
+        "map": "duat_scale_52",
+        "x": 7.384615384615385,
+        "y": 14.2
+      }
+    },
+    {
+      "width": 320,
+      "pixelsPerTile": 52,
+      "spot": "door",
+      "sourceFoot": [
+        550,
+        270
+      ],
+      "actual": {
+        "map": "duat_scale_52",
+        "x": 10.076923076923077,
+        "y": 4.392307692307693
+      }
+    },
+    {
+      "width": 320,
+      "pixelsPerTile": 60,
+      "spot": "entry",
+      "sourceFoot": [
+        550,
+        1180
+      ],
+      "actual": {
+        "map": "duat_scale_60",
+        "x": 8.666666666666666,
+        "y": 18.866666666666667
+      }
+    },
+    {
+      "width": 320,
+      "pixelsPerTile": 60,
+      "spot": "stairs",
+      "sourceFoot": [
+        410,
+        780
+      ],
+      "actual": {
+        "map": "duat_scale_60",
+        "x": 6.333333333333333,
+        "y": 12.2
+      }
+    },
+    {
+      "width": 320,
+      "pixelsPerTile": 60,
+      "spot": "door",
+      "sourceFoot": [
+        550,
+        270
+      ],
+      "actual": {
+        "map": "duat_scale_60",
+        "x": 8.666666666666666,
+        "y": 3.7
+      }
+    }
+  ],
+  "background": {
+    "changed": 0,
+    "tintNight": false
+  },
+  "errors": [],
+  "scope": "A-2 scale preview only; collision, exits and combat not verified"
+}
