@@ -1,0 +1,151 @@
+{
+ "status": "user-approved",
+ "approvalEvidence": "사용자가 채팅에 보낸 시트(2026-10-14) \"여기!!\" — 호루스 새 그림 옆모습 정지·걷기. 위 줄 왼쪽, 아래 줄 오른쪽, 칸마다 정지 · 걷기 0 · 1 · 2",
+ "pixelProcessing": "칸(384×512)을 잘라 알파 1~9 연무만 지우고 투명 여백 16px. 다시 그리거나 크기 바꾸지 않음",
+ "sprites": [
+  {
+   "file": "png/horus-left-idle.png",
+   "character": "horus",
+   "direction": "left",
+   "frame": "idle",
+   "size": [
+    325,
+    504
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    46,
+    21,
+    339,
+    493
+   ],
+   "sha256": "5e6eaa1de90505d2bb983673b1c00f92cd20eaed7804c8471eeebb3ae27b001f"
+  },
+  {
+   "file": "png/horus-left-walk-0.png",
+   "character": "horus",
+   "direction": "left",
+   "frame": "walk-0",
+   "size": [
+    327,
+    496
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    429,
+    26,
+    724,
+    490
+   ],
+   "sha256": "eb5707decee67dd48eb972d86c1d6a101d119696253d17d4ac876b0639ded7bc"
+  },
+  {
+   "file": "png/horus-left-walk-1.png",
+   "character": "horus",
+   "direction": "left",
+   "frame": "walk-1",
+   "size": [
+    330,
+    504
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    806,
+    22,
+    1104,
+    494
+   ],
+   "sha256": "af7146b1ca8f91093757581691bbda9dd822dc33514784c39d88851347b5b11e"
+  },
+  {
+   "file": "png/horus-left-walk-2.png",
+   "character": "horus",
+   "direction": "left",
+   "frame": "walk-2",
+   "size": [
+    331,
+    501
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    1210,
+    21,
+    1509,
+    490
+   ],
+   "sha256": "bf49078872a05b1d3eda327928408094f5ff4a8669ad6c80f7711c700e061ffb"
+  },
+  {
+   "file": "png/horus-right-idle.png",
+   "character": "horus",
+   "direction": "right",
+   "frame": "idle",
+   "size": [
+    330,
+    504
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    32,
+    517,
+    330,
+    989
+   ],
+   "sha256": "b73e82e26660560d1bb89a2d63bdc32850eeed0d852ceb6ec2ae46641efd93be"
+  },
+  {
+   "file": "png/horus-right-walk-0.png",
+   "character": "horus",
+   "direction": "right",
+   "frame": "walk-0",
+   "size": [
+    338,
+    502
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    423,
+    518,
+    729,
+    988
+   ],
+   "sha256": "3fbc44b5336f2ef9702edd4698f4edd9242ad3fc84f6626accede517e852394c"
+  },
+  {
+   "file": "png/horus-right-walk-1.png",
+   "character": "horus",
+   "direction": "right",
+   "frame": "walk-1",
+   "size": [
+    335,
+    504
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    801,
+    518,
+    1104,
+    990
+   ],
+   "sha256": "f96e59b920774a39fdcbb4b5f77842c5219d9c3c62c44a63135412f2466a7187"
+  },
+  {
+   "file": "png/horus-right-walk-2.png",
+   "character": "horus",
+   "direction": "right",
+   "frame": "walk-2",
+   "size": [
+    336,
+    499
+   ],
+   "source": "sheet.png",
+   "sourceBox": [
+    1193,
+    519,
+    1497,
+    986
+   ],
+   "sha256": "971104947042596f1ceb15f66bec2a0bce16fef88ef1df294fcd0414a5660f7d"
+  }
+ ]
+}

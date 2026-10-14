@@ -12,12 +12,14 @@
       "motion": "anticipation",
       "frame": 0,
       "size": [
-        1870,
-        841
+        584,
+        437
       ],
       "anchor": null,
       "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
-      "sha256": "7e8ac58e8b014e9f78a9ec0a7e3717db9acf865ee30806b10dc2b431bdb8c729"
+      "sha256": "d00c622e3b0a11599353d04f3006c42e3ee917aff409bbdb1fdf49bc931cac29",
+      "previousSha256": "7e8ac58e8b014e9f78a9ec0a7e3717db9acf865ee30806b10dc2b431bdb8c729",
+      "replacedBy": "2026-10-14 호루스 새 그림 첫 왼쪽 전투 묶음(docs/art/horus-redraw-2026-10-14, \"첫번째 전투모션은 채택이야\"). 사용자: \"그냥 교체해줘\". 예전 249본은 sources/*-249.png"
     },
     {
       "file": "horus-left-combat-attack-0.png",
@@ -26,12 +28,14 @@
       "motion": "attack",
       "frame": 0,
       "size": [
-        1870,
-        841
+        585,
+        417
       ],
       "anchor": null,
       "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
-      "sha256": "943704c38d1f700beb6a779a3e4e0582a00ac740484a9c20d426d9fb3d408912"
+      "sha256": "62d152dcd96aa2c12e03e482a3d2b9f0ca5970e2cbb4f2c3b9eeeb7a016c2eb9",
+      "previousSha256": "943704c38d1f700beb6a779a3e4e0582a00ac740484a9c20d426d9fb3d408912",
+      "replacedBy": "2026-10-14 호루스 새 그림 첫 왼쪽 전투 묶음(docs/art/horus-redraw-2026-10-14, \"첫번째 전투모션은 채택이야\"). 사용자: \"그냥 교체해줘\". 예전 249본은 sources/*-249.png"
     },
     {
       "file": "horus-left-combat-hit-0.png",
@@ -40,12 +44,14 @@
       "motion": "hit",
       "frame": 0,
       "size": [
-        1870,
-        841
+        344,
+        546
       ],
       "anchor": null,
       "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
-      "sha256": "a078982383efd910595111eff272cf70b10cf1ca236b3583f0d98e8a9f85a61e"
+      "sha256": "5998db26ce2a9453a164933e6922ffafa29014b510f3992c0f686f21f8db4b17",
+      "previousSha256": "a078982383efd910595111eff272cf70b10cf1ca236b3583f0d98e8a9f85a61e",
+      "replacedBy": "2026-10-14 호루스 새 그림 첫 왼쪽 전투 묶음(docs/art/horus-redraw-2026-10-14, \"첫번째 전투모션은 채택이야\"). 사용자: \"그냥 교체해줘\". 예전 249본은 sources/*-249.png"
     },
     {
       "file": "horus-left-combat-idle-0.png",
@@ -54,12 +60,14 @@
       "motion": "idle",
       "frame": 0,
       "size": [
-        1870,
-        841
+        572,
+        449
       ],
       "anchor": null,
       "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
-      "sha256": "2df0583e041d386654a031bc5bf9593933b50629bc19622cb85a47fa8a500319"
+      "sha256": "eaea89828d6b4b54cd656add1a5eb5bfbd96a6a076dcfe08a367946429ab7cfc",
+      "previousSha256": "2df0583e041d386654a031bc5bf9593933b50629bc19622cb85a47fa8a500319",
+      "replacedBy": "2026-10-14 호루스 새 그림 첫 왼쪽 전투 묶음(docs/art/horus-redraw-2026-10-14, \"첫번째 전투모션은 채택이야\"). 사용자: \"그냥 교체해줘\". 예전 249본은 sources/*-249.png"
     },
     {
       "file": "horus-left-combat-idle-1.png",
@@ -68,12 +76,14 @@
       "motion": "idle",
       "frame": 1,
       "size": [
-        1870,
-        841
+        534,
+        464
       ],
       "anchor": null,
       "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
-      "sha256": "99dd2e4488ae7c4f8b77f57c9772d9d96a1b59e79b1ad82251affb129a24db56"
+      "sha256": "e7058903b9add7e80924b109bfe2c1793d30d28b9ee4abf3c67cd4b1ee16c970",
+      "previousSha256": "99dd2e4488ae7c4f8b77f57c9772d9d96a1b59e79b1ad82251affb129a24db56",
+      "replacedBy": "2026-10-14 호루스 새 그림 첫 왼쪽 전투 묶음(docs/art/horus-redraw-2026-10-14, \"첫번째 전투모션은 채택이야\"). 사용자: \"그냥 교체해줘\". 예전 249본은 sources/*-249.png"
     },
     {
       "file": "horus-left-combat-idle-2.png",
@@ -82,12 +92,14 @@
       "motion": "idle",
       "frame": 2,
       "size": [
-        1870,
-        841
+        481,
+        455
       ],
       "anchor": null,
       "anchorNote": "게임 적용용 기준점은 아직 확정하지 않음",
-      "sha256": "76b8e8cf6127fa633948c5c2321b5e8fbe4dde5c458315c9326cd1736f34579b"
+      "sha256": "7531538a37696fba6af3fccaaa762dd4a74660ad6d4a0b16d7baca0d505b2840",
+      "previousSha256": "76b8e8cf6127fa633948c5c2321b5e8fbe4dde5c458315c9326cd1736f34579b",
+      "replacedBy": "2026-10-14 호루스 새 그림 첫 왼쪽 전투 묶음(docs/art/horus-redraw-2026-10-14, \"첫번째 전투모션은 채택이야\"). 사용자: \"그냥 교체해줘\". 예전 249본은 sources/*-249.png"
     },
     {
       "file": "horus-left-combat-skill-0.png",
