@@ -19,7 +19,7 @@ import { addXP, hasSkill, journal, rank } from '../../core/progress.js';
 import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { bar, list, para, stack } from '../../ui/kit.js';
-import { onSpot } from '../../ui/window.js';
+import { onSpot, travel } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
 import { HERO_NAME, leadOf, withOf } from '../../core/heroes.js';
 
@@ -47,9 +47,16 @@ onSpot('duat', (spot, u) => {
     ui = u;
     const s = getState();
     if (s.duat) { step(); return; }
-    if (!canDo(s, 'duat')) { u.showCard({ tag: '원정', title: spot.title, text: '오늘은 이미 다녀왔어. 다음 날 다시 올 수 있어.' }); return; }
-    const C = D().companions || {};
-    prep(withOf(s) || Object.keys(C).find(id => id !== leadOf(s)), []);
+    // Field maps can be visited at any hour; the legacy expedition keeps its own daily limit.
+    show({ text: '두아트의 길은 언제든 열려 있어.', buttons: [
+        { label: '닫기' },
+        { label: '기존 원정', disabled: !canDo(s, 'duat'), onClick: () => {
+            const C = D().companions || {};
+            prep(withOf(s) || Object.keys(C).find(id => id !== leadOf(s)), []);
+        } },
+        { label: '두아트 들어가기', primary: true, onClick: () => travel('duat_01', 'bottom') },
+    ] });
+
 });
 
 // what a packed thing does: its duat effect, or eating it

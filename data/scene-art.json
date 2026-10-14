@@ -506,5 +506,89 @@
     "night": [0, 0, 1536, 1024],
     "clip": [[0, 0], [1536, 0], [1536, 1024], [0, 1024]],
     "tintNight": true
+  },
+  "duat_01": {
+    "file": "../docs/art/map-expansion/duat-field-01-boundary.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "duat_02": {
+    "file": "../docs/art/map-expansion/duat-field-02-corridor.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "duat_03": {
+    "file": "../docs/art/map-expansion/duat-field-03-flooded.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "duat_04": {
+    "file": "../docs/art/map-expansion/duat-field-04-mechanism.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "duat_05": {
+    "file": "../docs/art/map-expansion/duat-field-05-sand.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "duat_06": {
+    "file": "../docs/art/map-expansion/duat-field-06-sun.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "duat_07": {
+    "file": "../docs/art/map-expansion/duat-field-07-return.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
   }
 }

@@ -71,7 +71,7 @@ const passed = [];
     assert((await pos()).y >= 9.37, 'Duat gate still blocks northward movement');
     await travel(36,10); await page.locator('.sf_talk').click();
     const gateCard=page.locator('.sf_pop_wrap').last(); await gateCard.waitFor();
-    assert((await gateCard.innerText()).includes('누구와 내려갈까?'));
+    assert((await gateCard.innerText()).includes('두아트의 길은 언제든 열려 있어.'));
     await gateCard.locator('.sf_pop_x').click();
     const forecourt=await page.evaluate(()=>{
       const m=artTest.map.getMap(),gate=m.buildings.find(b=>b.id==='duat'),jackal=m.decor.find(d=>d.k==='jackal');
@@ -108,7 +108,7 @@ const passed = [];
     await page.evaluate(()=>{artTest.state.getState().part='night';artTest.win.refresh();});
     await travel(36,10); await page.locator('.sf_talk').click();
     const nightGate=page.locator('.sf_pop_wrap').last(); await nightGate.waitFor();
-    assert((await nightGate.innerText()).includes('누구와 내려갈까?'));
+    assert((await nightGate.innerText()).includes('두아트의 길은 언제든 열려 있어.'));
     await nightGate.locator('.sf_pop_x').click();
     await page.evaluate(()=>{artTest.state.getState().part='day';artTest.win.refresh();});
     passed.push('Duat two-lane approach both ways, guardian clearance, gate day/night interactions and relocated mural');

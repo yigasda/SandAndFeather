@@ -63,8 +63,33 @@ export class GameMap {
     authoredSolidAt(x, y) {
         const c = this.changedCells.get(`${Math.floor(x)},${Math.floor(y)}`);
         if (c && this.d.legend[c]?.solid) return true;
+        if (this.authored.pixelWalk) return !this.pixelWalkAt(x, y);
         const px = x / this.w * this.authored.width, py = y / this.h * this.authored.height;
         return this.shapes.some(s => inPolygon(px, py, s.polygon));
+    }
+    pixelWalkAt(x, y) {
+        const m = this.authored.pixelWalk, px = Math.floor(x*m.pixelsPerTile), py = Math.floor(y*m.pixelsPerTile);
+        if (px < 0 || py < 0 || px >= m.width || py >= m.height) return false;
+        const row = m.rows[py] || [];
+        for (let i=0;i<row.length;i+=2) if (px>=row[i] && px<row[i+1]) return true;
+        return false;
+    }
+    // Duat uses every original-art pixel covered by the feet, including thin edges between corners.
+    solidRect(x0,y0,x1,y1) {
+        const m=this.authored?.pixelWalk;
+        if (!m) return this.solidAt(x0,y0)||this.solidAt(x1,y0)||this.solidAt(x0,y1)||this.solidAt(x1,y1);
+        const a=Math.floor(x0*m.pixelsPerTile), b=Math.floor(x1*m.pixelsPerTile);
+        const c=Math.floor(y0*m.pixelsPerTile), d=Math.floor(y1*m.pixelsPerTile);
+        if(a<0||c<0||b>=m.width||d>=m.height) return true;
+        for(let y=c;y<=d;y++) {
+            const row=m.rows[y]||[];
+            let clear=false;
+            for(let i=0;i<row.length;i+=2) if(a>=row[i]&&b<row[i+1]) {clear=true;break;}
+            if(!clear) return true;
+        }
+        for(let y=Math.floor(y0);y<=Math.floor(y1);y++) for(let x=Math.floor(x0);x<=Math.floor(x1);x++)
+            if(this.npcCells.has(`${x},${y}`)) return true;
+        return false;
     }
     solidAt(x, y) {
         const ix = Math.floor(x), iy = Math.floor(y);

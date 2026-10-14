@@ -26,7 +26,7 @@ export const RESIDENCE = ['temple_courtyard', 'courtyard_colonnade', 'temple_inn
     'temple_west_gallery', 'room_entrances_wide', 'set_room', 'horus_room', 'somang_room', 'temple_kitchen', 'temple_dining',
     'temple_sanctuary', 'temple_colonnade', 'temple_roof'];
 // the dock below the village, its own picture (tools/maps/dock.py)
-export const MAPS = ['ombos', 'ruins', 'dock_pier', ...RESIDENCE];
+export const MAPS = ['ombos', 'ruins', 'dock_pier', ...Array.from({ length: 7 }, (_, i) => `duat_${String(i + 1).padStart(2, '0')}`), ...RESIDENCE];
 
 export async function loadData() {
     const all = await Promise.all([...FILES.map(f => loadJson(`${f}.json`)), ...MAPS.map(m => loadJson(`maps/${m}.json`))]);

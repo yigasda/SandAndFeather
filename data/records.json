@@ -30,6 +30,7 @@
     "radius": 2.5,
     "steps": { "25": { "deben": 10, "xp": 2 }, "50": { "deben": 25, "xp": 4 } },
     "regions": [
+      { "id": "duat", "ko": "두아트", "maps": [], "rooms": ["duat_01", "duat_02", "duat_03", "duat_04", "duat_05", "duat_06", "duat_07"] },
       { "id": "ombos", "ko": "옴보스", "maps": ["ombos"],
         "points": ["temple_hall", "scriptorium", "training", "market", "garden", "kitchen", "dock", "duat", "altar", "ombos_bench"],
         "anchors": true, "rooms": ["dock_pier"] },
