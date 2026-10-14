@@ -1,0 +1,7 @@
+{
+  "bridgeRoundTrip": true,
+  "errors": [],
+  "version": "0.9.75",
+  "scope": "Only bridge lower edge and two brazier contours, user 1000482834 blue stroke",
+  "fullRegression": "Skipped at user request; actual stepPlayer round trip restricted to bridge verified"
+}
