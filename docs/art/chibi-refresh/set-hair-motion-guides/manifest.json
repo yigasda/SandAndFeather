@@ -1,0 +1,1342 @@
+{
+  "purpose": "Hair motion only; original Set idle/walk define appearance. Body pose and expressions use ASTRA-PLAN.",
+  "canvas": [
+    1600,
+    720
+  ],
+  "count": 18,
+  "files": [
+    {
+      "file": "png/set-right-combat-idle-0-hair-flow.png",
+      "direction": "right",
+      "motion": "idle-0",
+      "observation": "아래로 늘어짐 · 끝만 뒤로 약하게",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            710,
+            330
+          ],
+          [
+            660,
+            460
+          ],
+          [
+            690,
+            550
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            860,
+            350
+          ],
+          [
+            885,
+            450
+          ],
+          [
+            940,
+            515
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            885,
+            310
+          ],
+          [
+            870,
+            365
+          ],
+          [
+            890,
+            395
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-idle-0.png",
+        "sha256": "5fb2f3f5ef9ab95ce8f1bc5aa1cc89da109702f8a286e6d9d4e7fc5d40c7d6c8"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-right-combat-idle-1-hair-flow.png",
+      "direction": "right",
+      "motion": "idle-1",
+      "observation": "대기 0과 같은 흐름 · 끝의 작은 흔들림",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            704,
+            328
+          ],
+          [
+            650,
+            455
+          ],
+          [
+            678,
+            544
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            860,
+            345
+          ],
+          [
+            895,
+            445
+          ],
+          [
+            950,
+            506
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            885,
+            307
+          ],
+          [
+            877,
+            361
+          ],
+          [
+            900,
+            390
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-idle-1.png",
+        "sha256": "bc1ff3255fc15625dce83dda02c499a317a06f0be3dd31deedf6165291c43749"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-right-combat-idle-2-hair-flow.png",
+      "direction": "right",
+      "motion": "idle-2",
+      "observation": "대기 0과 같은 흐름 · 끝이 되돌아옴",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            720,
+            335
+          ],
+          [
+            677,
+            462
+          ],
+          [
+            702,
+            556
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            850,
+            355
+          ],
+          [
+            878,
+            461
+          ],
+          [
+            929,
+            523
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            883,
+            313
+          ],
+          [
+            866,
+            369
+          ],
+          [
+            883,
+            400
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-idle-2.png",
+        "sha256": "29cabbb77feb01aeafce9d3ebaaa10e492206038d419685a16500ea787a5a4c7"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-right-combat-anticipation-0-hair-flow.png",
+      "direction": "right",
+      "motion": "anticipation-0",
+      "observation": "뒤로 중간 정도 · 몸통 뒤에서 퍼짐",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            680,
+            295
+          ],
+          [
+            540,
+            350
+          ],
+          [
+            470,
+            380
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            750,
+            365
+          ],
+          [
+            650,
+            435
+          ],
+          [
+            545,
+            449
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            873,
+            310
+          ],
+          [
+            854,
+            360
+          ],
+          [
+            835,
+            380
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-anticipation-0.png",
+        "sha256": "b507fdeabeced99b26ebfb660bad04526be7af3abb9472f1c6d1cb1cffd506c5"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-right-combat-attack-0-hair-flow.png",
+      "direction": "right",
+      "motion": "attack-0",
+      "observation": "뒤로 크게 · 준비보다 넓게 펼침",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            640,
+            290
+          ],
+          [
+            485,
+            285
+          ],
+          [
+            375,
+            310
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            725,
+            365
+          ],
+          [
+            530,
+            425
+          ],
+          [
+            405,
+            400
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            855,
+            308
+          ],
+          [
+            808,
+            352
+          ],
+          [
+            775,
+            363
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-attack-0.png",
+        "sha256": "689095509f298f545ba7568a7daa7ce9ca7408e422322d276b980c81e14414c5"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-right-combat-skill-0-hair-flow.png",
+      "direction": "right",
+      "motion": "skill-0",
+      "observation": "내리꽂는 반동 · 위와 뒤로 솟음",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            650,
+            170
+          ],
+          [
+            620,
+            100
+          ],
+          [
+            540,
+            80
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            735,
+            185
+          ],
+          [
+            775,
+            90
+          ],
+          [
+            710,
+            48
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            865,
+            205
+          ],
+          [
+            850,
+            167
+          ],
+          [
+            821,
+            147
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-skill-0.png",
+        "sha256": "a399cb215147e3fcffa9c4693447d3e75c71ef05a681eb6afa3f4c52ebfffc54"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-right-combat-spell-0-hair-flow.png",
+      "direction": "right",
+      "motion": "spell-0",
+      "observation": "대체로 아래 · 끝의 약한 뒤쪽 흐름",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            710,
+            340
+          ],
+          [
+            660,
+            465
+          ],
+          [
+            696,
+            552
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            850,
+            360
+          ],
+          [
+            900,
+            459
+          ],
+          [
+            955,
+            511
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            885,
+            309
+          ],
+          [
+            875,
+            367
+          ],
+          [
+            894,
+            396
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-spell-0.png",
+        "sha256": "6e2d6e4151f2d7da7ded1727a3a26da19b2f6088762df54b178d39201273b08a"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-right-combat-tired-0-hair-flow.png",
+      "direction": "right",
+      "motion": "tired-0",
+      "observation": "중력 방향으로 처짐 · 퍼짐 작게",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            285
+          ],
+          [
+            724,
+            385
+          ],
+          [
+            688,
+            468
+          ],
+          [
+            708,
+            520
+          ]
+        ],
+        [
+          [
+            825,
+            298
+          ],
+          [
+            854,
+            394
+          ],
+          [
+            887,
+            457
+          ],
+          [
+            925,
+            493
+          ]
+        ],
+        [
+          [
+            860,
+            298
+          ],
+          [
+            881,
+            343
+          ],
+          [
+            872,
+            393
+          ],
+          [
+            885,
+            420
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-tired-0.png",
+        "sha256": "16b292c67631a7c8952bd6d83d3559be73d4ba57c3eb396a2f39d84f272acdeb"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        285
+      ]
+    },
+    {
+      "file": "png/set-right-combat-hit-0-hair-flow.png",
+      "direction": "right",
+      "motion": "hit-0",
+      "observation": "충격으로 앞쪽에 쏠림 · 뒤 다발도 앞으로",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            760,
+            230
+          ],
+          [
+            805,
+            302
+          ],
+          [
+            947,
+            356
+          ],
+          [
+            1088,
+            330
+          ]
+        ],
+        [
+          [
+            825,
+            245
+          ],
+          [
+            880,
+            372
+          ],
+          [
+            1020,
+            428
+          ],
+          [
+            1140,
+            393
+          ]
+        ],
+        [
+          [
+            860,
+            245
+          ],
+          [
+            905,
+            290
+          ],
+          [
+            971,
+            319
+          ],
+          [
+            1038,
+            301
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-right-combat-hit-0.png",
+        "sha256": "a5ac1beef1c191680b0ae7c783bff08b6443185af9c534db2fc1fc9ab441253c"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-idle-0-hair-flow.png",
+      "direction": "left",
+      "motion": "idle-0",
+      "observation": "아래로 늘어짐 · 끝만 뒤로 약하게",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            890,
+            330
+          ],
+          [
+            940,
+            460
+          ],
+          [
+            910,
+            550
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            740,
+            350
+          ],
+          [
+            715,
+            450
+          ],
+          [
+            660,
+            515
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            715,
+            310
+          ],
+          [
+            730,
+            365
+          ],
+          [
+            710,
+            395
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-idle-0.png",
+        "sha256": "4f80bdb2ee6159f366bfccef9be44ba618a32796cfa5acf448dd2307bff59096"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-idle-1-hair-flow.png",
+      "direction": "left",
+      "motion": "idle-1",
+      "observation": "대기 0과 같은 흐름 · 끝의 작은 흔들림",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            896,
+            328
+          ],
+          [
+            950,
+            455
+          ],
+          [
+            922,
+            544
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            740,
+            345
+          ],
+          [
+            705,
+            445
+          ],
+          [
+            650,
+            506
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            715,
+            307
+          ],
+          [
+            723,
+            361
+          ],
+          [
+            700,
+            390
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-idle-1.png",
+        "sha256": "24e3ec4f5fa9d35d7c0c1360e2fe12e248cd07e372ddfdc445e1582bb83833a0"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-idle-2-hair-flow.png",
+      "direction": "left",
+      "motion": "idle-2",
+      "observation": "대기 0과 같은 흐름 · 끝이 되돌아옴",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            880,
+            335
+          ],
+          [
+            923,
+            462
+          ],
+          [
+            898,
+            556
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            750,
+            355
+          ],
+          [
+            722,
+            461
+          ],
+          [
+            671,
+            523
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            717,
+            313
+          ],
+          [
+            734,
+            369
+          ],
+          [
+            717,
+            400
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-idle-2.png",
+        "sha256": "2b7a139ee084077951d374f789f288ad3b478ee09b705498c15fa1099c4654a4"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-anticipation-0-hair-flow.png",
+      "direction": "left",
+      "motion": "anticipation-0",
+      "observation": "뒤로 중간 정도 · 몸통 뒤에서 퍼짐",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            920,
+            295
+          ],
+          [
+            1060,
+            350
+          ],
+          [
+            1130,
+            380
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            850,
+            365
+          ],
+          [
+            950,
+            435
+          ],
+          [
+            1055,
+            449
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            727,
+            310
+          ],
+          [
+            746,
+            360
+          ],
+          [
+            765,
+            380
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-anticipation-0.png",
+        "sha256": "b180546c5403c957366a72d75ddbea3afc6f24f272c14f6a5c75690d17e5f3bb"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-attack-0-hair-flow.png",
+      "direction": "left",
+      "motion": "attack-0",
+      "observation": "뒤로 크게 · 준비보다 넓게 펼침",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            960,
+            290
+          ],
+          [
+            1115,
+            285
+          ],
+          [
+            1225,
+            310
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            875,
+            365
+          ],
+          [
+            1070,
+            425
+          ],
+          [
+            1195,
+            400
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            745,
+            308
+          ],
+          [
+            792,
+            352
+          ],
+          [
+            825,
+            363
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-attack-0.png",
+        "sha256": "7cc2560473f8b707fd57ad04d73f8a6a5e43c9967f9ca91ce41137c60c14720b"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-skill-0-hair-flow.png",
+      "direction": "left",
+      "motion": "skill-0",
+      "observation": "내리꽂는 반동 · 위와 뒤로 솟음",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            950,
+            170
+          ],
+          [
+            980,
+            100
+          ],
+          [
+            1060,
+            80
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            865,
+            185
+          ],
+          [
+            825,
+            90
+          ],
+          [
+            890,
+            48
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            735,
+            205
+          ],
+          [
+            750,
+            167
+          ],
+          [
+            779,
+            147
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-skill-0.png",
+        "sha256": "6239fdee282dd2596bb4ce89d8e0f37932d2fc48180bdadf07ebb1ea356285be"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-spell-0-hair-flow.png",
+      "direction": "left",
+      "motion": "spell-0",
+      "observation": "대체로 아래 · 끝의 약한 뒤쪽 흐름",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            890,
+            340
+          ],
+          [
+            940,
+            465
+          ],
+          [
+            904,
+            552
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            750,
+            360
+          ],
+          [
+            700,
+            459
+          ],
+          [
+            645,
+            511
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            715,
+            309
+          ],
+          [
+            725,
+            367
+          ],
+          [
+            706,
+            396
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-spell-0.png",
+        "sha256": "af05b253de1eb01afb79f4133d983b575e58350273e0218860266a84479c2a76"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    },
+    {
+      "file": "png/set-left-combat-tired-0-hair-flow.png",
+      "direction": "left",
+      "motion": "tired-0",
+      "observation": "중력 방향으로 처짐 · 퍼짐 작게",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            285
+          ],
+          [
+            876,
+            385
+          ],
+          [
+            912,
+            468
+          ],
+          [
+            892,
+            520
+          ]
+        ],
+        [
+          [
+            775,
+            298
+          ],
+          [
+            746,
+            394
+          ],
+          [
+            713,
+            457
+          ],
+          [
+            675,
+            493
+          ]
+        ],
+        [
+          [
+            740,
+            298
+          ],
+          [
+            719,
+            343
+          ],
+          [
+            728,
+            393
+          ],
+          [
+            715,
+            420
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-tired-0.png",
+        "sha256": "46708fc5c4654b310e6c23c77ea3cbfa8a5f5d420d831707955f9a0c1200b9d1"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        285
+      ]
+    },
+    {
+      "file": "png/set-left-combat-hit-0-hair-flow.png",
+      "direction": "left",
+      "motion": "hit-0",
+      "observation": "충격으로 앞쪽에 쏠림 · 뒤 다발도 앞으로",
+      "backBundles": "blue dashed; behind torso; forward swing does not change layering",
+      "frontSideLock": "orange solid; in front of shoulder, must not obscure face/hand",
+      "curves": [
+        [
+          [
+            840,
+            230
+          ],
+          [
+            795,
+            302
+          ],
+          [
+            653,
+            356
+          ],
+          [
+            512,
+            330
+          ]
+        ],
+        [
+          [
+            775,
+            245
+          ],
+          [
+            720,
+            372
+          ],
+          [
+            580,
+            428
+          ],
+          [
+            460,
+            393
+          ]
+        ],
+        [
+          [
+            740,
+            245
+          ],
+          [
+            695,
+            290
+          ],
+          [
+            629,
+            319
+          ],
+          [
+            562,
+            301
+          ]
+        ]
+      ],
+      "sourceObserved": {
+        "file": "set-left-combat-hit-0.png",
+        "sha256": "6eca01ae360297a1fd8a2de4593abccd0bdd70d13753934739f5dfbef0e03fea"
+      },
+      "containsCombatPixels": false,
+      "scaleMeaning": "Arrow extent is relative motion/spread, not hair length or physical proportion.",
+      "registration": [
+        800,
+        230
+      ]
+    }
+  ]
+}

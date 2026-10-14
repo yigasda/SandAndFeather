@@ -1,0 +1,98 @@
+{
+  "character": "set",
+  "count": 18,
+  "purpose": "사용자 요청: 이전 최종 전투 시안 보관. 몸 비율은 사용자가 별도 조절 예정. 이번 재작화 검토본 제외.",
+  "source_registry": "docs/ASTRA-COMBAT-POSE-SOURCES.json",
+  "files": [
+    {
+      "file": "set-right-combat-idle-0.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "5fb2f3f5ef9ab95ce8f1bc5aa1cc89da109702f8a286e6d9d4e7fc5d40c7d6c8"
+    },
+    {
+      "file": "set-right-combat-idle-1.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "bc1ff3255fc15625dce83dda02c499a317a06f0be3dd31deedf6165291c43749"
+    },
+    {
+      "file": "set-right-combat-idle-2.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "29cabbb77feb01aeafce9d3ebaaa10e492206038d419685a16500ea787a5a4c7"
+    },
+    {
+      "file": "set-right-combat-anticipation-0.png",
+      "source_revision": "combat-trio-v229",
+      "sha256": "b507fdeabeced99b26ebfb660bad04526be7af3abb9472f1c6d1cb1cffd506c5"
+    },
+    {
+      "file": "set-right-combat-attack-0.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "689095509f298f545ba7568a7daa7ce9ca7408e422322d276b980c81e14414c5"
+    },
+    {
+      "file": "set-right-combat-skill-0.png",
+      "source_revision": "combat-set-v234",
+      "sha256": "a399cb215147e3fcffa9c4693447d3e75c71ef05a681eb6afa3f4c52ebfffc54"
+    },
+    {
+      "file": "set-right-combat-spell-0.png",
+      "source_revision": "combat-trio-v233",
+      "sha256": "6e2d6e4151f2d7da7ded1727a3a26da19b2f6088762df54b178d39201273b08a"
+    },
+    {
+      "file": "set-right-combat-tired-0.png",
+      "source_revision": "combat-trio-v236",
+      "sha256": "16b292c67631a7c8952bd6d83d3559be73d4ba57c3eb396a2f39d84f272acdeb"
+    },
+    {
+      "file": "set-right-combat-hit-0.png",
+      "source_revision": "combat-trio-v236",
+      "sha256": "a5ac1beef1c191680b0ae7c783bff08b6443185af9c534db2fc1fc9ab441253c"
+    },
+    {
+      "file": "set-left-combat-idle-0.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "4f80bdb2ee6159f366bfccef9be44ba618a32796cfa5acf448dd2307bff59096"
+    },
+    {
+      "file": "set-left-combat-idle-1.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "24e3ec4f5fa9d35d7c0c1360e2fe12e248cd07e372ddfdc445e1582bb83833a0"
+    },
+    {
+      "file": "set-left-combat-idle-2.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "2b7a139ee084077951d374f789f288ad3b478ee09b705498c15fa1099c4654a4"
+    },
+    {
+      "file": "set-left-combat-anticipation-0.png",
+      "source_revision": "combat-trio-v229",
+      "sha256": "b180546c5403c957366a72d75ddbea3afc6f24f272c14f6a5c75690d17e5f3bb"
+    },
+    {
+      "file": "set-left-combat-attack-0.png",
+      "source_revision": "combat-trio-v228",
+      "sha256": "7cc2560473f8b707fd57ad04d73f8a6a5e43c9967f9ca91ce41137c60c14720b"
+    },
+    {
+      "file": "set-left-combat-skill-0.png",
+      "source_revision": "combat-set-v234",
+      "sha256": "6239fdee282dd2596bb4ce89d8e0f37932d2fc48180bdadf07ebb1ea356285be"
+    },
+    {
+      "file": "set-left-combat-spell-0.png",
+      "source_revision": "combat-trio-v233",
+      "sha256": "af05b253de1eb01afb79f4133d983b575e58350273e0218860266a84479c2a76"
+    },
+    {
+      "file": "set-left-combat-tired-0.png",
+      "source_revision": "combat-trio-v236",
+      "sha256": "46708fc5c4654b310e6c23c77ea3cbfa8a5f5d420d831707955f9a0c1200b9d1"
+    },
+    {
+      "file": "set-left-combat-hit-0.png",
+      "source_revision": "combat-trio-v236",
+      "sha256": "6eca01ae360297a1fd8a2de4593abccd0bdd70d13753934739f5dfbef0e03fea"
+    }
+  ]
+}

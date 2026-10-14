@@ -1,6 +1,6 @@
 # 세트 — 원본·가이드 바로 열기
 
-이 페이지에서 실제 이미지를 열고 작업한다. 설명만 읽고 그리지 않는다. **외형·비율은 정지·걷기, 기존 전투는 동세·표정 의도만 참고한다.**
+이 페이지에서 실제 이미지를 열고 작업한다. 설명만 읽고 그리지 않는다. **외형·비율은 정지·걷기, 몸 동세·표정은 GitHub PLAN 표를 따른다. 기존 전투는 머리 흐름을 사람이 관찰할 때만 사용하며 생성에 첨부하지 않는다.**
 
 ## 정지·걷기·전신 가이드
 
@@ -16,6 +16,10 @@
 - [눈 견본](art/chibi-refresh/palette/eyes.png) · [원본 머리 기준](art/chibi-refresh/notes/hair-reference.png).
 - [상세 외형](ASTRA-SPRITE.md): A의 비율·색·눈 규칙, B의 해당 캐릭터 머리 설명과 금지 사항을 확인한다.
 
+## 머리 움직임 전용 가이드
+
+[좌우 18장 흐름 가이드·사용법](art/chibi-refresh/set-hair-motion-guides/README.md). 생성에는 원본 + 오푸스 비율 가이드 + 해당 동작 흐름 PNG만 넣는다. 기존 전투 시안이나 크롭은 금지한다.
+
 ## 동작에 맞춘 머리 가이드
 
 - [오푸스 가이드 사용법](art/chibi-refresh/pose-guides/README.md) · [머리 가이드 코드](../tools/art/head-check.py).
@@ -25,6 +29,6 @@
 ## 이번 동작·표정과 그리기
 
 - [현재 작업](ASTRA-DRAW-STATE.md) → [동작별 자세·표정](ASTRA-PLAN.md). 해당 캐릭터·동작 칸을 읽는다.
-- 전투 동세 한눈에: [239 비교표](art/chibi-refresh/combat-reference-sheets/239-combat-latest-54.png) · [240 정지 정면과 나란히](art/chibi-refresh/combat-reference-sheets/240-combat-54-vs-idle-front.png). 동세·표정 의도만, 잘라 쓰지 않는다.
+- 전투 동세 한눈에: [239 비교표](art/chibi-refresh/combat-reference-sheets/239-combat-latest-54.png) · [240 정지 정면과 나란히](art/chibi-refresh/combat-reference-sheets/240-combat-54-vs-idle-front.png). 머리 흐름 관찰 전용. 생성에 넣거나 잘라 쓰지 않는다.
 - [전투 동세 파일·해시 목록](ASTRA-COMBAT-POSE-SOURCES.json): 외형 기준이 아니다. 파일이 로컬에만 있을 수 있으므로 실제 존재와 해시를 확인한다.
 - 기준을 확인했으면 **[그리기·비교](ASTRA-DRAW-CHECK.md)**로 진행한다. 추가 문서 순회를 반복하지 않는다.
