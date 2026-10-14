@@ -1,0 +1,37 @@
+PASS somang: 부두에 앉아 낚시(0), 줄·양동이 {"act":"fish","frame":0,"busy":true}
+PASS somang: 당기면 1번 그림
+PASS somang 낚시: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS somang: 요리 자세 (cook)
+PASS somang 요리: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS somang: 읽기 효과 하나만 (안 겹침)
+PASS somang 읽기: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS somang: 식탁에서 꿀빵 먹기, 태양 기운 5→6 (하루 한 번) {"act":"eat","dir":"left","sun":6,"seat":true}
+PASS somang: 다 먹으면 앉은 자세로
+PASS somang 먹기: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS somang: 텃밭 심기
+PASS somang 텃밭: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS set: 부두에 앉아 낚시(0), 줄·양동이 {"act":"fish","frame":0,"busy":true}
+PASS set: 당기면 1번 그림
+PASS set 낚시: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS set: 요리 자세 (cook)
+PASS set 요리: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS set: 읽기 효과 하나만 (안 겹침)
+PASS set 읽기: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS set: 식탁에서 꿀빵 먹기, 태양 기운 5→5 (하루 한 번) {"act":"eat","dir":"up","sun":5,"seat":true}
+PASS set: 다 먹으면 앉은 자세로
+PASS set 먹기: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS set: 텃밭 심기
+PASS set 텃밭: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS horus: 부두에 앉아 낚시(0), 줄·양동이 {"act":"fish","frame":0,"busy":true}
+PASS horus: 당기면 1번 그림
+PASS horus 낚시: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS horus: 요리 자세 (cook)
+PASS horus 요리: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS horus: 읽기 효과 하나만 (안 겹침)
+PASS horus 읽기: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS horus: 식탁에서 꿀빵 먹기, 태양 기운 5→5 (하루 한 번) {"act":"eat","dir":"right","sun":5,"seat":true}
+PASS horus: 다 먹으면 앉은 자세로
+PASS horus 먹기: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS horus: 텃밭 심기
+PASS horus 텃밭: 걸으면 효과·자세 안 남음 {"busy":false,"act":"","seat":false}
+PASS 콘솔 오류 없음 

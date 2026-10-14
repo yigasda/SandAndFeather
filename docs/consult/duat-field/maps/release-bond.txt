@@ -1,0 +1,1 @@
+bond: migration, activity/gift restrictions and double-click lock, RP point isolation, source/alias/carry validation, 75-candidate paging, stop/resume, retry checkpoints, chat switch and in-flight edit isolation OK

@@ -19,6 +19,7 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
     await m.win.openGame();
     window.pop = () => [...document.querySelectorAll('#sf_game .sf_pop')].pop();
     window.rowBtn = (name, label) => { const r = [...pop().querySelectorAll('.sf_list_row')].find(r => r.querySelector('b').textContent.includes(name)); return r && [...r.querySelectorAll('button')].find(b => b.textContent.includes(label)); };
+    window.exploreBtn = (region, pct) => { const h = [...pop().querySelectorAll('.sf_sub_head')].find(e => e.textContent.startsWith(region + ' ·')); const rows = h?.nextElementSibling?.nextElementSibling; const row = [...(rows?.querySelectorAll('.sf_list_row') || [])].find(e => e.querySelector('b')?.textContent === `탐사 ${pct}% 보상`); return row?.querySelector('button'); };
     window.cardBtn = label => [...pop().querySelectorAll('button')].find(b => b.textContent.includes(label));
     window.closeAll = () => document.querySelectorAll('#sf_game .sf_pop_x').forEach(x => x.click());
     window.S = () => m.st.getState();
@@ -173,8 +174,8 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
   await E(() => [...pop().querySelectorAll('button')].find(b => b.textContent === '탐사 수첩').click()); await sleep(600);
   const ruinsHidden = await E(() => pop().innerText.includes('강 건너 무너진 신전 · 아직 가 본 적 없어') && !pop().innerText.includes('강 건너 무너진 신전 · 0%'));
   ok(ruinsHidden, '탐사 수첩: 강 건너는 「아직 가 본 적 없어」만');
-  await E(() => { const b = rowBtn('탐사 25% 보상', '받기'); b.click(); b.click(); }); await sleep(700);
-  await E(() => { const b = rowBtn('탐사 50% 보상', '받기'); b.click(); b.click(); }); await sleep(700);
+  await E(() => { const b = exploreBtn('옴보스', 25); b.click(); b.click(); }); await sleep(700);
+  await E(() => { const b = exploreBtn('옴보스', 50); b.click(); b.click(); }); await sleep(700);
   const e3 = await E(d0 => ({ got: S().bag.deben - d0, again: [IT.ex.claimStep(S(), 'ombos', 25), IT.ex.claimStep(S(), 'ombos', 50)] }), e2.d0);
   ok(e3.got === 10 + 25 && e3.again.every(x => x === null), `옴보스 25·50% 보상 한 번씩, 두 번 눌러도 (데벤 +${e3.got})`);
   await p.screenshot({ path: `${OUT}/explore.png` });
@@ -233,4 +234,5 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
   ok(errs.length === 0, `오류 없음 ${errs.slice(0, 3).join(' | ')}`);
   console.log(`\n${res.filter(x => x.startsWith('PASS')).length} PASS, ${res.filter(x => x.startsWith('FAIL')).length} FAIL`);
   await b.close();
+  process.exitCode = res.some(r => r.startsWith('FAIL')) ? 1 : 0;
 })();

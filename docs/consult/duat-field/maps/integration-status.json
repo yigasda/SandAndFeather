@@ -1,0 +1,40 @@
+{
+  "version": "0.9.73",
+  "testedRelease": "0308d8e270bc8ee459042dd51d1b244494916d64",
+  "corridorBoundary": "user-approved final blue/yellow strokes; obsolete X-marked lines removed",
+  "otherMaps": "six existing provisional boundaries; detailed retracing deferred by user",
+  "runtime": "seven connected maps, all-time visits, unchanged Duat colours, exploration; no enemies or combat yet",
+  "driveUploads": false,
+  "tests": {
+    "residenceExits": 31,
+    "duatExits": 14,
+    "duatLighting": [
+      "day",
+      "dawn",
+      "evening",
+      "night"
+    ],
+    "phoneWidths": [
+      412,
+      320
+    ],
+    "mandatory": [
+      "verify-full-map",
+      "verify-cozy-ui",
+      "verify-ui-themes"
+    ],
+    "regressionPassCounts": {
+      "life70": 37,
+      "dock71": 10,
+      "records68": 36,
+      "items53": 44
+    },
+    "bond": "passed"
+  },
+  "testHarnessCorrections": [
+    "Scope exploration rewards to Ombos after adding Duat region",
+    "Open legacy expedition card before packing items",
+    "Remove random daily sold-out flag only in purchase lock/stock fixture"
+  ],
+  "remaining": "Detailed boundaries for other six maps; monsters and field combat"
+}

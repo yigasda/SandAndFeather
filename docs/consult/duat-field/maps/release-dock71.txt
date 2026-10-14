@@ -1,0 +1,10 @@
+PASS checkData 오류 없음
+PASS 옴보스 부두로 내려가면 선착장 세부맵 {"map":"dock_pier","x":9.45,"y":6.06}
+PASS 세부맵 데이터 {"has":true,"exits":1,"spots":["dock"]}
+PASS 계단 내려가 부두 앞쪽까지 걸어감 {"map":"dock_pier","x":9.45,"y":6.83}
+PASS 부두 앞에서 말 걸기 → 선착장 카드
+PASS 부두 끝에 앉아 낚시 {"act":"fish","line":true}
+PASS 돌길로 올라가면 옴보스 부두 위 {"map":"ombos","x":25.5,"y":26.71}
+PASS 나오면 줄·양동이·자세 안 남음
+PASS 탐사 수첩: 선착장 방 본 것으로
+PASS 콘솔 오류 없음 

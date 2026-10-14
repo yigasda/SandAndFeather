@@ -9,7 +9,7 @@
     {
       "map": "duat_02",
       "direction": "up",
-      "steps": 1012,
+      "steps": 1181,
       "exit": "top"
     },
     {
@@ -75,7 +75,7 @@
     {
       "map": "duat_02",
       "direction": "down",
-      "steps": 998,
+      "steps": 1152,
       "exit": "bottom"
     },
     {

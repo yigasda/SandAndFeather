@@ -149,6 +149,7 @@ const NEW = ['kyphi', 'frankincense', 'myrrh', 'lotus_oil', 'lily_oil', 'kohl', 
   // 6. 두아트 (R3·R4): 챙길 것에 향유·등잔·날로 먹는 것, 등잔은 들어갈 때 씀, 향유는 바르기, 남은 건 같은 uid로 돌아옴
   await E(() => { setBag(['lotus_oil', 'oil_lamp', 'cucumber', 'blue_lotus', 'kohl', 'linen']); const s = IT.st.getState(); s.part = 'night'; s.wake = null; delete s.ledger.acts.duat; s.duat = null; window.u0 = Object.fromEntries(s.bag.items.map(x => [x.id, x.uid])); });
   await spot('duat');
+  await click(() => cardBtn('기존 원정').click());
   const packRows = await E(() => [...pop().querySelectorAll('.sf_list_row b')].map(b => b.textContent));
   ok(['연꽃 향유', '기름 등잔', '오이', '콜 눈화장', '아마포'].every(x => packRows.includes(x)) && !packRows.includes('푸른 연꽃'), `챙길 수 있는 것: ${packRows.filter(x => !['소망', '세트', '호루스'].includes(x)).join(', ')} (푸른 연꽃은 예전처럼 빠짐)`);
   await click(() => rowBtn('연꽃 향유', '챙기기').click());
@@ -170,6 +171,7 @@ const NEW = ['kyphi', 'frankincense', 'myrrh', 'lotus_oil', 'lily_oil', 'kohl', 
   ok(await E(() => n('lotus_oil') === 0 && n('oil_lamp') === 0), '쓴 향유·등잔은 돌아오지 않음');
   await E(() => { const s = IT.st.getState(); s.duat = null; delete s.ledger.acts.duat; s.sun.left = 12; });
   await spot('duat');
+  await click(() => cardBtn('기존 원정').click());
   await click(() => rowBtn('아마포', '챙기기').click());
   await click(() => rowBtn('오이', '챙기기').click());
   await click(() => cardBtn('내려가기').click());
@@ -243,6 +245,8 @@ const NEW = ['kyphi', 'frankincense', 'myrrh', 'lotus_oil', 'lily_oil', 'kohl', 
   const buys = await E(async () => {
     const s = IT.st.getState(), sh = IT.market.shown(s).find(g => g.id === 'lotus_oil');
     if (!sh) return 'skip';
+    // This case tests purchase locking and the two-item stock limit, not the random daily sold-out draw.
+    if (s.market.out === 'lotus_oil') s.market.out = '';
     const price = IT.market.priceOf(s, sh), d0 = s.bag.deben;
     const r = await Promise.all([1, 2, 3, 4].map(() => IT.market.buy(s, 'lotus_oil')));
     const r2 = await IT.market.buy(s, 'lotus_oil'), r3 = await IT.market.buy(s, 'lotus_oil');

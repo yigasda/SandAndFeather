@@ -1,0 +1,191 @@
+{
+  "checks": [
+    {
+      "map": "temple_courtyard",
+      "exit": 0,
+      "to": "ombos",
+      "walked": 7
+    },
+    {
+      "map": "temple_courtyard",
+      "exit": 1,
+      "to": "courtyard_colonnade",
+      "walked": 131
+    },
+    {
+      "map": "temple_courtyard",
+      "exit": 2,
+      "to": "temple_kitchen",
+      "walked": 141
+    },
+    {
+      "map": "temple_courtyard",
+      "exit": 3,
+      "to": "temple_dining",
+      "walked": 148
+    },
+    {
+      "map": "courtyard_colonnade",
+      "exit": 0,
+      "to": "temple_courtyard",
+      "walked": 15
+    },
+    {
+      "map": "courtyard_colonnade",
+      "exit": 1,
+      "to": "temple_inner_corridor",
+      "walked": 175
+    },
+    {
+      "map": "temple_inner_corridor",
+      "exit": 0,
+      "to": "courtyard_colonnade",
+      "walked": 6
+    },
+    {
+      "map": "temple_inner_corridor",
+      "exit": 1,
+      "to": "temple_central_gallery",
+      "walked": 291
+    },
+    {
+      "map": "temple_central_gallery",
+      "exit": 0,
+      "to": "temple_inner_corridor",
+      "walked": 8
+    },
+    {
+      "map": "temple_central_gallery",
+      "exit": 3,
+      "to": "room_entrances_wide",
+      "walked": 59
+    },
+    {
+      "map": "temple_central_gallery",
+      "exit": 2,
+      "to": "temple_east_gallery",
+      "walked": 180
+    },
+    {
+      "map": "temple_central_gallery",
+      "exit": 1,
+      "to": "temple_west_gallery",
+      "walked": 180
+    },
+    {
+      "map": "temple_east_gallery",
+      "exit": 0,
+      "to": "temple_central_gallery",
+      "walked": 6
+    },
+    {
+      "map": "temple_east_gallery",
+      "exit": 2,
+      "to": "temple_sanctuary",
+      "walked": 182
+    },
+    {
+      "map": "temple_east_gallery",
+      "exit": 1,
+      "to": "room_entrances_wide",
+      "walked": 291
+    },
+    {
+      "map": "temple_west_gallery",
+      "exit": 0,
+      "to": "temple_central_gallery",
+      "walked": 6
+    },
+    {
+      "map": "temple_west_gallery",
+      "exit": 2,
+      "to": "temple_colonnade",
+      "walked": 222
+    },
+    {
+      "map": "temple_west_gallery",
+      "exit": 1,
+      "to": "room_entrances_wide",
+      "walked": 291
+    },
+    {
+      "map": "room_entrances_wide",
+      "exit": 5,
+      "to": "temple_central_gallery",
+      "walked": 13
+    },
+    {
+      "map": "room_entrances_wide",
+      "exit": 1,
+      "to": "somang_room",
+      "walked": 34
+    },
+    {
+      "map": "room_entrances_wide",
+      "exit": 0,
+      "to": "set_room",
+      "walked": 132
+    },
+    {
+      "map": "room_entrances_wide",
+      "exit": 2,
+      "to": "horus_room",
+      "walked": 136
+    },
+    {
+      "map": "room_entrances_wide",
+      "exit": 3,
+      "to": "temple_east_gallery",
+      "walked": 174
+    },
+    {
+      "map": "room_entrances_wide",
+      "exit": 4,
+      "to": "temple_west_gallery",
+      "walked": 179
+    },
+    {
+      "map": "set_room",
+      "exit": 0,
+      "to": "room_entrances_wide",
+      "walked": 18
+    },
+    {
+      "map": "horus_room",
+      "exit": 0,
+      "to": "room_entrances_wide",
+      "walked": 18
+    },
+    {
+      "map": "somang_room",
+      "exit": 0,
+      "to": "room_entrances_wide",
+      "walked": 18
+    },
+    {
+      "map": "temple_kitchen",
+      "exit": 0,
+      "to": "temple_courtyard",
+      "walked": 18
+    },
+    {
+      "map": "temple_dining",
+      "exit": 0,
+      "to": "temple_courtyard",
+      "walked": 18
+    },
+    {
+      "map": "temple_sanctuary",
+      "exit": 0,
+      "to": "temple_east_gallery",
+      "walked": 18
+    },
+    {
+      "map": "temple_colonnade",
+      "exit": 0,
+      "to": "temple_west_gallery",
+      "walked": 23
+    }
+  ],
+  "errors": []
+}
