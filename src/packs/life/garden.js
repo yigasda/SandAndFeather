@@ -10,6 +10,8 @@ import { getState, saveState } from '../../core/state.js';
 import { spend, sunLeft } from '../../core/sun.js';
 import { list, para, stack } from '../../ui/kit.js';
 import { onSpot } from '../../ui/window.js';
+import { feel } from './poses.js';
+import { showFx } from '../../world/fx.js';
 
 export function plotCount(s) {
     let n = 4;
@@ -43,6 +45,7 @@ function card(ui) {
                 record(st, 'harvest', { itemId: g.gives, itemUid: uids[0], source: 'garden', n: uids.length });
                 await saveState();
                 ui.toast(`${out?.ko} ${g.count || 1}개 수확했어`); close(); card(ui);
+                feel('happy'); // 0.9.70: a harvest is a happy moment
             } }] };
     });
     const close = ui.showCard({ tag: '생활', title: '텃밭', wide: true, body: stack(para('씨앗은 날이 지나야 자라. 챗에서 하루가 넘어가면 하루가 지나.'), list(rows)) });
@@ -61,6 +64,7 @@ function pickSeed(ui, k) {
                 takeUid(st, sd.uid); st.garden.plots[k] = { seed: id, day: today(st) };
                 record(st, 'plant', { itemId: id, itemUid: sd.uid, source: 'garden' });
                 const d = didAct(st, 'plant'); await saveState(); if (d) ui.toast(d); close(); card(ui);
+                showFx('seeds-0', { at: 'feet', dy: 0.05, size: 1.05, ms: 1300 }); // seeds scattered at her feet
             } }] };
     });
     const close = ui.showCard({ tag: '생활', title: `텃밭 · ${k + 1}번 칸`, wide: true, body: stack(para('무엇을 심을까? 태양 기운 1.'), list(rows, '씨앗이 없어')),

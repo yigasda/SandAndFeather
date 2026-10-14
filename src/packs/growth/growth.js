@@ -12,6 +12,7 @@ import { spend, sunLeft } from '../../core/sun.js';
 import { list, para, stack } from '../../ui/kit.js';
 import { onSpot } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
+import { busyPose } from '../life/poses.js';
 
 // one practice: costs `cost`, +1 to the stat, 경험치 2 + more. `use` is an item id that goes into it (a blank papyrus,
 // a cake of incense): it is checked and taken on the state as it is now, together with the sun, or nothing happens
@@ -25,6 +26,7 @@ async function practise(ui, stat, kind, cost, line, { more = 0, use = '' } = {})
     record(s, kind, { itemId: use, itemUid: it?.uid || '', source: kind });
     const d = didAct(s, kind);
     await saveState();
+    if (kind === 'study') busyPose('read', 'down', { ms: 2600, fx: [{ name: 'bubble-music', size: 0.95, ms: 1400 }] }); // 0.9.70: reading the scroll
     ui.toast(`${line} ${STATS[stat]} ${s.stats[stat]}${more ? ` · 경험치 +${2 + more}` : ''}${d ? ` · ${d}` : ''}`);
 }
 
@@ -44,6 +46,7 @@ function scriptorium(ui) {
             it.opened = true; addXP(s, 3); if (r.flag) s.flags[r.flag] = true; didAct(s, 'read');
             journal(s, { ko: `${josa(nameOf(it), '을')} 해독했다.`, say: `${nameOf(it)}에 적힌 내용을 이야기한다.`, en: `Somang deciphered ${itemInfo(it.id).en}: ${r.ko}`.slice(0, 220), marks: [itemInfo(it.id).ko.split(' ').pop()], kind: 'read' });
             await saveState(); close(); ui.showCard({ tag: '육성', title: `${itemInfo(it.id).icon} 해독`, text: r.ko });
+            busyPose('read', 'down', { ms: 2600, fx: [{ name: 'bubble-question', size: 0.95, ms: 1400 }] });
         } }] }; });
     const close = ui.showCard({
         tag: '육성', title: '필사실', wide: true,

@@ -3,12 +3,18 @@
 // seat; without one yet they rest where they stand.
 
 import { DATA } from '../../core/data.js';
-import { SIT_PER_DAY, restMore, sitRest, sitsLeft, sleepNow, tired } from '../../core/rest.js';
+import { itemInfo, takeUid } from '../../core/bag.js';
+import { record } from '../../core/facts.js';
+import { ATE_KEY, SIT_PER_DAY, eatMeal, partNow, restMore, sitRest, sitsLeft, sleepNow, tired } from '../../core/rest.js';
+import { josa } from '../../core/ko.js';
+import { canDo } from '../../core/ledger.js';
 import { getState, saveState } from '../../core/state.js';
 import { sunLeft, sunMax } from '../../core/sun.js';
 import { feet, holdMate, holdPose, player } from '../../world/player.js';
 import { leadOf, withOf } from '../../core/heroes.js';
 import { onSpot } from '../../ui/window.js';
+import { showFx } from '../../world/fx.js';
+import { busyPose } from './poses.js';
 
 // where a pose's anchor goes (tiles), which way she faces there, and which picture. The dining table has a cushion
 // on its left, right and front; sitting on the right one she faces left (the table), and so on.
@@ -156,13 +162,56 @@ function mateSeat(spotId, mine, mate) {
     return places.sort((a, b) => d(a) - d(b)).find(p => d(p) <= MATE_REACH) || null;
 }
 
+// sit the one walking with her down too (or stand them by), as when resting
+function seatMate(spotId, p, mate) {
+    let m = mate ? mateSeat(spotId, p, mate) : null;
+    if (m) holdMate(m.pose, m.x, m.y, m.dir);
+    else if (mate) standMate(p);
+}
+
+// 식탁 먹기 (0.9.70): the dining table's cushions. She sits at the one she has an eating picture for (the cushion
+// that faces the table the way the picture was drawn), else the nearest; one food from the bag, and the first meal
+// of a game day gives 태양 기운 1. Eating and sitting take turns a few times, with 냠 over her head
+const TABLE = ['temple_table', 'temple_table_left', 'temple_table_mid'];
+const foodsIn = s => [...new Map(s.bag.items.filter(it => itemInfo(it.id)?.kind === 'food').map(it => [it.id, it])).values()];
+function eatSeat(spotId) {
+    const all = TABLE.flatMap(id => SEATS[id].map(p => ({ ...p, id }))).filter(p => hasPose(p.pose, p.dir));
+    return all.find(p => hasPose('eat', p.dir)) || seatFor(spotId);
+}
+function eatCard(spot, ui) {
+    const s = getState(), foods = foodsIn(s);
+    if (!foods.length) { ui.showCard({ tag: '식사', title: spot.title, text: '가방에 먹을 게 없어. 부엌에서 만들거나 시장에서 사 오자.' }); return; }
+    const sun = canDo(s, ATE_KEY) ? '오늘 첫 끼니는 태양 기운 1이 돌아와.' : '오늘 끼니의 태양 기운은 이미 받았어.';
+    ui.showCard({
+        tag: '식사', title: '무엇을 먹을까', text: sun,
+        buttons: [{ label: '닫기' }, ...foods.slice(0, 6).map(it => ({ label: itemInfo(it.id).ko, primary: true, onClick: async () => {
+            const st = getState();
+            if (!takeUid(st, it.uid)) return;
+            const r = eatMeal(st);
+            record(st, 'eat', { itemId: it.id, itemUid: it.uid, source: 'table' });
+            await saveState();
+            const p = eatSeat(spot.id);
+            if (p) { holdPose(p.pose, p.x, p.y, p.dir); seatMate(p.id || spot.id, p, withOf(st)); }
+            const bites = p && hasPose('eat', p.dir) ? 3 : 0, seat = player.seat;
+            showFx('yummy-0', { who: 'lead', ms: 1600 * Math.max(1, bites), size: 1.35, dy: 0.25, bob: 0.04, key: 'eat' });
+            for (let k = 0; k < bites * 2; k++) setTimeout(() => {
+                if (player.seat !== seat || !player.act) return;   // she got up
+                player.act = { name: k % 2 ? p.pose : 'eat', at: performance.now() };
+            }, k * 800);
+            setTimeout(() => { if (player.seat === seat && player.act) player.act = { name: p.pose, at: performance.now() }; }, bites * 1600);
+            ui.toast(`${josa(itemInfo(it.id).ko, '을')} 먹었어. ${r === 'fed' ? `태양 기운 ${sunLeft(st)}/${sunMax()}` : r === 'full' ? '배부르고 기운도 가득해' : '맛있다'}`);
+        } }))],
+    });
+}
+
 function seatCard(spot, ui) {
     const s = getState();
     const left = sitsLeft(s);
+    const table = TABLE.includes(spot.id);
     ui.showCard({
         tag: '쉬기', title: spot.title,
-        text: `${spot.text}\n앉아 쉬면 태양 기운이 ${1 + restMore(s)} 돌아와${restMore(s) ? '(부채 덕에 더)' : ''}. 하루 ${SIT_PER_DAY}번까지(오늘 ${left}번 남음).`,
-        buttons: [{ label: '닫기' }, { label: '앉아 쉬기', primary: true, onClick: async () => {
+        text: `${spot.text}\n앉아 쉬면 태양 기운이 ${1 + restMore(s)} 돌아와${restMore(s) ? '(부채 덕에 더)' : ''}. 하루 ${SIT_PER_DAY}번까지(오늘 ${left}번 남음).${table ? '\n가방의 음식을 여기서 먹을 수 있어.' : ''}`,
+        buttons: [{ label: '닫기' }, ...(table ? [{ label: '먹기', onClick: () => setTimeout(() => eatCard(spot, ui), 0) }] : []), { label: '앉아 쉬기', primary: true, onClick: async () => {
             const st = getState();
             const r = sitRest(st);
             await saveState();
@@ -208,3 +257,9 @@ function bedCard(spot, ui) {
 
 for (const id of Object.keys(SEATS)) onSpot(id, seatCard);
 for (const id of Object.keys(BEDS)) onSpot(id, bedCard);
+
+// the roof's star-watching place: its own words as before, and she reads the sky like a scroll (읽기, ? then ♪)
+onSpot('roof_stars', (spot, ui) => {
+    ui.showCard({ title: spot.title || spot.label, text: (partNow(getState()) === 'night' && spot.textNight) || spot.text || '' });
+    busyPose('read', 'down', { ms: 2600, fx: [{ name: partNow(getState()) === 'night' ? 'bubble-music' : 'bubble-question', size: 0.95, ms: 1500 }] });
+});

@@ -6,6 +6,7 @@
 import { T, paintMap, rnd } from './paint.js';
 import { drawReferenceScenes } from './reference-scene.js';
 import { DATA, spriteFile } from '../core/data.js';
+import { drawFx, fxBusy } from './fx.js';
 const HOLD_MS = 220; // how long the last frame of an action (the hand touching) stays before standing again
 
 // the land changes with the season: the Nile runs high and dark in Akhet, the fields are green in Peret and gold in Shemu
@@ -100,6 +101,8 @@ export class Renderer {
             while (i < act.length - 1 && t >= play.frameMs[i]) t -= play.frameMs[i++];
             posed = !!(play.hold || play.loop);
             if (posed || anim.act.t * 1000 < total + HOLD_MS) r = act[i];
+            // a pose held on one frame (낚시: 0 waiting, 1 pulling)
+            if (anim.act.frame != null) { r = act[Math.min(anim.act.frame, act.length - 1)]; posed = true; }
         } else if (anim?.moving) {
             const k = Math.floor((anim.walkT || 0) * 1000 / m.frameMs) % m.sequence.length;
             r = (a.walk[dir] || a.walk.down)[m.sequence[k]];
@@ -115,7 +118,12 @@ export class Renderer {
         }
         g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
         // whole device pixels, so a 1:1 picture is not smeared by a half-pixel shift
-        g.drawImage(image, r[0], r[1], r[2], r[3], Math.round(fx + ox * step - r[4] * k), Math.round(fy + oy * step - r[5] * k), Math.round(r[2] * k), Math.round(r[3] * k));
+        // 0.9.70: a pulled line makes her jump a little (hop, ms since), kneading dough bobs (bob, px up and down)
+        let lift = 0;
+        if (anim?.act?.hop) { const dt = performance.now() - anim.act.hop; if (dt < 320) lift = Math.sin(Math.PI * dt / 320) * 3 * z; }
+        if (anim?.act?.bob) lift += (Math.sin(anim.act.t * Math.PI * 4) > 0 ? 0 : -anim.act.bob * z);
+        g.drawImage(image, r[0], r[1], r[2], r[3], Math.round(fx + ox * step - r[4] * k), Math.round(fy + oy * step - r[5] * k - lift), Math.round(r[2] * k), Math.round(r[3] * k));
+        if (anim) anim.top = fy + oy * step - r[5] * k - lift;   // where the picture's top was drawn (screen px): bubbles go over it
         g.imageSmoothingEnabled = false;
         return true;
     }
@@ -201,7 +209,7 @@ export class Renderer {
         // things lying on the ground first, then people and standing things back to front
         if (!fullScene) for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
         const ppl = [...people, { look: player.look || 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0, moving: player.moving, walkT: player.walkT,
-            act: player.act && !player.moving ? { name: player.act.name, t: (performance.now() - player.act.at) / 1000 } : null },
+            act: player.act && !player.moving ? { name: player.act.name, t: (performance.now() - player.act.at) / 1000, frame: player.act.frame, hop: player.act.hop, bob: player.act.bob } : null, lead: true },
             ...things.filter(t => !FLAT.has(t.sprite)).map(t => ({ thing: t, x: t.x, y: t.y }))];
         ppl.sort((a, b) => a.y - b.y);
         if (!fullScene) for (const p of ppl) {
@@ -247,10 +255,18 @@ export class Renderer {
             if (tag) { g.fillStyle = '#F2A36E'; g.fillText(tag, x + 4.5 * z, y + 0.5 * z); }
             g.fillStyle = '#FBF3EA'; g.fillText(sp.label, x + 4.5 * z + wt, y + 0.5 * z);
         }
-        // a soft ring under what she can talk to (not while she sits: the ring would be on her)
-        if (near && !player.seat) {
+        // a soft ring under what she can talk to (not while she sits or shows a short pose: the ring would be on her)
+        if (near && !player.seat && player.act?.until === undefined) {
             g.strokeStyle = 'rgba(184,84,31,.85)'; g.lineWidth = Math.max(2, z);
             g.beginPath(); g.ellipse((near.x + 0.5) * ts - cx, (near.y + 0.95) * ts - cy, 6 * z, 2.5 * z, 0, 0, Math.PI * 2); g.stroke();
+        }
+        // 생활 효과 (over the place names and the ring, so a name never hides them): bubbles, steam, splash, the bucket and the fishing line (world/fx.js)
+        if (fxBusy()) {
+            const H = (DATA.sprites?.looks?.[player.look || 'somang']?.motion?.height || 31.2) / 16;
+            const at = p => p && { x: p.x + 0.5, y: p.y + 1, top: p.top != null ? (p.top + cy) / ts : null, look: p.look, dir: p.dir, act: p.act };
+            drawFx(g, { H, ts, cx, cy,
+                pos: who => at(who === 'mate' ? ppl.find(p => p.mate) : ppl.find(p => p.lead)),
+                tip: (look, name, dir, frame) => DATA.sprites?.looks?.[look]?.motion?.actTips?.[name]?.[dir]?.[frame] || null });
         }
         // The sealed passage keeps its light inside the existing doorway.
         // A small threshold and inner seam brighten at night, with no village-wide glow.

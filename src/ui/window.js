@@ -10,7 +10,8 @@ import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
 import { bindPad, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
-import { feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
+import { endPose, feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
+import { clearFx, fxBusy } from '../world/fx.js';
 import { partNow } from '../core/rest.js';
 import { thingsOn } from '../world/things.js';
 import { MODE, Renderer } from '../world/render.js';
@@ -170,6 +171,7 @@ export async function travel(mapId, pos = null) {
         setTab(hud, 'world');
         hud.mini.classList.remove('sf_on');
         s.pos = { map: mapId, x: pos?.x ?? null, y: pos?.y ?? null, dir: pos?.dir || 'down' };
+        clearFx();
         await saveState();
         await enterMap();
         refresh();
@@ -282,10 +284,22 @@ function draw(t) {
     const w = withOf(s);
     // ... or sits or lies beside her (player.mate, set by a seat or the bed)
     const mate = player.mate;
-    if (w && mate) people.push({ look: w, x: mate.x, y: mate.y, dir: mate.dir, step: 0, moving: false, act: { name: mate.name, t: (performance.now() - mate.at) / 1000 } });
-    else if (w) { const f = follower(); people.push({ look: w, x: f.x, y: f.y, dir: f.dir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT }); }
+    if (w && mate) people.push({ look: w, x: mate.x, y: mate.y, dir: mate.dir, step: 0, moving: false, act: { name: mate.name, t: (performance.now() - mate.at) / 1000 }, mate: true });
+    else if (w) {
+        const f = follower(), ma = player.mateAct;
+        // 0.9.70: standing still, the one walking with her can show a pose of their own for a moment (matePose)
+        const posing = ma && !f.moving && performance.now() < ma.until && DATA.sprites?.looks?.[w]?.motion?.acts?.[ma.name]?.[ma.dir];
+        // while she shows a short pose (요리, 읽기, 기쁨…), they stand beside her rather than over her (the pose stays seen)
+        let fx = f.x, fy = f.y, fdir = f.dir;
+        if (player.act?.until !== undefined && !f.moving && Math.abs(f.x - player.x) < 0.9 && f.y > player.y - 0.6) {
+            const side = f.x >= player.x ? 1 : -1;
+            fx = player.x + side * 0.95; fy = player.y - 0.05; fdir = side > 0 ? 'left' : 'right';
+        }
+        people.push({ look: w, x: fx, y: fy, dir: posing ? ma.dir : fdir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT, mate: true,
+            ...(posing ? { act: { name: ma.name, t: (performance.now() - ma.at) / 1000, frame: ma.frame } } : {}) });
+    }
     renderer.draw({ player, people, things, part: partNow(s), time: t / 1000, near });
-    placeBubble(hud, renderer, cardOpen() || player.seat ? null : near);  // sitting or lying down: no bubble over her head
+    placeBubble(hud, renderer, cardOpen() || player.seat || (player.act?.until !== undefined && fxBusy()) ? null : near);  // sitting or lying down, or a short pose with its effects showing: no bubble over her head
     // ^ by the stairs (v on the roof): shown only where the stairs are, pressed to go
     const c = !cardOpen() && near?.climb;
     hud.climb.hidden = !c;
@@ -308,9 +322,11 @@ function frame(t) {
         }
         if (!moving) tileCheck();
     } else stand();
+    // a short pose (showPose) is over: back to her idle, facing the way she was
+    if (player.act?.until && performance.now() > player.act.until) endPose();
     // the battery: draw only as often as something on screen changes
     const acting = player.act && (performance.now() - player.act.at < 800 || player.act.name === 'sleep'); // sleeping breathes
-    const fps = cardOpen() ? FPS.card : player.moving || acting ? FPS.walk : FPS.still;
+    const fps = player.moving || acting || fxBusy() || player.act?.bob || player.act?.hop ? FPS.walk : cardOpen() ? FPS.card : FPS.still;
     if (t - drawnAt >= 1000 / fps - 2) { drawnAt = t; draw(t); }
     raf = requestAnimationFrame(frame);
 }
