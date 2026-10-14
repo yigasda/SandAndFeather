@@ -1,4 +1,4 @@
-// 원정: 밤의 두아트. At evening or night, once a game day, for 태양 기운 3: whoever leads (heroes.js) picks one of the
+// 원정: 밤의 두아트. At any time of day, once a game day, for 태양 기운 3: whoever leads (heroes.js) picks one of the
 // other two to go with, packs up to two
 // dishes, and go down a short road of forks (fights, events, treasure, rest) to a gatekeeper. Nobody dies:
 // at 0 체력 or full 공포 the companion carries the leader back up with half of what was found.
@@ -22,7 +22,6 @@ import { bar, list, para, stack } from '../../ui/kit.js';
 import { onSpot } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
 import { HERO_NAME, leadOf, withOf } from '../../core/heroes.js';
-import { partNow } from '../../core/rest.js';
 
 const D = () => DATA.duat || {};
 const FEAR_MAX = 10;
@@ -48,8 +47,7 @@ onSpot('duat', (spot, u) => {
     ui = u;
     const s = getState();
     if (s.duat) { step(); return; }
-    if (!['evening', 'night'].includes(partNow(s))) { u.showCard({ tag: '원정', title: spot.title, text: `${spot.text}\n문은 저녁과 밤에만 열려. 지금은 닫혀 있어.` }); return; }
-    if (!canDo(s, 'duat')) { u.showCard({ tag: '원정', title: spot.title, text: '오늘 밤은 이미 다녀왔어. 다음 날 밤에 다시.' }); return; }
+    if (!canDo(s, 'duat')) { u.showCard({ tag: '원정', title: spot.title, text: '오늘은 이미 다녀왔어. 다음 날 다시 올 수 있어.' }); return; }
     const C = D().companions || {};
     prep(withOf(s) || Object.keys(C).find(id => id !== leadOf(s)), []);
 });
@@ -268,7 +266,7 @@ function endCard() {
     const { rescued, keep, xp } = r.result;
     const comp = D().companions?.[r.comp]?.ko;
     show({
-        body: stack(para(rescued ? `더는 버틸 수 없었다. ${josa(comp, '가')} ${josa(HERO_NAME[leadOf(s)], '을')} 안고 올라왔다. 가져온 것의 절반만 남았다.` : r.won ? '마지막 문이 열렸다. 새벽빛이 들기 전에 올라왔다.' : '발걸음을 돌려 올라왔다.', 'sf_pop_text'),
+        body: stack(para(rescued ? `더는 버틸 수 없었다. ${josa(comp, '가')} ${josa(HERO_NAME[leadOf(s)], '을')} 안고 올라왔다. 가져온 것의 절반만 남았다.` : r.won ? '마지막 문이 열렸다. 무사히 올라왔다.' : '발걸음을 돌려 올라왔다.', 'sf_pop_text'),
             list(keep.map(id => ({ icon: itemInfo(id)?.icon, item: id, name: itemInfo(id)?.ko, sub: '가방에 넣었어' })), '가져온 건 없어.'),
             para(`모험 경험치 +${xp} · 이 일은 임무 탭 일지에서 챗에 꺼낼 수 있어.`)),
         buttons: [{ label: '닫기', primary: true, onClick: () => { const st = getState(); st.duat = null; save(); } }],

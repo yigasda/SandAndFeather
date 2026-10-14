@@ -71,7 +71,7 @@ const passed = [];
     assert((await pos()).y >= 9.37, 'Duat gate still blocks northward movement');
     await travel(36,10); await page.locator('.sf_talk').click();
     const gateCard=page.locator('.sf_pop_wrap').last(); await gateCard.waitFor();
-    assert((await gateCard.innerText()).includes('문은 저녁과 밤에만 열려'));
+    assert((await gateCard.innerText()).includes('누구와 내려갈까?'));
     await gateCard.locator('.sf_pop_x').click();
     const forecourt=await page.evaluate(()=>{
       const m=artTest.map.getMap(),gate=m.buildings.find(b=>b.id==='duat'),jackal=m.decor.find(d=>d.k==='jackal');

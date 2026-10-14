@@ -31,7 +31,7 @@
 
 ## 1. 지금 상태 (코드 위치)
 
-- **두아트 입구:** 옴보스 맵 spot `duat`(`data/maps/ombos.json`), `src/packs/duat/duat.js`의 `onSpot('duat', …)`. 저녁·밤에만, 게임 하루 한 번(`canDo(s,'duat')`), 태양 기운 3.
+- **두아트 입구:** 옴보스 맵 spot `duat`(`data/maps/ombos.json`), `src/packs/duat/duat.js`의 `onSpot('duat', …)`. 모든 시간대 입장 가능(사용자 변경), 게임 하루 한 번(`canDo(s,'duat')`), 태양 기운 3.
 - **지금 원정(카드):** `prep()`에서 동행 고르기 + 음식·도구 두 개 챙기기 → `s.duat`(진행 중 원정, 세이브에 남음) → 갈림길 층(`layer/layers`) 마다 싸움·사건·보물·쉼터 카드 → 문지기(`boss`). 체력 = 13 + 3 × 체력 능력치, 공포 0~10(`FEAR_MAX`). 체력 0 또는 공포 가득이면 **동행이 업고 올라옴, 찾은 것의 절반**(죽지 않음). 신앙이 있으면 싸움마다 주문 한 번. 세트는 세게 치고 덜 맞음, 호루스는 길을 봄.
 - **데이터:** `data/duat.json` — `enemies`(shade 6/2, jackal 8/3, serpent 9/3, ammit 12/3 = 체력/공격), `boss`(gatekeeper 16/4), `events` 5개, `relics`, `materials`, `companions`.
 - **맵 그리기·충돌:** 세부맵은 `tools/maps/residence.py`(안채 15장면)·`tools/maps/dock.py`(선착장, 0.9.70)가 만든다 — **두아트도 같은 방식으로 생성기를 새로 만든다. `data/maps/*.json`을 손으로 고치지 않는다.** 그림은 `data/scene-art.json`의 `fullMap` 항목으로 깔리고, 충돌은 `authoredCollision`(그림 px 사각형들).
@@ -164,7 +164,7 @@
 > 아래는 **기본안**이다. 사용자 결정이 필요한 곳은 ❓로 표시했다. D를 시작하기 전에 ❓들을 한 번에 묶어 사용자에게 묻고, 답을 이 문서에 적은 뒤 만든다.
 
 ### D-1. 원정 흐름
-1. 옴보스 `duat` spot(저녁·밤, 하루 한 번, 태양 기운 3) → 지금처럼 동행 고르기 + 두 개 챙기기 카드(`prep()` 재사용).
+1. 옴보스 `duat` spot(시간대 제한 없음, 하루 한 번, 태양 기운 3) → 지금처럼 동행 고르기 + 두 개 챙기기 카드(`prep()` 재사용).
 2. 출발하면 `s.duat = { v: 2, map: 'duat_01', hp, max, fear, comp, pack, loot, cleared: {}, ... }` 저장 후 `travel('duat_01', 'bottom')`.
 3. 맵을 걸어 위로 올라가며(02 → … → 07) 몹과 싸운다. 맵 사이 이동은 출구로(`exits`).
 4. 07 위 귀환문 → 결과 카드(가져온 것, 경험치) → 옴보스 duat 앞으로. `markDone(s,'duat')`, 일지·daylog(`noteDay`), `record(s,'duat_return')` + 업혀 오지 않았으면 `duat_return:safe`(업적 「무사 귀환」이 이것을 셈, 지금 `duat.js` 259–260줄 그대로).
@@ -284,3 +284,7 @@
 | E 마무리 | 테스트 결과 표, 폰 캡처, 버전 | 중간 |
 
 각 단계마다 작업 브랜치에 커밋·푸시하고, 사용자가 "넣어" 하면 main·release(OPUS-HANDOFF 배포 절차).
+
+### 추가 결정 — 입장 시간 (2026-10-14)
+- 사용자: “두아트 상시로 드나들 수 있음 좋겠어 지금은 저녁부터만 되잖아”. 저녁·밤 입장 제한을 없애고 새벽·아침·낮에도 입장 가능하게 한다. 두아트 내부 배경은 원본 그대로 유지한다.
+- 이번 수정은 시간대 제한 해제다. 기존 하루 한 번·태양 기운 3 및 진행 중 원정 재개 규칙은 유지한다.

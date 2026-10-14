@@ -1,6 +1,6 @@
 # 오푸스 인수인계 — 게임 적용과 코드 (지금 기준만)
 
-**오푸스용 문서다.** 갱신 2026-10-14, **0.9.71** 기준(전투 그림 손질 포함). 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
+**오푸스용 문서다.** 갱신 2026-10-14, **0.9.72** 기준(전투 그림 손질 포함). 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
 
 ## 이 게임
 
@@ -55,7 +55,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 ## 버전과 검증
 
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.71**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.72**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
 - **배포(0.9.54~):** 사용자는 `release` 브랜치로 설치한다(main은 docs 그림 기록 때문에 1 GB 넘음, SillyTavern은 `auto_update`로 켤 때마다 git pull). 버전을 올리고 main에 푸시한 뒤 `sh tools/release.sh && git push origin release`로 release도 올린다. 스크립트는 `index.js`, `style.css`, `manifest.json`, `README.md`, `src/`, `data/`와 `data/*.json`이 가리키는 `../docs/` 그림만 담는다. 게임이 새로 docs 밖 파일을 읽게 되면 스크립트에 더한다. 확인은 `git clone --depth 1 --branch release`한 폴더를 확장 자리에 넣고 검증 스크립트를 돌린다.
 - 캐릭터 그림은 게임 창을 열 때 불러온다(`ensureSpriteArt`, `window.js openGame`). 그 전에 그림을 쓰는 코드를 만들면 먼저 `ensureSpriteArt()`를 기다린다.
 - **검증 스크립트 세 개**(`tools/art/`, ST가 떠 있고 확장이 들어가 있어야 함). 출력 폴더를 인자로 준다. 셋 다 exit 0이어야 한다:
@@ -81,7 +81,9 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
   - `bed-measure.js <폴더> '<[누구,[x,y,방향],이름] 목록>' [방]`: 한 사람만 침대 자리에 눕힌 화면과 뺀 화면. 두 장 차이의 박스가 그 사람(머리 위끝·턱 높이 재기)
   - 폰 크기는 412×900. 안채나 맵을 고치면 출구 걷기·낮밤도 본다.
 
-## 게임 지금 상태 — 0.9.71
+## 게임 지금 상태 — 0.9.72
+
+두아트 입장은 시간대 제한이 없다(새벽·아침·낮·저녁·밤). 기존 카드 원정의 하루 한 번·태양 기운 3 규칙은 유지한다. 작업 브랜치에서 검증 중이며 main/release 배포는 아직이다.
 
 | 영역 | 내용 | 자세한 기록 |
 |---|---|---|
