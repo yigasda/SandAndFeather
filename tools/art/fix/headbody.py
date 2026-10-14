@@ -1,8 +1,11 @@
-# python3 headbody.py <in> <out> <head scale> <body scale> <neck x> <neck y> <rows>
-# head bigger, body smaller about the neck: scale h above the neck, smoothly to b over R rows below it
+# python3 headbody.py <in> <out> <head scale> <body scale> <neck x> <neck y> <rows> [width]
+# head bigger, body smaller about the neck: scale h above the neck, smoothly to b over R rows below it.
+# width (default 1): how much of the change goes across too; 0 = only up and down (the rows move, every row keeps its
+# pixels' width: a body shortened without narrowing, 0.9.72 Set combat)
 import sys, numpy as np
 from PIL import Image
 src,out,h,b,cx,cy,R=sys.argv[1],sys.argv[2],*map(float,sys.argv[3:8])
+wide=float(sys.argv[8]) if len(sys.argv)>8 else 1.0
 a=np.asarray(Image.open(src).convert('RGBA')).astype(np.float32); H,W=a.shape[:2]
 pm=a.copy(); pm[...,:3]*=pm[...,3:4]/255
 yy,xx=np.mgrid[0:H,0:W].astype(np.float32)
@@ -12,7 +15,7 @@ def k_of(ys):
 # build inverse map for rows numerically: source y for each output y
 ys_src=np.linspace(-200,H+400,20000); dy=ys_src[1]-ys_src[0]
 kk=k_of(ys_src); yo=np.cumsum(kk)*dy; yo-=np.interp(cy,ys_src,yo)-cy     # output y of each source y, neck fixed
-sy=np.interp(yy,yo,ys_src); ks=k_of(sy); sx=cx+(xx-cx)/ks
+sy=np.interp(yy,yo,ys_src); ks=1+(k_of(sy)-1)*wide; sx=cx+(xx-cx)/ks
 x0=np.floor(sx).astype(int); y0=np.floor(sy).astype(int); fx=sx-x0; fy=sy-y0
 def g(y,x):
     ok=(y>=0)&(y<H)&(x>=0)&(x<W); v=np.zeros((H,W,4),np.float32); v[ok]=pm[y[ok],x[ok]]; return v

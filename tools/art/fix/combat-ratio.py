@@ -4,7 +4,7 @@
 # against the idle (top of the hair → chin, chin → soles; numbers in the folder's README). Nothing is redrawn.
 # The neck of each picture: where head-check.py found the idle head (size, tilt, place), carried to the idle's neck
 # point; NECK_FIX overrides a frame where that was off (checked on the neck sheet).
-#   python3 tools/art/fix/combat-ratio.py <who> <head.json> <out folder> [h b R pad]
+#   python3 tools/art/fix/combat-ratio.py <who> <head.json> <out folder> [h b R pad [width]]
 #   → <out>/png/<file> (the canvas padded by `pad` on top, so a grown head stays inside), <out>/neck-sheet.png
 import json, math, os, subprocess, sys
 from PIL import Image, ImageDraw
@@ -36,6 +36,7 @@ def neck_of(who, view, r):
 def main():
     who, hj, out = sys.argv[1:4]
     h, b, R, pad = (float(x) for x in sys.argv[4:8]) if len(sys.argv) > 7 else (None, None, 70, 80)
+    wide = sys.argv[8] if len(sys.argv) > 8 else '1'   # 0: the body only shorter (Set: the hair keeps its shape)
     res = {r['file']: r for r in json.load(open(hj))}
     src = os.path.join(ROOT, '메인2', KO[who])
     files = sorted(f for f in os.listdir(src) if f.endswith('.png'))
@@ -54,7 +55,7 @@ def main():
             dst = os.path.join(out, 'png', f)
             big = Image.new('RGBA', (im.width, im.height + int(pad)), (0, 0, 0, 0)); big.paste(im, (0, int(pad))); big.save(dst)
             subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'headbody.py'), dst, dst,
-                            str(h), str(b), str(nx), str(ny + int(pad)), str(int(R))], check=True, capture_output=True)
+                            str(h), str(b), str(nx), str(ny + int(pad)), str(int(R)), wide], check=True, capture_output=True)
     # the neck sheet: every picture with the neck point found
     W = sum(t.width for t in thumbs[:9]); sheet = Image.new('RGB', (max(W, sum(t.width for t in thumbs[9:])), 2 * thumbs[0].height), (255, 255, 255))
     x = 0
