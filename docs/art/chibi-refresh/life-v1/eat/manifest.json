@@ -58,12 +58,16 @@
     ]
    },
    "referenceVisibleHeight": 492.3,
-   "sha256": "b24c810f8283e6950cfb2543a1f7e5295ae3b0a58ca5313a12b3c03a9a9dd558",
+   "sha256": "7e80801e3af6c26c7dd61e84bb68bbe45540101af01c098c13b26f485764c6b0",
    "source": "메인1/horus-right-eat-0.png",
    "canvas": [
     443,
     528
-   ]
+   ],
+   "edits": [
+    "headshrink [0.86, 250, 325, 70] pad 0: 머리 116% → 100%"
+   ],
+   "sourceSha256": "b24c810f8283e6950cfb2543a1f7e5295ae3b0a58ca5313a12b3c03a9a9dd558"
   },
   {
    "path": "png/set-back-eat-0.png",
@@ -73,17 +77,21 @@
    "anchor": {
     "kind": "seat-bottom",
     "position": [
-     306.5,
-     565.6
+     346.5,
+     605.6
     ]
    },
    "referenceVisibleHeight": 619.4,
-   "sha256": "cc4a68ae9c152394068fb1df81bba369faf157f5424b93d65d6baaa2b2ba220c",
+   "sha256": "5956bb95377def5592d647278d20b4859cf4b60173f19541ec704ceba77dc1f3",
    "source": "메인1/set-back-eat-0.png",
    "canvas": [
-    651,
-    591
-   ]
+    731,
+    671
+   ],
+   "edits": [
+    "headshrink [1.12, 310, 320, 80] pad 40: 머리 88% → 99%"
+   ],
+   "sourceSha256": "cc4a68ae9c152394068fb1df81bba369faf157f5424b93d65d6baaa2b2ba220c"
   }
  ]
 }

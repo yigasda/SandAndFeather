@@ -88,11 +88,12 @@
      750
     ]
    },
-   "sha256": "5497ed864dac5e90e94539ccc53b57b8baf1b4cee3aca12f1dded23bac5ea2fe",
+   "sha256": "9c23213b0dbb98ba3f81d61b6fa09cb1d7b5f2861f6107a6a7bdaa38877c1820",
    "source": "sources/horus-fishing-front-0-원본.png (메인1/horus-fishing-front-0.png와 같은 바이트)",
    "edits": [
     "캔버스 620×720 → 1020×1120",
-    "tonematch.py 머리카락 색을 호루스 걷기 정면 2 색으로, 피부를 정지 정면 색으로"
+    "tonematch.py 머리카락 색을 호루스 걷기 정면 2 색으로, 피부를 정지 정면 색으로",
+    "headshrink 1.06 about the neck (545,610) 60: 머리 94% → 100% (0.9.70 머리 크기 맞춤)"
    ],
    "tip": [
     302,
@@ -111,16 +112,17 @@
      750
     ]
    },
-   "sha256": "7051f8bb8911c494bf21ab5b1e946bd8c27e3324a99a7326bd5d481279476fbb",
+   "sha256": "2187385222dd7b06232288ac4ff3faecf08dffbb030462809ab678cfe35d5600",
    "source": "sources/horus-fishing-front-1-원본.png (메인1/horus-fishing-front-1.png와 같은 바이트)",
    "edits": [
     "캔버스 620×720 → 1020×1120",
     "tonematch.py 머리카락·피부 색 (0과 같게)",
-    "lean.py 허리 위 9° 화면 오른쪽으로, 축 (540,730), 170행에 걸쳐"
+    "lean.py 허리 위 9° 화면 오른쪽으로, 축 (540,730), 170행에 걸쳐",
+    "headshrink 1.06 about the neck (470,680) 60: 머리 94% → 100% (0.9.70 머리 크기 맞춤)"
    ],
    "tip": [
-    302,
-    341
+    291,
+    326
    ]
   }
  ]

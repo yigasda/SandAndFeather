@@ -4,7 +4,7 @@
 # standing character's full height, directionMap). The effects and the bucket go to data/art/fx (byte for byte).
 # Nothing is redrawn or resized here; the size each picture is shown at comes from referenceVisibleHeight.
 #   python3 tools/art/life-pack.py
-import hashlib, json, os, shutil
+import hashlib, json, os, shutil, subprocess, sys
 from PIL import Image
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
@@ -55,6 +55,24 @@ ACTS = {
             ('set', 'back', 0, 'set-back-eat-0.png', 'seat-bottom', [round((310 - 25) / 0.93, 1), round((648 - 122) / 0.93, 1)], round(576 / 0.93, 1))],
     'fish': [('somang', 'front', k, f'somang-front-fish-{k}.png', 'seat-bottom', [370, 600], round(576 / 1.0925, 1)) for k in (0, 1)],
 }
+# head sizes matched to the idle (0.9.70, user: 머리가 정지·걷기랑 안 맞으면 맞춰): measured with head-check.py in the
+# game's scale (head size × 576 / referenceVisibleHeight); the head alone is scaled about the neck (fix/headshrink.py),
+# the body stays where the sitting picture's registration put it. pad: transparent border first (the head grows past
+# the canvas), the anchor moves with it. The 메인1 original stays in <action>/sources/.
+FIX = {'horus-right-eat-0.png': {'pad': 0, 'head': [0.86, 250, 325, 70], 'why': '머리 116% → 100%'},
+       'set-back-eat-0.png': {'pad': 40, 'head': [1.12, 310, 320, 80], 'why': '머리 88% → 99%'},
+       'somang-front-surprised-0.png': {'pad': 0, 'head': [0.96, 300, 455, 50], 'why': '머리 104% → 100%'}}
+HEAD = os.path.join(ROOT, 'tools', 'art', 'fix', 'headshrink.py')
+
+
+def fix(dst, f):
+    if f['pad']:
+        im = Image.open(dst).convert('RGBA'); n = f['pad']
+        big = Image.new('RGBA', (im.width + 2 * n, im.height + 2 * n), (0, 0, 0, 0)); big.paste(im, (n, n)); big.save(dst)
+    s, nx, ny, r = f['head']
+    subprocess.run([sys.executable, HEAD, dst, dst, str(s), str(nx + f['pad']), str(ny + f['pad']), str(r)], check=True)
+
+
 PLAY = {'cook': {'sequence': [0], 'loop': False, 'hold': True}, 'read': {'sequence': [0], 'loop': False, 'hold': True},
         'happy': {'sequence': [0], 'loop': False, 'hold': True}, 'shy': {'sequence': [0], 'loop': False, 'hold': True},
         'surprised': {'sequence': [0], 'loop': False, 'hold': True}, 'eat': {'sequence': [0], 'loop': False, 'hold': True},
@@ -73,10 +91,16 @@ def main():
             s = os.path.join(M1, src); dst = os.path.join(d, 'png', src)
             shutil.copyfile(s, dst)
             assert sha(s) == sha(dst)
+            edit = FIX.get(src)
+            if edit:
+                os.makedirs(os.path.join(d, 'sources'), exist_ok=True); shutil.copyfile(s, os.path.join(d, 'sources', src))
+                fix(dst, edit)
+                if anchor: anchor = [anchor[0] + edit['pad'], anchor[1] + edit['pad']]
             f = {'path': f'png/{src}', 'character': who, 'direction': view, 'frame': fr,
                  'anchor': {'kind': kind, 'position': anchor or feet(dst)}, 'referenceVisibleHeight': rvh, 'sha256': sha(dst),
                  'source': f'메인1/{src}', 'canvas': list(Image.open(dst).size)}
             if name == 'fish': f['tip'] = tip(dst, fr)
+            if edit: f['edits'] = [f"headshrink {edit['head']} pad {edit['pad']}: {edit['why']}"]; f['sourceSha256'] = sha(s)
             files.append(f)
         m = {'action': name, 'status': 'user-approved', 'artApproved': True, 'runtimeEligible': True, 'runtimeOwner': 'opus',
              'directionMap': DMAP, 'referenceVisibleHeight': 576, 'playback': PLAY[name], 'approvalEvidence': EVIDENCE, 'files': files}

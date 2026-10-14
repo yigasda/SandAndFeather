@@ -38,12 +38,16 @@
     ]
    },
    "referenceVisibleHeight": 576,
-   "sha256": "496de9f83b954029df99b984e46a3bf35dc67e02013c139f78c0879b9dd24edd",
+   "sha256": "0c9ebffc1f442199c4aa2f9e884e4805aef270b09c3fa48dbc275bde45d2ab3f",
    "source": "메인1/somang-front-surprised-0.png",
    "canvas": [
     620,
     720
-   ]
+   ],
+   "edits": [
+    "headshrink [0.96, 300, 455, 50] pad 0: 머리 104% → 100%"
+   ],
+   "sourceSha256": "496de9f83b954029df99b984e46a3bf35dc67e02013c139f78c0879b9dd24edd"
   },
   {
    "path": "png/set-front-surprised-0.png",
