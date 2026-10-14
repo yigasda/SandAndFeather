@@ -9,8 +9,8 @@ const OUT = process.argv[2] || '/tmp/life-heads'; fs.mkdirSync(OUT, { recursive:
   const base = '/scripts/extensions/third-party/SandAndFeather/';
   await slash0(p, `/sendas name=Seraphina ${T}\n.`); await sleep(1000);
   await p.evaluate(async base => { const w = await import(base + 'src/ui/window.js'); await w.openGame(); }, base); await sleep(1500);
-  const acts = process.argv[3] ? process.argv[3].split(',') : ['happy', 'shy', 'surprised', 'read', 'cook', 'eat', 'fish'];
-  for (const who of (process.argv[4] || 'somang,set,horus').split(',')) {
+  const acts = ['happy', 'shy', 'surprised', 'read', 'cook', 'eat', 'fish'];
+  for (const who of ['somang', 'set', 'horus']) {
     const url = await p.evaluate(async ([base, who, acts]) => {
       const { Renderer } = await import(base + 'src/world/render.js'); const { DATA } = await import(base + 'src/core/data.js');
       const m = DATA.sprites.looks[who].motion;

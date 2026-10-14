@@ -116,54 +116,6 @@ def action_frames():
     return frames, playback
 
 
-# 호루스 새 그림 (2026-10-14, 아스트라 채택 43장, docs/art/horus-redraw-2026-10-14): they take the place of Horus's old
-# frames of the same action, direction and frame (user: "그냥 교체해줘"). Nothing is redrawn or warped: each new
-# picture is shown at the size the old one was (its alpha height scaled to the old one's), and its anchor sits where the
-# old anchor sat relative to the figure (same place from the middle of the alpha box). Fishing gets its rod end again.
-# Not in the game yet, so not used here: drink (no such action) and the left combat set (메인2/호루스).
-HORUS_V2 = os.path.join(ROOT, 'docs', 'art', 'horus-redraw-2026-10-14')
-V2_DIR = {'front': 'down', 'back': 'up', 'left': 'left', 'right': 'right'}
-
-
-def horus_v2(frames):
-    man = json.load(open(os.path.join(HORUS_V2, 'manifest.json')))
-    side = json.load(open(os.path.join(HORUS_V2, 'side-walk', 'manifest.json')))   # the side idle and walk (user's sheet)
-    sprites = man['sprites'] + [{**s, 'file': 'side-walk/' + s['file']} for s in side['sprites']]
-    by_id = {f['id']: i for i, f in enumerate(frames)}
-    done = []
-    for s in sprites:
-        name = os.path.basename(s['file'])[:-4].split('-')   # horus-<view>-<action…>-<frame>, horus-<view>-idle
-        if name[-1] == 'idle': name.append('')
-        view, act, ph = name[1], '-'.join(name[2:-1]), (int(name[-1]) if name[-1] else None)
-        if act in ('drink',) or act.startswith('combat'): continue
-        fid = f"horus.idle.{V2_DIR[view]}" if act == 'idle' else f"horus.{act}.{V2_DIR[view]}.{ph}"
-        if fid not in by_id: raise SystemExit(f'horus v2: no old frame {fid}')
-        old = frames[by_id[fid]]
-        path = os.path.join(HORUS_V2, s['file'])
-        data = open(path, 'rb').read()
-        assert hashlib.sha256(data).hexdigest() == s['sha256'], path
-        nb = Image.open(path).getchannel('A').point(lambda v: 255 if v >= 128 else 0).getbbox()
-        ob = old['alphaBounds']
-        r = (nb[3] - nb[1]) / (ob[3] - ob[1])
-        ocx, ncx = (ob[0] + ob[2]) / 2, (nb[0] + nb[2]) / 2
-        pivot = [round(ncx + (old['pivot'][0] - ocx) * r, 1), round(nb[1] + (old['pivot'][1] - ob[1]) * r, 1)]
-        new = {**old, 'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': round(old['referenceVisibleHeight'] * r, 2),
-               'alphaBounds': list(Image.open(path).getchannel('A').getbbox()), 'pivot': pivot}
-        new.pop('tip', None)
-        if old.get('tip'):   # the rod's end: the leftmost solid pixel (waiting) / in the top third (pulling), as life-pack does
-            a = Image.open(path).getchannel('A'); w, h = a.size; px = a.load(); best = None
-            for y in (range(h) if ph == 0 else range(h // 3)):
-                for x in range(w):
-                    if px[x, y] >= 128:
-                        if best is None or x < best[0]: best = (x, y)
-                        break
-            new['tip'] = list(best)
-        frames[by_id[fid]] = new
-        done.append(fid)
-    print('horus v2:', len(done), 'frames replaced')
-    return frames
-
-
 def main():
     man = json.load(open(os.path.join(SRC, 'manifest.json')))
     if man.get('runtimeEligible') is False:
@@ -176,7 +128,6 @@ def main():
         data = open(os.path.join(ROOT, f['path']), 'rb').read()
         assert hashlib.sha256(data).hexdigest() == f['sha256'], f['id']
     extra, playback = action_frames()
-    both = horus_v2(list(frames) + extra); frames, extra = both[:len(frames)], both[len(frames):]
     # one atlas per character: with every action in one picture it would pass 4096 px, past what some phones draw
     big, small = {}, {}
     for who in ['set', 'somang', 'horus']:
