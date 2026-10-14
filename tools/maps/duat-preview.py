@@ -4,6 +4,7 @@ python3 tools/maps/duat-preview.py
 The browser test loads the generated definitions into its disposable ST chat.
 Collision/exits/encounters are intentionally not claimed complete at this checkpoint.
 """
+import argparse
 import hashlib
 import json
 import math
@@ -14,15 +15,22 @@ OUT = ROOT / 'docs/consult/duat-field/scale'
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--out', type=Path, default=OUT)
+    parser.add_argument('--sizes', type=int, nargs='+', default=[52, 60])
+    args = parser.parse_args()
+    out = args.out.resolve()
+    if any(size <= 0 for size in args.sizes):
+        parser.error('sizes must be positive')
     src_dir = ROOT / '세부맵1/두아트'
     manifest = json.loads((src_dir / 'manifest.json').read_text())
     source = manifest['files'][0]
     raw = (src_dir / source['file']).read_bytes()
     assert hashlib.sha256(raw).hexdigest() == source['sha256']
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / 'boundary-source.png').write_bytes(raw)
+    out.mkdir(parents=True, exist_ok=True)
+    (out / 'boundary-source.png').write_bytes(raw)
     definitions = []
-    for size in (52, 60):
+    for size in args.sizes:
         name = f'duat_scale_{size}'
         w, h = math.ceil(1024 / size), math.ceil(1536 / size)
         # Map dimensions must be whole tiles. The approved image is not stretched
@@ -43,19 +51,19 @@ def main():
                 'note': '배율 비교 시안. 이동 충돌·출구·전투는 미적용.',
             },
             'scene': {
-                'file': '../docs/consult/duat-field/scale/boundary-source.png',
+                'file': '../' + (out / 'boundary-source.png').relative_to(ROOT).as_posix(),
                 'fullMap': True, 'lazy': True, 'origin': [0, 0],
                 'scale': [16 / size, 16 / size],
                 'day': [0, 0, 1024, 1536], 'night': [0, 0, 1024, 1536],
                 'clip': [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
             },
         })
-    (OUT / 'candidates.json').write_text(json.dumps({
+    (out / 'candidates.json').write_text(json.dumps({
         'status': 'preview-not-integrated', 'sourceSha256': source['sha256'],
         'positions': {'entry': [550, 1180], 'stairs': [410, 780], 'door': [550, 270]},
         'candidates': definitions,
     }, ensure_ascii=False, indent=2) + '\n')
-    print(f'Wrote {OUT}: source SHA256 verified, exact 52/60 px per tile')
+    print(f'Wrote {out}: source SHA256 verified, sizes {args.sizes}')
 
 
 if __name__ == '__main__':

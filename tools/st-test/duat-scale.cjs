@@ -6,7 +6,7 @@ const path = require('node:path');
 const assert = require('node:assert/strict');
 const OUT = path.resolve(process.argv[2] || 'docs/consult/duat-field/scale');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
-const candidates = JSON.parse(fs.readFileSync(path.join(__dirname, '../../docs/consult/duat-field/scale/candidates.json')));
+const candidates = JSON.parse(fs.readFileSync(path.join(OUT, 'candidates.json')));
 fs.mkdirSync(OUT, { recursive: true });
 (async () => {
     const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] });
@@ -33,7 +33,7 @@ fs.mkdirSync(OUT, { recursive: true });
             window.duatScale = {};
             for (const [key, file] of Object.entries({ win: 'ui/window', state: 'core/state', data: 'core/data', player: 'world/player', heroes: 'core/heroes', render: 'world/render', map: 'world/map' }))
                 duatScale[key] = await import(base + 'src/' + file + '.js');
-            const t = duatScale;
+            const t = duatScale; t.previewId = candidates.candidates[0].map.id;
             t.saved = structuredClone(SillyTavern.getContext().chatMetadata.sand_feather);
             t.state.resetState();
             const s = t.state.getState(); s.part = 'night'; s.wake = null;
@@ -66,7 +66,7 @@ fs.mkdirSync(OUT, { recursive: true });
         }
         // Verify the unoccupied background uses the same pixels at day/night.
         const background = await page.evaluate(() => {
-            const t = duatScale, id = 'duat_scale_60', scene = t.data.DATA.sceneArt[id];
+            const t = duatScale, id = t.previewId, scene = t.data.DATA.sceneArt[id];
             const map = new t.map.GameMap(t.data.DATA.maps[id]);
             const cv = document.createElement('canvas'), renderer = new t.render.Renderer(cv);
             renderer.setMap(map, 'akhet'); renderer.setSprites(t.data.DATA.sprites);
