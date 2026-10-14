@@ -17,7 +17,7 @@ OUT = ROOT / 'docs/consult/duat-field/scale'
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', type=Path, default=OUT)
-    parser.add_argument('--sizes', type=int, nargs='+', default=[52, 60])
+    parser.add_argument('--sizes', type=float, nargs='+', default=[52, 60])
     args = parser.parse_args()
     out = args.out.resolve()
     if any(size <= 0 for size in args.sizes):
