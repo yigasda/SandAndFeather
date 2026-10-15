@@ -1,0 +1,504 @@
+{
+  "status": "user-approved-art-only",
+  "runtimeApplied": false,
+  "count": 17,
+  "excluded": [
+    "horus-right-combat-hit-0"
+  ],
+  "pixelProcessing": "Connected-component extraction from generated originals; original RGBA pixels retained, 16px transparent padding; no resizing or regeneration",
+  "sprites": [
+    {
+      "file": "png/horus-left-combat-anticipation-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        584,
+        437
+      ],
+      "anchor": [
+        292,
+        421
+      ],
+      "source": "sources/combat-left-first.png",
+      "sourceCell": 1,
+      "sourceBox": [
+        12,
+        107,
+        564,
+        512
+      ],
+      "sha256": "d00c622e3b0a11599353d04f3006c42e3ee917aff409bbdb1fdf49bc931cac29",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-attack-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        585,
+        417
+      ],
+      "anchor": [
+        292,
+        401
+      ],
+      "source": "sources/combat-left-first.png",
+      "sourceCell": 2,
+      "sourceBox": [
+        561,
+        123,
+        1114,
+        508
+      ],
+      "sha256": "48092b611be54e278a10aa194c94c534e2ddaecd77c50b1c92d78434c5ffc60f",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-hit-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        344,
+        546
+      ],
+      "anchor": [
+        172,
+        530
+      ],
+      "source": "sources/combat-left-first.png",
+      "sourceCell": 3,
+      "sourceBox": [
+        1196,
+        0,
+        1508,
+        514
+      ],
+      "sha256": "5998db26ce2a9453a164933e6922ffafa29014b510f3992c0f686f21f8db4b17",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-idle-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        572,
+        449
+      ],
+      "anchor": [
+        286,
+        433
+      ],
+      "source": "sources/combat-left-first.png",
+      "sourceCell": 4,
+      "sourceBox": [
+        25,
+        587,
+        565,
+        1004
+      ],
+      "sha256": "eaea89828d6b4b54cd656add1a5eb5bfbd96a6a076dcfe08a367946429ab7cfc",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-idle-1.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "1",
+      "size": [
+        534,
+        464
+      ],
+      "anchor": [
+        267,
+        448
+      ],
+      "source": "sources/combat-left-first.png",
+      "sourceCell": 5,
+      "sourceBox": [
+        581,
+        572,
+        1083,
+        1004
+      ],
+      "sha256": "a7eb8e17c1d5c457ee88ddb3af8f3f984c9499c0179cd2e683c98a6655413834",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-idle-2.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "2",
+      "size": [
+        481,
+        455
+      ],
+      "anchor": [
+        240,
+        439
+      ],
+      "source": "sources/combat-left-first.png",
+      "sourceCell": 6,
+      "sourceBox": [
+        1069,
+        581,
+        1518,
+        1004
+      ],
+      "sha256": "f54159a3aa229fe5f09a843006599f842ff546d7ae6472e78393c407745e5034",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-idle-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        552,
+        402
+      ],
+      "anchor": [
+        276,
+        386
+      ],
+      "source": "sources/combat-right-six.png",
+      "sourceCell": 1,
+      "sourceBox": [
+        21,
+        106,
+        541,
+        476
+      ],
+      "sha256": "89080712db3fe105ba0162d221d418f6b0ae9cc9724bb5427cdf8070d2114983",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-idle-1.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "1",
+      "size": [
+        499,
+        395
+      ],
+      "anchor": [
+        249,
+        379
+      ],
+      "source": "sources/combat-right-six.png",
+      "sourceCell": 2,
+      "sourceBox": [
+        568,
+        113,
+        1035,
+        476
+      ],
+      "sha256": "8aa8745d38ab7667ac3111b42bcad67e8c2ddbaaedd19538be44ffe7571d8900",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-idle-2.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "2",
+      "size": [
+        514,
+        403
+      ],
+      "anchor": [
+        257,
+        387
+      ],
+      "source": "sources/combat-right-six.png",
+      "sourceCell": 3,
+      "sourceBox": [
+        1054,
+        107,
+        1536,
+        478
+      ],
+      "sha256": "eaf3944b1e6d45c663d9b9efd3ad6a4290ebe201a2f3e38c6a5172b084716455",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-skill-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        587,
+        395
+      ],
+      "anchor": [
+        293,
+        379
+      ],
+      "source": "sources/combat-right-six.png",
+      "sourceCell": 4,
+      "sourceBox": [
+        21,
+        598,
+        576,
+        961
+      ],
+      "sha256": "a986c73ef4d9452997e6e08391e9127272d112ab147879f36fe29885c6d9ae48",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-spell-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        326,
+        473
+      ],
+      "anchor": [
+        163,
+        457
+      ],
+      "source": "sources/combat-right-six.png",
+      "sourceCell": 5,
+      "sourceBox": [
+        664,
+        513,
+        958,
+        954
+      ],
+      "sha256": "bcfd0e18bbac695859b86ae0b7394faa2ca3f2e5b16225996733bf18100cf8c7",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-tired-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        331,
+        477
+      ],
+      "anchor": [
+        165,
+        461
+      ],
+      "source": "sources/combat-right-six.png",
+      "sourceCell": 6,
+      "sourceBox": [
+        1179,
+        502,
+        1478,
+        947
+      ],
+      "sha256": "e6b915fa0af6f3203ca29367b8e2a36ce7f52ecca50e3f1b6c72b4a183dfa965",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-skill-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        573,
+        432
+      ],
+      "anchor": [
+        286,
+        416
+      ],
+      "source": "sources/combat-mixed-original.png",
+      "sourceCell": 1,
+      "sourceBox": [
+        34,
+        126,
+        575,
+        526
+      ],
+      "sha256": "96082c8080c4f4d191cac607d8915d819740e6e71f91150130154bc940f22c56",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-spell-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        339,
+        534
+      ],
+      "anchor": [
+        169,
+        518
+      ],
+      "source": "sources/combat-mixed-original.png",
+      "sourceCell": 2,
+      "sourceBox": [
+        623,
+        17,
+        930,
+        519
+      ],
+      "sha256": "82c849a19ed5ba2cbdbc1d28694cfd0df87c5c8557ff185a1c024dc75050eee7",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "png/horus-left-combat-tired-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        774,
+        1285
+      ],
+      "anchor": [
+        387,
+        1269
+      ],
+      "source": "sources/combat-left-tired-final.png",
+      "sourceCell": 1,
+      "sourceBox": [
+        262,
+        5,
+        1004,
+        1258
+      ],
+      "sha256": "f758ec06edd6c9a6a0213c9d5c5dd363ad121976ff67b4dd4654e82dd032e3ee",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-anticipation-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        1018,
+        636
+      ],
+      "anchor": [
+        509,
+        620
+      ],
+      "source": "sources/combat-right-attack-final.png",
+      "sourceCell": 1,
+      "sourceBox": [
+        34,
+        116,
+        1020,
+        720
+      ],
+      "sha256": "3fddac5252f121620f616f3184bceacecd9658be24a37ea509dd344f0f9e6eb7",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-right-combat-attack-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        1036,
+        632
+      ],
+      "anchor": [
+        518,
+        616
+      ],
+      "source": "sources/combat-right-attack-final.png",
+      "sourceCell": 2,
+      "sourceBox": [
+        994,
+        121,
+        1998,
+        721
+      ],
+      "sha256": "17b7db69440038bf119306f51df00a2d477eecf6b2da4e6049095204b41fc25b",
+      "approvalEvidence": "사용자: 지금까지 한 전투 스프라이트 마지막 6번째만 제외한 거 다 개별png로 나눠서 올려줘",
+      "pixelEquality": true,
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}
