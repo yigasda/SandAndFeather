@@ -1,0 +1,338 @@
+[
+  {
+    "cell": 1,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-idle-0.png",
+    "headSourceBox": [
+      48,
+      50,
+      300,
+      245
+    ],
+    "visibleLandmarks": [
+      252,
+      289,
+      316,
+      345
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 2,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-idle-1.png",
+    "headSourceBox": [
+      402,
+      50,
+      650,
+      243
+    ],
+    "visibleLandmarks": [
+      251,
+      287,
+      315,
+      346
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 3,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-idle-2.png",
+    "headSourceBox": [
+      758,
+      50,
+      1007,
+      245
+    ],
+    "visibleLandmarks": [
+      251,
+      289,
+      317,
+      349
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 4,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 15,
+      "screenClockwiseRollDegrees": 15,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-skill-0.png",
+    "headSourceBox": [
+      1100,
+      67,
+      1370,
+      259
+    ],
+    "visibleLandmarks": [
+      246,
+      275,
+      296,
+      344
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 5,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 40,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-spell-0.png",
+    "headSourceBox": [
+      78,
+      413,
+      293,
+      594
+    ],
+    "visibleLandmarks": [
+      592,
+      632,
+      671,
+      701
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 6,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 50,
+      "pitchDownDegrees": 15,
+      "screenClockwiseRollDegrees": 5,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-tired-0.png",
+    "headSourceBox": [
+      451,
+      447,
+      654,
+      622
+    ],
+    "visibleLandmarks": [
+      626,
+      656,
+      675,
+      707
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 7,
+    "faceAngles": {
+      "yawDirection": "left",
+      "yawDegrees": 50,
+      "pitchDownDegrees": 15,
+      "screenClockwiseRollDegrees": -15,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-left-combat-skill-0.png",
+    "headSourceBox": [
+      778,
+      423,
+      1012,
+      604
+    ],
+    "visibleLandmarks": [
+      573,
+      606,
+      646,
+      686
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 8,
+    "faceAngles": {
+      "yawDirection": "left",
+      "yawDegrees": 40,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-left-combat-spell-0.png",
+    "headSourceBox": [
+      1152,
+      415,
+      1371,
+      602
+    ],
+    "visibleLandmarks": [
+      604,
+      641,
+      680,
+      717
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 9,
+    "faceAngles": {
+      "yawDirection": "left",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 20,
+      "screenClockwiseRollDegrees": -10,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-left-combat-tired-0.png",
+    "headSourceBox": [
+      70,
+      785,
+      260,
+      964
+    ],
+    "visibleLandmarks": [
+      965,
+      1001,
+      1024,
+      1068
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 10,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 10,
+      "screenClockwiseRollDegrees": 5,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-anticipation-0.png",
+    "headSourceBox": [
+      406,
+      778,
+      641,
+      972
+    ],
+    "visibleLandmarks": [
+      959,
+      991,
+      1019,
+      1056
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 11,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 10,
+      "screenClockwiseRollDegrees": 5,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-attack-0.png",
+    "headSourceBox": [
+      786,
+      778,
+      1017,
+      970
+    ],
+    "visibleLandmarks": [
+      957,
+      990,
+      1018,
+      1056
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 12,
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": -10,
+      "screenClockwiseRollDegrees": -10,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-hit-0.png",
+    "headSourceBox": [
+      1170,
+      761,
+      1407,
+      963
+    ],
+    "visibleLandmarks": [
+      955,
+      990,
+      1029,
+      1064
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  }
+]

@@ -1,0 +1,1 @@
+Life pose guides: eye outlines, eyelids, lashes and pupils removed. Body, hands, props, brows and mouth retained. Use original character image for appearance. Preserve diagram body poses. Surprise: do not use its pose diagram. Emotion prompts only: shy = slightly shy; surprise = slightly surprised.

@@ -1,0 +1,410 @@
+[
+  {
+    "cell": 1,
+    "expressionDetails": [
+      "눈: 양쪽 반쯤 뜸 · 윗눈꺼풀 낮게",
+      "눈썹: 안쪽이 조금 낮은 완만한 경사",
+      "시선: 얼굴이 향한 우측 전방",
+      "입: 아주 작게 다묾 · 미소 없음"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-idle-0.png",
+    "headSourceBox": [
+      48,
+      50,
+      300,
+      245
+    ],
+    "visibleLandmarks": [
+      252,
+      289,
+      316,
+      345
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 2,
+    "expressionDetails": [
+      "눈: 양쪽 반쯤 뜸 · 윗눈꺼풀 낮게",
+      "눈썹: 안쪽이 조금 낮은 완만한 경사",
+      "시선: 얼굴이 향한 우측 전방",
+      "입: 아주 작게 다묾 · 미소 없음"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-idle-1.png",
+    "headSourceBox": [
+      402,
+      50,
+      650,
+      243
+    ],
+    "visibleLandmarks": [
+      251,
+      287,
+      315,
+      346
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 3,
+    "expressionDetails": [
+      "눈: 양쪽 반쯤 뜸 · 윗눈꺼풀 낮게",
+      "눈썹: 안쪽이 조금 낮은 완만한 경사",
+      "시선: 얼굴이 향한 우측 전방",
+      "입: 아주 작게 다묾 · 미소 없음"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-idle-2.png",
+    "headSourceBox": [
+      758,
+      50,
+      1007,
+      245
+    ],
+    "visibleLandmarks": [
+      251,
+      289,
+      317,
+      349
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 4,
+    "expressionDetails": [
+      "눈: 양쪽 뜸 · 힘주어 좁힌 눈매",
+      "눈썹: 안쪽을 낮춰 강하게 모음",
+      "시선: 우측 아래 돌진 목표",
+      "입: 작은 가로 타원으로 살짝 벌림"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 15,
+      "screenClockwiseRollDegrees": 15,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-skill-0.png",
+    "headSourceBox": [
+      1100,
+      67,
+      1370,
+      259
+    ],
+    "visibleLandmarks": [
+      246,
+      275,
+      296,
+      344
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 5,
+    "expressionDetails": [
+      "눈: 양쪽 반쯤 뜸 · 차분하게 집중",
+      "눈썹: 안쪽이 조금 낮은 완만한 경사",
+      "시선: 뻗은 손 너머 우측 전방",
+      "입: 작게 다묾"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 40,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-spell-0.png",
+    "headSourceBox": [
+      78,
+      413,
+      293,
+      594
+    ],
+    "visibleLandmarks": [
+      592,
+      632,
+      671,
+      701
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 6,
+    "expressionDetails": [
+      "눈: 화면 왼쪽 눈 감음 · 반대 눈 가늘게 뜸",
+      "눈썹: 안쪽이 들림 · 힘겨운 비대칭",
+      "시선: 뜬 눈은 우측 아래",
+      "입: 작게 다묾 · 입꼬리 조금 내려감"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 50,
+      "pitchDownDegrees": 15,
+      "screenClockwiseRollDegrees": 5,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-tired-0.png",
+    "headSourceBox": [
+      451,
+      447,
+      654,
+      622
+    ],
+    "visibleLandmarks": [
+      626,
+      656,
+      675,
+      707
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 7,
+    "expressionDetails": [
+      "눈: 양쪽 뜸 · 윗눈꺼풀에 힘을 줌",
+      "눈썹: 안쪽 낮게 · 선명한 긴장",
+      "시선: 좌측 아래 돌진 목표",
+      "입: 작게 다묾 · 큰 외침 없음"
+    ],
+    "faceAngles": {
+      "yawDirection": "left",
+      "yawDegrees": 50,
+      "pitchDownDegrees": 15,
+      "screenClockwiseRollDegrees": -15,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-left-combat-skill-0.png",
+    "headSourceBox": [
+      778,
+      423,
+      1012,
+      604
+    ],
+    "visibleLandmarks": [
+      573,
+      606,
+      646,
+      686
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 8,
+    "expressionDetails": [
+      "눈: 양쪽 뜸 · 약간 좁힌 집중 눈매",
+      "눈썹: 안쪽 낮게 · 완만한 긴장",
+      "시선: 뻗은 손 너머 좌측 전방",
+      "입: 작고 둥글게 벌림 · 주문 중"
+    ],
+    "faceAngles": {
+      "yawDirection": "left",
+      "yawDegrees": 40,
+      "pitchDownDegrees": 0,
+      "screenClockwiseRollDegrees": 0,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-left-combat-spell-0.png",
+    "headSourceBox": [
+      1152,
+      415,
+      1371,
+      602
+    ],
+    "visibleLandmarks": [
+      604,
+      641,
+      680,
+      717
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 9,
+    "expressionDetails": [
+      "눈: 양쪽 가늘게 뜸 · 윗눈꺼풀 처짐",
+      "눈썹: 약한 비대칭 · 지친 긴장",
+      "시선: 좌측 아래 · 고개 숙임",
+      "입: 작게 다묾 · 손·팔에 일부 가림"
+    ],
+    "faceAngles": {
+      "yawDirection": "left",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 20,
+      "screenClockwiseRollDegrees": -10,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-left-combat-tired-0.png",
+    "headSourceBox": [
+      70,
+      785,
+      260,
+      964
+    ],
+    "visibleLandmarks": [
+      965,
+      1001,
+      1024,
+      1068
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 10,
+    "expressionDetails": [
+      "눈: 양쪽 반쯤 뜸 · 좁힌 집중 눈매",
+      "눈썹: 안쪽을 약간 낮춤",
+      "시선: 우측 창끝 너머",
+      "입: 작은 선으로 다묾"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 10,
+      "screenClockwiseRollDegrees": 5,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-anticipation-0.png",
+    "headSourceBox": [
+      406,
+      778,
+      641,
+      972
+    ],
+    "visibleLandmarks": [
+      959,
+      991,
+      1019,
+      1056
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 11,
+    "expressionDetails": [
+      "눈: 양쪽 반쯤 뜸 · 준비와 같은 집중",
+      "눈썹: 안쪽을 약간 낮춤",
+      "시선: 우측 공격 목표",
+      "입: 작은 선으로 다묾"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": 10,
+      "screenClockwiseRollDegrees": 5,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-attack-0.png",
+    "headSourceBox": [
+      786,
+      778,
+      1017,
+      970
+    ],
+    "visibleLandmarks": [
+      957,
+      990,
+      1018,
+      1056
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 12,
+    "expressionDetails": [
+      "눈: 화면 왼쪽 눈 꽉 감음 · 반대 눈 뜸",
+      "눈썹: 안쪽이 들린 비대칭 · 통증",
+      "시선: 뜬 눈은 우측 전방",
+      "입: 옆으로 벌어진 작은 입 · 흰 틈 표시"
+    ],
+    "faceAngles": {
+      "yawDirection": "right",
+      "yawDegrees": 45,
+      "pitchDownDegrees": -10,
+      "screenClockwiseRollDegrees": -10,
+      "method": "approximate manual visual estimates from 2D pose reference, not measured 3D angles"
+    },
+    "source": "png/horus-right-combat-hit-0.png",
+    "headSourceBox": [
+      1170,
+      761,
+      1407,
+      963
+    ],
+    "visibleLandmarks": [
+      955,
+      990,
+      1029,
+      1064
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "cell": 1,
+    "source": "png/horus-right-combat-idle-0.png",
+    "headSourceBox": [
+      48,
+      50,
+      300,
+      245
+    ],
+    "visibleLandmarks": [
+      252,
+      289,
+      316,
+      345
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 2,
+    "source": "png/horus-right-combat-idle-1.png",
+    "headSourceBox": [
+      402,
+      50,
+      650,
+      243
+    ],
+    "visibleLandmarks": [
+      251,
+      287,
+      315,
+      346
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 3,
+    "source": "png/horus-right-combat-idle-2.png",
+    "headSourceBox": [
+      758,
+      50,
+      1007,
+      245
+    ],
+    "visibleLandmarks": [
+      251,
+      289,
+      317,
+      349
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 4,
+    "source": "png/horus-right-combat-skill-0.png",
+    "headSourceBox": [
+      1100,
+      67,
+      1370,
+      259
+    ],
+    "visibleLandmarks": [
+      246,
+      275,
+      296,
+      344
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 5,
+    "source": "png/horus-right-combat-spell-0.png",
+    "headSourceBox": [
+      78,
+      413,
+      293,
+      594
+    ],
+    "visibleLandmarks": [
+      592,
+      632,
+      671,
+      701
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 6,
+    "source": "png/horus-right-combat-tired-0.png",
+    "headSourceBox": [
+      451,
+      447,
+      654,
+      622
+    ],
+    "visibleLandmarks": [
+      626,
+      656,
+      675,
+      707
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 7,
+    "source": "png/horus-left-combat-skill-0.png",
+    "headSourceBox": [
+      778,
+      423,
+      1012,
+      604
+    ],
+    "visibleLandmarks": [
+      573,
+      606,
+      646,
+      686
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 8,
+    "source": "png/horus-left-combat-spell-0.png",
+    "headSourceBox": [
+      1152,
+      415,
+      1371,
+      602
+    ],
+    "visibleLandmarks": [
+      604,
+      641,
+      680,
+      717
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 9,
+    "source": "png/horus-left-combat-tired-0.png",
+    "headSourceBox": [
+      70,
+      785,
+      260,
+      964
+    ],
+    "visibleLandmarks": [
+      965,
+      1001,
+      1024,
+      1068
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 10,
+    "source": "png/horus-right-combat-anticipation-0.png",
+    "headSourceBox": [
+      406,
+      778,
+      641,
+      972
+    ],
+    "visibleLandmarks": [
+      959,
+      991,
+      1019,
+      1056
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 11,
+    "source": "png/horus-right-combat-attack-0.png",
+    "headSourceBox": [
+      786,
+      778,
+      1017,
+      970
+    ],
+    "visibleLandmarks": [
+      957,
+      990,
+      1018,
+      1056
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  },
+  {
+    "cell": 12,
+    "source": "png/horus-right-combat-hit-0.png",
+    "headSourceBox": [
+      1170,
+      761,
+      1407,
+      963
+    ],
+    "visibleLandmarks": [
+      955,
+      990,
+      1029,
+      1064
+    ],
+    "headEnvelopeRatio": {
+      "height": 0.623,
+      "width": 0.757
+    },
+    "note": "manual head region suppression; Canny and alpha contours from original PNG; projected approximation for flight"
+  }
+]

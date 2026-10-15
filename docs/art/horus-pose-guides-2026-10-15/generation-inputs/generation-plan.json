@@ -1,0 +1,566 @@
+[
+  {
+    "name": "01-idle",
+    "guide": "/workspace/horus-redraw-68/01-idle-input-guide.png",
+    "cols": 2,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 1,
+        "id": "horus.idle.up",
+        "state": "idle",
+        "direction": "up",
+        "frame": 0
+      },
+      {
+        "number": 2,
+        "id": "horus.idle.down",
+        "state": "idle",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 3,
+        "id": "horus.idle.left",
+        "state": "idle",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 4,
+        "id": "horus.idle.right",
+        "state": "idle",
+        "direction": "right",
+        "frame": 0
+      }
+    ]
+  },
+  {
+    "name": "02-walk-back-front",
+    "guide": "/workspace/horus-redraw-68/02-walk-back-front-input-guide.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 5,
+        "id": "horus.walk.up.0",
+        "state": "walk",
+        "direction": "up",
+        "frame": 0
+      },
+      {
+        "number": 6,
+        "id": "horus.walk.up.1",
+        "state": "walk",
+        "direction": "up",
+        "frame": 1
+      },
+      {
+        "number": 7,
+        "id": "horus.walk.up.2",
+        "state": "walk",
+        "direction": "up",
+        "frame": 2
+      },
+      {
+        "number": 8,
+        "id": "horus.walk.down.0",
+        "state": "walk",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 9,
+        "id": "horus.walk.down.1",
+        "state": "walk",
+        "direction": "down",
+        "frame": 1
+      },
+      {
+        "number": 10,
+        "id": "horus.walk.down.2",
+        "state": "walk",
+        "direction": "down",
+        "frame": 2
+      }
+    ]
+  },
+  {
+    "name": "03-walk-left-right",
+    "guide": "/workspace/horus-redraw-68/03-walk-left-right-input-guide.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 11,
+        "id": "horus.walk.left.0",
+        "state": "walk",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 12,
+        "id": "horus.walk.left.1",
+        "state": "walk",
+        "direction": "left",
+        "frame": 1
+      },
+      {
+        "number": 13,
+        "id": "horus.walk.left.2",
+        "state": "walk",
+        "direction": "left",
+        "frame": 2
+      },
+      {
+        "number": 14,
+        "id": "horus.walk.right.0",
+        "state": "walk",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 15,
+        "id": "horus.walk.right.1",
+        "state": "walk",
+        "direction": "right",
+        "frame": 1
+      },
+      {
+        "number": 16,
+        "id": "horus.walk.right.2",
+        "state": "walk",
+        "direction": "right",
+        "frame": 2
+      }
+    ]
+  },
+  {
+    "name": "04-interact",
+    "guide": "/workspace/horus-redraw-68/04-interact-input-guide.png",
+    "cols": 4,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 17,
+        "id": "horus.interact.down.0",
+        "state": "interact",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 18,
+        "id": "horus.interact.down.1",
+        "state": "interact",
+        "direction": "down",
+        "frame": 1
+      },
+      {
+        "number": 19,
+        "id": "horus.interact.up.0",
+        "state": "interact",
+        "direction": "up",
+        "frame": 0
+      },
+      {
+        "number": 20,
+        "id": "horus.interact.up.1",
+        "state": "interact",
+        "direction": "up",
+        "frame": 1
+      },
+      {
+        "number": 21,
+        "id": "horus.interact.left.0",
+        "state": "interact",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 22,
+        "id": "horus.interact.left.1",
+        "state": "interact",
+        "direction": "left",
+        "frame": 1
+      },
+      {
+        "number": 23,
+        "id": "horus.interact.right.0",
+        "state": "interact",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 24,
+        "id": "horus.interact.right.1",
+        "state": "interact",
+        "direction": "right",
+        "frame": 1
+      }
+    ]
+  },
+  {
+    "name": "05-pickup",
+    "guide": "/workspace/horus-redraw-68/05-pickup-input-guide.png",
+    "cols": 4,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 25,
+        "id": "horus.pickup.up.0",
+        "state": "pickup",
+        "direction": "up",
+        "frame": 0
+      },
+      {
+        "number": 26,
+        "id": "horus.pickup.up.1",
+        "state": "pickup",
+        "direction": "up",
+        "frame": 1
+      },
+      {
+        "number": 27,
+        "id": "horus.pickup.down.0",
+        "state": "pickup",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 28,
+        "id": "horus.pickup.down.1",
+        "state": "pickup",
+        "direction": "down",
+        "frame": 1
+      },
+      {
+        "number": 29,
+        "id": "horus.pickup.left.0",
+        "state": "pickup",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 30,
+        "id": "horus.pickup.left.1",
+        "state": "pickup",
+        "direction": "left",
+        "frame": 1
+      },
+      {
+        "number": 31,
+        "id": "horus.pickup.right.0",
+        "state": "pickup",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 32,
+        "id": "horus.pickup.right.1",
+        "state": "pickup",
+        "direction": "right",
+        "frame": 1
+      }
+    ]
+  },
+  {
+    "name": "06-sit",
+    "guide": "/workspace/horus-redraw-68/06-sit-input-guide.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 33,
+        "id": "horus.sit-floor.up.0",
+        "state": "sit-floor",
+        "direction": "up",
+        "frame": 0
+      },
+      {
+        "number": 34,
+        "id": "horus.sit-stool.up.0",
+        "state": "sit-stool",
+        "direction": "up",
+        "frame": 0
+      },
+      {
+        "number": 35,
+        "id": "horus.sit-floor.left.0",
+        "state": "sit-floor",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 36,
+        "id": "horus.sit-bench.right.0",
+        "state": "sit-bench",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 37,
+        "id": "horus.sit-floor.right.0",
+        "state": "sit-floor",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 38,
+        "id": "horus.sit-bench.left.0",
+        "state": "sit-bench",
+        "direction": "left",
+        "frame": 0
+      }
+    ]
+  },
+  {
+    "name": "07-sleep",
+    "guide": "/workspace/horus-redraw-68/07-sleep-input-guide.png",
+    "cols": 2,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 39,
+        "id": "horus.sleep.down.0",
+        "state": "sleep",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 40,
+        "id": "horus.sleep.down.1",
+        "state": "sleep",
+        "direction": "down",
+        "frame": 1
+      },
+      {
+        "number": 41,
+        "id": "horus.sleep.right.0",
+        "state": "sleep",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 42,
+        "id": "horus.sleep.right.1",
+        "state": "sleep",
+        "direction": "right",
+        "frame": 1
+      }
+    ]
+  },
+  {
+    "name": "08-life",
+    "guide": "/workspace/horus-redraw-68/08-life-input-guide.png",
+    "cols": 4,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 43,
+        "id": "horus.fish.down.0",
+        "state": "fish",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 44,
+        "id": "horus.fish.down.1",
+        "state": "fish",
+        "direction": "down",
+        "frame": 1
+      },
+      {
+        "number": 45,
+        "id": "horus.cook.up.0",
+        "state": "cook",
+        "direction": "up",
+        "frame": 0
+      },
+      {
+        "number": 46,
+        "id": "horus.read.down.0",
+        "state": "read",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 47,
+        "id": "horus.happy.down.0",
+        "state": "happy",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 48,
+        "id": "horus.shy.down.0",
+        "state": "shy",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 49,
+        "id": "horus.surprised.down.0",
+        "state": "surprised",
+        "direction": "down",
+        "frame": 0
+      },
+      {
+        "number": 50,
+        "id": "horus.eat.right.0",
+        "state": "eat",
+        "direction": "right",
+        "frame": 0
+      }
+    ]
+  },
+  {
+    "name": "09-combat-left-a",
+    "guide": "/workspace/horus-redraw-68/09-combat-left-a-input-guide.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 51,
+        "id": "horus.combat.left.anticipation.0",
+        "state": "combat-anticipation",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 52,
+        "id": "horus.combat.left.attack.0",
+        "state": "combat-attack",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 53,
+        "id": "horus.combat.left.hit.0",
+        "state": "combat-hit",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 54,
+        "id": "horus.combat.left.idle.0",
+        "state": "combat-idle",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 55,
+        "id": "horus.combat.left.idle.1",
+        "state": "combat-idle",
+        "direction": "left",
+        "frame": 1
+      },
+      {
+        "number": 56,
+        "id": "horus.combat.left.idle.2",
+        "state": "combat-idle",
+        "direction": "left",
+        "frame": 2
+      }
+    ]
+  },
+  {
+    "name": "10-combat-mixed",
+    "guide": "/workspace/horus-redraw-68/10-combat-mixed-input-guide.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 57,
+        "id": "horus.combat.left.skill.0",
+        "state": "combat-skill",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 58,
+        "id": "horus.combat.left.spell.0",
+        "state": "combat-spell",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 59,
+        "id": "horus.combat.left.tired.0",
+        "state": "combat-tired",
+        "direction": "left",
+        "frame": 0
+      },
+      {
+        "number": 60,
+        "id": "horus.combat.right.anticipation.0",
+        "state": "combat-anticipation",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 61,
+        "id": "horus.combat.right.attack.0",
+        "state": "combat-attack",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 62,
+        "id": "horus.combat.right.hit.0",
+        "state": "combat-hit",
+        "direction": "right",
+        "frame": 0
+      }
+    ]
+  },
+  {
+    "name": "11-combat-right-b",
+    "guide": "/workspace/horus-redraw-68/11-combat-right-b-input-guide.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      {
+        "number": 63,
+        "id": "horus.combat.right.idle.0",
+        "state": "combat-idle",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 64,
+        "id": "horus.combat.right.idle.1",
+        "state": "combat-idle",
+        "direction": "right",
+        "frame": 1
+      },
+      {
+        "number": 65,
+        "id": "horus.combat.right.idle.2",
+        "state": "combat-idle",
+        "direction": "right",
+        "frame": 2
+      },
+      {
+        "number": 66,
+        "id": "horus.combat.right.skill.0",
+        "state": "combat-skill",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 67,
+        "id": "horus.combat.right.spell.0",
+        "state": "combat-spell",
+        "direction": "right",
+        "frame": 0
+      },
+      {
+        "number": 68,
+        "id": "horus.combat.right.tired.0",
+        "state": "combat-tired",
+        "direction": "right",
+        "frame": 0
+      }
+    ]
+  }
+]

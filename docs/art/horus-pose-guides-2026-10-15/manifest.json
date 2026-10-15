@@ -1,0 +1,1860 @@
+{
+  "purpose": "Historical pose-guide reference and construction archive; not approved sprite delivery",
+  "files": [
+    {
+      "file": "combat-12/horus-12-detailed-direction-guide.png",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/horus-12-detailed-direction-guide.png",
+      "sha256": "5c1dec30ddcf80a675a297a952c998816ab68e1664b5c153a64987266cafe147"
+    },
+    {
+      "file": "combat-12/angles.py",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/angles.py",
+      "sha256": "4e5f0bc0a284d10948594f774a7583783ed287b110f67bf4c1b44faa090bc3ca"
+    },
+    {
+      "file": "combat-12/three-direction-flight-test.png",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/three-direction-flight-test.png",
+      "sha256": "7971a2c8bf602f57ab11e9bb06294a96cd26275a71903fe479ddc2b81cf0d72a"
+    },
+    {
+      "file": "combat-12/horus-12-detailed-contour-guide.png",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/horus-12-detailed-contour-guide.png",
+      "sha256": "54b0054c91f5d31cade1f2c8a149cb3e8e446030a32503bc6e55a803b69c1f8e"
+    },
+    {
+      "file": "combat-12/expression-review.png",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/expression-review.png",
+      "sha256": "d2585c2e83785ffc79800497def4078bf7df8ea90ed9c10bb12fc5bfbadf7748"
+    },
+    {
+      "file": "combat-12/horus-12-pose-guide.png",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/horus-12-pose-guide.png",
+      "sha256": "a11a881b335ee682bd6432b18661365cf1ac4b80b2d101d044b30f6f1a14a164"
+    },
+    {
+      "file": "combat-12/detailed-manifest.json",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/detailed-manifest.json",
+      "sha256": "659fa6a6e5e5b8d1cc150be4a5275293e521fecdbedaa9139e7363d93ed19265"
+    },
+    {
+      "file": "combat-12/expression-notes.json",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/expression-notes.json",
+      "sha256": "797b2a5da64a95f3ce42b663b9436e399d8c9a4aba4e3187d54126d17ec01a61"
+    },
+    {
+      "file": "combat-12/horus-12-angle-expression-guide.png",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/horus-12-angle-expression-guide.png",
+      "sha256": "2bdcaf93abf1272e0c73ad8d20c0578c9c02a791825a67593d618676df7bc5d5"
+    },
+    {
+      "file": "combat-12/add_expressions.py",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/add_expressions.py",
+      "sha256": "20b82bb1fca205b47d6dbce185d56c47e57536bbb15000df2f9d2e1303ae87f5"
+    },
+    {
+      "file": "combat-12/detail.py",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/detail.py",
+      "sha256": "0de747cd72973b47098fec5a9d5f137e07268780356cd2dec292843df27d9a71"
+    },
+    {
+      "file": "combat-12/horus-12-face-angle-guide.png",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/horus-12-face-angle-guide.png",
+      "sha256": "5af07828d64f71c275945c5da6a8c43327fa7b1ccbc86ea253b0ce12aed7b023"
+    },
+    {
+      "file": "combat-12/angle-expression-manifest.json",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/angle-expression-manifest.json",
+      "sha256": "e3acd0fb96adb2c9e2acd81038323ff13e7fe96ac8dd664db3668a2d96f8d39a"
+    },
+    {
+      "file": "combat-12/three_test.py",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/three_test.py",
+      "sha256": "521890e8db801f709af89bdb5d2e7dcd3bd9678fe9568e438970b518f0f4f59b"
+    },
+    {
+      "file": "combat-12/manifest.json",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/manifest.json",
+      "sha256": "5f21f3a230128e06fc34a1325630bad915e2b79f3400cc7c3a5414d283129ca8"
+    },
+    {
+      "file": "combat-12/expressions.py",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/expressions.py",
+      "sha256": "9acf05be0de71786588ae6d7cd3f386886661e1a8057ae745a306295acf3730f"
+    },
+    {
+      "file": "combat-12/face-angle-manifest.json",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/face-angle-manifest.json",
+      "sha256": "5c33d1a8e55b1fd0b4e38a3a801537330611fba2af19facf0a587dcd880bc4c8"
+    },
+    {
+      "file": "combat-12/direction.py",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/direction.py",
+      "sha256": "480569b801fd300a9549b061937e81c8c3db0400928d371000554d6c286e501d"
+    },
+    {
+      "file": "combat-12/build.py",
+      "originalWorkspacePath": "/workspace/horus-combat-pose-guide/build.py",
+      "sha256": "24e48f3dc8b1de9d42640b55f0c1cfcbb07389c9e2b41f3f091ad2851469f927"
+    },
+    {
+      "file": "life-motion/02-pickup-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/02-pickup-diagram.png",
+      "sha256": "65593aad3d5f9c322d13c02a74529367634b0ab38f5fc26ca0a849c6b4ee282b"
+    },
+    {
+      "file": "life-motion/01-walk-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/01-walk-compare.png",
+      "sha256": "bac8a77e53e2041636403e8572f288275993f787745f73248fac13f276cc414c"
+    },
+    {
+      "file": "life-motion/07-fish-pull-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/07-fish-pull-compare.png",
+      "sha256": "55d3022ac6df72bb6346ce98dd2972f39ce8f64380ba1ff5bfae2d58b7f980d9"
+    },
+    {
+      "file": "life-motion/00-original-overlay-diagrams.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/00-original-overlay-diagrams.png",
+      "sha256": "427b01cf52149aa8aaa73d8364004ce7dac733fc5c85e02a79236a0549f620bd"
+    },
+    {
+      "file": "life-motion/10-read-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/10-read-diagram.png",
+      "sha256": "0e29e03c8164bda2875d324a6f289320e35fbb33691883a78db6a9edde3038f5"
+    },
+    {
+      "file": "life-motion/02-pickup-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/02-pickup-compare.png",
+      "sha256": "24d70e035d8df41620f640e24a838cdb9aaae2ebe13a132e6adfacbb97ff8f7b"
+    },
+    {
+      "file": "life-motion/09-cook-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/09-cook-compare.png",
+      "sha256": "0ed4ff9b92465a84014a63056b632e0b14c3d80087f8f3ddab429e84d79bdcb9"
+    },
+    {
+      "file": "life-motion/07-fish-pull-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/07-fish-pull-diagram.png",
+      "sha256": "24257b45cdb3d37978cafce5d2e5164595e2327837b7da178823fcf85ebef2db"
+    },
+    {
+      "file": "life-motion/12-alert-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/12-alert-compare.png",
+      "sha256": "1aea9f4a7354f29df78092f7ec64e8e35a95473183140d64c232d1ec2c3af159"
+    },
+    {
+      "file": "life-motion/03-kneel-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/03-kneel-diagram.png",
+      "sha256": "87b4d58d114921c1d5e80a7a05429a48a57a4cec26c1c55d98312c1c00be4339"
+    },
+    {
+      "file": "life-motion/04-sleep-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/04-sleep-compare.png",
+      "sha256": "b1f33b233b6899877dc56729b10ce2997713d059493c9354375882a00f6fd0e6"
+    },
+    {
+      "file": "life-motion/12-alert-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/12-alert-diagram.png",
+      "sha256": "1f4b19b6b047f4c21d8eff511913dea2f40ee27eb44dc37bb366a059bf0e7654"
+    },
+    {
+      "file": "life-motion/06-fish-wait-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/06-fish-wait-compare.png",
+      "sha256": "58cbb0c16cadd47f901b24c8a59d0a3721848f19665427c0a449c0f4f1a40c65"
+    },
+    {
+      "file": "life-motion/01-walk-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/01-walk-diagram.png",
+      "sha256": "0c2aa9b2659fdb35190756bafd2e521a21f88d70c40d914200143d890e02cd74"
+    },
+    {
+      "file": "life-motion/03-kneel-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/03-kneel-compare.png",
+      "sha256": "29777e6f5da35a545df124692ea14d61324a0dd0f9ea8bfe47ef4eee3f13548f"
+    },
+    {
+      "file": "life-motion/04-sleep-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/04-sleep-diagram.png",
+      "sha256": "6e049f1e53378bf5384ccee460da1cbe1afef77bab33e2e2ab5085ff76b7d329"
+    },
+    {
+      "file": "life-motion/08-drink-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/08-drink-compare.png",
+      "sha256": "ff26cd83c9277b564b5fa97d2cea80f7c44b50ea4969f5f8e1064990ae30b322"
+    },
+    {
+      "file": "life-motion/05-sleep-side-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/05-sleep-side-diagram.png",
+      "sha256": "2a90fb8b02f9429fd7eb58073c8459b273c67fac4f9973f6c52ae0345f232997"
+    },
+    {
+      "file": "life-motion/05-sleep-side-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/05-sleep-side-compare.png",
+      "sha256": "c66afbbd376b6ea27f2ccd84bb7a797d4a82599ab41a173b2e3251c243114454"
+    },
+    {
+      "file": "life-motion/08-drink-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/08-drink-diagram.png",
+      "sha256": "1b09b152a11d999555f02d3aa382568af9b6ca0ff82377d1fe79351eaf2904f7"
+    },
+    {
+      "file": "life-motion/09-cook-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/09-cook-diagram.png",
+      "sha256": "c0323b546a1c9b01d848c4006f1d1dd202222630c853c520982020adac3f0838"
+    },
+    {
+      "file": "life-motion/11-shy-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/11-shy-compare.png",
+      "sha256": "ed6a9667ae9f6134d00c7ac43e9d7126949f087d7030a7b728f39b68099e5b34"
+    },
+    {
+      "file": "life-motion/11-shy-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/11-shy-diagram.png",
+      "sha256": "da9d7ce2ecb2f50107247896097adcf0eda3314c9055dbc4a73919fdf82b8e61"
+    },
+    {
+      "file": "life-motion/06-fish-wait-diagram.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/06-fish-wait-diagram.png",
+      "sha256": "514eb22fbf452209ecb412dd4d8fe409cee0675a6dfffa6121adbae4aeea8ba6"
+    },
+    {
+      "file": "life-motion/10-read-compare.png",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/10-read-compare.png",
+      "sha256": "6625677fe7d7062c28783f572376ba7c254a41cc14c98c225b3f27f8073e16cd"
+    },
+    {
+      "file": "life-motion/landmarks.json",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/landmarks.json",
+      "sha256": "244cc7e2612f04aa9c591fd0f37c20803c17e9e3fb6ae96f1f10150a2ec4ebac"
+    },
+    {
+      "file": "life-motion/README.txt",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/README.txt",
+      "sha256": "906167cdaf8c54db3626a6104f22c75e02730dd7a3575d76e7004f8b85391a8c"
+    },
+    {
+      "file": "life-motion/build.py",
+      "originalWorkspacePath": "/workspace/horus-motion-diagrams/build.py",
+      "sha256": "ab9170a64c385c3ec872c9a36a2bded73c2284856591f312ccb1e0ca9780600e"
+    },
+    {
+      "file": "all-68/masks_draft.py",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/masks_draft.py",
+      "sha256": "fd42b528cac5d02fc1e6d59e4188a18d7bffd0fef20e576584f8c0733fa527cf"
+    },
+    {
+      "file": "all-68/00-all-68-index.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/00-all-68-index.png",
+      "sha256": "7417e3d69871ea1196143baf4c77d8f674988c8e953f0c76c210544f909cd02c"
+    },
+    {
+      "file": "all-68/00-clean-68-index.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/00-clean-68-index.png",
+      "sha256": "5ee9530f92c42da786a9e5f0672fa3df849c8a430bca6658bb39c81c2b120a38"
+    },
+    {
+      "file": "all-68/index.html",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/index.html",
+      "sha256": "aea24978ee983cd0a98e90fb4883f9e81a3169d696224d8e28f3081460cb9e00"
+    },
+    {
+      "file": "all-68/clean_preview.py",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean_preview.py",
+      "sha256": "afb3c4e9912aad941f4351eb9384a59243cb0004199cbe2b68339324c3e29b18"
+    },
+    {
+      "file": "all-68/remove_head.py",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/remove_head.py",
+      "sha256": "e1536da46405932af47d442c12d2196176a5767afc5a30ab975c9913788b229f"
+    },
+    {
+      "file": "all-68/manifest.json",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/manifest.json",
+      "sha256": "d954effbc0fce180df05d22c9cf3ef10c70853965252c30e6e7b18c5cbb26bb7"
+    },
+    {
+      "file": "all-68/remove_life_eyes.py",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/remove_life_eyes.py",
+      "sha256": "c0fcb1f9c6762e093121e6e1b0d4f98de73c43530268f6c7f03671e8b18a7328"
+    },
+    {
+      "file": "all-68/README.txt",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/README.txt",
+      "sha256": "68b63d8151890619080d519d685340921f56befd0bda0697ce9182ed925dec06"
+    },
+    {
+      "file": "all-68/build.py",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/build.py",
+      "sha256": "abb1843af1b4727578baef3fe150e281eee9e022cfcc9aef36e182fabaf34fbc"
+    },
+    {
+      "file": "all-68/comparisons/43-horus.fish.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/43-horus.fish.down.0.png",
+      "sha256": "58806b7ef288100770c54486a72d67cd3afab8445ca0fd8f413019a186cc0bc3"
+    },
+    {
+      "file": "all-68/comparisons/22-horus.interact.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/22-horus.interact.left.1.png",
+      "sha256": "58afcc780feebd7d4cf083b70ec5eb25d3826d8ff43cb1530c1b33022cf7ee65"
+    },
+    {
+      "file": "all-68/comparisons/15-horus.walk.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/15-horus.walk.right.1.png",
+      "sha256": "4a770176d8bea166e3b70ca05cd9a65733d52e7ad273cdab88df72f5b15545d6"
+    },
+    {
+      "file": "all-68/comparisons/11-horus.walk.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/11-horus.walk.left.0.png",
+      "sha256": "4fd40e9a042dc878bac3eaaad803bd781ee0072b35448b0498cd3fb4cbf44f6a"
+    },
+    {
+      "file": "all-68/comparisons/02-horus.idle.down.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/02-horus.idle.down.png",
+      "sha256": "3337a2f6aba9530e6ff23b35e6b0d3b88b9f6bc691455607278d60b82b399f15"
+    },
+    {
+      "file": "all-68/comparisons/62-horus.combat.right.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/62-horus.combat.right.hit.0.png",
+      "sha256": "f787920c480bc4cc6847aea7d343e3f5447212d73091b6205d704c9de8dbc646"
+    },
+    {
+      "file": "all-68/comparisons/21-horus.interact.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/21-horus.interact.left.0.png",
+      "sha256": "acab646cb9728465e9e3a38caa4cb185b4743467abb04963ef89ba967c5edb2d"
+    },
+    {
+      "file": "all-68/comparisons/30-horus.pickup.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/30-horus.pickup.left.1.png",
+      "sha256": "0801636de2918f818574de19c1841a2f32dc41cc45758c8d0a0b6a4211e2ec01"
+    },
+    {
+      "file": "all-68/comparisons/34-horus.sit-stool.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/34-horus.sit-stool.up.0.png",
+      "sha256": "04b44d6a87593ee38185792dfd2eeed00adbff13c87ed2f7a6e612d85e0199b9"
+    },
+    {
+      "file": "all-68/comparisons/31-horus.pickup.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/31-horus.pickup.right.0.png",
+      "sha256": "233d45afb99d0c80ce18b3aa62b0bfd3354d7f7e6fd415d5d4e5438e875ea628"
+    },
+    {
+      "file": "all-68/comparisons/29-horus.pickup.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/29-horus.pickup.left.0.png",
+      "sha256": "1f49a38bffbf84446197177b81a49c7b81e15fe5a6668fb8287b321853f418a9"
+    },
+    {
+      "file": "all-68/comparisons/33-horus.sit-floor.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/33-horus.sit-floor.up.0.png",
+      "sha256": "62b9936a68314cf01670a50bf6825e5bfe902faf5b235e460ebf5b269b90b1ba"
+    },
+    {
+      "file": "all-68/comparisons/24-horus.interact.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/24-horus.interact.right.1.png",
+      "sha256": "9cbc8df91cf785b9def827568d02636170711df96aa4c7ad5caf2b49d9bf0741"
+    },
+    {
+      "file": "all-68/comparisons/01-horus.idle.up.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/01-horus.idle.up.png",
+      "sha256": "b8f33ecd043ba9f412a6ffe3e59c4ff1a439e19269994962f80584a8b9937d43"
+    },
+    {
+      "file": "all-68/comparisons/05-horus.walk.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/05-horus.walk.up.0.png",
+      "sha256": "b51d10f21d0304eeef2cb58091307c2f4dce6e293a968c6176d7fa63bd6699db"
+    },
+    {
+      "file": "all-68/comparisons/66-horus.combat.right.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/66-horus.combat.right.skill.0.png",
+      "sha256": "1d8abad10ce85622fa24f1778a8e9154b8d8ce1b3b99c9d4a411b3d3b327f993"
+    },
+    {
+      "file": "all-68/comparisons/67-horus.combat.right.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/67-horus.combat.right.spell.0.png",
+      "sha256": "acd476fa3f59acefdf9f37d5ee863eaab76003213497deac7db438b50a2c555c"
+    },
+    {
+      "file": "all-68/comparisons/26-horus.pickup.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/26-horus.pickup.up.1.png",
+      "sha256": "2a68fcf36c977ce87cf012a1a21e6edafd5a164686a1cc8d93e31ee83668f1ab"
+    },
+    {
+      "file": "all-68/comparisons/08-horus.walk.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/08-horus.walk.down.0.png",
+      "sha256": "f5b8da4c0596b97db754636b5e7d1142a175b7f7a7d96cde35acf059ea3b3168"
+    },
+    {
+      "file": "all-68/comparisons/12-horus.walk.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/12-horus.walk.left.1.png",
+      "sha256": "38d8a0092b31d9531e903a13d0e800470e9d22ccc7651197d69e1483e74b2bdc"
+    },
+    {
+      "file": "all-68/comparisons/10-horus.walk.down.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/10-horus.walk.down.2.png",
+      "sha256": "e800c55bca60b362b3b5074e68a6bfdd8804e97f72e30fa8b58aa2b36619ae2c"
+    },
+    {
+      "file": "all-68/comparisons/25-horus.pickup.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/25-horus.pickup.up.0.png",
+      "sha256": "f9d7883ab429590aeba78392cc3235856aee74f6efb90e60adfef0a7ac0a9466"
+    },
+    {
+      "file": "all-68/comparisons/45-horus.cook.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/45-horus.cook.up.0.png",
+      "sha256": "95c1c7608ddde26925b7832f8f1674e0cc83522d7335d2af6f8e02154165905b"
+    },
+    {
+      "file": "all-68/comparisons/38-horus.sit-bench.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/38-horus.sit-bench.left.0.png",
+      "sha256": "d7b8096f96e827768e1a5adf075eb3a0893d385a4818041bfe2578e46a44ec9f"
+    },
+    {
+      "file": "all-68/comparisons/39-horus.sleep.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/39-horus.sleep.down.0.png",
+      "sha256": "a481eac8bf84c0d23e98ada67f39f2d4e8de3fa40db0fe7a0f9a6f5047195b08"
+    },
+    {
+      "file": "all-68/comparisons/13-horus.walk.left.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/13-horus.walk.left.2.png",
+      "sha256": "20c0dd86897488d904aa8b06f568b440eda4d2e95813e967b887f8a96bd729e4"
+    },
+    {
+      "file": "all-68/comparisons/03-horus.idle.left.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/03-horus.idle.left.png",
+      "sha256": "ab5f97fc6d15adbd028687f4a25e0894ac6419c47a899ff710ef34ede6f6c85a"
+    },
+    {
+      "file": "all-68/comparisons/46-horus.read.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/46-horus.read.down.0.png",
+      "sha256": "b5df661b49c631a6c57ef057946bafbd05e451a1c881d24462cc206594f86716"
+    },
+    {
+      "file": "all-68/comparisons/19-horus.interact.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/19-horus.interact.up.0.png",
+      "sha256": "14e6942f06cae80c54e2307c73d1a0ead346d3c49bad9ff4a781df1edd154aa5"
+    },
+    {
+      "file": "all-68/comparisons/51-horus.combat.left.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/51-horus.combat.left.anticipation.0.png",
+      "sha256": "3f9e7a99c87ea110ed641e13cff211a154daaea21f065417c184e984f8af4d28"
+    },
+    {
+      "file": "all-68/comparisons/56-horus.combat.left.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/56-horus.combat.left.idle.2.png",
+      "sha256": "bdad3b8331f281081c6eae0c674c7164dc652d8c994a4e2bd69872dbd3d8ec9d"
+    },
+    {
+      "file": "all-68/comparisons/63-horus.combat.right.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/63-horus.combat.right.idle.0.png",
+      "sha256": "2fb49683a3973bdedc15cfe8b69505ac56fcf38e9ff179a27b1c9dbac1ecd316"
+    },
+    {
+      "file": "all-68/comparisons/68-horus.combat.right.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/68-horus.combat.right.tired.0.png",
+      "sha256": "8e8ee1c60bcce5a4215fab7a07cce2f3b31c6b05d7a3ebdfd87fdaf6f121f834"
+    },
+    {
+      "file": "all-68/comparisons/57-horus.combat.left.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/57-horus.combat.left.skill.0.png",
+      "sha256": "0bc9013254f3b9949239b56140f4a95265b81019ad581cc06126037a6271a0fd"
+    },
+    {
+      "file": "all-68/comparisons/59-horus.combat.left.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/59-horus.combat.left.tired.0.png",
+      "sha256": "e53789a073207eb763731d3748dbb2108aa95e25c1803110b3bf508f6c3a5c9a"
+    },
+    {
+      "file": "all-68/comparisons/07-horus.walk.up.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/07-horus.walk.up.2.png",
+      "sha256": "da71234ffa236c479b92b8dc3d9d5c690b6dde419e10317117624e1729e4e8c7"
+    },
+    {
+      "file": "all-68/comparisons/58-horus.combat.left.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/58-horus.combat.left.spell.0.png",
+      "sha256": "0741014719d398ae8a00af1968e6058c891c0cd174ea5907bfc312f2e6066ee1"
+    },
+    {
+      "file": "all-68/comparisons/16-horus.walk.right.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/16-horus.walk.right.2.png",
+      "sha256": "5828373537bff79b2ca1e292b7b05c7331d797f82197062265d232dcc8e95b8f"
+    },
+    {
+      "file": "all-68/comparisons/47-horus.happy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/47-horus.happy.down.0.png",
+      "sha256": "3aa2551e9436b4e7327c783b072d843196a786999aaa387d3a5e992ee691e2cd"
+    },
+    {
+      "file": "all-68/comparisons/48-horus.shy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/48-horus.shy.down.0.png",
+      "sha256": "12f0c858d2d92bff966ffc1dc3ff9cb24778cfd2297d5cf144d5c43ab7913a14"
+    },
+    {
+      "file": "all-68/comparisons/40-horus.sleep.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/40-horus.sleep.down.1.png",
+      "sha256": "ccd1740c15a61d1a55969d7760ac3e5127c1b297242f0054758e1a46e58d774c"
+    },
+    {
+      "file": "all-68/comparisons/27-horus.pickup.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/27-horus.pickup.down.0.png",
+      "sha256": "17429882760248e4852ac48c6a1b6f573fcc82fd249e88777cfe6dde8c750fa9"
+    },
+    {
+      "file": "all-68/comparisons/14-horus.walk.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/14-horus.walk.right.0.png",
+      "sha256": "0b7b9e27d678245806223df9c3ceac85470eabf9a9d7da20e7a30fc9ce547a8a"
+    },
+    {
+      "file": "all-68/comparisons/54-horus.combat.left.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/54-horus.combat.left.idle.0.png",
+      "sha256": "9837ed29e08633ad56811cb20f1310da9ec9f7674d34624abf38b883d89bba90"
+    },
+    {
+      "file": "all-68/comparisons/09-horus.walk.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/09-horus.walk.down.1.png",
+      "sha256": "9b89dc97966a33fa47b733b56df9440bfa2f947c3e96ace714fd9afdb49cd484"
+    },
+    {
+      "file": "all-68/comparisons/41-horus.sleep.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/41-horus.sleep.right.0.png",
+      "sha256": "c6ce099f1fcfc94ab7ef0d73e81827acb0379dfdff13dfbc081d037875738626"
+    },
+    {
+      "file": "all-68/comparisons/61-horus.combat.right.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/61-horus.combat.right.attack.0.png",
+      "sha256": "3c8cd91b78905323975ffe8579cf91f0b1fca625f7ed1b158eb876f8332a1e25"
+    },
+    {
+      "file": "all-68/comparisons/36-horus.sit-bench.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/36-horus.sit-bench.right.0.png",
+      "sha256": "aad9b6172c43cbd1f58076a19f349a54c7b52e5b7cbb55557dbed2488301d5c8"
+    },
+    {
+      "file": "all-68/comparisons/17-horus.interact.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/17-horus.interact.down.0.png",
+      "sha256": "f36b17ee611a3910a7c40563b7f16436a4a51189c8cc0827d1f359aed9b7253d"
+    },
+    {
+      "file": "all-68/comparisons/28-horus.pickup.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/28-horus.pickup.down.1.png",
+      "sha256": "012c948c270be3fc91de8ee80e85f2c89139c994b455e8b63b23988effc39a53"
+    },
+    {
+      "file": "all-68/comparisons/37-horus.sit-floor.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/37-horus.sit-floor.right.0.png",
+      "sha256": "5777d1eb46f39bf3ab11a7c5db6a218b8e06f6810061efa14b1bd38752a44f27"
+    },
+    {
+      "file": "all-68/comparisons/49-horus.surprised.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/49-horus.surprised.down.0.png",
+      "sha256": "a80c8dce92ab79e9fdfa1cc4cdfaea92f1171206bdb17637748ae9e41f7138c2"
+    },
+    {
+      "file": "all-68/comparisons/50-horus.eat.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/50-horus.eat.right.0.png",
+      "sha256": "e4e38c654c7fb6dcaedb2425a74845110f7436c00d3d77a75fa5a603002e04ef"
+    },
+    {
+      "file": "all-68/comparisons/42-horus.sleep.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/42-horus.sleep.right.1.png",
+      "sha256": "14d33a25fa527decbbdf4c5e688548f92c51b5b2dbf72a8ed670b4f6b4528411"
+    },
+    {
+      "file": "all-68/comparisons/53-horus.combat.left.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/53-horus.combat.left.hit.0.png",
+      "sha256": "f1695a18edeb3851faee76860098638fa555d7b14c11b2b20d3c8fad26d46e24"
+    },
+    {
+      "file": "all-68/comparisons/23-horus.interact.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/23-horus.interact.right.0.png",
+      "sha256": "3f40849f1625715c1da4ecdb65135732aeff62cef50d7651a9130d756107bd90"
+    },
+    {
+      "file": "all-68/comparisons/64-horus.combat.right.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/64-horus.combat.right.idle.1.png",
+      "sha256": "ab6ff12472d179769f6ef733cb622720d5c0e745fa8beb4f2d941db88bdf75ab"
+    },
+    {
+      "file": "all-68/comparisons/35-horus.sit-floor.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/35-horus.sit-floor.left.0.png",
+      "sha256": "b7ee0547dfa5c86375bc50a271ba50b18a85583d4993a5c9245ecddb37cee357"
+    },
+    {
+      "file": "all-68/comparisons/06-horus.walk.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/06-horus.walk.up.1.png",
+      "sha256": "436b2f9c6aadc245151767c65f2d418602b8a7429ecce77cbc3d594c690f6219"
+    },
+    {
+      "file": "all-68/comparisons/65-horus.combat.right.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/65-horus.combat.right.idle.2.png",
+      "sha256": "ebc8893f8aec9148e4c22b57f2f4b7b4141c4ffde0b00e1b19d188b4f093899b"
+    },
+    {
+      "file": "all-68/comparisons/04-horus.idle.right.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/04-horus.idle.right.png",
+      "sha256": "2ac004adb347708dd2ecb59c03d9049e568bdfd22b00a4e7b0411b664fcd173b"
+    },
+    {
+      "file": "all-68/comparisons/32-horus.pickup.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/32-horus.pickup.right.1.png",
+      "sha256": "4860d84cc8a02d1d81bacdc969bdc784099b461f6497f74329992bfe65fd36a0"
+    },
+    {
+      "file": "all-68/comparisons/18-horus.interact.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/18-horus.interact.down.1.png",
+      "sha256": "44c36cc03cfa53eb1bf5092d7bbb3aacd8d14866591603281abd644e6c3663d1"
+    },
+    {
+      "file": "all-68/comparisons/55-horus.combat.left.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/55-horus.combat.left.idle.1.png",
+      "sha256": "28768aeded53fc8b7261a3e94b695eca7095682671fac9a3e117eb1ad86f1824"
+    },
+    {
+      "file": "all-68/comparisons/44-horus.fish.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/44-horus.fish.down.1.png",
+      "sha256": "dba6a14edae9e2a2a04b55f67cae432a748f85175437bf4daa54fe79b4aeedce"
+    },
+    {
+      "file": "all-68/comparisons/60-horus.combat.right.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/60-horus.combat.right.anticipation.0.png",
+      "sha256": "cef620f4b9a0f54372ef7ece67f30ff31ca94d4bee309d60c0692186e05c353f"
+    },
+    {
+      "file": "all-68/comparisons/52-horus.combat.left.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/52-horus.combat.left.attack.0.png",
+      "sha256": "40a063ef8cf8717f51efa374eabcbe6192563d06ee69ab56ede4905af11bb45d"
+    },
+    {
+      "file": "all-68/comparisons/20-horus.interact.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/comparisons/20-horus.interact.up.1.png",
+      "sha256": "2eae04f0850316086ecab3604ec41d6aebf45588cb7134c7487f0c303d6edd19"
+    },
+    {
+      "file": "all-68/clean-diagrams/43-horus.fish.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/43-horus.fish.down.0.png",
+      "sha256": "edff467baa47859d809d9ca06eaf8608a785120c65489046ae4af61110d79106"
+    },
+    {
+      "file": "all-68/clean-diagrams/22-horus.interact.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/22-horus.interact.left.1.png",
+      "sha256": "77489d3e5af4691befc03a4f1403529d459558cc9a48c2948535bb6689bac889"
+    },
+    {
+      "file": "all-68/clean-diagrams/15-horus.walk.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/15-horus.walk.right.1.png",
+      "sha256": "2f1a1609f4a775daa4afdfca6bc141d561c999aa205b8090b7cdc0a862e20a13"
+    },
+    {
+      "file": "all-68/clean-diagrams/11-horus.walk.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/11-horus.walk.left.0.png",
+      "sha256": "688b82b7b4abbaf3a5a9d84073738a91d5cc31c36d3b6bed3a2ee8a8ec4cb342"
+    },
+    {
+      "file": "all-68/clean-diagrams/02-horus.idle.down.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/02-horus.idle.down.png",
+      "sha256": "cefe4a997c320f70d715993ac1c3797fcd115f491245782809a0181a1bc9523b"
+    },
+    {
+      "file": "all-68/clean-diagrams/62-horus.combat.right.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/62-horus.combat.right.hit.0.png",
+      "sha256": "b21c8e40360d4eca36ee828cbb3618c12007da2f29a78de23b8352c6898cb796"
+    },
+    {
+      "file": "all-68/clean-diagrams/21-horus.interact.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/21-horus.interact.left.0.png",
+      "sha256": "4b05cab4de3b1f062442562e6ed65e9eedbf326cf476ed07a6f9ac8cc99579ab"
+    },
+    {
+      "file": "all-68/clean-diagrams/30-horus.pickup.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/30-horus.pickup.left.1.png",
+      "sha256": "40b1a8fff609e838a1fc6625216169bde42b57fbf3321c1876def2d3de3c9661"
+    },
+    {
+      "file": "all-68/clean-diagrams/34-horus.sit-stool.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/34-horus.sit-stool.up.0.png",
+      "sha256": "ac2b037dba73c585de922c773ee79bf3d0ff846c5c244fb33f1bac88dd56a55e"
+    },
+    {
+      "file": "all-68/clean-diagrams/31-horus.pickup.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/31-horus.pickup.right.0.png",
+      "sha256": "1881abd28abd7478895bf9c19e8617216785ea20e20ec3097766b65d93fc7d9f"
+    },
+    {
+      "file": "all-68/clean-diagrams/29-horus.pickup.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/29-horus.pickup.left.0.png",
+      "sha256": "5f0fc134c75a7c4043fba5d1352dc9a511ef0b550717e48714cd37e6260a112d"
+    },
+    {
+      "file": "all-68/clean-diagrams/33-horus.sit-floor.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/33-horus.sit-floor.up.0.png",
+      "sha256": "3285b0129e6d2334c29d9077ebacf1e9dcd477d868b3e67f7d0793eaa377a7a7"
+    },
+    {
+      "file": "all-68/clean-diagrams/24-horus.interact.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/24-horus.interact.right.1.png",
+      "sha256": "1d8b5513eca423bdd02e594ab54e3a40c5f23dcc3fabfa9cb5d52525ea099dd7"
+    },
+    {
+      "file": "all-68/clean-diagrams/01-horus.idle.up.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/01-horus.idle.up.png",
+      "sha256": "b49b3db807df0e37df0d447f1048c9c0f0795e3858a116d810d0fe0fbde8b0e5"
+    },
+    {
+      "file": "all-68/clean-diagrams/05-horus.walk.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/05-horus.walk.up.0.png",
+      "sha256": "072fa7e0164bc0307be6f4fd7de2dad0c63ad7559321ffdfc3dfd724ae9a6a2f"
+    },
+    {
+      "file": "all-68/clean-diagrams/66-horus.combat.right.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/66-horus.combat.right.skill.0.png",
+      "sha256": "40d7dc17987f0c537d1d3f445a7788a49f5043a2927184a02ac63ccca61672f9"
+    },
+    {
+      "file": "all-68/clean-diagrams/67-horus.combat.right.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/67-horus.combat.right.spell.0.png",
+      "sha256": "c2840d09e4f9bf21237a1a3056cc06965bc37c82715f65048333b844ff985672"
+    },
+    {
+      "file": "all-68/clean-diagrams/26-horus.pickup.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/26-horus.pickup.up.1.png",
+      "sha256": "1279fcb1a33eb7b0b250d8380fdad64af00df215af5e2a7c642379f9e02d8487"
+    },
+    {
+      "file": "all-68/clean-diagrams/08-horus.walk.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/08-horus.walk.down.0.png",
+      "sha256": "b0faca14569dcd0910f6ba279b3921c3263dce635949565a2b9bfd0f6b41ac79"
+    },
+    {
+      "file": "all-68/clean-diagrams/12-horus.walk.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/12-horus.walk.left.1.png",
+      "sha256": "090b91035e5a5d51640b8ae020746d882a805f0ace7f4175467f9dbf936da70f"
+    },
+    {
+      "file": "all-68/clean-diagrams/10-horus.walk.down.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/10-horus.walk.down.2.png",
+      "sha256": "2567d7edf350eb38e5dd8c8d2a72ab5426e50c51ecc1e85fd38103ae162d0fb1"
+    },
+    {
+      "file": "all-68/clean-diagrams/25-horus.pickup.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/25-horus.pickup.up.0.png",
+      "sha256": "48436d803ba4b72d3d6b18f85e928b5460cb462cf93baba8d7326129c546088b"
+    },
+    {
+      "file": "all-68/clean-diagrams/45-horus.cook.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/45-horus.cook.up.0.png",
+      "sha256": "b44a1ee6b957229816d0c8d5059c4c55574377d75e03e307a0663492eb63fc61"
+    },
+    {
+      "file": "all-68/clean-diagrams/38-horus.sit-bench.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/38-horus.sit-bench.left.0.png",
+      "sha256": "465e571d89dfc55d561160defcf1045d677410b74138446cbcd4be77528cf53b"
+    },
+    {
+      "file": "all-68/clean-diagrams/39-horus.sleep.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/39-horus.sleep.down.0.png",
+      "sha256": "2e71bbcb2628991f00b0e58178d3bc603bdbda86124c2d61288dd659d292f378"
+    },
+    {
+      "file": "all-68/clean-diagrams/13-horus.walk.left.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/13-horus.walk.left.2.png",
+      "sha256": "0e1a58236d557b5cdcadbc00aed6157a6dcb943586465b4b2a2541828df970aa"
+    },
+    {
+      "file": "all-68/clean-diagrams/03-horus.idle.left.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/03-horus.idle.left.png",
+      "sha256": "cdcd3b8e66fc01a1696606cd5a52217e8f28a081c2851f0cb1e5fd7f5991b9a5"
+    },
+    {
+      "file": "all-68/clean-diagrams/46-horus.read.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/46-horus.read.down.0.png",
+      "sha256": "a594f42eddccc4fe9f3b8cc9bb930a162dc311951b87179f12164d36bea52612"
+    },
+    {
+      "file": "all-68/clean-diagrams/19-horus.interact.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/19-horus.interact.up.0.png",
+      "sha256": "4a52ff76a23740059236a7e8bb246374d5a16696f5aaad309114be402562ca8e"
+    },
+    {
+      "file": "all-68/clean-diagrams/51-horus.combat.left.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/51-horus.combat.left.anticipation.0.png",
+      "sha256": "d797bce06da9bdb37ec8c8e39b2021efc50c05dbfe51f5d434964edf364d57b1"
+    },
+    {
+      "file": "all-68/clean-diagrams/56-horus.combat.left.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/56-horus.combat.left.idle.2.png",
+      "sha256": "716486ca463f86cc0bd299716cd11c3caf0085428ddc9cc149d2aa934c8a9e37"
+    },
+    {
+      "file": "all-68/clean-diagrams/63-horus.combat.right.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/63-horus.combat.right.idle.0.png",
+      "sha256": "cc94fc749cd95018cbab51103fb563377fe7eb4a2e7f19cb843a9f47d76e38a7"
+    },
+    {
+      "file": "all-68/clean-diagrams/68-horus.combat.right.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/68-horus.combat.right.tired.0.png",
+      "sha256": "40a0f20e1ab298c8043f081879d234915d6d5396fb2018016c35fa5321f825b7"
+    },
+    {
+      "file": "all-68/clean-diagrams/57-horus.combat.left.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/57-horus.combat.left.skill.0.png",
+      "sha256": "bce3b5501546fdbc3e4aee2bbde7a30547f58484a2b7c55c3c89f6b564a1eb84"
+    },
+    {
+      "file": "all-68/clean-diagrams/59-horus.combat.left.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/59-horus.combat.left.tired.0.png",
+      "sha256": "b485579175ef0183753aaaac32013600d59e16ff390a6f8b60e08900903f573e"
+    },
+    {
+      "file": "all-68/clean-diagrams/07-horus.walk.up.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/07-horus.walk.up.2.png",
+      "sha256": "c3112898f47155b0d7b21db886d8377447e8636ff9d5d58817f414192a5bd670"
+    },
+    {
+      "file": "all-68/clean-diagrams/58-horus.combat.left.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/58-horus.combat.left.spell.0.png",
+      "sha256": "a7b8b2cb129ace2ff1b9779c111c59f4c813e2a7a1b794ba6f27fb8668d9d4fb"
+    },
+    {
+      "file": "all-68/clean-diagrams/16-horus.walk.right.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/16-horus.walk.right.2.png",
+      "sha256": "6cc69c2c5e5858d962d44df159c6ed9bb147f2e9a5a43e61522c57afc6016a10"
+    },
+    {
+      "file": "all-68/clean-diagrams/47-horus.happy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/47-horus.happy.down.0.png",
+      "sha256": "c9dfad257340a42675415c7667db42d470e6720c7af21abb61de5ee03751c3a1"
+    },
+    {
+      "file": "all-68/clean-diagrams/48-horus.shy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/48-horus.shy.down.0.png",
+      "sha256": "d97bf4785c853a44d594404842ed23b5b67bfc26ee6c4abde2502e2c1cc08be3"
+    },
+    {
+      "file": "all-68/clean-diagrams/40-horus.sleep.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/40-horus.sleep.down.1.png",
+      "sha256": "4b097c3bca8cb8a29b0bf6c346e066d8ce79fc596f23d7f752f3a2b43334fc43"
+    },
+    {
+      "file": "all-68/clean-diagrams/27-horus.pickup.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/27-horus.pickup.down.0.png",
+      "sha256": "34a22d23cf730587b951a65ebee7a200c617c0b98ead26081d1bc681924ea82a"
+    },
+    {
+      "file": "all-68/clean-diagrams/14-horus.walk.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/14-horus.walk.right.0.png",
+      "sha256": "19fc017345413763800f5b58b1d1be0962dd94d904f2f85e05f426e86b98c7ea"
+    },
+    {
+      "file": "all-68/clean-diagrams/54-horus.combat.left.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/54-horus.combat.left.idle.0.png",
+      "sha256": "064ba2d815bb4172a6a236189db96aa5d238140357ce06498f3f3bd5d00a6e7f"
+    },
+    {
+      "file": "all-68/clean-diagrams/09-horus.walk.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/09-horus.walk.down.1.png",
+      "sha256": "72ccf229b359c89c8f8dfabb65981dbbbdde5fd744dcee131d096a141de1a6e7"
+    },
+    {
+      "file": "all-68/clean-diagrams/41-horus.sleep.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/41-horus.sleep.right.0.png",
+      "sha256": "393c4c061a73d556596e00043c474bf2022b5a3cb03fc5d4174b8a7fbac9532e"
+    },
+    {
+      "file": "all-68/clean-diagrams/61-horus.combat.right.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/61-horus.combat.right.attack.0.png",
+      "sha256": "783d141d879eecf2cc0c9bd97e726642e3eb3133c67de861362f308680c3bd84"
+    },
+    {
+      "file": "all-68/clean-diagrams/36-horus.sit-bench.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/36-horus.sit-bench.right.0.png",
+      "sha256": "e22f7e5fb04ed4217ecc5563e41f87e6c22eeab8c1e19cd3687360525a25b217"
+    },
+    {
+      "file": "all-68/clean-diagrams/17-horus.interact.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/17-horus.interact.down.0.png",
+      "sha256": "3160e547d283cc9b9f656d3304dda6578b0a116ea978241b50e660038e0df6df"
+    },
+    {
+      "file": "all-68/clean-diagrams/28-horus.pickup.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/28-horus.pickup.down.1.png",
+      "sha256": "f886743a247fe02dbbf43f027a74000e0c26457cd540aa80fb06bf7bbd211f55"
+    },
+    {
+      "file": "all-68/clean-diagrams/37-horus.sit-floor.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/37-horus.sit-floor.right.0.png",
+      "sha256": "6494aa8e82b9ffa1135f166da8d787f4638fb45aeec905115f9175ce6b2387d6"
+    },
+    {
+      "file": "all-68/clean-diagrams/49-horus.surprised.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/49-horus.surprised.down.0.png",
+      "sha256": "7913e42ff876fc41d09b2495ddba4c1587931343b6d182ff05a36e75195282f1"
+    },
+    {
+      "file": "all-68/clean-diagrams/50-horus.eat.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/50-horus.eat.right.0.png",
+      "sha256": "523c5ec4a89134f936a7aa93fa7a40614477e78a07fb43481912b4ca7d1e7889"
+    },
+    {
+      "file": "all-68/clean-diagrams/42-horus.sleep.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/42-horus.sleep.right.1.png",
+      "sha256": "766c9cd530e14b452f282dcb4c6de70fd2f381d1ab7fea761beedc216757009a"
+    },
+    {
+      "file": "all-68/clean-diagrams/53-horus.combat.left.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/53-horus.combat.left.hit.0.png",
+      "sha256": "4b9a19104db558a9e45498759ab899738936af605dbe53be256ad77760f5e65b"
+    },
+    {
+      "file": "all-68/clean-diagrams/23-horus.interact.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/23-horus.interact.right.0.png",
+      "sha256": "117c15f3b34982635cc00e11e976996048f75f51cd4e7729ed8465eed1229c35"
+    },
+    {
+      "file": "all-68/clean-diagrams/64-horus.combat.right.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/64-horus.combat.right.idle.1.png",
+      "sha256": "51cb484a78dc74de897e37b7a2d0c520264ca6889ff5b0db105e31187e2a5549"
+    },
+    {
+      "file": "all-68/clean-diagrams/35-horus.sit-floor.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/35-horus.sit-floor.left.0.png",
+      "sha256": "14b68bc392db07cd2b7c71d6a7421df93ccd4f592c44f90921067b416681723b"
+    },
+    {
+      "file": "all-68/clean-diagrams/06-horus.walk.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/06-horus.walk.up.1.png",
+      "sha256": "4a2f1e03499ddf5a0cb42515e53a1d6a047f13c4ddbb31e4c44a3ed0bb4509a5"
+    },
+    {
+      "file": "all-68/clean-diagrams/65-horus.combat.right.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/65-horus.combat.right.idle.2.png",
+      "sha256": "5acd4749b4c9f88740e2aad32b2794624b2a63b913c04e0740baadc868925aaf"
+    },
+    {
+      "file": "all-68/clean-diagrams/04-horus.idle.right.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/04-horus.idle.right.png",
+      "sha256": "035548d4094e860005f8290249f8752961d6f30db2e47d4dede3895123f4445d"
+    },
+    {
+      "file": "all-68/clean-diagrams/32-horus.pickup.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/32-horus.pickup.right.1.png",
+      "sha256": "9789fca3d9469e6b72772966087d0262535400028c801ae0f0c1fadbc7faab66"
+    },
+    {
+      "file": "all-68/clean-diagrams/18-horus.interact.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/18-horus.interact.down.1.png",
+      "sha256": "4f6e7037ad9b995019afeae85310225f53c3803c3d23e792a7e2ebe6e2b38725"
+    },
+    {
+      "file": "all-68/clean-diagrams/55-horus.combat.left.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/55-horus.combat.left.idle.1.png",
+      "sha256": "feb1c9fb810092d54106c1085cb08219336babde723c0b10c4902fd3db9aebb2"
+    },
+    {
+      "file": "all-68/clean-diagrams/44-horus.fish.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/44-horus.fish.down.1.png",
+      "sha256": "def1c3b70857a5cae4a25bcbc8d913b7f7cd00f33f9a603ffb824158d5103151"
+    },
+    {
+      "file": "all-68/clean-diagrams/60-horus.combat.right.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/60-horus.combat.right.anticipation.0.png",
+      "sha256": "28a4520009970f85feb993f1eeed0494644b0292a418a807c6f7137492711ab6"
+    },
+    {
+      "file": "all-68/clean-diagrams/52-horus.combat.left.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/52-horus.combat.left.attack.0.png",
+      "sha256": "22be8f42c80cc444046be3a61aee3da6d5543ac85568049367896e191ba74126"
+    },
+    {
+      "file": "all-68/clean-diagrams/20-horus.interact.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/clean-diagrams/20-horus.interact.up.1.png",
+      "sha256": "d0830f87e5310ebb8e1609afbdf03250f6a2c92b1adb86dcdf1d6ebf6c0a5eb2"
+    },
+    {
+      "file": "all-68/overlays/43-horus.fish.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/43-horus.fish.down.0.png",
+      "sha256": "ee1704a518c7032e010b18a74ba20266d9b721a472c7335b46708ff43721ef68"
+    },
+    {
+      "file": "all-68/overlays/22-horus.interact.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/22-horus.interact.left.1.png",
+      "sha256": "c15e9c7ee1193f333bebb54ba46ffe3407b3e14a6636bff67c71a388632536d8"
+    },
+    {
+      "file": "all-68/overlays/15-horus.walk.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/15-horus.walk.right.1.png",
+      "sha256": "e9aeef38efb5b8438a575eec5c38e66c6b1f4645b23bb260a24dd9c880709ad3"
+    },
+    {
+      "file": "all-68/overlays/11-horus.walk.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/11-horus.walk.left.0.png",
+      "sha256": "0a1465274660c836c657b4a77345ae9cee08535a33bdcaca60feb40aef3940b6"
+    },
+    {
+      "file": "all-68/overlays/02-horus.idle.down.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/02-horus.idle.down.png",
+      "sha256": "78e5e35d3101f8fb4d32f8a18a668f2346b89b9e8bccab62ff9dc784f8e33924"
+    },
+    {
+      "file": "all-68/overlays/62-horus.combat.right.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/62-horus.combat.right.hit.0.png",
+      "sha256": "a8149877dbe93c755d250df7156b8fa70b45f1e147c62f51f965d1ef63fbaf49"
+    },
+    {
+      "file": "all-68/overlays/21-horus.interact.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/21-horus.interact.left.0.png",
+      "sha256": "4738d3e8395e6b433af17bb3bd45399cd6051b5a9ccebce4da6329da310ff004"
+    },
+    {
+      "file": "all-68/overlays/30-horus.pickup.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/30-horus.pickup.left.1.png",
+      "sha256": "5e4a235bce637fc7d5d3c74247aca74ee7e645a3b1ed5650f2f5c3fc52d8640a"
+    },
+    {
+      "file": "all-68/overlays/34-horus.sit-stool.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/34-horus.sit-stool.up.0.png",
+      "sha256": "a8a5e435c750a7a56b398abbf89c0bbe77ec005fbfe5b96f8d42de8a71aa2f3b"
+    },
+    {
+      "file": "all-68/overlays/31-horus.pickup.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/31-horus.pickup.right.0.png",
+      "sha256": "77f65e1cdeadac441b066f6ea36d5eb71c9030ebdcfc952b0076f2f3aca6fc39"
+    },
+    {
+      "file": "all-68/overlays/29-horus.pickup.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/29-horus.pickup.left.0.png",
+      "sha256": "475e70354425ce87010b7c13c2d0020ed0054418acd3f4516b38380f66759d41"
+    },
+    {
+      "file": "all-68/overlays/33-horus.sit-floor.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/33-horus.sit-floor.up.0.png",
+      "sha256": "5aad7eb79e8c2f76acbd5895524373bc5df39b56aac61d591796d342f29529bb"
+    },
+    {
+      "file": "all-68/overlays/24-horus.interact.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/24-horus.interact.right.1.png",
+      "sha256": "87bcc2295fc373d0c49d05f5ad1b07de1fb5c19fc995208a0a55921f028ba926"
+    },
+    {
+      "file": "all-68/overlays/01-horus.idle.up.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/01-horus.idle.up.png",
+      "sha256": "f0e56d17e1b39b10d95373ca28027e17fe2cf79faa5a879e864638cf4b088f74"
+    },
+    {
+      "file": "all-68/overlays/05-horus.walk.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/05-horus.walk.up.0.png",
+      "sha256": "76b5e3e58c5cae87ab60ea793f2e5bf60e8d159618d78a59631b65ece624f3fa"
+    },
+    {
+      "file": "all-68/overlays/66-horus.combat.right.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/66-horus.combat.right.skill.0.png",
+      "sha256": "56a80ef4fe9fa4013d3b23d6ad115726c1f4bc9d2d8c0eafd3f3c1b3837aab9c"
+    },
+    {
+      "file": "all-68/overlays/67-horus.combat.right.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/67-horus.combat.right.spell.0.png",
+      "sha256": "a943abc282db03022b365b49f49d5bcd01db42169cae48e40d9a53dfcabd2d38"
+    },
+    {
+      "file": "all-68/overlays/26-horus.pickup.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/26-horus.pickup.up.1.png",
+      "sha256": "63750f6accfae359b238f19459a2fef95dad57b2d9c56ae6bbdb88aa78180a79"
+    },
+    {
+      "file": "all-68/overlays/08-horus.walk.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/08-horus.walk.down.0.png",
+      "sha256": "58b75ddc52b49314a25b3f8e10c719acfc9a853fd7777d74be1cd616b5062887"
+    },
+    {
+      "file": "all-68/overlays/12-horus.walk.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/12-horus.walk.left.1.png",
+      "sha256": "5b6a134d5d3b85ffe8f99736a6160e8f3b5a3e87636aaf338a455da63b246406"
+    },
+    {
+      "file": "all-68/overlays/10-horus.walk.down.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/10-horus.walk.down.2.png",
+      "sha256": "523460e9f82969288b61d60c87196509d22c95b531eb65bfcfb4fbccd956f3eb"
+    },
+    {
+      "file": "all-68/overlays/25-horus.pickup.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/25-horus.pickup.up.0.png",
+      "sha256": "dfe9062d102e80d728bea99c90126c94ad52e44a8c8d6d76d1cddac6542f6232"
+    },
+    {
+      "file": "all-68/overlays/45-horus.cook.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/45-horus.cook.up.0.png",
+      "sha256": "8296f557998692a2b71c3ab606ba91e848e22372bce061c27e6710dde62c2180"
+    },
+    {
+      "file": "all-68/overlays/38-horus.sit-bench.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/38-horus.sit-bench.left.0.png",
+      "sha256": "b12513890511d538239ae0e4b7130e30ce27f730504389a71b258c4256c06d80"
+    },
+    {
+      "file": "all-68/overlays/39-horus.sleep.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/39-horus.sleep.down.0.png",
+      "sha256": "02a35cc8242bed229429852e1473853d4385beba4acf2f6cda6b50ce4304b46a"
+    },
+    {
+      "file": "all-68/overlays/13-horus.walk.left.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/13-horus.walk.left.2.png",
+      "sha256": "8a41335ffe787414dd8fdb0624751e4d45100fee101fed45e423e7fdcc2c8526"
+    },
+    {
+      "file": "all-68/overlays/03-horus.idle.left.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/03-horus.idle.left.png",
+      "sha256": "283229c35c30ebb15cf1065f452140024ba26219c2a697af67b174991891a4b8"
+    },
+    {
+      "file": "all-68/overlays/46-horus.read.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/46-horus.read.down.0.png",
+      "sha256": "9b99c5c422b88e5bbd11e7e5676f47e90970c203069c42d47ee9273ec32f2e68"
+    },
+    {
+      "file": "all-68/overlays/19-horus.interact.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/19-horus.interact.up.0.png",
+      "sha256": "d06017c2b0948098c54215809d61cb069a69cc96d204d0e1725cf609fc8318ee"
+    },
+    {
+      "file": "all-68/overlays/51-horus.combat.left.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/51-horus.combat.left.anticipation.0.png",
+      "sha256": "d494282b6fd2e1945c1ad56cc38ade866891a02552f77ff962b48d274f234374"
+    },
+    {
+      "file": "all-68/overlays/56-horus.combat.left.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/56-horus.combat.left.idle.2.png",
+      "sha256": "59fc775ccc058ec78f94e6f58f7c6e636f9b7514f15258283a392669f98f7319"
+    },
+    {
+      "file": "all-68/overlays/63-horus.combat.right.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/63-horus.combat.right.idle.0.png",
+      "sha256": "ddeb4248ce93a2758dae65d27b5bf8fb7ca0e297a5f9eeadf634abdaf8863812"
+    },
+    {
+      "file": "all-68/overlays/68-horus.combat.right.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/68-horus.combat.right.tired.0.png",
+      "sha256": "f5f3f7df7def5ed9109d7faceff54746b4cae6a09935834d3762d8f3e6c765f0"
+    },
+    {
+      "file": "all-68/overlays/57-horus.combat.left.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/57-horus.combat.left.skill.0.png",
+      "sha256": "ffe9766e3bc74ca618aa5cede59eb577ae82d2be9ead7e6035ada1497bcd4e85"
+    },
+    {
+      "file": "all-68/overlays/59-horus.combat.left.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/59-horus.combat.left.tired.0.png",
+      "sha256": "576a98eb52f92e94395fbcb0d0707cea4aaddb930f7236e9bb0275331314a85a"
+    },
+    {
+      "file": "all-68/overlays/07-horus.walk.up.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/07-horus.walk.up.2.png",
+      "sha256": "2f8e603fc74d725fd2821602a1e81a8996482b9b3a0842fa1114ef1599ec0d73"
+    },
+    {
+      "file": "all-68/overlays/58-horus.combat.left.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/58-horus.combat.left.spell.0.png",
+      "sha256": "fc0360f2977c35cff0f64701fff863a01cb844970e16e852db3c3bd5a431d3fd"
+    },
+    {
+      "file": "all-68/overlays/16-horus.walk.right.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/16-horus.walk.right.2.png",
+      "sha256": "cb5c25ab585a7e7163723c6c3d9ad38abd674f348d606490d71b899b2202190e"
+    },
+    {
+      "file": "all-68/overlays/47-horus.happy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/47-horus.happy.down.0.png",
+      "sha256": "a1bbfc5a33e0f7511daee43e1415d851c4bb473f97ae98e6ad1d6ebac158c077"
+    },
+    {
+      "file": "all-68/overlays/48-horus.shy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/48-horus.shy.down.0.png",
+      "sha256": "e775f7f1a72bf60965b4d3ba2ca324ff229de213a12aba6fdffbad569c6801e0"
+    },
+    {
+      "file": "all-68/overlays/40-horus.sleep.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/40-horus.sleep.down.1.png",
+      "sha256": "86d9831782c258f123f709ebd7136776139ad71dc811b23b9ec62869086f1394"
+    },
+    {
+      "file": "all-68/overlays/27-horus.pickup.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/27-horus.pickup.down.0.png",
+      "sha256": "abe681bd4aaf8e919d86771d1f2c67b9367ec85fccc478e2bc707d9389334494"
+    },
+    {
+      "file": "all-68/overlays/14-horus.walk.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/14-horus.walk.right.0.png",
+      "sha256": "8c8108d4a5b57f599c0b30e571b55d7eb4ffd773faaefd0a5c489b2fdf4bd480"
+    },
+    {
+      "file": "all-68/overlays/54-horus.combat.left.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/54-horus.combat.left.idle.0.png",
+      "sha256": "a0acc2bc5361edcd860fc738a6fbaf3f3fabbd74041e01b05cc3afa6b1b02403"
+    },
+    {
+      "file": "all-68/overlays/09-horus.walk.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/09-horus.walk.down.1.png",
+      "sha256": "43aced7c73fc3092f6d599a098d982c53c9aa6ab1271bd11ee771d17f58b4ce2"
+    },
+    {
+      "file": "all-68/overlays/41-horus.sleep.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/41-horus.sleep.right.0.png",
+      "sha256": "3b596009a90d1e6fda064c2859b4f1b93382fdc98becc240367713332c87594c"
+    },
+    {
+      "file": "all-68/overlays/61-horus.combat.right.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/61-horus.combat.right.attack.0.png",
+      "sha256": "2287fa2cbde497c31629e06afa997d13821d18a78c0c1beacc37550c9a89b4f3"
+    },
+    {
+      "file": "all-68/overlays/36-horus.sit-bench.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/36-horus.sit-bench.right.0.png",
+      "sha256": "c039f56ad74a32ce7a82714224b919df74450798ede556972787842e52457b27"
+    },
+    {
+      "file": "all-68/overlays/17-horus.interact.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/17-horus.interact.down.0.png",
+      "sha256": "8d1b1a016c20ba7e6ccf2ba2bb53f30cc0a392d5c6658520ca3d1669bd44e199"
+    },
+    {
+      "file": "all-68/overlays/28-horus.pickup.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/28-horus.pickup.down.1.png",
+      "sha256": "4d3eb9436f165760e478f502fdb35680d0e8ab5774658f0ad569ffbad84d0682"
+    },
+    {
+      "file": "all-68/overlays/37-horus.sit-floor.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/37-horus.sit-floor.right.0.png",
+      "sha256": "aba3cba819b7b76b3a1f9456c8d3915b59434cab85e4d97df9672e7d22ab5b6b"
+    },
+    {
+      "file": "all-68/overlays/49-horus.surprised.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/49-horus.surprised.down.0.png",
+      "sha256": "871321869392396ee991d389d135ec1765d05b5518df4cbd12e161fa074f5562"
+    },
+    {
+      "file": "all-68/overlays/50-horus.eat.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/50-horus.eat.right.0.png",
+      "sha256": "cccedf9220ab204401dc1e7f33184b49cb9cb8e8ca6acca592aea36069b5f458"
+    },
+    {
+      "file": "all-68/overlays/42-horus.sleep.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/42-horus.sleep.right.1.png",
+      "sha256": "3ce9ede3a07d8e64e40897a6d2c31f0f034a5627a8949d5a44403cc786b18467"
+    },
+    {
+      "file": "all-68/overlays/53-horus.combat.left.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/53-horus.combat.left.hit.0.png",
+      "sha256": "e9364ba8d0b9d0c22fad3a105d7cacca69483853afedabadec628072c828b3da"
+    },
+    {
+      "file": "all-68/overlays/23-horus.interact.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/23-horus.interact.right.0.png",
+      "sha256": "42f8ec428140044c91957e6aed6758524c41b6e8266307092f828986a8831c21"
+    },
+    {
+      "file": "all-68/overlays/64-horus.combat.right.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/64-horus.combat.right.idle.1.png",
+      "sha256": "9528c6cf57829510920e36955136fccd2a4084e91676d764fe5a4ebd31e30293"
+    },
+    {
+      "file": "all-68/overlays/35-horus.sit-floor.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/35-horus.sit-floor.left.0.png",
+      "sha256": "aa497429abb883b9565aa4ee1e173f74c80ca259376fc0e283f23e8b7d82d28d"
+    },
+    {
+      "file": "all-68/overlays/06-horus.walk.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/06-horus.walk.up.1.png",
+      "sha256": "75850fd9a67229d2b179bc1184cef0868cdb22606eef630445c6aeb7fc116e0f"
+    },
+    {
+      "file": "all-68/overlays/65-horus.combat.right.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/65-horus.combat.right.idle.2.png",
+      "sha256": "149e27331bb40b4467c6c86dd4c3988bb538f5d1d5ddf71ffd9edfe6f1bb7079"
+    },
+    {
+      "file": "all-68/overlays/04-horus.idle.right.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/04-horus.idle.right.png",
+      "sha256": "acf6cb37b07d56137811367a1c351c4afe8a4679e4682133fcc2cfced83a61db"
+    },
+    {
+      "file": "all-68/overlays/32-horus.pickup.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/32-horus.pickup.right.1.png",
+      "sha256": "aa7ea12a261710910baf619e083fa02e696fc75b9f38a7eb53a2d47cd3a5cdb3"
+    },
+    {
+      "file": "all-68/overlays/18-horus.interact.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/18-horus.interact.down.1.png",
+      "sha256": "3c0d8f27074d7e6f8c5df18bd99785f84c4e57890793111ffa52bf388947c727"
+    },
+    {
+      "file": "all-68/overlays/55-horus.combat.left.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/55-horus.combat.left.idle.1.png",
+      "sha256": "45970e1ca07f8f7afca3d2e889eb7f0433754c2f8cec2da77da235b7005fca66"
+    },
+    {
+      "file": "all-68/overlays/44-horus.fish.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/44-horus.fish.down.1.png",
+      "sha256": "b5df6e56fe968d445a9bbf3eaa20cdcb54d1cad5d7efff00c1c5a1eb1d21e49e"
+    },
+    {
+      "file": "all-68/overlays/60-horus.combat.right.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/60-horus.combat.right.anticipation.0.png",
+      "sha256": "245a1d355a5c952671bf80e480f1296b162b2c29fd76e04cafcdee3019cc6c69"
+    },
+    {
+      "file": "all-68/overlays/52-horus.combat.left.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/52-horus.combat.left.attack.0.png",
+      "sha256": "9c4841190060dc82fcda6f6af98a9629608e2790dbda900153a74cdf30ac7cb4"
+    },
+    {
+      "file": "all-68/overlays/20-horus.interact.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/overlays/20-horus.interact.up.1.png",
+      "sha256": "20c739ae3f3cbc1a8928b673bfd1c6820b98a53931b9f6566fd19524432ae4c2"
+    },
+    {
+      "file": "all-68/life-no-eyes/43-horus.fish.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/43-horus.fish.down.0.png",
+      "sha256": "ed54f3422c04c0f496de58bf0833a02ecf2d84397982c9a3a9e0913fa527c74f"
+    },
+    {
+      "file": "all-68/life-no-eyes/49-horus.surprised.down.0-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/49-horus.surprised.down.0-white.png",
+      "sha256": "97e4a8f27ad90fa7f30f48d473c7583c4e7b641604d7eb0c27b48dd4e0886ae2"
+    },
+    {
+      "file": "all-68/life-no-eyes/45-horus.cook.up.0-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/45-horus.cook.up.0-white.png",
+      "sha256": "0239940d952dcef39af06ff4a57d3ed0647d49ad73e999769d987e3c3ffe3c2b"
+    },
+    {
+      "file": "all-68/life-no-eyes/44-horus.fish.down.1-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/44-horus.fish.down.1-white.png",
+      "sha256": "eaeee491b877766f3b4ca717a900bbc3f7bb0644950353706b146b5f96580cf6"
+    },
+    {
+      "file": "all-68/life-no-eyes/life-guide-excluding-surprise.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/life-guide-excluding-surprise.png",
+      "sha256": "8d820b0de933b1c61558e085887101e9141fc52a7832db40e0e20f5a60c07c20"
+    },
+    {
+      "file": "all-68/life-no-eyes/45-horus.cook.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/45-horus.cook.up.0.png",
+      "sha256": "b44a1ee6b957229816d0c8d5059c4c55574377d75e03e307a0663492eb63fc61"
+    },
+    {
+      "file": "all-68/life-no-eyes/46-horus.read.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/46-horus.read.down.0.png",
+      "sha256": "2b339e470fee2ea13ede31e5e64abe4a0e34494ab33035b8cbe506f1e553a3ad"
+    },
+    {
+      "file": "all-68/life-no-eyes/47-horus.happy.down.0-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/47-horus.happy.down.0-white.png",
+      "sha256": "a70470a51d92bfb0098ac5efe62bdd7007913bfb0b8cb10376f70be2d12bcb93"
+    },
+    {
+      "file": "all-68/life-no-eyes/50-horus.eat.right.0-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/50-horus.eat.right.0-white.png",
+      "sha256": "1ea2a506cfd50b99d610a2e87c08c230ab3e7c67841e989b4baf0ab5cc1cb909"
+    },
+    {
+      "file": "all-68/life-no-eyes/46-horus.read.down.0-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/46-horus.read.down.0-white.png",
+      "sha256": "a9d37f48afb9e77e401c4d5b790a66deea981b8b2c269c5dd94c3cdc9cece9f3"
+    },
+    {
+      "file": "all-68/life-no-eyes/47-horus.happy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/47-horus.happy.down.0.png",
+      "sha256": "e59d4a1dfd92936c12a7e8f48b64934e387f9adb2e2aabd8ed575914e51b0fc0"
+    },
+    {
+      "file": "all-68/life-no-eyes/48-horus.shy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/48-horus.shy.down.0.png",
+      "sha256": "538dd1027c152fba630219c5d765c8c8eead3d3fcee04e61c014c13d69aebf46"
+    },
+    {
+      "file": "all-68/life-no-eyes/49-horus.surprised.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/49-horus.surprised.down.0.png",
+      "sha256": "fb41251c62ae666170b3cff4198604be2b24cc7d89564cdaf9ab45caabce8b89"
+    },
+    {
+      "file": "all-68/life-no-eyes/50-horus.eat.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/50-horus.eat.right.0.png",
+      "sha256": "2549352aec8b139c439f254777d1a32a336ad712f20598e58c9fc668508ac3a0"
+    },
+    {
+      "file": "all-68/life-no-eyes/48-horus.shy.down.0-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/48-horus.shy.down.0-white.png",
+      "sha256": "6e452c1c7a623d915a8d1a4611cb389ff162768291b4cc61e577c289edc0bd62"
+    },
+    {
+      "file": "all-68/life-no-eyes/43-horus.fish.down.0-white.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/43-horus.fish.down.0-white.png",
+      "sha256": "8ff6619c1e9ddaba7e7640345047064146d7083198f68ea3d25747e436535d6c"
+    },
+    {
+      "file": "all-68/life-no-eyes/44-horus.fish.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/44-horus.fish.down.1.png",
+      "sha256": "f858e6539afc5fcb8fb0e09974e2e53373f89ac66295513dbe62fb7fe447392a"
+    },
+    {
+      "file": "all-68/life-no-eyes/README.txt",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/README.txt",
+      "sha256": "d4ebb02ae3519d80e06281e86839a23c4e2e7611223dae27c11b19f964881295"
+    },
+    {
+      "file": "all-68/life-no-eyes/life-no-eyes-sheet.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/life-no-eyes/life-no-eyes-sheet.png",
+      "sha256": "d2a0dccab579974408714d81ffef71986a6df465e613adb3f1133be7297ff417"
+    },
+    {
+      "file": "all-68/sheets/03-frames-25-36.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/sheets/03-frames-25-36.png",
+      "sha256": "d9bb0b6759bc0581b2091c2afff6a7b0e67cfbf5c5124f6bd5542245811214fd"
+    },
+    {
+      "file": "all-68/sheets/06-frames-61-68.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/sheets/06-frames-61-68.png",
+      "sha256": "ff2c10ad26c0ddb531958d1ccae3cbe2a12ff36e988c2b073b643c2c1a0f3667"
+    },
+    {
+      "file": "all-68/sheets/04-frames-37-48.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/sheets/04-frames-37-48.png",
+      "sha256": "89e5a9b076f10cbc0aa6198e3ef4d628346bdd2e5acc8020dfc2532d88721f54"
+    },
+    {
+      "file": "all-68/sheets/05-frames-49-60.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/sheets/05-frames-49-60.png",
+      "sha256": "24aa420ecbe5a3decf97ffe795f3c32f7eaa6983475bf9d29e29b913e68c2b04"
+    },
+    {
+      "file": "all-68/sheets/02-frames-13-24.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/sheets/02-frames-13-24.png",
+      "sha256": "8daf3eb092d219a985f0cfbf30464152fa4aee8cc701c88ee12e91030fb73154"
+    },
+    {
+      "file": "all-68/sheets/01-frames-01-12.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/sheets/01-frames-01-12.png",
+      "sha256": "630579f7026503c5e962c248d1e1beac206fd8a7cb01b8d2098ed60a5e8e09b0"
+    },
+    {
+      "file": "all-68/diagrams/43-horus.fish.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/43-horus.fish.down.0.png",
+      "sha256": "0935f53141e29971bc9ea6cb9c782c4d46ae0d378485aad2df02238cbad676ae"
+    },
+    {
+      "file": "all-68/diagrams/22-horus.interact.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/22-horus.interact.left.1.png",
+      "sha256": "5c573d2618d87e28bf969b75f7bec83892787449567350abe5930b4d56ee0166"
+    },
+    {
+      "file": "all-68/diagrams/15-horus.walk.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/15-horus.walk.right.1.png",
+      "sha256": "cc789275176b3613b95158dd570c6d67dfc70f20a5f8071ce2d42dededb7f9a3"
+    },
+    {
+      "file": "all-68/diagrams/11-horus.walk.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/11-horus.walk.left.0.png",
+      "sha256": "6277ccb51206c4fe9d7f9a95ecabdba640d242b0b9870f42864c04979a1bfb83"
+    },
+    {
+      "file": "all-68/diagrams/02-horus.idle.down.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/02-horus.idle.down.png",
+      "sha256": "c3e31c739b2daee8008980d459c6a1bd96ec0f0eda854d5246ff4f1c01498992"
+    },
+    {
+      "file": "all-68/diagrams/62-horus.combat.right.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/62-horus.combat.right.hit.0.png",
+      "sha256": "301c4a787857761e14d0ffdf13689127ea5f2ee9ebaad4e02d588c0d7e83fbbf"
+    },
+    {
+      "file": "all-68/diagrams/21-horus.interact.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/21-horus.interact.left.0.png",
+      "sha256": "6f38517b63dae4392b7842be60d744eab6cf08e9492882845e9a066205caabc1"
+    },
+    {
+      "file": "all-68/diagrams/30-horus.pickup.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/30-horus.pickup.left.1.png",
+      "sha256": "052d83c285e575bbe270230bc71f7ac1aaf9dfbfda18c336124c790fd8278a47"
+    },
+    {
+      "file": "all-68/diagrams/34-horus.sit-stool.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/34-horus.sit-stool.up.0.png",
+      "sha256": "74690646e8f5f3007ef18fed0f535eb6713ab52ed80d5b65a136365c755cbaad"
+    },
+    {
+      "file": "all-68/diagrams/31-horus.pickup.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/31-horus.pickup.right.0.png",
+      "sha256": "851870402bb6cd0c032392c7557063a85f758eead4767c96a647faae3a8af4f3"
+    },
+    {
+      "file": "all-68/diagrams/29-horus.pickup.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/29-horus.pickup.left.0.png",
+      "sha256": "019210db355d907edc0dd1a4e69f34d9ecf59a58622a43104a4394f908c6c5b3"
+    },
+    {
+      "file": "all-68/diagrams/33-horus.sit-floor.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/33-horus.sit-floor.up.0.png",
+      "sha256": "718e3e6f1139f7d0e45855343d3b59b333747797ec99163a414ca0bc10da6314"
+    },
+    {
+      "file": "all-68/diagrams/24-horus.interact.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/24-horus.interact.right.1.png",
+      "sha256": "5269725f2a9dba86a961a5d246777a249adddd4d361def9b3c19b9fa09218bae"
+    },
+    {
+      "file": "all-68/diagrams/01-horus.idle.up.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/01-horus.idle.up.png",
+      "sha256": "23333c51645b2ac986e8dd5d82f9749a06837589330062e5c8fcaf17028425ce"
+    },
+    {
+      "file": "all-68/diagrams/05-horus.walk.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/05-horus.walk.up.0.png",
+      "sha256": "ca1e38b5a1f9e22eab742718c017f2b850cb81c33cb775cc16211a8bfffec587"
+    },
+    {
+      "file": "all-68/diagrams/66-horus.combat.right.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/66-horus.combat.right.skill.0.png",
+      "sha256": "b074ff6af41643a80fe3aa9315230da3cd1251d68c4fe8ea016df8dfe159d3b1"
+    },
+    {
+      "file": "all-68/diagrams/67-horus.combat.right.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/67-horus.combat.right.spell.0.png",
+      "sha256": "b6dfe6e5de92ffcb669b46867660e99df3fb16485324997b01df1c181a34c055"
+    },
+    {
+      "file": "all-68/diagrams/26-horus.pickup.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/26-horus.pickup.up.1.png",
+      "sha256": "54bd8950229b73ea1ebf6cb9d45e0cc53c63b0074888691e1b0ad391cae53447"
+    },
+    {
+      "file": "all-68/diagrams/08-horus.walk.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/08-horus.walk.down.0.png",
+      "sha256": "4704fac6a1e53706934e2eb9baa8fad30d8558381945ddf3e589b83ca8f297b8"
+    },
+    {
+      "file": "all-68/diagrams/12-horus.walk.left.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/12-horus.walk.left.1.png",
+      "sha256": "d79a66ee8a52ddd1d5990496b69ae72ffcc0a0297cd88e5fe9100e9b15c2bdf2"
+    },
+    {
+      "file": "all-68/diagrams/10-horus.walk.down.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/10-horus.walk.down.2.png",
+      "sha256": "7a0e77e1322aff09b7fba8c1f9b23aff85abd266d007efbdefeebbf57cc844fb"
+    },
+    {
+      "file": "all-68/diagrams/25-horus.pickup.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/25-horus.pickup.up.0.png",
+      "sha256": "0f9afa8b7e89d30ae218d10a5f7d1a522a1d3d06806112e1e3065fa16be6248d"
+    },
+    {
+      "file": "all-68/diagrams/45-horus.cook.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/45-horus.cook.up.0.png",
+      "sha256": "628b10902942078f651632c4e24f3e0c41195bde408011f3c454db2a768f5c27"
+    },
+    {
+      "file": "all-68/diagrams/38-horus.sit-bench.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/38-horus.sit-bench.left.0.png",
+      "sha256": "8ae83a164ad4e4b1a5ff71090f3e92a2d40918e89183adf40b807767105f6653"
+    },
+    {
+      "file": "all-68/diagrams/39-horus.sleep.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/39-horus.sleep.down.0.png",
+      "sha256": "bef0eb008779a6a0b3c583a75a3bab60e0e6f5df6d56d0d1a82249b20be6d5a4"
+    },
+    {
+      "file": "all-68/diagrams/13-horus.walk.left.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/13-horus.walk.left.2.png",
+      "sha256": "731668269b530b0692e58c1a5aacc1ffe2c19ad239cdc0584551406be5583220"
+    },
+    {
+      "file": "all-68/diagrams/03-horus.idle.left.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/03-horus.idle.left.png",
+      "sha256": "109a78b5dca43a59ed4277b09aa499e3eae9db7be40dd1708ff067deebf32d25"
+    },
+    {
+      "file": "all-68/diagrams/46-horus.read.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/46-horus.read.down.0.png",
+      "sha256": "3206628df278fa15f4b2f05766684842dfe35d57d2642e74e9eca284f8ffe89e"
+    },
+    {
+      "file": "all-68/diagrams/19-horus.interact.up.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/19-horus.interact.up.0.png",
+      "sha256": "723ab5b35f1d251f56fcd9bcf71cd33e494dfc2ad0eb6aff9ba01092f17c3bc4"
+    },
+    {
+      "file": "all-68/diagrams/51-horus.combat.left.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/51-horus.combat.left.anticipation.0.png",
+      "sha256": "13a8c83086b980cf4ad3dc592f8201aa73633d426e203b330dffe73841adba85"
+    },
+    {
+      "file": "all-68/diagrams/56-horus.combat.left.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/56-horus.combat.left.idle.2.png",
+      "sha256": "0e6aaf1bbce9289d5457542b9dc15afd2faf1a2355b5b74127f58bd6b2f4cb97"
+    },
+    {
+      "file": "all-68/diagrams/63-horus.combat.right.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/63-horus.combat.right.idle.0.png",
+      "sha256": "85b268014cc1089e7a1bd573554fdf83d8f314e43d1cda1c2e00cdc0781e5887"
+    },
+    {
+      "file": "all-68/diagrams/68-horus.combat.right.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/68-horus.combat.right.tired.0.png",
+      "sha256": "00a19486293527f4a60f19eb7a3fbeb119e1872b35cb566146fbd268d04fe304"
+    },
+    {
+      "file": "all-68/diagrams/57-horus.combat.left.skill.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/57-horus.combat.left.skill.0.png",
+      "sha256": "ddba8921e8f0df874da97f385e289ca6be25b6068565160e1403f44fa5ce9d16"
+    },
+    {
+      "file": "all-68/diagrams/59-horus.combat.left.tired.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/59-horus.combat.left.tired.0.png",
+      "sha256": "c37b0b6bb8ea0aeeb06091ca4ccbf494e88f06e7a1fba822c64e369ee9e35db9"
+    },
+    {
+      "file": "all-68/diagrams/07-horus.walk.up.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/07-horus.walk.up.2.png",
+      "sha256": "ea46d75d1efd5ab998b56d2d4464d45c7ab18ba596be7e62eb55fec29c90594e"
+    },
+    {
+      "file": "all-68/diagrams/58-horus.combat.left.spell.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/58-horus.combat.left.spell.0.png",
+      "sha256": "bceb255e31c3ddeeaf0c1866282eef609eec22b96c431e1db4c55a216f8e370a"
+    },
+    {
+      "file": "all-68/diagrams/16-horus.walk.right.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/16-horus.walk.right.2.png",
+      "sha256": "3f7800172324ec92a5efd9ddb7c4316fe530bba4ddcf6f440023577cfc57baa5"
+    },
+    {
+      "file": "all-68/diagrams/47-horus.happy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/47-horus.happy.down.0.png",
+      "sha256": "4b5a3d94fe4192358ad638fed94364a8212a8886c84c0520d09d396b6e985ec9"
+    },
+    {
+      "file": "all-68/diagrams/48-horus.shy.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/48-horus.shy.down.0.png",
+      "sha256": "f8b7044e239714ebff87459668c1718ea2bc98992f4ecd5e96b2f36350bec5d2"
+    },
+    {
+      "file": "all-68/diagrams/40-horus.sleep.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/40-horus.sleep.down.1.png",
+      "sha256": "4e88e6845b954b8ee7f230fa9ad77450da5e00cd66785ba7bf8b63f90b0a9bbc"
+    },
+    {
+      "file": "all-68/diagrams/27-horus.pickup.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/27-horus.pickup.down.0.png",
+      "sha256": "d4fea48e812454cd33cd4330b48401e65e711b0ea57fe92a4db050c20bb3c37f"
+    },
+    {
+      "file": "all-68/diagrams/14-horus.walk.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/14-horus.walk.right.0.png",
+      "sha256": "c31e21ed46546674a1f2293d1974d286766063afefd9db5988a7a31a63b58067"
+    },
+    {
+      "file": "all-68/diagrams/54-horus.combat.left.idle.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/54-horus.combat.left.idle.0.png",
+      "sha256": "33fd20e8936ce99a6b1a8143df3e1af9608c6a54746f6875caecedf88d227d84"
+    },
+    {
+      "file": "all-68/diagrams/09-horus.walk.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/09-horus.walk.down.1.png",
+      "sha256": "d2d0493180788e9a6bd39d7f65c5a176f8b839d23a24f2293fcd058e9d6d5374"
+    },
+    {
+      "file": "all-68/diagrams/41-horus.sleep.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/41-horus.sleep.right.0.png",
+      "sha256": "1663d3a59e262d3f70e4376050b6bc6159b4ece5edea8d1db6a53bf2e017e51d"
+    },
+    {
+      "file": "all-68/diagrams/61-horus.combat.right.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/61-horus.combat.right.attack.0.png",
+      "sha256": "66ab0892dd4acd2f7c6f737bba11bf2d5e405aaa71f84ae4690c08c813c9721c"
+    },
+    {
+      "file": "all-68/diagrams/36-horus.sit-bench.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/36-horus.sit-bench.right.0.png",
+      "sha256": "7d3d370324588290909fa36bc99c12d5d910f31b5cd57c2b1a044bf7fb482995"
+    },
+    {
+      "file": "all-68/diagrams/17-horus.interact.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/17-horus.interact.down.0.png",
+      "sha256": "7c08569dcf9d63735f9b82e40e7682694a83619aac3b66e439a28b49bc72aaec"
+    },
+    {
+      "file": "all-68/diagrams/28-horus.pickup.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/28-horus.pickup.down.1.png",
+      "sha256": "ad6a78275a820f6bdbfa0c76b74554a63d83aae59b8445cfb503a2f58a5dd292"
+    },
+    {
+      "file": "all-68/diagrams/37-horus.sit-floor.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/37-horus.sit-floor.right.0.png",
+      "sha256": "2d7f79c5bc0bf4facf5392443ad0734851d2311ae7188230ebd8a21ae43f039a"
+    },
+    {
+      "file": "all-68/diagrams/49-horus.surprised.down.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/49-horus.surprised.down.0.png",
+      "sha256": "260ac001a3b277f72d172553deaeb1f14684da6d636918b9bb622196478127db"
+    },
+    {
+      "file": "all-68/diagrams/50-horus.eat.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/50-horus.eat.right.0.png",
+      "sha256": "bc1280929754e32172f1e5cd277b95fdae97b40c2ca3c71b7618f4d5204aacd8"
+    },
+    {
+      "file": "all-68/diagrams/42-horus.sleep.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/42-horus.sleep.right.1.png",
+      "sha256": "304a8e5ac1454b5dae1b1fdcf38642ac1c634945a7b20f3dcc23a0efd312818c"
+    },
+    {
+      "file": "all-68/diagrams/53-horus.combat.left.hit.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/53-horus.combat.left.hit.0.png",
+      "sha256": "8031f86978a4ba244eb4abce5ebabe1aaff98f98ab583afd7216b180ae7b6ccd"
+    },
+    {
+      "file": "all-68/diagrams/23-horus.interact.right.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/23-horus.interact.right.0.png",
+      "sha256": "87d21c2a263a24d9210927b7b60140e4a8fd794e397e901fb4fe33eecceba56c"
+    },
+    {
+      "file": "all-68/diagrams/64-horus.combat.right.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/64-horus.combat.right.idle.1.png",
+      "sha256": "622d111543c84b17099ec16acb02fd5adf12532549d68873f67b4d64c9592398"
+    },
+    {
+      "file": "all-68/diagrams/35-horus.sit-floor.left.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/35-horus.sit-floor.left.0.png",
+      "sha256": "f66f32bd06c84ca12a74128be2b59c9a966bea49ce84f202ab7c5366b97d1c62"
+    },
+    {
+      "file": "all-68/diagrams/06-horus.walk.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/06-horus.walk.up.1.png",
+      "sha256": "c2bcd97a5ab506307cf8f144a22ea9e840ffc02db2f7ab13d9d6ce60456344de"
+    },
+    {
+      "file": "all-68/diagrams/65-horus.combat.right.idle.2.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/65-horus.combat.right.idle.2.png",
+      "sha256": "84883b29fb1e3b00f3197231686374671fb5aff09b8dc99dbae80c3a3cf3bc48"
+    },
+    {
+      "file": "all-68/diagrams/04-horus.idle.right.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/04-horus.idle.right.png",
+      "sha256": "383f75777c77e66a89ba0d4b60b5566f4ac58a48a9da0bda57b281aadcbd9356"
+    },
+    {
+      "file": "all-68/diagrams/32-horus.pickup.right.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/32-horus.pickup.right.1.png",
+      "sha256": "5508a5efad2907ab8272538da869be1ff8065dc763b876312b1fc5ea8c35cdcf"
+    },
+    {
+      "file": "all-68/diagrams/18-horus.interact.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/18-horus.interact.down.1.png",
+      "sha256": "f5c48fef008ff759fd368c277f09796a625d28b5e98fac212f73efbb5cca8ef7"
+    },
+    {
+      "file": "all-68/diagrams/55-horus.combat.left.idle.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/55-horus.combat.left.idle.1.png",
+      "sha256": "31cca8f10a31d8d690034e279747f20508d7810e4a4a4207b82b0bf755b929de"
+    },
+    {
+      "file": "all-68/diagrams/44-horus.fish.down.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/44-horus.fish.down.1.png",
+      "sha256": "943ff5264a4b52b078c9b6ddcc0017ae70c080b456dd9f5a30152e81492d1433"
+    },
+    {
+      "file": "all-68/diagrams/60-horus.combat.right.anticipation.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/60-horus.combat.right.anticipation.0.png",
+      "sha256": "a5836b50d34356416ec25aac60ad5e858321fab0739c0711a3c899b6cf9a4c37"
+    },
+    {
+      "file": "all-68/diagrams/52-horus.combat.left.attack.0.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/52-horus.combat.left.attack.0.png",
+      "sha256": "ed2c2981a2ee5069f5d28fc79a0bdfb4bab21eedbcc8a47a55eb037488e7e3bd"
+    },
+    {
+      "file": "all-68/diagrams/20-horus.interact.up.1.png",
+      "originalWorkspacePath": "/workspace/horus-all-frame-guides/diagrams/20-horus.interact.up.1.png",
+      "sha256": "f0d52d555895db1201e4f7201ca438caf89dba55e4f1a1685f16ad646a770507"
+    },
+    {
+      "file": "generation-inputs/01-idle-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/01-idle-input-guide.png",
+      "sha256": "9c003e882e997997c1e48eb25350e2e925968bad4d67e854baaee902b781fe26"
+    },
+    {
+      "file": "generation-inputs/09-combat-left-a-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/09-combat-left-a-input-guide.png",
+      "sha256": "7f2e6f93f33a866afa856ee8fb5d7c40674555760f0e099e6e04e667365398bb"
+    },
+    {
+      "file": "generation-inputs/03-walk-left-right-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/03-walk-left-right-input-guide.png",
+      "sha256": "629698bdf6884a94096ee51eb0a92991df62ad3b50b04ab5df4bfa62e58774be"
+    },
+    {
+      "file": "generation-inputs/07-sleep-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/07-sleep-input-guide.png",
+      "sha256": "36d5f66c96ba2903342e8c7a329992b6986bc1d75f0978aacae386ee5e044b08"
+    },
+    {
+      "file": "generation-inputs/02-walk-back-front-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/02-walk-back-front-input-guide.png",
+      "sha256": "d1b2ac985e55c59eda91ac151b522bfcc692bd7d480a1d97cb7cb88f924b2d9d"
+    },
+    {
+      "file": "generation-inputs/08-life-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/08-life-input-guide.png",
+      "sha256": "d2a0dccab579974408714d81ffef71986a6df465e613adb3f1133be7297ff417"
+    },
+    {
+      "file": "generation-inputs/11-combat-right-b-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/11-combat-right-b-input-guide.png",
+      "sha256": "1a4108139c995b3b5b0be90eb90ba1f9bcaf93d648efc5d80aee63019602b703"
+    },
+    {
+      "file": "generation-inputs/06-sit-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/06-sit-input-guide.png",
+      "sha256": "2c3d289d49250d93ec14d6953537914b407ef206671b53eb828e3b02127a81e0"
+    },
+    {
+      "file": "generation-inputs/05-pickup-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/05-pickup-input-guide.png",
+      "sha256": "79c32e5039f9af8ea0e4b2969de646000384e0e96ddc2721e0ff39d8e44e0cab"
+    },
+    {
+      "file": "generation-inputs/04-interact-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/04-interact-input-guide.png",
+      "sha256": "5e0ace0fe5134ed6fed26295fb8b29f7b2cf364bba241a48d8ef8e8b1aeb1ef5"
+    },
+    {
+      "file": "generation-inputs/08-life-input-guide-with-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/08-life-input-guide-with-eyes.png",
+      "sha256": "7590c18f3c6520145a0649765a1830bad0156c80c14768d427e724d304a3b5b9"
+    },
+    {
+      "file": "generation-inputs/10-combat-mixed-input-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/10-combat-mixed-input-guide.png",
+      "sha256": "9d69d7d2159a2c38e680bba11718f1dd7caa22113a1b751b608bd18ceddf50d0"
+    },
+    {
+      "file": "generation-inputs/09-combat-left-a-no-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/09-combat-left-a-no-eyes.png",
+      "sha256": "b8c4e42cd9328d53f2fc3beb2d8b21bef12f79fdd7b322f331b6c64418c16587"
+    },
+    {
+      "file": "generation-inputs/11-combat-right-b-no-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/11-combat-right-b-no-eyes.png",
+      "sha256": "3a9a0330cd599cc79769f6bb27710af1154aaf00c3d40d681b6cb617b2350d1c"
+    },
+    {
+      "file": "generation-inputs/10-combat-mixed-no-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/10-combat-mixed-no-eyes.png",
+      "sha256": "2d3491231dd25f693006ebdf9049398824eb395bd330afe962b74b68e11f9a71"
+    },
+    {
+      "file": "generation-inputs/generation-plan.json",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/generation-plan.json",
+      "sha256": "78b4eff9b71eea098d5d125e7ebce306a83961736099979f15fcceaafa4e7d11"
+    },
+    {
+      "file": "idle/pose-guides.png",
+      "originalWorkspacePath": "/workspace/horus-idle-inputs/pose-guides.png",
+      "sha256": "4aa453e181f4f24836c5fcf1b1c9ff0a1dca14a7cd6d1193fd5519640a65b700"
+    }
+  ]
+}

@@ -1,0 +1,2414 @@
+{
+  "source_commit": "ab86d8c107d17d13eb5fe0d92bacc7496bdf8241",
+  "total": 68,
+  "runtime_daily": 50,
+  "adopted_combat": 18,
+  "coverage": "runtime idle/walk/acts exhaustively reconciled plus 18 accepted combat source PNGs",
+  "counts": {
+    "idle": 4,
+    "walk": 12,
+    "interact": 8,
+    "pickup": 8,
+    "sit-floor": 3,
+    "sit-stool": 1,
+    "sit-bench": 2,
+    "sleep": 4,
+    "fish": 2,
+    "cook": 1,
+    "read": 1,
+    "happy": 1,
+    "shy": 1,
+    "surprised": 1,
+    "eat": 1,
+    "combat-anticipation": 2,
+    "combat-attack": 2,
+    "combat-hit": 2,
+    "combat-idle": 6,
+    "combat-skill": 2,
+    "combat-spell": 2,
+    "combat-tired": 2
+  },
+  "frames": [
+    {
+      "number": 1,
+      "id": "horus.idle.up",
+      "state": "idle",
+      "direction": "up",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-back.png",
+      "source_sha256": "bebf2a1157152397f515031a834f957f49062fda568336975f0baebf9d9af810",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        104,
+        71,
+        504,
+        678
+      ],
+      "runtime": true,
+      "diagram": "diagrams/01-horus.idle.up.png",
+      "overlay": "overlays/01-horus.idle.up.png",
+      "comparison": "comparisons/01-horus.idle.up.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/01-horus.idle.up.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          100,
+          62,
+          508,
+          403
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 2,
+      "id": "horus.idle.down",
+      "state": "idle",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-front.png",
+      "source_sha256": "c883f0f3cc6af5fedbca1c755bd117cde6749db73e540360ffc0e77592d56890",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        100,
+        66,
+        516,
+        673
+      ],
+      "runtime": true,
+      "diagram": "diagrams/02-horus.idle.down.png",
+      "overlay": "overlays/02-horus.idle.down.png",
+      "comparison": "comparisons/02-horus.idle.down.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/02-horus.idle.down.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          105,
+          66,
+          512,
+          425
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 3,
+      "id": "horus.idle.left",
+      "state": "idle",
+      "direction": "left",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-left.png",
+      "source_sha256": "b548a49534b363056a9ad4027b9e65c86e73fb03af649152feeb18f422ebc426",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        95,
+        84,
+        519,
+        678
+      ],
+      "runtime": true,
+      "diagram": "diagrams/03-horus.idle.left.png",
+      "overlay": "overlays/03-horus.idle.left.png",
+      "comparison": "comparisons/03-horus.idle.left.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/03-horus.idle.left.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          91,
+          75,
+          523,
+          444
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 4,
+      "id": "horus.idle.right",
+      "state": "idle",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/idle/horus-right.png",
+      "source_sha256": "3b6a92bea4cc22bbcefc7c07ee87b0b0712dabb742f30f96b3be27057f5de065",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        99,
+        84,
+        525,
+        678
+      ],
+      "runtime": true,
+      "diagram": "diagrams/04-horus.idle.right.png",
+      "overlay": "overlays/04-horus.idle.right.png",
+      "comparison": "comparisons/04-horus.idle.right.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/04-horus.idle.right.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          95,
+          75,
+          529,
+          443
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 5,
+      "id": "horus.walk.up.0",
+      "state": "walk",
+      "direction": "up",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-back-0.png",
+      "source_sha256": "5c64d4cecfe0e6d3d3ce2bb5f212bdc74a31cdbd355fde38d7b458798360149d",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        55,
+        26,
+        298,
+        386
+      ],
+      "runtime": true,
+      "diagram": "diagrams/05-horus.walk.up.0.png",
+      "overlay": "overlays/05-horus.walk.up.0.png",
+      "comparison": "comparisons/05-horus.walk.up.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/05-horus.walk.up.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          51,
+          17,
+          302,
+          231
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 6,
+      "id": "horus.walk.up.1",
+      "state": "walk",
+      "direction": "up",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-back-1.png",
+      "source_sha256": "260828fd6d03387ec64bc110747df4ba85aa0090dfc89edc735368acdda8a285",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        55,
+        25,
+        298,
+        386
+      ],
+      "runtime": true,
+      "diagram": "diagrams/06-horus.walk.up.1.png",
+      "overlay": "overlays/06-horus.walk.up.1.png",
+      "comparison": "comparisons/06-horus.walk.up.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/06-horus.walk.up.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          51,
+          16,
+          302,
+          231
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 7,
+      "id": "horus.walk.up.2",
+      "state": "walk",
+      "direction": "up",
+      "frame": 2,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-back-2.png",
+      "source_sha256": "e7dfda575e585b71f369e194ff6268bb091cfad05a790fb2ec5908361031b08c",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        55,
+        24,
+        298,
+        386
+      ],
+      "runtime": true,
+      "diagram": "diagrams/07-horus.walk.up.2.png",
+      "overlay": "overlays/07-horus.walk.up.2.png",
+      "comparison": "comparisons/07-horus.walk.up.2.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/07-horus.walk.up.2.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          51,
+          15,
+          302,
+          231
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 8,
+      "id": "horus.walk.down.0",
+      "state": "walk",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-front-0.png",
+      "source_sha256": "21969177de721e83ae43ff50f801dea56a67debac3440ee2b4102e0206868fee",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        49,
+        22,
+        301,
+        385
+      ],
+      "runtime": true,
+      "diagram": "diagrams/08-horus.walk.down.0.png",
+      "overlay": "overlays/08-horus.walk.down.0.png",
+      "comparison": "comparisons/08-horus.walk.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/08-horus.walk.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          50,
+          18,
+          300,
+          236
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 9,
+      "id": "horus.walk.down.1",
+      "state": "walk",
+      "direction": "down",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-front-1.png",
+      "source_sha256": "2302b9cab6019464841fa40d4108fa504cd2d68212a8c9bcb30804f5f480fbb2",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        53,
+        22,
+        305,
+        383
+      ],
+      "runtime": true,
+      "diagram": "diagrams/09-horus.walk.down.1.png",
+      "overlay": "overlays/09-horus.walk.down.1.png",
+      "comparison": "comparisons/09-horus.walk.down.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/09-horus.walk.down.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          54,
+          18,
+          304,
+          236
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 10,
+      "id": "horus.walk.down.2",
+      "state": "walk",
+      "direction": "down",
+      "frame": 2,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-front-2.png",
+      "source_sha256": "8df7b158072bbe832aef68c14f7125ac92c2eb55074a610dae0b1b517c1c8ccd",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        55,
+        27,
+        302,
+        385
+      ],
+      "runtime": true,
+      "diagram": "diagrams/10-horus.walk.down.2.png",
+      "overlay": "overlays/10-horus.walk.down.2.png",
+      "comparison": "comparisons/10-horus.walk.down.2.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/10-horus.walk.down.2.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          55,
+          21,
+          302,
+          237
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 11,
+      "id": "horus.walk.left.0",
+      "state": "walk",
+      "direction": "left",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-left-0.png",
+      "source_sha256": "d488f9044b211c4a06fafa5875746135aea23bc95c10c7a8653937f59295d6da",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        54,
+        32,
+        307,
+        384
+      ],
+      "runtime": true,
+      "diagram": "diagrams/11-horus.walk.left.0.png",
+      "overlay": "overlays/11-horus.walk.left.0.png",
+      "comparison": "comparisons/11-horus.walk.left.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/11-horus.walk.left.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          50,
+          23,
+          311,
+          243
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 12,
+      "id": "horus.walk.left.1",
+      "state": "walk",
+      "direction": "left",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-left-1.png",
+      "source_sha256": "c7c33d933c81f46a4545d39c4c166dfda0b2d026374ad2b080ea6144c52abe4d",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        50,
+        32,
+        307,
+        385
+      ],
+      "runtime": true,
+      "diagram": "diagrams/12-horus.walk.left.1.png",
+      "overlay": "overlays/12-horus.walk.left.1.png",
+      "comparison": "comparisons/12-horus.walk.left.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/12-horus.walk.left.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          46,
+          23,
+          311,
+          243
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 13,
+      "id": "horus.walk.left.2",
+      "state": "walk",
+      "direction": "left",
+      "frame": 2,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-left-2.png",
+      "source_sha256": "f249cd105ac588ad4ff4bd364baad3612c7bcb2c4747d2f6197a7e7bc79ad67d",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        51,
+        32,
+        305,
+        384
+      ],
+      "runtime": true,
+      "diagram": "diagrams/13-horus.walk.left.2.png",
+      "overlay": "overlays/13-horus.walk.left.2.png",
+      "comparison": "comparisons/13-horus.walk.left.2.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/13-horus.walk.left.2.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          47,
+          23,
+          309,
+          243
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 14,
+      "id": "horus.walk.right.0",
+      "state": "walk",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-right-0.png",
+      "source_sha256": "622dc5c902a366b41451be42d51886c98dd9a539c9449ee3beb24bda72d736db",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        53,
+        34,
+        308,
+        386
+      ],
+      "runtime": true,
+      "diagram": "diagrams/14-horus.walk.right.0.png",
+      "overlay": "overlays/14-horus.walk.right.0.png",
+      "comparison": "comparisons/14-horus.walk.right.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/14-horus.walk.right.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          49,
+          25,
+          312,
+          243
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 15,
+      "id": "horus.walk.right.1",
+      "state": "walk",
+      "direction": "right",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-right-1.png",
+      "source_sha256": "00831f386335c3d8161e60ea9007ca1e7269c74b1450f4726353f39c283dbc07",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        52,
+        32,
+        310,
+        386
+      ],
+      "runtime": true,
+      "diagram": "diagrams/15-horus.walk.right.1.png",
+      "overlay": "overlays/15-horus.walk.right.1.png",
+      "comparison": "comparisons/15-horus.walk.right.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/15-horus.walk.right.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          48,
+          23,
+          314,
+          243
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 16,
+      "id": "horus.walk.right.2",
+      "state": "walk",
+      "direction": "right",
+      "frame": 2,
+      "source": "docs/art/chibi-refresh/final/horus/walk/horus-right-2.png",
+      "source_sha256": "f30b080e70568b5924d082b34d44e54de64edf9c4d21a17ac65b3ad0f1aeec84",
+      "canvas": [
+        360,
+        400
+      ],
+      "crop": [
+        51,
+        32,
+        308,
+        386
+      ],
+      "runtime": true,
+      "diagram": "diagrams/16-horus.walk.right.2.png",
+      "overlay": "overlays/16-horus.walk.right.2.png",
+      "comparison": "comparisons/16-horus.walk.right.2.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/16-horus.walk.right.2.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          47,
+          23,
+          312,
+          243
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 17,
+      "id": "horus.interact.down.0",
+      "state": "interact",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-front-0.png",
+      "source_sha256": "673f8dc7fa51b831ac0615180c5f53a31caba17a6919383ca6e6590964b1b1a4",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        100,
+        66,
+        516,
+        673
+      ],
+      "runtime": true,
+      "diagram": "diagrams/17-horus.interact.down.0.png",
+      "overlay": "overlays/17-horus.interact.down.0.png",
+      "comparison": "comparisons/17-horus.interact.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/17-horus.interact.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          105,
+          66,
+          512,
+          425
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 18,
+      "id": "horus.interact.down.1",
+      "state": "interact",
+      "direction": "down",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-front-1.png",
+      "source_sha256": "e014d4c17756455aaccc8b8996eb53738b524ac580a0726336402b00b85f1552",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        100,
+        66,
+        516,
+        673
+      ],
+      "runtime": true,
+      "diagram": "diagrams/18-horus.interact.down.1.png",
+      "overlay": "overlays/18-horus.interact.down.1.png",
+      "comparison": "comparisons/18-horus.interact.down.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/18-horus.interact.down.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          105,
+          66,
+          512,
+          425
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 19,
+      "id": "horus.interact.up.0",
+      "state": "interact",
+      "direction": "up",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-back-0.png",
+      "source_sha256": "1ae5a51627d2692f971fdbeb5dfd5fe107ee5ecaa70967dda181760db8913dfd",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        102,
+        71,
+        506,
+        678
+      ],
+      "runtime": true,
+      "diagram": "diagrams/19-horus.interact.up.0.png",
+      "overlay": "overlays/19-horus.interact.up.0.png",
+      "comparison": "comparisons/19-horus.interact.up.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/19-horus.interact.up.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          98,
+          62,
+          510,
+          403
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 20,
+      "id": "horus.interact.up.1",
+      "state": "interact",
+      "direction": "up",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-back-1.png",
+      "source_sha256": "ecc21c39b5f2ce73f8372bed6269facdd16a6e740c86034255dd0ea306d8d6e2",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        103,
+        71,
+        506,
+        678
+      ],
+      "runtime": true,
+      "diagram": "diagrams/20-horus.interact.up.1.png",
+      "overlay": "overlays/20-horus.interact.up.1.png",
+      "comparison": "comparisons/20-horus.interact.up.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/20-horus.interact.up.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          99,
+          62,
+          510,
+          403
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 21,
+      "id": "horus.interact.left.0",
+      "state": "interact",
+      "direction": "left",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-left-0.png",
+      "source_sha256": "ec2c7b3f29e8a9a2cd2ebe6e9a898ef9b406c00e8c2f16e85d2c6c72d7199dfd",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        95,
+        84,
+        519,
+        678
+      ],
+      "runtime": true,
+      "diagram": "diagrams/21-horus.interact.left.0.png",
+      "overlay": "overlays/21-horus.interact.left.0.png",
+      "comparison": "comparisons/21-horus.interact.left.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/21-horus.interact.left.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          91,
+          75,
+          523,
+          444
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 22,
+      "id": "horus.interact.left.1",
+      "state": "interact",
+      "direction": "left",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-left-1.png",
+      "source_sha256": "e86a24134893351e27269df51e91a3a160941e97a87aa5e96dfd5f1b16fca063",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        89,
+        84,
+        519,
+        678
+      ],
+      "runtime": true,
+      "diagram": "diagrams/22-horus.interact.left.1.png",
+      "overlay": "overlays/22-horus.interact.left.1.png",
+      "comparison": "comparisons/22-horus.interact.left.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/22-horus.interact.left.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          91,
+          75,
+          523,
+          444
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 23,
+      "id": "horus.interact.right.0",
+      "state": "interact",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-right-0.png",
+      "source_sha256": "cfa047c0792fb13d641b839d643d5376c51ea93b6fe0ee527205fd92288556a5",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        93,
+        77,
+        525,
+        677
+      ],
+      "runtime": true,
+      "diagram": "diagrams/23-horus.interact.right.0.png",
+      "overlay": "overlays/23-horus.interact.right.0.png",
+      "comparison": "comparisons/23-horus.interact.right.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/23-horus.interact.right.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          89,
+          68,
+          529,
+          442
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 24,
+      "id": "horus.interact.right.1",
+      "state": "interact",
+      "direction": "right",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/interaction-horus-v176/png/horus-right-1.png",
+      "source_sha256": "46f3dc9dbf0db2ed6a6bc91ace985ba3d792c7267fd609b80ed51c8416eead60",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        95,
+        79,
+        525,
+        677
+      ],
+      "runtime": true,
+      "diagram": "diagrams/24-horus.interact.right.1.png",
+      "overlay": "overlays/24-horus.interact.right.1.png",
+      "comparison": "comparisons/24-horus.interact.right.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/24-horus.interact.right.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          91,
+          70,
+          529,
+          442
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 25,
+      "id": "horus.pickup.up.0",
+      "state": "pickup",
+      "direction": "up",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-back-0.png",
+      "source_sha256": "3627dbcb00d95608009affb0bec1852f14aa02614012c731e418570979ba5c2a",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        110,
+        216,
+        510,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/25-horus.pickup.up.0.png",
+      "overlay": "overlays/25-horus.pickup.up.0.png",
+      "comparison": "comparisons/25-horus.pickup.up.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/25-horus.pickup.up.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          110,
+          212,
+          509,
+          543
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 26,
+      "id": "horus.pickup.up.1",
+      "state": "pickup",
+      "direction": "up",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-back-1.png",
+      "source_sha256": "c6a75507c0301516f4d258b4f8b4849853114a81cb7f756376ba09b3c14d131d",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        111,
+        256,
+        511,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/26-horus.pickup.up.1.png",
+      "overlay": "overlays/26-horus.pickup.up.1.png",
+      "comparison": "comparisons/26-horus.pickup.up.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/26-horus.pickup.up.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          113,
+          251,
+          512,
+          581
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 27,
+      "id": "horus.pickup.down.0",
+      "state": "pickup",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-front-0.png",
+      "source_sha256": "c7fb198667f2e8c43c8a1a3bf7f686680a5377a0a1bbabaf72958d1f180662f0",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        111,
+        195,
+        510,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/27-horus.pickup.down.0.png",
+      "overlay": "overlays/27-horus.pickup.down.0.png",
+      "comparison": "comparisons/27-horus.pickup.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/27-horus.pickup.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          110,
+          191,
+          510,
+          531
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 28,
+      "id": "horus.pickup.down.1",
+      "state": "pickup",
+      "direction": "down",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-front-1.png",
+      "source_sha256": "b86c5381d9afd8a3696a9af4858bcc62ebdab92f07d8afdd5aba4c6f76c6d966",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        111,
+        246,
+        510,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/28-horus.pickup.down.1.png",
+      "overlay": "overlays/28-horus.pickup.down.1.png",
+      "comparison": "comparisons/28-horus.pickup.down.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/28-horus.pickup.down.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          111,
+          243,
+          508,
+          573
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 29,
+      "id": "horus.pickup.left.0",
+      "state": "pickup",
+      "direction": "left",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-left-0.png",
+      "source_sha256": "bd016228b0601b6f58145e5d03d4c7996e19de184ecee0f3a9f51ed23e517b56",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        98,
+        191,
+        522,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/29-horus.pickup.left.0.png",
+      "overlay": "overlays/29-horus.pickup.left.0.png",
+      "comparison": "comparisons/29-horus.pickup.left.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/29-horus.pickup.left.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          99,
+          187,
+          521,
+          533
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 30,
+      "id": "horus.pickup.left.1",
+      "state": "pickup",
+      "direction": "left",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-left-1.png",
+      "source_sha256": "5e857dbf4271d2257df832264890ba5aa63f7632e5331360f260946ab1d769b7",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        99,
+        269,
+        523,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/30-horus.pickup.left.1.png",
+      "overlay": "overlays/30-horus.pickup.left.1.png",
+      "comparison": "comparisons/30-horus.pickup.left.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/30-horus.pickup.left.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          101,
+          265,
+          521,
+          584
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 31,
+      "id": "horus.pickup.right.0",
+      "state": "pickup",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-right-0.png",
+      "source_sha256": "b3cf5a03dc0082f23947aa3cbcde70f48f0e43aaeafc8b08c7e7e27a73e5bdf4",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        98,
+        202,
+        524,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/31-horus.pickup.right.0.png",
+      "overlay": "overlays/31-horus.pickup.right.0.png",
+      "comparison": "comparisons/31-horus.pickup.right.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/31-horus.pickup.right.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          96,
+          198,
+          523,
+          541
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 32,
+      "id": "horus.pickup.right.1",
+      "state": "pickup",
+      "direction": "right",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/pickup-trio-v182/png/horus-right-1.png",
+      "source_sha256": "5d514b24b4db4a9aff50d37424ca730861b6777ed354d74ef52ae2ad5f16211d",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        97,
+        253,
+        523,
+        679
+      ],
+      "runtime": true,
+      "diagram": "diagrams/32-horus.pickup.right.1.png",
+      "overlay": "overlays/32-horus.pickup.right.1.png",
+      "comparison": "comparisons/32-horus.pickup.right.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/32-horus.pickup.right.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          99,
+          249,
+          521,
+          586
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 33,
+      "id": "horus.sit-floor.up.0",
+      "state": "sit-floor",
+      "direction": "up",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sit-trio-v190/png/horus-back-floor-0.png",
+      "source_sha256": "3e71ac0146452383279997a561afa898f23af9389120d2028286595844c38fc9",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        88,
+        57,
+        532,
+        676
+      ],
+      "runtime": true,
+      "diagram": "diagrams/33-horus.sit-floor.up.0.png",
+      "overlay": "overlays/33-horus.sit-floor.up.0.png",
+      "comparison": "comparisons/33-horus.sit-floor.up.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/33-horus.sit-floor.up.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          84,
+          48,
+          536,
+          439
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 34,
+      "id": "horus.sit-stool.up.0",
+      "state": "sit-stool",
+      "direction": "up",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sit-trio-v190/png/horus-back-stool-0.png",
+      "source_sha256": "cea998a3cf4708b3a7e3e8e8181a2677829232b76e1f78c5d1e9e645112868c8",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        88,
+        37,
+        532,
+        585
+      ],
+      "runtime": true,
+      "diagram": "diagrams/34-horus.sit-stool.up.0.png",
+      "overlay": "overlays/34-horus.sit-stool.up.0.png",
+      "comparison": "comparisons/34-horus.sit-stool.up.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/34-horus.sit-stool.up.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          84,
+          28,
+          536,
+          418
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 35,
+      "id": "horus.sit-floor.left.0",
+      "state": "sit-floor",
+      "direction": "left",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sit-trio-v190/png/horus-left-floor-0.png",
+      "source_sha256": "103691356fa9d65148b3662da1035ddf0beff7bf7a1912e42b31e5f68d705720",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        71,
+        89,
+        543,
+        681
+      ],
+      "runtime": true,
+      "diagram": "diagrams/35-horus.sit-floor.left.0.png",
+      "overlay": "overlays/35-horus.sit-floor.left.0.png",
+      "comparison": "comparisons/35-horus.sit-floor.left.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/35-horus.sit-floor.left.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          67,
+          80,
+          547,
+          446
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 36,
+      "id": "horus.sit-bench.right.0",
+      "state": "sit-bench",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sit-trio-v190/png/horus-right-bench-0.png",
+      "source_sha256": "f3c7870344ca392e528d6db0d5d8340acef9dc3ca865d50ede7ebb2df2a6be33",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        76,
+        63,
+        549,
+        690
+      ],
+      "runtime": true,
+      "diagram": "diagrams/36-horus.sit-bench.right.0.png",
+      "overlay": "overlays/36-horus.sit-bench.right.0.png",
+      "comparison": "comparisons/36-horus.sit-bench.right.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/36-horus.sit-bench.right.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          72,
+          54,
+          553,
+          434
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 37,
+      "id": "horus.sit-floor.right.0",
+      "state": "sit-floor",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sit-trio-v190/png/horus-right-floor-0.png",
+      "source_sha256": "31868b6e9c2a4134949232b326c24c8af4adfe7e6b40558142d9f8c4b66c9c05",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        76,
+        84,
+        550,
+        681
+      ],
+      "runtime": true,
+      "diagram": "diagrams/37-horus.sit-floor.right.0.png",
+      "overlay": "overlays/37-horus.sit-floor.right.0.png",
+      "comparison": "comparisons/37-horus.sit-floor.right.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/37-horus.sit-floor.right.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          72,
+          75,
+          554,
+          447
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 38,
+      "id": "horus.sit-bench.left.0",
+      "state": "sit-bench",
+      "direction": "left",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sit-trio-v190/png/horus-left-bench-0.png",
+      "source_sha256": "dc168364b2d949dc7a81f4960ea54beddd11d14aab11a346a9a4181448c5d9d4",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        71,
+        63,
+        544,
+        690
+      ],
+      "runtime": true,
+      "diagram": "diagrams/38-horus.sit-bench.left.0.png",
+      "overlay": "overlays/38-horus.sit-bench.left.0.png",
+      "comparison": "comparisons/38-horus.sit-bench.left.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/38-horus.sit-bench.left.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          67,
+          54,
+          548,
+          434
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 39,
+      "id": "horus.sleep.down.0",
+      "state": "sleep",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sleep-trio-v220/png/horus-sleep-0.png",
+      "source_sha256": "6c199c2dc65ccc585b64ae4551c405f6bb80c97ae9cbfa4b2ad155a74fb87a9f",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        107,
+        49,
+        526,
+        641
+      ],
+      "runtime": true,
+      "diagram": "diagrams/39-horus.sleep.down.0.png",
+      "overlay": "overlays/39-horus.sleep.down.0.png",
+      "comparison": "comparisons/39-horus.sleep.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/39-horus.sleep.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          103,
+          40,
+          530,
+          400
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 40,
+      "id": "horus.sleep.down.1",
+      "state": "sleep",
+      "direction": "down",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/sleep-trio-v220/png/horus-sleep-1.png",
+      "source_sha256": "b07795ab1ad7aed6e28af321e545b8c5b5e815147ab786958e23fc3b5f0698d1",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        107,
+        49,
+        526,
+        641
+      ],
+      "runtime": true,
+      "diagram": "diagrams/40-horus.sleep.down.1.png",
+      "overlay": "overlays/40-horus.sleep.down.1.png",
+      "comparison": "comparisons/40-horus.sleep.down.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/40-horus.sleep.down.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          103,
+          40,
+          530,
+          400
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 41,
+      "id": "horus.sleep.right.0",
+      "state": "sleep",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/sleep-trio-v220/png/horus-sleep-side-0.png",
+      "source_sha256": "b3689539853cd90e4199ace4c514de9333829a58bdcff3616b306792f4235f08",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        102,
+        60,
+        546,
+        661
+      ],
+      "runtime": true,
+      "diagram": "diagrams/41-horus.sleep.right.0.png",
+      "overlay": "overlays/41-horus.sleep.right.0.png",
+      "comparison": "comparisons/41-horus.sleep.right.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/41-horus.sleep.right.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          98,
+          51,
+          550,
+          417
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 42,
+      "id": "horus.sleep.right.1",
+      "state": "sleep",
+      "direction": "right",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/sleep-trio-v220/png/horus-sleep-side-1.png",
+      "source_sha256": "63a6be301167fe90e80c60384111dd7d2090a37aca8180d0245335e53249b0cd",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        94,
+        56,
+        558,
+        665
+      ],
+      "runtime": true,
+      "diagram": "diagrams/42-horus.sleep.right.1.png",
+      "overlay": "overlays/42-horus.sleep.right.1.png",
+      "comparison": "comparisons/42-horus.sleep.right.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/42-horus.sleep.right.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          90,
+          47,
+          562,
+          419
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 43,
+      "id": "horus.fish.down.0",
+      "state": "fish",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/fishing-fix/png/horus-front-fish-0.png",
+      "source_sha256": "9c23213b0dbb98ba3f81d61b6fa09cb1d7b5f2861f6107a6a7bdaa38877c1820",
+      "canvas": [
+        1020,
+        1120
+      ],
+      "crop": [
+        284,
+        265,
+        771,
+        844
+      ],
+      "runtime": true,
+      "diagram": "diagrams/43-horus.fish.down.0.png",
+      "overlay": "overlays/43-horus.fish.down.0.png",
+      "comparison": "comparisons/43-horus.fish.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/43-horus.fish.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          326,
+          256,
+          775,
+          613
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 44,
+      "id": "horus.fish.down.1",
+      "state": "fish",
+      "direction": "down",
+      "frame": 1,
+      "source": "docs/art/chibi-refresh/fishing-fix/png/horus-front-fish-1.png",
+      "source_sha256": "2187385222dd7b06232288ac4ff3faecf08dffbb030462809ab678cfe35d5600",
+      "canvas": [
+        1020,
+        1120
+      ],
+      "crop": [
+        275,
+        262,
+        851,
+        889
+      ],
+      "runtime": true,
+      "diagram": "diagrams/44-horus.fish.down.1.png",
+      "overlay": "overlays/44-horus.fish.down.1.png",
+      "comparison": "comparisons/44-horus.fish.down.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/44-horus.fish.down.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          485,
+          335,
+          855,
+          695
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 45,
+      "id": "horus.cook.up.0",
+      "state": "cook",
+      "direction": "up",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/life-v1/cook/png/horus-back-cook-0.png",
+      "source_sha256": "edf45c3d5e930cfc960505819a4302a1bda71543c070a9438987e5b3d5975f07",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        98,
+        71,
+        514,
+        673
+      ],
+      "runtime": true,
+      "diagram": "diagrams/45-horus.cook.up.0.png",
+      "overlay": "overlays/45-horus.cook.up.0.png",
+      "comparison": "comparisons/45-horus.cook.up.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/45-horus.cook.up.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          94,
+          62,
+          518,
+          398
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 46,
+      "id": "horus.read.down.0",
+      "state": "read",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/life-v1/read/png/horus-front-read-0.png",
+      "source_sha256": "8eddc7ac1903b16ff6fc9947832d582288f864ae2b3f4525d8c7dd0d44d0799a",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        94,
+        56,
+        517,
+        637
+      ],
+      "runtime": true,
+      "diagram": "diagrams/46-horus.read.down.0.png",
+      "overlay": "overlays/46-horus.read.down.0.png",
+      "comparison": "comparisons/46-horus.read.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/46-horus.read.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          90,
+          52,
+          521,
+          405
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 47,
+      "id": "horus.happy.down.0",
+      "state": "happy",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/life-v1/happy/png/horus-front-happy-0.png",
+      "source_sha256": "0664418b20e051ee50ab08ee35ea244ed9dacd48035d1a1892c05c23228ef617",
+      "canvas": [
+        395,
+        550
+      ],
+      "crop": [
+        0,
+        0,
+        395,
+        550
+      ],
+      "runtime": true,
+      "diagram": "diagrams/47-horus.happy.down.0.png",
+      "overlay": "overlays/47-horus.happy.down.0.png",
+      "comparison": "comparisons/47-horus.happy.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/47-horus.happy.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          0,
+          0,
+          395,
+          331
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 48,
+      "id": "horus.shy.down.0",
+      "state": "shy",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/life-v1/shy/png/horus-front-shy-0.png",
+      "source_sha256": "a55882c26d33f0f224449020c44b344d56cdac2c5cea15947c4a1cf9a4f261ac",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        106,
+        50,
+        539,
+        659
+      ],
+      "runtime": true,
+      "diagram": "diagrams/48-horus.shy.down.0.png",
+      "overlay": "overlays/48-horus.shy.down.0.png",
+      "comparison": "comparisons/48-horus.shy.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/48-horus.shy.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          107,
+          43,
+          543,
+          418
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 49,
+      "id": "horus.surprised.down.0",
+      "state": "surprised",
+      "direction": "down",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/life-v1/surprised/png/horus-front-surprised-0.png",
+      "source_sha256": "75a4e6908c3bc14f56b9b9dafa95c4c66142d8738803d46893584cc207cc6a02",
+      "canvas": [
+        620,
+        720
+      ],
+      "crop": [
+        105,
+        56,
+        530,
+        649
+      ],
+      "runtime": true,
+      "diagram": "diagrams/49-horus.surprised.down.0.png",
+      "overlay": "overlays/49-horus.surprised.down.0.png",
+      "comparison": "comparisons/49-horus.surprised.down.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/49-horus.surprised.down.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          101,
+          47,
+          530,
+          421
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 50,
+      "id": "horus.eat.right.0",
+      "state": "eat",
+      "direction": "right",
+      "frame": 0,
+      "source": "docs/art/chibi-refresh/life-v1/eat/png/horus-right-eat-0.png",
+      "source_sha256": "7e80801e3af6c26c7dd61e84bb68bbe45540101af01c098c13b26f485764c6b0",
+      "canvas": [
+        443,
+        528
+      ],
+      "crop": [
+        28,
+        39,
+        423,
+        528
+      ],
+      "runtime": true,
+      "diagram": "diagrams/50-horus.eat.right.0.png",
+      "overlay": "overlays/50-horus.eat.right.0.png",
+      "comparison": "comparisons/50-horus.eat.right.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/50-horus.eat.right.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          24,
+          30,
+          416,
+          346
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 51,
+      "id": "horus.combat.left.anticipation.0",
+      "state": "combat-anticipation",
+      "direction": "left",
+      "frame": 0,
+      "source": "메인2/호루스/horus-left-combat-anticipation-0.png",
+      "source_sha256": "7e8ac58e8b014e9f78a9ec0a7e3717db9acf865ee30806b10dc2b431bdb8c729",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        240,
+        61,
+        1501,
+        802
+      ],
+      "runtime": false,
+      "diagram": "diagrams/51-horus.combat.left.anticipation.0.png",
+      "overlay": "overlays/51-horus.combat.left.anticipation.0.png",
+      "comparison": "comparisons/51-horus.combat.left.anticipation.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/51-horus.combat.left.anticipation.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          844,
+          52,
+          1437,
+          526
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 52,
+      "id": "horus.combat.left.attack.0",
+      "state": "combat-attack",
+      "direction": "left",
+      "frame": 0,
+      "source": "메인2/호루스/horus-left-combat-attack-0.png",
+      "source_sha256": "943704c38d1f700beb6a779a3e4e0582a00ac740484a9c20d426d9fb3d408912",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        147,
+        91,
+        1435,
+        816
+      ],
+      "runtime": false,
+      "diagram": "diagrams/52-horus.combat.left.attack.0.png",
+      "overlay": "overlays/52-horus.combat.left.attack.0.png",
+      "comparison": "comparisons/52-horus.combat.left.attack.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/52-horus.combat.left.attack.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          721,
+          82,
+          1334,
+          549
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 53,
+      "id": "horus.combat.left.hit.0",
+      "state": "combat-hit",
+      "direction": "left",
+      "frame": 0,
+      "source": "메인2/호루스/horus-left-combat-hit-0.png",
+      "source_sha256": "a078982383efd910595111eff272cf70b10cf1ca236b3583f0d98e8a9f85a61e",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        628,
+        0,
+        1227,
+        832
+      ],
+      "runtime": false,
+      "diagram": "diagrams/53-horus.combat.left.hit.0.png",
+      "overlay": "overlays/53-horus.combat.left.hit.0.png",
+      "comparison": "comparisons/53-horus.combat.left.hit.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/53-horus.combat.left.hit.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          694,
+          76,
+          1231,
+          559
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 54,
+      "id": "horus.combat.left.idle.0",
+      "state": "combat-idle",
+      "direction": "left",
+      "frame": 0,
+      "source": "메인2/호루스/horus-left-combat-idle-0.png",
+      "source_sha256": "2df0583e041d386654a031bc5bf9593933b50629bc19622cb85a47fa8a500319",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        319,
+        71,
+        1352,
+        827
+      ],
+      "runtime": false,
+      "diagram": "diagrams/54-horus.combat.left.idle.0.png",
+      "overlay": "overlays/54-horus.combat.left.idle.0.png",
+      "comparison": "comparisons/54-horus.combat.left.idle.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/54-horus.combat.left.idle.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          697,
+          62,
+          1276,
+          527
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 55,
+      "id": "horus.combat.left.idle.1",
+      "state": "combat-idle",
+      "direction": "left",
+      "frame": 1,
+      "source": "메인2/호루스/horus-left-combat-idle-1.png",
+      "source_sha256": "99dd2e4488ae7c4f8b77f57c9772d9d96a1b59e79b1ad82251affb129a24db56",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        317,
+        96,
+        1341,
+        827
+      ],
+      "runtime": false,
+      "diagram": "diagrams/55-horus.combat.left.idle.1.png",
+      "overlay": "overlays/55-horus.combat.left.idle.1.png",
+      "comparison": "comparisons/55-horus.combat.left.idle.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/55-horus.combat.left.idle.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          665,
+          87,
+          1232,
+          536
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 56,
+      "id": "horus.combat.left.idle.2",
+      "state": "combat-idle",
+      "direction": "left",
+      "frame": 2,
+      "source": "메인2/호루스/horus-left-combat-idle-2.png",
+      "source_sha256": "76b8e8cf6127fa633948c5c2321b5e8fbe4dde5c458315c9326cd1736f34579b",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        322,
+        85,
+        1356,
+        827
+      ],
+      "runtime": false,
+      "diagram": "diagrams/56-horus.combat.left.idle.2.png",
+      "overlay": "overlays/56-horus.combat.left.idle.2.png",
+      "comparison": "comparisons/56-horus.combat.left.idle.2.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/56-horus.combat.left.idle.2.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          707,
+          76,
+          1286,
+          542
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 57,
+      "id": "horus.combat.left.skill.0",
+      "state": "combat-skill",
+      "direction": "left",
+      "frame": 0,
+      "source": "메인2/호루스/horus-left-combat-skill-0.png",
+      "source_sha256": "a05f709f838b81177748a6c2efcbe34499a94da3705b84b245a7a091ed238dbb",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        373,
+        43,
+        1453,
+        815
+      ],
+      "runtime": false,
+      "diagram": "diagrams/57-horus.combat.left.skill.0.png",
+      "overlay": "overlays/57-horus.combat.left.skill.0.png",
+      "comparison": "comparisons/57-horus.combat.left.skill.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/57-horus.combat.left.skill.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          547,
+          34,
+          1146,
+          475
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 58,
+      "id": "horus.combat.left.spell.0",
+      "state": "combat-spell",
+      "direction": "left",
+      "frame": 0,
+      "source": "메인2/호루스/horus-left-combat-spell-0.png",
+      "source_sha256": "0946b0947c724b9ff8bfcae8c26218b9573ccbe14ce1c0f686ca644a6a2b7c52",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        658,
+        0,
+        1217,
+        834
+      ],
+      "runtime": false,
+      "diagram": "diagrams/58-horus.combat.left.spell.0.png",
+      "overlay": "overlays/58-horus.combat.left.spell.0.png",
+      "comparison": "comparisons/58-horus.combat.left.spell.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/58-horus.combat.left.spell.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          675,
+          90,
+          1153,
+          527
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 59,
+      "id": "horus.combat.left.tired.0",
+      "state": "combat-tired",
+      "direction": "left",
+      "frame": 0,
+      "source": "메인2/호루스/horus-left-combat-tired-0.png",
+      "source_sha256": "7816a8d76246dbf6c9f8be4cffa5538f4e9a87c419fbb60cfe064b7aabc24168",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        659,
+        17,
+        1258,
+        825
+      ],
+      "runtime": false,
+      "diagram": "diagrams/59-horus.combat.left.tired.0.png",
+      "overlay": "overlays/59-horus.combat.left.tired.0.png",
+      "comparison": "comparisons/59-horus.combat.left.tired.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/59-horus.combat.left.tired.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          719,
+          100,
+          1262,
+          572
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 60,
+      "id": "horus.combat.right.anticipation.0",
+      "state": "combat-anticipation",
+      "direction": "right",
+      "frame": 0,
+      "source": "메인2/호루스/horus-right-combat-anticipation-0.png",
+      "source_sha256": "d82317994bc5a858d4daea37d5f161832fab2b32a4f78e3f1bd99da6ccd26d40",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        500,
+        43,
+        1690,
+        813
+      ],
+      "runtime": false,
+      "diagram": "diagrams/60-horus.combat.right.anticipation.0.png",
+      "overlay": "overlays/60-horus.combat.right.anticipation.0.png",
+      "comparison": "comparisons/60-horus.combat.right.anticipation.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/60-horus.combat.right.anticipation.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          567,
+          34,
+          1164,
+          501
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 61,
+      "id": "horus.combat.right.attack.0",
+      "state": "combat-attack",
+      "direction": "right",
+      "frame": 0,
+      "source": "메인2/호루스/horus-right-combat-attack-0.png",
+      "source_sha256": "f06757c165ca192e4f94bd1580df156cd9b37e8f5d757a95b5aa3c7e6726f1f8",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        422,
+        37,
+        1709,
+        805
+      ],
+      "runtime": false,
+      "diagram": "diagrams/61-horus.combat.right.attack.0.png",
+      "overlay": "overlays/61-horus.combat.right.attack.0.png",
+      "comparison": "comparisons/61-horus.combat.right.attack.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/61-horus.combat.right.attack.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          466,
+          28,
+          1082,
+          507
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 62,
+      "id": "horus.combat.right.hit.0",
+      "state": "combat-hit",
+      "direction": "right",
+      "frame": 0,
+      "source": "메인2/호루스/horus-right-combat-hit-0.png",
+      "source_sha256": "5c2350cf8a84c0a8d705866d2bb18cb5d1acdc463fe3ea6ee2a90f8d8930f2a1",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        619,
+        0,
+        1227,
+        825
+      ],
+      "runtime": false,
+      "diagram": "diagrams/62-horus.combat.right.hit.0.png",
+      "overlay": "overlays/62-horus.combat.right.hit.0.png",
+      "comparison": "comparisons/62-horus.combat.right.hit.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/62-horus.combat.right.hit.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          615,
+          80,
+          1142,
+          546
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 63,
+      "id": "horus.combat.right.idle.0",
+      "state": "combat-idle",
+      "direction": "right",
+      "frame": 0,
+      "source": "메인2/호루스/horus-right-combat-idle-0.png",
+      "source_sha256": "909c33ac2aa841acf417c4ea890078487bfc77c9afaaea20c58573ce681c1041",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        548,
+        81,
+        1585,
+        836
+      ],
+      "runtime": false,
+      "diagram": "diagrams/63-horus.combat.right.idle.0.png",
+      "overlay": "overlays/63-horus.combat.right.idle.0.png",
+      "comparison": "comparisons/63-horus.combat.right.idle.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/63-horus.combat.right.idle.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          624,
+          72,
+          1186,
+          545
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 64,
+      "id": "horus.combat.right.idle.1",
+      "state": "combat-idle",
+      "direction": "right",
+      "frame": 1,
+      "source": "메인2/호루스/horus-right-combat-idle-1.png",
+      "source_sha256": "f7ebd93bb6ca5af7239800f37d1dc20445045911c778a62c52db71bbbe8e64bd",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        549,
+        83,
+        1589,
+        833
+      ],
+      "runtime": false,
+      "diagram": "diagrams/64-horus.combat.right.idle.1.png",
+      "overlay": "overlays/64-horus.combat.right.idle.1.png",
+      "comparison": "comparisons/64-horus.combat.right.idle.1.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/64-horus.combat.right.idle.1.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          628,
+          74,
+          1186,
+          539
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 65,
+      "id": "horus.combat.right.idle.2",
+      "state": "combat-idle",
+      "direction": "right",
+      "frame": 2,
+      "source": "메인2/호루스/horus-right-combat-idle-2.png",
+      "source_sha256": "855b3c1778c17371a4bd6055255ce7552954a2fadd478dd269a945c9010b2fe8",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        545,
+        80,
+        1587,
+        836
+      ],
+      "runtime": false,
+      "diagram": "diagrams/65-horus.combat.right.idle.2.png",
+      "overlay": "overlays/65-horus.combat.right.idle.2.png",
+      "comparison": "comparisons/65-horus.combat.right.idle.2.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/65-horus.combat.right.idle.2.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          624,
+          71,
+          1188,
+          552
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 66,
+      "id": "horus.combat.right.skill.0",
+      "state": "combat-skill",
+      "direction": "right",
+      "frame": 0,
+      "source": "메인2/호루스/horus-right-combat-skill-0.png",
+      "source_sha256": "01d48afb9b7f6a1383f6e78637fbe86f2f4df080367d466a06d9156f39dd1b55",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        505,
+        48,
+        1611,
+        816
+      ],
+      "runtime": false,
+      "diagram": "diagrams/66-horus.combat.right.skill.0.png",
+      "overlay": "overlays/66-horus.combat.right.skill.0.png",
+      "comparison": "comparisons/66-horus.combat.right.skill.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/66-horus.combat.right.skill.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          733,
+          39,
+          1313,
+          472
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 67,
+      "id": "horus.combat.right.spell.0",
+      "state": "combat-spell",
+      "direction": "right",
+      "frame": 0,
+      "source": "메인2/호루스/horus-right-combat-spell-0.png",
+      "source_sha256": "d2db310fd8d81b97f8527e6d86a2a2a5d0dfe8a45e4744460b1538f06ac74cee",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        650,
+        0,
+        1233,
+        827
+      ],
+      "runtime": false,
+      "diagram": "diagrams/67-horus.combat.right.spell.0.png",
+      "overlay": "overlays/67-horus.combat.right.spell.0.png",
+      "comparison": "comparisons/67-horus.combat.right.spell.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/67-horus.combat.right.spell.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          708,
+          109,
+          1209,
+          536
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    },
+    {
+      "number": 68,
+      "id": "horus.combat.right.tired.0",
+      "state": "combat-tired",
+      "direction": "right",
+      "frame": 0,
+      "source": "메인2/호루스/horus-right-combat-tired-0.png",
+      "source_sha256": "c1d9f9f6289cd4df41f17687ba38d3db08f547de32aadf5d4b220cc216ef7b2b",
+      "canvas": [
+        1870,
+        841
+      ],
+      "crop": [
+        628,
+        10,
+        1244,
+        818
+      ],
+      "runtime": false,
+      "diagram": "diagrams/68-horus.combat.right.tired.0.png",
+      "overlay": "overlays/68-horus.combat.right.tired.0.png",
+      "comparison": "comparisons/68-horus.combat.right.tired.0.png",
+      "method": "deterministic source-coordinate contour and expression-edge extraction; NOT joint landmarks or new-body retarget",
+      "clean_diagram": "clean-diagrams/68-horus.combat.right.tired.0.png",
+      "head_removal": {
+        "method": "bounded manual head region and expression windows",
+        "region": [
+          624,
+          70,
+          1186,
+          564
+        ],
+        "status": "expression-placement draft; not a new appearance template"
+      }
+    }
+  ],
+  "note": "Clean diagrams remove old hair and face outline; earlier diagrams remain superseded reference only."
+}
