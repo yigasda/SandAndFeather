@@ -1,0 +1,550 @@
+{
+  "count": 18,
+  "status": "latest user-approved sources",
+  "notes": "Individual PNGs are original-resolution RGBA crops with 16px padding, no resampling or regeneration. Preview-only scaling differs by source resolution. Crops can retain source edge artifacts; cropped source boundaries are not reconstructed.",
+  "sprites": [
+    {
+      "name": "left-combat-anticipation-0",
+      "file": "png/horus-left-combat-anticipation-0.png",
+      "source": "sources/horus-left-combat-anticipation-0.png",
+      "sourceBox": [
+        0,
+        0,
+        584,
+        437
+      ],
+      "size": [
+        616,
+        469
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "4828b5d30c9a880786fb9b834b79f1988f1d8e481a47322b1ed9a2a6f0780cfc",
+      "previewScaleOnly": 0.7,
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          308.0,
+          453
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+    },
+    {
+      "name": "left-combat-hit-0",
+      "file": "png/horus-left-combat-hit-0.png",
+      "source": "sources/horus-left-combat-hit-0.png",
+      "sourceBox": [
+        0,
+        0,
+        344,
+        546
+      ],
+      "size": [
+        376,
+        578
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "40de908f2d688d3a860374ca52fb36c517b47bb768f9065444ffe5396ffc71a2",
+      "previewScaleOnly": 0.7,
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          188.0,
+          562
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+    },
+    {
+      "name": "left-combat-idle-0",
+      "file": "png/horus-left-combat-idle-0.png",
+      "source": "sources/horus-left-combat-idle-0.png",
+      "sourceBox": [
+        0,
+        0,
+        572,
+        449
+      ],
+      "size": [
+        604,
+        481
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "0944dc2cc529af295635e6ef54bf6532f18430b13421d7bdce9d41fe30fcab7b",
+      "previewScaleOnly": 0.7,
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          302.0,
+          465
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+    },
+    {
+      "name": "left-combat-idle-1",
+      "file": "png/horus-left-combat-idle-1.png",
+      "source": "sources/horus-left-combat-idle-1.png",
+      "sourceBox": [
+        0,
+        0,
+        534,
+        464
+      ],
+      "size": [
+        566,
+        496
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "ae7af9ebf2001208818cbc72792ebc4a9c10fa7c731d8dbad849aefce28e68a4",
+      "previewScaleOnly": 0.7,
+      "character": "horus",
+      "direction": "left",
+      "frame": 1,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          283.0,
+          480
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+    },
+    {
+      "name": "left-combat-idle-2",
+      "file": "png/horus-left-combat-idle-2.png",
+      "source": "sources/horus-left-combat-idle-2.png",
+      "sourceBox": [
+        0,
+        0,
+        481,
+        455
+      ],
+      "size": [
+        513,
+        487
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "e6acb59830bbf844bc8014028ccdfe93348dbdc1dc507b3ec9e22b122d2ade59",
+      "previewScaleOnly": 0.7,
+      "character": "horus",
+      "direction": "left",
+      "frame": 2,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          256.5,
+          471
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+    },
+    {
+      "name": "right-combat-skill-0",
+      "file": "png/horus-right-combat-skill-0.png",
+      "source": "sources/exec-d7bdb7f3-237d-40c5-85ca-6c9a52fa691d.png",
+      "sourceBox": [
+        800,
+        113,
+        1459,
+        599
+      ],
+      "size": [
+        691,
+        518
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "ee214f1277dba24849e718b18cb69cb6eedaa77d93c7a576d86416c0c89e3886",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          345.5,
+          502
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기"
+    },
+    {
+      "name": "left-combat-skill-0",
+      "file": "png/horus-left-combat-skill-0.png",
+      "source": "sources/exec-d7bdb7f3-237d-40c5-85ca-6c9a52fa691d.png",
+      "sourceBox": [
+        1548,
+        120,
+        2154,
+        581
+      ],
+      "size": [
+        638,
+        493
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "e09388b13155e6d7d43e918c241169602e484172c81d86ce7767189c44ecc185",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          319.0,
+          477
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기"
+    },
+    {
+      "name": "right-combat-idle-0",
+      "file": "png/horus-right-combat-idle-0.png",
+      "source": "sources/exec-9000c6a4-65ff-4428-a593-b0f4d88f357c.png",
+      "sourceBox": [
+        18,
+        40,
+        711,
+        677
+      ],
+      "size": [
+        725,
+        669
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "b7340d054ccb7ac6861f567ccc4205119ae4878ac0336990790ae732bb445d57",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          362.5,
+          653
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "대기 채택!"
+    },
+    {
+      "name": "right-combat-idle-1",
+      "file": "png/horus-right-combat-idle-1.png",
+      "source": "sources/exec-9bb14107-8215-44de-9ea2-57047df1b25a.png",
+      "sourceBox": [
+        44,
+        30,
+        895,
+        848
+      ],
+      "size": [
+        883,
+        850
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "a4d533955de9dbe0b99fca4b367c1d50b29cb5da44ac370779c926cc04d75336",
+      "previewScaleOnly": 0.3673055242390079,
+      "character": "horus",
+      "direction": "right",
+      "frame": 1,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          441.5,
+          834
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "대기 채택!"
+    },
+    {
+      "name": "right-combat-idle-2",
+      "file": "png/horus-right-combat-idle-2.png",
+      "source": "sources/exec-9bb14107-8215-44de-9ea2-57047df1b25a.png",
+      "sourceBox": [
+        931,
+        78,
+        1774,
+        848
+      ],
+      "size": [
+        875,
+        802
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "843afff9eed1cb36573b3285a23564bf12eb79a19f37f41ab644f734ca782b22",
+      "previewScaleOnly": 0.3673055242390079,
+      "character": "horus",
+      "direction": "right",
+      "frame": 2,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          437.5,
+          786
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "대기 채택!"
+    },
+    {
+      "name": "right-combat-spell-0",
+      "file": "png/horus-right-combat-spell-0.png",
+      "source": "sources/exec-c1d5c47e-9588-4f88-ba26-fb4ccfc06457.png",
+      "sourceBox": [
+        124,
+        7,
+        561,
+        679
+      ],
+      "size": [
+        469,
+        704
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "d791757a80bf0295498669c0951c032c7c602d9b1f8497381094ce2f40066b49",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          234.5,
+          688
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)"
+    },
+    {
+      "name": "left-combat-spell-0",
+      "file": "png/horus-left-combat-spell-0.png",
+      "source": "sources/exec-c1d5c47e-9588-4f88-ba26-fb4ccfc06457.png",
+      "sourceBox": [
+        765,
+        7,
+        1209,
+        678
+      ],
+      "size": [
+        476,
+        703
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "8c8152349815159e0bb8559b04bb42bab6432347ce78279dc1e20475219f32ee",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          238.0,
+          687
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)"
+    },
+    {
+      "name": "right-combat-anticipation-0",
+      "file": "png/horus-right-combat-anticipation-0.png",
+      "source": "sources/exec-c1d5c47e-9588-4f88-ba26-fb4ccfc06457.png",
+      "sourceBox": [
+        1350,
+        158,
+        2146,
+        682
+      ],
+      "size": [
+        828,
+        556
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "6a87b147825e56d2a7fbbe5d5a0ee156847cddfb76709b90b140fb0e4154414e",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          414.0,
+          540
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)"
+    },
+    {
+      "name": "right-combat-tired-0",
+      "file": "png/horus-right-combat-tired-0.png",
+      "source": "sources/exec-271f9fda-529b-4359-8032-ad1c6f702418.png",
+      "sourceBox": [
+        56,
+        61,
+        533,
+        676
+      ],
+      "size": [
+        509,
+        647
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "1213ce9f7a7b777069a48b8ae8e1879b25efcae4fa67cd4e312af3510d927ec3",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          254.5,
+          631
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "지침 채택!"
+    },
+    {
+      "name": "left-combat-tired-0",
+      "file": "png/horus-left-combat-tired-0.png",
+      "source": "sources/exec-271f9fda-529b-4359-8032-ad1c6f702418.png",
+      "sourceBox": [
+        751,
+        29,
+        1178,
+        667
+      ],
+      "size": [
+        459,
+        670
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "65ef881373e314ab8ee024a16a266f2bcb4df7d3d57cab2d9651468e6998d3e2",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          229.5,
+          654
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "지침 채택!"
+    },
+    {
+      "name": "right-combat-hit-0",
+      "file": "png/horus-right-combat-hit-0.png",
+      "source": "sources/exec-288b6d07-8c7c-4907-a82a-084a05edfb12.png",
+      "sourceBox": [
+        805,
+        3,
+        1329,
+        714
+      ],
+      "size": [
+        556,
+        743
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "b0211af44f0e6293c50a91d78dc2f053bd78ddab51d87a71a2acd9df1bed0e55",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          278.0,
+          727
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "2번으로 하자 — 약한 피격 후보 2번; 이후 재시도는 반려"
+    },
+    {
+      "name": "left-combat-attack-0",
+      "file": "png/horus-left-combat-attack-0.png",
+      "source": "sources/exec-e09056d8-9f10-42f0-8688-f404fc2e2122.png",
+      "sourceBox": [
+        33,
+        94,
+        1027,
+        671
+      ],
+      "size": [
+        1026,
+        609
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "f77656e4882107054922ab3695fa9f48b46d444b7c19b304f39404067e318b48",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "left",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          513.0,
+          593
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기"
+    },
+    {
+      "name": "right-combat-attack-0",
+      "file": "png/horus-right-combat-attack-0.png",
+      "source": "sources/exec-e09056d8-9f10-42f0-8688-f404fc2e2122.png",
+      "sourceBox": [
+        1145,
+        94,
+        2138,
+        672
+      ],
+      "size": [
+        1025,
+        610
+      ],
+      "cropPixelsUnchanged": true,
+      "sha256": "0ca40f289b89fcc74a2da57ac0623d4a2039b5fe2185a96ce2833242ef78b5a5",
+      "previewScaleOnly": 0.45,
+      "character": "horus",
+      "direction": "right",
+      "frame": 0,
+      "anchor": {
+        "type": "padded-canvas-bottom-center",
+        "pixels": [
+          512.5,
+          594
+        ],
+        "runtimeConfigured": false
+      },
+      "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기"
+    }
+  ],
+  "runtimeApplied": false,
+  "supersedes": "../horus-combat-final-18-2026-10-15",
+  "approvalEvidence": "이제 스프라이트 지랄은 끝이다 메인에 ㄱㄱㄱ"
+}
