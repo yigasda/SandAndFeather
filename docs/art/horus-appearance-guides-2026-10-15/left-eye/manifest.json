@@ -1,0 +1,79 @@
+[
+  {
+    "file": "original.png",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "sourceBox": [
+      138,
+      404,
+      308,
+      582
+    ],
+    "processing": "crop only; original dimensions retained"
+  },
+  {
+    "file": "front-idle.png",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "sourceBox": [
+      340,
+      1754,
+      508,
+      1908
+    ],
+    "processing": "crop only; original dimensions retained"
+  },
+  {
+    "file": "shy.png",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "sourceBox": [
+      926,
+      954,
+      1026,
+      1056
+    ],
+    "processing": "crop only; original dimensions retained"
+  },
+  {
+    "file": "surprise.png",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "sourceBox": [
+      1358,
+      952,
+      1462,
+      1058
+    ],
+    "processing": "crop only; original dimensions retained"
+  },
+  {
+    "file": "walk-0.png",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "sourceBox": [
+      852,
+      500,
+      934,
+      562
+    ],
+    "processing": "crop only; original dimensions retained"
+  },
+  {
+    "file": "walk-1.png",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "sourceBox": [
+      1196,
+      500,
+      1278,
+      564
+    ],
+    "processing": "crop only; original dimensions retained"
+  },
+  {
+    "file": "walk-2.png",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "sourceBox": [
+      1554,
+      500,
+      1636,
+      564
+    ],
+    "processing": "crop only; original dimensions retained"
+  }
+]

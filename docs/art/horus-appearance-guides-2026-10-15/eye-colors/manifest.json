@@ -1,0 +1,1313 @@
+[
+  {
+    "label": "전투 01 · 준비",
+    "source": "/workspace/horus-combat-publish/docs/art/horus-combat-final-18-2026-10-15/png/horus-left-combat-anticipation-0.png",
+    "headBox": [
+      236,
+      16,
+      540,
+      263
+    ],
+    "eyesBox": [
+      236,
+      173,
+      540,
+      259
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            32,
+            32,
+            67
+          ],
+          "hex": "#202043",
+          "sourceXY": [
+            378,
+            37
+          ]
+        },
+        {
+          "rgb": [
+            49,
+            50,
+            86
+          ],
+          "hex": "#313256",
+          "sourceXY": [
+            346,
+            134
+          ]
+        },
+        {
+          "rgb": [
+            56,
+            55,
+            95
+          ],
+          "hex": "#38375F",
+          "sourceXY": [
+            410,
+            62
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            251,
+            195,
+            173
+          ],
+          "hex": "#FBC3AD",
+          "sourceXY": [
+            403,
+            195
+          ]
+        },
+        {
+          "rgb": [
+            252,
+            203,
+            182
+          ],
+          "hex": "#FCCBB6",
+          "sourceXY": [
+            342,
+            248
+          ]
+        },
+        {
+          "rgb": [
+            250,
+            207,
+            187
+          ],
+          "hex": "#FACFBB",
+          "sourceXY": [
+            314,
+            235
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "전투 02 · 공격",
+    "source": "/workspace/horus-combat-publish/docs/art/horus-combat-final-18-2026-10-15/png/horus-left-combat-attack-0.png",
+    "headBox": [
+      226,
+      16,
+      531,
+      254
+    ],
+    "eyesBox": [
+      226,
+      168,
+      531,
+      250
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            37,
+            35,
+            67
+          ],
+          "hex": "#252343",
+          "sourceXY": [
+            237,
+            179
+          ]
+        },
+        {
+          "rgb": [
+            49,
+            48,
+            88
+          ],
+          "hex": "#313058",
+          "sourceXY": [
+            421,
+            83
+          ]
+        },
+        {
+          "rgb": [
+            56,
+            55,
+            95
+          ],
+          "hex": "#38375F",
+          "sourceXY": [
+            376,
+            98
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            251,
+            195,
+            170
+          ],
+          "hex": "#FBC3AA",
+          "sourceXY": [
+            398,
+            230
+          ]
+        },
+        {
+          "rgb": [
+            248,
+            203,
+            184
+          ],
+          "hex": "#F8CBB8",
+          "sourceXY": [
+            363,
+            203
+          ]
+        },
+        {
+          "rgb": [
+            253,
+            204,
+            185
+          ],
+          "hex": "#FDCCB9",
+          "sourceXY": [
+            291,
+            179
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "전투 03 · 피격",
+    "source": "/workspace/horus-combat-publish/docs/art/horus-combat-final-18-2026-10-15/png/horus-left-combat-hit-0.png",
+    "headBox": [
+      36,
+      159,
+      330,
+      393
+    ],
+    "eyesBox": [
+      36,
+      312,
+      330,
+      389
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            35,
+            31,
+            66
+          ],
+          "hex": "#231F42",
+          "sourceXY": [
+            65,
+            311
+          ]
+        },
+        {
+          "rgb": [
+            50,
+            49,
+            86
+          ],
+          "hex": "#323156",
+          "sourceXY": [
+            212,
+            205
+          ]
+        },
+        {
+          "rgb": [
+            56,
+            56,
+            96
+          ],
+          "hex": "#383860",
+          "sourceXY": [
+            198,
+            246
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            233,
+            199,
+            183
+          ],
+          "hex": "#E9C7B7",
+          "sourceXY": [
+            114,
+            303
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            202,
+            182
+          ],
+          "hex": "#FBCAB6",
+          "sourceXY": [
+            116,
+            331
+          ]
+        },
+        {
+          "rgb": [
+            249,
+            207,
+            189
+          ],
+          "hex": "#F9CFBD",
+          "sourceXY": [
+            171,
+            300
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "전투 04 · 대기 0",
+    "source": "/workspace/horus-combat-publish/docs/art/horus-combat-final-18-2026-10-15/png/horus-left-combat-idle-0.png",
+    "headBox": [
+      231,
+      16,
+      548,
+      275
+    ],
+    "eyesBox": [
+      231,
+      182,
+      548,
+      271
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            39,
+            35,
+            52
+          ],
+          "hex": "#272334",
+          "sourceXY": [
+            397,
+            241
+          ]
+        },
+        {
+          "rgb": [
+            49,
+            49,
+            86
+          ],
+          "hex": "#313156",
+          "sourceXY": [
+            439,
+            91
+          ]
+        },
+        {
+          "rgb": [
+            53,
+            54,
+            99
+          ],
+          "hex": "#353663",
+          "sourceXY": [
+            384,
+            40
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            251,
+            194,
+            173
+          ],
+          "hex": "#FBC2AD",
+          "sourceXY": [
+            343,
+            268
+          ]
+        },
+        {
+          "rgb": [
+            250,
+            204,
+            183
+          ],
+          "hex": "#FACCB7",
+          "sourceXY": [
+            386,
+            174
+          ]
+        },
+        {
+          "rgb": [
+            253,
+            206,
+            186
+          ],
+          "hex": "#FDCEBA",
+          "sourceXY": [
+            341,
+            165
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "전투 05 · 대기 1",
+    "source": "/workspace/horus-combat-publish/docs/art/horus-combat-final-18-2026-10-15/png/horus-left-combat-idle-1.png",
+    "headBox": [
+      205,
+      16,
+      516,
+      285
+    ],
+    "eyesBox": [
+      205,
+      189,
+      516,
+      281
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            38,
+            36,
+            64
+          ],
+          "hex": "#262440",
+          "sourceXY": [
+            221,
+            194
+          ]
+        },
+        {
+          "rgb": [
+            49,
+            49,
+            90
+          ],
+          "hex": "#31315A",
+          "sourceXY": [
+            241,
+            136
+          ]
+        },
+        {
+          "rgb": [
+            54,
+            55,
+            99
+          ],
+          "hex": "#363763",
+          "sourceXY": [
+            347,
+            59
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            250,
+            197,
+            174
+          ],
+          "hex": "#FAC5AE",
+          "sourceXY": [
+            338,
+            209
+          ]
+        },
+        {
+          "rgb": [
+            253,
+            203,
+            182
+          ],
+          "hex": "#FDCBB6",
+          "sourceXY": [
+            310,
+            164
+          ]
+        },
+        {
+          "rgb": [
+            252,
+            206,
+            187
+          ],
+          "hex": "#FCCEBB",
+          "sourceXY": [
+            266,
+            192
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "전투 06 · 대기 2",
+    "source": "/workspace/horus-combat-publish/docs/art/horus-combat-final-18-2026-10-15/png/horus-left-combat-idle-2.png",
+    "headBox": [
+      159,
+      16,
+      464,
+      280
+    ],
+    "eyesBox": [
+      159,
+      188,
+      464,
+      276
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            34,
+            34,
+            66
+          ],
+          "hex": "#222242",
+          "sourceXY": [
+            356,
+            149
+          ]
+        },
+        {
+          "rgb": [
+            49,
+            48,
+            90
+          ],
+          "hex": "#31305A",
+          "sourceXY": [
+            378,
+            68
+          ]
+        },
+        {
+          "rgb": [
+            54,
+            55,
+            97
+          ],
+          "hex": "#363761",
+          "sourceXY": [
+            332,
+            50
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            249,
+            202,
+            168
+          ],
+          "hex": "#F9CAA8",
+          "sourceXY": [
+            327,
+            234
+          ]
+        },
+        {
+          "rgb": [
+            252,
+            204,
+            183
+          ],
+          "hex": "#FCCCB7",
+          "sourceXY": [
+            357,
+            230
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            210,
+            186
+          ],
+          "hex": "#FBD2BA",
+          "sourceXY": [
+            249,
+            217
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "원본 정면",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      33,
+      13,
+      717,
+      645
+    ],
+    "eyesBox": [
+      99,
+      401,
+      618,
+      612
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            48,
+            42,
+            64
+          ],
+          "hex": "#302A40",
+          "sourceXY": [
+            486,
+            421
+          ]
+        },
+        {
+          "rgb": [
+            58,
+            62,
+            103
+          ],
+          "hex": "#3A3E67",
+          "sourceXY": [
+            298,
+            72
+          ]
+        },
+        {
+          "rgb": [
+            67,
+            68,
+            108
+          ],
+          "hex": "#43446C",
+          "sourceXY": [
+            198,
+            188
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            249,
+            204,
+            185
+          ],
+          "hex": "#F9CCB9",
+          "sourceXY": [
+            537,
+            469
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            211,
+            195
+          ],
+          "hex": "#FBD3C3",
+          "sourceXY": [
+            294,
+            378
+          ]
+        },
+        {
+          "rgb": [
+            252,
+            213,
+            197
+          ],
+          "hex": "#FCD5C5",
+          "sourceXY": [
+            329,
+            453
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "채택 걷기 0",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      818,
+      358,
+      1074,
+      582
+    ],
+    "eyesBox": [
+      849,
+      497,
+      1043,
+      568
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            37,
+            36,
+            60
+          ],
+          "hex": "#25243C",
+          "sourceXY": [
+            905,
+            511
+          ]
+        },
+        {
+          "rgb": [
+            54,
+            55,
+            88
+          ],
+          "hex": "#363758",
+          "sourceXY": [
+            937,
+            388
+          ]
+        },
+        {
+          "rgb": [
+            59,
+            62,
+            94
+          ],
+          "hex": "#3B3E5E",
+          "sourceXY": [
+            970,
+            426
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            248,
+            196,
+            172
+          ],
+          "hex": "#F8C4AC",
+          "sourceXY": [
+            893,
+            557
+          ]
+        },
+        {
+          "rgb": [
+            250,
+            204,
+            185
+          ],
+          "hex": "#FACCB9",
+          "sourceXY": [
+            896,
+            567
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            206,
+            188
+          ],
+          "hex": "#FBCEBC",
+          "sourceXY": [
+            999,
+            517
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "채택 걷기 1",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      1158,
+      358,
+      1418,
+      582
+    ],
+    "eyesBox": [
+      1186,
+      497,
+      1387,
+      568
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            34,
+            36,
+            64
+          ],
+          "hex": "#222440",
+          "sourceXY": [
+            1182,
+            471
+          ]
+        },
+        {
+          "rgb": [
+            53,
+            56,
+            90
+          ],
+          "hex": "#35385A",
+          "sourceXY": [
+            1346,
+            435
+          ]
+        },
+        {
+          "rgb": [
+            58,
+            60,
+            97
+          ],
+          "hex": "#3A3C61",
+          "sourceXY": [
+            1345,
+            463
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            248,
+            195,
+            174
+          ],
+          "hex": "#F8C3AE",
+          "sourceXY": [
+            1342,
+            548
+          ]
+        },
+        {
+          "rgb": [
+            249,
+            205,
+            185
+          ],
+          "hex": "#F9CDB9",
+          "sourceXY": [
+            1232,
+            489
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            206,
+            188
+          ],
+          "hex": "#FBCEBC",
+          "sourceXY": [
+            1311,
+            567
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "채택 걷기 2",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      1504,
+      359,
+      1766,
+      583
+    ],
+    "eyesBox": [
+      1536,
+      497,
+      1737,
+      570
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            38,
+            38,
+            60
+          ],
+          "hex": "#26263C",
+          "sourceXY": [
+            1570,
+            397
+          ]
+        },
+        {
+          "rgb": [
+            55,
+            56,
+            89
+          ],
+          "hex": "#373859",
+          "sourceXY": [
+            1569,
+            468
+          ]
+        },
+        {
+          "rgb": [
+            59,
+            61,
+            96
+          ],
+          "hex": "#3B3D60",
+          "sourceXY": [
+            1579,
+            427
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            234,
+            199,
+            182
+          ],
+          "hex": "#EAC7B6",
+          "sourceXY": [
+            1593,
+            506
+          ]
+        },
+        {
+          "rgb": [
+            247,
+            204,
+            188
+          ],
+          "hex": "#F7CCBC",
+          "sourceXY": [
+            1556,
+            555
+          ]
+        },
+        {
+          "rgb": [
+            250,
+            206,
+            189
+          ],
+          "hex": "#FACEBD",
+          "sourceXY": [
+            1677,
+            495
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "채택 Shy",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      857,
+      729,
+      1258,
+      1087
+    ],
+    "eyesBox": [
+      904,
+      957,
+      1201,
+      1070
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            31,
+            29,
+            59
+          ],
+          "hex": "#1F1D3B",
+          "sourceXY": [
+            1147,
+            938
+          ]
+        },
+        {
+          "rgb": [
+            51,
+            51,
+            85
+          ],
+          "hex": "#333355",
+          "sourceXY": [
+            1207,
+            850
+          ]
+        },
+        {
+          "rgb": [
+            54,
+            55,
+            96
+          ],
+          "hex": "#363760",
+          "sourceXY": [
+            974,
+            868
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            246,
+            197,
+            166
+          ],
+          "hex": "#F6C5A6",
+          "sourceXY": [
+            979,
+            998
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            201,
+            183
+          ],
+          "hex": "#FBC9B7",
+          "sourceXY": [
+            1098,
+            980
+          ]
+        },
+        {
+          "rgb": [
+            254,
+            203,
+            183
+          ],
+          "hex": "#FECBB7",
+          "sourceXY": [
+            1045,
+            1029
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "채택 Surprise",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      1289,
+      729,
+      1692,
+      1087
+    ],
+    "eyesBox": [
+      1336,
+      954,
+      1630,
+      1068
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            31,
+            31,
+            59
+          ],
+          "hex": "#1F1F3B",
+          "sourceXY": [
+            1355,
+            979
+          ]
+        },
+        {
+          "rgb": [
+            51,
+            51,
+            85
+          ],
+          "hex": "#333355",
+          "sourceXY": [
+            1444,
+            761
+          ]
+        },
+        {
+          "rgb": [
+            55,
+            55,
+            94
+          ],
+          "hex": "#37375E",
+          "sourceXY": [
+            1430,
+            851
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            251,
+            192,
+            171
+          ],
+          "hex": "#FBC0AB",
+          "sourceXY": [
+            1587,
+            990
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            198,
+            180
+          ],
+          "hex": "#FBC6B4",
+          "sourceXY": [
+            1537,
+            947
+          ]
+        },
+        {
+          "rgb": [
+            252,
+            200,
+            182
+          ],
+          "hex": "#FCC8B6",
+          "sourceXY": [
+            1468,
+            1049
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "채택 정면 정지",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      232,
+      1382,
+      888,
+      1971
+    ],
+    "eyesBox": [
+      293,
+      1754,
+      801,
+      1950
+    ],
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            34,
+            31,
+            53
+          ],
+          "hex": "#221F35",
+          "sourceXY": [
+            389,
+            1681
+          ]
+        },
+        {
+          "rgb": [
+            56,
+            56,
+            94
+          ],
+          "hex": "#38385E",
+          "sourceXY": [
+            740,
+            1542
+          ]
+        },
+        {
+          "rgb": [
+            63,
+            62,
+            100
+          ],
+          "hex": "#3F3E64",
+          "sourceXY": [
+            543,
+            1492
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            254,
+            205,
+            180
+          ],
+          "hex": "#FECDB4",
+          "sourceXY": [
+            712,
+            1877
+          ]
+        },
+        {
+          "rgb": [
+            254,
+            209,
+            188
+          ],
+          "hex": "#FED1BC",
+          "sourceXY": [
+            544,
+            1811
+          ]
+        },
+        {
+          "rgb": [
+            254,
+            210,
+            190
+          ],
+          "hex": "#FED2BE",
+          "sourceXY": [
+            365,
+            1757
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "채택 뒷면 정지",
+    "source": "/workspace/horus-redraw-68/original-walk-shy-surprise-idle-bundle.png",
+    "headBox": [
+      937,
+      1399,
+      1578,
+      1958
+    ],
+    "eyesBox": null,
+    "samples": {
+      "머리": [
+        {
+          "rgb": [
+            41,
+            39,
+            68
+          ],
+          "hex": "#292744",
+          "sourceXY": [
+            1174,
+            1837
+          ]
+        },
+        {
+          "rgb": [
+            51,
+            51,
+            86
+          ],
+          "hex": "#333356",
+          "sourceXY": [
+            1089,
+            1714
+          ]
+        },
+        {
+          "rgb": [
+            60,
+            60,
+            99
+          ],
+          "hex": "#3C3C63",
+          "sourceXY": [
+            1476,
+            1628
+          ]
+        }
+      ],
+      "피부": [
+        {
+          "rgb": [
+            243,
+            176,
+            156
+          ],
+          "hex": "#F3B09C",
+          "sourceXY": [
+            1291,
+            1939
+          ]
+        },
+        {
+          "rgb": [
+            251,
+            204,
+            180
+          ],
+          "hex": "#FBCCB4",
+          "sourceXY": [
+            1134,
+            1923
+          ]
+        },
+        {
+          "rgb": [
+            252,
+            208,
+            190
+          ],
+          "hex": "#FCD0BE",
+          "sourceXY": [
+            1491,
+            1861
+          ]
+        }
+      ]
+    }
+  }
+]

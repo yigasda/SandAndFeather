@@ -1,0 +1,83 @@
+{
+  "method": "Manual visual landmark placement; source-space pixel coordinates, not anatomical ground-truth measurements",
+  "frames": [
+    {
+      "top": 107,
+      "hairline": 252,
+      "chin": 354,
+      "shoulder": 367,
+      "waist": 412,
+      "knee": 457,
+      "sole": 511,
+      "left": 232,
+      "right": 536,
+      "sl": 362,
+      "sr": 497
+    },
+    {
+      "top": 123,
+      "hairline": 263,
+      "chin": 361,
+      "shoulder": 372,
+      "waist": 412,
+      "knee": 453,
+      "sole": 507,
+      "left": 771,
+      "right": 1076,
+      "sl": 877,
+      "sr": 1010
+    },
+    {
+      "top": 143,
+      "hairline": 284,
+      "chin": 377,
+      "shoulder": 389,
+      "waist": 429,
+      "knee": 470,
+      "sole": 513,
+      "left": 1216,
+      "right": 1510,
+      "sl": 1300,
+      "sr": 1438
+    },
+    {
+      "top": 587,
+      "hairline": 741,
+      "chin": 846,
+      "shoulder": 860,
+      "waist": 901,
+      "knee": 952,
+      "sole": 1003,
+      "left": 240,
+      "right": 557,
+      "sl": 360,
+      "sr": 490
+    },
+    {
+      "top": 572,
+      "hairline": 733,
+      "chin": 841,
+      "shoulder": 857,
+      "waist": 898,
+      "knee": 950,
+      "sole": 1003,
+      "left": 770,
+      "right": 1081,
+      "sl": 876,
+      "sr": 1006
+    },
+    {
+      "top": 581,
+      "hairline": 741,
+      "chin": 845,
+      "shoulder": 862,
+      "waist": 906,
+      "knee": 954,
+      "sole": 1003,
+      "left": 1212,
+      "right": 1517,
+      "sl": 1318,
+      "sr": 1444
+    }
+  ]
+}

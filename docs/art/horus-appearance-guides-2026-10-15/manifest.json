@@ -1,0 +1,457 @@
+{
+  "scope": "Existing appearance, proportion, color, hair and eye guides; excludes pose diagrams",
+  "files": [
+    {
+      "file": "eye-colors/combat-six-eye-colors.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/combat-six-eye-colors.png",
+      "sha256": "89760ac8d929c8bc89f658b90d813abafc18623bb510250cda897dcee021aeb5",
+      "size": [
+        1600,
+        2010
+      ]
+    },
+    {
+      "file": "eye-colors/original-bundle-eye-colors.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/original-bundle-eye-colors.png",
+      "sha256": "837f79a35f5ada9eee1d972f3fd14772cef7a93691a03a073463a848b41c92c2",
+      "size": [
+        1600,
+        2630
+      ]
+    },
+    {
+      "file": "eye-colors/manifest.json",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/manifest.json",
+      "sha256": "adb510927cbfbf625f98fb059ba9f4bd7072beff4ff16e275f6384cfd7e8d153"
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-2-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-2-eyes.png",
+      "sha256": "d9a844621d8e9a88bdbe221f2bea3c0d1897501173146a15bab19577e43ac78e",
+      "size": [
+        194,
+        71
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-4-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-4-head.png",
+      "sha256": "17d9a4da37ca4ba719114db06f168d72a8025bcf97cc025eea864480106d666c",
+      "size": [
+        317,
+        259
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-6-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-6-eyes.png",
+      "sha256": "a6a6a3064b127197c763dba07b4516fa3b4e967db53fd4fbbe900e2509e11bd0",
+      "size": [
+        294,
+        114
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-7-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-7-head.png",
+      "sha256": "282d5679fe18ca721a999cd0717a2386c22197b8cb0ed7729019385a9a548153",
+      "size": [
+        656,
+        589
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-4-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-4-head.png",
+      "sha256": "68e6a7ad1dd8e047bf8ec7c245828168d3251b86430ecde31eee087a3b792222",
+      "size": [
+        262,
+        224
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-3-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-3-head.png",
+      "sha256": "afc102f04f8729e06971fb7499efed0bedff755aa280364e72b7889c01cd2e6e",
+      "size": [
+        260,
+        224
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-1-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-1-eyes.png",
+      "sha256": "18c4529621065db264174f7610d0fbdcf6a543b2bcfc1a5416c8db1dff2cc466",
+      "size": [
+        304,
+        86
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-6-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-6-head.png",
+      "sha256": "0ae9974a4acdc4d4d17a5546519a785c4e1eca5dc43eb469ec07c20cbecb8fcf",
+      "size": [
+        403,
+        358
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-1-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-1-head.png",
+      "sha256": "ac9f23819d58c53604e4734566740c615726dc232aa9e605c700d6709b3e0ac7",
+      "size": [
+        684,
+        632
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-2-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-2-eyes.png",
+      "sha256": "a10016e5237a3c409699eaac578c197872370ed38cb73bc5564e1beeb2c12968",
+      "size": [
+        305,
+        82
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-5-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-5-eyes.png",
+      "sha256": "789494b5e27f4ef14dfd9ae710a75f494d681d4c7c057ff6a3dd671581597e02",
+      "size": [
+        297,
+        113
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-7-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-7-eyes.png",
+      "sha256": "daacb531a8a8cfcab564e0ec9f6943a23aae6891c29646de7ee232c610a0ea1d",
+      "size": [
+        508,
+        196
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-6-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-6-head.png",
+      "sha256": "4311c80de4dd3d690f7272a257da535bcdf70bdf86e9ce9aeababe2a2f64a2ac",
+      "size": [
+        305,
+        264
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-5-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-5-eyes.png",
+      "sha256": "38d5dcc2f408c9ed4b8e03a78eb5bffa38607ee8bcf3f3b9a1e895e1a92d4e35",
+      "size": [
+        311,
+        92
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-2-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-2-head.png",
+      "sha256": "54683a4b3deaef2623bb984cbbda3a03713130ecc57b519f65f2e9b7ad50a047",
+      "size": [
+        305,
+        238
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-3-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-3-eyes.png",
+      "sha256": "6807f3d0dfc138dbb56b69d78186d1ec9d532d30de1bd027877bd7018380b1dc",
+      "size": [
+        201,
+        71
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-5-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-5-head.png",
+      "sha256": "ef0686c7741bedc3adc2b177ef287b49275e70138da2dd1ee48508ff55ac0340",
+      "size": [
+        311,
+        269
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-3-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-3-head.png",
+      "sha256": "33a1d3c9e08d7ea84f5717718b2846c37648dcb7c268697c78e7ce6e68257b27",
+      "size": [
+        294,
+        234
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-2-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-2-head.png",
+      "sha256": "08b4e084670d87d0ede1071138e874051b34ca6b0e2c095852e6e0735cb329a9",
+      "size": [
+        256,
+        224
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-1-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-1-head.png",
+      "sha256": "5928d493c80e3e30d51dc9cab91760a537da20389fa48a2c32259125e1d32496",
+      "size": [
+        304,
+        247
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-8-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-8-head.png",
+      "sha256": "13a5e622a0ba947ee357bced4855b475bdc3f5b596f8b82c23968b07d066dd08",
+      "size": [
+        641,
+        559
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-3-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-3-eyes.png",
+      "sha256": "cabdf492b00f27ee542577541a9b9b88cb02a534cea131b0e42c9aae43023452",
+      "size": [
+        294,
+        77
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-4-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-4-eyes.png",
+      "sha256": "ac251ee6103c8c263580d9852740571be35feacd6259a32898e523e00f57ce25",
+      "size": [
+        317,
+        89
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-1-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-1-eyes.png",
+      "sha256": "9f7c8dfcdccceac58db70cf37ca8a6195ddb3f1dee509ffbdb6326cafa14d3ad",
+      "size": [
+        519,
+        211
+      ]
+    },
+    {
+      "file": "eye-colors/crops/combat-six-eye-colors-6-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/combat-six-eye-colors-6-eyes.png",
+      "sha256": "526845657d9e521f87fb15d0d4aee9a8a6bedc4fb1c036c2eb978b1064307f29",
+      "size": [
+        305,
+        88
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-4-eyes.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-4-eyes.png",
+      "sha256": "7ccf479b39d7420389d817e1c4a0710285e0fb2b59855a8477f7cf2fd5816d91",
+      "size": [
+        201,
+        73
+      ]
+    },
+    {
+      "file": "eye-colors/crops/original-bundle-eye-colors-5-head.png",
+      "originalWorkspacePath": "/workspace/horus-appearance-guide/crops/original-bundle-eye-colors-5-head.png",
+      "sha256": "432f33ea42be78e24cc6f536647f06d395d20b4387382b309142ffa30ef292b7",
+      "size": [
+        401,
+        358
+      ]
+    },
+    {
+      "file": "left-eye/surprise.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/surprise.png",
+      "sha256": "cb1c48ce68028e40d7d7efbbd3e5696048a801796e09620f3a65b4adc7e83cf2",
+      "size": [
+        104,
+        106
+      ]
+    },
+    {
+      "file": "left-eye/front-idle.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/front-idle.png",
+      "sha256": "3693eabbc7bd1177673dc76e10c2b0d14497479eccd850aef2dbf590a7112404",
+      "size": [
+        168,
+        154
+      ]
+    },
+    {
+      "file": "left-eye/walk-1.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/walk-1.png",
+      "sha256": "02c1f9f26988561cb2e564f45f40d47f9c4d838a47d9896d8a3867bd324a6e89",
+      "size": [
+        82,
+        64
+      ]
+    },
+    {
+      "file": "left-eye/walk-2.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/walk-2.png",
+      "sha256": "918a250bd1e8fd2b6aca73467a198a5335be0d4a741523d06e42b777436733cb",
+      "size": [
+        82,
+        64
+      ]
+    },
+    {
+      "file": "left-eye/original.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/original.png",
+      "sha256": "05f5d7afb5c085928fbb9f481ee22aa3e5341e27de0390b02a8b78f7d292edf4",
+      "size": [
+        170,
+        178
+      ]
+    },
+    {
+      "file": "left-eye/walk-0.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/walk-0.png",
+      "sha256": "478a6d597cb8c6fd5a871c258d3a47ef6e974056be43312e9dfe0e0b927a1ac9",
+      "size": [
+        82,
+        62
+      ]
+    },
+    {
+      "file": "left-eye/left-eye-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/left-eye-guide.png",
+      "sha256": "8b4afbabfe1961d2606fe186f6fb4c4cc993ce510d15451f8e7b33fa221c81cc",
+      "size": [
+        1600,
+        950
+      ]
+    },
+    {
+      "file": "left-eye/shy.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/shy.png",
+      "sha256": "47144f5d730e47c5f64d981d50b25bf208d7f531c802119c80c00e54cea28c0b",
+      "size": [
+        100,
+        102
+      ]
+    },
+    {
+      "file": "left-eye/manifest.json",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/left-eye-guide/manifest.json",
+      "sha256": "e439cb43f1d002e7ddef36bbe52cde3fbb741cb6df489b4bf8f13ed963bed823"
+    },
+    {
+      "file": "proportions/combat-landmark-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/combat-landmark-guide.png",
+      "sha256": "9eb58f4d5a6a29625ead5c411026af546a3034af9615f0023fe20b30b382cef7",
+      "size": [
+        1900,
+        4130
+      ]
+    },
+    {
+      "file": "proportions/attack-0-head-source.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/attack-0-head-source.png",
+      "sha256": "19cb39599a7e04ff5bc53e20115416ea1f917f6ca4fce90f8b12aa23f2b25e75",
+      "size": [
+        306,
+        319
+      ]
+    },
+    {
+      "file": "proportions/combat-source-guide.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/combat-source-guide.png",
+      "sha256": "5d886305f99c186ee51efa322a0d9047e8b74af75c630c47219f4bcc75c5d77c",
+      "size": [
+        1800,
+        2090
+      ]
+    },
+    {
+      "file": "proportions/hit-0-head-source.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/hit-0-head-source.png",
+      "sha256": "1dcb57ecfa9b0f6820e1a8ad8f5c97ce8fa720f4470185af0ca240345019c307",
+      "size": [
+        297,
+        317
+      ]
+    },
+    {
+      "file": "proportions/idle-0-head-source.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/idle-0-head-source.png",
+      "sha256": "c35756d5c1ec579446bf09347ee6cb8f1186f4bafcdc792874ce7499dc6db1bb",
+      "size": [
+        290,
+        316
+      ]
+    },
+    {
+      "file": "proportions/idle-1-head-source.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/idle-1-head-source.png",
+      "sha256": "8a8d124aedf3d5ed47f8fa868033909b4240df64c98731177199e484de2d05df",
+      "size": [
+        298,
+        333
+      ]
+    },
+    {
+      "file": "proportions/anticipation-0-head-source.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/anticipation-0-head-source.png",
+      "sha256": "60e75dad35170caa87fdd8155252f2ffd4d0baee1be6164178b71c6f0bd78f3a",
+      "size": [
+        308,
+        324
+      ]
+    },
+    {
+      "file": "proportions/manifest.json",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/manifest.json",
+      "sha256": "8144258541a13be43bea1dcb8a7401f10be1e3e02dd713b867dd55ea9e6f4005"
+    },
+    {
+      "file": "proportions/landmarks.json",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/landmarks.json",
+      "sha256": "4ccaeb0d0991c92ac19f4be0bb7bbb8af4e23b33102027b6b57c06e8b40e69da"
+    },
+    {
+      "file": "proportions/idle-2-head-source.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/source-combat-guide/idle-2-head-source.png",
+      "sha256": "eed93611eecbe4d097264705793034f444938941f441b2b1e43ca27c33f10fae",
+      "size": [
+        303,
+        324
+      ]
+    },
+    {
+      "file": "overview/face-hair-priority.png",
+      "originalWorkspacePath": "/workspace/horus-redraw-68/appearance-face-priority.png",
+      "sha256": "061eed9363811bede6e878a7d1b7262e54c7b9a99bb4c148135316cf723a6920",
+      "size": [
+        2100,
+        1400
+      ]
+    },
+    {
+      "file": "overview/appearance-guides.png",
+      "originalWorkspacePath": "/workspace/horus-idle-inputs/appearance-guides.png",
+      "sha256": "b0be3c49bc3b434dee5df95bcb7bda647a474f42d2b26a9ee6060e5d4f85ee40",
+      "size": [
+        6177,
+        2000
+      ]
+    },
+    {
+      "file": "original/horus-original.png",
+      "originalWorkspacePath": "/workspace/horus-combat-publish/docs/art/horus-redraw-2026-10-14/sources/horus-original.png",
+      "sha256": "5c5671a551bf86ebc0a28c27e8c146ec6011d41926a200e2010055c2da55571a",
+      "size": [
+        908,
+        1236
+      ]
+    }
+  ]
+}
