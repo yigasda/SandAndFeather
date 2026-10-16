@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "objectSource": "docs/art/desert-03-approved-2026-10-16/approved-final.png",
   "sandBase": "docs/art/desert-03-sand-retouch-2026-10-16/review.png",
   "method": "원본 바위·나무·주변 잔돌과 그림자를 동일 좌표에서 합성. 경계 주변 모래만 완만하게 연결.",
@@ -137,5 +137,7 @@
   ],
   "sha256": "6e6093e3e9158ad662e667bb2e649033017dc87adaac7f54e0954000827c1161",
   "markerSource": "사막맵/03_고요한사구_06통합.png",
-  "markerNote": "추가된 작은 표지석과 주변 잔돌도 채택 원본에서 복사"
+  "markerNote": "추가된 작은 표지석과 주변 잔돌도 채택 원본에서 복사",
+  "approvalEvidence": "깃헙이랑 드라이브 03번을 지금 수정본으로 교체해줘",
+  "previousApprovedSource": "docs/art/desert-03-ridge-approved-2026-10-16/approved-final.png"
 }
