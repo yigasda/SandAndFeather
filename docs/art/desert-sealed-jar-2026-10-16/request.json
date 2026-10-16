@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "promptFile": "prompt.txt",
+  "referenced_image_paths": [
+    "몹/하위몹/고대장치/ring-idle.png"
+  ],
+  "referenceSha256": "3b00b328d37eb6d3e9f674cbfb7803430db73daad197850e4ac7791c8d8c24c0",
+  "transparent_background": true,
+  "output": "candidate-01.png",
+  "outputSha256": "82ac6e766538b136d60ec0fe2e251fd98e90ccb43928d1d515a871b4411ac0b4",
+  "userFeedback": "훨씬 낫다; 압축 뒤에도 이어서 할 수 있게 프롬프트와 제작 지시 백업 요청",
+  "runtimeApplied": false
+}
