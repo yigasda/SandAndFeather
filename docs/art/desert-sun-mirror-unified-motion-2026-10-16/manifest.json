@@ -1,0 +1,41 @@
+{
+  "status": "review-pending",
+  "method": "single generation of all 10 frames",
+  "references": [
+    "docs/art/desert-sun-mirror-approved-2026-10-16/approved.png",
+    "docs/art/desert-sun-mirror-motion-revisions-2026-10-16/idle12.png",
+    "docs/art/desert-sun-mirror-motion-revisions-2026-10-16/attack-aura.png",
+    "docs/art/desert-sun-mirror-motion-revisions-2026-10-16/prepare-and-defeat.png"
+  ],
+  "referenceRoles": [
+    "identity",
+    "idle surface reflections",
+    "attack aura",
+    "preparation and broken defeat"
+  ],
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "attack0",
+    "attack1",
+    "hit",
+    "defeat"
+  ],
+  "beam": "docs/art/desert-sun-mirror-motion-revisions-2026-10-16/beam.png",
+  "size": [
+    1774,
+    887
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "16a50f81f03d53cfc14a3ca345722aad94b3b4bc9a5f5fe65716595cfa6fa9f2",
+  "runtimeApplied": false,
+  "alignment": "individual extraction and runtime pivots not yet verified"
+}
