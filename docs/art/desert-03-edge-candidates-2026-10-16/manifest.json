@@ -1,0 +1,20 @@
+{
+  "status": "review-pending",
+  "source": "사막맵/03_고요한사구_06통합.png",
+  "intent": "구도와 배치를 유지하고 안티에일리싱 감소 강도 3안 비교",
+  "observation": "세 시안 모두 원본 구도를 가깝게 유지했으나 요청한 픽셀 표현 강도 차이는 작음. 안티에일리싱 제거 완료로 간주하지 않음.",
+  "files": [
+    {
+      "file": "candidate-01.png",
+      "sha256": "7ab41dc016ba259fdf02a5d534e8389edbe6653e216f0d714c07a27babeb5225"
+    },
+    {
+      "file": "candidate-02.png",
+      "sha256": "cedabe369f415de8c36750f3ad2c2cd48205406548f35e3129ec4e63aa83c9ac"
+    },
+    {
+      "file": "candidate-03.png",
+      "sha256": "72eddf32f2a360a6ca6a30ca8240c379c7672852268adf3ff5843a855c7882db"
+    }
+  ]
+}
