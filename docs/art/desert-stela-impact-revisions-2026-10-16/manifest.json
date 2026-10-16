@@ -1,0 +1,26 @@
+{
+  "status": "review-pending",
+  "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+  "editedCell": 8,
+  "latest": "raised.png",
+  "pixelIdentityOutsideEdit": "not verified",
+  "runtimeApplied": false,
+  "files": {
+    "wide.png": {
+      "size": [
+        1983,
+        793
+      ],
+      "mode": "RGBA",
+      "sha256": "cfd2013f5a245c7e1e163ba2d23630da061c5d7d5d1ec71fe80a3db7a736d46d"
+    },
+    "raised.png": {
+      "size": [
+        1983,
+        793
+      ],
+      "mode": "RGBA",
+      "sha256": "ef17a7c98e5ffe83fc453fd59e1e877897ff827d93ebb4f5f6f547e5abf7cf7e"
+    }
+  }
+}
