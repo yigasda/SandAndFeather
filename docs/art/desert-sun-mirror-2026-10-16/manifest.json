@@ -1,0 +1,22 @@
+{
+  "status": "review-pending",
+  "theme": "태양거울",
+  "variants": [
+    "초승달 받침 청동 원판",
+    "흑석 테두리 거울",
+    "꽃잎 분할 거울"
+  ],
+  "reference": "docs/art/desert-sealed-jar-2026-10-16/candidate-01.png",
+  "referenceRole": "pixel rendering only",
+  "size": [
+    1942,
+    809
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "12c9fec2538878496ac3dd9acf5e896b971ceb90564ed7d0b5720b00cfbecbf4",
+  "runtimeApplied": false
+}
