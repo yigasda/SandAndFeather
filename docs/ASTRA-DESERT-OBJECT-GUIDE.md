@@ -44,7 +44,7 @@
 
 ### 원본 기준
 
-05·07–11·14–20의 일반 최종 경로는 `docs/art/desert-번호-approved-2026-10-16/approved-final.png`다. 12는 해당 폴더의 `corridor-01.png`, `corridor-02.png`; 01은 `desert-01-method-2026-10-16/approved-final.png`와 `desert-01-open-approved-2026-10-16/approved-final.png`; 03은 `desert-03-ridge-approved-2026-10-16/approved-final.png`를 쓴다. 파일명 규칙만으로 존재·채택을 추정하지 말고 실제 manifest를 확인한다.
+05·07–11·14–20의 일반 최종 경로는 `docs/art/desert-번호-approved-2026-10-16/approved-final.png`다. 12는 해당 폴더의 `corridor-01.png`, `corridor-02.png`; 01은 `desert-01-method-2026-10-16/approved-final.png`와 `desert-01-open-approved-2026-10-16/approved-final.png`; 03은 최신 모래 정리·원본 오브젝트 합성 채택본 `../사막맵/03_고요한사구_06통합.png`를 쓴다. 이전 원본은 별도 보존한다. 파일명 규칙만으로 존재·채택을 추정하지 말고 실제 manifest를 확인한다.
 
 이번 추가 원본은 [추가 채택 목록](art/desert-late-approved-2026-10-16/manifest.json)에 파일·크기·해시·채택 근거를 기록한다. 전체 그림 채택과 패치/투명 PNG의 게임 사용 승인은 별개다.
 
