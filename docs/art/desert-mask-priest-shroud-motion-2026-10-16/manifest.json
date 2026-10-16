@@ -1,0 +1,39 @@
+{
+  "status": "review-pending",
+  "family": "빈 가면 사제",
+  "variant": 2,
+  "references": [
+    {
+      "path": "../desert-empty-mask-priest-concepts-2026-10-16/candidates.png",
+      "role": "middle design identity only"
+    },
+    {
+      "path": "../desert-mask-priest-mantle-motion-2026-10-16/sheet.png",
+      "role": "adopted animation sequence and rendering only"
+    }
+  ],
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "seal-cast0",
+    "seal-cast1",
+    "hit",
+    "defeat"
+  ],
+  "size": [
+    1944,
+    809
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "9ed9b21fca24c3ad81538ea524d6cf972b62f4b09b8b0117665e4f1a3220591a",
+  "runtimeApplied": false,
+  "reviewNotes": "Ten coherent keys visually checked; long mask and indigo sash retained. Attack effects occupy neighboring nominal cell margins; runtime extraction/pivots not validated."
+}

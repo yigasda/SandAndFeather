@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "identity": "empty mask priest variant1 broad collar mantle",
   "reference": "../desert-empty-mask-priest-concepts-2026-10-16/candidates.png LEFT only",
   "frames": [
@@ -25,5 +25,6 @@
   ],
   "sha256": "ef69f522031a77de7d9074b1550b6db289118d32f9527275b1bcc9bbe1d4600e",
   "runtimeApplied": false,
-  "reviewNotes": "Ten unified keys; attack effects extend beyond nominal equal cell borders, extraction/pivots not yet validated. No automatic adoption of motion."
+  "reviewNotes": "User adopted ten keys. Attack effects extend beyond nominal equal-cell borders; runtime extraction/pivots not validated.",
+  "approvalEvidence": "우왓 씨발 10292920% 합격!!! 이제 2번째 시안 모션도 10개 줘!"
 }
