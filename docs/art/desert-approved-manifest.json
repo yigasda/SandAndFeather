@@ -57,5 +57,20 @@
     "runtimeApplied": false,
     "uploadedThisSession": true,
     "publishedBranch": "main"
+  },
+  {
+    "map": "05",
+    "name": "피라미드 기단과 진입로",
+    "file": "art/desert-05-approved-2026-10-16/approved-final.png",
+    "source": "art/desert-05-candidates-2026-10-16/png/desert-05-candidate-01.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "13c2aa44f8c7bb0cae63490f9d7fa531ce07c988fce3aa965b90488ffeb4fed9",
+    "approvalEvidence": "1번으로 채택. 메인에 올리고 / 아니 앙크 ㄱㅊ 그냥 올려",
+    "runtimeApplied": false,
+    "publishedBranch": "main",
+    "ankhException": "사용자가 05 시안 1의 앙크 포함 원본을 명시적으로 승인. 새 맵의 앙크 금지는 유지."
   }
 ]
