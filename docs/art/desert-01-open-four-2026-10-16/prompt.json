@@ -1,0 +1,12 @@
+{
+  "base": "Edit only CENTRAL circular monument of exact reference desert01 image. Preserve whole canvas1586x992, original camera, all other map details. Original stone circular footprint approx x300..1060,y430..780 MUST NOT enlarge. Create SMALL NARROW entrance into left part of circle, no huge open crater/amphitheater. Stair clear width only70-90 source pixels, modest one-person descending staircase, 5 readable narrow treads descending into shadow along inside left rim. Opening occupies ONLY LEFT QUARTER of original circle, not half. Keep original lid diameter and flat elliptical perspective, NOT a tilted upright disk or shrunken disk. Lid slides right only80-110px and is partly recessed under original right fixed ring, do not extend beyond original monument footprint. Radial blue engraved sectors and central bronze hub are EXACTLY concentric on lid geometric center, all rings share same center, equal radial sector spacing; hub not off to right, no skewed pattern. Outer masonry ring remains fixed. Keep front sandy access gap and small level first tread. No surrounding pillars roads plants buildings moving, no new ornaments, no text or arrows. Match original clean tsukuru3/4 game art and sandstone. Full map one image. ",
+  "variants": [
+    "Option1: slim curved stair descending along left inside rim, opening crescent only about90px wide. Lid slightly shifted, almost entire circle remains covered.",
+    "Option2: narrow straight descending stone staircase inside small rectangular notch at front-left circle edge, about80px width; short shallow upper landing, left quarter opening with rest under lid.",
+    "Option3: narrow quarter-turn stairs enter at left-middle circle edge then turn down toward center beneath lid, dark opening narrow, fixed outer rim remains broad.",
+    "Option4: slim curved staircase begins near front-left edge, small stone side cheek separates entrance from lid, modest110px oval opening at maximum, concentric lid center clear and flat."
+  ],
+  "refs": [
+    "/workspace/SandAndFeather/docs/art/desert-01-method-2026-10-16/approved-final.png"
+  ]
+}

@@ -2,6 +2,8 @@
 
 ## 사막 현재 작업
 
+01 열린 상태 좁은 입구 시안4개: `art/desert-01-open-four-2026-10-16/`. 사용자1번 선호, 미채택. 원본에 중앙 유적 마스크 영역만 합성. 4개 모두 마스크 밖 RGB 변경 픽셀0 검증. 최신 원본 닫힘 그림 보존.
+
 19 단서판 위치 수정본 채택·최종 교체 완료: `art/desert-19-panel-revision-2026-10-16/revised.png`. 오른쪽 위 판 유지, 아래쪽 옆면 판을 뒤쪽 중앙 왼편 벽으로 이동. 최종은 `art/desert-19-approved-2026-10-16/approved-final.png`. 이전 그림은 before-panel-move.png로 보존. 수정 밖 픽셀 동일성 미검증. 01 입구 열린 상태 생성·확인 대기: `art/desert-01-open-state-2026-10-16/open-preview.png`. 문양 뚜껑 오른쪽·왼쪽 하강 계단. 닫힘 원본 보존.
 
 19번 원형·별빛 시안 4 채택: `art/desert-19-approved-2026-10-16/approved-final.png`. 이전 시안: `art/desert-19-round-candidates-2026-10-16/`. 최신 사용자 지시로 사각 방을 원형으로 변경. 별 문양은 작동 검증 전 시안. 다음 작업은 01 원판 개방 상태 추가. 오른쪽으로 뚜껑 이동·왼쪽 계단 노출 대 중앙 개방 방식 검토 중이며 미생성. 기존01 닫힘 원본 보존.
