@@ -1,0 +1,20 @@
+Redraw reference1 as ONE unified 2-row x 5-column transparent PNG sprite sheet of the SAME Egyptian balance sentinel, preserving exactly the TEN POSES and their order from reference1. Primary task: unify all material colors, rendering, proportions and pixel density across the whole sheet. Reference1 is the assembled approved-motion selection: follow its idle0, idle1, idle2, guard, prepare0 / prepare1, slam0, slam1, hit, defeat. Reference2 is the FIRST ORIGINAL sheet: use it for MATERIAL PALETTE and pixel execution ONLY. Do NOT restore its incorrect idle and hit facing or replace the selected poses of reference1.
+Choose ONE palette for the entire character: same muted creamy sandstone on beam and weights, same deep warm gray-brown basalt pylons, same restrained aged ochre bronze on axle/chains/bands. Use the colors of reference2's original guard/prepare/attack as authority. Newly added idle/hit cells in reference1 look more yellow/orange: remove this mismatch. Identical material base colors, shadow colors, highlight colors and saturation for ALL ten keys. Pose shading changes allowed, but no per-cell recolor or brightness/style drift. No yellow wash, no new red fringe, no outer glow. Distinct dark stone and pale stone; do not flatten all materials to one brown.
+
+Character identity: twin tall basalt pylons with narrow slot and bronze axle, double gold bands on lower portion, angular broad incised ivory crossbeam, two faceted tapered heavy stone weights on short bronze chains. Keep body and each component the same actual size throughout. Equal cells, plenty of padding. No face, limbs, eyes or new ornaments. All the same elevated 3/4 camera, consistent upper-left illumination.
+
+TOP ROW preserve reference1:
+1 idle0 neutral hanging weights.
+2 idle1 hover rises, left weight swings outward and right inward.
+3 idle2 settles, left inward and right outward.
+For all three idle frames COPY the same central body facing/projection of reference1 top-left: screen-right pylon nearer and lower, screen-left pylon farther and higher. Same visible faces. Do not turn as beam/weights move.
+4 guard weights drawn inward before lower body.
+5 prepare0 starting to raise screen-left weight for slam.
+BOTTOM ROW preserve reference1:
+6 prepare1 stronger lifting of screen-left weight.
+7 slam0 keep existing excellent left-weight downward strike nearly exactly, including body lean, swinging beam, raised opposite weight and sparse ochre falling arc.
+8 slam1 keep existing excellent contact pose nearly exactly, left weight impacts lower-left with strong compact chunky sand burst, opposite weight high.
+9 hit keep newly selected unbalanced swinging-weight recoil from reference1: left weight flung outward, right inward, central pylons SAME facing as idle0. Not original reference2 hit. Neither weight contacts ground; no glow or debris.
+10 defeat fallen broken beam, collapsed twin pylons, weights lying on slack chains.
+
+This is clean fresh unified rendering FROM THE ASSEMBLED POSES, not sharpening/upscaling the composite. Retain deliberate medium chunky pixel clusters, internally stepped angular shading, crisp structural planes, no smooth painterly detail, no grain, no tiny scratches. No redesign, no rearranged poses, no new attacks. Correct stray clipped slivers near cell boundaries; each complete silhouette and sand contained in its cell. All ten rendered simultaneously in SAME PALETTE and pixel density. Transparent background, no scenery, floor tiles, text, labels, panels or grid.

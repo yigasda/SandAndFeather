@@ -1,0 +1,26 @@
+{
+  "status": "review-pending",
+  "references": [
+    {
+      "file": "../desert-balance-sentinel-comparison-2026-10-16/sheet.png",
+      "role": "selected ten poses"
+    },
+    {
+      "file": "../desert-balance-sentinel-motion-2026-10-16/sheet.png",
+      "role": "original palette and pixel execution"
+    }
+  ],
+  "layout": "2x5",
+  "size": [
+    1983,
+    793
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "64bf3fbaca41130a4d7961c15af394ad7120bac9a380815253f3f741d7af66de",
+  "runtimeApplied": false,
+  "review": "Single generated color-unification sheet. Poses visually retained, palette more consistent. Edge alpha/fringe cleanup and runtime verification not performed."
+}

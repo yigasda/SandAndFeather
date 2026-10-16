@@ -1,0 +1,230 @@
+{
+  "status": "color-comparison-not-final-adoption",
+  "colorAdjustment": false,
+  "generated": false,
+  "layout": "2x5",
+  "frames": [
+    {
+      "slot": 1,
+      "source": "docs/art/desert-balance-sentinel-idle-hit-redraw-2026-10-16/sheet.png",
+      "sourceBox": [
+        0,
+        0,
+        543,
+        724
+      ],
+      "cropWithinCell": [
+        11,
+        129,
+        522,
+        569
+      ],
+      "scale": 0.75,
+      "resample": "nearest",
+      "position": [
+        58,
+        85
+      ]
+    },
+    {
+      "slot": 2,
+      "source": "docs/art/desert-balance-sentinel-idle-hit-redraw-2026-10-16/sheet.png",
+      "sourceBox": [
+        543,
+        0,
+        1086,
+        724
+      ],
+      "cropWithinCell": [
+        6,
+        103,
+        540,
+        558
+      ],
+      "scale": 0.75,
+      "resample": "nearest",
+      "position": [
+        550,
+        79
+      ]
+    },
+    {
+      "slot": 3,
+      "source": "docs/art/desert-balance-sentinel-idle-hit-redraw-2026-10-16/sheet.png",
+      "sourceBox": [
+        1086,
+        0,
+        1629,
+        724
+      ],
+      "cropWithinCell": [
+        41,
+        160,
+        543,
+        603
+      ],
+      "scale": 0.75,
+      "resample": "nearest",
+      "position": [
+        1062,
+        84
+      ]
+    },
+    {
+      "slot": 4,
+      "source": "docs/art/desert-balance-sentinel-motion-2026-10-16/sheet.png",
+      "sourceBox": [
+        0,
+        0,
+        1983,
+        793
+      ],
+      "cropWithinCell": [
+        1196,
+        60,
+        1555,
+        367
+      ],
+      "scale": 1,
+      "resample": "nearest",
+      "position": [
+        1570,
+        96
+      ]
+    },
+    {
+      "slot": 5,
+      "source": "docs/art/desert-balance-sentinel-motion-2026-10-16/sheet.png",
+      "sourceBox": [
+        0,
+        0,
+        1983,
+        793
+      ],
+      "cropWithinCell": [
+        1575,
+        1,
+        1977,
+        410
+      ],
+      "scale": 1,
+      "resample": "nearest",
+      "position": [
+        2049,
+        45
+      ]
+    },
+    {
+      "slot": 6,
+      "source": "docs/art/desert-balance-sentinel-motion-2026-10-16/sheet.png",
+      "sourceBox": [
+        0,
+        0,
+        1983,
+        793
+      ],
+      "cropWithinCell": [
+        10,
+        385,
+        384,
+        787
+      ],
+      "scale": 1,
+      "resample": "nearest",
+      "position": [
+        63,
+        549
+      ]
+    },
+    {
+      "slot": 7,
+      "source": "docs/art/desert-balance-sentinel-motion-2026-10-16/sheet.png",
+      "sourceBox": [
+        0,
+        0,
+        1983,
+        793
+      ],
+      "cropWithinCell": [
+        395,
+        412,
+        789,
+        787
+      ],
+      "scale": 1,
+      "resample": "nearest",
+      "position": [
+        553,
+        562
+      ]
+    },
+    {
+      "slot": 8,
+      "source": "docs/art/desert-balance-sentinel-motion-2026-10-16/sheet.png",
+      "sourceBox": [
+        0,
+        0,
+        1983,
+        793
+      ],
+      "cropWithinCell": [
+        751,
+        419,
+        1188,
+        783
+      ],
+      "scale": 1,
+      "resample": "nearest",
+      "position": [
+        1031,
+        568
+      ]
+    },
+    {
+      "slot": 9,
+      "source": "docs/art/desert-balance-sentinel-idle-hit-redraw-2026-10-16/sheet.png",
+      "sourceBox": [
+        1629,
+        0,
+        2172,
+        724
+      ],
+      "cropWithinCell": [
+        0,
+        127,
+        535,
+        558
+      ],
+      "scale": 0.75,
+      "resample": "nearest",
+      "position": [
+        1549,
+        588
+      ]
+    },
+    {
+      "slot": 10,
+      "source": "docs/art/desert-balance-sentinel-motion-2026-10-16/sheet.png",
+      "sourceBox": [
+        0,
+        0,
+        1983,
+        793
+      ],
+      "cropWithinCell": [
+        1529,
+        528,
+        1975,
+        790
+      ],
+      "scale": 1,
+      "resample": "nearest",
+      "position": [
+        2027,
+        619
+      ]
+    }
+  ],
+  "note": "Uniform 0.75 preview scale for new four sprites; original six at 1.0. Opaque bbox plus 8 px margin excludes distant faint alpha residue. Runtime pivots not calibrated.",
+  "sha256": "5ef900e4620162a8c80ae67bb417bf5f1be4700f3b8777f7b29fd97afe2af7bd"
+}
