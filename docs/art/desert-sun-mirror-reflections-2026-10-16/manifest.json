@@ -1,0 +1,38 @@
+{
+  "status": "review-pending",
+  "latest": "color.png",
+  "variants": [
+    "폐허 반사",
+    "시간 어긋남",
+    "빛의 불일치"
+  ],
+  "reference": "docs/art/desert-sun-mirror-oval-2026-10-16/candidates.png",
+  "latestInstruction": "거울 안 신전은 빛바랜 컬러. 황토색 사암·바랜 붉은 안료·청록 흔적, 은빛 반사와 구분.",
+  "runtimeApplied": false,
+  "files": {
+    "monochrome.png": {
+      "size": [
+        1881,
+        836
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "8a780ef53c036481c81f694d5e917409afb45dfe0ed1a76ed6d67ddb81c191c0"
+    },
+    "color.png": {
+      "size": [
+        1882,
+        836
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "1f83de4f7f8513e0a9b1fd50ca12d0343c12b3e54ed656c9921a85177e87b3ba"
+    }
+  }
+}
