@@ -1,0 +1,16 @@
+{
+  "status": "review-pending",
+  "variants": [
+    "가죽 방패병",
+    "연꽃 목제 방패병",
+    "봉인 석판 방패병"
+  ],
+  "reference": "docs/art/desert-sealed-jar-2026-10-16/candidate-01.png",
+  "request": "고대 이집트 느낌; 자세만 아닌 디자인 3안",
+  "size": [
+    1883,
+    835
+  ],
+  "sha256": "971c7fd5bbfb6a13b31afabd96a5e16deed40f367b982dfb3ecd7e8cae0b2bf3",
+  "runtimeApplied": false
+}
