@@ -1,0 +1,212 @@
+{
+  "source": "docs/art/desert-balance-sentinel-color-unified-2026-10-16/sheet.png",
+  "sourceSha256": "64bf3fbaca41130a4d7961c15af394ad7120bac9a380815253f3f741d7af66de",
+  "method": "connected bodies plus nearest-body ownership for detached pieces; source RGBA copied without resampling/recoloring",
+  "canvas": [
+    507,
+    520
+  ],
+  "sharedNominalCellOffset": [
+    50,
+    55
+  ],
+  "runtimePivot": null,
+  "runtimeApplied": false,
+  "verification": {
+    "visiblePixelReconstructionExact": true,
+    "frameCount": 10,
+    "sourceNonzeroAlphaPixels": 650553
+  },
+  "frames": [
+    {
+      "file": "00_idle_0.png",
+      "state": "idle_0",
+      "sourceBBox": [
+        31,
+        19,
+        403,
+        449
+      ],
+      "pasteOffset": [
+        81,
+        74
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        0
+      ],
+      "sha256": "4a856041f32991fa0703a2d84e999aca81e78dad9f6e628714862419f369edb4"
+    },
+    {
+      "file": "01_idle_1.png",
+      "state": "idle_1",
+      "sourceBBox": [
+        396,
+        39,
+        784,
+        397
+      ],
+      "pasteOffset": [
+        49,
+        94
+      ],
+      "nominalSourceCellOrigin": [
+        397,
+        0
+      ],
+      "sha256": "409d578e8ebfa9d2845bbd3d23397d66ebf5ee6d73ac9ead3f61d0a697ba17e6"
+    },
+    {
+      "file": "02_idle_2.png",
+      "state": "idle_2",
+      "sourceBBox": [
+        759,
+        17,
+        1211,
+        411
+      ],
+      "pasteOffset": [
+        16,
+        72
+      ],
+      "nominalSourceCellOrigin": [
+        793,
+        0
+      ],
+      "sha256": "e76e1a52a956bb51eb91af21927ca999f0a0d9fe6a1a87e7cb8eddccebd1c516"
+    },
+    {
+      "file": "03_guard.png",
+      "state": "guard",
+      "sourceBBox": [
+        1178,
+        23,
+        1620,
+        408
+      ],
+      "pasteOffset": [
+        38,
+        78
+      ],
+      "nominalSourceCellOrigin": [
+        1190,
+        0
+      ],
+      "sha256": "ef492aafb6c865e31c72b29a1838f4e8976847da9847464a139deb7a965aecb7"
+    },
+    {
+      "file": "04_prepare_0.png",
+      "state": "prepare_0",
+      "sourceBBox": [
+        1587,
+        31,
+        1967,
+        447
+      ],
+      "pasteOffset": [
+        51,
+        86
+      ],
+      "nominalSourceCellOrigin": [
+        1586,
+        0
+      ],
+      "sha256": "694231d3f0bc9c719d26cbcd31dfd4ead7369573ee1abe19ce0a464db7ba86c3"
+    },
+    {
+      "file": "05_prepare_1.png",
+      "state": "prepare_1",
+      "sourceBBox": [
+        0,
+        357,
+        403,
+        793
+      ],
+      "pasteOffset": [
+        50,
+        16
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        396
+      ],
+      "sha256": "4cd2f73793a585fafb80a9ea46b8fc73ed62f0240cd1827bc551fd77cf7c6b33"
+    },
+    {
+      "file": "06_slam_0.png",
+      "state": "slam_0",
+      "sourceBBox": [
+        402,
+        388,
+        838,
+        763
+      ],
+      "pasteOffset": [
+        55,
+        47
+      ],
+      "nominalSourceCellOrigin": [
+        397,
+        396
+      ],
+      "sha256": "4ce52f6f25b54f4429cf9d4bcc58678787f16e406e6762f08cd8f7a6f80eaa9f"
+    },
+    {
+      "file": "07_slam_1.png",
+      "state": "slam_1",
+      "sourceBBox": [
+        767,
+        390,
+        1227,
+        769
+      ],
+      "pasteOffset": [
+        24,
+        49
+      ],
+      "nominalSourceCellOrigin": [
+        793,
+        396
+      ],
+      "sha256": "f52a862d80723fe6b25347bc1ed95538d83bc3f7239104b9b9c2fb35cda794c6"
+    },
+    {
+      "file": "08_hit.png",
+      "state": "hit",
+      "sourceBBox": [
+        1202,
+        387,
+        1590,
+        775
+      ],
+      "pasteOffset": [
+        62,
+        46
+      ],
+      "nominalSourceCellOrigin": [
+        1190,
+        396
+      ],
+      "sha256": "019134d333781104329dacd6310afb4cd12f45acee166a0eb7733cec8b8641c0"
+    },
+    {
+      "file": "09_defeat.png",
+      "state": "defeat",
+      "sourceBBox": [
+        1563,
+        411,
+        1969,
+        759
+      ],
+      "pasteOffset": [
+        27,
+        70
+      ],
+      "nominalSourceCellOrigin": [
+        1586,
+        396
+      ],
+      "sha256": "2609ade4720403460324b7176c17e89d5fd30d488e27dff6e1303329386334e9"
+    }
+  ]
+}

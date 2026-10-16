@@ -1,0 +1,114 @@
+{
+  "monsters": [
+    {
+      "name": "01_봉인항아리",
+      "canvas": [
+        476,
+        538
+      ],
+      "source": "docs/art/desert-sealed-jar-sheet-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "02_가죽방패병",
+      "canvas": [
+        558,
+        477
+      ],
+      "source": "docs/art/desert-leather-shield-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "03_봉인방패병",
+      "canvas": [
+        476,
+        468
+      ],
+      "source": "docs/art/desert-sealed-shield-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "04_걸음비석",
+      "canvas": [
+        459,
+        435
+      ],
+      "source": "docs/art/desert-sandstone-stela-approved-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "05_태양거울",
+      "canvas": [
+        440,
+        494
+      ],
+      "source": "docs/art/desert-sun-mirror-unified-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "06_천칭파수꾼",
+      "canvas": [
+        507,
+        520
+      ],
+      "source": "docs/art/desert-balance-sentinel-color-unified-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "07_빈가면사제_장막형",
+      "canvas": [
+        517,
+        470
+      ],
+      "source": "docs/art/desert-mask-priest-mantle-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "08_빈가면사제_수의형",
+      "canvas": [
+        512,
+        528
+      ],
+      "source": "docs/art/desert-mask-priest-shroud-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "09_왕면수문장",
+      "canvas": [
+        487,
+        551
+      ],
+      "source": "docs/art/desert-royal-sarcophagus-boss-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "10_신전수문장",
+      "canvas": [
+        489,
+        493
+      ],
+      "source": "docs/art/desert-temple-gate-boss-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "11_왕좌수문장",
+      "canvas": [
+        573,
+        530
+      ],
+      "source": "docs/art/desert-throne-tomb-boss-motion-2026-10-16/sheet.png",
+      "frames": 10
+    },
+    {
+      "name": "12_파릉수문장",
+      "canvas": [
+        494,
+        486
+      ],
+      "source": "docs/art/desert-broken-vault-boss-motion-2026-10-16/sheet.png",
+      "frames": 10
+    }
+  ],
+  "count": 120,
+  "runtimeApplied": false
+}

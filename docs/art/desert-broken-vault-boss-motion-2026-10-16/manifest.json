@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "family": "4대 수문장",
   "originalConceptIndex": 5,
   "design": "파릉 수문장",
@@ -32,5 +32,6 @@
   "sha256": "5b364c536d502489766a473f6bf7032b5d6fcfe975ed9f1b6b88bfefd3e123de",
   "runtimeApplied": false,
   "intendedHeightRatio": 2.5,
-  "reviewNotes": "Ten coherent keys, extended open claw then closing grip. Runtime scale/extraction/pivots not validated; attack effects reach nominal cell boundaries."
+  "reviewNotes": "10모션 채택. 개별 PNG는 몹/사막/12_파릉수문장. 게임 배율·기준점은 적용 시 검증.",
+  "approvalEvidence": "아 ㅈㄴ 좋아 채택!!!!"
 }

@@ -1,0 +1,212 @@
+{
+  "source": "docs/art/desert-broken-vault-boss-motion-2026-10-16/sheet.png",
+  "sourceSha256": "5b364c536d502489766a473f6bf7032b5d6fcfe975ed9f1b6b88bfefd3e123de",
+  "method": "connected bodies plus nearest-body ownership for detached pieces; source RGBA copied without resampling/recoloring",
+  "canvas": [
+    494,
+    486
+  ],
+  "sharedNominalCellOffset": [
+    17,
+    -1
+  ],
+  "runtimePivot": null,
+  "runtimeApplied": false,
+  "verification": {
+    "visiblePixelReconstructionExact": true,
+    "frameCount": 10,
+    "sourceNonzeroAlphaPixels": 754456
+  },
+  "frames": [
+    {
+      "file": "00_idle_0.png",
+      "state": "idle_0",
+      "sourceBBox": [
+        0,
+        24,
+        412,
+        433
+      ],
+      "pasteOffset": [
+        17,
+        23
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        0
+      ],
+      "sha256": "3e0ac8dbbf58d95b820f95db4e9660b52e65eec788cda215885fbe74deb8c07b"
+    },
+    {
+      "file": "01_idle_1.png",
+      "state": "idle_1",
+      "sourceBBox": [
+        411,
+        23,
+        812,
+        471
+      ],
+      "pasteOffset": [
+        31,
+        22
+      ],
+      "nominalSourceCellOrigin": [
+        397,
+        0
+      ],
+      "sha256": "d79b60a03c7bce4cd06d7e634fd48c907ea07f86d1a1414187750351a803317b"
+    },
+    {
+      "file": "02_idle_2.png",
+      "state": "idle_2",
+      "sourceBBox": [
+        821,
+        17,
+        1227,
+        460
+      ],
+      "pasteOffset": [
+        45,
+        16
+      ],
+      "nominalSourceCellOrigin": [
+        793,
+        0
+      ],
+      "sha256": "5005516595835bfde88540004f81a2617665aa54f6a8d3a6ccd27fceab6182b9"
+    },
+    {
+      "file": "03_guard.png",
+      "state": "guard",
+      "sourceBBox": [
+        1230,
+        30,
+        1642,
+        401
+      ],
+      "pasteOffset": [
+        57,
+        29
+      ],
+      "nominalSourceCellOrigin": [
+        1190,
+        0
+      ],
+      "sha256": "2253eef963e32406ac18f5bebc713429dacd9b3c53599f184b0460c32b8a7001"
+    },
+    {
+      "file": "04_prepare_0.png",
+      "state": "prepare_0",
+      "sourceBBox": [
+        1623,
+        21,
+        1983,
+        405
+      ],
+      "pasteOffset": [
+        54,
+        20
+      ],
+      "nominalSourceCellOrigin": [
+        1586,
+        0
+      ],
+      "sha256": "78655516d927841d1f9205a2bbe204683479142040bedeaf33891526e03785eb"
+    },
+    {
+      "file": "05_prepare_1.png",
+      "state": "prepare_1",
+      "sourceBBox": [
+        16,
+        430,
+        451,
+        771
+      ],
+      "pasteOffset": [
+        33,
+        33
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        396
+      ],
+      "sha256": "68389f89c5ed32a87c1004e2cb61a515a122447fb0105ef517666e2879bc92c3"
+    },
+    {
+      "file": "06_grasp_0.png",
+      "state": "grasp_0",
+      "sourceBBox": [
+        398,
+        435,
+        848,
+        769
+      ],
+      "pasteOffset": [
+        18,
+        38
+      ],
+      "nominalSourceCellOrigin": [
+        397,
+        396
+      ],
+      "sha256": "3319677057322eb5f7ca148dea553e2f8af7e77c4b69194eb5de4d604248add5"
+    },
+    {
+      "file": "07_grasp_1.png",
+      "state": "grasp_1",
+      "sourceBBox": [
+        838,
+        428,
+        1254,
+        793
+      ],
+      "pasteOffset": [
+        62,
+        31
+      ],
+      "nominalSourceCellOrigin": [
+        793,
+        396
+      ],
+      "sha256": "fca3ef9be9658a047d14f7b0ed7788e306f3ca2f6e36a194564101d9b1288a6d"
+    },
+    {
+      "file": "08_hit.png",
+      "state": "hit",
+      "sourceBBox": [
+        1223,
+        428,
+        1628,
+        773
+      ],
+      "pasteOffset": [
+        50,
+        31
+      ],
+      "nominalSourceCellOrigin": [
+        1190,
+        396
+      ],
+      "sha256": "a5263981f79d69e123e63c91359dbdf69abcaccf978198c344ace9d217bb6c19"
+    },
+    {
+      "file": "09_defeat.png",
+      "state": "defeat",
+      "sourceBBox": [
+        1585,
+        446,
+        1983,
+        793
+      ],
+      "pasteOffset": [
+        16,
+        49
+      ],
+      "nominalSourceCellOrigin": [
+        1586,
+        396
+      ],
+      "sha256": "a514e12d1f2ca0ba8f9718ee86c7dacd99f261841225f498634f0e5e819bac83"
+    }
+  ]
+}

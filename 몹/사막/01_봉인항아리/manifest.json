@@ -1,0 +1,212 @@
+{
+  "source": "docs/art/desert-sealed-jar-sheet-2026-10-16/sheet.png",
+  "sourceSha256": "533952cd6f3910b2d6c5ed65eedf43dc868512bab4825bd6c0d4a68738ff3696",
+  "method": "connected bodies plus nearest-body ownership for detached pieces; source RGBA copied without resampling/recoloring",
+  "canvas": [
+    476,
+    538
+  ],
+  "sharedNominalCellOffset": [
+    55,
+    18
+  ],
+  "runtimePivot": null,
+  "runtimeApplied": false,
+  "verification": {
+    "visiblePixelReconstructionExact": true,
+    "frameCount": 10,
+    "sourceNonzeroAlphaPixels": 779591
+  },
+  "frames": [
+    {
+      "file": "00_idle_0.png",
+      "state": "idle_0",
+      "sourceBBox": [
+        31,
+        49,
+        373,
+        465
+      ],
+      "pasteOffset": [
+        86,
+        67
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        0
+      ],
+      "sha256": "f1c348d4a9b52197260f367dac6bfaee0fdad0c0131e66ce1fdc4bb8f1d4c785"
+    },
+    {
+      "file": "01_idle_1.png",
+      "state": "idle_1",
+      "sourceBBox": [
+        404,
+        31,
+        704,
+        438
+      ],
+      "pasteOffset": [
+        104,
+        49
+      ],
+      "nominalSourceCellOrigin": [
+        355,
+        0
+      ],
+      "sha256": "23539868857f0cf23f402ab4c86ecc900c72145f400874d6250d8b403c3f49a1"
+    },
+    {
+      "file": "02_idle_2.png",
+      "state": "idle_2",
+      "sourceBBox": [
+        737,
+        77,
+        1044,
+        476
+      ],
+      "pasteOffset": [
+        82,
+        95
+      ],
+      "nominalSourceCellOrigin": [
+        710,
+        0
+      ],
+      "sha256": "2da0c4c4bab892689c1119770b457101944e5b2b7304d62523ddf08139891878"
+    },
+    {
+      "file": "03_dormant.png",
+      "state": "dormant",
+      "sourceBBox": [
+        1063,
+        92,
+        1413,
+        444
+      ],
+      "pasteOffset": [
+        54,
+        110
+      ],
+      "nominalSourceCellOrigin": [
+        1064,
+        0
+      ],
+      "sha256": "ee230da820f95b0020f9cc34093ad594979fe17bcf7422b2c1daec9774979206"
+    },
+    {
+      "file": "04_prepare_0.png",
+      "state": "prepare_0",
+      "sourceBBox": [
+        1418,
+        86,
+        1746,
+        504
+      ],
+      "pasteOffset": [
+        54,
+        104
+      ],
+      "nominalSourceCellOrigin": [
+        1419,
+        0
+      ],
+      "sha256": "74ac1a61e43400a6100732c0a2f6cb918ff27d0ae542f23a05b2ad13f069ab3f"
+    },
+    {
+      "file": "05_prepare_1.png",
+      "state": "prepare_1",
+      "sourceBBox": [
+        0,
+        491,
+        323,
+        819
+      ],
+      "pasteOffset": [
+        55,
+        65
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        444
+      ],
+      "sha256": "6ea17578b50e1651c63a34bd48a105a4639d645ff6a07245b846572bb522f021"
+    },
+    {
+      "file": "06_attack_0.png",
+      "state": "attack_0",
+      "sourceBBox": [
+        367,
+        446,
+        760,
+        861
+      ],
+      "pasteOffset": [
+        67,
+        20
+      ],
+      "nominalSourceCellOrigin": [
+        355,
+        444
+      ],
+      "sha256": "e450149e9841727f2bac57f0cd0cc3e5f5dca56316368ee398e5e041fed0391d"
+    },
+    {
+      "file": "07_attack_1.png",
+      "state": "attack_1",
+      "sourceBBox": [
+        672,
+        442,
+        1084,
+        859
+      ],
+      "pasteOffset": [
+        17,
+        16
+      ],
+      "nominalSourceCellOrigin": [
+        710,
+        444
+      ],
+      "sha256": "b30f8d2a2d7ae9a6a33405a2b580b00fa9a55d55c0d157cd095562084203e46d"
+    },
+    {
+      "file": "08_hit.png",
+      "state": "hit",
+      "sourceBBox": [
+        1065,
+        501,
+        1395,
+        847
+      ],
+      "pasteOffset": [
+        56,
+        75
+      ],
+      "nominalSourceCellOrigin": [
+        1064,
+        444
+      ],
+      "sha256": "4caa9c840d8b7c6223b7a09993fcd46d1da8b57bf1f1717b7ef08e5ac859bc23"
+    },
+    {
+      "file": "09_defeat.png",
+      "state": "defeat",
+      "sourceBBox": [
+        1380,
+        503,
+        1774,
+        845
+      ],
+      "pasteOffset": [
+        16,
+        77
+      ],
+      "nominalSourceCellOrigin": [
+        1419,
+        444
+      ],
+      "sha256": "6a082e911681ed0502a0eddeef847bd829f00c32fd15b678804aaf65912c5ae0"
+    }
+  ]
+}

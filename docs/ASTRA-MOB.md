@@ -22,6 +22,10 @@
 | 신전 수문장 | [첫 외형](art/desert-royal-tomb-boss-concepts-2026-10-16/candidates.png) · [10모션](art/desert-temple-gate-boss-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-royal-tomb-boss-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-temple-gate-boss-motion-2026-10-16/prompt.txt) |
 | 왕좌 수문장 | [첫 외형](art/desert-royal-tomb-boss-concepts-2026-10-16/candidates.png) · [10모션](art/desert-throne-tomb-boss-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-royal-tomb-boss-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-throne-tomb-boss-motion-2026-10-16/prompt.txt) |
 
+| 파릉 수문장 | [첫 외형](art/desert-royal-tomb-boss-concepts-2026-10-16/candidates.png) · [10모션](art/desert-broken-vault-boss-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-royal-tomb-boss-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-broken-vault-boss-motion-2026-10-16/prompt.txt) |
+
+[채택 12종 개별 모션 PNG](../몹/사막/README.md) — 각 10장, 총 120장.
+
 ## 2. 주제를 몹으로 설계하기
 
 **장소의 소재 → 몸이 되는 형태 → 살아 움직이는 방식 → 공격 행동 → 작은 크기에서 읽을 특징** 순으로 설계한다. 이름·장식·큰 효과부터 붙이지 않는다.

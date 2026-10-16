@@ -1,0 +1,212 @@
+{
+  "source": "docs/art/desert-mask-priest-mantle-motion-2026-10-16/sheet.png",
+  "sourceSha256": "ef69f522031a77de7d9074b1550b6db289118d32f9527275b1bcc9bbe1d4600e",
+  "method": "connected bodies plus nearest-body ownership for detached pieces; source RGBA copied without resampling/recoloring",
+  "canvas": [
+    517,
+    470
+  ],
+  "sharedNominalCellOffset": [
+    10,
+    23
+  ],
+  "runtimePivot": null,
+  "runtimeApplied": false,
+  "verification": {
+    "visiblePixelReconstructionExact": true,
+    "frameCount": 10,
+    "sourceNonzeroAlphaPixels": 798568
+  },
+  "frames": [
+    {
+      "file": "00_idle_0.png",
+      "state": "idle_0",
+      "sourceBBox": [
+        43,
+        15,
+        385,
+        403
+      ],
+      "pasteOffset": [
+        53,
+        38
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        0
+      ],
+      "sha256": "2aa247efb0c4f3a1af7727c2a3e3404d7f114c6030e2e13682e714161d3e8c98"
+    },
+    {
+      "file": "01_idle_1.png",
+      "state": "idle_1",
+      "sourceBBox": [
+        428,
+        19,
+        823,
+        394
+      ],
+      "pasteOffset": [
+        50,
+        42
+      ],
+      "nominalSourceCellOrigin": [
+        388,
+        0
+      ],
+      "sha256": "a814498e390630a199fdb761e04f38e147d3fc04be5da9d101f1c2f4d543d2dc"
+    },
+    {
+      "file": "02_idle_2.png",
+      "state": "idle_2",
+      "sourceBBox": [
+        836,
+        15,
+        1174,
+        395
+      ],
+      "pasteOffset": [
+        69,
+        38
+      ],
+      "nominalSourceCellOrigin": [
+        777,
+        0
+      ],
+      "sha256": "a342ffde8325e1fec506fd6de910fba5ed23f034a4327e97c8cc786a5208606e"
+    },
+    {
+      "file": "03_guard.png",
+      "state": "guard",
+      "sourceBBox": [
+        1171,
+        33,
+        1554,
+        409
+      ],
+      "pasteOffset": [
+        16,
+        56
+      ],
+      "nominalSourceCellOrigin": [
+        1165,
+        0
+      ],
+      "sha256": "a63ab3f4b7c1010bc20972149422b21581a7669d3b5de9d4a7511912dd3fe2b7"
+    },
+    {
+      "file": "04_prepare_0.png",
+      "state": "prepare_0",
+      "sourceBBox": [
+        1572,
+        18,
+        1916,
+        431
+      ],
+      "pasteOffset": [
+        28,
+        41
+      ],
+      "nominalSourceCellOrigin": [
+        1554,
+        0
+      ],
+      "sha256": "0f48269f4c728141cb323ce880ca0636c04541badb3b6c419ef37d83895437a1"
+    },
+    {
+      "file": "05_prepare_1.png",
+      "state": "prepare_1",
+      "sourceBBox": [
+        16,
+        402,
+        420,
+        776
+      ],
+      "pasteOffset": [
+        26,
+        21
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        404
+      ],
+      "sha256": "8060c0e8fab231a86c2239b1b7398b1915c2623185f81506e9ce95e2cd7e1e28"
+    },
+    {
+      "file": "06_seal_cast_0.png",
+      "state": "seal_cast_0",
+      "sourceBBox": [
+        399,
+        397,
+        847,
+        766
+      ],
+      "pasteOffset": [
+        21,
+        16
+      ],
+      "nominalSourceCellOrigin": [
+        388,
+        404
+      ],
+      "sha256": "9d4830bd61b71534d42dad310bca3cbc879310dc091b6522dca92e46554d542e"
+    },
+    {
+      "file": "07_seal_cast_1.png",
+      "state": "seal_cast_1",
+      "sourceBBox": [
+        785,
+        419,
+        1268,
+        787
+      ],
+      "pasteOffset": [
+        18,
+        38
+      ],
+      "nominalSourceCellOrigin": [
+        777,
+        404
+      ],
+      "sha256": "128cd2b6acc27d7a6035a22f85d29c4a10cfabb048df0f524b6a0ca357998991"
+    },
+    {
+      "file": "08_hit.png",
+      "state": "hit",
+      "sourceBBox": [
+        1198,
+        403,
+        1591,
+        769
+      ],
+      "pasteOffset": [
+        43,
+        22
+      ],
+      "nominalSourceCellOrigin": [
+        1165,
+        404
+      ],
+      "sha256": "e2ecdb6cc28cbc6fe5e174ef204dc0ecaf4a62cec7733bcab61b43b7321822ca"
+    },
+    {
+      "file": "09_defeat.png",
+      "state": "defeat",
+      "sourceBBox": [
+        1584,
+        550,
+        1926,
+        779
+      ],
+      "pasteOffset": [
+        40,
+        169
+      ],
+      "nominalSourceCellOrigin": [
+        1554,
+        404
+      ],
+      "sha256": "f8479911f05651823c0ad260129171880d89b82d8d30bd96a6a9b2a4debd3252"
+    }
+  ]
+}

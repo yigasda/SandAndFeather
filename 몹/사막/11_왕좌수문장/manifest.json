@@ -1,0 +1,212 @@
+{
+  "source": "docs/art/desert-throne-tomb-boss-motion-2026-10-16/sheet.png",
+  "sourceSha256": "bb4d8f7e72ab14eb09d5bab9fa70469ebecdd6855cde3d05dd3b2694e6e7d52b",
+  "method": "connected bodies plus nearest-body ownership for detached pieces; source RGBA copied without resampling/recoloring",
+  "canvas": [
+    573,
+    530
+  ],
+  "sharedNominalCellOffset": [
+    74,
+    18
+  ],
+  "runtimePivot": null,
+  "runtimeApplied": false,
+  "verification": {
+    "visiblePixelReconstructionExact": true,
+    "frameCount": 10,
+    "sourceNonzeroAlphaPixels": 776138
+  },
+  "frames": [
+    {
+      "file": "00_idle_0.png",
+      "state": "idle_0",
+      "sourceBBox": [
+        0,
+        18,
+        365,
+        446
+      ],
+      "pasteOffset": [
+        74,
+        36
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        0
+      ],
+      "sha256": "bfd25603c9226a3bfb78f26c29c7c544b3c3c786eeb324b857a7a0b70eb633cd"
+    },
+    {
+      "file": "01_idle_1.png",
+      "state": "idle_1",
+      "sourceBBox": [
+        343,
+        20,
+        728,
+        496
+      ],
+      "pasteOffset": [
+        62,
+        38
+      ],
+      "nominalSourceCellOrigin": [
+        355,
+        0
+      ],
+      "sha256": "e83a9262fbec972f029cef33c1a991f7c2f57f3465aca791ceeb66c57878bf05"
+    },
+    {
+      "file": "02_idle_2.png",
+      "state": "idle_2",
+      "sourceBBox": [
+        695,
+        17,
+        1089,
+        492
+      ],
+      "pasteOffset": [
+        59,
+        35
+      ],
+      "nominalSourceCellOrigin": [
+        710,
+        0
+      ],
+      "sha256": "cf3acf3c583135d4db586e4e79443e94ce1294bcc93526c912ee8bb9d22fa4c4"
+    },
+    {
+      "file": "03_guard.png",
+      "state": "guard",
+      "sourceBBox": [
+        1030,
+        12,
+        1415,
+        485
+      ],
+      "pasteOffset": [
+        40,
+        30
+      ],
+      "nominalSourceCellOrigin": [
+        1064,
+        0
+      ],
+      "sha256": "ed783cbb7789f006bdddaf20c87e5c5ac825808d148aa44fc9857c62f70f088c"
+    },
+    {
+      "file": "04_prepare_0.png",
+      "state": "prepare_0",
+      "sourceBBox": [
+        1382,
+        17,
+        1758,
+        478
+      ],
+      "pasteOffset": [
+        37,
+        35
+      ],
+      "nominalSourceCellOrigin": [
+        1419,
+        0
+      ],
+      "sha256": "5a6bedde28d1d8640664a9c1beeca8e111ed9a8ac98f201aafff7519b408049a"
+    },
+    {
+      "file": "05_prepare_1.png",
+      "state": "prepare_1",
+      "sourceBBox": [
+        0,
+        442,
+        403,
+        887
+      ],
+      "pasteOffset": [
+        74,
+        16
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        444
+      ],
+      "sha256": "76f620f73a29b54f2a9052c75fc036b73dd3ee54da9d73a301d4dfb7cbf23be4"
+    },
+    {
+      "file": "06_earth_press_0.png",
+      "state": "earth_press_0",
+      "sourceBBox": [
+        297,
+        501,
+        758,
+        873
+      ],
+      "pasteOffset": [
+        16,
+        75
+      ],
+      "nominalSourceCellOrigin": [
+        355,
+        444
+      ],
+      "sha256": "bccc503b4202096dce2a0cfa651f801b098f5e498e2d9486d4a097cb1ccbe38e"
+    },
+    {
+      "file": "07_earth_press_1.png",
+      "state": "earth_press_1",
+      "sourceBBox": [
+        708,
+        511,
+        1193,
+        887
+      ],
+      "pasteOffset": [
+        72,
+        85
+      ],
+      "nominalSourceCellOrigin": [
+        710,
+        444
+      ],
+      "sha256": "3d91821997afbfde2a2f1cbb672b90373ae3bc5751ca1e97f38df48d2b7a8333"
+    },
+    {
+      "file": "08_hit.png",
+      "state": "hit",
+      "sourceBBox": [
+        1077,
+        473,
+        1470,
+        868
+      ],
+      "pasteOffset": [
+        87,
+        47
+      ],
+      "nominalSourceCellOrigin": [
+        1064,
+        444
+      ],
+      "sha256": "cdef2694918d9dddae7b616d06a64591f4b1039337899e9ebb58d385dd3856b5"
+    },
+    {
+      "file": "09_defeat.png",
+      "state": "defeat",
+      "sourceBBox": [
+        1418,
+        501,
+        1774,
+        871
+      ],
+      "pasteOffset": [
+        73,
+        75
+      ],
+      "nominalSourceCellOrigin": [
+        1419,
+        444
+      ],
+      "sha256": "3be1ccd4a17b3d9887d1edfb3b843c9d52ebdfed4bc002ff856fc8814a183e3c"
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "source": "docs/art/desert-sandstone-stela-approved-2026-10-16/sheet.png",
+  "sourceSha256": "273aa46dfdde1336e6bec2768fccc3033b4355f6308a6f679dbe579cf29b7ae1",
+  "method": "connected bodies plus nearest-body ownership for detached pieces; source RGBA copied without resampling/recoloring",
+  "canvas": [
+    459,
+    435
+  ],
+  "sharedNominalCellOffset": [
+    -30,
+    -71
+  ],
+  "runtimePivot": null,
+  "runtimeApplied": false,
+  "verification": {
+    "visiblePixelReconstructionExact": true,
+    "frameCount": 10,
+    "sourceNonzeroAlphaPixels": 783782
+  },
+  "frames": [
+    {
+      "file": "00_idle_0.png",
+      "state": "idle_0",
+      "sourceBBox": [
+        127,
+        107,
+        393,
+        490
+      ],
+      "pasteOffset": [
+        97,
+        36
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        0
+      ],
+      "sha256": "bab6ac197f286877070ed15270498fdab3ffe96f66d98f79a3c15077a7bb0dfa"
+    },
+    {
+      "file": "01_idle_1.png",
+      "state": "idle_1",
+      "sourceBBox": [
+        617,
+        107,
+        943,
+        490
+      ],
+      "pasteOffset": [
+        67,
+        36
+      ],
+      "nominalSourceCellOrigin": [
+        520,
+        0
+      ],
+      "sha256": "c7dc39a7e228c286c85a1d95384e640ef94283285e4d3d9aa18789029d0a1f21"
+    },
+    {
+      "file": "02_idle_2.png",
+      "state": "idle_2",
+      "sourceBBox": [
+        1135,
+        107,
+        1465,
+        490
+      ],
+      "pasteOffset": [
+        65,
+        36
+      ],
+      "nominalSourceCellOrigin": [
+        1040,
+        0
+      ],
+      "sha256": "4e033a74ac073f5041f105f2356550a780f15dd27059a9028872e64298dafe31"
+    },
+    {
+      "file": "03_guard.png",
+      "state": "guard",
+      "sourceBBox": [
+        1667,
+        87,
+        1972,
+        490
+      ],
+      "pasteOffset": [
+        77,
+        16
+      ],
+      "nominalSourceCellOrigin": [
+        1560,
+        0
+      ],
+      "sha256": "3d317055101de0fa92b88d7a821f4606dd83f8631636e04e29edaba403b3fd0c"
+    },
+    {
+      "file": "04_prepare_0.png",
+      "state": "prepare_0",
+      "sourceBBox": [
+        2171,
+        108,
+        2509,
+        490
+      ],
+      "pasteOffset": [
+        61,
+        37
+      ],
+      "nominalSourceCellOrigin": [
+        2080,
+        0
+      ],
+      "sha256": "03ad2afab22ae0eff7e2e4559a6638a5fed3c5f597e31b7349ed3ba89bc2ac2e"
+    },
+    {
+      "file": "05_prepare_1.png",
+      "state": "prepare_1",
+      "sourceBBox": [
+        78,
+        629,
+        442,
+        1010
+      ],
+      "pasteOffset": [
+        48,
+        38
+      ],
+      "nominalSourceCellOrigin": [
+        0,
+        520
+      ],
+      "sha256": "4e7404ea4da479164d98ebc6ccb90c7294c4646a2c46161a353f99df4b1c7028"
+    },
+    {
+      "file": "06_slam_0.png",
+      "state": "slam_0",
+      "sourceBBox": [
+        593,
+        615,
+        966,
+        1010
+      ],
+      "pasteOffset": [
+        43,
+        24
+      ],
+      "nominalSourceCellOrigin": [
+        520,
+        520
+      ],
+      "sha256": "39659a3e7d1a43427f7f102217771109598a705920db683bd8df36bf8817d4af"
+    },
+    {
+      "file": "07_slam_1.png",
+      "state": "slam_1",
+      "sourceBBox": [
+        1094,
+        663,
+        1506,
+        1010
+      ],
+      "pasteOffset": [
+        24,
+        72
+      ],
+      "nominalSourceCellOrigin": [
+        1040,
+        520
+      ],
+      "sha256": "9f64bdf6f5a9a814f9af41ac9afdbae7bc9199340bed38f033daeeb632628c6c"
+    },
+    {
+      "file": "08_hit.png",
+      "state": "hit",
+      "sourceBBox": [
+        1663,
+        645,
+        1977,
+        1010
+      ],
+      "pasteOffset": [
+        73,
+        54
+      ],
+      "nominalSourceCellOrigin": [
+        1560,
+        520
+      ],
+      "sha256": "f5f0e717918e842723aa0a08b67d7c4209105c6898a948fe3fd8ce3b82c8dc55"
+    },
+    {
+      "file": "09_defeat.png",
+      "state": "defeat",
+      "sourceBBox": [
+        2126,
+        645,
+        2553,
+        1010
+      ],
+      "pasteOffset": [
+        16,
+        54
+      ],
+      "nominalSourceCellOrigin": [
+        2080,
+        520
+      ],
+      "sha256": "cbc4c985c62f3f6be7cc0be30f905d9b5a3498033357a12063fdf97cf4b3b304"
+    }
+  ]
+}
