@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "designs-selected",
   "designs": [
     "왕의 석관형",
     "신전 문형",
@@ -17,5 +17,13 @@
   "sha256": "bac773f381dcf3fa2ef639cdaff84bc13a796478ab8e2f9f3636b1c46b700dec",
   "requestedSizeRatio": 2.5,
   "runtimeApplied": false,
-  "reviewNotes": "Five distinct boss concepts. Generated scale comparators are smaller than intended 40% boss height: not an accurate 2.5x demonstration. Brown atmospheric backing remains despite transparency request; not clean production sprites. Rendering is smoother and more textured than field monster target."
+  "reviewNotes": "Five distinct boss concepts. Generated scale comparators are smaller than intended 40% boss height: not an accurate 2.5x demonstration. Brown atmospheric backing remains despite transparency request; not clean production sprites. Rendering is smoother and more textured than field monster target.",
+  "adoptedDesigns": [
+    1,
+    2,
+    4,
+    5
+  ],
+  "family": "4대 수문장",
+  "approvalEvidence": "3번째를 제외하고 4종 다 4대 수문장으로 바리에이션 만들자!!!"
 }

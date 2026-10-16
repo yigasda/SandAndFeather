@@ -1,0 +1,35 @@
+{
+  "status": "review-pending",
+  "family": "4대 수문장",
+  "variant": 1,
+  "design": "왕면 수문장",
+  "referenceRoles": [
+    "boss concepts top-left identity only",
+    "stela first motion sheet pixel execution only"
+  ],
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "punch-slam0",
+    "punch-slam1",
+    "hit",
+    "defeat"
+  ],
+  "size": [
+    1774,
+    887
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "645167f0d77761fe7bc797d549ccdbabeb542d7ddbaa5a25cb6ee36fcf9488f5",
+  "runtimeApplied": false,
+  "intendedHeightRatio": 2.5,
+  "reviewNotes": "Ten poses generated together. Ratio is art intent only, not verified runtime scale. Some silhouettes/effects cross nominal equal cell borders; extraction and edge cleanup not yet performed."
+}
