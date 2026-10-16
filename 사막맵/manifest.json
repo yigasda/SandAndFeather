@@ -1,0 +1,297 @@
+{
+  "runtimeApplied": false,
+  "files": [
+    {
+      "file": "01_황금사구해_닫힘.png",
+      "source": "docs/art/desert-01-method-2026-10-16/approved-final.png",
+      "size": [
+        1586,
+        992
+      ],
+      "sha256": "75c9a2c4690cd4dadd448301fcea7896fd48897db9f44489831bc743f03fb860",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "01_황금사구해_입구열림.png",
+      "source": "docs/art/desert-01-open-approved-2026-10-16/approved-final.png",
+      "size": [
+        1586,
+        992
+      ],
+      "sha256": "11870d94064560435edbea068f9c05d49347f6c7a8528fb31c209ead31d03cf5",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "02_매몰신전사막.png",
+      "source": "docs/art/desert-02-candidates-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "8e8e2dc22bbad1dc4afb9e206d424f0b787798cc9cb24b270c521ac67c679d13",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "03_고요한사구_06통합.png",
+      "source": "docs/art/desert-03-ridge-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "6ed29e6324503811475cae4975fbf029c9099c0028bd8975e50f4c858b8af090",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "04_메마른모래벌판.png",
+      "source": "docs/art/desert-04-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "38194da3bc67a4a09279e7d563239416c93ab8213721b2d1c6c14e4f04eafd69",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "05_피라미드기단.png",
+      "source": "docs/art/desert-05-approved-2026-10-16/approved-final.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "13c2aa44f8c7bb0cae63490f9d7fa531ce07c988fce3aa965b90488ffeb4fed9",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "07_고요한오아시스.png",
+      "source": "docs/art/desert-07-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "0570face42f225660ce78f0e02e807713e8530ad6a8a8c4e0bf3cb5231861f75",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "08_대상의쉼터.png",
+      "source": "docs/art/desert-08-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "c77d4858d13917b0b81e98d7ed5e121aff2d4ddda538c41f600812ecb9df6e95",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "09_옛성소.png",
+      "source": "docs/art/desert-09-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "b77a1f4fc2174664ba4b242fcc8eed0bf65ec16d5b5d8baee4246bb238b1b80b",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "10_모래바람분지.png",
+      "source": "docs/art/desert-10-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "02254c2ec30e9c845a70aef6e2365b5ed4046dff94e4d9ee34d186d134b819e6",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "11_매몰도시출입구.png",
+      "source": "docs/art/desert-11-approved-2026-10-16/approved-final.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e3f03790c82b33df11660aac0eb22cf73dbfcc4f859366aaf320188d34996e6d",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "14_피라미드중심실.png",
+      "source": "docs/art/desert-14-approved-2026-10-16/approved-final.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ea0e748ba3a9fce00e72690b9ead4389cb770fdae646f38f864f2666f8d8460e",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "15_열주홀.png",
+      "source": "docs/art/desert-15-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "c300fb8169493b4159844259d1aa5e726e10df68eb74dd691127a6f975cb28b1",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "16_빛우물.png",
+      "source": "docs/art/desert-16-approved-2026-10-16/approved-final.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "4c989a8bbe359268dc9c04d140e3495b3c673bdec4dcbbdcc73642d0eba2b29b",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "17_지하도시광장.png",
+      "source": "docs/art/desert-17-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "39dd2b7899e242e1e5661afe0c1c60599f8ec3236cfea609b01dd425b0e5fbc0",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "18_옛기록고.png",
+      "source": "docs/art/desert-18-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "9b94310e04a93a9dc9e1230ed51e073d6cfc4611c3ce4b2967a48b252509d1ab",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "19_별관측실.png",
+      "source": "docs/art/desert-19-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "84a9c8de32068a25630cf74a48edd7541ede50d80cb027668ba112f588822073",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "20_지하샘.png",
+      "source": "docs/art/desert-20-approved-2026-10-16/approved-final.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7c8e424a99bb123d687dc9f77ee65dfeeb09bf859b5891a64738fcfa16a470e1",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "12_1_피라미드하강회랑.png",
+      "source": "docs/art/desert-12-approved-2026-10-16/corridor-01.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "fba5442a0bba78c305f6f99075ab1070147dc33b8669851f20f303d866ef897e",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "12_2_피라미드하강회랑.png",
+      "source": "docs/art/desert-12-approved-2026-10-16/corridor-02.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c2204803e83a42b2c617762e6407147024287165571982c46e6bd74e8c286e31",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "17_추가_주거실.png",
+      "source": "docs/art/desert-17-dwelling-approved-2026-10-16/approved-final.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "f3cad85d09728273d52b610cf210a0026c986b612d0c1916ac4cfc26a2227e34",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "추가_보물방/00_상자모두닫힘.png",
+      "source": "docs/art/desert-late-approved-2026-10-16/closed-all.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "07eff1c7dabf15b8e2182f8b265d206487557a7130e6658ac0340b077d06f057",
+      "note": "최신 채택본"
+    },
+    {
+      "file": "추가_보물방/01_C1_왼쪽위_열림.png",
+      "source": "docs/art/desert-late-approved-2026-10-16/open-C1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "566f9dc64ebb386d108ce30fbc1e59bf6048f0b0474805a8f5e14e36dd1f264c",
+      "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+      "file": "추가_보물방/02_C2_오른쪽위_열림.png",
+      "source": "docs/art/desert-late-approved-2026-10-16/open-C2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6415a9b9f1ed0de199d07873fe2c9b72acd84a38adcfb45dd55ed746d8b6e2c1",
+      "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+      "file": "추가_보물방/03_C3_왼쪽아래_열림.png",
+      "source": "docs/art/desert-late-approved-2026-10-16/open-C3.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7ebe8dd6c9009a775889235676236e7e9504547351d3d8023477bcd85673fb88",
+      "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+      "file": "추가_보물방/04_C4_오른쪽아래안쪽_열림.png",
+      "source": "docs/art/desert-late-approved-2026-10-16/open-C4.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5a887c0a30c00ae607412344d2e70cdbfdca75b5c34aa37c6a5ff4497a402367",
+      "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+      "file": "추가_보물방/05_C5_오른쪽아래바깥쪽_열림.png",
+      "source": "docs/art/desert-late-approved-2026-10-16/open-C5.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b8efc84f29f06c58564f352a06dbdd274b465ca689210f03923e66ec53739284",
+      "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+      "file": "추가_전망맵_오벨리스크최종.png",
+      "source": "docs/art/desert-late-approved-2026-10-16/sky-approved-final.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3ddfde58482bbbfb186d6dcdf6cbc052c5155dc4f2aa478bbe3257cba915b307",
+      "note": "최신 채택본"
+    }
+  ],
+  "missing": [
+    {
+      "map": "13",
+      "description": "3번 기반 가로확장·입구확장 최종 채택 PNG 미확보. 이전 시안으로 대체하지 않음."
+    }
+  ],
+  "merged": [
+    {
+      "map": "06",
+      "into": "03"
+    }
+  ]
+}
