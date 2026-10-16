@@ -1,0 +1,23 @@
+{
+  "status": "review-pending",
+  "variants": [
+    "균열 세로타원 거울",
+    "온전한 세로타원 거울"
+  ],
+  "reference": "docs/art/desert-sun-mirror-silver-2026-10-16/candidates.png",
+  "referenceRole": "middle and left design; change to vertical oval",
+  "size": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    254
+  ],
+  "sha256": "98f3d08150b1b929453b13fe4feac9c5127f8c404e0371a33d7f792619542c7b",
+  "limitations": [
+    "요청하지 않은 금빛 후광이 생성됨. 깨끗한 외곽 투명화는 미완료."
+  ],
+  "runtimeApplied": false
+}
