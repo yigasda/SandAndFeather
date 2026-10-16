@@ -1,0 +1,60 @@
+{
+  "status": "review-pending",
+  "latest": "candidates.png",
+  "variants": [
+    "폐허의 반사",
+    "어긋난 시간",
+    "빛의 불일치"
+  ],
+  "references": [
+    "docs/art/desert-sun-mirror-silver-2026-10-16/candidates.png",
+    "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png"
+  ],
+  "referenceRoles": [
+    "mirror design",
+    "camera and pixel volume only"
+  ],
+  "priorFeedback": {
+    "dark-front.png": "too dark and frontal",
+    "faded-frame.png": "user prefers previous gold color"
+  },
+  "runtimeApplied": false,
+  "files": {
+    "faded-frame.png": {
+      "size": [
+        1882,
+        836
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "667dfc64dbfca756478510c885c91de0bd92bb22064900ea5df6d2028fc1205d"
+    },
+    "candidates.png": {
+      "size": [
+        1944,
+        809
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "d6d8ee34d7d6e7b5e2c9b0a71de5fa2c3d342c9e8fc5c0b2ec1526ad71801f0c"
+    },
+    "dark-front.png": {
+      "size": [
+        1882,
+        836
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "9816dddf8c8fe0fb7b9d7e390325952a1dd37953163ddebda26873082d2fabca"
+    }
+  }
+}
