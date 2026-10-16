@@ -1,0 +1,14 @@
+{
+  "map": "09",
+  "name": "모래에 잠긴 옛 성소",
+  "file": "art/desert-09-approved-2026-10-16/approved-final.png",
+  "source": "art/desert-09-candidates-2026-10-16/png/candidate-04.png",
+  "size": [
+    1774,
+    887
+  ],
+  "sha256": "b77a1f4fc2174664ba4b242fcc8eed0bf65ec16d5b5d8baee4246bb238b1b80b",
+  "approvalEvidence": "응 4번으로 하고",
+  "runtimeApplied": false,
+  "publishedBranch": "main"
+}

@@ -2,7 +2,7 @@
 
 ## 사막 현재 작업
 
-05 시안 1 원본(앙크 포함) 채택. 06은 03에 통합 확정, 03 통합 시안 2 채택. [03 최신 원본](art/desert-03-ridge-approved-2026-10-16/approved-final.png) · [05 원본](art/desert-05-approved-2026-10-16/approved-final.png). [07 오아시스 시안 2](art/desert-07-approved-2026-10-16/approved-final.png) 채택. [08 시안 4](art/desert-08-approved-2026-10-16/approved-final.png) 채택. 현재 [09 낮 시안 4개](art/desert-09-candidates-2026-10-16/README.md) 생성 완료·미채택. 다음은 사용자 선택·수정 지시. 채택 그림만 Drive 업로드. 런타임 미적용.
+05 시안 1 원본(앙크 포함) 채택. 06은 03에 통합 확정, 03 통합 시안 2 채택. [03 최신 원본](art/desert-03-ridge-approved-2026-10-16/approved-final.png) · [05 원본](art/desert-05-approved-2026-10-16/approved-final.png). [07 오아시스 시안 2](art/desert-07-approved-2026-10-16/approved-final.png) 채택. [08 시안 4](art/desert-08-approved-2026-10-16/approved-final.png) 채택. [09 기존 시안 4](art/desert-09-approved-2026-10-16/approved-final.png) 원본 채택(시점 수정 2안 미채택). 현재 [10 낮 시안 4개](art/desert-10-candidates-2026-10-16/README.md) 생성 완료·미채택. 다음은 사용자 선택·수정 지시. 채택 그림만 Drive 업로드. 런타임 미적용.
 
 > **압축 후 사막 작업은 [01~04 통합 인수인계](ASTRA-DESERT-HANDOFF.md)부터 읽는다.** 01~04 최종 채택 완료. 정확한 최종 PNG·생성문·참고 원본·실패 교훈·다음 작업 순서는 이 문서가 최신이다. main 전달 대상은 01 최종본, 02 출구 국소 합성본, 03 외곽선 보강본, 04 마지막 시안 채택본이다. 게임 런타임 적용은 미실행.
 
