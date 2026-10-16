@@ -1,0 +1,39 @@
+{
+  "status": "review-pending",
+  "references": [
+    "docs/art/desert-walking-stela-2026-10-16/candidates.png",
+    "docs/art/desert-leather-shield-motion-2026-10-16/sheet.png"
+  ],
+  "referenceRoles": [
+    "leftmost design",
+    "motion only"
+  ],
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "charge0",
+    "charge1",
+    "hit",
+    "defeat"
+  ],
+  "size": [
+    1774,
+    887
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "952acaed5770e5b582357a1920d126cb0b213d9d787960fb60e88e609e8eace0",
+  "runtimeApplied": false,
+  "latestUserClarification": "내려찍기는 괜찮아! 소멸 빛 꺼진 것도 ㄱㅊ",
+  "interpretation": "내려찍기 공격도 허용. 빛이 꺼지는 소멸 허용. 전체 시트 최종 채택은 미확정. 두 버전 보존.",
+  "limitations": [
+    "방어 칸 몸통이 짧아 보이는 비율 차이 있음. 프레임 추출·배율·기준점 미검증."
+  ]
+}
