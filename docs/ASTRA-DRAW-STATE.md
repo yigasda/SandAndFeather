@@ -2,6 +2,8 @@
 
 ## 사막 현재 작업
 
+**최신: 사막 배경 작화 종료·오브젝트 계획 단계.** [오브젝트 제작·적용 지침](ASTRA-DESERT-OBJECT-GUIDE.md)을 다음 작업 기준으로 사용한다. 20 시안2, 보물방 닫힘+개별 개방5장, 원본에서 다시 수정한 오른쪽 오벨리스크 전망맵 채택. [추가 채택 원본 목록](art/desert-late-approved-2026-10-16/manifest.json). 상자 패치 추출·게임 적용·검사는 미완료. 이전 아래 기록의 대기/다음 작업보다 이 문단이 우선한다.
+
 01 열린 상태 좁은 입구 시안4개: `art/desert-01-open-four-2026-10-16/`. 1번 조건부 채택 완료: `art/desert-01-open-approved-2026-10-16/approved-final.png`. 中央 유적 마스크 밖 RGBA 변경 픽셀0 재검증. 원본에 중앙 유적 마스크 영역만 합성. 4개 모두 마스크 밖 RGB 변경 픽셀0 검증. 최신 원본 닫힘 그림 보존.
 
 19 단서판 위치 수정본 채택·최종 교체 완료: `art/desert-19-panel-revision-2026-10-16/revised.png`. 오른쪽 위 판 유지, 아래쪽 옆면 판을 뒤쪽 중앙 왼편 벽으로 이동. 최종은 `art/desert-19-approved-2026-10-16/approved-final.png`. 이전 그림은 before-panel-move.png로 보존. 수정 밖 픽셀 동일성 미검증. 01 입구 열린 상태 생성·확인 대기: `art/desert-01-open-state-2026-10-16/open-preview.png`. 문양 뚜껑 오른쪽·왼쪽 하강 계단. 닫힘 원본 보존.

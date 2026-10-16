@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-16",
+  "runtimeApplied": false,
+  "patchesExtracted": false,
+  "pixelPreservationVerified": false,
+  "files": [
+    {
+      "file": "closed-all.png",
+      "role": "보물방 닫힘 전체",
+      "source": "/workspace/generated_images/exec-6aaef61d-5163-4982-8f06-6707ae778086.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "07eff1c7dabf15b8e2182f8b265d206487557a7130e6658ac0340b077d06f057",
+      "approvalEvidence": "6장 다 채택!!"
+    },
+    {
+      "file": "open-C1.png",
+      "role": "왼쪽 위 개방",
+      "source": "/workspace/generated_images/exec-1d00a1e4-3b13-486d-b8b3-26a15230a680.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "566f9dc64ebb386d108ce30fbc1e59bf6048f0b0474805a8f5e14e36dd1f264c",
+      "approvalEvidence": "6장 다 채택!!"
+    },
+    {
+      "file": "open-C2.png",
+      "role": "오른쪽 위 개방",
+      "source": "/workspace/generated_images/exec-62186625-ab68-4b4c-a161-7b984b60dec4.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6415a9b9f1ed0de199d07873fe2c9b72acd84a38adcfb45dd55ed746d8b6e2c1",
+      "approvalEvidence": "6장 다 채택!!"
+    },
+    {
+      "file": "open-C3.png",
+      "role": "왼쪽 아래 개방",
+      "source": "/workspace/generated_images/exec-371337fa-0845-4c10-82a7-47c125532ff2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7ebe8dd6c9009a775889235676236e7e9504547351d3d8023477bcd85673fb88",
+      "approvalEvidence": "6장 다 채택!!"
+    },
+    {
+      "file": "open-C4.png",
+      "role": "오른쪽 아래 안쪽 개방",
+      "source": "/workspace/generated_images/exec-168a95fa-869d-4648-b5dd-1cb3acc6bb1a.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5a887c0a30c00ae607412344d2e70cdbfdca75b5c34aa37c6a5ff4497a402367",
+      "approvalEvidence": "6장 다 채택!!"
+    },
+    {
+      "file": "open-C5.png",
+      "role": "오른쪽 아래 바깥쪽 개방",
+      "source": "/workspace/generated_images/exec-3284aafb-18de-4783-89cc-fffc2d24fa0e.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b8efc84f29f06c58564f352a06dbdd274b465ca689210f03923e66ec53739284",
+      "approvalEvidence": "6장 다 채택!!"
+    },
+    {
+      "file": "sky-original.png",
+      "role": "전망맵 최초 선택 원본",
+      "source": "/workspace/generated_images/exec-ea65d969-cf58-423b-909a-208cd24e3069.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7daee98e78266447248c0f6678c10626f05be2426313b336485733de02faef7f",
+      "approvalEvidence": "오 shit 2번째 좋다"
+    },
+    {
+      "file": "sky-approved-final.png",
+      "role": "원본 기반 오른쪽 오벨리스크 최종",
+      "source": "/workspace/generated_images/exec-7ae13252-a681-4fc5-b34f-d4a03cd1989f.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3ddfde58482bbbfb186d6dcdf6cbc052c5155dc4f2aa478bbe3257cba915b307",
+      "approvalEvidence": "굿!! 채택!!시발 사막은 끝!!!"
+    }
+  ]
+}
