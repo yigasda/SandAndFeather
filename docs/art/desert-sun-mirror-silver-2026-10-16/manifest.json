@@ -1,0 +1,22 @@
+{
+  "status": "review-pending",
+  "variants": [
+    "온전한 의식용 거울",
+    "오래된 균열 거울",
+    "작은 날개 거울"
+  ],
+  "constraints": [
+    "금색 원형 테두리",
+    "은백색·회청색 거울면; 금색·갈색 거울면 금지",
+    "다리·기괴한 부속물 금지; 날개는 작게"
+  ],
+  "reference": "docs/art/desert-sealed-jar-2026-10-16/candidate-01.png",
+  "referenceRole": "pixel execution only",
+  "size": [
+    2149,
+    732
+  ],
+  "mode": "RGBA",
+  "sha256": "08cafd823e1d8ba8cf6f4e80828b0b1a57d01da0e01dd3c4634049d9a74a8465",
+  "runtimeApplied": false
+}
