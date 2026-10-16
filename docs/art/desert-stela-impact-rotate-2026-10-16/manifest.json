@@ -1,0 +1,19 @@
+{
+  "status": "review-pending",
+  "source": "docs/art/desert-stela-impact-revisions-2026-10-16/wide.png",
+  "sourceCrop": [
+    790,
+    530,
+    1215,
+    780
+  ],
+  "rotationDegrees": 30,
+  "method": "Pillow nearest-neighbor rigid 2D rotation, no image generation, no resizing/repainting body; added sand fan on separate layer",
+  "output": "standalone replacement for cell8; original sheet unmodified",
+  "size": [
+    660,
+    570
+  ],
+  "sha256": "bfffa86adf94c3fc9d767fd56693958e586a8a1dec88e11830ed5d67eaa4f8b9",
+  "runtimeApplied": false
+}
