@@ -1,0 +1,17 @@
+{
+  "status": "review-pending",
+  "reference": "docs/art/desert-sealed-jar-2026-10-16/candidate-01.png",
+  "variants": [
+    "낡은 원형 방패",
+    "보강대 방패",
+    "갈라진 방패 측면 자세"
+  ],
+  "size": [
+    1942,
+    809
+  ],
+  "mode": "RGBA",
+  "sha256": "f0f1300b572364a2ec1330359cb5813f2d927cf83d3f67a795a36259033fed09",
+  "runtimeApplied": false,
+  "observation": "항아리보다 금속 표면 명암이 촘촘함. 사용자 검토 전 채택하지 않음."
+}

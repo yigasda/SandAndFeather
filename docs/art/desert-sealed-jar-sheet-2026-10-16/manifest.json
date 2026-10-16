@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "file": "sheet.png",
   "size": [
     1774,
@@ -25,5 +25,6 @@
   ],
   "sha256": "533952cd6f3910b2d6c5ed65eedf43dc868512bab4825bd6c0d4a68738ff3696",
   "runtimeApplied": false,
-  "note": "한 번에 생성한 10칸 검토 시트. 대기0 실제 원본 별도 보존. 개별 프레임 배율·pivot 정렬 미완료. 피격 칸에 분리 파편이 생겨 생존 피격으로 사용할지 확인 필요."
+  "note": "한 번에 생성한 10칸 검토 시트. 대기0 실제 원본 별도 보존. 개별 프레임 배율·pivot 정렬 미완료. 피격 칸에 분리 파편이 생겨 생존 피격으로 사용할지 확인 필요.",
+  "approvalEvidence": "ㅇㅋ 채택 다음 몹 하자"
 }
