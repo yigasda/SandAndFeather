@@ -18,6 +18,7 @@
 | 천칭 파수꾼 | [첫 외형](art/desert-balance-sentinel-concepts-2026-10-16/candidates.png) · [10모션](art/desert-balance-sentinel-color-unified-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-balance-sentinel-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-balance-sentinel-color-unified-2026-10-16/prompt.txt) |
 | 빈 가면 사제 1형 — 장막형 | [첫 외형](art/desert-empty-mask-priest-concepts-2026-10-16/candidates.png) · [10모션](art/desert-mask-priest-mantle-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-empty-mask-priest-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-mask-priest-mantle-motion-2026-10-16/prompt.txt) |
 | 빈 가면 사제 2형 — 수의형 | [첫 외형](art/desert-empty-mask-priest-concepts-2026-10-16/candidates.png) · [10모션](art/desert-mask-priest-shroud-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-empty-mask-priest-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-mask-priest-shroud-motion-2026-10-16/prompt.txt) |
+| 왕면 수문장 | [첫 외형](art/desert-royal-tomb-boss-concepts-2026-10-16/candidates.png) · [10모션](art/desert-royal-sarcophagus-boss-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-royal-tomb-boss-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-royal-sarcophagus-boss-motion-2026-10-16/prompt.txt) |
 
 ## 2. 주제를 몹으로 설계하기
 

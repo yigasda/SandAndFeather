@@ -1,6 +1,6 @@
 # 현재 작업 — 압축 후 먼저 확인
 
-> **현재 몹 작업:** 빈 가면 사제 두 버전 10모션 최종 채택. 다음은 4대 수문장: [보스 외형 시안](art/desert-royal-tomb-boss-concepts-2026-10-16/candidates.png)의 1·2·4·5번 선택, 3번 제외. [1번 왕면 수문장 10모션](art/desert-royal-sarcophagus-boss-motion-2026-10-16/sheet.png) 검토 중. 일반 몹 대비 높이 약 2.5배는 제작 목표이며 게임 배율 미검증. 원본·실제 프롬프트 main 보존, 게임 미적용.
+> **현재 몹 작업:** 4대 수문장 외형 1·2·4·5번 선택. [1번 왕면 수문장 10모션](art/desert-royal-sarcophagus-boss-motion-2026-10-16/sheet.png) 최종 채택. [2번 신전 수문장 10모션](art/desert-temple-gate-boss-motion-2026-10-16/sheet.png) 검토 중: 문 닫기 방어와 양손 압착 공격. 원본·실제 프롬프트 main 보존, 게임 미적용. 높이 약 2.5배는 제작 목표이며 게임 배율 미검증.
 
 > **태양거울 모션 수정 진행:** [수정 에셋 폴더](art/desert-sun-mirror-motion-revisions-2026-10-16/). 대기1·2는 신전 내용 대신 표면 은빛 반사 띠 이동. 준비0·1은 공격 오라와 연결되는 빛 응축, 공격0·1은 표면 오라 강화, 소멸은 유리와 금테 파손. beam.png는 별도 광선 PNG. 1·4·9번은 기존 모션 유지 대상. 수정본 채택·프레임 정렬·게임 적용 미완료.
 
