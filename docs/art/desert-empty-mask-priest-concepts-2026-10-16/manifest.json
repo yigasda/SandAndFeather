@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "designs-1-and-2-adopted",
   "designs": [
     "넓은 깃 장막형",
     "긴 가면 수의형",
@@ -19,5 +19,12 @@
     255
   ],
   "sha256": "bdccd80f74ca70dae73b40ecb1d6a72b1e0e088a5945cf4c6cb6ae7d757ed642",
-  "runtimeApplied": false
+  "runtimeApplied": false,
+  "adoptedDesigns": [
+    1,
+    2
+  ],
+  "family": "빈 가면 사제",
+  "approvalEvidence": "이것도 방패병처럼 두버전 채택! 1,2 둘 다 채택할게",
+  "rankAssignment": null
 }
