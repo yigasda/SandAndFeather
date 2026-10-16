@@ -1,0 +1,88 @@
+{
+  "status": "review-pending",
+  "reference": "docs/art/desert-sun-mirror-approved-2026-10-16/approved.png",
+  "replaces": {
+    "idle12.png": [
+      2,
+      3
+    ],
+    "prepare-and-defeat.png": [
+      5,
+      6,
+      10
+    ],
+    "attack-aura.png": [
+      7,
+      8
+    ]
+  },
+  "preserveFromOriginalSheet": [
+    1,
+    4,
+    9
+  ],
+  "beam": {
+    "file": "beam.png",
+    "direction": "left-to-right",
+    "originApproxNormalized": [
+      0.13,
+      0.5
+    ],
+    "usage": "별도 레이어에서 발사점으로 위치 정렬 후 공격 방향으로 회전. 길이·충돌·피해·표시배율은 게임에서 설정.",
+    "runtimeApplied": false
+  },
+  "limitations": [
+    "개별 프레임 추출·배율/피벗 통일·통합 시트 아직 미완료.",
+    "idle12와 beam에 넓은 반투명 후광 있음; 실제 배경 위 합성 검토 필요."
+  ],
+  "files": {
+    "idle12.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "sha256": "0efbbaa7d4176019eb96fe3e75f45ed9fa2f2b95821484093b6febba5fcaecd3"
+    },
+    "prepare-and-defeat.png": {
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "e5bcd88c14cd7f9401bd8672c1efd75826632449498efa0cfedd3a3615cc9ff9"
+    },
+    "beam.png": {
+      "size": [
+        2048,
+        768
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "sha256": "0b7569d991b53befaaa26967a636a37f58ee063fefb78bafd5a76b58dd30e1c7"
+    },
+    "attack-aura.png": {
+      "size": [
+        1774,
+        887
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "52a55a09285a68881d0b4b0f9cf7f9541003a324a780d5dae00f2dcf6091e9fa"
+    }
+  }
+}
