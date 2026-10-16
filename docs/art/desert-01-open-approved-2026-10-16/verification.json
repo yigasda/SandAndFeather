@@ -1,0 +1,11 @@
+{
+  "source": "../desert-01-open-four-2026-10-16/candidate-01.png",
+  "mask": "../desert-01-open-four-2026-10-16/edit-mask.png",
+  "outside_mask_changed_RGBA_pixels": 0,
+  "size": [
+    1586,
+    992
+  ],
+  "adopted": true,
+  "closed_original_preserved": true
+}
