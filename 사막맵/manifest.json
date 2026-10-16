@@ -314,6 +314,17 @@
       "sha256": "8bfd8b7d35e8b4aa363f9280ad94ce78e0df2239ac83dee33ad3a2bf13984486",
       "note": "채택 원본",
       "approvalEvidence": "13둘 다 채택!"
+    },
+    {
+      "file": "T2_무너진봉헌품회랑.png",
+      "source": "docs/art/desert-t2-votive-concepts-2026-10-16/candidate-02.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "ad11794b913153147d23b47427c73af4c951a31cac8972857b6fe3fbd95ac0ad",
+      "approvalEvidence": "두번째로 채택!!!",
+      "note": "시안2 채택 원본"
     }
   ],
   "missing": [],
