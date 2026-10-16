@@ -1,0 +1,24 @@
+{
+  "status": "review-pending",
+  "layout": "2x2",
+  "designs": [
+    "사암 멍에형",
+    "청동 초승형",
+    "목제 봉인형",
+    "쌍탑 축형"
+  ],
+  "source": "/workspace/generated_images/exec-a18b17c1-444b-4fce-9e31-70cb1f3e677d.png",
+  "reference": "docs/art/desert-sealed-jar-2026-10-16/candidate-01.png",
+  "referenceRole": "pixel execution only, not design",
+  "size": [
+    1374,
+    1145
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "7602cc1efcb81f7fc822a356f3cfa02d97f16ff64edd4e1467f248d5024b5dd3",
+  "runtimeApplied": false
+}
