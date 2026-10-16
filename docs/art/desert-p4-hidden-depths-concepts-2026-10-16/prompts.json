@@ -12,5 +12,8 @@
   "adoptedUses": {
     "candidate-04.png": "P4 무너진 왕릉 하부실",
     "candidate-02.png": "별도 황금 부장고 보물상자 맵"
+  },
+  "preserveCandidates": {
+    "candidate-03.png": "사용자 요청: 디자인 보존. 별도 맵 채택·연결 미정."
   }
 }

@@ -1,0 +1,123 @@
+{
+  "sourceGuide": "docs/ASTRA-DESERT-05-20-GUIDE.md",
+  "runtimeApplied": false,
+  "nodes": [
+    {
+      "id": "14",
+      "title": "피라미드 중심실",
+      "source": "사막맵/14_피라미드중심실.png"
+    },
+    {
+      "id": "P2",
+      "title": "왕면 열병 전실",
+      "source": "사막맵/P2_왕면열병전실.png"
+    },
+    {
+      "id": "13",
+      "title": "왕의 기록 회랑",
+      "source": "사막맵/13_왕의기록회랑.png"
+    },
+    {
+      "id": "12B",
+      "title": "둘째 하강 회랑",
+      "source": "사막맵/12_2_피라미드하강회랑.png"
+    },
+    {
+      "id": "P1",
+      "title": "고대 장례 미궁",
+      "source": "사막맵/P1A_고대장례미궁_세로.png"
+    },
+    {
+      "id": "12A",
+      "title": "첫째 하강 회랑",
+      "source": "사막맵/12_1_피라미드하강회랑.png"
+    },
+    {
+      "id": "05",
+      "title": "피라미드 기단",
+      "source": "사막맵/05_피라미드기단.png"
+    },
+    {
+      "id": "P3A",
+      "title": "장례선 봉안실",
+      "source": "사막맵/P3A_부왕장례전_장례선봉안실.png"
+    },
+    {
+      "id": "P3B",
+      "title": "석관 안치전",
+      "source": "사막맵/P3B_부왕장례전_석관안치전.png"
+    },
+    {
+      "id": "P4",
+      "title": "왕릉 하부실 · 최종 수문장",
+      "source": "사막맵/P4_무너진왕릉하부실.png"
+    },
+    {
+      "id": "보물",
+      "title": "황금 부장고",
+      "source": "사막맵/추가_황금부장고.png"
+    }
+  ],
+  "links": [
+    {
+      "from": "05",
+      "to": "12A",
+      "bidirectional": true,
+      "status": "document-plan"
+    },
+    {
+      "from": "12A",
+      "to": "P1",
+      "bidirectional": true,
+      "status": "document-plan"
+    },
+    {
+      "from": "P1",
+      "to": "12B",
+      "bidirectional": true,
+      "status": "document-plan"
+    },
+    {
+      "from": "12B",
+      "to": "13",
+      "bidirectional": true,
+      "status": "document-plan"
+    },
+    {
+      "from": "13",
+      "to": "P2",
+      "bidirectional": true,
+      "status": "document-plan"
+    },
+    {
+      "from": "P2",
+      "to": "14",
+      "bidirectional": true,
+      "status": "document-plan"
+    },
+    {
+      "from": "P1",
+      "to": "P3A",
+      "bidirectional": true,
+      "status": "proposal"
+    },
+    {
+      "from": "P3A",
+      "to": "P3B",
+      "bidirectional": true,
+      "status": "proposal"
+    },
+    {
+      "from": "P3B",
+      "to": "P4",
+      "bidirectional": true,
+      "status": "proposal"
+    },
+    {
+      "from": "P3A",
+      "to": "보물",
+      "bidirectional": true,
+      "status": "proposal"
+    }
+  ]
+}
