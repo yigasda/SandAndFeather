@@ -1,0 +1,14 @@
+{
+  "commonPrompt": "Edit this exact supplied labyrinth image minimally. Remove approximately 15 percent of the existing narrative mural panels, leaving approximately 85 percent unchanged. Choose FOUR SMALL panels scattered through different parts of the map, not the important long large murals. Replace each chosen painted panel interior and its blue painted border with naturally weathered BARE warm sandstone masonry matching adjacent wall: subtle block seams, gentle worn surface, same illumination and perspective. Do not leave a blank blue/orange framed picture; it must read as plain architectural wall. KEEP every other mural exactly as supplied, without rearranging or inventing scenes. Preserve maze wall geometry, passages, openings, floor, rubble, shadows, light, palette, pixel rendering, canvas dimensions and aspect ratio. No new doors, objects, symbols or paths. No ankh. This is ONLY a modest reduction of mural count; the map should still have abundant diverse murals, punctuated by a few undecorated walls. Output ONE full edited map.",
+  "inputs": [
+    "../desert-p1-labyrinth-murals-2026-10-16/candidate-01-murals.png",
+    "../desert-p1-labyrinth-murals-2026-10-16/candidate-03-murals.png"
+  ],
+  "outputs": [
+    "vertical.png",
+    "horizontal.png"
+  ],
+  "status": "adopted",
+  "approvalEvidence": "벽화수 15%만 줄이자!! 그러면 둘 다 채택!!!(못정함..)",
+  "note": "벽화 약 15% 감소 요청. 두 맵 채택, 상호 연결 위치 미정. 이미지 편집 결과이며 수정 외 픽셀 동일성 미검증."
+}
