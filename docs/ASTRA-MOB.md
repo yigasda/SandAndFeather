@@ -16,6 +16,8 @@
 | 걸음 비석 | [최종 10모션](art/desert-sandstone-stela-approved-2026-10-16/sheet.png) · [개별 10장](art/desert-sandstone-stela-approved-2026-10-16/frames/) | [최종 조립 출처·해시](art/desert-sandstone-stela-approved-2026-10-16/manifest.json) · [첫 시트 프롬프트](art/desert-sandstone-stela-motion-2026-10-16/prompt.txt). 최종본은 원본 합성이므로 단일 생성문으로 동일 결과를 만들었다고 하지 않는다. |
 | 태양거울 | [채택 외형](art/desert-sun-mirror-approved-2026-10-16/approved.png) · [최종 10모션](art/desert-sun-mirror-unified-motion-2026-10-16/sheet.png) | [최종 모션 프롬프트](art/desert-sun-mirror-unified-motion-2026-10-16/prompt.txt) · [외형 마지막 색 수정문](art/desert-sun-mirror-approved-2026-10-16/prompt.txt) · [외형 재사용 지침](art/desert-sun-mirror-approved-2026-10-16/REUSE.md) |
 
+| 천칭 파수꾼 | [외형 4안 중 오른쪽 아래 채택](art/desert-balance-sentinel-concepts-2026-10-16/candidates.png) · [10모션 검토본](art/desert-balance-sentinel-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-balance-sentinel-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-balance-sentinel-motion-2026-10-16/prompt.txt). 외형 채택, 모션 검토 중. |
+
 가죽형·봉인형은 **같은 방패 수호병 계열**이다. 임의로 일반/엘리트 등급을 나누지 않는다. 외형 시안 가운데 목제형은 미채택이다. 태양거울은 **외형과 최종 통합 10모션 모두 채택**이며, 이전 개별 수정본을 최종 시트 대신 사용하지 않는다.
 
 태양거울의 [별도 광선 PNG](art/desert-sun-mirror-motion-revisions-2026-10-16/beam.png)와 [광선 제작문](art/desert-sun-mirror-motion-revisions-2026-10-16/beam-prompt.txt)은 공격 몸체와 분리한 적용용 자료다. 위 채택은 작화 채택이며, 프레임 시간·피벗·게임 적용 완료를 뜻하지 않는다.

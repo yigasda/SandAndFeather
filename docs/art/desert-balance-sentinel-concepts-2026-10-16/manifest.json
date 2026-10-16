@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "design-4-adopted",
   "layout": "2x2",
   "designs": [
     "사암 멍에형",
@@ -20,5 +20,7 @@
     255
   ],
   "sha256": "7602cc1efcb81f7fc822a356f3cfa02d97f16ff64edd4e1467f248d5024b5dd3",
-  "runtimeApplied": false
+  "runtimeApplied": false,
+  "adoptedDesign": 4,
+  "approvalEvidence": "오 4번이 딱 신전 파수꾼 느낌이다. 4번 모션 10장 주라!"
 }

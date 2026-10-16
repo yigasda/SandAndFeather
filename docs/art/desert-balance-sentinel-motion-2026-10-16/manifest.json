@@ -1,0 +1,31 @@
+{
+  "status": "review-pending",
+  "identity": "desert-balance-sentinel-concepts-2026-10-16/candidates.png bottom-right design 4",
+  "identityApproval": "오 4번이 딱 신전 파수꾼 느낌이다. 4번 모션 10장 주라!",
+  "source": "/workspace/generated_images/exec-65567391-956c-4959-892b-f1aa6bc2ce01.png",
+  "layout": "2x5",
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "slam0",
+    "slam1",
+    "hit",
+    "defeat"
+  ],
+  "size": [
+    1983,
+    793
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "b5cefd688ce59b55094a87eef4bf4a01e3012d46c05554cfe4868b4dd5038cd3",
+  "runtimeApplied": false,
+  "reviewNotes": "Unified sheet visually checked: ten poses, left-weight slam, broken beam defeat. Idle rocking direction differs from prompt order; slam0 already includes a little contact debris. Not runtime-validated or user-adopted motion."
+}
