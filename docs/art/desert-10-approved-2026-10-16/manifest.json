@@ -1,0 +1,14 @@
+{
+  "map": "10",
+  "name": "모래바람 분지",
+  "file": "art/desert-10-approved-2026-10-16/approved-final.png",
+  "source": "art/desert-10-candidates-2026-10-16/png/candidate-01.png",
+  "size": [
+    1774,
+    887
+  ],
+  "sha256": "02254c2ec30e9c845a70aef6e2365b5ed4046dff94e4d9ee34d186d134b819e6",
+  "approvalEvidence": "3번은 따로 살려두고\n1번으로 하자",
+  "runtimeApplied": false,
+  "publishedBranch": "main"
+}
