@@ -1,0 +1,23 @@
+{
+  "status": "review-pending",
+  "designs": [
+    "넓은 깃 장막형",
+    "긴 가면 수의형",
+    "초승 가면 부채형"
+  ],
+  "referenceRoles": [
+    "approved jar: pixel execution only",
+    "user masked cloth enemies: silhouette principles only"
+  ],
+  "size": [
+    1942,
+    809
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "bdccd80f74ca70dae73b40ecb1d6a72b1e0e088a5945cf4c6cb6ae7d757ed642",
+  "runtimeApplied": false
+}
