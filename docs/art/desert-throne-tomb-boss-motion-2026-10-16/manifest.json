@@ -1,0 +1,36 @@
+{
+  "status": "review-pending",
+  "family": "4대 수문장",
+  "originalConceptIndex": 4,
+  "design": "왕좌 수문장",
+  "referenceRoles": [
+    "boss concept bottom-left identity",
+    "temple gate motion pixel execution only, not attack"
+  ],
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "earth-press0",
+    "earth-press1",
+    "hit",
+    "defeat"
+  ],
+  "attackIdentity": "two separated flat palms ground press followed by expanding ground shockwave",
+  "size": [
+    1774,
+    887
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "bb4d8f7e72ab14eb09d5bab9fa70469ebecdd6855cde3d05dd3b2694e6e7d52b",
+  "runtimeApplied": false,
+  "intendedHeightRatio": 2.5,
+  "reviewNotes": "Ten keys; flat-palm shockwave attack distinct from fist slam and inward clap. Wave crosses nominal cell margins; runtime extraction/pivots and scale not validated."
+}

@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "family": "4대 수문장",
   "variant": 2,
   "design": "신전 수문장",
@@ -32,5 +32,6 @@
   "sha256": "60abb60480ec3422778257715be779b902793f6a94b06898cbd511fe90b42297",
   "runtimeApplied": false,
   "intendedHeightRatio": 2.5,
-  "reviewNotes": "Ten poses visually checked. Both-palms inward attack distinct from variant1. Runtime scale, extraction and pivots not validated."
+  "reviewNotes": "Ten poses visually checked. Both-palms inward attack distinct from variant1. Runtime scale, extraction and pivots not validated.",
+  "approvalEvidence": "으아가각 존나 좋아 합격!! 합격!! 함격!!"
 }
