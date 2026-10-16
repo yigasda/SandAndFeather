@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "variant-01-selected",
   "variants": [
     "가죽 방패병",
     "연꽃 목제 방패병",
@@ -12,5 +12,7 @@
     835
   ],
   "sha256": "971c7fd5bbfb6a13b31afabd96a5e16deed40f367b982dfb3ecd7e8cae0b2bf3",
-  "runtimeApplied": false
+  "runtimeApplied": false,
+  "selectedVariant": 1,
+  "approvalEvidence": "1번 가죽방패병이 젤 어울린다; 10모션 시안 쥬!"
 }
