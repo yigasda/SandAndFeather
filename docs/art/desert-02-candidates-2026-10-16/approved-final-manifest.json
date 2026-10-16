@@ -1,0 +1,10 @@
+{
+  "map": "02 매몰 신전 사막",
+  "file": "approved-final.png",
+  "source": "original PNG + local weathered-exit composite",
+  "approvalEvidence": "ㄱㄱㄱ 채택채택 0102둘 다 메인에 올려",
+  "sha256": "8e8e2dc22bbad1dc4afb9e206d424f0b787798cc9cb24b270c521ac67c679d13",
+  "runtimeApplied": false,
+  "publishedBranch": "main",
+  "reproduction": "composite-exit.py"
+}

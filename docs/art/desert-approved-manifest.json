@@ -1,0 +1,31 @@
+[
+  {
+    "map": "01",
+    "file": "art/desert-01-method-2026-10-16/approved-final.png",
+    "source": "exec-8a151917-b3a4-4ab0-ac2f-c10c42815059",
+    "size": [
+      1586,
+      992
+    ],
+    "sha256": "75c9a2c4690cd4dadd448301fcea7896fd48897db9f44489831bc743f03fb860",
+    "approvalEvidence": "01 황금대형맵 이걸로 최종 채택",
+    "runtimeApplied": false,
+    "uploadedThisSession": true,
+    "publishedBranch": "main"
+  },
+  {
+    "map": "02",
+    "file": "art/desert-02-candidates-2026-10-16/approved-final.png",
+    "source": "original PNG + local weathered-exit composite",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "8e8e2dc22bbad1dc4afb9e206d424f0b787798cc9cb24b270c521ac67c679d13",
+    "approvalEvidence": "ㄱㄱㄱ 채택채택 0102둘 다 메인에 올려",
+    "runtimeApplied": false,
+    "uploadedThisSession": true,
+    "publishedBranch": "main",
+    "reproduction": "art/desert-02-candidates-2026-10-16/composite-exit.py"
+  }
+]
