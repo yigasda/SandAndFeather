@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "variant-selected",
   "theme": "걸음 비석",
   "variants": [
     "둥근 머리 사암 비석",
@@ -26,5 +26,7 @@
   "sha256": "b2026678febeccf3aafc4682d8dfb442c858c4a538fbcca8b4bc6492e59df6d4",
   "pivot": null,
   "gameScale": null,
-  "runtimeApplied": false
+  "runtimeApplied": false,
+  "selectedVariant": 1,
+  "selectionEvidence": "1번이 사막에 제일 어울린다! 1번으로 모션 10장 줘!"
 }
