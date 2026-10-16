@@ -1,0 +1,25 @@
+{
+  "status": "review-pending",
+  "variants": [
+    "빙의된 부유 원판",
+    "거울 등껍질 쇠똥구리",
+    "분리되는 봉인 거울"
+  ],
+  "reference": "docs/art/desert-sealed-jar-2026-10-16/candidate-01.png",
+  "referenceRole": "pixel execution only",
+  "promptsReviewed": [
+    "docs/art/desert-sealed-jar-2026-10-16/prompt.txt",
+    "docs/art/desert-shield-egyptian-2026-10-16/prompt.txt"
+  ],
+  "size": [
+    2172,
+    724
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "32c837a0dcde6f4f6a46dde89bcd4a2fd6196c05a9e498e34fa78b54444f3156",
+  "runtimeApplied": false
+}

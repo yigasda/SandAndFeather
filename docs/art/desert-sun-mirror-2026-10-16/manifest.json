@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "rejected",
   "theme": "태양거울",
   "variants": [
     "초승달 받침 청동 원판",
@@ -18,5 +18,6 @@
     255
   ],
   "sha256": "12c9fec2538878496ac3dd9acf5e896b971ceb90564ed7d0b5720b00cfbecbf4",
-  "runtimeApplied": false
+  "runtimeApplied": false,
+  "reason": "몹같지 않고 도트 표현도 다르다는 사용자 피드백"
 }
