@@ -1,5 +1,7 @@
 # 현재 작업 — 압축 후 먼저 확인
 
+> **태양거울 외형 채택:** [최종 PNG](art/desert-sun-mirror-approved-2026-10-16/approved.png) · [최종 수정 프롬프트](art/desert-sun-mirror-approved-2026-10-16/prompt.txt). 가운데가 조이는 금색 세로타원 틀, 3/4 시점, 중성 은빛 유리와 빛바랜 컬러의 오래된 불길한 신전 반사. 원형 설계는 `desert-sun-mirror-shape-2026-10-16`의 2번, 노화 단계는 `desert-sun-mirror-aged-2026-10-16`. 사용자 요청으로 태양거울 반려 탐색안 프롬프트 삭제, 이미지 원본 보존. 모션은 아직 제작 전.
+
 > **걸음 비석 최종 10모션 채택:** [최종 시트](art/desert-sandstone-stela-approved-2026-10-16/sheet.png) · [개별 10 PNG](art/desert-sandstone-stela-approved-2026-10-16/frames/) · [출처·해시](art/desert-sandstone-stela-approved-2026-10-16/manifest.json). 첫 내려찍기 시트를 기본으로 4번만 두 번째 시안 방어, 8번만 원본 30도 회전+모래 채택본으로 교체. 생성 없이 원본 픽셀 복사. 대기0·1·2 / 방어 / 준비0·1 / 내려찍기0·1 / 피격 / 소멸. 이전 원본 모두 보존. 게임 적용·시간·기준점 검증은 별도.
 
 > **걸음 비석 최신:** 외형 1번 사암형 채택. [내려찍기 시트](art/desert-sandstone-stela-motion-2026-10-16/sheet.png)와 [방어 포함 돌진 시트](art/desert-sandstone-stela-charge-2026-10-16/sheet.png) 보존. 사용자 정정: 내려찍기도 괜찮고 소멸 시 빛 꺼짐도 괜찮음. 공격을 돌진으로만 제한하지 않는다. 전체 모션 최종 채택은 미확정.

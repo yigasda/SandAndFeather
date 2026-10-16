@@ -1,0 +1,33 @@
+{
+  "status": "adopted",
+  "evidence": "유리만 좀 덜 푸른끼 있게 하면 채택!!",
+  "source": "docs/art/desert-sun-mirror-aged-2026-10-16/candidate.png",
+  "change": "유리의 푸른끼를 줄인 중성 은빛",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    254
+  ],
+  "sha256": "b6854e70107ebf4c26aeb42b9f257349b31d70bcb8ff6da9267b2ebfb7f9256a",
+  "runtimeApplied": false,
+  "limitations": [
+    "생성본 외곽에 금빛 후광 잔존; 완전한 외곽 정리는 미완료."
+  ],
+  "deletedRejectedPromptPaths": [
+    "docs/art/desert-sun-mirror-2026-10-16/prompt.txt",
+    "docs/art/desert-sun-mirror-oval-2026-10-16/prompt.txt",
+    "docs/art/desert-sun-mirror-reflections-2026-10-16/color-prompt.txt",
+    "docs/art/desert-sun-mirror-reflections-2026-10-16/monochrome-prompt.txt",
+    "docs/art/desert-sun-mirror-silver-2026-10-16/prompt.txt",
+    "docs/art/desert-sun-mirror-gold-2026-10-16/prompt.txt",
+    "docs/art/desert-sun-mirror-perspective-2026-10-16/prompt.txt",
+    "docs/art/desert-sun-mirror-perspective-2026-10-16/faded-frame-prompt.txt",
+    "docs/art/desert-sun-mirror-perspective-2026-10-16/dark-front-prompt.txt",
+    "docs/art/desert-sun-mirror-v2-2026-10-16/prompt.txt"
+  ],
+  "deletionScope": "태양거울 반려 탐색안 프롬프트. 이미지 및 선택 디자인 제작 프롬프트 보존. Git 과거 이력은 유지."
+}
