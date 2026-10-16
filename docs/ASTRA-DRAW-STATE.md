@@ -2,7 +2,9 @@
 
 ## 사막 현재 작업
 
-16번 시안 4개 미채택: `art/desert-16-candidates-2026-10-16/`. 번호는 PNG 01~04 순서. 구조 시안이며 장치 상세·광로·이동 검증 미완료.
+17번 시안 4개 미채택: `art/desert-17-candidates-2026-10-16/`. 고정 받침·건축 구조 시안이며 가동 장치·문양·게임 검증 미완료.
+
+16번 시안 3 채택: `art/desert-16-approved-2026-10-16/approved-final.png`. 이전 시안: `art/desert-16-candidates-2026-10-16/`. 번호는 PNG 01~04 순서. 구조 시안이며 장치 상세·광로·이동 검증 미완료.
 
 15번 **위층 수신부 원본 채택**: [최종 PNG](art/desert-15-approved-2026-10-16/approved-final.png). 오른쪽 광원 → 가운데 반사판 → 위쪽 수신부. 노란 선은 사용자 광로 설명이며 그림에 합성하지 않음. [상세 프롬프트·장치 배치 기록](art/desert-15-spatial-revision-2026-10-16/REUSE.md). 아래층 수정안은 미채택. 런타임 미적용.
 
