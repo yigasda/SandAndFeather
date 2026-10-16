@@ -1,0 +1,15 @@
+{
+  "map": "03",
+  "name": "고요한 사구 — 06 관측 기능 통합",
+  "file": "art/desert-03-ridge-approved-2026-10-16/approved-final.png",
+  "source": "art/desert-03-ridge-candidates-2026-10-16/png/candidate-02.png",
+  "size": [
+    1774,
+    887
+  ],
+  "sha256": "6ed29e6324503811475cae4975fbf029c9099c0028bd8975e50f4c858b8af090",
+  "approvalEvidence": "2번째로 채택 메인에 올리고 5-20 지침문서 읽고 7번 맵 시안 4개 줘",
+  "runtimeApplied": false,
+  "publishedBranch": "main",
+  "previousApproved": "art/desert-03-approved-2026-10-16/approved-final.png"
+}

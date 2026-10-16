@@ -2,7 +2,7 @@
 
 > **최신 사용자 절대 금지: 앞으로 모든 맵에 앙크 문양을 넣지 않는다.** 참고 원본에 있어도 복사하지 않는다. 고리 달린 십자가·생명의 열쇠 형태와 변형도 제외한다. 예외: 05 시안 1은 사용자가 앙크 포함 원본 그대로 채택했다. 이 예외를 다른 새 맵에 확대하지 않는다.
 
-> **05~20 최신 통합 작화 지침:** [통합 문서](ASTRA-DESERT-05-20-GUIDE.md). 사용자 첨부 2종과 맵별 분위기·퍼즐·10가지 기능을 통합했다. 05는 시안 1 원본(앙크 포함) 채택. 06은 03에 통합하기로 확정했다. 현재 제작 범위는 03 통합 시안 4개이며 런타임 미적용이다.
+> **05~20 최신 통합 작화 지침:** [통합 문서](ASTRA-DESERT-05-20-GUIDE.md). 사용자 첨부 2종과 맵별 분위기·퍼즐·10가지 기능을 통합했다. 05는 시안 1 원본(앙크 포함) 채택. 06은 03에 통합하기로 확정했다. 03 통합 시안 2 채택. 현재 제작 범위는 07 낮 시안 4개이며 런타임 미적용이다.
 
 이 문서는 다음 맵 작업을 바로 실행하기 위한 지침이다. 최신 사용자 지시가 우선한다. 작업 저장소는 `/workspace/horus-combat-publish`.
 
@@ -14,7 +14,7 @@
 |---|---|
 | 01 최종 그림 | [approved-final.png](art/desert-01-method-2026-10-16/approved-final.png) |
 | 02 최종 그림 | [approved-final.png](art/desert-02-candidates-2026-10-16/approved-final.png) |
-| 03 최종 그림 | [approved-final.png](art/desert-03-approved-2026-10-16/approved-final.png) |
+| 03 최종 그림 | [approved-final.png](art/desert-03-ridge-approved-2026-10-16/approved-final.png) |
 | 04 최종 그림 | [approved-final.png](art/desert-04-approved-2026-10-16/approved-final.png) |
 | 01 정확한 최종 호출 | [approved-final-request.json](art/desert-01-method-2026-10-16/approved-final-request.json) |
 | 02 합성 전 원본 생성 호출 | [approved-final-request.json](art/desert-02-candidates-2026-10-16/approved-final-request.json) |
