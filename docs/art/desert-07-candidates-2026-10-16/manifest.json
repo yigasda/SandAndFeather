@@ -1,0 +1,50 @@
+[
+  {
+    "number": 1,
+    "file": "png/candidate-01.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "ba0de575a4f0bb56d7937f4c0f372df51da88d0fc9a808e4044aa8761762e6e4",
+    "status": "unapproved concept",
+    "runtimeApplied": false,
+    "driveUploaded": false
+  },
+  {
+    "number": 2,
+    "file": "png/candidate-02.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "0570face42f225660ce78f0e02e807713e8530ad6a8a8c4e0bf3cb5231861f75",
+    "status": "unapproved concept",
+    "runtimeApplied": false,
+    "driveUploaded": false
+  },
+  {
+    "number": 3,
+    "file": "png/candidate-03.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "116091adccbc10fc4c276da5df6e6a6f33d1a7d15a0728bda68d679aec2b647a",
+    "status": "unapproved concept",
+    "runtimeApplied": false,
+    "driveUploaded": false
+  },
+  {
+    "number": 4,
+    "file": "png/candidate-04.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "1d50165a6b630cf7b8a96ecf485a288cf104fe4568e57fbdfd5f950a73f22839",
+    "status": "unapproved concept",
+    "runtimeApplied": false,
+    "driveUploaded": false
+  }
+]
