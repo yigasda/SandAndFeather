@@ -280,14 +280,20 @@
       ],
       "sha256": "3ddfde58482bbbfb186d6dcdf6cbc052c5155dc4f2aa478bbe3257cba915b307",
       "note": "최신 채택본"
-    }
-  ],
-  "missing": [
+    },
     {
-      "map": "13",
-      "description": "3번 기반 가로확장·입구확장 최종 채택 PNG 미확보. 이전 시안으로 대체하지 않음."
+      "file": "13_왕의기록회랑.png",
+      "source": "docs/art/desert-13-approved-2026-10-16/approved-final.png",
+      "size": [
+        2078,
+        757
+      ],
+      "sha256": "fdbad3f814ced6fb21505aa58f302820fd430605d638f42c3ac785b5e7df36ed",
+      "note": "3번 원본 기반 왼쪽 입구 확장 최종 채택",
+      "approvalEvidence": "이걸로 올리거라 13번으로"
     }
   ],
+  "missing": [],
   "merged": [
     {
       "map": "06",
