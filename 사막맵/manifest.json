@@ -358,6 +358,28 @@
       "sha256": "5f1a850a62c50a012b186344fe38d1f79fbdef3f82436707ed19ad2b3e5c4be3",
       "approvalEvidence": "첫번째 개쩐다 이걸로 채택!!!",
       "note": "시안1 원본"
+    },
+    {
+      "file": "P3A_부왕장례전_장례선봉안실.png",
+      "source": "docs/art/desert-p3-funerary-redesign-2026-10-16/candidate-01.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "6bee891fe6efa0f110349e992bf9c6a564fb057d0b383d1ab016c240655f4571",
+      "approvalEvidence": "오옷 1번 2번 채택!! 여기를 플레이어가 지나갈 수 있게 허물어줘!!",
+      "note": "P3 선택 탐사 구역. 세부 맵 연결과 충돌은 적용 시 검증."
+    },
+    {
+      "file": "P3B_부왕장례전_석관안치전.png",
+      "source": "docs/art/desert-p3-sarcophagus-passage-2026-10-16/revised.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "bbb4fbce9d0a5d0c940efa189a508b334117ecff82f35e7e96dd5b8cdc8b4e4d",
+      "approvalEvidence": "오옷 1번 2번 채택!! 여기를 플레이어가 지나갈 수 있게 허물어줘!!",
+      "note": "P3 선택 탐사 구역. 세부 맵 연결과 충돌은 적용 시 검증."
     }
   ],
   "missing": [],
