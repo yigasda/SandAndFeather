@@ -402,6 +402,17 @@
       "sha256": "0135fdc55f850fbff43fa342aea13b5ee3456dfc7806acbc37486722e8d82090",
       "approvalEvidence": "4번으로 채택!!! 2번은 별도의 보물상자 맵으로 쓰자!",
       "note": "별도 보물상자 맵. 기존 지하 샘 보물방과 별개이며 연결·상자 상태 분리는 미정."
+    },
+    {
+      "file": "추가_매몰된부장품운반로.png",
+      "source": "docs/art/desert-funerary-transport-concepts-2026-10-16/candidate-01.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "2380ec8f490965aaa24e95edbbbe69bb7fda6cfc1651f87e6c9fb547e7f5b7bb",
+      "approvalEvidence": "1번 수정번으로 하자!!!",
+      "note": "수정본 원본 복사. 왼쪽 위↔석관실 아래 중앙, 오른쪽 위↔황금 부장고 아래 입구."
     }
   ],
   "missing": [],

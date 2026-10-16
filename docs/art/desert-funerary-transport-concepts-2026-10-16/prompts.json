@@ -11,10 +11,11 @@
     "../../../사막맵/P3B_부왕장례전_석관안치전.png",
     "../../../사막맵/추가_황금부장고.png"
   ],
-  "status": "review-pending",
+  "status": "candidate-01-corrected-adopted",
   "runtimeApplied": false,
   "connections": {
     "upperLeft": "P3B south-center opening",
     "upperRight": "golden treasury south stair"
-  }
+  },
+  "adoptedFile": "candidate-01.png"
 }

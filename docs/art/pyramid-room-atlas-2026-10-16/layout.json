@@ -163,6 +163,21 @@
           0.97
         ]
       }
+    },
+    {
+      "id": "운반로",
+      "title": "매몰된 부장품 운반로",
+      "source": "사막맵/추가_매몰된부장품운반로.png",
+      "ports": {
+        "NW": [
+          0.17,
+          0.025
+        ],
+        "NE": [
+          0.83,
+          0.025
+        ]
+      }
     }
   ],
   "links": [
@@ -237,20 +252,25 @@
       "toPort": "S",
       "status": "입출구 기반 연결 제안",
       "bidirectional": true
-    }
-  ],
-  "unresolvedPorts": [
-    {
-      "map": "P3B",
-      "port": "S",
-      "reason": "아래 중앙 열린 통로의 목적지 미정"
     },
     {
-      "map": "보물",
-      "port": "S",
-      "reason": "별도 보물방에 연결할 상대 출입구 미정"
+      "from": "P3B",
+      "fromPort": "S",
+      "to": "운반로",
+      "toPort": "NW",
+      "status": "사용자 채택 연결",
+      "bidirectional": true
+    },
+    {
+      "from": "운반로",
+      "fromPort": "NE",
+      "to": "보물",
+      "toPort": "S",
+      "status": "사용자 채택 연결",
+      "bidirectional": true
     }
   ],
+  "unresolvedPorts": [],
   "externalLinks": [
     {
       "map": "05",
