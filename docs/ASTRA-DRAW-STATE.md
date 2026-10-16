@@ -2,6 +2,8 @@
 
 ## 사막 현재 작업
 
+19 단서판 위치 수정 확인 대기: `art/desert-19-panel-revision-2026-10-16/revised.png`. 오른쪽 위 판 유지, 아래쪽 옆면 판을 뒤쪽 중앙 왼편 벽으로 이동. 기존 채택 원본 보존. 수정 밖 픽셀 동일성 미검증. 01 입구 추가 작업은 아직 미생성.
+
 19번 원형·별빛 시안 4 채택: `art/desert-19-approved-2026-10-16/approved-final.png`. 이전 시안: `art/desert-19-round-candidates-2026-10-16/`. 최신 사용자 지시로 사각 방을 원형으로 변경. 별 문양은 작동 검증 전 시안. 다음 작업은 01 원판 개방 상태 추가. 오른쪽으로 뚜껑 이동·왼쪽 계단 노출 대 중앙 개방 방식 검토 중이며 미생성. 기존01 닫힘 원본 보존.
 
 17번 출입 수정본 채택: `art/desert-17-approved-2026-10-16/approved-final.png`. 사용자 요청한 두 실내 시안: `art/desert-17-interiors-2026-10-16/left-dwelling.png`(추가 생활집, 번호 미정), `right-archive18.png`(기획18 기록고). 두 실내 모두 채택. 왼쪽 최종: `art/desert-17-dwelling-approved-2026-10-16/approved-final.png`, 오른쪽18 최종: `art/desert-18-approved-2026-10-16/approved-final.png`. 실제 단서·게임 검증 미완료.
