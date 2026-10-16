@@ -1,6 +1,6 @@
 # 현재 작업 — 압축 후 먼저 확인
 
-> **태양거울 외형 채택:** [최종 PNG](art/desert-sun-mirror-approved-2026-10-16/approved.png) · [최종 수정 프롬프트](art/desert-sun-mirror-approved-2026-10-16/prompt.txt). 가운데가 조이는 금색 세로타원 틀, 3/4 시점, 중성 은빛 유리와 빛바랜 컬러의 오래된 불길한 신전 반사. 원형 설계는 `desert-sun-mirror-shape-2026-10-16`의 2번, 노화 단계는 `desert-sun-mirror-aged-2026-10-16`. 사용자 요청으로 태양거울 반려 탐색안 프롬프트 삭제, 이미지 원본 보존. 모션은 아직 제작 전.
+> **태양거울 외형 채택:** [최종 PNG](art/desert-sun-mirror-approved-2026-10-16/approved.png) · [최종 수정 프롬프트](art/desert-sun-mirror-approved-2026-10-16/prompt.txt). 가운데가 조이는 금색 세로타원 틀, 3/4 시점, 중성 은빛 유리와 빛바랜 컬러의 오래된 불길한 신전 반사. 원형 설계는 `desert-sun-mirror-shape-2026-10-16`의 2번, 노화 단계는 `desert-sun-mirror-aged-2026-10-16`. 사용자 요청으로 태양거울 반려 탐색안 프롬프트 삭제, 이미지 원본 보존. [10모션 검토 시트](art/desert-sun-mirror-motion-2026-10-16/sheet.png) · [실제 모션 프롬프트](art/desert-sun-mirror-motion-2026-10-16/prompt.txt) · [채택 외형 재사용 지침](art/desert-sun-mirror-approved-2026-10-16/REUSE.md). 대기0·1·2 / 방어 / 준비0·1 / 빛 공격0·1 / 피격 / 소멸. 외형은 확정, 모션은 검토 중. 이전 거울 프롬프트는 사용자 지시로 모두 삭제했고 현재 채택본 수정문과 새 모션문만 남김.
 
 > **걸음 비석 최종 10모션 채택:** [최종 시트](art/desert-sandstone-stela-approved-2026-10-16/sheet.png) · [개별 10 PNG](art/desert-sandstone-stela-approved-2026-10-16/frames/) · [출처·해시](art/desert-sandstone-stela-approved-2026-10-16/manifest.json). 첫 내려찍기 시트를 기본으로 4번만 두 번째 시안 방어, 8번만 원본 30도 회전+모래 채택본으로 교체. 생성 없이 원본 픽셀 복사. 대기0·1·2 / 방어 / 준비0·1 / 내려찍기0·1 / 피격 / 소멸. 이전 원본 모두 보존. 게임 적용·시간·기준점 검증은 별도.
 

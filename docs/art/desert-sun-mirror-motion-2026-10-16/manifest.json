@@ -1,0 +1,36 @@
+{
+  "status": "review-pending",
+  "reference": "docs/art/desert-sun-mirror-approved-2026-10-16/approved.png",
+  "referenceRole": "adopted identity and rendering",
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "light-attack0",
+    "light-attack1",
+    "hit",
+    "defeat"
+  ],
+  "size": [
+    1774,
+    887
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "85346f0385efb1f53666ef05a1a9cb719b33f84be55e5dbf20c498e9858ff30b",
+  "runtimeApplied": false,
+  "frameAlignment": "not extracted or pivot-aligned",
+  "limitations": [
+    "일부 상단 프레임의 여백이 좁음; 적용 전 외곽/기준점 확인 필요."
+  ],
+  "deletedPreviousPromptPaths": [
+    "docs/art/desert-sun-mirror-aged-2026-10-16/prompt.txt",
+    "docs/art/desert-sun-mirror-shape-2026-10-16/prompt.txt"
+  ]
+}
