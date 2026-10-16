@@ -1,0 +1,36 @@
+{
+  "status": "review-pending",
+  "family": "4대 수문장",
+  "originalConceptIndex": 5,
+  "design": "파릉 수문장",
+  "referenceRoles": [
+    "boss concepts bottom-right identity",
+    "throne guardian sheet pixel execution only"
+  ],
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "grasp0",
+    "grasp1",
+    "hit",
+    "defeat"
+  ],
+  "attackIdentity": "fragmented left stone arm extends open claw then closes and retracts",
+  "size": [
+    1983,
+    793
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "5b364c536d502489766a473f6bf7032b5d6fcfe975ed9f1b6b88bfefd3e123de",
+  "runtimeApplied": false,
+  "intendedHeightRatio": 2.5,
+  "reviewNotes": "Ten coherent keys, extended open claw then closing grip. Runtime scale/extraction/pivots not validated; attack effects reach nominal cell boundaries."
+}

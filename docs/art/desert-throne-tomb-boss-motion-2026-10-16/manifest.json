@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "family": "4대 수문장",
   "originalConceptIndex": 4,
   "design": "왕좌 수문장",
@@ -32,5 +32,6 @@
   "sha256": "bb4d8f7e72ab14eb09d5bab9fa70469ebecdd6855cde3d05dd3b2694e6e7d52b",
   "runtimeApplied": false,
   "intendedHeightRatio": 2.5,
-  "reviewNotes": "Ten keys; flat-palm shockwave attack distinct from fist slam and inward clap. Wave crosses nominal cell margins; runtime extraction/pivots and scale not validated."
+  "reviewNotes": "Ten keys; flat-palm shockwave attack distinct from fist slam and inward clap. Wave crosses nominal cell margins; runtime extraction/pivots and scale not validated.",
+  "approvalEvidence": "아가각 이번도 채택!!"
 }
