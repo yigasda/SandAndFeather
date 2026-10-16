@@ -7,6 +7,10 @@
     "DESIGN 4 THE TOMB BEFORE THE PYRAMID. Wide irregular bedrock chamber where massive pyramid foundation courses terminate above a much older rock-cut burial sanctuary. Architectural reveal: on rear-left a gigantic curved fragment of an ancient boat-shaped STONE mortuary cradle fused into the rock, empty and worn; on rear-right three tall uneven rock-cut burial recesses, differing sizes and depths, sealed with plain eroded slabs, no painted coffins. Upper stone lintel partly collapsed, enormous squared blocks held at outer margins. One very old sparse funerary relief: the outline of a recumbent jackal worn almost entirely away on a single side slab, no repeated motifs. Single open broad stair descends from foreground-right to generous continuous central limestone floor, a wide low ramp follows LEFT edge to an accessible small discovery recess; no pits, bridges, water, treasure heaps or additional exits. Raw muted brown bedrock and pale chalk-warm limestone planes, amber indirect light from entry only, still clearly readable. Massive buried depth, oldest hidden terminal sanctuary, not a normal temple hall."
   ],
   "reference": "../desert-t1-forecourt-concepts-2026-10-16/references.jpg",
-  "status": "review-pending",
-  "runtimeApplied": false
+  "status": "candidates-04-and-02-adopted",
+  "runtimeApplied": false,
+  "adoptedUses": {
+    "candidate-04.png": "P4 무너진 왕릉 하부실",
+    "candidate-02.png": "별도 황금 부장고 보물상자 맵"
+  }
 }

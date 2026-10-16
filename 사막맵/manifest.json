@@ -380,6 +380,28 @@
       "sha256": "bbb4fbce9d0a5d0c940efa189a508b334117ecff82f35e7e96dd5b8cdc8b4e4d",
       "approvalEvidence": "오옷 1번 2번 채택!! 여기를 플레이어가 지나갈 수 있게 허물어줘!!",
       "note": "P3 선택 탐사 구역. 세부 맵 연결과 충돌은 적용 시 검증."
+    },
+    {
+      "file": "P4_무너진왕릉하부실.png",
+      "source": "docs/art/desert-p4-hidden-depths-concepts-2026-10-16/candidate-04.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "ee39e78d686a670ea5c2894c8dfb6c7cce498731cde6d987158a9d02b0408345",
+      "approvalEvidence": "4번으로 채택!!! 2번은 별도의 보물상자 맵으로 쓰자!",
+      "note": "왕릉 선택 탐사의 최종 수문장 맵"
+    },
+    {
+      "file": "추가_황금부장고.png",
+      "source": "docs/art/desert-p4-hidden-depths-concepts-2026-10-16/candidate-02.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "0135fdc55f850fbff43fa342aea13b5ee3456dfc7806acbc37486722e8d82090",
+      "approvalEvidence": "4번으로 채택!!! 2번은 별도의 보물상자 맵으로 쓰자!",
+      "note": "별도 보물상자 맵. 기존 지하 샘 보물방과 별개이며 연결·상자 상태 분리는 미정."
     }
   ],
   "missing": [],
