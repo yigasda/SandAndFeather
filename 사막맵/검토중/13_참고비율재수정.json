@@ -1,0 +1,12 @@
+{
+  "file": "13_참고비율재수정.png",
+  "status": "review-pending",
+  "source": "docs/art/desert-13-candidates-2026-10-16/png/candidate-03.png",
+  "reference": "사용자 첨부 1000483348.jpg — 구도 참고, JPG 별도 보존 안 함",
+  "size": [
+    2098,
+    749
+  ],
+  "note": "좌측보다 우측 입구를 넓게 재수정. 원본 픽셀 동일성 보장 없음. 이전 양옆 단순확장본은 반려.",
+  "sha256": "ee62bc10071886ca0c994ab3346f3ec1d3d55e0b93b9afd111fe507a9fac711a"
+}

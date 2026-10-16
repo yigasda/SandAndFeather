@@ -1,7 +1,7 @@
 {
   "source": "docs/art/desert-13-candidates-2026-10-16/png/candidate-03.png",
   "file": "13_양옆확장.png",
-  "status": "review-pending",
+  "status": "rejected",
   "size": [
     2100,
     887
@@ -20,5 +20,6 @@
     887
   ],
   "preservedPixelDifference": 0,
-  "sha256": "7bdcc28ce28f71a9500b68d1e41a0e7956d6dae55b75a4dcad00f3c31279cae5"
+  "sha256": "7bdcc28ce28f71a9500b68d1e41a0e7956d6dae55b75a4dcad00f3c31279cae5",
+  "reason": "입구 지나치게 넓고 같은 크기"
 }
