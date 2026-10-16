@@ -1,0 +1,25 @@
+{
+  "status": "review-pending",
+  "designSource": "docs/art/desert-shield-egyptian-2026-10-16/candidates.png",
+  "designVariant": 3,
+  "motionSource": "docs/art/desert-leather-shield-motion-2026-10-16/sheet.png",
+  "order": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "charge0",
+    "charge1",
+    "hit",
+    "defeat"
+  ],
+  "size": [
+    1774,
+    887
+  ],
+  "sha256": "1fc62cef53297b240a6eb54eedf300ebfe705175448b2f6373f5a500584a2a13",
+  "runtimeApplied": false,
+  "frameAlignmentVerified": false
+}
