@@ -1,0 +1,242 @@
+{
+  "status": "adopted",
+  "userEvidence": "굿 채택. 두번째 시안의 방어만 떼와서 10장 최종 채택하자",
+  "method": "lossless crop and paste only; no regeneration or resizing",
+  "frameSize": [
+    520,
+    520
+  ],
+  "frameOrder": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "guard",
+    "prepare0",
+    "prepare1",
+    "slam0",
+    "slam1",
+    "hit",
+    "defeat"
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "state": "idle0",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        0,
+        0,
+        400,
+        398
+      ],
+      "alphaTrim": [
+        108,
+        15,
+        374,
+        398
+      ],
+      "placement": [
+        127,
+        107
+      ],
+      "sha256": "24da96d91b5200c64263ed91a9f8c3f9710fdde86703bc40a909c63ed4d082b9"
+    },
+    {
+      "index": 1,
+      "state": "idle1",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        400,
+        0,
+        800,
+        398
+      ],
+      "alphaTrim": [
+        64,
+        15,
+        390,
+        398
+      ],
+      "placement": [
+        97,
+        107
+      ],
+      "sha256": "8197d4e7379bb1893572ec1d6dd85c59b9f1438a99017a16334b00e24a1296c1"
+    },
+    {
+      "index": 2,
+      "state": "idle2",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        800,
+        0,
+        1215,
+        398
+      ],
+      "alphaTrim": [
+        43,
+        15,
+        373,
+        398
+      ],
+      "placement": [
+        95,
+        107
+      ],
+      "sha256": "efee91bda350d45677aaa0de7c58175c07b2fb211b456e858b521d6694a1b30f"
+    },
+    {
+      "index": 3,
+      "state": "guard",
+      "source": "docs/art/desert-sandstone-stela-charge-2026-10-16/sheet.png",
+      "sourceCrop": [
+        1064,
+        0,
+        1419,
+        450
+      ],
+      "alphaTrim": [
+        18,
+        47,
+        323,
+        450
+      ],
+      "placement": [
+        107,
+        87
+      ],
+      "sha256": "158fdb83100fd5e959583d6677ad98c8e4aacf3641691480897d34f7f78f4657"
+    },
+    {
+      "index": 4,
+      "state": "prepare0",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        1540,
+        0,
+        1983,
+        398
+      ],
+      "alphaTrim": [
+        73,
+        16,
+        411,
+        398
+      ],
+      "placement": [
+        91,
+        108
+      ],
+      "sha256": "e9c5c594aeb8f655d759eba6396ab9d319d1a9291f5cba07e148e5d9264dff76"
+    },
+    {
+      "index": 5,
+      "state": "prepare1",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        0,
+        398,
+        400,
+        793
+      ],
+      "alphaTrim": [
+        33,
+        0,
+        397,
+        381
+      ],
+      "placement": [
+        78,
+        109
+      ],
+      "sha256": "36d5fbae09c3c7510f733e12b6200f3adb50cdc0405eb8ca3aca4fef8de88b0d"
+    },
+    {
+      "index": 6,
+      "state": "slam0",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        400,
+        398,
+        800,
+        793
+      ],
+      "alphaTrim": [
+        18,
+        0,
+        391,
+        395
+      ],
+      "placement": [
+        73,
+        95
+      ],
+      "sha256": "97373b50385265b2dcc0c4b51a86bdd2a9570fa0e1907068dbceea2c2f069505"
+    },
+    {
+      "index": 7,
+      "state": "slam1",
+      "source": "docs/art/desert-stela-impact-rotate-2026-10-16/impact.png",
+      "sourceCrop": null,
+      "alphaTrim": [
+        127,
+        99,
+        539,
+        446
+      ],
+      "placement": [
+        54,
+        143
+      ],
+      "sha256": "d748fa2989f0ea6a31309fa70d038ad3fec20f58cbdc5be5504cf6d28081f54a"
+    },
+    {
+      "index": 8,
+      "state": "hit",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        1215,
+        398,
+        1540,
+        793
+      ],
+      "alphaTrim": [
+        11,
+        0,
+        325,
+        365
+      ],
+      "placement": [
+        103,
+        125
+      ],
+      "sha256": "c51d26a14c642e212b4b09674dba5aeec9efad01bb236fa5657cbbb6e429d200"
+    },
+    {
+      "index": 9,
+      "state": "defeat",
+      "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+      "sourceCrop": [
+        1540,
+        398,
+        1983,
+        793
+      ],
+      "alphaTrim": [
+        0,
+        0,
+        427,
+        365
+      ],
+      "placement": [
+        46,
+        125
+      ],
+      "sha256": "0172835d406ca43cfa8badf39df59278bc3e856b42319924375bd9dcffba4339"
+    }
+  ],
+  "sheetSha256": "273aa46dfdde1336e6bec2768fccc3033b4355f6308a6f679dbe579cf29b7ae1",
+  "runtimeApplied": false,
+  "alignment": "visual bottom alignment for review; runtime pivots/timing not validated",
+  "defeat": "original first sheet broken-stone defeat retained; only guard and impact replaced"
+}

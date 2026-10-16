@@ -1,5 +1,7 @@
 # 현재 작업 — 압축 후 먼저 확인
 
+> **걸음 비석 최종 10모션 채택:** [최종 시트](art/desert-sandstone-stela-approved-2026-10-16/sheet.png) · [개별 10 PNG](art/desert-sandstone-stela-approved-2026-10-16/frames/) · [출처·해시](art/desert-sandstone-stela-approved-2026-10-16/manifest.json). 첫 내려찍기 시트를 기본으로 4번만 두 번째 시안 방어, 8번만 원본 30도 회전+모래 채택본으로 교체. 생성 없이 원본 픽셀 복사. 대기0·1·2 / 방어 / 준비0·1 / 내려찍기0·1 / 피격 / 소멸. 이전 원본 모두 보존. 게임 적용·시간·기준점 검증은 별도.
+
 > **걸음 비석 최신:** 외형 1번 사암형 채택. [내려찍기 시트](art/desert-sandstone-stela-motion-2026-10-16/sheet.png)와 [방어 포함 돌진 시트](art/desert-sandstone-stela-charge-2026-10-16/sheet.png) 보존. 사용자 정정: 내려찍기도 괜찮고 소멸 시 빛 꺼짐도 괜찮음. 공격을 돌진으로만 제한하지 않는다. 전체 모션 최종 채택은 미확정.
 
 > **몹 압축 후 재개:** [ASTRA-MOB](ASTRA-MOB.md)의 「압축 후 바로 재개」에 주제→외형 설계, 디자인 3안의 차이, 디자인/모션 참고 분리, 투명 10칸 일괄 생성, 실제 프롬프트 링크를 정리했다. 항아리·가죽/봉인 방패병 시트 채택 완료. 새 생성은 다음 사용자 지시를 따른다.
