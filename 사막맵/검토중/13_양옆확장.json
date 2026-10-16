@@ -1,0 +1,24 @@
+{
+  "source": "docs/art/desert-13-candidates-2026-10-16/png/candidate-03.png",
+  "file": "13_양옆확장.png",
+  "status": "review-pending",
+  "size": [
+    2100,
+    887
+  ],
+  "method": "원본 양쪽 입구가 포함된 세로 구역만 가로 확장; 중앙 원본 그대로 복사",
+  "preservedSourceRect": [
+    150,
+    0,
+    1500,
+    887
+  ],
+  "preservedDestinationRect": [
+    313,
+    0,
+    1500,
+    887
+  ],
+  "preservedPixelDifference": 0,
+  "sha256": "7bdcc28ce28f71a9500b68d1e41a0e7956d6dae55b75a4dcad00f3c31279cae5"
+}
