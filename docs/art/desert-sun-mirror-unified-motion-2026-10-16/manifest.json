@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "method": "single generation of all 10 frames",
   "references": [
     "docs/art/desert-sun-mirror-approved-2026-10-16/approved.png",
@@ -37,5 +37,6 @@
   ],
   "sha256": "16a50f81f03d53cfc14a3ca345722aad94b3b4bc9a5f5fe65716595cfa6fa9f2",
   "runtimeApplied": false,
-  "alignment": "individual extraction and runtime pivots not yet verified"
+  "alignment": "individual extraction and runtime pivots not yet verified",
+  "adoptionEvidence": "개굿ㅋㅋㅋㅋㅋ 캭ㅋㅋㅋ 이대로 채택!! 메인에 올려줭"
 }
