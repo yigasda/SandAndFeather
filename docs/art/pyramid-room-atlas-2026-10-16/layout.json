@@ -1,123 +1,261 @@
 {
   "sourceGuide": "docs/ASTRA-DESERT-05-20-GUIDE.md",
   "runtimeApplied": false,
+  "anchorMeaning": "Normalized visual doorway/stair/passage locations, not runtime portal coordinates.",
   "nodes": [
     {
-      "id": "14",
-      "title": "피라미드 중심실",
-      "source": "사막맵/14_피라미드중심실.png"
-    },
-    {
-      "id": "P2",
-      "title": "왕면 열병 전실",
-      "source": "사막맵/P2_왕면열병전실.png"
-    },
-    {
-      "id": "13",
-      "title": "왕의 기록 회랑",
-      "source": "사막맵/13_왕의기록회랑.png"
-    },
-    {
-      "id": "12B",
-      "title": "둘째 하강 회랑",
-      "source": "사막맵/12_2_피라미드하강회랑.png"
-    },
-    {
-      "id": "P1",
-      "title": "고대 장례 미궁",
-      "source": "사막맵/P1A_고대장례미궁_세로.png"
+      "id": "05",
+      "title": "피라미드 기단",
+      "source": "사막맵/05_피라미드기단.png",
+      "ports": {
+        "N": [
+          0.53,
+          0.19
+        ],
+        "S": [
+          0.52,
+          0.98
+        ]
+      }
     },
     {
       "id": "12A",
       "title": "첫째 하강 회랑",
-      "source": "사막맵/12_1_피라미드하강회랑.png"
+      "source": "사막맵/12_1_피라미드하강회랑.png",
+      "ports": {
+        "N": [
+          0.25,
+          0.025
+        ],
+        "S": [
+          0.73,
+          0.985
+        ]
+      }
     },
     {
-      "id": "05",
-      "title": "피라미드 기단",
-      "source": "사막맵/05_피라미드기단.png"
+      "id": "P1",
+      "title": "고대 장례 미궁",
+      "source": "사막맵/P1A_고대장례미궁_세로.png",
+      "ports": {
+        "N": [
+          0.5,
+          0.025
+        ],
+        "S": [
+          0.5,
+          0.965
+        ],
+        "E": [
+          0.985,
+          0.505
+        ]
+      }
+    },
+    {
+      "id": "12B",
+      "title": "둘째 하강 회랑",
+      "source": "사막맵/12_2_피라미드하강회랑.png",
+      "ports": {
+        "N": [
+          0.49,
+          0.03
+        ],
+        "S": [
+          0.5,
+          0.98
+        ]
+      }
+    },
+    {
+      "id": "13",
+      "title": "왕의 기록 회랑",
+      "source": "사막맵/13_왕의기록회랑.png",
+      "ports": {
+        "NW": [
+          0.09,
+          0.31
+        ],
+        "NE": [
+          0.9,
+          0.31
+        ]
+      }
+    },
+    {
+      "id": "P2",
+      "title": "왕면 열병 전실",
+      "source": "사막맵/P2_왕면열병전실.png",
+      "ports": {
+        "N": [
+          0.77,
+          0.025
+        ],
+        "S": [
+          0.22,
+          0.98
+        ]
+      }
+    },
+    {
+      "id": "14",
+      "title": "피라미드 중심실",
+      "source": "사막맵/14_피라미드중심실.png",
+      "ports": {
+        "S": [
+          0.48,
+          0.97
+        ]
+      }
     },
     {
       "id": "P3A",
       "title": "장례선 봉안실",
-      "source": "사막맵/P3A_부왕장례전_장례선봉안실.png"
+      "source": "사막맵/P3A_부왕장례전_장례선봉안실.png",
+      "ports": {
+        "SW": [
+          0.085,
+          0.89
+        ],
+        "NE": [
+          0.927,
+          0.48
+        ]
+      }
     },
     {
       "id": "P3B",
       "title": "석관 안치전",
-      "source": "사막맵/P3B_부왕장례전_석관안치전.png"
+      "source": "사막맵/P3B_부왕장례전_석관안치전.png",
+      "ports": {
+        "SW": [
+          0.135,
+          0.955
+        ],
+        "E": [
+          0.985,
+          0.61
+        ],
+        "S": [
+          0.56,
+          0.87
+        ]
+      }
     },
     {
       "id": "P4",
       "title": "왕릉 하부실 · 최종 수문장",
-      "source": "사막맵/P4_무너진왕릉하부실.png"
+      "source": "사막맵/P4_무너진왕릉하부실.png",
+      "ports": {
+        "S": [
+          0.76,
+          0.96
+        ]
+      }
     },
     {
       "id": "보물",
       "title": "황금 부장고",
-      "source": "사막맵/추가_황금부장고.png"
+      "source": "사막맵/추가_황금부장고.png",
+      "ports": {
+        "S": [
+          0.2,
+          0.97
+        ]
+      }
     }
   ],
   "links": [
     {
       "from": "05",
+      "fromPort": "N",
       "to": "12A",
-      "bidirectional": true,
-      "status": "document-plan"
+      "toPort": "N",
+      "status": "문서 주경로",
+      "bidirectional": true
     },
     {
       "from": "12A",
+      "fromPort": "S",
       "to": "P1",
-      "bidirectional": true,
-      "status": "document-plan"
+      "toPort": "N",
+      "status": "문서 주경로",
+      "bidirectional": true
     },
     {
       "from": "P1",
+      "fromPort": "S",
       "to": "12B",
-      "bidirectional": true,
-      "status": "document-plan"
+      "toPort": "N",
+      "status": "문서 주경로",
+      "bidirectional": true
     },
     {
       "from": "12B",
+      "fromPort": "S",
       "to": "13",
-      "bidirectional": true,
-      "status": "document-plan"
+      "toPort": "NW",
+      "status": "문서 주경로",
+      "bidirectional": true
     },
     {
       "from": "13",
+      "fromPort": "NE",
       "to": "P2",
-      "bidirectional": true,
-      "status": "document-plan"
+      "toPort": "S",
+      "status": "문서 주경로",
+      "bidirectional": true
     },
     {
       "from": "P2",
+      "fromPort": "N",
       "to": "14",
-      "bidirectional": true,
-      "status": "document-plan"
+      "toPort": "S",
+      "status": "문서 주경로",
+      "bidirectional": true
     },
     {
       "from": "P1",
+      "fromPort": "E",
       "to": "P3A",
-      "bidirectional": true,
-      "status": "proposal"
+      "toPort": "SW",
+      "status": "입출구 기반 연결 제안",
+      "bidirectional": true
     },
     {
       "from": "P3A",
+      "fromPort": "NE",
       "to": "P3B",
-      "bidirectional": true,
-      "status": "proposal"
+      "toPort": "SW",
+      "status": "입출구 기반 연결 제안",
+      "bidirectional": true
     },
     {
       "from": "P3B",
+      "fromPort": "E",
       "to": "P4",
-      "bidirectional": true,
-      "status": "proposal"
+      "toPort": "S",
+      "status": "입출구 기반 연결 제안",
+      "bidirectional": true
+    }
+  ],
+  "unresolvedPorts": [
+    {
+      "map": "P3B",
+      "port": "S",
+      "reason": "아래 중앙 열린 통로의 목적지 미정"
     },
     {
-      "from": "P3A",
-      "to": "보물",
-      "bidirectional": true,
-      "status": "proposal"
+      "map": "보물",
+      "port": "S",
+      "reason": "별도 보물방에 연결할 상대 출입구 미정"
+    }
+  ],
+  "externalLinks": [
+    {
+      "map": "05",
+      "port": "S",
+      "destination": "01 황금 사구해"
     }
   ]
 }
