@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "variant-selected",
   "variants": [
     "상부가 무거운 틀",
     "허리가 조이는 틀",
@@ -24,5 +24,7 @@
     255
   ],
   "sha256": "417922e18eb9c0ee4551fbd061f4918a97f778a7f083a68e95e81056b3b2170c",
-  "runtimeApplied": false
+  "runtimeApplied": false,
+  "selectedVariant": 2,
+  "selectionEvidence": "두번째가 낫다!"
 }

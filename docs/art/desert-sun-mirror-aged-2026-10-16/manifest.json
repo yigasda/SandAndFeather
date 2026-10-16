@@ -1,0 +1,21 @@
+{
+  "status": "review-pending",
+  "reference": "docs/art/desert-sun-mirror-shape-2026-10-16/candidates.png",
+  "selectedSourceVariant": 2,
+  "request": "거울을 오래되게, 신전은 훨씬 오래되고 부서지고 불길하게",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    254
+  ],
+  "sha256": "d89cf4e60aefdbc4eb4fd9e3a87f203ba63cf3e49a50ef3dafe00b869ea2b17a",
+  "limitations": [
+    "외곽 금빛 후광이 요청과 달리 생성됨.",
+    "표면 노화 표현에 미세 질감이 늘어남."
+  ],
+  "runtimeApplied": false
+}
