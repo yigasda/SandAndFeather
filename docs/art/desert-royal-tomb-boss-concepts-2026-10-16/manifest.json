@@ -1,0 +1,21 @@
+{
+  "status": "review-pending",
+  "designs": [
+    "왕의 석관형",
+    "신전 문형",
+    "봉인 석함형",
+    "계단식 왕좌형",
+    "파손된 왕릉형"
+  ],
+  "reference": "../desert-sandstone-stela-motion-2026-10-16/sheet.png",
+  "referenceRole": "pixel execution and ordinary monster size benchmark only",
+  "size": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "sha256": "bac773f381dcf3fa2ef639cdaff84bc13a796478ab8e2f9f3636b1c46b700dec",
+  "requestedSizeRatio": 2.5,
+  "runtimeApplied": false,
+  "reviewNotes": "Five distinct boss concepts. Generated scale comparators are smaller than intended 40% boss height: not an accurate 2.5x demonstration. Brown atmospheric backing remains despite transparency request; not clean production sprites. Rendering is smoother and more textured than field monster target."
+}
