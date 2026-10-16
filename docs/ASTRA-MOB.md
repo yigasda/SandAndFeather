@@ -8,16 +8,16 @@
 
 아래 목록이 현재 채택본의 단일 진입점이다. 새 채택 때 해당 행을 갱신한다. **문서 최상단에 작업별 업데이트를 계속 덧붙이지 않는다.** 시행착오와 해시·세부 출처는 각 작업 폴더에, 현재 진행 사항은 [작업 상태](ASTRA-DRAW-STATE.md)에 기록한다.
 
-| 몹 | 채택 그림 | 실제 프롬프트·재개 자료 |
+| 몹 | 채택 그림 | 실제 프롬프트 |
 |---|---|---|
-| 봉인 항아리 | [첫 외형](art/desert-sealed-jar-2026-10-16/candidate-01.png) · [10모션](art/desert-sealed-jar-sheet-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-sealed-jar-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-sealed-jar-sheet-2026-10-16/prompt.txt) · [설명](art/desert-sealed-jar-2026-10-16/REUSE.md) |
-| 가죽 방패병 | [외형 3안 중 왼쪽](art/desert-shield-egyptian-2026-10-16/candidates.png) · [10모션](art/desert-leather-shield-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-shield-egyptian-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-leather-shield-motion-2026-10-16/prompt.txt) |
-| 봉인 방패병 | [외형 3안 중 오른쪽](art/desert-shield-egyptian-2026-10-16/candidates.png) · [10모션](art/desert-sealed-shield-motion-2026-10-16/sheet.png) | [모션 프롬프트](art/desert-sealed-shield-motion-2026-10-16/prompt.txt) |
-| 걸음 비석 | [최종 10모션](art/desert-sandstone-stela-approved-2026-10-16/sheet.png) · [개별 10장](art/desert-sandstone-stela-approved-2026-10-16/frames/) | [최종 조립 출처·해시](art/desert-sandstone-stela-approved-2026-10-16/manifest.json) · [첫 시트 프롬프트](art/desert-sandstone-stela-motion-2026-10-16/prompt.txt). 최종본은 원본 합성이므로 단일 생성문으로 동일 결과를 만들었다고 하지 않는다. |
-| 태양거울 | [채택 외형](art/desert-sun-mirror-approved-2026-10-16/approved.png) · [최종 10모션](art/desert-sun-mirror-unified-motion-2026-10-16/sheet.png) | [최종 모션 프롬프트](art/desert-sun-mirror-unified-motion-2026-10-16/prompt.txt) · [외형 마지막 색 수정문](art/desert-sun-mirror-approved-2026-10-16/prompt.txt) · [외형 재사용 지침](art/desert-sun-mirror-approved-2026-10-16/REUSE.md) |
-| 천칭 파수꾼 | [외형 4안 중 오른쪽 아래](art/desert-balance-sentinel-concepts-2026-10-16/candidates.png) · [최종 색 통일 10모션 채택](art/desert-balance-sentinel-color-unified-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-balance-sentinel-concepts-2026-10-16/prompt.txt) · [최종 모션 프롬프트](art/desert-balance-sentinel-color-unified-2026-10-16/prompt.txt). 대기0·1·2 / 방어 / 준비0·1 / 내려찍기0·1 / 피격 / 소멸. |
-| 빈 가면 사제 1형 — 장막형 | [외형 왼쪽 채택](art/desert-empty-mask-priest-concepts-2026-10-16/candidates.png) · [채택 10모션](art/desert-mask-priest-mantle-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-empty-mask-priest-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-mask-priest-mantle-motion-2026-10-16/prompt.txt) |
-| 빈 가면 사제 2형 — 수의형 | [외형 가운데 채택](art/desert-empty-mask-priest-concepts-2026-10-16/candidates.png) | [외형 프롬프트](art/desert-empty-mask-priest-concepts-2026-10-16/prompt.txt) · [채택 10모션](art/desert-mask-priest-shroud-motion-2026-10-16/sheet.png) · [모션 프롬프트](art/desert-mask-priest-shroud-motion-2026-10-16/prompt.txt) |
+| 봉인 항아리 | [첫 외형](art/desert-sealed-jar-2026-10-16/candidate-01.png) · [10모션](art/desert-sealed-jar-sheet-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-sealed-jar-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-sealed-jar-sheet-2026-10-16/prompt.txt) |
+| 가죽 방패병 | [첫 외형](art/desert-shield-egyptian-2026-10-16/candidates.png) · [10모션](art/desert-leather-shield-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-shield-egyptian-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-leather-shield-motion-2026-10-16/prompt.txt) |
+| 봉인 방패병 | [첫 외형](art/desert-shield-egyptian-2026-10-16/candidates.png) · [10모션](art/desert-sealed-shield-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-shield-egyptian-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-sealed-shield-motion-2026-10-16/prompt.txt) |
+| 걸음 비석 | [첫 외형](art/desert-walking-stela-2026-10-16/candidates.png) · [10모션](art/desert-sandstone-stela-approved-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-walking-stela-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-sandstone-stela-motion-2026-10-16/prompt.txt) |
+| 태양거울 | [첫 외형](art/desert-sun-mirror-approved-2026-10-16/approved.png) · [10모션](art/desert-sun-mirror-unified-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-sun-mirror-approved-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-sun-mirror-unified-motion-2026-10-16/prompt.txt) |
+| 천칭 파수꾼 | [첫 외형](art/desert-balance-sentinel-concepts-2026-10-16/candidates.png) · [10모션](art/desert-balance-sentinel-color-unified-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-balance-sentinel-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-balance-sentinel-color-unified-2026-10-16/prompt.txt) |
+| 빈 가면 사제 1형 — 장막형 | [첫 외형](art/desert-empty-mask-priest-concepts-2026-10-16/candidates.png) · [10모션](art/desert-mask-priest-mantle-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-empty-mask-priest-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-mask-priest-mantle-motion-2026-10-16/prompt.txt) |
+| 빈 가면 사제 2형 — 수의형 | [첫 외형](art/desert-empty-mask-priest-concepts-2026-10-16/candidates.png) · [10모션](art/desert-mask-priest-shroud-motion-2026-10-16/sheet.png) | [외형 프롬프트](art/desert-empty-mask-priest-concepts-2026-10-16/prompt.txt) · [모션 프롬프트](art/desert-mask-priest-shroud-motion-2026-10-16/prompt.txt) |
 
 빈 가면 사제 1·2형은 외형과 10모션 모두 최종 채택된 같은 계열의 두 디자인이며 임의의 등급 차이를 붙이지 않는다. 3형은 미채택이다.
 
