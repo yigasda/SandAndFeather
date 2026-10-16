@@ -1,0 +1,25 @@
+{
+  "status": "review-pending",
+  "source": "/workspace/generated_images/exec-9173e598-e567-44c8-bd2d-63f1befd0d17.png",
+  "reference": "docs/art/desert-balance-sentinel-motion-2026-10-16/sheet.png",
+  "referenceRole": "FIRST original ten-motion sheet; not revised sheets. First cell controls facing.",
+  "layout": "1x4",
+  "frames": [
+    "idle0",
+    "idle1",
+    "idle2",
+    "hit"
+  ],
+  "size": [
+    2172,
+    724
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "f0bb8d34ab1d562931c2ce7a6197e154de493b78d2f60bcf39e24d975397b1f9",
+  "runtimeApplied": false,
+  "reviewNotes": "All four retain right-near pylon orientation; weights swing across idle and hit. Hit chain appears longer than idle; not a validated runtime rig. Original ten-frame sheet not overwritten or assembled."
+}
