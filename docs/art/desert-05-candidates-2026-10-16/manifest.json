@@ -1,0 +1,50 @@
+[
+  {
+    "number": 1,
+    "file": "png/desert-05-candidate-01.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "13c2aa44f8c7bb0cae63490f9d7fa531ce07c988fce3aa965b90488ffeb4fed9",
+    "status": "unapproved concept",
+    "ankh": "present; predates user prohibition",
+    "runtimeApplied": false
+  },
+  {
+    "number": 2,
+    "file": "png/desert-05-candidate-02.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "21ac1b209e0cdaa655f182b19c777ff0a3c93071f2f6f75729aeea43ac569d2a",
+    "status": "unapproved concept",
+    "ankh": "present; predates user prohibition",
+    "runtimeApplied": false
+  },
+  {
+    "number": 3,
+    "file": "png/desert-05-candidate-03.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "5c7ba4d20240dab95176f0a529ef76c737fc6c19dc5a9cce55c40e641a39951f",
+    "status": "unapproved concept",
+    "ankh": "not observed in visual review",
+    "runtimeApplied": false
+  },
+  {
+    "number": 4,
+    "file": "png/desert-05-candidate-04.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "c6524b9f3f53eae51314ab8fb786d4960308c3f23e7e31112b429fc5dd079002",
+    "status": "unapproved concept",
+    "ankh": "not observed in visual review",
+    "runtimeApplied": false
+  }
+]
