@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "family": "빈 가면 사제",
   "variant": 2,
   "references": [
@@ -35,5 +35,6 @@
   ],
   "sha256": "9ed9b21fca24c3ad81538ea524d6cf972b62f4b09b8b0117665e4f1a3220591a",
   "runtimeApplied": false,
-  "reviewNotes": "Ten coherent keys visually checked; long mask and indigo sash retained. Attack effects occupy neighboring nominal cell margins; runtime extraction/pivots not validated."
+  "reviewNotes": "Ten coherent keys visually checked; long mask and indigo sash retained. Attack effects occupy neighboring nominal cell margins; runtime extraction/pivots not validated.",
+  "approvalEvidence": "으악 씨발 너무 좋아서 소름돋아 둘 다 채택!!"
 }
