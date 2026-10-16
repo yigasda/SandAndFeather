@@ -1,0 +1,14 @@
+{
+  "approval": "굿 채택 / 2번째를 첫 입구로 채택한 3번째를 두번째 입구로",
+  "sequence": [
+    {
+      "file": "corridor-01.png",
+      "source": "docs/art/desert-12-candidates-2026-10-16/png/candidate-02.png"
+    },
+    {
+      "file": "corridor-02.png",
+      "source": "docs/art/desert-12-second-corridor-2026-10-16/png/second-corridor.png"
+    }
+  ],
+  "runtimeApplied": false
+}
