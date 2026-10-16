@@ -208,7 +208,7 @@
     "transparent_background": false,
     "output": "docs/art/desert-07-candidates-2026-10-16/png/candidate-02.png",
     "outputSha256": "0570face42f225660ce78f0e02e807713e8530ad6a8a8c4e0bf3cb5231861f75",
-    "approved": false,
+    "approved": true,
     "historicalRequest": "docs/art/desert-07-candidates-2026-10-16/requests.json",
     "note": "생성 당시 원문. 신규 맵은 최신 사용자 조건을 적용."
   },

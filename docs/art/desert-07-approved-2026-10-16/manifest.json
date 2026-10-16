@@ -1,0 +1,14 @@
+{
+  "map": "07",
+  "name": "고요한 오아시스 물가",
+  "file": "art/desert-07-approved-2026-10-16/approved-final.png",
+  "source": "art/desert-07-candidates-2026-10-16/png/candidate-02.png",
+  "size": [
+    1774,
+    887
+  ],
+  "sha256": "0570face42f225660ce78f0e02e807713e8530ad6a8a8c4e0bf3cb5231861f75",
+  "approvalEvidence": "2번으로 채택 하고 5-20문서 읽고 8번 시안 4개 줘",
+  "runtimeApplied": false,
+  "publishedBranch": "main"
+}
