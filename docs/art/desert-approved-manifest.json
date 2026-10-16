@@ -128,5 +128,20 @@
     "approvalEvidence": "3번은 따로 살려두고\n1번으로 하자",
     "runtimeApplied": false,
     "publishedBranch": "main"
+  },
+  {
+    "map": "11",
+    "name": "매몰 도시의 출입구",
+    "file": "art/desert-11-approved-2026-10-16/approved-final.png",
+    "source": "art/desert-11-candidates-2026-10-16/sources/before-roof-sand-02.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "e3f03790c82b33df11660aac0eb22cf73dbfcc4f859366aaf320188d34996e6d",
+    "approvalEvidence": "2번째 원본이 제일 낫다 이걸로 채택",
+    "note": "첨부 캡처와 일치하는 지붕 모래 추가 전 2번. 수정본 아님.",
+    "runtimeApplied": false,
+    "publishedBranch": "main"
   }
 ]
