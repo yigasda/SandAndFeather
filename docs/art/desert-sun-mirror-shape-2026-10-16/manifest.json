@@ -1,0 +1,28 @@
+{
+  "status": "review-pending",
+  "variants": [
+    "상부가 무거운 틀",
+    "허리가 조이는 틀",
+    "하부가 무거운 틀"
+  ],
+  "references": [
+    "docs/art/desert-sun-mirror-perspective-2026-10-16/candidates.png",
+    "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png"
+  ],
+  "referenceRoles": [
+    "mirror theme and materials",
+    "pixel rendering and camera only"
+  ],
+  "designDirection": "별도 팔다리·영혼·눈 대신 틀 자체의 비율과 실루엣으로 몹 성격 표현",
+  "size": [
+    1944,
+    809
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "417922e18eb9c0ee4551fbd061f4918a97f778a7f083a68e95e81056b3b2170c",
+  "runtimeApplied": false
+}
