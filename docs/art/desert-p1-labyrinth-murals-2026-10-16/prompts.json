@@ -1,0 +1,13 @@
+{
+  "commonPrompt": "Edit the supplied existing game map locally. Preserve its exact canvas aspect, entire maze geometry, wall positions and thickness, walkable corridors, entrances, paving, debris, shadows, lighting, colors, pixel-cluster rendering and all architecture. Change ONLY painted narrative figures INSIDE the existing recessed blue/ochre wall mural panels. Keep each panel's original border, pigment palette, age and paint density. Replace repetitive identical rows of standing people with DIFFERENT ancient Egyptian scenes from panel to panel: funerary boat with oars, seated ruler receiving two attendants, weighing balance ceremony, offerings of grain and bread, reclining jackal shrine, lotus and papyrus marsh with birds, two kneeling mourners with bier, craftsmen carving stone, cattle and harvest, solar barque, procession carrying a canopy, musicians with harp. Mix subjects and compositions; some panels depict animals/boats/plants rather than people. Keep silhouettes simple, readable, faded, same small scale, historical flat-profile mural language. No modern symbols, text captions, glowing paint, ankh or looped cross. No repeated identical person-line across adjacent panels. Do not add any freestanding items. This is a mural-content-only correction to the original, not a redesign or new maze. Output ONE full edited map matching the source orientation and dimensions.",
+  "inputs": [
+    "../desert-p1-labyrinth-concepts-2026-10-16/candidate-01.png",
+    "../desert-p1-labyrinth-concepts-2026-10-16/candidate-03.png"
+  ],
+  "outputs": [
+    "candidate-01-murals.png",
+    "candidate-03-murals.png"
+  ],
+  "status": "review-pending",
+  "scope": "벽화 내용 변경 요청. 원본 보존. 이미지 편집 생성 결과이며 벽화 밖 픽셀 동일성은 미검증."
+}
