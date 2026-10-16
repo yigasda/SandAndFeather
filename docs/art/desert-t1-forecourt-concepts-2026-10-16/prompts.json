@@ -14,5 +14,10 @@
     "사막맵/13_왕의기록회랑.png",
     "사막맵/14_피라미드중심실.png"
   ],
-  "status": "review-pending"
+  "status": "partially-adopted",
+  "adopted": {
+    "1": "T1W 서쪽 앞뜰",
+    "3": "T1E 동쪽 앞뜰"
+  },
+  "approvalEvidence": "13둘 다 채택!"
 }

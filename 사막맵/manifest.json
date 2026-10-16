@@ -292,6 +292,28 @@
       "sha256": "fdbad3f814ced6fb21505aa58f302820fd430605d638f42c3ac785b5e7df36ed",
       "note": "3번 원본 기반 왼쪽 입구 확장 최종 채택",
       "approvalEvidence": "이걸로 올리거라 13번으로"
+    },
+    {
+      "file": "T1W_서쪽제례앞뜰.png",
+      "source": "docs/art/desert-t1-forecourt-concepts-2026-10-16/candidate-01.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "8b234232126468ed406174671c18382c3609d3803e45761034ad3c9b5ba6b767",
+      "note": "채택 원본",
+      "approvalEvidence": "13둘 다 채택!"
+    },
+    {
+      "file": "T1E_동쪽제례앞뜰.png",
+      "source": "docs/art/desert-t1-forecourt-concepts-2026-10-16/candidate-03.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "8bfd8b7d35e8b4aa363f9280ad94ce78e0df2239ac83dee33ad3a2bf13984486",
+      "note": "채택 원본",
+      "approvalEvidence": "13둘 다 채택!"
     }
   ],
   "missing": [],
