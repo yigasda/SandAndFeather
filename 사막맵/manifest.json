@@ -347,6 +347,17 @@
       "sha256": "5f823ea5df94b3c8f341af690429694f123eee86591ffb9ca7900df315b2e029",
       "approvalEvidence": "벽화수 15%만 줄이자!! 그러면 둘 다 채택!!!(못정함..)",
       "note": "벽화 수 감소 수정본, 두 미궁 모두 채택. 연결 미정."
+    },
+    {
+      "file": "P2_왕면열병전실.png",
+      "source": "docs/art/desert-p2-royal-procession-concepts-2026-10-16/candidate-01.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5f1a850a62c50a012b186344fe38d1f79fbdef3f82436707ed19ad2b3e5c4be3",
+      "approvalEvidence": "첫번째 개쩐다 이걸로 채택!!!",
+      "note": "시안1 원본"
     }
   ],
   "missing": [],
