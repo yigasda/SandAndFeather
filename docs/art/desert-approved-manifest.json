@@ -86,5 +86,19 @@
     "approvalEvidence": "2번으로 채택 하고 5-20문서 읽고 8번 시안 4개 줘",
     "runtimeApplied": false,
     "publishedBranch": "main"
+  },
+  {
+    "map": "08",
+    "name": "사막 대상의 쉼터",
+    "file": "art/desert-08-approved-2026-10-16/approved-final.png",
+    "source": "art/desert-08-candidates-2026-10-16/png/candidate-04.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "c77d4858d13917b0b81e98d7ed5e121aff2d4ddda538c41f600812ecb9df6e95",
+    "approvalEvidence": "4번으로 하고 5-20문셔 읽고 9번 4개 시안줘",
+    "runtimeApplied": false,
+    "publishedBranch": "main"
   }
 ]
