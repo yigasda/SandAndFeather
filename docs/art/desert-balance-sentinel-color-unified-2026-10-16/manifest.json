@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "references": [
     {
       "file": "../desert-balance-sentinel-comparison-2026-10-16/sheet.png",
@@ -22,5 +22,6 @@
   ],
   "sha256": "64bf3fbaca41130a4d7961c15af394ad7120bac9a380815253f3f741d7af66de",
   "runtimeApplied": false,
-  "review": "Single generated color-unification sheet. Poses visually retained, palette more consistent. Edge alpha/fringe cleanup and runtime verification not performed."
+  "review": "Single generated color-unification sheet. Poses visually retained, palette more consistent. Edge alpha/fringe cleanup and runtime verification not performed.",
+  "approvalEvidence": "채택! 메인에 업로드하고 다음꺼 하자"
 }
