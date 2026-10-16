@@ -325,6 +325,17 @@
       "sha256": "ad11794b913153147d23b47427c73af4c951a31cac8972857b6fe3fbd95ac0ad",
       "approvalEvidence": "두번째로 채택!!!",
       "note": "시안2 채택 원본"
+    },
+    {
+      "file": "T3_신전수호문전당.png",
+      "source": "docs/art/desert-t3-guardian-hall-concepts-2026-10-16/candidate-01.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ae87479081fe61acb53ba9f9e3bd51dc8f6079bf6fc1f6346ecd02ce7e0a4633",
+      "approvalEvidence": "1번으로 채택!!!",
+      "note": "시안1 채택 원본; 시안2는 원래 제작 폴더에 보존"
     }
   ],
   "missing": [],
