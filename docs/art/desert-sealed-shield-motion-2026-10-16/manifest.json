@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "adopted",
   "designSource": "docs/art/desert-shield-egyptian-2026-10-16/candidates.png",
   "designVariant": 3,
   "motionSource": "docs/art/desert-leather-shield-motion-2026-10-16/sheet.png",
@@ -21,5 +21,8 @@
   ],
   "sha256": "1fc62cef53297b240a6eb54eedf300ebfe705175448b2f6373f5a500584a2a13",
   "runtimeApplied": false,
-  "frameAlignmentVerified": false
+  "frameAlignmentVerified": false,
+  "approvalEvidence": "개굿ㅋㅋ 둘 다 채택!! 같은 부류 몹으로 분류하자",
+  "family": "방패 수호병",
+  "variant": "봉인 방패병"
 }
