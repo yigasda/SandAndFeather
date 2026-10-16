@@ -8,7 +8,12 @@
     "vertical.png",
     "horizontal.png"
   ],
-  "status": "adopted",
+  "status": "partially-adopted",
   "approvalEvidence": "벽화수 15%만 줄이자!! 그러면 둘 다 채택!!!(못정함..)",
-  "note": "벽화 약 15% 감소 요청. 두 맵 채택, 상호 연결 위치 미정. 이미지 편집 결과이며 수정 외 픽셀 동일성 미검증."
+  "note": "벽화 약 15% 감소 요청. 두 맵 채택, 상호 연결 위치 미정. 이미지 편집 결과이며 수정 외 픽셀 동일성 미검증.",
+  "selection": {
+    "vertical.png": "adopted",
+    "horizontal.png": "rejected-preserved"
+  },
+  "latestSelectionEvidence": "가로형 맵은 몹을 둘 공간이 별로없다 탈락!! 세로형만 남기자!!!"
 }

@@ -347,17 +347,6 @@
       "sha256": "5f823ea5df94b3c8f341af690429694f123eee86591ffb9ca7900df315b2e029",
       "approvalEvidence": "벽화수 15%만 줄이자!! 그러면 둘 다 채택!!!(못정함..)",
       "note": "벽화 수 감소 수정본, 두 미궁 모두 채택. 연결 미정."
-    },
-    {
-      "file": "P1B_고대장례미궁_가로.png",
-      "source": "docs/art/desert-p1-labyrinth-approved-2026-10-16/horizontal.png",
-      "size": [
-        1774,
-        887
-      ],
-      "sha256": "c44a9444828e52a57b2ed66d25c5f0b779304c9ba2de429a8b47d475ceff6752",
-      "approvalEvidence": "벽화수 15%만 줄이자!! 그러면 둘 다 채택!!!(못정함..)",
-      "note": "벽화 수 감소 수정본, 두 미궁 모두 채택. 연결 미정."
     }
   ],
   "missing": [],
