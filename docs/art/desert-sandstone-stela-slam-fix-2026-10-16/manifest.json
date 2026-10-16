@@ -1,0 +1,23 @@
+{
+  "status": "review-pending",
+  "source": "docs/art/desert-sandstone-stela-motion-2026-10-16/sheet.png",
+  "request": "첫 내려찍기 시트 원본에서 내려찍기만 수정",
+  "targetCells": [
+    7,
+    8
+  ],
+  "change": "문양면을 지면으로 향하게 뒤집힌 등면과 앞쪽 접촉 충격 표현",
+  "size": [
+    1983,
+    793
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "0b2c73f0bf5ad5774d0396a8fd9b595ef222a657f1a6dc4494460ea9ae9ceba9",
+  "runtimeApplied": false,
+  "pixelIdentityOutsideEdit": "not verified; generated edit",
+  "pivot": null
+}
