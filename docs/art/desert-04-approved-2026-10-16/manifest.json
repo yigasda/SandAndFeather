@@ -1,0 +1,15 @@
+{
+  "map": "04",
+  "name": "메마른 모래벌판",
+  "file": "art/desert-04-approved-2026-10-16/approved-final.png",
+  "source": "exec-646df3d8-be08-4fcb-a505-0e72ea17b4a0.png",
+  "size": [
+    1774,
+    887
+  ],
+  "sha256": "38194da3bc67a4a09279e7d563239416c93ab8213721b2d1c6c14e4f04eafd69",
+  "approvalEvidence": "개굿 ㄱㄱㄱ 채택 0304 메인에 올려",
+  "runtimeApplied": false,
+  "uploadedThisSession": true,
+  "publishedBranch": "main"
+}

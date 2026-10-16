@@ -1,0 +1,15 @@
+{
+  "map": "03",
+  "name": "고요한 사구",
+  "file": "art/desert-03-approved-2026-10-16/approved-final.png",
+  "source": "exec-5ed7312f-f74f-4aad-b4f0-8684c2cf7dd7.png",
+  "size": [
+    1774,
+    887
+  ],
+  "sha256": "2d8e6b6307b3183c28642c1fe484f509a2e0991d4eb34e76fe1e0eceecb05969",
+  "approvalEvidence": "개굿 ㄱㄱㄱ 채택 0304 메인에 올려",
+  "runtimeApplied": false,
+  "uploadedThisSession": true,
+  "publishedBranch": "main"
+}

@@ -4,12 +4,14 @@
 
 ## 1. 현재 기준과 바로 열 파일
 
-01 황금 사구해와 02 매몰 신전 사막은 최종 채택됐다. 재작화 지시 없이 변경하지 않는다. 다음 맵은 사용자 지정 후 시작한다. 01·02 채택 원본과 이 지침을 main에 전달한다. Drive 업로드·게임 런타임 적용은 미실행이다. 02 최종본은 원래 채택 PNG에 풍화된 오른쪽 출구만 합성한 버전이며, 반복 재생성된 전체 맵을 사용하지 않는다.
+01 황금 사구해·02 매몰 신전 사막·03 고요한 사구·04 메마른 모래벌판은 최종 채택됐다. 재작화 지시 없이 변경하지 않는다. 다음 맵은 사용자 지정 후 시작한다. 01~04 채택 원본과 이 지침을 main에 전달한다. Drive 업로드·게임 런타임 적용은 미실행이다. 02 최종본은 원래 채택 PNG에 풍화된 오른쪽 출구만 합성한 버전이며, 반복 재생성된 전체 맵을 사용하지 않는다.
 
 | 용도 | 파일 |
 |---|---|
 | 01 최종 그림 | [approved-final.png](art/desert-01-method-2026-10-16/approved-final.png) |
 | 02 최종 그림 | [approved-final.png](art/desert-02-candidates-2026-10-16/approved-final.png) |
+| 03 최종 그림 | [approved-final.png](art/desert-03-approved-2026-10-16/approved-final.png) |
+| 04 최종 그림 | [approved-final.png](art/desert-04-approved-2026-10-16/approved-final.png) |
 | 01 정확한 최종 호출 | [approved-final-request.json](art/desert-01-method-2026-10-16/approved-final-request.json) |
 | 02 합성 전 원본 생성 호출 | [approved-final-request.json](art/desert-02-candidates-2026-10-16/approved-final-request.json) |
 | 지도별 설계·미술 지시 | [map-art-plan.txt](art/desert-handoff-sources/map-art-plan.txt) |
@@ -20,6 +22,8 @@
 최종 호출 JSON의 이미지 경로는 JSON 파일이 있는 폴더 기준 상대경로다. 실행 시 절대경로로 해석한다. 입력 이미지도 같은 폴더의 `final-source-references/`에 보존되어 있다. `candidate`, `result`라는 이름을 최종본으로 추정하지 않는다.
 
 02 최종 합성 재현: [스크립트](art/desert-02-candidates-2026-10-16/composite-exit.py), [합성 전 원본](art/desert-02-candidates-2026-10-16/approved-before-exit.png), [출구 소스](art/desert-02-candidates-2026-10-16/exit-weathering-source.png). 마스크 바깥은 원본과 픽셀이 동일하다.
+
+03은 04 첫 번째 시안 지형에 03 두 번째 시안의 오브젝트 두 군을 옮기고 외곽선을 보강한 버전이다. 04는 마지막 시안(전체 4번)이다. 각 폴더의 manifest와 최종 PNG를 기준으로 삼는다.
 
 ## 2. 요청을 받으면 먼저 작업 종류를 고른다
 

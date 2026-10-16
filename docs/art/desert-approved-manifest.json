@@ -27,5 +27,35 @@
     "uploadedThisSession": true,
     "publishedBranch": "main",
     "reproduction": "art/desert-02-candidates-2026-10-16/composite-exit.py"
+  },
+  {
+    "map": "03",
+    "name": "고요한 사구",
+    "file": "art/desert-03-approved-2026-10-16/approved-final.png",
+    "source": "exec-5ed7312f-f74f-4aad-b4f0-8684c2cf7dd7.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "2d8e6b6307b3183c28642c1fe484f509a2e0991d4eb34e76fe1e0eceecb05969",
+    "approvalEvidence": "개굿 ㄱㄱㄱ 채택 0304 메인에 올려",
+    "runtimeApplied": false,
+    "uploadedThisSession": true,
+    "publishedBranch": "main"
+  },
+  {
+    "map": "04",
+    "name": "메마른 모래벌판",
+    "file": "art/desert-04-approved-2026-10-16/approved-final.png",
+    "source": "exec-646df3d8-be08-4fcb-a505-0e72ea17b4a0.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sha256": "38194da3bc67a4a09279e7d563239416c93ab8213721b2d1c6c14e4f04eafd69",
+    "approvalEvidence": "개굿 ㄱㄱㄱ 채택 0304 메인에 올려",
+    "runtimeApplied": false,
+    "uploadedThisSession": true,
+    "publishedBranch": "main"
   }
 ]
