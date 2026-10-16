@@ -1,0 +1,13 @@
+{
+  "status": "review-pending",
+  "reference": "몹/하위몹/고대장치/ring-idle.png",
+  "referenceRole": "도트 표현·밀도·3/4 시점만 참고. 디자인·팔레트는 별개.",
+  "design": "팔다리·얼굴 없는 붉은 토기 봉인 항아리. 기울어진 몸체와 열린 뚜껑·어두운 내부로 생명감 표현.",
+  "size": [
+    1374,
+    1145
+  ],
+  "sha256": "82ac6e766538b136d60ec0fe2e251fd98e90ccb43928d1d515a871b4411ac0b4",
+  "runtimeApplied": false,
+  "runtimeScaleVerified": false
+}
