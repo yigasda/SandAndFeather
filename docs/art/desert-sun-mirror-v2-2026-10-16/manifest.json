@@ -1,5 +1,5 @@
 {
-  "status": "review-pending",
+  "status": "not-selected",
   "variants": [
     "빙의된 부유 원판",
     "거울 등껍질 쇠똥구리",
@@ -21,5 +21,6 @@
     255
   ],
   "sha256": "32c837a0dcde6f4f6a46dde89bcd4a2fd6196c05a9e498e34fa78b54444f3156",
-  "runtimeApplied": false
+  "runtimeApplied": false,
+  "feedback": "항아리몹 비슷해 보임. 신전의 금색 동그란 거울 몹 요청."
 }

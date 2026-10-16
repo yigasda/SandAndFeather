@@ -1,0 +1,21 @@
+{
+  "status": "review-pending",
+  "variants": [
+    "날개형 태양거울",
+    "사자발형 태양거울",
+    "개폐 고리형 태양거울"
+  ],
+  "reference": "docs/art/desert-sealed-jar-2026-10-16/candidate-01.png",
+  "referenceRole": "pixel execution only; no jar design",
+  "size": [
+    2055,
+    765
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "cf262943c3ab2e2e8668314b15b8c84bf60c6e8dc40c40a37fe039fe15420030",
+  "runtimeApplied": false
+}
