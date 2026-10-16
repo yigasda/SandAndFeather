@@ -1,0 +1,35 @@
+{
+  "status": "needs-correction-not-adopted",
+  "reference": "../desert-balance-sentinel-motion-2026-10-16/sheet.png",
+  "request": "10 frames unified facing; keep slam nearly unchanged",
+  "review": "Two generated attempts retain central-pylon orientation changes in idle1 and hit. Do not use as final. No further automatic generation after repeated failure.",
+  "runtimeApplied": false,
+  "files": [
+    {
+      "file": "attempt-02.png",
+      "size": [
+        1983,
+        793
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "d97cfc64b1d7445eef1d278d7618efbf48f87b8a9304d7ddf84b4b9277b5c179"
+    },
+    {
+      "file": "attempt-01.png",
+      "size": [
+        1983,
+        793
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "41ead1db0bf5936cfd1e51cc44405e97085a0b00d32e5b221b5fd0911addebcb"
+    }
+  ]
+}
