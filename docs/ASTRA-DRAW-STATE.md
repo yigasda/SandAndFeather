@@ -2,6 +2,8 @@
 
 ## 사막 현재 작업
 
+19번 원형·별빛 시안 4개 미채택: `art/desert-19-round-candidates-2026-10-16/`. 최신 사용자 지시로 사각 방을 원형으로 변경. 별 문양은 작동 검증 전 시안.
+
 17번 출입 수정본 채택: `art/desert-17-approved-2026-10-16/approved-final.png`. 사용자 요청한 두 실내 시안: `art/desert-17-interiors-2026-10-16/left-dwelling.png`(추가 생활집, 번호 미정), `right-archive18.png`(기획18 기록고). 두 실내 모두 채택. 왼쪽 최종: `art/desert-17-dwelling-approved-2026-10-16/approved-final.png`, 오른쪽18 최종: `art/desert-18-approved-2026-10-16/approved-final.png`. 실제 단서·게임 검증 미완료.
 
 16번 시안 3 채택: `art/desert-16-approved-2026-10-16/approved-final.png`. 이전 시안: `art/desert-16-candidates-2026-10-16/`. 번호는 PNG 01~04 순서. 구조 시안이며 장치 상세·광로·이동 검증 미완료.
