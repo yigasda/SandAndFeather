@@ -1,0 +1,18 @@
+{
+  "base": "../desert-p1-shorter-layout-2026-10-16/candidate.png",
+  "initialEdit": {
+    "prompt": "Make four LOCAL edits to FIRST IMAGE original clean map. SECOND IMAGE is user markup for location ONLY; never copy blue strokes or phone UI. Preserve original 1:2 full portrait canvas, colors, sharp game pixel-cluster rendering, constellation fully visible, all unmarked architecture and the three genuine exits (north center, south center, east around midheight). BLUE STRAIGHT STROKES mean CONNECT/EXTEND MASONRY, BLUE X means DEMOLISH to make walkable floor. Exactly: 1 Upper-right short horizontal interior wall around normalized x .81-.95,y .13: EXTEND its LEFT END leftward to about x .72, creating a longer straight wall with same coping and thickness. Keep ample floor between its end and main upper curved wall; do not block a genuine exit. 2 Right exterior boundary alongside constellation, around x .95,y .25-.36: JOIN the separated vertical wall sections with continuous matching upright sandstone masonry so the right outline is solid between the short upper wall and mural wall below. Stay at outside boundary, don't cover constellation's rightmost star. 3 Left exterior boundary at x .035,y .64-.73 (near small lower-left alcove): CONNECT wall gap into continuous matching exterior wall with same height and thickness. Do not move inward or block adjacent inner floor. 4 Blue X at bottom third: right-hand END POST and terminal portion of the long horizontal lower wall, around x .62-.71,y .78-.85. DEMOLISH this terminal post and shorten the right end of long horizontal wall back to roughly x .60, replacing with continuous sandstone floor. Make a broad walkable route curving around the shortened wall end down toward south exit. Clear rubble from walking opening, only tiny remnants at wall foot. Keep horizontal wall's left portion intact. Do NOT demolish south entrance frame or outer right wall. No other redesign, no new props/murals, no squashing, no extra curves, no glow. Match adjacent stone course and lighting at each edit, return full unannotated original map.",
+    "output": "before-curve-restoration.png"
+  },
+  "restoration": {
+    "prompt": "Image1 is current edited map. Image2 is original reference. Make ONLY ONE restoration to image1: restore the missing RIGHT-HAND HORIZONTAL EXTENSION of the large lower-middle S-curved wall, exactly as seen in image2. In image1 this curved wall ends prematurely at normalized x.64,y.71. In image2 it continues rightward to join the OUTER RIGHT WALL at x.94,y.69-.74, and has a small Egyptian mural on that horizontal extension. Restore that missing continuation with its original height, stone courses, mural and wall contact. Do NOT restore any other removed structures. In particular KEEP the new broad opening at the shortened LOWER straight wall around x.60-.80,y.78-.85; its removed terminal post must remain removed. Keep image1's extended upper-right wall, repaired right boundary near stars and repaired left exterior boundary. All other pixels and layout as close as possible to image1. No additional edits, no new exits, no crop or resize. Full portrait map, no annotations.",
+    "inputs": [
+      "before-curve-restoration.png",
+      "../desert-p1-shorter-layout-2026-10-16/candidate.png"
+    ],
+    "output": "approved.png"
+  },
+  "status": "adopted",
+  "approval": "ㅇㅋ 됐다 채택!! ... 03이 아니라 미로ㅋㅋㅋ png 자체를 교체해줘",
+  "runtimeApplied": false
+}

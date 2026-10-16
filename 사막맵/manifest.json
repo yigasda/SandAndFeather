@@ -339,14 +339,14 @@
     },
     {
       "file": "P1A_고대장례미궁_세로.png",
-      "source": "docs/art/desert-p1-labyrinth-approved-2026-10-16/vertical.png",
+      "source": "docs/art/desert-p1-shorter-approved-2026-10-16/approved.png",
       "size": [
-        793,
-        1983
+        887,
+        1774
       ],
-      "sha256": "5f823ea5df94b3c8f341af690429694f123eee86591ffb9ca7900df315b2e029",
-      "approvalEvidence": "벽화수 15%만 줄이자!! 그러면 둘 다 채택!!!(못정함..)",
-      "note": "벽화 수 감소 수정본, 두 미궁 모두 채택. 연결 미정."
+      "sha256": "5fefc6e8f640fd3d71e39dada2b9095436c9d9bf17ef8c6eecd1c543054405eb",
+      "approvalEvidence": "03이 아니라 미로ㅋㅋㅋ png 자체를 교체해줘",
+      "note": "짧아진 별자리 미궁 최종 채택. 표시 벽 연결·하단 탈출 통로·큰 곡선 벽 복원본. 이전 채택 원본 별도 보존."
     },
     {
       "file": "P2_왕면열병전실.png",
