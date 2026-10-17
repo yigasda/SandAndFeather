@@ -453,7 +453,7 @@
         385,
         1008
       ],
-      "sha256": "01488154f1fa0c4e6b4b463f33da29c0afe072446416d0ad77bcf74eb99e6575",
+      "sha256": "4a84a3587ef1f72851b95e1c862008937fbf46bdb52a5116da02d9ae21057cfa",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -461,7 +461,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 106.6 %(목 185,285 기준 가로세로 같이, headshrink.py 70행 — 오른쪽 상호작용와 같은 값) 뒤 가로폭 93.7 %(faceslim.py). 몸 그대로. 캔버스 위 22px·좌우 23px 늘림(anchor 같이 옮김). 원본 sources/horus-right-sit-bench-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\"",
-        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 486.2 — 세트·소망 같은 자리(right bench) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\""
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 486.2 — 세트·소망 같은 자리(right bench) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\"",
+        "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 208,307 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93), 몸 그대로, 게임 크기 referenceVisibleHeight 그대로(몸 크기 같음). 원본 sources/horus-right-sit-bench-0-옆머리전.png. 사용자: \"옆 정지랑 앉기(쿠션 앉기 빼고)도 해야지\""
       ],
       "referenceVisibleHeight": 486.2
     },
@@ -507,7 +508,7 @@
         1488,
         1007
       ],
-      "sha256": "8e828d268cbc117dd59ad48c27a9f83b316c5f6f8da9785994521432be107cda",
+      "sha256": "424cc496f5ef92c3d4ab66716033b631a95d93ad01b3723f50447b0a02e64257",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -515,7 +516,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 96.8 %(목 180,290 기준 가로세로 같이, headshrink.py 70행 — 왼쪽 상호작용와 같은 값) 뒤 가로폭 96.7 %(faceslim.py). 몸 그대로. 원본 sources/horus-left-sit-bench-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\"",
-        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 460.2 — 세트·소망 같은 자리(left bench) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\""
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 460.2 — 세트·소망 같은 자리(left bench) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\"",
+        "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 180,290 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93), 몸 그대로, 게임 크기 referenceVisibleHeight 그대로(몸 크기 같음). 원본 sources/horus-left-sit-bench-0-옆머리전.png. 사용자: \"옆 정지랑 앉기(쿠션 앉기 빼고)도 해야지\""
       ],
       "referenceVisibleHeight": 460.2
     },
