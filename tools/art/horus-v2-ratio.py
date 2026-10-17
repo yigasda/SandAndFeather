@@ -5,6 +5,7 @@
 # consistent. Sheets already at the measure (shy·surprised, smile, side idle·walk) are left as they are.
 # The neck of each picture: found by head-check's search for the head of a standing picture of the same sheet and
 # view (the template), carried to the template's neck (the top middle of its gold collar).
+# Then the body narrower across (WIDTH, tools/art/fix/bodywidth.py), user: "몸 비율도 샤이 서프라이즈처럼".
 # Writes docs/art/horus-redraw-2026-10-14/ratio/: png/ (fixed pictures, same names and canvases), manifest.json
 # (factor, neck, head match, source sha) and scale.json (referenceVisibleHeight for pack-trio-motion.py: a standing
 # picture's alpha height; any other = its template's fixed height × the head size found).
@@ -34,6 +35,16 @@ SHEETS = {
     'side-idle-walk': (0.944, {'left': 'left-idle-0', 'right': 'right-idle-0'}),
 }
 KEEP = ('shy-surprise',)
+# the body (below the neck) narrower across only, toward shy's slim body (user picked these per sheet and view after
+# the 90/80/70 % drafts: front walk 80, front 87, back 80, side 90). Side sitting, crouching and lying are left: across
+# is their legs' or body's length there, not the body's width. Smile and the side idle·walk are already as slim.
+WIDTH = {('walk', 'front'): 0.80, 'front': 0.87, 'back': 0.80, 'left': 0.90, 'right': 0.90}
+NO_WIDTH = {'smile', 'side-idle-walk', 'shy-surprise'}
+def width_of(sheet, n):
+    view = n.split('-')[0]
+    if sheet in NO_WIDTH: return 1.0
+    if view in ('left', 'right') and sheet != 'interact': return 1.0
+    return WIDTH.get((sheet, view), WIDTH[view])
 # the chin of each template (rows read on the zoomed strips; right side pictures like their left ones)
 CHIN = {'front-walk-1': 343, 'front-interact-0': 293, 'front-read-0': 300, 'front-happy-0': 361, 'left-idle-0': 302, 'right-idle-0': 302,
         'left-interact-0': 280, 'right-interact-0': 280, 'back-interact-0': 288, 'back-cook-0': 290}
@@ -41,6 +52,12 @@ STANDING = {'front-walk-0', 'front-walk-1', 'front-walk-2', 'front-interact-0', 
             'left-interact-0', 'left-interact-1', 'right-interact-0', 'right-interact-1', 'front-read-0', 'back-cook-0',
             'front-happy-0', 'front-shy-0', 'front-surprised-0', 'left-idle-0', 'right-idle-0',
             'left-walk-0', 'left-walk-1', 'left-walk-2', 'right-walk-0', 'right-walk-1', 'right-walk-2'}
+# where the head search was weak (match under 0.3, or the neck it gave fell on the face): head size and neck read by
+# eye on the neck sheet; size from the hair's width and height against the template's (back stool 330/305, fishing
+# pull ~1.0, front sleep 387/302 · 252/207, side sleep 586/286 · 417/236)
+OVERRIDE = {'back-sit-stool-0': {'size': 1.06, 'neck': (180, 340)}, 'front-fish-1': {'size': 1.0, 'neck': (240, 368)},
+            'front-sleep-0': {'size': 1.25, 'neck': (215, 362)}, 'front-sleep-1': {'size': 1.25, 'neck': (215, 362)},
+            'right-sleep-0': {'size': 1.9}, 'right-sleep-1': {'size': 1.9}}
 png = lambda n: os.path.join(R, 'png', f'horus-{n}.png')
 solid = lambda im: im.getchannel('A').point(lambda v: 255 if v >= 128 else 0).getbbox()
 
@@ -104,9 +121,15 @@ def main():
         src = png(n); dst = os.path.join(OUT, 'png', f'horus-{n}.png')
         if sh in KEEP:
             Image.open(src).save(dst); rows.append({'file': n, 'sheet': sh, 'factor': 1.0}); continue
-        k = SHEETS[sh][0]; r = found[n]; x, y = neck(r)
+        k = SHEETS[sh][0]; r = dict(found[n]); x, y = neck(r)
+        if n in OVERRIDE:
+            r['size'] = OVERRIDE[n]['size']; r['match'] = f"by eye ({found[n]['match']})"
+            if 'neck' in OVERRIDE[n]: x, y = OVERRIDE[n]['neck']
         subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'art', 'fix', 'headbody.py'), src, dst, str(k), '1', str(x), str(y), '60'], check=True)
-        rows.append({'file': n, 'sheet': sh, 'factor': k, 'neck': [round(x, 1), round(y, 1)], 'template': r['template'], 'headSize': r['size'], 'match': r['match']})
+        wd = width_of(sh, n)
+        if wd != 1.0:
+            subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'art', 'fix', 'bodywidth.py'), dst, dst, str(wd), str(x), str(y), '40'], check=True)
+        rows.append({'file': n, 'sheet': sh, 'factor': k, 'bodyWidth': wd, 'neck': [round(x, 1), round(y, 1)], 'template': r['template'], 'headSize': r['size'], 'match': r['match']})
     for row in rows:
         n = row['file']; dst = os.path.join(OUT, 'png', f'horus-{n}.png')
         row['sha256'] = hashlib.sha256(open(dst, 'rb').read()).hexdigest()
