@@ -83,7 +83,7 @@ def pack(frames, visible, out):
 
 
 # approved action sets packed beside the base 48 (same canvas, pivot and reference height as the idle)
-ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ['interaction-somang-v172', 'interaction-set-v174', 'interaction-horus-v176', 'pickup-somang-v178', 'pickup-trio-v182', 'sit-somang-v179', 'sit-trio-v190', 'sleep-trio-v220',
+ACTIONS = [os.path.join(ROOT, 'docs', 'art', 'chibi-refresh', d, 'manifest.json') for d in ['interaction-somang-v172', 'interaction-set-v174', 'pickup-somang-v178', 'pickup-trio-v182', 'sit-somang-v179', 'sit-trio-v190', 'sleep-trio-v220',
     # 0.9.70 생활 묶음 (메인1, life-pack.py) and Set/Horus fishing hand-fixed by Opus (fishing-fix)
     'fishing-fix'] + [f'life-v1/{x}' for x in ('cook', 'read', 'happy', 'shy', 'surprised', 'eat', 'fish')]]
 
@@ -96,6 +96,7 @@ def action_frames():
         base = os.path.dirname(mp); dmap = am['directionMap']
         names = set()
         for f in am['files']:
+            if f['character'] == 'horus': continue      # Horus: horus_frames()
             path = os.path.join(base, f['path'])
             data = open(path, 'rb').read()
             assert hashlib.sha256(data).hexdigest() == f['sha256'], path
@@ -116,47 +117,104 @@ def action_frames():
     return frames, playback
 
 
-# 새 호루스 (docs/art/horus-redraw-2026-10-14, 아스트라 채택본): the pictures with the head:height of the approved shy and
-# surprised (tools/art/horus-v2-ratio.py → ratio/png, ratio/scale.json) take the place of Horus's old frames of the same
-# action, direction and frame. Sizes: standing pictures are a whole Horus tall, the others by their head
-# (scale.json). The anchor sits where the old anchor sat relative to the figure (same place from the middle of the
-# alpha box); the fishing rod's end is measured again. Front and back idle and back walk have no new picture yet
-# (the old ones stay); drink has no action in the game and the combat set is not in the game yet.
-HORUS_V2 = os.path.join(ROOT, 'docs', 'art', 'horus-redraw-2026-10-14', 'ratio')
-V2_DIR = {'front': 'down', 'back': 'up', 'left': 'left', 'right': 'right'}
+# 새 호루스 (0.9.77): every Horus frame comes from docs/art/horus-redraw-2026-10-14/manifest.json (60 approved pictures,
+# the only source; drink and the combat set are not in the game). The old Horus pictures (final, the action folders)
+# are not read. Sizes (referenceVisibleHeight = the picture px that make one whole Horus tall):
+#   standing pictures: their own solid alpha height (alpha ≥ 128), so every one is the same height;
+#   a value written in the manifest (sitting 4, sleeping 4, fishing 2, picked by the user against Set and Somang): as is;
+#   picking up: the head as tall as the same direction's interact head (head = top of the hair → the neck written in
+#   the entry's edits, "목 x,y", + "캔버스 위 Npx");
+#   the user's own floor sitting and meal pictures (sides): HORUS_USER (Set's and Somang's same pose, user-approved).
+# Anchors are found on the new pictures: standing = the middle of the two feet on the bottom row; the others the same
+# body place as the old anchor of that pose (HORUS_ANCHOR, read on zoomed crops 2026-10-17). The rod's end is measured.
+HORUS = os.path.join(ROOT, 'docs', 'art', 'horus-redraw-2026-10-14')
+HORUS_DIR = {'front': 'down', 'back': 'up', 'left': 'left', 'right': 'right'}
+HORUS_SKIP = ('drink', 'combat')
+STANDING = ('idle', 'walk', 'interact', 'cook', 'read', 'happy', 'shy', 'surprised')
+HORUS_STATE = {'eat-eyes-open': ('eat', 0), 'eat-eyes-closed': ('eat', 1)}
+# the user's floor sitting and meal pictures: referenceVisibleHeight (filled in after the user's pick)
+HORUS_USER = {'left-sit-floor-0': 1101.0, 'right-sit-floor-0': 1086.0, 'left-eat-eyes-open-0': 1101.0, 'left-eat-eyes-closed-0': 1101.0,
+              'right-eat-eyes-open-0': 1086.0, 'right-eat-eyes-closed-0': 1086.0}
+# old anchor → the same body place on the new picture (source px of the new picture). Sitting on a bench: the old
+# anchor sat 78 px behind and 18 px above the fold behind the knee (old 576 scale), carried at this picture's scale
+# so rest.js FOLD stays; stool: the middle of the figure just under the kilt; floor: under the hips (the back of the
+# waistband) on the floor, sides 11 px (old scale) above the bottom; the meal frames: their sitting picture's anchor
+# moved by how the meal picture lies on it (registered on the feet and hem); sleeping front: between the clasped fists,
+# side: on the waistband behind the elbow; frame 1 registered on frame 0's legs; fishing: the kilt's hem between the legs
+HORUS_ANCHOR = {
+    'right-sit-bench-0': ('fold', 241.75, 437.5, -78, -18), 'left-sit-bench-0': ('fold', 153.5, 418.75, 77.5, -18),
+    'back-sit-stool-0': (192.5, 481.5), 'back-sit-floor-0': (490, 1140),
+    'right-sit-floor-0': ('floor', 573, 1183), 'left-sit-floor-0': ('floor', 789, 1182),
+    'left-eat-eyes-open-0': ('like', 'left-sit-floor-0', -2, 2), 'left-eat-eyes-closed-0': ('like', 'left-sit-floor-0', -1, 2),
+    'right-eat-eyes-open-0': ('like', 'right-sit-floor-0', -1, 0), 'right-eat-eyes-closed-0': ('like', 'right-sit-floor-0', -1, 1),
+    'front-fish-0': (250, 404), 'front-fish-1': (240, 415),
+    'front-sleep-0': (223, 378), 'front-sleep-1': (224, 382), 'right-sleep-0': (282, 538), 'right-sleep-1': (273, 516),
+}
 
 
-def horus_v2(frames):
-    scale = json.load(open(os.path.join(HORUS_V2, 'scale.json')))['referenceVisibleHeight']
-    rows = json.load(open(os.path.join(HORUS_V2, 'manifest.json')))['files']
-    by_id = {f['id']: i for i, f in enumerate(frames)}
-    done = 0
-    for row in rows:
-        name = row['file'].split('-')                      # <view>-<action…>-<frame>
-        view, act, ph = name[0], '-'.join(name[1:-1]), int(name[-1])
-        fid = f"horus.idle.{V2_DIR[view]}" if act == 'idle' else f"horus.{act}.{V2_DIR[view]}.{ph}"
-        if fid not in by_id: raise SystemExit(f'horus v2: no old frame {fid}')
-        old = frames[by_id[fid]]
-        path = os.path.join(HORUS_V2, 'png', f"horus-{row['file']}.png")
-        assert hashlib.sha256(open(path, 'rb').read()).hexdigest() == row['sha256'], path
-        nb = Image.open(path).getchannel('A').point(lambda v: 255 if v >= 128 else 0).getbbox()
-        ob = old['alphaBounds']
-        r = (nb[3] - nb[1]) / (ob[3] - ob[1])
-        ocx, ncx = (ob[0] + ob[2]) / 2, (nb[0] + nb[2]) / 2
-        pivot = [round(ncx + (old['pivot'][0] - ocx) * r, 1), round(nb[1] + (old['pivot'][1] - ob[1]) * r, 1)]
-        new = {**old, 'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': scale[row['file']],
-               'alphaBounds': list(Image.open(path).getchannel('A').getbbox()), 'pivot': pivot}
-        new.pop('tip', None)
-        if old.get('tip'):   # the rod's end: the leftmost solid pixel (waiting) / in the top third (pulling), as life-pack does
-            a = Image.open(path).getchannel('A'); w, h = a.size; px = a.load(); best = None
-            for y in (range(h) if ph == 0 else range(h // 3)):
+def solid_box(path):
+    return Image.open(path).getchannel('A').point(lambda v: 255 if v >= 128 else 0).getbbox()
+
+
+def feet_middle(path):
+    """the middle of the two feet: across the solid pixels of the bottom 4 % of the figure, on the bottom row"""
+    import numpy as np
+    a = np.asarray(Image.open(path).getchannel('A')) >= 128
+    ys = np.nonzero(a.any(1))[0]; y0, y1 = ys[0], ys[-1]
+    xs = np.nonzero(a[int(y1 - 0.04 * (y1 - y0)):y1 + 1].any(0))[0]
+    return [round(float(xs.min() + xs.max()) / 2, 1), float(y1 + 1)]
+
+
+def neck_y(entry):
+    import re
+    t = ' '.join(entry.get('edits') or [])
+    n = re.search(r'목(?:=깃 위끝)? (\d+),(\d+)', t); c = re.search(r'캔버스 위 (\d+)px', t)
+    return int(n.group(2)) + (int(c.group(1)) if c else 0)
+
+
+def horus_frames(playback):
+    man = json.load(open(os.path.join(HORUS, 'manifest.json')))
+    by = {e['file'][len('png/horus-'):-4]: e for e in man['sprites']}
+    path = lambda n: os.path.join(HORUS, by[n]['file'])
+    def rvh(n, state, view):
+        e = by[n]
+        if e.get('referenceVisibleHeight'): return e['referenceVisibleHeight']
+        if state in STANDING: b = solid_box(path(n)); return b[3] - b[1]
+        if state == 'pickup':
+            ref = f'{view}-interact-0'; rb = solid_box(path(ref)); b = solid_box(path(n))
+            return round((neck_y(e) - b[1]) * (rb[3] - rb[1]) / (neck_y(by[ref]) - rb[1]), 1)
+        if n in HORUS_USER: return HORUS_USER[n]
+        raise SystemExit(f'horus: no size for {n}')
+    def anchor(n, h):
+        a = HORUS_ANCHOR.get(n)
+        if a is None: return feet_middle(path(n))
+        if a[0] == 'fold': return [round(a[1] + a[3] * h / 576, 1), round(a[2] + a[4] * h / 576, 1)]
+        if a[0] == 'floor': return [a[1], round(a[2] - 11 * h / 576, 1)]
+        if a[0] == 'like':
+            x, y = anchor(a[1], rvh(a[1], 'sit-floor', None)); return [x + a[2], y + a[3]]
+        return list(a)
+    frames = []
+    for n, e in by.items():
+        if any(k in n for k in HORUS_SKIP): continue
+        data = open(path(n), 'rb').read()
+        assert hashlib.sha256(data).hexdigest() == e['sha256'], n
+        view, rest = n.split('-', 1); act, ph = rest.rsplit('-', 1)
+        state, ph = HORUS_STATE.get(act, (act, int(ph)))
+        d = HORUS_DIR[view]; h = rvh(n, state, view)
+        f = {'id': f'horus.idle.{d}' if state == 'idle' else f'horus.{state}.{d}.{ph}', 'character': 'horus', 'state': state,
+             'gameDirection': d, 'phase': ph, 'path': os.path.relpath(path(n), ROOT), 'referenceVisibleHeight': h,
+             'alphaBounds': list(Image.open(path(n)).getchannel('A').getbbox()), 'pivot': anchor(n, h)}
+        if state == 'fish':   # the rod's end: the leftmost solid pixel (waiting) / in the top third (pulling), as life-pack does
+            a = Image.open(path(n)).getchannel('A'); w, hh = a.size; px = a.load(); best = None
+            for y in (range(hh) if ph == 0 else range(hh // 3)):
                 for x in range(w):
                     if px[x, y] >= 128:
                         if best is None or x < best[0]: best = (x, y)
                         break
-            new['tip'] = list(best)
-        frames[by_id[fid]] = new; done += 1
-    print('horus v2:', done, 'frames replaced')
+            f['tip'] = list(best)
+        frames.append(f)
+    # the meal: frame 0 (eyes open) and 1 (eyes closed) take turns while eating (rest.js eatCard holds one at a time)
+    print('horus:', len(frames), 'frames from', os.path.relpath(HORUS, ROOT))
     return frames
 
 
@@ -166,13 +224,15 @@ def main():
         raise SystemExit('Final art is approved, but runtime integration is not enabled. Opus must review final/manifest.json and runtime packaging before enabling it.')
     # Both states come from the same final selection.
     cycle = man['walkCycle']
-    frames = man['frames']
-    assert len(frames) == 48
+    frames = [f for f in man['frames'] if f['character'] != 'horus']   # Horus: horus_frames()
+    assert len(frames) == 32
     for f in frames:
         data = open(os.path.join(ROOT, f['path']), 'rb').read()
         assert hashlib.sha256(data).hexdigest() == f['sha256'], f['id']
     extra, playback = action_frames()
-    both = horus_v2(list(frames) + extra); frames, extra = both[:len(frames)], both[len(frames):]
+    hf = horus_frames(playback)
+    extra += [f for f in hf if f['state'] not in ('idle', 'walk')]
+    frames += [f for f in hf if f['state'] in ('idle', 'walk')]
     # one atlas per character: with every action in one picture it would pass 4096 px, past what some phones draw
     big, small = {}, {}
     for who in ['set', 'somang', 'horus']:
