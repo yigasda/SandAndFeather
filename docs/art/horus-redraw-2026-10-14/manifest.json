@@ -523,11 +523,14 @@
         397,
         451
       ],
-      "sha256": "8b8939a76199cbc8668be1b77ba46f30382423249dae8988485589c23d017eac",
+      "sha256": "47b8565ab6da98c7c8f6a0130b3bbd4cea5ea9a336f3266dc7d96a0544787d6e",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 86.1 %(목 190,300 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-back-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
@@ -551,11 +554,14 @@
         812,
         449
       ],
-      "sha256": "2adfbc9dc311f1b215ec7deff17c07305d8642c5e979643871b4166fdaf1ae7a",
+      "sha256": "3e309991a4da8b92b93738b031d2c8717c4babf435c18658b1f178d26cee4630",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 86.1 %(목 205,297 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-back-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
@@ -579,11 +585,14 @@
         1273,
         449
       ],
-      "sha256": "19b68f7d079020abacb10299337feb01a00e328f82f89b94a2e68df29e81798a",
+      "sha256": "8c45f8aa00d84d74216c59032ca6de6d75acd256c0fcf9ef52e31a4d66939e4a",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 93.0 %(목 200,340 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용과 같은 값) 뒤 가로폭 94.3 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-front-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
@@ -607,11 +616,14 @@
         1721,
         461
       ],
-      "sha256": "a0e5c2d3e5cbfcc4b8251086f7882e9d61da918fb8b502b647f48ff98e3a6a8e",
+      "sha256": "062776c2ee3bdc4c49b80eab5d2c291357b88c701ddf1ac496f82001fb02decc",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 93.0 %(목 215,340 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용과 같은 값) 뒤 가로폭 94.3 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-front-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
@@ -635,11 +647,14 @@
         394,
         864
       ],
-      "sha256": "0ff12b94f2b0fde42eeb7eda7abbde42ba6ae5aab49864cfd795aa5566feaca2",
+      "sha256": "359be80cbaa188e999a45bc3d18bbe770ef6ec4b23d93da10a7b429869aadbca",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 92.0 %(목 205,287 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 96.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-left-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
@@ -663,11 +678,14 @@
         820,
         866
       ],
-      "sha256": "80e8b8abd5254180446cc627126176c1dbffef6ec9e04b9c0f3bd52ee45673ab",
+      "sha256": "d02f5c0e4c1acaa1a9cd712f54abc5e90fd2a06510f07701e9508e5b2168f57a",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 92.0 %(목 235,280 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 96.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-left-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
@@ -691,11 +709,14 @@
         1267,
         865
       ],
-      "sha256": "9cb0d98c348555d8ad05d93f596b57f7183d12ef9b1c9bce65538f0980f22016",
+      "sha256": "d8c23f2bd039e6a508004c3e6371cdc58c6bfcf586e89fb6db157ff4c757a31a",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 99.1 %(목 195,268 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 7 % 작게) 뒤 가로폭 93.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-right-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
@@ -719,11 +740,14 @@
         1724,
         865
       ],
-      "sha256": "38a3c6a9c72ec97f25b6821b9cb3399c033e1628822078a5cbaf0176f30e0550",
+      "sha256": "db5770d958fd246ce3e217801fe070133a3fdabfe85dc62c42ff371a00f9da7c",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 99.1 %(목 165,270 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 7 % 작게) 뒤 가로폭 93.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-right-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\""
       ]
     },
     {
