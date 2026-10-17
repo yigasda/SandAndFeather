@@ -2,7 +2,7 @@
   "status": "user-approved-art-only",
   "runtimeApplied": false,
   "pixelProcessing": "Lossless extraction, no resizing/repainting; transparent padding 16 px",
-  "count": 51,
+  "count": 57,
   "sprites": [
     {
       "file": "png/horus-front-walk-0.png",
@@ -374,23 +374,16 @@
       "direction": "left",
       "frame": "0",
       "size": [
-        374,
-        530
+        1284,
+        1225
       ],
       "anchor": [
-        187,
-        514
+        642,
+        1190
       ],
-      "source": "sources/sit.png",
-      "sourceCell": 3,
-      "sourceBox": [
-        1131,
-        18,
-        1473,
-        516
-      ],
-      "sha256": "d3a2b1ae2fbe24679c094c2ae8311a10962773f60cd2241381a484b7e630cfdd",
-      "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
+      "source": "사용자 그림, 구글 드라이브 \"좌향 00.png\" (2026-10-17)",
+      "sha256": "008d447ceabdb52864a72b021137df1b347ed3818b7c30ea2ee2d5ed179907c0",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
@@ -430,23 +423,16 @@
       "direction": "right",
       "frame": "0",
       "size": [
-        363,
-        504
+        1284,
+        1225
       ],
       "anchor": [
-        181,
-        488
+        642,
+        1191
       ],
-      "source": "sources/sit.png",
-      "sourceCell": 5,
-      "sourceBox": [
-        593,
-        519,
-        924,
-        991
-      ],
-      "sha256": "2a89a4b6f1f0f19e11a14b498e3534ad760bf49ef41257c5d0bb932809a1ff33",
-      "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
+      "source": "사용자 그림, 구글 드라이브 \"우향 00.png\" (2026-10-17)",
+      "sha256": "d6068e03ef5e75691047767ea22a3cbd5a3101f0dfa08dc2c048cd5ea473f007",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
@@ -969,16 +955,9 @@
         213,
         594
       ],
-      "source": "sources/smile.png",
-      "sourceCell": 1,
-      "sourceBox": [
-        205,
-        1,
-        599,
-        579
-      ],
-      "sha256": "f8073ce482b84a6be6dc9eb4abc63a9ea3e374ad28f637db31e0aae5ce021f53",
-      "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
+      "source": "사용자 그림, 구글 드라이브 \"정면 해피.png\" (2026-10-17)",
+      "sha256": "afe56cbc0ef6bdc241a04ed95fe7c645cc44e8075763e0b296b1c735d7e76328",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
@@ -1430,6 +1409,132 @@
       "alphaExtrema": [
         0,
         254
+      ]
+    },
+    {
+      "file": "png/horus-front-idle-0.png",
+      "character": "horus",
+      "direction": "front",
+      "frame": "0",
+      "size": [
+        887,
+        981
+      ],
+      "anchor": [
+        443,
+        975
+      ],
+      "source": "사용자 그림, 구글 드라이브 \"호루스 정지 정면.png\" (2026-10-17)",
+      "sha256": "103d166f36c85240e7a7453e9b6f803938846922a50d3c1c9cd24e82ba976ca2",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-back-idle-0.png",
+      "character": "horus",
+      "direction": "back",
+      "frame": "0",
+      "size": [
+        887,
+        887
+      ],
+      "anchor": [
+        443,
+        875
+      ],
+      "source": "사용자 그림, ../horus-replacement-originals-2026-10-17/horus-back-idle-v1.png",
+      "sha256": "236ad3a3fbe600350637b45fde533f34dcd8a3d0e5974b74e94d4817f4915184",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-left-eat-eyes-open-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        1284,
+        1225
+      ],
+      "anchor": [
+        642,
+        1191
+      ],
+      "source": "사용자 그림, 구글 드라이브 \"좌향 01.png\" (2026-10-17), 좌향 먹기 눈 뜸",
+      "sha256": "8903fbcc002aa6e17faeba5d231221062fc7be15f8bca7bf0e550cde2164945e",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-left-eat-eyes-closed-0.png",
+      "character": "horus",
+      "direction": "left",
+      "frame": "0",
+      "size": [
+        1284,
+        1225
+      ],
+      "anchor": [
+        642,
+        1191
+      ],
+      "source": "사용자 그림, 구글 드라이브 \"죄향 02.png\" (2026-10-17), 좌향 먹기 눈 감음",
+      "sha256": "95c1164ec934ed97273f444c61518208463616e4ace962328f3d8df886aba478",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-right-eat-eyes-open-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        1284,
+        1225
+      ],
+      "anchor": [
+        642,
+        1193
+      ],
+      "source": "사용자 그림, 구글 드라이브 \"우향 01.png\" (2026-10-17), 우향 먹기 눈 뜸",
+      "sha256": "3176f3b03e38ae65ac861c0aba53e7940b8a7b64fac6f568749284f4f9b6366e",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-right-eat-eyes-closed-0.png",
+      "character": "horus",
+      "direction": "right",
+      "frame": "0",
+      "size": [
+        1284,
+        1225
+      ],
+      "anchor": [
+        642,
+        1191
+      ],
+      "source": "사용자 그림, 구글 드라이브 \"우향 02.png\" (2026-10-17), 우향 먹기 눈 감음",
+      "sha256": "0f11ac3f4edcd14a4643499282d7dde000e9cab80ffe7d5e58295240c5ae4f2f",
+      "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
+      "alphaExtrema": [
+        0,
+        255
       ]
     }
   ]
