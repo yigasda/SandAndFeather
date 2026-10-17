@@ -1782,3 +1782,19 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_pop_wrap[data-kind='fishing'] .sf_pop_body { padding: 6px 12px 0; }
 #sf_game .sf_pop_wrap[data-kind='fishing'] .sf_pop_btns { padding-top: 4px; padding-bottom: 4px; }
 #sf_game .sf_pop_wrap[data-kind='fishing'] .sf_btn { min-height: 34px; }
+
+/* 두아트 필드 전투 (src/packs/duat/field.js): 체력·공포 panel, 기술·주문 over 공격 */
+#sf_game .sf_duat_hud { position: absolute; left: 10px; top: calc(172px + env(safe-area-inset-top, 0px)); z-index: 4; width: 168px; padding: 6px 8px; border-radius: 8px; background: #2b2018d9; color: #fbf3ea; font-size: 12px; display: flex; flex-direction: column; gap: 4px; pointer-events: none; }
+#sf_game .sf_duat_hud b { font-size: 12px; color: #f2c66e; }
+#sf_game .sf_duat_bar { position: relative; height: 15px; border-radius: 4px; background: #00000066; overflow: hidden; }
+#sf_game .sf_duat_bar i { position: absolute; left: 0; top: 0; bottom: 0; background: #d8574a; }
+#sf_game .sf_duat_bar.sf_fear i { background: #7a63b8; }
+#sf_game .sf_duat_bar span { position: relative; z-index: 1; padding-left: 5px; line-height: 15px; font-size: 11px; font-weight: 700; text-shadow: 0 1px 1px #000; }
+#sf_game .sf_duat_btns { display: flex; flex-direction: column; gap: 6px; align-self: flex-end; }
+#sf_game .sf_duat_btns .sf_btn { min-width: 58px; height: 34px; padding: 0 8px; font-size: 13px; font-weight: 800; }
+#sf_game .sf_duat_btns .sf_btn:disabled { opacity: .55; }
+/* 공격: the 말 걸기 art has its words drawn in, so down in the Duat the button is drawn plain with its own word */
+#sf_game .sf_talk.sf_attack, #sf_game[data-ui-theme] .sf_talk.sf_attack { background: radial-gradient(circle at 50% 38%, #e2763f, #a8381f 70%); border: 3px solid #f2c66e; border-radius: 50%; box-shadow: 0 0 0 2px #4a2414, inset 0 -4px 0 #0003; opacity: 1; }
+#sf_game .sf_talk.sf_attack > *, #sf_game[data-ui-theme] .sf_talk.sf_attack > * { opacity: 1; }
+#sf_game .sf_talk.sf_attack i { display: none; }
+#sf_game .sf_talk.sf_attack span { color: #fff4dc; font-size: 17px; font-weight: 900; text-shadow: 0 1px 2px #0008; }

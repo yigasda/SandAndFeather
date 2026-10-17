@@ -32,6 +32,7 @@ export const freshState = () => ({
     daily: { day: -1, tasks: [] },                 // progress.js: today's two commissions
     adv: { cur: null, done: [], recent: [], memory: [], day: -1, wait: false }, // packs/adventure
     duat: null,                                    // packs/duat: a run in progress
+    duatField: null,                               // packs/duat/field.js: the field run below (체력 each, 공포, 주문, cleared)
     lessons: { cur: '', prog: {}, done: [] },      // progress.js: the learning goal and what was learned
     picks: [],                                     // picks.js: what was taken from chat messages, while they still say it
     daylog: { day: -1 },                           // daylog.js: the day going on: what she did, got, lived through
