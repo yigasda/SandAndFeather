@@ -781,6 +781,10 @@
       "alphaExtrema": [
         0,
         254
+      ],
+      "referenceVisibleHeight": 537.5,
+      "edits": [
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 537.5(그림 px, 서 있는 키 576과 같은 단위). 정면 잠: 세트·소망 정면 잠 키 평균에 맞춤. 사용자 \"정면 잠은 채택\""
       ]
     },
     {
@@ -809,6 +813,10 @@
       "alphaExtrema": [
         0,
         254
+      ],
+      "referenceVisibleHeight": 537.5,
+      "edits": [
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 537.5(그림 px, 서 있는 키 576과 같은 단위). 정면 잠: 0프레임과 같은 배율. 사용자 \"정면 잠은 채택\""
       ]
     },
     {
@@ -837,6 +845,10 @@
       "alphaExtrema": [
         0,
         255
+      ],
+      "referenceVisibleHeight": 821.2,
+      "edits": [
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 821.2(그림 px, 서 있는 키 576과 같은 단위). 옆잠: 세트 옆잠 키에 맞춘 값(837.6)에서 2 % 크게. 사용자 \"옆잠 2%\""
       ]
     },
     {
@@ -865,6 +877,10 @@
       "alphaExtrema": [
         0,
         255
+      ],
+      "referenceVisibleHeight": 821.2,
+      "edits": [
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 821.2(그림 px, 서 있는 키 576과 같은 단위). 옆잠: 0프레임과 같은 배율. 사용자 \"옆잠 2%\""
       ]
     },
     {
@@ -888,11 +904,15 @@
         431,
         484
       ],
-      "sha256": "58ac49dd654fb13a1b501943ebb38434202b956212761d6753ce6a05e04c2058",
+      "sha256": "e3d1adac63058faa70204241c9cb4dcc53b724044d4abcd88be0de95b64bcc24",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "referenceVisibleHeight": 435.5,
+      "edits": [
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 435.5(그림 px, 서 있는 키 576과 같은 단위). 낚시: 세트·소망 낚시 0프레임 키 평균에 맞춤. 발밑 점(465행 아래, x 150 오른쪽) 지움 원본 sources/horus-front-fish-0-점전.png."
       ]
     },
     {
@@ -916,11 +936,15 @@
         903,
         484
       ],
-      "sha256": "b584b3d8ef44055a640a39c7c024abb73f4284eb07abcb9c27e929eaf28db1d1",
+      "sha256": "7865ff5bc396d2f7cad468ff9873003761999296f658ebfd42f8a8353b2adc29",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "referenceVisibleHeight": 366.0,
+      "edits": [
+        "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 366.0(그림 px, 서 있는 키 576과 같은 단위). 낚시 1프레임: 0프레임 배율에서 19 % 크게(당기는 그림이 작게 그려져 있음). 발밑 점(478행 아래) 지움. 사용자 \"fish 1 19%\" 원본 sources/horus-front-fish-1-점전.png."
       ]
     },
     {
