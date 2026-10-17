@@ -183,11 +183,14 @@
         1250,
         445
       ],
-      "sha256": "6bfa18ed4d0ba97cd46ea7c540e6177baf1f8fd6817b110815b993126d3dcfab",
+      "sha256": "871c4addb74fd93543fd859c6db6b610dc33f831215bedcabd2e3e066b9b198a",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 89.7 %(목=깃 위끝 176,290 기준 가로세로 같이, headshrink.py 70행 — 정지 정면 비율값에서 4 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 원본 sources/horus-back-interact-0-비율전.png. 사용자: 시안 시트 -4 % 열에 동그라미 \"이거 ㄱㄱ\""
       ]
     },
     {
@@ -211,11 +214,14 @@
         1692,
         447
       ],
-      "sha256": "fe7fc515113d1a2add393892767642d39a736ba470900d8dbdaf869c3d31b1a1",
+      "sha256": "168861f83f71c7676f328ba89191f0eff8378eb12e415b53f229f7df0b85666f",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 89.7 %(목=깃 위끝 179,290 기준 가로세로 같이, headshrink.py 70행 — 정지 정면 비율값에서 4 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 원본 sources/horus-back-interact-1-비율전.png. 사용자: 시안 시트 -4 % 열에 동그라미 \"이거 ㄱㄱ\""
       ]
     },
     {
@@ -1508,18 +1514,21 @@
       "frame": "0",
       "size": [
         887,
-        887
+        893
       ],
       "anchor": [
         443,
-        875
+        881
       ],
       "source": "사용자 그림, ../horus-replacement-originals-2026-10-17/horus-back-idle-v1.png",
-      "sha256": "236ad3a3fbe600350637b45fde533f34dcd8a3d0e5974b74e94d4817f4915184",
+      "sha256": "64449afdc4d1bed4d85302c58721a94641d7a86ca4131ccb4488daf0d3b968fc",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 99.4 %(목=깃 위끝 429,537 기준 가로세로 같이, headshrink.py 70행 — 정지 정면 비율값에서 4 % 작게) 뒤 가로폭 98.9 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 6px·좌우 0px 늘림(anchor 같이 옮김). 원본 sources/horus-back-idle-0-비율전.png. 사용자: 시안 시트 -4 % 열에 동그라미 \"이거 ㄱㄱ\""
       ]
     },
     {
