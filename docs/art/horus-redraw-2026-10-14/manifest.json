@@ -224,12 +224,12 @@
       "direction": "left",
       "frame": "0",
       "size": [
-        363,
-        454
+        337,
+        451
       ],
       "anchor": [
-        181,
-        438
+        168,
+        435
       ],
       "source": "sources/interact.png",
       "sourceCell": 5,
@@ -239,14 +239,11 @@
         366,
         877
       ],
-      "sha256": "bf9e8fda0a8162e5893386368b8215278a1f1b816b620ab040f8dc57ba5a31f2",
+      "sha256": "36082ff375935154c3fc717e053a40f6facf0f642a907565088d9fc9a332f96e",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 101.4 %(목 156,272 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 96.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 3px·좌우 13px 늘림(anchor 같이 옮김). 원본 sources/horus-left-interact-0-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -255,12 +252,12 @@
       "direction": "left",
       "frame": "1",
       "size": [
-        374,
-        456
+        348,
+        452
       ],
       "anchor": [
-        187,
-        440
+        174,
+        436
       ],
       "source": "sources/interact.png",
       "sourceCell": 6,
@@ -270,14 +267,11 @@
         809,
         879
       ],
-      "sha256": "620b5e67e3248d9902eee261608a5ce8963f3d10aadb7c8f512f82a38b4da1c1",
+      "sha256": "1f8619e93ac7a3586ca214984e700959e2b43c219754c77114569c6c3f989c46",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 101.4 %(목 165,272 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 96.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 4px·좌우 13px 늘림(anchor 같이 옮김). 원본 sources/horus-left-interact-1-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -286,12 +280,12 @@
       "direction": "right",
       "frame": "0",
       "size": [
-        402,
-        479
+        342,
+        450
       ],
       "anchor": [
-        201,
-        463
+        171,
+        434
       ],
       "source": "sources/interact.png",
       "sourceCell": 7,
@@ -301,14 +295,11 @@
         1232,
         877
       ],
-      "sha256": "79badb96385e3aa893f1033766ce2225fd2155cc8921f38aff62d88356f26285",
+      "sha256": "5b4501aef0643c2cc5edc543b7a6785d9f38008e9d9ce492b974ac55f1051bb4",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 111.6 %(목 171,262 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 93.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 29px·좌우 30px 늘림(anchor 같이 옮김). 원본 sources/horus-right-interact-0-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -317,12 +308,12 @@
       "direction": "right",
       "frame": "1",
       "size": [
-        396,
-        481
+        336,
+        454
       ],
       "anchor": [
-        198,
-        465
+        168,
+        438
       ],
       "source": "sources/interact.png",
       "sourceCell": 8,
@@ -332,14 +323,11 @@
         1688,
         878
       ],
-      "sha256": "932b3ba48c8c8af2e12637b29dc41aa53322c3b920f2ff11af59bbf7c38aef79",
+      "sha256": "36d12ce769d6c3fc8f6349db35a837e8e6527a516ca2d7da60f505d512268f1b",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 111.6 %(목 178,265 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 93.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 27px·좌우 30px 늘림(anchor 같이 옮김). 원본 sources/horus-right-interact-1-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1235,12 +1223,12 @@
       "direction": "left",
       "frame": 0,
       "size": [
-        512,
-        559
+        416,
+        510
       ],
       "anchor": [
-        256,
-        543
+        208,
+        494
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 1,
@@ -1250,14 +1238,11 @@
         384,
         496
       ],
-      "sha256": "b825dfbde320b2cd696eb4b1de0982bffa6ed4cfc50c16d331d972226c0a3eea",
+      "sha256": "d2ae2ef0a5b460e92978453af658aac99c287ad2bbef98aa08cc03fe4e4ee012",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 118.0 %(목 200,292 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 107.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 49px·좌우 48px 늘림(anchor 같이 옮김). 원본 sources/horus-left-idle-0-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1266,12 +1251,12 @@
       "direction": "left",
       "frame": 0,
       "size": [
-        498,
-        557
+        416,
+        517
       ],
       "anchor": [
-        249,
-        541
+        208,
+        501
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 2,
@@ -1281,14 +1266,11 @@
         768,
         508
       ],
-      "sha256": "a0de49ce3c1ad6938849702816ce7f5c966c9fea87046e2070ebf703513df252",
+      "sha256": "0b487551597be0078ab464fd53899ccb066b17d8e2b427ef390cebc443b406e6",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 114.7 %(목 215,289 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 106.8 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 40px·좌우 41px 늘림(anchor 같이 옮김). 원본 sources/horus-left-walk-0-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1297,12 +1279,12 @@
       "direction": "left",
       "frame": 1,
       "size": [
-        498,
-        556
+        416,
+        514
       ],
       "anchor": [
-        249,
-        540
+        208,
+        498
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 3,
@@ -1312,14 +1294,11 @@
         1152,
         502
       ],
-      "sha256": "f92a0d6f0c87fb42725d0e67eb34f525f60e926747de5b7654c3236fc6d57faf",
+      "sha256": "79a1b29955410b2aff8afb4a9ed4e99bd21fcb856c6fcedb05498761db45a8ee",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 114.7 %(목 202,294 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 106.8 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 42px·좌우 41px 늘림(anchor 같이 옮김). 원본 sources/horus-left-walk-1-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1328,12 +1307,12 @@
       "direction": "left",
       "frame": 2,
       "size": [
-        483,
-        551
+        403,
+        510
       ],
       "anchor": [
-        241,
-        535
+        201,
+        494
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 4,
@@ -1343,14 +1322,11 @@
         1524,
         496
       ],
-      "sha256": "26f8856c437f76a0c82f4fd4a491bb79237783e2f8d4064c4d0f59e7f919ae48",
+      "sha256": "1d43ad06915994163f95d8ccb62bbadf047c708b445a7f48dcfb1ae247f877c6",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 114.7 %(목 222,296 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 106.8 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 41px·좌우 40px 늘림(anchor 같이 옮김). 원본 sources/horus-left-walk-2-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1359,12 +1335,12 @@
       "direction": "right",
       "frame": 0,
       "size": [
-        516,
-        570
+        416,
+        517
       ],
       "anchor": [
-        258,
-        554
+        208,
+        501
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 5,
@@ -1374,14 +1350,11 @@
         384,
         1000
       ],
-      "sha256": "ad5010b5603b4a0c3ca8b69e55d0e3f2bed3f085940d2d73dfea227ef3d08df5",
+      "sha256": "d89d0ebb2ae369d5a34f6b1e2ecbf0acfe00dbd29bbe53d14ecd3ca9c60435c0",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 119.0 %(목 202,290 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 103.1 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 53px·좌우 50px 늘림(anchor 같이 옮김). 원본 sources/horus-right-idle-0-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1390,12 +1363,12 @@
       "direction": "right",
       "frame": 0,
       "size": [
-        520,
-        564
+        416,
+        509
       ],
       "anchor": [
-        260,
-        548
+        208,
+        493
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 6,
@@ -1405,14 +1378,11 @@
         768,
         992
       ],
-      "sha256": "8555d50bc84c3e882296d581a134b87aaaf4e01a8f8a828f6d7083ec84136118",
+      "sha256": "0af2ed8c7524c13b39602f8a2f8c85eae53278478b186fba8c859a3ff7a80ff1",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 120.1 %(목 204,290 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 101.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 55px·좌우 52px 늘림(anchor 같이 옮김). 원본 sources/horus-right-walk-0-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1421,12 +1391,12 @@
       "direction": "right",
       "frame": 1,
       "size": [
-        520,
-        568
+        416,
+        515
       ],
       "anchor": [
-        260,
-        552
+        208,
+        499
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 7,
@@ -1436,14 +1406,11 @@
         1152,
         996
       ],
-      "sha256": "f4a158f9e868f33dfcc089e75309769b91eef58f6f73a889905ad3fbc9f1c8bb",
+      "sha256": "b5a6b3222ec6a410dc743ad99e890fb7380a3f9f56ea21a03466d4d879a7b741",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 120.1 %(목 202,292 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 101.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 53px·좌우 52px 늘림(anchor 같이 옮김). 원본 sources/horus-right-walk-1-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
@@ -1452,12 +1419,12 @@
       "direction": "right",
       "frame": 2,
       "size": [
-        519,
-        560
+        415,
+        510
       ],
       "anchor": [
-        259,
-        544
+        207,
+        494
       ],
       "source": "sources/side-idle-walk.png",
       "sourceCell": 8,
@@ -1467,14 +1434,11 @@
         1535,
         990
       ],
-      "sha256": "0ed67216a543dc2a8273b55af315e411556362c699d721839ef5773859649ce2",
+      "sha256": "2d7b4235237acc8a12687f10bcb5dede26515206cb39e5bf3c818065cf5ad6f3",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
         254
-      ],
-      "edits": [
-        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 120.1 %(목 240,290 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값) 뒤 가로폭 101.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 몸÷머리 0.614. 캔버스 위 50px·좌우 52px 늘림(anchor 같이 옮김). 원본 sources/horus-right-walk-2-비율전.png. 사용자: \"크기 가로폭 둘다\""
       ]
     },
     {
