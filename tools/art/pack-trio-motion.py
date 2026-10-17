@@ -217,6 +217,53 @@ def horus_frames(playback):
     return frames
 
 
+# 전투 (두아트 필드 전투): each one's 18 combat pictures (left/right × idle 0-2, anticipation, attack, skill, spell,
+# hit, tired) in their own atlas, data/art/characters/trio-combat-<who>[-small].png (the life atlases are near 4096),
+# as sprites.json looks.<who>.combat = {file, visible, height, acts{ready,anticipation,…}{left,right}[frames], actPlay,
+# small}. The combat idle is the state "ready". Sizes: referenceVisibleHeight written per picture in each manifest
+# (user-approved on game-renderer sheets). Anchor: the middle of the two feet on the bottom row (feet_middle), or
+# COMBAT_ANCHOR where a weapon reaches lower than the feet.
+COMBAT = {'horus': os.path.join(ROOT, 'docs', 'art', 'horus-combat-approved-18-2026-10-15'),
+          'set': os.path.join(ROOT, '메인2', '세트'), 'somang': os.path.join(ROOT, '메인2', '소망')}
+# Set's trident reaches below the feet in these: the middle of the two sandals (read on zoomed crops 2026-10-17)
+COMBAT_ANCHOR = {('set', 'right-combat-idle-0'): [801.5, 677], ('set', 'right-combat-idle-1'): [809.5, 679], ('set', 'right-combat-idle-2'): [803.5, 680],
+                 ('set', 'right-combat-skill-0'): [794.5, 787], ('set', 'right-combat-tired-0'): [844, 797], ('set', 'right-combat-hit-0'): [811, 800],
+                 ('set', 'left-combat-idle-0'): [799, 680], ('set', 'left-combat-idle-1'): [799, 676], ('set', 'left-combat-idle-2'): [800, 676],
+                 ('set', 'left-combat-skill-0'): [796.5, 784], ('set', 'left-combat-tired-0'): [739, 795]}
+# Horus's skill is a dive from the air: the anchor puts his head where the same side's idle 0 has it (plan B-2), the
+# height of the jump is given in the game
+COMBAT_AIR = {('horus', 'skill')}
+COMBAT_PLAY = {'ready': {'frameMs': [220, 220, 220, 220], 'seq': [0, 1, 2, 1], 'loop': True},
+               'anticipation': {'frameMs': [120]}, 'attack': {'frameMs': [260]}, 'skill': {'frameMs': [450]},
+               'spell': {'frameMs': [500]}, 'hit': {'frameMs': [300]}, 'tired': {'frameMs': [800], 'hold': True}}
+
+
+def combat_frames(who):
+    d = COMBAT[who]; m = json.load(open(os.path.join(d, 'manifest.json')))
+    out = []
+    for e in m.get('sprites') or m.get('files'):
+        path = os.path.join(d, e['file'])
+        assert hashlib.sha256(open(path, 'rb').read()).hexdigest() == e['sha256'], path
+        name = os.path.basename(path)[:-4].split('-', 1)[1]          # left-combat-idle-0
+        side, _, motion, ph = name.split('-')
+        state = 'ready' if motion == 'idle' else motion
+        out.append({'id': f'{who}.combat.{state}.{side}.{ph}', 'character': who, 'state': state, 'gameDirection': side,
+                    'phase': int(ph), 'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': e['referenceVisibleHeight'],
+                    'alphaBounds': list(Image.open(path).getchannel('A').getbbox()),
+                    'pivot': COMBAT_ANCHOR.get((who, name)) or feet_middle(path)})
+    assert len(out) == 18, (who, len(out))
+    def head(f):   # top of the hair and the middle of the top fifth of the figure
+        b = solid_box(os.path.join(ROOT, f['path'])); a = Image.open(os.path.join(ROOT, f['path'])).getchannel('A').point(lambda v: 255 if v >= 128 else 0)
+        t = a.crop((0, b[1], a.width, b[1] + (b[3] - b[1]) // 5)).getbbox()
+        return (t[0] + t[2]) / 2, b[1]
+    for f in out:
+        if (who, f['state']) in COMBAT_AIR:
+            idle = next(g for g in out if g['state'] == 'ready' and g['phase'] == 0 and g['gameDirection'] == f['gameDirection'])
+            (ix, iy), (hx, hy) = head(idle), head(f); k = f['referenceVisibleHeight'] / idle['referenceVisibleHeight']
+            f['pivot'] = [round(hx + (idle['pivot'][0] - ix) * k, 1), round(hy + (idle['pivot'][1] - iy) * k, 1)]
+    return out
+
+
 def main():
     man = json.load(open(os.path.join(SRC, 'manifest.json')))
     if man.get('runtimeEligible') is False:
@@ -256,6 +303,12 @@ def main():
             sprites['looks'][who]['motion']['acts'] = b['acts']
             sprites['looks'][who]['motion']['actPlay'] = {k: v for k, v in playback.items() if k in b['acts']}
             if b.get('tips'): sprites['looks'][who]['motion']['actTips'] = b['tips']
+    for who in ['set', 'somang', 'horus']:
+        cf = combat_frames(who)
+        b = pack(cf, VISIBLE, f'art/characters/trio-combat-{who}.png')[who]
+        sm = pack(cf, SMALL, f'art/characters/trio-combat-{who}-small.png')[who]
+        sprites['looks'][who]['combat'] = {'file': b['file'], 'visible': b['visible'], 'height': HEIGHT, 'acts': b['acts'],
+                                           'actPlay': COMBAT_PLAY, 'small': {k: sm[k] for k in ('file', 'visible', 'acts')}}
     with open(sprites_path, 'w') as fh:
         fh.write(compact(json.dumps(sprites, ensure_ascii=False, indent=1)) + '\n')
 
