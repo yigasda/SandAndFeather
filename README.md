@@ -1,5 +1,7 @@
 # 모래와 깃털 (Sand and Feather)
 
+**호루스 재생성 원문 바로가기:** [정면·뒷면·먹기 프롬프트와 채택 PNG](docs/HORUS-SPRITE-PROMPTS.md)
+
 > # 🛑 DO EXACTLY WHAT THE USER SAID. NOT YOUR VERSION OF IT. 🛑
 > - **THE USER'S WORDS ARE THE ORDER. DO NOT REINTERPRET, NARROW, SOFTEN OR "OPTIMISE" THEM.** "Trace Horus's body and redraw" means **TRACE THE WHOLE BODY AND REDRAW IT** — not "match the outer width", not "fix only the outline", not "adjust a few pixels".
 > - **IF YOU THINK A SMALLER OR EASIER VERSION IS ENOUGH, YOU ARE WRONG. DO THE WHOLE THING.**
