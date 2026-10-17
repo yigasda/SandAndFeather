@@ -925,11 +925,14 @@
         1738,
         481
       ],
-      "sha256": "573bd96c6bf84366d6fba7e9d0a5fb6ae8568bada83e35b4855c93c35e94983a",
+      "sha256": "64e07de1c88a0c996dd49a492033293254b9e57a0dd0bf392818e92a1a01638b",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 89.5 %(목 165,303 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 103.1 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 원본 sources/horus-front-read-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\""
       ]
     },
     {
@@ -966,19 +969,22 @@
       "direction": "front",
       "frame": "0",
       "size": [
-        426,
-        610
+        506,
+        655
       ],
       "anchor": [
-        213,
-        594
+        253,
+        639
       ],
       "source": "사용자 그림, 구글 드라이브 \"정면 해피.png\" (2026-10-17)",
-      "sha256": "afe56cbc0ef6bdc241a04ed95fe7c645cc44e8075763e0b296b1c735d7e76328",
+      "sha256": "151e57f61bdbca27e064a6089f0d32d5a738fb89f7a4a3a88b135e3c5f080c6f",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 113.6 %(목 205,358 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 96.2 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 캔버스 위 45px·좌우 40px 늘림(anchor 같이 옮김). 원본 sources/horus-front-happy-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\""
       ]
     },
     {
@@ -987,12 +993,12 @@
       "direction": "front",
       "frame": "0",
       "size": [
-        653,
-        973
+        769,
+        1054
       ],
       "anchor": [
-        326,
-        957
+        384,
+        1038
       ],
       "source": "sources/shy-surprise.png",
       "sourceCell": 1,
@@ -1002,11 +1008,14 @@
         767,
         958
       ],
-      "sha256": "7046162bdbd3365a678bb04727ca96445ecb96015b41f91b65e480a955dc1f8a",
+      "sha256": "cdf156fc48ceb8be36c146f3515749b1c51fe60d3d541f6d2ed29c18b042b3c0",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 114.5 %(목 290,567 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 100.8 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 캔버스 위 81px·좌우 58px 늘림(anchor 같이 옮김). 원본 sources/horus-front-shy-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\""
       ]
     },
     {
@@ -1015,12 +1024,12 @@
       "direction": "front",
       "frame": "0",
       "size": [
-        658,
-        975
+        782,
+        1063
       ],
       "anchor": [
-        329,
-        959
+        391,
+        1047
       ],
       "source": "sources/shy-surprise.png",
       "sourceCell": 2,
@@ -1030,11 +1039,14 @@
         1453,
         960
       ],
-      "sha256": "e71c0c333ec96f7f8e8ff3bdfbc7db664a0b3377162ec35118c24fd925d08d12",
+      "sha256": "6675c8b4321ea871c1b3dce18000cdbf8a633e51fd361b695d0439ef69ffbadb",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 115.8 %(목 290,565 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 99.5 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 캔버스 위 88px·좌우 62px 늘림(anchor 같이 옮김). 원본 sources/horus-front-surprised-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\""
       ]
     },
     {
