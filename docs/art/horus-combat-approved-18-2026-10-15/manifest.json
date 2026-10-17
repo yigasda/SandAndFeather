@@ -18,7 +18,7 @@
         469
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "4828b5d30c9a880786fb9b834b79f1988f1d8e481a47322b1ed9a2a6f0780cfc",
+      "sha256": "efbbe044a025f373b8520652db24119656b1f8fd646f15bf7984f036f1d30ed0",
       "previewScaleOnly": 0.7,
       "character": "horus",
       "direction": "left",
@@ -31,7 +31,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-anticipation-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-hit-0",
@@ -48,7 +51,7 @@
         578
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "40de908f2d688d3a860374ca52fb36c517b47bb768f9065444ffe5396ffc71a2",
+      "sha256": "5da3555b77195a0ae69f1f31d7e8a9272bf4bafc16f72e03f844b13e306875d8",
       "previewScaleOnly": 0.7,
       "character": "horus",
       "direction": "left",
@@ -61,7 +64,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-hit-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-idle-0",
@@ -78,7 +84,7 @@
         481
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "0944dc2cc529af295635e6ef54bf6532f18430b13421d7bdce9d41fe30fcab7b",
+      "sha256": "46a3540de26f6589cc40ce8456c576097eae51f1cc81131e463228828578651b",
       "previewScaleOnly": 0.7,
       "character": "horus",
       "direction": "left",
@@ -91,7 +97,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-idle-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-idle-1",
@@ -108,7 +117,7 @@
         496
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "ae7af9ebf2001208818cbc72792ebc4a9c10fa7c731d8dbad849aefce28e68a4",
+      "sha256": "6017cf018466a6d2f2dbb8e379446ed1314f23ae1f29f600829cc37d665bbc17",
       "previewScaleOnly": 0.7,
       "character": "horus",
       "direction": "left",
@@ -121,7 +130,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-idle-1.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-idle-2",
@@ -138,7 +150,7 @@
         487
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "e6acb59830bbf844bc8014028ccdfe93348dbdc1dc507b3ec9e22b122d2ade59",
+      "sha256": "4aaa7c9ae9d9524c170a502ea4a7ca1e211edfe0a939f3a3cc126f2a32254b5b",
       "previewScaleOnly": 0.7,
       "character": "horus",
       "direction": "left",
@@ -151,7 +163,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존"
+      "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-idle-2.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-skill-0",
@@ -168,7 +183,7 @@
         518
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "ee214f1277dba24849e718b18cb69cb6eedaa77d93c7a576d86416c0c89e3886",
+      "sha256": "34bec777accbdd097437decd0bb86c5972fef20a036050761c5c4d85e3d8a674",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -181,7 +196,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기"
+      "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-skill-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-skill-0",
@@ -198,7 +216,7 @@
         493
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "e09388b13155e6d7d43e918c241169602e484172c81d86ce7767189c44ecc185",
+      "sha256": "c900a6fb984e97b2e2d1bf2abb7e02bca1832f25ee6d335ba00c0f8417c430c4",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "left",
@@ -211,7 +229,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기"
+      "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-skill-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-idle-0",
@@ -228,7 +249,7 @@
         669
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "b7340d054ccb7ac6861f567ccc4205119ae4878ac0336990790ae732bb445d57",
+      "sha256": "c21ace9b4359ecdd6cbc900ccdb67096d6ca6abfc728d718e6ac1eed7a2bac2d",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -241,7 +262,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "대기 채택!"
+      "approvalEvidence": "대기 채택!",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-idle-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-idle-1",
@@ -258,7 +282,7 @@
         850
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "a4d533955de9dbe0b99fca4b367c1d50b29cb5da44ac370779c926cc04d75336",
+      "sha256": "68690658fde44b3e895f5fa7c8184c7b70f9ce5d0f113ac3c4c5b8774877894f",
       "previewScaleOnly": 0.3673055242390079,
       "character": "horus",
       "direction": "right",
@@ -271,7 +295,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "대기 채택!"
+      "approvalEvidence": "대기 채택!",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-idle-1.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-idle-2",
@@ -288,7 +315,7 @@
         802
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "843afff9eed1cb36573b3285a23564bf12eb79a19f37f41ab644f734ca782b22",
+      "sha256": "8a96e0164fb14c3b8959e37541ca4c0f7bead31aa784c74df0db3bdcdbed90b3",
       "previewScaleOnly": 0.3673055242390079,
       "character": "horus",
       "direction": "right",
@@ -301,7 +328,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "대기 채택!"
+      "approvalEvidence": "대기 채택!",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-idle-2.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-spell-0",
@@ -318,7 +348,7 @@
         704
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "d791757a80bf0295498669c0951c032c7c602d9b1f8497381094ce2f40066b49",
+      "sha256": "71bbb8105648432cca72a226e755e466d7b93e4a13bea4f955b92c3fe11fe379",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -331,7 +361,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)"
+      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-spell-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-spell-0",
@@ -348,7 +381,7 @@
         703
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "8c8152349815159e0bb8559b04bb42bab6432347ce78279dc1e20475219f32ee",
+      "sha256": "5931dbddcf538757ea79b1bedad5f5d116400f92004f29931bb00d963962e32a",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "left",
@@ -361,7 +394,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)"
+      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-spell-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-anticipation-0",
@@ -378,7 +414,7 @@
         556
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "6a87b147825e56d2a7fbbe5d5a0ee156847cddfb76709b90b140fb0e4154414e",
+      "sha256": "7735b1ef190627aa2f5989ca063a477de0212807a2b6ecfb3e11129687e70afa",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -391,7 +427,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)"
+      "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-anticipation-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-tired-0",
@@ -408,7 +447,7 @@
         647
       ],
       "cropPixelsUnchanged": false,
-      "sha256": "8bfb9a0024329d48abb2096276798a9347ea3c2c04d7aedb8f2c23a70efff4be",
+      "sha256": "6ad6af7e3cc84014e628c6c30e95e7acb087871eeec3dc04d6da2735d5e03648",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -422,7 +461,10 @@
         "runtimeConfigured": false
       },
       "approvalEvidence": "사용자 2026-10-17: \"드라이브에 수정본 올렸음 이거 깃헙 최종 전투 채택본에서 교체해\"",
-      "userEdit": "2026-10-17 사용자 수정본(구글 드라이브 \"horus-right-combat-tired-0.png\")으로 교체, 받은 그대로"
+      "userEdit": "2026-10-17 사용자 수정본(구글 드라이브 \"horus-right-combat-tired-0.png\")으로 교체, 받은 그대로",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-tired-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-tired-0",
@@ -439,7 +481,7 @@
         670
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "65ef881373e314ab8ee024a16a266f2bcb4df7d3d57cab2d9651468e6998d3e2",
+      "sha256": "2432a3ab62193c87fe293ef3755fa9a207171804c257afcc160b02912db56505",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "left",
@@ -452,7 +494,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "지침 채택!"
+      "approvalEvidence": "지침 채택!",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-tired-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-hit-0",
@@ -469,7 +514,7 @@
         743
       ],
       "cropPixelsUnchanged": false,
-      "sha256": "ab90ef0240aca34be4125ce329d4785ffaa0110054067324915d85ee528882cc",
+      "sha256": "a731c814d402340154e13106de7d345e1cb8c94d346971a17a6b73237a0e3f5e",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -483,7 +528,10 @@
         "runtimeConfigured": false
       },
       "approvalEvidence": "사용자 2026-10-17: \"드라이브에 수정본 올렸음 이거 깃헙 최종 전투 채택본에서 교체해\"",
-      "userEdit": "2026-10-17 사용자 수정본(구글 드라이브 \"horus-right-combat-hit-0.png\")으로 교체, 받은 그대로"
+      "userEdit": "2026-10-17 사용자 수정본(구글 드라이브 \"horus-right-combat-hit-0.png\")으로 교체, 받은 그대로",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-hit-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "left-combat-attack-0",
@@ -500,7 +548,7 @@
         609
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "f77656e4882107054922ab3695fa9f48b46d444b7c19b304f39404067e318b48",
+      "sha256": "fee3f383aac23c83639c06d7974eee752efbbf7631d12c3aeb6ee5e8745bbff6",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "left",
@@ -513,7 +561,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기"
+      "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-attack-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     },
     {
       "name": "right-combat-attack-0",
@@ -530,7 +581,7 @@
         610
       ],
       "cropPixelsUnchanged": true,
-      "sha256": "0ca40f289b89fcc74a2da57ac0623d4a2039b5fe2185a96ce2833242ef78b5a5",
+      "sha256": "a203c3a973b8899b1999ebbb1450d7f4c4674902aeae33e0949b50517b78ccf2",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -543,7 +594,10 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기"
+      "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기",
+      "edits": [
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-attack-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
+      ]
     }
   ],
   "runtimeApplied": false,
