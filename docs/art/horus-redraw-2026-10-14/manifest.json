@@ -2,7 +2,7 @@
   "status": "user-approved-art-only",
   "runtimeApplied": false,
   "pixelProcessing": "Lossless extraction, no resizing/repainting; transparent padding 16 px",
-  "count": 57,
+  "count": 60,
   "sprites": [
     {
       "file": "png/horus-front-walk-0.png",
@@ -1671,6 +1671,90 @@
       "source": "사용자 그림, 구글 드라이브 \"우향 02.png\" (2026-10-17), 우향 먹기 눈 감음",
       "sha256": "0f11ac3f4edcd14a4643499282d7dde000e9cab80ffe7d5e58295240c5ae4f2f",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-back-walk-0.png",
+      "character": "horus",
+      "direction": "back",
+      "frame": "0",
+      "size": [
+        376,
+        527
+      ],
+      "anchor": [
+        188,
+        511
+      ],
+      "source": "sources/walk.png",
+      "sourceCell": 1,
+      "sourceBox": [
+        76,
+        18,
+        420,
+        513
+      ],
+      "sha256": "4075937f06f5d9d94d6f1bacd236a055f04e7aef324a7852ad8e440cf28aeab3",
+      "approvalEvidence": "채택 시트 walk.png 윗줄(뒷면 걷기). 사용자 2026-10-17 \"뒷면 걷기…도 싹 다 바뀌었는데\": 오푸스가 시트에서 잘라 넣음(알파 1~9 연무만 지움)",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-back-walk-1.png",
+      "character": "horus",
+      "direction": "back",
+      "frame": "1",
+      "size": [
+        377,
+        526
+      ],
+      "anchor": [
+        188,
+        510
+      ],
+      "source": "sources/walk.png",
+      "sourceCell": 2,
+      "sourceBox": [
+        575,
+        19,
+        920,
+        513
+      ],
+      "sha256": "4592fbcc9710669b5c5903311b0e815c234f0393709585ed834c9fbdd62653b4",
+      "approvalEvidence": "채택 시트 walk.png 윗줄(뒷면 걷기). 사용자 2026-10-17 \"뒷면 걷기…도 싹 다 바뀌었는데\": 오푸스가 시트에서 잘라 넣음(알파 1~9 연무만 지움)",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "png/horus-back-walk-2.png",
+      "character": "horus",
+      "direction": "back",
+      "frame": "2",
+      "size": [
+        378,
+        525
+      ],
+      "anchor": [
+        189,
+        509
+      ],
+      "source": "sources/walk.png",
+      "sourceCell": 3,
+      "sourceBox": [
+        1087,
+        23,
+        1433,
+        516
+      ],
+      "sha256": "59e53f7b028e54212e12775e10198dd48b04d4afdffa38b26bc8ca87418f3f5b",
+      "approvalEvidence": "채택 시트 walk.png 윗줄(뒷면 걷기). 사용자 2026-10-17 \"뒷면 걷기…도 싹 다 바뀌었는데\": 오푸스가 시트에서 잘라 넣음(알파 1~9 연무만 지움)",
       "alphaExtrema": [
         0,
         255
