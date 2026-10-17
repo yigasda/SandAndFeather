@@ -407,8 +407,8 @@
         509,
         647
       ],
-      "cropPixelsUnchanged": true,
-      "sha256": "1213ce9f7a7b777069a48b8ae8e1879b25efcae4fa67cd4e312af3510d927ec3",
+      "cropPixelsUnchanged": false,
+      "sha256": "8bfb9a0024329d48abb2096276798a9347ea3c2c04d7aedb8f2c23a70efff4be",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -421,7 +421,8 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "지침 채택!"
+      "approvalEvidence": "사용자 2026-10-17: \"드라이브에 수정본 올렸음 이거 깃헙 최종 전투 채택본에서 교체해\"",
+      "userEdit": "2026-10-17 사용자 수정본(구글 드라이브 \"horus-right-combat-tired-0.png\")으로 교체, 받은 그대로"
     },
     {
       "name": "left-combat-tired-0",
@@ -467,8 +468,8 @@
         556,
         743
       ],
-      "cropPixelsUnchanged": true,
-      "sha256": "b0211af44f0e6293c50a91d78dc2f053bd78ddab51d87a71a2acd9df1bed0e55",
+      "cropPixelsUnchanged": false,
+      "sha256": "ab90ef0240aca34be4125ce329d4785ffaa0110054067324915d85ee528882cc",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -481,7 +482,8 @@
         ],
         "runtimeConfigured": false
       },
-      "approvalEvidence": "2번으로 하자 — 약한 피격 후보 2번; 이후 재시도는 반려"
+      "approvalEvidence": "사용자 2026-10-17: \"드라이브에 수정본 올렸음 이거 깃헙 최종 전투 채택본에서 교체해\"",
+      "userEdit": "2026-10-17 사용자 수정본(구글 드라이브 \"horus-right-combat-hit-0.png\")으로 교체, 받은 그대로"
     },
     {
       "name": "left-combat-attack-0",
