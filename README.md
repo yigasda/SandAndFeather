@@ -1,5 +1,7 @@
 # 모래와 깃털 (Sand and Feather)
 
+**호루스 재생성 원문 바로가기:** [정면·뒷면·먹기 프롬프트와 채택 PNG](docs/HORUS-SPRITE-PROMPTS.md)
+
 > # 🛑 DO EXACTLY WHAT THE USER SAID. NOT YOUR VERSION OF IT. 🛑
 > - **THE USER'S WORDS ARE THE ORDER. DO NOT REINTERPRET, NARROW, SOFTEN OR "OPTIMISE" THEM.** "Trace Horus's body and redraw" means **TRACE THE WHOLE BODY AND REDRAW IT** — not "match the outer width", not "fix only the outline", not "adjust a few pixels".
 > - **IF YOU THINK A SMALLER OR EASIER VERSION IS ENOUGH, YOU ARE WRONG. DO THE WHOLE THING.**
@@ -20,7 +22,7 @@
 
 세트·호루스 RP 채팅 옆에서 돌아가는 이집트 오픈월드 게임이다. SillyTavern 확장으로 동작한다.
 
-**현재 버전 0.9.76.** 버전별 변경 내역은 [CHANGELOG.md](CHANGELOG.md)에 있다.
+**현재 버전 0.9.77.** 버전별 변경 내역은 [CHANGELOG.md](CHANGELOG.md)에 있다.
 
 **설치는 `release` 브랜치로 한다.** SillyTavern 확장 설치에서 주소 `https://github.com/yigasda/SandAndFeather`, 브랜치 `release`. main은 그림 작업 기록(1 GB 넘음)까지 들어 있어서, main으로 깔면 SillyTavern이 켤 때마다 자동 업데이트로 그걸 다 받느라 느려진다. release는 게임이 쓰는 파일만(약 100 MB).
 

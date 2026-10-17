@@ -196,7 +196,8 @@ function eatCard(spot, ui) {
             showFx('yummy-0', { who: 'lead', ms: 1600 * Math.max(1, bites), size: 1.35, dy: 0.25, bob: 0.04, key: 'eat' });
             for (let k = 0; k < bites * 2; k++) setTimeout(() => {
                 if (player.seat !== seat || !player.act) return;   // she got up
-                player.act = { name: k % 2 ? p.pose : 'eat', at: performance.now() };
+                // a meal drawn in two (Horus: eyes open, eyes closed) shows them by turns; one picture stays as it is
+                player.act = k % 2 ? { name: p.pose, at: performance.now() } : { name: 'eat', at: performance.now(), frame: (k / 2) % 2 };
             }, k * 800);
             setTimeout(() => { if (player.seat === seat && player.act) player.act = { name: p.pose, at: performance.now() }; }, bites * 1600);
             ui.toast(`${josa(itemInfo(it.id).ko, '을')} 먹었어. ${r === 'fed' ? `태양 기운 ${sunLeft(st)}/${sunMax()}` : r === 'full' ? '배부르고 기운도 가득해' : '맛있다'}`);
