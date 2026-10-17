@@ -24,7 +24,7 @@ TARGET = 0.586   # head (top of the hair → chin) / height, shy and surprised a
 # front walk 1 head 323 / body 160, interact 274/151 front · 259/150 left · 268/158 back, read 281/160, happy 340/233,
 # side idle 282/188), factor = TARGET·body / ((1 − TARGET)·head); and the standing template of each view
 SHEETS = {
-    'walk': (0.701, {'front': 'front-walk-1'}),
+    'walk': (0.701, {'front': 'front-walk-1', 'back': 'back-walk-1'}),   # back walk: same sheet, same factor
     'interact': (0.80, {'front': 'front-interact-0', 'back': 'back-interact-0', 'left': 'left-interact-0', 'right': 'right-interact-0'}),
     'sit': (0.80, {'back': 'back-interact-0', 'left': 'left-interact-0', 'right': 'right-interact-0'}),
     'pickup': (0.80, {'front': 'front-interact-0', 'back': 'back-interact-0', 'left': 'left-interact-0', 'right': 'right-interact-0'}),
@@ -47,8 +47,8 @@ def width_of(sheet, n):
     return WIDTH.get((sheet, view), WIDTH[view])
 # the chin of each template (rows read on the zoomed strips; right side pictures like their left ones)
 CHIN = {'front-walk-1': 343, 'front-interact-0': 293, 'front-read-0': 300, 'front-happy-0': 361, 'left-idle-0': 302, 'right-idle-0': 302,
-        'left-interact-0': 280, 'right-interact-0': 280, 'back-interact-0': 288, 'back-cook-0': 290}
-STANDING = {'front-walk-0', 'front-walk-1', 'front-walk-2', 'front-interact-0', 'front-interact-1', 'back-interact-0', 'back-interact-1',
+        'left-interact-0': 280, 'back-walk-1': 314, 'right-interact-0': 280, 'back-interact-0': 288, 'back-cook-0': 290}
+STANDING = {'front-walk-0', 'front-walk-1', 'front-walk-2', 'back-walk-0', 'back-walk-1', 'back-walk-2', 'front-interact-0', 'front-interact-1', 'back-interact-0', 'back-interact-1',
             'left-interact-0', 'left-interact-1', 'right-interact-0', 'right-interact-1', 'front-read-0', 'back-cook-0',
             'front-happy-0', 'front-shy-0', 'front-surprised-0', 'left-idle-0', 'right-idle-0',
             'left-walk-0', 'left-walk-1', 'left-walk-2', 'right-walk-0', 'right-walk-1', 'right-walk-2'}
@@ -117,7 +117,7 @@ def main():
     rows, scale = [], {}
     fixed_h = {}
     for n, sh in sorted(sheet_of.items()):
-        if 'combat' in n or 'drink' in n: continue
+        if 'combat' in n: continue
         src = png(n); dst = os.path.join(OUT, 'png', f'horus-{n}.png')
         if sh in KEEP:
             Image.open(src).save(dst); rows.append({'file': n, 'sheet': sh, 'factor': 1.0}); continue

@@ -120,8 +120,8 @@ def action_frames():
 # surprised (tools/art/horus-v2-ratio.py → ratio/png, ratio/scale.json) take the place of Horus's old frames of the same
 # action, direction and frame. Sizes: standing pictures are a whole Horus tall, the others by their head
 # (scale.json). The anchor sits where the old anchor sat relative to the figure (same place from the middle of the
-# alpha box); the fishing rod's end is measured again. Front and back idle and back walk have no new picture yet
-# (the old ones stay); drink has no action in the game and the combat set is not in the game yet.
+# alpha box); the fishing rod's end is measured again. Back walk was cut from the walk sheet (top row). Front and back
+# idle and the meal have their own new pictures (drawn 2026-10-15), not in the repository yet: the old ones stay.
 HORUS_V2 = os.path.join(ROOT, 'docs', 'art', 'horus-redraw-2026-10-14', 'ratio')
 V2_DIR = {'front': 'down', 'back': 'up', 'left': 'left', 'right': 'right'}
 
@@ -134,6 +134,7 @@ def horus_v2(frames):
     for row in rows:
         name = row['file'].split('-')                      # <view>-<action…>-<frame>
         view, act, ph = name[0], '-'.join(name[1:-1]), int(name[-1])
+        if act == 'drink': continue        # no drink action in the game (the meal has its own picture, not this one)
         fid = f"horus.idle.{V2_DIR[view]}" if act == 'idle' else f"horus.{act}.{V2_DIR[view]}.{ph}"
         if fid not in by_id: raise SystemExit(f'horus v2: no old frame {fid}')
         old = frames[by_id[fid]]

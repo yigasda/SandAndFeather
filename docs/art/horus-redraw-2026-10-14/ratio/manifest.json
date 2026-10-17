@@ -108,6 +108,51 @@
    "sourceSha256": "d185de12ffffac9fd06b93f72ab4b935bcd2a2fb0a8b8ebc6e15c6a68c84137d"
   },
   {
+   "file": "back-walk-0",
+   "sheet": "walk",
+   "factor": 0.701,
+   "bodyWidth": 0.8,
+   "neck": [
+    198.4,
+    305.1
+   ],
+   "template": "back-walk-1",
+   "headSize": 0.96,
+   "match": 0.517,
+   "sha256": "20d2e0e4c3341994523a6f2a8e4fb52f5e3af267f4bef576a6f4c61275a86c64",
+   "sourceSha256": "4075937f06f5d9d94d6f1bacd236a055f04e7aef324a7852ad8e440cf28aeab3"
+  },
+  {
+   "file": "back-walk-1",
+   "sheet": "walk",
+   "factor": 0.701,
+   "bodyWidth": 0.8,
+   "neck": [
+    194.5,
+    314.0
+   ],
+   "template": "back-walk-1",
+   "headSize": 1.0,
+   "match": 1.0,
+   "sha256": "174ed4f3f42e2d338b120aa5f034b476b4db2ebaadad26e88692cafc38b15cfd",
+   "sourceSha256": "4592fbcc9710669b5c5903311b0e815c234f0393709585ed834c9fbdd62653b4"
+  },
+  {
+   "file": "back-walk-2",
+   "sheet": "walk",
+   "factor": 0.701,
+   "bodyWidth": 0.8,
+   "neck": [
+    191.7,
+    311.0
+   ],
+   "template": "back-walk-1",
+   "headSize": 0.99,
+   "match": 0.593,
+   "sha256": "96e4b75d6e0631a9799da0ba5c1a4b571d3e7f57fad739f9fe3bb3359499f6f6",
+   "sourceSha256": "59e53f7b028e54212e12775e10198dd48b04d4afdffa38b26bc8ca87418f3f5b"
+  },
+  {
    "file": "front-fish-0",
    "sheet": "life",
    "factor": 0.806,
@@ -465,6 +510,21 @@
    "match": 0.7,
    "sha256": "9d002a4ebf5aab2787e20dd3b33a1e08c368ec4661a08ab89705111cf0dd6680",
    "sourceSha256": "1d43ad06915994163f95d8ccb62bbadf047c708b445a7f48dcfb1ae247f877c6"
+  },
+  {
+   "file": "right-drink-0",
+   "sheet": "life",
+   "factor": 0.806,
+   "bodyWidth": 1.0,
+   "neck": [
+    190.9,
+    281.9
+   ],
+   "template": "right-interact-0",
+   "headSize": 0.96,
+   "match": 0.549,
+   "sha256": "49ff1c0348b851e3daa3f69cbadfa2890d27ebf7d4717ee0fee20a77eb82946e",
+   "sourceSha256": "d4449eb7edec713cd13d968a5567208798f5f3ad427e1d642160e5403674efa3"
   },
   {
    "file": "right-idle-0",
