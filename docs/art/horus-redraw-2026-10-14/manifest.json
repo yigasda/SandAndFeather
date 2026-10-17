@@ -354,26 +354,22 @@
       "direction": "back",
       "frame": "0",
       "size": [
-        381,
-        511
+        943,
+        1176
       ],
       "anchor": [
-        190,
-        495
+        471,
+        1160
       ],
-      "source": "sources/sit.png",
-      "sourceCell": 1,
-      "sourceBox": [
-        67,
-        21,
-        416,
-        500
-      ],
-      "sha256": "f9761b26a42b1d39d36f7025c86e828cbcaa52db2d630a051641009e73c97c52",
+      "source": "sources/horus-back-sit-floor-0-사용자-새그림.png",
+      "sha256": "9f7641317c70ecd913133d046487615e7d4fb6e0f677adaa9ea104c12662f367",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 사용자가 새로 뽑아 온 뒷모습 방석 앉기로 교체(옛 그림 sources/horus-back-sit-floor-0-옛그림.png: 다리가 쩍벌). 받은 그림(1201×1310, 투명)의 흐린 티끌을 지우고 여백 16px로 자름(943×1176). 머리 90 %(목=깃 위끝 489,795 기준 가로세로 같이, headshrink.py 70행), 머리색 tonematch.py horus hair (기준 뒷모습 정지), 파란 하이라이트 줄 hairhl.py(기준 뒷모습 정지). 게임 크기는 세트·소망 뒷모습 바닥 앉기 키(319·327 /576 기준)에 맞출 것. 사용자: \"그냥 back sit 방석 이걸로 하자\", \"-10\", \"색 맞춤 하이라이트도\", \"ㄱㄱ\""
       ]
     },
     {
@@ -397,11 +393,14 @@
         942,
         505
       ],
-      "sha256": "d185de12ffffac9fd06b93f72ab4b935bcd2a2fb0a8b8ebc6e15c6a68c84137d",
+      "sha256": "d5fd028577d2b01ea8b5720e0f8153196dfa1d8630465b1553a403b4b3749df0",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 90.6 %(목 190,315 기준 가로세로 같이, headshrink.py 70행 — 뒷모습 상호작용와 같은 값) 뒤 가로폭 95.7 %(faceslim.py). 몸 그대로. 원본 sources/horus-back-sit-stool-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\""
       ]
     },
     {
@@ -431,12 +430,12 @@
       "direction": "right",
       "frame": "0",
       "size": [
-        368,
-        524
+        414,
+        546
       ],
       "anchor": [
-        184,
-        508
+        207,
+        530
       ],
       "source": "sources/sit.png",
       "sourceCell": 4,
@@ -446,11 +445,14 @@
         385,
         1008
       ],
-      "sha256": "87943e79a2b671e26bf1f29fda985b4caeee0c295283de83443256858d96dd62",
+      "sha256": "01488154f1fa0c4e6b4b463f33da29c0afe072446416d0ad77bcf74eb99e6575",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 106.6 %(목 185,285 기준 가로세로 같이, headshrink.py 70행 — 오른쪽 상호작용와 같은 값) 뒤 가로폭 93.7 %(faceslim.py). 몸 그대로. 캔버스 위 22px·좌우 23px 늘림(anchor 같이 옮김). 원본 sources/horus-right-sit-bench-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\""
       ]
     },
     {
@@ -495,11 +497,14 @@
         1488,
         1007
       ],
-      "sha256": "7bd9832737828ad7421d27eabf5ee9685657b779e7d4d54cac429ee457c517f1",
+      "sha256": "8e828d268cbc117dd59ad48c27a9f83b316c5f6f8da9785994521432be107cda",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리 96.8 %(목 180,290 기준 가로세로 같이, headshrink.py 70행 — 왼쪽 상호작용와 같은 값) 뒤 가로폭 96.7 %(faceslim.py). 몸 그대로. 원본 sources/horus-left-sit-bench-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\""
       ]
     },
     {
