@@ -1,6 +1,6 @@
 {
   "count": 18,
-  "status": "latest user-approved sources",
+  "status": "user-approved; sizes set 2026-10-17",
   "notes": "Individual PNGs are original-resolution RGBA crops with 16px padding, no resampling or regeneration. Preview-only scaling differs by source resolution. Crops can retain source edge artifacts; cropped source boundaries are not reconstructed.",
   "sprites": [
     {
@@ -34,7 +34,8 @@
       "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-anticipation-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 422.3
     },
     {
       "name": "left-combat-hit-0",
@@ -67,7 +68,8 @@
       "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-hit-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 373.3
     },
     {
       "name": "left-combat-idle-0",
@@ -100,7 +102,8 @@
       "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-idle-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 399.2
     },
     {
       "name": "left-combat-idle-1",
@@ -133,7 +136,8 @@
       "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-idle-1.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 411.0
     },
     {
       "name": "left-combat-idle-2",
@@ -166,7 +170,8 @@
       "approvalEvidence": "기존 첫 왼쪽 전투 채택본 유지; 이전 최종 묶음에서 원본 그대로 보존",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-idle-2.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 418.3
     },
     {
       "name": "right-combat-skill-0",
@@ -199,7 +204,8 @@
       "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-skill-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 523.7
     },
     {
       "name": "left-combat-skill-0",
@@ -232,7 +238,8 @@
       "approvalEvidence": "일단 이거 좌우찌르기는 채택 — 1000483180 공중 찌르기",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-skill-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 512.5
     },
     {
       "name": "right-combat-idle-0",
@@ -265,7 +272,8 @@
       "approvalEvidence": "대기 채택!",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-idle-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 629.0
     },
     {
       "name": "right-combat-idle-1",
@@ -298,7 +306,8 @@
       "approvalEvidence": "대기 채택!",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-idle-1.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 799.5
     },
     {
       "name": "right-combat-idle-2",
@@ -331,7 +340,8 @@
       "approvalEvidence": "대기 채택!",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-idle-2.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 798.8
     },
     {
       "name": "right-combat-spell-0",
@@ -364,7 +374,8 @@
       "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-spell-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 530.5
     },
     {
       "name": "left-combat-spell-0",
@@ -397,7 +408,8 @@
       "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-spell-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 520.4
     },
     {
       "name": "right-combat-anticipation-0",
@@ -430,7 +442,8 @@
       "approvalEvidence": "그리고 방금 3장 채택 (좌우주문 우향 공격 준비)",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-anticipation-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 544.3
     },
     {
       "name": "right-combat-tired-0",
@@ -464,7 +477,8 @@
       "userEdit": "2026-10-17 사용자 수정본(구글 드라이브 \"horus-right-combat-tired-0.png\")으로 교체, 받은 그대로",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-tired-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 562.5
     },
     {
       "name": "left-combat-tired-0",
@@ -497,7 +511,8 @@
       "approvalEvidence": "지침 채택!",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-tired-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 513.7
     },
     {
       "name": "right-combat-hit-0",
@@ -534,7 +549,8 @@
         "2026-10-17 오푸스: 사진 idle(left-combat-idle-0: 몸÷머리 0.767, 머리 폭÷높이 1.177)에 맞춤 — 목 아래 몸을 가로세로 같이 85.8 %(bodyscale.py, 목 280,428, 70행, 발 330,716 제자리), 뒤 머리 폭 102.4 %(faceslim.py). 머리 크기 그대로. 원본 sources/비율전/horus-right-combat-hit-0.png. 사용자: \"제일 심각한 right hit를 사진 idle의 머리폭, 비율, 크기로 맞춰\", 시안 \"Bㄱㄱ\"",
         "2026-10-17 오푸스: 위 몸 85.8 % 손질을 되돌림(창이 목 띠에서 휨) — 색만 바꾼 그림으로. 사용자: 창은 무조건 찌그러지면 안 됨, 방법 2(게임 크기로 맞추고 필요한 장만 5 % 안 손질)",
         "2026-10-17 오푸스: 사용자가 비율을 직접 고친 수정본(구글 드라이브 \"Hit 수정본.png\", 556×743 같은 캔버스, 원본 sources/사용자수정/horus-right-combat-hit-0.png)으로 교체하고 머리색·파란 하이라이트·피부색을 다른 그림과 같은 기준으로(HAIR_ONLY_LARGEST=1 tonematch.py hair, tonematch.py skin, hairhl.py; 창 그대로). 사용자: \"Right Hit 비율 수정본 방금 구글드라이브에 올렸어 머리색 피부색 머리하이라이트색 다른애들처럼 바꿔서 ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 522.6
     },
     {
       "name": "left-combat-attack-0",
@@ -567,7 +583,8 @@
       "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-left-combat-attack-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 640.7
     },
     {
       "name": "right-combat-attack-0",
@@ -600,9 +617,11 @@
       "approvalEvidence": "2번으로 하자 / 이거 채택(원본 그림) — 1000483187 좌우 찌르기",
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-attack-0.png. 사용자: 시트 보고 \"ㄱㄱ\""
-      ]
+      ],
+      "referenceVisibleHeight": 640.5
     }
   ],
   "runtimeApplied": false,
-  "approvalEvidence": "이제 스프라이트 지랄은 끝이다 메인에 ㄱㄱㄱ"
+  "approvalEvidence": "이제 스프라이트 지랄은 끝이다 메인에 ㄱㄱㄱ",
+  "sizeNote": "referenceVisibleHeight: 머리(머리카락 넓이·폭)가 옆 정지·걷기와 같아지는 값(tools/st-test/combat-size.js, combat-anim.js로 확인). 그림 픽셀은 색만 바꿈, 오른쪽 피격은 사용자 수정본. 사용자: \"굿 전투는 이제 손대지 말자 채택\""
 }
