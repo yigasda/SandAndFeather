@@ -25,8 +25,28 @@ def lab2rgb(lab):
     return np.clip(c * 255, 0, 255)
 
 
+def largest(m):
+    """the biggest 8-connected piece of a mask (the hair; a dark spear shaft of the same blue lies apart from it)"""
+    from collections import deque
+    lab = np.zeros(m.shape, np.int32); best, size, n = 0, 0, 0
+    for y0, x0 in zip(*np.nonzero(m)):
+        if lab[y0, x0]: continue
+        n += 1; q = deque([(y0, x0)]); lab[y0, x0] = n; c = 0
+        while q:
+            y, x = q.popleft(); c += 1
+            for yy in (y - 1, y, y + 1):
+                for xx in (x - 1, x, x + 1):
+                    if 0 <= yy < m.shape[0] and 0 <= xx < m.shape[1] and m[yy, xx] and not lab[yy, xx]:
+                        lab[yy, xx] = n; q.append((yy, xx))
+        if c > size: best, size = n, c
+    return lab == best
+
+
 def mask_of(im, who, part):
-    if part == 'hair': return cs.parts(im, who)['hair'] & (im[..., 3] > 0)
+    if part == 'hair':
+        m = cs.parts(im, who)['hair'] & (im[..., 3] > 0)
+        # HAIR_ONLY_LARGEST=1: pictures holding a dark blue weapon (Horus's spear) keep only the hair's own piece
+        return largest(m) if os.environ.get('HAIR_ONLY_LARGEST') else m
     # skin as skin-check measures it (Somang's ivory dress is less saturated than skin)
     p = cs.parts(im, who); _, s, _ = cs.hsv(im[..., :3] / 255)
     return p['skin'] & ~p['outline'] & (s > (0.08 if who == 'horus' else 0.14))
