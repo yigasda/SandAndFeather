@@ -178,13 +178,13 @@
 |---|---|---|---|
 | 세트 | [set/idle/](art/chibi-refresh/final/set/idle/) (148) | [set/walk/](art/chibi-refresh/final/set/walk/) (163) | |
 | 소망 | [somang/idle/](art/chibi-refresh/final/somang/idle/) (151) | [somang/walk/](art/chibi-refresh/final/somang/walk/) (163) | 150 정면으로 되돌리지 않는다 |
-| 호루스 | [horus/idle/](art/chibi-refresh/final/horus/idle/) (173) | [horus/walk/](art/chibi-refresh/final/horus/walk/) (173) | 168 피부 팔레트에 비율 수정. 비율을 다시 적용하지 않는다 |
+| 호루스 | 새 호루스 [horus-redraw-2026-10-14/png/](art/horus-redraw-2026-10-14/manifest.json) `*-idle-0` | 같은 폴더 `*-walk-0~2` | 0.9.77부터 호루스 그림은 이 manifest 하나뿐이다(동작 전부 포함, 머리 손질은 각 항목 `edits`). 구 호루스 그림은 지웠다 |
 
 **채택된 동작** (모두 게임 적용 완료 또는 적용 대기는 오푸스 몫)
 
 | 동작 | 파일 | 채택 |
 |---|---|---|
-| 상호작용 | 소망 [172](art/chibi-refresh/interaction-somang-v172/README.md), 세트 [174·175](art/chibi-refresh/interaction-set-v174/README.md), 호루스 [176·177](art/chibi-refresh/interaction-horus-v176/README.md) | 셋 × 4방향 × 2 |
+| 상호작용 | 소망 [172](art/chibi-refresh/interaction-somang-v172/README.md), 세트 [174·175](art/chibi-refresh/interaction-set-v174/README.md) (호루스는 새 호루스 manifest) | 셋 × 4방향 × 2 |
 | 줍기 | 소망 [181](art/chibi-refresh/pickup-somang-v178/README.md), 호루스 182·세트 185 [pickup-trio-v182](art/chibi-refresh/pickup-trio-v182/README.md) | 셋 × 4방향 × 2 |
 | 앉기 | 소망 방석 왼쪽 [179](art/chibi-refresh/sit-somang-v179/README.md) | 대표 1장 |
 | 잠들기 | 소망 프레임0 [180](art/chibi-refresh/sleep-somang-v180/README.md), 세트 옆0 [195](art/chibi-refresh/sleep-set-horus-v195/README.md) | 이 행은 이전 수정 경과다. 최신 잠들기 기준은 PLAN의 완료 기록(sleep-trio-v220, 호루스 정면 오푸스 219)을 확인하며 아래 구버전으로 되돌리지 않는다. 197 정면은 채택 후 몸 수정 요청으로[199](art/chibi-refresh/sleep-front-body-v199/README.md)4장 검토 중. 세트 옆1은 이후 재작화 요청으로[200](art/chibi-refresh/sleep-side-inhale-v200/README.md) 검토 중. 호루스 옆0은198 외곽선 수정본 유지, 옆1은200 새 그림. 새 버전을 채택 처리하지 않는다 |

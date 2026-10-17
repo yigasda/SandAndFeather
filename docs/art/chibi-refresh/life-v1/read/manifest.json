@@ -44,26 +44,6 @@
     620,
     720
    ]
-  },
-  {
-   "path": "png/horus-front-read-0.png",
-   "character": "horus",
-   "direction": "front",
-   "frame": 0,
-   "anchor": {
-    "kind": "feet",
-    "position": [
-     304,
-     620
-    ]
-   },
-   "referenceVisibleHeight": 576,
-   "sha256": "8eddc7ac1903b16ff6fc9947832d582288f864ae2b3f4525d8c7dd0d44d0799a",
-   "source": "메인1/horus-front-read-0.png",
-   "canvas": [
-    620,
-    720
-   ]
   }
  ]
 }

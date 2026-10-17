@@ -46,26 +46,6 @@
    ]
   },
   {
-   "path": "png/horus-front-shy-0.png",
-   "character": "horus",
-   "direction": "front",
-   "frame": 0,
-   "anchor": {
-    "kind": "feet",
-    "position": [
-     316,
-     642
-    ]
-   },
-   "referenceVisibleHeight": 576,
-   "sha256": "a55882c26d33f0f224449020c44b344d56cdac2c5cea15947c4a1cf9a4f261ac",
-   "source": "메인1/horus-front-shy-0.png",
-   "canvas": [
-    620,
-    720
-   ]
-  },
-  {
    "path": "png/set-front-shy-0.png",
    "character": "set",
    "direction": "front",

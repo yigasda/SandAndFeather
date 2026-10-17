@@ -64,26 +64,6 @@
     620,
     720
    ]
-  },
-  {
-   "path": "png/horus-back-cook-0.png",
-   "character": "horus",
-   "direction": "back",
-   "frame": 0,
-   "anchor": {
-    "kind": "feet",
-    "position": [
-     306,
-     656
-    ]
-   },
-   "referenceVisibleHeight": 576,
-   "sha256": "edf45c3d5e930cfc960505819a4302a1bda71543c070a9438987e5b3d5975f07",
-   "source": "메인1/horus-back-cook-0.png",
-   "canvas": [
-    620,
-    720
-   ]
   }
  ]
 }

@@ -46,30 +46,6 @@
    ]
   },
   {
-   "path": "png/horus-right-eat-0.png",
-   "character": "horus",
-   "direction": "right",
-   "frame": 0,
-   "anchor": {
-    "kind": "seat-bottom",
-    "position": [
-     186.3,
-     506.0
-    ]
-   },
-   "referenceVisibleHeight": 492.3,
-   "sha256": "7e80801e3af6c26c7dd61e84bb68bbe45540101af01c098c13b26f485764c6b0",
-   "source": "메인1/horus-right-eat-0.png",
-   "canvas": [
-    443,
-    528
-   ],
-   "edits": [
-    "headshrink [0.86, 250, 325, 70] pad 0: 머리 116% → 100%"
-   ],
-   "sourceSha256": "b24c810f8283e6950cfb2543a1f7e5295ae3b0a58ca5313a12b3c03a9a9dd558"
-  },
-  {
    "path": "png/set-back-eat-0.png",
    "character": "set",
    "direction": "back",

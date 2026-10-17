@@ -96,7 +96,6 @@ def action_frames():
         base = os.path.dirname(mp); dmap = am['directionMap']
         names = set()
         for f in am['files']:
-            if f['character'] == 'horus': continue      # Horus: horus_frames()
             path = os.path.join(base, f['path'])
             data = open(path, 'rb').read()
             assert hashlib.sha256(data).hexdigest() == f['sha256'], path
@@ -111,7 +110,7 @@ def action_frames():
                            **({'tip': f['tip']} if f.get('tip') else {})})
         pb = am['playback']
         # a pose that stays (sitting) holds its last frame until she moves; a looping one (sleeping) cycles
-        for name in names:
+        for name in sorted(names):   # sorted: a set's order changes run to run
             playback[name] = {'frameMs': pb.get('durationMs') or [800] * len(pb['sequence']), 'loop': bool(pb.get('loop')),
                               **({'hold': True} if pb.get('hold') else {})}
     return frames, playback
@@ -119,7 +118,7 @@ def action_frames():
 
 # 새 호루스 (0.9.77): every Horus frame comes from docs/art/horus-redraw-2026-10-14/manifest.json (60 approved pictures,
 # the only source; drink and the combat set are not in the game). The old Horus pictures (final, the action folders)
-# are not read. Sizes (referenceVisibleHeight = the picture px that make one whole Horus tall):
+# were deleted after 0.9.77. Sizes (referenceVisibleHeight = the picture px that make one whole Horus tall):
 #   standing pictures: their own solid alpha height (alpha ≥ 128), so every one is the same height;
 #   a value written in the manifest (sitting 4, sleeping 4, fishing 2, picked by the user against Set and Somang): as is;
 #   picking up: the head as tall as the same direction's interact head (head = top of the hair → the neck written in
@@ -224,8 +223,8 @@ def main():
         raise SystemExit('Final art is approved, but runtime integration is not enabled. Opus must review final/manifest.json and runtime packaging before enabling it.')
     # Both states come from the same final selection.
     cycle = man['walkCycle']
-    frames = [f for f in man['frames'] if f['character'] != 'horus']   # Horus: horus_frames()
-    assert len(frames) == 32
+    frames = man['frames']      # Set and Somang; Horus comes from horus_frames()
+    assert len(frames) == 32 and all(f['character'] != 'horus' for f in frames)
     for f in frames:
         data = open(os.path.join(ROOT, f['path']), 'rb').read()
         assert hashlib.sha256(data).hexdigest() == f['sha256'], f['id']

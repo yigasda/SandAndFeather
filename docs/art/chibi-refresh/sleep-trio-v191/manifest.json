@@ -12,66 +12,6 @@
   "frameCount": 8,
   "files": [
     {
-      "path": "png/horus-sleep-0.png",
-      "character": "horus",
-      "direction": "front",
-      "pose": "sleep-supine",
-      "frame": 0,
-      "anchor": {
-        "kind": "body-center",
-        "position": [
-          310,
-          450
-        ]
-      },
-      "sha256": "ce0ce0a2204c66c6e88dfa7480eff71a80334495ef9771cf659694ca80446c9f"
-    },
-    {
-      "path": "png/horus-sleep-1.png",
-      "character": "horus",
-      "direction": "front",
-      "pose": "sleep-supine",
-      "frame": 1,
-      "anchor": {
-        "kind": "body-center",
-        "position": [
-          310,
-          450
-        ]
-      },
-      "sha256": "ccb79c6f0d2790d3f2d74b58d5b04ad2427eb5379173e42064e38343f05a7596"
-    },
-    {
-      "path": "png/horus-sleep-side-0.png",
-      "character": "horus",
-      "direction": "right",
-      "pose": "sleep-side",
-      "frame": 0,
-      "anchor": {
-        "kind": "body-center",
-        "position": [
-          315,
-          445
-        ]
-      },
-      "sha256": "386979f1c7df95b1cc3d0d14effdf5bc88290c0b8ee21f939b29bcbb0621cab8"
-    },
-    {
-      "path": "png/horus-sleep-side-1.png",
-      "character": "horus",
-      "direction": "right",
-      "pose": "sleep-side",
-      "frame": 1,
-      "anchor": {
-        "kind": "body-center",
-        "position": [
-          315,
-          445
-        ]
-      },
-      "sha256": "6b4e1f0ebd4a5a7ff83ac09d86926aa6920e5e67c4b75faa7de2db9e3c9c134d"
-    },
-    {
       "path": "png/set-sleep-0.png",
       "character": "set",
       "direction": "front",

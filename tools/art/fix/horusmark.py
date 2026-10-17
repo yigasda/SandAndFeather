@@ -7,7 +7,7 @@
 import sys, numpy as np
 from PIL import Image
 ROOT = __file__.rsplit('/tools/', 1)[0]
-IDLE = ROOT + '/docs/art/chibi-refresh/final/horus/idle/horus-left.png'
+IDLE = ROOT + '/docs/art/horus-redraw-2026-10-14/png/horus-left-idle-0.png'
 IDLE_EYE_BOX = (180, 318, 270, 372); MARK_BOX = (215, 352, 270, 408); IDLE_BOTTOM = 365
 def hsv(rgb):
     mx, mn = rgb.max(-1), rgb.min(-1); d = mx - mn; s = np.where(mx > 0, d / np.maximum(mx, 1e-6), 0)

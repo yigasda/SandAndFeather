@@ -68,26 +68,6 @@
     620,
     720
    ]
-  },
-  {
-   "path": "png/horus-front-surprised-0.png",
-   "character": "horus",
-   "direction": "front",
-   "frame": 0,
-   "anchor": {
-    "kind": "feet",
-    "position": [
-     310,
-     632
-    ]
-   },
-   "referenceVisibleHeight": 576,
-   "sha256": "75a4e6908c3bc14f56b9b9dafa95c4c66142d8738803d46893584cc207cc6a02",
-   "source": "메인1/horus-front-surprised-0.png",
-   "canvas": [
-    620,
-    720
-   ]
   }
  ]
 }
