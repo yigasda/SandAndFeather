@@ -25,11 +25,14 @@
         454,
         1020
       ],
-      "sha256": "a86f2cbc11ed3ca7748aef6595ffbc94201007324dbda92eb11df7acc9605b78",
+      "sha256": "55fca527f00074ca210023edea336f2212cb28fe29bf452c51e19a5379250d2b",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리(목 위)를 가로세로 같이 87 %로 줄임, 목 208,339 기준 70행에 걸쳐 1로(tools/art/fix/headshrink.py), 몸 그대로. 원본 sources/horus-front-walk-0-비율전.png. 사용자: \"신 스프라이트 정지 정면 머리 폭, 머리 비율, 몸 비율로 … 정확히 맞춘다\", 시안 중 \"중 87로 해\""
       ]
     },
     {
@@ -53,11 +56,14 @@
         959,
         1018
       ],
-      "sha256": "756748f43a85968d820c9675ed333e32ac5d5a39518c3b58bba51333315f26c5",
+      "sha256": "44c279c8eda04ef0cbb53677d840a60eb418f3738006ae08f37632a2a7d2899b",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리(목 위)를 가로세로 같이 87 %로 줄임, 목 208,339 기준 70행에 걸쳐 1로(tools/art/fix/headshrink.py), 몸 그대로. 원본 sources/horus-front-walk-1-비율전.png. 사용자: \"신 스프라이트 정지 정면 머리 폭, 머리 비율, 몸 비율로 … 정확히 맞춘다\", 시안 중 \"중 87로 해\""
       ]
     },
     {
@@ -81,11 +87,14 @@
         1477,
         1020
       ],
-      "sha256": "8faa989cc54c71bdb15c77fe911d5ed636df5681ec5f90ebc67728429368718f",
+      "sha256": "7256970953e21e689e952b782f6aeb302d0d4bea3885861b79a0ae39b208a027",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
+      ],
+      "edits": [
+        "2026-10-17 오푸스: 머리(목 위)를 가로세로 같이 87 %로 줄임, 목 208,339 기준 70행에 걸쳐 1로(tools/art/fix/headshrink.py), 몸 그대로. 원본 sources/horus-front-walk-2-비율전.png. 사용자: \"신 스프라이트 정지 정면 머리 폭, 머리 비율, 몸 비율로 … 정확히 맞춘다\", 시안 중 \"중 87로 해\""
       ]
     },
     {
