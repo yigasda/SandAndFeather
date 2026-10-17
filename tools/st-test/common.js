@@ -2,9 +2,11 @@
 const { chromium } = require('playwright');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const T = '<tracker> 🌇 05:48 오후 \\| 하티르 여드렛날, 2년 \\| 옴보스 → 서쪽 별채 \\| ☀️ 맑음 </tracker>';
-async function open({ fresh = true, dpr = 1, mobile = false } = {}) {
+async function open({ fresh = true, dpr = 1, mobile = false, video = null } = {}) {
   const b = await chromium.launch(require('fs').existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : {});
-  const p = await b.newPage({ viewport: { width: 412, height: 900 }, deviceScaleFactor: dpr, isMobile: mobile, hasTouch: mobile });
+  const opts = { viewport: { width: 412, height: 900 }, deviceScaleFactor: dpr, isMobile: mobile, hasTouch: mobile };
+  // video: a folder to record the page into (webm, the page's size)
+  const p = video ? await (await b.newContext({ ...opts, recordVideo: { dir: video, size: opts.viewport } })).newPage() : await b.newPage(opts);
   const errs = [];
   p.on('pageerror', e => { if (!/Internal S|Host not/.test(e.message)) errs.push('pageerror ' + e.message); });
   p.on('console', m => { const t = m.text(); if ((m.type() === 'error' && !/Failed to load resource/.test(t)) || /\[SandAndFeather\]/.test(t)) errs.push(m.type() + ' ' + t); });

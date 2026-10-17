@@ -129,5 +129,77 @@
       "skill": "하늘에서 본다",
       "about": "길을 봐. 갈림길마다 앞에 뭐가 있는지 보이고, 적의 다음 공격을 빗나가게 해."
     }
+  },
+  "field": {
+    "_about": "두아트 필드 전투 (src/packs/duat/field.js). 몹 수치는 계획서 F-5 추천안(사용자 선택). 배치: 04 고대장치에 모래시계 2·고리 3(사용자: 초기 제안으로 먼저 시작). 다른 맵은 몹 그림이 오면. timing: 모든 몹 공통 10모션 시간(초), 몹마다 enemies.<kind>.timing으로 덮어씀. 방어 중 일반 공격은 30 %, 기술은 방어를 깸(정상 피해 + 경직, 반격 취소).",
+    "enemies": {
+      "hourglass": {
+        "ko": "모래시계 장치",
+        "hp": 10,
+        "atk": 3,
+        "range": 4,
+        "speed": 1.2,
+        "attack": "shot",
+        "bolt": {
+          "speed": 4.5,
+          "hit": 0.45,
+          "life": 6
+        },
+        "guard": 0.35,
+        "fx": {
+          "color": "#e9c98a",
+          "size": 1
+        }
+      },
+      "ring": {
+        "ko": "고리 장치",
+        "hp": 9,
+        "atk": 3,
+        "range": 2.2,
+        "speed": 1.8,
+        "attack": "dash",
+        "dash": {
+          "dist": 2.6,
+          "time": 0.32,
+          "hit": 0.6
+        },
+        "guard": 0.2,
+        "fx": {
+          "color": "#78dbe4",
+          "size": 1
+        }
+      }
+    },
+    "maps": {
+      "duat_04": {
+        "hourglass": 2,
+        "ring": 3
+      }
+    },
+    "reach": {
+      "set": 1.6,
+      "horus": 1.9,
+      "somang": 1.1
+    },
+    "spells": 3,
+    "timing": {
+      "idle": 0.18,
+      "prepare": [
+        0.4,
+        0.3
+      ],
+      "recover": 0.35,
+      "rest": 1.2,
+      "hit": 0.3,
+      "steady": 0.4,
+      "guard": 1.2,
+      "guardCd": 6,
+      "guardTake": 0.3,
+      "stagger": 0.8,
+      "die": [
+        0.25,
+        0.6
+      ]
+    }
   }
 }

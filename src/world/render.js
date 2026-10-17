@@ -35,12 +35,14 @@ export class Renderer {
         this.art = new Map(); // drawn pictures from data/sprites.json, one small canvas each
         this.artScale = new Map();
         this.motion = new Map(); // look → standing/walking frames in their atlas (Set, Somang, Horus)
+        this.combat = new Map(); // look → combat frames (두아트 필드 전투), their own atlas
     }
     // data/sprites.json: people by look and view, things by sprite name; what is missing stays drawn in code
     setSprites(data) {
         this.art.clear();
         this.artScale.clear();
         this.motion.clear();
+        this.combat.clear();
         const make = (rows, colors, flip = false) => {
             // usually 16×16; a wider or taller one (wings) is centred on the tile and stands on its bottom
             const c = document.createElement('canvas');
@@ -72,6 +74,7 @@ export class Renderer {
             }
         }
         for (const [look, d] of Object.entries(data?.looks || {})) if (d.motion) this.motion.set(look, d.motion);
+        for (const [look, d] of Object.entries(data?.looks || {})) if (d.combat) this.combat.set(look, d.combat);
         for (const [name, d] of Object.entries(data?.things || {})) if (ok(d.rows)) this.art.set(`thing|${name}`, make(d.rows, d.colors));
     }
     // the approved standing and walking pictures: walking (anim.moving) plays the poses in sequence by the time
@@ -82,6 +85,7 @@ export class Renderer {
     // 1:1, so it stays crisp), else the large one once it has loaded.
     // An action (anim.act) shows its frames in order, the last one held HOLD_MS, then the idle again.
     motionPerson(g, look, x, y, dir, z, anim) {
+        if (anim?.combat && this.combatPerson(g, look, x, y, dir, z, anim)) return true;
         const m = this.motion.get(look);
         if (!m) return false;
         const small = m.small && DATA.spriteArt?.[m.small.file];
@@ -124,6 +128,34 @@ export class Renderer {
         if (anim?.act?.bob) lift += (Math.sin(anim.act.t * Math.PI * 4) > 0 ? 0 : -anim.act.bob * z);
         g.drawImage(image, r[0], r[1], r[2], r[3], Math.round(fx + ox * step - r[4] * k), Math.round(fy + oy * step - r[5] * k - lift), Math.round(r[2] * k), Math.round(r[3] * k));
         if (anim) anim.top = fy + oy * step - r[5] * k - lift;   // where the picture's top was drawn (screen px): bubbles go over it
+        g.imageSmoothingEnabled = false;
+        return true;
+    }
+    // 두아트 필드 전투: the combat pictures (looks.<who>.combat, left or right only): anim.combat = { name, t (s), lift
+    // (tiles up), flash }. "ready" loops its frames by actPlay.seq; the others show their one frame. Same feet anchor
+    // and character height as the walking pictures; the atlas loads the first time it is wanted.
+    combatPerson(g, look, x, y, dir, z, anim) {
+        const c = this.combat.get(look);
+        if (!c) return false;
+        const want = c.height * z;
+        const a = (want <= c.small.visible + 1 && spriteFile(c.small.file)) ? c.small : spriteFile(c.file) ? c : spriteFile(c.small.file) ? c.small : null;
+        if (!a) return false;
+        const side = dir === 'left' || dir === 'right' ? dir : (anim.combat.face || 'right');
+        const name = a.acts[anim.combat.name] ? anim.combat.name : 'ready', play = c.actPlay[name] || {};
+        const frames = a.acts[name]?.[side];
+        if (!frames) return false;
+        let r = frames[0];
+        if (play.seq) r = frames[play.seq[Math.floor(anim.combat.t * 1000 / play.frameMs[0]) % play.seq.length]] || frames[0];
+        const k = want / a.visible, fx = x + 8 * z, fy = y + 16 * z, lift = (anim.combat.lift || 0) * T * z;
+        g.fillStyle = 'rgba(40,25,10,.22)';
+        g.beginPath(); g.ellipse(fx, fy - 0.6 * z, 5.5 * z * (1 - Math.min(0.5, (anim.combat.lift || 0) * 0.3)), 1.6 * z, 0, 0, Math.PI * 2); g.fill();
+        g.save();
+        if (anim.combat.blink && Math.floor(performance.now() / 80) % 2) g.globalAlpha = 0.45;
+        if (anim.combat.flash) g.filter = 'brightness(1.8) saturate(0.6)';
+        g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+        g.drawImage(DATA.spriteArt[a.file], r[0], r[1], r[2], r[3], Math.round(fx - r[4] * k), Math.round(fy - r[5] * k - lift), Math.round(r[2] * k), Math.round(r[3] * k));
+        g.restore();
+        anim.top = fy - r[5] * k - lift;
         g.imageSmoothingEnabled = false;
         return true;
     }
@@ -186,7 +218,7 @@ export class Renderer {
     }
 
     // ---- a frame
-    draw({ player, people, things = [], part, time, near }) {
+    draw({ player, people, things = [], part, time, near, lead = {} }) {
         const g = this.g, m = this.map, z = this.zoom, W = this.cv.width, H = this.cv.height, ts = T * z;
         const fullScene = (m.d.referenceScenes || []).map(id => DATA.sceneArt?.[id]).find(s => s?.fullMap);
         g.imageSmoothingEnabled = false;
@@ -209,11 +241,12 @@ export class Renderer {
         // things lying on the ground first, then people and standing things back to front
         if (!fullScene) for (const t of things) if (FLAT.has(t.sprite)) this.sprite(g, t, Math.round(t.x * ts - cx), Math.round(t.y * ts - cy), z, time);
         const ppl = [...people, { look: player.look || 'somang', x: player.x, y: player.y, dir: player.dir, step: player.moving ? player.step : 0, moving: player.moving, walkT: player.walkT,
-            act: player.act && !player.moving ? { name: player.act.name, t: (performance.now() - player.act.at) / 1000, frame: player.act.frame, hop: player.act.hop, bob: player.act.bob } : null, lead: true },
+            act: player.act && !player.moving ? { name: player.act.name, t: (performance.now() - player.act.at) / 1000, frame: player.act.frame, hop: player.act.hop, bob: player.act.bob } : null, lead: true, ...lead },
             ...things.filter(t => !FLAT.has(t.sprite)).map(t => ({ thing: t, x: t.x, y: t.y }))];
         ppl.sort((a, b) => a.y - b.y);
         if (!fullScene) for (const p of ppl) {
             if (p.thing) this.sprite(g, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
+            else if (p.draw) p.draw(g, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, ts);
             else this.person(g, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z, p);
         }
         if (!fullScene) g.drawImage(this.top, -cx, -cy, mw, mh);
@@ -227,6 +260,7 @@ export class Renderer {
                 for (const p of ppl) {
                     if ((p.y + 1) * T < minimumFoot || (skip && skip(p))) continue;
                     if (p.thing) this.sprite(target, p.thing, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, time);
+                    else if (p.draw) p.draw(target, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), z, ts);
                     else this.person(target, p.look, Math.round(p.x * ts - cx), Math.round(p.y * ts - cy), p.dir, p.step, z, p);
                 }
             }

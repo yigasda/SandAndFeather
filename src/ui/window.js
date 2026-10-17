@@ -65,6 +65,16 @@ function tileCheck() {
     lastTile = key;
     for (const fn of tileFns) { try { fn(map.id, f.x, f.y, ui); } catch (e) { console.error('[SandAndFeather] tile', e); } }
 }
+// a pack that runs on its own while she walks (두아트 필드 전투): onFrame((dt, map, ui) => …) every frame no card is open;
+// onDraw(scene => …) adds to what is drawn (scene.extra: { x, y, draw(g, sx, sy, z, ts) } sorted with people by y,
+// scene.lead: more for her picture, e.g. combat); onTalkFirst(() => true) takes the 말 걸기 button first;
+// onBusy(() => true) while something moves on its own (the frame rate of walking)
+const frameFns = [], drawFns = [], talkFns = [], busyFns = [];
+export const onFrame = fn => { frameFns.push(fn); };
+export const onDraw = fn => { drawFns.push(fn); };
+export const onTalkFirst = fn => { talkFns.push(fn); };
+export const onBusy = fn => { busyFns.push(fn); };
+export const currentMap = () => map;
 // a pack takes over a place: onSpot('dock', (spot, ui, map) => …)
 const spotActs = new Map();
 export const onSpot = (id, fn) => { spotActs.set(id, fn); };
@@ -298,7 +308,9 @@ function draw(t) {
         people.push({ look: w, x: fx, y: fy, dir: posing ? ma.dir : fdir, step: f.moving ? f.step : 0, moving: f.moving, walkT: f.walkT, mate: true,
             ...(posing ? { act: { name: ma.name, t: (performance.now() - ma.at) / 1000, frame: ma.frame } } : {}) });
     }
-    renderer.draw({ player, people, things, part: partNow(s), time: t / 1000, near });
+    const scene = { people, extra: [], lead: {}, map };
+    for (const fn of drawFns) { try { fn(scene); } catch (e) { console.error('[SandAndFeather] draw', e); } }
+    renderer.draw({ player, people: [...people, ...scene.extra], things, part: partNow(s), time: t / 1000, near, lead: scene.lead });
     placeBubble(hud, renderer, cardOpen() || player.seat || (player.act?.until !== undefined && fxBusy()) ? null : near);  // sitting or lying down, or a short pose with its effects showing: no bubble over her head
     // ^ by the stairs (v on the roof): shown only where the stairs are, pressed to go
     const c = !cardOpen() && near?.climb;
@@ -313,6 +325,7 @@ function frame(t) {
     // cannot pass through a thin wall; before, a slow phone made her walk slower as well as jerkier
     let dt = last ? Math.min(0.2, (t - last) / 1000) : 0;
     last = t;
+    const dtAll = dt;
     if (!cardOpen() && !moving) {
         for (; dt > 1e-6 && !moving; dt -= 0.05) {
             stepPlayer(map, input.dx, input.dy, Math.min(0.05, dt));
@@ -321,12 +334,13 @@ function frame(t) {
             else if (doorArmed) { doorArmed = false; useExit(ex); break; }
         }
         if (!moving) tileCheck();
+        if (!moving) for (const fn of frameFns) { try { fn(dtAll, map, ui); } catch (e) { console.error('[SandAndFeather] frame', e); } }
     } else stand();
     // a short pose (showPose) is over: back to her idle, facing the way she was
     if (player.act?.until && performance.now() > player.act.until) endPose();
     // the battery: draw only as often as something on screen changes
     const acting = player.act && (performance.now() - player.act.at < 800 || player.act.name === 'sleep'); // sleeping breathes
-    const fps = player.moving || acting || fxBusy() || player.act?.bob || player.act?.hop ? FPS.walk : cardOpen() ? FPS.card : FPS.still;
+    const fps = player.moving || acting || fxBusy() || player.act?.bob || player.act?.hop || busyFns.some(fn => fn()) ? FPS.walk : cardOpen() ? FPS.card : FPS.still;
     if (t - drawnAt >= 1000 / fps - 2) { drawnAt = t; draw(t); }
     raf = requestAnimationFrame(frame);
 }
@@ -336,6 +350,7 @@ function talk() {
     if (mode !== 'open') return;
     if (cardOpen()) { closeTopCard(); return; }
     lookAround();
+    for (const fn of talkFns) if (fn(near)) return;
     // sitting or lying down, 말 걸기 stands her up first
     if (getUp()) return;
     if (!near) { toast(root, '가까이에 말 걸 곳이 없어'); return; }

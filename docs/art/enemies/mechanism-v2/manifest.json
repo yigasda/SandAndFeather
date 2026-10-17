@@ -1,0 +1,299 @@
+{
+ "about": "tools/art/enemy-pack.py — 몹/하위몹/고대장치/10모션-2026-10-18 그대로(바이트 같음). 공통 10모션: 대기 0·1·2, 고유 방어(휴면), 준비 0·1, 고유 공격 0·1, 피격, 소멸(소멸만 몹/하위몹/고대장치/<kind>-disappear.png 첫 채택본, 사용자). anchor = 몸(가장 큰 조각) 아래끝 가운데",
+ "source": "몹/하위몹/고대장치/10모션-2026-10-18",
+ "heightOfCharacter": 1.1,
+ "motions": [
+  "idle-0",
+  "idle-1",
+  "idle-2",
+  "guard",
+  "prepare-0",
+  "prepare-1",
+  "attack-0",
+  "attack-1",
+  "hit",
+  "disappear"
+ ],
+ "files": [
+  {
+   "file": "png/hourglass/01-idle-0.png",
+   "kind": "hourglass",
+   "motion": "idle-0",
+   "size": [
+    288,
+    432
+   ],
+   "anchor": [
+    127.3,
+    392.0
+   ],
+   "sha256": "b75a1e2ef685bb4137ceb8f1dd21670c2f3ce22b3aae3345c91231bf95b419ba"
+  },
+  {
+   "file": "png/hourglass/02-idle-1.png",
+   "kind": "hourglass",
+   "motion": "idle-1",
+   "size": [
+    342,
+    400
+   ],
+   "anchor": [
+    149.1,
+    390.0
+   ],
+   "sha256": "9a0d058a86bd2faeee22cbce00ebdfbedeea7b8bdbb82e4996f53b4ef3b04d09"
+  },
+  {
+   "file": "png/hourglass/03-idle-2.png",
+   "kind": "hourglass",
+   "motion": "idle-2",
+   "size": [
+    339,
+    419
+   ],
+   "anchor": [
+    170.7,
+    402.0
+   ],
+   "sha256": "0be6ea59b8e5745d113f0faee024172758f6463c1930bceefc6a1180878e7c60"
+  },
+  {
+   "file": "png/hourglass/04-guard.png",
+   "kind": "hourglass",
+   "motion": "guard",
+   "size": [
+    338,
+    421
+   ],
+   "anchor": [
+    164.8,
+    397.0
+   ],
+   "sha256": "3e9acfa9a84e1edd131e431d30588b4d59dd89af34196960de5c2c61e09a63ad"
+  },
+  {
+   "file": "png/hourglass/05-prepare-0.png",
+   "kind": "hourglass",
+   "motion": "prepare-0",
+   "size": [
+    359,
+    407
+   ],
+   "anchor": [
+    200.2,
+    378.0
+   ],
+   "sha256": "7ea433598f78853ac337fc998e834192333bdb9d2ba43331ff53dad9c22ad686"
+  },
+  {
+   "file": "png/hourglass/06-prepare-1.png",
+   "kind": "hourglass",
+   "motion": "prepare-1",
+   "size": [
+    292,
+    385
+   ],
+   "anchor": [
+    138.0,
+    380.0
+   ],
+   "sha256": "57414fe577705fd74d0378daff63eb5d1ba5cd4341341123f279f82389c9b2f4"
+  },
+  {
+   "file": "png/hourglass/07-attack-0.png",
+   "kind": "hourglass",
+   "motion": "attack-0",
+   "size": [
+    390,
+    473
+   ],
+   "anchor": [
+    186.6,
+    425.0
+   ],
+   "sha256": "fd5eb9c4ad52df12c815598039407a28a3f550571aaed6e1d4834971b9467f77"
+  },
+  {
+   "file": "png/hourglass/08-attack-1.png",
+   "kind": "hourglass",
+   "motion": "attack-1",
+   "size": [
+    396,
+    457
+   ],
+   "anchor": [
+    193.4,
+    401.0
+   ],
+   "sha256": "cc58db8818a844d58ad7d24ad4071cbb2ec986c193b0a107ccf3a13e1edcc67b"
+  },
+  {
+   "file": "png/hourglass/09-hit.png",
+   "kind": "hourglass",
+   "motion": "hit",
+   "size": [
+    311,
+    403
+   ],
+   "anchor": [
+    119.9,
+    369.0
+   ],
+   "sha256": "28644265e48efed4fb8229f0af4e7396a3043e961d56b9b413755d0fdaa013c8"
+  },
+  {
+   "file": "png/hourglass/hourglass-disappear.png",
+   "kind": "hourglass",
+   "motion": "disappear",
+   "size": [
+    1199,
+    1312
+   ],
+   "anchor": [
+    422.6,
+    1302.0
+   ],
+   "sha256": "b549dacb71d4077439b464ea1c443cad45cef9b8e4c18d884a66b78ff945679c"
+  },
+  {
+   "file": "png/ring/01-idle-0.png",
+   "kind": "ring",
+   "motion": "idle-0",
+   "size": [
+    385,
+    447
+   ],
+   "anchor": [
+    178.7,
+    434.0
+   ],
+   "sha256": "97dde9a1dfb82cece4eee310b9c84efb3fc758471d993718d012dd1198560b77"
+  },
+  {
+   "file": "png/ring/02-idle-1.png",
+   "kind": "ring",
+   "motion": "idle-1",
+   "size": [
+    362,
+    445
+   ],
+   "anchor": [
+    176.1,
+    436.0
+   ],
+   "sha256": "d4af21f17ab109689d234e939b63a5589c7e5c3ddf9f78a398a73ae3747efaea"
+  },
+  {
+   "file": "png/ring/03-idle-2.png",
+   "kind": "ring",
+   "motion": "idle-2",
+   "size": [
+    384,
+    421
+   ],
+   "anchor": [
+    185.0,
+    417.0
+   ],
+   "sha256": "74f11fe15945a37d59fcaddb3c4a78256759547cb95f4bdb06383b30e9169e18"
+  },
+  {
+   "file": "png/ring/04-guard.png",
+   "kind": "ring",
+   "motion": "guard",
+   "size": [
+    327,
+    439
+   ],
+   "anchor": [
+    155.4,
+    416.0
+   ],
+   "sha256": "a8e659abdda908ae7bc6c772b71d53c09b42a69230eb01de40df00f305c3d9c1"
+  },
+  {
+   "file": "png/ring/05-prepare-0.png",
+   "kind": "ring",
+   "motion": "prepare-0",
+   "size": [
+    312,
+    411
+   ],
+   "anchor": [
+    159.1,
+    379.0
+   ],
+   "sha256": "6efabe1a46b1eb7947fe756db2afe8b13155e35897a2bd6e67d45ec23607df3d"
+  },
+  {
+   "file": "png/ring/06-prepare-1.png",
+   "kind": "ring",
+   "motion": "prepare-1",
+   "size": [
+    322,
+    412
+   ],
+   "anchor": [
+    150.5,
+    401.0
+   ],
+   "sha256": "b607a5bf3db478def3d6110625e933fa2af5703a5f2d8ba787d164b95974d7b8"
+  },
+  {
+   "file": "png/ring/07-attack-0.png",
+   "kind": "ring",
+   "motion": "attack-0",
+   "size": [
+    406,
+    439
+   ],
+   "anchor": [
+    197.0,
+    435.0
+   ],
+   "sha256": "7becde30f60983e881659e17e5ddacf2ea17d01f4f18fa41809e9326adb7b5aa"
+  },
+  {
+   "file": "png/ring/08-attack-1.png",
+   "kind": "ring",
+   "motion": "attack-1",
+   "size": [
+    382,
+    449
+   ],
+   "anchor": [
+    166.3,
+    433.0
+   ],
+   "sha256": "96fd40ea0dbb219a5730eb9d27ebf249be9c8aef2790e346780c4b656b9d212e"
+  },
+  {
+   "file": "png/ring/09-hit.png",
+   "kind": "ring",
+   "motion": "hit",
+   "size": [
+    378,
+    432
+   ],
+   "anchor": [
+    179.6,
+    408.0
+   ],
+   "sha256": "9f78e78a45240b02f703b99e398136a93c14d5a037868e37271ac173a6ced6a5"
+  },
+  {
+   "file": "png/ring/ring-disappear.png",
+   "kind": "ring",
+   "motion": "disappear",
+   "size": [
+    1374,
+    1145
+   ],
+   "anchor": [
+    690.5,
+    1129.0
+   ],
+   "sha256": "197356a415192a656c126b4206c5fcf60485d61abe050e618ced5206c78fac2b"
+  }
+ ]
+}
