@@ -514,7 +514,7 @@
         743
       ],
       "cropPixelsUnchanged": false,
-      "sha256": "a731c814d402340154e13106de7d345e1cb8c94d346971a17a6b73237a0e3f5e",
+      "sha256": "d95a53419046e626dd7628a60191e55eca863d57bb8a6c352eba7c2ab2975a4a",
       "previewScaleOnly": 0.45,
       "character": "horus",
       "direction": "right",
@@ -532,7 +532,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-redraw-2026-10-14/sources/horus-color-reference-2026-10-17.png 색으로(생활 그림과 같은 기준) — HAIR_ONLY_LARGEST=1 tonematch.py horus hair(머리카락 덩어리만, 창대 제외), tonematch.py horus skin, hairhl.py. 모양 그대로. 원본 sources/색전/horus-right-combat-hit-0.png. 사용자: 시트 보고 \"ㄱㄱ\"",
         "2026-10-17 오푸스: 사진 idle(left-combat-idle-0: 몸÷머리 0.767, 머리 폭÷높이 1.177)에 맞춤 — 목 아래 몸을 가로세로 같이 85.8 %(bodyscale.py, 목 280,428, 70행, 발 330,716 제자리), 뒤 머리 폭 102.4 %(faceslim.py). 머리 크기 그대로. 원본 sources/비율전/horus-right-combat-hit-0.png. 사용자: \"제일 심각한 right hit를 사진 idle의 머리폭, 비율, 크기로 맞춰\", 시안 \"Bㄱㄱ\"",
-        "2026-10-17 오푸스: 위 몸 85.8 % 손질을 되돌림(창이 목 띠에서 휨) — 색만 바꾼 그림으로. 사용자: 창은 무조건 찌그러지면 안 됨, 방법 2(게임 크기로 맞추고 필요한 장만 5 % 안 손질)"
+        "2026-10-17 오푸스: 위 몸 85.8 % 손질을 되돌림(창이 목 띠에서 휨) — 색만 바꾼 그림으로. 사용자: 창은 무조건 찌그러지면 안 됨, 방법 2(게임 크기로 맞추고 필요한 장만 5 % 안 손질)",
+        "2026-10-17 오푸스: 사용자가 비율을 직접 고친 수정본(구글 드라이브 \"Hit 수정본.png\", 556×743 같은 캔버스, 원본 sources/사용자수정/horus-right-combat-hit-0.png)으로 교체하고 머리색·파란 하이라이트·피부색을 다른 그림과 같은 기준으로(HAIR_ONLY_LARGEST=1 tonematch.py hair, tonematch.py skin, hairhl.py; 창 그대로). 사용자: \"Right Hit 비율 수정본 방금 구글드라이브에 올렸어 머리색 피부색 머리하이라이트색 다른애들처럼 바꿔서 ㄱㄱ\""
       ]
     },
     {
