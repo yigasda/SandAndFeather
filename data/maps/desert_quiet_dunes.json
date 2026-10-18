@@ -1,10 +1,10 @@
 {
- "id": "desert_03",
+ "id": "desert_quiet_dunes",
  "name": "고요한 사구",
  "tile": 16,
  "scene": "desert",
  "referenceScenes": [
-  "desert_03"
+  "desert_quiet_dunes"
  ],
  "legend": {
   ".": {
@@ -5421,7 +5421,7 @@
    "y0": 24.049388111888113,
    "x1": 0.9484265734265735,
    "y1": 59.88636363636364,
-   "to": "desert_04",
+   "to": "desert_dry_flats",
    "at": "east"
   },
   {
@@ -5430,7 +5430,7 @@
    "y0": 30.485139860139864,
    "x1": 120.17919580419581,
    "y1": 38.00480769230769,
-   "to": "desert_02",
+   "to": "desert_buried_temple",
    "at": "west"
   }
  ],

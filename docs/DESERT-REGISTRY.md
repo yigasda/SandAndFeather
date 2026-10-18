@@ -2,16 +2,16 @@
 
 `python3 tools/maps/desert-registry.py`가 만든다(손으로 고치지 않는다). 기준: 사막맵/manifest.json(34곳·PNG 40장), ASTRA-DESERT-05-20-GUIDE 1장 연결표, OPUS 사막 계획서 2·3·18·20절. 원본 해시·크기와 충돌 PNG 크기는 만들 때 검사한다.
 
-실행 ID는 의미 기반 제안이다. 이미 배포한 `desert_01`~`04`는 아직 옛 ID로 돌고 있으며, 바꿀 때는 옛 ID를 별칭으로 두고 저장 위치(`s.pos.map`)를 옮긴다.
+실행 ID는 의미 기반이다. 처음 `desert_01`~`04`로 나간 대형맵 네 곳은 의미 ID로 바뀌었고, 옛 ID에 서 있던 저장 위치(`s.pos.map`)는 저장 13판에서 옮긴다(src/core/state.js).
 
 ## 공간 34곳
 
 | 번호 | 이름 | 실행 ID(제안) | 현재 게임 | 그림(크기) | 충돌 | 충돌 승인 | 출입 걷기 확인 |
 |---|---|---|---|---|---|---|---|
-| 01 | 황금 사구해 | `desert_golden_dunes` | `desert_01` | 1586×992 +상태 1장 | 사용자 | ○ | ○ |
-| 02 | 매몰 신전 사막 | `desert_buried_temple` | `desert_02` | 1774×887 | 사용자 | ○ | ○ |
-| 03 | 고요한 사구 (06 통합) | `desert_quiet_dunes` | `desert_03` | 1774×887 | Opus (desert-collision.py) + 사용자 칠한 사구 | × | ○ |
-| 04 | 메마른 모래벌판 | `desert_dry_flats` | `desert_04` | 1774×887 | Opus (desert-collision.py) + 사용자 칠한 사구 | × | ○ |
+| 01 | 황금 사구해 | `desert_golden_dunes` | `desert_golden_dunes` | 1586×992 +상태 1장 | 사용자 | ○ | ○ |
+| 02 | 매몰 신전 사막 | `desert_buried_temple` | `desert_buried_temple` | 1774×887 | 사용자 | ○ | ○ |
+| 03 | 고요한 사구 (06 통합) | `desert_quiet_dunes` | `desert_quiet_dunes` | 1774×887 | Opus (desert-collision.py) + 사용자 수정·승인 | ○ | ○ |
+| 04 | 메마른 모래벌판 | `desert_dry_flats` | `desert_dry_flats` | 1774×887 | Opus (desert-collision.py) + 사용자 수정·승인 | ○ | ○ |
 | 05 | 피라미드 기단과 진입로 | `desert_pyramid_base` | — | 1024×1536 | 사용자 | ○ | × |
 | 07 | 고요한 오아시스 물가 | `desert_oasis` | — | 1774×887 | 사용자 | ○ | × |
 | 08 | 사막 대상의 쉼터 | `desert_caravan_rest` | — | 1774×887 | 사용자 | ○ | × |

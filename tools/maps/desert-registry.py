@@ -1,8 +1,8 @@
 """사막 등록표 (docs/OPUS desert plan 2·3·18·20절, ASTRA-DESERT-05-20-GUIDE 1장 연결표).
 
 34 places / 40 approved PNGs (사막맵/manifest.json), each with:
-  - the planning number and the runtime map id. Runtime ids are meaning-based (plan 2절); the four big maps already
-    shipped as desert_01..04 keep those ids as aliases until the rename is applied with a save move;
+  - the planning number and the runtime map id. Runtime ids are meaning-based (plan 2절); the four big maps first
+    shipped as desert_01..04 run under their meaning ids now, saves standing on the old ids move (src/core/state.js);
   - every approved picture of the place (state pictures are not places), its size and sha256, checked against the file;
   - the collision source: the user's picture in 사막맵/충돌/ (sha256, size checked against the art), or none;
   - its links from the guide's table, each with the guide's status (기획 / 채택 / 제안 / 미채택) and whether a portal
@@ -58,7 +58,7 @@ PLACES = [
     ('추가-운반로', 'desert_burial_passage', None, '매몰된 부장품 운반로', ['추가_매몰된부장품운반로.png'], '추가_매몰된부장품운반로.png'),
     ('추가-부장고', 'desert_golden_vault', None, '황금 부장고', ['추가_황금부장고.png'], '추가_황금부장고.png'),
 ]
-# collision pictures not drawn by the user (tools/maps/desert-collision.py, user-painted dunes on 03): not approved
+# collision pictures not drawn by the user (tools/maps/desert-collision.py, fixed and approved by the user)
 MADE = {'03_고요한사구_06통합.png', '04_메마른모래벌판.png'}
 
 # links: a, b, guide status, note. Physical moves only; information links (18 → 01 disc → 19) are listed apart.
@@ -131,7 +131,7 @@ def main():
             csize = list(Image.open(c).size)
             assert csize == pictures[0]['size'], f'{coll}: collision {csize} is not the art size'
             collision = {'file': f'사막맵/충돌/{coll}', 'sha256': sha(c), 'size': csize,
-                         'by': 'Opus (desert-collision.py) + 사용자 칠한 사구' if coll in MADE else '사용자'}
+                         'by': 'Opus (desert-collision.py) + 사용자 수정·승인' if coll in MADE else '사용자'}
         runtime = old if old in shipped else (rid if rid in shipped else None)
         built = {'desert_11': '11', 'desert_17': '17'}
         if not runtime:
@@ -139,7 +139,7 @@ def main():
                 if v == no and k in shipped: runtime = k
         out.append({'no': no, 'id': rid, 'shippedAs': runtime, 'name': name, 'pictures': pictures, 'collision': collision,
                     'state': {'artAccepted': True,
-                              'collisionApproved': bool(collision) and coll not in MADE,
+                              'collisionApproved': bool(collision),   # 03·04 too (user: "03 04 충돌 승인")
                               'portalValidated': any(no in k and v.startswith('걸어서') for k, v in BUILT.items()),
                               'assetReady': False, 'logicReady': False, 'saveReady': False, 'playtestReady': False}})
     assert len(out) == 34, len(out)
@@ -149,7 +149,7 @@ def main():
 
     L = ['# 사막 등록표', '', '`python3 tools/maps/desert-registry.py`가 만든다(손으로 고치지 않는다). 기준: 사막맵/manifest.json(34곳·PNG 40장), '
          'ASTRA-DESERT-05-20-GUIDE 1장 연결표, OPUS 사막 계획서 2·3·18·20절. 원본 해시·크기와 충돌 PNG 크기는 만들 때 검사한다.', '',
-         '실행 ID는 의미 기반 제안이다. 이미 배포한 `desert_01`~`04`는 아직 옛 ID로 돌고 있으며, 바꿀 때는 옛 ID를 별칭으로 두고 저장 위치(`s.pos.map`)를 옮긴다.', '',
+         '실행 ID는 의미 기반이다. 처음 `desert_01`~`04`로 나간 대형맵 네 곳은 의미 ID로 바뀌었고, 옛 ID에 서 있던 저장 위치(`s.pos.map`)는 저장 13판에서 옮긴다(src/core/state.js).', '',
          '## 공간 34곳', '', '| 번호 | 이름 | 실행 ID(제안) | 현재 게임 | 그림(크기) | 충돌 | 충돌 승인 | 출입 걷기 확인 |', '|---|---|---|---|---|---|---|---|']
     for p in out:
         pic = p['pictures'][0]; extra = f" +상태 {len(p['pictures']) - 1}장" if len(p['pictures']) > 1 else ''

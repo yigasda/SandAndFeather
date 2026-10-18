@@ -48,15 +48,15 @@ fs.mkdirSync(OUT, { recursive: true });
         await page.waitForTimeout(800);
         await page.screenshot({ path: path.join(OUT, 'ombos-east-edge-412.png') });
         let r = await walk(1, 0); log.push(r);
-        await page.waitForFunction(() => T.player.player.map === 'desert_01', null, { timeout: 15000 });
+        await page.waitForFunction(() => T.player.player.map === 'desert_golden_dunes', null, { timeout: 15000 });
         await page.waitForTimeout(1500);
         log.push({ arrived: await page.evaluate(() => ({ map: T.player.player.map, x: T.player.player.x, y: T.player.player.y })) });
-        await page.screenshot({ path: path.join(OUT, 'desert_01-west-412.png') });
+        await page.screenshot({ path: path.join(OUT, 'desert_golden_dunes-west-412.png') });
         // a short walk inside: right along the paved path, then back
         r = await walk(1, 0.25); log.push({ inside: r });
         await page.waitForTimeout(500);
-        await page.screenshot({ path: path.join(OUT, 'desert_01-inside-412.png') });
-        await page.evaluate(async () => T.win.travel('desert_01', 'west'));
+        await page.screenshot({ path: path.join(OUT, 'desert_golden_dunes-inside-412.png') });
+        await page.evaluate(async () => T.win.travel('desert_golden_dunes', 'west'));
         await page.waitForTimeout(800);
         r = await walk(-1, 0); log.push(r);
         await page.waitForFunction(() => T.player.player.map === 'ombos', null, { timeout: 15000 });
@@ -64,14 +64,21 @@ fs.mkdirSync(OUT, { recursive: true });
         log.push({ back: await page.evaluate(() => ({ map: T.player.player.map, x: T.player.player.x, y: T.player.player.y })) });
         await page.screenshot({ path: path.join(OUT, 'ombos-back-412.png') });
         // the big maps edge to edge: start at the way in next to the exit, walk out, land on the next map's way in
-        const legs = [['desert_01', 'east', 1, 'desert_04', 'west'], ['desert_04', 'east', 1, 'desert_03', 'west'],
-            ['desert_03', 'east', 1, 'desert_02', 'west'], ['desert_02', 'west', -1, 'desert_03', 'east'],
-            ['desert_03', 'west', -1, 'desert_04', 'east'], ['desert_04', 'west', -1, 'desert_01', 'east']];
-        legs.push(['desert_02', 'door', [0, -1], 'desert_11', 'outside'], ['desert_11', 'door', [0, -1], 'desert_17', 'east'],
-            ['desert_17', 'east', [1, 0], 'desert_11', 'door'], ['desert_11', 'outside', [-1, 0], 'desert_02', 'door']);
+        const legs = [['desert_golden_dunes', 'east', 1, 'desert_dry_flats', 'west'], ['desert_dry_flats', 'east', 1, 'desert_quiet_dunes', 'west'],
+            ['desert_quiet_dunes', 'east', 1, 'desert_buried_temple', 'west'], ['desert_buried_temple', 'west', -1, 'desert_quiet_dunes', 'east'],
+            ['desert_quiet_dunes', 'west', -1, 'desert_dry_flats', 'east'], ['desert_dry_flats', 'west', -1, 'desert_golden_dunes', 'east']];
+        legs.push(['desert_buried_temple', 'door', [0, -1], 'desert_11', 'outside'], ['desert_11', 'door', [0, -1], 'desert_17', 'east'],
+            ['desert_17', 'east', [1, 0], 'desert_11', 'door'], ['desert_11', 'outside', [-1, 0], 'desert_buried_temple', 'door']);
         for (const [from, at, dx, to, land] of legs) {
             await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
             await page.waitForTimeout(600);
+            // a landing inside its own way out (02's stone door): step back off it first, as a player must (doorArmed)
+            const off = await page.evaluate(([dx, dy]) => {
+                const p = T.player.player, map = T.map.getMap(p.map); let n = 0;
+                while (map.exitAt(p.x + .5, p.y + .8) && n < 400) { T.player.stepPlayer(map, -dx, -dy, 0.015); n++; }
+                return n;
+            }, Array.isArray(dx) ? dx : [dx, 0]);
+            if (off) await page.waitForTimeout(400);
             r = Array.isArray(dx) ? await walk(dx[0], dx[1]) : await walk(dx, 0); log.push(r);
             if (r.exit !== to) throw Error(`${from} ${at}: ${JSON.stringify(r)}`);
             await page.waitForFunction(id => T.player.player.map === id, to, { timeout: 15000 });

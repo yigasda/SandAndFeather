@@ -1,10 +1,10 @@
 {
- "id": "desert_02",
+ "id": "desert_buried_temple",
  "name": "매몰 신전 사막",
  "tile": 16,
  "scene": "desert",
  "referenceScenes": [
-  "desert_02"
+  "desert_buried_temple"
  ],
  "legend": {
   ".": {
@@ -10451,7 +10451,7 @@
    "y0": 12.736013986013987,
    "x1": 0.9484265734265735,
    "y1": 28.79152097902098,
-   "to": "desert_03",
+   "to": "desert_quiet_dunes",
    "at": "east"
   },
   {

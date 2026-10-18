@@ -3,7 +3,7 @@
   {
    "no": "01",
    "id": "desert_golden_dunes",
-   "shippedAs": "desert_01",
+   "shippedAs": "desert_golden_dunes",
    "name": "황금 사구해",
    "pictures": [
     {
@@ -49,7 +49,7 @@
   {
    "no": "02",
    "id": "desert_buried_temple",
-   "shippedAs": "desert_02",
+   "shippedAs": "desert_buried_temple",
    "name": "매몰 신전 사막",
    "pictures": [
     {
@@ -85,7 +85,7 @@
   {
    "no": "03",
    "id": "desert_quiet_dunes",
-   "shippedAs": "desert_03",
+   "shippedAs": "desert_quiet_dunes",
    "name": "고요한 사구 (06 통합)",
    "pictures": [
     {
@@ -106,11 +106,11 @@
      1774,
      887
     ],
-    "by": "Opus (desert-collision.py) + 사용자 칠한 사구"
+    "by": "Opus (desert-collision.py) + 사용자 수정·승인"
    },
    "state": {
     "artAccepted": true,
-    "collisionApproved": false,
+    "collisionApproved": true,
     "portalValidated": true,
     "assetReady": false,
     "logicReady": false,
@@ -121,7 +121,7 @@
   {
    "no": "04",
    "id": "desert_dry_flats",
-   "shippedAs": "desert_04",
+   "shippedAs": "desert_dry_flats",
    "name": "메마른 모래벌판",
    "pictures": [
     {
@@ -142,11 +142,11 @@
      1774,
      887
     ],
-    "by": "Opus (desert-collision.py) + 사용자 칠한 사구"
+    "by": "Opus (desert-collision.py) + 사용자 수정·승인"
    },
    "state": {
     "artAccepted": true,
-    "collisionApproved": false,
+    "collisionApproved": true,
     "portalValidated": true,
     "assetReady": false,
     "logicReady": false,

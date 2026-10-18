@@ -6,19 +6,19 @@
     40.734000000000044,
     22.4
    ],
-   "exit": "desert_01",
+   "exit": "desert_golden_dunes",
    "steps": 18
   },
   {
    "arrived": {
-    "map": "desert_01",
+    "map": "desert_golden_dunes",
     "x": 2.3452797202797204,
     "y": 17.15236013986014
    }
   },
   {
    "inside": {
-    "from": "desert_01",
+    "from": "desert_golden_dunes",
     "at": [
      38.796637906740116,
      27.013907160962333
@@ -28,7 +28,7 @@
    }
   },
   {
-   "from": "desert_01",
+   "from": "desert_golden_dunes",
    "at": [
     0.4048797202797193,
     17.15236013986014
@@ -44,17 +44,17 @@
    }
   },
   {
-   "from": "desert_01",
+   "from": "desert_golden_dunes",
    "at": [
     106.05743916083918,
     50.00856643356644
    ],
-   "exit": "desert_04",
+   "exit": "desert_dry_flats",
    "steps": 13
   },
   {
    "arrived": {
-    "map": "desert_04",
+    "map": "desert_dry_flats",
     "x": 2.480769230769231,
     "y": 46.621328671328676,
     "entry": [
@@ -64,17 +64,17 @@
    }
   },
   {
-   "from": "desert_04",
+   "from": "desert_dry_flats",
    "at": [
     118.8152265734266,
     19.523426573426576
    ],
-   "exit": "desert_03",
+   "exit": "desert_quiet_dunes",
    "steps": 24
   },
   {
    "arrived": {
-    "map": "desert_03",
+    "map": "desert_quiet_dunes",
     "x": 2.480769230769231,
     "y": 28.330244755244756,
     "entry": [
@@ -84,17 +84,17 @@
    }
   },
   {
-   "from": "desert_03",
+   "from": "desert_quiet_dunes",
    "at": [
     118.8152265734266,
     33.4111013986014
    ],
-   "exit": "desert_02",
+   "exit": "desert_buried_temple",
    "steps": 24
   },
   {
    "arrived": {
-    "map": "desert_02",
+    "map": "desert_buried_temple",
     "x": 2.480769230769231,
     "y": 21.555769230769233,
     "entry": [
@@ -104,17 +104,17 @@
    }
   },
   {
-   "from": "desert_02",
+   "from": "desert_buried_temple",
    "at": [
     0.3639692307692296,
     21.555769230769233
    ],
-   "exit": "desert_03",
+   "exit": "desert_quiet_dunes",
    "steps": 24
   },
   {
    "arrived": {
-    "map": "desert_03",
+    "map": "desert_quiet_dunes",
     "x": 116.69842657342659,
     "y": 33.4111013986014,
     "entry": [
@@ -124,17 +124,17 @@
    }
   },
   {
-   "from": "desert_03",
+   "from": "desert_quiet_dunes",
    "at": [
     0.3639692307692296,
     28.330244755244756
    ],
-   "exit": "desert_04",
+   "exit": "desert_dry_flats",
    "steps": 24
   },
   {
    "arrived": {
-    "map": "desert_04",
+    "map": "desert_dry_flats",
     "x": 116.69842657342659,
     "y": 19.523426573426576,
     "entry": [
@@ -144,22 +144,102 @@
    }
   },
   {
-   "from": "desert_04",
+   "from": "desert_dry_flats",
    "at": [
     0.3639692307692296,
     46.621328671328676
    ],
-   "exit": "desert_01",
+   "exit": "desert_golden_dunes",
    "steps": 24
   },
   {
    "arrived": {
-    "map": "desert_01",
+    "map": "desert_golden_dunes",
     "x": 104.91083916083917,
     "y": 50.00856643356644,
     "entry": [
      104.91083916083917,
      50.00856643356644
+    ]
+   }
+  },
+  {
+   "from": "desert_buried_temple",
+   "at": [
+    100.16870629370631,
+    45.5374125874126
+   ],
+   "exit": "desert_11",
+   "steps": 1
+  },
+  {
+   "arrived": {
+    "map": "desert_11",
+    "x": 8.442307692307693,
+    "y": 39.44038461538462,
+    "entry": [
+     8.442307692307693,
+     39.44038461538462
+    ]
+   }
+  },
+  {
+   "from": "desert_11",
+   "at": [
+    20.66346153846154,
+    9.690999999999988
+   ],
+   "exit": "desert_17",
+   "steps": 18
+  },
+  {
+   "arrived": {
+    "map": "desert_17",
+    "x": 50.91826923076923,
+    "y": 14.252884615384616,
+    "entry": [
+     50.91826923076923,
+     14.252884615384616
+    ]
+   }
+  },
+  {
+   "from": "desert_17",
+   "at": [
+    51.989269230769274,
+    14.252884615384616
+   ],
+   "exit": "desert_11",
+   "steps": 17
+  },
+  {
+   "arrived": {
+    "map": "desert_11",
+    "x": 20.66346153846154,
+    "y": 10.825,
+    "entry": [
+     20.66346153846154,
+     10.825
+    ]
+   }
+  },
+  {
+   "from": "desert_11",
+   "at": [
+    -0.12569230769229744,
+    39.44038461538462
+   ],
+   "exit": "desert_buried_temple",
+   "steps": 136
+  },
+  {
+   "arrived": {
+    "map": "desert_buried_temple",
+    "x": 100.16870629370631,
+    "y": 45.5374125874126,
+    "entry": [
+     100.16870629370631,
+     45.5374125874126
     ]
    }
   }

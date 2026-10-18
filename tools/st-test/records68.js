@@ -70,10 +70,10 @@ const OUT = process.argv[2] || '/tmp/records68'; fs.mkdirSync(OUT, { recursive: 
     md.sand_feather = old;
     const s2 = IT.st.getState();
     const st = IT.ex.regionStatus(s2, 'ombos');
-    return { v: s2.v, deben: s2.bag.deben, uids: s2.bag.items.map(x => x.uid).join() === old.bag.items.map(x => x.uid).join(), f: !!(s2.fishing.records && s2.achieve.claimed && s2.explore.seen && s2.treasure.clues),
+    return { v: s2.v, cur: IT.st.STATE_VERSION, deben: s2.bag.deben, uids: s2.bag.items.map(x => x.uid).join() === old.bag.items.map(x => x.uid).join(), f: !!(s2.fishing.records && s2.achieve.claimed && s2.explore.seen && s2.treasure.clues),
       counted: st.points.filter(p => p.seen).map(p => p.key).sort().join(), started: IT.tr.started(s2) };
   });
-  ok(mig.v === 12 && mig.deben === 77 && mig.uids && mig.f, `세이브 v11 → v12: 데벤·가방 uid 그대로, 새 기록 칸 생김 (${JSON.stringify({ v: mig.v, deben: mig.deben })})`);
+  ok(mig.v === mig.cur && mig.deben === 77 && mig.uids && mig.f, `세이브 v11 → 최신: 데벤·가방 uid 그대로, 새 기록 칸 생김 (${JSON.stringify({ v: mig.v, deben: mig.deben })})`);
   ok(mig.counted.includes('secret:night_mural') && mig.counted.includes('secret:sand_trace') && mig.counted.includes('obelisk:ob_north'), `예전에 찾은 비밀·깨운 오벨리스크가 탐사율에 들어감: ${mig.counted}`);
   ok(mig.started, '예전에 해독한 지도 조각(garden_hint)이 보물지도 첫 단서로 인정됨');
   // back to a clean game for the rest

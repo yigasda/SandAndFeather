@@ -7080,8 +7080,8 @@
   }
  },
  "walkSpeed": 1.0,
- "cameraScale": 1.0,
- "actorScale": 1.0,
+ "cameraScale": 0.8,
+ "actorScale": 1.4,
  "entries": {
   "east": {
    "x": 50.91826923076923,

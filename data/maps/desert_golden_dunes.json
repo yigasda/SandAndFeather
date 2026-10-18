@@ -1,10 +1,10 @@
 {
- "id": "desert_01",
+ "id": "desert_golden_dunes",
  "name": "황금 사구해",
  "tile": 16,
  "scene": "desert",
  "referenceScenes": [
-  "desert_01"
+  "desert_golden_dunes"
  ],
  "legend": {
   ".": {
@@ -13705,7 +13705,7 @@
    "y0": 45.79545454545455,
    "x1": 107.44318181818183,
    "y1": 55.68618881118881,
-   "to": "desert_04",
+   "to": "desert_dry_flats",
    "at": "west"
   }
  ],

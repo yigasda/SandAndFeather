@@ -4,7 +4,7 @@ import { freshBond, fillBond } from './bond-state.js';
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 12;
+export const STATE_VERSION = 13;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -60,6 +60,17 @@ const STEPS = {
     // 11 → 12: 낚시 기록, 업적·칭호, 탐사율, 보물지도 are new (filled below). Secrets, woken obelisks, the 도감 and the map
     // scrap read before count as they are (read from codex / flags, nothing copied)
     11: () => {},
+    // 12 → 13: the first desert maps went out as desert_01..04 and run under their meaning ids now (tools/maps/desert.py):
+    // a save standing there stays where it stood, and the places seen there stay seen
+    12: s => {
+        const to = { desert_01: 'desert_golden_dunes', desert_02: 'desert_buried_temple', desert_03: 'desert_quiet_dunes', desert_04: 'desert_dry_flats' };
+        if (to[s.pos?.map]) s.pos.map = to[s.pos.map];
+        const seen = s.explore?.seen;
+        if (seen && typeof seen === 'object') for (const k of Object.keys(seen)) {
+            const n = k.replace(/desert_0[1-4]/, m => to[m]);
+            if (n !== k) { seen[n] = seen[k]; delete seen[k]; }
+        }
+    },
     1: () => {},  // 1 → 2: ledger, bag, news, recent are new; they are filled below
     // 2 → 3: 말 걸기 no longer moves the scene by itself. Talk lines made before that, still waiting, are dropped
     // so an ongoing scene is not pulled to the temple courtyard.
