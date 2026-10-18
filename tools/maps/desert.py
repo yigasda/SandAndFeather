@@ -30,6 +30,10 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # the big maps are wide at 44 %: walking is 1.25 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자")
 WALK = {'big': 1.25, 'detail': 1.0}
+# the big maps' camera further out (user: "75", then "60%로 카메라") and the people a little larger than their tile so they
+# are not specks (user: "캐릭터도 좀만 키우자"); src/world/render.js fitZoom / actorScale
+CAMERA = {'big': 0.6, 'detail': 1.0}
+ACTOR = {'big': 1.25, 'detail': 1.0}
 ALPHA = 128
 SRC = ROOT / '사막맵'
 OUT_ART = ROOT / 'docs/art/map-expansion'
@@ -82,6 +86,7 @@ def main():
                 'authoredCollision': {'width': W * PX, 'height': H * PX, 'shapes': [],
                                       'pixelWalk': {'width': w, 'height': h, 'pixelsPerTile': PX, 'rows': P.runs(mask)}},
                 'walkSpeed': WALK['big' if ident in BIG else 'detail'],
+                'cameraScale': CAMERA['big' if ident in BIG else 'detail'], 'actorScale': ACTOR['big' if ident in BIG else 'detail'],
                 'entries': entries, 'spawn': next(iter(entries.values())), 'exits': ex, 'spots': [], 'spawns': [], 'roam': [], 'labels': [],
                 'note': '모래 너머로 옴보스가 보여. 왼쪽 길로 돌아갈 수 있어.',
                 'source': {'art': f'사막맵/{file}', 'artSha256': manifest[file]['sha256'], 'collision': f'사막맵/충돌/{coll}',
