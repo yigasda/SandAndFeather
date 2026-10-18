@@ -1,0 +1,119 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 981,
+    "sha256": "d2282c18d79521f396bbec273064dc8e14b56bc5da16f4c6e011078331c79595",
+    "git_blob_sha": "63079c8b724ea8613a7e85a686838d3d557bc35f"
+  },
+  {
+    "path": "approved/horus-front-combat-idle-0.png",
+    "bytes": 958318,
+    "sha256": "3f55cd93d2935a1d2e120a67addeb0bec44718c5b12c993dfc762d905abf37ca",
+    "git_blob_sha": "30be528cdb3b6eed333f3d2fdf7645600a221982",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/horus-front-combat-idle-1.png",
+    "bytes": 957666,
+    "sha256": "a9630814012de33929749d688bc42aa9c71e7f5fb7f7f8fd22f7b702c2de47e7",
+    "git_blob_sha": "35643cdc2c5a56f9e6d2cc7eb40b7e6dd8aba4ec",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/horus-front-combat-idle-2.png",
+    "bytes": 940594,
+    "sha256": "f2f9c61c325a6e9392a13c517caa1a116af5747e24ab640f0736240c41e3f46f",
+    "git_blob_sha": "762d46c514816275acf613f8c92b1f53bc14f877",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "browfix-exact-prompt.txt",
+    "bytes": 647,
+    "sha256": "b64c21c6e04a1a8e6496f17e21c0f769e33633ab43fd1190b6ca3113a2335c18",
+    "git_blob_sha": "3004ec1be42dbe6f2b421ea79e433b1d943443e6"
+  },
+  {
+    "path": "initial-prompts.json",
+    "bytes": 4906,
+    "sha256": "47b4bc9dab6584e6ddbeacb73ff213c92189ffaa8bcc60997248f33263158851",
+    "git_blob_sha": "b60cddea15e2daa28754dfa028e2f52cfd5a5700"
+  },
+  {
+    "path": "preview.gif",
+    "bytes": 320583,
+    "sha256": "5932b35971da694fa6a8dfcd13754cdeeae878ef8fe37dc8fa9d8ae4fa3ef5f4",
+    "git_blob_sha": "954d91ebdbe9c263ece0630c65ec941bfcaa6516",
+    "width": 600,
+    "height": 480,
+    "mode": "P"
+  },
+  {
+    "path": "references/1000483614.png",
+    "bytes": 208036,
+    "sha256": "eb30b47d30e85779ca5d35d68bf054e7656f62a7830042ae7437cbacd4a3bbd2",
+    "git_blob_sha": "724fe39271b867f7d4a630f3c305a2e27dba1d6e",
+    "width": 616,
+    "height": 469,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483688(1).png",
+    "bytes": 697804,
+    "sha256": "edd259153dec6522a4041466d63ff527972be859ef98ea7ba2ef270008679c85",
+    "git_blob_sha": "c8877522612361ef8cb706bb70e713556816cc85",
+    "width": 908,
+    "height": 1236,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483726.png",
+    "bytes": 621788,
+    "sha256": "bf298c5c61c7b20db7e8db1213e9129dcb4fdc18f5ed0757c9ddaae0ac337c35",
+    "git_blob_sha": "f55750a259298b49a2d5a29838b0412eafe633d8",
+    "width": 2048,
+    "height": 704,
+    "mode": "RGB"
+  },
+  {
+    "path": "references/1000483731(1).png",
+    "bytes": 206796,
+    "sha256": "db44ed6cff70b11d79c9d0306e6fe71c7be1618ce9a714c305e1a62580ec33e8",
+    "git_blob_sha": "334991b805e59cc26e44883cd8fece81d48be234",
+    "width": 604,
+    "height": 481,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483733(1).png",
+    "bytes": 378247,
+    "sha256": "510547cc45a28a61f2eadb9bdc29297bda72435d77bba87c6eb90f5aafc37fbf",
+    "git_blob_sha": "f7180f14d4a0446d27dd1d8dabf2b3fa35a720e1",
+    "width": 725,
+    "height": 669,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/before-browfix/horus-front-combat-idle-1.png",
+    "bytes": 976848,
+    "sha256": "280c064c16884b185bad5853aaa2b369c60fa48e36a8a837f34d55fd9e396df4",
+    "git_blob_sha": "6ba819baa5d807a0428520413dea6cbb773ce833",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/before-browfix/horus-front-combat-idle-2.png",
+    "bytes": 956863,
+    "sha256": "6e4054148c1b2617ad81f6b121e944535bc1b34ebea998e36cd4e905b52a1421",
+    "git_blob_sha": "fbdebabd03627ddf6231e6e417899ee0579aa3bb",
+    "width": 1401,
+    "height": 1123,
+    "mode": "RGBA"
+  }
+]

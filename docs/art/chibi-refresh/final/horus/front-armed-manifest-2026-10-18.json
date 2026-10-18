@@ -1,0 +1,78 @@
+{
+  "status": "user-adopted-original-sources-not-runtime",
+  "count": 8,
+  "files": [
+    {
+      "path": "docs/art/chibi-refresh/final/horus/armed-walk/horus-front-armed-walk-0.png",
+      "bytes": 911650,
+      "sha256": "f4bc4739a5a3d42c0102c6465d3c0a0d9b3f28b147597ff52e72a55e542b21ab",
+      "git_blob_sha": "f5d2c2bd078fb693acf5b9bb3730a3d241042ae0",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/chibi-refresh/final/horus/armed-walk/horus-front-armed-walk-1.png",
+      "bytes": 906326,
+      "sha256": "181290e6c5633660f2afd575b2c97297d6921dd84b9fe9739613744d06b8f56d",
+      "git_blob_sha": "18431352db04d1165cb405a64e66e9aa52214cf4",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/chibi-refresh/final/horus/armed-walk/horus-front-armed-walk-2.png",
+      "bytes": 875945,
+      "sha256": "d14f74b41009240a6abec886b92330aee77f7dc7845422744cbb94cb8e389de8",
+      "git_blob_sha": "e3e2be0780ef34de52d0960673ec2151d9718486",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/chibi-refresh/final/horus/combat-attack/horus-front-combat-attack-0.png",
+      "bytes": 480343,
+      "sha256": "d654db3ef972d2edc20aee4b7014552369470d907dcc3113b6f2b8cddaf7a15e",
+      "git_blob_sha": "850824da7257e86cbabba56911a3b48d93e665be",
+      "width": 992,
+      "height": 793,
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/chibi-refresh/final/horus/combat-attack/horus-front-combat-attack-1.png",
+      "bytes": 494941,
+      "sha256": "a7bdb04ae9b6159fe312daae22671029abdaae694409cccfe1b406e0b58faf5e",
+      "git_blob_sha": "f2286889fb5b21f487416eeff2133f4ddf00b52a",
+      "width": 992,
+      "height": 793,
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/chibi-refresh/final/horus/combat-idle/horus-front-combat-idle-0.png",
+      "bytes": 958318,
+      "sha256": "3f55cd93d2935a1d2e120a67addeb0bec44718c5b12c993dfc762d905abf37ca",
+      "git_blob_sha": "30be528cdb3b6eed333f3d2fdf7645600a221982",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/chibi-refresh/final/horus/combat-idle/horus-front-combat-idle-1.png",
+      "bytes": 957666,
+      "sha256": "a9630814012de33929749d688bc42aa9c71e7f5fb7f7f8fd22f7b702c2de47e7",
+      "git_blob_sha": "35643cdc2c5a56f9e6d2cc7eb40b7e6dd8aba4ec",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/art/chibi-refresh/final/horus/combat-idle/horus-front-combat-idle-2.png",
+      "bytes": 940594,
+      "sha256": "f2f9c61c325a6e9392a13c517caa1a116af5747e24ab640f0736240c41e3f46f",
+      "git_blob_sha": "762d46c514816275acf613f8c92b1f53bc14f877",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA"
+    }
+  ]
+}

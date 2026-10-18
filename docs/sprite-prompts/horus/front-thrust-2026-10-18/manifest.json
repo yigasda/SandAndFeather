@@ -1,0 +1,128 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 1486,
+    "sha256": "e1e78ef3c863e7af3c24c05e7883d41777a5daaf3f995c937242c41c06b342d6",
+    "git_blob_sha": "15ac402afb313f344ad9093a395cf69ea5281e23"
+  },
+  {
+    "path": "approved/horus-front-combat-attack-0.png",
+    "bytes": 480343,
+    "sha256": "d654db3ef972d2edc20aee4b7014552369470d907dcc3113b6f2b8cddaf7a15e",
+    "git_blob_sha": "850824da7257e86cbabba56911a3b48d93e665be",
+    "width": 992,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/horus-front-combat-attack-1.png",
+    "bytes": 494941,
+    "sha256": "a7bdb04ae9b6159fe312daae22671029abdaae694409cccfe1b406e0b58faf5e",
+    "git_blob_sha": "f2286889fb5b21f487416eeff2133f4ddf00b52a",
+    "width": 992,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "brown-fix-exact-prompt.txt",
+    "bytes": 1124,
+    "sha256": "dfeb575ccea6581235f8418db340cd4baeaed3a0ee53d6e53b7cf0dc50f27298",
+    "git_blob_sha": "2c75bd46360c31c15c9dbc40297944fbde897149"
+  },
+  {
+    "path": "initial-exact-prompt.txt",
+    "bytes": 1695,
+    "sha256": "058cf0d5d521ff609e989f338833ae5bdd3a90a0c4a2b6e391ca671c4216d016",
+    "git_blob_sha": "bc3726de81b3a720e910c2585c1d4996f600fc7a"
+  },
+  {
+    "path": "preview.gif",
+    "bytes": 153897,
+    "sha256": "c6763242871b425f86f74c2f41424e47df817abc50bdcbc1437656fe23302395",
+    "git_blob_sha": "bda685fd6865bf51f2b8c64990be0504c4742a74",
+    "width": 600,
+    "height": 480,
+    "mode": "P"
+  },
+  {
+    "path": "provenance/accepted-brown-fixed-sheet.png",
+    "bytes": 1009710,
+    "sha256": "0e84f89e7a291a444f55e75678382733043a4c87001de977e883075fabff5142",
+    "git_blob_sha": "6232aa27dd7c3b462269d0a1a0e1907daa8a3a2a",
+    "width": 1983,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "provenance/original-sheet.png",
+    "bytes": 1014519,
+    "sha256": "135072620ea6be2cdd737b902eceab98cce9d60b9aee03ebc556bc65d721cef4",
+    "git_blob_sha": "4be7aa2c4edaf8e91e310dcb093826afef50edd6",
+    "width": 1983,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/01-horus-front-combat-idle-0.png",
+    "bytes": 958318,
+    "sha256": "3f55cd93d2935a1d2e120a67addeb0bec44718c5b12c993dfc762d905abf37ca",
+    "git_blob_sha": "30be528cdb3b6eed333f3d2fdf7645600a221982",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/02-1000483688(1).png",
+    "bytes": 697804,
+    "sha256": "edd259153dec6522a4041466d63ff527972be859ef98ea7ba2ef270008679c85",
+    "git_blob_sha": "c8877522612361ef8cb706bb70e713556816cc85",
+    "width": 908,
+    "height": 1236,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/03-1000483614.png",
+    "bytes": 208036,
+    "sha256": "eb30b47d30e85779ca5d35d68bf054e7656f62a7830042ae7437cbacd4a3bbd2",
+    "git_blob_sha": "724fe39271b867f7d4a630f3c305a2e27dba1d6e",
+    "width": 616,
+    "height": 469,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/04-set-front-combat-attack-0.png",
+    "bytes": 756735,
+    "sha256": "abba61f910229e30631d677e4e213e59184ed71763d6d6e59e484516fdbba4a3",
+    "git_blob_sha": "ac935566044c346e1cf0253dcd32e66ca1efa85c",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/05-set-front-combat-attack-1.png",
+    "bytes": 806697,
+    "sha256": "157b5751c25d5cbc125ac7235f37caf3b6e6c66323dedef70aac4175de54fc97",
+    "git_blob_sha": "67608de45d305e18a76098afefde7d727cd718ae",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483818.jpg",
+    "bytes": 168526,
+    "sha256": "e9231c67c6ba3befc969162bd71a27c0aa922a0bb188af4627b165ced379805e",
+    "git_blob_sha": "1bc4f5fa8116e1183ac511155f0d5d540ccd6a58",
+    "width": 1079,
+    "height": 1009,
+    "mode": "RGB"
+  },
+  {
+    "path": "references/1000483821.jpg",
+    "bytes": 139855,
+    "sha256": "71af29bd5c67c50549d81d3e5fb8aa27b62c1cd1982638590e93bfa98a591613",
+    "git_blob_sha": "5a2364fafa6861cae07b2deff2adabd3e59d4f38",
+    "width": 1080,
+    "height": 761,
+    "mode": "RGB"
+  }
+]
