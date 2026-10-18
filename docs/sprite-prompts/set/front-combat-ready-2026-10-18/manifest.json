@@ -1,11 +1,5 @@
 [
   {
-    "path": "README.md",
-    "bytes": 2373,
-    "sha256": "9d2f2f39824275b001835125fe085303e6d018f73657cab8a8efd4add5e1740e",
-    "git_blob_sha": "d28b92d0441308bb940ac30c0e29dd1f480018a7"
-  },
-  {
     "path": "actual-generation-prompt.txt",
     "bytes": 4002,
     "sha256": "329e4b0e087d789f5727cf8c9dd126afcc19799d70e4b7fef3c478f73b645022",
@@ -64,5 +58,44 @@
     "width": 620,
     "height": 720,
     "mode": "RGBA"
+  },
+  {
+    "path": "README.md",
+    "bytes": 3877,
+    "sha256": "787f7ebc0bf013695a6f17864ad17313610dd18a51c74848732483205ebc714c",
+    "git_blob_sha": "3714b6927db6520fa486e367eadfe06ca843ee4c"
+  },
+  {
+    "path": "approved/set-front-combat-idle-012-preview.gif",
+    "bytes": 294240,
+    "sha256": "e588193869974636c53ba0f308d1ba90b32de10f50626d56b260f1642fc7ba2e",
+    "git_blob_sha": "ccee05ea1d8b95b447b50c513ea6e4d750541f72",
+    "width": 600,
+    "height": 480,
+    "mode": "P"
+  },
+  {
+    "path": "approved/set-front-combat-idle-1.png",
+    "bytes": 691294,
+    "sha256": "32f82b0404f1a309862a4ee6ae85d88be099ea426527144691bc82037d6fd844",
+    "git_blob_sha": "3c592d32d30712031d6046f04e67e2f1f64b707b",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/set-front-combat-idle-2.png",
+    "bytes": 698822,
+    "sha256": "b0cbd35720e84fc658312024db4bf89027764183e5872ecaa490170a2c52d1f1",
+    "git_blob_sha": "2ce0b7337c749daa984f820dd370555cbdd5620b",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "idle-1-2-exact-prompts.json",
+    "bytes": 3072,
+    "sha256": "4bf31593c259219556908984c042d7e0d8dc2bafff8188c03f68bc84342765d2",
+    "git_blob_sha": "a149034b78fc20344658a60c04011cc2342b68ed"
   }
 ]
