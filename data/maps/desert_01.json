@@ -13667,7 +13667,7 @@
  },
  "walkSpeed": 1.25,
  "cameraScale": 0.6,
- "actorScale": 1.25,
+ "actorScale": 1.6,
  "entries": {
   "west": {
    "x": 2.3452797202797204,

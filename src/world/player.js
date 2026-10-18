@@ -12,12 +12,13 @@ export const player = { map: 'ombos', x: 25, y: 16, dir: 'down', moving: false, 
 // where she has been lately, so a companion can walk a little behind her
 const trail = [];
 const TRAIL_GAP = 0.9; // tiles behind her
+let gap = TRAIL_GAP;   // the people drawn larger on a map (map.d.actorScale) keep that much further apart; set as she walks
 // a pack can walk the companion on its own for a while (두아트 전투: a place of their own to fight from); follower()
 // then returns mateWalk.pos ({ x, y, dir, moving, step, walkT }) instead of the place behind her
 export const mateWalk = { pos: null };
 export function follower() { return mateWalk.pos || behind(); }
 export function behind() {
-    let need = TRAIL_GAP, prev = { x: player.x, y: player.y };
+    let need = gap, prev = { x: player.x, y: player.y };
     for (let k = trail.length - 1; k >= 0; k--) {
         const p = trail[k], d = Math.hypot(p.x - prev.x, p.y - prev.y);
         if (d >= need) { const t = need / d; return { x: prev.x + (p.x - prev.x) * t, y: prev.y + (p.y - prev.y) * t, dir: p.dir, moving: player.moving, step: player.step, walkT: player.walkT }; }
@@ -83,6 +84,7 @@ export function stepPlayer(map, dx, dy, dt) {
     getUp();
     // a map may set its own pace (the wide desert maps: map.d.walkSpeed, tools/maps/desert.py); the walking pictures keep step
     const pace = map.d?.walkSpeed || 1;
+    gap = TRAIL_GAP * (map.d?.actorScale || 1);
     const k = Math.min(1, len) * SPEED * pace * dt / len;
     const nx = player.x + dx * k, ny = player.y + dy * k, x0 = player.x, y0 = player.y;
     if (!blocked(map, nx, player.y)) player.x = nx;
