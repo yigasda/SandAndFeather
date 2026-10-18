@@ -1,0 +1,86 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 1874,
+    "sha256": "f1d7b7d5f0bc7bc98d643455b05c786010c9488ad3b128af9dec75aad6f02eb0",
+    "git_blob_sha": "731ff819a3fb887b508d0421c80b887107fef830"
+  },
+  {
+    "path": "approved/set-front-armed-walk-0.png",
+    "bytes": 736983,
+    "sha256": "20fb67cc586b90f7d44d6aab797d4224cf7f30b0a2fd00ae14297c451632a7b3",
+    "git_blob_sha": "71d2931877c96d6e1f26a6fe11644c21c0e87c85",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/set-front-armed-walk-1.png",
+    "bytes": 709428,
+    "sha256": "6bcfcffdb52817598e0121abfc469700eaa6fabd3d4710505aace4ba929c289f",
+    "git_blob_sha": "4ae827b789a39d5a8d1bb753eebe0641fd464834",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/set-front-armed-walk-2.png",
+    "bytes": 703180,
+    "sha256": "7d7c34f44924a27ec1622f6e361cbff726eeb1e4af4bbd4409e763469e3942b2",
+    "git_blob_sha": "d953c3643d02dbf6eec27a8f18e382df0a5d25cb",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "prompts.json",
+    "bytes": 3550,
+    "sha256": "ac2b14cbc6edb98ba8a5a9ae2a1ad68b2cac134be410e9481d22de4944bb20e0",
+    "git_blob_sha": "05fae9a3fedaa75ccb635fd9ec9e4888755973da"
+  },
+  {
+    "path": "references/set-front-combat-idle-0.png",
+    "bytes": 715210,
+    "sha256": "d3fabf45515f89d5198a1e036d942417531a974e0e40405b923056e16077c279",
+    "git_blob_sha": "8dbe5cef023643abfb73dcaa670e14e9352e765d",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/walk-0-guide.png",
+    "bytes": 119097,
+    "sha256": "e44f087ac680d177b409b98ea611bcb4139b20fe624b18e4c4f2c676bb42e07c",
+    "git_blob_sha": "af69490d999e388ad4da2715b99ea0cc05b356f1",
+    "width": 360,
+    "height": 400,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/walk-1-guide.png",
+    "bytes": 119135,
+    "sha256": "8b0fe51bd1a0d9f4eeb52b95efb490160d436f6d19025e04197cdfe00db59f12",
+    "git_blob_sha": "df8935eb6df8495f0af7fd0d25dda7b261b8a932",
+    "width": 360,
+    "height": 400,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/walk-2-guide.png",
+    "bytes": 119596,
+    "sha256": "1ee45afdcf7a4b3ce1cb205a0d1872641c903be220eca1fca6732092bc4e95c0",
+    "git_blob_sha": "ed3cdea650d79d412a07e6bcc572707fbf2c1f65",
+    "width": 360,
+    "height": 400,
+    "mode": "RGBA"
+  },
+  {
+    "path": "walk-preview.gif",
+    "bytes": 299975,
+    "sha256": "aaca529a3f69a1665154c95da506665f18c22859eae2140bb989d1b9b80957bc",
+    "git_blob_sha": "dd50b5a6a43af8e7e4a9c005ae2701972a415f7a",
+    "width": 600,
+    "height": 480,
+    "mode": "P"
+  }
+]
