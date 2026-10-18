@@ -89,7 +89,7 @@ export class Renderer {
         const m = this.motion.get(look);
         if (!m) return false;
         const small = m.small && DATA.spriteArt?.[m.small.file];
-        let a = small && m.height * z <= m.small.visible + 1 ? m.small : null;
+        let a = small && m.height * z * this.actorScale() <= m.small.visible + 1 ? m.small : null;
         if (!a) a = spriteFile(m.file) ? m : small ? m.small : null;
         if (!a) return false;
         const image = DATA.spriteArt[a.file];
@@ -113,8 +113,9 @@ export class Renderer {
             [ox, oy] = m.offsets[dir]?.[k] || [0, 0];
         }
         let k = m.height * z / a.visible;
+        k *= this.actorScale();
         if (Math.abs(k - 1) < 0.03) k = 1; // drawn pixel for pixel: no resampling at all
-        const step = m.height * z / m.offsetRef;
+        const step = m.height * z * this.actorScale() / m.offsetRef;
         const fx = x + 8 * z, fy = y + 16 * z;
         if (!posed) { // sitting or lying, the seat or the bed is under her, not a shadow on the floor
             g.fillStyle = 'rgba(40,25,10,.22)';
@@ -137,7 +138,7 @@ export class Renderer {
     combatPerson(g, look, x, y, dir, z, anim) {
         const c = this.combat.get(look);
         if (!c) return false;
-        const want = c.height * z;
+        const want = c.height * z * this.actorScale();
         const a = (want <= c.small.visible + 1 && spriteFile(c.small.file)) ? c.small : spriteFile(c.file) ? c : spriteFile(c.small.file) ? c.small : null;
         if (!a) return false;
         const side = dir === 'left' || dir === 'right' ? dir : (anim.combat.face || 'right');
@@ -161,6 +162,7 @@ export class Renderer {
     setMap(map, season) {
         if (this.map === map && this.season === season) return;
         this.map = map; this.season = season;
+        this.fitZoom();
         this.paintGround();
     }
     // a phone browser can throw canvas pictures away while the tab is in the background (the GPU memory is
@@ -177,8 +179,13 @@ export class Renderer {
         this.cv.height = Math.max(1, Math.round(r.height * dpr));
         this.dpr = dpr;
         // about 12 tiles across on a phone, about 18 on a wide screen, always whole pixels
-        this.zoom = Math.max(2, Math.min(4, Math.round(r.width / ((r.width < 600 ? 12 : 18) * T)))) * dpr;
+        this.baseZoom = Math.max(2, Math.min(4, Math.round(r.width / ((r.width < 600 ? 12 : 18) * T)))) * dpr;
+        this.fitZoom();
     }
+    // a map may ask for the camera further out (the wide desert maps: map.d.cameraScale, tools/maps/desert.py)
+    fitZoom() { this.zoom = (this.baseZoom || 2) * (this.map?.d?.cameraScale || 1); }
+    // and the people drawn larger than their tile (map.d.actorScale), so they do not shrink with the camera
+    actorScale() { return this.map?.d?.actorScale || 1; }
 
     // ---- the still layers: painted once per map and season (paint.js)
     paintGround() { paintMap(this.map, SEASON[this.season] || SEASON.peret, this.ground, this.top, this.season); }

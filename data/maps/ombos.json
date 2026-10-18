@@ -636,10 +636,11 @@
       "en": "a blue lotus just opened on the riverbank at dawn"
     }
   ],
-  "_exits_about": "걸어 들어가면 다른 맵으로: 신전 문 안쪽은 안채 우물 마당 입구(tools/maps/residence.py와 짝), 선착장 부두로 내려가면 선착장 세부맵(tools/maps/dock.py와 짝).",
+  "_exits_about": "걸어 들어가면 다른 맵으로: 신전 문 안쪽은 안채 우물 마당 입구(tools/maps/residence.py와 짝), 선착장 부두로 내려가면 선착장 세부맵(tools/maps/dock.py와 짝), 오른쪽 아래 강가 풀밭 동쪽 끝으로 나가면 사막 01 황금 사구해(tools/maps/desert.py와 짝).",
   "exits": [
     { "x0": 24.75, "y0": 9.45, "x1": 26.05, "y1": 10.05, "to": "temple_courtyard", "at": "south" },
-    { "x0": 24.2, "y0": 28.55, "x1": 26.8, "y1": 30.6, "to": "dock_pier", "at": "path" }
+    { "x0": 24.2, "y0": 28.55, "x1": 26.8, "y1": 30.6, "to": "dock_pier", "at": "path" },
+    { "x0": 41.2, "y0": 20.8, "x1": 42, "y1": 25.2, "to": "desert_01", "at": "west" }
   ],
   "companionSpots": {
     "set": {

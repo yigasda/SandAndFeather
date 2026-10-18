@@ -590,5 +590,17 @@
     "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
     "tintActors": false,
     "tintWorld": false
+  },
+  "desert_01": {
+    "file": "../docs/art/map-expansion/desert-01.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [1.083916083916084, 1.083916083916084],
+    "day": [0, 0, 1586, 992],
+    "night": [0, 0, 1586, 992],
+    "clip": [[0, 0], [1586, 0], [1586, 992], [0, 992]],
+    "tintActors": false,
+    "tintWorld": false
   }
 }
