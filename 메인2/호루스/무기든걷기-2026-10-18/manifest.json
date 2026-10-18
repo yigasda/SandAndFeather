@@ -1,0 +1,90 @@
+{
+ "about": "호루스 무기 든 걷기 6장(좌우 × 0·1·2). 크기는 방향마다 하나: 걷기 0 머리를 같은 방향 전투 대기 0 머리에 겹친 배율(좌 ×2.38, 우 ×1.8) × 대기 0 referenceVisibleHeight. pivot = 발바닥 행, 좌우는 대기와 같은 몸 자리(치마 가운데).",
+ "approval": "2026-10-18 사용자 \"합격\"",
+ "sprites": [
+  {
+   "file": "horus-left-armed-walk-0-v1.png",
+   "side": "left",
+   "phase": 0,
+   "sha256": "ddbd53d200a012167d90288664238f1052d68b1d4ec3bbd7fa098732cc782a13",
+   "referenceVisibleHeight": 950.1,
+   "pivot": [
+    905.4,
+    1038
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~629↔0~268)·팔몸(629~907↔268~385)·다리(907~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-0-v1.png. 사용자: 움짤 보고 \"합격\""
+   ]
+  },
+  {
+   "file": "horus-left-armed-walk-1-v1.png",
+   "side": "left",
+   "phase": 1,
+   "sha256": "6485e82ce92eb045f72d40decceefe86248340e38d9dc26b28ada0ba5aff5bb7",
+   "referenceVisibleHeight": 950.1,
+   "pivot": [
+    932.4,
+    1061
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~643↔0~268)·팔몸(643~915↔268~385)·다리(915~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-1-v1.png. 사용자: 움짤 보고 \"합격\""
+   ]
+  },
+  {
+   "file": "horus-left-armed-walk-2-v1.png",
+   "side": "left",
+   "phase": 2,
+   "sha256": "8c29d5cbbd58c011e38b04ea1fe9000953beb8e9848f2f4777878cce31de49c0",
+   "referenceVisibleHeight": 950.1,
+   "pivot": [
+    903.4,
+    1042
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~631↔0~268)·팔몸(631~858↔268~385)·다리(858~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-2-v1.png. 사용자: 움짤 보고 \"합격\""
+   ]
+  },
+  {
+   "file": "horus-right-armed-walk-0-v1.png",
+   "side": "right",
+   "phase": 0,
+   "sha256": "72201640e816343e50c3f80a6ca48268c36cd5007c9722702819ae8e7e9f5354",
+   "referenceVisibleHeight": 1132.2,
+   "pivot": [
+    475.2,
+    1148
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~654↔0~365)·팔몸(654~981↔365~555)·다리(981~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-0-v1.png. 사용자: 움짤 보고 \"합격\""
+   ]
+  },
+  {
+   "file": "horus-right-armed-walk-1-v1.png",
+   "side": "right",
+   "phase": 1,
+   "sha256": "38332a6d278568ed258bea28e932d9dc3644fb0785d84cd13ecbb5f1f0bf5af9",
+   "referenceVisibleHeight": 1132.2,
+   "pivot": [
+    482.2,
+    1156
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~652↔0~365)·팔몸(652~965↔365~555)·다리(965~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-1-v1.png. 사용자: 움짤 보고 \"합격\""
+   ]
+  },
+  {
+   "file": "horus-right-armed-walk-2-v1.png",
+   "side": "right",
+   "phase": 2,
+   "sha256": "c63f47d360dbe97df09d4609cfb78aaf4e27d666c52632e05ff76ae8a122b765",
+   "referenceVisibleHeight": 1132.2,
+   "pivot": [
+    495.2,
+    1150
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~656↔0~365)·팔몸(656~990↔365~555)·다리(990~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-2-v1.png. 사용자: 움짤 보고 \"합격\""
+   ]
+  }
+ ]
+}

@@ -47,16 +47,39 @@ def mask_of(im, who, part):
         m = cs.parts(im, who)['hair'] & (im[..., 3] > 0)
         # HAIR_ONLY_LARGEST=1: pictures holding a dark blue weapon (Horus's spear) keep only the hair's own piece
         return largest(m) if os.environ.get('HAIR_ONLY_LARGEST') else m
+    # SKIN_TIGHT=1: only warm, mid-saturated skin (Horus's ivory kilt and gold collar pass skin-check's mask and pulled
+    # its tones off: a walk picture went grey); its tones are then taken like the hair's (15 / 50 / 85 % lightness)
+    if os.environ.get('SKIN_TIGHT'):
+        r, g, b = im[..., 0], im[..., 1], im[..., 2]
+        mx = np.maximum(np.maximum(r, g), b); sat = (mx - np.minimum(np.minimum(r, g), b)) / np.maximum(mx, 1)
+        return (im[..., 3] > 0) & (r >= g) & (g >= b) & (r > 150) & (r - b > 25) & (r - b < 110) & (sat > 0.18) & (sat < 0.5) & (g - b < 45) & (r - g > 18)
     # skin as skin-check measures it (Somang's ivory dress is less saturated than skin)
     p = cs.parts(im, who); _, s, _ = cs.hsv(im[..., :3] / 255)
     return p['skin'] & ~p['outline'] & (s > (0.08 if who == 'horus' else 0.14))
 
 
-def anchors(im, who, part):
+def rows(m, band):
+    """the mask only between rows band = (y0, y1); None keeps it all"""
+    if band is None: return m
+    m = m.copy(); m[:band[0]] = False; m[band[1]:] = False
+    return m
+
+
+def erode(m, n):
+    """the mask without its outer n px (thin lines that pass it, like a kilt's fold lines, drop out)"""
+    for _ in range(n):
+        e = m.copy(); e[1:] &= m[:-1]; e[:-1] &= m[1:]; e[:, 1:] &= m[:, :-1]; e[:, :-1] &= m[:, 1:]; m = e
+    return m
+
+
+def anchors(im, who, part, band=None):
     """three (lightness, Lab tone) anchors, dark to light"""
-    m = mask_of(im, who, part) & (im[..., 3] >= 250)
+    m = rows(mask_of(im, who, part), band) & (im[..., 3] >= 250)
+    # SKIN_CORE=n: measure only n px inside the mask (every pixel still moves); Horus's kilt fold lines and the edges
+    # next to the outline pass SKIN_TIGHT and read as his skin's shadow
+    if os.environ.get('SKIN_CORE'): m = erode(m, int(os.environ['SKIN_CORE']))
     lab = cs.lab(im[..., :3][m])
-    if part == 'hair':
+    if part == 'hair' or os.environ.get('SKIN_TIGHT'):
         L = lab[:, 0]; out = []
         for q in (15, 50, 85):
             lo, hi = np.percentile(L, [max(0, q - 7), min(100, q + 7)])
@@ -71,9 +94,13 @@ def main():
     k = float(sys.argv[6]) if len(sys.argv) > 6 else 1.0
     im = np.asarray(Image.open(src).convert('RGBA')).astype(np.float32)
     rf = np.asarray(Image.open(ref).convert('RGBA')).astype(np.float32)
-    a, b = anchors(im, who, part), anchors(rf, who, part)
+    # PART_ROWS="y0,y1,ry0,ry1": one body part at a time (a face, the arms, the legs painted in their own tones on the
+    # reference): only rows y0..y1 of the picture move, onto the tones of rows ry0..ry1 of the reference
+    pr = [int(v) for v in os.environ['PART_ROWS'].split(',')] if os.environ.get('PART_ROWS') else None
+    sb, rb = (pr[:2], pr[2:]) if pr else (None, None)
+    a, b = anchors(im, who, part, sb), anchors(rf, who, part, rb)
     order = np.argsort(a[:, 0]); a, b = a[order], b[order]
-    m = mask_of(im, who, part)
+    m = rows(mask_of(im, who, part), sb)
     lab = cs.lab(im[..., :3][m])
     off = np.stack([np.interp(lab[:, 0], a[:, 0], (b - a)[:, c]) for c in range(3)], -1)
     new = im.copy(); new[..., :3][m] = lab2rgb(lab + k * off)
