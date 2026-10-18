@@ -602,5 +602,41 @@
     "clip": [[0, 0], [1586, 0], [1586, 992], [0, 992]],
     "tintActors": false,
     "tintWorld": false
+  },
+  "desert_04": {
+    "file": "../docs/art/map-expansion/desert-04.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [1.083916083916084, 1.083916083916084],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "desert_03": {
+    "file": "../docs/art/map-expansion/desert-03.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [1.083916083916084, 1.083916083916084],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "desert_02": {
+    "file": "../docs/art/map-expansion/desert-02.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [1.083916083916084, 1.083916083916084],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "tintActors": false,
+    "tintWorld": false
   }
 }
