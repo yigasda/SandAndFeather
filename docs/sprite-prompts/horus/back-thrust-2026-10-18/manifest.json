@@ -1,0 +1,86 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 1313,
+    "sha256": "713044f95b9fafd0438884ac0b6136b0c8b884550978faee0e92604b3191f6c6",
+    "git_blob_sha": "d7ddd4ae24c32cc8199f6a44334bfaeaa2d98732"
+  },
+  {
+    "path": "approved/horus-back-combat-attack-0.png",
+    "bytes": 416443,
+    "sha256": "728643042ddbc41d08565287861c0c611c9fe497a554c5c55572728402b5dd8e",
+    "git_blob_sha": "9dc59cb6a89c4b4b29bbd12142a952ec24f71535",
+    "width": 992,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/horus-back-combat-attack-1.png",
+    "bytes": 416902,
+    "sha256": "80ce7be7b86feb961f55003be38b98c051e71d3d21ddf8d384a0f759966c9e2b",
+    "git_blob_sha": "5bb5fcfbc6da5be6e31286d790d94fa5afa0d488",
+    "width": 992,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "color-redo-exact-prompt.txt",
+    "bytes": 1549,
+    "sha256": "ab6d594bec5f2a538cc03184d4eaad79d4ece51084ebc5e84bdc1c6ecb750f40",
+    "git_blob_sha": "20d201a917f9998ecb558878b10a74d4e965d525"
+  },
+  {
+    "path": "preview.gif",
+    "bytes": 313005,
+    "sha256": "dc262b4cd9a7bc25a2f9870fa856f1db7032c70a95d408b0dbcfa30fdc734c9a",
+    "git_blob_sha": "0ba2da17b9f75d3ad602258d477b8f103c9aae7b",
+    "width": 992,
+    "height": 793,
+    "mode": "P"
+  },
+  {
+    "path": "provenance/accepted-sheet.png",
+    "bytes": 863446,
+    "sha256": "6bf71cfd3fb85d505aef2374e76b3eb0ecb9ccf5095713a1e363e2c6e57aaa5a",
+    "git_blob_sha": "3090f2d66235b8b3150e96b16f2e99f22d763297",
+    "width": 1983,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/01-v2-preparation.png",
+    "bytes": 387058,
+    "sha256": "853b91ab1348fcf1d9bb8bb3113aa123c793e2d6a0aaf62e0feb74d6710e5aff",
+    "git_blob_sha": "fe3f5d30b89352b66c99418ebf4d271aaf213c1b",
+    "width": 991,
+    "height": 793,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/02-user-fixed-impact.png",
+    "bytes": 612548,
+    "sha256": "c7d8a52c6641f5045198c4a190731a59c405c05a9de103d7e4f5565689c6f952",
+    "git_blob_sha": "f7f36daa87c1093f459fc57f7daf218b13bcf668",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/03-exact-weapon-back-idle-0.png",
+    "bytes": 274218,
+    "sha256": "7ed9c9798bdf6c51a1ad04ed59cdd05962e6a8ee5e173f88b79c66ea905561ce",
+    "git_blob_sha": "d236c9be27c67f66f93a16975ad784042d795b76",
+    "width": 724,
+    "height": 724,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/04-front-idle-0.png",
+    "bytes": 958318,
+    "sha256": "3f55cd93d2935a1d2e120a67addeb0bec44718c5b12c993dfc762d905abf37ca",
+    "git_blob_sha": "30be528cdb3b6eed333f3d2fdf7645600a221982",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  }
+]

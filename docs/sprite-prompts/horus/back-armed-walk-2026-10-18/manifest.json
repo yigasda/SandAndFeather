@@ -1,0 +1,101 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 1255,
+    "sha256": "720ad56a7c893573604065b8d33ef003947e373e391af31094e8ec65a47253bd",
+    "git_blob_sha": "fa6adc54ba2a142539d48716acec32902013bba2"
+  },
+  {
+    "path": "approved/horus-back-armed-walk-0.png",
+    "bytes": 315175,
+    "sha256": "c12308a1a6c38d00b5e13d8ab8f79fcaac9bfe355801ff88d38fa59a770f461d",
+    "git_blob_sha": "b215e7f13e3f9fadea79921fd30a2e1e0cef74dd",
+    "width": 800,
+    "height": 830,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/horus-back-armed-walk-1.png",
+    "bytes": 301024,
+    "sha256": "72c5da97bb1eaf42cb683e9f17869460948f92ad3bf90fdf3b8c6c501e7f3d04",
+    "git_blob_sha": "628bcc727242e3be4965f63bd65b64119ea8bdcd",
+    "width": 800,
+    "height": 830,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/horus-back-armed-walk-2.png",
+    "bytes": 300098,
+    "sha256": "31e191e27b645f43875ca39008680b3aeecacf8204f324ff00e2d6f80fae57ae",
+    "git_blob_sha": "75e4fea809b93dbbed7d767dd762793a22e6b017",
+    "width": 800,
+    "height": 830,
+    "mode": "RGBA"
+  },
+  {
+    "path": "base-v2-exact-prompt.txt",
+    "bytes": 1406,
+    "sha256": "16bde94d227d7c112b42146d3750ea80ddd6dc8ce3bd255b272c3173a930ea14",
+    "git_blob_sha": "a8402aa787d533fc8cec485cc5a7ec9051330937"
+  },
+  {
+    "path": "provenance/accepted-sheet.png",
+    "bytes": 949633,
+    "sha256": "cc23232509c85b9977760b3b05db0034c52e409b32c1b83ca50f27276c3b751b",
+    "git_blob_sha": "42c7542fa996be6a87706dc4d2fb1a3460dd5d2b",
+    "width": 1895,
+    "height": 830,
+    "mode": "RGBA"
+  },
+  {
+    "path": "provenance/input-v2-sheet.png",
+    "bytes": 946585,
+    "sha256": "24803a6824d18bfe1ed5a6301765eebc5568da1ce41a18cf975a3f1bc3ae23f9",
+    "git_blob_sha": "b00c6a9f3b04c9c85b73242cb89572a603a2d581",
+    "width": 1896,
+    "height": 830,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483768.png",
+    "bytes": 157957,
+    "sha256": "2216059f5ae82d38e72323ea7caf55082119546ae53c2dc4b550020cd979b98e",
+    "git_blob_sha": "441a8e2181f904dd0a7f0ca96517ee5ef4997a9e",
+    "width": 404,
+    "height": 535,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483769.png",
+    "bytes": 157298,
+    "sha256": "b2402954664871d109537b229cc8100e9a47ca5aa34850303f4cdc1df0337d6c",
+    "git_blob_sha": "e171779b1d3f26a66c336386b5ce935efcdb29b4",
+    "width": 405,
+    "height": 534,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483770(1).png",
+    "bytes": 156711,
+    "sha256": "dff5b132ebd2d7641bbca337c6c03a7f535ba30b9e97903a793a35bbb2079ff5",
+    "git_blob_sha": "0be1e1462add8283df8a1fc2662a09f1856d4a5c",
+    "width": 406,
+    "height": 533,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/horus-back-combat-idle-0.png",
+    "bytes": 274218,
+    "sha256": "7ed9c9798bdf6c51a1ad04ed59cdd05962e6a8ee5e173f88b79c66ea905561ce",
+    "git_blob_sha": "d236c9be27c67f66f93a16975ad784042d795b76",
+    "width": 724,
+    "height": 724,
+    "mode": "RGBA"
+  },
+  {
+    "path": "shaft-fix-exact-prompt.txt",
+    "bytes": 787,
+    "sha256": "69caa6ed158560a8c5f6b0fc0c280a277d66efee5b37bf283d1f74c216083c65",
+    "git_blob_sha": "9ac0bec513071c457d9b619a872c87f84a286cd8"
+  }
+]
