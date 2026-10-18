@@ -31,6 +31,10 @@ MAPS = {
            'paint': [('desert-collision/03-user-dunes.png', (0, 0), False),
                      ('desert-collision/03-user-front-dunes.png', (729, 372), True)],
            'dunes': [],
+           # the marker stone's whole body, its sunlit right side too (user's paint: "여기만 그림처럼 채우랬는데")
+           'fill': [[(1190, 595), (1195, 585), (1202, 579), (1208, 577), (1215, 579), (1222, 582), (1228, 588),
+                     (1231, 596), (1232, 607), (1233, 622), (1228, 627), (1220, 629), (1210, 631), (1198, 631),
+                     (1188, 629), (1183, 626), (1182, 618), (1184, 603), (1188, 597)]],
            'cliff': (1430, 470)},
     '04': {'art': '04_메마른모래벌판.png',
            'tops': [[(150, 410), (170, 400), (200, 394), (230, 389), (260, 386), (300, 385), (340, 386), (370, 389),
@@ -133,6 +137,7 @@ def make(n, spec):
         p = np.asarray(Image.open(Path(__file__).parent / name)) > 127
         r = (slice(y0, y0 + p.shape[0]), slice(x0, x0 + p.shape[1]))
         block[r] = p | (rocks[r] if keep else False)   # keep: the rocks inside the painted box stay as they are
+    block |= dunes(block.shape, spec.get('fill', []))   # only added, nothing else changes
     floor = ~block
     # one pixel soft edge, like the user's brush: 4x the picture, blurred, back down
     big = Image.fromarray((floor * 255).astype('uint8')).resize((w * 4, h * 4), Image.NEAREST)
