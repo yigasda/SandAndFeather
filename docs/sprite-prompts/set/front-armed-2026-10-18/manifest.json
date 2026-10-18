@@ -1,0 +1,79 @@
+{
+  "status": "user-approved-concept-only",
+  "date": "2026-10-18",
+  "adopted": "approved/set-front-long-shaft-1.png",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2181,
+      "sha256": "d46fcf14bd536758df64d6ac90032f3d49cb01b1eba1bb743d2ffa4789409909",
+      "git_blob_sha": "ccdb7bde249bde6959bb7fc908298f8a69b04e0d"
+    },
+    {
+      "path": "actual-generation-prompt.txt",
+      "bytes": 3093,
+      "sha256": "a26644546691955a91b8da7ea56c6adc86d3262b17c10c7e45e45925e8fb6531",
+      "git_blob_sha": "63dfca3dcb00077bd479adc8c1304647d3122b0b"
+    },
+    {
+      "path": "approved/set-front-long-shaft-1.png",
+      "bytes": 792041,
+      "sha256": "4f9192225f8faa31c02fd909e9845294978aef9b610b85fc0da0f8643cc50f31",
+      "git_blob_sha": "2f9482864af362b654805a1f630743abf2013f10",
+      "width": 1402,
+      "height": 1122,
+      "mode": "RGBA"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 3847,
+      "sha256": "540634ed0df0566813c3714ba750bd304494eda464abc8206adf30e04eede595",
+      "git_blob_sha": "368ff83464a7990bbe17634f6e58de1bfa9cd4e1"
+    },
+    {
+      "path": "references/01-1000483771.png",
+      "bytes": 818189,
+      "sha256": "909322d2b5b57881ef6b92588ba1e1231c5d18001d76b826a07a91f8c9534657",
+      "git_blob_sha": "fffd23d1b7b79cf14951a39c08cb03beb03f6ad4",
+      "width": 2048,
+      "height": 746,
+      "mode": "RGB"
+    },
+    {
+      "path": "references/02-set-left-combat-idle-0.png",
+      "bytes": 388804,
+      "sha256": "0e23ebfed2b8fb553aff9d111ac4d73304991e11ef2c864c1d32356662687c04",
+      "git_blob_sha": "a275dc9b4bbec3797801e97e880b93f1f59c3823",
+      "width": 1600,
+      "height": 780,
+      "mode": "RGBA"
+    },
+    {
+      "path": "references/03-set-left-combat-attack-0.png",
+      "bytes": 443875,
+      "sha256": "bbeedc5ac99fc8e8915a96fe8f5bac7a3ce4a226f90b6c8dd612219ee5e3d2ef",
+      "git_blob_sha": "a80675e9585c28ff8fb2e77f00333f8eb6eea305",
+      "width": 1600,
+      "height": 780,
+      "mode": "RGBA"
+    },
+    {
+      "path": "references/04-1000483753.png",
+      "bytes": 119097,
+      "sha256": "e44f087ac680d177b409b98ea611bcb4139b20fe624b18e4c4f2c676bb42e07c",
+      "git_blob_sha": "af69490d999e388ad4da2715b99ea0cc05b356f1",
+      "width": 360,
+      "height": 400,
+      "mode": "RGBA"
+    },
+    {
+      "path": "references/05-set-front-original.png",
+      "bytes": 152207,
+      "sha256": "4dc0d64afb225a91dd07f515c2828751b81de0f58fd8e5ead9d931d1fb2604fc",
+      "git_blob_sha": "e6ab797d334b6f74e57738a8a4afa23e8660e5a8",
+      "width": 620,
+      "height": 720,
+      "mode": "RGBA"
+    }
+  ]
+}
