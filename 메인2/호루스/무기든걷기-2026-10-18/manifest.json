@@ -6,84 +6,90 @@
    "file": "horus-left-armed-walk-0-v1.png",
    "side": "left",
    "phase": 0,
-   "sha256": "ddbd53d200a012167d90288664238f1052d68b1d4ec3bbd7fa098732cc782a13",
+   "sha256": "c8f278a5d673024da92ae2215d35df590c8d7d6655b0cf369d7a9834382f47fa",
    "referenceVisibleHeight": 950.1,
    "pivot": [
     905.4,
     1038
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~629↔0~268)·팔몸(629~907↔268~385)·다리(907~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-0-v1.png. 사용자: 움짤 보고 \"합격\""
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~629↔0~268)·팔몸(629~907↔268~385)·다리(907~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-0-v1.png. 사용자: 움짤 보고 \"합격\"",
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 메인2/호루스/무기든걷기-2026-10-18/sources/색전/horus-left-armed-walk-0-v1.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   },
   {
    "file": "horus-left-armed-walk-1-v1.png",
    "side": "left",
    "phase": 1,
-   "sha256": "6485e82ce92eb045f72d40decceefe86248340e38d9dc26b28ada0ba5aff5bb7",
+   "sha256": "6c2cf22604ff4b3f463811e809b99a7b594c489ac4375c08fea30f41de64cdd0",
    "referenceVisibleHeight": 950.1,
    "pivot": [
     932.4,
     1061
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~643↔0~268)·팔몸(643~915↔268~385)·다리(915~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-1-v1.png. 사용자: 움짤 보고 \"합격\""
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~643↔0~268)·팔몸(643~915↔268~385)·다리(915~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-1-v1.png. 사용자: 움짤 보고 \"합격\"",
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 메인2/호루스/무기든걷기-2026-10-18/sources/색전/horus-left-armed-walk-1-v1.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   },
   {
    "file": "horus-left-armed-walk-2-v1.png",
    "side": "left",
    "phase": 2,
-   "sha256": "8c29d5cbbd58c011e38b04ea1fe9000953beb8e9848f2f4777878cce31de49c0",
+   "sha256": "c266d941d27ac617656298e65ac399d184f67d9d03f962b9281b6f126d7f5fda",
    "referenceVisibleHeight": 950.1,
    "pivot": [
     903.4,
     1042
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~631↔0~268)·팔몸(631~858↔268~385)·다리(858~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-2-v1.png. 사용자: 움짤 보고 \"합격\""
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-left-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~631↔0~268)·팔몸(631~858↔268~385)·다리(858~↔385~) 따로. 모양 그대로. 원본 sources/색전/horus-left-armed-walk-2-v1.png. 사용자: 움짤 보고 \"합격\"",
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 메인2/호루스/무기든걷기-2026-10-18/sources/색전/horus-left-armed-walk-2-v1.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   },
   {
    "file": "horus-right-armed-walk-0-v1.png",
    "side": "right",
    "phase": 0,
-   "sha256": "72201640e816343e50c3f80a6ca48268c36cd5007c9722702819ae8e7e9f5354",
+   "sha256": "6353d15b44288dc626358379b2642d3702b5f38fddb2e3c7a961beffca381f79",
    "referenceVisibleHeight": 1132.2,
    "pivot": [
     475.2,
     1148
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~654↔0~365)·팔몸(654~981↔365~555)·다리(981~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-0-v1.png. 사용자: 움짤 보고 \"합격\""
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~654↔0~365)·팔몸(654~981↔365~555)·다리(981~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-0-v1.png. 사용자: 움짤 보고 \"합격\"",
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 메인2/호루스/무기든걷기-2026-10-18/sources/색전/horus-right-armed-walk-0-v1.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   },
   {
    "file": "horus-right-armed-walk-1-v1.png",
    "side": "right",
    "phase": 1,
-   "sha256": "38332a6d278568ed258bea28e932d9dc3644fb0785d84cd13ecbb5f1f0bf5af9",
+   "sha256": "1c8d9e64b8f8c00c2ac9ed22075c1d20ae5dd9330601f3774fd3975ad66d7821",
    "referenceVisibleHeight": 1132.2,
    "pivot": [
     482.2,
     1156
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~652↔0~365)·팔몸(652~965↔365~555)·다리(965~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-1-v1.png. 사용자: 움짤 보고 \"합격\""
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~652↔0~365)·팔몸(652~965↔365~555)·다리(965~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-1-v1.png. 사용자: 움짤 보고 \"합격\"",
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 메인2/호루스/무기든걷기-2026-10-18/sources/색전/horus-right-armed-walk-1-v1.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   },
   {
    "file": "horus-right-armed-walk-2-v1.png",
    "side": "right",
    "phase": 2,
-   "sha256": "c63f47d360dbe97df09d4609cfb78aaf4e27d666c52632e05ff76ae8a122b765",
+   "sha256": "c85b92cb9232555a0e41d0ee891d2b160dbf03a72f4ae441a2e820a76e9dabaf",
    "referenceVisibleHeight": 1132.2,
    "pivot": [
     495.2,
     1150
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~656↔0~365)·팔몸(656~990↔365~555)·다리(990~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-2-v1.png. 사용자: 움짤 보고 \"합격\""
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 docs/art/horus-combat-approved-18-2026-10-15/png/horus-right-combat-idle-0.png에 — HAIR_ONLY_LARGEST=1 tonematch.py hair, hairhl.py, 피부는 SKIN_TIGHT=1 SKIN_CORE=4 PART_ROWS로 얼굴(0~656↔0~365)·팔몸(656~990↔365~555)·다리(990~↔555~) 따로. 모양 그대로. 원본 sources/색전/horus-right-armed-walk-2-v1.png. 사용자: 움짤 보고 \"합격\"",
+    "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 메인2/호루스/무기든걷기-2026-10-18/sources/색전/horus-right-armed-walk-2-v1.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   }
  ]

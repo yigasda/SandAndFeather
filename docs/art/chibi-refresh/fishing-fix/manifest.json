@@ -39,12 +39,13 @@
      750
     ]
    },
-   "sha256": "6a554b98b8f0cce171e06ad9ab36ac543291363a6d8382c52ec50b01e9d8a55a",
+   "sha256": "63daa7246423d75ad7af2cbb7b38b6c5be48248b2004214a84c28e41849c3abb",
    "source": "sources/set-fishing-front-0-원본.png (메인1/set-fishing-front-0.png와 같은 바이트)",
    "edits": [
     "캔버스 620×720 → 1020×1120(사방 200px 투명, 커져도 안 잘리게)",
     "bodyscale.py 전체 1.16배·머리 1.16배, 목 (540,618) 앉은 자리 (540,750) 고정 (시안 B)",
-    "tonematch.py 머리카락 색을 세트 정지 정면 색으로"
+    "tonematch.py 머리카락 색을 세트 정지 정면 색으로",
+    "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/fishing-fix/png/sources/색전/set-front-fish-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ],
    "tip": [
     185,
@@ -63,13 +64,14 @@
      750
     ]
    },
-   "sha256": "52349b87df5ededfa0ea2d32b056a4e02bf6ad0bcdceddb3364c42bbedb1f685",
+   "sha256": "2a2cab26498d124e8faf45766af60adf758b5b8463478c059e6d1fd2e3b6d796",
    "source": "sources/set-fishing-front-1-원본.png (메인1/set-fishing-front-1.png와 같은 바이트)",
    "edits": [
     "캔버스 620×720 → 1020×1120",
     "bodyscale.py 전체 1.16배·머리 1.26배, 목 (542,655) 앉은 자리 (540,750) 고정 (시안 B)",
     "tonematch.py 머리카락 색을 세트 정지 정면 색으로",
-    "lean.py 허리 위 9° 화면 오른쪽으로(대를 당기는 반대쪽으로 버팀), 축 (540,730), 170행에 걸쳐"
+    "lean.py 허리 위 9° 화면 오른쪽으로(대를 당기는 반대쪽으로 버팀), 축 (540,730), 170행에 걸쳐",
+    "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/fishing-fix/png/sources/색전/set-front-fish-1.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ],
    "tip": [
     237,

@@ -109,7 +109,10 @@ def main():
     # reference): only rows y0..y1 of the picture move, onto the tones of rows ry0..ry1 of the reference
     pr = [int(v) for v in os.environ['PART_ROWS'].split(',')] if os.environ.get('PART_ROWS') else None
     sb, rb = (pr[:2], pr[2:]) if pr else (None, None)
-    a, b = anchors(im, who, part, sb), anchors(rf, who, part, rb)
+    # TONE_FROM=png: measure the picture's tones on another picture of the same motion (Set's back pickup 1 shows only
+    # a sliver of hand, whose median came out as a highlight and pulled the skin pink)
+    tf = np.asarray(Image.open(os.environ['TONE_FROM']).convert('RGBA')).astype(np.float32) if os.environ.get('TONE_FROM') else im
+    a, b = anchors(tf, who, part, sb), anchors(rf, who, part, rb)
     order = np.argsort(a[:, 0]); a, b = a[order], b[order]
     m = rows(mask_of(im, who, part), sb)
     # SKIN_SPREAD=n: move every warm light pixel within n px of the skin mask too (measured on the mask as before);
@@ -134,14 +137,40 @@ def main():
     if part == 'hair' and os.environ.get('HAIR_SOFT'):
         sh = (b - a)[1]; lab_all = cs.lab(im[..., :3].reshape(-1, 3)).reshape(im.shape[:2] + (3,))
         L, B_ = lab_all[..., 0], lab_all[..., 2]
-        w = dilate(mask_of(im, who, part), 3) * np.clip((14 - B_) / 5, 0, 1) * np.clip((55 - L) / 10, 0, 1) * (im[..., 3] > 0)
+        # HAIR_HUE=deg: hair-like = hue angle (Lab a/b) under deg, fading out over 10 degrees, instead of "not yellow"
+        # (Set's red hair and its highlights have b* 10–20; gold and skin lie at higher angles), with some colour in it
+        # (the black skirt's near-grey pixels have any angle)
+        if os.environ.get('HAIR_HUE'):
+            A_ = lab_all[..., 1]; ang = np.degrees(np.arctan2(B_, A_))
+            hue = np.clip((float(os.environ['HAIR_HUE']) + 10 - ang) / 10, 0, 1) * np.clip((ang + 40) / 10, 0, 1) \
+                * np.clip((np.hypot(A_, B_) - 6) / 6, 0, 1)
+        else: hue = np.clip((14 - B_) / 5, 0, 1)
+        w = dilate(mask_of(im, who, part), 3) * hue * np.clip((55 - L) / 10, 0, 1) * (im[..., 3] > 0)
+        # HAIR_INK=1: the lightness shift fades to nothing toward black (L / the hair's middle L), so the dark ink lines
+        # keep their weight (Horus's hair moves +5 L and its black outline went grey)
+        sh = np.broadcast_to(sh, lab_all.shape).copy()
+        if os.environ.get('HAIR_INK'): sh[..., 0] *= np.clip(L / a[1][0], 0, 1)
         new = im.copy(); new[..., :3] = np.where(w[..., None] > 0, lab2rgb(lab_all + k * w[..., None] * sh), im[..., :3])
         m = w > 0
     if part == 'skin' and os.environ.get('SKIN_SOFT'):
         sh = (b - a)[1]; R, G, B = im[..., 0], im[..., 1], im[..., 2]
         L = cs.lab(im[..., :3].reshape(-1, 3)).reshape(im.shape[:2] + (3,))[..., 0]
         sat = (R - B) / np.maximum(R, 1)
-        w = np.clip((L - 55) / 12, 0, 1) * np.clip((sat - 0.09) / 0.07, 0, 1) * np.clip((R - G + 4) / 8, 0, 1) * (im[..., 3] > 0)
+        # SKIN_SATMIN=s: skin starts at saturation s instead of 0.09 (Horus's ivory kilt is 0.08–0.1 with warm folds and
+        # moved with his skin; his skin is 0.2)
+        smin = float(os.environ.get('SKIN_SATMIN', 0.09))
+        w = np.clip((L - 55) / 12, 0, 1) * np.clip((sat - smin) / 0.07, 0, 1) * np.clip((R - G + 4) / 8, 0, 1) * (im[..., 3] > 0)
+        # SKIN_SATMAX=s: and not much more saturated than skin (Set's and Horus's gold collar and bands are 0.6 and moved
+        # with the skin), fading out over 0.08 above s
+        if os.environ.get('SKIN_SATMAX'): w = w * np.clip((float(os.environ['SKIN_SATMAX']) + 0.08 - sat) / 0.08, 0, 1)
+        # SKIN_GROW=1: only the skin-like areas next to the skin itself (the skin mask without its outer 3 px, grown
+        # through skin-like pixels): Horus's warm kilt folds and the gold spear tip's light faces are skin-like but stand
+        # apart from his skin behind the outline, and moved with it
+        if os.environ.get('SKIN_GROW'):
+            # at most 12 px out (the kilt meets the belly without an outline, so its folds joined through the waist)
+            ok = w > 0; s_ = erode(mask_of(im, who, 'skin'), 3) & ok
+            for _ in range(3): s_ = dilate(s_, 4) & ok
+            w = w * s_
         if sb is not None:   # PART_FEATHER=n: the part fades in and out over n rows round its band, so two parts meet without a seam
             n = int(os.environ.get('PART_FEATHER', 0)); y = np.arange(im.shape[0])[:, None]
             if n: w = w * np.clip((y - (sb[0] - n / 2)) / n, 0, 1) * np.clip(((sb[1] + n / 2) - y) / n, 0, 1)

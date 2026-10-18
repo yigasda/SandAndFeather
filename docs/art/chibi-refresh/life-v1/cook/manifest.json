@@ -61,11 +61,14 @@
     ]
    },
    "referenceVisibleHeight": 576,
-   "sha256": "1ae079b378c82d66703c03533b3180913681fcee9ae4fcfe0617a09d03971d16",
+   "sha256": "568e244237aca4fd603dfc83a5d6e13dcea29899469850c3bd66719a2a7d8917",
    "source": "메인1/set-back-cook-0.png",
    "canvas": [
     620,
     720
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/life-v1/cook/png/sources/색전/set-back-cook-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   }
  ]

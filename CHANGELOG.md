@@ -1,5 +1,9 @@
 # 버전 기록 — 모래와 깃털
 
+## 0.9.86
+
+세트·호루스 인게임 스프라이트 전부(세트 88·호루스 98장: 정지·걷기·생활·앉기·잠·줍기·전투·무기 든 걷기·새 앞뒤 전투)의 머리색·하이라이트·피부색을 각자 정면 정지에 맞춤. 소망과 같은 부드러운 방식, 예전 방식(픽셀 깨짐)으로 맞췄던 것은 그 전 원본에서 다시. 원본은 각 폴더 `sources/색전/`. `tonematch.py` 옵션 `HAIR_HUE`·`HAIR_INK`·`SKIN_SATMAX`·`SKIN_SATMIN`·`SKIN_GROW`·`TONE_FROM`. 호루스 오른쪽 마시기 그림(게임에 안 쓰던 것)은 삭제.
+
 ## 0.9.85
 
 소망 인게임 스프라이트 전부(87장: 정지·걷기·전투·생활·앉기·잠·줍기 등)의 머리색·피부색을 정면 정지(`final/somang/idle/somang-front.png`)에 맞춤. 그림 모양은 그대로, 색만 한 번에 부드럽게 옮김(`tools/art/fix/tonematch.py` `TONE_FLAT`·`HAIR_SOFT`·`SKIN_SOFT`·`SKIN_PLAIN`). 원본은 각 폴더 `sources/색전/`.

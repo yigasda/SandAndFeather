@@ -7,217 +7,235 @@
     {
       "file": "set-right-combat-idle-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "0b5584d3ae0985a40e991911f065be0dbe22aee55be10887d3483b489361abd2",
+      "sha256": "d4c32647235e53c8ee242daa8d07af203159aa5d77afe283d45d3572f483f03b",
       "sourceSha256": "5fb2f3f5ef9ab95ce8f1bc5aa1cc89da109702f8a286e6d9d4e7fc5d40c7d6c8",
       "edits": [
         "0.9.72 비율: 목(822,361) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-idle-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-idle-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 558.0
     },
     {
       "file": "set-right-combat-idle-1.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "34ed59bdc51a1a3c62f258f7b17508423976ce21b1bbccd08d7fe3e69f0efb6b",
+      "sha256": "56bcb60c7208b25105304694448021a0a4fcff6fec830c844d361415d1b91cbd",
       "sourceSha256": "bc1ff3255fc15625dce83dda02c499a317a06f0be3dd31deedf6165291c43749",
       "edits": [
         "0.9.72 비율: 목(820,368) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-idle-1-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-idle-1.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 558.0
     },
     {
       "file": "set-right-combat-idle-2.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "5e360f150caa3cd226cb763c8afbd7633d2e9850028fbeab61f32713f55f4677",
+      "sha256": "2b8d6c6052ece7c4c9a7893f30132b64f12905ca7f7d83ce74938bc1caefa176",
       "sourceSha256": "29cabbb77feb01aeafce9d3ebaaa10e492206038d419685a16500ea787a5a4c7",
       "edits": [
         "0.9.72 비율: 목(816,374) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-idle-2-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-idle-2.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 558.0
     },
     {
       "file": "set-right-combat-anticipation-0.png",
       "source_revision": "combat-trio-v229",
-      "sha256": "094c51707a822dd6ea01387b9f804aa27526003fae8a43f1edeb0e643a835ad7",
+      "sha256": "df9a7dac2d5574087350e9b706a83a610ca852987bbd779ac5868cd024590741",
       "sourceSha256": "b507fdeabeced99b26ebfb660bad04526be7af3abb9472f1c6d1cb1cffd506c5",
       "edits": [
         "0.9.72 비율: 목(774,365) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-anticipation-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-anticipation-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 558.0
     },
     {
       "file": "set-right-combat-attack-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "81629c36a86abd6142f3d9f276cad80a7a78727d11a900c0c6b429370c883f49",
+      "sha256": "13866c1179587d5a72d3be53bfed8e3e3a7958fbf639a1ab3bd5a7f6c3252813",
       "sourceSha256": "689095509f298f545ba7568a7daa7ce9ca7408e422322d276b980c81e14414c5",
       "edits": [
         "0.9.72 비율: 목(829,346) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-attack-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-attack-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 558.0
     },
     {
       "file": "set-right-combat-skill-0.png",
       "source_revision": "combat-set-v234",
-      "sha256": "b39a9caf1d59b43ebef97c5451fdc3719f642e96844776eec87f24eb9308e026",
+      "sha256": "04899fc3c068717d981c864bbb78c90ac939cfe6b484441b026dd1d96360c7b5",
       "sourceSha256": "a399cb215147e3fcffa9c4693447d3e75c71ef05a681eb6afa3f4c52ebfffc54",
       "edits": [
         "0.9.72 비율: 목(873,526) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-skill-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-skill-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 558.0
     },
     {
       "file": "set-right-combat-spell-0.png",
       "source_revision": "combat-trio-v233",
-      "sha256": "722adbdd204b2240498ca05f7a3cc70fba0b04b04eec80a2529dee3fc1094dca",
+      "sha256": "3a84bedfb567b3caf1916dc39705c86b749d0d35e252174628684d57c07cb5d9",
       "sourceSha256": "6e2d6e4151f2d7da7ded1727a3a26da19b2f6088762df54b178d39201273b08a",
       "edits": [
         "0.9.72 비율: 목(797,376) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-spell-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 558.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-spell-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 558.0
     },
     {
       "file": "set-right-combat-tired-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "634aca779764cc520a83ab08daeb4f2037bf2645767500e8c9fc3b8e64900949",
+      "sha256": "1175750deea57fe9527b0675ccf0f6f1f46401148e09487fb2e995b8c8e7fddc",
       "sourceSha256": "16b292c67631a7c8952bd6d83d3559be73d4ba57c3eb396a2f39d84f272acdeb",
       "edits": [
         "0.9.72 비율: 목(892,529) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-tired-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 507.3(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값, 이 그림만 110 %로 크게(사용자 \"Tired 110\"). 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 507.3(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값, 이 그림만 110 %로 크게(사용자 \"Tired 110\"). 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-tired-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 507.3
     },
     {
       "file": "set-right-combat-hit-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "4877424f8c0bbebb62d5ba607ec17ced59aa3acca4cebeb6c02208add960eb3f",
+      "sha256": "6c72f024a7e3342d48e45592835fa179fef76301d1543d8334d0ef27b3b18144",
       "sourceSha256": "a5ac1beef1c191680b0ae7c783bff08b6443185af9c534db2fc1fc9ab441253c",
       "edits": [
         "0.9.72 비율: 목(718,541) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-right-combat-hit-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "0.9.72 크기: 이 그림만 머리·몸·창이 다른 그림보다 작게 그려져 있어 그림 전체를 112 %로(발 아래 가운데 기준, 캔버스 1600×880 그대로). 사용자: \"얘 혼자 머리랑 몸이 작어\" → \"112% 하자\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %, 그다음 그림 전체 112 %(발 아래 가운데 기준, 캔버스 그대로). 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 575.3(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값, 이 그림만 97 %로 작게(사용자 \"Hit 97\"). 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 575.3(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값, 이 그림만 97 %로 작게(사용자 \"Hit 97\"). 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-right-combat-hit-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 575.3
     },
     {
       "file": "set-left-combat-idle-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "0e23ebfed2b8fb553aff9d111ac4d73304991e11ef2c864c1d32356662687c04",
+      "sha256": "4befb58e7195649ac9047c700d1aa417fc2ea66145eb451b0fd3ea1eb717bac2",
       "sourceSha256": "4f80bdb2ee6159f366bfccef9be44ba618a32796cfa5acf448dd2307bff59096",
       "edits": [
         "0.9.72 비율: 목(790,371) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-idle-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-idle-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-idle-1.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "82b3943e3a2ec747ae834bbc636a5f91bad415f445f04a9421401a23b5148f82",
+      "sha256": "f8963b0c1fbf00b394569de87c18bdee5aaabc46d9b2bcbd0188583a117c9ae2",
       "sourceSha256": "24e3ec4f5fa9d35d7c0c1360e2fe12e248cd07e372ddfdc445e1582bb83833a0",
       "edits": [
         "0.9.72 비율: 목(798,363) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-idle-1-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-idle-1.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-idle-2.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "5dd5c9cd563fb27340aab82af9bcbbd0031ee56f8b64bfba6ff6f7d47fc0c9a0",
+      "sha256": "fc8a875d39e6d5e3261ca5d436af8e7a46efb6ec18a0b16c2f708e10b347de3e",
       "sourceSha256": "2b7a139ee084077951d374f789f288ad3b478ee09b705498c15fa1099c4654a4",
       "edits": [
         "0.9.72 비율: 목(790,365) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-idle-2-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-idle-2.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-anticipation-0.png",
       "source_revision": "combat-trio-v229",
-      "sha256": "73d5f968f16fda6ffea68de4447d9b12beb5ab1a43833c1840da087f17f549c2",
+      "sha256": "3ebb65094c123575c492ea3f6e9c3de8816a6ed4bc671c58f18ebb140f0d7b9d",
       "sourceSha256": "b180546c5403c957366a72d75ddbea3afc6f24f272c14f6a5c75690d17e5f3bb",
       "edits": [
         "0.9.72 비율: 목(802,324) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-anticipation-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-anticipation-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-attack-0.png",
       "source_revision": "combat-trio-v228",
-      "sha256": "bbeedc5ac99fc8e8915a96fe8f5bac7a3ce4a226f90b6c8dd612219ee5e3d2ef",
+      "sha256": "f1b3399aa3b1d0120282c2cb37dcff7c825f1a9383ccf63b3fd9dabbe555ba3d",
       "sourceSha256": "7cc2560473f8b707fd57ad04d73f8a6a5e43c9967f9ca91ce41137c60c14720b",
       "edits": [
         "0.9.72 비율: 목(778,330) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-attack-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-attack-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-skill-0.png",
       "source_revision": "combat-set-v234",
-      "sha256": "da6887468aaccfe9c05f64b2510fbaeff7f69e494a6b6616d48e982c07df537f",
+      "sha256": "1b337f3ee6a04285aac2fd7db2864dbe744282037c35317830f6b3bdd8bf1777",
       "sourceSha256": "6239fdee282dd2596bb4ce89d8e0f37932d2fc48180bdadf07ebb1ea356285be",
       "edits": [
         "0.9.72 비율: 목(720,532) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-skill-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-skill-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-spell-0.png",
       "source_revision": "combat-trio-v233",
-      "sha256": "9739890e34296171598aac535da114a7bf66e8cf58ee58a9fe2f250b5fcd8a03",
+      "sha256": "29029fb9ae6f32c31cc73744c33ecca3b1ba2b63114651066c30b53aee584f8c",
       "sourceSha256": "af05b253de1eb01afb79f4133d983b575e58350273e0218860266a84479c2a76",
       "edits": [
         "0.9.72 비율: 목(803,386) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-spell-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-spell-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-tired-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "23f228cc5e3ada8c2d1bc906a187c209ac785a067a3b43fc1707bb4d79ea9923",
+      "sha256": "d38f1973e1674c9f72f9f91385e5c0e72a000416d193ab05ad418aecc83e79e5",
       "sourceSha256": "46708fc5c4654b310e6c23c77ea3cbfa8a5f5d420d831707955f9a0c1200b9d1",
       "edits": [
         "0.9.72 비율: 목(738,523) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-tired-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-tired-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     },
     {
       "file": "set-left-combat-hit-0.png",
       "source_revision": "combat-trio-v236",
-      "sha256": "012961bfce4382e113dc89ca2af6553797f23da185a09818a97014c3daf5ac9a",
+      "sha256": "8573bd2281fb79831b6769307abda66775d23deb4f3b61cbb2b0b3b9722e37d5",
       "sourceSha256": "6eca01ae360297a1fd8a2de4593abccd0bdd70d13753934739f5dfbef0e03fea",
       "edits": [
         "0.9.72 비율: 목(863,504) 기준 머리 110 %(가로세로 같이, 머리카락 모양 그대로), 목 아래 몸은 위아래로만 76 %(폭 그대로, 띠 90행; tools/art/fix/combat-ratio.py → headbody.py width 0), 캔버스 위로 60px 늘림(높이 780 또는 880). 원본 sources/set-left-combat-hit-0-비율전.png. 사용자: \"세트 비율이 정지·걷기랑 완전 달라\" → 시안 D(몸 76 %) + \"대갈크기도 조금 더\" → F(머리 110 %) \"F가 낫다\"",
         "2026-10-17 몸 85 %로 다시: 손질 전 원본(sources/*-비율전.png)에서 같은 방법(같은 목 좌표, 머리 110 % 가로세로 같이, 목 아래 몸은 위아래로만, 띠 90행, 캔버스 위 60px)으로 몸만 76 → 85 %. 76 %는 머리카락이 눌렸음. 사용자: \"85가 젤 낫다\", \"세트 몸 일단 85%로 싹다 바꿔볼까\", \"ㄱㄱ 바꿔\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 564.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 메인2/세트/sources/색전/set-left-combat-hit-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 564.0
     }
