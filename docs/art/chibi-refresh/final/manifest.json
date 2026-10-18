@@ -677,11 +677,14 @@
         537,
         662
       ],
-      "sha256": "7b4722c6783fdadbc5b4b954202fd6d9e3fc178ebf7ca66ad19347ad0067bcb1",
+      "sha256": "e72ca15c460d2e51ad9ac788e29e228ca3e7375ce5626574da498b7cd1c02a49",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-idle-v164/idle/somang-back.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.idle.down",
@@ -749,11 +752,14 @@
         554,
         662
       ],
-      "sha256": "443a4bfec45cbadd805d20dfa61e83fb46a8a3c066b294ef48cc15b2d87f2b2a",
+      "sha256": "53e26bc234a2a3a955c0dc8a9a3de59263af62901eb9ff84e729d3dfd0f5a0a3",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-idle-v164/idle/somang-left.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.idle.right",
@@ -785,11 +791,14 @@
         526,
         662
       ],
-      "sha256": "8cab5225ae864d13cecd1777b4349d7366a51d1368b33ea3028f021bae374833",
+      "sha256": "a4544f4b367d9cec6bc8e136e238cf1734c6c7b1dd3a6985f53d6d9d9e296d15",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-idle-v164/idle/somang-right.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.up.0",
@@ -821,11 +830,14 @@
         303,
         370
       ],
-      "sha256": "c568dacdceb59aed913f78062c58d33957dcf8240b67502a1ad58901ef2b0e61",
+      "sha256": "b77b2f79460537b7bb4239379009ee8283f1ccd5c89fc5a671fbfcb91db11472",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-back-0.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.up.1",
@@ -857,11 +869,14 @@
         307,
         370
       ],
-      "sha256": "b4b67519643abe8f3e73bffd8c11595974c4e9be2af8492863a85766cded94c3",
+      "sha256": "2732fdf6c16454c73cf5175069a9ae60e525413cfba773fa07b28d6eab702800",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-back-1.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.up.2",
@@ -893,11 +908,14 @@
         303,
         370
       ],
-      "sha256": "353b62bd637bd32089628b37602129a1072e35af51f5b51ac68f2927d7bd8821",
+      "sha256": "cf016da91b4c19339ab7becfb01f1c49a79bb3e00bbf20e602d3d62bfac9fbfc",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-back-2.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.down.0",
@@ -929,11 +947,14 @@
         321,
         370
       ],
-      "sha256": "a0517e42749b0083ffb96d14fe2c5bfd9ca2340c765cdcef34600fc78d7854f3",
+      "sha256": "50972e8d29b07279947612326df37914fb26aabd33b27d20af73afa08f17025e",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-front-0.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.down.1",
@@ -965,11 +986,14 @@
         321,
         370
       ],
-      "sha256": "2fb224d8fe0453f81240d70290e39cbe8a1bb72fe53c0e1beaceb8ae46ce9895",
+      "sha256": "6e13473ce780a779825a7d25c0e29ab10d23336f67c0b585ee2747a3b001e28a",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-front-1.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.down.2",
@@ -1001,11 +1025,14 @@
         322,
         370
       ],
-      "sha256": "2757f0e0b5c009aa0cd59e6c95e655d19a48c4a9acdb9c3fbb579b82e8101a7a",
+      "sha256": "d7e5bce727e5101c2f463145dfd95c51b80ddbb43be5558555bf8c250b44ea91",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-front-2.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.left.0",
@@ -1037,11 +1064,14 @@
         319,
         369
       ],
-      "sha256": "3d1d9dd4c8a16d90cad3132467fe24060e1ca42d531a341d7e3a0e5e7031314b",
+      "sha256": "97a96641d2aecfc4ccc49e51801332dd4545e3f490c8161026033d8246c515b5",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-left-0.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.left.1",
@@ -1073,11 +1103,14 @@
         320,
         369
       ],
-      "sha256": "66367b6ec66f28deb9e473433391ebf2c787af00f9d048844beabc36fcb2332e",
+      "sha256": "a80188aea2f8c3a8a75ba6a710b6b7f4b8f32add350bb0d9f1ab8763a3adf259",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-left-1.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.left.2",
@@ -1109,11 +1142,14 @@
         316,
         370
       ],
-      "sha256": "1e2c8bec849959d222535ba26633724d182ea0eee024f948ffbf893db1ec4b81",
+      "sha256": "31b699260cd6a09501b529693fdeebb2aec82e4855b8dc8ac9beb6cbd80b604d",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-left-2.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.right.0",
@@ -1145,11 +1181,14 @@
         304,
         369
       ],
-      "sha256": "fb81fce8cd7bc3ed106456c1161496b5cd08d02174a085e2fc379fe6bbbabcb7",
+      "sha256": "2619a3ff1e94378c39c4f6e136da47ae10b3a48a5557cfb696027a86eb78f06e",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-right-0.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.right.1",
@@ -1181,11 +1220,14 @@
         304,
         370
       ],
-      "sha256": "531763ebc2b10428c35fc2eeb00a43406858b9f323146c716e4fac820541017d",
+      "sha256": "d382b4a7f4c4cf481e9a1abe3121b2261d8fbac69627963956f98a3a393157a0",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-right-1.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     },
     {
       "id": "somang.walk.right.2",
@@ -1217,11 +1259,14 @@
         305,
         370
       ],
-      "sha256": "e4426a75fc86ede927c935f6f5a859b138a16180a9632ea4738140d693a1ec5f",
+      "sha256": "dbc26dcdfbd393789f208b8e850c3b61ac00b5d932800447a1862097a80eac26",
       "sourceGitCommit": "d4b2a597998f60c18fa727c3ec2709163291f1d8",
       "sourceGitPath": "docs/art/chibi-refresh/final-trio-v163/walk/somang-right-2.png",
       "copiedUnchanged": true,
-      "approvalStatus": "user-approved-final"
+      "approvalStatus": "user-approved-final",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     }
   ],
   "skinPaletteRevision": 168,

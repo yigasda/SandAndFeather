@@ -38,11 +38,14 @@
     ]
    },
    "referenceVisibleHeight": 576,
-   "sha256": "f8ba73a18e15b3f87e378adf04dd281d1dc7b15172e7dd6fec381e58e0d450b6",
+   "sha256": "f42a4f83454c0f69b0bcaf0cb56a11b00982b13ca0a0f2b74a16e1dd8b0b1c77",
    "source": "메인1/somang-left-eat-0.png",
    "canvas": [
     620,
     720
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {

@@ -8,12 +8,13 @@
       "file": "somang-right-combat-idle-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-idle-0.png",
       "revision": "combat-trio-v228",
-      "sha256": "b18bfe483ebd4ce3ed0a642960b1cf375690aab73416d927a8983fff20dd8bae",
+      "sha256": "4e1b0b182a3ffe4aa906b8d28e9646c7e5a6c17ce3ca5c6393c4005577ef042c",
       "status": "existing-latest",
       "sourceSha256": "a2020597e1126eebc7c3fd9e94e10e200bcc683e0b6b0c5f3feca52f9d092243",
       "edits": [
         "0.9.72 비율: 목(795,414) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-idle-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -22,12 +23,13 @@
       "file": "somang-right-combat-idle-1.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-idle-1.png",
       "revision": "combat-trio-v228",
-      "sha256": "3cd3195e6afab3ee077c925dbbcc6a98c784a43d14fc7c3725207b060f61040d",
+      "sha256": "865a48bde6994833b975244538c3627370c2966b2ddffc8557d43ee6a58f1878",
       "status": "existing-latest",
       "sourceSha256": "5253e2dcd01163035125080e03cfa657e077fb1a8a598e326fbed5ec529f9316",
       "edits": [
         "0.9.72 비율: 목(797,411) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-idle-1-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -36,12 +38,13 @@
       "file": "somang-right-combat-idle-2.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-idle-2.png",
       "revision": "combat-trio-v228",
-      "sha256": "930619a28185c2fb4de872ca0b2be7ffdf81989c92318e95364fb2f833e021ef",
+      "sha256": "ef8dad894f75ea10d042d4317be40806d86f12b4cb7b7891bed814c82d8ce7a9",
       "status": "existing-latest",
       "sourceSha256": "74a17c9a223b18840bfb3088b0e1137644c0c982fe07e59e0f702be0cf79d16d",
       "edits": [
         "0.9.72 비율: 목(797,422) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-idle-2-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -50,12 +53,13 @@
       "file": "somang-right-combat-anticipation-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v229/png/somang-right-combat-anticipation-0.png",
       "revision": "combat-trio-v229",
-      "sha256": "755faaaf9e473a984ee24d11a12e9ace501c6b0f875eab18420a99bbe8ce543b",
+      "sha256": "53640dc9beb6dc47de6f889018216623044b1b14f07e5fa5ec20c7119d71d440",
       "status": "existing-latest",
       "sourceSha256": "3d57c6093a57c9aa5042ef4a80533a400ca9dfff24afe3e19b5d32f82e5196be",
       "edits": [
         "0.9.72 비율: 목(804,393) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-anticipation-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -64,12 +68,13 @@
       "file": "somang-right-combat-attack-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-right-combat-attack-0.png",
       "revision": "combat-trio-v228",
-      "sha256": "b8ff0c9a65270ffd6644aa275dce9c9f6295d56645d3cf8f41e70e4110f7d425",
+      "sha256": "87402f13652a2e7736676ba0cbf38328beebaa6557474efa48aa1f761ec115d3",
       "status": "existing-latest",
       "sourceSha256": "1d5d07e87674d998238ff7dd4a00d774b78a1a42cf90b506aada3d9249e79b7c",
       "edits": [
         "0.9.72 비율: 목(797,426) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-attack-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -78,12 +83,13 @@
       "file": "somang-right-combat-skill-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-right-combat-skill-0.png",
       "revision": "combat-trio-v233",
-      "sha256": "3fe346f36be287273b6db757b22891008c4f1ff778f6f0801e09c2321fedb024",
+      "sha256": "f2a3043f175685d4e65c48d892c662a80c307f0b58dc93e307771c001a2f2c6e",
       "status": "existing-latest",
       "sourceSha256": "dcb44acdfebcf9b4118d2d2b3ec10e600463ff90d11f60f432f0dabd023696b1",
       "edits": [
         "0.9.72 비율: 목(802,423) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-skill-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -92,12 +98,13 @@
       "file": "somang-right-combat-spell-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-right-combat-spell-0.png",
       "revision": "combat-trio-v233",
-      "sha256": "6d837d11e7f8798dc4653039df89418e9ebff944230fd9065b8aa889ba9cab6f",
+      "sha256": "b11c21ad02189d4fbefdb15d8c722728bf2efbc9afced6df1713ae68b3c2cecb",
       "status": "existing-latest",
       "sourceSha256": "18e53018d38e3f60889c2c9fe4aaee4dac5539de8a892ca05a45fd91dfaa8c85",
       "edits": [
         "0.9.72 비율: 목(788,421) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-spell-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -106,12 +113,13 @@
       "file": "somang-right-combat-tired-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-right-combat-tired-0.png",
       "revision": "combat-trio-v236",
-      "sha256": "71d8fe229e4da4a2fc1f35830eae5e47fb8325e39138e4cdb08cb7f450b9c3d9",
+      "sha256": "c15e329fa277064c8c806991db526a9d05e8315743659abf535b553b6af553d1",
       "status": "awaiting-approval",
       "sourceSha256": "729efbe0f1cfb3b2f700b630908d3e414d4db44383541be0f95430c722246601",
       "edits": [
         "0.9.72 비율: 목(811,572) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-tired-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -120,12 +128,13 @@
       "file": "somang-right-combat-hit-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-right-combat-hit-0.png",
       "revision": "combat-trio-v236",
-      "sha256": "adb5e21468160fbaa3c88470c5e7f59a1d1d84a355177dae226d6e034ea0cff6",
+      "sha256": "79e1d59c3ee83727d28ae1dfa1e3d7b68e56ac7d433086c5228d28d62115826e",
       "status": "awaiting-approval",
       "sourceSha256": "a818b052e6ebb0aed62153e6f72cd2f900f11b3247ee318f0501ae1ff675610d",
       "edits": [
         "0.9.72 비율: 목(769,553) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-right-combat-hit-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 522.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 522.0
     },
@@ -134,12 +143,13 @@
       "file": "somang-left-combat-idle-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-idle-0.png",
       "revision": "combat-trio-v228",
-      "sha256": "e3a9c49202ba69139976c8a27514a29c4dc05fe926b082000fbaf11f89b84d93",
+      "sha256": "ee20ab983d34fd3f13c590b355039a64353118b21c20e239005adeffce2c2b57",
       "status": "existing-latest",
       "sourceSha256": "9db5a471fef56a21f06c9f9c7d397853ed9ac0e1e25a5aed12d8403b59dbbacd",
       "edits": [
         "0.9.72 비율: 목(784,380) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-idle-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -148,12 +158,13 @@
       "file": "somang-left-combat-idle-1.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-idle-1.png",
       "revision": "combat-trio-v228",
-      "sha256": "b890720385d2fbfcceacfc2a14ef5602b5c7ad289e7fe19ea500fbfa439fc50c",
+      "sha256": "e2e454db4480c14295da452e2e57615cce9c133d6e2c3226db9ff96296c14ff7",
       "status": "existing-latest",
       "sourceSha256": "43599014bfaf1399acd4e129ada38ee6080f9871aa57c73e7be0c8a221177c76",
       "edits": [
         "0.9.72 비율: 목(786,381) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-idle-1-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -162,12 +173,13 @@
       "file": "somang-left-combat-idle-2.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-idle-2.png",
       "revision": "combat-trio-v228",
-      "sha256": "a554a9f3dab8642304bbff5ecd623e62e4ff9a3c2bf39978f060216d66d986d3",
+      "sha256": "eba4e3ce942dcceca9ea57d2c1dc59976c3706f8dcee12ebdf64bf5ad2cfeb65",
       "status": "existing-latest",
       "sourceSha256": "e07e1961c29186338d14fb4c895965d8e188b6e8400c672bcaf8621d70985892",
       "edits": [
         "0.9.72 비율: 목(769,385) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-idle-2-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -176,12 +188,13 @@
       "file": "somang-left-combat-anticipation-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v229/png/somang-left-combat-anticipation-0.png",
       "revision": "combat-trio-v229",
-      "sha256": "20fedeef9a9ccaf20e5c81e68a56da4f620ab39bda5af58ffc12285aa6c7b440",
+      "sha256": "cb62ea58f2f73a4cfe0031da405066b93e9e832f44ee82b0649c98ad609bad08",
       "status": "existing-latest",
       "sourceSha256": "5b69cb29b8f035c633560f8aa025bb0b5bad230229f40298e23b9c5ce5b66887",
       "edits": [
         "0.9.72 비율: 목(802,357) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-anticipation-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -190,12 +203,13 @@
       "file": "somang-left-combat-attack-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v228/png/somang-left-combat-attack-0.png",
       "revision": "combat-trio-v228",
-      "sha256": "8a52ae9f66f4cf2a815b94f4183ff4ef8e4d7713a2d0b52b0c9e4cf0a51af4d4",
+      "sha256": "5b8d74c762005cd211359307ac45f176e285c0ec79ff919bbdcb679bdabb2440",
       "status": "existing-latest",
       "sourceSha256": "0a26ae8cfddd10cc41fe68270d8dc67df00b4b356d68f515ae3394f229dcad2a",
       "edits": [
         "0.9.72 비율: 목(769,424) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-attack-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -204,12 +218,13 @@
       "file": "somang-left-combat-skill-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-left-combat-skill-0.png",
       "revision": "combat-trio-v233",
-      "sha256": "9c9681b76958ca1c9f8bb5bf361314c1534e64901f3148447bafc1c876c53911",
+      "sha256": "d6ce554ea4e4c573cdb333e9c69e7459f675b49192340bcbafd3d045bb93eb4c",
       "status": "existing-latest",
       "sourceSha256": "2005ac25f5621995605ba73e536fdad4c5eb1b6a2f5c382552f00b523e78fa91",
       "edits": [
         "0.9.72 비율: 목(793,330) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-skill-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -218,12 +233,13 @@
       "file": "somang-left-combat-spell-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v233/png/somang-left-combat-spell-0.png",
       "revision": "combat-trio-v233",
-      "sha256": "1b4b8809dd30cb66843f5de0bbc375824b1d913ba7c96271d80b570b22da51a5",
+      "sha256": "cd486e6e90b2e52af10dba8b60c8118300163ce94bb908b85ffaa1c86c455331",
       "status": "existing-latest",
       "sourceSha256": "c47a3c0d49e12a76974f0d3fda46c78727cf4e138be260da3ae6f2a20a7e91d0",
       "edits": [
         "0.9.72 비율: 목(809,397) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-spell-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -232,12 +248,13 @@
       "file": "somang-left-combat-tired-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-left-combat-tired-0.png",
       "revision": "combat-trio-v236",
-      "sha256": "57d2d19f65f2aa43901c1881961c36345815d31c349a6497370842dc0a35a5e4",
+      "sha256": "6daa41f50c9c776011afff6bdc42b10bd43fe5b944555c2a1a0d19e295fb0f9b",
       "status": "awaiting-approval",
       "sourceSha256": "8a560034602bedaa57d9b4582d230526c28e447a0cf1c8e2db14f69ca0f2b452",
       "edits": [
         "0.9.72 비율: 목(772,543) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-tired-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     },
@@ -246,12 +263,13 @@
       "file": "somang-left-combat-hit-0.png",
       "source": "/workspace/bond-work/docs/art/chibi-refresh/combat-trio-v236/png/somang-left-combat-hit-0.png",
       "revision": "combat-trio-v236",
-      "sha256": "c056c430956a33231fed7c3b71ed6bcea215413f855de056b8e30da083dc7309",
+      "sha256": "3e490783b4fc1dcb73b51da9c28480d48f38f8c5735166af269363ba36d60f6d",
       "status": "awaiting-approval",
       "sourceSha256": "ab09e924f1e736d51d949411929f375ca13f9e9a03465889336827f8469ec690",
       "edits": [
         "0.9.72 비율: 목(773,499) 기준 머리 103 %, 몸 97.5 % (tools/art/fix/combat-ratio.py → headbody.py, 띠 80행), 캔버스 위로 40px 늘림(머리가 커진 만큼, 높이 760). 원본 sources/somang-left-combat-hit-0-비율전.png. 사용자: \"소망 비율도 수정해줘\" → 시안 A \"소망은 괜찮아 합격\"",
-        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인"
+        "2026-10-17 게임 크기 referenceVisibleHeight 552.0(그림 px, 서 있는 키 576과 같은 단위): 같은 방향 대기 3장의 머리 크기(옆 정지 머리 = 1, head-check × 0.9.72 머리 배율)로 정한 값. 사용자: 게임 렌더러 시트 확인",
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
       ],
       "referenceVisibleHeight": 552.0
     }

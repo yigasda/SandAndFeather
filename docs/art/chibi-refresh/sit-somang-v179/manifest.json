@@ -30,7 +30,10 @@
       "character": "somang",
       "direction": "left",
       "frame": 0,
-      "sha256": "eeeb3dee19bb0057eb92f0b32a0d507c1e3c5c99975708a3d7480c4f304dac53"
+      "sha256": "095544fde432729aa1d6eeda174da3ba958bca4c3a7011ab722f5a1506466c57",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+      ]
     }
   ],
   "playback": {

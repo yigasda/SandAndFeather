@@ -38,11 +38,14 @@
     ]
    },
    "referenceVisibleHeight": 576,
-   "sha256": "c07b6d09927d2be5f1dd66342844d049322717303fb609c338c8cf5b1c72564d",
+   "sha256": "219fe98fb3420c22ee594c094a430917615a08f17e6a5bf8ea6e819b69f1b173",
    "source": "메인1/somang-back-cook-0.png",
    "canvas": [
     620,
     720
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {

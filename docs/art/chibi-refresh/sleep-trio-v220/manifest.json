@@ -86,8 +86,11 @@
      450
     ]
    },
-   "sha256": "fb36c262f63cbcc02edfd855bb812884f7d4226ecb97f0c821ce1c8ae097ea46",
-   "referenceVisibleHeight": 523.6
+   "sha256": "8a077ad8609e3ec56f5ecae05e2fbcfbd14ec96f928448507b22b6d33442f246",
+   "referenceVisibleHeight": 523.6,
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+   ]
   },
   {
    "path": "png/somang-sleep-1.png",
@@ -100,8 +103,11 @@
      450
     ]
    },
-   "sha256": "9e931f24fc6178fad5c950c87e7cab3308f83a25c6e0455f77eabd144ef8beb0",
-   "referenceVisibleHeight": 523.6
+   "sha256": "82a667d61a68368d39044c59497ee0814da8f295b04d175abc2eeb38d9d65fb6",
+   "referenceVisibleHeight": 523.6,
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+   ]
   }
  ],
  "playback": {

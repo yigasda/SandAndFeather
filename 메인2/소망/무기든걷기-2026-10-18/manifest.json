@@ -5,84 +5,90 @@
    "file": "somang-left-armed-walk-0.png",
    "side": "left",
    "phase": 0,
-   "sha256": "56b1a4ad241dea6c4c2762ee1f3bc8b040cb88568c02e1f8cfe987234248ab11",
+   "sha256": "4e219f14b9e560bf92118924ac054c14ffec9f118e3e945dfe9d8cbd87e73412",
    "referenceVisibleHeight": 598.9,
    "pivot": [
     905.2,
     763
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-0.png"
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-0.png",
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {
    "file": "somang-left-armed-walk-1.png",
    "side": "left",
    "phase": 1,
-   "sha256": "e970d292e17dbd5bdbb752779fe892b0853d200ea238b4320eea3b98f541e677",
+   "sha256": "88b0bc90b0c6acdbb78927e345905dae4a8666f1fdc47ea947a2044325c7b875",
    "referenceVisibleHeight": 598.9,
    "pivot": [
     909.7,
     770
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-1.png"
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-1.png",
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {
    "file": "somang-left-armed-walk-2.png",
    "side": "left",
    "phase": 2,
-   "sha256": "3987d93d77175dfe1dc783ac9b079538db14a463d58053afe1a8d02df5b2f292",
+   "sha256": "ecc2d2fc979961e1f3a9cc9f4a8f9a6b9d9dab8616338920e66b7b941814d118",
    "referenceVisibleHeight": 598.9,
    "pivot": [
     908.2,
     773
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-2.png"
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-2.png",
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {
    "file": "somang-right-armed-walk-0.png",
    "side": "right",
    "phase": 0,
-   "sha256": "6c0f19b206dc9297f70d27549dadc9ef5ebb00a9bf2509e3dbf43ea185f304df",
+   "sha256": "569e4d93c5824358eb59bfa41f1911dcd6c0f7a4b1fc7bf5621349f560e3dce8",
    "referenceVisibleHeight": 576.8,
    "pivot": [
     921.2,
     748
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-0.png"
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-0.png",
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {
    "file": "somang-right-armed-walk-1.png",
    "side": "right",
    "phase": 1,
-   "sha256": "0d1dfa6eea3f73d06ac1da00667c331d63394c61c082f221050df4fd7e1a07d9",
+   "sha256": "4c9070b23f85d13dc272aef1ac94f142657eef77aba71f6d1c81fe7499947f12",
    "referenceVisibleHeight": 576.8,
    "pivot": [
     922.2,
     771
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-1.png"
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-1.png",
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {
    "file": "somang-right-armed-walk-2.png",
    "side": "right",
    "phase": 2,
-   "sha256": "3771d8bbaa2280a58fc4b65a74bcb324bdbdba0fe0ae613ed887b4ace1d42412",
+   "sha256": "a76689a0b04a66ebb632dd79c20dc6d33dbf28c765c24273c300768bc8f6f7b5",
    "referenceVisibleHeight": 576.8,
    "pivot": [
     917.9,
     753
    ],
    "edits": [
-    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-2.png"
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-2.png",
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   }
  ]
