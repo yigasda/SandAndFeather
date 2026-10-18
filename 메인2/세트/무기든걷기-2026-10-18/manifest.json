@@ -1,0 +1,89 @@
+{
+ "about": "세트 무기 든 걷기 6장. 크기는 장마다: 키(머리카락 위끝~발바닥)를 같은 방향 전투 대기 0 키와 같게(사용자 \"E가 낫다\"; 좌 ×1.098·1.041·1.051, 우 ×1.108·1.097·1.068 × 대기 0 referenceVisibleHeight). pivot = 발바닥 행, 좌우는 대기와 같은 몸 자리(치마 가운데).",
+ "sprites": [
+  {
+   "file": "set-left-armed-walk-0.png",
+   "side": "left",
+   "phase": 0,
+   "sha256": "2107104968a55154e439240bad2cdef165374c6a1ad4174896e940b36817b4fe",
+   "referenceVisibleHeight": 619.3,
+   "pivot": [
+    890.4,
+    746
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/세트/set-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/set-left-armed-walk-0.png"
+   ]
+  },
+  {
+   "file": "set-left-armed-walk-1.png",
+   "side": "left",
+   "phase": 1,
+   "sha256": "de4f095259a9b36569c53ee5edf482d887a7978b6674007a3709456ff6d9bb26",
+   "referenceVisibleHeight": 587.1,
+   "pivot": [
+    870.7,
+    776
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/세트/set-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/set-left-armed-walk-1.png"
+   ]
+  },
+  {
+   "file": "set-left-armed-walk-2.png",
+   "side": "left",
+   "phase": 2,
+   "sha256": "73d93cf3d24e1fd361e554fa52ffb70945adbb53c4742443414d27e502015e36",
+   "referenceVisibleHeight": 592.8,
+   "pivot": [
+    873.6,
+    765
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/세트/set-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/set-left-armed-walk-2.png"
+   ]
+  },
+  {
+   "file": "set-right-armed-walk-0.png",
+   "side": "right",
+   "phase": 0,
+   "sha256": "18557b1fada1d357f1df0ba24e1788e150daf6e1e4fa1851919ac799c0845e32",
+   "referenceVisibleHeight": 618.3,
+   "pivot": [
+    958.8,
+    767.5
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/세트/set-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/set-right-armed-walk-0.png"
+   ]
+  },
+  {
+   "file": "set-right-armed-walk-1.png",
+   "side": "right",
+   "phase": 1,
+   "sha256": "3a7c42f60e5f58875225f1e59c4765b69323a7a6b7c7d6e4c925922bd44200ab",
+   "referenceVisibleHeight": 612.1,
+   "pivot": [
+    960.3,
+    777.5
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/세트/set-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/set-right-armed-walk-1.png"
+   ]
+  },
+  {
+   "file": "set-right-armed-walk-2.png",
+   "side": "right",
+   "phase": 2,
+   "sha256": "619b9bf68e31902567ca1659cb765a002886b64e803669a49af9e9134e2bc9fe",
+   "referenceVisibleHeight": 595.9,
+   "pivot": [
+    941.3,
+    756.5
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/세트/set-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/set-right-armed-walk-2.png"
+   ]
+  }
+ ]
+}

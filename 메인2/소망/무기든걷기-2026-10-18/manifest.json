@@ -1,0 +1,89 @@
+{
+ "about": "소망 무기 든 걷기 6장. 크기는 방향마다 하나: 걷기 0 머리를 같은 방향 전투 대기 0 머리에 겹친 배율(좌 ×1.085, 우 ×1.105) × 대기 0 referenceVisibleHeight. pivot = 발바닥 행, 좌우는 대기와 같은 몸 자리(치마 가운데).",
+ "sprites": [
+  {
+   "file": "somang-left-armed-walk-0.png",
+   "side": "left",
+   "phase": 0,
+   "sha256": "56b1a4ad241dea6c4c2762ee1f3bc8b040cb88568c02e1f8cfe987234248ab11",
+   "referenceVisibleHeight": 598.9,
+   "pivot": [
+    905.2,
+    763
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-0.png"
+   ]
+  },
+  {
+   "file": "somang-left-armed-walk-1.png",
+   "side": "left",
+   "phase": 1,
+   "sha256": "e970d292e17dbd5bdbb752779fe892b0853d200ea238b4320eea3b98f541e677",
+   "referenceVisibleHeight": 598.9,
+   "pivot": [
+    909.7,
+    770
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-1.png"
+   ]
+  },
+  {
+   "file": "somang-left-armed-walk-2.png",
+   "side": "left",
+   "phase": 2,
+   "sha256": "3987d93d77175dfe1dc783ac9b079538db14a463d58053afe1a8d02df5b2f292",
+   "referenceVisibleHeight": 598.9,
+   "pivot": [
+    908.2,
+    773
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-left-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-left-armed-walk-2.png"
+   ]
+  },
+  {
+   "file": "somang-right-armed-walk-0.png",
+   "side": "right",
+   "phase": 0,
+   "sha256": "6c0f19b206dc9297f70d27549dadc9ef5ebb00a9bf2509e3dbf43ea185f304df",
+   "referenceVisibleHeight": 576.8,
+   "pivot": [
+    921.2,
+    748
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-0.png"
+   ]
+  },
+  {
+   "file": "somang-right-armed-walk-1.png",
+   "side": "right",
+   "phase": 1,
+   "sha256": "0d1dfa6eea3f73d06ac1da00667c331d63394c61c082f221050df4fd7e1a07d9",
+   "referenceVisibleHeight": 576.8,
+   "pivot": [
+    922.2,
+    771
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-1.png"
+   ]
+  },
+  {
+   "file": "somang-right-armed-walk-2.png",
+   "side": "right",
+   "phase": 2,
+   "sha256": "3771d8bbaa2280a58fc4b65a74bcb324bdbdba0fe0ae613ed887b4ace1d42412",
+   "referenceVisibleHeight": 576.8,
+   "pivot": [
+    917.9,
+    753
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-2.png"
+   ]
+  }
+ ]
+}
