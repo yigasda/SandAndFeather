@@ -233,7 +233,11 @@ COMBAT_ANCHOR = {('set', 'right-combat-idle-0'): [801.5, 677], ('set', 'right-co
 # Horus's skill is a dive from the air: the anchor puts his head where the same side's idle 0 has it (plan B-2), the
 # height of the jump is given in the game
 COMBAT_AIR = {('horus', 'skill')}
+# walking down there: the armed walk pictures (메인2/<who>/무기든걷기-2026-10-18, colour-matched and sized to the combat
+# idle; each manifest has referenceVisibleHeight and pivot per picture), left/right × 0-1-2, played 0-1-2-1 as she walks
+ARMED_WALK = {'set': '세트', 'somang': '소망', 'horus': '호루스'}
 COMBAT_PLAY = {'ready': {'frameMs': [220, 220, 220, 220], 'seq': [0, 1, 2, 1], 'loop': True},
+               'walk': {'frameMs': [180, 180, 180, 180], 'seq': [0, 1, 2, 1], 'loop': True},
                'anticipation': {'frameMs': [120]}, 'attack': {'frameMs': [260]}, 'skill': {'frameMs': [450]},
                'spell': {'frameMs': [500]}, 'hit': {'frameMs': [300]}, 'tired': {'frameMs': [800], 'hold': True}}
 
@@ -252,6 +256,13 @@ def combat_frames(who):
                     'alphaBounds': list(Image.open(path).getchannel('A').getbbox()),
                     'pivot': COMBAT_ANCHOR.get((who, name)) or feet_middle(path)})
     assert len(out) == 18, (who, len(out))
+    wd = os.path.join(ROOT, '메인2', ARMED_WALK[who], '무기든걷기-2026-10-18'); wm = json.load(open(os.path.join(wd, 'manifest.json')))
+    for e in wm['sprites']:
+        path = os.path.join(wd, e['file'])
+        assert hashlib.sha256(open(path, 'rb').read()).hexdigest() == e['sha256'], path
+        out.append({'id': f"{who}.combat.walk.{e['side']}.{e['phase']}", 'character': who, 'state': 'stride', 'gameDirection': e['side'],
+                    'phase': e['phase'], 'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': e['referenceVisibleHeight'],
+                    'alphaBounds': list(Image.open(path).getchannel('A').point(lambda v: 255 if v >= 128 else 0).getbbox()), 'pivot': e['pivot']})
     def head(f):   # top of the hair and the middle of the top fifth of the figure
         b = solid_box(os.path.join(ROOT, f['path'])); a = Image.open(os.path.join(ROOT, f['path'])).getchannel('A').point(lambda v: 255 if v >= 128 else 0)
         t = a.crop((0, b[1], a.width, b[1] + (b[3] - b[1]) // 5)).getbbox()
@@ -307,6 +318,7 @@ def main():
         cf = combat_frames(who)
         b = pack(cf, VISIBLE, f'art/characters/trio-combat-{who}.png')[who]
         sm = pack(cf, SMALL, f'art/characters/trio-combat-{who}-small.png')[who]
+        for t in (b, sm): t['acts']['walk'] = t['acts'].pop('stride')   # packed as "stride" (pack() keeps "walk" for the walk table)
         sprites['looks'][who]['combat'] = {'file': b['file'], 'visible': b['visible'], 'height': HEIGHT, 'acts': b['acts'],
                                            'actPlay': COMBAT_PLAY, 'small': {k: sm[k] for k in ('file', 'visible', 'acts')}}
     with open(sprites_path, 'w') as fh:
