@@ -28,8 +28,8 @@ DUAT_PX = 52 / 1.55
 BIG = {'desert_01', 'desert_02', 'desert_03', 'desert_04'}
 SCALE = {'big': 0.44, 'detail': 1.0}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
-# the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4")
-WALK = {'big': 1.4, 'detail': 1.0}
+# the big maps are wide at 44 %: walking is 1.25 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자")
+WALK = {'big': 1.25, 'detail': 1.0}
 ALPHA = 128
 SRC = ROOT / '사막맵'
 OUT_ART = ROOT / 'docs/art/map-expansion'
