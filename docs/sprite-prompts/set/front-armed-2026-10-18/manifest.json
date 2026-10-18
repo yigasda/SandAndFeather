@@ -1,13 +1,13 @@
 {
-  "status": "user-approved-concept-only",
+  "status": "superseded-archive-only",
   "date": "2026-10-18",
   "adopted": "approved/set-front-long-shaft-1.png",
   "files": [
     {
       "path": "README.md",
-      "bytes": 2181,
-      "sha256": "d46fcf14bd536758df64d6ac90032f3d49cb01b1eba1bb743d2ffa4789409909",
-      "git_blob_sha": "ccdb7bde249bde6959bb7fc908298f8a69b04e0d"
+      "bytes": 2533,
+      "sha256": "72e9a8f235ea538ba9a6aca55e0cc102242e87a3a19b1fb2f5999ad413b5dd56",
+      "git_blob_sha": "1dc4689b7f1d6de266f3a368dd6752f35f9a170b"
     },
     {
       "path": "actual-generation-prompt.txt",
@@ -75,5 +75,6 @@
       "height": 720,
       "mode": "RGBA"
     }
-  ]
+  ],
+  "superseded_by": "../front-combat-ready-2026-10-18/README.md"
 }

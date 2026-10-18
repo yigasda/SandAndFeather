@@ -1,0 +1,68 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 2373,
+    "sha256": "9d2f2f39824275b001835125fe085303e6d018f73657cab8a8efd4add5e1740e",
+    "git_blob_sha": "d28b92d0441308bb940ac30c0e29dd1f480018a7"
+  },
+  {
+    "path": "actual-generation-prompt.txt",
+    "bytes": 4002,
+    "sha256": "329e4b0e087d789f5727cf8c9dd126afcc19799d70e4b7fef3c478f73b645022",
+    "git_blob_sha": "8ad8a83478d8ef6cd8654e4e71fd939fe311ce87"
+  },
+  {
+    "path": "approved/set-front-combat-idle-0.png",
+    "bytes": 715473,
+    "sha256": "d91f0570716cbaaafd746b965f5be265efc481f8ef80a7c9115bb77a83818a13",
+    "git_blob_sha": "a18697277f75ab474017fb9616a5ac54c97d2f5b",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/01-1000483771.png",
+    "bytes": 818189,
+    "sha256": "909322d2b5b57881ef6b92588ba1e1231c5d18001d76b826a07a91f8c9534657",
+    "git_blob_sha": "fffd23d1b7b79cf14951a39c08cb03beb03f6ad4",
+    "width": 2048,
+    "height": 746,
+    "mode": "RGB"
+  },
+  {
+    "path": "references/02-set-left-combat-idle-0.png",
+    "bytes": 388804,
+    "sha256": "0e23ebfed2b8fb553aff9d111ac4d73304991e11ef2c864c1d32356662687c04",
+    "git_blob_sha": "a275dc9b4bbec3797801e97e880b93f1f59c3823",
+    "width": 1600,
+    "height": 780,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/03-set-left-combat-attack-0.png",
+    "bytes": 443875,
+    "sha256": "bbeedc5ac99fc8e8915a96fe8f5bac7a3ce4a226f90b6c8dd612219ee5e3d2ef",
+    "git_blob_sha": "a80675e9585c28ff8fb2e77f00333f8eb6eea305",
+    "width": 1600,
+    "height": 780,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/04-1000483753.png",
+    "bytes": 119097,
+    "sha256": "e44f087ac680d177b409b98ea611bcb4139b20fe624b18e4c4f2c676bb42e07c",
+    "git_blob_sha": "af69490d999e388ad4da2715b99ea0cc05b356f1",
+    "width": 360,
+    "height": 400,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/05-set-front-original.png",
+    "bytes": 152207,
+    "sha256": "4dc0d64afb225a91dd07f515c2828751b81de0f58fd8e5ead9d931d1fb2604fc",
+    "git_blob_sha": "e6ab797d334b6f74e57738a8a4afa23e8660e5a8",
+    "width": 620,
+    "height": 720,
+    "mode": "RGBA"
+  }
+]
