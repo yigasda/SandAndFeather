@@ -1,6 +1,6 @@
 # 오푸스 인수인계 — 게임 적용과 코드 (지금 기준만)
 
-**오푸스용 문서다.** 갱신 2026-10-18, **0.9.83** 기준(사막 01 황금 사구해, 맵별 카메라·캐릭터 크기·걷기 속도). 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
+**오푸스용 문서다.** 갱신 2026-10-18, **0.9.84** 기준(사막 대형맵 01·04·03·02 연결). 처음 온 오푸스는 이 문서 하나만 처음부터 끝까지 읽으면 바로 일할 수 있게 썼다. 버전별 변경은 `CHANGELOG.md`, 작업별 상세는 아래 표의 기록 문서에 있다. 그림 작업 규칙은 아스트라용 [ASTRA-HANDOFF.md](ASTRA-HANDOFF.md)·[ASTRA-PLAN.md](ASTRA-PLAN.md)에 있다. 아트를 받을 때 채택 상태와 명세를 확인하는 용도로 본다.
 
 ## 직접 하는 그림 손질 (`tools/art/fix/`)
 
@@ -104,7 +104,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
 
 ## 버전과 검증
 
-- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.83**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
+- 버전은 `manifest.json`의 `version`과 `src/core/settings.js`의 `VERSION`을 같이 올린다. 지금은 **0.9.84**이다. 올릴 때 `CHANGELOG.md` 맨 위에 한 줄, README의 "현재 버전" 줄, 이 문서의 이 줄과 맨 위 기준 버전도 고친다. README에는 버전 내역을 쌓지 않는다.
 - **배포(0.9.54~):** 사용자는 `release` 브랜치로 설치한다(main은 docs 그림 기록 때문에 1 GB 넘음, SillyTavern은 `auto_update`로 켤 때마다 git pull). 버전을 올리고 main에 푸시한 뒤 `sh tools/release.sh && git push origin release`로 release도 올린다. 스크립트는 `index.js`, `style.css`, `manifest.json`, `README.md`, `src/`, `data/`와 `data/*.json`이 가리키는 `../docs/` 그림만 담는다. 게임이 새로 docs 밖 파일을 읽게 되면 스크립트에 더한다. 확인은 `git clone --depth 1 --branch release`한 폴더를 확장 자리에 넣고 검증 스크립트를 돌린다.
 - 캐릭터 그림은 게임 창을 열 때 불러온다(`ensureSpriteArt`, `window.js openGame`). 그 전에 그림을 쓰는 코드를 만들면 먼저 `ensureSpriteArt()`를 기다린다.
 - **검증 스크립트 세 개**(`tools/art/`, ST가 떠 있고 확장이 들어가 있어야 함). 출력 폴더를 인자로 준다. 셋 다 exit 0이어야 한다:
@@ -130,11 +130,11 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
   - `bed-measure.js <폴더> '<[누구,[x,y,방향],이름] 목록>' [방]`: 한 사람만 침대 자리에 눕힌 화면과 뺀 화면. 두 장 차이의 박스가 그 사람(머리 위끝·턱 높이 재기)
   - 폰 크기는 412×900. 안채나 맵을 고치면 출구 걷기·낮밤도 본다.
 
-## 게임 지금 상태 — 0.9.83
+## 게임 지금 상태 — 0.9.84
 
 두아트 7맵은 입구의 「두아트 들어가기」로 상시 무료 탐색한다. 위·아래 출구로 왕복하며 기존 카드 원정은 별도 버튼으로 하루 한 번·태양 기운 3 규칙을 유지한다. +55% 배율, 배경·캐릭터 원색. 회랑(02)은 승인된 수동 경계와 최종 파랑·노랑 선(물가·기둥·계단) 수정, 나머지 6맵은 사용자 요청대로 기존 임시 경계다. 나머지 6맵 정밀 경계는 다음 작업. 생성기 `tools/maps/duat.py`, 회랑 좌표 `tools/maps/duat-boundaries/02.json`, 검증 `tools/st-test/duat-maps.cjs`. 필드 전투 1차는 04 고대장치만(`src/packs/duat/field.js`, 수치 `data/duat.json` field, 몹 그림 `tools/art/enemy-pack.py` — `몹/하위몹/<무리>/10모션-*/<kind>/NN-<motion>.png` 공통 10모션, 소멸은 첫 채택본, 테스트 `tools/st-test/duat-field.js`·`duat-mob-video.js`). 평상(일반 그림)·전투(전투 그림) 두 자세: 바뀜은 멈췄을 때만·최소 2초(깜빡임 방지), 전투 중 좌우는 무기 든 걷기(`pack-trio-motion.py` `ARMED_WALK`), 위아래는 일반 상하 걷기(무기 든 앞·뒤 걷기 그림이 오면 교체). 동행은 전투 때 `player.js mateWalk`로 따로 걸어 몹 반대편에 섬. 다른 맵 몹·06 문지기·아이콘·도트 체력바·드롭은 다음.
 
-사막(0.9.83): 01 황금 사구해만. 옴보스 동쪽 끝 출구(`ombos.json` exits `desert_01`) ↔ 01 서쪽 끝. 생성기 `tools/maps/desert.py`(그림 sha는 `사막맵/manifest.json`과 대조, 충돌은 `사막맵/충돌/*.png` 알파 128 이상 = 바닥, 크기가 그림과 다르면 멈춤). 대형맵(01~04) 배율 0.44(두아트 기준)·`cameraScale` 0.6·`actorScale` 1.6·`walkSpeed` 1.4, 세부맵은 1.0(사용자가 아직 안 정함). 렌더러 `fitZoom()`·`actorScale()`, 동행 간격은 `actorScale`배. 충돌 PNG는 01·02·10만 있다. 다른 맵은 충돌 PNG를 받은 뒤 `PLACES`에 줄을 더한다. 검증 `tools/st-test/desert-maps.cjs`(옴보스 → 01 → 옴보스 왕복).
+사막(0.9.84): 대형맵 01 → 04 → 03 → 02(가장자리 출구, `tools/maps/desert.py` PLACES). 옴보스 동쪽 끝 출구(`ombos.json` exits `desert_01`) ↔ 01 서쪽 끝. 그림 sha는 `사막맵/manifest.json`과 대조, 충돌은 `사막맵/충돌/*.png` 알파 128 이상 = 바닥. 01·02·10 충돌은 사용자 그림, 03·04는 `tools/maps/desert-collision.py`(사구 못 올라감, 03 사구는 사용자가 칠한 그림 `tools/maps/desert-collision/` 그대로 — 사용자가 고친 곳만 고치고 다른 곳은 건드리지 않는다). 대형맵 배율 0.44(두아트 기준)·`cameraScale` 0.6·`actorScale` 1.6·`walkSpeed` 1.4, 세부맵은 1.0(사용자 미정). 렌더러 `fitZoom()`·`actorScale()`, 동행 간격은 `actorScale`배. 02의 신전 문(T1W)·오른쪽 아래 돌 출구(11)·오른쪽(10)은 아직 출구 없음. 검증 `tools/st-test/desert-maps.cjs`(옴보스 ↔ 01, 01 → 04 → 03 → 02 왕복).
 
 | 영역 | 내용 | 자세한 기록 |
 |---|---|---|
