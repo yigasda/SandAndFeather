@@ -5,8 +5,8 @@ The collision pictures (사막맵/충돌/, from the user's Google Drive folder '
 the art: the painted part (one flat colour) is where the feet may go, the clear part is dunes, walls, stones. The
 painted edge is soft; a pixel is floor when its alpha is at least ALPHA (half). Nothing is redrawn or resized.
 
-Scale: the Duat's (+55 %), PX source pixels a tile, so the characters stand small in these wide places (user: "초대형
-맵이니까 캐릭터가 ㅈㄴ 작았으면... 두아트처럼").
+Scale: PX source pixels a tile, 44 % of the Duat's, so the characters stand very small in these wide places (user: "초대형
+맵이니까 캐릭터가 ㅈㄴ 작았으면... 두아트처럼", then "44%" after seeing the Duat scale).
 
 Only the places with a collision picture and a decided way in are built (user: one stretch at a time):
   desert_01 황금 사구해 — in from Ombos (the east edge of the village, right of the riverside palms), out on its west
@@ -21,7 +21,8 @@ import residence as R
 _spec = importlib.util.spec_from_file_location("duat_pixel", Path(__file__).with_name("duat-pixel.py"))
 P = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(P)
 ROOT = Path(R.ROOT)
-PX = 52 / 1.55
+# the Duat's tile (52/1.55 source px) × 0.44: the characters stand at 44 % of their Duat size against the art (user: "44%")
+PX = 52 / 1.55 * 0.44
 ALPHA = 128
 SRC = ROOT / '사막맵'
 OUT_ART = ROOT / 'docs/art/map-expansion'
