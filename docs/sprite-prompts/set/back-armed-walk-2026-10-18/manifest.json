@@ -1,0 +1,101 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 1916,
+    "sha256": "2cbb57a8bc259cadb0a41728f7b5b7bb1769b1f4e57f6147333524a5632f6625",
+    "git_blob_sha": "5463e11ec25f0d9e387053da2d567250728a582e"
+  },
+  {
+    "path": "approved/set-back-armed-walk-0.png",
+    "bytes": 587914,
+    "sha256": "2c78ec71fe0a652e9a818e38c806d36e8561a3a3f4d123c46d8d7026ddcf1873",
+    "git_blob_sha": "79d41e03f2da691fd4b64b922760007be06b3000",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/set-back-armed-walk-1.png",
+    "bytes": 580633,
+    "sha256": "ee5b96cb4c5c56054f3642c6e041cf76df11d3253b7f2635e8680399492615bb",
+    "git_blob_sha": "51eecf8c3a8adc48c47db34079b0d6bbe4a24e5c",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "approved/set-back-armed-walk-2.png",
+    "bytes": 601927,
+    "sha256": "43939ad496d79b4edd924959d22bc15307b9b156eff760b1becab2c45ddc1d3b",
+    "git_blob_sha": "dd6bb8e62ad9a791aa3d7ef534efcc0b6643a30d",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "frame-2-accepted-exact-prompt.txt",
+    "bytes": 592,
+    "sha256": "ee37e62c0ca2d7869fb805dc84dbc2bf52761e6f177503cf7e0a73760699b3e2",
+    "git_blob_sha": "dcab042df682ccd82038d43034fae17a412d2a94"
+  },
+  {
+    "path": "initial-prompts.json",
+    "bytes": 4551,
+    "sha256": "42af40efb48f7a3b4092999271068166a4fd13bfc9c05c88e099da850bf485a6",
+    "git_blob_sha": "4d6166f95f21962ede21ddb1cb9df71c300f34f5"
+  },
+  {
+    "path": "references/1000483756.png",
+    "bytes": 96072,
+    "sha256": "8e50282fe5aeb5eb121ee32cf1dbcb727820d016ba81b1dca675a7ad14f9541f",
+    "git_blob_sha": "6de21c8c9e73b50f026f87dc519a696a4b6af2df",
+    "width": 360,
+    "height": 400,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483757.png",
+    "bytes": 95875,
+    "sha256": "69a8fdb30e3176c201ab341917dc11b93ed69b52eb13ee9e4499b4524ee05edf",
+    "git_blob_sha": "90f3633fcaa7e8be55c4d19f90f72d937bc426f1",
+    "width": 360,
+    "height": 400,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/original-back.png",
+    "bytes": 718186,
+    "sha256": "b562256a8404d802ce1d6bcc34856264c5a76b00b46316d715696e388d48fd98",
+    "git_blob_sha": "8f06e48ebd01eeb1a52b94492c78f9d1fba6d7ff",
+    "width": 2048,
+    "height": 704,
+    "mode": "RGB"
+  },
+  {
+    "path": "references/set-front-armed-walk-0.png",
+    "bytes": 736983,
+    "sha256": "20fb67cc586b90f7d44d6aab797d4224cf7f30b0a2fd00ae14297c451632a7b3",
+    "git_blob_sha": "71d2931877c96d6e1f26a6fe11644c21c0e87c85",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/set-front-armed-walk-1.png",
+    "bytes": 709428,
+    "sha256": "6bcfcffdb52817598e0121abfc469700eaa6fabd3d4710505aace4ba929c289f",
+    "git_blob_sha": "4ae827b789a39d5a8d1bb753eebe0641fd464834",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "walk-preview.gif",
+    "bytes": 276111,
+    "sha256": "0212f23b39d57829b5683c53a02fb06dbbdd62996aaaed71b46757f21efa6486",
+    "git_blob_sha": "b809ba70dcbd7c5c6be6b20cf3813fc7e58d0783",
+    "width": 600,
+    "height": 480,
+    "mode": "P"
+  }
+]
