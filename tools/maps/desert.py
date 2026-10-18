@@ -12,7 +12,8 @@ Only the places with a collision picture and a decided way in are built (user: o
   edge where the paved path starts below the ruined colonnade (user's picture); its lower right sand leads on east.
   desert_04 메마른 모래벌판, desert_03 고요한 사구 — the guide's way from 01 to 02, edge to edge (collision pictures made
   by tools/maps/desert-collision.py to the user's rules: user "니가 충돌 만들어 하나하나 내가 그린 퀄리티대로").
-  desert_02 매몰 신전 사막 — in from 03 on its left edge.
+  desert_02 매몰 신전 사막 — in from 03 on its left edge; its lower right stone door goes down to desert_11.
+  desert_11 매몰 도시의 출입구 → desert_17 잊힌 지하 도시의 광장 (detail maps, the Duat's scale until the user picks theirs).
 Requires shapely and scipy (duat-pixel.py)."""
 import hashlib, json, math, shutil
 from pathlib import Path
@@ -64,9 +65,20 @@ PLACES = [
      [('west', (0, 355, 14, 884), 'desert_04', 'east'), ('east', (1760, 450, 1774, 561), 'desert_02', 'west')],
      '소리 하나 없는 사구야. 왼쪽은 메마른 모래벌판, 오른쪽 절벽 아래로 매몰 신전 쪽 길이 나 있어.'),
     ('desert_02', '매몰 신전 사막', '02_매몰신전사막.png', '02_매몰신전사막.png',
-     {'west': ((44, 330), 'right')},
-     [('west', (0, 188, 14, 686), 'desert_03', 'east')],
-     '모래에 반쯤 묻힌 신전이 보여. 왼쪽으로 가면 고요한 사구로 돌아가.'),
+     {'west': ((44, 330), 'right'), 'door': ((1500, 712), 'down')},
+     [('west', (0, 188, 14, 686), 'desert_03', 'east'), ('door', (1484, 668, 1518, 684), 'desert_11', 'outside')],
+     '모래에 반쯤 묻힌 신전이 보여. 왼쪽으로 가면 고요한 사구, 오른쪽 아래 돌 문은 땅 밑으로 이어져.'),
+    # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
+    ('desert_11', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
+     {'outside': ((300, 1350), 'up'), 'door': ((710, 390), 'down')},
+     [('left', (0, 335, 14, 1536), 'desert_02', 'door'), ('bottom', (0, 1522, 644, 1536), 'desert_02', 'door'),
+      ('door', (640, 312, 790, 340), 'desert_17', 'east')],
+     '모래에 묻힌 돌 문이야. 계단 아래로 내려가면 땅 밑 도시, 뒤로 나가면 매몰 신전 사막이야.'),
+    # 17 잊힌 지하 도시의 광장: 오른쪽 계단 위가 11의 문 (guide: 17 우측 계단); 왼쪽 집 주거실·오른쪽 집 18 기록고는 다음
+    ('desert_17', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
+     {'east': ((1725, 505), 'left')},
+     [('east', (1760, 402, 1774, 537), 'desert_11', 'door')],
+     '모래 아래 숨은 도시 광장이야. 오른쪽 계단으로 올라가면 바깥 출입구야.'),
 ]
 
 

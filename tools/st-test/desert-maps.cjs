@@ -1,5 +1,5 @@
 // 사막 01: 옴보스 오른쪽 아래 끝 → 사막 01 서쪽 → 다시 옴보스. 대형맵 01 → 04 → 03 → 02와 돌아오기(가장자리 출구).
-// 폰 화면(412×900), 걸어서 출구를 밟는다.
+// 02 돌 문 → 11 → 17과 돌아오기. 폰 화면(412×900), 걸어서 출구를 밟는다.
 //   python3 tools/maps/desert.py && node tools/st-test/desert-maps.cjs [out]
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -67,10 +67,12 @@ fs.mkdirSync(OUT, { recursive: true });
         const legs = [['desert_01', 'east', 1, 'desert_04', 'west'], ['desert_04', 'east', 1, 'desert_03', 'west'],
             ['desert_03', 'east', 1, 'desert_02', 'west'], ['desert_02', 'west', -1, 'desert_03', 'east'],
             ['desert_03', 'west', -1, 'desert_04', 'east'], ['desert_04', 'west', -1, 'desert_01', 'east']];
+        legs.push(['desert_02', 'door', [0, -1], 'desert_11', 'outside'], ['desert_11', 'door', [0, -1], 'desert_17', 'east'],
+            ['desert_17', 'east', [1, 0], 'desert_11', 'door'], ['desert_11', 'outside', [-1, 0], 'desert_02', 'door']);
         for (const [from, at, dx, to, land] of legs) {
             await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
             await page.waitForTimeout(600);
-            r = await walk(dx, 0); log.push(r);
+            r = Array.isArray(dx) ? await walk(dx[0], dx[1]) : await walk(dx, 0); log.push(r);
             if (r.exit !== to) throw Error(`${from} ${at}: ${JSON.stringify(r)}`);
             await page.waitForFunction(id => T.player.player.map === id, to, { timeout: 15000 });
             await page.waitForTimeout(1200);

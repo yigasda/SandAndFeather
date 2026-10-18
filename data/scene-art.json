@@ -638,5 +638,29 @@
     "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
     "tintActors": false,
     "tintWorld": false
+  },
+  "desert_11": {
+    "file": "../docs/art/map-expansion/desert-11.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1024, 1536],
+    "night": [0, 0, 1024, 1536],
+    "clip": [[0, 0], [1024, 0], [1024, 1536], [0, 1536]],
+    "tintActors": false,
+    "tintWorld": false
+  },
+  "desert_17": {
+    "file": "../docs/art/map-expansion/desert-17.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "tintActors": false,
+    "tintWorld": false
   }
 }
