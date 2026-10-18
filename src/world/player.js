@@ -12,7 +12,11 @@ export const player = { map: 'ombos', x: 25, y: 16, dir: 'down', moving: false, 
 // where she has been lately, so a companion can walk a little behind her
 const trail = [];
 const TRAIL_GAP = 0.9; // tiles behind her
-export function follower() {
+// a pack can walk the companion on its own for a while (두아트 전투: a place of their own to fight from); follower()
+// then returns mateWalk.pos ({ x, y, dir, moving, step, walkT }) instead of the place behind her
+export const mateWalk = { pos: null };
+export function follower() { return mateWalk.pos || behind(); }
+export function behind() {
     let need = TRAIL_GAP, prev = { x: player.x, y: player.y };
     for (let k = trail.length - 1; k >= 0; k--) {
         const p = trail[k], d = Math.hypot(p.x - prev.x, p.y - prev.y);
@@ -29,7 +33,7 @@ export function placePlayer(map) {
     else Object.assign(player, { map: map.id, x: map.d.spawn.x, y: map.d.spawn.y, dir: 'down' });
     player.seat = null; player.act = null; player.mate = null;
     stand();
-    trail.length = 0;
+    trail.length = 0; mateWalk.pos = null;
 }
 const blocked = (m, x, y) => m.solidRect(x+FOOT.x0,y+FOOT.y0,x+FOOT.x1,y+FOOT.y1);
 

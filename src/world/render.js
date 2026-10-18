@@ -132,7 +132,7 @@ export class Renderer {
         return true;
     }
     // 두아트 필드 전투: the combat pictures (looks.<who>.combat, left or right only): anim.combat = { name, t (s), lift
-    // (tiles up), flash }. "ready" loops its frames by actPlay.seq; the others show their one frame. Same feet anchor
+    // (tiles up) }. "ready" loops its frames by actPlay.seq; the others show their one frame. Same feet anchor
     // and character height as the walking pictures; the atlas loads the first time it is wanted.
     combatPerson(g, look, x, y, dir, z, anim) {
         const c = this.combat.get(look);
@@ -151,7 +151,6 @@ export class Renderer {
         g.beginPath(); g.ellipse(fx, fy - 0.6 * z, 5.5 * z * (1 - Math.min(0.5, (anim.combat.lift || 0) * 0.3)), 1.6 * z, 0, 0, Math.PI * 2); g.fill();
         g.save();
         if (anim.combat.blink && Math.floor(performance.now() / 80) % 2) g.globalAlpha = 0.45;
-        if (anim.combat.flash) g.filter = 'brightness(1.8) saturate(0.6)';
         g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
         g.drawImage(DATA.spriteArt[a.file], r[0], r[1], r[2], r[3], Math.round(fx - r[4] * k), Math.round(fy - r[5] * k - lift), Math.round(r[2] * k), Math.round(r[3] * k));
         g.restore();

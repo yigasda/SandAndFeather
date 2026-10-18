@@ -551,19 +551,19 @@
       "loop": true
      },
      "anticipation": {
-      "frameMs": [120]
+      "frameMs": [200]
      },
      "attack": {
-      "frameMs": [260]
+      "frameMs": [350]
      },
      "skill": {
-      "frameMs": [450]
+      "frameMs": [700]
      },
      "spell": {
-      "frameMs": [500]
+      "frameMs": [800]
      },
      "hit": {
-      "frameMs": [300]
+      "frameMs": [450]
      },
      "tired": {
       "frameMs": [800],
@@ -1192,19 +1192,19 @@
       "loop": true
      },
      "anticipation": {
-      "frameMs": [120]
+      "frameMs": [200]
      },
      "attack": {
-      "frameMs": [260]
+      "frameMs": [350]
      },
      "skill": {
-      "frameMs": [450]
+      "frameMs": [700]
      },
      "spell": {
-      "frameMs": [500]
+      "frameMs": [800]
      },
      "hit": {
-      "frameMs": [300]
+      "frameMs": [450]
      },
      "tired": {
       "frameMs": [800],
@@ -1861,19 +1861,19 @@
       "loop": true
      },
      "anticipation": {
-      "frameMs": [120]
+      "frameMs": [200]
      },
      "attack": {
-      "frameMs": [260]
+      "frameMs": [350]
      },
      "skill": {
-      "frameMs": [450]
+      "frameMs": [700]
      },
      "spell": {
-      "frameMs": [500]
+      "frameMs": [800]
      },
      "hit": {
-      "frameMs": [300]
+      "frameMs": [450]
      },
      "tired": {
       "frameMs": [800],
