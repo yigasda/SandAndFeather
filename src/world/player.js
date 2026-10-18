@@ -81,7 +81,9 @@ export function stepPlayer(map, dx, dy, dt) {
     const len = Math.hypot(dx, dy);
     if (len <= 0.15) { stand(); return; }
     getUp();
-    const k = Math.min(1, len) * SPEED * dt / len;
+    // a map may set its own pace (the wide desert maps: map.d.walkSpeed, tools/maps/desert.py); the walking pictures keep step
+    const pace = map.d?.walkSpeed || 1;
+    const k = Math.min(1, len) * SPEED * pace * dt / len;
     const nx = player.x + dx * k, ny = player.y + dy * k, x0 = player.x, y0 = player.y;
     if (!blocked(map, nx, player.y)) player.x = nx;
     if (!blocked(map, player.x, ny)) player.y = ny;
@@ -90,8 +92,8 @@ export function stepPlayer(map, dx, dy, dt) {
     player.moving = Math.hypot(player.x - x0, player.y - y0) > 1e-4;
     if (!player.moving) { player.walkT = 0; return; }
     player.act = null; player.posePrev = null;
-    player.walkT += dt;
-    player.step += dt * 8;
+    player.walkT += dt * pace;
+    player.step += dt * 8 * pace;
     const last = trail[trail.length - 1];
     if (!last || Math.hypot(last.x - player.x, last.y - player.y) > 0.12) { trail.push({ x: player.x, y: player.y, dir: player.dir }); if (trail.length > 40) trail.shift(); }
 }
