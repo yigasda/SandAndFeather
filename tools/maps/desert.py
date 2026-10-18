@@ -55,10 +55,12 @@ REVIEW = ROOT / 'docs/consult/desert/maps'
 # docs/OPUS-HANDOFF.md "가구에 몸 가리기": straight edges measured at 5-6x on the rows they cross, joined as corners
 # (user: "지붕 맞춰"). Only the edge against where she can be shown matters; the rest of a polygon is the same stone.
 FRONT = {
-    # 11: the lintel over the stairway down (its lower edge against the dark opening: 615,291 → 784,338) and the right jamb
-    # (inner edge 784 → 781, its foot at 528), each its own foot. Not the left jamb: its inner face is the passage wall she
-    # walks in front of (user: "여기는 가림 없애. 이쪽벽은 머리카락이 보여야 정상이잖아")
+    # 11: the lintel over the stairway down (its lower edge against the dark opening: 615,291 → 784,338), the left jamb
+    # (inner edge x 615 down to its foot at 455-465) and the right jamb (inner edge 784 → 781, its foot at 528), each its own
+    # foot so someone on the stairs in front of a jamb's foot is not put behind it (left jamb taken out, then back: user
+    # "걍 다 가리게 하자")
     'desert_11': [(530, [[560, 180], [840, 180], [840, 338], [784, 338], [615, 291], [560, 291]]),
+                  (460, [[560, 291], [615, 291], [615, 455], [600, 465], [560, 465]]),
                   (528, [[784, 338], [840, 338], [840, 528], [781, 528], [782, 450], [783, 380]])],
     # 17: the two doors the floor runs into. Middle house: the beam's lower edge 583,242 → 620,232 → 664,222 (the rows where
     # it turns dark), the left post's inner edge x 583 to its foot 352, the right post 664-682 to 334. Right house (records):
