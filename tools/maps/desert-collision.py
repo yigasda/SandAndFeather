@@ -31,6 +31,8 @@ MAPS = {
            'dunes': [[(1774, 565), (1700, 545), (1640, 527), (1590, 520), (1578, 530), (1590, 565), (1605, 600),
                       (1597, 645), (1550, 690), (1500, 725), (1450, 742), (1400, 760), (1350, 776), (1290, 780),
                       (1250, 786), (1200, 805), (1100, 840), (1000, 870), (960, 887), (1774, 887)]],
+           # small blocked pieces that are only sand (a ripple, a sliver at a crest): cleared
+           'sand': [(1222, 790)],
            'cliff': (1430, 470)},
     '04': {'art': '04_메마른모래벌판.png',
            'tops': [[(150, 410), (170, 400), (200, 394), (230, 389), (260, 386), (300, 385), (340, 386), (370, 389),
@@ -43,6 +45,7 @@ MAPS = {
                       (110, 338), (60, 352), (0, 362)],
                      [(850, 887), (870, 820), (900, 773), (1000, 736), (1100, 705), (1200, 666), (1275, 646), (1300, 642),
                       (1400, 617), (1500, 595), (1600, 580), (1675, 572), (1725, 580), (1774, 595), (1774, 887)]],
+           'sand': [(11, 519), (826, 772)],
            'cliff': None},
 }
 
@@ -121,6 +124,11 @@ def make(n, spec):
     if spec.get('paint'):   # the user painted this corner (from the top left of the picture): exactly theirs there
         p = np.asarray(Image.open(Path(__file__).parent / spec['paint'])) > 127
         block[:p.shape[0], :p.shape[1]] = p
+    lab, _ = nd.label(block)
+    for x, y in spec.get('sand', []):
+        i = lab[y, x]
+        assert i and (lab == i).sum() < 3000, f'{n}: {x},{y} is not a small blocked piece'
+        block[lab == i] = False
     floor = ~block
     # one pixel soft edge, like the user's brush: 4x the picture, blurred, back down
     big = Image.fromarray((floor * 255).astype('uint8')).resize((w * 4, h * 4), Image.NEAREST)
