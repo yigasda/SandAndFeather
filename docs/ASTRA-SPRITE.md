@@ -1,5 +1,7 @@
 # 아스트라 스프라이트 — 외형·작화 상세 기준
 
+**세트 앞뒤 무기 모션 16장 원본 정리 (2026-10-18):** [최종 PNG 목록과 해시](art/chibi-refresh/final/set/armed-motion-manifest-2026-10-18.json) · [뒷전투 대기 0·1·2와 정확한 프롬프트](sprite-prompts/set/back-combat-idle-2026-10-18/README.md). 대기 0·1은 최초본, 2만 수정 채택본. 게임 적용은 별도다.
+
 **세트 뒷모습 찌르기 0·1 채택 (2026-10-18):** [원본 PNG · 정확한 프롬프트 · 실제 입력 3장](sprite-prompts/set/back-thrust-2026-10-18/README.md). 내려다보는 뒷모습 3/4 시점. 회수 프레임은 의도적으로 생략한다.
 
 **세트 뒷모습 무기 걷기 0·1·2 채택 (2026-10-18):** [원본 PNG · 실제 프롬프트 · 프레임 2 재생성 계보](sprite-prompts/set/back-armed-walk-2026-10-18/README.md). 채택 2는 뒷걷기 0 한 장으로 재생성한 결과다.
