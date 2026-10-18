@@ -3,9 +3,8 @@ way the user drew 01 and 02 (사막맵/충돌/): the size of the art, one flat c
 clear elsewhere, a one-pixel soft edge. Same rules as the user's 02:
   - rocks, bushes, branches, marker stones: cut out along their own outline, small stones too; their cast shadows
     on the sand stay floor;
-  - a dune between the play area and the border: blocked from its foot (where the rippled flat sand starts) to the
-    border;
-  - a dune in front (bottom of the picture): blocked from its crest down, its sunlit windward side is floor;
+  - a dune is never climbed: blocked from its foot to the border; a dune in front is blocked from its top outline
+    down, sunlit face and all (03: the user's own paint);
   - a cliff: blocked from its sand-side edge to the border.
 Objects come from the colour against the sand around them; rock tops the colour of sand and the dunes are traced\nby hand (MAPS).
 Writes 사막맵/충돌/<art name>.png and a review picture to docs/consult/desert/maps/<nn>-collision-made.png.
@@ -26,13 +25,12 @@ MAPS = {
     '03': {'art': '03_고요한사구_06통합.png',
            'tops': [[(115, 535), (125, 527), (145, 520), (160, 515), (175, 507), (185, 505), (205, 505), (220, 511),
                      (240, 517), (250, 523), (252, 535), (252, 545), (115, 545)]],
-           # the top left dunes: painted by the user over our first try ("이렇게 수정 하셈"), read from their screenshot
-           'paint': 'desert-collision/03-user-dunes.png',
-           'dunes': [[(1774, 565), (1700, 545), (1640, 527), (1590, 520), (1578, 530), (1590, 565), (1605, 600),
-                      (1597, 645), (1550, 690), (1500, 725), (1450, 742), (1400, 760), (1350, 776), (1290, 780),
-                      (1250, 786), (1200, 805), (1100, 840), (1000, 870), (960, 887), (1774, 887)]],
-           # small blocked pieces that are only sand (a ripple, a sliver at a crest): cleared
-           'sand': [(1222, 790)],
+           # both dune groups painted by the user over our tries, read from their screenshots (file, top left in the
+           # picture, keep the rocks inside its box): the top left ("이렇게 수정 하셈") and the bottom right, the
+           # whole dune with its sunlit face ("이렇게 수정(사구를 올라갈 수 있으면 안되겠지?)")
+           'paint': [('desert-collision/03-user-dunes.png', (0, 0), False),
+                     ('desert-collision/03-user-front-dunes.png', (729, 372), True)],
+           'dunes': [],
            'cliff': (1430, 470)},
     '04': {'art': '04_메마른모래벌판.png',
            'tops': [[(150, 410), (170, 400), (200, 394), (230, 389), (260, 386), (300, 385), (340, 386), (370, 389),
@@ -45,7 +43,8 @@ MAPS = {
                       (110, 338), (60, 352), (0, 362)],
                      [(850, 887), (870, 820), (900, 773), (1000, 736), (1100, 705), (1200, 666), (1275, 646), (1300, 642),
                       (1400, 617), (1500, 595), (1600, 580), (1675, 572), (1725, 580), (1774, 595), (1774, 887)]],
-           'sand': [(11, 519), (826, 772)],
+           # small blocked pieces that are only sand (a ripple, a sliver at a crest, a dot): cleared
+           'sand': [(11, 519), (826, 772), (65, 827)],
            'cliff': None},
 }
 
@@ -101,6 +100,12 @@ def dunes(shape, polys):
     return np.asarray(im) > 0
 
 
+def smooth(block):
+    """smooth the outlines a little (padded with the edge, so the border keeps what is next to it)"""
+    P = 8; b = np.pad(block, P, mode='edge')
+    return nd.binary_opening(nd.binary_closing(b, disk(2)), disk(2))[P:-P, P:-P]
+
+
 def make(n, spec):
     art = Image.open(SRC / spec['art']).convert('RGB'); a = np.asarray(art).astype(float); h, w = a.shape[:2]
     block = objects(a)
@@ -117,18 +122,17 @@ def make(n, spec):
         # the row fill leaves steps under the overhangs: round the cliff foot
         c = np.pad(block[:y + 40, x:], 12, mode='edge')
         block[:y + 40, x:] = nd.binary_opening(nd.binary_closing(c, disk(6)), disk(3))[12:-12, 12:-12]
-    block |= dunes(block.shape, spec['dunes'])
-    # smooth the outlines a little (padded with the edge, so the border keeps what is next to it)
-    P = 8; b = np.pad(block, P, mode='edge')
-    block = nd.binary_opening(nd.binary_closing(b, disk(2)), disk(2))[P:-P, P:-P]
-    if spec.get('paint'):   # the user painted this corner (from the top left of the picture): exactly theirs there
-        p = np.asarray(Image.open(Path(__file__).parent / spec['paint'])) > 127
-        block[:p.shape[0], :p.shape[1]] = p
+    rocks = smooth(block)
+    block = smooth(block | dunes(block.shape, spec['dunes']))
     lab, _ = nd.label(block)
     for x, y in spec.get('sand', []):
         i = lab[y, x]
         assert i and (lab == i).sum() < 3000, f'{n}: {x},{y} is not a small blocked piece'
         block[lab == i] = False
+    for name, (x0, y0), keep in spec.get('paint', []):   # where the user painted the dunes: exactly theirs
+        p = np.asarray(Image.open(Path(__file__).parent / name)) > 127
+        r = (slice(y0, y0 + p.shape[0]), slice(x0, x0 + p.shape[1]))
+        block[r] = p | (rocks[r] if keep else False)   # keep: the rocks inside the painted box stay as they are
     floor = ~block
     # one pixel soft edge, like the user's brush: 4x the picture, blurred, back down
     big = Image.fromarray((floor * 255).astype('uint8')).resize((w * 4, h * 4), Image.NEAREST)
