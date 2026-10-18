@@ -263,6 +263,18 @@ def combat_frames(who):
         out.append({'id': f"{who}.combat.walk.{e['side']}.{e['phase']}", 'character': who, 'state': 'stride', 'gameDirection': e['side'],
                     'phase': e['phase'], 'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': e['referenceVisibleHeight'],
                     'alphaBounds': list(Image.open(path).getchannel('A').point(lambda v: 255 if v >= 128 else 0).getbbox()), 'pivot': e['pivot']})
+    # front (down) and back (up): ready 0-2, the armed walk 0-2 and the thrust (combat-attack 0 = anticipation, 1 =
+    # attack), sizes and anchors in final/<who>/front-back-combat.json; skill, spell, hit and tired stay side only
+    fd = os.path.join(SRC, who); fm = json.load(open(os.path.join(fd, 'front-back-combat.json')))
+    for e in fm['files']:
+        path = os.path.join(fd, e['file'])
+        assert hashlib.sha256(open(path, 'rb').read()).hexdigest() == e['sha256'], path
+        state, ph = (('anticipation', 'attack')[e['phase']], 0) if e['motion'] == 'combat-attack' else \
+            ({'combat-idle': 'ready', 'armed-walk': 'stride'}[e['motion']], e['phase'])
+        d = {'front': 'down', 'back': 'up'}[e['view']]
+        out.append({'id': f'{who}.combat.{state}.{d}.{ph}', 'character': who, 'state': state, 'gameDirection': d,
+                    'phase': ph, 'path': os.path.relpath(path, ROOT), 'referenceVisibleHeight': e['referenceVisibleHeight'],
+                    'alphaBounds': list(Image.open(path).getchannel('A').point(lambda v: 255 if v >= 128 else 0).getbbox()), 'pivot': e['pivot']})
     def head(f):   # top of the hair and the middle of the top fifth of the figure
         b = solid_box(os.path.join(ROOT, f['path'])); a = Image.open(os.path.join(ROOT, f['path'])).getchannel('A').point(lambda v: 255 if v >= 128 else 0)
         t = a.crop((0, b[1], a.width, b[1] + (b[3] - b[1]) // 5)).getbbox()

@@ -1,0 +1,232 @@
+{
+ "purpose": "두아트 필드 전투 앞(down)·뒤(up) 그림의 게임 크기와 기준점(pack-trio-motion.py combat_frames가 읽음). 그림은 색 맞춤 0.9.86 채택본, 이 숫자는 사용자 \"합격\"(크기 시트) · 전투 모음 움짤 채택(2026-10-18).",
+ "size": "referenceVisibleHeight = 이 그림에서 호루스/세트/소망 한 사람 키에 해당하는 px(같은 방향 일반 정지 머리에 register.py로 겹쳐 잰 배율 × 기준 refVH; 호루스 앞 대기는 1안 머리 고정: 장마다 얼굴을 0번에 겹친 배율과 자리)",
+ "pivot": "발 기준점(옷 큰 덩어리 아래 가운데, 샌들 바닥 행; 흔들리는 장은 머리 가로 자리를 0번에 맞춤)",
+ "files": [
+  {
+   "file": "combat-idle/somang-front-combat-idle-0.png",
+   "view": "front",
+   "motion": "combat-idle",
+   "phase": 0,
+   "sha256": "2cd3436e80d294336636effbb8348a0fb0c103c3ecf0a7f5360580e5346a42c2",
+   "referenceVisibleHeight": 1010.9,
+   "pivot": [
+    691.8,
+    1210
+   ]
+  },
+  {
+   "file": "combat-idle/somang-front-combat-idle-1.png",
+   "view": "front",
+   "motion": "combat-idle",
+   "phase": 1,
+   "sha256": "dadeea25f035377f8c7c6c02d5945382fe9d037f5df7fcd1bd855d178a19ac9c",
+   "referenceVisibleHeight": 763.2,
+   "pivot": [
+    570.3,
+    860
+   ]
+  },
+  {
+   "file": "combat-idle/somang-front-combat-idle-2.png",
+   "view": "front",
+   "motion": "combat-idle",
+   "phase": 2,
+   "sha256": "83f29028262eb7224faebafbb2462a54695b7c568719f4ff1153b3ae38337bdd",
+   "referenceVisibleHeight": 763.2,
+   "pivot": [
+    466.9,
+    861
+   ]
+  },
+  {
+   "file": "armed-walk/somang-front-armed-walk-0.png",
+   "view": "front",
+   "motion": "armed-walk",
+   "phase": 0,
+   "sha256": "b7c03ab9e64379437a65bb3e6b8fe290e975e5a5326053e53d336d3021302e06",
+   "referenceVisibleHeight": 632.8,
+   "pivot": [
+    502.9,
+    682
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.626"
+   ]
+  },
+  {
+   "file": "armed-walk/somang-front-armed-walk-1.png",
+   "view": "front",
+   "motion": "armed-walk",
+   "phase": 1,
+   "sha256": "0347d4275944541567077485980c69367dce217a56781b130318f5836bd7d403",
+   "referenceVisibleHeight": 632.8,
+   "pivot": [
+    403.8,
+    677
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.626"
+   ],
+   "edits": [
+    "오른쪽 끝 떨어진 조각(약 518 px, x 707–723) 지움(사용자)"
+   ]
+  },
+  {
+   "file": "armed-walk/somang-front-armed-walk-2.png",
+   "view": "front",
+   "motion": "armed-walk",
+   "phase": 2,
+   "sha256": "ad0732b4611f9ee39f285a2b58484510096a4360b10fc9baa05707da35983333",
+   "referenceVisibleHeight": 632.8,
+   "pivot": [
+    332.6,
+    682
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.626"
+   ]
+  },
+  {
+   "file": "combat-attack/somang-front-combat-attack-0.png",
+   "view": "front",
+   "motion": "combat-attack",
+   "phase": 0,
+   "sha256": "e548682a2ac13134e16b8d90fba2e5b66890ef232dad397e943b72b009561a3d",
+   "referenceVisibleHeight": 714.6,
+   "pivot": [
+    527.7,
+    824
+   ],
+   "notes": [
+    "머리 높이를 앞 대기·걷기 평균에 맞춤(사용자: 머리 찌부)"
+   ]
+  },
+  {
+   "file": "combat-attack/somang-front-combat-attack-1.png",
+   "view": "front",
+   "motion": "combat-attack",
+   "phase": 1,
+   "sha256": "8eb4e92a98373a90edf76fceb770f4ea2010c5f7870daa3d2fb8106650999e96",
+   "referenceVisibleHeight": 714.6,
+   "pivot": [
+    517.5,
+    828
+   ],
+   "notes": [
+    "머리 높이를 앞 대기·걷기 평균에 맞춤(사용자: 머리 찌부)"
+   ]
+  },
+  {
+   "file": "combat-idle/somang-back-combat-idle-0.png",
+   "view": "back",
+   "motion": "combat-idle",
+   "phase": 0,
+   "sha256": "f0f653d1fca6067f1a192df111fa4ff312f8643a79c3ce1cb3c1a1947b5fa02a",
+   "referenceVisibleHeight": 587.5,
+   "pivot": [
+    418.8,
+    698
+   ]
+  },
+  {
+   "file": "combat-idle/somang-back-combat-idle-1.png",
+   "view": "back",
+   "motion": "combat-idle",
+   "phase": 1,
+   "sha256": "5b592f66e2a7faa20f3affcc47aa67cf2f7ff83c6ddf2ff528147e5f148c506e",
+   "referenceVisibleHeight": 587.5,
+   "pivot": [
+    390.1,
+    698
+   ]
+  },
+  {
+   "file": "combat-idle/somang-back-combat-idle-2.png",
+   "view": "back",
+   "motion": "combat-idle",
+   "phase": 2,
+   "sha256": "7fe322fcb110b7e36d894a3a5253a6145a7c6762ca7cfee3170a175120ede8cb",
+   "referenceVisibleHeight": 587.5,
+   "pivot": [
+    353.2,
+    698
+   ]
+  },
+  {
+   "file": "armed-walk/somang-back-armed-walk-0.png",
+   "view": "back",
+   "motion": "armed-walk",
+   "phase": 0,
+   "sha256": "9511ad3e2fdb046c204efe91d1f4e0bdc7abaa81a5ebec80cb54585eec2ca9f0",
+   "referenceVisibleHeight": 612.8,
+   "pivot": [
+    369.8,
+    682
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.043"
+   ]
+  },
+  {
+   "file": "armed-walk/somang-back-armed-walk-1.png",
+   "view": "back",
+   "motion": "armed-walk",
+   "phase": 1,
+   "sha256": "d2485d757e88dc039119ac97ea7503ccae951cf8e5ecf9f7d9ec75bd2781f0d1",
+   "referenceVisibleHeight": 612.8,
+   "pivot": [
+    376.1,
+    680
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.043"
+   ]
+  },
+  {
+   "file": "armed-walk/somang-back-armed-walk-2.png",
+   "view": "back",
+   "motion": "armed-walk",
+   "phase": 2,
+   "sha256": "f1aa8b7e85810bf160f04349d8b08b9d38e725af3658b872bee60f89e3959d05",
+   "referenceVisibleHeight": 612.8,
+   "pivot": [
+    357.5,
+    680
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.043"
+   ]
+  },
+  {
+   "file": "combat-attack/somang-back-combat-attack-0.png",
+   "view": "back",
+   "motion": "combat-attack",
+   "phase": 0,
+   "sha256": "2dddb0f773e27c5cd4a34640a1160916bccf5c69c669535cd9c0ca1e95631bc6",
+   "referenceVisibleHeight": 713.2,
+   "pivot": [
+    439.3,
+    836
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.214"
+   ]
+  },
+  {
+   "file": "combat-attack/somang-back-combat-attack-1.png",
+   "view": "back",
+   "motion": "combat-attack",
+   "phase": 1,
+   "sha256": "44dc9fa8c39d9405c057b1ccf28540fbeb7468e0cb21ad0926d2f3123313c769",
+   "referenceVisibleHeight": 713.2,
+   "pivot": [
+    383.3,
+    811
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.214"
+   ]
+  }
+ ]
+}

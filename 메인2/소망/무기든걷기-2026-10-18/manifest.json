@@ -51,14 +51,15 @@
    "side": "right",
    "phase": 0,
    "sha256": "569e4d93c5824358eb59bfa41f1911dcd6c0f7a4b1fc7bf5621349f560e3dce8",
-   "referenceVisibleHeight": 576.8,
+   "referenceVisibleHeight": 602.1,
    "pivot": [
     921.2,
     748
    ],
    "edits": [
     "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-0.png",
-    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\"",
+    "2026-10-18 오푸스: 게임 크기 referenceVisibleHeight 576.8 → 602.1: 오른쪽이 다른 동작보다 커 보여 같은 방향 머리를 맞춤(사용자 \"라이트들은 다른 모션보다 크기가 크다\", 전투 모음 움짤 채택)"
    ]
   },
   {
@@ -66,14 +67,15 @@
    "side": "right",
    "phase": 1,
    "sha256": "4c9070b23f85d13dc272aef1ac94f142657eef77aba71f6d1c81fe7499947f12",
-   "referenceVisibleHeight": 576.8,
+   "referenceVisibleHeight": 602.1,
    "pivot": [
     922.2,
     771
    ],
    "edits": [
     "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-1.png",
-    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\"",
+    "2026-10-18 오푸스: 게임 크기 referenceVisibleHeight 576.8 → 602.1: 오른쪽이 다른 동작보다 커 보여 같은 방향 머리를 맞춤(사용자 \"라이트들은 다른 모션보다 크기가 크다\", 전투 모음 움짤 채택)"
    ]
   },
   {
@@ -81,14 +83,15 @@
    "side": "right",
    "phase": 2,
    "sha256": "a76689a0b04a66ebb632dd79c20dc6d33dbf28c765c24273c300768bc8f6f7b5",
-   "referenceVisibleHeight": 576.8,
+   "referenceVisibleHeight": 602.1,
    "pivot": [
     917.9,
     753
    ],
    "edits": [
     "2026-10-18 오푸스: 머리색·피부색을 메인2/소망/somang-right-combat-idle-0.png에 — tonematch.py hair, SKIN_TIGHT=1 tonematch.py skin. 모양 그대로. 원본 sources/색전/somang-right-armed-walk-2.png",
-    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\"",
+    "2026-10-18 오푸스: 게임 크기 referenceVisibleHeight 576.8 → 602.1: 오른쪽이 다른 동작보다 커 보여 같은 방향 머리를 맞춤(사용자 \"라이트들은 다른 모션보다 크기가 크다\", 전투 모음 움짤 채택)"
    ]
   }
  ]

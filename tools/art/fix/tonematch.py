@@ -4,6 +4,8 @@
 # skin: skin-check's shadow / base / light) are each shifted in Lab to the reference's, and every pixel of the part is
 # shifted by the offset interpolated at its own lightness. Nothing is redrawn: shapes, shading steps and outlines stay,
 # only the colour of those pixels moves. strength 1 = all the way (0.5 = half).
+# The way used now (one soft shift, no blotches) is TONE_FLAT with HAIR_SOFT / SKIN_SOFT and the options below; the
+# commands and a table of every option are in docs/OPUS-HANDOFF.md ("색을 옮기는 방식").
 import importlib.util, os, sys
 import numpy as np
 from PIL import Image
