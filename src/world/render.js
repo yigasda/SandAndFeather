@@ -132,17 +132,18 @@ export class Renderer {
         g.imageSmoothingEnabled = false;
         return true;
     }
-    // 두아트 필드 전투: the combat pictures (looks.<who>.combat, left or right only): anim.combat = { name, t (s), lift
-    // (tiles up) }. "ready" loops its frames by actPlay.seq; the others show their one frame. Same feet anchor
-    // and character height as the walking pictures; the atlas loads the first time it is wanted.
+    // 두아트 필드 전투: the combat pictures (looks.<who>.combat): anim.combat = { name, t (s), lift (tiles up), face }.
+    // Up and down have ready, walk and the thrust (anticipation, attack); the rest are left or right only, drawn the
+    // way she faces sideways (face). "ready" loops its frames by actPlay.seq; the others show their one frame. Same
+    // feet anchor and character height as the walking pictures; the atlas loads the first time it is wanted.
     combatPerson(g, look, x, y, dir, z, anim) {
         const c = this.combat.get(look);
         if (!c) return false;
         const want = c.height * z * this.actorScale();
         const a = (want <= c.small.visible + 1 && spriteFile(c.small.file)) ? c.small : spriteFile(c.file) ? c : spriteFile(c.small.file) ? c.small : null;
         if (!a) return false;
-        const side = dir === 'left' || dir === 'right' ? dir : (anim.combat.face || 'right');
         const name = a.acts[anim.combat.name] ? anim.combat.name : 'ready', play = c.actPlay[name] || {};
+        const side = a.acts[name]?.[dir] ? dir : (anim.combat.face || 'right');
         const frames = a.acts[name]?.[side];
         if (!frames) return false;
         let r = frames[0];
