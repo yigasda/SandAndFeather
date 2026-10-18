@@ -5,8 +5,7 @@ The collision pictures (사막맵/충돌/, from the user's Google Drive folder '
 the art: the painted part (one flat colour) is where the feet may go, the clear part is dunes, walls, stones. The
 painted edge is soft; a pixel is floor when its alpha is at least ALPHA (half). Nothing is redrawn or resized.
 
-Scale: PX source pixels a tile, 44 % of the Duat's, so the characters stand very small in these wide places (user: "초대형
-맵이니까 캐릭터가 ㅈㄴ 작았으면... 두아트처럼", then "44%" after seeing the Duat scale).
+Scale: px_of(id) source pixels a tile, by kind of map (SCALE below).
 
 Only the places with a collision picture and a decided way in are built (user: one stretch at a time):
   desert_01 황금 사구해 — in from Ombos (the east edge of the village, right of the riverside palms), out on its west
@@ -21,8 +20,14 @@ import residence as R
 _spec = importlib.util.spec_from_file_location("duat_pixel", Path(__file__).with_name("duat-pixel.py"))
 P = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(P)
 ROOT = Path(R.ROOT)
-# the Duat's tile (52/1.55 source px) × 0.44: the characters stand at 44 % of their Duat size against the art (user: "44%")
-PX = 52 / 1.55 * 0.44
+# Two kinds of desert map, two scales (user: "사막 세부맵이랑 대형맵은 비율 다르게 해야돼"). The four 대형맵 (01 황금 사구해,
+# 02 매몰 신전 사막, 03 고요한 사구, 04 메마른 모래벌판; docs/ASTRA-DESERT-05-20-GUIDE.md "대형맵 네 곳") show a whole region,
+# so the characters stand at 44 % of their Duat size against the art (user: "44%"). The 세부맵 (every other place: a
+# building's approach, a hall, a room) are drawn closer; until the user picks their scale they take the Duat's own.
+DUAT_PX = 52 / 1.55
+BIG = {'desert_01', 'desert_02', 'desert_03', 'desert_04'}
+SCALE = {'big': 0.44, 'detail': 1.0}
+def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 ALPHA = 128
 SRC = ROOT / '사막맵'
 OUT_ART = ROOT / 'docs/art/map-expansion'
@@ -52,6 +57,7 @@ def main():
         cimg = Image.open(SRC / '충돌' / coll)
         assert cimg.size == (w, h), f'{coll}: collision {cimg.size} is not the art size {(w, h)}'
         mask = np.asarray(cimg.convert('RGBA'))[..., 3] >= ALPHA
+        PX = px_of(ident)
         safe = P.safe_centres(mask, PX)
         out_file = f'desert-{ident[7:]}.png'; shutil.copyfile(src, OUT_ART / out_file)
         entries = {}
