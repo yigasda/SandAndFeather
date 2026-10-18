@@ -238,8 +238,8 @@ COMBAT_AIR = {('horus', 'skill')}
 ARMED_WALK = {'set': '세트', 'somang': '소망', 'horus': '호루스'}
 COMBAT_PLAY = {'ready': {'frameMs': [220, 220, 220, 220], 'seq': [0, 1, 2, 1], 'loop': True},
                'walk': {'frameMs': [180, 180, 180, 180], 'seq': [0, 1, 2, 1], 'loop': True},
-               'anticipation': {'frameMs': [120]}, 'attack': {'frameMs': [260]}, 'skill': {'frameMs': [450]},
-               'spell': {'frameMs': [500]}, 'hit': {'frameMs': [300]}, 'tired': {'frameMs': [800], 'hold': True}}
+               'anticipation': {'frameMs': [200]}, 'attack': {'frameMs': [350]}, 'skill': {'frameMs': [700]},
+               'spell': {'frameMs': [800]}, 'hit': {'frameMs': [450]}, 'tired': {'frameMs': [800], 'hold': True}}
 
 
 def combat_frames(who):

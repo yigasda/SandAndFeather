@@ -135,7 +135,7 @@
     "enemies": {
       "hourglass": {
         "ko": "모래시계 장치",
-        "hp": 10,
+        "hp": 30,
         "atk": 3,
         "range": 4,
         "speed": 1.2,
@@ -153,7 +153,7 @@
       },
       "ring": {
         "ko": "고리 장치",
-        "hp": 9,
+        "hp": 26,
         "atk": 3,
         "range": 2.2,
         "speed": 1.8,

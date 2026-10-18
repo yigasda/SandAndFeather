@@ -21,6 +21,7 @@ const MATE = { horus: 'set', set: 'somang', somang: 'horus' };
     let st = await E(F => F.fieldState());
     ok(st.map === 'duat_04' && st.mobs.length === 5, `${lead}: 04에 몹 5 (${st.mobs.map(m => m.kind).join(',')})`);
     await p.screenshot({ path: `${OUT}/${lead}-arrive.png` });
+    ok(st.stance === false, `${lead}: 들어오자마자는 평상(일반 그림)`);
     // stand next to the first creature, facing it
     const m0 = st.mobs[0];
     await E((F, P, S, W, m) => { P.player.x = m.x - 1.1; P.player.y = m.y; }, m0);
@@ -29,8 +30,9 @@ const MATE = { horus: 'set', set: 'somang', somang: 'horus' };
     ok(st.mobs.some(m => ['chase', 'prepare', 'attack', 'recover', 'guard', 'hit'].includes(m.st)), `${lead}: 가까이 가면 다가옴/공격 준비 (${st.mobs.map(m => m.st).join(',')})`);
     await p.screenshot({ path: `${OUT}/${lead}-near.png` });
     const hp0 = st.mobs.reduce((a, m) => a + m.hp, 0);
-    for (let k = 0; k < 4; k++) { await E(F => F.attack()); await sleep(150); if (k === 0) await p.screenshot({ path: `${OUT}/${lead}-attack.png` }); await sleep(400); }
+    for (let k = 0; k < 4; k++) { await E((F, P) => { const m = F.fieldState().mobs.find(o => o.st !== 'dead'); if (m) { P.player.x = m.x - 0.9; P.player.y = m.y; } F.attack(); }); await sleep(150); if (k === 0) await p.screenshot({ path: `${OUT}/${lead}-attack.png` }); await sleep(400); }
     st = await E(F => F.fieldState());
+    ok(st.stance === true, `${lead}: 공격하면 전투 자세`);
     const hp1 = st.mobs.reduce((a, m) => a + m.hp, 0);
     ok(hp1 < hp0 || st.mobs.length < 5, `${lead}: 공격으로 몹 체력 줄어듦 ${hp0}→${hp1}`);
     await E(F => F.skill()); await sleep(200); await p.screenshot({ path: `${OUT}/${lead}-skill.png` }); await sleep(600);

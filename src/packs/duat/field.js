@@ -16,14 +16,18 @@
 // The 말 걸기 button becomes 공격 there (a place right by her and no creature near still opens with it); 기술 and
 // 주문 sit above it (text for now; icons later). Each of the two has their own 체력 (s.duatField.hp), one 공포 for
 // both; at 0 체력 (or 공포 full) the leader goes down and is carried back up to Ombos. Leaving the Duat ends the run.
-// Down there she shows her combat pictures (looks.<who>.combat) standing and walking alike: walking, the armed walk
-// pictures (combat acts.walk; the ordinary walking pictures have no weapon and switching made her flicker, user), always
-// facing left or right (the last way she pressed).
+// Two ways of standing down there (user: going straight into the combat pose on arrival looked odd): calm, her
+// ordinary standing and walking pictures in all four ways, as in the town; fighting (a creature has seen her, she
+// struck or was struck), the combat pictures (looks.<who>.combat: ready standing, the armed walk walking left or right,
+// facing left or right). Fighting ends when no awake creature is within 6 tiles for 4 s. So that she does not flicker
+// between the two sets, the change happens only when she stands still (or on a button / a hit) and holds 2 s at least.
+// Walking up or down while fighting she shows her ordinary up / down walk (no armed front / back pictures yet, user "가").
+// Fighting, the one with her leaves her heels and takes a place of their own beside the creature (1.5 tiles from her).
 
 import { DATA, spriteFile } from '../../core/data.js';
 import { getState, saveState } from '../../core/state.js';
 import { HERO_NAME, leadOf, statsOf, withOf } from '../../core/heroes.js';
-import { feet, follower, player } from '../../world/player.js';
+import { behind, feet, follower, mateWalk, player } from '../../world/player.js';
 import { input } from '../../world/input.js';
 import { currentMap, gameMode, onBusy, onDraw, onFrame, onTalkFirst, travel } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
@@ -32,7 +36,10 @@ const F = () => DATA.duat?.field || {};
 const isDuat = id => /^duat_\d+$/.test(id || '');
 const FEAR_MAX = 10, AGGRO = 4, BOLT_LIFT = 0.8, BODY_MID = 0.9;
 const FLOAT = 0.35, BOB = 0.08, BOB_S = 1.8, IDLE_LOOP = ['idle-0', 'idle-1', 'idle-2', 'idle-1'];
-const SKILL_CD = 6, ATTACK_CD = 0.45, INVULN = 0.6;
+const SKILL_CD = 6, ATTACK_CD = 0.55, INVULN = 0.6, MATE_SKILL_CD = 8, TIRED_FEAR = 7;
+// how long each combat picture shows (s), long enough to be seen (user: only ready, walk and attack were seen)
+const SHOW = { anticipation: 0.2, attack: 0.35, hit: 0.45, skill: 0.7, spell: 0.8, jump: 0.45 };
+const CALM = 4, HOLD = 2, FIGHT_NEAR = 6, MATE_SPEED = 3.6, MATE_APART = 1.5, VERT = 1.3;
 // the shared timings (seconds), a kind may change any of them (enemies.<kind>.timing)
 const TIME = { idle: 0.18, prepare: [0.4, 0.3], recover: 0.35, rest: 1.2, hit: 0.3, steady: 0.4, guard: 1.2, guardCd: 6, guardTake: 0.3, stagger: 0.8, die: [0.25, 0.6] };
 const timing = o => ({ ...TIME, ...(F().timing || {}), ...(o.e.timing || {}) });
@@ -42,8 +49,10 @@ const now = () => performance.now() / 1000;
 
 let mobs = [], bolts = [], pops = [], fx = [], mapId = '', mapObj = null, runObj = null, ui = null;
 // what she and the one with her are doing now: { name, at, until, lift, face }
-const me = { act: null, face: 'right', cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false };
-const mate = { act: null, face: 'right', cd: 0, hurtAt: -9, down: false };
+const me = { act: null, face: 'right', cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
+const mate = { act: null, face: 'right', cd: 0, cdSkill: 0, hurtAt: -9, down: false, shown: false, vert: false };
+// fighting or calm: on (what she shows), since (when it last changed), last (the last time a fight was going on)
+const stance = { on: false, since: -9, last: -9 };
 
 // ---- the run
 const maxHp = (s, who) => 13 + 3 * (statsOf(s, who)?.strength || 0);
@@ -182,16 +191,72 @@ function mobFx(o, what) {
     if (what === 'break') { burst('spark', c.x, c.y, y, '#fff6d8', 1.4 * k); burst('ring', c.x, c.y, y, col, 1.6 * k); burst('shards', c.x, c.y, y, STONE, 1.3 * k); }
 }
 
+// ---- fighting or calm
+const ACTIVE = ['chase', 'prepare', 'attack', 'recover', 'guard', 'hit'];
+function nearestMob(from) {
+    let best = null, bd = 1e9;
+    for (const o of mobs) { if (o.st === 'dead') continue; const c = centre(o), d = Math.hypot(c.x - from.x, c.y - from.y); if (d < bd) { bd = d; best = o; } }
+    return best ? { o: best, d: bd } : null;
+}
+function faceMob() {
+    const f = feet(), n = nearestMob(f);
+    if (n) me.face = centre(n.o).x >= f.x ? 'right' : 'left';
+    else if (player.dir === 'left' || player.dir === 'right') me.face = player.dir;
+}
+// a button, a hit: fighting at once (she is doing something, so the change does not show as a flicker)
+function engage() {
+    stance.last = now();
+    if (!stance.on) { stance.on = true; stance.since = now(); faceMob(); }
+}
+function stepStance() {
+    const t = now(), f = feet();
+    if (mobs.some(o => ACTIVE.includes(o.st) && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < FIGHT_NEAR)) stance.last = t;
+    const want = t - stance.last < CALM;
+    if (want !== stance.on && t - stance.since >= HOLD && !player.moving) { stance.on = want; stance.since = t; if (want) faceMob(); }
+}
+// the one with her, fighting: walks to a place of their own (beside the nearest creature, MATE_APART from her);
+// calm again, walks back behind her and is handed back to the trail
+function stepMateWalk(dt, s) {
+    const w = withOf(s), home = behind();
+    let goal = null;
+    if (w && stance.on && !mate.down) {
+        const f = feet(), o = mateTarget(), reach = F().reach?.[w] || 1.4;
+        if (o) {
+            // on the creature's other side from her, level with it (so the blow lands where it is seen), else close to level
+            const c = centre(o), ps = f.x <= c.x ? -1 : 1;
+            for (const [side, dy] of [[-ps, 0], [-ps, 0.35], [-ps, -0.35], [ps, 0.9], [ps, -0.9]]) {
+                const gx = c.x + side * reach * 0.95, gy = c.y + dy;
+                if (Math.hypot(gx - f.x, gy - f.y) >= MATE_APART && !solid(map(), gx - 0.5, gy - 0.8)) { goal = { x: gx - 0.5, y: gy - 0.8 }; break; }
+            }
+        }
+        if (!goal) { const gx = f.x + (me.face === 'right' ? -1 : 1) * MATE_APART, gy = f.y + 0.4; if (!solid(map(), gx - 0.5, gy - 0.8)) goal = { x: gx - 0.5, y: gy - 0.8 }; }
+    }
+    if (!goal) { if (!mateWalk.pos) return; goal = home; }
+    const cur = mateWalk.pos || { ...home, walkT: 0 };
+    const dx = goal.x - cur.x, dy = goal.y - cur.y, d = Math.hypot(dx, dy);
+    let moving = false;
+    if (d > 0.08) {
+        const k = Math.min(d, MATE_SPEED * dt) / d, nx = cur.x + dx * k, ny = cur.y + dy * k;
+        if (!solid(map(), nx, cur.y)) { cur.x = nx; moving = true; }
+        if (!solid(map(), cur.x, ny)) { cur.y = ny; moving = true; }
+        if (moving) cur.dir = Math.abs(dx) >= Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+    }
+    cur.moving = moving; cur.walkT = moving ? (cur.walkT || 0) + dt : 0; cur.step = 0;
+    mateWalk.pos = cur;
+    if (!stance.on && d < 0.15) mateWalk.pos = null;   // back behind her: the trail takes over
+}
+
 // ---- hurting and being hurt
 function pop(x, y, text, color) { pops.push({ x, y, text, color, at: now() }); }
 function hurt(s, who, atk) {
     const r = run(s), lead = who === leadOf(s), st = lead ? me : mate;
     if (now() - st.hurtAt < INVULN || st.down) return;
+    engage();
     if (me.shield > now()) { pop(lead ? feet().x : follower().x + 0.5, (lead ? feet().y : follower().y + 0.8) - 2, '막음', '#9fd6ff'); return; }
     const dmg = Math.max(1, atk + Math.round(rand(-1, 1)) - (who === 'set' ? 1 : 0));
     r.hp[who] = Math.max(0, (r.hp[who] ?? 0) - dmg);
     r.fear = Math.min(FEAR_MAX, r.fear + 1);
-    st.hurtAt = now(); st.act = { name: 'hit', at: now(), until: now() + 0.3 };
+    st.hurtAt = now(); st.act = { name: 'hit', at: now(), until: now() + SHOW.hit };
     const p = lead ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 };
     pop(p.x, p.y - 2.1, `-${dmg}`, '#ff6b5a');
     save();
@@ -215,7 +280,7 @@ function damage(s, o, n, push = 0, from = null, kind = '') {
     o.shownAt = now();
     let st = '';
     if (o.st === 'guard') {
-        if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); pop(c.x, c.y - 2.6, '파괴', '#ffd27a'); }
+        if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); }
         else { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); }
     } else mobFx(o, 'hit');
     o.hp -= n;
@@ -245,7 +310,7 @@ function strike(s, who, from, face, mult = 1, reach = null) {
     let hit = 0;
     for (const o of mobs) {
         const c = centre(o), dx = (c.x - from.x) * (face === 'right' ? 1 : -1);
-        if (o.st !== 'dead' && dx > -0.2 && dx < reach && Math.abs(c.y - from.y) < 0.75) { damage(s, o, power(s, who) * mult, 0.25, from); hit++; }
+        if (o.st !== 'dead' && dx > -0.2 && dx < reach && Math.abs(c.y - from.y) < 0.75) { damage(s, o, power(s, who) * mult, 0.25, from); hit++; me.target = o; }
     }
     return hit;
 }
@@ -255,33 +320,41 @@ const busy = () => me.act && me.act.until > now();
 export function attack() {
     const s = getState();
     if (!s || !isDuat(mapId) || me.down || busy() || me.cdAttack > now()) return;
+    engage();
     me.cdAttack = now() + ATTACK_CD;
-    me.act = { name: 'anticipation', at: now(), until: now() + 0.12 };
+    me.act = { name: 'anticipation', at: now(), until: now() + SHOW.anticipation };
     setTimeout(() => {
         if (me.down) return;
-        me.act = { name: 'attack', at: now(), until: now() + 0.26 };
+        me.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
         strike(s, leadOf(s), feet(), me.face);
-    }, 120);
+    }, SHOW.anticipation * 1000);
 }
 export function skill() {
     const s = getState();
     if (!s || !isDuat(mapId) || me.down || busy() || me.cdSkill > now()) return;
+    engage();
     me.cdSkill = now() + SKILL_CD;
-    const who = leadOf(s), f = feet();
-    me.act = { name: 'skill', at: now(), until: now() + 0.45 };
-    if (who === 'set') {          // 모래폭풍 강타: everything around her, twice as hard, pushed away
-        for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - f.x, c.y - f.y) < 2) damage(s, o, power(s, who) * 2, 0.8, f, 'skill'); }
-        pop(f.x, f.y - 2.6, '모래폭풍', '#ffb37a');
-    } else if (who === 'horus') {  // 하늘에서 내리꽂기: up, 2.5 tiles ahead, down on everything around where he lands
-        const dir = me.face === 'right' ? 1 : -1, x0 = player.x;
-        let x1 = x0;
-        for (let k = 1; k <= 25; k++) { const x = x0 + dir * k * 0.1; if (solid(map(), x, player.y)) break; x1 = x; }
-        me.act = { name: 'skill', at: now(), until: now() + 0.45, jump: { x0, x1 } };
-        setTimeout(() => { const g = feet(); for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - g.x, c.y - g.y) < 1.2) damage(s, o, power(s, who) * 2, 0.5, g, 'skill'); } pop(g.x, g.y - 2.6, '내리꽂기', '#ffe28a'); }, 450);
-    } else {                       // 엄호: 2 seconds no harm to either, and what is close is pushed back
+    me.act = { name: 'skill', at: now(), until: now() + SHOW.skill };
+    useSkill(s, leadOf(s), feet(), me.face, true);
+}
+// each one's own 기술 (no name is shown, user: "오글거린다"); the one with her uses theirs too (MATE_SKILL_CD)
+function useSkill(s, who, f, face, lead) {
+    const hits = (g, r, n, push) => { for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - g.x, c.y - g.y) < r) damage(s, o, n, push, g, 'skill'); } };
+    if (who === 'set') hits(f, 2, power(s, who) * 2, 0.8);              // 모래폭풍 강타: everything around, twice as hard, pushed away
+    else if (who === 'horus') {                                          // 하늘에서 내리꽂기
+        if (lead) {   // up, 2.5 tiles ahead, down on everything around where he lands
+            const dir = face === 'right' ? 1 : -1, x0 = player.x;
+            let x1 = x0;
+            for (let k = 1; k <= 25; k++) { const x = x0 + dir * k * 0.1; if (solid(map(), x, player.y)) break; x1 = x; }
+            me.act.jump = { x0, x1 };
+            setTimeout(() => hits(feet(), 1.2, power(s, who) * 2, 0.5), SHOW.jump * 1000);
+        } else {      // the one with her: up and down in their place, onto what is in front
+            mate.act.hop = true;
+            setTimeout(() => hits({ x: f.x + (face === 'right' ? 0.8 : -0.8), y: f.y }, 1.2, power(s, who) * 2, 0.5), SHOW.jump * 1000);
+        }
+    } else {                                                             // 엄호: 2 seconds no harm to either, what is close pushed back
         me.shield = now() + 2;
-        for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - f.x, c.y - f.y) < 1.5) damage(s, o, 1, 0.5, f, 'skill'); }
-        pop(f.x, f.y - 2.6, '엄호', '#9fd6ff');
+        hits(f, 1.5, 1, 0.5);
     }
 }
 export function spell() {
@@ -289,28 +362,42 @@ export function spell() {
     if (!s || !isDuat(mapId) || me.down || busy()) return;
     const r = run(s);
     if (r.spells <= 0) { ui?.toast((statsOf(s, leadOf(s))?.faith || 0) > 0 ? '이번 원정의 주문은 다 썼어' : '신앙이 있어야 주문을 쓸 수 있어'); return; }
-    r.spells--;
+    r.spells--; engage();
     const heal = 4 + (statsOf(s, leadOf(s))?.faith || 0);
     for (const who of Object.keys(r.hp)) if (r.hp[who] > 0) r.hp[who] = Math.min(r.max[who], r.hp[who] + heal);
     r.fear = Math.max(0, r.fear - 2);
-    me.act = { name: 'spell', at: now(), until: now() + 0.5 };
+    me.act = { name: 'spell', at: now(), until: now() + SHOW.spell };
     const f = feet(); pop(f.x, f.y - 2.6, `+${heal}`, '#9cf0b0');
     save();
 }
 
 // ---- the one walking with her fights by themselves
+// whom the one with her fights: the creature she last struck (both on one), else the one nearest her
+function mateTarget() {
+    const f = feet(), ok = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < FIGHT_NEAR;
+    if (ok(me.target)) return me.target;
+    const n = nearestMob(f);
+    return n && n.d < FIGHT_NEAR ? n.o : null;
+}
+// they strike only standing in their place, facing it, level with it and within reach (no blows at the air)
 function stepMate(dt, s) {
     const w = withOf(s);
-    if (!w || mate.down || (run(s).hp[w] ?? 0) <= 0) return;
+    if (!w || mate.down || (run(s).hp[w] ?? 0) <= 0 || !stance.on) return;
     if (mate.cd > now() || (mate.act && mate.act.until > now())) return;
-    const p = follower(), c = { x: p.x + 0.5, y: p.y + 0.8 }, reach = F().reach?.[w] || 1.4;
-    const o = mobs.filter(o => o.st !== 'dead').map(o => ({ o, d: Math.hypot(centre(o).x - c.x, centre(o).y - c.y) })).sort((a, b) => a.d - b.d)[0];
-    if (!o || o.d > 3) return;
-    mate.face = centre(o.o).x > c.x ? 'right' : 'left';
-    if (o.d > reach + 0.3) return;
-    mate.cd = now() + 1.2;
-    mate.act = { name: 'attack', at: now(), until: now() + 0.26 };
-    damage(s, o.o, Math.max(1, power(s, w) - 1), 0.2, c);
+    const p = follower(), c = { x: p.x + 0.5, y: p.y + 0.8 }, reach = F().reach?.[w] || 1.4, o = mateTarget();
+    if (!o) return;
+    const oc = centre(o), dx = oc.x - c.x, dy = oc.y - c.y;
+    mate.face = dx >= 0 ? 'right' : 'left';
+    if (p.moving || Math.abs(dy) > 0.6 || Math.abs(dx) > reach + 0.2) return;
+    if (mate.cdSkill <= now()) {
+        mate.cdSkill = now() + MATE_SKILL_CD; mate.cd = now() + 1.2; engage();
+        mate.act = { name: 'skill', at: now(), until: now() + SHOW.skill };
+        useSkill(s, w, c, mate.face, false);
+        return;
+    }
+    mate.cd = now() + 1.2; engage();
+    mate.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
+    damage(s, o, Math.max(1, power(s, w) - 1), 0.2, c);
 }
 
 // ---- every frame
@@ -321,25 +408,32 @@ onFrame((dt, m, u) => {
     if (!s) return;
     if (!isDuat(m.id)) {
         if (s.duatField) { s.duatField = null; saveState(); }
-        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; hud(false); }
+        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); }
         return;
     }
     // a new map object each time she arrives (enterMap), or a new run: the creatures of this map again
     if (m !== mapObj || s.duatField !== runObj) {
         mapId = m.id; mapObj = m; runObj = run(s);
-        Object.assign(me, { act: null, down: false, shield: 0 }); Object.assign(mate, { act: null, down: false });
+        Object.assign(me, { act: null, down: false, shield: 0, target: null }); Object.assign(mate, { act: null, down: false, shown: false, cdSkill: now() + 3 });
+        Object.assign(stance, { on: false, since: -9, last: -9 }); mateWalk.pos = null;
         spawn(m, s);
     }
     hud(true, s, m);
-    // always facing left or right down here: the last way she was pushed sideways
+    // the way she faces sideways (fighting she always faces left or right, except walking up or down)
     if (input.dx > 0.2) me.face = 'right'; else if (input.dx < -0.2) me.face = 'left';
-    player.dir = me.face;
+    const ax = Math.abs(input.dx), ay = Math.abs(input.dy);
+    if (ay > ax * VERT) me.vert = true; else if (ax > ay * VERT) me.vert = false;
+    stepStance();
+    if (stance.on && !(player.moving && me.vert)) player.dir = me.face;
     // Horus's dive moves him while the skill plays
     const j = me.act?.jump;
-    if (j) { const k = Math.min(1, (now() - me.act.at) / 0.45); player.x = j.x0 + (j.x1 - j.x0) * k; me.act.lift = Math.sin(Math.PI * k) * 1.2; }
+    if (j) { const k = Math.min(1, (now() - me.act.at) / SHOW.jump); player.x = j.x0 + (j.x1 - j.x0) * k; me.act.lift = Math.sin(Math.PI * k) * 1.2; }
+    // the one with her, in Horus's dive: up and down where they stand
+    if (mate.act?.hop) { const k = Math.min(1, (now() - mate.act.at) / SHOW.jump); mate.act.lift = Math.sin(Math.PI * k) * 1.2; }
     for (const o of mobs) stepMob(m, o, dt, s);
     mobs = mobs.filter(o => !o.gone);
     stepBolts(dt, s);
+    stepMateWalk(dt, s);
     stepMate(dt, s);
     pops = pops.filter(p => now() - p.at < 1);
     fx = fx.filter(e => now() - e.at < e.dur);
@@ -366,20 +460,30 @@ const actNow = (st, who, walkT = 0) => {
     const t = now();
     if (st.act && (st.act.until > t || st.down)) return { name: st.act.name, t: t - st.act.at, lift: st.act.lift || 0 };
     if (walkT && DATA.sprites?.looks?.[who]?.combat?.acts?.walk) return { name: 'walk', t: walkT, lift: 0 };
+    // 공포 7 and over: standing, the tired picture instead of ready (the fear shows on them)
+    if (!walkT && (getState()?.duatField?.fear || 0) >= TIRED_FEAR && DATA.sprites?.looks?.[who]?.combat?.acts?.tired) return { name: 'tired', t: 0, lift: 0 };
     return { name: 'ready', t, lift: walkT ? Math.abs(Math.sin(Math.PI * walkT / STEP_S)) * STEP_BOB : 0 };
 };
 onDraw(scene => {
     if (!isDuat(mapId) || !isDuat(scene.map?.id)) return;
     const s = getState(); if (!s) return;
     const t = now(), blink = st => t - st.hurtAt < INVULN;
-    const c = actNow(me, leadOf(s), player.moving ? player.walkT || 0.001 : 0);
-    if (c) scene.lead.combat = { ...c, face: me.face, blink: blink(me), flash: me.shield > t };
-    scene.lead.dir = me.face;
+    // her: calm = her ordinary pictures; fighting = the combat ones, except walking up or down
+    if (stance.on && !(player.moving && me.vert)) {
+        const c = actNow(me, leadOf(s), player.moving ? player.walkT || 0.001 : 0);
+        scene.lead.combat = { ...c, face: me.face, blink: blink(me) };
+        scene.lead.dir = me.face;
+    }
     for (const p of scene.people) if (p.mate) {
+        // the one with her takes up the fighting pictures (or puts them down) only while standing, as she does
+        if (!p.moving || mate.act) mate.shown = stance.on || mate.down;
+        const pv = p.dir === 'up' || p.dir === 'down';
+        if (p.moving) mate.vert = pv;
+        if (!mate.shown || (p.moving && mate.vert && !mate.down)) continue;
         if (p.moving && (p.dir === 'left' || p.dir === 'right')) mate.face = p.dir;
         p.dir = mate.face;
         const mc = actNow(mate, withOf(s), mate.down ? 0 : p.moving ? p.walkT || 0.001 : 0);
-        if (mc) { p.combat = { ...mc, face: mate.face, blink: blink(mate) }; p.act = null; }
+        p.combat = { ...mc, face: mate.face, blink: blink(mate) }; p.act = null;
     }
     for (const o of mobs) scene.extra.push({ x: o.x, y: o.y, draw: (g, sx, sy, z, ts) => drawMob(g, o, sx, sy, z, ts) });
     scene.extra.push({ x: 0, y: 1e6, draw: (g, sx, sy, z, ts) => drawTop(g, z, ts, sx, sy) });
@@ -440,6 +544,18 @@ function drawTop(g, z, ts, ox, oy) {
             g.fillStyle = SAND[i % 3]; g.fillRect(x + Math.cos(a) * rr - s2 / 2, y + Math.sin(a) * rr * 0.8 - s2 / 2, s2, s2);
         }
     }
+    // 엄호: a light ring on the floor round each of the two while it lasts (no light on their bodies, user)
+    if (me.shield > t) {
+        const s = getState(), w = s && withOf(s), spots = [feet()];
+        if (w && !mate.down) { const p = follower(); spots.push({ x: p.x + 0.5, y: p.y + 0.8 }); }
+        const k = 0.5 + 0.5 * Math.sin(t * 8);
+        g.strokeStyle = '#9fd6ff'; g.lineWidth = Math.max(1, 1.6 * z);
+        for (const f of spots) {
+            const x = f.x * ts - cx, y = f.y * ts - cy;
+            g.globalAlpha = 0.45 + 0.35 * k; g.beginPath(); g.ellipse(x, y - 0.1 * ts, 0.55 * ts, 0.2 * ts, 0, 0, Math.PI * 2); g.stroke();
+        }
+        g.globalAlpha = 1;
+    }
     // the shared effects
     for (const e of fx) {
         const k = (t - e.at) / e.dur, x = e.x * ts - cx, y = (e.y - e.lift) * ts - cy;
@@ -473,7 +589,7 @@ function drawTop(g, z, ts, ox, oy) {
     g.globalAlpha = 1;
 }
 
-// ---- the HUD down here: 체력 each, 공포, where, and the 기술 · 주문 buttons over 공격
+// ---- the HUD down here: 체력 each, 공포, where (a small box right under the hint line, on its left edge), and the 기술 · 주문 buttons over 공격
 let el = null;
 function hud(show, s, m) {
     const root = document.getElementById('sf_game');
@@ -482,7 +598,7 @@ function hud(show, s, m) {
         el = { box: document.createElement('div'), btns: document.createElement('div') };
         el.box.className = 'sf_duat_hud';
         el.btns.className = 'sf_duat_btns';
-        el.btns.innerHTML = '<button type="button" class="sf_btn sf_duat_skill">기술</button><button type="button" class="sf_btn sf_duat_spell">주문</button>';
+        el.btns.innerHTML = '<button type="button" class="sf_duat_skill">기술</button><button type="button" class="sf_duat_spell">주문<em></em></button>';
         el.btns.querySelector('.sf_duat_skill').addEventListener('click', skill);
         el.btns.querySelector('.sf_duat_spell').addEventListener('click', spell);
     }
@@ -493,18 +609,29 @@ function hud(show, s, m) {
         return;
     }
     if (!el.box.isConnected) root.append(el.box);
-    if (!el.btns.isConnected && actions) actions.prepend(el.btns);
+    if (!el.btns.isConnected && actions) actions.append(el.btns);
     if (talk && !talk.dataset.duat) { talk.dataset.duat = '1'; talk.querySelector('span').textContent = '공격'; talk.classList.add('sf_attack'); }
+    // right under the hint line (or the chips when there is no hint), whatever the theme puts them
+    const hint = root.querySelector('.sf_hint_pill'), chips = root.querySelector('.sf_chip_sun')?.parentElement;
+    const above = hint && !hint.hidden ? hint : chips;
+    if (above) {
+        const top = `${Math.round(above.offsetTop + above.offsetHeight + 6)}px`, left = `${Math.round(above.offsetLeft)}px`;
+        if (el.box.style.top !== top) el.box.style.top = top;
+        if (el.box.style.left !== left) el.box.style.left = left;
+    }
     const r = run(s), t = now(), no = Number(m.id.slice(5));
     const bar = (label, v, max, cls) => `<div class="sf_duat_bar ${cls}"><span>${label} ${v}/${max}</span><i style="width:${Math.round(100 * Math.max(0, v) / max)}%"></i></div>`;
     const html = `<b>${m.d.name || ''} ${no}/7</b>` + Object.keys(r.hp).map(w => bar(HERO_NAME[w], r.hp[w], r.max[w], 'sf_hp')).join('') + bar('공포', r.fear, FEAR_MAX, 'sf_fear');
     if (el.box._html !== html) { el.box.innerHTML = html; el.box._html = html; }
+    // 기술: the time left darkens it round like a clock; 주문: how many are left in the corner
     const sk = el.btns.querySelector('.sf_duat_skill'), sp = el.btns.querySelector('.sf_duat_spell');
-    const left = Math.ceil(me.cdSkill - t);
-    sk.textContent = left > 0 ? `기술 ${left}` : '기술'; sk.disabled = left > 0 || me.down;
-    sp.textContent = `주문 ${r.spells}`; sp.disabled = r.spells <= 0 || me.down;
+    const left = Math.max(0, me.cdSkill - t), cd = (left / SKILL_CD).toFixed(3);
+    if (sk.style.getPropertyValue('--cd') !== cd) sk.style.setProperty('--cd', cd);
+    sk.disabled = left > 0 || me.down;
+    const em = sp.querySelector('em'); if (em.textContent !== String(r.spells)) em.textContent = r.spells;
+    sp.classList.toggle('sf_empty', r.spells <= 0); sp.disabled = me.down;
 }
 
 // for tests: what is going on down here, one creature put by her, numbers over the data
-export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face }, mate: { act: mate.act?.name || '', down: mate.down }, run: getState()?.duatField });
+export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: getState()?.duatField });
 export function testOnly(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs = [makeMob(99, kind, x, y)]; bolts = []; fx = []; }
