@@ -1,5 +1,7 @@
 # 아스트라 스프라이트 — 외형·작화 상세 기준
 
+**호루스 뒷전투 대기 0·1·2 채택 (2026-10-18):** [금색 창 최종 PNG · 정확한 프롬프트 · 입력 계보](sprite-prompts/horus/back-combat-idle-2026-10-18/README.md) · [앞모션 8장+뒷대기 3장 원본 목록](art/chibi-refresh/final/horus/armed-motion-manifest-2026-10-18.json). 기존 앞모션은 변경하지 않았다.
+
 **호루스 정면 무기 모션 8장 채택 (2026-10-18):** [최종 원본 목록](art/chibi-refresh/final/horus/front-armed-manifest-2026-10-18.json) · [대기 0·1·2](sprite-prompts/horus/front-combat-idle-2026-10-18/README.md) · [걷기 0·1·2](sprite-prompts/horus/front-armed-walk-2026-10-18/README.md) · [찌르기 0·1](sprite-prompts/horus/front-thrust-2026-10-18/README.md). 눈썹 수정·눈 복사·갈색선 창자루 수정의 최종 채택 계보를 각각 보존한다. 런타임 적용은 별도다.
 
 **세트 앞뒤 무기 모션 16장 원본 정리 (2026-10-18):** [최종 PNG 목록과 해시](art/chibi-refresh/final/set/armed-motion-manifest-2026-10-18.json) · [뒷전투 대기 0·1·2와 정확한 프롬프트](sprite-prompts/set/back-combat-idle-2026-10-18/README.md). 대기 0·1은 최초본, 2만 수정 채택본. 게임 적용은 별도다.
