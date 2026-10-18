@@ -16,9 +16,9 @@
 // The 말 걸기 button becomes 공격 there (a place right by her and no creature near still opens with it); 기술 and
 // 주문 sit above it (text for now; icons later). Each of the two has their own 체력 (s.duatField.hp), one 공포 for
 // both; at 0 체력 (or 공포 full) the leader goes down and is carried back up to Ombos. Leaving the Duat ends the run.
-// Down there she shows her combat pictures (looks.<who>.combat) standing and walking alike: walking, the ready
-// pictures with a small step bob (the walking pictures have no weapon and switching made her flicker, user: A for now,
-// until weapon walking pictures come), always facing left or right (the last way she pressed).
+// Down there she shows her combat pictures (looks.<who>.combat) standing and walking alike: walking, the armed walk
+// pictures (combat acts.walk; the ordinary walking pictures have no weapon and switching made her flicker, user), always
+// facing left or right (the last way she pressed).
 
 import { DATA, spriteFile } from '../../core/data.js';
 import { getState, saveState } from '../../core/state.js';
@@ -361,23 +361,24 @@ window.addEventListener('keydown', e => {
 }, true);
 
 // ---- drawing: her and the one with her in their combat pictures, the creatures, sand shots and numbers
-const STEP_BOB = 0.09, STEP_S = 0.4;   // tiles up at each step, seconds a step
-const actNow = (st, walkT = 0) => {
+const STEP_BOB = 0.09, STEP_S = 0.4;   // without armed walk pictures: the ready pictures, a step bob (tiles up, seconds a step)
+const actNow = (st, who, walkT = 0) => {
     const t = now();
     if (st.act && (st.act.until > t || st.down)) return { name: st.act.name, t: t - st.act.at, lift: st.act.lift || 0 };
+    if (walkT && DATA.sprites?.looks?.[who]?.combat?.acts?.walk) return { name: 'walk', t: walkT, lift: 0 };
     return { name: 'ready', t, lift: walkT ? Math.abs(Math.sin(Math.PI * walkT / STEP_S)) * STEP_BOB : 0 };
 };
 onDraw(scene => {
     if (!isDuat(mapId) || !isDuat(scene.map?.id)) return;
     const s = getState(); if (!s) return;
     const t = now(), blink = st => t - st.hurtAt < INVULN;
-    const c = actNow(me, player.moving ? player.walkT || 0.001 : 0);
+    const c = actNow(me, leadOf(s), player.moving ? player.walkT || 0.001 : 0);
     if (c) scene.lead.combat = { ...c, face: me.face, blink: blink(me), flash: me.shield > t };
     scene.lead.dir = me.face;
     for (const p of scene.people) if (p.mate) {
         if (p.moving && (p.dir === 'left' || p.dir === 'right')) mate.face = p.dir;
         p.dir = mate.face;
-        const mc = actNow(mate, p.moving ? p.walkT || 0.001 : 0);
+        const mc = actNow(mate, withOf(s), mate.down ? 0 : p.moving ? p.walkT || 0.001 : 0);
         if (mc) { p.combat = { ...mc, face: mate.face, blink: blink(mate) }; p.act = null; }
     }
     for (const o of mobs) scene.extra.push({ x: o.x, y: o.y, draw: (g, sx, sy, z, ts) => drawMob(g, o, sx, sy, z, ts) });
