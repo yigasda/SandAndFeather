@@ -1,0 +1,50 @@
+{
+ "log": [
+  {
+   "from": "ombos",
+   "at": [
+    40.734000000000044,
+    22.4
+   ],
+   "exit": "desert_01",
+   "steps": 18
+  },
+  {
+   "arrived": {
+    "map": "desert_01",
+    "x": 2.3452797202797204,
+    "y": 17.15236013986014
+   }
+  },
+  {
+   "inside": {
+    "from": "desert_01",
+    "at": [
+     38.796637906740116,
+     27.013907160962333
+    ],
+    "blocked": true,
+    "steps": 467
+   }
+  },
+  {
+   "from": "desert_01",
+   "at": [
+    0.4048797202797193,
+    17.15236013986014
+   ],
+   "exit": "ombos",
+   "steps": 22
+  },
+  {
+   "back": {
+    "map": "ombos",
+    "x": 39.6,
+    "y": 22.4
+   }
+  }
+ ],
+ "errors": [
+  "Unexpected token 'I', \"Internal S\"... is not valid JSON"
+ ]
+}
