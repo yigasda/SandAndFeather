@@ -47,38 +47,32 @@ REVIEW = ROOT / 'docs/consult/desert/maps'
 # Ombos: the landing when coming back (just inside the east edge, on the grass) and the exit rectangle (tiles of ombos.json)
 OMBOS_BACK = {'x': 39.6, 'y': 22.4, 'dir': 'left'}
 
-# id, name, art file, collision file, ways in {name: (source px, facing)}, exits [(name, source box x0,y0,x1,y1, to, at)],
-# what she says there. The big maps run 01 → 04 → 03 → 02 across their side edges (docs/ASTRA-DESERT-05-20-GUIDE.md
+# id, name, art file, collision file, ways in {name: (source px, facing)}, exits [(name, source box x0,y0,x1,y1, to, at)]. The big maps run 01 → 04 → 03 → 02 across their side edges (docs/ASTRA-DESERT-05-20-GUIDE.md
 # "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's temple door
 # (T1W), its lower right stone exit (11) and its right side (10) wait for those places.
 PLACES = [
     ('desert_01', '황금 사구해', '01_황금사구해_닫힘.png', '01.png',
      {'west': ((42, 265), 'right'), 'east': ((1556, 750), 'left')},
-     [('west', (0, 150, 14, 300), 'ombos', OMBOS_BACK), ('east', (1572, 676, 1586, 822), 'desert_04', 'west')],
-     '모래 너머로 옴보스가 보여. 왼쪽 길로 돌아갈 수 있고, 오른쪽 아래 모래밭은 더 깊은 사막으로 이어져.'),
+     [('west', (0, 150, 14, 300), 'ombos', OMBOS_BACK), ('east', (1572, 676, 1586, 822), 'desert_04', 'west')]),
     ('desert_04', '메마른 모래벌판', '04_메마른모래벌판.png', '04_메마른모래벌판.png',
      {'west': ((44, 700), 'right'), 'east': ((1730, 300), 'left')},
-     [('west', (0, 366, 14, 884), 'desert_01', 'east'), ('east', (1760, 4, 1774, 590), 'desert_03', 'west')],
-     '바람 자국만 남은 메마른 벌판이야. 왼쪽은 황금 사구해, 오른쪽은 더 먼 사구로 이어져.'),
+     [('west', (0, 366, 14, 884), 'desert_01', 'east'), ('east', (1760, 4, 1774, 590), 'desert_03', 'west')]),
     ('desert_03', '고요한 사구', '03_고요한사구_06통합.png', '03_고요한사구_06통합.png',
      {'west': ((44, 430), 'right'), 'east': ((1730, 505), 'left')},
-     [('west', (0, 355, 14, 884), 'desert_04', 'east'), ('east', (1760, 450, 1774, 561), 'desert_02', 'west')],
-     '소리 하나 없는 사구야. 왼쪽은 메마른 모래벌판, 오른쪽 절벽 아래로 매몰 신전 쪽 길이 나 있어.'),
+     [('west', (0, 355, 14, 884), 'desert_04', 'east'), ('east', (1760, 450, 1774, 561), 'desert_02', 'west')]),
     ('desert_02', '매몰 신전 사막', '02_매몰신전사막.png', '02_매몰신전사막.png',
-     {'west': ((44, 330), 'right'), 'door': ((1500, 712), 'down')},
-     [('west', (0, 188, 14, 686), 'desert_03', 'east'), ('door', (1484, 668, 1518, 684), 'desert_11', 'outside')],
-     '모래에 반쯤 묻힌 신전이 보여. 왼쪽으로 가면 고요한 사구, 오른쪽 아래 돌 문은 땅 밑으로 이어져.'),
+     # the west way out only where the paved path meets the edge, the door landing just inside the door (user's circle and mark)
+     {'west': ((44, 330), 'right'), 'door': ((1486, 684), 'down')},
+     [('west', (0, 188, 14, 425), 'desert_03', 'east'), ('door', (1484, 668, 1518, 684), 'desert_11', 'outside')]),
     # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
     ('desert_11', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
      {'outside': ((300, 1350), 'up'), 'door': ((710, 390), 'down')},
      [('left', (0, 335, 14, 1536), 'desert_02', 'door'), ('bottom', (0, 1522, 644, 1536), 'desert_02', 'door'),
-      ('door', (640, 312, 790, 340), 'desert_17', 'east')],
-     '모래에 묻힌 돌 문이야. 계단 아래로 내려가면 땅 밑 도시, 뒤로 나가면 매몰 신전 사막이야.'),
+      ('door', (640, 312, 790, 340), 'desert_17', 'east')]),
     # 17 잊힌 지하 도시의 광장: 오른쪽 계단 위가 11의 문 (guide: 17 우측 계단); 왼쪽 집 주거실·오른쪽 집 18 기록고는 다음
     ('desert_17', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
      {'east': ((1725, 505), 'left')},
-     [('east', (1760, 402, 1774, 537), 'desert_11', 'door')],
-     '모래 아래 숨은 도시 광장이야. 오른쪽 계단으로 올라가면 바깥 출입구야.'),
+     [('east', (1760, 402, 1774, 537), 'desert_11', 'door')]),
 ]
 
 
@@ -89,7 +83,7 @@ def main():
     manifest = {f['file']: f for f in json.loads((SRC / 'manifest.json').read_text())['files']}
     art = json.loads((ROOT / 'data/scene-art.json').read_text())
     REVIEW.mkdir(parents=True, exist_ok=True)
-    for ident, name, file, coll, ways, exits, note in PLACES:
+    for ident, name, file, coll, ways, exits in PLACES:
         src = SRC / file
         assert sha(src) == manifest[file]['sha256'], f'{file}: not the approved picture'
         image = Image.open(src).convert('RGB'); w, h = image.size
@@ -121,7 +115,8 @@ def main():
                 'walkSpeed': WALK['big' if ident in BIG else 'detail'],
                 'cameraScale': CAMERA['big' if ident in BIG else 'detail'], 'actorScale': ACTOR['big' if ident in BIG else 'detail'],
                 'entries': entries, 'spawn': next(iter(entries.values())), 'exits': ex, 'spots': [], 'spawns': [], 'roam': [], 'labels': [],
-                'note': note,
+                # no map-card text: nothing the user did not write (user: "안내 문구는 또 뭐야")
+                'note': '',
                 'source': {'art': f'사막맵/{file}', 'artSha256': manifest[file]['sha256'], 'collision': f'사막맵/충돌/{coll}',
                            'collisionSha256': sha(SRC / '충돌' / coll), 'floorAlphaAtLeast': ALPHA,
                            **({'collisionMadeBy': 'tools/maps/desert-collision.py'} if coll in MADE else {})}}

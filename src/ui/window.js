@@ -409,8 +409,8 @@ function openMap() {
     box.append(cv);
     const note = document.createElement('div');
     note.className = 'sf_note';
-    note.textContent = map.d.note || (map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.');
-    box.append(note);
+    note.textContent = map.d.note ?? (map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.');
+    if (note.textContent) box.append(note);
     for (const fn of mapParts) { try { const el = fn(ui, map); if (el) box.append(el); } catch (e) { console.error('[SandAndFeather] map part', e); } }
     showCard(root, { title: map.d.name || '지도', body: box, wide: true, onClose: () => setTab(hud, 'world') });
 }
