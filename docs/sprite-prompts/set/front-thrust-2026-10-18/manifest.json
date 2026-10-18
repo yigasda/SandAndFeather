@@ -1,0 +1,65 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 2827,
+    "sha256": "080048c5ef325303791efa1c06c285a103eae22973a06aaef160389d438189ea",
+    "git_blob_sha": "180d9f5016b70d3a72215bae224b24958ad61a22"
+  },
+  {
+    "path": "approved/set-front-combat-attack-1.png",
+    "bytes": 806697,
+    "sha256": "157b5751c25d5cbc125ac7235f37caf3b6e6c66323dedef70aac4175de54fc97",
+    "git_blob_sha": "67608de45d305e18a76098afefde7d727cd718ae",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "prompts/impact-1-exact.txt",
+    "bytes": 1096,
+    "sha256": "b2f5ca66cafbcfec53fb1b2aeca4b7346d0435132943b5a1d8011a5e48fc1eb3",
+    "git_blob_sha": "d4d5a8a8f8e91dd4d433fdea2f7f74c591710801"
+  },
+  {
+    "path": "prompts/pullback-0-exact.txt",
+    "bytes": 1308,
+    "sha256": "1bbc0d0ed44d783107cedc8238ea7055f969653577df8675b2d1bf121d0d737a",
+    "git_blob_sha": "0c6f50fc1fee822f3c036df7dcd819d4cddc65fc"
+  },
+  {
+    "path": "references/1000483782.png",
+    "bytes": 745879,
+    "sha256": "dd60ae45d1d0acd05d437c46f630c8729773ee6dc7df598247540d38f27e2f06",
+    "git_blob_sha": "5bab3f69d2ee064f73c3fff78a33e1b5e2221dd9",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  },
+  {
+    "path": "references/1000483785.jpg",
+    "bytes": 124204,
+    "sha256": "0384b55a91b84997fae4d682eb6c2347b2a43b731223dcd6b5ea9662ca6ab3ac",
+    "git_blob_sha": "a04c3fd26dbafd7e2204bdf0f3914c2b851b5f9b",
+    "width": 848,
+    "height": 1733,
+    "mode": "RGB"
+  },
+  {
+    "path": "thrust-preview.gif",
+    "bytes": 161714,
+    "sha256": "c3b428a0e62a7bd9462b448efe882dd7eef81a7cf9bb5ea701831267ecb8790f",
+    "git_blob_sha": "832255a041c41e904ff8bd84cc310d8b129e10bc",
+    "width": 600,
+    "height": 480,
+    "mode": "P"
+  },
+  {
+    "path": "working/set-front-combat-attack-0.png",
+    "bytes": 756735,
+    "sha256": "abba61f910229e30631d677e4e213e59184ed71763d6d6e59e484516fdbba4a3",
+    "git_blob_sha": "ac935566044c346e1cf0253dcd32e66ca1efa85c",
+    "width": 1402,
+    "height": 1122,
+    "mode": "RGBA"
+  }
+]
