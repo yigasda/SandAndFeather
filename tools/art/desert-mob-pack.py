@@ -72,17 +72,23 @@ def main(ids, hit_only=False):
         for old in glob.glob(os.path.join(ROOT, 'data', 'art', 'enemies', sid.replace('_', '-') + '*.png')): os.remove(old)   # its sheets made again
         out = {}
         for vis, suffix in ((VISIBLE, ''), (SMALL, '-small')):
-            k = HEIGHT_K[sid] * vis / body_h
+            # never bigger than the source (사용자 10-19: 수문장은 원본 해상도로 묶고 화면에서만 확대): a kind whose
+            # character height would need more than its own pixels keeps its pixels, and `visible` says how many px a
+            # character's height is on its sheets, so the game draws it at the same size
+            k = min(1.0, HEIGHT_K[sid] * vis / body_h)
+            if suffix and '' in out and abs(k - out['']['k']) < 1e-9:   # the small set would be the big one: share it
+                out[suffix] = out['']; continue
             pieces = []
             for slot, f in sp['frames'].items():
                 path = os.path.join(folder, f['file'])
                 assert hashlib.sha256(open(path, 'rb').read()).hexdigest() == f['sha256'], path
                 im = Image.open(path).convert('RGBA')
-                a = np.asarray(im).astype(np.float32); a[..., :3] *= a[..., 3:4] / 255   # premultiplied, so edges do not darken
-                w, h = round(im.width * k), round(im.height * k)
-                sm = np.stack([np.asarray(Image.fromarray(a[..., c], 'F').resize((w, h), Image.LANCZOS)) for c in range(4)], -1).clip(0, 255)
-                rgb = np.where(sm[..., 3:4] > 0, sm[..., :3] * 255 / np.maximum(sm[..., 3:4], 1e-3), 0)
-                im = Image.fromarray(np.dstack([rgb.clip(0, 255), sm[..., 3]]).round().astype(np.uint8), 'RGBA')
+                if k != 1:   # at its own size the source pixels go in as they are
+                    a = np.asarray(im).astype(np.float32); a[..., :3] *= a[..., 3:4] / 255   # premultiplied, so edges do not darken
+                    w, h = round(im.width * k), round(im.height * k)
+                    sm = np.stack([np.asarray(Image.fromarray(a[..., c], 'F').resize((w, h), Image.LANCZOS)) for c in range(4)], -1).clip(0, 255)
+                    rgb = np.where(sm[..., 3:4] > 0, sm[..., :3] * 255 / np.maximum(sm[..., 3:4], 1e-3), 0)
+                    im = Image.fromarray(np.dstack([rgb.clip(0, 255), sm[..., 3]]).round().astype(np.uint8), 'RGBA')
                 bb = im.getbbox(); bx0, by0 = max(0, bb[0] - PAD), max(0, bb[1] - PAD)
                 piece = im.crop((bx0, by0, min(im.width, bb[2] + PAD), min(im.height, bb[3] + PAD)))
                 pieces.append((MOTION[slot], piece, [round(foot[0] * k - bx0, 2), round(foot[1] * k - by0, 2)]))
@@ -106,9 +112,10 @@ def main(ids, hit_only=False):
                     import oxipng; oxipng.optimize(os.path.join(ROOT, 'data', file), level=4)   # lossless: same pixels, fewer bytes
                 except ImportError: pass
                 print(sid, file, atlas.size)
-            out[suffix] = {'file': files[0], 'sheets': files, 'visible': vis, 'frames': frames}
+            out[suffix] = {'file': files[0], 'sheets': files, 'visible': vis if k * body_h == HEIGHT_K[sid] * vis else round(body_h * k / HEIGHT_K[sid], 3), 'frames': frames, 'k': k}
         hit = shape(sid, sp, idle, body_h, foot)
-        sprites.setdefault('enemies', {})[sid] = {**out[''], 'height': HEIGHT_K[sid], 'small': out['-small'], 'hit': hit, 'source': sp['folder']}
+        strip = lambda v: {a: b for a, b in v.items() if a != 'k'}
+        sprites.setdefault('enemies', {})[sid] = {**strip(out['']), 'height': HEIGHT_K[sid], 'small': strip(out['-small']), 'hit': hit, 'source': sp['folder']}
         print(' ', sid, hit)
     import importlib.util
     spec = importlib.util.spec_from_file_location('ptm', os.path.join(ROOT, 'tools', 'art', 'pack-trio-motion.py')); ptm = importlib.util.module_from_spec(spec); spec.loader.exec_module(ptm)

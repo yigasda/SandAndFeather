@@ -780,7 +780,11 @@ function drawMob(g, o, sx, sy, z, ts) {
     const wantSmall = H <= d.small.visible + 1, got = (wantSmall && pick(d.small)) || pick(d) || pick(d.small);
     if (!got) return;
     // drawn from the set it wants: the other set (asked for only to show something while this one loaded) is let go
-    if (got.a === (wantSmall ? d.small : d)) releaseSprites((wantSmall ? d : d.small).sheets || [(wantSmall ? d : d.small).file]);
+    // (a kind whose small set would be bigger than its picture shares the big set's sheets: nothing of those let go)
+    if (got.a === (wantSmall ? d.small : d)) {
+        const used = new Set(got.a.sheets || [got.a.file]), other = wantSmall ? d : d.small;
+        releaseSprites((other.sheets || [other.file]).filter(f => !used.has(f)));
+    }
     const { a, r, img } = got, k = H / a.visible;   // the atlas has a character's height in `visible` px
     // floating: lifted off the floor and bobbing, except while it warns, strikes, is hit, guards or breaks
     const still = !['wander', 'chase'].includes(o.st);
@@ -980,10 +984,14 @@ export function testReset() {
 }
 export const testFade = () => mobs[0]?.fade || 0;
 export const testCover = () => mobs[0]?.cover || [];
+// tests only: hold the creatures in a state (e.g. { st: "hit", stun: 999 }: one picture, for comparing pictures)
+export function testSet(fields) { for (const o of mobs) Object.assign(o, typeof fields === 'function' ? fields(o) : fields); }
 export function testMobFace(right) { for (const o of mobs) o.faceR = !!right; }
 export function testHold(on = true) { held = !!on; }
 export function testFace(d) { if (d === 'left' || d === 'right') { me.face = d; me.vdir = null; } else me.vdir = d; }
 export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: runNow(getState()), fight: getState()?.desertFight || null });
 // tests only: numbers over a kind's data for the creatures made from now on (the next time she comes into the map)
 export function testTune(kind, numbers = {}) { tune[kind] = numbers; }
+// tests only: one more creature beside those there (its pictures kept as a map's would be)
+export function testAdd(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs.push(makeMob(mobs.length + 100, kind, x, y)); keepArt([...new Set(mobs.map(o => o.kind))]); }
 export function testOnly(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs = [makeMob(99, kind, x, y)]; bolts = []; fx = []; }
