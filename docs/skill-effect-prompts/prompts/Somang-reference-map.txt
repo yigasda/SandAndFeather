@@ -1,0 +1,6 @@
+Built-in image_gen tool.
+Image 1: /workspace/shared/signature_previews_v2/originals/Somang.png (approved v2 absolute authority; frame 4 hold)
+Image 2: /workspace/shared/skill_frames_v2/skill-fx-v2-prompt-backup-2026-10-18/references/Somang-original-design.png (historical motif)
+Image 3: /workspace/shared/skill_frames_v2/skill-fx-v2-prompt-backup-2026-10-18/references/temple-roof-v1-day.png (historical map context)
+Image 4: /workspace/shared/skill_frames_v2/skill-fx-v2-prompt-backup-2026-10-18/references/Maple-FX-23.png (historical FX layering)
+Cell order: 0,1 / 2,3 / 5,6. Frame 4 remains exact existing approved original.

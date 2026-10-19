@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "/workspace/shared/signature_previews_v2/originals/Horus.png",
+    "/workspace/shared/skill_frames_v2/skill-fx-v2-prompt-backup-2026-10-18/references/Horus-original-design.png",
+    "/workspace/shared/skill_frames_v2/skill-fx-v2-prompt-backup-2026-10-18/references/temple-roof-v1-day.png"
+  ],
+  "order": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6
+  ],
+  "layout": "2 columns x 3 rows",
+  "originalPeak": "/workspace/shared/signature_previews_v2/originals/Horus.png"
+}

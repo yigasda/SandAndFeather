@@ -1,0 +1,6 @@
+Generated with built-in image_gen.imagegen; one sheet, six new poses only. Approved frame 3 remains untouched.
+Sheet: Horus-six-new-frames.png, 1024 x 1536 RGBA, alpha extrema 0..253. RGB contains diffuse glow in transparent areas; preserve alpha when compositing.
+Row-major frame order: 0, 1, 2, 4, 5, 6. Grid cell dimensions 512 x 512.
+Estimated local ground-contact anchors for later alignment: frame 0 (256,393), frame 1 (250,403), frame 2 (255,380), frame 4 (252,372), frame 5 (258,350), frame 6 (256,367). The sparse final stages have inferred ellipse-center anchors rather than a visible point.
+The generated sheet does not obey the exact requested 70% anchor uniformly; align by each estimated ground center during packaging rather than bounding-box centering. Effects have meaningful shape changes: separated gather, emerging wings/spear, narrow folded charge, broad breaking release, detached feather breakup, sparse residue. Expansion frame 4 is close to cell edges horizontally; preserve entire cell when cropping.
+Exact final submitted prompt: generation-prompt.txt. Input order and paths: reference-map.json.

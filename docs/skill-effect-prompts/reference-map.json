@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "scope": "Exact six-new-frame generation and correction prompts, reference mapping only. No images or runtime changes.",
+  "source_archive": {
+    "name": "skill-fx-v2-animation-21-frames.zip",
+    "library_file_id": "libfile_a2d38796a61881919f701dcd617746d9",
+    "version_id": "1",
+    "sha256": "41f91e64c852f04475d26f8a8df47d9360b618b5e158c4c6766022cee8ec7e73",
+    "bytes": 37305477
+  },
+  "tool": "image_gen.imagegen",
+  "reproducibility_limit": "Original prompt bytes and available source hashes are preserved. Intermediate generation inputs are missing where explicitly marked; model version/seed were not recorded, and exact regeneration is not guaranteed.",
+  "characters": {
+    "Set": {
+      "new_frame_order": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "existing_frame": 3,
+      "initial_prompt": "prompts/Set-actual-animation-prompt.txt",
+      "selected_prompt": "prompts/Set-final-animation-prompt.txt",
+      "original_reference_map": "prompts/Set-reference-map.json",
+      "initial_inputs": [
+        "archival-originals/Set.png",
+        "references/temple-roof-v1-day.png",
+        "references/Maple-FX-53.png"
+      ],
+      "selected_inputs": [
+        "archival-originals/Set.png",
+        "references/temple-roof-v1-day.png",
+        "references/Maple-FX-53.png",
+        null
+      ],
+      "unavailable_input_note": "Final regeneration image 4 is the initial generated Set sheet. Its bytes/name/hash are not separately preserved in this archive; do not substitute the final sheet.",
+      "selected_sheet": "generated-sheets/Set-six-new-frames.png",
+      "source_sheet_name_in_metadata": "Set-six-new-frames.png"
+    },
+    "Horus": {
+      "new_frame_order": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "existing_frame": 3,
+      "initial_prompt": "prompts/Horus-generation-prompt.txt",
+      "selected_prompt": "prompts/Horus-layout-correction-2-prompt.txt",
+      "original_reference_map": "prompts/Horus-reference-map.json",
+      "initial_inputs": [
+        "archival-originals/Horus.png",
+        "references/Horus-original-design.png",
+        "references/temple-roof-v1-day.png"
+      ],
+      "selected_inputs": [
+        null
+      ],
+      "unavailable_input_note": "Both layout corrections used the ORIGINAL generated Horus-six-new-frames.png as sole input, per Horus-final-layout-qa.txt. The archive generated-sheets/Horus-six-new-frames.png is the selected FINAL layout sheet (renamed), not that intermediate. Original intermediate bytes/hash are absent.",
+      "selected_sheet": "generated-sheets/Horus-six-new-frames.png",
+      "source_sheet_name_in_metadata": "Horus-six-new-frames-final-layout.png",
+      "rejected_attempt": "prompts/Horus-layout-correction-prompt.txt"
+    },
+    "Somang": {
+      "new_frame_order": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "existing_frame": 4,
+      "initial_prompt": "prompts/Somang-generation-prompt.txt",
+      "selected_prompt": "prompts/Somang-spatial-correction-prompt.txt",
+      "original_reference_map": "prompts/Somang-reference-map.txt",
+      "initial_inputs": [
+        "archival-originals/Somang.png",
+        "references/Somang-original-design.png",
+        "references/temple-roof-v1-day.png",
+        "references/Maple-FX-23.png"
+      ],
+      "selected_inputs": [
+        null
+      ],
+      "unavailable_input_note": "Spatial correction used the ORIGINAL generated Somang-six-new-frames.png as sole input. The archive generated-sheets/Somang-six-new-frames.png is the selected SPACED sheet (renamed), not that intermediate. Original intermediate bytes/hash are absent.",
+      "selected_sheet": "generated-sheets/Somang-six-new-frames.png",
+      "source_sheet_name_in_metadata": "Somang-six-new-frames-spaced.png",
+      "rejected_attempt": "prompts/Somang-cleanup-prompt.txt"
+    }
+  },
+  "published_original_text_files": [
+    {
+      "archive_path": "prompts/Horus-final-layout-qa.txt",
+      "sha256": "75609fdc30317c5dbf1beb733a2c048fb9e625df9854789c86523cfcc9563bfb",
+      "bytes": 1166
+    },
+    {
+      "archive_path": "prompts/Horus-generation-prompt.txt",
+      "sha256": "b7bc65f5bd567f2b1f7ff948c881630bae188a6e78c1351bf1882e2476a2a9a4",
+      "bytes": 6769
+    },
+    {
+      "archive_path": "prompts/Horus-layout-correction-2-prompt.txt",
+      "sha256": "c7ae12508a9738ba276f935706d4045fbcf68c2b591b13b5996b38f74f39764d",
+      "bytes": 1092
+    },
+    {
+      "archive_path": "prompts/Horus-layout-correction-prompt.txt",
+      "sha256": "7a076b4ee7bfb70a37f76eccb6ca74f47558e39a37898dc38da4861173fb11e2",
+      "bytes": 1427
+    },
+    {
+      "archive_path": "prompts/Horus-qa-and-anchors.txt",
+      "sha256": "d0a59a2180964af081590d17f7c4b79038b15c920308c024cc8c9121e37a3448",
+      "bytes": 1123
+    },
+    {
+      "archive_path": "prompts/Horus-reference-map.json",
+      "sha256": "5ced6238b6873dcaf4a882d42fc42788ad1b4c2ff1349a734a83778ca05d07ad",
+      "bytes": 525
+    },
+    {
+      "archive_path": "prompts/Set-actual-animation-prompt.txt",
+      "sha256": "3f2f57654f4a033407e4924bf904c65936ff1e7af9ae15585707b9c38d5eec8a",
+      "bytes": 3004
+    },
+    {
+      "archive_path": "prompts/Set-final-animation-prompt.txt",
+      "sha256": "4a56154985bebe2f4d7167a979e32d19eedf9ede873bd8a1c9ef63054f9b9c38",
+      "bytes": 3829
+    },
+    {
+      "archive_path": "prompts/Set-reference-map.json",
+      "sha256": "e0ea9bc425bf118ae54b7bb3b623f89523d9312c15b2c94143f502e32edfcf12",
+      "bytes": 305
+    },
+    {
+      "archive_path": "prompts/Somang-QA-notes.txt",
+      "sha256": "a2ce05dadbb364eb2731357f509b1d4f51c8d01ded7a8055d5d214f65c1116be",
+      "bytes": 1297
+    },
+    {
+      "archive_path": "prompts/Somang-cleanup-prompt.txt",
+      "sha256": "3ebdf826a411a2086b06541cce6221c12eafe04395f04fad49d2918838768937",
+      "bytes": 990
+    },
+    {
+      "archive_path": "prompts/Somang-generation-prompt.txt",
+      "sha256": "a9927fffcf1a24bef097353abd3d5c63ecb7f82854a4e3339ffa6c71a3c7b725",
+      "bytes": 6553
+    },
+    {
+      "archive_path": "prompts/Somang-reference-map.txt",
+      "sha256": "de4ab49cf03627529b5ee59859920cb749693e59bae6a586dce9f0d7a40e910f",
+      "bytes": 629
+    },
+    {
+      "archive_path": "prompts/Somang-spatial-correction-QA.txt",
+      "sha256": "2a91c4a39780b333a20c306d71d18c0f21507638e9e804ddd9ecfb344f98dade",
+      "bytes": 1028
+    },
+    {
+      "archive_path": "prompts/Somang-spatial-correction-prompt.txt",
+      "sha256": "ea342aea17d2a687b0adbd2e089f95a0f9fe142c7c95d72c2a30cbcafca5564d",
+      "bytes": 1608
+    }
+  ],
+  "archive_only_image_inventory": [
+    {
+      "archive_path": "archival-originals/Horus.png",
+      "sha256": "578345c1737069d984c21c5a1a0a37bf940e4bf8724a376bf1d4effab2d8e66d",
+      "bytes": 2579611
+    },
+    {
+      "archive_path": "archival-originals/Set.png",
+      "sha256": "5c1a9484224007b43e5081bd1e28ebbf290e5a4dcedc4984a7db5498468e241d",
+      "bytes": 2390289
+    },
+    {
+      "archive_path": "archival-originals/Somang.png",
+      "sha256": "b5028cf55beb6323e8479a81b4078164efd25129597027a94f1baa258adedbad",
+      "bytes": 1902390
+    },
+    {
+      "archive_path": "generated-sheets/Horus-six-new-frames.png",
+      "sha256": "06354885ae8e3accdec53b27dc679381743ea5f931f4b55e6e1edc0f03ddc519",
+      "bytes": 1740803
+    },
+    {
+      "archive_path": "generated-sheets/Set-six-new-frames.png",
+      "sha256": "003533b9b1229fe64489f0733831f61489b9c3d77b67417807cbe5bfa2e5d3c4",
+      "bytes": 1075339
+    },
+    {
+      "archive_path": "generated-sheets/Somang-six-new-frames.png",
+      "sha256": "f8587aa7180554931942b120f4fc433b5e31825ec113532bff7b86c3502f225c",
+      "bytes": 1987409
+    },
+    {
+      "archive_path": "references/Horus-original-design.png",
+      "sha256": "bbc089a56ecb7be88f528857bb558f624a0869143fee6234c1a144decc54d6ef",
+      "bytes": 2654454
+    },
+    {
+      "archive_path": "references/Maple-FX-04.png",
+      "sha256": "3070662c4c4222ba8a0714856d090a2c180c29c062b56bce34ef1440ef6ea745",
+      "bytes": 136942
+    },
+    {
+      "archive_path": "references/Maple-FX-23.png",
+      "sha256": "2ac110bd7f9ed36999772eb78041001a58d26722dc0d91fd72c0b2854921bfc4",
+      "bytes": 32324
+    },
+    {
+      "archive_path": "references/Maple-FX-53.png",
+      "sha256": "2529bf5e3a03455445d610741fc596f3b5f1339ec705623282bffd54a0d5e93a",
+      "bytes": 50622
+    },
+    {
+      "archive_path": "references/Set-original-design.png",
+      "sha256": "736643ad79a14be7f33a4a960ba81b2864626d70ab2dd1c12e0f3dcc9e7e81cb",
+      "bytes": 2986983
+    },
+    {
+      "archive_path": "references/Somang-original-design.png",
+      "sha256": "fe4ac9e974193abe58752664e76c8610be6e6c037182de0f5aa8c4920d4b283d",
+      "bytes": 2067258
+    },
+    {
+      "archive_path": "references/temple-roof-v1-day.png",
+      "sha256": "a790f2308ee6373d58a6520384d7e38676816165772745da0d5fa933a6979fc5",
+      "bytes": 2323692
+    }
+  ],
+  "archive_metadata": {
+    "archive_path": "animation-metadata.json",
+    "sha256": "cb110fbbf6bb29218a2a24b4d065cb0a2c1cf7e9d3611f78df9c39bb08108955",
+    "bytes": 11160
+  }
+}
