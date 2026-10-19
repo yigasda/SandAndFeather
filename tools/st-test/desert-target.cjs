@@ -3,7 +3,7 @@
 //   몹이 그를 봄(가로로 0.3칸 넘게 떨어졌을 때)
 //   사거리 + 1칸 안이지만 닿지 않는 곳 — 그쪽으로 돌기만 함(헛치기, 맞지 않음)
 //   동행(호루스·소망·세트)이 그 몹을 실제로 침 — 몸통 높이에서 사거리 안에 서서
-// 몹 능력치는 시험 값(가죽 방패병 데이터, 체력만 큼, 움직이지 않음, 가드 안 함, 밀려나지 않음). 결과·캡처를 out에 남긴다.
+// 몹 능력치는 시험 값(가죽 방패병 데이터, 체력만 큼, 움직이지 않음, 가드 안 함, 밀려나지 않음, 알아채는 거리 +4칸 — 수문장 종별 데이터 전). 결과·캡처를 out에 남긴다.
 //   node tools/st-test/desert-target.cjs [out]
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -55,7 +55,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         const press = (kind, dx, dy, away) => page.evaluate(async ([kind, dx, dy, away]) => {
             const p = T.player.player, base = T.data.DATA.desert.enemies.desert_leather_shield;
             T.field.testReset(); T.field.testRanges(true); T.field.testHold(false);
-            T.field.testOnly(kind, p.x + dx, p.y + dy, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true });
+            T.field.testOnly(kind, p.x + dx, p.y + dy, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true, aggro: 4 });
             await new Promise(r => setTimeout(r, 120));   // it has looked at her
             T.field.testFace(away); T.field.testEvents(true); T.field.attack();
             await new Promise(r => setTimeout(r, 650));
@@ -115,7 +115,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                     const p = T.player.player, base = T.data.DATA.desert.enemies.desert_leather_shield;
                     T.field.testReset(); T.field.testRanges(true);
                     const h = T.data.DATA.sprites.enemies[kind].hit, t = 31.2 / 16 * (T.win.currentMap().d.actorScale || 1);
-                    T.field.testOnly(kind, p.x + 2.2 + Math.max(h.body, h.front || 0) * t, p.y, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true });
+                    T.field.testOnly(kind, p.x + 2.2 + Math.max(h.body, h.front || 0) * t, p.y, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true, aggro: 4 });
                     T.field.testEvents(true);
                     for (let k = 0; k < 60; k++) { await new Promise(r => setTimeout(r, 100)); if (T.field.testEvents().some(e => e.ev === 'blow')) break; }
                     return { blow: T.field.testEvents(true).find(e => e.ev === 'blow') || null, st: T.field.fieldState() };

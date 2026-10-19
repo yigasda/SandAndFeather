@@ -57,6 +57,9 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         // 2. the fight: walk at it with the stick; when close, face it and tap 공격; 기술 when it guards
         const seen = new Set(), P = await pad();
         let hurt = 0, guardHit = null, broke = false, t0 = Date.now(), held = false, lastHp = null, strikes = 0;
+        // every state it goes through, looked at in the page every 25 ms (the dash is 0.36 s, a flinch 0.3 s: the loop
+        // below looks only every half second or so and missed them)
+        await page.evaluate(() => { T.seen = new Set(); T.seenTimer = setInterval(() => { const o = T.field.fieldState().mobs[0]; if (o) T.seen.add(o.st); }, 25); });
         const hp0 = (await fs_()).run.hp.horus;
         while (Date.now() - t0 < 60000) {
             st = await fs_();
@@ -93,6 +96,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
             await page.waitForTimeout(350);
         }
         if (held) await touch('touchEnd');
+        for (const x of await page.evaluate(() => { clearInterval(T.seenTimer); return [...T.seen]; })) seen.add(x);
         st = await fs_();
         const f = st.fight, day = await today();
         ok(['chase', 'prepare', 'attack', 'recover'].every(x => seen.has(x)), `다가옴·준비·돌진·후딜을 다 보임 (${[...seen].join(', ')})`);
@@ -149,7 +153,9 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         ok(g2.st === 'guard' && g3.st === 'hit' && g2.hp - g3.hp >= 2 * full - 1, `기술은 방패를 깸: 피해 ${g2.hp - g3.hp}(일반 ${full}의 두 배), 경직(${g3.st})`);
         await shot('4-guard-broken.png');
         await page.evaluate(() => { const s = T.state.getState(); T.heroes.setLead(s, 'horus'); T.heroes.setWith(s, 'set'); });
-        // a fresh one (a day on) for the next part
+        // a fresh one (a day on) for the next part, with its own numbers again (the guard test's stand-still numbers
+        // stayed on the kind and the next one never struck)
+        await page.evaluate(() => T.field.testTune('desert_leather_shield', {}));
         await page.evaluate(async () => T.win.travel('desert_buried_temple', 'west'));
         await page.waitForTimeout(600);
         await page.evaluate(async base => { const L = await import(base + 'src/core/ledger.js'); const s = T.state.getState(); s.ledger.gday = L.today(s) + 1; }, BASE);

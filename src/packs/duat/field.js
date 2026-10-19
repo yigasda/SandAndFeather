@@ -183,9 +183,9 @@ function aimAt(o, s) {
 function stepMob(m, o, dt, s) {
     o.t += dt;
     const T = timing(o), c = centre(o), tg = targets(s).map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d);
-    // how near it notices: from its outline (a warden's fists reach 3 tiles; every Duat creature is a point, as before).
-    // Its reach, keeping its distance and the dash stay from its feet's middle (the leather shield's approved numbers)
-    const h = shape(o), A = AGGRO + Math.max(h.body || 0, h.front || 0) * charTiles();
+    // how near it notices: AGGRO from its feet's middle (the approved 4), and a kind's own `aggro` on top (data; a boss
+    // may watch its whole room). Its reach, keeping its distance and the dash stay from its feet's middle too
+    const A = AGGRO + (o.e.aggro || 0);
     // whom it goes for: the one it already fights (or who last struck it) while they stay in reach, else the nearest
     let near = tg.find(q => q.p.who === o.foe && q.d < A + 2.5) || tg[0];
     if (near && near.d >= A && near.p.who !== o.foe) near = null;
@@ -298,7 +298,7 @@ function mobFx(o, what) {
 const ACTIVE = ['chase', 'prepare', 'attack', 'recover', 'guard', 'hit'];
 function nearestMob(from) {
     let best = null, bd = 1e9;
-    for (const o of mobs) { if (o.st === 'dead') continue; const d = nearPoint(o, from).d; if (d < bd) { bd = d; best = o; } }   // to its shapes' edge
+    for (const o of mobs) { if (o.st === 'dead') continue; const d = toTorso(hurtArea(o), from).d; if (d < bd) { bd = d; best = o; } }   // to its torso's edge
     return best ? { o: best, d: bd } : null;
 }
 // where a creature is from her: the nearest point of its shapes (its torso, what it holds out) and how far
@@ -357,7 +357,7 @@ function engage() {
 }
 function stepStance() {
     const t = now(), f = feet();
-    if (mobs.some(o => ACTIVE.includes(o.st) && nearPoint(o, f).d < FIGHT_NEAR)) stance.last = t;
+    if (mobs.some(o => ACTIVE.includes(o.st) && toTorso(hurtArea(o), f).d < FIGHT_NEAR)) stance.last = t;   // from its torso's edge
     const want = t - stance.last < CALM;
     if (want !== stance.on && t - stance.since >= HOLD && !player.moving) { stance.on = want; stance.since = t; if (want) faceMob(); }
 }
@@ -622,7 +622,7 @@ export function spell() {
 // ---- the one walking with her fights by themselves
 // whom the one with her fights: the creature she last struck (both on one), else the one nearest her
 function mateTarget() {
-    const f = feet(), ok = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && nearPoint(o, f).d < FIGHT_NEAR;
+    const f = feet(), ok = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && toTorso(hurtArea(o), f).d < FIGHT_NEAR;
     if (ok(me.target)) return me.target;
     const n = nearestMob(f);
     return n && n.d < FIGHT_NEAR ? n.o : null;
@@ -740,6 +740,23 @@ onDraw(scene => {
     for (const o of mobs) scene.extra.push({ x: o.x, y: o.y, draw: (g, sx, sy, z, ts) => drawMob(g, o, sx, sy, z, ts) });
     scene.extra.push({ x: 0, y: 1e6, draw: (g, sx, sy, z, ts) => drawTop(g, z, ts, sx, sy) });
 });
+// is the frame's pixel (fx, fy) opaque — the frame read once, at a quarter of its size (tests whether she is hidden)
+const alphaOf = new Map();
+function opaque(img, r, fx, fy) {
+    if (fx < 0 || fy < 0 || fx >= r[2] || fy >= r[3]) return false;
+    const key = `${img.src}|${r[0]},${r[1]}`;
+    let a = alphaOf.get(key);
+    if (!a) {
+        const w = Math.max(1, Math.ceil(r[2] / 4)), h = Math.max(1, Math.ceil(r[3] / 4)), c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        const cx = c.getContext('2d', { willReadFrequently: true }); cx.drawImage(img, r[0], r[1], r[2], r[3], 0, 0, w, h);
+        let d; try { d = cx.getImageData(0, 0, w, h).data; } catch { d = null; }
+        a = { w, d };
+        if (alphaOf.size > 64) alphaOf.clear();
+        alphaOf.set(key, a);
+    }
+    return !!a.d && a.d[((fy >> 2) * a.w + (fx >> 2)) * 4 + 3] >= 128;
+}
 function drawMob(g, o, sx, sy, z, ts) {
     const d = DATA.sprites?.enemies?.[o.kind];
     if (!d) return;
@@ -771,7 +788,23 @@ function drawMob(g, o, sx, sy, z, ts) {
     const baseY = gy - (fl * (FLOAT + (still ? 0 : BOB * bob)) + up - Math.min(1, die) * 0.3 * fl) * ts;   // the bottom of its body
     const shake = warn1 ? Math.sin(t * 60) * z * 0.6 : 0;
     g.save();
-    g.globalAlpha = o.st === 'dead' ? Math.max(0, 1 - die) : 1;
+    // 사용자 10-19: a big one hid her whole behind it — drawn see-through (no silhouette) only while one of the two
+    // stands behind it with their whole body covered by its picture (사용자: 몸이 100% 겹쳤을 때만): every point of
+    // their body's box falls on its opaque pixels
+    const toS = p => ({ x: sx + (p.x - o.x) * ts, y: sy + (p.y - o.y) * ts }), ch = charTiles() * ts;
+    const people = [feet()]; { const st = getState(); if (st && withOf(st) && !mate.down) { const q = follower(); people.push({ x: q.x + 0.5, y: q.y + 0.8 }); } }
+    // against its standing picture (idle-0), one shape whatever it does, so it does not flicker as the frames change
+    const ir = a.frames['idle-0'], stand = ir && spriteFile((a.sheets || [a.file])[ir[6] || 0]), [iimg, rr] = stand ? [stand, ir] : [img, r];
+    const covered = (X, Y) => opaque(iimg, rr, o.faceR ? rr[4] - (X - gx) / k : (X - gx) / k + rr[4], (Y - baseY) / k + rr[5]);
+    o.cover = people.map(p => {   // the share of each one's body box on its opaque pixels (behind it only)
+        if (p.y >= centre(o).y) return 0;   // in front of it: drawn over it
+        const q = toS(p); let n = 0;
+        for (let i = 0; i <= 4; i++) for (let j = 0; j <= 6; j++) if (covered(q.x + (i / 4 - 0.5) * 0.4 * ch, q.y - j / 6 * 0.9 * ch)) n++;
+        return n / 35;
+    });
+    const hidden = o.cover.some(c => c >= 1);
+    o.fade = Math.max(0, Math.min(1, (o.fade || 0) + (hidden ? 1 : -1) * 0.12));
+    g.globalAlpha = (o.st === 'dead' ? Math.max(0, 1 - die) : 1) * (1 - 0.55 * o.fade);
     g.translate(gx + shake, baseY);
     if (o.faceR) g.scale(-1, 1);   // the pictures face left: mirrored to face someone on its right (user: it looked away)
     g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
@@ -780,9 +813,11 @@ function drawMob(g, o, sx, sy, z, ts) {
     // its 체력 as a straight bar over it: hidden while it drifts on its own, shown once it has met them and for a
     // while after a hit (a dot-art bar comes later, user)
     if ((o.st !== 'wander' || t - o.shownAt < 3) && o.st !== 'dead') {
-        const w = 0.9 * ts, x = gx - w / 2, y = baseY - (r[5] * k) - 4 * z;
-        g.fillStyle = 'rgba(20,12,6,.8)'; g.fillRect(x - z, y - z, w + 2 * z, 4 * z);
-        g.fillStyle = '#e8584a'; g.fillRect(x, y, w * Math.max(0, o.hp) / o.e.hp, 2 * z);
+        // as wide as it is big (사용자 10-19: 수문장을 키웠으니 체력바도), thicker up to twice
+        const big = Math.max(1, (d.height || 1) / 1.5), th = 2 * z * Math.min(2, big);
+        const w = 0.9 * ts * big, x = gx - w / 2, y = baseY - (r[5] * k) - th - 2 * z;
+        g.fillStyle = 'rgba(20,12,6,.8)'; g.fillRect(x - z, y - z, w + 2 * z, th + 2 * z);
+        g.fillStyle = '#e8584a'; g.fillRect(x, y, w * Math.max(0, o.hp) / o.e.hp, th);
     }
     g.imageSmoothingEnabled = false;
 }
@@ -873,6 +908,14 @@ function drawTop(g, z, ts, ox, oy) {
     g.globalAlpha = 1;
 }
 
+const mobName = o => DATA.desert?.names?.[o.kind] || o.e.ko || '';
+function hudFoe() {
+    const f = feet(), near = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && toTorso(hurtArea(o), f).d < FIGHT_NEAR;
+    if (near(me.target)) return me.target;
+    let best = null, bd = FIGHT_NEAR;
+    for (const o of mobs) if (ACTIVE.includes(o.st) && near(o)) { const d = toTorso(hurtArea(o), f).d; if (d < bd) { bd = d; best = o; } }
+    return best;
+}
 // ---- the HUD down here: 체력 each, 공포, where (a small box right under the hint line, on its left edge), and the 기술 · 주문 buttons over 공격
 let el = null;
 function hud(show, s, m) {
@@ -905,7 +948,10 @@ function hud(show, s, m) {
     }
     const r = run(s), t = now(), no = Number(m.id.slice(5));
     const bar = (label, v, max, cls) => `<div class="sf_duat_bar ${cls}"><span>${label} ${v}/${max}</span><i style="width:${Math.round(100 * Math.max(0, v) / max)}%"></i></div>`;
-    const html = `<b>${m.d.name || ''}${isDuat(m.id) ? ` ${no}/7` : ''}</b>` + Object.keys(r.hp).map(w => bar(HERO_NAME[w], r.hp[w], r.max[w], 'sf_hp')).join('') + bar('공포', r.fear, FEAR_MAX, 'sf_fear');
+    // the title: the creature she is fighting (사용자 10-19: 맵 이름 말고 몹 이름) — the one she last struck while it is
+    // near, else the nearest one coming at her; none about, the place as before
+    const foe = hudFoe(), title = foe ? mobName(foe) : `${m.d.name || ''}${isDuat(m.id) ? ` ${no}/7` : ''}`;
+    const html = `<b>${title}</b>` + Object.keys(r.hp).map(w => bar(HERO_NAME[w], r.hp[w], r.max[w], 'sf_hp')).join('') + bar('공포', r.fear, FEAR_MAX, 'sf_fear');
     if (el.box._html !== html) { el.box.innerHTML = html; el.box._html = html; }
     // 기술: the time left darkens it round like a clock; 주문: how many are left in the corner
     const sk = el.btns.querySelector('.sf_duat_skill'), sp = el.btns.querySelector('.sf_duat_spell');
@@ -932,6 +978,8 @@ export function testReset() {
     for (const k of Object.keys(tune)) delete tune[k];
     bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
 }
+export const testFade = () => mobs[0]?.fade || 0;
+export const testCover = () => mobs[0]?.cover || [];
 export function testMobFace(right) { for (const o of mobs) o.faceR = !!right; }
 export function testHold(on = true) { held = !!on; }
 export function testFace(d) { if (d === 'left' || d === 'right') { me.face = d; me.vdir = null; } else me.vdir = d; }

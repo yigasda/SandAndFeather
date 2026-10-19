@@ -4,7 +4,7 @@
 //   정면 몸통 끝 — 중심이 사거리 밖이어도 몸이 닿으면 맞음(전부 피해)      빈 공간 — 몸 끝보다 더 멀면 안 맞음(공격이 늘지 않음)
 //   방패만 닿음 — 막힘(가드 규칙: max(1, round(피해 × 0.3)), 움찔 없음)     주먹만 닿음(수문장) — 몸이라 전부 피해
 //   옆 — 좌우 폭 안이면 맞음, 밖이면 안 맞음      뒤 — 안 맞음      벽 — 벽 너머는 안 맞음, 벽 앞은 맞음
-// 몹 능력치는 시험 값(가죽 방패병 데이터, 체력만 큼, 움직이지 않음, 가드 안 함, 밀려나지 않음). 영상·결과를 out에 남긴다.
+// 몹 능력치는 시험 값(가죽 방패병 데이터, 체력만 큼, 움직이지 않음, 가드 안 함, 밀려나지 않음, 알아채는 거리 +4칸 — 수문장 종별 데이터 전). 영상·결과를 out에 남긴다.
 //   node tools/st-test/desert-strike.cjs [out]
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -60,7 +60,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const v = { right: [1, 0], left: [-1, 0], up: [0, -1], down: [0, 1] }[dir];
             const base = T.data.DATA.desert.enemies.desert_leather_shield;
             T.field.testReset(); T.field.testRanges(true); T.field.testHold(true);   // the stick held that way: the box's geometry alone
-            T.field.testOnly(kind, p.x + v[0] * d + (v[0] ? 0 : off), p.y + v[1] * d + (v[0] ? off : 0), { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true });
+            T.field.testOnly(kind, p.x + v[0] * d + (v[0] ? 0 : off), p.y + v[1] * d + (v[0] ? off : 0), { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true, aggro: 4 });
             T.field.testMobFace(dir === 'left');
             T.field.testFace(dir); T.field.testEvents(true); T.field.attack();
             await new Promise(r => setTimeout(r, 650));
@@ -124,7 +124,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 const r = await page.evaluate(async ([v, d]) => {
                     const p = T.player.player, base = T.data.DATA.desert.enemies.desert_leather_shield;
                     T.field.testReset(); T.field.testRanges(true); T.field.testHold(false);
-                    T.field.testOnly('desert_temple_warden', p.x + v[0] * d, p.y + v[1] * d, { ...base, hp: 999, guard: 1, speed: 0, range: 0, nopush: true });
+                    T.field.testOnly('desert_temple_warden', p.x + v[0] * d, p.y + v[1] * d, { ...base, hp: 999, guard: 1, speed: 0, range: 0, nopush: true, aggro: 4 });
                     T.field.testFace(v[1] ? (v[1] < 0 ? 'down' : 'up') : 'right');   // facing away first
                     T.field.testEvents(true); T.field.attack();
                     await new Promise(r => setTimeout(r, 650));
