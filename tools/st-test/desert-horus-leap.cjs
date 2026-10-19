@@ -47,12 +47,12 @@ const log = msg => { console.log(msg); res.push(msg); };
             await page.evaluate(() => T.field.testReset());
             return page.evaluate(() => { const f = T.field.fieldState(); return !f.me.down && !f.me.act && f.map === T.win.currentMap().id; });
         };
-        const put = (kind, dx, dy, n) => page.evaluate(([k, dx, dy, n]) => { const p = T.player.player; T.field.testOnly(k, p.x + dx, p.y + dy, n); T.field.testFace('right'); }, [kind, dx, dy, n]);
+        const put = (kind, dx, dy, n) => page.evaluate(([k, dx, dy, n]) => { const p = T.player.player; T.field.testOnly(k, p.x + dx, p.y + dy, n); T.field.testFace('right'); T.field.testHold(true); }, [kind, dx, dy, n]);
         // press the 기술, wait out the leap; where he went, what the events say
         // (she turns to what she is fighting on her own; the case is about where she faces when the button goes down)
         const leap = async () => {
             const x0 = await page.evaluate(() => T.player.player.x); await page.evaluate(() => T.field.testEvents(true));
-            await page.evaluate(() => { T.field.testFace('right'); T.field.skill(); }); await sleep(900);
+            await page.evaluate(() => { T.field.testFace('right'); T.field.testHold(true); T.field.skill(); }); await sleep(900);
             return page.evaluate(x0 => {
                 const p = T.player.player, o = T.field.fieldState().mobs[0], ev = T.field.testEvents(true);
                 return { x0, x1: p.x, y: p.y, inWall: T.solid(p.x, p.y), gap: o ? Math.hypot(o.x + 0.5 - (p.x + 0.5), o.y + 0.8 - (p.y + 0.8)) : null, blows: ev.filter(e => e.ev === 'blow'), ev };

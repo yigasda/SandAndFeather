@@ -5,7 +5,7 @@ data/art/enemies/desert-<kind>[-small].png에 넣고 data/sprites.json enemies.<
     그 가운데 x)를 모든 프레임에 쓴다. 공격 섬광이 든 알파 상자로 프레임 크기를 바꾸지 않는다(사용자 보완 지시 A-3).
   - 그림은 다시 그리지 않고 같은 비율로만 줄인다. 슬롯: 00 대기0 · 01 대기1 · 02 대기2 · 03 특수(guard, 항아리는 dormant) ·
     04·05 준비 · 06·07 공격 · 08 피격 · 09 소멸 → idle-0 … disappear(두아트 field.js 이름).
-  python3 tools/art/desert-mob-pack.py [speciesId …]   (기본: PACK)"""
+  python3 tools/art/desert-mob-pack.py [--hit] [speciesId …]   (기본: PACK; --hit: 시트는 두고 피격 도형만)"""
 import glob, hashlib, json, os, sys
 import numpy as np
 from PIL import Image
@@ -40,12 +40,26 @@ PACK = list(HEIGHT_K)
 # sheet — nothing is made smaller to fit. The source PNGs (몹/사막/…) stay as they are; the game loads a kind's sheets
 # only when that kind is drawn (data.js spriteFile).
 MAX = 4096
+# the torso on the floor is an ellipse DEPTH of its width deep (src/packs/duat/field.js DEPTH). A warden's feet's middle
+# is the front of its fists on the ground; its torso stands behind them (사용자 10-19: 위쪽에서 너무 멀다): the
+# ellipse's front edge at the torso's lowest pixel down its middle column, `back` behind the feet's middle
+DEPTH = 0.4
 
 
-def main(ids):
+def shape(sid, sp, idle, body_h, foot):
+    """the shape in characters' heights: picture px × HEIGHT_K / the standing body's height"""
+    cx, hw, front = HIT[sid]; per = HEIGHT_K[sid] / body_h
+    hit = {'body': round(float(hw * per), 3)}
+    if front is not None: hit.update(front=round(float((foot[0] - front) * per), 3), frontKind='body' if 'warden' in sid else 'shield')
+    if 'warden' in sid:
+        base = int(np.median([np.nonzero(idle[:, x])[0].max() for x in range(cx - 8, cx + 9)]))
+        hit['back'] = round(float((foot[1] - base) * per + hw * per * DEPTH), 3)
+    return hit
+
+
+def main(ids, hit_only=False):
     sprites_path = os.path.join(ROOT, 'data', 'sprites.json'); sprites = json.load(open(sprites_path))
     for sid in ids:
-        for old in glob.glob(os.path.join(ROOT, 'data', 'art', 'enemies', sid.replace('_', '-') + '*.png')): os.remove(old)   # its sheets made again
         sp = next(s for s in REG['species'] if s['speciesId'] == sid)
         folder = os.path.join(ROOT, sp['folder'])
         idle = np.maximum.reduce([np.asarray(Image.open(os.path.join(folder, sp['frames'][k]['file'])).getchannel('A')) for k in ('idle_0', 'idle_1', 'idle_2')]) >= 128
@@ -53,6 +67,9 @@ def main(ids):
         # the pivot (사용자 10-19): across, the middle of the body standing on the ground (the torso's middle, HIT); down, the
         # registry's foot line. One pivot a kind, so turning round (mirrored about it) does not shove the body sideways.
         foot = [HIT[sid][0], sp['measured']['footLineCandidate']]
+        if hit_only:   # --hit: the shape alone, the sheets as they are
+            sprites['enemies'][sid]['hit'] = shape(sid, sp, idle, body_h, foot); print(' ', sid, sprites['enemies'][sid]['hit']); continue
+        for old in glob.glob(os.path.join(ROOT, 'data', 'art', 'enemies', sid.replace('_', '-') + '*.png')): os.remove(old)   # its sheets made again
         out = {}
         for vis, suffix in ((VISIBLE, ''), (SMALL, '-small')):
             k = HEIGHT_K[sid] * vis / body_h
@@ -90,10 +107,7 @@ def main(ids):
                 except ImportError: pass
                 print(sid, file, atlas.size)
             out[suffix] = {'file': files[0], 'sheets': files, 'visible': vis, 'frames': frames}
-        # the shape in characters' heights: picture px × HEIGHT_K / the standing body's height
-        cx, hw, front = HIT[sid]; per = HEIGHT_K[sid] / body_h
-        hit = {'body': round(float(hw * per), 3)}
-        if front is not None: hit.update(front=round(float((foot[0] - front) * per), 3), frontKind='body' if 'warden' in sid else 'shield')
+        hit = shape(sid, sp, idle, body_h, foot)
         sprites.setdefault('enemies', {})[sid] = {**out[''], 'height': HEIGHT_K[sid], 'small': out['-small'], 'hit': hit, 'source': sp['folder']}
         print(' ', sid, hit)
     import importlib.util
@@ -102,4 +116,5 @@ def main(ids):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:] or PACK)
+    args = [a for a in sys.argv[1:] if a != '--hit']
+    main(args or PACK, '--hit' in sys.argv)
