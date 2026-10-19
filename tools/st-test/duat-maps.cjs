@@ -9,7 +9,7 @@ const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 const routes = JSON.parse(fs.readFileSync(path.join(OUT, 'paths.json')));
 fs.mkdirSync(OUT, { recursive: true });
 (async () => {
-    const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] });
+    const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : {});
     const page = await browser.newPage({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
     const errors = [], checks = [];
     page.on('pageerror', e => { if (!/Internal Server Error/.test(e.message)) errors.push(e.message); });
