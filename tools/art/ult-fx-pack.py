@@ -4,7 +4,7 @@
 (축소 없음 — 게임용 해상도는 실제 표시 크기에서 확인받은 뒤 정한다). 원본 PNG는 그대로 둔다.
 잘린 위치는 기준점(anchor)에 반영해 data/duat.json field.ult.fx.<who>에 적는다:
   frames: [{file, w, h, ax, ay, ms}]  (ax, ay = 잘린 그림 안의 기준점 px, ms = 이 프레임 재생 시간)
-  heightsPerPx: 원본 1px이 캐릭터 키 몇 개로 그려지는지(가장 큰 장면의 긴 변 = 캐릭터 키 SPAN배, 시제품 값)
+  heightsPerPx: 원본 1px이 캐릭터 키 몇 개로 그려지는지(가장 큰 장면의 또렷한 부분 긴 변 = 캐릭터 키 SPAN배, 시제품 값)
   python3 tools/art/ult-fx-pack.py
 """
 import hashlib, json, os
@@ -15,9 +15,15 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
 SRC = os.path.join(ROOT, 'docs', 'art', 'skill-effects', 'final')
 OUT = os.path.join(ROOT, 'data', 'art', 'fx', 'ult')
 WHO = {'Set': 'set', 'Horus': 'horus', 'Somang': 'somang'}
-# how big it is drawn (prototype; user 10-19: about four times a character): the largest frame's longer side spans this
-# many character heights — so on any map it keeps to the people's size (Somang's lotus ring round the two of them)
-SPAN = 4
+# how big it is drawn (prototype; user 10-19: about four times a character): what is plainly seen (alpha 64 and up, not the
+# faint haze round it) of the largest frame spans this many character heights on its longer side — so on any map it
+# keeps to the people's size (Somang's lotus ring round the two of them)
+SPAN, SEEN = 4, 64
+
+
+def seen(im):
+    ys, xs = np.nonzero(np.asarray(im)[..., 3] >= SEEN)
+    return max(int(xs.max() - xs.min()) + 1, int(ys.max() - ys.min()) + 1) if len(xs) else 0
 
 
 def main():
@@ -36,10 +42,10 @@ def main():
         assert np.array_equal(np.asarray(piece), np.asarray(im)[y0:y1, x0:x1])   # the same pixels
         name = f'art/fx/ult/{who}-{f["frame"]}.png'
         piece.save(os.path.join(ROOT, 'data', name), optimize=True)
-        fx.setdefault(who, {'frames': []})['frames'].append({'file': name, 'w': x1 - x0, 'h': y1 - y0, 'ax': f['anchor'][0] - x0, 'ay': f['anchor'][1] - y0, 'ms': f['duration_ms']})
+        fx.setdefault(who, {'frames': []})['frames'].append({'file': name, 'w': x1 - x0, 'h': y1 - y0, 'ax': f['anchor'][0] - x0, 'ay': f['anchor'][1] - y0, 'ms': f['duration_ms'], 'seen': seen(piece)})
         print(who, f['frame'], (x1 - x0, y1 - y0))
     for who, v in fx.items():
-        v['heightsPerPx'] = round(SPAN / max(max(fr['w'], fr['h']) for fr in v['frames']), 7)
+        v['heightsPerPx'] = round(SPAN / max(fr.pop('seen') for fr in v['frames']), 7)
     p = os.path.join(ROOT, 'data', 'duat.json')
     d = json.load(open(p))
     d['field'].setdefault('ult', {})['fx'] = fx

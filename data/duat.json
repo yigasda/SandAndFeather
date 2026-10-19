@@ -288,7 +288,7 @@
               "ms": 220
             }
           ],
-          "heightsPerPx": 0.0021265
+          "heightsPerPx": 0.002442
         },
         "horus": {
           "frames": [
@@ -349,7 +349,7 @@
               "ms": 220
             }
           ],
-          "heightsPerPx": 0.0015625
+          "heightsPerPx": 0.0020576
         },
         "somang": {
           "frames": [
@@ -402,7 +402,7 @@
               "ms": 260
             }
           ],
-          "heightsPerPx": 0.0019531
+          "heightsPerPx": 0.002611
         }
       }
     },

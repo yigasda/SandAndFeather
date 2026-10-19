@@ -1,5 +1,5 @@
 // 궁 이펙트 해상도 후보를 실제 표시 크기로 나란히(사용자 10-19: 원본 보존, 확정 전). 폰 412×900 dpr 2, T1W, 앞장 혼자 + 몹 하나(크기 비교용).
-// 후보(full 원본 해상도 · half · third — tools/art/ult-fx-candidates.py가 시험 서버에 만든 것)마다 캐릭터별로 가장 넓은 장면의
+// 후보(full 원본 해상도 · half · third — tools/art/ult-fx-candidates.py가 시험 서버에 만든 것)마다 캐릭터별로 가장 활짝 핀 셋째 장면의
 // 한가운데 순간을 멈춰 세우고(testUltFrame) 화면을 찍는다. 줄이지 않은 화면 픽셀 그대로 잘라 붙인다.
 //   node tools/st-test/ult-fx-view.cjs [out]   → out/<tag>-<who>.png, out/sheet-<who>.png (왼쪽부터 full · half · third)
 const { chromium } = require('playwright');
@@ -38,8 +38,8 @@ fs.mkdirSync(OUT, { recursive: true });
                 }, [who, table[tag], MAP]);
                 await sleep(2500);
                 const ms = await page.evaluate(who => {
-                    const fr = T.data.DATA.duat.field.ult.fx[who].frames; let at = 0, best = 0, wide = 0;
-                    for (const f of fr) { if (f.w > wide) { wide = f.w; best = at + f.ms / 2; } at += f.ms; }
+                    const fr = T.data.DATA.duat.field.ult.fx[who].frames; let at = 0, best = 0;
+                    for (const [i, f] of fr.entries()) { if (i === 2) best = at + f.ms / 2; at += f.ms; }   // the third: each one at its fullest
                     const p = T.player.player; T.field.testOnly('desert_leather_shield', p.x + 2.6, p.y, { hp: 999, atk: 0, speed: 0, range: 0, guard: 0, nopush: true });
                     T.field.testUltFrame(who, best); return best;
                 }, who);
