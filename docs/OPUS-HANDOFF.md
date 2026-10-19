@@ -171,6 +171,7 @@ SillyTavern 확장 "모래와 깃털"이다. 이집트 옴보스를 배경으로
   - 문법 검사는 모듈로 한다(`node --experimental-default-type=module --check`). 그냥 `--check`는 같은 이름 함수가 두 번 선언돼도 통과시킨다.
   - 컨테이너가 재시작되면 ST를 다시 띄운다(`node server.js --port 8000 --listen false`). 첫 화면의 Save 버튼과 캐릭터 목록을 기다리는 부트 코드는 `desert-15-lift.cjs`를 따른다. 터치로 걷는 도우미는 `tools/st-test/touch-walk.cjs`.
   - 사막 검사 목록과 실행법: [DESERT-WORK-LOG.md](DESERT-WORK-LOG.md) 「실행법」.
+  - **사막 맵·몹 전체 인수인계:** [DESERT-OPUS-HANDOFF.md](DESERT-OPUS-HANDOFF.md) (지킬 지시, 자료 위치, 맵 8곳, 몹 12종 도형·판정·방향, 퍼즐, 결정 대기, 시험).
 
 ## 게임 지금 상태 — 0.9.89
 

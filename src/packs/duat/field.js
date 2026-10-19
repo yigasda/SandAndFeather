@@ -183,9 +183,10 @@ function aimAt(o, s) {
 function stepMob(m, o, dt, s) {
     o.t += dt;
     const T = timing(o), c = centre(o), tg = targets(s).map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d);
-    // whom it goes for: the one it already fights (or who last struck it) while they stay in reach, else the nearest
-    // how near it notices: from its outline (a warden's fists reach 3 tiles; every Duat creature is a point, as before)
+    // how near it notices: from its outline (a warden's fists reach 3 tiles; every Duat creature is a point, as before).
+    // Its reach, keeping its distance and the dash stay from its feet's middle (the leather shield's approved numbers)
     const h = shape(o), A = AGGRO + Math.max(h.body || 0, h.front || 0) * charTiles();
+    // whom it goes for: the one it already fights (or who last struck it) while they stay in reach, else the nearest
     let near = tg.find(q => q.p.who === o.foe && q.d < A + 2.5) || tg[0];
     if (near && near.d >= A && near.p.who !== o.foe) near = null;
     o.foe = near ? near.p.who : (tg[0]?.d < A ? tg[0].p.who : null);
@@ -297,34 +298,56 @@ function mobFx(o, what) {
 const ACTIVE = ['chase', 'prepare', 'attack', 'recover', 'guard', 'hit'];
 function nearestMob(from) {
     let best = null, bd = 1e9;
-    for (const o of mobs) { if (o.st === 'dead') continue; const c = centre(o), d = Math.hypot(c.x - from.x, c.y - from.y); if (d < bd) { bd = d; best = o; } }
+    for (const o of mobs) { if (o.st === 'dead') continue; const d = nearPoint(o, from).d; if (d < bd) { bd = d; best = o; } }   // to its shapes' edge
     return best ? { o: best, d: bd } : null;
 }
-function faceMob() {
-    const f = feet(), n = nearestMob(f);
-    if (n) {
-        const dx = centre(n.o).x - f.x, dy = centre(n.o).y - f.y;
-        me.face = dx >= 0 ? 'right' : 'left';
-        me.vdir = Math.abs(dy) > Math.abs(dx) * VERT ? (dy > 0 ? 'down' : 'up') : null;
-    } else if (player.dir === 'left' || player.dir === 'right') { me.face = player.dir; me.vdir = null; }
-    else me.vdir = player.dir;
+// where a creature is from her: the nearest point of its shapes (its torso, what it holds out) and how far
+function nearPoint(o, f) {
+    const t = toTorso(hurtArea(o), f), fl = frontLine(o);
+    if (!fl) return t;
+    const x = Math.min(Math.max(f.x, fl.x0), fl.x1), d = Math.hypot(x - f.x, fl.y - f.y);
+    return d < t.d ? { d, x, y: fl.y } : t;
 }
-// 공격 / 기술 with the stick let go: she turns to the creature her blow can come to (its torso's edge within her
-// reach and a step), so she strikes the way she faces it (user: she faced away from it); the stick held, its way
-let held = false;   // tests only: as if the stick were held
-function turnToFoe(reach) {
-    if (held || Math.abs(input.dx) > 0.2 || Math.abs(input.dy) > 0.2) return;
-    const f = feet(); let best = null, bd = reach + 1;
+const WAYS = ['left', 'right', 'up', 'down'];
+const wayOf = (dx, dy) => Math.abs(dy) > Math.abs(dx) * VERT ? (dy > 0 ? 'down' : 'up') : dx >= 0 ? 'right' : 'left';
+// the way to turn for a blow of this reach (사용자 10-19: 타겟팅): of the creatures her blow can meet one way or
+// another, the nearest (its torso or fists rather than only its shield), the way of those nearest to where it is;
+// none in reach: toward the nearest one's nearest point (within `far`). → { o, way } or null
+function aimWay(f, reach, far = Infinity, ways = WAYS) {
+    let best = null;
     for (const o of mobs) {
         if (o.st === 'dead') continue;
-        const fl = frontLine(o), d = Math.min(toTorso(hurtArea(o), f).d, fl ? Math.hypot(Math.min(Math.max(f.x, fl.x0), fl.x1) - f.x, fl.y - f.y) : Infinity);
-        if (d < bd) { bd = d; best = o; }
+        const p = nearPoint(o, f); if (p.d > far) continue;
+        // standing within its shape (its torso is over her on the floor): toward its torso's middle
+        const a = hurtArea(o), dx = p.d > 0.05 ? p.x - f.x : a.x - f.x, dy = p.d > 0.05 ? p.y - f.y : a.y - f.y, len = Math.hypot(dx, dy) || 1;
+        let way = null, wk = -1, rank = 3;
+        for (const w of ways) {
+            const m = blowMeets(o, f, w, reach); if (!m) continue;
+            const v = { left: [-1, 0], right: [1, 0], up: [0, -1], down: [0, 1] }[w], dot = (v[0] * dx + v[1] * dy) / len, r = m === 'shield' ? 1 : 0;
+            if (r < rank || (r === rank && dot > wk)) { rank = r; wk = dot; way = w; }
+        }
+        const key = [way ? rank : 3, p.d];
+        if (!best || key[0] < best.key[0] || (key[0] === best.key[0] && key[1] < best.key[1])) best = { o, way: way || (ways === WAYS ? wayOf(dx, dy) : dx >= 0 ? 'right' : 'left'), key };
     }
-    if (!best) return;
-    const dx = centre(best).x - f.x, dy = centre(best).y - f.y;
-    if (Math.abs(dx) > 0.05) me.face = dx > 0 ? 'right' : 'left';
-    me.vdir = Math.abs(dy) > Math.abs(dx) * VERT ? (dy > 0 ? 'down' : 'up') : null;
+    return best;
+}
+function faceWay(way) {
+    if (way === 'left' || way === 'right') { me.face = way; me.vdir = null; } else me.vdir = way;
     if (stance.on) player.dir = me.vdir || me.face;
+}
+function faceMob() {
+    const a = aimWay(feet(), F().reach?.[leadOf(getState())] || 1.4);
+    if (a) faceWay(a.way);
+    else if (player.dir === 'left' || player.dir === 'right') { me.face = player.dir; me.vdir = null; }
+    else me.vdir = player.dir;
+}
+// 공격 / 기술 with the stick let go: she turns the way her blow meets a creature (else toward the nearest within her
+// reach and a step), so she strikes the way she faces it (user: she faced away from it); the stick held, its way
+let held = false;   // tests only: as if the stick were held
+function turnToFoe(reach, ways) {
+    if (held || Math.abs(input.dx) > 0.2 || Math.abs(input.dy) > 0.2) return;
+    const a = aimWay(feet(), reach, reach + 1, ways);
+    if (a) faceWay(a.way);
 }
 // a button, a hit: fighting at once (she is doing something, so the change does not show as a flicker)
 function engage() {
@@ -333,7 +356,7 @@ function engage() {
 }
 function stepStance() {
     const t = now(), f = feet();
-    if (mobs.some(o => ACTIVE.includes(o.st) && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < FIGHT_NEAR)) stance.last = t;
+    if (mobs.some(o => ACTIVE.includes(o.st) && nearPoint(o, f).d < FIGHT_NEAR)) stance.last = t;
     const want = t - stance.last < CALM;
     if (want !== stance.on && t - stance.since >= HOLD && !player.moving) { stance.on = want; stance.since = t; if (want) faceMob(); }
 }
@@ -346,9 +369,10 @@ function stepMateWalk(dt, s) {
         const f = feet(), o = mateTarget(), reach = F().reach?.[w] || 1.4;
         if (o) {
             // on the creature's other side from her, level with it (so the blow lands where it is seen), else close to level
-            const c = centre(o), ps = f.x <= c.x ? -1 : 1;
+            // (사용자 10-19: 타겟팅) its shape: level with its torso, their reach from its edge
+            const c = hurtArea(o), ps = f.x <= c.x ? -1 : 1;
             for (const [side, dy] of [[-ps, 0], [-ps, 0.35], [-ps, -0.35], [ps, 0.9], [ps, -0.9]]) {
-                const gx = c.x + side * reach * 0.95, gy = c.y + dy;
+                const gx = c.x + side * (c.r + reach * 0.75), gy = c.y + dy;
                 if (Math.hypot(gx - f.x, gy - f.y) >= MATE_APART && !solid(map(), gx - 0.5, gy - 0.8)) { goal = { x: gx - 0.5, y: gy - 0.8 }; break; }
             }
         }
@@ -476,7 +500,7 @@ export function attack() {
 export function skill() {
     const s = getState();
     if (!s || !isField(mapId) || me.down || busy() || me.cdSkill > now()) { if (s && isField(mapId)) note({ ev: 'ignored', what: 'skill', why: me.down ? 'down' : busy() ? `busy:${me.act.name}` : 'cooldown' }); return; }
-    engage(); turnToFoe(leadOf(s) === 'horus' ? 2.5 : leadOf(s) === 'set' ? 2 : 1.5);
+    engage(); if (leadOf(s) === 'horus') turnToFoe(2.5, ['left', 'right']); else turnToFoe(leadOf(s) === 'set' ? 2 : 1.5);   // his dive goes sideways
     me.cdSkill = now() + SKILL_CD;
     me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'skill', who: leadOf(s) });
     useSkill(s, leadOf(s), feet(), me.face, true);
@@ -597,7 +621,7 @@ export function spell() {
 // ---- the one walking with her fights by themselves
 // whom the one with her fights: the creature she last struck (both on one), else the one nearest her
 function mateTarget() {
-    const f = feet(), ok = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < FIGHT_NEAR;
+    const f = feet(), ok = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && nearPoint(o, f).d < FIGHT_NEAR;
     if (ok(me.target)) return me.target;
     const n = nearestMob(f);
     return n && n.d < FIGHT_NEAR ? n.o : null;
@@ -609,9 +633,11 @@ function stepMate(dt, s) {
     if (mate.cd > now() || (mate.act && mate.act.until > now())) return;
     const p = follower(), c = { x: p.x + 0.5, y: p.y + 0.8 }, reach = F().reach?.[w] || 1.4, o = mateTarget();
     if (!o) return;
-    const oc = centre(o), dx = oc.x - c.x, dy = oc.y - c.y;
+    const oc = hurtArea(o), dx = oc.x - c.x;
     mate.face = dx >= 0 ? 'right' : 'left';
-    if (p.moving || Math.abs(dy) > 0.6 || Math.abs(dx) > reach + 0.2) return;
+    // their blow as hers: its box against the creature's shapes (a shield alone is guarded)
+    const meet = blowMeets(o, c, mate.face, reach + 0.2);
+    if (p.moving || !meet) return;
     if (mate.cdSkill <= now()) {
         mate.cdSkill = now() + MATE_SKILL_CD; mate.cd = now() + 1.2; engage();
         mate.act = { name: 'skill', at: now(), until: now() + SHOW.skill };
@@ -620,7 +646,7 @@ function stepMate(dt, s) {
     }
     mate.cd = now() + 1.2; engage();
     mate.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
-    damage(s, o, Math.max(1, power(s, w) - 1), 0.2, c);
+    damage(s, o, Math.max(1, power(s, w) - 1), meet === 'shield' ? 0 : 0.2, c, meet === 'shield' ? 'shield' : '');
 }
 
 // ---- every frame
