@@ -8,6 +8,8 @@ the plan gives it (사용자 보완 지시 1: 후보 종, 개체 수·좌표 아
     are drawn at one scale and one pivot; the boxes (attack flashes included) never resize a frame.
   - a foot line candidate: the lowest opaque row of the three idle frames, and its middle. Pivot, movement collider,
     hurt box, attack box and launch socket stay null until they are set on the game screen (B3, then per species).
+Separate effect pictures (not one of the ten frames, not counted in the 120): the sun mirror's attack beam
+(docs/art/desert-sun-mirror-motion-revisions-2026-10-16/beam.png, user: "태양거울은 별도의 공격 광선 png가 있습니다").
 The ancient devices (몹/하위몹/고대장치, ring and hourglass, 2 × 10) are a separate set and not counted here.
 Writes docs/DESERT-MOBS.md, tools/maps/desert-mobs.json and docs/consult/desert/mobs/sheet.png. Stops on a mismatch.
   python3 tools/maps/desert-mobs.py"""
@@ -35,6 +37,9 @@ SPECIES = [
     ('11_왕좌수문장', 'desert_throne_warden', '왕좌 수문장', 'boss', ['P3']),
     ('12_파릉수문장', 'desert_broken_tomb_warden', '파릉 수문장', 'boss', ['P4']),
 ]
+# effect pictures drawn on their own layer (EFFECTS[speciesId] = [(name, folder, manifest key)]): placed at the launch socket,
+# turned to the attack direction, cut at the first wall; length, hit and display scale are set in the game
+EFFECTS = {'desert_sun_mirror': [('beam', 'docs/art/desert-sun-mirror-motion-revisions-2026-10-16', 'beam')]}
 ZONES = {'T1': 'T1W·T1E 제례 앞뜰', 'T2': 'T2 무너진 봉헌품 회랑', 'T3': 'T3 신전 수호문 전당', 'P1': 'P1 고대 장례 미궁',
          'P2': 'P2 왕면 열병 전실', 'P3': 'P3A·P3B 부왕 장례전', 'P4': 'P4 무너진 왕릉 하부실'}
 
@@ -68,9 +73,16 @@ def main():
         idle = np.maximum.reduce(alphas[:3]) >= 128
         ys = np.nonzero(idle.any(1))[0]; foot_y = int(ys.max()) + 1
         xs = np.nonzero(idle[foot_y - 6:foot_y].any(0))[0]
+        effects = {}
+        for ename, efolder, key in EFFECTS.get(sid, []):
+            em = json.loads((ROOT / efolder / 'manifest.json').read_text())[key]
+            ef = ROOT / efolder / em['file']; im = Image.open(ef)
+            assert im.mode == 'RGBA', f'{ef}: not RGBA'
+            effects[ename] = {'file': f'{efolder}/{em["file"]}', 'sha256': sha(ef), 'size': list(im.size), 'direction': em['direction'],
+                              'originApproxNormalized': em['originApproxNormalized'], 'usage': em['usage'], 'applied': False}
         out.append({'folder': f'몹/사막/{folder}', 'speciesId': sid, 'name': name, 'role': role, 'zones': zones,
                     'canvas': fm['canvas'], 'sharedCellOffset': fm.get('sharedNominalCellOffset'),
-                    'special': special, 'attackFamily': attack, 'frames': frames,
+                    'special': special, 'attackFamily': attack, 'frames': frames, 'effects': effects,
                     'measured': {'idleBox': alpha_box(np.maximum.reduce(alphas[:3])), 'footLineCandidate': foot_y,
                                  'footMiddleCandidate': int((xs.min() + xs.max() + 1) // 2)},
                     'runtime': {'pivot': None, 'moveCollider': None, 'hurtBox': None, 'attackBox': None, 'launchSocket': None,
@@ -110,6 +122,12 @@ def main():
         L.append(f"| {s['folder'].split('/')[-1]} | `{s['speciesId']}` | {s['name']} | {'보스' if s['role'] == 'boss' else '일반'} | "
                  f"{', '.join(ZONES[z] for z in s['zones'])} | {s['canvas'][0]}×{s['canvas'][1]} | {s['special']} | {s['attackFamily']} | "
                  f"y {s['measured']['footLineCandidate']}, x {s['measured']['footMiddleCandidate']} |")
+    L += ['', '## 별도 효과 그림 (10장에 들지 않음, 120장에 세지 않음)', '']
+    for s in out:
+        for ename, e in s['effects'].items():
+            L.append(f"- {s['name']} {ename}: [`{e['file']}`](../{e['file']}) {e['size'][0]}×{e['size'][1]}, sha256 `{e['sha256'][:12]}…`, "
+                     f"방향 {e['direction']}, 발사점 약 {e['originApproxNormalized']}(정규화). {e['usage']} "
+                     '몸 프레임(06·07 light_attack)에는 근접 빛·발사점만 있고 긴 광선은 이 그림이다. 그림을 늘려 벽 뒤까지 보이게 하지 않고, 첫 벽에서 자른다(계획서 16절).')
     L += ['', '보스 4종: 신전 수문장(T3), 왕면 수문장(P2), 왕좌 수문장(P3, 추천안 P3B 한 개체), 파릉 수문장(P4). 전투 역할 구역 7곳 = 실제 공간 9곳'
           '(T1W·T1E, P3A·P3B 분할)이며 34공간에 다시 더하지 않는다. 후보 종은 개체 수·좌표가 아니다.', '',
           '## 프레임별 알파 상자 (기록만, 크기 조절에 쓰지 않음)', '',

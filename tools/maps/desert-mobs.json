@@ -131,6 +131,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      92,
@@ -283,6 +284,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      134,
@@ -435,6 +437,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      114,
@@ -587,6 +590,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      70,
@@ -736,6 +740,23 @@
       412,
       448
      ]
+    }
+   },
+   "effects": {
+    "beam": {
+     "file": "docs/art/desert-sun-mirror-motion-revisions-2026-10-16/beam.png",
+     "sha256": "0b7569d991b53befaaa26967a636a37f58ee063fefb78bafd5a76b58dd30e1c7",
+     "size": [
+      2048,
+      768
+     ],
+     "direction": "left-to-right",
+     "originApproxNormalized": [
+      0.13,
+      0.5
+     ],
+     "usage": "별도 레이어에서 발사점으로 위치 정렬 후 공격 방향으로 회전. 길이·충돌·피해·표시배율은 게임에서 설정.",
+     "applied": false
     }
    },
    "measured": {
@@ -889,6 +910,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      73,
@@ -1040,6 +1062,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      54,
@@ -1191,6 +1214,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      57,
@@ -1342,6 +1366,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      102,
@@ -1493,6 +1518,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      45,
@@ -1644,6 +1670,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      71,
@@ -1795,6 +1822,7 @@
      ]
     }
    },
+   "effects": {},
    "measured": {
     "idleBox": [
      34,
