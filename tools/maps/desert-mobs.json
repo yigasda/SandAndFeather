@@ -1,0 +1,1841 @@
+{
+ "species": [
+  {
+   "folder": "몹/사막/01_봉인항아리",
+   "speciesId": "desert_sealed_jar",
+   "name": "봉인 항아리",
+   "role": "normal",
+   "zones": [
+    "T1",
+    "T2"
+   ],
+   "canvas": [
+    476,
+    538
+   ],
+   "sharedCellOffset": [
+    55,
+    18
+   ],
+   "special": "dormant",
+   "attackFamily": "attack",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "f1c348d4a9b52197260f367dac6bfaee0fdad0c0131e66ce1fdc4bb8f1d4c785",
+     "alphaBox": [
+      106,
+      81,
+      416,
+      445
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "23539868857f0cf23f402ab4c86ecc900c72145f400874d6250d8b403c3f49a1",
+     "alphaBox": [
+      113,
+      55,
+      396,
+      439
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "2da0c4c4bab892689c1119770b457101944e5b2b7304d62523ddf08139891878",
+     "alphaBox": [
+      92,
+      98,
+      367,
+      453
+     ]
+    },
+    "special": {
+     "file": "03_dormant.png",
+     "state": "dormant",
+     "sha256": "ee230da820f95b0020f9cc34093ad594979fe17bcf7422b2c1daec9774979206",
+     "alphaBox": [
+      85,
+      139,
+      360,
+      445
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "74ac1a61e43400a6100732c0a2f6cb918ff27d0ae542f23a05b2ad13f069ab3f",
+     "alphaBox": [
+      68,
+      120,
+      351,
+      451
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "6ea17578b50e1651c63a34bd48a105a4639d645ff6a07245b846572bb522f021",
+     "alphaBox": [
+      95,
+      91,
+      368,
+      385
+     ]
+    },
+    "attack_0": {
+     "file": "06_attack_0.png",
+     "state": "attack_0",
+     "sha256": "e450149e9841727f2bac57f0cd0cc3e5f5dca56316368ee398e5e041fed0391d",
+     "alphaBox": [
+      71,
+      40,
+      425,
+      392
+     ]
+    },
+    "attack_1": {
+     "file": "07_attack_1.png",
+     "state": "attack_1",
+     "sha256": "b30f8d2a2d7ae9a6a33405a2b580b00fa9a55d55c0d157cd095562084203e46d",
+     "alphaBox": [
+      73,
+      53,
+      415,
+      397
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "4caa9c840d8b7c6223b7a09993fcd46d1da8b57bf1f1717b7ef08e5ac859bc23",
+     "alphaBox": [
+      69,
+      88,
+      376,
+      397
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "6a082e911681ed0502a0eddeef847bd829f00c32fd15b678804aaf65912c5ae0",
+     "alphaBox": [
+      41,
+      121,
+      396,
+      413
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     92,
+     55,
+     416,
+     453
+    ],
+    "footLineCandidate": 453,
+    "footMiddleCandidate": 222
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/02_가죽방패병",
+   "speciesId": "desert_leather_shield",
+   "name": "가죽 방패병",
+   "role": "normal",
+   "zones": [
+    "T1",
+    "P1"
+   ],
+   "canvas": [
+    558,
+    477
+   ],
+   "sharedCellOffset": [
+    114,
+    18
+   ],
+   "special": "guard",
+   "attackFamily": "charge",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "4111e2e96e40ba63f45e597df0483d1906e94f8be74f6f39f38cf1f3cd5d28ba",
+     "alphaBox": [
+      139,
+      57,
+      461,
+      451
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "6ae945b8a2fa3ce83bb5d8797912624aa54d99473747e5becc9aa041483bb4e0",
+     "alphaBox": [
+      134,
+      48,
+      447,
+      451
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "b94f0ee68e5331eefbd48cd3c6892ae84ae345f65c91396efd732c9aea35e71b",
+     "alphaBox": [
+      139,
+      60,
+      441,
+      449
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "847d40bdc94f0ac80848d911d4de18aaf333885ba3a0a69ca6370fc05d237eed",
+     "alphaBox": [
+      118,
+      125,
+      441,
+      449
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "590000b4a0bc1238f2e3824e56d18ff04f491061d695e7aaeffe907ce22a5f00",
+     "alphaBox": [
+      156,
+      74,
+      446,
+      443
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "c6dbd35d6ff2d969632dafdc290bba16026415959643d348bbaeccc3fe23fb76",
+     "alphaBox": [
+      139,
+      42,
+      439,
+      407
+     ]
+    },
+    "attack_0": {
+     "file": "06_charge_0.png",
+     "state": "charge_0",
+     "sha256": "5f0f0c4f41962fd96ba57d97550abe23403744d893c57a61a1233b47f18af016",
+     "alphaBox": [
+      117,
+      79,
+      459,
+      395
+     ]
+    },
+    "attack_1": {
+     "file": "07_charge_1.png",
+     "state": "charge_1",
+     "sha256": "4c55ca2270b0eeddc92d0431a829a6f392bffa154171d40ad6bcd0783db688bb",
+     "alphaBox": [
+      103,
+      78,
+      445,
+      414
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "85fd0ad538d7ed40f9610d7189a72d1d7c861922c9438ce9fe64467d4b96d9e1",
+     "alphaBox": [
+      118,
+      44,
+      463,
+      392
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "836e7270fe4c09e0b6884beeea1f8883f773d15b759658293b1b896cb047162a",
+     "alphaBox": [
+      26,
+      157,
+      451,
+      448
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     134,
+     48,
+     461,
+     451
+    ],
+    "footLineCandidate": 451,
+    "footMiddleCandidate": 333
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/03_봉인방패병",
+   "speciesId": "desert_sealed_shield",
+   "name": "봉인 방패병",
+   "role": "normal",
+   "zones": [
+    "P1",
+    "P2"
+   ],
+   "canvas": [
+    476,
+    468
+   ],
+   "sharedCellOffset": [
+    102,
+    0
+   ],
+   "special": "guard",
+   "attackFamily": "charge",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "6460076c4984ea32a6eba2943640bba2f9ce531c4060fb627a56bfecbd3a9ae6",
+     "alphaBox": [
+      135,
+      32,
+      427,
+      425
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "a69f27f676debb5410e026ddc91ee25807ce6512f7579123c7d89042e0f73872",
+     "alphaBox": [
+      122,
+      32,
+      407,
+      425
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "5354ab4b6d6362301c08f61fde9531fead26f4e71f26c5a328bb1b6541491b93",
+     "alphaBox": [
+      114,
+      37,
+      408,
+      426
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "249e1adc63dc2f9d10545e270e5742fd8d998adacc1fc7a2aa476f125b927e3e",
+     "alphaBox": [
+      99,
+      142,
+      437,
+      438
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "42938c04c6bcf46a397dd01e16be8f6bffd2fbeef2ac4b7f677437a77bc0d840",
+     "alphaBox": [
+      132,
+      43,
+      430,
+      434
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "3467e36ce29a184141130c2449a338da2e6e6d1c1aecf6df6f13a76ea061d2d8",
+     "alphaBox": [
+      136,
+      20,
+      431,
+      393
+     ]
+    },
+    "attack_0": {
+     "file": "06_charge_0.png",
+     "state": "charge_0",
+     "sha256": "4c350b93ff44712824559ac2d232f973b7680b252a924ee7f8983b87b34d33eb",
+     "alphaBox": [
+      124,
+      45,
+      446,
+      390
+     ]
+    },
+    "attack_1": {
+     "file": "07_charge_1.png",
+     "state": "charge_1",
+     "sha256": "9a86b7289bce728262c1b01129924d09a2c5513c2f9beefa183e917fb85d9d9d",
+     "alphaBox": [
+      93,
+      34,
+      442,
+      396
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "fbb9a286513ed249e30c36b2b7a1ec63c3c78903e3b169d753b46b2005cd6c40",
+     "alphaBox": [
+      108,
+      26,
+      456,
+      389
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "b42feb86ef2848dc84633b5e6d6f5d33d7c936a1e48e4d49ff60800fb4a32afb",
+     "alphaBox": [
+      25,
+      145,
+      444,
+      427
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     114,
+     32,
+     427,
+     426
+    ],
+    "footLineCandidate": 426,
+    "footMiddleCandidate": 356
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/04_걸음비석",
+   "speciesId": "desert_walking_stela",
+   "name": "걸음 비석",
+   "role": "normal",
+   "zones": [
+    "P1",
+    "P4"
+   ],
+   "canvas": [
+    459,
+    435
+   ],
+   "sharedCellOffset": [
+    -30,
+    -71
+   ],
+   "special": "guard",
+   "attackFamily": "slam",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "bab6ac197f286877070ed15270498fdab3ffe96f66d98f79a3c15077a7bb0dfa",
+     "alphaBox": [
+      104,
+      40,
+      357,
+      413
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "c7dc39a7e228c286c85a1d95384e640ef94283285e4d3d9aa18789029d0a1f21",
+     "alphaBox": [
+      70,
+      42,
+      322,
+      413
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "4e033a74ac073f5041f105f2356550a780f15dd27059a9028872e64298dafe31",
+     "alphaBox": [
+      84,
+      41,
+      340,
+      413
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "3d317055101de0fa92b88d7a821f4606dd83f8631636e04e29edaba403b3fd0c",
+     "alphaBox": [
+      84,
+      84,
+      378,
+      414
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "03ad2afab22ae0eff7e2e4559a6638a5fed3c5f597e31b7349ed3ba89bc2ac2e",
+     "alphaBox": [
+      69,
+      41,
+      389,
+      413
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "4e7404ea4da479164d98ebc6ccb90c7294c4646a2c46161a353f99df4b1c7028",
+     "alphaBox": [
+      54,
+      41,
+      397,
+      416
+     ]
+    },
+    "attack_0": {
+     "file": "06_slam_0.png",
+     "state": "slam_0",
+     "sha256": "39659a3e7d1a43427f7f102217771109598a705920db683bd8df36bf8817d4af",
+     "alphaBox": [
+      55,
+      55,
+      413,
+      391
+     ]
+    },
+    "attack_1": {
+     "file": "07_slam_1.png",
+     "state": "slam_1",
+     "sha256": "9f64bdf6f5a9a814f9af41ac9afdbae7bc9199340bed38f033daeeb632628c6c",
+     "alphaBox": [
+      29,
+      82,
+      426,
+      419
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "f5f0e717918e842723aa0a08b67d7c4209105c6898a948fe3fd8ce3b82c8dc55",
+     "alphaBox": [
+      79,
+      71,
+      381,
+      412
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "cbc4c985c62f3f6be7cc0be30f905d9b5a3498033357a12063fdf97cf4b3b304",
+     "alphaBox": [
+      26,
+      127,
+      438,
+      406
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     70,
+     40,
+     357,
+     413
+    ],
+    "footLineCandidate": 413,
+    "footMiddleCandidate": 266
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/05_태양거울",
+   "speciesId": "desert_sun_mirror",
+   "name": "태양거울",
+   "role": "normal",
+   "zones": [
+    "T2"
+   ],
+   "canvas": [
+    440,
+    494
+   ],
+   "sharedCellOffset": [
+    69,
+    22
+   ],
+   "special": "guard",
+   "attackFamily": "light_attack",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "ca418eea70b013b372d2ea407d902d1faf75f033e57b5e5d42e7cdc1186d5b7d",
+     "alphaBox": [
+      98,
+      39,
+      402,
+      470
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "0aee420c8eaf27b1d751fd1d68fa32bf49ea80937fb058d27793f63628adfe4f",
+     "alphaBox": [
+      82,
+      39,
+      384,
+      470
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "0109031f6f1e720e06a65339fb4f79f8d9c637255b37ac470b19d12408ebe29b",
+     "alphaBox": [
+      71,
+      39,
+      376,
+      470
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "60da4fdb6fc29159f3205e55469b101bc0e46cbbf4bad51d058bbd598b6c9f33",
+     "alphaBox": [
+      84,
+      39,
+      392,
+      470
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "984de3419e64638620230efe738baf5693cdbb6899f3636141fb880b70747a78",
+     "alphaBox": [
+      100,
+      39,
+      408,
+      470
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "34deecdf48bebf5aa0e9311ad31af8df0b5364b28ac215147982675d8cf61f77",
+     "alphaBox": [
+      93,
+      28,
+      402,
+      454
+     ]
+    },
+    "attack_0": {
+     "file": "06_light_attack_0.png",
+     "state": "light_attack_0",
+     "sha256": "172dc932fa041994251924e5b67fe1b398d24d9e086ee902fcfab05256572230",
+     "alphaBox": [
+      81,
+      28,
+      393,
+      454
+     ]
+    },
+    "attack_1": {
+     "file": "07_light_attack_1.png",
+     "state": "light_attack_1",
+     "sha256": "8bde94d2d070629bcfb4fa5e2cda6a5739d0cee99c299edb06880d4fa3583aa2",
+     "alphaBox": [
+      74,
+      28,
+      386,
+      454
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "de237ec3abb0cc4349527484db212a35fd95603fd743b2d5b4155a4c8aeec59b",
+     "alphaBox": [
+      49,
+      37,
+      395,
+      448
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "896df52b8b10f87afafd7d1b6fc75d3c2dd77e055c43028fec28aa289792d236",
+     "alphaBox": [
+      24,
+      131,
+      412,
+      448
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     71,
+     39,
+     402,
+     470
+    ],
+    "footLineCandidate": 470,
+    "footMiddleCandidate": 218
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/06_천칭파수꾼",
+   "speciesId": "desert_balance_sentinel",
+   "name": "천칭 파수꾼",
+   "role": "normal",
+   "zones": [
+    "T3"
+   ],
+   "canvas": [
+    507,
+    520
+   ],
+   "sharedCellOffset": [
+    50,
+    55
+   ],
+   "special": "guard",
+   "attackFamily": "slam",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "4a856041f32991fa0703a2d84e999aca81e78dad9f6e628714862419f369edb4",
+     "alphaBox": [
+      93,
+      122,
+      413,
+      402
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "409d578e8ebfa9d2845bbd3d23397d66ebf5ee6d73ac9ead3f61d0a697ba17e6",
+     "alphaBox": [
+      73,
+      118,
+      408,
+      409
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "e76e1a52a956bb51eb91af21927ca999f0a0d9fe6a1a87e7cb8eddccebd1c516",
+     "alphaBox": [
+      89,
+      122,
+      416,
+      402
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "ef492aafb6c865e31c72b29a1838f4e8976847da9847464a139deb7a965aecb7",
+     "alphaBox": [
+      108,
+      140,
+      403,
+      388
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "694231d3f0bc9c719d26cbcd31dfd4ead7369573ee1abe19ce0a464db7ba86c3",
+     "alphaBox": [
+      90,
+      94,
+      423,
+      428
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "4cd2f73793a585fafb80a9ea46b8fc73ed62f0240cd1827bc551fd77cf7c6b33",
+     "alphaBox": [
+      74,
+      87,
+      413,
+      420
+     ]
+    },
+    "attack_0": {
+     "file": "06_slam_0.png",
+     "state": "slam_0",
+     "sha256": "4ce52f6f25b54f4429cf9d4bcc58678787f16e406e6762f08cd8f7a6f80eaa9f",
+     "alphaBox": [
+      64,
+      88,
+      425,
+      419
+     ]
+    },
+    "attack_1": {
+     "file": "07_slam_1.png",
+     "state": "slam_1",
+     "sha256": "f52a862d80723fe6b25347bc1ed95538d83bc3f7239104b9b9c2fb35cda794c6",
+     "alphaBox": [
+      56,
+      90,
+      451,
+      412
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "019134d333781104329dacd6310afb4cd12f45acee166a0eb7733cec8b8641c0",
+     "alphaBox": [
+      73,
+      112,
+      412,
+      382
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "2609ade4720403460324b7176c17e89d5fd30d488e27dff6e1303329386334e9",
+     "alphaBox": [
+      40,
+      184,
+      425,
+      407
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     73,
+     118,
+     416,
+     409
+    ],
+    "footLineCandidate": 409,
+    "footMiddleCandidate": 342
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/07_빈가면사제_장막형",
+   "speciesId": "desert_mask_priest_mantle",
+   "name": "빈 가면 사제 장막형",
+   "role": "normal",
+   "zones": [
+    "T2"
+   ],
+   "canvas": [
+    517,
+    470
+   ],
+   "sharedCellOffset": [
+    10,
+    23
+   ],
+   "special": "guard",
+   "attackFamily": "seal_cast",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "2aa247efb0c4f3a1af7727c2a3e3404d7f114c6030e2e13682e714161d3e8c98",
+     "alphaBox": [
+      56,
+      47,
+      388,
+      411
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "a814498e390630a199fdb761e04f38e147d3fc04be5da9d101f1c2f4d543d2dc",
+     "alphaBox": [
+      54,
+      47,
+      425,
+      409
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "a342ffde8325e1fec506fd6de910fba5ed23f034a4327e97c8cc786a5208606e",
+     "alphaBox": [
+      74,
+      49,
+      383,
+      413
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "a63ab3f4b7c1010bc20972149422b21581a7669d3b5de9d4a7511912dd3fe2b7",
+     "alphaBox": [
+      67,
+      61,
+      380,
+      423
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "0f48269f4c728141cb323ce880ca0636c04541badb3b6c419ef37d83895437a1",
+     "alphaBox": [
+      42,
+      44,
+      368,
+      411
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "8060c0e8fab231a86c2239b1b7398b1915c2623185f81506e9ce95e2cd7e1e28",
+     "alphaBox": [
+      29,
+      36,
+      403,
+      388
+     ]
+    },
+    "attack_0": {
+     "file": "06_seal_cast_0.png",
+     "state": "seal_cast_0",
+     "sha256": "9d4830bd61b71534d42dad310bca3cbc879310dc091b6522dca92e46554d542e",
+     "alphaBox": [
+      39,
+      37,
+      448,
+      382
+     ]
+    },
+    "attack_1": {
+     "file": "07_seal_cast_1.png",
+     "state": "seal_cast_1",
+     "sha256": "128cd2b6acc27d7a6035a22f85d29c4a10cfabb048df0f524b6a0ca357998991",
+     "alphaBox": [
+      25,
+      43,
+      478,
+      363
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "e2ecdb6cc28cbc6fe5e174ef204dc0ecaf4a62cec7733bcab61b43b7321822ca",
+     "alphaBox": [
+      48,
+      35,
+      432,
+      384
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "f8479911f05651823c0ad260129171880d89b82d8d30bd96a6a9b2a4debd3252",
+     "alphaBox": [
+      43,
+      173,
+      379,
+      388
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     54,
+     47,
+     425,
+     413
+    ],
+    "footLineCandidate": 413,
+    "footMiddleCandidate": 251
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/08_빈가면사제_수의형",
+   "speciesId": "desert_mask_priest_shroud",
+   "name": "빈 가면 사제 수의형",
+   "role": "normal",
+   "zones": [
+    "P3"
+   ],
+   "canvas": [
+    512,
+    528
+   ],
+   "sharedCellOffset": [
+    21,
+    16
+   ],
+   "special": "guard",
+   "attackFamily": "seal_cast",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "67d8f5f0c1d16c244cd9e0ab710f8aa3055d43a0a122665cb8b4f3609db3e197",
+     "alphaBox": [
+      106,
+      27,
+      368,
+      438
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "3b74476cb53d4af7833d288f0614e94806a8058c2cf0e4525deb883d7b5d47da",
+     "alphaBox": [
+      57,
+      28,
+      416,
+      435
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "f232c3a44836276213547b9549a2185d5a29c2028754df5c43b7662d53b69d34",
+     "alphaBox": [
+      119,
+      28,
+      382,
+      437
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "e809cef1769ff067c43329218d8780840857ab01f7feba9fe917ad1d55009300",
+     "alphaBox": [
+      67,
+      55,
+      384,
+      438
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "f3d197e169854ecb97fb447590a884b461a8a59196989f9d5af88a67bc48f6c4",
+     "alphaBox": [
+      66,
+      28,
+      374,
+      438
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "62ecf587ef996522a9dbab90006153db1fde1944115a9d22fed0c0ac458be042",
+     "alphaBox": [
+      33,
+      43,
+      407,
+      406
+     ]
+    },
+    "attack_0": {
+     "file": "06_seal_cast_0.png",
+     "state": "seal_cast_0",
+     "sha256": "db43c54da35f30b5cc66ed2b033a16f16953d938a27623e950a7311499a14f65",
+     "alphaBox": [
+      22,
+      42,
+      453,
+      392
+     ]
+    },
+    "attack_1": {
+     "file": "07_seal_cast_1.png",
+     "state": "seal_cast_1",
+     "sha256": "dbe7a1dc7bcf8c1d250ea386a9c09f8a44772aefb15a59bcdb910a12c48043dc",
+     "alphaBox": [
+      46,
+      43,
+      482,
+      399
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "4c8be8901a364e7bbe32cceebf65d70db6963f8ac477f82223f592caa8639648",
+     "alphaBox": [
+      65,
+      49,
+      428,
+      405
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "446300d1d1b6e432dc0b73413566c9ce8fae4777f1a0e2203c0afdf6a0a517a4",
+     "alphaBox": [
+      47,
+      221,
+      398,
+      405
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     57,
+     27,
+     416,
+     438
+    ],
+    "footLineCandidate": 438,
+    "footMiddleCandidate": 265
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/09_왕면수문장",
+   "speciesId": "desert_royal_mask_warden",
+   "name": "왕면 수문장",
+   "role": "boss",
+   "zones": [
+    "P2"
+   ],
+   "canvas": [
+    487,
+    551
+   ],
+   "sharedCellOffset": [
+    92,
+    51
+   ],
+   "special": "guard",
+   "attackFamily": "punch_slam",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "83afc57b2ddd9aeed857fcbbd6ae8f86e32b7a1ee4198b545496b7a9e5bb4863",
+     "alphaBox": [
+      103,
+      108,
+      445,
+      472
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "85622747f74e55646d7616c6aa7a1e3e04e0fe512c882f2a23117a60bd532c53",
+     "alphaBox": [
+      102,
+      96,
+      451,
+      473
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "87db3e791b0cccda6265f5c89c6d8974bf35f11d932ab0ed7ddecdfc4b0dc345",
+     "alphaBox": [
+      102,
+      113,
+      429,
+      472
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "a25e8fe9bdc3adeb0cf8757d27fe4d43b79c826c04cee67b6cc6f7585a676adf",
+     "alphaBox": [
+      107,
+      114,
+      376,
+      457
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "dd64184cb4c83678f2e489cc2752d45415864da19da2063ae18704ee221c52b3",
+     "alphaBox": [
+      82,
+      102,
+      415,
+      473
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "f3979b0977b9278abc9e08f5ca03f61b321f3f8354df6395e1fe8c3f73f2065a",
+     "alphaBox": [
+      112,
+      24,
+      471,
+      446
+     ]
+    },
+    "attack_0": {
+     "file": "06_punch_slam_0.png",
+     "state": "punch_slam_0",
+     "sha256": "6e65e64a7056a2307e014500a17902b770ac12cb29bd5712eba798af1055a83a",
+     "alphaBox": [
+      77,
+      89,
+      431,
+      434
+     ]
+    },
+    "attack_1": {
+     "file": "07_punch_slam_1.png",
+     "state": "punch_slam_1",
+     "sha256": "153d462fd05c279702f9202c700fa73d48768c67a405ec6e154f1da9c8bdc5d8",
+     "alphaBox": [
+      31,
+      114,
+      437,
+      456
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "b98f95bce156630a4318875ea71f9a59b650d1696ecf0343771db5468130d9eb",
+     "alphaBox": [
+      56,
+      86,
+      413,
+      435
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "04331f1052a512c9302180cb1f2f94223fd8c00add3b34608ee9f70b2102f4cb",
+     "alphaBox": [
+      16,
+      186,
+      426,
+      468
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     102,
+     96,
+     451,
+     473
+    ],
+    "footLineCandidate": 473,
+    "footMiddleCandidate": 364
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/10_신전수문장",
+   "speciesId": "desert_temple_warden",
+   "name": "신전 수문장",
+   "role": "boss",
+   "zones": [
+    "T3"
+   ],
+   "canvas": [
+    489,
+    493
+   ],
+   "sharedCellOffset": [
+    52,
+    34
+   ],
+   "special": "guard",
+   "attackFamily": "crush",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "377d36bde293a375f249132e40df51f5ef6a30684135f109d1bdca7d07d0f5c6",
+     "alphaBox": [
+      64,
+      107,
+      412,
+      441
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "592a3ae26160a31cf9714e245f58ad01e6e6372ddf93a1d4856ecdc8ee624990",
+     "alphaBox": [
+      61,
+      96,
+      403,
+      434
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "5da1c9c56111add8b115e0f36b85f0913d466075a8d178a7de01a952a1eecb51",
+     "alphaBox": [
+      45,
+      111,
+      385,
+      449
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "63716d6cf93349a55b9ee0ece659c2400d2b4e4b098a58121818a52bf68c1a56",
+     "alphaBox": [
+      52,
+      111,
+      354,
+      451
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "a3a13e87b64987648e53a5f32485a479536d2ff03b100ea2ff40eecea8c4584b",
+     "alphaBox": [
+      20,
+      111,
+      389,
+      428
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "b837a5a840201a268d8b864efda1fdb9d23bb2e0690b634515b3404bfa366703",
+     "alphaBox": [
+      66,
+      61,
+      458,
+      368
+     ]
+    },
+    "attack_0": {
+     "file": "06_crush_0.png",
+     "state": "crush_0",
+     "sha256": "b4739339ca2486f0c374ed2ed9f894c80f8108ea2944ebe4a2aa5a0e5e442480",
+     "alphaBox": [
+      115,
+      61,
+      447,
+      390
+     ]
+    },
+    "attack_1": {
+     "file": "07_crush_1.png",
+     "state": "crush_1",
+     "sha256": "a97640079a0a8a380cd037bb96ca452156da66e806d0c3148b55db0bde05f3a6",
+     "alphaBox": [
+      108,
+      75,
+      395,
+      399
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "912937dfb048dd881d5a72fa67711f76cbbde23a464c9a47164e67565ce98127",
+     "alphaBox": [
+      54,
+      61,
+      401,
+      393
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "13c7736802c74faa0be34fc0803464d7b20cba6a5eec261ec0da975932c21d72",
+     "alphaBox": [
+      35,
+      113,
+      395,
+      447
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     45,
+     96,
+     412,
+     449
+    ],
+    "footLineCandidate": 449,
+    "footMiddleCandidate": 308
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/11_왕좌수문장",
+   "speciesId": "desert_throne_warden",
+   "name": "왕좌 수문장",
+   "role": "boss",
+   "zones": [
+    "P3"
+   ],
+   "canvas": [
+    573,
+    530
+   ],
+   "sharedCellOffset": [
+    74,
+    18
+   ],
+   "special": "guard",
+   "attackFamily": "earth_press",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "bfd25603c9226a3bfb78f26c29c7c544b3c3c786eeb324b857a7a0b70eb633cd",
+     "alphaBox": [
+      83,
+      122,
+      427,
+      442
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "e83a9262fbec972f029cef33c1a991f7c2f57f3465aca791ceeb66c57878bf05",
+     "alphaBox": [
+      73,
+      114,
+      418,
+      448
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "cf3acf3c583135d4db586e4e79443e94ce1294bcc93526c912ee8bb9d22fa4c4",
+     "alphaBox": [
+      71,
+      132,
+      400,
+      451
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "ed783cbb7789f006bdddaf20c87e5c5ac825808d148aa44fc9857c62f70f088c",
+     "alphaBox": [
+      49,
+      177,
+      395,
+      451
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "5a6bedde28d1d8640664a9c1beeca8e111ed9a8ac98f201aafff7519b408049a",
+     "alphaBox": [
+      40,
+      132,
+      404,
+      447
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "76f620f73a29b54f2a9052c75fc036b73dd3ee54da9d73a301d4dfb7cbf23be4",
+     "alphaBox": [
+      78,
+      68,
+      446,
+      340
+     ]
+    },
+    "attack_0": {
+     "file": "06_earth_press_0.png",
+     "state": "earth_press_0",
+     "sha256": "bccc503b4202096dce2a0cfa651f801b098f5e498e2d9486d4a097cb1ccbe38e",
+     "alphaBox": [
+      69,
+      130,
+      458,
+      419
+     ]
+    },
+    "attack_1": {
+     "file": "07_earth_press_1.png",
+     "state": "earth_press_1",
+     "sha256": "3d91821997afbfde2a2f1cbb672b90373ae3bc5751ca1e97f38df48d2b7a8333",
+     "alphaBox": [
+      80,
+      149,
+      535,
+      410
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "cdef2694918d9dddae7b616d06a64591f4b1039337899e9ebb58d385dd3856b5",
+     "alphaBox": [
+      125,
+      90,
+      431,
+      394
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "3be1ccd4a17b3d9887d1edfb3b843c9d52ebdfed4bc002ff856fc8814a183e3c",
+     "alphaBox": [
+      84,
+      140,
+      422,
+      415
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     71,
+     114,
+     427,
+     451
+    ],
+    "footLineCandidate": 451,
+    "footMiddleCandidate": 324
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  },
+  {
+   "folder": "몹/사막/12_파릉수문장",
+   "speciesId": "desert_broken_tomb_warden",
+   "name": "파릉 수문장",
+   "role": "boss",
+   "zones": [
+    "P4"
+   ],
+   "canvas": [
+    494,
+    486
+   ],
+   "sharedCellOffset": [
+    17,
+    -1
+   ],
+   "special": "guard",
+   "attackFamily": "grasp",
+   "frames": {
+    "idle_0": {
+     "file": "00_idle_0.png",
+     "state": "idle_0",
+     "sha256": "3e0ac8dbbf58d95b820f95db4e9660b52e65eec788cda215885fbe74deb8c07b",
+     "alphaBox": [
+      34,
+      74,
+      412,
+      385
+     ]
+    },
+    "idle_1": {
+     "file": "01_idle_1.png",
+     "state": "idle_1",
+     "sha256": "d79b60a03c7bce4cd06d7e634fd48c907ea07f86d1a1414187750351a803317b",
+     "alphaBox": [
+      43,
+      73,
+      412,
+      380
+     ]
+    },
+    "idle_2": {
+     "file": "02_idle_2.png",
+     "state": "idle_2",
+     "sha256": "5005516595835bfde88540004f81a2617665aa54f6a8d3a6ccd27fceab6182b9",
+     "alphaBox": [
+      53,
+      74,
+      412,
+      384
+     ]
+    },
+    "special": {
+     "file": "03_guard.png",
+     "state": "guard",
+     "sha256": "2253eef963e32406ac18f5bebc713429dacd9b3c53599f184b0460c32b8a7001",
+     "alphaBox": [
+      77,
+      89,
+      398,
+      384
+     ]
+    },
+    "prepare_0": {
+     "file": "04_prepare_0.png",
+     "state": "prepare_0",
+     "sha256": "78655516d927841d1f9205a2bbe204683479142040bedeaf33891526e03785eb",
+     "alphaBox": [
+      54,
+      80,
+      406,
+      394
+     ]
+    },
+    "prepare_1": {
+     "file": "05_prepare_1.png",
+     "state": "prepare_1",
+     "sha256": "68389f89c5ed32a87c1004e2cb61a515a122447fb0105ef517666e2879bc92c3",
+     "alphaBox": [
+      38,
+      57,
+      413,
+      335
+     ]
+    },
+    "attack_0": {
+     "file": "06_grasp_0.png",
+     "state": "grasp_0",
+     "sha256": "3319677057322eb5f7ca148dea553e2f8af7e77c4b69194eb5de4d604248add5",
+     "alphaBox": [
+      29,
+      74,
+      455,
+      334
+     ]
+    },
+    "attack_1": {
+     "file": "07_grasp_1.png",
+     "state": "grasp_1",
+     "sha256": "fca3ef9be9658a047d14f7b0ed7788e306f3ca2f6e36a194564101d9b1288a6d",
+     "alphaBox": [
+      77,
+      75,
+      462,
+      340
+     ]
+    },
+    "hit": {
+     "file": "08_hit.png",
+     "state": "hit",
+     "sha256": "a5263981f79d69e123e63c91359dbdf69abcaccf978198c344ace9d217bb6c19",
+     "alphaBox": [
+      50,
+      81,
+      393,
+      356
+     ]
+    },
+    "defeat": {
+     "file": "09_defeat.png",
+     "state": "defeat",
+     "sha256": "a514e12d1f2ca0ba8f9718ee86c7dacd99f261841225f498634f0e5e819bac83",
+     "alphaBox": [
+      25,
+      138,
+      406,
+      356
+     ]
+    }
+   },
+   "measured": {
+    "idleBox": [
+     34,
+     73,
+     412,
+     385
+    ],
+    "footLineCandidate": 385,
+    "footMiddleCandidate": 231
+   },
+   "runtime": {
+    "pivot": null,
+    "moveCollider": null,
+    "hurtBox": null,
+    "attackBox": null,
+    "launchSocket": null,
+    "displayScale": null,
+    "guardRule": null,
+    "applied": false
+   }
+  }
+ ],
+ "slots": [
+  "idle_0",
+  "idle_1",
+  "idle_2",
+  "special",
+  "prepare_0",
+  "prepare_1",
+  "attack_0",
+  "attack_1",
+  "hit",
+  "defeat"
+ ],
+ "zones": {
+  "T1": "T1W·T1E 제례 앞뜰",
+  "T2": "T2 무너진 봉헌품 회랑",
+  "T3": "T3 신전 수호문 전당",
+  "P1": "P1 고대 장례 미궁",
+  "P2": "P2 왕면 열병 전실",
+  "P3": "P3A·P3B 부왕 장례전",
+  "P4": "P4 무너진 왕릉 하부실"
+ }
+}

@@ -12,8 +12,8 @@ Only the places with a collision picture and a decided way in are built (user: o
   edge where the paved path starts below the ruined colonnade (user's picture); its lower right sand leads on east.
   desert_dry_flats 메마른 모래벌판, desert_quiet_dunes 고요한 사구 — the guide's way from 01 to 02, edge to edge (collision pictures made
   by tools/maps/desert-collision.py to the user's rules: user "니가 충돌 만들어 하나하나 내가 그린 퀄리티대로").
-  desert_buried_temple 매몰 신전 사막 — in from 03 on its left edge; its lower right stone door goes down to desert_11.
-  desert_11 매몰 도시의 출입구 → desert_17 잊힌 지하 도시의 광장 (detail maps, the Duat's scale until the user picks theirs).
+  desert_buried_temple 매몰 신전 사막 — in from 03 on its left edge; its lower right stone door goes down to desert_city_gate.
+  desert_city_gate 매몰 도시의 출입구 → desert_city_plaza 잊힌 지하 도시의 광장 (detail maps: the Duat's scale, camera 0.8, people ×1.4).
 Requires shapely and scipy (duat-pixel.py)."""
 import hashlib, json, math, shutil
 from pathlib import Path
@@ -32,9 +32,10 @@ DUAT_PX = 52 / 1.55
 BIG = {'desert_golden_dunes', 'desert_buried_temple', 'desert_quiet_dunes', 'desert_dry_flats'}
 SCALE = {'big': 0.44, 'detail': 1.0}
 # the guide's place number of each map: the art copy's name (docs/art/map-expansion/desert-NN.png) and review pictures.
-# 01..04 run under their meaning ids (tools/maps/desert-registry.py); the old desert_01..04 move in saves (src/core/state.js)
+# all run under their meaning ids (tools/maps/desert-registry.py); the old desert_01..04, desert_11, desert_17 move in saves
+# (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
-      'desert_11': '11', 'desert_17': '17'}
+      'desert_city_gate': '11', 'desert_city_plaza': '17'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자", then "1.4로 늘리고")
 WALK = {'big': 1.4, 'detail': 1.0}
@@ -59,13 +60,13 @@ FRONT = {
     # (inner edge x 615 down to its foot at 455-465) and the right jamb (inner edge 784 → 781, its foot at 528), each its own
     # foot so someone on the stairs in front of a jamb's foot is not put behind it (left jamb taken out, then back: user
     # "걍 다 가리게 하자")
-    'desert_11': [(530, [[560, 180], [840, 180], [840, 338], [784, 338], [615, 291], [560, 291]]),
+    'desert_city_gate': [(530, [[560, 180], [840, 180], [840, 338], [784, 338], [615, 291], [560, 291]]),
                   (460, [[560, 291], [615, 291], [615, 455], [600, 465], [560, 465]]),
                   (528, [[784, 338], [840, 338], [840, 528], [781, 528], [782, 450], [783, 380]])],
     # 17: the two doors the floor runs into. Middle house: the beam's lower edge 583,242 → 620,232 → 664,222 (the rows where
     # it turns dark), the left post's inner edge x 583 to its foot 352, the right post 664-682 to 334. Right house (records):
     # the lintel's lower edge level at 200, the posts' inner edges x 1209 (foot 342) and 1342 (foot 345)
-    'desert_17': [(352, [[545, 170], [720, 170], [720, 222], [664, 222], [620, 232], [583, 242], [545, 242]]),
+    'desert_city_plaza': [(352, [[545, 170], [720, 170], [720, 222], [664, 222], [620, 232], [583, 242], [545, 242]]),
                   (352, [[545, 242], [583, 242], [583, 352], [545, 352]]),
                   (334, [[664, 222], [682, 222], [682, 334], [664, 334]]),
                   (345, [[1160, 140], [1390, 140], [1390, 200], [1160, 200]]),
@@ -91,16 +92,16 @@ PLACES = [
     ('desert_buried_temple', '매몰 신전 사막', '02_매몰신전사막.png', '02_매몰신전사막.png',
      # the west way out only where the paved path meets the edge, the door landing just inside the door (user's circle and mark)
      {'west': ((44, 330), 'right'), 'door': ((1486, 684), 'down')},
-     [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_11', 'outside')]),
+     [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_city_gate', 'outside')]),
     # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
-    ('desert_11', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
+    ('desert_city_gate', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
      {'outside': ((300, 1350), 'up'), 'door': ((710, 390), 'down')},
      [('left', (0, 335, 14, 1536), 'desert_buried_temple', 'door'), ('bottom', (0, 1522, 644, 1536), 'desert_buried_temple', 'door'),
-      ('door', (640, 312, 790, 352), 'desert_17', 'east')]),
+      ('door', (640, 312, 790, 352), 'desert_city_plaza', 'east')]),
     # 17 잊힌 지하 도시의 광장: 오른쪽 계단 위가 11의 문 (guide: 17 우측 계단); 왼쪽 집 주거실·오른쪽 집 18 기록고는 다음
-    ('desert_17', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
+    ('desert_city_plaza', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
      {'east': ((1725, 505), 'left')},
-     [('east', (1760, 402, 1774, 537), 'desert_11', 'door')]),
+     [('east', (1760, 402, 1774, 537), 'desert_city_gate', 'door')]),
 ]
 
 

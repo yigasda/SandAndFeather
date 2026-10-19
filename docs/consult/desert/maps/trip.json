@@ -169,12 +169,12 @@
     100.16870629370631,
     45.5374125874126
    ],
-   "exit": "desert_11",
+   "exit": "desert_city_gate",
    "steps": 1
   },
   {
    "arrived": {
-    "map": "desert_11",
+    "map": "desert_city_gate",
     "x": 8.442307692307693,
     "y": 39.44038461538462,
     "entry": [
@@ -184,17 +184,17 @@
    }
   },
   {
-   "from": "desert_11",
+   "from": "desert_city_gate",
    "at": [
     20.66346153846154,
     9.690999999999988
    ],
-   "exit": "desert_17",
+   "exit": "desert_city_plaza",
    "steps": 18
   },
   {
    "arrived": {
-    "map": "desert_17",
+    "map": "desert_city_plaza",
     "x": 50.91826923076923,
     "y": 14.252884615384616,
     "entry": [
@@ -204,17 +204,17 @@
    }
   },
   {
-   "from": "desert_17",
+   "from": "desert_city_plaza",
    "at": [
     51.989269230769274,
     14.252884615384616
    ],
-   "exit": "desert_11",
+   "exit": "desert_city_gate",
    "steps": 17
   },
   {
    "arrived": {
-    "map": "desert_11",
+    "map": "desert_city_gate",
     "x": 20.66346153846154,
     "y": 10.825,
     "entry": [
@@ -224,7 +224,7 @@
    }
   },
   {
-   "from": "desert_11",
+   "from": "desert_city_gate",
    "at": [
     -0.12569230769229744,
     39.44038461538462

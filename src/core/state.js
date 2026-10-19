@@ -4,7 +4,7 @@ import { freshBond, fillBond } from './bond-state.js';
 import { MODULE } from './settings.js';
 import { ctx } from './st.js';
 
-export const STATE_VERSION = 13;
+export const STATE_VERSION = 14;
 
 export const freshState = () => ({
     v: STATE_VERSION,
@@ -55,6 +55,15 @@ export const freshState = () => ({
 // Upgrading an older save, one version at a time: STEPS[n] turns a version n save into version n+1.
 // A step only moves or renames what changed shape; new fields are filled from freshState() after the steps.
 // A save from a newer version of the extension is left as it is (never cut down to this version's shape).
+// a map renamed: where the save stands and the places seen there go with it
+function moveMaps(s, to) {
+    if (to[s.pos?.map]) s.pos.map = to[s.pos.map];
+    const seen = s.explore?.seen, old = new RegExp(`\\b(${Object.keys(to).join('|')})\\b`);
+    if (seen && typeof seen === 'object') for (const k of Object.keys(seen)) {
+        const n = k.replace(old, m => to[m]);
+        if (n !== k) { seen[n] = seen[k]; delete seen[k]; }
+    }
+}
 const STEPS = {
     10: s => { fillBond(s); }, // blank bond only; existing RP never grants points
     // 11 → 12: 낚시 기록, 업적·칭호, 탐사율, 보물지도 are new (filled below). Secrets, woken obelisks, the 도감 and the map
@@ -62,15 +71,9 @@ const STEPS = {
     11: () => {},
     // 12 → 13: the first desert maps went out as desert_01..04 and run under their meaning ids now (tools/maps/desert.py):
     // a save standing there stays where it stood, and the places seen there stay seen
-    12: s => {
-        const to = { desert_01: 'desert_golden_dunes', desert_02: 'desert_buried_temple', desert_03: 'desert_quiet_dunes', desert_04: 'desert_dry_flats' };
-        if (to[s.pos?.map]) s.pos.map = to[s.pos.map];
-        const seen = s.explore?.seen;
-        if (seen && typeof seen === 'object') for (const k of Object.keys(seen)) {
-            const n = k.replace(/desert_0[1-4]/, m => to[m]);
-            if (n !== k) { seen[n] = seen[k]; delete seen[k]; }
-        }
-    },
+    12: s => moveMaps(s, { desert_01: 'desert_golden_dunes', desert_02: 'desert_buried_temple', desert_03: 'desert_quiet_dunes', desert_04: 'desert_dry_flats' }),
+    // 13 → 14: the same for the two detail maps tried as desert_11 and desert_17 (test saves stood there)
+    13: s => moveMaps(s, { desert_11: 'desert_city_gate', desert_17: 'desert_city_plaza' }),
     1: () => {},  // 1 → 2: ledger, bag, news, recent are new; they are filled below
     // 2 → 3: 말 걸기 no longer moves the scene by itself. Talk lines made before that, still waiting, are dropped
     // so an ongoing scene is not pulled to the temple courtyard.

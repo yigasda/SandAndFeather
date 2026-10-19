@@ -1,10 +1,10 @@
 {
- "id": "desert_11",
+ "id": "desert_city_gate",
  "name": "매몰 도시의 출입구",
  "tile": 16,
  "scene": "desert",
  "referenceScenes": [
-  "desert_11"
+  "desert_city_gate"
  ],
  "legend": {
   ".": {
@@ -6705,7 +6705,7 @@
    "y0": 9.3,
    "x1": 23.548076923076923,
    "y1": 10.492307692307692,
-   "to": "desert_17",
+   "to": "desert_city_plaza",
    "at": "east"
   }
  ],

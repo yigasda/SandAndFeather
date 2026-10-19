@@ -337,7 +337,7 @@
   {
    "no": "11",
    "id": "desert_city_gate",
-   "shippedAs": "desert_11",
+   "shippedAs": "desert_city_gate",
    "name": "매몰 도시의 출입구",
    "pictures": [
     {
@@ -589,7 +589,7 @@
   {
    "no": "17",
    "id": "desert_city_plaza",
-   "shippedAs": "desert_17",
+   "shippedAs": "desert_city_plaza",
    "name": "잊힌 지하 도시의 광장",
    "pictures": [
     {

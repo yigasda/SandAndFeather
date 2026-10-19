@@ -1,10 +1,10 @@
 {
- "id": "desert_17",
+ "id": "desert_city_plaza",
  "name": "잊힌 지하 도시의 광장",
  "tile": 16,
  "scene": "desert",
  "referenceScenes": [
-  "desert_17"
+  "desert_city_plaza"
  ],
  "legend": {
   ".": {
@@ -7101,7 +7101,7 @@
    "y0": 11.982692307692307,
    "x1": 52.878846153846155,
    "y1": 16.00673076923077,
-   "to": "desert_11",
+   "to": "desert_city_gate",
    "at": "door"
   }
  ],
