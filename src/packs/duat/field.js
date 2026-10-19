@@ -97,6 +97,45 @@ function targets(s) {
     return out;
 }
 const wall = (x, y) => map().solidRect(x - 0.08, y - 0.08, x + 0.08, y + 0.08);
+// a clear line between two points (no wall along it): a shot or a rush only when it can reach
+function clearLine(a, b) {
+    const d = Math.hypot(b.x - a.x, b.y - a.y), n = Math.ceil(d / 0.2);
+    for (let k = 1; k < n; k++) if (wall(a.x + (b.x - a.x) * k / n, a.y + (b.y - a.y) * k / n)) return false;
+    return true;
+}
+// the way round walls (user: they stood stuck against a wall): breadth-first over half-tile cells where its body fits,
+// at most 14 tiles out; the next point along the way (or null when there is none). Asked again every 0.3 s at most.
+const CELL = 0.5, fits = (x, y) => !solid(map(), x - 0.5, y - 0.8);
+function wayTo(o, gx, gy) {
+    const c = centre(o), t = now();
+    if (o.way && t - o.way.at < 0.3 && Math.hypot(o.way.gx - gx, o.way.gy - gy) < 0.6) return o.way.next;
+    const m = map(), W = Math.ceil(m.w / CELL), H = Math.ceil(m.h / CELL), R = 28;
+    const sx = Math.floor(c.x / CELL), sy = Math.floor(c.y / CELL), tx = Math.floor(gx / CELL), ty = Math.floor(gy / CELL);
+    const key = (x, y) => y * W + x, from = new Map([[key(sx, sy), -1]]), q = [[sx, sy]];
+    const ok = (x, y) => x >= 0 && y >= 0 && x < W && y < H && Math.abs(x - sx) <= R && Math.abs(y - sy) <= R && fits((x + 0.5) * CELL, (y + 0.5) * CELL);
+    let end = null, best = null, bd = 1e9;
+    for (let i = 0; i < q.length && !end; i++) {
+        const [x, y] = q[i], d = Math.hypot(x - tx, y - ty);
+        if (d < bd) { bd = d; best = [x, y]; }
+        if (d <= 1) { end = [x, y]; break; }
+        for (const [ax, ay] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+            const nx = x + ax, ny = y + ay;
+            if (from.has(key(nx, ny)) || !ok(nx, ny) || (ax && ay && (!ok(x + ax, y) || !ok(x, y + ay)))) continue;
+            from.set(key(nx, ny), key(x, y)); q.push([nx, ny]);
+        }
+    }
+    end ||= best;   // cannot get there: as close as it can
+    const cells = [];
+    for (let k = key(end[0], end[1]); k !== -1 && k !== undefined; k = from.get(k)) cells.push(k);
+    cells.reverse();
+    // the farthest cell of the first few that it can go to in a straight line
+    let next = null;
+    for (const k of cells.slice(1, 6)) { const p = { x: (k % W + 0.5) * CELL, y: (Math.floor(k / W) + 0.5) * CELL }; if (clearLine(c, p)) next = p; else break; }
+    if (!next && cells.length > 1) next = { x: (cells[1] % W + 0.5) * CELL, y: (Math.floor(cells[1] / W) + 0.5) * CELL };
+    if (cells.length <= 1) next = { x: gx, y: gy };
+    o.way = { at: t, gx, gy, next };
+    return next;
+}
 // the warning: fix whom it means; while 준비 0 its eye follows them, at 준비 1 the line is fixed
 function warn(o, p) { o.st = 'prepare'; o.t = 0; o.target = p.who; o.aim = null; }
 function aimAt(o, s) {
@@ -104,19 +143,29 @@ function aimAt(o, s) {
     if (!p) return;
     const dx = p.x - c.x, dy = p.y - c.y, d = Math.hypot(dx, dy) || 1;
     o.look = { dx: dx / d, dy: dy / d };
+    if (Math.abs(dx) > 0.1) o.faceR = dx > 0;
 }
 function stepMob(m, o, dt, s) {
     o.t += dt;
-    const T = timing(o), c = centre(o), tg = targets(s), near = tg.map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d)[0];
+    const T = timing(o), c = centre(o), tg = targets(s).map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d);
+    // whom it goes for: the one it already fights (or who last struck it) while they stay in reach, else the nearest
+    let near = tg.find(q => q.p.who === o.foe && q.d < AGGRO + 2.5) || tg[0];
+    if (near && near.d >= AGGRO && near.p.who !== o.foe) near = null;
+    o.foe = near ? near.p.who : (tg[0]?.d < AGGRO ? tg[0].p.who : null);
     const move = (tx, ty, speed) => {
         const dx = tx - c.x, dy = ty - c.y, d = Math.hypot(dx, dy);
         if (d < 0.05) return true;
-        const k = Math.min(d, speed * dt) / d, nx = o.x + dx * k, ny = o.y + dy * k;
+        if (Math.abs(dx) > 0.05) o.faceR = dx > 0;
+        let k = Math.min(d, speed * dt) / d, nx = o.x + dx * k, ny = o.y + dy * k;
+        // not on top of another creature: a little push away from any within 0.9
+        for (const q of mobs) if (q !== o && q.st !== 'dead') { const e = centre(q), ex = c.x - e.x, ey = c.y - e.y, ed = Math.hypot(ex, ey); if (ed < 0.9 && ed > 0.01) { nx += ex / ed * speed * dt * 0.5; ny += ey / ed * speed * dt * 0.5; } }
         let moved = false;
         if (!solid(map(), nx, o.y)) { o.x = nx; moved = true; }
         if (!solid(map(), o.x, ny)) { o.y = ny; moved = true; }
         return !moved;
     };
+    // along the way round walls to a point
+    const go = (tx, ty, speed) => { const w = wayTo(o, tx, ty); return w ? move(w.x, w.y, speed) : true; };
     switch (o.st) {
         case 'dead': if (o.t > T.die[0] + T.die[1]) o.gone = true; return;
         case 'hit': if (o.t > o.stun) { o.st = 'chase'; o.t = 0; } return;
@@ -149,16 +198,27 @@ function stepMob(m, o, dt, s) {
             return;
     }
     // drifting about, or coming at whoever it sees
-    if (near && near.d < AGGRO) {
+    if (near) {
         o.st = 'chase';
-        if (near.d <= o.e.range && now() >= o.restAt) { warn(o, near.p); return; }
-        const keep = o.e.attack === 'shot' ? o.e.range * 0.75 : 0.6;   // the hourglass keeps its distance
-        if (near.d > keep && move(near.p.x, near.p.y, o.e.speed)) { o.tx = c.x + rand(-2, 2); o.ty = c.y + rand(-2, 2); }
+        const p = near.p, seen = clearLine(c, p);
+        if (near.d <= o.e.range && seen && now() >= o.restAt) { warn(o, p); return; }
+        const shot = o.e.attack === 'shot', keep = shot ? o.e.range * 0.6 : 0.9;   // the hourglass keeps its distance
+        const ax = (c.x - p.x) / (near.d || 1), ay = (c.y - p.y) / (near.d || 1);
+        o.orbit ||= Math.random() < 0.5 ? 1 : -1;
+        if (now() < o.restAt || (seen && near.d < keep)) {
+            // resting after a blow, or too close: step round them at its distance (not standing still)
+            const want = shot ? o.e.range * 0.8 : Math.max(1.4, o.e.range * 0.75), a = Math.atan2(ay, ax) + o.orbit * 0.9;
+            const gx = p.x + Math.cos(a) * want, gy = p.y + Math.sin(a) * want;
+            if (!fits(gx, gy) || move(gx, gy, o.e.speed * 0.6)) o.orbit = -o.orbit;
+            o.faceR = p.x > c.x;
+            return;
+        }
+        go(p.x, p.y, o.e.speed);
         return;
     }
     o.st = 'wander';
     if (o.wait > 0) { o.wait -= dt; return; }
-    const stuck = move(o.tx, o.ty, o.e.speed * 0.5);
+    const stuck = go(o.tx, o.ty, o.e.speed * 0.5);
     if (stuck || Math.hypot(o.tx - c.x, o.ty - c.y) < 0.15) {
         for (let k = 0; k < 20; k++) { const tx = c.x + rand(-4, 4), ty = c.y + rand(-4, 4); if (!solid(map(), tx - 0.5, ty - 0.8)) { o.tx = tx; o.ty = ty; break; } }
         o.wait = rand(0.4, 1.6);
@@ -284,6 +344,7 @@ function damage(s, o, n, push = 0, from = null, kind = '') {
     if (o.st === 'dead') return;
     const T = timing(o), c = centre(o);
     o.shownAt = now();
+    if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) o.foe = q.who; }
     let st = '';
     if (o.st === 'guard') {
         if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); }
@@ -519,7 +580,8 @@ function drawMob(g, o, sx, sy, z, ts) {
     const shake = warn1 ? Math.sin(t * 60) * z * 0.6 : 0;
     g.save();
     g.globalAlpha = o.st === 'dead' ? Math.max(0, 1 - die) : 1;
-    g.translate(gx + shake, baseY);   // never mirrored: the carvings (an ankh, the eye) read one way
+    g.translate(gx + shake, baseY);
+    if (o.faceR) g.scale(-1, 1);   // the pictures face left: mirrored to face someone on its right (user: it looked away)
     g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
     g.drawImage(DATA.spriteArt[a.file], r[0], r[1], r[2], r[3], -r[4] * k, -r[5] * k, r[2] * k, r[3] * k);
     g.restore();
