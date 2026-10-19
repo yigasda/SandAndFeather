@@ -382,7 +382,7 @@ function damage0(s, o, n, push, from, kind) {
     if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) o.foe = q.who; }
     let st = '';
     if (o.st === 'guard') {
-        if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); }
+        if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); note({ ev: 'break', mob: o.i }); }
         else { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); }
     } else mobFx(o, 'hit');
     o.hp -= n;
@@ -442,15 +442,36 @@ export function skill() {
     me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'skill', who: leadOf(s) });
     useSkill(s, leadOf(s), feet(), me.face, true);
 }
+// how far its body reaches past its middle (data body, tiles; 0: a point, as every Duat creature)
+const body = o => o.e.body || 0;
+// where his leap comes down short of a creature: this far from its body's edge, inside his 1.2 reach
+const LAND_GAP = 0.6;
+// the nearest creature ahead on his leap: in front, across no more than his blow's width (plus its body), no wall
+// between, and one he can come down short of before the wall or the leap's end
+function leapTarget(f, dir, x0, x1) {
+    let best = null, bestAlong = Infinity;
+    for (const o of mobs) {
+        if (o.st === 'dead') continue;
+        const c = centre(o), b = body(o), along = (c.x - f.x) * dir, dy = Math.abs(c.y - f.y);
+        if (along <= 0 || dy >= 0.75 + b || !clearLine(f, c)) continue;
+        const gx = Math.sqrt(Math.max(0, (b + LAND_GAP) ** 2 - dy ** 2));
+        if (along - gx > (x1 - x0) * dir + 1e-6) continue;   // too far: his leap ends (or a wall stops it) first
+        if (along < bestAlong) { best = o; bestAlong = along; }
+    }
+    return best;
+}
 // each one's own 기술 (no name is shown, user: "오글거린다"); the one with her uses theirs too (MATE_SKILL_CD)
 function useSkill(s, who, f, face, lead) {
-    const hits = (g, r, n, push) => { for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - g.x, c.y - g.y) < r) damage(s, o, n, push, g, 'skill'); } };
+    const hits = (g, r, n, push) => { for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - g.x, c.y - g.y) - body(o) < r) damage(s, o, n, push, g, 'skill'); } };
     if (who === 'set') hits(f, 2, power(s, who) * 2, 0.8);              // 모래폭풍 강타: everything around, twice as hard, pushed away
     else if (who === 'horus') {                                          // 하늘에서 내리꽂기
-        if (lead) {   // up, 2.5 tiles ahead, down on everything around where he lands
+        if (lead) {   // up, at most 2.5 tiles ahead, down on everything around where he lands
             const dir = face === 'right' ? 1 : -1, x0 = player.x;
             let x1 = x0;
             for (let k = 1; k <= 25; k++) { const x = x0 + dir * k * 0.1; if (solid(map(), x, player.y)) break; x1 = x; }
+            // user (A안): not over the nearest one ahead on his way: he comes down just short of it, its body inside his reach
+            const o = leapTarget(f, dir, x0, x1);
+            if (o) { const c = centre(o), b = body(o), gx = Math.sqrt(Math.max(0, (b + LAND_GAP) ** 2 - (c.y - f.y) ** 2)); x1 = c.x - dir * gx - 0.5; if ((x1 - x0) * dir < 0) x1 = x0; }
             me.act.jump = { x0, x1 };
             setTimeout(() => hits(feet(), 1.2, power(s, who) * 2, 0.5), SHOW.jump * 1000);
         } else {      // the one with her: up and down in their place, onto what is in front
