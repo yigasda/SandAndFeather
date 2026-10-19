@@ -8,7 +8,7 @@
 
 ## 프레임 0·1 실제 입력과 프롬프트
 
-[최초 배치의 정확한 프롬프트 JSON](initial-prompts.json) 중 배열 0과 1이 채택 프레임 0과 1의 실제 요청이다. 배열 2는 반려된 최초 2번 결과의 기록이며 채택 2의 프롬프트가 아니다. 반려 이미지는 이 폴더에 올리지 않았다.
+[정확한 프롬프트 JSON](initial-prompts.json)의 배열 0과 1이 채택 프레임 0과 1의 실제 요청이다.
 
 걷기 0 입력 순서:
 1. references/set-front-armed-walk-0.png — 채택 정면 걷기 0
@@ -22,7 +22,7 @@
 
 ## 프레임 2 실제 계보
 
-[채택 2의 정확한 수정 프롬프트](frame-2-accepted-exact-prompt.txt)를 사용했다. 입력 이미지는 **채택 뒷걷기 0 (approved/set-back-armed-walk-0.png) 한 장뿐**이다. 반려된 최초 2번 시트나 정면 걷기 2, 뒷걷기 2 가이드를 이번 채택 2 생성 입력으로 사용하지 않았다.
+[채택 2의 정확한 수정 프롬프트](frame-2-accepted-exact-prompt.txt)를 사용했다. 입력 이미지는 **채택 뒷걷기 0 (approved/set-back-armed-walk-0.png) 한 장뿐**이다.
 
 ## 보존 및 적용
 

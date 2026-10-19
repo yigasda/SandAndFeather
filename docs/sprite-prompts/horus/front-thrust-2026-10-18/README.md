@@ -18,6 +18,6 @@ brown-fix-exact-prompt.txt 실제 입력 순서:
 2. references/1000483821.jpg — 오른쪽 타격 인물 위치 표시
 3. references/1000483818.jpg — 왼쪽 준비 인물 위치 표시
 
-갈색선은 창 뒤쪽 자루의 새 위치 지시이며 완성 무기의 색이 아니다. 채택 최종 시트는 provenance/accepted-brown-fixed-sheet.png다. 이 시트에서 잘라낸 원본 PNG를 그대로 보존한다. 중간 v2/repair 반려 시트는 포함하지 않는다.
+갈색선은 창 뒤쪽 자루의 새 위치 지시이며 완성 무기의 색이 아니다. 채택 최종 시트는 provenance/accepted-brown-fixed-sheet.png다. 이 시트에서 잘라낸 원본 PNG를 그대로 보존한다.
 
 PNG는 docs/art/chibi-refresh/final/horus/combat-attack/에도 동일 바이트로 보존한다. 런타임/아틀라스/앵커 작업은 별도다. 정확한 요청은 원문 프롬프트를 따른다.

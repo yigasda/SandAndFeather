@@ -1,0 +1,19 @@
+FINAL preferred sheet: Somang-six-new-frames-spaced.png
+1024x1536 RGBA. Nominal equal cells 512x512. Order 0,1 / 2,3 / 5,6.
+Center vertical seam alpha maximum 1; horizontal seams maxima 1 and 2. No visible petals/sparks cross any cell boundary.
+Alpha >16 local bounding boxes (inclusive):
+frame0 (133,230,446,420)
+frame1 (57,111,424,433)
+frame2 (107,96,460,416)
+frame3 (50,67,440,422)
+frame5 (96,18,463,375)
+frame6 (78,175,419,355)
+Approximate local ground ellipse focus anchors, visually estimated:
+frame0 (287,360)
+frame1 (244,350)
+frame2 (285,288)
+frame3 (244,279)
+frame5 (285,273)
+frame6 (244,292)
+Image generation did not enforce consistent anchor despite explicit prompt; use these ellipse focuses rather than bounding-box centers when packaging. Last few rows have higher ground focuses, requiring translation for consistent animation.
+All six poses retained. Some edge style smoothing occurred from the imagegen correction. Exact prompt recorded in spatial-correction-prompt.txt; reference was original six-frame sheet.

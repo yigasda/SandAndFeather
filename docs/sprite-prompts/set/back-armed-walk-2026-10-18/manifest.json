@@ -1,9 +1,9 @@
 [
   {
     "path": "README.md",
-    "bytes": 1916,
-    "sha256": "2cbb57a8bc259cadb0a41728f7b5b7bb1769b1f4e57f6147333524a5632f6625",
-    "git_blob_sha": "5463e11ec25f0d9e387053da2d567250728a582e"
+    "bytes": 1613,
+    "sha256": "81007774f15e9ec36de4227fbfe629c61c4478b53247917c1eee1dbf6cf1bb3c",
+    "git_blob_sha": "c4c39e04c251cc047de3c790828e7147a064acdb"
   },
   {
     "path": "approved/set-back-armed-walk-0.png",
@@ -40,9 +40,9 @@
   },
   {
     "path": "initial-prompts.json",
-    "bytes": 4551,
-    "sha256": "42af40efb48f7a3b4092999271068166a4fd13bfc9c05c88e099da850bf485a6",
-    "git_blob_sha": "4d6166f95f21962ede21ddb1cb9df71c300f34f5"
+    "bytes": 3026,
+    "sha256": "e6ff5364d6b1be1c084faffb0b984e39cce6df5daa5597a84ea833e9edd95cbc",
+    "git_blob_sha": "4c7f394d793364acc9acd93941ec91c4651c46d6"
   },
   {
     "path": "references/1000483756.png",

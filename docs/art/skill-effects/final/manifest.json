@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "approvalEvidence": {
+    "initial": "개굿 채택! 최종 최택본들\n개별 png로 메인에 올려!",
+    "somang_six_frames": {
+      "question": "응ㅋㅋ 그 한 장만 꽃잎 디테일이랑 선 느낌이 달라서 중간에 튀었어. 빼니까 펼쳐졌다 흩어지는 흐름이 더 일관돼! 소망은 이 6프레임 버전으로 메인에 올릴까?",
+      "answer": "웅!"
+    }
+  },
+  "format": "RGBA PNG",
+  "frame_counts": {
+    "Set": 7,
+    "Horus": 7,
+    "Somang": 6
+  },
+  "note": "Approved individual skill-effect frames. Somang excludes the former hold frame 4; old frames 0,1,2,3,5,6 are numbered 0–5. Game runtime integration is separate.",
+  "files": [
+    {
+      "character": "Set",
+      "frame": 0,
+      "size": 93515,
+      "sha256": "44a2b1042f9b4b91f9550703a8836c0601ba80e05dae7367dfee6530d43c4591",
+      "canvas": [
+        2400,
+        2000
+      ],
+      "anchor": [
+        1200,
+        1100
+      ],
+      "duration_ms": 130,
+      "path": "set/set-skill-sandstorm-0.png"
+    },
+    {
+      "character": "Set",
+      "frame": 1,
+      "size": 216889,
+      "sha256": "b55c381d4d1e3a865f4de3a1e365acb8cb9b5679aec284938e3ce81b74246ccd",
+      "canvas": [
+        2400,
+        2000
+      ],
+      "anchor": [
+        1200,
+        1100
+      ],
+      "duration_ms": 110,
+      "path": "set/set-skill-sandstorm-1.png"
+    },
+    {
+      "character": "Set",
+      "frame": 2,
+      "size": 302863,
+      "sha256": "432054b7579225dafccdd906bb3077ada933f3def3d60eb65331c2f696986eed",
+      "canvas": [
+        2400,
+        2000
+      ],
+      "anchor": [
+        1200,
+        1100
+      ],
+      "duration_ms": 200,
+      "path": "set/set-skill-sandstorm-2.png"
+    },
+    {
+      "character": "Set",
+      "frame": 3,
+      "size": 2429706,
+      "sha256": "e841a33b4f7f152c15f8cf2d2fade205863cf8b289bbb5b103f1077161b67b60",
+      "canvas": [
+        2400,
+        2000
+      ],
+      "anchor": [
+        1200,
+        1100
+      ],
+      "duration_ms": 80,
+      "path": "set/set-skill-sandstorm-3.png"
+    },
+    {
+      "character": "Set",
+      "frame": 4,
+      "size": 494212,
+      "sha256": "7e0143fe868ec166a5daa404a6e21f22a2e41832227d13ff492dbedbf395aa57",
+      "canvas": [
+        2400,
+        2000
+      ],
+      "anchor": [
+        1200,
+        1100
+      ],
+      "duration_ms": 90,
+      "path": "set/set-skill-sandstorm-4.png"
+    },
+    {
+      "character": "Set",
+      "frame": 5,
+      "size": 262924,
+      "sha256": "42f8a99178fb4b8abf104580f6179962ef87386410c083367bed81c84df79a63",
+      "canvas": [
+        2400,
+        2000
+      ],
+      "anchor": [
+        1200,
+        1100
+      ],
+      "duration_ms": 130,
+      "path": "set/set-skill-sandstorm-5.png"
+    },
+    {
+      "character": "Set",
+      "frame": 6,
+      "size": 102201,
+      "sha256": "3465ac91689757009a74976c87829a47594dd15824dbf61c9e4e27b24e0f88c6",
+      "canvas": [
+        2400,
+        2000
+      ],
+      "anchor": [
+        1200,
+        1100
+      ],
+      "duration_ms": 220,
+      "path": "set/set-skill-sandstorm-6.png"
+    },
+    {
+      "character": "Horus",
+      "frame": 0,
+      "size": 464256,
+      "sha256": "524462f12eca34638e4adfedd514bfdb815ff95714ac78e2e5ac8ffe2e29d0ef",
+      "canvas": [
+        3200,
+        3200
+      ],
+      "anchor": [
+        1600,
+        1800
+      ],
+      "duration_ms": 130,
+      "path": "horus/horus-skill-impact-0.png"
+    },
+    {
+      "character": "Horus",
+      "frame": 1,
+      "size": 535783,
+      "sha256": "c0aaf347f9e376ef03348f5e584aab1a0884d05b8d5c8b7eb7ffe21af6929886",
+      "canvas": [
+        3200,
+        3200
+      ],
+      "anchor": [
+        1600,
+        1800
+      ],
+      "duration_ms": 110,
+      "path": "horus/horus-skill-impact-1.png"
+    },
+    {
+      "character": "Horus",
+      "frame": 2,
+      "size": 511255,
+      "sha256": "92067b65c0e1ebe0a7cc1bdcf08723ad9f99ca000867122ba21e13d9a3800229",
+      "canvas": [
+        3200,
+        3200
+      ],
+      "anchor": [
+        1600,
+        1800
+      ],
+      "duration_ms": 200,
+      "path": "horus/horus-skill-impact-2.png"
+    },
+    {
+      "character": "Horus",
+      "frame": 3,
+      "size": 3015730,
+      "sha256": "670802dab2218cb8cfef49df3cd936866bed608c46ebb3a8a1ded18ceb83ed54",
+      "canvas": [
+        3200,
+        3200
+      ],
+      "anchor": [
+        1600,
+        1800
+      ],
+      "duration_ms": 80,
+      "path": "horus/horus-skill-impact-3.png"
+    },
+    {
+      "character": "Horus",
+      "frame": 4,
+      "size": 570816,
+      "sha256": "1ba1390650e4964a4abbf2f260ca827de8adfce403198ae1100d7db4553d033d",
+      "canvas": [
+        3200,
+        3200
+      ],
+      "anchor": [
+        1600,
+        1800
+      ],
+      "duration_ms": 90,
+      "path": "horus/horus-skill-impact-4.png"
+    },
+    {
+      "character": "Horus",
+      "frame": 5,
+      "size": 485501,
+      "sha256": "aaf70ebf3fcc2ed79a2904ebfa963825f5f3869e0b54bf703d0ca53f611a0893",
+      "canvas": [
+        3200,
+        3200
+      ],
+      "anchor": [
+        1600,
+        1800
+      ],
+      "duration_ms": 130,
+      "path": "horus/horus-skill-impact-5.png"
+    },
+    {
+      "character": "Horus",
+      "frame": 6,
+      "size": 392790,
+      "sha256": "bcc9966b3a62f2652efd03af926eb4d0523757a99560379b013b5c6d3f45dd0c",
+      "canvas": [
+        3200,
+        3200
+      ],
+      "anchor": [
+        1600,
+        1800
+      ],
+      "duration_ms": 220,
+      "path": "horus/horus-skill-impact-6.png"
+    },
+    {
+      "character": "Somang",
+      "frame": 0,
+      "size": 400273,
+      "sha256": "9a79309986f4671086d413aafbb84b30c09ff6875a452015554fbb3909251ce3",
+      "canvas": [
+        2800,
+        2600
+      ],
+      "anchor": [
+        1400,
+        1500
+      ],
+      "duration_ms": 140,
+      "source_frame": 0,
+      "path": "somang/somang-skill-shield-0.png"
+    },
+    {
+      "character": "Somang",
+      "frame": 1,
+      "size": 563564,
+      "sha256": "2fe538a0d00e06f874b1fc80bf356dede3202225253127aad610825bf0a249da",
+      "canvas": [
+        2800,
+        2600
+      ],
+      "anchor": [
+        1400,
+        1500
+      ],
+      "duration_ms": 130,
+      "source_frame": 1,
+      "path": "somang/somang-skill-shield-1.png"
+    },
+    {
+      "character": "Somang",
+      "frame": 2,
+      "size": 566592,
+      "sha256": "47afb8585ccf7d5de3d5b8b72196041b153b5d8178cb17f4d7638ec50069bd44",
+      "canvas": [
+        2800,
+        2600
+      ],
+      "anchor": [
+        1400,
+        1500
+      ],
+      "duration_ms": 160,
+      "source_frame": 2,
+      "path": "somang/somang-skill-shield-2.png"
+    },
+    {
+      "character": "Somang",
+      "frame": 3,
+      "size": 614995,
+      "sha256": "39c3084c6615725531fc3301bbbeabe6c4180646213010d60c4308db37ad1fbe",
+      "canvas": [
+        2800,
+        2600
+      ],
+      "anchor": [
+        1400,
+        1500
+      ],
+      "duration_ms": 300,
+      "source_frame": 3,
+      "path": "somang/somang-skill-shield-3.png"
+    },
+    {
+      "character": "Somang",
+      "frame": 4,
+      "size": 579843,
+      "sha256": "91675f289b068474caca11f9c172b3dee618d1ad1f803618ef5e92c500bed37d",
+      "canvas": [
+        2800,
+        2600
+      ],
+      "anchor": [
+        1400,
+        1500
+      ],
+      "duration_ms": 180,
+      "source_frame": 5,
+      "path": "somang/somang-skill-shield-4.png"
+    },
+    {
+      "character": "Somang",
+      "frame": 5,
+      "size": 416318,
+      "sha256": "b4dc20b1aebc4a0912966573a0877e23a27f598a126b0e0fdd8b3c6ba622893e",
+      "canvas": [
+        2800,
+        2600
+      ],
+      "anchor": [
+        1400,
+        1500
+      ],
+      "duration_ms": 260,
+      "source_frame": 6,
+      "path": "somang/somang-skill-shield-5.png"
+    }
+  ]
+}
