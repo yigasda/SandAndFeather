@@ -35,7 +35,8 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # all run under their meaning ids (tools/maps/desert-registry.py); the old desert_01..04, desert_11, desert_17 move in saves
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
-      'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15'}
+      'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
+      'desert_forecourt_west': 'T1W'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자", then "1.4로 늘리고")
 WALK = {'big': 1.4, 'detail': 1.0}
@@ -119,6 +120,11 @@ PLACES = [
     ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
      {'east': ((1680, 620), 'left')},
      []),
+    # T1W 서쪽 제례 앞뜰 (desert_forecourt_west): 가죽 방패병 한 마리 전투(B3, data/desert.json field). 02·T1E 출입은 아직
+    # 없음: 석재 마당 왼쪽의 시험 착지 하나(시험 이동으로만)
+    ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
+     {'yard': ((900, 650), 'right')},
+     []),
 ]
 
 
@@ -151,7 +157,7 @@ def main():
         ys, xs = np.nonzero(lab == big); mid = (int(xs[len(xs) // 2]), int(ys[len(ys) // 2]))
         first = next(iter(ways.values()))[0]
         route, steps = P.path(safe, first, mid)
-        P.review(image, mask, route, REVIEW, int(NO[ident]))
+        P.review(image, mask, route, REVIEW, int(NO[ident]) if NO[ident].isdigit() else NO[ident])
         for k, ((x, y), _) in ways.items():
             for e, (x0, y0, x1, y1), *_ in exits:
                 g = math.hypot(max(x0 - x, 0, x - x1), max(y0 - y, 0, y - y1))

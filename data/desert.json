@@ -1,0 +1,36 @@
+{
+ "_about": "사막 필드 전투(src/packs/duat/field.js를 같이 씀, 사막 맵만 이 파일). enemies = 종별 수치(시작 추천안, 화면으로 확정), float = 부유 여부(그림 높이만, 충돌은 지상과 같음), maps.<id>.spawns = 정해 둔 자리(spawnId는 저장 키, 바꾸지 않음). 재출현: 쓰러진 개체는 게임 하루가 지난 뒤 이 맵에 다시 들어올 때(사용자). 최초 처치와 지금 상태는 따로 저장(s.desertFight). 공통 시간·가드 규칙(가드 중 일반 공격 30 %, 기술은 가드를 깸)은 두아트 field.timing 그대로.",
+ "enemies": {
+  "desert_leather_shield": {
+   "ko": "가죽 방패병",
+   "hp": 34,
+   "atk": 3,
+   "range": 2.4,
+   "speed": 1.3,
+   "attack": "dash",
+   "dash": {
+    "dist": 2.4,
+    "time": 0.36,
+    "hit": 0.65
+   },
+   "guard": 0.4,
+   "float": false,
+   "fx": {
+    "color": "#c98b5a",
+    "size": 1.1
+   }
+  }
+ },
+ "maps": {
+  "desert_forecourt_west": {
+   "spawns": [
+    {
+     "id": "t1w.shield.1",
+     "kind": "desert_leather_shield",
+     "x": 38.25,
+     "y": 14.1
+    }
+   ]
+  }
+ }
+}

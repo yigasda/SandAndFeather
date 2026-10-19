@@ -25,6 +25,11 @@
 // armed front / back pictures (ready, walk, the thrust), and 공격 strikes that way; 기술·주문·피격·지침 have side
 // pictures only and keep to the way she faces sideways (me.face).
 // Fighting, the one with her leaves her heels and takes a place of their own beside the creature (1.5 tiles from her).
+// The desert maps that have creatures (data/desert.json, B3 onward) fight the same way with the Duat's shared timings,
+// reach and spells and their own creatures, put where the data says (spawnId), not at random. There a creature struck
+// down stays down until a game day has passed and she comes into the map again (user: bosses too); the first time each
+// one fell and the day it last fell are kept apart (s.desertFight.first / killed), and only her 체력·공포 of the fight
+// (s.desertFight.run) end when she leaves. Gone down there, she is back at the map's way in, nothing lost.
 
 import { DATA, spriteFile } from '../../core/data.js';
 import { getState, saveState } from '../../core/state.js';
@@ -33,9 +38,16 @@ import { behind, feet, follower, mateWalk, player } from '../../world/player.js'
 import { input } from '../../world/input.js';
 import { currentMap, gameMode, onBusy, onDraw, onFrame, onTalkFirst, travel } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
+import { today } from '../../core/ledger.js';
 
-const F = () => DATA.duat?.field || {};
 const isDuat = id => /^duat_\d+$/.test(id || '');
+const isDesert = id => !!DATA.desert?.maps?.[id];
+const isField = id => isDuat(id) || isDesert(id);
+// the numbers: the Duat's own; a desert map the Duat's shared ones (timing, reach, spells) with its own creatures
+const F = () => isDesert(mapId) ? { ...(DATA.duat?.field || {}), enemies: DATA.desert.enemies } : DATA.duat?.field || {};
+const fight = s => (s.desertFight ||= { run: null, killed: {}, first: {} });
+// the fight going on now (체력, 공포, 주문): the Duat's run, or this desert visit's
+const runNow = s => (isDesert(mapId) ? s?.desertFight?.run : s?.duatField) || null;
 const FEAR_MAX = 10, AGGRO = 4, BOLT_LIFT = 0.8, BODY_MID = 0.9;
 const FLOAT = 0.35, BOB = 0.08, BOB_S = 1.8, IDLE_LOOP = ['idle-0', 'idle-1', 'idle-2', 'idle-1'];
 const SKILL_CD = 6, ATTACK_CD = 0.55, INVULN = 0.6, MATE_SKILL_CD = 8, TIRED_FEAR = 7;
@@ -50,6 +62,8 @@ const rand = (a, b) => a + Math.random() * (b - a);
 const now = () => performance.now() / 1000;
 
 let mobs = [], bolts = [], pops = [], fx = [], mapId = '', mapObj = null, runObj = null, ui = null;
+// tests only: what happened when (guard up / down, blows: the state just before, the damage, the state after); read, never acted on
+const events = [], note = e => { events.push({ t: +now().toFixed(3), ...e }); if (events.length > 300) events.shift(); };
 // what she and the one with her are doing now: { name, at, until, lift, face }
 const me = { act: null, face: 'right', vdir: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
 const mate = { act: null, face: 'right', cd: 0, cdSkill: 0, hurtAt: -9, down: false, shown: false };
@@ -59,11 +73,12 @@ const stance = { on: false, since: -9, last: -9 };
 // ---- the run
 const maxHp = (s, who) => 13 + 3 * (statsOf(s, who)?.strength || 0);
 function run(s) {
-    if (s.duatField) return s.duatField;
+    if (runNow(s)) return runNow(s);
     const lead = leadOf(s), w = withOf(s), hp = {};
     for (const who of [lead, w].filter(Boolean)) hp[who] = maxHp(s, who);
-    s.duatField = { v: 1, hp, max: { ...hp }, fear: 0, spells: (statsOf(s, lead)?.faith || 0) > 0 ? F().spells || 3 : 0, cleared: {} };
-    return s.duatField;
+    const r = { v: 1, hp, max: { ...hp }, fear: 0, spells: (statsOf(s, lead)?.faith || 0) > 0 ? F().spells || 3 : 0, cleared: {} };
+    if (isDesert(mapId)) fight(s).run = r; else s.duatField = r;
+    return r;
 }
 let saveSoon = 0;
 const save = () => { clearTimeout(saveSoon); saveSoon = setTimeout(() => saveState(), 1200); };
@@ -76,6 +91,14 @@ function makeMob(i, kind, x, y) {
 }
 function spawn(m, s) {
     mobs = []; bolts = []; pops = []; fx = [];
+    if (isDesert(m.id)) {   // where the data puts them; one struck down today stays down
+        const f = fight(s), day = today(s);
+        DATA.desert.maps[m.id].spawns.forEach((sp, i) => {
+            if (f.killed[sp.id] != null && f.killed[sp.id] >= day) return;
+            mobs.push(Object.assign(makeMob(i, sp.kind, sp.x, sp.y), { sid: sp.id }));
+        });
+        return;
+    }
     const want = F().maps?.[m.id] || {}, dead = new Set(run(s).cleared[m.id] || []);
     const away = [...Object.values(m.d.entries || {}), { x: player.x, y: player.y }];
     let i = 0;
@@ -170,7 +193,7 @@ function stepMob(m, o, dt, s) {
         case 'dead': if (o.t > T.die[0] + T.die[1]) o.gone = true; return;
         case 'hit': if (o.t > o.stun) { o.st = 'chase'; o.t = 0; } return;
         case 'guard':   // it opens and strikes back, the whole warning first
-            if (o.t > T.guard) { o.t = 0; if (near) warn(o, near.p); else o.st = 'chase'; }
+            if (o.t > T.guard) { o.t = 0; note({ ev: 'guardEnd', mob: o.i }); if (near) warn(o, near.p); else o.st = 'chase'; }
             return;
         case 'prepare':
             if (o.t < T.prepare[0]) { aimAt(o, s); return; }
@@ -333,8 +356,15 @@ function hurt(s, who, atk) {
 }
 async function carried() {
     const s = getState();
-    if (!s || !isDuat(mapId)) return;
+    if (!s || !isField(mapId)) return;
     const w = withOf(s);
+    if (isDesert(mapId)) {   // back at this map's way in, the fight over (체력 full again), nothing lost
+        const m = DATA.maps[mapId], at = Object.keys(m.entries || {})[0];
+        fight(s).run = null;
+        await travel(mapId, at);   // the move closes cards: the card after it
+        ui?.showCard({ tag: '전투', title: m.name, text: w ? `${josa(HERO_NAME[w], '가')} 부축해서 들어온 곳까지 물러났어.` : '들어온 곳까지 겨우 물러났어.' });
+        return;
+    }
     ui?.showCard({ tag: '원정', title: '두아트', text: w ? `${josa(HERO_NAME[w], '가')} 업고 올라왔어. 쉬고 다시 내려가자.` : '겨우 기어서 올라왔어. 쉬고 다시 내려가자.' });
     s.duatField = null;
     await travel('ombos', { x: 36, y: 10.6, dir: 'down' });
@@ -342,6 +372,11 @@ async function carried() {
 // a blow on a creature. kind: '' her or her companion's blow, 'skill' a 기술 (it breaks a guard)
 function damage(s, o, n, push = 0, from = null, kind = '') {
     if (o.st === 'dead') return;
+    const before = o.st, hp0 = o.hp;
+    try { return damage0(s, o, n, push, from, kind); }
+    finally { note({ ev: 'blow', by: kind || 'attack', before, after: o.st, dmg: hp0 - o.hp, mob: o.i }); }
+}
+function damage0(s, o, n, push, from, kind) {
     const T = timing(o), c = centre(o);
     o.shownAt = now();
     if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) o.foe = q.who; }
@@ -354,14 +389,15 @@ function damage(s, o, n, push = 0, from = null, kind = '') {
     pop(c.x, c.y - 2.3, `${n}`, o.st === 'guard' && st !== 'break' ? '#cfe3ea' : '#fff3c4');
     if (o.hp <= 0) {
         o.st = 'dead'; o.t = 0;
-        const r = run(s); (r.cleared[mapId] ||= []).push(o.i); save();
+        if (o.sid) { const f = fight(s), day = today(s); f.killed[o.sid] = day; f.first[o.sid] ??= day; save(); }   // no reward is decided yet
+        else { const r = run(s); (r.cleared[mapId] ||= []).push(o.i); save(); }
         return;
     }
     if (st === 'break') { o.st = 'hit'; o.t = 0; o.stun = T.stagger; o.steadyAt = now() + T.stagger + T.steady; return; }   // no counter
     if (o.st === 'guard') return;
     // the first blow lands in full, then it may close up
     if ((o.st === 'wander' || o.st === 'chase') && now() >= o.guardAt && Math.random() < (o.e.guard || 0)) {
-        o.st = 'guard'; o.t = 0; o.guardAt = now() + T.guardCd; mobFx(o, 'guard');
+        o.st = 'guard'; o.t = 0; o.guardAt = now() + T.guardCd; mobFx(o, 'guard'); note({ ev: 'guard', mob: o.i, until: +(now() + T.guard).toFixed(3) });
         return;
     }
     // flinch (not in the warning or the blow itself, and not again right after the last flinch)
@@ -388,10 +424,10 @@ function strike(s, who, from, face, mult = 1, reach = null) {
 const busy = () => me.act && me.act.until > now();
 export function attack() {
     const s = getState();
-    if (!s || !isDuat(mapId) || me.down || busy() || me.cdAttack > now()) return;
+    if (!s || !isField(mapId) || me.down || busy() || me.cdAttack > now()) { if (s && isField(mapId)) note({ ev: 'ignored', what: 'attack', why: me.down ? 'down' : busy() ? `busy:${me.act.name}` : 'cooldown' }); return; }
     engage();
     me.cdAttack = now() + ATTACK_CD;
-    me.act = { name: 'anticipation', at: now(), until: now() + SHOW.anticipation };
+    me.act = { name: 'anticipation', at: now(), until: now() + SHOW.anticipation }; note({ ev: 'press', what: 'attack' });
     setTimeout(() => {
         if (me.down) return;
         me.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
@@ -400,10 +436,10 @@ export function attack() {
 }
 export function skill() {
     const s = getState();
-    if (!s || !isDuat(mapId) || me.down || busy() || me.cdSkill > now()) return;
+    if (!s || !isField(mapId) || me.down || busy() || me.cdSkill > now()) { if (s && isField(mapId)) note({ ev: 'ignored', what: 'skill', why: me.down ? 'down' : busy() ? `busy:${me.act.name}` : 'cooldown' }); return; }
     engage();
     me.cdSkill = now() + SKILL_CD;
-    me.act = { name: 'skill', at: now(), until: now() + SHOW.skill };
+    me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'skill', who: leadOf(s) });
     useSkill(s, leadOf(s), feet(), me.face, true);
 }
 // each one's own 기술 (no name is shown, user: "오글거린다"); the one with her uses theirs too (MATE_SKILL_CD)
@@ -428,7 +464,7 @@ function useSkill(s, who, f, face, lead) {
 }
 export function spell() {
     const s = getState();
-    if (!s || !isDuat(mapId) || me.down || busy()) return;
+    if (!s || !isField(mapId) || me.down || busy()) return;
     const r = run(s);
     if (r.spells <= 0) { ui?.toast((statsOf(s, leadOf(s))?.faith || 0) > 0 ? '이번 원정의 주문은 다 썼어' : '신앙이 있어야 주문을 쓸 수 있어'); return; }
     r.spells--; engage();
@@ -475,13 +511,14 @@ onFrame((dt, m, u) => {
     ui = u;
     const s = getState();
     if (!s) return;
-    if (!isDuat(m.id)) {
-        if (s.duatField) { s.duatField = null; saveState(); }
+    if (!isDuat(m.id) && s.duatField) { s.duatField = null; saveState(); }
+    if (!isDesert(m.id) && s.desertFight?.run) { s.desertFight.run = null; saveState(); }   // the fight's 체력 ends, who fell when stays
+    if (!isField(m.id)) {
         if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); }
         return;
     }
     // a new map object each time she arrives (enterMap), or a new run: the creatures of this map again
-    if (m !== mapObj || s.duatField !== runObj) {
+    if (m !== mapObj || (m.id === mapId && runNow(s) !== runObj)) {
         mapId = m.id; mapObj = m; runObj = run(s);
         Object.assign(me, { act: null, vdir: null, down: false, shield: 0, target: null }); Object.assign(mate, { act: null, down: false, shown: false, cdSkill: now() + 3 });
         Object.assign(stance, { on: false, since: -9, last: -9 }); mateWalk.pos = null;
@@ -509,17 +546,17 @@ onFrame((dt, m, u) => {
     pops = pops.filter(p => now() - p.at < 1);
     fx = fx.filter(e => now() - e.at < e.dur);
 });
-onBusy(() => isDuat(mapId) && (mobs.length > 0 || pops.length > 0 || fx.length > 0));
+onBusy(() => isField(mapId) && (mobs.length > 0 || pops.length > 0 || fx.length > 0));
 // 말 걸기 is 공격 down here, unless a place is right by her and nothing is close
 onTalkFirst(nearSpot => {
-    if (!isDuat(mapId) || gameMode() !== 'open') return false;
+    if (!isField(mapId) || gameMode() !== 'open') return false;
     const f = feet(), threat = mobs.some(o => o.st !== 'dead' && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < 2);
     if (nearSpot && !threat) return false;
     attack();
     return true;
 });
 window.addEventListener('keydown', e => {
-    if (!isDuat(mapId) || gameMode() !== 'open' || e.repeat || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName)) return;
+    if (!isField(mapId) || gameMode() !== 'open' || e.repeat || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName)) return;
     if (e.code === 'KeyJ' || e.code === 'KeyZ') { attack(); e.preventDefault(); }
     else if (e.code === 'KeyK' || e.code === 'KeyX') { skill(); e.preventDefault(); }
     else if (e.code === 'KeyL' || e.code === 'KeyC') { spell(); e.preventDefault(); }
@@ -532,11 +569,11 @@ const actNow = (st, who, walkT = 0) => {
     if (st.act && (st.act.until > t || st.down)) return { name: st.act.name, t: t - st.act.at, lift: st.act.lift || 0 };
     if (walkT && DATA.sprites?.looks?.[who]?.combat?.acts?.walk) return { name: 'walk', t: walkT, lift: 0 };
     // 공포 7 and over: standing, the tired picture instead of ready (the fear shows on them)
-    if (!walkT && (getState()?.duatField?.fear || 0) >= TIRED_FEAR && DATA.sprites?.looks?.[who]?.combat?.acts?.tired) return { name: 'tired', t: 0, lift: 0 };
+    if (!walkT && (runNow(getState())?.fear || 0) >= TIRED_FEAR && DATA.sprites?.looks?.[who]?.combat?.acts?.tired) return { name: 'tired', t: 0, lift: 0 };
     return { name: 'ready', t, lift: walkT ? Math.abs(Math.sin(Math.PI * walkT / STEP_S)) * STEP_BOB : 0 };
 };
 onDraw(scene => {
-    if (!isDuat(mapId) || !isDuat(scene.map?.id)) return;
+    if (!isField(mapId) || !isField(scene.map?.id)) return;
     const s = getState(); if (!s) return;
     const t = now(), blink = st => t - st.hurtAt < INVULN;
     // her: calm = her ordinary pictures; fighting = the combat ones, all four ways
@@ -561,23 +598,26 @@ onDraw(scene => {
 function drawMob(g, o, sx, sy, z, ts) {
     const d = DATA.sprites?.enemies?.[o.kind];
     if (!d) return;
-    const a = (31.2 * z <= d.small.visible + 1 && spriteFile(d.small.file)) ? d.small : spriteFile(d.file) ? d : spriteFile(d.small.file) ? d.small : null;
+    // as large against the people as the map draws them (map.d.actorScale: the desert maps draw people larger)
+    const H = 31.2 * z * (map()?.d?.actorScale || 1);
+    const a = (H <= d.small.visible + 1 && spriteFile(d.small.file)) ? d.small : spriteFile(d.file) ? d : spriteFile(d.small.file) ? d.small : null;
     const gx = sx + 8 * z, gy = sy + 16 * z, t = now(), T = timing(o);
     // the shadow on the floor: smaller and lighter while it is high
     const bob = Math.sin((t / BOB_S) * Math.PI * 2 + o.phase), warn1 = o.st === 'prepare' && o.t >= T.prepare[0];
-    const up = o.st === 'prepare' ? 0.1 * Math.min(1, o.t / T.prepare[0]) : 0;
+    const fl = o.e.float === false ? 0 : 1;   // a creature on its feet (data float: false): no lift, no bob, the shadow still
+    const up = fl * (o.st === 'prepare' ? 0.1 * Math.min(1, o.t / T.prepare[0]) : 0);
     g.fillStyle = `rgba(20,12,6,${o.st === 'dead' ? 0.12 : 0.24 - 0.05 * bob})`;
-    g.beginPath(); g.ellipse(gx, gy - 0.5 * z, 0.45 * ts * (1 - 0.15 * bob), 0.13 * ts, 0, 0, Math.PI * 2); g.fill();
+    g.beginPath(); g.ellipse(gx, gy - 0.5 * z, 0.45 * ts * (1 - 0.15 * bob * fl), 0.13 * ts, 0, 0, Math.PI * 2); g.fill();
     if (!a) return;
     const motion = o.st === 'dead' ? 'disappear' : o.st === 'hit' ? 'hit' : o.st === 'guard' ? 'guard'
         : o.st === 'prepare' ? (warn1 ? 'prepare-1' : 'prepare-0')
         : o.st === 'attack' ? 'attack-0' : o.st === 'recover' ? 'attack-1'
         : IDLE_LOOP[Math.floor((t + o.phase) / T.idle) % IDLE_LOOP.length];
-    const r = a.frames[motion] || a.frames['idle-0'], k = 31.2 * z / a.visible;   // the atlas has a character's height in `visible` px
+    const r = a.frames[motion] || a.frames['idle-0'], k = H / a.visible;   // the atlas has a character's height in `visible` px
     // floating: lifted off the floor and bobbing, except while it warns, strikes, is hit, guards or breaks
     const still = !['wander', 'chase'].includes(o.st);
     const die = o.st === 'dead' ? Math.max(0, o.t - T.die[0]) / T.die[1] : 0;   // the broken picture holds, then sinks away
-    const baseY = gy - (FLOAT + up + (still ? 0 : BOB * bob) - Math.min(1, die) * 0.3) * ts;   // the bottom of its body
+    const baseY = gy - (fl * (FLOAT + (still ? 0 : BOB * bob)) + up - Math.min(1, die) * 0.3 * fl) * ts;   // the bottom of its body
     const shake = warn1 ? Math.sin(t * 60) * z * 0.6 : 0;
     g.save();
     g.globalAlpha = o.st === 'dead' ? Math.max(0, 1 - die) : 1;
@@ -692,7 +732,7 @@ function hud(show, s, m) {
     }
     const r = run(s), t = now(), no = Number(m.id.slice(5));
     const bar = (label, v, max, cls) => `<div class="sf_duat_bar ${cls}"><span>${label} ${v}/${max}</span><i style="width:${Math.round(100 * Math.max(0, v) / max)}%"></i></div>`;
-    const html = `<b>${m.d.name || ''} ${no}/7</b>` + Object.keys(r.hp).map(w => bar(HERO_NAME[w], r.hp[w], r.max[w], 'sf_hp')).join('') + bar('공포', r.fear, FEAR_MAX, 'sf_fear');
+    const html = `<b>${m.d.name || ''}${isDuat(m.id) ? ` ${no}/7` : ''}</b>` + Object.keys(r.hp).map(w => bar(HERO_NAME[w], r.hp[w], r.max[w], 'sf_hp')).join('') + bar('공포', r.fear, FEAR_MAX, 'sf_fear');
     if (el.box._html !== html) { el.box.innerHTML = html; el.box._html = html; }
     // 기술: the time left darkens it round like a clock; 주문: how many are left in the corner
     const sk = el.btns.querySelector('.sf_duat_skill'), sp = el.btns.querySelector('.sf_duat_spell');
@@ -705,6 +745,17 @@ function hud(show, s, m) {
 
 // for tests: what is going on down here, one creature put by her, numbers over the data
 // tests only: turn her a way (left, right, up, down) as walking that way would
+export const testEvents = (clear = false) => { const out = events.slice(); if (clear) events.length = 0; return out; };
+export const testNow = () => +now().toFixed(3);
+// tests only: a clean start for one check (her and the companion's cooldowns, poses, down, shield; numbers over the data)
+export function testReset() {
+    Object.assign(me, { act: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, target: null });
+    Object.assign(mate, { act: null, cd: 0, cdSkill: 0, hurtAt: -9, down: false });
+    for (const k of Object.keys(tune)) delete tune[k];
+    bolts = []; fx = []; pops = []; events.length = 0;
+}
 export function testFace(d) { if (d === 'left' || d === 'right') { me.face = d; me.vdir = null; } else me.vdir = d; }
-export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: getState()?.duatField });
+export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: runNow(getState()), fight: getState()?.desertFight || null });
+// tests only: numbers over a kind's data for the creatures made from now on (the next time she comes into the map)
+export function testTune(kind, numbers = {}) { tune[kind] = numbers; }
 export function testOnly(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs = [makeMob(99, kind, x, y)]; bolts = []; fx = []; }

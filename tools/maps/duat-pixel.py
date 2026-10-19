@@ -51,14 +51,15 @@ def path(safe,start,goal):
     compact.append(pts[-1]);return compact,len(pts)
 
 def review(image,mask,route,out,index):
+    index=f'{index}' if isinstance(index,int) else str(index)   # a desert place may be named, not numbered (T1W)
     a=np.asarray(image.convert('RGBA')).copy()
     a[mask,:3]=(a[mask,:3]*.65+np.array([25,220,85])*.35).astype('uint8')
     edge=mask ^ nd.binary_erosion(mask)
     a[edge,:3]=[0,255,70]
     im=Image.fromarray(a);d=ImageDraw.Draw(im);d.line([tuple(p) for p in route],fill=(255,45,100),width=2)
-    im.save(out/f'{index:02}-collision.png')
+    im.save(out/f'{index}-collision.png')
     # Every quadrant at nearest-neighbor x2; no smooth resizing hides the pixel edge.
     for y in range(3):
         for x in range(2):
             box=(x*512,y*512,(x+1)*512,(y+1)*512)
-            im.crop(box).resize((1024,1024),Image.Resampling.NEAREST).save(out/f'{index:02}-detail-{y}-{x}.png')
+            im.crop(box).resize((1024,1024),Image.Resampling.NEAREST).save(out/f'{index}-detail-{y}-{x}.png')

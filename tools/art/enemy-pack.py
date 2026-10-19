@@ -116,7 +116,9 @@ def main():
         for f, piece, pv, x, yy in place:
             t = tables.setdefault(suffix, {}).setdefault(f['kind'], {'file': file, 'visible': vis, 'frames': {}})
             t['frames'][f['state']] = [x, yy, piece.width, piece.height, *pv]
-    sprites['enemies'] = {kind: {**tables[''][kind], 'height': HEIGHT_K, 'small': tables['-small'][kind]} for kind in KINDS}
+    # only its own kinds: the desert ones (tools/art/desert-mob-pack.py) stay
+    sprites['enemies'] = {**{k: v for k, v in sprites.get('enemies', {}).items() if k not in KINDS},
+                          **{kind: {**tables[''][kind], 'height': HEIGHT_K, 'small': tables['-small'][kind]} for kind in KINDS}}
     import importlib.util
     spec = importlib.util.spec_from_file_location('ptm', os.path.join(ROOT, 'tools', 'art', 'pack-trio-motion.py')); ptm = importlib.util.module_from_spec(spec); spec.loader.exec_module(ptm)
     with open(sprites_path, 'w') as fh: fh.write(ptm.compact(json.dumps(sprites, ensure_ascii=False, indent=1)) + '\n')
