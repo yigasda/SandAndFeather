@@ -22,30 +22,34 @@ ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / '몹/사막'
 SHEET = ROOT / 'docs/consult/desert/mobs'
 SLOTS = ['idle_0', 'idle_1', 'idle_2', 'special', 'prepare_0', 'prepare_1', 'attack_0', 'attack_1', 'hit', 'defeat']
-# folder, species id (meaning based, proposed), name, role, zones the plan lists it in (role zones; T1 = T1W·T1E, P3 = P3A·P3B)
+# folder, species id (meaning based, proposed), name, role, movement, zones it is placed in (user, 2026-10-19 통합 지시:
+# kinds only, not counts or spots; T1 = T1W·T1E, P3 = P3A·P3B). Movement: 'float' = drawn floating with a bob
+# (태양거울, 빈 가면 사제 두 종, 천칭 파수꾼; the 수문장 bosses are not 파수꾼 and stay on the ground), 'ground' = on its feet.
+# Floating is a picture height only: the ground point, movement collision and walls are the same as on foot.
 SPECIES = [
-    ('01_봉인항아리', 'desert_sealed_jar', '봉인 항아리', 'normal', ['T1', 'T2', '17']),
-    ('02_가죽방패병', 'desert_leather_shield', '가죽 방패병', 'normal', ['T1', 'P1']),
-    ('03_봉인방패병', 'desert_sealed_shield', '봉인 방패병', 'normal', ['P1', 'P2']),
-    ('04_걸음비석', 'desert_walking_stela', '걸음 비석', 'normal', ['P1', 'P4', '10']),
-    ('05_태양거울', 'desert_sun_mirror', '태양거울', 'normal', ['T2']),
-    ('06_천칭파수꾼', 'desert_balance_sentinel', '천칭 파수꾼', 'normal', ['T3']),
-    ('07_빈가면사제_장막형', 'desert_mask_priest_mantle', '빈 가면 사제 장막형', 'normal', ['T2']),
-    ('08_빈가면사제_수의형', 'desert_mask_priest_shroud', '빈 가면 사제 수의형', 'normal', ['P3']),
-    ('09_왕면수문장', 'desert_royal_mask_warden', '왕면 수문장', 'boss', ['P2']),
-    ('10_신전수문장', 'desert_temple_warden', '신전 수문장', 'boss', ['T3']),
-    ('11_왕좌수문장', 'desert_throne_warden', '왕좌 수문장', 'boss', ['P3']),
-    ('12_파릉수문장', 'desert_broken_tomb_warden', '파릉 수문장', 'boss', ['P4']),
+    ('01_봉인항아리', 'desert_sealed_jar', '봉인 항아리', 'normal', 'ground', ['T1', 'T2', '17']),
+    ('02_가죽방패병', 'desert_leather_shield', '가죽 방패병', 'normal', 'ground', ['T1', '03', '04']),
+    ('03_봉인방패병', 'desert_sealed_shield', '봉인 방패병', 'normal', 'ground', ['P2', '03', '04']),
+    ('04_걸음비석', 'desert_walking_stela', '걸음 비석', 'normal', 'ground', ['P4', '10']),
+    ('05_태양거울', 'desert_sun_mirror', '태양거울', 'normal', 'float', ['T2']),
+    ('06_천칭파수꾼', 'desert_balance_sentinel', '천칭 파수꾼', 'normal', 'float', ['T3', 'P1']),
+    ('07_빈가면사제_장막형', 'desert_mask_priest_mantle', '빈 가면 사제 장막형', 'normal', 'float', ['T2']),
+    ('08_빈가면사제_수의형', 'desert_mask_priest_shroud', '빈 가면 사제 수의형', 'normal', 'float', ['P3']),
+    ('09_왕면수문장', 'desert_royal_mask_warden', '왕면 수문장', 'boss', 'ground', ['P2']),
+    ('10_신전수문장', 'desert_temple_warden', '신전 수문장', 'boss', 'ground', ['T3']),
+    ('11_왕좌수문장', 'desert_throne_warden', '왕좌 수문장', 'boss', 'ground', ['P3']),
+    ('12_파릉수문장', 'desert_broken_tomb_warden', '파릉 수문장', 'boss', 'ground', ['P4']),
 ]
 # effect pictures drawn on their own layer (EFFECTS[speciesId] = [(name, folder, manifest key)]): placed at the launch socket,
-# turned to the attack direction, cut at the first wall; length, hit and display scale are set in the game
+# facing the way the mob faces, cut at the first wall; length, hit and display scale are set in the game
 EFFECTS = {'desert_sun_mirror': [('beam', 'docs/art/desert-sun-mirror-motion-revisions-2026-10-16', 'beam')]}
 ZONES = {'T1': 'T1W·T1E 제례 앞뜰', 'T2': 'T2 무너진 봉헌품 회랑', 'T3': 'T3 신전 수호문 전당', 'P1': 'P1 고대 장례 미궁',
          'P2': 'P2 왕면 열병 전실', 'P3': 'P3A·P3B 부왕 장례전', 'P4': 'P4 무너진 왕릉 하부실',
-         # added by the user outside the seven combat zones (2026-10-19: "지하도시 광장에 항아리몹", "모래바람분지에 비석몹")
-         '17': '17 지하 도시 광장(사용자 추가)', '10': '10 모래바람 분지(사용자 추가)'}
-# zones whose extra species is still open (user: "고대 장례 미궁에 몹추가(미정)")
-OPEN = {'P1': 'P1 고대 장례 미궁: 몹 추가(종 미정, 사용자 2026-10-19)'}
+         # existing desert maps the user added mobs to (not new places, not combat zones of the plan)
+         '03': '03 고요한 사구 `desert_quiet_dunes`', '04': '04 메마른 모래벌판 `desert_dry_flats`',
+         '17': '17 지하 도시 광장 `desert_city_plaza`', '10': '10 모래바람 분지 `desert_wind_basin`'}
+# still open (user): more kinds for P1 besides the sentinel; counts and spots everywhere
+OPEN = {'P1': 'P1 고대 장례 미궁: 천칭 파수꾼 말고 더할 종 미정'}
 
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -61,7 +65,7 @@ def main():
     assert top['count'] == 120 and len(top['monsters']) == 12, 'not 12 × 10'
     canv = {m['name']: m['canvas'] for m in top['monsters']}
     out = []
-    for folder, sid, name, role, zones in SPECIES:
+    for folder, sid, name, role, move, zones in SPECIES:
         fm = json.loads((SRC / folder / 'manifest.json').read_text())
         assert len(fm['frames']) == 10, folder
         frames, alphas = {}, []
@@ -86,7 +90,7 @@ def main():
                               'originApproxNormalized': em['originApproxNormalized'], 'usage': em['usage'], 'applied': False}
         out.append({'folder': f'몹/사막/{folder}', 'speciesId': sid, 'name': name, 'role': role, 'zones': zones,
                     'canvas': fm['canvas'], 'sharedCellOffset': fm.get('sharedNominalCellOffset'),
-                    'special': special, 'attackFamily': attack, 'frames': frames, 'effects': effects,
+                    'movement': move, 'special': special, 'attackFamily': attack, 'frames': frames, 'effects': effects,
                     'measured': {'idleBox': alpha_box(np.maximum.reduce(alphas[:3])), 'footLineCandidate': foot_y,
                                  'footMiddleCandidate': int((xs.min() + xs.max() + 1) // 2)},
                     'runtime': {'pivot': None, 'moveCollider': None, 'hurtBox': None, 'attackBox': None, 'launchSocket': None,
@@ -120,14 +124,17 @@ def main():
          '## 공통 슬롯', '', '| 슬롯 | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 |', '|---|---|---|---|---|---|---|---|---|---|---|',
          '| 뜻 | 대기 0 | 대기 1 | 대기 2 | 특수(가드 그림, 항아리는 휴면) | 준비 0 | 준비 1 | 공격 0 | 공격 1 | 피격 | 소멸 |', '',
          '특수 칸이 가드 그림이라고 가드 규칙이 생기지 않는다. 가드는 종별 데이터로 따로 정한다(방패병 가드를 다른 종에 일괄 적용하지 않음).', '',
-         '## 12종', '', '| 폴더 | 종 ID(제안) | 이름 | 역할 | 후보 구역 | 캔버스 | 특수 칸 | 공격 이름(파일) | 발 기준선 후보(대기 세 장 맨 아래 행, 가운데 x) |',
-         '|---|---|---|---|---|---|---|---|---|']
+         '## 12종', '', '| 폴더 | 종 ID(제안) | 이름 | 역할 | 이동 | 배치 대상 맵 | 캔버스 | 특수 칸 | 공격 이름(파일) | 발 기준선 후보(대기 세 장 맨 아래 행, 가운데 x) |',
+         '|---|---|---|---|---|---|---|---|---|---|']
     for s in out:
-        L.append(f"| {s['folder'].split('/')[-1]} | `{s['speciesId']}` | {s['name']} | {'보스' if s['role'] == 'boss' else '일반'} | "
+        L.append(f"| {s['folder'].split('/')[-1]} | `{s['speciesId']}` | {s['name']} | {'보스' if s['role'] == 'boss' else '일반'} | {'부유' if s['movement'] == 'float' else '지상'} | "
                  f"{', '.join(ZONES[z] for z in s['zones'])} | {s['canvas'][0]}×{s['canvas'][1]} | {s['special']} | {s['attackFamily']} | "
                  f"y {s['measured']['footLineCandidate']}, x {s['measured']['footMiddleCandidate']} |")
-    L += ['', '사용자 추가 배치(2026-10-19): 봉인 항아리 → 17 지하 도시 광장, 걸음 비석 → 10 모래바람 분지. 7구역 밖이며 개체 수·좌표는 화면으로 확인받는다. '
-          '미정: ' + '; '.join(OPEN.values()) + '.']
+    L += ['', '배치(사용자 10-19 통합 지시): 종 구성만 정했고 마릿수·무리 수·좌표는 화면 오버레이로 확인받는다. 03·04의 방패병은 **두 종류**(가죽·봉인)이지 두 마리가 아니다. '
+          'P1은 천칭 파수꾼으로 바뀌었고 예전 후보(가죽·봉인 방패병, 걸음 비석)는 P1에서 뺐다. 미정: ' + '; '.join(OPEN.values()) + '. '
+          '17 광장의 항아리는 운반석 입문 퍼즐 조작 지점·출입구·착지를 막지 않는지 오버레이로 확인한다.', '',
+          '부유(태양거울, 빈 가면 사제 두 종, 천칭 파수꾼): 그림만 뜬다. 지상 기준점·이동 충돌·벽은 지상 몹과 같고, 준비·공격처럼 자세를 고정하는 구간은 종별 모션에 맞춰 흔들림을 멈춘다. '
+          '보스 수문장 4종과 방패병·항아리·비석은 지상이다(고대장치의 공통 부유를 모든 종에 복사하지 않음).']
     L += ['', '## 별도 효과 그림 (10장에 들지 않음, 120장에 세지 않음)', '']
     for s in out:
         for ename, e in s['effects'].items():

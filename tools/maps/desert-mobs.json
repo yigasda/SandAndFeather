@@ -18,6 +18,7 @@
     55,
     18
    ],
+   "movement": "ground",
    "special": "dormant",
    "attackFamily": "attack",
    "frames": {
@@ -161,7 +162,8 @@
    "role": "normal",
    "zones": [
     "T1",
-    "P1"
+    "03",
+    "04"
    ],
    "canvas": [
     558,
@@ -171,6 +173,7 @@
     114,
     18
    ],
+   "movement": "ground",
    "special": "guard",
    "attackFamily": "charge",
    "frames": {
@@ -313,8 +316,9 @@
    "name": "봉인 방패병",
    "role": "normal",
    "zones": [
-    "P1",
-    "P2"
+    "P2",
+    "03",
+    "04"
    ],
    "canvas": [
     476,
@@ -324,6 +328,7 @@
     102,
     0
    ],
+   "movement": "ground",
    "special": "guard",
    "attackFamily": "charge",
    "frames": {
@@ -466,7 +471,6 @@
    "name": "걸음 비석",
    "role": "normal",
    "zones": [
-    "P1",
     "P4",
     "10"
    ],
@@ -478,6 +482,7 @@
     -30,
     -71
    ],
+   "movement": "ground",
    "special": "guard",
    "attackFamily": "slam",
    "frames": {
@@ -630,6 +635,7 @@
     69,
     22
    ],
+   "movement": "float",
    "special": "guard",
    "attackFamily": "light_attack",
    "frames": {
@@ -788,7 +794,8 @@
    "name": "천칭 파수꾼",
    "role": "normal",
    "zones": [
-    "T3"
+    "T3",
+    "P1"
    ],
    "canvas": [
     507,
@@ -798,6 +805,7 @@
     50,
     55
    ],
+   "movement": "float",
    "special": "guard",
    "attackFamily": "slam",
    "frames": {
@@ -950,6 +958,7 @@
     10,
     23
    ],
+   "movement": "float",
    "special": "guard",
    "attackFamily": "seal_cast",
    "frames": {
@@ -1102,6 +1111,7 @@
     21,
     16
    ],
+   "movement": "float",
    "special": "guard",
    "attackFamily": "seal_cast",
    "frames": {
@@ -1254,6 +1264,7 @@
     92,
     51
    ],
+   "movement": "ground",
    "special": "guard",
    "attackFamily": "punch_slam",
    "frames": {
@@ -1406,6 +1417,7 @@
     52,
     34
    ],
+   "movement": "ground",
    "special": "guard",
    "attackFamily": "crush",
    "frames": {
@@ -1558,6 +1570,7 @@
     74,
     18
    ],
+   "movement": "ground",
    "special": "guard",
    "attackFamily": "earth_press",
    "frames": {
@@ -1710,6 +1723,7 @@
     17,
     -1
    ],
+   "movement": "ground",
    "special": "guard",
    "attackFamily": "grasp",
    "frames": {
@@ -1867,7 +1881,9 @@
   "P2": "P2 왕면 열병 전실",
   "P3": "P3A·P3B 부왕 장례전",
   "P4": "P4 무너진 왕릉 하부실",
-  "17": "17 지하 도시 광장(사용자 추가)",
-  "10": "10 모래바람 분지(사용자 추가)"
+  "03": "03 고요한 사구 `desert_quiet_dunes`",
+  "04": "04 메마른 모래벌판 `desert_dry_flats`",
+  "17": "17 지하 도시 광장 `desert_city_plaza`",
+  "10": "10 모래바람 분지 `desert_wind_basin`"
  }
 }

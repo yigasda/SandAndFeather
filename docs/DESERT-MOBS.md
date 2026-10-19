@@ -14,22 +14,24 @@
 
 ## 12종
 
-| 폴더 | 종 ID(제안) | 이름 | 역할 | 후보 구역 | 캔버스 | 특수 칸 | 공격 이름(파일) | 발 기준선 후보(대기 세 장 맨 아래 행, 가운데 x) |
-|---|---|---|---|---|---|---|---|---|
-| 01_봉인항아리 | `desert_sealed_jar` | 봉인 항아리 | 일반 | T1W·T1E 제례 앞뜰, T2 무너진 봉헌품 회랑, 17 지하 도시 광장(사용자 추가) | 476×538 | dormant | attack | y 453, x 222 |
-| 02_가죽방패병 | `desert_leather_shield` | 가죽 방패병 | 일반 | T1W·T1E 제례 앞뜰, P1 고대 장례 미궁 | 558×477 | guard | charge | y 451, x 333 |
-| 03_봉인방패병 | `desert_sealed_shield` | 봉인 방패병 | 일반 | P1 고대 장례 미궁, P2 왕면 열병 전실 | 476×468 | guard | charge | y 426, x 356 |
-| 04_걸음비석 | `desert_walking_stela` | 걸음 비석 | 일반 | P1 고대 장례 미궁, P4 무너진 왕릉 하부실, 10 모래바람 분지(사용자 추가) | 459×435 | guard | slam | y 413, x 266 |
-| 05_태양거울 | `desert_sun_mirror` | 태양거울 | 일반 | T2 무너진 봉헌품 회랑 | 440×494 | guard | light_attack | y 470, x 218 |
-| 06_천칭파수꾼 | `desert_balance_sentinel` | 천칭 파수꾼 | 일반 | T3 신전 수호문 전당 | 507×520 | guard | slam | y 409, x 342 |
-| 07_빈가면사제_장막형 | `desert_mask_priest_mantle` | 빈 가면 사제 장막형 | 일반 | T2 무너진 봉헌품 회랑 | 517×470 | guard | seal_cast | y 413, x 251 |
-| 08_빈가면사제_수의형 | `desert_mask_priest_shroud` | 빈 가면 사제 수의형 | 일반 | P3A·P3B 부왕 장례전 | 512×528 | guard | seal_cast | y 438, x 265 |
-| 09_왕면수문장 | `desert_royal_mask_warden` | 왕면 수문장 | 보스 | P2 왕면 열병 전실 | 487×551 | guard | punch_slam | y 473, x 364 |
-| 10_신전수문장 | `desert_temple_warden` | 신전 수문장 | 보스 | T3 신전 수호문 전당 | 489×493 | guard | crush | y 449, x 308 |
-| 11_왕좌수문장 | `desert_throne_warden` | 왕좌 수문장 | 보스 | P3A·P3B 부왕 장례전 | 573×530 | guard | earth_press | y 451, x 324 |
-| 12_파릉수문장 | `desert_broken_tomb_warden` | 파릉 수문장 | 보스 | P4 무너진 왕릉 하부실 | 494×486 | guard | grasp | y 385, x 231 |
+| 폴더 | 종 ID(제안) | 이름 | 역할 | 이동 | 배치 대상 맵 | 캔버스 | 특수 칸 | 공격 이름(파일) | 발 기준선 후보(대기 세 장 맨 아래 행, 가운데 x) |
+|---|---|---|---|---|---|---|---|---|---|
+| 01_봉인항아리 | `desert_sealed_jar` | 봉인 항아리 | 일반 | 지상 | T1W·T1E 제례 앞뜰, T2 무너진 봉헌품 회랑, 17 지하 도시 광장 `desert_city_plaza` | 476×538 | dormant | attack | y 453, x 222 |
+| 02_가죽방패병 | `desert_leather_shield` | 가죽 방패병 | 일반 | 지상 | T1W·T1E 제례 앞뜰, 03 고요한 사구 `desert_quiet_dunes`, 04 메마른 모래벌판 `desert_dry_flats` | 558×477 | guard | charge | y 451, x 333 |
+| 03_봉인방패병 | `desert_sealed_shield` | 봉인 방패병 | 일반 | 지상 | P2 왕면 열병 전실, 03 고요한 사구 `desert_quiet_dunes`, 04 메마른 모래벌판 `desert_dry_flats` | 476×468 | guard | charge | y 426, x 356 |
+| 04_걸음비석 | `desert_walking_stela` | 걸음 비석 | 일반 | 지상 | P4 무너진 왕릉 하부실, 10 모래바람 분지 `desert_wind_basin` | 459×435 | guard | slam | y 413, x 266 |
+| 05_태양거울 | `desert_sun_mirror` | 태양거울 | 일반 | 부유 | T2 무너진 봉헌품 회랑 | 440×494 | guard | light_attack | y 470, x 218 |
+| 06_천칭파수꾼 | `desert_balance_sentinel` | 천칭 파수꾼 | 일반 | 부유 | T3 신전 수호문 전당, P1 고대 장례 미궁 | 507×520 | guard | slam | y 409, x 342 |
+| 07_빈가면사제_장막형 | `desert_mask_priest_mantle` | 빈 가면 사제 장막형 | 일반 | 부유 | T2 무너진 봉헌품 회랑 | 517×470 | guard | seal_cast | y 413, x 251 |
+| 08_빈가면사제_수의형 | `desert_mask_priest_shroud` | 빈 가면 사제 수의형 | 일반 | 부유 | P3A·P3B 부왕 장례전 | 512×528 | guard | seal_cast | y 438, x 265 |
+| 09_왕면수문장 | `desert_royal_mask_warden` | 왕면 수문장 | 보스 | 지상 | P2 왕면 열병 전실 | 487×551 | guard | punch_slam | y 473, x 364 |
+| 10_신전수문장 | `desert_temple_warden` | 신전 수문장 | 보스 | 지상 | T3 신전 수호문 전당 | 489×493 | guard | crush | y 449, x 308 |
+| 11_왕좌수문장 | `desert_throne_warden` | 왕좌 수문장 | 보스 | 지상 | P3A·P3B 부왕 장례전 | 573×530 | guard | earth_press | y 451, x 324 |
+| 12_파릉수문장 | `desert_broken_tomb_warden` | 파릉 수문장 | 보스 | 지상 | P4 무너진 왕릉 하부실 | 494×486 | guard | grasp | y 385, x 231 |
 
-사용자 추가 배치(2026-10-19): 봉인 항아리 → 17 지하 도시 광장, 걸음 비석 → 10 모래바람 분지. 7구역 밖이며 개체 수·좌표는 화면으로 확인받는다. 미정: P1 고대 장례 미궁: 몹 추가(종 미정, 사용자 2026-10-19).
+배치(사용자 10-19 통합 지시): 종 구성만 정했고 마릿수·무리 수·좌표는 화면 오버레이로 확인받는다. 03·04의 방패병은 **두 종류**(가죽·봉인)이지 두 마리가 아니다. P1은 천칭 파수꾼으로 바뀌었고 예전 후보(가죽·봉인 방패병, 걸음 비석)는 P1에서 뺐다. 미정: P1 고대 장례 미궁: 천칭 파수꾼 말고 더할 종 미정. 17 광장의 항아리는 운반석 입문 퍼즐 조작 지점·출입구·착지를 막지 않는지 오버레이로 확인한다.
+
+부유(태양거울, 빈 가면 사제 두 종, 천칭 파수꾼): 그림만 뜬다. 지상 기준점·이동 충돌·벽은 지상 몹과 같고, 준비·공격처럼 자세를 고정하는 구간은 종별 모션에 맞춰 흔들림을 멈춘다. 보스 수문장 4종과 방패병·항아리·비석은 지상이다(고대장치의 공통 부유를 모든 종에 복사하지 않음).
 
 ## 별도 효과 그림 (10장에 들지 않음, 120장에 세지 않음)
 
