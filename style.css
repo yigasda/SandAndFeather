@@ -202,7 +202,8 @@
     touch-action: none;
 }
 /* the pad takes touches a little outside its ring too, so a thumb that slips still steers */
-#sf_game .sf_pad::before { content: ''; position: absolute; inset: -30px; border-radius: 50%; }
+/* (not downward over the tab bar: there the tabs take touches, 사용자 10-19) */
+#sf_game .sf_pad::before { content: ''; position: absolute; inset: -30px -30px -4px; border-radius: 50%; }
 #sf_game .sf_knob {
     width: 46px;
     height: 46px;

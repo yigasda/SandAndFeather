@@ -8,7 +8,7 @@ import { settings } from '../core/settings.js';
 import { hasChat } from '../core/st.js';
 import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
-import { bindPad, input, startInput, stopInput } from '../world/input.js';
+import { bindPad, bindPress, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
 import { endPose, feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
 import { clearFx, fxBusy } from '../world/fx.js';
@@ -119,7 +119,7 @@ function build() {
     bindPad(hud.pad, hud.knob);
     hud.close.addEventListener('click', closeGame);
     hud.collapse.addEventListener('click', foldGame);
-    hud.talk.addEventListener('click', talk);
+    bindPress(hud.talk, talk);   // 공격 in a fight: also a second thumb while the other holds the pad
     hud.climb.addEventListener('click', climb);
     hud.bag.addEventListener('click', () => { if (!cardOpen()) bagCard(ui, map); });
     hud.appearance.addEventListener('click', () => { if (!cardOpen()) appearanceCard(ui, applyTheme); });

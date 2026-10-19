@@ -21,7 +21,8 @@ const MOCK_CSS = `
 #sf_game .sf_mock_ult > b i { font-size: 16px; color: #ffe6a0; }
 #sf_game .sf_mock_ult.sf_full { animation: sfUltGlow 1.8s ease-in-out infinite; }
 @keyframes sfUltGlow { 0%,100% { box-shadow: 0 0 0 2px #4a2414, 0 0 6px 2px #ffd36a66; } 50% { box-shadow: 0 0 0 2px #4a2414, 0 0 16px 6px #ffd36acc; } }
-#sf_game .sf_mock_ult:not(.sf_full) > b { filter: saturate(.7) brightness(.85); }
+#sf_game .sf_mock_ult > b { background: var(--icon) center / 100% no-repeat, radial-gradient(circle at 50% 38%, #5b3a8a, #2a1840 72%); }
+#sf_game .sf_mock_ult:not(.sf_full) > b { filter: brightness(.88) saturate(.9); }   /* charging: a little darker, the picture still clear */
 #sf_game .sf_duat_skill { display: grid !important; place-items: center; align-content: center; gap: 0; }
 #sf_game .sf_duat_skill i { font-size: 14px; color: #ffe6a0; line-height: 1; }
 #sf_game .sf_duat_skill s { position: absolute; inset: 0; display: grid; place-items: center; font-size: 19px; font-weight: 900; text-decoration: none; color: #fff; z-index: 2; }
@@ -56,12 +57,12 @@ const MOCK_CSS = `
             const tag = `${W}x${H}`;
             await page.screenshot({ path: path.join(OUT, `${tag}-0-now.png`) });
             // the mock
-            await page.evaluate(css => {
+            await page.evaluate(([css, base]) => {
                 const root = document.getElementById('sf_game'), st = document.createElement('style'); st.textContent = css; document.head.append(st);
                 const bag = root.querySelector('.sf_bag'), gear = root.querySelector('.sf_appearance'), actions = root.querySelector('.sf_actions');
                 // 궁 where 가방 was
-                const ult = document.createElement('button'); ult.type = 'button'; ult.className = 'sf_mock_ult'; ult.innerHTML = '<b><i class="fa-solid fa-sun"></i>궁</b>';
-                actions.insertBefore(ult, bag);
+                const ult = document.createElement('button'); ult.type = 'button'; ult.className = 'sf_mock_ult'; ult.innerHTML = '<b></b>'; ult.setAttribute('aria-label', '궁');   // the user's picture inside (data/art/ui/ult-<who>.png)
+                actions.insertBefore(ult, bag); ult.style.setProperty('--icon', `url(${base}data/art/ui/ult-set.png)`);
                 // 가방 under the gear, the same button, as wide as the gear
                 const g = gear.getBoundingClientRect(), r = root.getBoundingClientRect();
                 bag.classList.add('sf_mock_bag'); root.append(bag);
@@ -69,7 +70,7 @@ const MOCK_CSS = `
                 Object.assign(bag.style, { width: `${size}px`, height: `${size}px`, right: `${r.right - g.right}px`, top: `${g.bottom - r.top + 8}px` });
                 // 스킬: name, icon, time left
                 const sk = root.querySelector('.sf_duat_skill'); sk.innerHTML = '<i class="fa-solid fa-bolt"></i>스킬';
-            }, MOCK_CSS);
+            }, [MOCK_CSS, BASE]);
             const stateShot = async (name, g, cd) => {
                 await page.evaluate(([g, cd]) => {
                     const ult = document.querySelector('.sf_mock_ult'); ult.style.setProperty('--g', g); ult.classList.toggle('sf_full', g >= 1);
@@ -83,11 +84,16 @@ const MOCK_CSS = `
             await stateShot('1-ult-0', 0, 0);
             await stateShot('2-ult-60-skill-cd', 0.6, 4);
             await stateShot('3-ult-full', 1, 0);
+            // each one's picture: Horus and Somang leading, full
+            for (const who of ['horus', 'somang']) {
+                await page.evaluate(([who, base]) => document.querySelector('.sf_mock_ult').style.setProperty('--icon', `url(${base}data/art/ui/ult-${who}.png)`), [who, BASE]);
+                await stateShot(`4-ult-full-${who}`, 1, 0);
+            }
             // touch areas (CSS px): buttons, the pad with its 30 px margin, the tabs, the screen edges
             const rects = await page.evaluate(() => {
                 const R = (sel, grow = 0) => { const e = document.querySelector(sel); if (!e) return null; const b = e.getBoundingClientRect(); return { sel, x0: b.left - grow, y0: b.top - grow, x1: b.right + grow, y1: b.bottom + grow }; };
                 const game = document.getElementById('sf_game').getBoundingClientRect();
-                return { game: { x0: game.left, y0: game.top, x1: game.right, y1: game.bottom }, list: [R('.sf_pad', 30), R('.sf_talk'), R('.sf_mock_ult'), R('.sf_duat_skill'), R('.sf_duat_spell'), R('.sf_mock_bag'), R('.sf_appearance'), R('.sf_tabs'), R('.sf_mini')].filter(Boolean) };
+                return { game: { x0: game.left, y0: game.top, x1: game.right, y1: game.bottom }, list: [(r => r && { ...r, y1: r.y1 - 26 })(R('.sf_pad', 30)), R('.sf_talk'), R('.sf_mock_ult'), R('.sf_duat_skill'), R('.sf_duat_spell'), R('.sf_mock_bag'), R('.sf_appearance'), R('.sf_tabs'), R('.sf_mini')].filter(Boolean) };
             });
             const names = { '.sf_pad': '조이스틱(+30px)', '.sf_talk': '공격', '.sf_mock_ult': '궁', '.sf_duat_skill': '스킬', '.sf_duat_spell': '주문', '.sf_mock_bag': '가방', '.sf_appearance': '설정', '.sf_tabs': '하단 탭', '.sf_mini': '미니맵' };
             const over = (a, b) => Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0) > 0 && Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0) > 0;

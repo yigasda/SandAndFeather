@@ -1,0 +1,53 @@
+{
+ "note": "궁 버튼 그림(사용자 10-19: 세트·호루스 첫 PNG, 소망 최신 수정본). source는 원본 그대로, game은 알파 24 이상 본체 상자를 지름 50px(128 캔버스에서 96 %) 원 안에 맞춘 것 — 옅은 픽셀은 본체 상자 안에서 그대로",
+ "files": {
+  "somang": {
+   "source": "docs/art/ult-icons/source/ult-somang.png",
+   "sha256": "da44751abcc2bebd4db2befcb8563642dd7eecd7fa27b200c062d9503fe33019",
+   "bodyBox": [
+    83,
+    164,
+    1171,
+    1154
+   ],
+   "game": "data/art/ui/ult-somang.png",
+   "size": [
+    128,
+    128
+   ],
+   "scale": 0.0835
+  },
+  "horus": {
+   "source": "docs/art/ult-icons/source/ult-horus.png",
+   "sha256": "548f9829958d18eda17af43b2d57bd23fa89c9bb837fdb533b47b97eb0a0339f",
+   "bodyBox": [
+    74,
+    161,
+    1181,
+    1130
+   ],
+   "game": "data/art/ui/ult-horus.png",
+   "size": [
+    128,
+    128
+   ],
+   "scale": 0.0835
+  },
+  "set": {
+   "source": "docs/art/ult-icons/source/ult-set.png",
+   "sha256": "a50f7da29082e2bf8a33f11b31f302d4c1445252971beb9177a7eeadcdb33f74",
+   "bodyBox": [
+    98,
+    274,
+    1157,
+    990
+   ],
+   "game": "data/art/ui/ult-set.png",
+   "size": [
+    128,
+    128
+   ],
+   "scale": 0.0961
+  }
+ }
+}

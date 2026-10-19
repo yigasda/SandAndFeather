@@ -35,7 +35,7 @@ import { DATA, releaseSprites, spriteFile } from '../../core/data.js';
 import { getState, saveState } from '../../core/state.js';
 import { HERO_NAME, leadOf, statsOf, withOf } from '../../core/heroes.js';
 import { behind, feet, follower, mateWalk, player } from '../../world/player.js';
-import { input } from '../../world/input.js';
+import { bindPress, input } from '../../world/input.js';
 import { currentMap, gameMode, onBusy, onDraw, onFrame, onTalkFirst, travel } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
 import { today } from '../../core/ledger.js';
@@ -930,8 +930,8 @@ function hud(show, s, m) {
         el.box.className = 'sf_duat_hud';
         el.btns.className = 'sf_duat_btns';
         el.btns.innerHTML = '<button type="button" class="sf_duat_skill">기술</button><button type="button" class="sf_duat_spell">주문<em></em></button>';
-        el.btns.querySelector('.sf_duat_skill').addEventListener('click', skill);
-        el.btns.querySelector('.sf_duat_spell').addEventListener('click', spell);
+        bindPress(el.btns.querySelector('.sf_duat_skill'), skill);
+        bindPress(el.btns.querySelector('.sf_duat_spell'), spell);
     }
     const actions = root.querySelector('.sf_actions'), talk = root.querySelector('.sf_talk');
     if (!show) {
