@@ -172,6 +172,8 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             }
             await sleep(1200);   // still pushing, 1.2 s after arriving
             const held = await where();
+            const transition = CONNECTIONS ? await page.evaluate(()=>T.moves.at(-1)) : null;
+            res.push('  positions '+JSON.stringify({leg,arrival:arrivedAt,held}));
             if (!CONNECTIONS || leg >= PAIRS.length) await W.touch('touchEnd'); await sleep(500);
             const entry = await page.evaluate(([to, land]) => T.map.getMap(to).d.entries[land], [to, land]);
             res.push(`  ${name}: 출구 앞 ${now.map.replace('desert_', '')} (${now.x.toFixed(1)}, ${now.y.toFixed(1)}) → 도착 ${arrivedAt.map.replace('desert_', '')} (${arrivedAt.x.toFixed(1)}, ${arrivedAt.y.toFixed(1)})`);
@@ -189,13 +191,14 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const mate = await where();
             ok(!mate.mateInExit && mate.floor && mate.mateFloor, `${name}: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖`);
             if(CONNECTIONS) {
-                const move=await page.evaluate(()=>T.moves.at(-1));
+                const move=transition;
                 ok(move?.to===to && Math.hypot(move.x-entry.x,move.y-entry.y)<0.05, `${name}: 첫 도착 프레임 정확한 착지`);
                 if(WIDTHS) { const t=ex.axis?(move.sourceFeet.x-ex.origin[0])*ex.axis[0]+(move.sourceFeet.y-ex.origin[1])*ex.axis[1]:ex.vertical?move.sourceFeet.x:move.sourceFeet.y; ok(Math.abs(t-ex.t)<.35,`${name}: 실제 문턱 통과가 지정 폭 lane ${ex.lane} 안 (${t.toFixed(2)} / ${ex.t.toFixed(2)})`); }
                 fs.writeFileSync(path.join(OUT,'moves.json'), JSON.stringify(await page.evaluate(()=>T.moves),null,2));
                 fs.writeFileSync(path.join(OUT,'result.txt'),res.join('\n')+'\n');
             }
             leg++;
+            if(back.length){await page.screenshot({path:path.join(OUT,'unexpected-reentry.png')});res.push('STOP: unexpected re-entry; remaining route not run');break;}
         }
         if (!CONNECTIONS) {
         // the return on purpose and save / load: from T1W's landing, walk back into its exit; then reload where she is
