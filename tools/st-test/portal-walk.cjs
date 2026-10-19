@@ -87,8 +87,10 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const checks=await page.evaluate(()=>{
                 const m=T.map.getMap('desert_forecourt_east'),e=m.d.exits.find(e=>e.id==='east'),px=m.d.authoredCollision.pixelWalk.pixelsPerTile;
                 const p=(x,y)=>T.map.containsExit(e,x/px,y/px);
+                const f=T.map.getMap('desert_colonnade').d.exits.find(e=>e.id==='forecourt');
+                const fifteen=f.polygon?.length===4 && T.map.containsExit(f,1720/px,620/px) && !T.map.containsExit(f,1707/px,651/px);
                 const legacy={x0:1,y0:2,x1:3,y1:4};
-                return {polygon:e.polygon?.length===5,inside:p(1699,295),outside:!p(1666,340)&&!p(1732,249),legacy:T.map.containsExit(legacy,1,2)&&T.map.containsExit(legacy,3,4)&&!T.map.containsExit(legacy,.99,3)};
+                return {polygon:e.polygon?.length===5,fifteen,inside:p(1699,295),outside:!p(1666,340)&&!p(1732,249),legacy:T.map.containsExit(legacy,1,2)&&T.map.containsExit(legacy,3,4)&&!T.map.containsExit(legacy,.99,3)};
             });
             for(const [name,value] of Object.entries(checks))ok(value,'출구 실제 판정 계약: '+name);
         }

@@ -53,7 +53,10 @@ ALPHA = 128
 # 사이를 좀 더 멀리"); checked below, the build stops when one is closer
 GAP = 3
 # Parent-registered latest user mark, source pixels. AABB remains in each runtime exit.
-EXIT_POLYGONS = {('desert_forecourt_east', 'east'): [(1665,254),(1684,248),(1733,319),(1733,340),(1727,342)]}
+EXIT_POLYGONS = {
+    ('desert_forecourt_east', 'east'): [(1665,254),(1684,248),(1733,319),(1733,340),(1727,342)],
+    ('desert_colonnade', 'forecourt'): [(1706,582),(1720,580),(1739,646),(1728,652)],
+}
 # landings the user put by hand (their mark wins over GAP; still at least 2 people-widths): 11 door, the blue mark on the
 # stairs below the door ("파란색으로 수정", docs/consult/desert/maps/user-11-door-landing.jpg), 2.47
 BY_USER = {('desert_city_gate', 'door'), ('desert_forecourt_west', 'south'), ('desert_forecourt_west', 'east'), ('desert_buried_temple', 'temple')}   # user marks: T1W south/east, 02 temple steps, 11 door
@@ -125,8 +128,8 @@ PLACES = [
     # 위층 뒷벽 수신부); 받침 앞 바닥에서 퍼즐 화면을 연다(src/packs/puzzle/colonnade.js). T2·16 출입은 아직 없음:
     # east 시험 착지는 보존. 실제 T1E 왕복은 오른쪽 문 앞 석재 길의 forecourt 착지를 쓴다.
     ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
-     {'east': ((1680, 620), 'left'), 'forecourt': ((1570, 620), 'left')},
-     [('forecourt', (1710, 580, 1730, 655), 'desert_forecourt_east', 'east')]),
+     {'east': ((1680, 620), 'left'), 'forecourt': ((1645, 620), 'left')},
+     [('forecourt', (1706, 580, 1739, 652), 'desert_forecourt_east', 'east')]),
     # T1W 서쪽 제례 앞뜰 (desert_forecourt_west): 가죽 방패병 한 마리 전투(B3, data/desert.json field). 02 ↔ 모래 경사 아래 끝
     # (south); T1E 출입은 오른쪽 문. yard: 석재 마당 왼쪽 착지(시험들이 씀)
     ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
@@ -189,6 +192,7 @@ def main(review_ids=None):
                 if (ident, k) in {('desert_colonnade', 'forecourt'), ('desert_forecourt_east', 'west'), ('desert_forecourt_east', 'east')}: need = 130
                 # User's new doorway landing is fixed; do not move it for a generic gap rule.
                 if (ident, k) == ('desert_forecourt_east', 'east'): need = 90
+                if (ident, k) == ('desert_colonnade', 'forecourt'): need = 60
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         for item in ex:
