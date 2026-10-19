@@ -272,7 +272,8 @@ export function refresh() {
     frameNow();
 }
 
-function frameNow() { if (map && renderer.cv.width > 1) draw(performance.now()); }
+// not before the renderer has the map: reopening, a resize can come while the map's pictures still load (enterMap)
+function frameNow() { if (map && renderer.map && renderer.cv.width > 1) draw(performance.now()); }
 
 // what she can use from where she stands, worked out now (also when the button is pressed between frames)
 // the leader and the one walking with them are not also standing about the map as people

@@ -2,7 +2,7 @@
 // 걷는다(CDP 터치 이벤트 → .sf_pad의 pointer 이벤트, 키보드·순간이동 없음). 영상으로 남기고 다음을 검사한다.
 //   - 출구 진입·이탈·재진입, 한 번 밟을 때 이동 한 번(맵 바뀜을 매 프레임 기록), 착지 출구 안에 서 있어도 다시 안 넘어감
 //   - 착지 발 상자가 바닥 안이고 출구 밖(02 돌 문은 문 안 착지: 가만히 있으면 안 넘어감)
-//   - 저장 → 새로고침 → 같은 채팅 다시 열기 → 같은 맵·자리, 다른 채팅으로 갔다 와도 그대로
+//   - 게임 창 닫기(자리 저장) → 새로고침 → 같은 채팅 다시 열기 → 같은 맵·자리, 새 채팅으로 갔다 와도 그대로
 //   node tools/st-test/desert-b1.cjs [out]
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -21,7 +21,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
     const errors = [];
-    page.on('pageerror', e => errors.push(e.message));
+    page.on('pageerror', e => errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 4).map(s => s.trim()).join(' < ')));
 
     const boot = async charId => {
         await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 });
@@ -43,7 +43,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
             T[k] = await import(base + 'src/' + f + '.js');
         // every map change, frame by frame (a second change right after one is a double move)
         T.moves = []; let last = T.player.player.map;
-        const watch = () => { const m = T.player.player.map; if (m !== last) { T.moves.push({ from: last, to: m, t: performance.now() }); last = m; } requestAnimationFrame(watch); };
+        const watch = () => { const m = T.player.player.map; if (m !== last) { T.moves.push({ from: last, to: m, t: performance.now(), x: T.player.player.x, y: T.player.player.y }); last = m; } requestAnimationFrame(watch); };
         requestAnimationFrame(watch);
     }, BASE);
 
@@ -61,6 +61,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
     const walkTo = async (exitId, limitMs = 40000) => {
         const route = await page.evaluate(exitId => {
             const p = T.player.player, m = T.map.getMap(p.map), e = m.d.exits.find(x => x.id === exitId);
+            if (!e) return null;
             const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96);
             const gx = Math.round(p.x / S), gy = Math.round(p.y / S), key = (x, y) => x + ',' + y;
             const inExit = (x, y) => { const fx = x * S + 0.5, fy = y * S + 0.8; return fx >= e.x0 && fx <= e.x1 && fy >= e.y0 && fy <= e.y1; };
@@ -83,24 +84,38 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         if (!route) return { reached: false, why: 'no route' };
         const from = await page.evaluate(() => T.player.player.map);
         const p = await padBox(); await touch('touchStart', p.x, p.y);
-        const t0 = Date.now(); let i = 0, changed = false;
+        const t0 = Date.now(); let i = 0, changed = false, last = null, lastT = t0, trace = [];
         while (Date.now() - t0 < limitMs) {
-            const me = await page.evaluate(() => ({ x: T.player.player.x, y: T.player.player.y, map: T.player.player.map }));
+            const me = await page.evaluate(() => ({ x: T.player.player.x, y: T.player.player.y, map: T.player.player.map, moving: T.player.player.moving, card: !!document.querySelector('.sf_pop_wrap'), act: T.player.player.act }));
             if (me.map !== from) { changed = true; break; }
-            while (i < route.length - 1 && Math.hypot(route[i][0] - me.x, route[i][1] - me.y) < 0.35) i++;
-            // look ahead along the route while the straight line stays near it
-            let j = i; while (j < route.length - 1 && j < i + 6) j++;
-            const [tx, ty] = route[Math.min(j, route.length - 1)];
+            // the nearest route point ahead of the last one (a shortcut may have passed some without touching them)
+            { let bi = i, bd = Infinity; for (let k = i; k < Math.min(route.length, i + 40); k++) { const d = Math.hypot(route[k][0] - me.x, route[k][1] - me.y); if (d < bd) { bd = d; bi = k; } } i = bi; }
+            // aim at the farthest route point ahead (up to 3 tiles) that a straight walk reaches without touching a wall
+            const j = await page.evaluate(([route, i]) => {
+                const p = T.player.player, m = T.map.getMap(p.map);
+                const free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96);
+                let best = i;
+                for (let j = i; j < Math.min(route.length, i + 12); j++) {
+                    const [tx, ty] = route[j], n = Math.ceil(Math.hypot(tx - p.x, ty - p.y) / 0.08); let clear = true;
+                    for (let k = 1; k <= n && clear; k++) clear = free(p.x + (tx - p.x) * k / n, p.y + (ty - p.y) * k / n);
+                    if (clear) best = j; else break;
+                }
+                return best;
+            }, [route, i]);
+            const [tx, ty] = route[j];
             const dx = tx - me.x, dy = ty - me.y, n = Math.hypot(dx, dy) || 1;
             await touch('touchMove', p.x + dx / n * p.lim, p.y + dy / n * p.lim);
+            if (Date.now() - lastT > 400) { trace.push([+me.x.toFixed(2), +me.y.toFixed(2), i, j, route[j].map(v => +v.toFixed(2)), me.moving, me.card, me.act]); lastT = Date.now(); }
             await page.waitForTimeout(50);
         }
         await touch('touchEnd');
+        if (!changed) console.log('stuck trace', JSON.stringify(trace.slice(0, 6).concat(trace.slice(-6))), 'route end', JSON.stringify(route[route.length - 1]));
         return { reached: changed, ms: Date.now() - t0 };
     };
     const where = () => page.evaluate(() => ({ map: T.player.player.map, x: T.player.player.x, y: T.player.player.y }));
     const landing = (map, entry) => page.evaluate(([map, entry]) => {
-        const m = T.map.getMap(map), w = m.d.entries[entry], p = T.player.player;
+        const m = T.map.getMap(map), w = m.d.entries[entry], last = T.moves[T.moves.length - 1];
+        const p = last && last.to === map ? last : T.player.player;
         const fx = w.x + 0.5, fy = w.y + 0.8;
         return { at: Math.hypot(p.x - w.x, p.y - w.y) < 0.05, floor: !m.solidRect(w.x + 0.22, w.y + 0.62, w.x + 0.78, w.y + 0.96),
             inExit: m.d.exits.filter(e => fx >= e.x0 && fx <= e.x1 && fy >= e.y0 && fy <= e.y1).map(e => e.id) };
@@ -178,7 +193,8 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         await page.waitForTimeout(1500);
         await hold(-1, 0.3, 700);
         const before = await where();
-        await page.evaluate(async () => { await T.state.saveState(); });
+        // as a player leaves: the game window closed (window.js closeGame → rememberPosition → saveState)
+        await page.evaluate(async () => { await T.win.closeGame(); });
         await page.waitForTimeout(1500);
         await page.reload({ waitUntil: 'domcontentloaded' });
         await boot(0);
@@ -186,23 +202,28 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         await page.evaluate(async () => { await T.win.openGame(); window.toastr?.clear(); });
         await page.waitForTimeout(2500);
         let after = await where();
-        ok(after.map === before.map && Math.hypot(after.x - before.x, after.y - before.y) < 0.05, `저장 → 새로고침 → 같은 채팅: ${JSON.stringify(before)} → ${JSON.stringify(after)}`);
+        ok(after.map === before.map && Math.hypot(after.x - before.x, after.y - before.y) < 0.02, `게임 창 닫기(저장) → 새로고침 → 같은 채팅: ${JSON.stringify(before)} → ${JSON.stringify(after)}`);
         await page.screenshot({ path: path.join(OUT, '5-reload.png') });
 
-        // 6. 다른 채팅으로 갔다 오기
-        const chars = await page.evaluate(() => SillyTavern.getContext().characters.length);
-        if (chars > 1) {
-            await selectChar(1);
-            await page.evaluate(async () => { await T.win.openGame(); window.toastr?.clear(); });
-            await page.waitForTimeout(2000);
-            const other = await page.evaluate(() => ({ map: T.state.getState()?.pos?.map, chat: SillyTavern.getContext().chatId }));
-            ok(!(other.map === before.map && other.chat === undefined), `다른 채팅(${other.chat}) 게임: ${other.map} (사막 자리를 가져가지 않음)`);
-            await selectChar(0);
-            await page.evaluate(async () => { await T.win.openGame(); window.toastr?.clear(); });
-            await page.waitForTimeout(2500);
-            after = await where();
-            ok(after.map === before.map && Math.hypot(after.x - before.x, after.y - before.y) < 0.05, `원래 채팅으로 돌아와 같은 맵·자리: ${JSON.stringify(after)}`);
-        } else ok(true, '다른 채팅 검사 미실행: 캐릭터가 하나뿐 (환경)');
+        // 6. 다른 채팅(같은 캐릭터의 새 채팅)으로 갔다 오기: 그 채팅의 게임은 따로, 돌아오면 그대로
+        const chatA = await page.evaluate(() => SillyTavern.getContext().chatId);
+        await page.evaluate(async () => { await T.win.closeGame(); });
+        await page.evaluate(async () => { await SillyTavern.getContext().executeSlashCommandsWithOptions('/newchat'); });
+        await page.waitForFunction(a => SillyTavern.getContext().chatId && SillyTavern.getContext().chatId !== a, chatA, { timeout: 30000 });
+        await page.waitForTimeout(1500);
+        await page.evaluate(async () => { await T.win.openGame(); window.toastr?.clear(); });
+        await page.waitForTimeout(2000);
+        const other = await page.evaluate(() => ({ chat: SillyTavern.getContext().chatId, pos: T.state.getState()?.pos, on: T.player.player.map }));
+        ok(other.on !== before.map && other.pos?.map !== before.map, `새 채팅(${other.chat})의 게임은 따로: ${other.on} (사막 자리를 가져가지 않음)`);
+        await page.evaluate(async () => { await T.win.closeGame(); });
+        await page.evaluate(async a => { await SillyTavern.getContext().openCharacterChat(a); }, chatA);
+        await page.waitForFunction(a => SillyTavern.getContext().chatId === a, chatA, { timeout: 30000 });
+        await page.waitForTimeout(1500);
+        await page.evaluate(async () => { await T.win.openGame(); window.toastr?.clear(); });
+        await page.waitForTimeout(2500);
+        after = await where();
+        ok(after.map === before.map && Math.hypot(after.x - before.x, after.y - before.y) < 0.02, `원래 채팅으로 돌아와 같은 맵·자리: ${JSON.stringify(after)}`);
+        await page.screenshot({ path: path.join(OUT, '6-back-to-chat.png') });
         ok(!errors.length, `페이지 오류 없음 ${errors.join('; ')}`);
     } finally {
         fs.writeFileSync(path.join(OUT, 'result.txt'), res.join('\n') + '\n');
