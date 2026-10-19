@@ -37,6 +37,8 @@ export NODE_PATH=/opt/node-tools/node_modules
 | 호루스 기술·가드 깨기 | `node tools/st-test/desert-horus-leap.cjs [out]` (영상 docs/consult/desert/b3/) |
 | 15 빛 퍼즐 A안 | `node tools/st-test/puzzle-lift.mjs`, `node tools/st-test/desert-15-lift.cjs [out]` |
 | 사막 몹 12종 몸 범위 검수 | `node tools/st-test/desert-mob-hits.cjs [out]` |
+| 일반 공격 판정 | `node tools/st-test/desert-strike.cjs [out]` |
+| 몹 그림 로딩·메모리 | `node tools/st-test/mob-art-load.cjs [out]` |
 | 회귀 | [`DESERT-COMBAT-SURVEY.md`](DESERT-COMBAT-SURVEY.md) 「회귀 시나리오」 |
 
 ## 기록
@@ -52,6 +54,8 @@ export NODE_PATH=/opt/node-tools/node_modules
 | 10-19 | 퍼즐 A안·몸 범위 | 15 A안 맵 안 시제품(받침 회전·올림 틀 밀기·낮은/높은 빛 구분·장치 창·채팅별 저장), 16 구체 설계(돌 하나·그릇 둘·돌림판, 그림·충돌 원본 확인), 방패병 몸 범위 비교(데이터 값 추가, 기본 0) | puzzle-lift 5·desert-15-lift 22·desert-b2 14·horus-leap 16 통과, 16 전체 상태 12 중 정답 1, 몸 범위 비교 4안 |
 
 | 10-19 | 몸 범위·16 보완 | 호루스 C안·세트 A안 적용(착지 여유·기술별 명중 분리), 사막 몹 12종 몸통·앞 몸체 실측과 크기 제안 팩, 16 안 X 보완·안 K 비교·접근 검사·입구 갓·벽감 그림 목록 | desert-mob-hits 24·horus-leap 16 통과, 16 두 안 정답 각 1·접근 통과 |
+
+| 10-19 | 일반 공격·기준점·에셋 | 일반 공격을 공격 범위×피격 도형(몸통·방패 막힘·주먹)으로, 12종 기준점을 몸통 가운데로, 몹 그림 맵별 불러오기·놓기, 무손실 최적화, 로딩·메모리 측정 | desert-strike 58·desert-mob-hits 36·horus-leap 16·mob-art-load 6 통과, duat-mob-video 통과 |
 
 ## 따로 고칠 것
 

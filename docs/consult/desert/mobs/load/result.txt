@@ -1,0 +1,15 @@
+조건: 412×900 dpr 2, CPU 4배 느리게, 로컬 서버(네트워크 지연 없음 — 실제 폰은 내려받는 시간이 더해진다)
+통과 T1W 들어가서 가죽 방패병: 처음 보이기까지 1170 ms(art/enemies/desert-leather-shield.png) → 자리 잡은 뒤 몹 그림 1장 5.3 MB (art/enemies/desert-leather-shield.png)
+통과 신전 수문장(4.2배) 더하기: 처음 보이기까지 705 ms → 자리 잡은 뒤 몹 그림 2장 52.7 MB (art/enemies/desert-leather-shield.png, art/enemies/desert-temple-warden-0.png)
+  02(필드 아님): 몹 그림 0장 0.0 MB
+  T1W: 몹 그림 1장 5.3 MB
+  02(필드 아님): 몹 그림 0장 0.0 MB
+  T1W: 몹 그림 1장 5.3 MB
+  02(필드 아님): 몹 그림 0장 0.0 MB
+  T1W: 몹 그림 1장 5.3 MB
+  두아트 04: 몹 그림 2장 3.0 MB
+통과 필드가 아닌 맵에 가면 사막 몹 그림을 모두 놓는다
+통과 T1W에 돌아오면 그 맵 몹(가죽 방패병) 그림만
+통과 두아트에서는 사막 몹 그림이 남지 않음
+종별 장 수(큰 / 작은): hourglass 1/1, ring 1/1, leather_shield 1/1, sealed_jar 1/1, sealed_shield 1/1, walking_stela 1/1, sun_mirror 1/1, balance_sentinel 1/1, mask_priest_mantle 1/1, mask_priest_shroud 1/1, royal_mask_warden 1/1, temple_warden 2/1, throne_warden 2/1, broken_tomb_warden 2/1
+통과 페이지 오류 없음 

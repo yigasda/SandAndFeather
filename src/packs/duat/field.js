@@ -31,7 +31,7 @@
 // one fell and the day it last fell are kept apart (s.desertFight.first / killed), and only her 체력·공포 of the fight
 // (s.desertFight.run) end when she leaves. Gone down there, she is back at the map's way in, nothing lost.
 
-import { DATA, spriteFile } from '../../core/data.js';
+import { DATA, releaseSprites, spriteFile } from '../../core/data.js';
 import { getState, saveState } from '../../core/state.js';
 import { HERO_NAME, leadOf, statsOf, withOf } from '../../core/heroes.js';
 import { behind, feet, follower, mateWalk, player } from '../../world/player.js';
@@ -91,8 +91,18 @@ function makeMob(i, kind, x, y) {
     const e = { ...F().enemies[kind], ...(tune[kind] || {}) };
     return { i, kind, e, x, y, hp: e.hp, st: 'wander', t: 0, tx: x, ty: y, wait: rand(0, 1.5), phase: rand(0, 6.28), shownAt: -9, guardAt: 0, steadyAt: 0, restAt: 0 };
 }
+// a creature's sheets (both sizes), and only the kinds this map has kept in memory: the rest let go (사용자 10-19: the
+// pictures of maps she has left do not pile up). A kind's sheets load when it is first drawn (drawMob → spriteFile).
+const kindFiles = kinds => kinds.flatMap(k => { const d = DATA.sprites?.enemies?.[k]; return d ? [...(d.sheets || [d.file]), ...(d.small?.sheets || [d.small?.file])].filter(Boolean) : []; });
+function keepArt(kinds) {
+    const keep = new Set(kindFiles(kinds));
+    releaseSprites(kindFiles(Object.keys(DATA.sprites?.enemies || {})).filter(f => !keep.has(f)));
+}
 function spawn(m, s) {
     mobs = []; bolts = []; pops = []; fx = [];
+    try { spawnHere(m, s); } finally { keepArt([...new Set(mobs.map(o => o.kind))]); }
+}
+function spawnHere(m, s) {
     if (isDesert(m.id)) {   // where the data puts them; one struck down today stays down
         const f = fight(s), day = today(s);
         DATA.desert.maps[m.id].spawns.forEach((sp, i) => {
@@ -386,9 +396,10 @@ function damage0(s, o, n, push, from, kind) {
     if (o.st === 'guard') {
         if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); note({ ev: 'break', mob: o.i }); }
         else { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); }
-    } else mobFx(o, 'hit');
+    } else if (kind === 'shield') { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); st = 'shield'; }   // the guard's own rule
+    else mobFx(o, 'hit');
     o.hp -= n;
-    pop(c.x, c.y - 2.3, `${n}`, o.st === 'guard' && st !== 'break' ? '#cfe3ea' : '#fff3c4');
+    pop(c.x, c.y - 2.3, `${n}`, (o.st === 'guard' && st !== 'break') || st === 'shield' ? '#cfe3ea' : '#fff3c4');
     if (o.hp <= 0) {
         o.st = 'dead'; o.t = 0;
         if (o.sid) { const f = fight(s), day = today(s); f.killed[o.sid] = day; f.first[o.sid] ??= day; save(); }   // no reward is decided yet
@@ -396,6 +407,7 @@ function damage0(s, o, n, push, from, kind) {
         return;
     }
     if (st === 'break') { o.st = 'hit'; o.t = 0; o.stun = T.stagger; o.steadyAt = now() + T.stagger + T.steady; return; }   // no counter
+    if (st === 'shield') return;   // stopped on the shield: no flinch, no closing up
     if (o.st === 'guard') return;
     // the first blow lands in full, then it may close up
     if ((o.st === 'wander' || o.st === 'chase') && now() >= o.guardAt && Math.random() < (o.e.guard || 0)) {
@@ -413,11 +425,14 @@ const power = (s, who) => 3 + Math.floor((statsOf(s, who)?.strength || 0) / 2) +
 // or up / down for the thrust from the front / back pictures)
 function strike(s, who, from, face, mult = 1, reach = null) {
     reach ??= F().reach?.[who] || 1.4;
-    const v = face === 'up' || face === 'down', sign = face === 'right' || face === 'down' ? 1 : -1;
     let hit = 0;
     for (const o of mobs) {
-        const c = centre(o), along = ((v ? c.y - from.y : c.x - from.x)) * sign, across = Math.abs(v ? c.x - from.x : c.y - from.y);
-        if (o.st !== 'dead' && along > -0.2 && along < reach && across < 0.75) { damage(s, o, power(s, who) * mult, 0.25, from); hit++; me.target = o; }
+        if (o.st === 'dead') continue;
+        const m = blowMeets(o, from, face, reach);
+        if (!m) continue;
+        // on the shield alone: blocked as by a guard (사용자 10-19); on the torso or a boss's fists: a blow
+        damage(s, o, power(s, who) * mult, m === 'shield' ? 0 : 0.25, from, m === 'shield' ? 'shield' : '');
+        hit++; me.target = o;
     }
     return hit;
 }
@@ -448,30 +463,49 @@ export function skill() {
 // tile) times the map's actorScale; its shape is given in parts of that height (as drawMob draws it)
 const charTiles = () => 31.2 / 16 * (map()?.d?.actorScale || 1);
 // its shape (사용자 10-19), measured once a kind on its standing picture (tools/art/desert-mob-pack.py → sprites.json
-// enemies.<kind>.hit), the same in every frame; weapons, flashes and empty margins are not in it:
-//   body  — the torso's half width          back — the torso's middle behind its feet's middle (away from where it faces)
-//   front — what it holds out in front (a shield, a boss's fists), from its feet's middle; frontHit — Horus's 기술
-//           lands short of it and counts it as struck (Set's 기술 counts the torso only)
-// Every Duat creature has none of it: its middle, as before. Tests may put another in its place (testTune … { hit }; { hit: {} } = none).
+// enemies.<kind>.hit), the same in every frame; weapons, flashes and empty margins are not in it. Its feet's middle is
+// the middle of its body on the ground (the pivot), so:
+//   body  — the torso, a circle that wide round its feet's middle
+//   front, frontKind — what it holds out in front, from its feet's middle: 'shield' a guard surface (a blow on the shield
+//           alone is blocked as by a guard; Horus's 기술 counts it), 'body' part of it (a boss's fists: struck as the torso)
+// Every Duat creature has none of it: a point, as before. Tests may put another in its place (testTune … { hit }).
 const shape = o => o.e.hit || DATA.sprites?.enemies?.[o.kind]?.hit || {};
-function hurtArea(o) { const h = shape(o), k = charTiles(), c = centre(o), back = (h.back || 0) * k * (o.faceR ? -1 : 1); return { x: c.x + back, y: c.y, r: (h.body || 0) * k }; }
-// how far from its feet's middle he comes down: past what it holds out (frontHit) or its torso's front edge, and his
-// own room (LAND_GAP); with no shape 0.6, as before
-const LAND_GAP = 0.6;
-function room(o) {
-    const h = shape(o), k = charTiles();
-    const ahead = h.frontHit ? h.front || 0 : Math.max(0, (h.body || 0) - (h.back || 0));
-    return ahead * k + LAND_GAP;
-}
-// a 기술 around g with reach r touches it: its torso; with withFront (Horus) also what it holds out in front
-function touches(o, g, r, withFront = false) {
-    const a = hurtArea(o);
-    if (Math.hypot(a.x - g.x, a.y - g.y) - a.r < r) return true;
-    const h = shape(o);
-    if (!withFront || !h.frontHit || !h.front) return false;
+function hurtArea(o) { const h = shape(o), c = centre(o); return { x: c.x, y: c.y, r: (h.body || 0) * charTiles() }; }
+// what it holds out, as a line on the floor from its feet's middle forward: { x0, x1, y, kind } or null
+function frontLine(o) {
+    const h = shape(o); if (!h.front || !h.frontKind) return null;
     const c = centre(o), fx = c.x + (o.faceR ? 1 : -1) * h.front * charTiles();
-    const px = Math.min(Math.max(g.x, Math.min(c.x, fx)), Math.max(c.x, fx));
-    return Math.hypot(px - g.x, c.y - g.y) < r;
+    return { x0: Math.min(c.x, fx), x1: Math.max(c.x, fx), y: c.y, kind: h.frontKind };
+}
+// how far from its feet's middle he comes down: past what it holds out or its torso, and his own room (LAND_GAP)
+const LAND_GAP = 0.6;
+function room(o) { const h = shape(o); return (h.frontKind ? h.front || 0 : h.body || 0) * charTiles() + LAND_GAP; }
+// a 기술 around g with reach r: 'torso' / 'body' (a boss's fists) for everyone, 'shield' for Horus only (C안); else null
+function touches(o, g, r, horus = false) {
+    const a = hurtArea(o);
+    if (Math.hypot(a.x - g.x, a.y - g.y) - a.r < r) return 'torso';
+    const f = frontLine(o);
+    if (!f || (f.kind === 'shield' && !horus)) return null;
+    const px = Math.min(Math.max(g.x, f.x0), f.x1);
+    return Math.hypot(px - g.x, f.y - g.y) < r ? f.kind : null;
+}
+// a blow's reach in front of her (the box the old check used on its middle: from just behind her feet out to reach,
+// 0.75 to either side) against its shapes: the torso circle, what it holds out. No wall between her and where it lands.
+// → 'torso' / 'body' / 'shield' (only the shield in reach) / null
+function blowMeets(o, from, face, reach) {
+    const v = face === 'up' || face === 'down', sign = face === 'right' || face === 'down' ? 1 : -1;
+    const local = (x, y) => ({ along: (v ? y - from.y : x - from.x) * sign, across: v ? x - from.x : y - from.y });
+    const inBox = (x, y) => { const l = local(x, y); return l.along > -0.2 && l.along < reach && Math.abs(l.across) < 0.75; };
+    const seen = (x, y) => clearLine(from, { x, y });
+    // the torso: the point of the circle nearest the box's middle line, clamped into the box
+    const a = hurtArea(o), l = local(a.x, a.y);
+    const al = Math.min(Math.max(l.along, -0.2 + 1e-6), reach - 1e-6), ac = Math.min(Math.max(l.across, -0.75 + 1e-6), 0.75 - 1e-6);
+    const nx = v ? from.x + ac : from.x + al * sign, ny = v ? from.y + al * sign : from.y + ac;
+    if (Math.hypot(nx - a.x, ny - a.y) <= a.r + 1e-6 && inBox(nx, ny) && seen(nx, ny)) return 'torso';
+    if (a.r === 0 && inBox(a.x, a.y) && seen(a.x, a.y)) return 'torso';
+    const f = frontLine(o);
+    if (f) for (let x = f.x0; x <= f.x1 + 1e-6; x += 0.05) if (inBox(x, f.y) && seen(x, f.y)) return f.kind;
+    return null;
 }
 // the nearest creature ahead on his leap: in front, across no more than his blow's width (plus its torso), no wall
 // between, and one he can come down short of before the wall or the leap's end
@@ -562,7 +596,7 @@ onFrame((dt, m, u) => {
     if (!isDuat(m.id) && s.duatField) { s.duatField = null; saveState(); }
     if (!isDesert(m.id) && s.desertFight?.run) { s.desertFight.run = null; saveState(); }   // the fight's 체력 ends, who fell when stays
     if (!isField(m.id)) {
-        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); }
+        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); keepArt([]); }
         return;
     }
     // a new map object each time she arrives (enterMap), or a new run: the creatures of this map again
@@ -663,8 +697,10 @@ function drawMob(g, o, sx, sy, z, ts) {
     // a kind's pictures are on its own sheets (one or more, tools/art/desert-mob-pack.py: frame [x, y, w, h, px, py, sheet]);
     // only the sheet this frame is on is asked for, the small set when it is drawn small, the other while that one loads
     const pick = v => { const r = v.frames[motion] || v.frames['idle-0'], img = spriteFile((v.sheets || [v.file])[r[6] || 0]); return img && { a: v, r, img }; };
-    const got = (H <= d.small.visible + 1 && pick(d.small)) || pick(d) || pick(d.small);
+    const wantSmall = H <= d.small.visible + 1, got = (wantSmall && pick(d.small)) || pick(d) || pick(d.small);
     if (!got) return;
+    // drawn from the set it wants: the other set (asked for only to show something while this one loaded) is let go
+    if (got.a === (wantSmall ? d.small : d)) releaseSprites((wantSmall ? d : d.small).sheets || [(wantSmall ? d : d.small).file]);
     const { a, r, img } = got, k = H / a.visible;   // the atlas has a character's height in `visible` px
     // floating: lifted off the floor and bobbing, except while it warns, strikes, is hit, guards or breaks
     const still = !['wander', 'chase'].includes(o.st);
@@ -688,7 +724,7 @@ function drawMob(g, o, sx, sy, z, ts) {
     g.imageSmoothingEnabled = false;
 }
 const SAND = ['#f3dca4', '#e2bd7c', '#c9995a'];
-// tests only: green — where a 기술 hurts it (torso), blue — what it holds out in front (solid: Horus's 기술 counts it, frontHit), the leap's
+// tests only: green — where a 기술 hurts it (torso), blue — a shield (a blow on it alone is blocked; Horus's 기술 counts it), a green line — a boss's fists (body), the leap's
 // landing (magenta ×) and each 기술's reach (orange: Horus, yellow: Set) as circles on the floor
 function drawRanges(g, z, ts, cx, cy) {
     const P = (x, y) => [x * ts - cx, y * ts - cy];
@@ -698,8 +734,8 @@ function drawRanges(g, z, ts, cx, cy) {
         const h = hurtArea(o), [hx, hy] = P(h.x, h.y), c = centre(o), [px, py] = P(c.x, c.y);
         g.strokeStyle = '#30d070'; g.fillStyle = 'rgba(48,208,112,.25)'; g.beginPath(); g.arc(hx, hy, Math.max(2 * z, h.r * ts), 0, Math.PI * 2); g.fill(); g.stroke();
         g.fillStyle = '#ffffff'; g.fillRect(px - 2 * z, py - 2 * z, 4 * z, 4 * z);
-        const sh = shape(o);
-        if (sh.front) { const [fx] = P(c.x + (o.faceR ? 1 : -1) * sh.front * charTiles(), c.y); g.strokeStyle = sh.frontHit ? '#3080ff' : 'rgba(48,128,255,.6)'; g.setLineDash(sh.frontHit ? [] : [5 * z, 4 * z]); g.beginPath(); g.moveTo(px, py); g.lineTo(fx, py); g.stroke(); g.setLineDash([]); }
+        const fl = frontLine(o);
+        if (fl) { const [ax] = P(fl.x0, fl.y), [bx] = P(fl.x1, fl.y); g.strokeStyle = fl.kind === 'shield' ? '#3080ff' : '#30d070'; g.lineWidth = 4 * z; g.beginPath(); g.moveTo(ax, py); g.lineTo(bx, py); g.stroke(); g.lineWidth = 2 * z; }
     }
     for (const a of areas.slice(-4)) {
         const [x, y] = P(a.x, a.y);
@@ -821,9 +857,11 @@ function hud(show, s, m) {
 // tests only: turn her a way (left, right, up, down) as walking that way would
 export const testEvents = (clear = false) => { const out = events.slice(); if (clear) events.length = 0; return out; };
 export const testNow = () => +now().toFixed(3);
+// tests only: the creature pictures in memory now, and what they take decoded (width × height × 4)
+export const testArt = () => { const files = kindFiles(Object.keys(DATA.sprites?.enemies || {})).filter(f => DATA.spriteArt?.[f]); return { files, bytes: files.reduce((n, f) => n + DATA.spriteArt[f].naturalWidth * DATA.spriteArt[f].naturalHeight * 4, 0) }; };
 export const testTouch = (x, y, r, withFront = false) => mobs.filter(o => o.st !== 'dead').map(o => touches(o, { x, y }, r, withFront));
 export const testRanges = (on = true) => { showRanges = on; if (!on) areas.length = 0; };
-export const testHurt = () => mobs.filter(o => o.st !== 'dead').map(o => ({ ...hurtArea(o), cx: centre(o).x, faceR: !!o.faceR, tiles: charTiles() }));
+export const testHurt = () => mobs.filter(o => o.st !== 'dead').map(o => ({ ...hurtArea(o), cx: centre(o).x, faceR: !!o.faceR, tiles: charTiles(), front: frontLine(o) }));
 // tests only: a clean start for one check (her and the companion's cooldowns, poses, down, shield; numbers over the data)
 export function testReset() {
     Object.assign(me, { act: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, target: null });

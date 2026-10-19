@@ -89,14 +89,20 @@ export async function ensureSceneArt(mapId) {
     }
 }
 
-// a sprite picture loaded on first need (the large trio atlas): null until it has decoded
+// a sprite picture loaded on first need (the large trio atlas, a creature's sheets): null until it has decoded
 const spriteLoading = new Map();
+// let go of sprite pictures no longer needed (a map's creatures when she leaves it), so they do not pile up
+export function releaseSprites(files) {
+    for (const file of files) { if (DATA.spriteArt) delete DATA.spriteArt[file]; spriteLoading.delete(file); }
+}
 export function spriteFile(file) {
     if (DATA.spriteArt?.[file]) return DATA.spriteArt[file];
     if (!spriteLoading.has(file)) {
         const image = new Image();
         image.src = new URL(file, base).href;
-        spriteLoading.set(file, image.decode().then(() => { DATA.spriteArt[file] = image; }).catch(() => { spriteLoading.delete(file); }));
+        // kept only if nobody let it go while it decoded (releaseSprites)
+        const loading = image.decode().then(() => { if (spriteLoading.get(file) === loading) DATA.spriteArt[file] = image; }).catch(() => { if (spriteLoading.get(file) === loading) spriteLoading.delete(file); });
+        spriteLoading.set(file, loading);
     }
     return null;
 }

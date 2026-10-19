@@ -25,7 +25,8 @@ HEIGHT_K = {
 # the shape a 기술 sees (사용자 10-19: 호루스 C안·세트 A안, 몹별 수치는 직접 정하고 묶어서 검수), measured by eye on the
 # standing picture idle_0 in its own pixels (the pictures face left): the torso's middle x and half width, without
 # weapons, hanging weights, flowing cloth, flashes or empty margin; front: the left edge of what it holds out (shield
-# family: the shield; bosses: the fists), with frontHit. The same for every frame (one pivot, one scale a kind).
+# family: the shield, a guard surface; bosses: the fists, body). The same for every frame (one pivot, one scale a kind).
+# The atlases are made smaller without loss afterwards (oxipng): the pixels stay the same.
 HIT = {
     'desert_sealed_jar': (255, 140, None), 'desert_leather_shield': (375, 48, 150), 'desert_sealed_shield': (365, 50, 118),
     'desert_walking_stela': (215, 130, None), 'desert_sun_mirror': (237, 150, None), 'desert_balance_sentinel': (290, 45, None),
@@ -48,7 +49,9 @@ def main(ids):
         folder = os.path.join(ROOT, sp['folder'])
         idle = np.maximum.reduce([np.asarray(Image.open(os.path.join(folder, sp['frames'][k]['file'])).getchannel('A')) for k in ('idle_0', 'idle_1', 'idle_2')]) >= 128
         ys = np.nonzero(idle.any(1))[0]; body_h = ys.max() + 1 - ys.min()
-        foot = [sp['measured']['footMiddleCandidate'], sp['measured']['footLineCandidate']]
+        # the pivot (사용자 10-19): across, the middle of the body standing on the ground (the torso's middle, HIT); down, the
+        # registry's foot line. One pivot a kind, so turning round (mirrored about it) does not shove the body sideways.
+        foot = [HIT[sid][0], sp['measured']['footLineCandidate']]
         out = {}
         for vis, suffix in ((VISIBLE, ''), (SMALL, '-small')):
             k = HEIGHT_K[sid] * vis / body_h
@@ -81,12 +84,15 @@ def main(ids):
                     atlas.paste(piece, (px, py)); frames[mo] = [px, py, piece.width, piece.height, *pv, n]
                 file = f'art/enemies/{sid.replace("_", "-")}{suffix}{"" if len(sheets) == 1 else f"-{n}"}.png'
                 atlas.save(os.path.join(ROOT, 'data', file), optimize=True); files.append(file)
+                try:
+                    import oxipng; oxipng.optimize(os.path.join(ROOT, 'data', file), level=4)   # lossless: same pixels, fewer bytes
+                except ImportError: pass
                 print(sid, file, atlas.size)
             out[suffix] = {'file': files[0], 'sheets': files, 'visible': vis, 'frames': frames}
         # the shape in characters' heights: picture px × HEIGHT_K / the standing body's height
         cx, hw, front = HIT[sid]; per = HEIGHT_K[sid] / body_h
-        hit = {'body': round(hw * per, 3), 'back': round((cx - foot[0]) * per, 3)}
-        if front is not None: hit.update(front=round((foot[0] - front) * per, 3), frontHit=True)
+        hit = {'body': round(float(hw * per), 3)}
+        if front is not None: hit.update(front=round(float((foot[0] - front) * per), 3), frontKind='body' if 'warden' in sid else 'shield')
         sprites.setdefault('enemies', {})[sid] = {**out[''], 'height': HEIGHT_K[sid], 'small': out['-small'], 'hit': hit, 'source': sp['folder']}
         print(' ', sid, hit)
     import importlib.util

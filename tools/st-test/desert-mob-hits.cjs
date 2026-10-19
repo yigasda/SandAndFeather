@@ -50,7 +50,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             // the shape in tiles on this map, and where Horus should land
             const sh = await page.evaluate(k => { const h = T.data.DATA.sprites.enemies[k].hit, t = 31.2 / 16 * (T.win.currentMap()?.d?.actorScale || 1.4); return { ...h, t }; }, kind);
             await scene('horus');
-            const ahead = (sh.frontHit ? sh.front : Math.max(0, sh.body - sh.back)) * sh.t;
+            const ahead = (sh.frontKind ? sh.front : sh.body) * sh.t;
             const D = ahead + 0.6 + 1.2;   // a little more than his room: he leaps 1.2 to come down short of it
             await put(kind, D); await sleep(250);
             const x0 = await page.evaluate(() => T.player.player.x); await page.evaluate(() => T.field.testEvents(true));
@@ -58,21 +58,21 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const h = await page.evaluate(x0 => ({ moved: T.player.player.x - x0, feet: T.player.player.x + 0.5, mob: T.field.testHurt()[0], blows: T.field.testEvents(true).filter(e => e.ev === 'blow').length }), x0);
             await page.screenshot({ path: path.join(OUT, `${String(i).padStart(2, '0')}-${kind}-horus.png`) });
             const edge = h.mob.cx - ahead, clear = edge - h.feet;   // from his feet to the front of its body / what it holds out
-            ok(h.blows === 1 && clear >= 0.55, `${kind} 호루스: ${h.moved.toFixed(2)}칸 도약, 앞 몸체까지 ${clear.toFixed(2)}칸 띄우고 착지, ${h.blows ? '명중' : '빗나감'}${sh.frontHit ? ' (앞 몸체 인정)' : ''}`);
+            ok(h.blows === 1 && clear >= 0.55, `${kind} 호루스: ${h.moved.toFixed(2)}칸 도약, 앞 몸체까지 ${clear.toFixed(2)}칸 띄우고 착지, ${h.blows ? '명중' : '빗나감'}${sh.frontKind ? ` (${sh.frontKind === 'shield' ? '방패' : '주먹'} 앞)` : ''}`);
             // Set (reach 2) and Somang (엄호, reach 1.5): torso only — how far from its feet's middle the 기술 still touches it
             for (const [who, R] of [['set', 2], ['somang', 1.5]]) {
                 await scene(who); await put(kind, R); await sleep(200);
                 const reach = await page.evaluate(([kind, R]) => {
                     const p = T.player.player, f = { x: p.x + 0.5, y: p.y + 0.8 }, base = T.data.DATA.desert.enemies.desert_leather_shield; let last = 0;
-                    for (let d = 0.3; d <= 9; d += 0.02) { T.field.testOnly(kind, f.x + d - 0.5, p.y, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true }); if (T.field.testTouch(f.x, f.y, R)[0]) last = d; }
+                    for (let d = 0.3; d <= 14; d += 0.02) { T.field.testOnly(kind, f.x + d - 0.5, p.y, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true }); if (T.field.testTouch(f.x, f.y, R)[0]) last = d; }
                     return +last.toFixed(2);
                 }, [kind, R]);
                 await put(kind, Math.max(0.6, reach - 0.05)); await sleep(150);
                 await page.evaluate(() => { T.field.testFace('right'); T.field.skill(); }); await sleep(500);
                 const blows = await page.evaluate(() => T.field.testEvents(true).filter(e => e.ev === 'blow').length);
                 await page.screenshot({ path: path.join(OUT, `${String(i).padStart(2, '0')}-${kind}-${who}.png`) });
-                const torso = +((sh.body - sh.back) * sh.t).toFixed(2);   // how much nearer its torso's near edge is than its feet's middle
-                ok(Math.abs(reach - (R + torso)) < 0.06 && blows === 1, `${kind} ${who === 'set' ? '세트' : '소망'}(몸통만): 닿는 거리 ${reach}칸 = ${R} + 몸통 끝(${torso >= 0 ? '+' : ''}${torso}칸), 그 끝에서 기술 ${blows ? '명중' : '빗나감'}`);
+                const torso = +((sh.frontKind === 'body' ? Math.max(sh.body, sh.front) : sh.body) * sh.t).toFixed(2);   // its torso's (or fists') near edge from its feet's middle
+                ok(Math.abs(reach - (R + torso)) < 0.06 && blows === 1, `${kind} ${who === 'set' ? '세트' : '소망'}(몸통·주먹, 방패 제외): 닿는 거리 ${reach}칸 = ${R} + ${sh.frontKind === 'body' ? '주먹 끝' : '몸통 끝'}(${torso}칸), 그 끝에서 기술 ${blows ? '명중' : '빗나감'}`);
             }
         }
         ok(!errors.length, `페이지 오류 없음 ${errors.join('; ')}`);
