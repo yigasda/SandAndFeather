@@ -57,6 +57,7 @@ export NODE_PATH=/opt/node-tools/node_modules
 
 | 10-19 | 일반 공격·기준점·에셋 | 일반 공격을 공격 범위×피격 도형(몸통·방패 막힘·주먹)으로, 12종 기준점을 몸통 가운데로, 몹 그림 맵별 불러오기·놓기, 무손실 최적화, 로딩·메모리 측정 | desert-strike 58·desert-mob-hits 36·horus-leap 16·mob-art-load 6 통과, duat-mob-video 통과 |
 | 10-19 | 수문장 거리·방향 | 몸통을 바닥 타원(앞뒤 0.4배)으로, 수문장 몸통은 주먹 뒤(`hit.back`), 몹이 알아채는 거리를 몸 끝부터, 몹은 서 있어도 상대를 봄, 스틱 뗀 공격·기술은 닿을 몹 쪽으로 돌아서 | desert-strike 130·desert-mob-hits 37·horus-leap 16·desert-b3 통과, duat-field 전체 3회 중 1회 세트 "공격으로 체력 줄어듦" 실패(그때 세트가 맞는 중, 원인 확정 못 함), 다른 2회와 세트만 2회는 통과, 바꾸기 전 세트만 2회 통과 |
+| 10-19 | 겨냥·main 반영 | 돌 방향을 실제로 닿는 방향으로(`aimWay`), 동행 자리·공격을 도형으로, 전투 거리 몸 끝부터, 인수인계 문서 DESERT-OPUS-HANDOFF | 전체 17개 통과(desert-target 77·strike 130·mob-hits 38·horus-leap 17·b1·b2·b3·15-lift·maps·save-move·mob-art-load·duat-field·verify 3). strike 벽 검사 3개가 처음 실패 → 스틱 고정 시험에서 전투 시작 돌기가 끼어든 것, 고친 뒤 130 통과 |
 
 ## 따로 고칠 것
 

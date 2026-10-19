@@ -335,7 +335,9 @@ function faceWay(way) {
     if (way === 'left' || way === 'right') { me.face = way; me.vdir = null; } else me.vdir = way;
     if (stance.on) player.dir = me.vdir || me.face;
 }
+let held = false;   // tests only: as if the stick were held
 function faceMob() {
+    if (held) return;   // the stick held: its way (tests: testHold)
     const a = aimWay(feet(), F().reach?.[leadOf(getState())] || 1.4);
     if (a) faceWay(a.way);
     else if (player.dir === 'left' || player.dir === 'right') { me.face = player.dir; me.vdir = null; }
@@ -343,7 +345,6 @@ function faceMob() {
 }
 // 공격 / 기술 with the stick let go: she turns the way her blow meets a creature (else toward the nearest within her
 // reach and a step), so she strikes the way she faces it (user: she faced away from it); the stick held, its way
-let held = false;   // tests only: as if the stick were held
 function turnToFoe(reach, ways) {
     if (held || Math.abs(input.dx) > 0.2 || Math.abs(input.dy) > 0.2) return;
     const a = aimWay(feet(), reach, reach + 1, ways);

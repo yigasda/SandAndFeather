@@ -8,7 +8,7 @@
 
 | 항목 | 상태 |
 |---|---|
-| 작업 브랜치 | `ccr-3d224608-3ozn95`. **아직 main에 안 올림.** 사용자 지시: 검증 후 main에 푸시 → 다음 담당이 7절 시험을 돌리고 통과하면 main에 병합·푸시(main은 이 브랜치의 조상이라 fast-forward) |
+| 작업 브랜치 | `ccr-3d224608-3ozn95`. 2026-10-19 전체 시험(7절 17개) 통과 뒤 main에 반영(사용자 지시 "검증 후 메인에 푸시") |
 | 버전 | **올리지 않음.** `manifest.json`·`src/core/settings.js` 그대로(사용자: 버전 변경 보류) |
 | release 브랜치 | **반영하지 않음.** 사막 몹 그림 84 MB를 release에 넣을지 사용자 결정 보류 중(4절 "배포") |
 | 저장 판 | 14판(`src/core/state.js` STEPS 12·13: 옛 사막 ID → 의미 ID) |
@@ -223,8 +223,8 @@ node --experimental-default-type=module --check src/packs/duat/field.js   # 문�
 | `desert-b2.cjs`, `desert-15-lift.cjs`, `puzzle-lift.mjs`, `puzzle-optics.mjs` | 15 퍼즐 | 통과 |
 | `desert-maps.cjs`, `desert-b1.cjs`, `desert-save-move.cjs` | 사막 걷기·출구·저장 이관 | 통과 |
 | `mob-art-load.cjs [out]` | 몹 그림 로딩·메모리 | 측정 |
-| `duat-field.js <out>` | 두아트 전투(같은 코드) | 통과(전체 5회 중 1회 세트 공격 한 항목 실패 기록, 원인 미확정 — 그때 세트가 맞는 중) |
-| `tools/art/verify-full-map.cjs`·`verify-cozy-ui.cjs`·`verify-ui-themes.cjs` | 옴보스 낮밤·UI·테마 | **미실행** — main 반영 전 실행 |
+| `duat-field.js <out>` | 두아트 전투(같은 코드) | 통과(이전 전체 실행 한 번에서 세트 공격 한 항목 실패 기록, 원인 미확정 — 그때 세트가 맞는 중) |
+| `tools/art/verify-full-map.cjs`·`verify-cozy-ui.cjs`·`verify-ui-themes.cjs` | 옴보스 낮밤·UI·테마 | 통과 |
 
 - **시험 전용 훅(field.js):** `testOnly(kind, x, y, 수치)`, `testFace(dir)`, `testHold(true)`(스틱을 기울인 것처럼: 정해진 방향 공격 검사에 필수 — 안 쓰면 자동 돌기가 끼어듦), `testMobFace(right)`, `testRanges(true)`(초록 몸통 타원·파랑 방패·초록 주먹 줄·주황/노랑 기술 원), `testEvents`, `testHurt`, `testTouch`, `testArt`, `testReset`, `fieldState`. 시험 몹은 `nopush`(밀려나지 않음)로 거리 측정.
 - 시험에서 쓰는 거리 계산은 게임 함수를 쓰지 않고 시험 안에서 다시 계산한다(타원·주먹 줄·공격 상자). 도형 규칙을 바꾸면 시험의 `DEPTH`·`edge()`도 같이 바꾼다.
