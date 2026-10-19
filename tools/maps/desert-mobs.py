@@ -49,7 +49,7 @@ ZONES = {'T1': 'T1W·T1E 제례 앞뜰', 'T2': 'T2 무너진 봉헌품 회랑', 
          '03': '03 고요한 사구 `desert_quiet_dunes`', '04': '04 메마른 모래벌판 `desert_dry_flats`',
          '17': '17 지하 도시 광장 `desert_city_plaza`', '10': '10 모래바람 분지 `desert_wind_basin`'}
 # still open (user): more kinds for P1 besides the sentinel; counts and spots everywhere
-OPEN = {'P1': 'P1 고대 장례 미궁: 천칭 파수꾼 말고 더할 종 미정'}
+OPEN = {'P1': 'P1 고대 장례 미궁: 우선 천칭 파수꾼만, 다른 종 추가는 보류(사용자 10-19)'}
 
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -131,7 +131,7 @@ def main():
                  f"{', '.join(ZONES[z] for z in s['zones'])} | {s['canvas'][0]}×{s['canvas'][1]} | {s['special']} | {s['attackFamily']} | "
                  f"y {s['measured']['footLineCandidate']}, x {s['measured']['footMiddleCandidate']} |")
     L += ['', '배치(사용자 10-19 통합 지시): 종 구성만 정했고 마릿수·무리 수·좌표는 화면 오버레이로 확인받는다. 03·04의 방패병은 **두 종류**(가죽·봉인)이지 두 마리가 아니다. '
-          'P1은 천칭 파수꾼으로 바뀌었고 예전 후보(가죽·봉인 방패병, 걸음 비석)는 P1에서 뺐다. 미정: ' + '; '.join(OPEN.values()) + '. '
+          'P1은 천칭 파수꾼으로 바뀌었고 예전 후보(가죽·봉인 방패병, 걸음 비석)는 P1에서 뺐다. 보류: ' + '; '.join(OPEN.values()) + '. '
           '17 광장의 항아리는 운반석 입문 퍼즐 조작 지점·출입구·착지를 막지 않는지 오버레이로 확인한다.', '',
           '부유(태양거울, 빈 가면 사제 두 종, 천칭 파수꾼): 그림만 뜬다. 지상 기준점·이동 충돌·벽은 지상 몹과 같고, 준비·공격처럼 자세를 고정하는 구간은 종별 모션에 맞춰 흔들림을 멈춘다. '
           '보스 수문장 4종과 방패병·항아리·비석은 지상이다(고대장치의 공통 부유를 모든 종에 복사하지 않음).']
