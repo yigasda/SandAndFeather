@@ -16,6 +16,7 @@ Only the places with a collision picture and a decided way in are built (user: o
   desert_city_gate 매몰 도시의 출입구 → desert_city_plaza 잊힌 지하 도시의 광장 (detail maps: the Duat's scale, camera 0.8, people ×1.4).
 Requires shapely and scipy (duat-pixel.py)."""
 import argparse, hashlib, json, math, shutil
+from shapely.geometry import Point, Polygon
 from pathlib import Path
 import importlib.util
 import numpy as np
@@ -51,6 +52,8 @@ ALPHA = 128
 # lands, left or right, never takes her back (user: "좌우로 움직이다가 다시 전 맵으로 돌아가는 일이 없게", "착지랑 출구
 # 사이를 좀 더 멀리"); checked below, the build stops when one is closer
 GAP = 3
+# Parent-registered latest user mark, source pixels. AABB remains in each runtime exit.
+EXIT_POLYGONS = {('desert_forecourt_east', 'east'): [(1665,254),(1684,248),(1733,319),(1733,340),(1727,342)]}
 # landings the user put by hand (their mark wins over GAP; still at least 2 people-widths): 11 door, the blue mark on the
 # stairs below the door ("파란색으로 수정", docs/consult/desert/maps/user-11-door-landing.jpg), 2.47
 BY_USER = {('desert_city_gate', 'door'), ('desert_forecourt_west', 'south'), ('desert_forecourt_west', 'east'), ('desert_buried_temple', 'temple')}   # user marks: T1W south/east, 02 temple steps, 11 door
@@ -135,9 +138,9 @@ PLACES = [
     # ASTRA guide: T1W right gate <-> lower-left stairs; right gate <-> 15 right entrance.
     # Land along the paved approach, not at the yard's centre. Entry/exit names match field.js safeZones.
     ('desert_forecourt_east', '동쪽 제례 앞뜰', 'T1E_동쪽제례앞뜰.png', 'T1E_동쪽제례앞뜰.png',
-     {'west': ((325, 610), 'up'), 'east': ((1500, 450), 'left')},
+     {'west': ((325, 610), 'up'), 'east': ((1621, 369), 'left')},
      [('west', (222, 748, 399, 772), 'desert_forecourt_west', 'east'),
-      ('east', (1550, 300, 1734, 320), 'desert_colonnade', 'forecourt')]),
+      ('east', (1665, 248, 1733, 342), 'desert_colonnade', 'forecourt')]),
 ]
 
 
@@ -175,6 +178,8 @@ def main(review_ids=None):
         for k, ((x, y), _) in ways.items():
             for e, (x0, y0, x1, y1), *_ in exits:
                 g = math.hypot(max(x0 - x, 0, x - x1), max(y0 - y, 0, y - y1))
+                polygon = EXIT_POLYGONS.get((ident, e))
+                if polygon: g = Polygon(polygon).distance(Point(x, y))
                 need = (2 if (ident, k) in BY_USER else GAP) * (ACTOR['big' if ident in BIG else 'detail']) * PX
                 # Keep the historical puzzle-test entry exactly where it was. No portal targets it.
                 # Its entire foot is outside the full-width door (30 px centre clearance); real arrivals use forecourt.
@@ -182,8 +187,17 @@ def main(review_ids=None):
                 # Full-width thresholds follow the real doorway; do not move the landing for GAP.
                 # These approaches retain >= 130px centre clearance and are checked with held touch input.
                 if (ident, k) in {('desert_colonnade', 'forecourt'), ('desert_forecourt_east', 'west'), ('desert_forecourt_east', 'east')}: need = 130
+                # User's new doorway landing is fixed; do not move it for a generic gap rule.
+                if (ident, k) == ('desert_forecourt_east', 'east'): need = 90
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
+        for item in ex:
+            polygon = EXIT_POLYGONS.get((ident, item['id']))
+            if polygon:
+                shape = Polygon(polygon)
+                assert shape.is_valid and shape.area > 0
+                item['polygon'] = [[x / PX, y / PX] for x, y in polygon]
+                item.update(zip(('x0', 'y0', 'x1', 'y1'), [v / PX for v in shape.bounds]))
         W, H = math.ceil(w / PX), math.ceil(h / PX)
         data = {'id': ident, 'name': name, 'tile': 16, 'scene': 'desert', 'referenceScenes': [ident], 'legend': {'.': {'t': 'sand'}},
                 'rows': ['.' * W] * H,

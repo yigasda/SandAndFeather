@@ -64,6 +64,15 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.evaluate(async () => {
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
         });
+        if(WIDTHS) {
+            const checks=await page.evaluate(()=>{
+                const m=T.map.getMap('desert_forecourt_east'),e=m.d.exits.find(e=>e.id==='east'),px=m.d.authoredCollision.pixelWalk.pixelsPerTile;
+                const p=(x,y)=>T.map.containsExit(e,x/px,y/px);
+                const legacy={x0:1,y0:2,x1:3,y1:4};
+                return {polygon:e.polygon?.length===5,inside:p(1699,295),outside:!p(1666,340)&&!p(1732,249),legacy:T.map.containsExit(legacy,1,2)&&T.map.containsExit(legacy,3,4)&&!T.map.containsExit(legacy,.99,3)};
+            });
+            for(const [name,value] of Object.entries(checks))ok(value,'출구 실제 판정 계약: '+name);
+        }
         let shot = 0;
         if (CONNECTIONS) {
             // One fixture placement, then two continuous touch-only round trips, with no travel between legs.
@@ -90,7 +99,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 if (!T.overlay) return;
                 scene.extra.push({x:0,y:10000,draw(g,sx,sy,z,ts) {
                     const oy=sy-10000*ts; g.save(); g.lineWidth=3;
-                    for(const e of T.win.currentMap().d.exits) {g.strokeStyle='#ff40ed';g.strokeRect(sx+e.x0*ts,oy+e.y0*ts,(e.x1-e.x0)*ts,(e.y1-e.y0)*ts);}
+                    for(const e of T.win.currentMap().d.exits) {g.strokeStyle='#ff40ed'; if(e.polygon){g.beginPath();e.polygon.forEach(([x,y],i)=>i?g.lineTo(sx+x*ts,oy+y*ts):g.moveTo(sx+x*ts,oy+y*ts));g.closePath();g.stroke();}else g.strokeRect(sx+e.x0*ts,oy+e.y0*ts,(e.x1-e.x0)*ts,(e.y1-e.y0)*ts);}
                     for(const [p,color] of [[T.player.player,'#00ff55'],[T.player.follower(),'#00ffff']]) {
                         g.strokeStyle=color;g.strokeRect(sx+(p.x+.22)*ts,oy+(p.y+.62)*ts,.56*ts,.34*ts);
                     }
@@ -114,6 +123,19 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 const lane=Math.floor(leg/PAIRS.length);
                 const approach=await page.evaluate(([exitId,lane])=>{
                     const m=T.win.currentMap(),e=m.d.exits.find(x=>x.id===exitId);
+                    if(e.polygon) {
+                        // Approach the registered threshold's long inner edge along its normal.
+                        const a=e.polygon[0],b=e.polygon.at(-1),len=Math.hypot(b[0]-a[0],b[1]-a[1]);
+                        const axis=[(b[0]-a[0])/len,(b[1]-a[1])/len],n=[axis[1],-axis[0]];
+                        const free=(x,y)=>!m.solidRect(x-.28,y-.18,x+.28,y+.16),slots=[];
+                        for(let t=0;t<=len;t+=.02){const x=a[0]+axis[0]*t+n[0]*.08,y=a[1]+axis[1]*t+n[1]*.08;
+                            if(free(x,y)&&T.map.containsExit(e,x,y))slots.push({x,y,t});}
+                        if(!slots.length)return null;
+                        const selected=slots[Math.round((slots.length-1)*[.12,.5,.88][lane])];let pre=null;
+                        for(const d of [1.5,1,2,.6,2.5]){const x=selected.x-n[0]*d,y=selected.y-n[1]*d;
+                            if(free(x,y)&&!m.exits.some(e=>T.map.containsExit(e,x,y))){pre={x:x-.5,y:y-.8};break;}}
+                        return pre?{cx:selected.x,cy:selected.y,pre,axis,origin:a,lane,t:selected.t,range:[slots[0].t,slots.at(-1).t]}:null;
+                    }
                     const direction=m.id==='desert_colonnade'?'right':exitId==='west'||exitId==='south'?'down':'up';
                     const vertical=direction!=='right',n=direction==='up'?[0,-1]:direction==='down'?[0,1]:[1,0];
                     const fixed=direction==='up'?e.y1-.08:direction==='down'?e.y0+.08:e.x0+.08;
@@ -123,7 +145,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                     if(!slots.length)return null;
                     const selected=slots[Math.round((slots.length-1)*[.12,.5,.88][lane])];
                     let pre=null;
-                    for(const d of [1.5,1,2,.6,2.5]){const x=selected.x-n[0]*d,y=selected.y-n[1]*d;if(free(x,y)&&!m.exitAt(x,y)){pre={x:x-.5,y:y-.8};break;}}
+                    for(const d of [1.5,1,2,.6,2.5]){const x=selected.x-n[0]*d,y=selected.y-n[1]*d;if(free(x,y)&&!m.exits.some(e=>T.map.containsExit(e,x,y))){pre={x:x-.5,y:y-.8};break;}}
                     return pre?{cx:selected.x,cy:selected.y,pre,vertical,lane,t:selected.t,range:[slots[0].t,slots.at(-1).t]}:null;
                 },[exitId,lane]);
                 ok(!!approach,`${name}: 문 폭 ${['왼쪽/위','중앙','오른쪽/아래'][lane]} 보행 가능한 접근`);
@@ -169,7 +191,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             if(CONNECTIONS) {
                 const move=await page.evaluate(()=>T.moves.at(-1));
                 ok(move?.to===to && Math.hypot(move.x-entry.x,move.y-entry.y)<0.05, `${name}: 첫 도착 프레임 정확한 착지`);
-                if(WIDTHS) { const t=ex.vertical?move.sourceFeet.x:move.sourceFeet.y; ok(Math.abs(t-ex.t)<.35,`${name}: 실제 문턱 통과가 지정 폭 lane ${ex.lane} 안 (${t.toFixed(2)} / ${ex.t.toFixed(2)})`); }
+                if(WIDTHS) { const t=ex.axis?(move.sourceFeet.x-ex.origin[0])*ex.axis[0]+(move.sourceFeet.y-ex.origin[1])*ex.axis[1]:ex.vertical?move.sourceFeet.x:move.sourceFeet.y; ok(Math.abs(t-ex.t)<.35,`${name}: 실제 문턱 통과가 지정 폭 lane ${ex.lane} 안 (${t.toFixed(2)} / ${ex.t.toFixed(2)})`); }
                 fs.writeFileSync(path.join(OUT,'moves.json'), JSON.stringify(await page.evaluate(()=>T.moves),null,2));
                 fs.writeFileSync(path.join(OUT,'result.txt'),res.join('\n')+'\n');
             }
