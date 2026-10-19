@@ -35,7 +35,7 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # all run under their meaning ids (tools/maps/desert-registry.py); the old desert_01..04, desert_11, desert_17 move in saves
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
-      'desert_city_gate': '11', 'desert_city_plaza': '17'}
+      'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자", then "1.4로 늘리고")
 WALK = {'big': 1.4, 'detail': 1.0}
@@ -113,6 +113,12 @@ PLACES = [
      # The exit as it was (the user's red mark is the same right edge, "출구는 빨간색")
      {'east': ((1623, 570), 'left')},
      [('east', (1760, 402, 1774, 537), 'desert_city_gate', 'door')]),
+    # 15 매몰 신전의 열주홀 (desert_colonnade): 반사광 입문 퍼즐(B2). 장치는 그림 그대로(오른쪽 광원, 가운데 받침 위 반사판,
+    # 위층 뒷벽 수신부); 받침 앞 바닥에서 퍼즐 화면을 연다(src/packs/puzzle/colonnade.js). T1E·T2·16 출입은 아직 없음:
+    # 오른쪽 문 안 착지 하나뿐(시험 이동으로만)
+    ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
+     {'east': ((1680, 620), 'left')},
+     []),
 ]
 
 

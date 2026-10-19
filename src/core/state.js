@@ -48,6 +48,7 @@ export const freshState = () => ({
     achieve: { claimed: {}, worn: {} },            // achieve.js: { claimed: { [id]: day }, worn: { somang|set|horus: achievement id } }
     explore: { seen: {}, claimed: {} },            // explore.js: seen { 'map:point' | 'room:map': day }, claimed { 'region:25': day }
     treasure: { clues: {}, found: -1, got: null }, // packs/world/treasure.js: clues { id: day }, the day it was dug up and what came out
+    puzzles: {},                                   // packs/puzzle: { puzzleId: { v, orient, solvedEver, solvedDay, claimed: { rewardId: day } } }
     wake: null,                                    // rest.js: { part, raw } the time of day after sleeping, until the chat's tracker moves
     started: Date.now(),
 });
@@ -108,7 +109,7 @@ const STEPS = {
 function fill(s) {
     const f = freshState();
     for (const [k, v] of Object.entries(f)) if (!Object.hasOwn(s, k)) s[k] = structuredClone(v);
-    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'chars', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest', 'codex', 'fishing', 'achieve', 'explore', 'treasure'];
+    const objs = ['date', 'pos', 'sync', 'ledger', 'bag', 'recent', 'sun', 'stats', 'party', 'chars', 'garden', 'works', 'flags', 'daily', 'adv', 'lessons', 'daylog', 'fest', 'codex', 'fishing', 'achieve', 'explore', 'treasure', 'puzzles'];
     for (const k of objs) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = structuredClone(f[k]);
     for (const k of ['news', 'journal', 'picks', 'days', 'facts']) if (!Array.isArray(s[k])) s[k] = [];
     if (!s.tally || typeof s.tally !== 'object' || Array.isArray(s.tally)) s.tally = {};

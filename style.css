@@ -729,6 +729,11 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 :is(#sf_game, #sf_pick) .sf_pop_wrap { padding: 18px 12px; background: #21180d66; }
 :is(#sf_game, #sf_pick) .sf_pop { width: min(440px, 100%); max-height: calc(100% - 16px); padding: 0; gap: 0; background-color: var(--sf-card); overscroll-behavior: contain; scrollbar-color: #b08655 var(--sf-card); scrollbar-width: thin; }
 :is(#sf_game, #sf_pick) .sf_pop_wide { width: min(690px, 100%); }
+/* the puzzle screen (packs/puzzle/screen.js): the puzzle as large as the card allows, 100:60 */
+#sf_game .sf_pop_wrap[data-kind='puzzle'] .sf_pop { width: min(690px, 100%); }
+#sf_game .sf_puzzle { display: flex; flex-direction: column; gap: 6px; }
+#sf_game .sf_puzzle_cv { display: block; width: 100%; aspect-ratio: 100 / 60; border-radius: 8px; touch-action: none; cursor: pointer; box-shadow: inset 0 0 0 2px #8a6438; }
+#sf_game .sf_puzzle_say { min-height: 1.4em; text-align: center; font-weight: 600; }
 :is(#sf_game, #sf_pick) .sf_pop_head { position: sticky; top: 0; z-index: 2; min-height: 53px; padding: 8px 12px; color: #fceacc; background: linear-gradient(90deg, #51402d, #39291f); border-bottom: 3px double #d6ac6e; }
 :is(#sf_game, #sf_pick) .sf_pop_head::after { content: ''; width: 27px; height: 28px; background: url('data/art/ui/flower.svg') center / contain no-repeat; image-rendering: pixelated; pointer-events: none; }
 :is(#sf_game, #sf_pick) .sf_pop_title { letter-spacing: .5px; }

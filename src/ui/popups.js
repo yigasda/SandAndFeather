@@ -19,7 +19,8 @@ function keepGameInViewport(root) {
 
 // The title stays at the top and the frame stays round the card; only .sf_pop_scroll scrolls. When the card itself
 // scrolled, its frame (a ::before inside it) scrolled away with the content and left the rest of the list unframed.
-export function showCard(root, { tag = '', title = '', text = '', body = null, buttons = null, wide = false, kind = '', onClose = null } = {}) {
+// modal: a touch beside the card does not close it (the puzzle screen: a stray touch must not end the puzzle)
+export function showCard(root, { tag = '', title = '', text = '', body = null, buttons = null, wide = false, kind = '', modal = false, onClose = null } = {}) {
     const wrap = document.createElement('div');
     wrap.className = 'sf_pop_wrap';
     if (kind) wrap.dataset.kind = kind;
@@ -59,7 +60,7 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
     }
     wrap.sfClose = close;
     wrap.querySelector('.sf_pop_x').addEventListener('click', close);
-    wrap.addEventListener('pointerdown', e => { if (e.target === wrap) close(); });
+    wrap.addEventListener('pointerdown', e => { if (e.target === wrap && !modal) close(); });
     openCount++;
     root.append(wrap);
     keepGameInViewport(root);

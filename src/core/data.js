@@ -26,7 +26,7 @@ export const RESIDENCE = ['temple_courtyard', 'courtyard_colonnade', 'temple_inn
     'temple_west_gallery', 'room_entrances_wide', 'set_room', 'horus_room', 'somang_room', 'temple_kitchen', 'temple_dining',
     'temple_sanctuary', 'temple_colonnade', 'temple_roof'];
 // the desert east of the village, one map a picture (tools/maps/desert.py; only the places built so far)
-export const DESERT = ['desert_golden_dunes', 'desert_dry_flats', 'desert_quiet_dunes', 'desert_buried_temple', 'desert_city_gate', 'desert_city_plaza'];
+export const DESERT = ['desert_golden_dunes', 'desert_dry_flats', 'desert_quiet_dunes', 'desert_buried_temple', 'desert_city_gate', 'desert_city_plaza', 'desert_colonnade'];
 // the dock below the village, its own picture (tools/maps/dock.py)
 export const MAPS = ['ombos', 'ruins', 'dock_pier', ...Array.from({ length: 7 }, (_, i) => `duat_${String(i + 1).padStart(2, '0')}`), ...DESERT, ...RESIDENCE];
 
