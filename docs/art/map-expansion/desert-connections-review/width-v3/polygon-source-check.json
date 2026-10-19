@@ -1,0 +1,27 @@
+{
+  "T1E-east-proposal.json": {
+    "polygonPixels": 1860,
+    "blockedPolygonPixels": 0,
+    "footGapPx": 91.0468063263135,
+    "blockedPixelExamples": []
+  },
+  "15-door-proposal.json": {
+    "polygonPixels": 930,
+    "blockedPolygonPixels": 3,
+    "footGapPx": 58.81507549512932,
+    "blockedPixelExamples": [
+      [
+        1738,
+        644
+      ],
+      [
+        1738,
+        645
+      ],
+      [
+        1737,
+        646
+      ]
+    ]
+  }
+}

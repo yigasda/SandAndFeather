@@ -1,0 +1,14 @@
+[
+  {
+    "test": "full-map",
+    "exit": 0
+  },
+  {
+    "test": "cozy-ui",
+    "exit": 0
+  },
+  {
+    "test": "themes",
+    "exit": 0
+  }
+]

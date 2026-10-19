@@ -1,0 +1,27 @@
+{
+  "map": "desert_colonnade",
+  "exit": "forecourt",
+  "polygon": [
+    [
+      1706,
+      582
+    ],
+    [
+      1720,
+      580
+    ],
+    [
+      1739,
+      646
+    ],
+    [
+      1728,
+      652
+    ]
+  ],
+  "landing": [
+    1645,
+    620
+  ],
+  "source": "Candidate for parent visual alignment: right doorway floor perspective, excludes posts; not user-marked, not applied. Historical east test landing unchanged."
+}

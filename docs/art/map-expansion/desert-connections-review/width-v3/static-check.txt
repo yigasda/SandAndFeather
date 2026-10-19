@@ -1,0 +1,19 @@
+PASS desert_forecourt_west original collision exact
+PASS desert_forecourt_west:south target exists
+PASS desert_forecourt_west:south safe-zone name paired
+PASS desert_forecourt_west:east target exists
+PASS desert_forecourt_west:east safe-zone name paired
+PASS desert_forecourt_west existing entries unchanged
+PASS desert_forecourt_west old collision unchanged
+PASS desert_forecourt_east original collision exact
+PASS desert_forecourt_east:west target exists
+PASS desert_forecourt_east:west safe-zone name paired
+PASS desert_forecourt_east:east target exists
+PASS desert_forecourt_east:east safe-zone name paired
+PASS desert_colonnade original collision exact
+PASS desert_colonnade:forecourt target exists
+PASS desert_colonnade:forecourt safe-zone name paired
+PASS desert_colonnade existing entries unchanged
+PASS desert_colonnade old collision unchanged
+PASS 02 all data unchanged
+PASS puzzle/combat/source art untouched

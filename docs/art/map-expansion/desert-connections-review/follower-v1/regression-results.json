@@ -1,0 +1,14 @@
+[
+  {
+    "test": "entry-safe",
+    "exit": 0
+  },
+  {
+    "test": "ult",
+    "exit": 1
+  },
+  {
+    "test": "puzzle15",
+    "exit": 0
+  }
+]

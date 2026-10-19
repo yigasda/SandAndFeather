@@ -1,0 +1,19 @@
+{
+  "runtimeCommit": "b52bf23c",
+  "recheckCodeCommit": "6549fc0f",
+  "implemented": [
+    "Optional polygon exit with preserved AABB",
+    "Exported containsExit helper",
+    "User T1E polygon and (1621,369) landing",
+    "Preserved user T1W (1523,241) landing"
+  ],
+  "pending": [
+    "15 perspective threshold and nearer landing candidate decision",
+    "Separate player.js follower-spacing coordination"
+  ],
+  "initialRun": "16 requested transitions then genuine re-entry after held-right followed by up; later assertions cascaded, preserved in runtime/",
+  "recheck": "Historical: full 18 transitions + save/load completed, 3 failed assertions (2 return-path bot failures; 1 delayed arrival observation). See width-v4 for latest applied 15 polygon, which reproduces held-input re-entry.",
+  "forbiddenFilesChanged": false,
+  "remotePush": false,
+  "supersededBy": "../width-v4/review-status.json"
+}

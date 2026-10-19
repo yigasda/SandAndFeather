@@ -1,0 +1,223 @@
+통과 출구 실제 판정 계약: polygon
+통과 출구 실제 판정 계약: inside
+통과 출구 실제 판정 계약: outside
+통과 출구 실제 판정 계약: legacy
+통과 buried_temple → forecourt_west: 연속 왕복의 출발 맵
+통과 buried_temple → forecourt_west: 문 폭 왼쪽/위 보행 가능한 접근
+통과 buried_temple → forecourt_west: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":0,"arrival":{"map":"desert_forecourt_west","x":37.447057861968716,"y":22.320689578924032,"inExit":false,"mateInExit":false,"mate":{"x":37.447057861968716,"y":22.320689578924032},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":37.46204972585263,"y":21.76061018953599,"inExit":false,"mateInExit":false,"mate":{"x":37.447057861968716,"y":22.320689578924032},"floor":true,"mateFloor":true}}
+  buried_temple → forecourt_west: 출구 앞 buried_temple (62.2, 22.8) → 도착 forecourt_west (37.4, 22.3)
+통과 buried_temple → forecourt_west: 걸어서 도착, 착지 south(37.4, 22.4) 자리, 트리거 밖
+통과 buried_temple → forecourt_west: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_west)
+통과 buried_temple → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 buried_temple → forecourt_west: 실제 문턱 통과가 지정 폭 lane 0 안 (62.78 / 62.78)
+통과 forecourt_west → forecourt_east: 연속 왕복의 출발 맵
+통과 forecourt_west → forecourt_east: 문 폭 왼쪽/위 보행 가능한 접근
+통과 T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기
+통과 forecourt_west → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":1,"arrival":{"map":"desert_forecourt_east","x":9.179457887614392,"y":17.313014879292737,"inExit":false,"mateInExit":false,"mate":{"x":9.179457887614392,"y":17.313014879292737},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":9.171463931590376,"y":17.24375468100335,"inExit":false,"mateInExit":false,"mate":{"x":9.179457887614392,"y":17.313014879292737},"floor":true,"mateFloor":true}}
+  forecourt_west → forecourt_east: 출구 앞 forecourt_west (43.3, 4.6) → 도착 forecourt_east (9.2, 17.3)
+통과 forecourt_west → forecourt_east: 걸어서 도착, 착지 west(9.2, 17.4) 자리, 트리거 밖
+통과 forecourt_west → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 forecourt_west → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → forecourt_east: 실제 문턱 통과가 지정 폭 lane 0 안 (43.59 / 43.58)
+통과 forecourt_east → colonnade: 연속 왕복의 출발 맵
+통과 forecourt_east → colonnade: 문 폭 왼쪽/위 보행 가능한 접근
+통과 forecourt_east → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":2,"arrival":{"map":"desert_colonnade","x":46.410269546953685,"y":17.596559428818463,"inExit":false,"mateInExit":false,"mate":{"x":46.35383732895581,"y":17.638916454949374},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":46.46602995283255,"y":17.554706652998625,"inExit":false,"mateInExit":false,"mate":{"x":46.35383732895581,"y":17.638916454949374},"floor":true,"mateFloor":true}}
+  forecourt_east → colonnade: 출구 앞 forecourt_east (48.2, 8.3) → 도착 colonnade (46.4, 17.6)
+통과 forecourt_east → colonnade: 걸어서 도착, 착지 forecourt(46.3, 17.7) 자리, 트리거 밖
+통과 forecourt_east → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 forecourt_east → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → colonnade: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → colonnade: 실제 문턱 통과가 지정 폭 lane 0 안 (0.66 / 0.66)
+통과 colonnade → forecourt_east: 연속 왕복의 출발 맵
+통과 colonnade → forecourt_east: 문 폭 왼쪽/위 보행 가능한 접근
+통과 colonnade → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":3,"arrival":{"map":"desert_forecourt_east","x":47.95782786401981,"y":10.184830503440079,"inExit":false,"mateInExit":false,"mate":{"x":47.88804854739454,"y":10.191934482489268},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":48.02718934042578,"y":10.17776906318759,"inExit":false,"mateInExit":false,"mate":{"x":47.88804854739454,"y":10.191934482489268},"floor":true,"mateFloor":true}}
+  colonnade → forecourt_east: 출구 앞 colonnade (49.0, 17.0) → 도착 forecourt_east (48.0, 10.2)
+통과 colonnade → forecourt_east: 걸어서 도착, 착지 east(47.8, 10.2) 자리, 트리거 밖
+통과 colonnade → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 colonnade → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_east: 실제 문턱 통과가 지정 폭 lane 0 안 (17.65 / 17.65)
+통과 forecourt_east → forecourt_west: 연속 왕복의 출발 맵
+통과 forecourt_east → forecourt_west: 문 폭 왼쪽/위 보행 가능한 접근
+통과 forecourt_east → forecourt_west: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":4,"arrival":{"map":"desert_forecourt_west","x":44.898101139075735,"y":6.453366877131871,"inExit":false,"mateInExit":false,"mate":{"x":44.898101139075735,"y":6.453366877131871},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":44.90008452455619,"y":6.593632855123819,"inExit":false,"mateInExit":false,"mate":{"x":44.898101139075735,"y":6.453366877131871},"floor":true,"mateFloor":true}}
+  forecourt_east → forecourt_west: 출구 앞 forecourt_east (7.0, 20.0) → 도착 forecourt_west (44.9, 6.5)
+통과 forecourt_east → forecourt_west: 걸어서 도착, 착지 east(44.9, 6.4) 자리, 트리거 밖
+통과 forecourt_east → forecourt_west: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_west)
+통과 forecourt_east → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → forecourt_west: 실제 문턱 통과가 지정 폭 lane 0 안 (7.56 / 7.56)
+통과 forecourt_west → buried_temple: 연속 왕복의 출발 맵
+통과 forecourt_west → buried_temple: 문 폭 왼쪽/위 보행 가능한 접근
+통과 T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기
+통과 forecourt_west → buried_temple: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":5,"arrival":{"map":"desert_buried_temple","x":60.67759287609312,"y":26.209028412016565,"inExit":false,"mateInExit":false,"mate":{"x":60.674198554978325,"y":25.719236173409023},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.67826929542692,"y":26.30663406820961,"inExit":false,"mateInExit":false,"mate":{"x":60.674198554978325,"y":25.719236173409023},"floor":true,"mateFloor":true}}
+  forecourt_west → buried_temple: 출구 앞 forecourt_west (32.3, 23.7) → 도착 buried_temple (60.7, 26.2)
+통과 forecourt_west → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 forecourt_west → buried_temple: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (buried_temple)
+통과 forecourt_west → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → buried_temple: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → buried_temple: 실제 문턱 통과가 지정 폭 lane 0 안 (32.80 / 32.80)
+통과 buried_temple → forecourt_west: 연속 왕복의 출발 맵
+통과 buried_temple → forecourt_west: 문 폭 중앙 보행 가능한 접근
+통과 buried_temple → forecourt_west: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":6,"arrival":{"map":"desert_forecourt_west","x":37.44397891934161,"y":22.320255155142142,"inExit":false,"mateInExit":false,"mate":{"x":37.44397891934161,"y":22.320255155142142},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":37.35679660305368,"y":17.281432439875122,"inExit":false,"mateInExit":false,"mate":{"x":37.37859401207745,"y":18.541243883290306},"floor":true,"mateFloor":true}}
+  buried_temple → forecourt_west: 출구 앞 buried_temple (63.0, 22.7) → 도착 forecourt_west (37.4, 22.3)
+통과 buried_temple → forecourt_west: 걸어서 도착, 착지 south(37.4, 22.4) 자리, 트리거 밖
+통과 buried_temple → forecourt_west: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_west)
+통과 buried_temple → forecourt_west: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 buried_temple → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 buried_temple → forecourt_west: 실제 문턱 통과가 지정 폭 lane 1 안 (63.52 / 63.52)
+통과 forecourt_west → forecourt_east: 연속 왕복의 출발 맵
+통과 forecourt_west → forecourt_east: 문 폭 중앙 보행 가능한 접근
+통과 T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기
+통과 forecourt_west → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":7,"arrival":{"map":"desert_forecourt_east","x":9.181827040303137,"y":17.24294748977395,"inExit":false,"mateInExit":false,"mate":{"x":9.184655002194066,"y":17.312610071679217},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":8.977396060236055,"y":14.79510507860968,"inExit":false,"mateInExit":false,"mate":{"x":9.129302888384505,"y":15.949094115450693},"floor":true,"mateFloor":true}}
+  forecourt_west → forecourt_east: 출구 앞 forecourt_west (44.7, 4.5) → 도착 forecourt_east (9.2, 17.2)
+통과 forecourt_west → forecourt_east: 걸어서 도착, 착지 west(9.2, 17.4) 자리, 트리거 밖
+통과 forecourt_west → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 forecourt_west → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_west → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → forecourt_east: 실제 문턱 통과가 지정 폭 lane 1 안 (45.18 / 45.18)
+통과 forecourt_east → colonnade: 연속 왕복의 출발 맵
+통과 forecourt_east → colonnade: 문 폭 중앙 보행 가능한 접근
+통과 forecourt_east → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":8,"arrival":{"map":"desert_colonnade","x":46.530460239486096,"y":17.525073287736706,"inExit":false,"mateInExit":false,"mate":{"x":46.47253887233308,"y":17.5638803846487},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":48.217158364894644,"y":16.355951048839174,"inExit":false,"mateInExit":false,"mate":{"x":47.20282040506535,"y":17.074594519919124},"floor":true,"mateFloor":true}}
+  forecourt_east → colonnade: 출구 앞 forecourt_east (48.8, 9.0) → 도착 colonnade (46.5, 17.5)
+통과 forecourt_east → colonnade: 걸어서 도착, 착지 forecourt(46.3, 17.7) 자리, 트리거 밖
+통과 forecourt_east → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+실패 forecourt_east → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → colonnade: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → colonnade: 실제 문턱 통과가 지정 폭 lane 1 안 (1.64 / 1.64)
+통과 colonnade → forecourt_east: 연속 왕복의 출발 맵
+통과 colonnade → forecourt_east: 문 폭 중앙 보행 가능한 접근
+통과 colonnade → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":9,"arrival":{"map":"desert_forecourt_east","x":47.957841951143166,"y":10.213107336266766,"inExit":false,"mateInExit":false,"mate":{"x":47.8880555909562,"y":10.206072898902613},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":50.81323236525809,"y":10.725568204363913,"inExit":false,"mateInExit":false,"mate":{"x":49.783091193780685,"y":10.397091734319662},"floor":true,"mateFloor":true}}
+  colonnade → forecourt_east: 출구 앞 colonnade (49.0, 17.5) → 도착 forecourt_east (48.0, 10.2)
+통과 colonnade → forecourt_east: 걸어서 도착, 착지 east(47.8, 10.2) 자리, 트리거 밖
+통과 colonnade → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 colonnade → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_east: 실제 문턱 통과가 지정 폭 lane 1 안 (18.44 / 18.45)
+통과 forecourt_east → forecourt_west: 연속 왕복의 출발 맵
+통과 forecourt_east → forecourt_west: 문 폭 중앙 보행 가능한 접근
+통과 forecourt_east → forecourt_west: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":10,"arrival":{"map":"desert_forecourt_west","x":44.89913236555569,"y":6.453344617441358,"inExit":false,"mateInExit":false,"mate":{"x":44.89913236555569,"y":6.453344617441358},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":45.04899647951719,"y":11.631452888886342,"inExit":false,"mateInExit":false,"mate":{"x":45.01254499204955,"y":10.371980265499316},"floor":true,"mateFloor":true}}
+  forecourt_east → forecourt_west: 출구 앞 forecourt_east (8.8, 20.0) → 도착 forecourt_west (44.9, 6.5)
+통과 forecourt_east → forecourt_west: 걸어서 도착, 착지 east(44.9, 6.4) 자리, 트리거 밖
+통과 forecourt_east → forecourt_west: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_west)
+통과 forecourt_east → forecourt_west: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → forecourt_west: 실제 문턱 통과가 지정 폭 lane 1 안 (9.30 / 9.30)
+통과 forecourt_west → buried_temple: 연속 왕복의 출발 맵
+통과 forecourt_west → buried_temple: 문 폭 중앙 보행 가능한 접근
+통과 T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기
+통과 forecourt_west → buried_temple: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":11,"arrival":{"map":"desert_buried_temple","x":60.66450043761419,"y":26.698220855171762,"inExit":false,"mateInExit":false,"mate":{"x":60.67269770176175,"y":25.718059132150184},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.602216965692776,"y":34.1455684159338,"inExit":false,"mateInExit":false,"mate":{"x":60.61425951674632,"y":32.70561877203506},"floor":true,"mateFloor":true}}
+  forecourt_west → buried_temple: 출구 앞 forecourt_west (36.3, 23.7) → 도착 buried_temple (60.7, 26.7)
+실패 forecourt_west → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 forecourt_west → buried_temple: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (buried_temple)
+통과 forecourt_west → buried_temple: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_west → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → buried_temple: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → buried_temple: 실제 문턱 통과가 지정 폭 lane 1 안 (36.74 / 36.74)
+통과 buried_temple → forecourt_west: 연속 왕복의 출발 맵
+통과 buried_temple → forecourt_west: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 buried_temple → forecourt_west: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":12,"arrival":{"map":"desert_forecourt_west","x":37.44257621948213,"y":22.32029341991412,"inExit":false,"mateInExit":false,"mate":{"x":37.44257621948213,"y":22.32029341991412},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":37.25460949832052,"y":17.284220039974564,"inExit":false,"mateInExit":false,"mate":{"x":37.30160509491064,"y":18.543343311898777},"floor":true,"mateFloor":true}}
+  buried_temple → forecourt_west: 출구 앞 buried_temple (63.8, 22.7) → 도착 forecourt_west (37.4, 22.3)
+통과 buried_temple → forecourt_west: 걸어서 도착, 착지 south(37.4, 22.4) 자리, 트리거 밖
+통과 buried_temple → forecourt_west: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_west)
+통과 buried_temple → forecourt_west: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 buried_temple → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 buried_temple → forecourt_west: 실제 문턱 통과가 지정 폭 lane 2 안 (64.24 / 64.24)
+통과 forecourt_west → forecourt_east: 연속 왕복의 출발 맵
+통과 forecourt_west → forecourt_east: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기
+통과 forecourt_west → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":13,"arrival":{"map":"desert_forecourt_east","x":9.188436654580666,"y":17.31255856204727,"inExit":false,"mateInExit":false,"mate":{"x":9.188436654580666,"y":17.31255856204727},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":9.25667222121769,"y":14.72306948631657,"inExit":false,"mateInExit":false,"mate":{"x":9.206301455521476,"y":15.974898520615241},"floor":true,"mateFloor":true}}
+  forecourt_west → forecourt_east: 출구 앞 forecourt_west (46.3, 4.5) → 도착 forecourt_east (9.2, 17.3)
+통과 forecourt_west → forecourt_east: 걸어서 도착, 착지 west(9.2, 17.4) 자리, 트리거 밖
+통과 forecourt_west → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 forecourt_west → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_west → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → forecourt_east: 실제 문턱 통과가 지정 폭 lane 2 안 (46.78 / 46.78)
+통과 forecourt_east → colonnade: 연속 왕복의 출발 맵
+통과 forecourt_east → colonnade: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 forecourt_east → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":14,"arrival":{"map":"desert_colonnade","x":46.411043349414825,"y":17.59760033682181,"inExit":false,"mateInExit":false,"mate":{"x":46.35489835907929,"y":17.638935775130957},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":48.15864072931911,"y":16.228052681998783,"inExit":false,"mateInExit":false,"mate":{"x":47.21074698770934,"y":17.00883720392655},"floor":true,"mateFloor":true}}
+  forecourt_east → colonnade: 출구 앞 forecourt_east (49.5, 9.8) → 도착 colonnade (46.4, 17.6)
+통과 forecourt_east → colonnade: 걸어서 도착, 착지 forecourt(46.3, 17.7) 자리, 트리거 밖
+통과 forecourt_east → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+실패 forecourt_east → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → colonnade: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → colonnade: 실제 문턱 통과가 지정 폭 lane 2 안 (2.62 / 2.62)
+통과 colonnade → forecourt_east: 연속 왕복의 출발 맵
+통과 colonnade → forecourt_east: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 colonnade → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":15,"arrival":{"map":"desert_forecourt_east","x":48.30770982671904,"y":10.182498164191657,"inExit":false,"mateInExit":false,"mate":{"x":47.88836921320806,"y":10.196669482415889},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":50.82627207002843,"y":10.009903140333524,"inExit":false,"mateInExit":false,"mate":{"x":49.654423038025634,"y":10.13698694763093},"floor":true,"mateFloor":true}}
+  colonnade → forecourt_east: 출구 앞 colonnade (49.0, 18.5) → 도착 forecourt_east (48.3, 10.2)
+통과 colonnade → forecourt_east: 걸어서 도착, 착지 east(47.8, 10.2) 자리, 트리거 밖
+통과 colonnade → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 colonnade → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_east: 실제 문턱 통과가 지정 폭 lane 2 안 (19.25 / 19.25)
+통과 forecourt_east → forecourt_west: 연속 왕복의 출발 맵
+통과 forecourt_east → forecourt_west: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 forecourt_east → forecourt_west: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":16,"arrival":{"map":"desert_forecourt_west","x":44.89715326880463,"y":6.453793786969483,"inExit":false,"mateInExit":false,"mate":{"x":44.89715326880463,"y":6.453793786969483},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":44.89995102752249,"y":11.633649416182843,"inExit":false,"mateInExit":false,"mate":{"x":44.899270472749805,"y":10.373649599974444},"floor":true,"mateFloor":true}}
+  forecourt_east → forecourt_west: 출구 앞 forecourt_east (10.5, 19.9) → 도착 forecourt_west (44.9, 6.5)
+통과 forecourt_east → forecourt_west: 걸어서 도착, 착지 east(44.9, 6.4) 자리, 트리거 밖
+통과 forecourt_east → forecourt_west: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_west)
+통과 forecourt_east → forecourt_west: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → forecourt_west: 실제 문턱 통과가 지정 폭 lane 2 안 (11.04 / 11.04)
+통과 forecourt_west → buried_temple: 연속 왕복의 출발 맵
+통과 forecourt_west → buried_temple: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기
+통과 forecourt_west → buried_temple: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":17,"arrival":{"map":"desert_buried_temple","x":60.67067395659756,"y":25.71802121956489,"inExit":false,"mateInExit":false,"mate":{"x":60.67067395659756,"y":25.71802121956489},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.44256484690333,"y":33.55450595396521,"inExit":false,"mateInExit":false,"mate":{"x":60.4844634859458,"y":32.115115630235614},"floor":true,"mateFloor":true}}
+  forecourt_west → buried_temple: 출구 앞 forecourt_west (40.2, 23.7) → 도착 buried_temple (60.7, 25.7)
+통과 forecourt_west → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 forecourt_west → buried_temple: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (buried_temple)
+통과 forecourt_west → buried_temple: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_west → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → buried_temple: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → buried_temple: 실제 문턱 통과가 지정 폭 lane 2 안 (40.68 / 40.68)
+통과 연속 왕복: 정확히 18번 전환, 튕김 없음
+통과 저장·다시 불러오기: buried_temple (60.8, 26.0) 그대로, 트리거 밖
+통과 페이지 오류 없음 
