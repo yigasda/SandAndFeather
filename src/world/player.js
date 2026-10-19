@@ -2,6 +2,7 @@
 // Positions are in tiles (fractions allowed); her feet are a small box near the bottom of her tile.
 
 import { getState } from '../core/state.js';
+import { containsExit } from './map.js';
 
 const SPEED = 4.2; // tiles a second
 const FOOT = { x0: 0.22, x1: 0.78, y0: 0.62, y1: 0.96 };
@@ -35,8 +36,33 @@ export function placePlayer(map) {
     player.seat = null; player.act = null; player.mate = null;
     stand();
     trail.length = 0; mateWalk.pos = null;
+    seedTrail(map);
 }
 const blocked = (m, x, y) => m.solidRect(x+FOOT.x0,y+FOOT.y0,x+FOOT.x1,y+FOOT.y1);
+
+// Seed a real, collision-safe route so the first movement sample cannot collapse the companion onto her.
+// Keep the familiar lower-left preference, then try other directions without moving the player's landing.
+function seedTrail(map) {
+    gap = TRAIL_GAP * (map.d?.actorScale || 1);
+    const safe = (x, y) => !blocked(map, x, y)
+        && !(map.exits || []).some(e => containsExit(e, x + 0.5, y + 0.8));
+    const base = Math.atan2(1, -2);
+    for (const distance of [gap, gap * 0.85, gap * 0.7]) {
+        for (let j = 0; j < 16; j++) {
+            const turn = j % 2 ? (j + 1) / 2 : -j / 2, a = base + turn * Math.PI / 8;
+            const dx = Math.cos(a) * distance, dy = Math.sin(a) * distance;
+            const steps = Math.ceil(distance / 0.08), route = [];
+            for (let k = 0; k <= steps; k++) {
+                const t = 1 - k / steps, x = player.x + dx * t, y = player.y + dy * t;
+                if (!safe(x, y)) break;
+                route.push({ x, y, dir: player.dir });
+            }
+            if (route.length === steps + 1) { trail.push(...route); return; }
+        }
+    }
+    // No safe separate route in a cramped placement: never invent an offset through a wall or exit.
+    trail.push({ x: player.x, y: player.y, dir: player.dir });
+}
 
 // standing still: the idle picture, and the next walk starts on its first pose
 export function stand() { player.moving = false; player.walkT = 0; }

@@ -13,9 +13,10 @@ const path = require('node:path');
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
+const ARRIVALS = process.argv.includes('--arrivals');
 const INNER = process.argv.includes('--widths-inner');
 const WIDTHS = INNER || process.argv.includes('--widths');
-const CONNECTIONS = WIDTHS || process.argv.includes('--connections');
+const CONNECTIONS = ARRIVALS || WIDTHS || process.argv.includes('--connections');
 const PAIRS = INNER ? [
     ['desert_forecourt_east','west','east','desert_colonnade','forecourt'],
     ['desert_colonnade','forecourt','forecourt','desert_forecourt_east','east'],
@@ -128,7 +129,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 }});
             });
         });
-        const trips = WIDTHS ? [...PAIRS,...PAIRS,...PAIRS] : CONNECTIONS ? [...PAIRS, ...PAIRS] : PAIRS;
+        const trips = ARRIVALS ? PAIRS : WIDTHS ? [...PAIRS,...PAIRS,...PAIRS] : CONNECTIONS ? [...PAIRS, ...PAIRS] : PAIRS;
         let leg = 0;
         for (const [from, at, exitId, to, land] of trips) {
             const name = `${from.replace('desert_', '')} → ${to.replace('desert_', '')}`;
@@ -218,6 +219,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             ok(!mate.mateInExit && mate.floor && mate.mateFloor, `${name}: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖`);
             if(CONNECTIONS) {
                 const move=transition;
+                ok(move?.mate && Math.hypot(move.x-move.mate.x,move.y-move.mate.y) >= .6,`${name}: 최초 도착 동행 간격 유지`);
                 ok(move?.to===to && Math.hypot(move.x-entry.x,move.y-entry.y)<0.05, `${name}: 첫 도착 프레임 정확한 착지`);
                 if(WIDTHS) { const t=ex.axis?(move.sourceFeet.x-ex.origin[0])*ex.axis[0]+(move.sourceFeet.y-ex.origin[1])*ex.axis[1]:ex.vertical?move.sourceFeet.x:move.sourceFeet.y; ok(Math.abs(t-ex.t)<.35,`${name}: 실제 문턱 통과가 지정 폭 lane ${ex.lane} 안 (${t.toFixed(2)} / ${ex.t.toFixed(2)})`); }
                 fs.writeFileSync(path.join(OUT,'moves.json'), JSON.stringify(await page.evaluate(()=>T.moves),null,2));
