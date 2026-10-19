@@ -22,7 +22,8 @@ const T2 = (x, y) => [x / PX - 0.5, y / PX - 0.8];   // picture point where her 
     const cdp = await context.newCDPSession(page);
     const W = require('./touch-walk.cjs')(page, cdp);
     const errors = [];
-    page.on('pageerror', e => errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 3).map(s => s.trim()).join(' < ')));
+    // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+    page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 3).map(s => s.trim()).join(' < ')));
     const shot = n => page.screenshot({ path: path.join(OUT, n) });
     const st = () => page.evaluate(() => T.lift.liftTest.state());
     const say = () => page.locator('.sf_dev_say').textContent().catch(() => '');

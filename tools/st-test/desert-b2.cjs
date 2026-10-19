@@ -21,7 +21,8 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
     const errors = [];
-    page.on('pageerror', e => errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 3).map(s => s.trim()).join(' < ')));
+    // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+    page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 3).map(s => s.trim()).join(' < ')));
     const touch = (type, x, y) => cdp.send('Input.dispatchTouchEvent', { type, touchPoints: type === 'touchEnd' ? [] : [{ x, y, id: 1 }] });
     const tap = async (x, y) => { await touch('touchStart', x, y); await page.waitForTimeout(60); await touch('touchEnd'); await page.waitForTimeout(350); };
     const tapEl = async sel => { const b = await page.locator(sel).first().boundingBox(); await tap(b.x + b.width / 2, b.y + b.height / 2); };
