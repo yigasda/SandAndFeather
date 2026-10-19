@@ -300,7 +300,8 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             } else if (near) await W.walkToPoint(near.x, near.y, 90000, 0.4); else await W.walkToPoint(ex.cx - ux * 2 - 0.5, ex.cy - uy * 2 - 0.8, 90000, 0.5);
             const p = await W.padBox();
             const now = await where(), gx = ex.cx - (now.x + 0.5), gy = ex.cy - (now.y + 0.8), gn = Math.hypot(gx, gy) || 1;
-            if(KEYBOARD){if(!VOTIVE||!WIDTHS)throw new Error('--keyboard requires --temple-15-t2 --widths');await page.keyboard.down('ArrowLeft');}
+            if(KEYBOARD){if(!VOTIVE||!WIDTHS)throw new Error('--keyboard requires --temple-15-t2 --widths');await page.evaluate(()=>document.activeElement?.blur?.());await page.keyboard.down('ArrowLeft');
+                const inputState=await page.evaluate(async base=>{const {input}=await import(base+'src/world/input.js');return {...input,focused:document.activeElement?.tagName};},BASE);res.push('  keyboard '+JSON.stringify(inputState));ok(inputState.dx<0,'실제 키보드 왼쪽 입력 전달');}
             else {await W.touch('touchStart', p.x, p.y); await W.touch('touchMove', p.x + gx / gn * p.lim, p.y + gy / gn * p.lim);}
             await page.waitForFunction(to => T.win.currentMap()?.id === to, to, { timeout: 15000 }).catch(() => {});
             const arrivedAt = await where();
@@ -345,7 +346,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 const move=transition;
                 ok(move?.mate && Math.hypot(move.x-move.mate.x,move.y-move.mate.y) >= .6,`${name}: 최초 도착 동행 간격 유지`);
                 ok(move?.to===to && Math.hypot(move.x-entry.x,move.y-entry.y)<0.05, `${name}: 첫 도착 프레임 정확한 착지`);
-                if(WIDTHS) { const t=ex.axis?(move.sourceFeet.x-ex.origin[0])*ex.axis[0]+(move.sourceFeet.y-ex.origin[1])*ex.axis[1]:ex.vertical?move.sourceFeet.x:move.sourceFeet.y; ok(Math.abs(t-ex.t)<.35,`${name}: 실제 문턱 통과가 지정 폭 lane ${ex.lane} 안 (${t.toFixed(2)} / ${ex.t.toFixed(2)})`); }
+                if(WIDTHS && move) { const t=ex.axis?(move.sourceFeet.x-ex.origin[0])*ex.axis[0]+(move.sourceFeet.y-ex.origin[1])*ex.axis[1]:ex.vertical?move.sourceFeet.x:move.sourceFeet.y; ok(Math.abs(t-ex.t)<.35,`${name}: 실제 문턱 통과가 지정 폭 lane ${ex.lane} 안 (${t.toFixed(2)} / ${ex.t.toFixed(2)})`); }
                 fs.writeFileSync(path.join(OUT,'moves.json'), JSON.stringify(await page.evaluate(()=>T.moves),null,2));
                 fs.writeFileSync(path.join(OUT,'result.txt'),res.join('\n')+'\n');
             }
