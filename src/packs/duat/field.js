@@ -63,6 +63,8 @@ const now = () => performance.now() / 1000;
 
 let mobs = [], bolts = [], pops = [], fx = [], mapId = '', mapObj = null, runObj = null, ui = null;
 // tests only: what happened when (guard up / down, blows: the state just before, the damage, the state after); read, never acted on
+// tests only: the 기술 areas lately used, drawn with the creatures' hurt range when testRanges(true) (comparison pictures)
+const areas = []; let showRanges = false;
 const events = [], note = e => { events.push({ t: +now().toFixed(3), ...e }); if (events.length > 300) events.shift(); };
 // what she and the one with her are doing now: { name, at, until, lift, face }
 const me = { act: null, face: 'right', vdir: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
@@ -403,7 +405,7 @@ function damage0(s, o, n, push, from, kind) {
     // flinch (not in the warning or the blow itself, and not again right after the last flinch)
     if (['wander', 'chase', 'recover'].includes(o.st) && now() >= o.steadyAt) {
         o.st = 'hit'; o.t = 0; o.stun = T.hit; o.steadyAt = now() + T.hit + T.steady;
-        if (push && from) { const dx = c.x - from.x, dy = c.y - from.y, d = Math.hypot(dx, dy) || 1, nx = o.x + dx / d * push, ny = o.y + dy / d * push; if (!solid(map(), nx, ny)) { o.x = nx; o.y = ny; } }
+        if (push && from && !o.e.nopush) { const dx = c.x - from.x, dy = c.y - from.y, d = Math.hypot(dx, dy) || 1, nx = o.x + dx / d * push, ny = o.y + dy / d * push; if (!solid(map(), nx, ny)) { o.x = nx; o.y = ny; } }
     }
 }
 const power = (s, who) => 3 + Math.floor((statsOf(s, who)?.strength || 0) / 2) + (who === 'set' ? 1 : 0);
@@ -442,19 +444,35 @@ export function skill() {
     me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'skill', who: leadOf(s) });
     useSkill(s, leadOf(s), feet(), me.face, true);
 }
-// how far its body reaches past its middle (data body, tiles; 0: a point, as every Duat creature)
-const body = o => o.e.body || 0;
-// where his leap comes down short of a creature: this far from its body's edge, inside his 1.2 reach
+// a creature's size against the people, in tiles: its picture is a character's height (31.2 px at zoom 1, 16 px a
+// tile) times the map's actorScale, and the data gives its sizes as parts of that height (as drawMob draws it)
+const charTiles = () => 31.2 / 16 * (map()?.d?.actorScale || 1);
+// where a 기술 can hurt it. data body: the torso's half width (no shield, weapon or effect); bodyBack: the torso's middle
+// behind its feet's middle, away from the way it faces. Both 0 for every Duat creature: its middle, as before.
+function hurtArea(o) { const k = charTiles(), c = centre(o), back = (o.e.bodyBack || 0) * k * (o.faceR ? -1 : 1); return { x: c.x + back, y: c.y, r: (o.e.body || 0) * k }; }
+// how far from its feet's middle he comes down: what it holds out in front (data space: e.g. its shield) and his own
+// room (LAND_GAP); without space 0.6, as before
 const LAND_GAP = 0.6;
-// the nearest creature ahead on his leap: in front, across no more than his blow's width (plus its body), no wall
+const room = o => (o.e.space || 0) * charTiles() + LAND_GAP;
+// a 기술 around g with reach r touches it: its torso, or (data shieldHit, a choice still open) its shield's face, from its
+// feet's middle out to guardFront in front
+function touches(o, g, r) {
+    const h = hurtArea(o);
+    if (Math.hypot(h.x - g.x, h.y - g.y) - h.r < r) return true;
+    if (!o.e.shieldHit) return false;
+    const c = centre(o), fx = c.x + (o.faceR ? 1 : -1) * (o.e.guardFront || 0) * charTiles();
+    const px = Math.min(Math.max(g.x, Math.min(c.x, fx)), Math.max(c.x, fx));
+    return Math.hypot(px - g.x, c.y - g.y) < r;
+}
+// the nearest creature ahead on his leap: in front, across no more than his blow's width (plus its torso), no wall
 // between, and one he can come down short of before the wall or the leap's end
 function leapTarget(f, dir, x0, x1) {
     let best = null, bestAlong = Infinity;
     for (const o of mobs) {
         if (o.st === 'dead') continue;
-        const c = centre(o), b = body(o), along = (c.x - f.x) * dir, dy = Math.abs(c.y - f.y);
-        if (along <= 0 || dy >= 0.75 + b || !clearLine(f, c)) continue;
-        const gx = Math.sqrt(Math.max(0, (b + LAND_GAP) ** 2 - dy ** 2));
+        const c = centre(o), along = (c.x - f.x) * dir, dy = Math.abs(c.y - f.y);
+        if (along <= 0 || dy >= 0.75 + hurtArea(o).r || !clearLine(f, c)) continue;
+        const gx = Math.sqrt(Math.max(0, room(o) ** 2 - dy ** 2));
         if (along - gx > (x1 - x0) * dir + 1e-6) continue;   // too far: his leap ends (or a wall stops it) first
         if (along < bestAlong) { best = o; bestAlong = along; }
     }
@@ -462,7 +480,7 @@ function leapTarget(f, dir, x0, x1) {
 }
 // each one's own 기술 (no name is shown, user: "오글거린다"); the one with her uses theirs too (MATE_SKILL_CD)
 function useSkill(s, who, f, face, lead) {
-    const hits = (g, r, n, push) => { for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - g.x, c.y - g.y) - body(o) < r) damage(s, o, n, push, g, 'skill'); } };
+    const hits = (g, r, n, push) => { areas.push({ x: g.x, y: g.y, r, who, at: now() }); if (areas.length > 8) areas.shift(); for (const o of mobs) if (o.st !== 'dead' && touches(o, g, r)) damage(s, o, n, push, g, 'skill'); };
     if (who === 'set') hits(f, 2, power(s, who) * 2, 0.8);              // 모래폭풍 강타: everything around, twice as hard, pushed away
     else if (who === 'horus') {                                          // 하늘에서 내리꽂기
         if (lead) {   // up, at most 2.5 tiles ahead, down on everything around where he lands
@@ -471,7 +489,7 @@ function useSkill(s, who, f, face, lead) {
             for (let k = 1; k <= 25; k++) { const x = x0 + dir * k * 0.1; if (solid(map(), x, player.y)) break; x1 = x; }
             // user (A안): not over the nearest one ahead on his way: he comes down just short of it, its body inside his reach
             const o = leapTarget(f, dir, x0, x1);
-            if (o) { const c = centre(o), b = body(o), gx = Math.sqrt(Math.max(0, (b + LAND_GAP) ** 2 - (c.y - f.y) ** 2)); x1 = c.x - dir * gx - 0.5; if ((x1 - x0) * dir < 0) x1 = x0; }
+            if (o) { const c = centre(o), gx = Math.sqrt(Math.max(0, room(o) ** 2 - (c.y - f.y) ** 2)); x1 = c.x - dir * gx - 0.5; if ((x1 - x0) * dir < 0) x1 = x0; }
             me.act.jump = { x0, x1 };
             setTimeout(() => hits(feet(), 1.2, power(s, who) * 2, 0.5), SHOW.jump * 1000);
         } else {      // the one with her: up and down in their place, onto what is in front
@@ -657,9 +675,30 @@ function drawMob(g, o, sx, sy, z, ts) {
     g.imageSmoothingEnabled = false;
 }
 const SAND = ['#f3dca4', '#e2bd7c', '#c9995a'];
+// tests only: green — where a 기술 hurts it (torso), blue — its shield's face (counted only with shieldHit), the leap's
+// landing (magenta ×) and each 기술's reach (orange: Horus, yellow: Set) as circles on the floor
+function drawRanges(g, z, ts, cx, cy) {
+    const P = (x, y) => [x * ts - cx, y * ts - cy];
+    g.save(); g.lineWidth = 2 * z;
+    for (const o of mobs) {
+        if (o.st === 'dead') continue;
+        const h = hurtArea(o), [hx, hy] = P(h.x, h.y), c = centre(o), [px, py] = P(c.x, c.y);
+        g.strokeStyle = '#30d070'; g.fillStyle = 'rgba(48,208,112,.25)'; g.beginPath(); g.arc(hx, hy, Math.max(2 * z, h.r * ts), 0, Math.PI * 2); g.fill(); g.stroke();
+        g.fillStyle = '#ffffff'; g.fillRect(px - 2 * z, py - 2 * z, 4 * z, 4 * z);
+        if (o.e.guardFront) { const [fx] = P(c.x + (o.faceR ? 1 : -1) * o.e.guardFront * charTiles(), c.y); g.strokeStyle = o.e.shieldHit ? '#3080ff' : 'rgba(48,128,255,.6)'; g.setLineDash(o.e.shieldHit ? [] : [5 * z, 4 * z]); g.beginPath(); g.moveTo(px, py); g.lineTo(fx, py); g.stroke(); g.setLineDash([]); }
+    }
+    for (const a of areas.slice(-4)) {
+        const [x, y] = P(a.x, a.y);
+        g.strokeStyle = a.who === 'set' ? '#ffd030' : '#ff8a20'; g.fillStyle = a.who === 'set' ? 'rgba(255,208,48,.12)' : 'rgba(255,138,32,.14)';
+        g.beginPath(); g.arc(x, y, a.r * ts, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.strokeStyle = '#ff40d0'; g.beginPath(); g.moveTo(x - 6 * z, y - 6 * z); g.lineTo(x + 6 * z, y + 6 * z); g.moveTo(x + 6 * z, y - 6 * z); g.lineTo(x - 6 * z, y + 6 * z); g.stroke();
+    }
+    g.restore();
+}
 function drawTop(g, z, ts, ox, oy) {
     // ox, oy: where (0, 1e6) landed; the camera is ox, oy − 1e6·ts
     const cx = -ox, cy = -(oy - 1e6 * ts), t = now();
+    if (showRanges) drawRanges(g, z, ts, cx, cy);
     // sand shots: a small bunch of grains turning about its middle, a few dropping behind, a shadow under it
     for (const b of bolts) {
         const x = b.x * ts - cx, y = (b.y - BOLT_LIFT) * ts - cy, gy = b.y * ts - cy, R = 0.11 * ts, sp = Math.hypot(b.vx, b.vy) || 1;
@@ -768,12 +807,15 @@ function hud(show, s, m) {
 // tests only: turn her a way (left, right, up, down) as walking that way would
 export const testEvents = (clear = false) => { const out = events.slice(); if (clear) events.length = 0; return out; };
 export const testNow = () => +now().toFixed(3);
+export const testTouch = (x, y, r) => mobs.filter(o => o.st !== 'dead').map(o => touches(o, { x, y }, r));
+export const testRanges = (on = true) => { showRanges = on; if (!on) areas.length = 0; };
+export const testHurt = () => mobs.filter(o => o.st !== 'dead').map(o => ({ ...hurtArea(o), cx: centre(o).x, faceR: !!o.faceR, tiles: charTiles() }));
 // tests only: a clean start for one check (her and the companion's cooldowns, poses, down, shield; numbers over the data)
 export function testReset() {
     Object.assign(me, { act: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, target: null });
     Object.assign(mate, { act: null, cd: 0, cdSkill: 0, hurtAt: -9, down: false });
     for (const k of Object.keys(tune)) delete tune[k];
-    bolts = []; fx = []; pops = []; events.length = 0;
+    bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
 }
 export function testFace(d) { if (d === 'left' || d === 'right') { me.face = d; me.vdir = null; } else me.vdir = d; }
 export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: runNow(getState()), fight: getState()?.desertFight || null });

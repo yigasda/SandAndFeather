@@ -9,13 +9,16 @@ const { chromium } = require('playwright');
 const fs = require('node:fs');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/', MAP = 'desert_forecourt_west', KIND = 'desert_leather_shield';
 (async () => {
-    const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : {});
+    const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : { args: ['--no-sandbox'] });
     const page = await browser.newPage({ viewport: { width: 412, height: 900 } });
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     const sleep = ms => page.waitForTimeout(ms);
     await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 }); await sleep(2500);
-    await page.evaluate(() => SillyTavern.getContext().selectCharacterById(0)); await page.waitForFunction(() => !!SillyTavern.getContext().chatId);
+    const save = page.locator('button:visible, .menu_button:visible', { hasText: /^Save$/ });
+        if (await save.count()) { await save.first().click(); await sleep(1500); }
+        await page.waitForFunction(() => SillyTavern.getContext().characters?.length > 0, null, { timeout: 30000 });
+        await page.evaluate(() => SillyTavern.getContext().selectCharacterById(0)); await page.waitForFunction(() => !!SillyTavern.getContext().chatId);
     await page.waitForSelector('#sf_open', { state: 'attached' });
     await page.evaluate(async base => {
         window.T = {}; for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', field: 'packs/duat/field', ledger: 'core/ledger' })) T[k] = await import(base + 'src/' + f + '.js');
