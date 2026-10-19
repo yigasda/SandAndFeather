@@ -15,8 +15,8 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
 // the mock: CSS and the moved / new elements (only in this page)
 const MOCK_CSS = `
 #sf_game .sf_mock_ult { position: relative; width: 64px; height: 64px; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
-  background: conic-gradient(#f6d27a calc(var(--g, 0) * 1turn), #3a2618 0); box-shadow: 0 0 0 2px #4a2414; }
-#sf_game .sf_mock_ult > b { position: absolute; inset: 5px; border-radius: 50%; display: grid; place-items: center; align-content: center; gap: 1px;
+  background: conic-gradient(#ffd25e calc(var(--g, 0) * 1turn), #2a1a10 0); box-shadow: 0 0 0 2px #4a2414; }
+#sf_game .sf_mock_ult > b { position: absolute; inset: 7px; border-radius: 50%; display: grid; place-items: center; align-content: center; gap: 1px;
   background: radial-gradient(circle at 50% 38%, #5b3a8a, #2a1840 72%); color: #fff4dc; font-size: 13px; font-weight: 900; text-shadow: 0 1px 2px #0008; }
 #sf_game .sf_mock_ult > b i { font-size: 16px; color: #ffe6a0; }
 #sf_game .sf_mock_ult.sf_full { animation: sfUltGlow 1.8s ease-in-out infinite; }
@@ -24,7 +24,9 @@ const MOCK_CSS = `
 #sf_game .sf_mock_ult:not(.sf_full) > b { filter: saturate(.7) brightness(.85); }
 #sf_game .sf_duat_skill { display: grid !important; place-items: center; align-content: center; gap: 0; }
 #sf_game .sf_duat_skill i { font-size: 14px; color: #ffe6a0; line-height: 1; }
-#sf_game .sf_duat_skill s { position: absolute; inset: 0; display: grid; place-items: center; font-size: 17px; font-weight: 900; text-decoration: none; color: #fff; z-index: 2; }
+#sf_game .sf_duat_skill s { position: absolute; inset: 0; display: grid; place-items: center; font-size: 19px; font-weight: 900; text-decoration: none; color: #fff; z-index: 2; }
+#sf_game .sf_duat_skill.sf_cd { color: transparent; text-shadow: none; }
+#sf_game .sf_duat_skill.sf_cd i { visibility: hidden; }
 #sf_game .sf_mock_bag { position: absolute; z-index: 4; }
 `;
 
@@ -71,7 +73,7 @@ const MOCK_CSS = `
             const stateShot = async (name, g, cd) => {
                 await page.evaluate(([g, cd]) => {
                     const ult = document.querySelector('.sf_mock_ult'); ult.style.setProperty('--g', g); ult.classList.toggle('sf_full', g >= 1);
-                    const sk = document.querySelector('.sf_duat_skill'); sk.querySelector('s')?.remove();
+                    const sk = document.querySelector('.sf_duat_skill'); sk.querySelector('s')?.remove(); sk.classList.toggle('sf_cd', !!cd);
                     // the 스킬 really used: the game darkens it round by the time left; the seconds left written over it
                     if (cd) { T.field.skill(); setTimeout(() => sk.insertAdjacentHTML('beforeend', `<s>${cd}</s>`), (6 - cd) * 1000); }
                 }, [g, cd]);

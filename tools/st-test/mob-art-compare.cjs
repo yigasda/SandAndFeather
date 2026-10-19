@@ -65,7 +65,7 @@ const log = m => { console.log(m); res.push(m); };
                     for (let y = 1; y < Hh - 1; y++) for (let x = 1; x < W - 1; x++) {
                         const i = (y * W + x) * 4;
                         if (d2[i + 3] >= 128) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
-                        if (d2[i + 3] === 255 && d2[i + 7] === 255 && d2[i + W * 4 + 3] === 255) { grad += Math.abs(L(i + 4) - L(i)) + Math.abs(L(i + W * 4) - L(i)); n++; }
+                        if (d2[i + 3] >= 250 && d2[i + 7] >= 250 && d2[i + W * 4 + 3] >= 250) { grad += Math.abs(L(i + 4) - L(i)) + Math.abs(L(i + W * 4) - L(i)); n++; }
                     }
                     return { c, W, Hh, px, py, box: [x0 - px, x1 - px, y0 - py, y1 - py], sharp: n ? grad / n : 0, k: a.visible, src: (a.sheets || [a.file])[r[6] || 0] };
                 };
@@ -83,7 +83,7 @@ const log = m => { console.log(m); res.push(m); };
                     const g = s.getContext('2d'); g.fillStyle = '#d9b97a'; g.fillRect(0, 0, W, s.height);
                     g.drawImage(A.c, 0, 0); g.drawImage(B.c, A.W + 12, 0);
                     g.imageSmoothingEnabled = false;
-                    const zx = Math.round(A.px + A.box[0] + 10), zy = Math.round(A.py + A.box[3] - 70);   // a 80×80 patch at the front-bottom
+                    const zx = Math.round(A.px + (A.box[0] + A.box[1]) / 2 - 40), zy = Math.round(A.py + A.box[2] + (A.box[3] - A.box[2]) * 0.7 - 40);   // a 80×80 patch in its lower middle
                     g.drawImage(A.c, zx, zy, 80, 80, 0, Hh + 10, 240, 240);
                     g.drawImage(B.c, zx - A.px + B.px, zy - A.py + B.py, 80, 80, A.W + 12, Hh + 10, 240, 240);
                     g.fillStyle = '#000'; g.font = '14px sans-serif'; g.fillText('이전', 4, 16); g.fillText('지금', A.W + 16, 16);

@@ -40,9 +40,10 @@ const SCENES = [
     // the browser's processes (the one Playwright started and its children): renderer, GPU, … RSS in KB
     const procs = () => {
         try {
-            const root = browser.process?.()?.pid;
             const rows = execSync('ps -eo pid,ppid,rss,args --no-headers').toString().trim().split('\n').map(l => { const m = l.trim().match(/^(\d+)\s+(\d+)\s+(\d+)\s+(.*)$/); return m && { pid: +m[1], ppid: +m[2], rss: +m[3], args: m[4] }; }).filter(Boolean);
-            const kids = new Set(root ? [root] : []); let grew = true;
+            // the browser Playwright started (driven over a pipe), the newest one, and all under it
+            const root = Math.max(...rows.filter(r => /remote-debugging-pipe/.test(r.args)).map(r => r.pid));
+            const kids = new Set([root]); let grew = true;
             while (grew) { grew = false; for (const r of rows) if (kids.has(r.ppid) && !kids.has(r.pid)) { kids.add(r.pid); grew = true; } }
             const mine = rows.filter(r => kids.has(r.pid) && /chrom/i.test(r.args));
             const kind = r => /--type=renderer/.test(r.args) ? 'renderer' : /--type=gpu-process/.test(r.args) ? 'gpu' : /--type=/.test(r.args) ? 'other' : 'browser';
