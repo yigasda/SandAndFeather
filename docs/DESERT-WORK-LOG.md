@@ -36,7 +36,7 @@ export NODE_PATH=/opt/node-tools/node_modules
 | 저장 이관 | `node tools/st-test/desert-save-move.cjs` |
 | 호루스 기술·가드 깨기 | `node tools/st-test/desert-horus-leap.cjs [out]` (영상 docs/consult/desert/b3/) |
 | 15 빛 퍼즐 A안 | `node tools/st-test/puzzle-lift.mjs`, `node tools/st-test/desert-15-lift.cjs [out]` |
-| 방패병 몸 범위 비교 | `node tools/st-test/desert-shield-ranges.cjs [out]` |
+| 사막 몹 12종 몸 범위 검수 | `node tools/st-test/desert-mob-hits.cjs [out]` |
 | 회귀 | [`DESERT-COMBAT-SURVEY.md`](DESERT-COMBAT-SURVEY.md) 「회귀 시나리오」 |
 
 ## 기록
@@ -50,6 +50,8 @@ export NODE_PATH=/opt/node-tools/node_modules
 | 10-19 | B3 진단·호루스 A안 | 장면별 초기화 진단(S1~S4): 가드 규칙은 두아트와 같음, 실패는 시험(타이밍·장면 사이 상태·동행 피해 섞임·피해만으로 판정)과 호루스 도약이 가까운 적을 넘어가는 것. **이번 검사 범위에서 사막 변경으로 인한 오류가 확인되지 않았다.** 호루스 기술 A안: 진행 방향 도약 경로의 가장 가까운 유효 적 앞(몸 가장자리 + 0.6칸)에 착지, 적 없으면 기존 2.5칸. 피해·반경 1.2·가드 시간 그대로, 경로 전체 피해(B안) 없음. 적 몸 반경 `body`(데이터, 기본 0 = 두아트 그대로) | `desert-horus-leap.cjs` 16개 통과(근접·최대·넘어섬·큰 적·뒤·옆·벽 너머·벽 앞·두아트 고대장치 2·호루스/세트 가드 깨기·가드 중 반올림 2). 회귀 duat-field 23·duat-mob-video·B2 14·사막 걷기·광학 13 통과 |
 
 | 10-19 | 퍼즐 A안·몸 범위 | 15 A안 맵 안 시제품(받침 회전·올림 틀 밀기·낮은/높은 빛 구분·장치 창·채팅별 저장), 16 구체 설계(돌 하나·그릇 둘·돌림판, 그림·충돌 원본 확인), 방패병 몸 범위 비교(데이터 값 추가, 기본 0) | puzzle-lift 5·desert-15-lift 22·desert-b2 14·horus-leap 16 통과, 16 전체 상태 12 중 정답 1, 몸 범위 비교 4안 |
+
+| 10-19 | 몸 범위·16 보완 | 호루스 C안·세트 A안 적용(착지 여유·기술별 명중 분리), 사막 몹 12종 몸통·앞 몸체 실측과 크기 제안 팩, 16 안 X 보완·안 K 비교·접근 검사·입구 갓·벽감 그림 목록 | desert-mob-hits 24·horus-leap 16 통과, 16 두 안 정답 각 1·접근 통과 |
 
 ## 따로 고칠 것
 

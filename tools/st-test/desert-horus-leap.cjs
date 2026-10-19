@@ -1,10 +1,10 @@
 // 호루스 기술 A안(사용자 2026-10-19): 진행 방향 도약 경로의 가장 가까운 유효 적 앞에 착지, 피해·반경 1.2·가드 시간 그대로.
 //   장면마다 testReset·하루 넘김으로 새 몹, 동행 없음, 서 있는 시험 몹(speed 0, range 0) — 판정은 사건 기록(field.js testEvents)
 //   - 근접 1.1칸 / 최대 3.0칸(2.5칸 도약 + 착지 간격) / 넘어선 4.0칸(기존 도약 그대로, 안 맞음)
-//   - 큰 적(시험 값: 몸 반경·앞 공간 1.5칸): 중심 2.1칸에 내려도 몸이 반경 안이라 맞음, 몸과 겹치지 않음
+//   - 큰 적(시험 값: 몸통 반폭 1.5칸): 중심 2.1칸에 내려도 몸이 반경 안이라 맞음, 몸과 겹치지 않음
 //   - 뒤·옆 적은 겨냥하지 않음(기존 도약 그대로) / 벽 너머 적은 겨냥하지 않음, 벽 안에 내리지 않음 / 벽 앞 적은 맞음
 //   - 두아트 고대장치(ring): 근접·2.5칸 모두 맞음
-//   - 가드 깨기: 호루스·세트 따로 — 가드 중 기술 명중 → break 사건, 가드 풀림(hit), 경직(stun = stagger)
+//   - 가드 깨기: 호루스·세트 따로(실제 방패병 모양 데이터) — 가드 중 기술 명중 → break 사건, 가드 풀림(hit), 경직(stun = stagger)
 //   - 가드 중 일반 공격 피해 = max(1, round(n × guardTake)) 를 실제 계산과 대조
 //   node tools/st-test/desert-horus-leap.cjs [out]
 const { chromium } = require('playwright');
@@ -58,13 +58,13 @@ const log = msg => { console.log(msg); res.push(msg); };
                 return { x0, x1: p.x, y: p.y, inWall: T.solid(p.x, p.y), gap: o ? Math.hypot(o.x + 0.5 - (p.x + 0.5), o.y + 0.8 - (p.y + 0.8)) : null, blows: ev.filter(e => e.ev === 'blow'), ev };
             }, x0);
         };
-        const STILL = { guard: 0, speed: 0, range: 0 };
+        const STILL = { guard: 0, speed: 0, range: 0, hit: {} };   // the leap's geometry alone: no shape (the shield's own: desert-mob-hits.cjs)
         // a standing place in T1W with clear floor 4.5 tiles to the right (the yard landing)
         const cases = [
             ['근접 1.1칸', 1.1, 0, STILL, r => r.blows.length === 1 && r.x1 >= r.x0 && r.gap >= 0.3 && r.gap - 0 < 1.2],
             ['최대 3.0칸(도약 2.5 + 간격 0.6 안)', 3.0, 0, STILL, r => r.blows.length === 1 && r.x1 - r.x0 <= 2.5 + 1e-6 && r.gap < 1.2],
             ['넘어선 4.0칸: 기존 도약(2.5칸), 안 맞음', 4.0, 0, STILL, r => r.blows.length === 0 && Math.abs(r.x1 - r.x0 - 2.5) < 0.05],
-            ['큰 적(몸 반경·앞 공간 각 1.5칸 = 캐릭터 키 0.55배) 3.5칸: 몸과 안 겹치고 맞음', 3.5, 0, { ...STILL, body: 0.55, space: 0.55 }, r => r.blows.length === 1 && r.gap >= 1.5 && r.gap - 1.5 < 1.2],
+            ['큰 적(몸통 반폭 1.5칸 = 캐릭터 키 0.55배) 3.5칸: 몸과 안 겹치고 맞음', 3.5, 0, { ...STILL, hit: { body: 0.55, back: 0 } }, r => r.blows.length === 1 && r.gap >= 1.5 && r.gap - 1.5 < 1.2],
             ['뒤 1.5칸: 겨냥 안 함, 기존 도약', -1.5, 0, STILL, r => r.blows.length === 0 && Math.abs(r.x1 - r.x0 - 2.5) < 0.05],
             ['옆(위아래 1.5칸): 겨냥 안 함, 기존 도약', 1.0, 1.5, STILL, r => Math.abs(r.x1 - r.x0 - 2.5) < 0.05],
         ];

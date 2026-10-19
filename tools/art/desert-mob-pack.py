@@ -15,9 +15,27 @@ REG = json.load(open(os.path.join(ROOT, 'tools', 'maps', 'desert-mobs.json')))
 MOTION = {'idle_0': 'idle-0', 'idle_1': 'idle-1', 'idle_2': 'idle-2', 'special': 'guard', 'prepare_0': 'prepare-0', 'prepare_1': 'prepare-1',
           'attack_0': 'attack-0', 'attack_1': 'attack-1', 'hit': 'hit', 'defeat': 'disappear'}
 VISIBLE, SMALL, PAD = 256, 125, 2
-# body height in characters' heights (the game draws a character 31.2 px × zoom high); normal mobs first, bosses later
-HEIGHT_K = {'desert_leather_shield': 1.15}
-PACK = ['desert_leather_shield']
+# body height in characters' heights (the game draws a character 31.2 px × zoom high). 사용자 10-19 "몹 크기 다 늘리셈,
+# 방패병은 더 커야, 4대 수문장은 ㅈㄴ 커야": 제안 값(화면 비교 docs/consult/desert/mobs/hit-sheet.png로 검수)
+HEIGHT_K = {
+    'desert_sealed_jar': 1.3, 'desert_leather_shield': 1.5, 'desert_sealed_shield': 1.6, 'desert_walking_stela': 1.4,
+    'desert_sun_mirror': 1.3, 'desert_balance_sentinel': 1.3, 'desert_mask_priest_mantle': 1.45, 'desert_mask_priest_shroud': 1.45,
+    'desert_royal_mask_warden': 2.8, 'desert_temple_warden': 2.8, 'desert_throne_warden': 2.8, 'desert_broken_tomb_warden': 2.8,
+}
+# the shape a 기술 sees (사용자 10-19: 호루스 C안·세트 A안, 몹별 수치는 직접 정하고 묶어서 검수), measured by eye on the
+# standing picture idle_0 in its own pixels (the pictures face left): the torso's middle x and half width, without
+# weapons, hanging weights, flowing cloth, flashes or empty margin; front: the left edge of what it holds out (shield
+# family: the shield; bosses: the fists), with frontHit. The same for every frame (one pivot, one scale a kind).
+HIT = {
+    'desert_sealed_jar': (255, 140, None), 'desert_leather_shield': (375, 48, 150), 'desert_sealed_shield': (365, 50, 118),
+    'desert_walking_stela': (215, 130, None), 'desert_sun_mirror': (237, 150, None), 'desert_balance_sentinel': (290, 45, None),
+    'desert_mask_priest_mantle': (255, 95, None), 'desert_mask_priest_shroud': (250, 90, None),
+    'desert_royal_mask_warden': (240, 90, 102), 'desert_temple_warden': (235, 95, 45), 'desert_throne_warden': (285, 115, 71),
+    'desert_broken_tomb_warden': (265, 70, 34),
+}
+# a boss's picture is large: its atlas is packed smaller (drawMob scales it), so one atlas stays a sane size
+VIS = {k: (128, 64) for k in HEIGHT_K if 'warden' in k}
+PACK = list(HEIGHT_K)
 
 
 def main(ids):
@@ -29,7 +47,8 @@ def main(ids):
         ys = np.nonzero(idle.any(1))[0]; body_h = ys.max() + 1 - ys.min()
         foot = [sp['measured']['footMiddleCandidate'], sp['measured']['footLineCandidate']]
         out = {}
-        for vis, suffix in ((VISIBLE, ''), (SMALL, '-small')):
+        big, small = VIS.get(sid, (VISIBLE, SMALL))
+        for vis, suffix in ((big, ''), (small, '-small')):
             k = HEIGHT_K[sid] * vis / body_h
             pieces = []
             for slot, f in sp['frames'].items():
@@ -53,7 +72,12 @@ def main(ids):
             atlas.save(os.path.join(ROOT, 'data', file), optimize=True)
             out[suffix] = {'file': file, 'visible': vis, 'frames': frames}
             print(sid, file, atlas.size)
-        sprites.setdefault('enemies', {})[sid] = {**out[''], 'height': HEIGHT_K[sid], 'small': out['-small'], 'source': sp['folder']}
+        # the shape in characters' heights: picture px × HEIGHT_K / the standing body's height
+        cx, hw, front = HIT[sid]; per = HEIGHT_K[sid] / body_h
+        hit = {'body': round(hw * per, 3), 'back': round((cx - foot[0]) * per, 3)}
+        if front is not None: hit.update(front=round((foot[0] - front) * per, 3), frontHit=True)
+        sprites.setdefault('enemies', {})[sid] = {**out[''], 'height': HEIGHT_K[sid], 'small': out['-small'], 'hit': hit, 'source': sp['folder']}
+        print(' ', sid, hit)
     import importlib.util
     spec = importlib.util.spec_from_file_location('ptm', os.path.join(ROOT, 'tools', 'art', 'pack-trio-motion.py')); ptm = importlib.util.module_from_spec(spec); spec.loader.exec_module(ptm)
     with open(sprites_path, 'w') as fh: fh.write(ptm.compact(json.dumps(sprites, ensure_ascii=False, indent=1)) + '\n')

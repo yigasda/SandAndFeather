@@ -445,22 +445,31 @@ export function skill() {
     useSkill(s, leadOf(s), feet(), me.face, true);
 }
 // a creature's size against the people, in tiles: its picture is a character's height (31.2 px at zoom 1, 16 px a
-// tile) times the map's actorScale, and the data gives its sizes as parts of that height (as drawMob draws it)
+// tile) times the map's actorScale; its shape is given in parts of that height (as drawMob draws it)
 const charTiles = () => 31.2 / 16 * (map()?.d?.actorScale || 1);
-// where a 기술 can hurt it. data body: the torso's half width (no shield, weapon or effect); bodyBack: the torso's middle
-// behind its feet's middle, away from the way it faces. Both 0 for every Duat creature: its middle, as before.
-function hurtArea(o) { const k = charTiles(), c = centre(o), back = (o.e.bodyBack || 0) * k * (o.faceR ? -1 : 1); return { x: c.x + back, y: c.y, r: (o.e.body || 0) * k }; }
-// how far from its feet's middle he comes down: what it holds out in front (data space: e.g. its shield) and his own
-// room (LAND_GAP); without space 0.6, as before
+// its shape (사용자 10-19), measured once a kind on its standing picture (tools/art/desert-mob-pack.py → sprites.json
+// enemies.<kind>.hit), the same in every frame; weapons, flashes and empty margins are not in it:
+//   body  — the torso's half width          back — the torso's middle behind its feet's middle (away from where it faces)
+//   front — what it holds out in front (a shield, a boss's fists), from its feet's middle; frontHit — Horus's 기술
+//           lands short of it and counts it as struck (Set's 기술 counts the torso only)
+// Every Duat creature has none of it: its middle, as before. Tests may put another in its place (testTune … { hit }; { hit: {} } = none).
+const shape = o => o.e.hit || DATA.sprites?.enemies?.[o.kind]?.hit || {};
+function hurtArea(o) { const h = shape(o), k = charTiles(), c = centre(o), back = (h.back || 0) * k * (o.faceR ? -1 : 1); return { x: c.x + back, y: c.y, r: (h.body || 0) * k }; }
+// how far from its feet's middle he comes down: past what it holds out (frontHit) or its torso's front edge, and his
+// own room (LAND_GAP); with no shape 0.6, as before
 const LAND_GAP = 0.6;
-const room = o => (o.e.space || 0) * charTiles() + LAND_GAP;
-// a 기술 around g with reach r touches it: its torso, or (data shieldHit, a choice still open) its shield's face, from its
-// feet's middle out to guardFront in front
-function touches(o, g, r) {
-    const h = hurtArea(o);
-    if (Math.hypot(h.x - g.x, h.y - g.y) - h.r < r) return true;
-    if (!o.e.shieldHit) return false;
-    const c = centre(o), fx = c.x + (o.faceR ? 1 : -1) * (o.e.guardFront || 0) * charTiles();
+function room(o) {
+    const h = shape(o), k = charTiles();
+    const ahead = h.frontHit ? h.front || 0 : Math.max(0, (h.body || 0) - (h.back || 0));
+    return ahead * k + LAND_GAP;
+}
+// a 기술 around g with reach r touches it: its torso; with withFront (Horus) also what it holds out in front
+function touches(o, g, r, withFront = false) {
+    const a = hurtArea(o);
+    if (Math.hypot(a.x - g.x, a.y - g.y) - a.r < r) return true;
+    const h = shape(o);
+    if (!withFront || !h.frontHit || !h.front) return false;
+    const c = centre(o), fx = c.x + (o.faceR ? 1 : -1) * h.front * charTiles();
     const px = Math.min(Math.max(g.x, Math.min(c.x, fx)), Math.max(c.x, fx));
     return Math.hypot(px - g.x, c.y - g.y) < r;
 }
@@ -480,7 +489,7 @@ function leapTarget(f, dir, x0, x1) {
 }
 // each one's own 기술 (no name is shown, user: "오글거린다"); the one with her uses theirs too (MATE_SKILL_CD)
 function useSkill(s, who, f, face, lead) {
-    const hits = (g, r, n, push) => { areas.push({ x: g.x, y: g.y, r, who, at: now() }); if (areas.length > 8) areas.shift(); for (const o of mobs) if (o.st !== 'dead' && touches(o, g, r)) damage(s, o, n, push, g, 'skill'); };
+    const hits = (g, r, n, push) => { areas.push({ x: g.x, y: g.y, r, who, at: now() }); if (areas.length > 8) areas.shift(); for (const o of mobs) if (o.st !== 'dead' && touches(o, g, r, who === 'horus')) damage(s, o, n, push, g, 'skill'); };
     if (who === 'set') hits(f, 2, power(s, who) * 2, 0.8);              // 모래폭풍 강타: everything around, twice as hard, pushed away
     else if (who === 'horus') {                                          // 하늘에서 내리꽂기
         if (lead) {   // up, at most 2.5 tiles ahead, down on everything around where he lands
@@ -675,7 +684,7 @@ function drawMob(g, o, sx, sy, z, ts) {
     g.imageSmoothingEnabled = false;
 }
 const SAND = ['#f3dca4', '#e2bd7c', '#c9995a'];
-// tests only: green — where a 기술 hurts it (torso), blue — its shield's face (counted only with shieldHit), the leap's
+// tests only: green — where a 기술 hurts it (torso), blue — what it holds out in front (solid: Horus's 기술 counts it, frontHit), the leap's
 // landing (magenta ×) and each 기술's reach (orange: Horus, yellow: Set) as circles on the floor
 function drawRanges(g, z, ts, cx, cy) {
     const P = (x, y) => [x * ts - cx, y * ts - cy];
@@ -685,7 +694,8 @@ function drawRanges(g, z, ts, cx, cy) {
         const h = hurtArea(o), [hx, hy] = P(h.x, h.y), c = centre(o), [px, py] = P(c.x, c.y);
         g.strokeStyle = '#30d070'; g.fillStyle = 'rgba(48,208,112,.25)'; g.beginPath(); g.arc(hx, hy, Math.max(2 * z, h.r * ts), 0, Math.PI * 2); g.fill(); g.stroke();
         g.fillStyle = '#ffffff'; g.fillRect(px - 2 * z, py - 2 * z, 4 * z, 4 * z);
-        if (o.e.guardFront) { const [fx] = P(c.x + (o.faceR ? 1 : -1) * o.e.guardFront * charTiles(), c.y); g.strokeStyle = o.e.shieldHit ? '#3080ff' : 'rgba(48,128,255,.6)'; g.setLineDash(o.e.shieldHit ? [] : [5 * z, 4 * z]); g.beginPath(); g.moveTo(px, py); g.lineTo(fx, py); g.stroke(); g.setLineDash([]); }
+        const sh = shape(o);
+        if (sh.front) { const [fx] = P(c.x + (o.faceR ? 1 : -1) * sh.front * charTiles(), c.y); g.strokeStyle = sh.frontHit ? '#3080ff' : 'rgba(48,128,255,.6)'; g.setLineDash(sh.frontHit ? [] : [5 * z, 4 * z]); g.beginPath(); g.moveTo(px, py); g.lineTo(fx, py); g.stroke(); g.setLineDash([]); }
     }
     for (const a of areas.slice(-4)) {
         const [x, y] = P(a.x, a.y);
@@ -807,7 +817,7 @@ function hud(show, s, m) {
 // tests only: turn her a way (left, right, up, down) as walking that way would
 export const testEvents = (clear = false) => { const out = events.slice(); if (clear) events.length = 0; return out; };
 export const testNow = () => +now().toFixed(3);
-export const testTouch = (x, y, r) => mobs.filter(o => o.st !== 'dead').map(o => touches(o, { x, y }, r));
+export const testTouch = (x, y, r, withFront = false) => mobs.filter(o => o.st !== 'dead').map(o => touches(o, { x, y }, r, withFront));
 export const testRanges = (on = true) => { showRanges = on; if (!on) areas.length = 0; };
 export const testHurt = () => mobs.filter(o => o.st !== 'dead').map(o => ({ ...hurtArea(o), cx: centre(o).x, faceR: !!o.faceR, tiles: charTiles() }));
 // tests only: a clean start for one check (her and the companion's cooldowns, poses, down, shield; numbers over the data)
