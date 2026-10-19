@@ -1,0 +1,22 @@
+[
+  {
+    "test": "old-02-t1w",
+    "exit": 0
+  },
+  {
+    "test": "puzzle15",
+    "exit": 1
+  },
+  {
+    "test": "full-map",
+    "exit": 0
+  },
+  {
+    "test": "cozy-ui",
+    "exit": 0
+  },
+  {
+    "test": "themes",
+    "exit": 0
+  }
+]

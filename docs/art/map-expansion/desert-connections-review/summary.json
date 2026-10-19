@@ -1,0 +1,33 @@
+{
+  "tested_code_commit": "19111dd7794da5a73d430dfb9d0ebcd03d41310f",
+  "base_commit": "1add5d4fe1020dff9f32053e20a9e621d1c7cc4d",
+  "new_portals": {
+    "pass": 51,
+    "fail": 0
+  },
+  "old_02_t1w": {
+    "pass": 14,
+    "fail": 0
+  },
+  "puzzle_unit": {
+    "pass": 5,
+    "fail": 0
+  },
+  "puzzle_runtime": {
+    "first": "12 checks then button lookup timeout",
+    "baseline_1add5d4": "21 pass",
+    "same_code_recheck": "21 pass"
+  },
+  "full_map": "exit 0",
+  "cozy_ui": "exit 0",
+  "themes": "exit 0",
+  "collision": "0 source pixels changed",
+  "reproduction": "byte-identical",
+  "remaining": [
+    "companion visual overlap: shared player.js change awaiting coordination",
+    "full acceptance withheld until companion visual issue is resolved"
+  ],
+  "remote_opus_observed": "e4537b07",
+  "remote_merge": "not performed",
+  "push": "not performed"
+}

@@ -1,0 +1,35 @@
+{
+  "codeCommit": "882aadd76796a309487066a5a04618ef80e6dfb1",
+  "baseCommit": "1add5d4fe1020dff9f32053e20a9e621d1c7cc4d",
+  "branch": "maps/desert-connections",
+  "fullWidthActualJoystick": {
+    "pass": 169,
+    "fail": 0,
+    "transitions": 18,
+    "fixturePlacements": 1,
+    "lanes": [
+      "left/top",
+      "center",
+      "right/bottom"
+    ]
+  },
+  "innerWidthActualJoystick": {
+    "pass": 57,
+    "fail": 0,
+    "transitions": 6
+  },
+  "reproduction": "9 desert map JSON + scene-art byte-identical",
+  "collision": "source PNG exact, 0 pixels different",
+  "safeZoneEastDepth": 3.5,
+  "pending": [
+    "Parent visual reconfirmation of registered user-mark overlay",
+    "Shared player.js follower-spacing coordination; actual screenshots still show overlap"
+  ],
+  "notDone": [
+    "Shared movement/combat code changes",
+    "Next map bundle",
+    "Remote push",
+    "main/release/version changes"
+  ],
+  "historicalRegressions": "See ../ logs: narrow-version 51, old02-T1W14, puzzleunit5, puzzle-runtime21 on rerun, full-map/cozy/themes exit0. Initial puzzle timeout preserved."
+}

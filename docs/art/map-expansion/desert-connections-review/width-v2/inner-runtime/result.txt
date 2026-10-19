@@ -1,0 +1,63 @@
+통과 forecourt_east → colonnade: 연속 왕복의 출발 맵
+통과 forecourt_east → colonnade: 문 폭 왼쪽/위 보행 가능한 접근
+통과 forecourt_east → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  forecourt_east → colonnade: 출구 앞 forecourt_east (46.3, 10.2) → 도착 colonnade (46.3, 17.5)
+통과 forecourt_east → colonnade: 걸어서 도착, 착지 forecourt(46.3, 17.7) 자리, 트리거 밖
+통과 forecourt_east → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 forecourt_east → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → colonnade: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → colonnade: 실제 문턱 통과가 지정 폭 lane 0 안 (46.82 / 46.82)
+통과 colonnade → forecourt_east: 연속 왕복의 출발 맵
+통과 colonnade → forecourt_east: 문 폭 왼쪽/위 보행 가능한 접근
+통과 colonnade → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  colonnade → forecourt_east: 출구 앞 colonnade (48.9, 17.0) → 도착 forecourt_east (44.3, 12.6)
+통과 colonnade → forecourt_east: 걸어서 도착, 착지 east(44.2, 12.6) 자리, 트리거 밖
+통과 colonnade → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 colonnade → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_east: 실제 문턱 통과가 지정 폭 lane 0 안 (17.65 / 17.65)
+통과 forecourt_east → colonnade: 연속 왕복의 출발 맵
+통과 forecourt_east → colonnade: 문 폭 중앙 보행 가능한 접근
+통과 forecourt_east → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  forecourt_east → colonnade: 출구 앞 forecourt_east (48.3, 10.2) → 도착 colonnade (46.3, 17.5)
+통과 forecourt_east → colonnade: 걸어서 도착, 착지 forecourt(46.3, 17.7) 자리, 트리거 밖
+통과 forecourt_east → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 forecourt_east → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → colonnade: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → colonnade: 실제 문턱 통과가 지정 폭 lane 1 안 (48.80 / 48.80)
+통과 colonnade → forecourt_east: 연속 왕복의 출발 맵
+통과 colonnade → forecourt_east: 문 폭 중앙 보행 가능한 접근
+통과 colonnade → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  colonnade → forecourt_east: 출구 앞 colonnade (49.0, 17.7) → 도착 forecourt_east (44.3, 12.6)
+통과 colonnade → forecourt_east: 걸어서 도착, 착지 east(44.2, 12.6) 자리, 트리거 밖
+통과 colonnade → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 colonnade → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_east: 실제 문턱 통과가 지정 폭 lane 1 안 (18.45 / 18.45)
+통과 forecourt_east → colonnade: 연속 왕복의 출발 맵
+통과 forecourt_east → colonnade: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 forecourt_east → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  forecourt_east → colonnade: 출구 앞 forecourt_east (50.2, 10.3) → 도착 colonnade (46.3, 17.6)
+통과 forecourt_east → colonnade: 걸어서 도착, 착지 forecourt(46.3, 17.7) 자리, 트리거 밖
+통과 forecourt_east → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 forecourt_east → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → colonnade: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → colonnade: 실제 문턱 통과가 지정 폭 lane 2 안 (50.78 / 50.78)
+통과 colonnade → forecourt_east: 연속 왕복의 출발 맵
+통과 colonnade → forecourt_east: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 colonnade → forecourt_east: 지정 폭 접근점까지 실제 조이스틱
+  colonnade → forecourt_east: 출구 앞 colonnade (49.0, 18.5) → 도착 forecourt_east (44.3, 12.6)
+통과 colonnade → forecourt_east: 걸어서 도착, 착지 east(44.2, 12.6) 자리, 트리거 밖
+통과 colonnade → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 colonnade → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_east: 실제 문턱 통과가 지정 폭 lane 2 안 (19.25 / 19.25)
+통과 연속 왕복: 정확히 6번 전환, 튕김 없음
+통과 저장·다시 불러오기: forecourt_east (48.5, 12.4) 그대로, 트리거 밖
+통과 페이지 오류 없음 

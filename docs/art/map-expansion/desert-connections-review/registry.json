@@ -1,0 +1,1545 @@
+{
+ "places": [
+  {
+   "no": "01",
+   "id": "desert_golden_dunes",
+   "shippedAs": "desert_golden_dunes",
+   "name": "황금 사구해",
+   "pictures": [
+    {
+     "file": "사막맵/01_황금사구해_닫힘.png",
+     "size": [
+      1586,
+      992
+     ],
+     "sha256": "75c9a2c4690cd4dadd448301fcea7896fd48897db9f44489831bc743f03fb860",
+     "source": "docs/art/desert-01-method-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    },
+    {
+     "file": "사막맵/01_황금사구해_입구열림.png",
+     "size": [
+      1586,
+      992
+     ],
+     "sha256": "11870d94064560435edbea068f9c05d49347f6c7a8528fb31c209ead31d03cf5",
+     "source": "docs/art/desert-01-open-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/01.png",
+    "sha256": "e816e5a3427336894a039697dc22dc6a0f8ae02b5ba9afb57a8ff29a785ded4c",
+    "size": [
+     1586,
+     992
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": true,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "02",
+   "id": "desert_buried_temple",
+   "shippedAs": "desert_buried_temple",
+   "name": "매몰 신전 사막",
+   "pictures": [
+    {
+     "file": "사막맵/02_매몰신전사막.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "8e8e2dc22bbad1dc4afb9e206d424f0b787798cc9cb24b270c521ac67c679d13",
+     "source": "docs/art/desert-02-candidates-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/02_매몰신전사막.png",
+    "sha256": "2414c66d1313151e1ea47509fa80fdefd886703296a371007ce9ba1a86ab1aee",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": true,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "03",
+   "id": "desert_quiet_dunes",
+   "shippedAs": "desert_quiet_dunes",
+   "name": "고요한 사구 (06 통합)",
+   "pictures": [
+    {
+     "file": "사막맵/03_고요한사구_06통합.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "6e6093e3e9158ad662e667bb2e649033017dc87adaac7f54e0954000827c1161",
+     "source": "docs/art/desert-03-sand-composite-2026-10-16/review.png",
+     "note": "모래 정리본에 기존 03 바위·나무·잔돌 및 채택 표지석 원본 합성"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/03_고요한사구_06통합.png",
+    "sha256": "d5db8b8571a181549d9f892d5847a02310f8c65a207b22f88be80e747ecfd6e9",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "Opus (desert-collision.py) + 사용자 수정·승인"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": true,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "04",
+   "id": "desert_dry_flats",
+   "shippedAs": "desert_dry_flats",
+   "name": "메마른 모래벌판",
+   "pictures": [
+    {
+     "file": "사막맵/04_메마른모래벌판.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "38194da3bc67a4a09279e7d563239416c93ab8213721b2d1c6c14e4f04eafd69",
+     "source": "docs/art/desert-04-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/04_메마른모래벌판.png",
+    "sha256": "e8215a79c39d3274a94fd1f202f18eefcb6f6549811143fb8830d43d9dcce8ce",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "Opus (desert-collision.py) + 사용자 수정·승인"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": true,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "05",
+   "id": "desert_pyramid_base",
+   "shippedAs": null,
+   "name": "피라미드 기단과 진입로",
+   "pictures": [
+    {
+     "file": "사막맵/05_피라미드기단.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "13c2aa44f8c7bb0cae63490f9d7fa531ce07c988fce3aa965b90488ffeb4fed9",
+     "source": "docs/art/desert-05-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/05_피라미드기단.png",
+    "sha256": "7863afff5abc56745e37476396402326ec09653cccc7c28d41d52e7f857878c3",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "07",
+   "id": "desert_oasis",
+   "shippedAs": null,
+   "name": "고요한 오아시스 물가",
+   "pictures": [
+    {
+     "file": "사막맵/07_고요한오아시스.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "0570face42f225660ce78f0e02e807713e8530ad6a8a8c4e0bf3cb5231861f75",
+     "source": "docs/art/desert-07-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/07_고요한오아시스.png",
+    "sha256": "6c6e4e9be3729e222c2314b34fce83995700569d894a4b98f7e47e01d4542734",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "08",
+   "id": "desert_caravan_rest",
+   "shippedAs": null,
+   "name": "사막 대상의 쉼터",
+   "pictures": [
+    {
+     "file": "사막맵/08_대상의쉼터.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "c77d4858d13917b0b81e98d7ed5e121aff2d4ddda538c41f600812ecb9df6e95",
+     "source": "docs/art/desert-08-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/08_대상의쉼터.png",
+    "sha256": "197e44052350f25e18cc73813a39c72da8378b7351d48bd4fe801a7518f291a7",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "09",
+   "id": "desert_old_sanctuary",
+   "shippedAs": null,
+   "name": "모래에 잠긴 옛 성소",
+   "pictures": [
+    {
+     "file": "사막맵/09_옛성소.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "b77a1f4fc2174664ba4b242fcc8eed0bf65ec16d5b5d8baee4246bb238b1b80b",
+     "source": "docs/art/desert-09-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/09_옛성소.png",
+    "sha256": "bd3197c4ac61ba5c431835eaccdc9037952ab9341d5b26f331f4888e043aace1",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "10",
+   "id": "desert_wind_basin",
+   "shippedAs": null,
+   "name": "모래바람 분지",
+   "pictures": [
+    {
+     "file": "사막맵/10_모래바람분지.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "02254c2ec30e9c845a70aef6e2365b5ed4046dff94e4d9ee34d186d134b819e6",
+     "source": "docs/art/desert-10-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/10_모래바람분지.png",
+    "sha256": "85aed5e5dd6b185a57918663b4e01f0288b54440ee5d81c89c7ede828487bb44",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "11",
+   "id": "desert_city_gate",
+   "shippedAs": "desert_city_gate",
+   "name": "매몰 도시의 출입구",
+   "pictures": [
+    {
+     "file": "사막맵/11_매몰도시출입구.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "e3f03790c82b33df11660aac0eb22cf73dbfcc4f859366aaf320188d34996e6d",
+     "source": "docs/art/desert-11-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/11_매몰도시출입구.png",
+    "sha256": "225d60d4b53b0fc10942a46262073c4f2aebe96db0cc1420807ecc8c5b2f005b",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "12A",
+   "id": "desert_descent_upper",
+   "shippedAs": null,
+   "name": "첫째 하강 회랑",
+   "pictures": [
+    {
+     "file": "사막맵/12_1_피라미드하강회랑.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "fba5442a0bba78c305f6f99075ab1070147dc33b8669851f20f303d866ef897e",
+     "source": "docs/art/desert-12-approved-2026-10-16/corridor-01.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/12_1_피라미드하강회랑.png",
+    "sha256": "73ee957bac85c2d46f498632b01866588c9f8e3b2626b8af8fb8a632346795bd",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "12B",
+   "id": "desert_descent_lower",
+   "shippedAs": null,
+   "name": "둘째 하강 회랑",
+   "pictures": [
+    {
+     "file": "사막맵/12_2_피라미드하강회랑.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "c2204803e83a42b2c617762e6407147024287165571982c46e6bd74e8c286e31",
+     "source": "docs/art/desert-12-approved-2026-10-16/corridor-02.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/12_2_피라미드하강회랑.png",
+    "sha256": "29f247e39448eba932013c3b691441401c1a29a2f3d5e86654928625113c95ab",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "13",
+   "id": "desert_royal_records",
+   "shippedAs": null,
+   "name": "왕의 기록 회랑",
+   "pictures": [
+    {
+     "file": "사막맵/13_왕의기록회랑.png",
+     "size": [
+      2078,
+      757
+     ],
+     "sha256": "fdbad3f814ced6fb21505aa58f302820fd430605d638f42c3ac785b5e7df36ed",
+     "source": "docs/art/desert-13-approved-2026-10-16/approved-final.png",
+     "note": "3번 원본 기반 왼쪽 입구 확장 최종 채택"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/13_왕의기록회랑.png",
+    "sha256": "8433d73f696dce5d81d0123c7d68d811481517f651340c0d3bffdf0b34f2a06d",
+    "size": [
+     2078,
+     757
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "14",
+   "id": "desert_pyramid_heart",
+   "shippedAs": null,
+   "name": "피라미드 중심실",
+   "pictures": [
+    {
+     "file": "사막맵/14_피라미드중심실.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "ea0e748ba3a9fce00e72690b9ead4389cb770fdae646f38f864f2666f8d8460e",
+     "source": "docs/art/desert-14-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/14_피라미드중심실.png",
+    "sha256": "bab67360b6e54e74be20d9b5e9cff592e9fcc56bc3e75ed2aaa5d711905f9f48",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "15",
+   "id": "desert_colonnade",
+   "shippedAs": "desert_colonnade",
+   "name": "매몰 신전의 열주홀",
+   "pictures": [
+    {
+     "file": "사막맵/15_열주홀.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "c300fb8169493b4159844259d1aa5e726e10df68eb74dd691127a6f975cb28b1",
+     "source": "docs/art/desert-15-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/15_열주홀.png",
+    "sha256": "ca1f5691e89bc92ad4c9b89a5ce988acd6a8838e6fa5e1bcb3fcab794caa8aa6",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "16",
+   "id": "desert_lightwell",
+   "shippedAs": null,
+   "name": "신전의 빛 우물",
+   "pictures": [
+    {
+     "file": "사막맵/16_빛우물.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "4c989a8bbe359268dc9c04d140e3495b3c673bdec4dcbbdcc73642d0eba2b29b",
+     "source": "docs/art/desert-16-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/16_빛우물.png",
+    "sha256": "736605450ed188fba05d05e5a3c7f3fec4c372f52ec40950777eb3ed5a4e20a2",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "17",
+   "id": "desert_city_plaza",
+   "shippedAs": "desert_city_plaza",
+   "name": "잊힌 지하 도시의 광장",
+   "pictures": [
+    {
+     "file": "사막맵/17_지하도시광장.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "39dd2b7899e242e1e5661afe0c1c60599f8ec3236cfea609b01dd425b0e5fbc0",
+     "source": "docs/art/desert-17-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/17_지하도시광장.png",
+    "sha256": "f3d9f102edd9ceaa6102559dadce355f092ab52b989f4e31a8ab6a75377df7c8",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "17-주거",
+   "id": "desert_city_dwelling",
+   "shippedAs": null,
+   "name": "지하 도시 부속 주거실",
+   "pictures": [
+    {
+     "file": "사막맵/17_추가_주거실.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "f3cad85d09728273d52b610cf210a0026c986b612d0c1916ac4cfc26a2227e34",
+     "source": "docs/art/desert-17-dwelling-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/17_추가_주거실.png",
+    "sha256": "3aa166489fee4cc1e398d451258ec344e9dbb52b8a033cc830fa1ef1b0e56e01",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "18",
+   "id": "desert_city_archive",
+   "shippedAs": null,
+   "name": "지하 도시의 옛 기록고",
+   "pictures": [
+    {
+     "file": "사막맵/18_옛기록고.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "9b94310e04a93a9dc9e1230ed51e073d6cfc4611c3ce4b2967a48b252509d1ab",
+     "source": "docs/art/desert-18-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/18_옛기록고.png",
+    "sha256": "84975e2b0aea877d62af70ffec5ab0fa2ba5be9160f369931576e008e9f43d32",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "19",
+   "id": "desert_star_room",
+   "shippedAs": null,
+   "name": "모래 아래 별 관측실",
+   "pictures": [
+    {
+     "file": "사막맵/19_별관측실.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "84a9c8de32068a25630cf74a48edd7541ede50d80cb027668ba112f588822073",
+     "source": "docs/art/desert-19-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/19_별관측실.png",
+    "sha256": "7a42706094bf039a661d6381aba27af30b24857bc2bb929b67bbbb464d1713aa",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "20",
+   "id": "desert_hidden_spring",
+   "shippedAs": null,
+   "name": "바람이 드러낸 지하 샘",
+   "pictures": [
+    {
+     "file": "사막맵/20_지하샘.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "7c8e424a99bb123d687dc9f77ee65dfeeb09bf859b5891a64738fcfa16a470e1",
+     "source": "docs/art/desert-20-approved-2026-10-16/approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/20_지하샘.png",
+    "sha256": "f1b58fe3d71e01f6a6d760c940d00a773fd94e6b025e21501426a1f9253acebb",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "추가-보물방",
+   "id": "desert_treasure_grotto",
+   "shippedAs": null,
+   "name": "지하 보물방 (상자 5개)",
+   "pictures": [
+    {
+     "file": "사막맵/추가_보물방/00_상자모두닫힘.png",
+     "size": [
+      1536,
+      1024
+     ],
+     "sha256": "07eff1c7dabf15b8e2182f8b265d206487557a7130e6658ac0340b077d06f057",
+     "source": "docs/art/desert-late-approved-2026-10-16/closed-all.png",
+     "note": "최신 채택본"
+    },
+    {
+     "file": "사막맵/추가_보물방/01_C1_왼쪽위_열림.png",
+     "size": [
+      1536,
+      1024
+     ],
+     "sha256": "566f9dc64ebb386d108ce30fbc1e59bf6048f0b0474805a8f5e14e36dd1f264c",
+     "source": "docs/art/desert-late-approved-2026-10-16/open-C1.png",
+     "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+     "file": "사막맵/추가_보물방/02_C2_오른쪽위_열림.png",
+     "size": [
+      1536,
+      1024
+     ],
+     "sha256": "6415a9b9f1ed0de199d07873fe2c9b72acd84a38adcfb45dd55ed746d8b6e2c1",
+     "source": "docs/art/desert-late-approved-2026-10-16/open-C2.png",
+     "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+     "file": "사막맵/추가_보물방/03_C3_왼쪽아래_열림.png",
+     "size": [
+      1536,
+      1024
+     ],
+     "sha256": "7ebe8dd6c9009a775889235676236e7e9504547351d3d8023477bcd85673fb88",
+     "source": "docs/art/desert-late-approved-2026-10-16/open-C3.png",
+     "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+     "file": "사막맵/추가_보물방/04_C4_오른쪽아래안쪽_열림.png",
+     "size": [
+      1536,
+      1024
+     ],
+     "sha256": "5a887c0a30c00ae607412344d2e70cdbfdca75b5c34aa37c6a5ff4497a402367",
+     "source": "docs/art/desert-late-approved-2026-10-16/open-C4.png",
+     "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    },
+    {
+     "file": "사막맵/추가_보물방/05_C5_오른쪽아래바깥쪽_열림.png",
+     "size": [
+      1536,
+      1024
+     ],
+     "sha256": "b8efc84f29f06c58564f352a06dbdd274b465ca689210f03923e66ec53739284",
+     "source": "docs/art/desert-late-approved-2026-10-16/open-C5.png",
+     "note": "전체 그림 채택. 부분 교체 패치 미추출·게임 미적용"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/추가_보물방/00_상자모두닫힘.png",
+    "sha256": "fc20bb1a9ea2c0046bea64f29a5df32ed890b569103c9b89e46e5f149ce8d935",
+    "size": [
+     1536,
+     1024
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "추가-전망",
+   "id": "desert_sky_overlook",
+   "shippedAs": null,
+   "name": "오벨리스크 전망맵",
+   "pictures": [
+    {
+     "file": "사막맵/추가_전망맵_오벨리스크최종.png",
+     "size": [
+      1536,
+      1024
+     ],
+     "sha256": "3ddfde58482bbbfb186d6dcdf6cbc052c5155dc4f2aa478bbe3257cba915b307",
+     "source": "docs/art/desert-late-approved-2026-10-16/sky-approved-final.png",
+     "note": "최신 채택본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/추가_전망맵_오벨리스크최종.png",
+    "sha256": "3ed8cafa1dd76ed70c55216af8b399b343ec8c45d21ab08fabaab1eb20354fc2",
+    "size": [
+     1536,
+     1024
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "T1W",
+   "id": "desert_forecourt_west",
+   "shippedAs": "desert_forecourt_west",
+   "name": "서쪽 제례 앞뜰",
+   "pictures": [
+    {
+     "file": "사막맵/T1W_서쪽제례앞뜰.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "8b234232126468ed406174671c18382c3609d3803e45761034ad3c9b5ba6b767",
+     "source": "docs/art/desert-t1-forecourt-concepts-2026-10-16/candidate-01.png",
+     "note": "채택 원본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/T1W_서쪽제례앞뜰.png",
+    "sha256": "7cfbdbec0c1f9e4c8327f2c01f51e09844536199dc0115f64ba9a5ebc8b64a58",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "T1E",
+   "id": "desert_forecourt_east",
+   "shippedAs": "desert_forecourt_east",
+   "name": "동쪽 제례 앞뜰",
+   "pictures": [
+    {
+     "file": "사막맵/T1E_동쪽제례앞뜰.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "8bfd8b7d35e8b4aa363f9280ad94ce78e0df2239ac83dee33ad3a2bf13984486",
+     "source": "docs/art/desert-t1-forecourt-concepts-2026-10-16/candidate-03.png",
+     "note": "채택 원본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/T1E_동쪽제례앞뜰.png",
+    "sha256": "a7273b8da77e82a92df9b95c9d1eee282ccda75f5d550d7dfc3e501488f70a23",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "T2",
+   "id": "desert_votive_hall",
+   "shippedAs": null,
+   "name": "무너진 봉헌품 회랑",
+   "pictures": [
+    {
+     "file": "사막맵/T2_무너진봉헌품회랑.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "ad11794b913153147d23b47427c73af4c951a31cac8972857b6fe3fbd95ac0ad",
+     "source": "docs/art/desert-t2-votive-concepts-2026-10-16/candidate-02.png",
+     "note": "시안2 채택 원본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/T2_무너진봉헌품회랑.png",
+    "sha256": "b4388d4031adb3a8768c261bb3d92d705b8cbc0da2a66faf0885e14ba8d7909c",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "T3",
+   "id": "desert_guardian_gate",
+   "shippedAs": null,
+   "name": "신전 수호문 전당",
+   "pictures": [
+    {
+     "file": "사막맵/T3_신전수호문전당.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "ae87479081fe61acb53ba9f9e3bd51dc8f6079bf6fc1f6346ecd02ce7e0a4633",
+     "source": "docs/art/desert-t3-guardian-hall-concepts-2026-10-16/candidate-01.png",
+     "note": "시안1 채택 원본; 시안2는 원래 제작 폴더에 보존"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/T3_신전수호문전당.png",
+    "sha256": "35ae344ecc8ee36a6651898ee622ae22e420441ab01e4b34a9f0c2d293c4c786",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "P1",
+   "id": "desert_funerary_maze",
+   "shippedAs": null,
+   "name": "고대 장례 미궁",
+   "pictures": [
+    {
+     "file": "사막맵/P1A_고대장례미궁_세로.png",
+     "size": [
+      887,
+      1774
+     ],
+     "sha256": "5fefc6e8f640fd3d71e39dada2b9095436c9d9bf17ef8c6eecd1c543054405eb",
+     "source": "docs/art/desert-p1-shorter-approved-2026-10-16/approved.png",
+     "note": "짧아진 별자리 미궁 최종 채택. 표시 벽 연결·하단 탈출 통로·큰 곡선 벽 복원본. 이전 채택 원본 별도 보존."
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/P1A_고대장례미궁_세로.png",
+    "sha256": "b787f9aad5c3d4910d81017faa2a834b97314b4eb4d18aab62b0c261e5b6f546",
+    "size": [
+     887,
+     1774
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "P2",
+   "id": "desert_royal_procession",
+   "shippedAs": null,
+   "name": "왕면 열병 전실",
+   "pictures": [
+    {
+     "file": "사막맵/P2_왕면열병전실.png",
+     "size": [
+      1024,
+      1536
+     ],
+     "sha256": "5f1a850a62c50a012b186344fe38d1f79fbdef3f82436707ed19ad2b3e5c4be3",
+     "source": "docs/art/desert-p2-royal-procession-concepts-2026-10-16/candidate-01.png",
+     "note": "시안1 원본"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/P2_왕면열병전실.png",
+    "sha256": "45c01a1e1f9c3e1ef97248274cbd0ed058342038e16b5e7bb60f4ed536b2ab98",
+    "size": [
+     1024,
+     1536
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "P3A",
+   "id": "desert_barque_shrine",
+   "shippedAs": null,
+   "name": "부왕 장례전 장례선 봉안실",
+   "pictures": [
+    {
+     "file": "사막맵/P3A_부왕장례전_장례선봉안실.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "6bee891fe6efa0f110349e992bf9c6a564fb057d0b383d1ab016c240655f4571",
+     "source": "docs/art/desert-p3-funerary-redesign-2026-10-16/candidate-01.png",
+     "note": "P3 선택 탐사 구역. 세부 맵 연결과 충돌은 적용 시 검증."
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/P3A_부왕장례전_장례선봉안실.png",
+    "sha256": "07b78e22074d18469c04be5f6fff3f0598c9b995cef76d8e2d1f9bc797ad6b92",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "P3B",
+   "id": "desert_sarcophagus_hall",
+   "shippedAs": null,
+   "name": "부왕 장례전 석관 안치전",
+   "pictures": [
+    {
+     "file": "사막맵/P3B_부왕장례전_석관안치전.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "bbb4fbce9d0a5d0c940efa189a508b334117ecff82f35e7e96dd5b8cdc8b4e4d",
+     "source": "docs/art/desert-p3-sarcophagus-passage-2026-10-16/revised.png",
+     "note": "P3 선택 탐사 구역. 세부 맵 연결과 충돌은 적용 시 검증."
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/P3B_부왕장례전_석관안치전.png",
+    "sha256": "8bb7cdbfd59e69c2006caa4f199255a7ffe489593fbadce7ba4656f13e4c76ef",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "P4",
+   "id": "desert_collapsed_crypt",
+   "shippedAs": null,
+   "name": "무너진 왕릉 하부실",
+   "pictures": [
+    {
+     "file": "사막맵/P4_무너진왕릉하부실.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "ee39e78d686a670ea5c2894c8dfb6c7cce498731cde6d987158a9d02b0408345",
+     "source": "docs/art/desert-p4-hidden-depths-concepts-2026-10-16/candidate-04.png",
+     "note": "왕릉 선택 탐사의 최종 수문장 맵"
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/P4_무너진왕릉하부실.png",
+    "sha256": "06b71bea17ed384c30fe11f0025073d5e7e54af7ff07619a07726a332488273e",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "추가-운반로",
+   "id": "desert_burial_passage",
+   "shippedAs": null,
+   "name": "매몰된 부장품 운반로",
+   "pictures": [
+    {
+     "file": "사막맵/추가_매몰된부장품운반로.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "2380ec8f490965aaa24e95edbbbe69bb7fda6cfc1651f87e6c9fb547e7f5b7bb",
+     "source": "docs/art/desert-funerary-transport-concepts-2026-10-16/candidate-01.png",
+     "note": "수정본 원본 복사. 왼쪽 위↔석관실 아래 중앙, 오른쪽 위↔황금 부장고 아래 입구."
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/추가_매몰된부장품운반로.png",
+    "sha256": "0a605143a7e5f8167601147f68dcb6aa9b693cd3c882f640b98a7bb546573238",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  },
+  {
+   "no": "추가-부장고",
+   "id": "desert_golden_vault",
+   "shippedAs": null,
+   "name": "황금 부장고",
+   "pictures": [
+    {
+     "file": "사막맵/추가_황금부장고.png",
+     "size": [
+      1774,
+      887
+     ],
+     "sha256": "0135fdc55f850fbff43fa342aea13b5ee3456dfc7806acbc37486722e8d82090",
+     "source": "docs/art/desert-p4-hidden-depths-concepts-2026-10-16/candidate-02.png",
+     "note": "별도 보물상자 맵. 기존 지하 샘 보물방과 별개이며 연결·상자 상태 분리는 미정."
+    }
+   ],
+   "collision": {
+    "file": "사막맵/충돌/추가_황금부장고.png",
+    "sha256": "ee9a69417fc82d4a357242b4b564615738a75622bfc6f991ac7b9700f3cb2364",
+    "size": [
+     1774,
+     887
+    ],
+    "by": "사용자"
+   },
+   "state": {
+    "artAccepted": true,
+    "collisionApproved": true,
+    "portalValidated": false,
+    "assetReady": false,
+    "logicReady": false,
+    "saveReady": false,
+    "playtestReady": false
+   }
+  }
+ ],
+ "links": [
+  {
+   "a": "옴보스",
+   "b": "01",
+   "guide": "사용자 지정",
+   "note": "옴보스 동쪽 끝(강가 야자수 오른쪽) ↔ 01 서쪽 끝 포석길 (사용자 사진)",
+   "built": "걸어서 확인 (0.9.83)"
+  },
+  {
+   "a": "01",
+   "b": "04",
+   "guide": "기획",
+   "note": "가장자리 이동, 길 그림 추가 없음",
+   "built": "걸어서 확인 (0.9.84)"
+  },
+  {
+   "a": "04",
+   "b": "03",
+   "guide": "기획",
+   "note": "가장자리 이동, 길 그림 추가 없음",
+   "built": "걸어서 확인 (0.9.84)"
+  },
+  {
+   "a": "03",
+   "b": "02",
+   "guide": "기획",
+   "note": "가장자리 이동, 길 그림 추가 없음",
+   "built": "걸어서 확인 (0.9.84)"
+  },
+  {
+   "a": "01",
+   "b": "05",
+   "guide": "기획",
+   "note": "05 아래쪽 01 귀환 (05.S)",
+   "built": "없음"
+  },
+  {
+   "a": "05",
+   "b": "12A",
+   "guide": "기획 + 두 회랑 채택",
+   "note": "05.N ↔ 12A.N",
+   "built": "없음"
+  },
+  {
+   "a": "12A",
+   "b": "P1",
+   "guide": "확장 주경로",
+   "note": "12A.S ↔ P1.N",
+   "built": "없음"
+  },
+  {
+   "a": "P1",
+   "b": "12B",
+   "guide": "확장 주경로",
+   "note": "P1.S ↔ 12B.N",
+   "built": "없음"
+  },
+  {
+   "a": "12B",
+   "b": "13",
+   "guide": "확장 주경로",
+   "note": "12B.S ↔ 13.NW",
+   "built": "없음"
+  },
+  {
+   "a": "13",
+   "b": "P2",
+   "guide": "확장 주경로",
+   "note": "13.NE ↔ P2.S, 13 문양 봉인 해제 뒤",
+   "built": "없음"
+  },
+  {
+   "a": "P2",
+   "b": "14",
+   "guide": "확장 주경로",
+   "note": "P2.N ↔ 14.S, 왕면 필수 여부 미정",
+   "built": "없음"
+  },
+  {
+   "a": "P1",
+   "b": "P3A",
+   "guide": "분기 제안",
+   "note": "P1.E ↔ P3A.SW",
+   "built": "없음"
+  },
+  {
+   "a": "P3A",
+   "b": "P3B",
+   "guide": "분기 제안",
+   "note": "P3A.NE ↔ P3B.SW",
+   "built": "없음"
+  },
+  {
+   "a": "P3B",
+   "b": "P4",
+   "guide": "분기 제안",
+   "note": "P3B.E ↔ P4.S",
+   "built": "없음"
+  },
+  {
+   "a": "P3B",
+   "b": "추가-운반로",
+   "guide": "사용자 채택",
+   "note": "P3B.S ↔ 운반로.NW",
+   "built": "없음"
+  },
+  {
+   "a": "추가-운반로",
+   "b": "추가-부장고",
+   "guide": "사용자 채택",
+   "note": "운반로.NE ↔ 부장고.S",
+   "built": "없음"
+  },
+  {
+   "a": "04",
+   "b": "07",
+   "guide": "기획",
+   "note": "오아시스 분기",
+   "built": "없음"
+  },
+  {
+   "a": "04",
+   "b": "08",
+   "guide": "기획",
+   "note": "쉼터 분기",
+   "built": "없음"
+  },
+  {
+   "a": "01",
+   "b": "09",
+   "guide": "기획",
+   "note": "01 좌상단 성소",
+   "built": "없음"
+  },
+  {
+   "a": "01",
+   "b": "19",
+   "guide": "채택 (발견 후)",
+   "note": "01 원판 열림 상태의 왼쪽 좁은 하강 계단 ↔ 19 왼쪽 곡선 계단",
+   "built": "없음"
+  },
+  {
+   "a": "02",
+   "b": "T1W",
+   "guide": "확장 주경로",
+   "note": "02 신전 → 서쪽 앞뜰",
+   "built": "기준 1add5d4에 연결됨 (파란 착지 보존)"
+  },
+  {
+   "a": "T1W",
+   "b": "T1E",
+   "guide": "채택",
+   "note": "서쪽 오른쪽 문 ↔ 동쪽 왼쪽 아래 계단",
+   "built": "전체 폭 실보행 18회 통과 (882aadd7, 시각 재확인·동행 간격 조율 대기)"
+  },
+  {
+   "a": "T1E",
+   "b": "15",
+   "guide": "채택",
+   "note": "동쪽 오른쪽 문 ↔ 15",
+   "built": "전체 폭 실보행 18회 통과 (882aadd7, 시각 재확인·동행 간격 조율 대기)"
+  },
+  {
+   "a": "15",
+   "b": "T2",
+   "guide": "확장 주경로",
+   "note": "",
+   "built": "없음"
+  },
+  {
+   "a": "T2",
+   "b": "16",
+   "guide": "확장 주경로",
+   "note": "16에 새 출구를 뚫지 않음",
+   "built": "없음"
+  },
+  {
+   "a": "T2",
+   "b": "T3",
+   "guide": "선택 분기",
+   "note": "같은 길 귀환, T3 뒤 문은 출구 아님",
+   "built": "없음"
+  },
+  {
+   "a": "02",
+   "b": "11",
+   "guide": "기획",
+   "note": "02 우하단 오래된 석조 출구 ↔ 11 외부 쪽",
+   "built": "데이터만 (작업 브랜치, 걷기 확인 전)"
+  },
+  {
+   "a": "11",
+   "b": "17",
+   "guide": "기획",
+   "note": "11 계단 아래 ↔ 17 우측 계단 (좌표는 적용 시 확정)",
+   "built": "데이터만 (작업 브랜치, 걷기 확인 전)"
+  },
+  {
+   "a": "17",
+   "b": "17-주거",
+   "guide": "채택",
+   "note": "광장 왼쪽 집 입구 ↔ 실내 출구",
+   "built": "없음"
+  },
+  {
+   "a": "17",
+   "b": "18",
+   "guide": "채택",
+   "note": "광장 오른쪽 집 입구 ↔ 기록고 출구",
+   "built": "없음"
+  },
+  {
+   "a": "02",
+   "b": "10",
+   "guide": "기획",
+   "note": "02 오른쪽 출구(풍화 합성)",
+   "built": "없음"
+  },
+  {
+   "a": "10",
+   "b": "20",
+   "guide": "기획 (발견 후)",
+   "note": "분지의 발견 입구 ↔ 샘의 위쪽 계단",
+   "built": "없음"
+  },
+  {
+   "a": "20",
+   "b": "추가-보물방",
+   "guide": "공간 채택, 문턱 미확정",
+   "note": "20 아래쪽 사용자 지정 구역 ↔ 보물방 아래쪽 열린 바닥 가장자리(제안)",
+   "built": "없음"
+  },
+  {
+   "a": "추가-보물방",
+   "b": "추가-전망",
+   "guide": "채택",
+   "note": "보물방 위 계단 ↔ 전망맵 바위 동굴 출입구",
+   "built": "없음"
+  },
+  {
+   "a": "추가-전망",
+   "b": "워프",
+   "guide": "목적지 미확정",
+   "note": "오른쪽 오벨리스크",
+   "built": "없음"
+  },
+  {
+   "a": "15",
+   "b": "17",
+   "guide": "미채택 제안",
+   "note": "기본 그래프에 넣지 않음",
+   "built": "없음"
+  }
+ ],
+ "info": [
+  "18의 기록 → 01 원판 조사 → 19 개방 (18↔19 직통 문 없음)"
+ ]
+}

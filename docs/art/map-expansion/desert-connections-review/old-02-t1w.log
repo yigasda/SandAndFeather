@@ -1,0 +1,16 @@
+통과 buried_temple → forecourt_west: 연속 왕복의 출발 맵
+통과 buried_temple → forecourt_west: 걸어서 도착, 착지 south(37.4, 22.4) 자리, 트리거 밖
+통과 buried_temple → forecourt_west: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_west)
+통과 buried_temple → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → buried_temple: 연속 왕복의 출발 맵
+통과 forecourt_west → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 forecourt_west → buried_temple: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (buried_temple)
+통과 forecourt_west → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 T1W 착지에서 일부러 아래로 걸어가면 02로 돌아감 (desert_buried_temple)
+통과 같은 입력으로 두 번 넘어가지 않음
+통과 저장·다시 불러오기: buried_temple (60.7, 25.8) 그대로, 트리거 밖
+통과 페이지 오류 없음 
+
+ALL PASS (0 failed)
