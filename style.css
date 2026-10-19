@@ -1814,3 +1814,20 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_dev_say { margin: 2px 0 5px; font-size: 12px; line-height: 1.35; }
 #sf_game .sf_dev_btns { display: flex; flex-wrap: wrap; gap: 6px; }
 #sf_game .sf_dev_btns button { flex: 1 0 auto; min-width: 52px; min-height: 34px; padding: 3px 6px; border-radius: 8px; border: 1px solid #f2c66e; background: #5a3e26; color: #fff4dc; font-size: 13px; font-weight: 700; cursor: pointer; }
+
+/* 가방: always up under the gear (사용자 10-19: 평상시에도 위에, 공격 때처럼); 궁 takes its old place by 공격 in a fight */
+#sf_game .sf_bag { position: absolute; z-index: 4; right: 10px; top: calc(98px + 34px + 8px + env(safe-area-inset-top, 0px)); width: 52px; height: 52px; font-size: 11px; gap: 2px; }
+#sf_game[data-ui-theme] .sf_bag { right: 20px; top: calc(114px + 31px + 8px + env(safe-area-inset-top, 0px)); width: 52px; height: 52px; }
+/* 궁: the lead's picture in the middle, its rim the gauge; ready, a soft glow; filling, the picture a little darker */
+#sf_game .sf_ult { position: relative; width: 64px; height: 64px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; align-self: flex-end;
+  background: conic-gradient(#ffd25e calc(var(--g, 0) * 1turn), #2a1a10 0); box-shadow: 0 0 0 2px #4a2414; touch-action: manipulation; }
+#sf_game .sf_ult > b { position: absolute; inset: 7px; border-radius: 50%; background: var(--icon) center / 100% no-repeat, radial-gradient(circle at 50% 38%, #5b3a8a, #2a1840 72%); }
+#sf_game .sf_ult:not(.sf_full) > b { filter: brightness(.88) saturate(.9); }
+#sf_game .sf_ult.sf_full { animation: sfUltGlow 1.8s ease-in-out infinite; }
+@keyframes sfUltGlow { 0%, 100% { box-shadow: 0 0 0 2px #4a2414, 0 0 6px 2px #ffd36a66; } 50% { box-shadow: 0 0 0 2px #4a2414, 0 0 16px 6px #ffd36acc; } }
+/* 스킬: its name and mark; while it waits, only the seconds left */
+#sf_game .sf_duat_skill { display: grid; place-items: center; align-content: center; gap: 0; }
+#sf_game .sf_duat_skill i { font-size: 14px; color: #ffe6a0; line-height: 1; }
+#sf_game .sf_duat_skill s { position: absolute; inset: 0; display: grid; place-items: center; font-size: 19px; font-weight: 900; text-decoration: none; color: #fff; z-index: 2; }
+#sf_game .sf_duat_skill s:empty { display: none; }
+#sf_game .sf_duat_skill.sf_cd > span, #sf_game .sf_duat_skill.sf_cd > i { visibility: hidden; }

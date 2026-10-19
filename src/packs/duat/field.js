@@ -67,7 +67,7 @@ let mobs = [], bolts = [], pops = [], fx = [], mapId = '', mapObj = null, runObj
 const areas = []; let showRanges = false;
 const events = [], note = e => { events.push({ t: +now().toFixed(3), ...e }); if (events.length > 300) events.shift(); };
 // what she and the one with her are doing now: { name, at, until, lift, face }
-const me = { act: null, face: 'right', vdir: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
+const me = { act: null, face: 'right', vdir: null, cdAttack: 0, cdSkill: 0, cdUlt: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
 const mate = { act: null, face: 'right', cd: 0, cdSkill: 0, hurtAt: -9, down: false, shown: false };
 // fighting or calm: on (what she shows), since (when it last changed), last (the last time a fight was going on)
 const stance = { on: false, since: -9, last: -9 };
@@ -94,6 +94,10 @@ function makeMob(i, kind, x, y) {
 // a creature's sheets (both sizes), and only the kinds this map has kept in memory: the rest let go (사용자 10-19: the
 // pictures of maps she has left do not pile up). A kind's sheets load when it is first drawn (drawMob → spriteFile).
 const kindFiles = kinds => kinds.flatMap(k => { const d = DATA.sprites?.enemies?.[k]; return d ? [...(d.sheets || [d.file]), ...(d.small?.sheets || [d.small?.file])].filter(Boolean) : []; });
+// the 궁 pictures of the two who are here (data/art/fx/ult, original pixels, field.ult.fx): asked for on coming into a
+// field so the first 궁 does not wait for them; let go when she leaves the fields
+const ultFiles = (whoList = ['set', 'horus', 'somang']) => whoList.flatMap(w => (F().ult?.fx?.[w]?.frames || []).map(f => f.file));
+function ultArt(s) { const w = withOf(s), keep = [leadOf(s), w].filter(Boolean); for (const f of ultFiles(keep)) spriteFile(f); releaseSprites(ultFiles().filter(f => !ultFiles(keep).includes(f))); }
 function keepArt(kinds) {
     const keep = new Set(kindFiles(kinds));
     releaseSprites(kindFiles(Object.keys(DATA.sprites?.enemies || {})).filter(f => !keep.has(f)));
@@ -433,7 +437,14 @@ function hurt(s, who, atk) {
     if (now() - st.hurtAt < INVULN || st.down) return;
     engage();
     if (me.shield > now()) { pop(lead ? feet().x : follower().x + 0.5, (lead ? feet().y : follower().y + 0.8) - 2, '막음', '#9fd6ff'); return; }
-    const dmg = Math.max(1, atk + Math.round(rand(-1, 1)) - (who === 'set' ? 1 : 0));
+    let dmg = Math.max(1, atk + Math.round(rand(-1, 1)) - (who === 'set' ? 1 : 0));
+    // 소망's lotus ward takes the harm first, as far as it lasts
+    const wd = wards[who];
+    if (wd && wd.until > now() && wd.left > 0) {
+        const take = Math.min(wd.left, dmg); wd.left -= take; dmg -= take;
+        const q = lead ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 };
+        if (!dmg) { st.hurtAt = now(); pop(q.x, q.y - 2.1, `막음 ${take}`, '#ffe7a0'); return; }
+    }
     r.hp[who] = Math.max(0, (r.hp[who] ?? 0) - dmg);
     r.fear = Math.min(FEAR_MAX, r.fear + 1);
     st.hurtAt = now(); st.act = { name: 'hit', at: now(), until: now() + SHOW.hit };
@@ -461,19 +472,19 @@ async function carried() {
     await travel('ombos', { x: 36, y: 10.6, dir: 'down' });
 }
 // a blow on a creature. kind: '' her or her companion's blow, 'skill' a 기술 (it breaks a guard)
-function damage(s, o, n, push = 0, from = null, kind = '') {
+function damage(s, o, n, push = 0, from = null, kind = '', actor = null) {
     if (o.st === 'dead') return;
     const before = o.st, hp0 = o.hp;
-    try { return damage0(s, o, n, push, from, kind); }
+    try { return damage0(s, o, n, push, from, kind, actor); }
     finally { note({ ev: 'blow', by: kind || 'attack', before, after: o.st, dmg: hp0 - o.hp, mob: o.i }); }
 }
-function damage0(s, o, n, push, from, kind) {
+function damage0(s, o, n, push, from, kind, actor) {
     const T = timing(o), c = centre(o);
     o.shownAt = now();
     if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) { o.foe = q.who; (o.provoked ||= {})[q.who] = now(); } }
     let st = '';
     if (o.st === 'guard') {
-        if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); note({ ev: 'break', mob: o.i }); }
+        if (kind === 'skill' || kind === 'ult') { st = 'break'; mobFx(o, 'break'); note({ ev: 'break', mob: o.i }); }
         else { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); }
     } else if (kind === 'shield') { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); st = 'shield'; }   // the guard's own rule
     else mobFx(o, 'hit');
@@ -481,6 +492,8 @@ function damage0(s, o, n, push, from, kind) {
     pop(c.x, c.y - 2.3, `${n}`, (o.st === 'guard' && st !== 'break') || st === 'shield' ? '#cfe3ea' : '#fff3c4');
     if (o.hp <= 0) {
         o.st = 'dead'; o.t = 0;
+        // 궁 게이지: the one who felled it, once for this creature (the next day's comes back as a new one), quietly
+        if (actor && !o.paid) { o.paid = true; charge(s, actor, U().kill ?? 15); }
         if (o.sid) { const f = fight(s), day = today(s); f.killed[o.sid] = day; f.first[o.sid] ??= day; save(); }   // no reward is decided yet
         else { const r = run(s); (r.cleared[mapId] ||= []).push(o.i); save(); }
         return;
@@ -502,7 +515,7 @@ function damage0(s, o, n, push, from, kind) {
 const power = (s, who) => 3 + Math.floor((statsOf(s, who)?.strength || 0) / 2) + (who === 'set' ? 1 : 0);
 // her blow: everything in front of her, from her feet out to her reach, a little to either side (face: left, right,
 // or up / down for the thrust from the front / back pictures)
-function strike(s, who, from, face, mult = 1, reach = null) {
+function strike(s, who, from, face, mult = 1, reach = null, kind = '', push = 0.25) {
     reach ??= F().reach?.[who] || 1.4;
     let hit = 0;
     for (const o of mobs) {
@@ -510,8 +523,10 @@ function strike(s, who, from, face, mult = 1, reach = null) {
         const m = blowMeets(o, from, face, reach);
         if (!m) continue;
         // on the shield alone: blocked as by a guard (사용자 10-19); on the torso or a boss's fists: a blow
-        damage(s, o, power(s, who) * mult, m === 'shield' ? 0 : 0.25, from, m === 'shield' ? 'shield' : '');
-        hit++; me.target = o;
+        const hp0 = o.hp;
+        damage(s, o, Math.round(power(s, who) * mult), m === 'shield' ? 0 : push, from, m === 'shield' && kind !== 'skill' ? 'shield' : kind, who);
+        if (o.hp < hp0) hit++;
+        me.target = o;
     }
     return hit;
 }
@@ -616,7 +631,13 @@ function leapTarget(f, dir, x0, x1) {
 }
 // each one's own 기술 (no name is shown, user: "오글거린다"); the one with her uses theirs too (MATE_SKILL_CD)
 function useSkill(s, who, f, face, lead) {
-    const hits = (g, r, n, push) => { areas.push({ x: g.x, y: g.y, r, who, at: now() }); if (areas.length > 8) areas.shift(); for (const o of mobs) if (o.st !== 'dead' && touches(o, g, r, who === 'horus')) damage(s, o, n, push, g, 'skill'); };
+    // what it really hurt (a guard broken counts; nothing for the air): one 스킬, one charge of the 궁 gauge
+    const hits = (g, r, n, push) => {
+        areas.push({ x: g.x, y: g.y, r, who, at: now() }); if (areas.length > 8) areas.shift();
+        let got = 0;
+        for (const o of mobs) if (o.st !== 'dead' && touches(o, g, r, who === 'horus')) { const hp0 = o.hp; damage(s, o, n, push, g, 'skill', who); if (o.hp < hp0) got++; }
+        chargeSkill(s, who, got);
+    };
     if (who === 'set') hits(f, 2, power(s, who) * 2, 0.8);              // 모래폭풍 강타: everything around, twice as hard, pushed away
     else if (who === 'horus') {                                          // 하늘에서 내리꽂기
         if (lead) {   // up, at most 2.5 tiles ahead, down on everything around where he lands
@@ -632,10 +653,68 @@ function useSkill(s, who, f, face, lead) {
             mate.act.hop = true;
             setTimeout(() => hits({ x: f.x + (face === 'right' ? 0.8 : -0.8), y: f.y }, 1.2, power(s, who) * 2, 0.5), SHOW.jump * 1000);
         }
-    } else {                                                             // 엄호: 2 seconds no harm to either, what is close pushed back
-        me.shield = now() + 2;
-        hits(f, 1.5, 1, 0.5);
+    } else {                                                             // 봉으로 치기 (사용자 10-19: 엄호는 궁 연꽃 방패로)
+        // a longer, harder blow in front than her ordinary one; it breaks a guard and pushes
+        const k = F().somangSkill || {}, reach = (F().reach?.somang || 1.1) + (k.reach ?? 0.5);
+        const way = lead ? me.vdir || me.face : face;
+        chargeSkill(s, who, strike(s, who, f, way, k.mult ?? 1.8, reach, 'skill', k.push ?? 0.6));
     }
+}
+// ---- 궁 (사용자 10-19, 시제품): a gauge each (s.ult), filled by 스킬 that really hurt and by felling; full and its own
+// cooldown over → 궁, the gauge empties the moment it goes. Its own blows fill nothing (felling with it does)
+const U = () => F().ult || {};
+const gauge = s => (s.ult ||= { set: 0, horus: 0, somang: 0 });
+// one happening, given out once: the one who did it all of it, their partner a share
+function charge(s, who, amt) {
+    if (!amt || !s || s !== getState()) return;   // a late blow (Horus's dive) after the chat changed: not into the new one
+    const u = U(), g = gauge(s), max = u.max || 100, lead = leadOf(s), w = withOf(s), other = who === lead ? w : who === w ? lead : null;
+    g[who] = Math.min(max, (g[who] || 0) + amt);
+    if (other) g[other] = Math.min(max, (g[other] || 0) + Math.round(amt * (u.share ?? 0.4)));
+    note({ ev: 'charge', who, amt, g: { ...g } });
+    save();
+}
+function chargeSkill(s, who, n) { if (n > 0) { const u = U(); charge(s, who, Math.min(u.skillCap ?? 35, (u.skillFirst ?? 25) + (u.skillEach ?? 5) * (n - 1))); } }
+let storms = [], wards = {}, ultShows = [];   // 세트's storm going on, 소망's lotus wards (who → { left, until }), the pictures playing
+const ultReady = s => { const u = U(); return (gauge(s)[leadOf(s)] || 0) >= (u.max || 100) && me.cdUlt <= now(); };
+export function ult() {
+    const s = getState();
+    if (!s || !isField(mapId) || me.down || busy() || !ultReady(s)) { if (s && isField(mapId)) note({ ev: 'ignored', what: 'ult', why: me.down ? 'down' : busy() ? `busy:${me.act.name}` : 'not ready' }); return; }
+    const who = leadOf(s), u = U(), k = u[who] || {}, f = feet(), w = withOf(s);
+    engage();
+    gauge(s)[who] = 0; me.cdUlt = now() + (u.cd ?? 12); saveState();   // spent the moment it goes (and kept so)
+    me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'ult', who });
+    ultShows.push({ who, at: now(), lead: true, x: f.x, y: f.y });
+    if (who === 'set') storms.push({ who, lead: true, until: now() + (k.time ?? 3), next: now(), r: k.r ?? 2.6, every: k.every ?? 0.5, n: Math.max(1, Math.round(power(s, who) * (k.mult ?? 0.8))), push: k.push ?? 0.3 });
+    else if (who === 'horus') {   // one strong blow round him: each one once
+        const n = Math.round(power(s, who) * (k.mult ?? 4));
+        areas.push({ x: f.x, y: f.y, r: k.r ?? 3.2, who, at: now() });
+        for (const o of mobs) if (o.st !== 'dead' && touches(o, f, k.r ?? 3.2, true)) damage(s, o, n, k.push ?? 1, f, 'ult', who);
+    } else {   // 연꽃 방패: each of the two takes up to `ward` of harm (not no harm at all), until it is used up or ends
+        const until = now() + (k.time ?? 6);
+        for (const x of [who, w]) if (x && !(x === w && mate.down)) wards[x] = { left: k.ward ?? 8, max: k.ward ?? 8, until };
+        for (const o of mobs) if (o.st !== 'dead' && touches(o, f, k.r ?? 1.6)) shove(o, f, k.push ?? 0.6);
+    }
+}
+function shove(o, from, d) {
+    if (o.e.nopush) return;
+    const c = centre(o), dx = c.x - from.x, dy = c.y - from.y, n = Math.hypot(dx, dy) || 1, nx = o.x + dx / n * d, ny = o.y + dy / n * d;
+    if (!solid(map(), nx, ny) && !intoSafe(o.x, o.y, nx, ny)) { o.x = nx; o.y = ny; }
+}
+// the storm goes round 세트 wherever he walks, a blow every `every` seconds
+function stepUlt(s) {
+    const t = now();
+    for (const st of storms) {
+        if (t > st.until) continue;
+        const lead = st.who === leadOf(s), c = lead ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 };
+        st.x = c.x; st.y = c.y;
+        while (st.next <= t && st.next <= st.until) {
+            st.next += st.every;
+            for (const o of mobs) if (o.st !== 'dead' && touches(o, c, st.r)) damage(s, o, st.n, st.push, c, 'ult', st.who);
+        }
+    }
+    storms = storms.filter(st => t <= st.until);
+    for (const [k, v] of Object.entries(wards)) if (t > v.until || v.left <= 0) delete wards[k];
+    ultShows = ultShows.filter(u => t - u.at < 3);
 }
 export function spell() {
     const s = getState();
@@ -679,7 +758,7 @@ function stepMate(dt, s) {
     }
     mate.cd = now() + 1.2; engage();
     mate.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
-    damage(s, o, Math.max(1, power(s, w) - 1), meet === 'shield' ? 0 : 0.2, c, meet === 'shield' ? 'shield' : '');
+    damage(s, o, Math.max(1, power(s, w) - 1), meet === 'shield' ? 0 : 0.2, c, meet === 'shield' ? 'shield' : '', w);
 }
 
 // ---- every frame
@@ -691,7 +770,7 @@ onFrame((dt, m, u) => {
     if (!isDuat(m.id) && s.duatField) { s.duatField = null; saveState(); }
     if (!isDesert(m.id) && s.desertFight?.run) { s.desertFight.run = null; saveState(); }   // the fight's 체력 ends, who fell when stays
     if (!isField(m.id)) {
-        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); keepArt([]); }
+        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); keepArt([]); storms = []; wards = {}; ultShows = []; releaseSprites(ultFiles()); }
         return;
     }
     // a new map object each time she arrives (enterMap), or a new run: the creatures of this map again
@@ -699,7 +778,9 @@ onFrame((dt, m, u) => {
         mapId = m.id; mapObj = m; runObj = run(s);
         Object.assign(me, { act: null, vdir: null, down: false, shield: 0, target: null }); Object.assign(mate, { act: null, down: false, shown: false, cdSkill: now() + 3 });
         Object.assign(stance, { on: false, since: -9, last: -9 }); mateWalk.pos = null;
+        storms = []; wards = {}; ultShows = [];   // a storm or a ward does not come along to the next map
         spawn(m, s);
+        ultArt(s);
     }
     hud(true, s, m);
     // the way she faces: sideways (me.face), and up or down after going that way until she goes sideways again
@@ -716,6 +797,7 @@ onFrame((dt, m, u) => {
     // the one with her, in Horus's dive: up and down where they stand
     if (mate.act?.hop) { const k = Math.min(1, (now() - mate.act.at) / SHOW.jump); mate.act.lift = Math.sin(Math.PI * k) * 1.2; }
     for (const o of mobs) stepMob(m, o, dt, s);
+    stepUlt(s);
     mobs = mobs.filter(o => !o.gone);
     stepBolts(dt, s);
     stepMateWalk(dt, s);
@@ -886,10 +968,37 @@ function drawRanges(g, z, ts, cx, cy) {
     }
     g.restore();
 }
+// 궁: its picture played once (the approved frames, their own times, field.ult.fx), then what goes on shows on the
+// floor: the storm a sand ring round 세트 while it lasts, each lotus ward a gold ring under the one it keeps, as thick
+// as what is left of it
+function drawUlt(g, z, ts, cx, cy) {
+    const s = getState(), t = now(), at = who => (s && who === leadOf(s) ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 });
+    for (const st of storms) {
+        const x = st.x * ts - cx, y = st.y * ts - cy, k = 0.5 + 0.5 * Math.sin(t * 6);
+        g.save(); g.setLineDash([10 * z, 7 * z]); g.lineDashOffset = -t * 40 * z; g.lineWidth = 3 * z;
+        g.strokeStyle = `rgba(226,189,124,${0.55 + 0.3 * k})`; g.beginPath(); g.ellipse(x, y, st.r * ts, st.r * ts * 0.5, 0, 0, Math.PI * 2); g.stroke(); g.restore();
+    }
+    for (const [who, wd] of Object.entries(wards)) {
+        const p = at(who), x = p.x * ts - cx, y = p.y * ts - cy;
+        g.save(); g.lineWidth = Math.max(1.5, 5 * z * wd.left / wd.max); g.strokeStyle = 'rgba(255,214,120,.85)';
+        g.beginPath(); g.ellipse(x, y - 0.05 * ts, 0.6 * ts, 0.22 * ts, 0, 0, Math.PI * 2); g.stroke(); g.restore();
+    }
+    for (const u of ultShows) {
+        const fx = F().ult?.fx?.[u.who]; if (!fx) continue;
+        let el = (t - u.at) * 1000, fr = null;
+        for (const f of fx.frames) { if (el < f.ms) { fr = f; break; } el -= f.ms; }
+        if (!fr) continue;
+        const img = spriteFile(fr.file); if (!img) continue;
+        const p = u.who === 'horus' ? u : at(u.who), k = fx.tilesPerPx * ts, x = p.x * ts - cx, y = p.y * ts - cy;
+        g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+        g.drawImage(img, x - fr.ax * k, y - fr.ay * k, fr.w * k, fr.h * k);
+    }
+}
 function drawTop(g, z, ts, ox, oy) {
     // ox, oy: where (0, 1e6) landed; the camera is ox, oy − 1e6·ts
     const cx = -ox, cy = -(oy - 1e6 * ts), t = now();
     if (showRanges) drawRanges(g, z, ts, cx, cy);
+    drawUlt(g, z, ts, cx, cy);
     // sand shots: a small bunch of grains turning about its middle, a few dropping behind, a shadow under it
     for (const b of bolts) {
         const x = b.x * ts - cx, y = (b.y - BOLT_LIFT) * ts - cy, gy = b.y * ts - cy, R = 0.11 * ts, sp = Math.hypot(b.vx, b.vy) || 1;
@@ -968,18 +1077,22 @@ function hud(show, s, m) {
         el = { box: document.createElement('div'), btns: document.createElement('div') };
         el.box.className = 'sf_duat_hud';
         el.btns.className = 'sf_duat_btns';
-        el.btns.innerHTML = '<button type="button" class="sf_duat_skill">기술</button><button type="button" class="sf_duat_spell">주문<em></em></button>';
+        el.btns.innerHTML = '<button type="button" class="sf_duat_skill"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span>스킬</span><s></s></button><button type="button" class="sf_duat_spell">주문<em></em></button>';
+        // 궁 where 가방 was (가방 is up under the gear now): the lead's picture inside, its rim the gauge
+        el.ult = document.createElement('button'); el.ult.type = 'button'; el.ult.className = 'sf_ult'; el.ult.setAttribute('aria-label', '궁'); el.ult.innerHTML = '<b></b>';
+        bindPress(el.ult, ult);
         bindPress(el.btns.querySelector('.sf_duat_skill'), skill);
         bindPress(el.btns.querySelector('.sf_duat_spell'), spell);
     }
     const actions = root.querySelector('.sf_actions'), talk = root.querySelector('.sf_talk');
     if (!show) {
-        el.box.remove(); el.btns.remove();
+        el.box.remove(); el.btns.remove(); el.ult.remove();
         if (talk?.dataset.duat) { talk.querySelector('span').textContent = '말 걸기'; delete talk.dataset.duat; talk.classList.remove('sf_attack'); }
         return;
     }
     if (!el.box.isConnected) root.append(el.box);
     if (!el.btns.isConnected && actions) actions.append(el.btns);
+    if (!el.ult.isConnected && actions) actions.insertBefore(el.ult, talk || null);
     if (talk && !talk.dataset.duat) { talk.dataset.duat = '1'; talk.querySelector('span').textContent = '공격'; talk.classList.add('sf_attack'); }
     // right under the hint line (or the chips when there is no hint), whatever the theme puts them
     const hint = root.querySelector('.sf_hint_pill'), chips = root.querySelector('.sf_chip_sun')?.parentElement;
@@ -998,9 +1111,15 @@ function hud(show, s, m) {
     if (el.box._html !== html) { el.box.innerHTML = html; el.box._html = html; }
     // 기술: the time left darkens it round like a clock; 주문: how many are left in the corner
     const sk = el.btns.querySelector('.sf_duat_skill'), sp = el.btns.querySelector('.sf_duat_spell');
-    const left = Math.max(0, me.cdSkill - t), cd = (left / SKILL_CD).toFixed(3);
+    const left = Math.max(0, me.cdSkill - t), cd = (left / SKILL_CD).toFixed(3), sec = left > 0 ? String(Math.ceil(left)) : '';
     if (sk.style.getPropertyValue('--cd') !== cd) sk.style.setProperty('--cd', cd);
     sk.disabled = left > 0 || me.down;
+    const secEl = sk.querySelector('s'); if (secEl.textContent !== sec) { secEl.textContent = sec; sk.classList.toggle('sf_cd', !!sec); }
+    // 궁: the rim filled as far as the gauge; ready (full and its cooldown over) it glows softly
+    const who = leadOf(s), gv = ((gauge(s)[who] || 0) / (U().max || 100)).toFixed(3), ready = ultReady(s);
+    if (el.ult.style.getPropertyValue('--g') !== gv) el.ult.style.setProperty('--g', gv);
+    if (el.ult.dataset.who !== who) { el.ult.dataset.who = who; el.ult.style.setProperty('--icon', `url(${new URL(`../../../data/art/ui/ult-${who}.png`, import.meta.url).href})`); }
+    el.ult.classList.toggle('sf_full', ready); el.ult.disabled = me.down;
     const em = sp.querySelector('em'); if (em.textContent !== String(r.spells)) em.textContent = r.spells;
     sp.classList.toggle('sf_empty', r.spells <= 0); sp.disabled = me.down;
 }
@@ -1022,6 +1141,10 @@ export function testReset() {
     bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
 }
 export const testFade = () => mobs[0]?.fade || 0;
+// tests only: someone hit by a creature's blow of `atk` (as a creature's blow does)
+export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, atk); }
+// tests only: the 궁 gauges (read, or set some), what is going on with the 궁
+export function testUlt(set) { const s = getState(); if (set) Object.assign(gauge(s), set); if (set?.cd === 0) me.cdUlt = 0; return { g: { ...gauge(s) }, ready: ultReady(s), cd: +Math.max(0, me.cdUlt - now()).toFixed(2), storms: storms.length, wards: JSON.parse(JSON.stringify(wards)), shows: ultShows.length }; }
 // tests only: how deep a point (feet, tiles) is in this map's entrance safe zones, and the zones
 export const testSafe = (x, y) => safeDepth({ x, y });
 export const testZones = () => safeZones().map(z => ({ ...z }));

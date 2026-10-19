@@ -200,6 +200,217 @@
         0.25,
         0.6
       ]
+    },
+    "ult": {
+      "_about": "궁(사용자 10-19, 시제품 시험값 — 영상 보고 확정). 게이지는 세트·호루스·소망 각자, 채팅 저장(s.ult). 충전: 스킬 한 번이 몹에 실제 피해(가드 브레이크 포함)를 준 수만큼 skillFirst + 한 마리 더마다 skillEach, 스킬 한 번에 skillCap까지. 몹 한 개체를 쓰러뜨리면 kill(그 개체에 한 번; 다음 날 다시 나온 몹은 새 개체). 그 사건을 한 쪽(행동한 사람)이 다 받고 짝은 share만큼. 일반 공격·피격·궁 타격 자체는 충전 없음(궁·일반 공격으로 쓰러뜨리면 kill은 지급). 가득 + cd 끝 → 사용, 발동 순간 비움. set: 따라다니는 범위 r에 every초마다 time초 동안(공격력×mult). horus: 범위 r 한 번, 대상마다 한 번(공격력×mult). somang: 소망과 동행 각자 ward만큼 피해 흡수(무적 아님), time초 또는 다 깎이면 끝, 시작할 때 가까운 몹 밀어냄. 모두 가드를 깸.",
+      "max": 100,
+      "skillFirst": 25,
+      "skillEach": 5,
+      "skillCap": 35,
+      "kill": 15,
+      "share": 0.4,
+      "cd": 12,
+      "set": {
+        "r": 2.6,
+        "every": 0.5,
+        "time": 3,
+        "mult": 0.8,
+        "push": 0.3
+      },
+      "horus": {
+        "r": 3.2,
+        "mult": 4,
+        "push": 1.0
+      },
+      "somang": {
+        "ward": 8,
+        "time": 6,
+        "push": 0.6,
+        "r": 1.6
+      },
+      "fx": {
+        "set": {
+          "frames": [
+            {
+              "file": "art/fx/ult/set-0.png",
+              "w": 1881,
+              "h": 1227,
+              "ax": 990,
+              "ay": 783,
+              "ms": 130
+            },
+            {
+              "file": "art/fx/ult/set-1.png",
+              "w": 1872,
+              "h": 1191,
+              "ax": 978,
+              "ay": 747,
+              "ms": 110
+            },
+            {
+              "file": "art/fx/ult/set-2.png",
+              "w": 1881,
+              "h": 1254,
+              "ax": 1050,
+              "ay": 681,
+              "ms": 200
+            },
+            {
+              "file": "art/fx/ult/set-3.png",
+              "w": 1536,
+              "h": 1024,
+              "ax": 768,
+              "ay": 590,
+              "ms": 80
+            },
+            {
+              "file": "art/fx/ult/set-4.png",
+              "w": 1878,
+              "h": 1254,
+              "ax": 960,
+              "ay": 696,
+              "ms": 90
+            },
+            {
+              "file": "art/fx/ult/set-5.png",
+              "w": 1881,
+              "h": 1254,
+              "ax": 990,
+              "ay": 627,
+              "ms": 130
+            },
+            {
+              "file": "art/fx/ult/set-6.png",
+              "w": 1881,
+              "h": 1254,
+              "ax": 969,
+              "ay": 723,
+              "ms": 220
+            }
+          ],
+          "tilesPerPx": 0.003041
+        },
+        "horus": {
+          "frames": [
+            {
+              "file": "art/fx/ult/horus-0.png",
+              "w": 2275,
+              "h": 2515,
+              "ax": 1000,
+              "ay": 1730,
+              "ms": 130
+            },
+            {
+              "file": "art/fx/ult/horus-1.png",
+              "w": 2485,
+              "h": 2325,
+              "ax": 1210,
+              "ay": 1590,
+              "ms": 110
+            },
+            {
+              "file": "art/fx/ult/horus-2.png",
+              "w": 2560,
+              "h": 2560,
+              "ax": 1300,
+              "ay": 1625,
+              "ms": 200
+            },
+            {
+              "file": "art/fx/ult/horus-3.png",
+              "w": 1997,
+              "h": 1331,
+              "ax": 998,
+              "ay": 975,
+              "ms": 80
+            },
+            {
+              "file": "art/fx/ult/horus-4.png",
+              "w": 2485,
+              "h": 2395,
+              "ax": 1205,
+              "ay": 1605,
+              "ms": 90
+            },
+            {
+              "file": "art/fx/ult/horus-5.png",
+              "w": 2405,
+              "h": 2560,
+              "ax": 1135,
+              "ay": 1360,
+              "ms": 130
+            },
+            {
+              "file": "art/fx/ult/horus-6.png",
+              "w": 2555,
+              "h": 2545,
+              "ax": 1195,
+              "ay": 1290,
+              "ms": 220
+            }
+          ],
+          "tilesPerPx": 0.00275
+        },
+        "somang": {
+          "frames": [
+            {
+              "file": "art/fx/ult/somang-0.png",
+              "w": 1948,
+              "h": 1980,
+              "ax": 1048,
+              "ay": 1372,
+              "ms": 140
+            },
+            {
+              "file": "art/fx/ult/somang-1.png",
+              "w": 2044,
+              "h": 2012,
+              "ax": 976,
+              "ay": 1364,
+              "ms": 130
+            },
+            {
+              "file": "art/fx/ult/somang-2.png",
+              "w": 2048,
+              "h": 2048,
+              "ax": 1140,
+              "ay": 1152,
+              "ms": 160
+            },
+            {
+              "file": "art/fx/ult/somang-3.png",
+              "w": 2024,
+              "h": 2048,
+              "ax": 976,
+              "ay": 1116,
+              "ms": 300
+            },
+            {
+              "file": "art/fx/ult/somang-4.png",
+              "w": 2048,
+              "h": 2048,
+              "ax": 1140,
+              "ay": 1092,
+              "ms": 180
+            },
+            {
+              "file": "art/fx/ult/somang-5.png",
+              "w": 2048,
+              "h": 2048,
+              "ax": 976,
+              "ay": 1168,
+              "ms": 260
+            }
+          ],
+          "tilesPerPx": 0.001563
+        }
+      }
+    },
+    "somangSkill": {
+      "_about": "소망 스킬 봉으로 치기(사용자 10-19: 기존 엄호는 궁으로): 앞쪽 일반 공격 상자를 reach만큼 더 길게, 공격력×mult, 가드를 깸, 밀어냄 push",
+      "mult": 1.8,
+      "reach": 0.5,
+      "push": 0.6
     }
   }
 }
