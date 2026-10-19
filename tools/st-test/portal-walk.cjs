@@ -182,9 +182,17 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                         for(let x=e.x0;x<=e.x1;x+=.02){if(T.map.containsExit(e,x,y)&&free(x,y))slots.push(x);}
                         if(!slots.length)return null;
                         const x=slots[Math.round((slots.length-1)*[.12,.5,.88][lane])];
-                        const py=y-n*1.5;
-                        if(!free(x,py)||m.exits.some(e=>T.map.containsExit(e,x,py)))return null;
-                        return {cx:x,cy:y,pre:{x:x-.5,y:py-.8},vertical:true,lane,t:x,range:[slots[0],slots.at(-1)]};
+                        // The south floor narrows inland: a fixed 1.5-tile setback can be wall.
+                        // Keep the selected threshold lane, choosing a clear continuous approach.
+                        let pre=null;
+                        for(const d of [1.5,1,.6,2,2.5]) {
+                            const py=y-n*d;
+                            if(m.exits.some(e=>T.map.containsExit(e,x,py)))continue;
+                            let clear=true;
+                            for(let t=0;t<=d;t+=.02)if(!free(x,y-n*t)){clear=false;break;}
+                            if(clear){pre={x:x-.5,y:py-.8};break;}
+                        }
+                        return pre?{cx:x,cy:y,pre,vertical:true,lane,t:x,range:[slots[0],slots.at(-1)]}:null;
                     }
                     if(e.polygon) {
                         // Approach the registered threshold's long inner edge along its normal.
