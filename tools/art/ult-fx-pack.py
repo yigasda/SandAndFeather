@@ -4,7 +4,7 @@
 (축소 없음 — 게임용 해상도는 실제 표시 크기에서 확인받은 뒤 정한다). 원본 PNG는 그대로 둔다.
 잘린 위치는 기준점(anchor)에 반영해 data/duat.json field.ult.fx.<who>에 적는다:
   frames: [{file, w, h, ax, ay, ms}]  (ax, ay = 잘린 그림 안의 기준점 px, ms = 이 프레임 재생 시간)
-  tilesPerPx: 원본 1px이 몇 칸으로 그려지는지(궁 범위에 맞춘 시제품 값 — 수치 확정 전)
+  heightsPerPx: 원본 1px이 캐릭터 키 몇 개로 그려지는지(가장 큰 장면의 긴 변 = 캐릭터 키 SPAN배, 시제품 값)
   python3 tools/art/ult-fx-pack.py
 """
 import hashlib, json, os
@@ -15,9 +15,9 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
 SRC = os.path.join(ROOT, 'docs', 'art', 'skill-effects', 'final')
 OUT = os.path.join(ROOT, 'data', 'art', 'fx', 'ult')
 WHO = {'Set': 'set', 'Horus': 'horus', 'Somang': 'somang'}
-# how big it is drawn (prototype): the widest frame's body spans this many tiles — Set's storm and Horus's shock wave a
-# little wider than their reach (field.ult.<who>.r), Somang's lotus round the two of them
-SPAN = {'set': 2.6 * 2.2, 'horus': 3.2 * 2.2, 'somang': 3.2}
+# how big it is drawn (prototype; user 10-19: about four times a character): the largest frame's longer side spans this
+# many character heights — so on any map it keeps to the people's size (Somang's lotus ring round the two of them)
+SPAN = 4
 
 
 def main():
@@ -39,7 +39,7 @@ def main():
         fx.setdefault(who, {'frames': []})['frames'].append({'file': name, 'w': x1 - x0, 'h': y1 - y0, 'ax': f['anchor'][0] - x0, 'ay': f['anchor'][1] - y0, 'ms': f['duration_ms']})
         print(who, f['frame'], (x1 - x0, y1 - y0))
     for who, v in fx.items():
-        v['tilesPerPx'] = round(SPAN[who] / max(fr['w'] for fr in v['frames']), 6)
+        v['heightsPerPx'] = round(SPAN / max(max(fr['w'], fr['h']) for fr in v['frames']), 7)
     p = os.path.join(ROOT, 'data', 'duat.json')
     d = json.load(open(p))
     d['field'].setdefault('ult', {})['fx'] = fx
