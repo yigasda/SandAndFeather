@@ -79,7 +79,8 @@ const log = m => { console.log(m); res.push(m); };
         await page.evaluate(() => { const p = T.player.player; T.field.testReset(); T.field.testUlt({ set: 60, horus: 0, cd: 0 }); T.field.testOnly('desert_leather_shield', p.x + 1, p.y, { hp: 999, speed: 0, range: 0, guard: 0, nopush: true }); T.field.ult(); });
         await sleep(200);
         ok((await G('set')) === 60 && (await U()).storms === 0, '게이지가 덜 찼을 때 궁: 안 나감, 게이지 그대로');
-        await page.evaluate(() => { T.field.testReset(); T.field.testUlt({ set: 100, horus: 0, cd: 0 }); T.field.ult(); });
+        // (alone here: the one with him would use his own 스킬 meanwhile and fill both, rightly)
+        await page.evaluate(() => { const s = T.state.getState(); T.heroes.setWith(s, null); T.field.testReset(); T.field.testUlt({ set: 100, horus: 0, cd: 0 }); T.field.ult(); });
         const fired = await U();
         await sleep(3400);
         const after = await U();
@@ -87,7 +88,7 @@ const log = m => { console.log(m); res.push(m); };
         const ticks = await page.evaluate(() => T.field.testEvents(true).filter(e => e.ev === 'blow' && e.by === 'ult').length);
         ok(ticks >= 6 && ticks <= 7, `모래폭풍: 0.5초마다 친 횟수 ${ticks} (3초 → 6~7번, 프레임 수와 무관)`);
         // charging again while it goes on (no "nothing while it lasts")
-        await page.evaluate(() => { const p = T.player.player; T.field.testReset(); T.field.testUlt({ set: 100, horus: 0, cd: 0 }); T.field.ult(); T.field.testReset(); T.field.skill(); });
+        await page.evaluate(() => { const s = T.state.getState(); T.heroes.setWith(s, 'horus'); const p = T.player.player; T.field.testReset(); T.field.testUlt({ set: 100, horus: 0, cd: 0 }); T.field.ult(); T.field.testReset(); T.field.skill(); });
         await sleep(400);
         ok((await G('set')) === num.skillFirst, `궁이 이어지는 중에 스킬: 다시 충전됨 (${await G('set')})`);
         await sleep(3000);
@@ -114,6 +115,18 @@ const log = m => { console.log(m); res.push(m); };
         await page.evaluate(() => T.field.testHit('somang', 5)); await sleep(700);
         const w2 = await U(), hp2 = await page.evaluate(() => T.field.fieldState().run.hp.somang);
         ok(hp1 === hp0 && w1.wards.somang.left < num.somang.ward && hp2 < hp0 && !w2.wards.somang, `연꽃 방패는 흡수: 첫 타 다 막음(체력 ${hp0} → ${hp1}, 남은 흡수 ${w1.wards.somang?.left}), 다음 타 남은 만큼 막고 나머지 들어옴(체력 → ${hp2}), 방패 끝`);
+        // the old 2 s no-harm is gone (not on top of the ward), and the companion's ward is its own
+        ok(!w0.shield && !w1.shield && w1.wards.set?.left === num.somang.ward, `옛 2초 무적 없음(궁 직후 ${w0.shield ? '켜짐' : '꺼짐'}), 소망이 맞아도 세트 방패 그대로 ${w1.wards.set?.left}`);
+        const hs0 = await page.evaluate(() => T.field.fieldState().run.hp.set);
+        await page.evaluate(() => T.field.testHit('set', 5)); await sleep(700);
+        const w3 = await U(), hs1 = await page.evaluate(() => T.field.fieldState().run.hp.set);
+        ok(hs1 === hs0 && w3.wards.set?.left < num.somang.ward, `동행(세트) 방패는 따로 줄어듦: 체력 ${hs0} → ${hs1}, 남은 흡수 ${w3.wards.set?.left}`);
+        // how long it lasts is the ward's own time, not how long the lotus picture plays
+        await page.evaluate(() => { T.field.testReset(); T.field.testUlt({ somang: 100, cd: 0 }); T.field.ult(); });
+        const play = await page.evaluate(() => T.data.DATA.duat.field.ult.fx.somang.frames.reduce((a, f) => a + f.ms, 0) / 1000);
+        await sleep((num.somang.time - 0.5) * 1000); const wa = await U();
+        await sleep(1000); const wb = await U();
+        ok(!!wa.wards.somang && !wb.wards.somang, `연꽃 방패 지속 ${num.somang.time}초(그림 재생 ${play.toFixed(2)}초와 따로): ${num.somang.time - 0.5}초에 ${wa.wards.somang ? '있음' : '없음'}, ${num.somang.time + 0.5}초에 ${wb.wards.somang ? '있음' : '없음'}`);
         // ---- moving about, swapping, saving, another chat
         await into('set');
         await page.evaluate(() => T.field.testUlt({ set: 40, horus: 30, somang: 20 }));

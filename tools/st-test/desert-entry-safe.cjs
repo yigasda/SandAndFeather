@@ -69,7 +69,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         const h1 = await hp();
         await sleep(10000);
         const ev = await page.evaluate(() => T.field.testEvents(true).filter(e => e.ev === 'prepare' || e.ev === 'hurt').length);
-        ok((await hp()) === h1 && (await deep()) <= 0, `구역 바로 밖 몹 10초: 체력 ${h1} → ${await hp()}, 구역 깊이 ${(await deep()).toFixed(2)}칸`);
+        ok((await hp()) === h1 && (await deep()) <= 0, `구역 바로 밖 몹 10초: 체력 ${h1} → ${await hp()}, 구역 깊이 ${(await deep()).toFixed(3)}칸 (준비·공격 ${ev}번)`);
         await page.screenshot({ path: path.join(OUT, '3-edge.png') });
         // 3. out of the zone toward it: it strikes as usual
         const h2 = await hp();
@@ -78,17 +78,39 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         for (let k = 0; k < 40 && !hurt; k++) { await sleep(250); hurt = (await hp()) < h2; }
         ok(hurt, `구역 밖으로 나가면 정상으로 공격받음 (체력 ${h2} → ${await hp()})`);
         await page.screenshot({ path: path.join(OUT, '4-outside.png') });
-        // 4. back in; struck from inside, it may strike back (it gets ready) but stays out
+        // 4. back in, just inside the edge; she strikes it from there: it may come in after her and strike back (no hitting
+        //    it from shelter for ever); left alone 3 s, it walks out again and leaves her be
         await W.walkToPoint(at.x, at.y - r + 1.0, 15000, 0.25);
         await page.evaluate(([x, y]) => { T.field.testOnly('desert_leather_shield', x, y, { guard: 0 }); T.watch(); }, [at.x, at.y - r - 0.5]);
         await sleep(400);
+        const h4 = await hp();
         await page.evaluate(() => { T.field.testReset(); T.field.testEvents(true); });
-        await W.tapEl('.sf_talk'); await sleep(200);
-        let ready = false;
-        for (let k = 0; k < 20 && !ready; k++) { await sleep(150); ready = await page.evaluate(() => ['prepare', 'attack'].includes(T.field.fieldState().mobs[0]?.st)); }
-        const blow = await page.evaluate(() => T.field.testEvents().some(e => e.ev === 'blow'));
-        ok(blow && ready && (await deep()) <= 0, `구역 안에서 먼저 때리면 반격 준비(${ready ? '함' : '안 함'}), 몹은 구역 밖(깊이 ${(await deep()).toFixed(2)}칸)`);
-        await sleep(1500); await page.screenshot({ path: path.join(OUT, '5-provoked.png') });
+        let back = false;
+        for (let k = 0; k < 6 && !back; k++) { await W.tapEl('.sf_talk'); await sleep(500); back = (await hp()) < h4 || await page.evaluate(() => T.field.testEvents().some(e => e.ev === 'hurt')); }
+        const came = await deep();
+        ok(back, `구역 안에서 먼저 때리면 반격을 받음(체력 ${h4} → ${await hp()}, 몹이 구역에 들어온 깊이 ${came.toFixed(2)}칸) — 구역 안에서 일방적으로 계속 때릴 수 없음`);
+        await page.screenshot({ path: path.join(OUT, '5-provoked.png') });
+        // stop; it goes out again; from then on she is not hurt
+        await W.walkToPoint(at.x, at.y, 15000, 0.3);
+        await sleep(4000);
+        await page.evaluate(() => T.watch());
+        const h5 = await hp();
+        await sleep(5000);
+        ok((await hp()) === h5 && (await deep()) <= 0, `3초 넘게 안 때리면 몹은 구역 밖으로 나가고 더 공격하지 않음 (체력 ${h5} → ${await hp()}, 깊이 ${(await deep()).toFixed(2)}칸)`);
+        // 5. the one with her strikes first: it goes for them only; she, in the zone, is not hurt
+        await page.evaluate(async () => { const s = T.state.getState(); T.heroes.setWith(s, 'horus'); await T.win.travel('desert_buried_temple', 'temple'); });
+        await sleep(800);
+        await page.evaluate(async () => { const s = T.state.getState(); s.ledger.gday = T.ledger.today(s) + 1; await T.win.travel('desert_forecourt_west', 'south'); });
+        await sleep(1500);
+        await page.evaluate(([x, y]) => { T.field.testRanges(true); T.field.testReset(); T.field.testOnly('desert_leather_shield', x, y, { guard: 0 }); T.watch(); }, [at.x + 1, at.y - r - 0.6]);
+        await sleep(300);
+        const h6 = await hp();
+        await page.evaluate(() => { T.field.testEvents(true); T.field.testStrikeBy('horus'); });
+        await sleep(6000);
+        const evs = await page.evaluate(() => T.field.testEvents(true));
+        const targets = evs.filter(e => e.ev === 'hurt').map(e => e.who);
+        ok((await hp()) === h6, `동행이 먼저 때리면 몹은 동행에게만 반격 — 구역 안의 세트 체력 ${h6} → ${await hp()} (맞은 쪽: ${[...new Set(targets)].join(', ') || '없음'})`);
+        await page.screenshot({ path: path.join(OUT, '6-mate-first.png') });
         ok(!errors.length, `페이지 오류 없음 ${errors.join('; ')}`);
     } finally {
         fs.writeFileSync(path.join(OUT, 'result.txt'), res.join('\n') + '\n');

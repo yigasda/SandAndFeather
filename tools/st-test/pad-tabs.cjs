@@ -82,7 +82,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 return page.evaluate(what => T.field.testEvents(true).filter(e => (e.ev === 'press' || e.ev === 'ignored') && e.what === what).length, what);
             };
             const off = [atk.cx, atk.y0 - 120];   // the map above the buttons
-            for (const [sel, what, name] of [['.sf_talk', 'attack', '공격'], ['.sf_duat_skill', 'skill', '스킬']]) {
+            for (const [sel, what, name] of [['.sf_talk', 'attack', '공격'], ['.sf_duat_skill', 'skill', '스킬'], ['.sf_ult', 'ult', '궁']]) {
                 const b = await box(sel);
                 const lift = await fired(what, async () => { await touches('touchStart', [[pad.cx, pad.cy, 1]]); await touches('touchStart', [[pad.cx, pad.cy, 1], [b.cx, b.cy, 2]]); await sleep(80); await touches('touchEnd', [[b.cx, b.cy, 2]]); await sleep(100); await touches('touchEnd', [[pad.cx, pad.cy, 1]]); });
                 const slide = await fired(what, async () => { await touches('touchStart', [[pad.cx, pad.cy, 1]]); await touches('touchStart', [[pad.cx, pad.cy, 1], [b.cx, b.cy, 2]]); for (let k = 1; k <= 5; k++) { await touches('touchMove', [[pad.cx, pad.cy, 1], [b.cx + (off[0] - b.cx) * k / 5, b.cy + (off[1] - b.cy) * k / 5, 2]]); await sleep(30); } await touches('touchEnd', [[off[0], off[1], 2]]); await touches('touchEnd', [[pad.cx, pad.cy, 1]]); });

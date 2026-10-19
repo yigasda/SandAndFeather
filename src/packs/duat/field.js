@@ -187,8 +187,8 @@ function aimAt(o, s) {
 // 입구 안전구역(사용자 10-19: 입장하자마자 공격받거나 출구가 몹에게 막히지 않게; 착지는 옮기지 않음): on a desert map,
 // round each landing and along the way from it to its own exit (the exit of the same name), SAFE_R people-widths wide.
 // A creature does not walk or dash into it, does not pick a wandering point in it, and does not start a blow at someone
-// in it — unless they struck it from there in the last PROVOKED seconds (no hitting it from shelter for free); it still
-// stays out. The Duat's fights are as approved (no zones there).
+// in it — unless they struck it in the last PROVOKED seconds: then it strikes back at them and may come in after them
+// (no hitting it from shelter for ever); left alone it walks out again. The Duat's fights are as approved (no zones).
 const SAFE_R = 2.5, PROVOKED = 3;
 let safeOf = null;   // [the map object, its zones]
 function safeZones() {
@@ -214,6 +214,23 @@ function safeDepth(p) {
     return d;
 }
 const sheltered = (o, p) => safeDepth(p) > 0 && !(now() - (o.provoked?.[p.who] ?? -99) < PROVOKED);
+// struck lately (by either of the two): it may come into a zone after them, so no one hits it from shelter for ever;
+// left alone PROVOKED seconds it only walks out again
+const provokedNow = o => Object.values(o.provoked || {}).some(t => now() - t < PROVOKED);
+// the nearest point a little outside the zone a point is deepest in (away from the zone's line), or null
+function outOfSafe(p) {
+    let best = null;
+    for (const z of safeZones()) {
+        const vx = z.b.x - z.a.x, vy = z.b.y - z.a.y, L = vx * vx + vy * vy;
+        const t = L ? Math.max(0, Math.min(1, ((p.x - z.a.x) * vx + (p.y - z.a.y) * vy) / L)) : 0;
+        const qx = z.a.x + t * vx, qy = z.a.y + t * vy, d = Math.hypot(p.x - qx, p.y - qy), deep = z.r - d;
+        if (deep <= 0 || (best && deep <= best.deep)) continue;
+        // right on the line: out sideways
+        const ux = d > 1e-3 ? (p.x - qx) / d : (L ? -vy / Math.sqrt(L) : 1), uy = d > 1e-3 ? (p.y - qy) / d : (L ? vx / Math.sqrt(L) : 0);
+        best = { deep, x: qx + ux * (z.r + 0.3), y: qy + uy * (z.r + 0.3) };
+    }
+    return best;
+}
 // a step from (x, y) to (nx, ny) (top-left) that takes its feet deeper into a zone
 const intoSafe = (x, y, nx, ny) => { const d1 = safeDepth({ x: nx + 0.5, y: ny + 0.8 }); return d1 > 0 && d1 > safeDepth({ x: x + 0.5, y: y + 0.8 }) - 1e-6; };
 function stepMob(m, o, dt, s) {
@@ -237,8 +254,9 @@ function stepMob(m, o, dt, s) {
         // not on top of another creature: a little push away from any within 0.9
         for (const q of mobs) if (q !== o && q.st !== 'dead') { const e = centre(q), ex = c.x - e.x, ey = c.y - e.y, ed = Math.hypot(ex, ey); if (ed < 0.9 && ed > 0.01) { nx += ex / ed * speed * dt * 0.5; ny += ey / ed * speed * dt * 0.5; } }
         let moved = false;
-        if (!solid(map(), nx, o.y) && !intoSafe(o.x, o.y, nx, o.y)) { o.x = nx; moved = true; }
-        if (!solid(map(), o.x, ny) && !intoSafe(o.x, o.y, o.x, ny)) { o.y = ny; moved = true; }
+        const free = provokedNow(o);
+        if (!solid(map(), nx, o.y) && (free || !intoSafe(o.x, o.y, nx, o.y))) { o.x = nx; moved = true; }
+        if (!solid(map(), o.x, ny) && (free || !intoSafe(o.x, o.y, o.x, ny))) { o.y = ny; moved = true; }
         return !moved;
     };
     // along the way round walls to a point
@@ -262,7 +280,7 @@ function stepMob(m, o, dt, s) {
                 const d = o.e.dash, v = d.dist / d.time;
                 if (o.t <= d.time) {
                     const nx = o.x + o.aim.dx * v * dt, ny = o.y + o.aim.dy * v * dt;
-                    if (solid(map(), nx, ny) || intoSafe(o.x, o.y, nx, ny)) o.t = d.time; else { o.x = nx; o.y = ny; }
+                    if (solid(map(), nx, ny) || (!provokedNow(o) && intoSafe(o.x, o.y, nx, ny))) o.t = d.time; else { o.x = nx; o.y = ny; }
                     const cc = centre(o);
                     for (const p of targets(s)) if (!o.struck.has(p.who) && !sheltered(o, p) && Math.hypot(p.x - cc.x, p.y - cc.y) < d.hit) { o.struck.add(p.who); hurt(s, p.who, o.e.atk); }
                     return;
@@ -274,6 +292,9 @@ function stepMob(m, o, dt, s) {
             if (o.t > T.recover) { o.st = 'chase'; o.t = 0; o.restAt = now() + T.rest; }
             return;
     }
+    // in a zone (it came in after someone who struck it) and left alone: straight out the shortest way first
+    const out = safeDepth(c) > 0 && !provokedNow(o) && outOfSafe(c);
+    if (out) { o.st = 'wander'; o.tx = out.x; o.ty = out.y; move(out.x, out.y, o.e.speed); return; }
     // drifting about, or coming at whoever it sees
     if (near) {
         o.st = 'chase';
@@ -446,6 +467,7 @@ function hurt(s, who, atk) {
         if (!dmg) { st.hurtAt = now(); pop(q.x, q.y - 2.1, `막음 ${take}`, '#ffe7a0'); return; }
     }
     r.hp[who] = Math.max(0, (r.hp[who] ?? 0) - dmg);
+    note({ ev: 'hurt', who, dmg });
     r.fear = Math.min(FEAR_MAX, r.fear + 1);
     st.hurtAt = now(); st.act = { name: 'hit', at: now(), until: now() + SHOW.hit };
     const p = lead ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 };
@@ -1141,10 +1163,12 @@ export function testReset() {
     bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
 }
 export const testFade = () => mobs[0]?.fade || 0;
+// tests only: the first creature struck by one of the two (from where they stand), for the safe-zone checks
+export function testStrikeBy(who) { const s = getState(), o = mobs[0]; if (!s || !o) return; const f = who === leadOf(s) ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 }; damage(s, o, 1, 0, f, '', who); }
 // tests only: someone hit by a creature's blow of `atk` (as a creature's blow does)
 export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, atk); }
 // tests only: the 궁 gauges (read, or set some), what is going on with the 궁
-export function testUlt(set) { const s = getState(); if (set) Object.assign(gauge(s), set); if (set?.cd === 0) me.cdUlt = 0; return { g: { ...gauge(s) }, ready: ultReady(s), cd: +Math.max(0, me.cdUlt - now()).toFixed(2), storms: storms.length, wards: JSON.parse(JSON.stringify(wards)), shows: ultShows.length }; }
+export function testUlt(set) { const s = getState(); if (set) { const { cd, ...g } = set; Object.assign(gauge(s), g); if (cd === 0) me.cdUlt = 0; } return { g: { ...gauge(s) }, ready: ultReady(s), cd: +Math.max(0, me.cdUlt - now()).toFixed(2), storms: storms.length, wards: JSON.parse(JSON.stringify(wards)), shield: me.shield > now(), shows: ultShows.length }; }
 // tests only: how deep a point (feet, tiles) is in this map's entrance safe zones, and the zones
 export const testSafe = (x, y) => safeDepth({ x, y });
 export const testZones = () => safeZones().map(z => ({ ...z }));
