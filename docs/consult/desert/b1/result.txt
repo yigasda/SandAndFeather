@@ -1,18 +1,18 @@
 PASS 02 돌 문 착지: 바닥 안 ({"at":true,"floor":true,"inExit":["door"]})
 PASS 02 돌 문 착지가 문 안이어도 가만히 2.5초: 안 넘어감
 PASS 조이스틱 아래로 문에서 물러남: 그대로 02
-PASS 조이스틱으로 02 돌 문 → 11 바깥 착지 (781 ms, {"at":true,"floor":true,"inExit":[]})
+PASS 조이스틱으로 02 돌 문 → 11 바깥 착지 (786 ms, {"at":true,"floor":true,"inExit":[]})
 PASS 한 번 밟아 이동 한 번
-PASS 조이스틱으로 11 문 → 17 동쪽 착지 (8446 ms, {"at":true,"floor":true,"inExit":[]})
+PASS 조이스틱으로 11 문 → 17 동쪽 착지 (8415 ms, {"at":true,"floor":true,"inExit":[]})
 PASS 한 번 밟아 이동 한 번
 PASS 17 착지에서 가만히 2초: 안 넘어감
 PASS 17에서 물러났다 다시 동쪽 출구 → 11 문 착지 ({"at":true,"floor":true,"inExit":[]})
 PASS 한 번 밟아 이동 한 번
-PASS 조이스틱으로 11 아래 → 02 돌 문 (8482 ms)
+PASS 조이스틱으로 11 아래 → 02 돌 문 (8540 ms)
 PASS 한 번 밟아 이동 한 번
 PASS 02 돌 문 착지(문 안)에 가만히 2초: 11로 되돌아가지 않음
 PASS 조이스틱으로 걸은 동안 맵 바뀜 전체(네 번, 중복 없음): desert_buried_temple→desert_city_gate, desert_city_gate→desert_city_plaza, desert_city_plaza→desert_city_gate, desert_city_gate→desert_buried_temple
-PASS 게임 창 닫기(저장) → 새로고침 → 같은 채팅: {"map":"desert_city_plaza","x":48.50494981238876,"y":15.15803267752366} → {"map":"desert_city_plaza","x":48.5,"y":15.16}
-PASS 새 채팅(Seraphina - 2026-10-19@02h30m16s044ms)의 게임은 따로: ombos (사막 자리를 가져가지 않음)
-PASS 원래 채팅으로 돌아와 같은 맵·자리: {"map":"desert_city_plaza","x":48.5,"y":15.16}
+PASS 게임 창 닫기(저장) → 새로고침 → 같은 채팅: {"map":"desert_city_plaza","x":48.50414523848708,"y":15.178187307707285} → {"map":"desert_city_plaza","x":48.5,"y":15.18}
+PASS 새 채팅(Seraphina - 2026-10-19@02h44m14s151ms)의 게임은 따로: ombos (사막 자리를 가져가지 않음)
+PASS 원래 채팅으로 돌아와 같은 맵·자리: {"map":"desert_city_plaza","x":48.5,"y":15.18}
 PASS 페이지 오류 없음 
