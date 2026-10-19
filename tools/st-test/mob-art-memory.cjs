@@ -34,7 +34,8 @@ const SCENES = [
     const context = await browser.newContext({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
-    const errors = []; page.on('pageerror', e => errors.push(e.message));
+    // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+        const errors = []; page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
     const sleep = ms => page.waitForTimeout(ms);
     // the browser's processes (the one Playwright started and its children): renderer, GPU, … RSS in KB
     const procs = () => {

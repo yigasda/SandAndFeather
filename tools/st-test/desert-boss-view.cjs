@@ -14,7 +14,8 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
     const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : { args: ['--no-sandbox'] });
     const context = await browser.newContext({ viewport: { width: 412, height: 900 }, recordVideo: { dir: OUT, size: { width: 412, height: 900 } } });
     const page = await context.newPage();
-    const errors = []; page.on('pageerror', e => errors.push(e.message));
+    // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+        const errors = []; page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
     const sleep = ms => page.waitForTimeout(ms);
     try {
         await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });

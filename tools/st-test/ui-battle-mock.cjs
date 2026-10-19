@@ -33,7 +33,8 @@ const MOCK_CSS = `
     for (const [W, H] of [[412, 900], [360, 740]]) {
         const context = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
         const page = await context.newPage();
-        const errors = []; page.on('pageerror', e => errors.push(e.message));
+        // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+        const errors = []; page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
         const sleep = ms => page.waitForTimeout(ms);
         try {
             await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
