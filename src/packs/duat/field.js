@@ -1171,6 +1171,8 @@ export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, at
 export function testUlt(set) { const s = getState(); if (set) { const { cd, ...g } = set; Object.assign(gauge(s), g); if (cd === 0) me.cdUlt = 0; } return { g: { ...gauge(s) }, ready: ultReady(s), cd: +Math.max(0, me.cdUlt - now()).toFixed(2), storms: storms.length, wards: JSON.parse(JSON.stringify(wards)), shield: me.shield > now(), shows: ultShows.length }; }
 // tests only: how deep a point (feet, tiles) is in this map's entrance safe zones, and the zones
 export const testSafe = (x, y) => safeDepth({ x, y });
+// tests only: the deepest any living creature's feet are in a zone now (its exact place, not fieldState's rounded one)
+export const testMobDeep = () => Math.max(0, ...mobs.filter(o => o.st !== 'dead').map(o => safeDepth(centre(o))));
 export const testZones = () => safeZones().map(z => ({ ...z }));
 export const testCover = () => mobs[0]?.cover || [];
 // tests only: hold the creatures in a state (e.g. { st: "hit", stun: 999 }: one picture, for comparing pictures)

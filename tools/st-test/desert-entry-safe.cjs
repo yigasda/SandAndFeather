@@ -36,7 +36,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             window.T = {}; for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', ledger: 'core/ledger', field: 'packs/duat/field' })) T[k] = await import(base + 'src/' + f + '.js');
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
             // every 50 ms: the deepest any creature's feet went into a safe zone, and her 체력
-            T.watch = () => { T.deep = 0; clearInterval(T.watchT); T.watchT = setInterval(() => { for (const o of T.field.fieldState().mobs) T.deep = Math.max(T.deep, T.field.testSafe(o.x + 0.5, o.y + 0.8)); }, 50); };
+            T.watch = () => { T.deep = 0; clearInterval(T.watchT); T.watchT = setInterval(() => { T.deep = Math.max(T.deep, T.field.testMobDeep()); }, 50); };
         }, BASE);
         const hp = () => page.evaluate(() => T.field.fieldState().run?.hp?.set ?? null);
         const deep = () => page.evaluate(() => T.deep);
