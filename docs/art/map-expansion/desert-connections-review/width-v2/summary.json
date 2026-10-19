@@ -31,5 +31,6 @@
     "Remote push",
     "main/release/version changes"
   ],
-  "historicalRegressions": "See ../ logs: narrow-version 51, old02-T1W14, puzzleunit5, puzzle-runtime21 on rerun, full-map/cozy/themes exit0. Initial puzzle timeout preserved."
+  "historicalRegressions": "See ../ logs: narrow-version 51, old02-T1W14, puzzleunit5, puzzle-runtime21 on rerun, full-map/cozy/themes exit0. Initial puzzle timeout preserved.",
+  "supersededBy": "Latest user JPEG libfile_a8048b5a80c8819194e7209ce5dac6f1: actual perspective polygon and landing near doorway, coordinate + shared map.js approval pending"
 }
