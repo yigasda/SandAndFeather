@@ -14,6 +14,8 @@ const path = require('node:path');
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
+const LIFECYCLE = process.argv.includes('--exit-lifecycle');
+const KEYBOARD = process.argv.includes('--keyboard');
 const VOTIVE = process.argv.includes('--temple-15-t2');
 const TEMPLE = process.argv.includes('--temple-02-15');
 const ARRIVALS = process.argv.includes('--arrivals');
@@ -51,6 +53,16 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
     const context = await browser.newContext({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, recordVideo: { dir: OUT, size: { width: 412, height: 900 } } });
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
+    if(LIFECYCLE) await page.route('**/src/ui/window.js',async route=>{
+        const response=await route.fetch(),body=await response.text();
+        await route.fulfill({response,body:body+`\nexport const __exitReview = {
+            get:()=>({doorArmed,doorNeedsNeutral,moving,dx:input.dx,dy:input.dy}),
+            set:(armed,neutral)=>{doorArmed=armed;doorNeedsNeutral=neutral;},
+            useExit,
+            reject:async()=>{const original=travel;travel=async()=>{throw new Error('isolated exit rejection fixture');};
+                try{await useExit({to:map.id,at:null});}finally{travel=original;}}
+        };`});
+    });
     // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
     const errors = []; page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
     const sleep = ms => page.waitForTimeout(ms);
@@ -93,6 +105,40 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.evaluate(async () => {
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
         });
+        if(LIFECYCLE) {
+            // Isolated state fixtures supplement, never replace, the real round-trip modes.
+            await page.evaluate(()=>T.win.travel('desert_votive_hall','west'));await sleep(300);
+            const gate=()=>page.evaluate(()=>T.win.__exitReview.get());
+            const set=async(a,n)=>page.evaluate(([a,n])=>T.win.__exitReview.set(a,n),[a,n]);
+            const pad=await W.padBox();
+            await page.evaluate(async()=>{await T.win.__exitReview.useExit(null);await T.win.__exitReview.useExit({to:'missing-test-map'});});
+            ok((await where()).map==='desert_votive_hall'&&!(await gate()).moving,'fixture: null/미등록 출구 무시, 이동 상태 고착 없음');
+            await W.touch('touchStart',pad.x,pad.y);await W.touch('touchMove',pad.x+pad.lim,pad.y);await set(false,true);await sleep(100);
+            ok(!(await gate()).doorArmed&&(await gate()).doorNeedsNeutral,'실제 패드 유지: 출구 밖이어도 중립 전 재무장 금지');
+            await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});await sleep(100);
+            ok((await gate()).dx===0&&!(await gate()).doorNeedsNeutral&&(await gate()).doorArmed,'실제 touchCancel: 중립 후 출구 밖 재무장');
+            await page.keyboard.down('ArrowRight');await set(false,true);await W.touch('touchStart',pad.x,pad.y);
+            await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});await sleep(100);
+            ok((await gate()).dx!==0&&(await gate()).doorNeedsNeutral,'키보드 유지+패드 취소: 남은 이동 입력을 중립으로 오인하지 않음');
+            await page.keyboard.up('ArrowRight');await sleep(100);
+            ok(!(await gate()).doorNeedsNeutral&&(await gate()).doorArmed,'키보드 해제: 출구 밖 재무장');
+            await page.evaluate(()=>{const px=52/1.55;T.player.player.x=15/px-.5;T.player.player.y=550/px-.8;T.win.__exitReview.set(false,true);});await sleep(100);
+            ok((await where()).inExit&&!(await gate()).doorNeedsNeutral&&!(await gate()).doorArmed,'fixture: 출구 안 중립은 재무장하지 않음');
+            await page.keyboard.down('ArrowRight');await sleep(450);await page.keyboard.up('ArrowRight');await sleep(100);
+            ok(!(await where()).inExit&&(await gate()).doorArmed,'실제 키보드로 출구 이탈 후 재무장');
+            await page.evaluate(()=>T.win.__exitReview.reject());await sleep(100);
+            ok(!(await gate()).moving,'fixture: 거절된 이동 Promise 처리, moving 고착 없음');
+            for(const action of ['foldGame','closeGame']) {
+                await page.keyboard.down('ArrowRight');await set(false,true);await page.evaluate(a=>T.win[a](),action);await page.keyboard.up('ArrowRight');
+                ok((await gate()).dx===0&&(await gate()).dy===0,action+': 입력 정리');
+                await page.evaluate(()=>T.win.openGame());await sleep(150);
+                ok(!(await gate()).doorNeedsNeutral&&!errors.length,action+': 재개 뒤 중립 해제/페이지 예외 없음');
+            }
+            await page.screenshot({path:path.join(OUT,'lifecycle.png')});
+            ok(!errors.length,'수명주기 fixture 페이지 오류 없음');
+            if(fail)throw new Error('lifecycle failures: '+fail);
+            return;
+        }
         if(process.argv.includes('--follower-contract')) {
             const probe=await page.evaluate(()=>{
                 const P=T.player,s=T.state.getState(),saved={pos:structuredClone(s.pos),lead:T.heroes.leadOf(s),with:T.heroes.withOf(s)};
@@ -250,11 +296,12 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             } else if (near) await W.walkToPoint(near.x, near.y, 90000, 0.4); else await W.walkToPoint(ex.cx - ux * 2 - 0.5, ex.cy - uy * 2 - 0.8, 90000, 0.5);
             const p = await W.padBox();
             const now = await where(), gx = ex.cx - (now.x + 0.5), gy = ex.cy - (now.y + 0.8), gn = Math.hypot(gx, gy) || 1;
-            await W.touch('touchStart', p.x, p.y); await W.touch('touchMove', p.x + gx / gn * p.lim, p.y + gy / gn * p.lim);
+            if(KEYBOARD){if(!VOTIVE||!WIDTHS)throw new Error('--keyboard requires --temple-15-t2 --widths');await page.keyboard.down('ArrowLeft');}
+            else {await W.touch('touchStart', p.x, p.y); await W.touch('touchMove', p.x + gx / gn * p.lim, p.y + gy / gn * p.lim);}
             await page.waitForFunction(to => T.win.currentMap()?.id === to, to, { timeout: 15000 }).catch(() => {});
             const arrivedAt = await where();
             if (CONNECTIONS && leg < PAIRS.length) {
-                await W.touch('touchEnd');
+                if(KEYBOARD)await page.keyboard.up('ArrowLeft');else await W.touch('touchEnd');
                 await page.screenshot({path:path.join(OUT, `${String(shot++).padStart(2,'0')}-arrival-${to}-${land}.png`)});
                 await page.evaluate(()=>{T.overlay=true}); await sleep(180);
                 await page.screenshot({path:path.join(OUT, `${String(shot-1).padStart(2,'0')}-arrival-overlay-${to}-${land}.png`)});
@@ -265,16 +312,20 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const held = await where();
             const transition = CONNECTIONS ? await page.evaluate(()=>T.moves.at(-1)) : null;
             res.push('  positions '+JSON.stringify({leg,arrival:arrivedAt,held}));
-            if (!CONNECTIONS || leg >= PAIRS.length) await W.touch('touchEnd'); await sleep(500);
+            if (!CONNECTIONS || leg >= PAIRS.length) {if(KEYBOARD)await page.keyboard.up('ArrowLeft');else await W.touch('touchEnd');} await sleep(500);
+            if(CONNECTIONS && leg>=PAIRS.length) ok((await where()).map===to,`${name}: 입력 중립 후 출구 안에서도 즉시 재전환 없음`);
             const entry = await page.evaluate(([to, land]) => T.map.getMap(to).d.entries[land], [to, land]);
             res.push(`  ${name}: 출구 앞 ${now.map.replace('desert_', '')} (${now.x.toFixed(1)}, ${now.y.toFixed(1)}) → 도착 ${arrivedAt.map.replace('desert_', '')} (${arrivedAt.x.toFixed(1)}, ${arrivedAt.y.toFixed(1)})`);
             ok(arrivedAt.map === to && Math.hypot(arrivedAt.x - entry.x, arrivedAt.y - entry.y) < 0.6 && !arrivedAt.inExit, `${name}: 걸어서 도착, 착지 ${land}(${entry.x.toFixed(1)}, ${entry.y.toFixed(1)}) 자리, 트리거 밖`);
-            ok(held.map === to && !held.inExit, `${name}: 도착 뒤 1.2초 ${CONNECTIONS && leg < PAIRS.length ? '정지' : '입력 유지'}에도 되돌아가지 않음 (${held.map.replace('desert_', '')})`);
+            res.push('  held exit occupancy '+JSON.stringify({inExit:held.inExit,contract:'walking may enter threshold; no transition before neutral then departure/re-entry'}));
+            ok(held.map === to, `${name}: 도착 뒤 1.2초 ${CONNECTIONS && leg < PAIRS.length ? '정지' : '입력 유지'}에도 되돌아가지 않음 (${held.map.replace('desert_', '')})`);
             await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${to.replace('desert_', '')}-${land}.png`) });
             // Held input may carry the party away from its landing, even to the doorway wall.
             // Walk back (never teleport) before the separate landing-neighbourhood checks.
             if(CONNECTIONS && leg >= PAIRS.length && held.map===to) {
+                const count=await page.evaluate(()=>T.moves.length);
                 ok(await walkBackToLanding(entry),`${name}: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴`);
+                ok((await where()).map===to&&!(await where()).inExit&&await page.evaluate(()=>T.moves.length)===count,`${name}: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용`);
             }
             // short steps every way
             const back = [];
