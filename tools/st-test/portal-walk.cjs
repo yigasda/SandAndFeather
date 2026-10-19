@@ -13,8 +13,20 @@ const path = require('node:path');
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
-const CONNECTIONS = process.argv.includes('--connections');
-const PAIRS = CONNECTIONS ? [
+const INNER = process.argv.includes('--widths-inner');
+const WIDTHS = INNER || process.argv.includes('--widths');
+const CONNECTIONS = WIDTHS || process.argv.includes('--connections');
+const PAIRS = INNER ? [
+    ['desert_forecourt_east','west','east','desert_colonnade','forecourt'],
+    ['desert_colonnade','forecourt','forecourt','desert_forecourt_east','east'],
+] : WIDTHS ? [
+    ['desert_buried_temple','temple','temple','desert_forecourt_west','south'],
+    ['desert_forecourt_west','south','east','desert_forecourt_east','west'],
+    ['desert_forecourt_east','west','east','desert_colonnade','forecourt'],
+    ['desert_colonnade','forecourt','forecourt','desert_forecourt_east','east'],
+    ['desert_forecourt_east','east','west','desert_forecourt_west','east'],
+    ['desert_forecourt_west','east','south','desert_buried_temple','temple'],
+] : CONNECTIONS ? [
     ['desert_forecourt_west', 'east', 'east', 'desert_forecourt_east', 'west'],
     ['desert_forecourt_east', 'west', 'east', 'desert_colonnade', 'forecourt'],
     ['desert_colonnade', 'forecourt', 'forecourt', 'desert_forecourt_east', 'east'],
@@ -55,7 +67,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         let shot = 0;
         if (CONNECTIONS) {
             // One fixture placement, then two continuous touch-only round trips, with no travel between legs.
-            await page.evaluate(async () => T.win.travel('desert_forecourt_west', 'east'));
+            await page.evaluate(async start => T.win.travel(start[0], start[1]), PAIRS[0]);
             await sleep(1200);
             await page.evaluate(() => {
                 T.moves = [];
@@ -64,9 +76,9 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 const p = T.player.player; let current = p.map;
                 Object.defineProperty(p, 'map', { configurable: true, enumerable: true,
                     get: () => current,
-                    set: value => { const from = current; current = value; if (from === value) return;
+                    set: value => { const from = current, sourceFeet={x:p.x+.5,y:p.y+.8}; current = value; if (from === value) return;
                         queueMicrotask(() => { const q=T.player.follower();
-                            T.moves.push({from,to:p.map,x:p.x,y:p.y,dir:p.dir,mate:{x:q.x,y:q.y}});
+                            T.moves.push({from,sourceFeet,to:p.map,x:p.x,y:p.y,dir:p.dir,mate:{x:q.x,y:q.y}});
                         });
                     }
                 });
@@ -86,25 +98,49 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 }});
             });
         });
-        const trips = CONNECTIONS ? [...PAIRS, ...PAIRS] : PAIRS;
+        const trips = WIDTHS ? [...PAIRS,...PAIRS,...PAIRS] : CONNECTIONS ? [...PAIRS, ...PAIRS] : PAIRS;
         let leg = 0;
         for (const [from, at, exitId, to, land] of trips) {
             const name = `${from.replace('desert_', '')} → ${to.replace('desert_', '')}`;
             if (!CONNECTIONS) { await page.evaluate(async ([from, at]) => T.win.travel(from, at), [from, at]); await sleep(1200); }
             ok((await where()).map === from, `${name}: 연속 왕복의 출발 맵`);
             // walk to just before the exit (its middle, a step back toward the start), then push into it and keep pushing
-            const ex = await page.evaluate(([from, exitId]) => { const e = T.win.currentMap().d.exits.find(x => x.id === exitId); return { cx: (e.x0 + e.x1) / 2, cy: (e.y0 + e.y1) / 2 }; }, [from, exitId]);
+            let ex = await page.evaluate(([from, exitId]) => { const e = T.win.currentMap().d.exits.find(x => x.id === exitId); return { cx: (e.x0 + e.x1) / 2, cy: (e.y0 + e.y1) / 2 }; }, [from, exitId]);
             const me = await where();
             const fx = me.x + 0.5, fy = me.y + 0.8, d = Math.hypot(ex.cx - fx, ex.cy - fy), ux = (ex.cx - fx) / d, uy = (ex.cy - fy) / d;
             // walk (stick) to the landing that belongs to this exit (the way in from it), then on into the exit
             const near = await page.evaluate(([from, exitId]) => T.win.currentMap().d.entries[exitId], [from, exitId]);
-            if (near) await W.walkToPoint(near.x, near.y, 90000, 0.4); else await W.walkToPoint(ex.cx - ux * 2 - 0.5, ex.cy - uy * 2 - 0.8, 90000, 0.5);
+            if (WIDTHS) {
+                const lane=Math.floor(leg/PAIRS.length);
+                const approach=await page.evaluate(([exitId,lane])=>{
+                    const m=T.win.currentMap(),e=m.d.exits.find(x=>x.id===exitId);
+                    const direction=m.id==='desert_colonnade'?'right':exitId==='west'||exitId==='south'?'down':'up';
+                    const vertical=direction!=='right',n=direction==='up'?[0,-1]:direction==='down'?[0,1]:[1,0];
+                    const fixed=direction==='up'?e.y1-.08:direction==='down'?e.y0+.08:e.x0+.08;
+                    const lo=vertical?e.x0:e.y0,hi=vertical?e.x1:e.y1;
+                    const free=(x,y)=>!m.solidRect(x-.28,y-.18,x+.28,y+.16);
+                    const slots=[];for(let t=lo;t<=hi;t+=.02){const x=vertical?t:fixed,y=vertical?fixed:t;if(free(x,y))slots.push({x,y,t});}
+                    if(!slots.length)return null;
+                    const selected=slots[Math.round((slots.length-1)*[.12,.5,.88][lane])];
+                    let pre=null;
+                    for(const d of [1.5,1,2,.6,2.5]){const x=selected.x-n[0]*d,y=selected.y-n[1]*d;if(free(x,y)&&!m.exitAt(x,y)){pre={x:x-.5,y:y-.8};break;}}
+                    return pre?{cx:selected.x,cy:selected.y,pre,vertical,lane,t:selected.t,range:[slots[0].t,slots.at(-1).t]}:null;
+                },[exitId,lane]);
+                ok(!!approach,`${name}: 문 폭 ${['왼쪽/위','중앙','오른쪽/아래'][lane]} 보행 가능한 접근`);
+                if(!approach)throw new Error('no lane '+name);
+                ex=approach;
+                // Walk the eastern paved perimeter, avoiding the existing shield soldier without changing it.
+                if(from==='desert_forecourt_west' && ((await where()).y>18 || exitId==='south')) {
+                    const px=52/1.55;ok(await W.walkToPoint(1530/px-.5,650/px-.8,90000,.4),'T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기');
+                }
+                ok(await W.walkToPoint(ex.pre.x,ex.pre.y,90000,.2),`${name}: 지정 폭 접근점까지 실제 조이스틱`);
+            } else if (near) await W.walkToPoint(near.x, near.y, 90000, 0.4); else await W.walkToPoint(ex.cx - ux * 2 - 0.5, ex.cy - uy * 2 - 0.8, 90000, 0.5);
             const p = await W.padBox();
             const now = await where(), gx = ex.cx - (now.x + 0.5), gy = ex.cy - (now.y + 0.8), gn = Math.hypot(gx, gy) || 1;
             await W.touch('touchStart', p.x, p.y); await W.touch('touchMove', p.x + gx / gn * p.lim, p.y + gy / gn * p.lim);
             await page.waitForFunction(to => T.win.currentMap()?.id === to, to, { timeout: 15000 }).catch(() => {});
             const arrivedAt = await where();
-            if (CONNECTIONS && leg < 4) {
+            if (CONNECTIONS && leg < PAIRS.length) {
                 await W.touch('touchEnd');
                 await page.screenshot({path:path.join(OUT, `${String(shot++).padStart(2,'0')}-arrival-${to}-${land}.png`)});
                 await page.evaluate(()=>{T.overlay=true}); await sleep(180);
@@ -114,11 +150,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             }
             await sleep(1200);   // still pushing, 1.2 s after arriving
             const held = await where();
-            if (!CONNECTIONS || leg >= 4) await W.touch('touchEnd'); await sleep(500);
+            if (!CONNECTIONS || leg >= PAIRS.length) await W.touch('touchEnd'); await sleep(500);
             const entry = await page.evaluate(([to, land]) => T.map.getMap(to).d.entries[land], [to, land]);
             res.push(`  ${name}: 출구 앞 ${now.map.replace('desert_', '')} (${now.x.toFixed(1)}, ${now.y.toFixed(1)}) → 도착 ${arrivedAt.map.replace('desert_', '')} (${arrivedAt.x.toFixed(1)}, ${arrivedAt.y.toFixed(1)})`);
             ok(arrivedAt.map === to && Math.hypot(arrivedAt.x - entry.x, arrivedAt.y - entry.y) < 0.6 && !arrivedAt.inExit, `${name}: 걸어서 도착, 착지 ${land}(${entry.x.toFixed(1)}, ${entry.y.toFixed(1)}) 자리, 트리거 밖`);
-            ok(held.map === to && !held.inExit, `${name}: 도착 뒤 1.2초 ${CONNECTIONS && leg < 4 ? '정지' : '입력 유지'}에도 되돌아가지 않음 (${held.map.replace('desert_', '')})`);
+            ok(held.map === to && !held.inExit, `${name}: 도착 뒤 1.2초 ${CONNECTIONS && leg < PAIRS.length ? '정지' : '입력 유지'}에도 되돌아가지 않음 (${held.map.replace('desert_', '')})`);
             await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${to.replace('desert_', '')}-${land}.png`) });
             // short steps every way
             const back = [];
@@ -133,6 +169,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             if(CONNECTIONS) {
                 const move=await page.evaluate(()=>T.moves.at(-1));
                 ok(move?.to===to && Math.hypot(move.x-entry.x,move.y-entry.y)<0.05, `${name}: 첫 도착 프레임 정확한 착지`);
+                if(WIDTHS) { const t=ex.vertical?move.sourceFeet.x:move.sourceFeet.y; ok(Math.abs(t-ex.t)<.35,`${name}: 실제 문턱 통과가 지정 폭 lane ${ex.lane} 안 (${t.toFixed(2)} / ${ex.t.toFixed(2)})`); }
                 fs.writeFileSync(path.join(OUT,'moves.json'), JSON.stringify(await page.evaluate(()=>T.moves),null,2));
                 fs.writeFileSync(path.join(OUT,'result.txt'),res.join('\n')+'\n');
             }
@@ -152,7 +189,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         const twice = await where();
         ok(twice.map === 'desert_buried_temple' && !twice.inExit, '같은 입력으로 두 번 넘어가지 않음');
         } else {
-            ok(await page.evaluate(()=>T.moves.length) === 8, '연속 왕복 2회: 정확히 8번 전환, 튕김 없음');
+            ok(await page.evaluate(()=>T.moves.length) === trips.length, `연속 왕복: 정확히 ${trips.length}번 전환, 튕김 없음`);
         }
         // reload: fold the game (saves where she is), reload the page, open it again
         await page.evaluate(async () => T.win.foldGame()); await sleep(800);

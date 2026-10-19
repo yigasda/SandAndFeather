@@ -3,9 +3,9 @@
   보라 사각형 = 출입 트리거(발 중심이 들어가면 이동, → 목적지:착지), 초록 = 착지점의 발 상자(FOOT)와 바라보는 방향.
 두 경계가 1px이라도 다르면 노랑으로 칠하고 개수를 적는다. 착지마다 발 상자가 바닥 안인지, 발 중심이 출구 트리거
 밖인지(도착하자마자 다시 이동하지 않는지) 검사한다.
-Writes docs/consult/desert/maps/<id>-overlay.png and prints a table.
+Writes docs/art/map-expansion/desert-connections-review/<id>-overlay.png and prints a table.
   python3 tools/maps/desert-overlay.py [map id …]"""
-import json, sys, unicodedata
+import argparse, json, sys, unicodedata
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -33,8 +33,8 @@ def walk_mask(pw):
 def edge(m): return m ^ nd.binary_erosion(m)
 
 
-def main(ids):
-    OUT.mkdir(parents=True, exist_ok=True)
+def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)"):
+    out.mkdir(parents=True, exist_ok=True)
     for ident in ids:
         d = json.loads((ROOT / f'data/maps/{ident}.json').read_text())
         src = d['source']
@@ -58,18 +58,23 @@ def main(ids):
             clear = bool(applied[int(fy0):int(fy1) + 1, int(fx0):int(fx1) + 1].all())
             cx, cy = (p['x'] + 0.5), (p['y'] + 0.8)
             inside = [e['id'] for e in d['exits'] if e['x0'] <= cx <= e['x1'] and e['y0'] <= cy <= e['y1']]
+            # Circle = landing; the small rectangle inside it is the actual collision foot.
+            g.ellipse([cx * PX - 17, cy * PX - 17, cx * PX + 17, cy * PX + 17], outline=(0, 255, 90), width=2)
             g.rectangle([fx0, fy0, fx1, fy1], outline=(0, 255, 90), width=3)
             ax, ay = ARROW[p['dir']]; mx, my = (fx0 + fx1) / 2, (fy0 + fy1) / 2
             g.line([mx, my, mx + ax * PX, my + ay * PX], fill=(0, 255, 90), width=3)
             g.text((fx1 + 4, fy0), f'착지 {k}', fill=(0, 255, 90), font=F, stroke_width=2, stroke_fill=(0, 0, 0))
             rows.append(f"  착지 {k}: 발 상자 {'바닥 안' if clear else '막힌 곳에 걸림'}, 출구 트리거 {'안: ' + ','.join(inside) if inside else '밖'}")
-        g.text((12, 12), 'DATA OVERLAY (not a game capture)', fill='white', font=F, stroke_width=2, stroke_fill='black')
-        img.save(OUT / f'{ident}-overlay.png')
+        g.text((12, 12), label, fill='white', font=F, stroke_width=2, stroke_fill='black')
+        img.save(out / f'{ident}-overlay.png')
         print(f"{ident}: 원본 {user.shape[1]}×{user.shape[0]} / 적용 {pw['width']}×{pw['height']}, 경계 차이 {int(diff.sum())}px, 출구 {len(d['exits'])}개")
         print('\n'.join(rows))
 
 
 if __name__ == '__main__':
-    ids = sys.argv[1:] or [m for m in json.loads((ROOT / 'tools/maps/desert-registry.json').read_text())['places'] and
-                           sorted(p.stem for p in (ROOT / 'data/maps').glob('desert_*.json'))]
-    main(ids)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('ids', nargs='*')
+    parser.add_argument('--out', type=Path, default=OUT)
+    parser.add_argument('--label', default='DATA OVERLAY (not a game capture)')
+    args = parser.parse_args()
+    main(args.ids or sorted(p.stem for p in (ROOT / 'data/maps').glob('desert_*.json')), args.out, args.label)

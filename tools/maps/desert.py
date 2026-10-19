@@ -53,7 +53,7 @@ ALPHA = 128
 GAP = 3
 # landings the user put by hand (their mark wins over GAP; still at least 2 people-widths): 11 door, the blue mark on the
 # stairs below the door ("파란색으로 수정", docs/consult/desert/maps/user-11-door-landing.jpg), 2.47
-BY_USER = {('desert_city_gate', 'door'), ('desert_forecourt_west', 'south'), ('desert_buried_temple', 'temple')}   # the user's blue circles (사용자 10-19): T1W yard's foot, 02 temple steps
+BY_USER = {('desert_city_gate', 'door'), ('desert_forecourt_west', 'south'), ('desert_forecourt_west', 'east'), ('desert_buried_temple', 'temple')}   # user marks: T1W south/east, 02 temple steps, 11 door
 # collision pictures the user did not draw: made by tools/maps/desert-collision.py to the user's 01·02 rules
 MADE = {'03_고요한사구_06통합.png', '04_메마른모래벌판.png'}
 SRC = ROOT / '사막맵'
@@ -123,20 +123,21 @@ PLACES = [
     # east 시험 착지는 보존. 실제 T1E 왕복은 오른쪽 문 앞 석재 길의 forecourt 착지를 쓴다.
     ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
      {'east': ((1680, 620), 'left'), 'forecourt': ((1570, 620), 'left')},
-     [('forecourt', (1720, 600, 1740, 645), 'desert_forecourt_east', 'east')]),
+     [('forecourt', (1710, 580, 1730, 655), 'desert_forecourt_east', 'east')]),
     # T1W 서쪽 제례 앞뜰 (desert_forecourt_west): 가죽 방패병 한 마리 전투(B3, data/desert.json field). 02 ↔ 모래 경사 아래 끝
     # (south); T1E 출입은 오른쪽 문. yard: 석재 마당 왼쪽 착지(시험들이 씀)
     ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
+     # east: latest user annotation registered by parent to source pixels (1523,241), exit (1434,107,1596,127).
      # south: the user's blue circle on the stone yard (centre about 1273, 795; inside it, 2 people-widths from the exit)
-     {'yard': ((900, 650), 'right'), 'south': ((1273, 778), 'up'), 'east': ((1500, 410), 'down')},
-     [('south', (1060, 873, 1420, 887), 'desert_buried_temple', 'temple'),
-      ('east', (1450, 225, 1580, 255), 'desert_forecourt_east', 'west')]),
+     {'yard': ((900, 650), 'right'), 'south': ((1273, 778), 'up'), 'east': ((1523, 241), 'down')},
+     [('south', (1048, 873, 1419, 887), 'desert_buried_temple', 'temple'),
+      ('east', (1434, 107, 1596, 127), 'desert_forecourt_east', 'west')]),
     # ASTRA guide: T1W right gate <-> lower-left stairs; right gate <-> 15 right entrance.
     # Land along the paved approach, not at the yard's centre. Entry/exit names match field.js safeZones.
     ('desert_forecourt_east', '동쪽 제례 앞뜰', 'T1E_동쪽제례앞뜰.png', 'T1E_동쪽제례앞뜰.png',
      {'west': ((325, 610), 'up'), 'east': ((1500, 450), 'left')},
-     [('west', (245, 810, 380, 840), 'desert_forecourt_west', 'east'),
-      ('east', (1690, 275, 1730, 340), 'desert_colonnade', 'forecourt')]),
+     [('west', (222, 748, 399, 772), 'desert_forecourt_west', 'east'),
+      ('east', (1550, 300, 1734, 320), 'desert_colonnade', 'forecourt')]),
 ]
 
 
@@ -176,8 +177,11 @@ def main(review_ids=None):
                 g = math.hypot(max(x0 - x, 0, x - x1), max(y0 - y, 0, y - y1))
                 need = (2 if (ident, k) in BY_USER else GAP) * (ACTOR['big' if ident in BIG else 'detail']) * PX
                 # Keep the historical puzzle-test entry exactly where it was. No portal targets it.
-                # Its entire foot is outside the new door (40 px centre clearance); real arrivals use forecourt.
+                # Its entire foot is outside the full-width door (30 px centre clearance); real arrivals use forecourt.
                 if (ident, k) == ('desert_colonnade', 'east'): need = 30
+                # Full-width thresholds follow the real doorway; do not move the landing for GAP.
+                # These approaches retain >= 130px centre clearance and are checked with held touch input.
+                if (ident, k) in {('desert_colonnade', 'forecourt'), ('desert_forecourt_east', 'west'), ('desert_forecourt_east', 'east')}: need = 130
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         W, H = math.ceil(w / PX), math.ceil(h / PX)
