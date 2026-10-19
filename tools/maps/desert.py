@@ -54,8 +54,10 @@ ALPHA = 128
 GAP = 3
 # Parent-registered latest user mark, source pixels. AABB remains in each runtime exit.
 EXIT_POLYGONS = {
-    ('desert_forecourt_east', 'east'): [(1665,254),(1684,248),(1733,319),(1733,340),(1727,342)],
-    ('desert_colonnade', 'forecourt'): [(1706,582),(1720,580),(1739,646),(1728,652)],
+    # Deep walkable doorway, following the perspective of the left inner jamb.
+    ('desert_buried_temple', 'temple'): [(929,315),(956,315),(955,340),(910,340)],
+    # Full southern paved opening between the broken walls; open edge, not a wall niche.
+    ('desert_colonnade', 'south'): [(800,860),(1190,860),(1210,887),(780,887)],
 }
 # landings the user put by hand (their mark wins over GAP; still at least 2 people-widths): 11 door, the blue mark on the
 # stairs below the door ("파란색으로 수정", docs/consult/desert/maps/user-11-door-landing.jpg), 2.47
@@ -92,10 +94,9 @@ OMBOS_BACK = {'x': 37.5, 'y': 22.4, 'dir': 'left'}   # 3.2 tiles from the exit (
 
 # id, name, art file, collision file, ways in {name: (source px, facing)}, exits [(name, source box x0,y0,x1,y1, to, at)]. The big maps run 01 → 04 → 03 → 02 across their side edges (docs/ASTRA-DESERT-05-20-GUIDE.md
 # "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's right side (10)
-# waits for that place. 02's temple door ↔ T1W (OPUS 사막 계획서 3절 "02 ↔ T1W ↔ T1E ↔ 15", 02 "연결: 03·T1W·11·10";
-# ASTRA-DESERT-05-20-GUIDE T1W "양쪽 끝의 02·15 연결", "한쪽 벽을 넘은 큰 모래 경사"): in 02 the doorway of the small
-# temple (walkable inside it in the user's collision up to y 310), in T1W the bottom edge of the stone yard below the
-# user's blue circle (the landing, 사용자 10-19); T1W's right gate is T1E's lower-left stairs
+# waits for that place. Current temple route: docs/DESERT-TEMPLE-CONNECTIONS.md.
+# First implemented pair: 02-A temple <-> 15-D south. Retired linear exits stay disabled;
+# historical entries remain for test/save compatibility while their new routes are staged.
 PLACES = [
     ('desert_golden_dunes', '황금 사구해', '01_황금사구해_닫힘.png', '01.png',
      {'west': ((85, 294), 'right'), 'east': ((1501, 750), 'left')},
@@ -111,7 +112,7 @@ PLACES = [
      # the door, GAP from it (it was just inside the door, user's mark, until the GAP rule)
      {'west': ((85, 330), 'right'), 'door': ((1438, 738), 'down'), 'temple': ((903, 390), 'down')},   # temple: the user's blue circle on the temple steps
      [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_city_gate', 'outside'),
-      ('temple', (912, 296, 956, 326), 'desert_forecourt_west', 'south')]),
+      ('temple', (910, 315, 956, 340), 'desert_colonnade', 'south')]),
     # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
     ('desert_city_gate', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
      {'outside': ((300, 1350), 'up'), 'door': ((672, 468), 'down')},
@@ -126,24 +127,22 @@ PLACES = [
      [('east', (1760, 402, 1774, 537), 'desert_city_gate', 'door')]),
     # 15 매몰 신전의 열주홀 (desert_colonnade): 반사광 입문 퍼즐(B2). 장치는 그림 그대로(오른쪽 광원, 가운데 받침 위 반사판,
     # 위층 뒷벽 수신부); 받침 앞 바닥에서 퍼즐 화면을 연다(src/packs/puzzle/colonnade.js). T2·16 출입은 아직 없음:
-    # east 시험 착지는 보존. 실제 T1E 왕복은 오른쪽 문 앞 석재 길의 forecourt 착지를 쓴다.
+    # east 시험 착지와 과거 forecourt 착지는 보존. 현재 실제 02 왕복은 남쪽 south를 쓴다.
     ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
-     {'east': ((1680, 620), 'left'), 'forecourt': ((1645, 620), 'left')},
-     [('forecourt', (1706, 580, 1739, 652), 'desert_forecourt_east', 'east')]),
-    # T1W 서쪽 제례 앞뜰 (desert_forecourt_west): 가죽 방패병 한 마리 전투(B3, data/desert.json field). 02 ↔ 모래 경사 아래 끝
-    # (south); T1E 출입은 오른쪽 문. yard: 석재 마당 왼쪽 착지(시험들이 씀)
+     {'east': ((1680, 620), 'left'), 'forecourt': ((1645, 620), 'left'), 'south': ((995, 795), 'up')},
+     [('south', (780, 860, 1210, 887), 'desert_buried_temple', 'temple')]),
+    # T1W: existing combat fixture and user landings preserved. New 15/east-court routes pending.
+    # yard remains the historical test entry; no retired route may bypass the new structure.
     ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
      # east: latest user annotation registered by parent to source pixels (1523,241), exit (1434,107,1596,127).
      # south: the user's blue circle on the stone yard (centre about 1273, 795; inside it, 2 people-widths from the exit)
      {'yard': ((900, 650), 'right'), 'south': ((1273, 778), 'up'), 'east': ((1523, 241), 'down')},
-     [('south', (1048, 873, 1419, 887), 'desert_buried_temple', 'temple'),
-      ('east', (1434, 107, 1596, 127), 'desert_forecourt_east', 'west')]),
-    # ASTRA guide: T1W right gate <-> lower-left stairs; right gate <-> 15 right entrance.
+     []),
+    # T1E: old exits retired; new T2 / two T1W routes pending their separate implementation.
     # Land along the paved approach, not at the yard's centre. Entry/exit names match field.js safeZones.
     ('desert_forecourt_east', '동쪽 제례 앞뜰', 'T1E_동쪽제례앞뜰.png', 'T1E_동쪽제례앞뜰.png',
      {'west': ((325, 610), 'up'), 'east': ((1621, 369), 'left')},
-     [('west', (222, 748, 399, 772), 'desert_forecourt_west', 'east'),
-      ('east', (1665, 248, 1733, 342), 'desert_colonnade', 'forecourt')]),
+     []),
 ]
 
 
@@ -193,6 +192,8 @@ def main(review_ids=None):
                 # User's new doorway landing is fixed; do not move it for a generic gap rule.
                 if (ident, k) == ('desert_forecourt_east', 'east'): need = 90
                 if (ident, k) == ('desert_colonnade', 'forecourt'): need = 60
+                # South arrival follows the near opening's centre; validate actual feet/follower, not 3x spacing.
+                if (ident, k) == ('desert_colonnade', 'south'): need = 60
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         for item in ex:

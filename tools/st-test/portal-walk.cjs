@@ -6,18 +6,23 @@
 //   5. 저장·다시 불러오기(새로고침 뒤 게임 다시 열기) → 같은 맵·같은 자리
 // 양방향 영상과 도착 화면을 out에 남긴다.
 //   node tools/st-test/portal-walk.cjs [out] [--connections]
-// --connections: T1W -> T1E -> 15 -> T1E -> T1W twice, one initial fixture placement only.
+// --temple-02-15: current 02-A <-> 15-D, one fixture then real round trips.
+// --connections: historical retired graph; use only against its historical code. T1W -> T1E -> 15 -> T1E -> T1W twice, one initial fixture placement only.
 const { chromium } = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
+const TEMPLE = process.argv.includes('--temple-02-15');
 const ARRIVALS = process.argv.includes('--arrivals');
 const INNER = process.argv.includes('--widths-inner');
 const WIDTHS = INNER || process.argv.includes('--widths');
-const CONNECTIONS = ARRIVALS || WIDTHS || process.argv.includes('--connections');
-const PAIRS = INNER ? [
+const CONNECTIONS = TEMPLE || ARRIVALS || WIDTHS || process.argv.includes('--connections');
+const PAIRS = TEMPLE ? [
+    ['desert_buried_temple','temple','temple','desert_colonnade','south'],
+    ['desert_colonnade','south','south','desert_buried_temple','temple'],
+] : INNER ? [
     ['desert_forecourt_east','west','east','desert_colonnade','forecourt'],
     ['desert_colonnade','forecourt','forecourt','desert_forecourt_east','east'],
 ] : WIDTHS ? [
@@ -108,7 +113,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             fs.writeFileSync(path.join(OUT,'follower-contract.json'),JSON.stringify(probe,null,2));
             ok(!probe.failures.length,`동행 초기화·첫 걸음·교대·전투 위치 우선 계약: ${probe.checked} 조합, 실패 ${probe.failures.length}`);
         }
-        if(WIDTHS) {
+        if(WIDTHS && !TEMPLE) {
             const checks=await page.evaluate(()=>{
                 const m=T.map.getMap('desert_forecourt_east'),e=m.d.exits.find(e=>e.id==='east'),px=m.d.authoredCollision.pixelWalk.pixelsPerTile;
                 const p=(x,y)=>T.map.containsExit(e,x/px,y/px);
