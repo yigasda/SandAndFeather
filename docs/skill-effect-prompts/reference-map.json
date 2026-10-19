@@ -60,10 +60,9 @@
       "selected_inputs": [
         null
       ],
-      "unavailable_input_note": "Both layout corrections used the ORIGINAL generated Horus-six-new-frames.png as sole input, per Horus-final-layout-qa.txt. The archive generated-sheets/Horus-six-new-frames.png is the selected FINAL layout sheet (renamed), not that intermediate. Original intermediate bytes/hash are absent.",
+      "unavailable_input_note": "Final layout input: original generated Horus-six-new-frames.png. Its bytes/hash are absent from the archive. Archive generated-sheets/Horus-six-new-frames.png is the final result, not this input.",
       "selected_sheet": "generated-sheets/Horus-six-new-frames.png",
-      "source_sheet_name_in_metadata": "Horus-six-new-frames-final-layout.png",
-      "rejected_attempt": "prompts/Horus-layout-correction-prompt.txt"
+      "source_sheet_name_in_metadata": "Horus-six-new-frames-final-layout.png"
     },
     "Somang": {
       "new_frame_order": [
@@ -89,87 +88,9 @@
       ],
       "unavailable_input_note": "Spatial correction used the ORIGINAL generated Somang-six-new-frames.png as sole input. The archive generated-sheets/Somang-six-new-frames.png is the selected SPACED sheet (renamed), not that intermediate. Original intermediate bytes/hash are absent.",
       "selected_sheet": "generated-sheets/Somang-six-new-frames.png",
-      "source_sheet_name_in_metadata": "Somang-six-new-frames-spaced.png",
-      "rejected_attempt": "prompts/Somang-cleanup-prompt.txt"
+      "source_sheet_name_in_metadata": "Somang-six-new-frames-spaced.png"
     }
   },
-  "published_original_text_files": [
-    {
-      "archive_path": "prompts/Horus-final-layout-qa.txt",
-      "sha256": "75609fdc30317c5dbf1beb733a2c048fb9e625df9854789c86523cfcc9563bfb",
-      "bytes": 1166
-    },
-    {
-      "archive_path": "prompts/Horus-generation-prompt.txt",
-      "sha256": "b7bc65f5bd567f2b1f7ff948c881630bae188a6e78c1351bf1882e2476a2a9a4",
-      "bytes": 6769
-    },
-    {
-      "archive_path": "prompts/Horus-layout-correction-2-prompt.txt",
-      "sha256": "c7ae12508a9738ba276f935706d4045fbcf68c2b591b13b5996b38f74f39764d",
-      "bytes": 1092
-    },
-    {
-      "archive_path": "prompts/Horus-layout-correction-prompt.txt",
-      "sha256": "7a076b4ee7bfb70a37f76eccb6ca74f47558e39a37898dc38da4861173fb11e2",
-      "bytes": 1427
-    },
-    {
-      "archive_path": "prompts/Horus-qa-and-anchors.txt",
-      "sha256": "d0a59a2180964af081590d17f7c4b79038b15c920308c024cc8c9121e37a3448",
-      "bytes": 1123
-    },
-    {
-      "archive_path": "prompts/Horus-reference-map.json",
-      "sha256": "5ced6238b6873dcaf4a882d42fc42788ad1b4c2ff1349a734a83778ca05d07ad",
-      "bytes": 525
-    },
-    {
-      "archive_path": "prompts/Set-actual-animation-prompt.txt",
-      "sha256": "3f2f57654f4a033407e4924bf904c65936ff1e7af9ae15585707b9c38d5eec8a",
-      "bytes": 3004
-    },
-    {
-      "archive_path": "prompts/Set-final-animation-prompt.txt",
-      "sha256": "4a56154985bebe2f4d7167a979e32d19eedf9ede873bd8a1c9ef63054f9b9c38",
-      "bytes": 3829
-    },
-    {
-      "archive_path": "prompts/Set-reference-map.json",
-      "sha256": "e0ea9bc425bf118ae54b7bb3b623f89523d9312c15b2c94143f502e32edfcf12",
-      "bytes": 305
-    },
-    {
-      "archive_path": "prompts/Somang-QA-notes.txt",
-      "sha256": "a2ce05dadbb364eb2731357f509b1d4f51c8d01ded7a8055d5d214f65c1116be",
-      "bytes": 1297
-    },
-    {
-      "archive_path": "prompts/Somang-cleanup-prompt.txt",
-      "sha256": "3ebdf826a411a2086b06541cce6221c12eafe04395f04fad49d2918838768937",
-      "bytes": 990
-    },
-    {
-      "archive_path": "prompts/Somang-generation-prompt.txt",
-      "sha256": "a9927fffcf1a24bef097353abd3d5c63ecb7f82854a4e3339ffa6c71a3c7b725",
-      "bytes": 6553
-    },
-    {
-      "archive_path": "prompts/Somang-reference-map.txt",
-      "sha256": "de4ab49cf03627529b5ee59859920cb749693e59bae6a586dce9f0d7a40e910f",
-      "bytes": 629
-    },
-    {
-      "archive_path": "prompts/Somang-spatial-correction-QA.txt",
-      "sha256": "2a91c4a39780b333a20c306d71d18c0f21507638e9e804ddd9ecfb344f98dade",
-      "bytes": 1028
-    },
-    {
-      "archive_path": "prompts/Somang-spatial-correction-prompt.txt",
-      "sha256": "ea342aea17d2a687b0adbd2e089f95a0f9fe142c7c95d72c2a30cbcafca5564d",
-      "bytes": 1608
-    }
-  ],
   "archive_only_image_inventory": [
     {
       "archive_path": "archival-originals/Horus.png",
@@ -241,5 +162,62 @@
     "archive_path": "animation-metadata.json",
     "sha256": "cb110fbbf6bb29218a2a24b4d065cb0a2c1cf7e9d3611f78df9c39bb08108955",
     "bytes": 11160
-  }
+  },
+  "published_text_files": [
+    {
+      "archive_path": "prompts/Horus-final-layout-qa.txt",
+      "sha256": "5ca41b165d7b4cb2484ea4245317dfd1a64f05212d656547f14b4f60e4b0bdde",
+      "bytes": 1071
+    },
+    {
+      "archive_path": "prompts/Horus-generation-prompt.txt",
+      "sha256": "b7bc65f5bd567f2b1f7ff948c881630bae188a6e78c1351bf1882e2476a2a9a4",
+      "bytes": 6769
+    },
+    {
+      "archive_path": "prompts/Horus-layout-correction-2-prompt.txt",
+      "sha256": "c7ae12508a9738ba276f935706d4045fbcf68c2b591b13b5996b38f74f39764d",
+      "bytes": 1092
+    },
+    {
+      "archive_path": "prompts/Horus-reference-map.json",
+      "sha256": "5ced6238b6873dcaf4a882d42fc42788ad1b4c2ff1349a734a83778ca05d07ad",
+      "bytes": 525
+    },
+    {
+      "archive_path": "prompts/Set-actual-animation-prompt.txt",
+      "sha256": "3f2f57654f4a033407e4924bf904c65936ff1e7af9ae15585707b9c38d5eec8a",
+      "bytes": 3004
+    },
+    {
+      "archive_path": "prompts/Set-final-animation-prompt.txt",
+      "sha256": "4a56154985bebe2f4d7167a979e32d19eedf9ede873bd8a1c9ef63054f9b9c38",
+      "bytes": 3829
+    },
+    {
+      "archive_path": "prompts/Set-reference-map.json",
+      "sha256": "e0ea9bc425bf118ae54b7bb3b623f89523d9312c15b2c94143f502e32edfcf12",
+      "bytes": 305
+    },
+    {
+      "archive_path": "prompts/Somang-generation-prompt.txt",
+      "sha256": "a9927fffcf1a24bef097353abd3d5c63ecb7f82854a4e3339ffa6c71a3c7b725",
+      "bytes": 6553
+    },
+    {
+      "archive_path": "prompts/Somang-reference-map.txt",
+      "sha256": "de4ab49cf03627529b5ee59859920cb749693e59bae6a586dce9f0d7a40e910f",
+      "bytes": 629
+    },
+    {
+      "archive_path": "prompts/Somang-spatial-correction-QA.txt",
+      "sha256": "2a91c4a39780b333a20c306d71d18c0f21507638e9e804ddd9ecfb344f98dade",
+      "bytes": 1028
+    },
+    {
+      "archive_path": "prompts/Somang-spatial-correction-prompt.txt",
+      "sha256": "ea342aea17d2a687b0adbd2e089f95a0f9fe142c7c95d72c2a30cbcafca5564d",
+      "bytes": 1608
+    }
+  ]
 }

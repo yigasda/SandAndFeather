@@ -1,8 +1,0 @@
-Preferred source sheet: Somang-six-new-frames.png
-Dimensions: 1024x1536 RGBA. Six nominal 512x512 cells. Reading order 0,1 / 2,3 / 5,6.
-Frame 4 must be the EXACT existing /workspace/shared/signature_previews_v2/originals/Somang.png.
-Distinct shape sequence visually present: seed, petal contours, partial membranes, nearly open canopy, broken petal fragments, residue arcs.
-Transparency QA issue: imagegen added broad diffuse semi-transparent yellow clouds spilling into cell gutters. Alpha range 0..254. True clean extraction requires further cleanup. Somang-six-new-frames-clean.png is a failed cleanup attempt and less faithful in edge rendering; prefer the original generated sheet.
-Approximate per-cell ground ellipse focus for alignment in original generated sheet: frame0 (260,374), frame1 (261,369), frame2 (258,343), frame3 (258,340), frame5 (266,336), frame6 (256,360). These are visual estimates, not precise measurements. Align using ground ellipse center rather than full-effect bounding box; upper petals shift apparent bounding center.
-Do not scale each frame to its independent bbox, as small seed/residue frames need unchanged world framing.
-Exact initial prompt: generation-prompt.txt. Exact reference inputs/order: reference-map.txt. Cleanup attempt prompt: cleanup-prompt.txt.

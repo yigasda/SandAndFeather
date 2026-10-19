@@ -1,9 +1,9 @@
 [
   {
     "path": "README.md",
-    "bytes": 1788,
-    "sha256": "043c208b27eb30242cd22cf7a2fb241a8de91656b17ea12618fae1818f6d6568",
-    "git_blob_sha": "3cc8668d0eb548298cda926b376265c668ccf049"
+    "bytes": 1682,
+    "sha256": "055cc798a5236b7b9a7497ee684ca6b1ad9d27492ac70c745653608340b20b8b",
+    "git_blob_sha": "b282f8557a08883debef02ec55f2979f1ca44c99"
   },
   {
     "path": "approved/set-back-combat-idle-0.png",

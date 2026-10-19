@@ -1,6 +1,6 @@
 Preferred final generated sheet: Horus-six-new-frames-final-layout.png (1024x1536 RGBA).
-The second layout correction materially reduces all six poses and prevents feather clipping. Same six row-major stages 0,1,2,4,5,6. Original approved peak remains untouched.
+The final sheet contains all six poses without main feather clipping. Same six row-major stages 0,1,2,4,5,6. Original approved peak remains untouched.
 Above-alpha-16 content bounds in each 512x512 cell: frame 0 (113,200,400,416); frame 1 (96,132,396,416); frame 2 (146,101,374,381); frame 4 (75,118,408,382); frame 5 (111,82,405,328); frame 6 (99,164,395,313). All visible effects now fit at least 75px from horizontal cell borders.
 Residual alpha values <=16 still occur toward cell edges; imagegen did not enforce exact zero-alpha gutters. This is low-alpha haze/noise rather than clipped main feathers. Preserve alpha; do not judge RGB-only previews as opaque backgrounds.
 Estimated local ground anchors: frame 0 (257,355); frame 1 (243,355); frame 2 (260,325); frame 4 (242,322); frame 5 (258,272); frame 6 (240,261). Align these during packaging; centers differ by row.
-Corrections used original generated sheet as sole image reference. Prompts: layout-correction-prompt.txt (insufficient result), layout-correction-2-prompt.txt (preferred result).
+Final prompt: Horus-layout-correction-2-prompt.txt. Its sole image input was the original generated sheet.
