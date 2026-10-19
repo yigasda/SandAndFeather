@@ -57,7 +57,7 @@ EXIT_POLYGONS = {
     # Registered blue side passage; original collision and doorway perspective preserved.
     ('desert_votive_hall', 'west'): [(0,524),(20,524),(20,580),(0,581)],
     # Upper-left stair ends at the outer edge, not the torch recess behind it.
-    ('desert_colonnade', 'stair'): [(0,380),(12,381),(12,414),(30,415),(30,462),(0,463)],
+    ('desert_colonnade', 'stair'): [(0,380),(11,381),(11,414),(30,415),(30,462),(0,463)],
     # Deep walkable doorway, following the perspective of the left inner jamb.
     ('desert_buried_temple', 'temple'): [(929,315),(956,315),(955,340),(910,340)],
     # Full southern paved opening between the broken walls; open edge, not a wall niche.
