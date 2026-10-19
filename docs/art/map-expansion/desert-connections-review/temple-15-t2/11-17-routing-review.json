@@ -1,0 +1,42 @@
+{
+  "basis": [
+    "Viewed original 11_매몰도시출입구.png 1024x1536",
+    "Viewed original 17_지하도시광장.png 1774x887",
+    "Read current generator and 11/17 JSON",
+    "Read latest DESERT-TEMPLE-CONNECTIONS.md"
+  ],
+  "gate11": {
+    "physicalStoneDoorCount": 1,
+    "doorSourceBounds": [
+      640,
+      312,
+      790,
+      352
+    ],
+    "currentDestination": "17/east",
+    "requestedDestination": "T2/south",
+    "outsidePath": "left and bottom are two boundaries of the same outside path, both returning to02/door; not two spare doors"
+  },
+  "plaza17": {
+    "currentExit": "east at right stair →11/door",
+    "otherVisibleDoorways": "Three building doorways exist in art; not approved substitutes for external 11/T2 routing. No new connection proposed."
+  },
+  "decisionRequired": "With fixed one-to-one exits, the one physical 11 door cannot independently connect both T2 and17. User must resolve17 external access before replacing11/door.",
+  "optionsForCoordination": [
+    {
+      "option": "Retain fixed 11-A↔T2-D design",
+      "needsDecision": "Choose an existing, user-designated physical route for17 external access; no destination chosen here. Keep current11↔17 until this is decided."
+    },
+    {
+      "option": "Keep17 sharing11-A",
+      "needsDecision": "Requires explicit route-selection/history/progression semantics and reversible return/save rules, beyond ordinary map linking. Would change simple connection contract; not approved or implemented."
+    }
+  ],
+  "rejectedShortcuts": [
+    "Do not duplicate overlapping door triggers.",
+    "Do not split left/bottom into separate destinations; both are one02 outside path.",
+    "Do not delete17 or change its existing user landing.",
+    "Do not invent another opening or suggest new art."
+  ],
+  "status": "Investigation only; no11/17/T2 south connection or source data changed."
+}

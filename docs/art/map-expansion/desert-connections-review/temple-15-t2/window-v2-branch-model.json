@@ -1,0 +1,63 @@
+{
+  "source": "unapplied v2 proposal exact frame branch in isolated VM",
+  "passed": 8,
+  "runtimeTest": false,
+  "rows": [
+    {
+      "exit": false,
+      "armed": false,
+      "needsNeutral": false,
+      "calls": 0,
+      "armedAfter": true
+    },
+    {
+      "exit": false,
+      "armed": false,
+      "needsNeutral": true,
+      "calls": 0,
+      "armedAfter": false
+    },
+    {
+      "exit": false,
+      "armed": true,
+      "needsNeutral": false,
+      "calls": 0,
+      "armedAfter": true
+    },
+    {
+      "exit": false,
+      "armed": true,
+      "needsNeutral": true,
+      "calls": 0,
+      "armedAfter": true
+    },
+    {
+      "exit": true,
+      "armed": false,
+      "needsNeutral": false,
+      "calls": 0,
+      "armedAfter": false
+    },
+    {
+      "exit": true,
+      "armed": false,
+      "needsNeutral": true,
+      "calls": 0,
+      "armedAfter": false
+    },
+    {
+      "exit": true,
+      "armed": true,
+      "needsNeutral": false,
+      "calls": 1,
+      "armedAfter": false
+    },
+    {
+      "exit": true,
+      "armed": true,
+      "needsNeutral": true,
+      "calls": 0,
+      "armedAfter": true
+    }
+  ]
+}
