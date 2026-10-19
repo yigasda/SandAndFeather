@@ -18,7 +18,7 @@ VISIBLE, SMALL, PAD = 256, 125, 2
 # body height in characters' heights (the game draws a character 31.2 px × zoom high). 사용자 10-19 "몹 크기 다 늘리셈,
 # 방패병은 더 커야, 4대 수문장은 ㅈㄴ 커야": 제안 값(화면 비교 docs/consult/desert/mobs/hit-sheet.png로 검수)
 HEIGHT_K = {
-    'desert_sealed_jar': 0.85, 'desert_leather_shield': 1.5, 'desert_sealed_shield': 1.6, 'desert_walking_stela': 1.4,
+    'desert_sealed_jar': 0.95, 'desert_leather_shield': 1.5, 'desert_sealed_shield': 1.6, 'desert_walking_stela': 1.4,
     'desert_sun_mirror': 1.3, 'desert_balance_sentinel': 1.3, 'desert_mask_priest_mantle': 1.45, 'desert_mask_priest_shroud': 1.45,
     'desert_royal_mask_warden': 4.2, 'desert_temple_warden': 4.2, 'desert_throne_warden': 4.2, 'desert_broken_tomb_warden': 4.2,
 }
