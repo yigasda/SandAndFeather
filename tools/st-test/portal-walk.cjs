@@ -84,6 +84,30 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.evaluate(async () => {
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
         });
+        if(process.argv.includes('--follower-contract')) {
+            const probe=await page.evaluate(()=>{
+                const P=T.player,s=T.state.getState(),saved={pos:structuredClone(s.pos),lead:T.heroes.leadOf(s),with:T.heroes.withOf(s)};
+                const failures=[];let checked=0,minGap=Infinity;
+                const ids=Object.keys(T.data.DATA.maps).filter(id=>id==='ombos'||id.startsWith('desert_'));
+                for(const id of ids){const m=T.map.getMap(id);if(!m)continue;
+                    const entries=Object.entries(m.d.entries||{});if(!entries.length)entries.push(['spawn',m.d.spawn]);
+                    for(const [name,entry] of entries)for(const lead of ['set','horus','somang'])for(const mate of ['set','horus','somang']){
+                        if(lead===mate)continue;T.heroes.setLead(s,lead);T.heroes.setWith(s,mate);s.pos={map:id,...entry};P.placePlayer(m);
+                        const f=P.follower(),gap=Math.hypot(f.x-P.player.x,f.y-P.player.y);minGap=Math.min(minGap,gap);checked++;
+                        const safe=q=>!m.solidRect(q.x+.22,q.y+.62,q.x+.78,q.y+.96)&&!m.exits.some(e=>T.map.containsExit(e,q.x+.5,q.y+.8));
+                        if(!safe(f)||gap<.4*(m.d.actorScale||1))failures.push({id,name,lead,mate,phase:'placement',gap});
+                        const controlled={...f,walkT:3};P.mateWalk.pos=controlled;
+                        if(P.follower()!==controlled)failures.push({id,name,phase:'combat priority'});P.mateWalk.pos=null;
+                        P.stepPlayer(m,1,0,.01);const next=P.follower();
+                        if(!safe(next)||Math.hypot(next.x-P.player.x,next.y-P.player.y)<.3*(m.d.actorScale||1))failures.push({id,name,phase:'first step'});
+                    }
+                }
+                T.heroes.setLead(s,saved.lead);T.heroes.setWith(s,saved.with);s.pos=saved.pos;P.placePlayer(T.map.getMap(s.pos.map));
+                return {checked,minGap,failures,kind:'synchronous placement/API fixtures, not a walking substitute'};
+            });
+            fs.writeFileSync(path.join(OUT,'follower-contract.json'),JSON.stringify(probe,null,2));
+            ok(!probe.failures.length,`동행 초기화·첫 걸음·교대·전투 위치 우선 계약: ${probe.checked} 조합, 실패 ${probe.failures.length}`);
+        }
         if(WIDTHS) {
             const checks=await page.evaluate(()=>{
                 const m=T.map.getMap('desert_forecourt_east'),e=m.d.exits.find(e=>e.id==='east'),px=m.d.authoredCollision.pixelWalk.pixelsPerTile;
