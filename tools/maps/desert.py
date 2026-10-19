@@ -53,7 +53,7 @@ ALPHA = 128
 GAP = 3
 # landings the user put by hand (their mark wins over GAP; still at least 2 people-widths): 11 door, the blue mark on the
 # stairs below the door ("파란색으로 수정", docs/consult/desert/maps/user-11-door-landing.jpg), 2.47
-BY_USER = {('desert_city_gate', 'door')}
+BY_USER = {('desert_city_gate', 'door'), ('desert_forecourt_west', 'south'), ('desert_buried_temple', 'temple')}   # the user's blue circles (사용자 10-19): T1W yard's foot, 02 temple steps
 # collision pictures the user did not draw: made by tools/maps/desert-collision.py to the user's 01·02 rules
 MADE = {'03_고요한사구_06통합.png', '04_메마른모래벌판.png'}
 SRC = ROOT / '사막맵'
@@ -85,8 +85,11 @@ FRONT = {
 OMBOS_BACK = {'x': 37.5, 'y': 22.4, 'dir': 'left'}   # 3.2 tiles from the exit (GAP)
 
 # id, name, art file, collision file, ways in {name: (source px, facing)}, exits [(name, source box x0,y0,x1,y1, to, at)]. The big maps run 01 → 04 → 03 → 02 across their side edges (docs/ASTRA-DESERT-05-20-GUIDE.md
-# "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's temple door
-# (T1W), its lower right stone exit (11) and its right side (10) wait for those places.
+# "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's right side (10)
+# waits for that place. 02's temple door ↔ T1W (OPUS 사막 계획서 3절 "02 ↔ T1W ↔ T1E ↔ 15", 02 "연결: 03·T1W·11·10";
+# ASTRA-DESERT-05-20-GUIDE T1W "양쪽 끝의 02·15 연결", "한쪽 벽을 넘은 큰 모래 경사"): in 02 the doorway of the small
+# temple (walkable inside it in the user's collision up to y 310), in T1W the bottom edge of the stone yard below the
+# user's blue circle (the landing, 사용자 10-19); T1W's right gate is T1E's (later)
 PLACES = [
     ('desert_golden_dunes', '황금 사구해', '01_황금사구해_닫힘.png', '01.png',
      {'west': ((85, 294), 'right'), 'east': ((1501, 750), 'left')},
@@ -100,8 +103,9 @@ PLACES = [
     ('desert_buried_temple', '매몰 신전 사막', '02_매몰신전사막.png', '02_매몰신전사막.png',
      # the west way out only where the paved path meets the edge (user's circle); the door landing on the stone path below
      # the door, GAP from it (it was just inside the door, user's mark, until the GAP rule)
-     {'west': ((85, 330), 'right'), 'door': ((1438, 738), 'down')},
-     [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_city_gate', 'outside')]),
+     {'west': ((85, 330), 'right'), 'door': ((1438, 738), 'down'), 'temple': ((903, 390), 'down')},   # temple: the user's blue circle on the temple steps
+     [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_city_gate', 'outside'),
+      ('temple', (912, 296, 956, 326), 'desert_forecourt_west', 'south')]),
     # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
     ('desert_city_gate', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
      {'outside': ((300, 1350), 'up'), 'door': ((672, 468), 'down')},
@@ -120,11 +124,12 @@ PLACES = [
     ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
      {'east': ((1680, 620), 'left')},
      []),
-    # T1W 서쪽 제례 앞뜰 (desert_forecourt_west): 가죽 방패병 한 마리 전투(B3, data/desert.json field). 02·T1E 출입은 아직
-    # 없음: 석재 마당 왼쪽의 시험 착지 하나(시험 이동으로만)
+    # T1W 서쪽 제례 앞뜰 (desert_forecourt_west): 가죽 방패병 한 마리 전투(B3, data/desert.json field). 02 ↔ 모래 경사 아래 끝
+    # (south); T1E 출입(오른쪽 문)은 아직. yard: 석재 마당 왼쪽 착지(시험들이 씀)
     ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
-     {'yard': ((900, 650), 'right')},
-     []),
+     # south: the user's blue circle on the stone yard (centre about 1273, 795; inside it, 2 people-widths from the exit)
+     {'yard': ((900, 650), 'right'), 'south': ((1273, 778), 'up')},
+     [('south', (1060, 873, 1420, 887), 'desert_buried_temple', 'temple')]),
 ]
 
 
