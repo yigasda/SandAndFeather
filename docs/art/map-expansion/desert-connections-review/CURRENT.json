@@ -28,6 +28,32 @@
   ],
   "videoLibrary": "libfile_dc4d306dcd7881919abcfaa1aa64b6cd",
   "windowPatchApplied": false,
-  "next": "Coordinate 15-C ↔ T2-B using registered blue exit annotation; no code push authorized",
-  "evidence": "temple-02-15"
+  "next": "Await parent/Opus decision on minimal window.js patch; not applied",
+  "evidence": "temple-02-15",
+  "nextPair": {
+    "scope": "15-C ↔ T2-B",
+    "geometryCode": "70d3c834",
+    "widthTestCode": "632838e6",
+    "basic": {
+      "pass": 33,
+      "fail": 0
+    },
+    "width": {
+      "pass": 28,
+      "fail": 5,
+      "lowerLane": "not run"
+    },
+    "regression02": {
+      "pass": 33,
+      "fail": 0
+    },
+    "puzzle15": {
+      "pass": 21,
+      "fail": 0
+    },
+    "complete": false,
+    "blocker": "window.js neutral-input rearm coordination pending; held left input returns T2 to 15",
+    "evidence": "temple-15-t2",
+    "videoLibrary": "libfile_57187a38de348191ac40abe9c6fdc92e"
+  }
 }
