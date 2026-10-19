@@ -1,0 +1,15 @@
+{
+  "source": "actual travel function in isolated VM; no browser transport or state rollback claim",
+  "rows": [
+    {
+      "phase": "saveState",
+      "rejected": true,
+      "movingAfter": false
+    },
+    {
+      "phase": "enterMap",
+      "rejected": true,
+      "movingAfter": false
+    }
+  ]
+}

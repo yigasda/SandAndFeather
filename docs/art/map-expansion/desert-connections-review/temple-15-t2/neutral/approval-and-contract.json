@@ -1,0 +1,13 @@
+{
+  "approval": "Parent relayed user/Opus no-conflict authorization; input bindPress import and button preserved",
+  "runtimeCode": "e159a0a1",
+  "testCode": "9a48a795",
+  "windowPatchApplied": true,
+  "oldDraftFile": "window-neutral-exit-v2-NOT-APPLIED.patch retained as historical review artifact; its content now applied after approval",
+  "testContractClarification": "Old assertion combined no transition with never occupying threshold while holding. New policy allows movement into threshold, but prohibits transition until neutral and departure. New tests retain first-arrival outside, add neutral-inside no-transition and departure-without-transition, and still require intended return. Old failed assertion logs retained.",
+  "helperCorrection": "Direct walk-back accepts a contiguous initial threshold segment, forbids re-entry after leaving; otherwise rejects. No teleport or collision relaxation.",
+  "remainingBeforeMerge": [
+    "Ombos/Duat/residence exit regression",
+    "Opus combat/safe-zone/ultimate merge integration checks; latest combat not merged or declared passed"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "runtimeCode": "e159a0a1",
+  "geometryCode": "70d3c834",
+  "touchTestCode": "9a48a795",
+  "keyboardAnd02TestCode": "7dfed219",
+  "touch": {
+    "pass": 75,
+    "fail": 0
+  },
+  "keyboard": {
+    "pass": 53,
+    "fail": 0
+  },
+  "lifecycle": {
+    "pass": 13,
+    "fail": 0
+  },
+  "02Regression": {
+    "pass": 37,
+    "fail": 0
+  },
+  "touchVideo": "libfile_d2ba2a78873c819183839a7c09d45db9",
+  "keyboardVideo": "libfile_a947febf77588191bf354d882448586a",
+  "runtimeScenarios": "Separate isolated lifecycle hooks; actual touch 6 trips, keyboard 4 trips, 02 touch 4 trips. No concurrent server tests.",
+  "priorPuzzle": "21/0 on70d3c834 before window patch; not rerun or relabeled as current pass",
+  "remaining": [
+    "Ombos/Duat/residence exits before merge",
+    "Opus combat integration checks after merging; combat code not fetched/merged here",
+    "11/17 routing decision before T2 south connection"
+  ]
+}
