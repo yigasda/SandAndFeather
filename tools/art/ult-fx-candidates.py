@@ -32,7 +32,7 @@ def main(out):
                 os.makedirs(os.path.join(out, os.path.dirname(name)), exist_ok=True)
                 im.save(os.path.join(out, name), optimize=True)
                 frames.append({**f, 'file': name, 'w': im.width, 'h': im.height, 'ax': round(f['ax'] * k, 2), 'ay': round(f['ay'] * k, 2)})
-            t[who] = {'frames': frames, 'heightsPerPx': v['heightsPerPx'] / k}
+            t[who] = {**v, 'frames': frames, 'heightsPerPx': v['heightsPerPx'] / k}
             print(tag, who, [f'{f["w"]}x{f["h"]}' for f in frames][:2])
         table[tag] = t
     json.dump(table, open(os.path.join(out, 'fx.json'), 'w'), ensure_ascii=False, indent=1)

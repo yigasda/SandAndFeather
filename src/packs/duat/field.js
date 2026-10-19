@@ -611,13 +611,14 @@ function frontLine(o) {
 const LAND_GAP = 0.6;
 function room(o) { const h = shape(o); return (h.frontKind ? h.front || 0 : h.body || 0) * charTiles() + LAND_GAP; }
 // a 기술 around g with reach r: 'torso' / 'body' (a boss's fists) for everyone, 'shield' for Horus only (C안); else null
-function touches(o, g, r, horus = false) {
-    const a = hurtArea(o);
-    if (toTorso(a, g).d < r) return 'torso';
+// ry: an oval on the floor instead (a 궁's ring as drawn: r wide, ry deep), tested with the depth stretched to r
+function touches(o, g, r, horus = false, ry = r) {
+    const k = r / ry, a = hurtArea(o), sa = { ...a, y: g.y + (a.y - g.y) * k, ry: a.ry * k };
+    if (toTorso(sa, g).d < r) return 'torso';
     const f = frontLine(o);
     if (!f || (f.kind === 'shield' && !horus)) return null;
     const px = Math.min(Math.max(g.x, f.x0), f.x1);
-    return Math.hypot(px - g.x, f.y - g.y) < r ? f.kind : null;
+    return Math.hypot(px - g.x, (f.y - g.y) * k) < r ? f.kind : null;
 }
 // a blow's reach in front of her (the box the old check used on its middle: from just behind her feet out to reach,
 // 0.75 to either side) against its shapes: the torso ellipse, what it holds out. No wall between her and where it lands.
@@ -699,6 +700,9 @@ function charge(s, who, amt) {
 }
 function chargeSkill(s, who, n) { if (n > 0) { const u = U(); charge(s, who, Math.min(u.skillCap ?? 35, (u.skillFirst ?? 25) + (u.skillEach ?? 5) * (n - 1))); } }
 let storms = [], wards = {}, ultShows = [];   // 세트's storm going on, 소망's lotus wards (who → { left, until }), the pictures playing
+// where a 궁 hurts: the main part of its picture as drawn (fx.<who>.area, character heights; not the faint glow round it),
+// else the round reach r in tiles
+const ultArea = who => { const a = F().ult?.fx?.[who]?.area, k = U()[who] || {}; return a ? { rx: a.rx * charTiles(), ry: a.ry * charTiles() } : { rx: k.r ?? 3, ry: k.r ?? 3 }; };
 const ultReady = s => { const u = U(); return (gauge(s)[leadOf(s)] || 0) >= (u.max || 100) && me.cdUlt <= now(); };
 export function ult() {
     const s = getState();
@@ -708,11 +712,13 @@ export function ult() {
     gauge(s)[who] = 0; me.cdUlt = now() + (u.cd ?? 12); saveState();   // spent the moment it goes (and kept so)
     me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'ult', who });
     ultShows.push({ who, at: now(), lead: true, x: f.x, y: f.y, pair: who === 'somang' && w && !mate.down ? [who, w] : null });
-    if (who === 'set') storms.push({ who, lead: true, until: now() + (k.time ?? 3), next: now(), r: k.r ?? 2.6, every: k.every ?? 0.5, n: Math.max(1, Math.round(power(s, who) * (k.mult ?? 0.8))), push: k.push ?? 0.3 });
+    const ar = ultArea(who);
+    if (who === 'set') areas.push({ x: f.x, y: f.y, r: ar.rx, ry: ar.ry, who, at: now() });
+    if (who === 'set') storms.push({ who, lead: true, until: now() + (k.time ?? 3), next: now(), r: ar.rx, ry: ar.ry, every: k.every ?? 0.5, n: Math.max(1, Math.round(power(s, who) * (k.mult ?? 0.8))), push: k.push ?? 0.3 });
     else if (who === 'horus') {   // one strong blow round him: each one once
         const n = Math.round(power(s, who) * (k.mult ?? 4));
-        areas.push({ x: f.x, y: f.y, r: k.r ?? 3.2, who, at: now() });
-        for (const o of mobs) if (o.st !== 'dead' && touches(o, f, k.r ?? 3.2, true)) damage(s, o, n, k.push ?? 1, f, 'ult', who);
+        areas.push({ x: f.x, y: f.y, r: ar.rx, ry: ar.ry, who, at: now() });
+        for (const o of mobs) if (o.st !== 'dead' && touches(o, f, ar.rx, true, ar.ry)) damage(s, o, n, k.push ?? 1, f, 'ult', who);
     } else {   // 연꽃 방패: each of the two takes up to `ward` of harm (not no harm at all), until it is used up or ends
         const until = now() + (k.time ?? 6);
         for (const x of [who, w]) if (x && !(x === w && mate.down)) wards[x] = { left: k.ward ?? 8, max: k.ward ?? 8, until };
@@ -733,7 +739,7 @@ function stepUlt(s) {
         st.x = c.x; st.y = c.y;
         while (st.next <= t && st.next <= st.until) {
             st.next += st.every;
-            for (const o of mobs) if (o.st !== 'dead' && touches(o, c, st.r)) damage(s, o, st.n, st.push, c, 'ult', st.who);
+            for (const o of mobs) if (o.st !== 'dead' && touches(o, c, st.r, false, st.ry)) damage(s, o, st.n, st.push, c, 'ult', st.who);
         }
     }
     storms = storms.filter(st => t <= st.until);
@@ -877,6 +883,8 @@ onDraw(scene => {
     }
     for (const o of mobs) scene.extra.push({ x: o.x, y: o.y, draw: (g, sx, sy, z, ts) => drawMob(g, o, sx, sy, z, ts) });
     scene.extra.push({ x: 0, y: -1e6, draw: (g, sx, sy, z, ts) => drawUlt(g, z, ts, -sx, -(sy + 1e6 * ts), true) });
+    const y0 = Math.min(player.y, follower().y) - 0.01;
+    scene.extra.push({ x: 0, y: y0, draw: (g, sx, sy, z, ts) => drawUlt(g, z, ts, -sx, y0 * ts - sy) });
     scene.extra.push({ x: 0, y: 1e6, draw: (g, sx, sy, z, ts) => drawTop(g, z, ts, sx, sy) });
 });
 // is the frame's pixel (fx, fy) opaque — the frame read once, at a quarter of its size (tests whether she is hidden)
@@ -988,7 +996,7 @@ function drawRanges(g, z, ts, cx, cy) {
     for (const a of areas.slice(-4)) {
         const [x, y] = P(a.x, a.y);
         g.strokeStyle = a.who === 'set' ? '#ffd030' : '#ff8a20'; g.fillStyle = a.who === 'set' ? 'rgba(255,208,48,.12)' : 'rgba(255,138,32,.14)';
-        g.beginPath(); g.arc(x, y, a.r * ts, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.beginPath(); g.ellipse(x, y, a.r * ts, (a.ry ?? a.r) * ts, 0, 0, Math.PI * 2); g.fill(); g.stroke();
         g.strokeStyle = '#ff40d0'; g.beginPath(); g.moveTo(x - 6 * z, y - 6 * z); g.lineTo(x + 6 * z, y + 6 * z); g.moveTo(x + 6 * z, y - 6 * z); g.lineTo(x - 6 * z, y + 6 * z); g.stroke();
     }
     g.restore();
@@ -996,13 +1004,14 @@ function drawRanges(g, z, ts, cx, cy) {
 // 궁: its picture played once (the approved frames, their own times, field.ult.fx), then what goes on shows on the
 // floor: the storm a sand ring round 세트 while it lasts, each lotus ward a gold ring under the one it keeps, as thick
 // as what is left of it
-// under: 소망's lotus and the wards on the ground, under the people (they stand inside its ring); the rest over them
+// under: 소망's lotus and the wards on the ground, under everyone (the two stand inside its ring); otherwise 세트's storm and
+// 호루스's shock wave, just behind the two (user 10-19: the 궁 never hides his body or face; what stands further back it covers)
 function drawUlt(g, z, ts, cx, cy, under = false) {
     const s = getState(), t = now(), at = who => (s && who === leadOf(s) ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 });
     if (!under) for (const st of storms) {
         const x = st.x * ts - cx, y = st.y * ts - cy, k = 0.5 + 0.5 * Math.sin(t * 6);
         g.save(); g.setLineDash([10 * z, 7 * z]); g.lineDashOffset = -t * 40 * z; g.lineWidth = 3 * z;
-        g.strokeStyle = `rgba(226,189,124,${0.55 + 0.3 * k})`; g.beginPath(); g.ellipse(x, y, st.r * ts, st.r * ts * 0.5, 0, 0, Math.PI * 2); g.stroke(); g.restore();
+        g.strokeStyle = `rgba(226,189,124,${0.55 + 0.3 * k})`; g.beginPath(); g.ellipse(x, y, st.r * ts, (st.ry ?? st.r * 0.5) * ts, 0, 0, Math.PI * 2); g.stroke(); g.restore();
     }
     if (under) for (const [who, wd] of Object.entries(wards)) {
         const p = at(who), x = p.x * ts - cx, y = p.y * ts - cy;
@@ -1027,7 +1036,6 @@ function drawTop(g, z, ts, ox, oy) {
     // ox, oy: where (0, 1e6) landed; the camera is ox, oy − 1e6·ts
     const cx = -ox, cy = -(oy - 1e6 * ts), t = now();
     if (showRanges) drawRanges(g, z, ts, cx, cy);
-    drawUlt(g, z, ts, cx, cy);
     // sand shots: a small bunch of grains turning about its middle, a few dropping behind, a shadow under it
     for (const b of bolts) {
         const x = b.x * ts - cx, y = (b.y - BOLT_LIFT) * ts - cy, gy = b.y * ts - cy, R = 0.11 * ts, sp = Math.hypot(b.vx, b.vy) || 1;
@@ -1175,8 +1183,14 @@ export function testStrikeBy(who) { const s = getState(), o = mobs[0]; if (!s ||
 // tests only: someone hit by a creature's blow of `atk` (as a creature's blow does)
 export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, atk); }
 // tests only: the 궁 gauges (read, or set some), what is going on with the 궁
-// tests only: one 궁 picture held still `ms` into its playing, round the one in front (the shown sizes compared)
-export function testUltFrame(who, ms) { const f = feet(), w = withOf(getState()); ultShows = ms == null ? [] : [{ who, at: now(), hold: ms, x: f.x, y: f.y, pair: who === 'somang' && w ? [who, w] : null }]; }
+// tests only: one 궁 picture held still `ms` into its playing, round the one in front (the shown sizes compared), and
+// where it hurts (drawn with testRanges)
+export function testUltFrame(who, ms) {
+    const f = feet(), w = withOf(getState());
+    ultShows = ms == null ? [] : [{ who, at: now(), hold: ms, x: f.x, y: f.y, pair: who === 'somang' && w ? [who, w] : null }];
+    areas.length = 0;
+    if (ms != null && who !== 'somang') { const ar = ultArea(who); areas.push({ x: f.x, y: f.y, r: ar.rx, ry: ar.ry, who, at: now() }); }
+}
 export function testUlt(set) { const s = getState(); if (set) { const { cd, ...g } = set; Object.assign(gauge(s), g); if (cd === 0) me.cdUlt = 0; } return { g: { ...gauge(s) }, ready: ultReady(s), cd: +Math.max(0, me.cdUlt - now()).toFixed(2), storms: storms.length, wards: JSON.parse(JSON.stringify(wards)), shield: me.shield > now(), shows: ultShows.length }; }
 // tests only: how deep a point (feet, tiles) is in this map's entrance safe zones, and the zones
 export const testSafe = (x, y) => safeDepth({ x, y });

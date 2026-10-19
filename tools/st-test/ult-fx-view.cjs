@@ -1,6 +1,7 @@
-// 궁 이펙트 해상도 후보를 실제 표시 크기로 나란히(사용자 10-19: 원본 보존, 확정 전). 폰 412×900 dpr 2, T1W, 앞장 혼자 + 몹 하나(크기 비교용).
+// 궁 이펙트 해상도 후보를 실제 표시 크기로 나란히(사용자 10-19: 원본 보존, 확정 전). 폰 412×900 dpr 2, T1W, 앞장·동행 + 몹 하나(크기 비교용).
 // 후보(full 원본 해상도 · half · third — tools/art/ult-fx-candidates.py가 시험 서버에 만든 것)마다 캐릭터별로 가장 활짝 핀 셋째 장면의
 // 한가운데 순간을 멈춰 세우고(testUltFrame) 화면을 찍는다. 줄이지 않은 화면 픽셀 그대로 잘라 붙인다.
+// 세트·호루스는 타격 범위(그림의 주된 부분, 희미한 빛 제외)를 겹친 화면도 남긴다(area-<who>.png).
 //   node tools/st-test/ult-fx-view.cjs [out]   → out/<tag>-<who>.png, out/sheet-<who>.png (왼쪽부터 full · half · third)
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -32,7 +33,7 @@ fs.mkdirSync(OUT, { recursive: true });
             for (const tag of TAGS) {
                 await page.evaluate(async ([who, fx, m]) => {
                     T.data.DATA.duat.field.ult.fx = fx;
-                    const s = T.state.getState(); T.heroes.setLead(s, who); T.heroes.setWith(s, null);
+                    const s = T.state.getState(); T.heroes.setLead(s, who); T.heroes.setWith(s, { set: 'horus', horus: 'set', somang: 'set' }[who]);
                     await T.win.travel('desert_buried_temple', 'west');
                     s.ledger.gday = T.ledger.today(s) + 1; await T.win.travel(m, 'yard');   // the 궁 pictures of this table are asked for on the way in
                 }, [who, table[tag], MAP]);
@@ -45,6 +46,13 @@ fs.mkdirSync(OUT, { recursive: true });
                 }, who);
                 await sleep(1500);
                 await page.screenshot({ path: path.join(OUT, `${tag}-${who}.png`) });
+                // where it hurts over the picture (yellow 세트, orange 호루스: the main part, not the faint glow), full only
+                if (tag === 'full' && who !== 'somang') {
+                    // the widest frame of its main part (tools/art/ult-fx-pack.py area: 세트 5th, 호루스 4th), the one the oval is taken from
+                    await page.evaluate(([who, i]) => { const fr = T.data.DATA.duat.field.ult.fx[who].frames; let at = 0; for (let k = 0; k < i; k++) at += fr[k].ms; T.field.testRanges(true); T.field.testUltFrame(who, at + fr[i].ms / 2); }, [who, { set: 4, horus: 3 }[who]]); await sleep(120);
+                    await page.screenshot({ path: path.join(OUT, `area-${who}.png`) });
+                    await page.evaluate(() => T.field.testRanges(false));
+                }
                 console.log(tag, who, `${Math.round(ms)} ms`);
                 await page.evaluate(() => T.field.testUltFrame(null));
             }

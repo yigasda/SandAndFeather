@@ -5,7 +5,7 @@
 잘린 위치는 기준점(anchor)에 반영해 data/duat.json field.ult.fx.<who>에 적는다:
   frames: [{file, w, h, ax, ay, ms}]  (ax, ay = 잘린 그림 안의 기준점 px, ms = 이 프레임 재생 시간)
   heightsPerPx: 원본 1px이 캐릭터 키 몇 개로 그려지는지(가장 큰 장면의 또렷한 부분 긴 변 = 캐릭터 키 SPAN배, 시제품 값)
-  python3 tools/art/ult-fx-pack.py
+  python3 tools/art/ult-fx-pack.py           (--area: 타격 범위 area만 다시 계산)
 """
 import hashlib, json, os
 import numpy as np
@@ -46,11 +46,43 @@ def main():
         print(who, f['frame'], (x1 - x0, y1 - y0))
     for who, v in fx.items():
         v['heightsPerPx'] = round(SPAN / max(fr.pop('seen') for fr in v['frames']), 7)
+        if who in FLOOR: v['area'] = area(who, v)
     p = os.path.join(ROOT, 'data', 'duat.json')
     d = json.load(open(p))
     d['field'].setdefault('ult', {})['fx'] = fx
     open(p, 'w').write(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
 
 
+# where 세트's storm and 호루스's shock wave hurt (user 10-19): the main part of the picture as drawn — alpha MAIN and up,
+# not the faint glow or after-light round it — as an oval on the floor round the anchor, in character heights:
+#   rx: how far out to either side (98th percentile of its pixels, over the frames: the widest),
+#   ry: how deep — the storm is a flat whirl on the ground (half its whole height round the anchor); the shock wave's
+#       ground ring is what lies below the anchor (above it the wings rise, height not floor)
+MAIN, FLOOR = 160, {'set': 'both', 'horus': 'below'}
+
+
+def area(who, v):
+    rx = ry = 0
+    for f in v['frames']:
+        a = np.asarray(Image.open(os.path.join(ROOT, 'data', f['file'])).convert('RGBA'))[..., 3]
+        ys, xs = np.nonzero(a >= MAIN)
+        if not len(xs): continue
+        dy = ys - f['ay']
+        below = np.percentile(dy[dy > 0], 98) if (dy > 0).any() else 0
+        above = np.percentile(-dy[dy < 0], 98) if (dy < 0).any() else 0
+        rx = max(rx, np.percentile(np.abs(xs - f['ax']), 98))
+        ry = max(ry, (below + above) / 2 if FLOOR[who] == 'both' else below)
+    return {'rx': round(float(rx) * v['heightsPerPx'], 2), 'ry': round(float(ry) * v['heightsPerPx'], 2)}
+
+
+def only_area():
+    p = os.path.join(ROOT, 'data', 'duat.json')
+    d = json.load(open(p))
+    for who, v in d['field']['ult']['fx'].items():
+        if who in FLOOR: v['area'] = area(who, v); print(who, v['area'])
+    open(p, 'w').write(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+
+
 if __name__ == '__main__':
-    main()
+    import sys
+    only_area() if '--area' in sys.argv else main()
