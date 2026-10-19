@@ -6,7 +6,7 @@ data/art/enemies/desert-<kind>[-small].png에 넣고 data/sprites.json enemies.<
   - 그림은 다시 그리지 않고 같은 비율로만 줄인다. 슬롯: 00 대기0 · 01 대기1 · 02 대기2 · 03 특수(guard, 항아리는 dormant) ·
     04·05 준비 · 06·07 공격 · 08 피격 · 09 소멸 → idle-0 … disappear(두아트 field.js 이름).
   python3 tools/art/desert-mob-pack.py [speciesId …]   (기본: PACK)"""
-import hashlib, json, os, sys
+import glob, hashlib, json, os, sys
 import numpy as np
 from PIL import Image
 
@@ -18,9 +18,9 @@ VISIBLE, SMALL, PAD = 256, 125, 2
 # body height in characters' heights (the game draws a character 31.2 px × zoom high). 사용자 10-19 "몹 크기 다 늘리셈,
 # 방패병은 더 커야, 4대 수문장은 ㅈㄴ 커야": 제안 값(화면 비교 docs/consult/desert/mobs/hit-sheet.png로 검수)
 HEIGHT_K = {
-    'desert_sealed_jar': 1.3, 'desert_leather_shield': 1.5, 'desert_sealed_shield': 1.6, 'desert_walking_stela': 1.4,
+    'desert_sealed_jar': 1.05, 'desert_leather_shield': 1.5, 'desert_sealed_shield': 1.6, 'desert_walking_stela': 1.4,
     'desert_sun_mirror': 1.3, 'desert_balance_sentinel': 1.3, 'desert_mask_priest_mantle': 1.45, 'desert_mask_priest_shroud': 1.45,
-    'desert_royal_mask_warden': 2.8, 'desert_temple_warden': 2.8, 'desert_throne_warden': 2.8, 'desert_broken_tomb_warden': 2.8,
+    'desert_royal_mask_warden': 4.2, 'desert_temple_warden': 4.2, 'desert_throne_warden': 4.2, 'desert_broken_tomb_warden': 4.2,
 }
 # the shape a 기술 sees (사용자 10-19: 호루스 C안·세트 A안, 몹별 수치는 직접 정하고 묶어서 검수), measured by eye on the
 # standing picture idle_0 in its own pixels (the pictures face left): the torso's middle x and half width, without
@@ -33,22 +33,24 @@ HIT = {
     'desert_royal_mask_warden': (240, 90, 102), 'desert_temple_warden': (235, 95, 45), 'desert_throne_warden': (285, 115, 71),
     'desert_broken_tomb_warden': (265, 70, 34),
 }
-# a boss's picture is large: its atlas is packed smaller (drawMob scales it), so one atlas stays a sane size
-VIS = {k: (128, 64) for k in HEIGHT_K if 'warden' in k}
 PACK = list(HEIGHT_K)
+# one kind's 10 motions to its own sheets (사용자 10-19): rows within MAX × MAX; what does not fit goes on the kind's next
+# sheet — nothing is made smaller to fit. The source PNGs (몹/사막/…) stay as they are; the game loads a kind's sheets
+# only when that kind is drawn (data.js spriteFile).
+MAX = 4096
 
 
 def main(ids):
     sprites_path = os.path.join(ROOT, 'data', 'sprites.json'); sprites = json.load(open(sprites_path))
     for sid in ids:
+        for old in glob.glob(os.path.join(ROOT, 'data', 'art', 'enemies', sid.replace('_', '-') + '*.png')): os.remove(old)   # its sheets made again
         sp = next(s for s in REG['species'] if s['speciesId'] == sid)
         folder = os.path.join(ROOT, sp['folder'])
         idle = np.maximum.reduce([np.asarray(Image.open(os.path.join(folder, sp['frames'][k]['file'])).getchannel('A')) for k in ('idle_0', 'idle_1', 'idle_2')]) >= 128
         ys = np.nonzero(idle.any(1))[0]; body_h = ys.max() + 1 - ys.min()
         foot = [sp['measured']['footMiddleCandidate'], sp['measured']['footLineCandidate']]
         out = {}
-        big, small = VIS.get(sid, (VISIBLE, SMALL))
-        for vis, suffix in ((big, ''), (small, '-small')):
+        for vis, suffix in ((VISIBLE, ''), (SMALL, '-small')):
             k = HEIGHT_K[sid] * vis / body_h
             pieces = []
             for slot, f in sp['frames'].items():
@@ -63,15 +65,24 @@ def main(ids):
                 bb = im.getbbox(); bx0, by0 = max(0, bb[0] - PAD), max(0, bb[1] - PAD)
                 piece = im.crop((bx0, by0, min(im.width, bb[2] + PAD), min(im.height, bb[3] + PAD)))
                 pieces.append((MOTION[slot], piece, [round(foot[0] * k - bx0, 2), round(foot[1] * k - by0, 2)]))
-            W = sum(p.width + PAD for _, p, _ in pieces); H = max(p.height for _, p, _ in pieces)
-            atlas = Image.new('RGBA', (W, H), (0, 0, 0, 0)); x = 0; frames = {}
+            # shelves: left to right, a new row when the width runs out, a new sheet when the height does
+            sheets, frames, x = [[]], {}, 0
+            y = row_h = 0
             for mo, piece, pv in pieces:
-                atlas.paste(piece, (x, 0)); frames[mo] = [x, 0, piece.width, piece.height, *pv]; x += piece.width + PAD
-            file = f'art/enemies/{sid.replace("_", "-")}{suffix}.png'
-            os.makedirs(os.path.join(ROOT, 'data', 'art', 'enemies'), exist_ok=True)
-            atlas.save(os.path.join(ROOT, 'data', file), optimize=True)
-            out[suffix] = {'file': file, 'visible': vis, 'frames': frames}
-            print(sid, file, atlas.size)
+                assert piece.width <= MAX and piece.height <= MAX, (sid, mo, piece.size)
+                if x + piece.width > MAX: x, y, row_h = 0, y + row_h + PAD, 0
+                if y + piece.height > MAX: sheets.append([]); x = y = row_h = 0
+                sheets[-1].append((mo, piece, pv, x, y)); x += piece.width + PAD; row_h = max(row_h, piece.height)
+            files = []
+            for n, sheet in enumerate(sheets):
+                W = max(px + p.width for _, p, _, px, _ in sheet); H = max(py + p.height for _, p, _, _, py in sheet)
+                atlas = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+                for mo, piece, pv, px, py in sheet:
+                    atlas.paste(piece, (px, py)); frames[mo] = [px, py, piece.width, piece.height, *pv, n]
+                file = f'art/enemies/{sid.replace("_", "-")}{suffix}{"" if len(sheets) == 1 else f"-{n}"}.png'
+                atlas.save(os.path.join(ROOT, 'data', file), optimize=True); files.append(file)
+                print(sid, file, atlas.size)
+            out[suffix] = {'file': files[0], 'sheets': files, 'visible': vis, 'frames': frames}
         # the shape in characters' heights: picture px × HEIGHT_K / the standing body's height
         cx, hw, front = HIT[sid]; per = HEIGHT_K[sid] / body_h
         hit = {'body': round(hw * per, 3), 'back': round((cx - foot[0]) * per, 3)}

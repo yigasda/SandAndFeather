@@ -111,9 +111,9 @@ const log = msg => { console.log(msg); res.push(msg); };
             ok(r.blows.length === 1 && !r.inWall, `두아트 duat_04 고대장치 ${dx}칸 앞: ${(r.x1 - r.x0).toFixed(2)}칸 도약, 착지-중심 ${r.gap?.toFixed(2)}, 명중 ${r.blows.map(b => `${b.by} ${b.dmg}`).join(',') || '없음'}`);
         }
         // the guard break, Horus then Set: a still creature that always guards; a full blow → it closes up → the 기술
-        for (const lead of ['horus', 'set']) {
+        for (const lead of ['horus', 'set', 'somang']) {
             await scene(lead);
-            await put(KIND, 1.1, 0, { guard: 1, speed: 0, range: 0 }); await sleep(300);
+            await put(KIND, lead === 'somang' ? 0.9 : 1.1, 0, { guard: 1, speed: 0, range: 0 }); await sleep(300);   // inside her blow's reach (somang 1.1)
             const t0 = await page.evaluate(() => T.field.testNow()); await page.evaluate(() => T.field.testEvents(true));
             await page.evaluate(() => T.field.attack());
             await page.waitForFunction(() => T.field.fieldState().mobs[0]?.st === 'guard', null, { timeout: 2000 }).catch(() => {});
@@ -133,7 +133,7 @@ const log = msg => { console.log(msg); res.push(msg); };
             const tl = ev.map(e => `${(e.t - t0).toFixed(2)} ${e.ev}${e.by ? `[${e.by}] ${e.before}→${e.after} 피해 ${e.dmg}` : e.what ? ` ${e.what}${e.why ? ` (${e.why})` : ''}` : ''}`).join(' · ');
             const guard = ev.find(e => e.ev === 'guard'), brk = ev.find(e => e.ev === 'break'), sb = ev.find(e => e.ev === 'blow' && e.by === 'skill');
             ok(g0 === 'guard' && guard && brk && sb && sb.before === 'guard' && sb.after === 'hit' && st && st.held > 0.5 && sb.t < guard.until,
-                `${lead === 'horus' ? '호루스' : '세트'} 가드 깨기: 가드 중(${g0}) 기술 명중 → break → 가드 풀림·경직(${st ? `st ${st.st} ${st.held}초 이상 유지` : '경직 못 봄'}), 피해 ${sb?.dmg} · ${tl}`);
+                `${{ horus: '호루스', set: '세트', somang: '소망' }[lead]} 가드 깨기: 가드 중(${g0}) 기술 명중 → break → 가드 풀림·경직(${st ? `st ${st.st} ${st.held}초 이상 유지` : '경직 못 봄'}), 피해 ${sb?.dmg} · ${tl}`);
         }
         // the guarded ordinary blow: max(1, round(n × guardTake)) against what the game did
         for (const lead of ['set', 'horus']) {

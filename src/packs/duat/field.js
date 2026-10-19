@@ -648,20 +648,24 @@ function drawMob(g, o, sx, sy, z, ts) {
     if (!d) return;
     // as large against the people as the map draws them (map.d.actorScale: the desert maps draw people larger)
     const H = 31.2 * z * (map()?.d?.actorScale || 1);
-    const a = (H <= d.small.visible + 1 && spriteFile(d.small.file)) ? d.small : spriteFile(d.file) ? d : spriteFile(d.small.file) ? d.small : null;
     const gx = sx + 8 * z, gy = sy + 16 * z, t = now(), T = timing(o);
     // the shadow on the floor: smaller and lighter while it is high
     const bob = Math.sin((t / BOB_S) * Math.PI * 2 + o.phase), warn1 = o.st === 'prepare' && o.t >= T.prepare[0];
     const fl = o.e.float === false ? 0 : 1;   // a creature on its feet (data float: false): no lift, no bob, the shadow still
     const up = fl * (o.st === 'prepare' ? 0.1 * Math.min(1, o.t / T.prepare[0]) : 0);
     g.fillStyle = `rgba(20,12,6,${o.st === 'dead' ? 0.12 : 0.24 - 0.05 * bob})`;
-    g.beginPath(); g.ellipse(gx, gy - 0.5 * z, 0.45 * ts * (1 - 0.15 * bob * fl), 0.13 * ts, 0, 0, Math.PI * 2); g.fill();
-    if (!a) return;
+    const wide = Math.max(1, (d.height || 1) / 1.3);   // a big one's shadow as big as it is
+    g.beginPath(); g.ellipse(gx, gy - 0.5 * z, 0.45 * ts * wide * (1 - 0.15 * bob * fl), 0.13 * ts * wide, 0, 0, Math.PI * 2); g.fill();
     const motion = o.st === 'dead' ? 'disappear' : o.st === 'hit' ? 'hit' : o.st === 'guard' ? 'guard'
         : o.st === 'prepare' ? (warn1 ? 'prepare-1' : 'prepare-0')
         : o.st === 'attack' ? 'attack-0' : o.st === 'recover' ? 'attack-1'
         : IDLE_LOOP[Math.floor((t + o.phase) / T.idle) % IDLE_LOOP.length];
-    const r = a.frames[motion] || a.frames['idle-0'], k = H / a.visible;   // the atlas has a character's height in `visible` px
+    // a kind's pictures are on its own sheets (one or more, tools/art/desert-mob-pack.py: frame [x, y, w, h, px, py, sheet]);
+    // only the sheet this frame is on is asked for, the small set when it is drawn small, the other while that one loads
+    const pick = v => { const r = v.frames[motion] || v.frames['idle-0'], img = spriteFile((v.sheets || [v.file])[r[6] || 0]); return img && { a: v, r, img }; };
+    const got = (H <= d.small.visible + 1 && pick(d.small)) || pick(d) || pick(d.small);
+    if (!got) return;
+    const { a, r, img } = got, k = H / a.visible;   // the atlas has a character's height in `visible` px
     // floating: lifted off the floor and bobbing, except while it warns, strikes, is hit, guards or breaks
     const still = !['wander', 'chase'].includes(o.st);
     const die = o.st === 'dead' ? Math.max(0, o.t - T.die[0]) / T.die[1] : 0;   // the broken picture holds, then sinks away
@@ -672,7 +676,7 @@ function drawMob(g, o, sx, sy, z, ts) {
     g.translate(gx + shake, baseY);
     if (o.faceR) g.scale(-1, 1);   // the pictures face left: mirrored to face someone on its right (user: it looked away)
     g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
-    g.drawImage(DATA.spriteArt[a.file], r[0], r[1], r[2], r[3], -r[4] * k, -r[5] * k, r[2] * k, r[3] * k);
+    g.drawImage(img, r[0], r[1], r[2], r[3], -r[4] * k, -r[5] * k, r[2] * k, r[3] * k);
     g.restore();
     // its 체력 as a straight bar over it: hidden while it drifts on its own, shown once it has met them and for a
     // while after a hit (a dot-art bar comes later, user)

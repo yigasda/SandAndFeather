@@ -1,6 +1,6 @@
 // 사막 몹 12종 몸 범위 검수(사용자 10-19: 호루스 C안·세트 A안, 몹별 수치는 직접 정하고 묶어서 검수). T1W에서 종마다:
 //   호루스 — 몸 범위 밖(앞 몸체 또는 몸통 앞) 안전한 곳에 착지하고 기술이 맞는다
-//   세트   — 몸통 기준: 기술이 닿는 최대 거리(발 가운데에서)와 모양이 없을 때(2칸)의 차이
+//   세트·소망 — 몸통 기준: 기술이 닿는 최대 거리(발 가운데에서, 세트 2·소망 엄호 1.5)와 모양이 없을 때와의 차이
 // 화면 표시(field.js testRanges): 초록 몸통, 파랑 앞 몸체(방패·주먹, 호루스 기술만 인정), 분홍 × 착지, 주황·노랑 기술 범위.
 // 몹 능력치는 시험 값(가죽 방패병 데이터에 체력만 크게, 움직이지 않음, 밀려나지 않음). 영상·캡처·결과를 out에 남긴다.
 //   node tools/st-test/desert-mob-hits.cjs [out]
@@ -59,18 +59,21 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             await page.screenshot({ path: path.join(OUT, `${String(i).padStart(2, '0')}-${kind}-horus.png`) });
             const edge = h.mob.cx - ahead, clear = edge - h.feet;   // from his feet to the front of its body / what it holds out
             ok(h.blows === 1 && clear >= 0.55, `${kind} 호루스: ${h.moved.toFixed(2)}칸 도약, 앞 몸체까지 ${clear.toFixed(2)}칸 띄우고 착지, ${h.blows ? '명중' : '빗나감'}${sh.frontHit ? ' (앞 몸체 인정)' : ''}`);
-            // Set: torso only — how far from its feet's middle his 기술 still touches it
-            await scene('set'); await put(kind, 2.0); await sleep(200);
-            const reach = await page.evaluate(([kind]) => {
-                const p = T.player.player, f = { x: p.x + 0.5, y: p.y + 0.8 }, base = T.data.DATA.desert.enemies.desert_leather_shield; let last = 0;
-                for (let d = 0.5; d <= 9; d += 0.02) { T.field.testOnly(kind, f.x + d - 0.5, p.y, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true }); if (T.field.testTouch(f.x, f.y, 2)[0]) last = d; }
-                return +last.toFixed(2);
-            }, [kind]);
-            await put(kind, Math.min(reach - 0.05, 2.0 + (sh.body - sh.back) * sh.t - 0.05)); await sleep(150);
-            await page.evaluate(() => { T.field.testFace('right'); T.field.skill(); }); await sleep(500);
-            await page.screenshot({ path: path.join(OUT, `${String(i).padStart(2, '0')}-${kind}-set.png`) });
-            const torso = +((sh.body - sh.back) * sh.t).toFixed(2);   // how much nearer its torso's near edge is than its feet's middle
-            ok(Math.abs(reach - (2 + torso)) < 0.06, `${kind} 세트(몸통만): 닿는 거리 ${reach}칸 = 2 + 몸통 끝(${torso >= 0 ? '+' : ''}${torso}칸, 앞 몸체 무시)`);
+            // Set (reach 2) and Somang (엄호, reach 1.5): torso only — how far from its feet's middle the 기술 still touches it
+            for (const [who, R] of [['set', 2], ['somang', 1.5]]) {
+                await scene(who); await put(kind, R); await sleep(200);
+                const reach = await page.evaluate(([kind, R]) => {
+                    const p = T.player.player, f = { x: p.x + 0.5, y: p.y + 0.8 }, base = T.data.DATA.desert.enemies.desert_leather_shield; let last = 0;
+                    for (let d = 0.3; d <= 9; d += 0.02) { T.field.testOnly(kind, f.x + d - 0.5, p.y, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true }); if (T.field.testTouch(f.x, f.y, R)[0]) last = d; }
+                    return +last.toFixed(2);
+                }, [kind, R]);
+                await put(kind, Math.max(0.6, reach - 0.05)); await sleep(150);
+                await page.evaluate(() => { T.field.testFace('right'); T.field.skill(); }); await sleep(500);
+                const blows = await page.evaluate(() => T.field.testEvents(true).filter(e => e.ev === 'blow').length);
+                await page.screenshot({ path: path.join(OUT, `${String(i).padStart(2, '0')}-${kind}-${who}.png`) });
+                const torso = +((sh.body - sh.back) * sh.t).toFixed(2);   // how much nearer its torso's near edge is than its feet's middle
+                ok(Math.abs(reach - (R + torso)) < 0.06 && blows === 1, `${kind} ${who === 'set' ? '세트' : '소망'}(몸통만): 닿는 거리 ${reach}칸 = ${R} + 몸통 끝(${torso >= 0 ? '+' : ''}${torso}칸), 그 끝에서 기술 ${blows ? '명중' : '빗나감'}`);
+            }
         }
         ok(!errors.length, `페이지 오류 없음 ${errors.join('; ')}`);
     } finally {
