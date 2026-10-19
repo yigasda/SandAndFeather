@@ -1,0 +1,41 @@
+통과 buried_temple → colonnade: 연속 왕복의 출발 맵
+  positions {"leg":0,"arrival":{"map":"desert_colonnade","x":29.188542772383016,"y":22.834127067925618,"inExit":false,"mateInExit":false,"mate":{"x":28.094035033538614,"y":23.429424790923004},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":29.308458584844622,"y":22.581414905784744,"inExit":false,"mateInExit":false,"mate":{"x":28.34422414436839,"y":23.304330235508115},"floor":true,"mateFloor":true}}
+  buried_temple → colonnade: 출구 앞 buried_temple (60.8, 25.5) → 도착 colonnade (29.2, 22.8)
+통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
+통과 buried_temple → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 buried_temple → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
+통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
+통과 colonnade → buried_temple: 연속 왕복의 출발 맵
+  positions {"leg":1,"arrival":{"map":"desert_buried_temple","x":60.66928340712384,"y":25.718559318600658,"inExit":false,"mateInExit":false,"mate":{"x":59.473367957404,"y":26.220527559759542},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.66084758215126,"y":25.914181411161454,"inExit":false,"mateInExit":false,"mate":{"x":59.648500287351006,"y":26.13296139478604},"floor":true,"mateFloor":true}}
+  colonnade → buried_temple: 출구 앞 colonnade (29.3, 22.7) → 도착 buried_temple (60.7, 25.7)
+통과 colonnade → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 colonnade → buried_temple: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (buried_temple)
+통과 colonnade → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → buried_temple: 최초 도착 동행 간격 유지
+통과 colonnade → buried_temple: 첫 도착 프레임 정확한 착지
+통과 buried_temple → colonnade: 연속 왕복의 출발 맵
+  positions {"leg":2,"arrival":{"map":"desert_colonnade","x":29.186482603655264,"y":22.832732360953433,"inExit":false,"mateInExit":false,"mate":{"x":28.094410669649015,"y":23.429236972867802},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":31.185987162095444,"y":18.206792834487864,"inExit":false,"mateInExit":false,"mate":{"x":30.686069051716306,"y":19.363374817278082},"floor":true,"mateFloor":true}}
+  buried_temple → colonnade: 출구 앞 buried_temple (60.7, 26.0) → 도착 colonnade (29.2, 22.8)
+통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
+통과 buried_temple → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 buried_temple → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 buried_temple → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
+통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
+통과 colonnade → buried_temple: 연속 왕복의 출발 맵
+  positions {"leg":3,"arrival":{"map":"desert_buried_temple","x":60.67205988972439,"y":25.718639760081725,"inExit":false,"mateInExit":false,"mate":{"x":59.47336798680476,"y":26.220527545059163},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.56612853966837,"y":32.871462042442246,"inExit":false,"mateInExit":false,"mate":{"x":60.58745220919857,"y":31.43161993265459},"floor":true,"mateFloor":true}}
+  colonnade → buried_temple: 출구 앞 colonnade (29.2, 22.8) → 도착 buried_temple (60.7, 25.7)
+통과 colonnade → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 colonnade → buried_temple: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (buried_temple)
+통과 colonnade → buried_temple: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → buried_temple: 최초 도착 동행 간격 유지
+통과 colonnade → buried_temple: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: buried_temple (60.7, 25.8) 그대로, 트리거 밖
+통과 페이지 오류 없음 

@@ -1,0 +1,65 @@
+통과 buried_temple → colonnade: 연속 왕복의 출발 맵
+통과 buried_temple → colonnade: 문 폭 왼쪽/위 보행 가능한 접근
+통과 buried_temple → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":0,"arrival":{"map":"desert_colonnade","x":29.167563856091746,"y":22.687304573911,"inExit":false,"mateInExit":false,"mate":{"x":28.21950522014307,"y":23.366689697620775},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":29.17647386602965,"y":22.477493763206613,"inExit":false,"mateInExit":false,"mate":{"x":28.407334854792186,"y":23.272774880296218},"floor":true,"mateFloor":true}}
+  buried_temple → colonnade: 출구 앞 buried_temple (61.8, 23.7) → 도착 colonnade (29.2, 22.7)
+통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
+통과 buried_temple → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 buried_temple → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
+통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
+통과 buried_temple → colonnade: 실제 문턱 통과가 지정 폭 lane 0 안 (62.34 / 62.35)
+통과 colonnade → buried_temple: 연속 왕복의 출발 맵
+통과 colonnade → buried_temple: 문 폭 왼쪽/위 보행 가능한 접근
+통과 colonnade → buried_temple: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":1,"arrival":{"map":"desert_buried_temple","x":60.66171637717699,"y":25.71734694303362,"inExit":false,"mateInExit":false,"mate":{"x":59.47284207390537,"y":26.22079050150886},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.64984769840723,"y":25.814823029754734,"inExit":false,"mateInExit":false,"mate":{"x":59.56067123998681,"y":26.176875918468138},"floor":true,"mateFloor":true}}
+  colonnade → buried_temple: 출구 앞 colonnade (24.8, 24.0) → 도착 buried_temple (60.7, 25.7)
+통과 colonnade → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 colonnade → buried_temple: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (buried_temple)
+통과 colonnade → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → buried_temple: 최초 도착 동행 간격 유지
+통과 colonnade → buried_temple: 첫 도착 프레임 정확한 착지
+통과 colonnade → buried_temple: 실제 문턱 통과가 지정 폭 lane 0 안 (25.19 / 25.19)
+통과 buried_temple → colonnade: 연속 왕복의 출발 맵
+통과 buried_temple → colonnade: 문 폭 중앙 보행 가능한 접근
+통과 buried_temple → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":2,"arrival":{"map":"desert_colonnade","x":29.159615438735813,"y":22.826981978745376,"inExit":false,"mateInExit":false,"mate":{"x":28.094410706625396,"y":23.42923695437961},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":29.229661988194533,"y":17.71816232360386,"inExit":false,"mateInExit":false,"mate":{"x":29.21238786939247,"y":18.978043907253536},"floor":true,"mateFloor":true}}
+  buried_temple → colonnade: 출구 앞 buried_temple (62.7, 23.8) → 도착 colonnade (29.2, 22.8)
+통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
+통과 buried_temple → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 buried_temple → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 buried_temple → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
+통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
+통과 buried_temple → colonnade: 실제 문턱 통과가 지정 폭 lane 1 안 (63.27 / 63.27)
+통과 colonnade → buried_temple: 연속 왕복의 출발 맵
+통과 colonnade → buried_temple: 문 폭 중앙 보행 가능한 접근
+통과 colonnade → buried_temple: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":3,"arrival":{"map":"desert_buried_temple","x":60.65533704026524,"y":26.109921150096014,"inExit":false,"mateInExit":false,"mate":{"x":59.823632846834634,"y":26.045395115044226},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.386217866292434,"y":33.356729835622076,"inExit":false,"mateInExit":false,"mate":{"x":60.43965720504467,"y":31.917721761609382},"floor":true,"mateFloor":true}}
+  colonnade → buried_temple: 출구 앞 colonnade (29.2, 23.2) → 도착 buried_temple (60.7, 26.1)
+통과 colonnade → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+통과 colonnade → buried_temple: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (buried_temple)
+통과 colonnade → buried_temple: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → buried_temple: 최초 도착 동행 간격 유지
+통과 colonnade → buried_temple: 첫 도착 프레임 정확한 착지
+통과 colonnade → buried_temple: 실제 문턱 통과가 지정 폭 lane 1 안 (29.67 / 29.67)
+통과 buried_temple → colonnade: 연속 왕복의 출발 맵
+통과 buried_temple → colonnade: 문 폭 오른쪽/아래 보행 가능한 접근
+통과 buried_temple → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":4,"arrival":{"map":"desert_colonnade","x":29.154966427173637,"y":22.82707237967366,"inExit":false,"mateInExit":false,"mate":{"x":28.0944107086707,"y":23.42923695335696},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":28.89002426942802,"y":17.794461503652258,"inExit":false,"mateInExit":false,"mate":{"x":28.956265328952718,"y":19.05271907745543},"floor":true,"mateFloor":true}}
+  buried_temple → colonnade: 출구 앞 buried_temple (63.8, 23.7) → 도착 colonnade (29.2, 22.8)
+통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
+통과 buried_temple → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 buried_temple → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 buried_temple → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
+통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
+통과 buried_temple → colonnade: 실제 문턱 통과가 지정 폭 lane 2 안 (64.19 / 64.19)
+통과 colonnade → buried_temple: 연속 왕복의 출발 맵
+실패 colonnade → buried_temple: 문 폭 오른쪽/아래 보행 가능한 접근

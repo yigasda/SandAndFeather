@@ -1,0 +1,11 @@
+{
+  "src/packs/duat/field.js": true,
+  "src/ui/window.js": true,
+  "src/world/input.js": true,
+  "src/ui/hud.js": true,
+  "data/desert.json": true,
+  "data/maps/desert_city_gate.json": true,
+  "desert_buried_temple/temple": true,
+  "desert_colonnade/east": true,
+  "desert_forecourt_west/yard": true
+}
