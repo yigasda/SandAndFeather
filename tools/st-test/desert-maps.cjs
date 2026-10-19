@@ -11,7 +11,7 @@ fs.mkdirSync(OUT, { recursive: true });
     const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : {});
     const page = await browser.newPage({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
     const errors = [], log = [];
-    page.on('pageerror', e => { if (!/Internal Server Error|"Internal S"/.test(e.message)) errors.push(e.message); });
+    page.on('pageerror', e => errors.push(e.message));
     try {
         await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
         await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 });

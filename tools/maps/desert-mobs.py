@@ -24,10 +24,10 @@ SHEET = ROOT / 'docs/consult/desert/mobs'
 SLOTS = ['idle_0', 'idle_1', 'idle_2', 'special', 'prepare_0', 'prepare_1', 'attack_0', 'attack_1', 'hit', 'defeat']
 # folder, species id (meaning based, proposed), name, role, zones the plan lists it in (role zones; T1 = T1W·T1E, P3 = P3A·P3B)
 SPECIES = [
-    ('01_봉인항아리', 'desert_sealed_jar', '봉인 항아리', 'normal', ['T1', 'T2']),
+    ('01_봉인항아리', 'desert_sealed_jar', '봉인 항아리', 'normal', ['T1', 'T2', '17']),
     ('02_가죽방패병', 'desert_leather_shield', '가죽 방패병', 'normal', ['T1', 'P1']),
     ('03_봉인방패병', 'desert_sealed_shield', '봉인 방패병', 'normal', ['P1', 'P2']),
-    ('04_걸음비석', 'desert_walking_stela', '걸음 비석', 'normal', ['P1', 'P4']),
+    ('04_걸음비석', 'desert_walking_stela', '걸음 비석', 'normal', ['P1', 'P4', '10']),
     ('05_태양거울', 'desert_sun_mirror', '태양거울', 'normal', ['T2']),
     ('06_천칭파수꾼', 'desert_balance_sentinel', '천칭 파수꾼', 'normal', ['T3']),
     ('07_빈가면사제_장막형', 'desert_mask_priest_mantle', '빈 가면 사제 장막형', 'normal', ['T2']),
@@ -41,7 +41,11 @@ SPECIES = [
 # turned to the attack direction, cut at the first wall; length, hit and display scale are set in the game
 EFFECTS = {'desert_sun_mirror': [('beam', 'docs/art/desert-sun-mirror-motion-revisions-2026-10-16', 'beam')]}
 ZONES = {'T1': 'T1W·T1E 제례 앞뜰', 'T2': 'T2 무너진 봉헌품 회랑', 'T3': 'T3 신전 수호문 전당', 'P1': 'P1 고대 장례 미궁',
-         'P2': 'P2 왕면 열병 전실', 'P3': 'P3A·P3B 부왕 장례전', 'P4': 'P4 무너진 왕릉 하부실'}
+         'P2': 'P2 왕면 열병 전실', 'P3': 'P3A·P3B 부왕 장례전', 'P4': 'P4 무너진 왕릉 하부실',
+         # added by the user outside the seven combat zones (2026-10-19: "지하도시 광장에 항아리몹", "모래바람분지에 비석몹")
+         '17': '17 지하 도시 광장(사용자 추가)', '10': '10 모래바람 분지(사용자 추가)'}
+# zones whose extra species is still open (user: "고대 장례 미궁에 몹추가(미정)")
+OPEN = {'P1': 'P1 고대 장례 미궁: 몹 추가(종 미정, 사용자 2026-10-19)'}
 
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -122,6 +126,8 @@ def main():
         L.append(f"| {s['folder'].split('/')[-1]} | `{s['speciesId']}` | {s['name']} | {'보스' if s['role'] == 'boss' else '일반'} | "
                  f"{', '.join(ZONES[z] for z in s['zones'])} | {s['canvas'][0]}×{s['canvas'][1]} | {s['special']} | {s['attackFamily']} | "
                  f"y {s['measured']['footLineCandidate']}, x {s['measured']['footMiddleCandidate']} |")
+    L += ['', '사용자 추가 배치(2026-10-19): 봉인 항아리 → 17 지하 도시 광장, 걸음 비석 → 10 모래바람 분지. 7구역 밖이며 개체 수·좌표는 화면으로 확인받는다. '
+          '미정: ' + '; '.join(OPEN.values()) + '.']
     L += ['', '## 별도 효과 그림 (10장에 들지 않음, 120장에 세지 않음)', '']
     for s in out:
         for ename, e in s['effects'].items():

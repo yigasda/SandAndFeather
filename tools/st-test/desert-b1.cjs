@@ -21,7 +21,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
     const errors = [];
-    page.on('pageerror', e => { if (!/Internal Server Error|"Internal S"/.test(e.message)) errors.push(e.message); });
+    page.on('pageerror', e => errors.push(e.message));
 
     const boot = async charId => {
         await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 });

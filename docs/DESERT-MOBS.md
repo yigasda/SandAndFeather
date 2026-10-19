@@ -16,10 +16,10 @@
 
 | 폴더 | 종 ID(제안) | 이름 | 역할 | 후보 구역 | 캔버스 | 특수 칸 | 공격 이름(파일) | 발 기준선 후보(대기 세 장 맨 아래 행, 가운데 x) |
 |---|---|---|---|---|---|---|---|---|
-| 01_봉인항아리 | `desert_sealed_jar` | 봉인 항아리 | 일반 | T1W·T1E 제례 앞뜰, T2 무너진 봉헌품 회랑 | 476×538 | dormant | attack | y 453, x 222 |
+| 01_봉인항아리 | `desert_sealed_jar` | 봉인 항아리 | 일반 | T1W·T1E 제례 앞뜰, T2 무너진 봉헌품 회랑, 17 지하 도시 광장(사용자 추가) | 476×538 | dormant | attack | y 453, x 222 |
 | 02_가죽방패병 | `desert_leather_shield` | 가죽 방패병 | 일반 | T1W·T1E 제례 앞뜰, P1 고대 장례 미궁 | 558×477 | guard | charge | y 451, x 333 |
 | 03_봉인방패병 | `desert_sealed_shield` | 봉인 방패병 | 일반 | P1 고대 장례 미궁, P2 왕면 열병 전실 | 476×468 | guard | charge | y 426, x 356 |
-| 04_걸음비석 | `desert_walking_stela` | 걸음 비석 | 일반 | P1 고대 장례 미궁, P4 무너진 왕릉 하부실 | 459×435 | guard | slam | y 413, x 266 |
+| 04_걸음비석 | `desert_walking_stela` | 걸음 비석 | 일반 | P1 고대 장례 미궁, P4 무너진 왕릉 하부실, 10 모래바람 분지(사용자 추가) | 459×435 | guard | slam | y 413, x 266 |
 | 05_태양거울 | `desert_sun_mirror` | 태양거울 | 일반 | T2 무너진 봉헌품 회랑 | 440×494 | guard | light_attack | y 470, x 218 |
 | 06_천칭파수꾼 | `desert_balance_sentinel` | 천칭 파수꾼 | 일반 | T3 신전 수호문 전당 | 507×520 | guard | slam | y 409, x 342 |
 | 07_빈가면사제_장막형 | `desert_mask_priest_mantle` | 빈 가면 사제 장막형 | 일반 | T2 무너진 봉헌품 회랑 | 517×470 | guard | seal_cast | y 413, x 251 |
@@ -28,6 +28,8 @@
 | 10_신전수문장 | `desert_temple_warden` | 신전 수문장 | 보스 | T3 신전 수호문 전당 | 489×493 | guard | crush | y 449, x 308 |
 | 11_왕좌수문장 | `desert_throne_warden` | 왕좌 수문장 | 보스 | P3A·P3B 부왕 장례전 | 573×530 | guard | earth_press | y 451, x 324 |
 | 12_파릉수문장 | `desert_broken_tomb_warden` | 파릉 수문장 | 보스 | P4 무너진 왕릉 하부실 | 494×486 | guard | grasp | y 385, x 231 |
+
+사용자 추가 배치(2026-10-19): 봉인 항아리 → 17 지하 도시 광장, 걸음 비석 → 10 모래바람 분지. 7구역 밖이며 개체 수·좌표는 화면으로 확인받는다. 미정: P1 고대 장례 미궁: 몹 추가(종 미정, 사용자 2026-10-19).
 
 ## 별도 효과 그림 (10장에 들지 않음, 120장에 세지 않음)
 
