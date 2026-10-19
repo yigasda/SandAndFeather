@@ -50,6 +50,8 @@ const MATE = { horus: 'set', set: 'somang', somang: 'horus' };
     st = await E(F => F.fieldState());
     console.log(lead, JSON.stringify({ me: st.me, mate: st.mate, hp: st.run?.hp, fear: st.run?.fear, spells: st.run?.spells, mobs: st.mobs.map(m => `${m.kind}:${m.st}:${m.hp}`) }));
     await p.screenshot({ path: `${OUT}/${lead}-after.png` });
+    // struck down: wait until she has been carried up to Ombos (carried() travels), so the next lead starts clean
+    if (st.me.down) await sleep(3000);
   }
   // leaving the Duat ends the run
   await E((F, P, S, W) => W.travel('ombos')); await sleep(1500);
