@@ -58,6 +58,25 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         const p = T.player.player, m = T.win.currentMap(), q = T.player.follower();
         return { map: m.id, x: p.x, y: p.y, inExit: !!m.exitAt(p.x + 0.5, p.y + 0.8), mateInExit: !!m.exitAt(q.x + 0.5, q.y + 0.8), mate: {x:q.x,y:q.y}, floor: !m.solidRect(p.x+.22,p.y+.62,p.x+.78,p.y+.96), mateFloor: !m.solidRect(q.x+.22,q.y+.62,q.x+.78,q.y+.96) };
     });
+    async function walkBackToLanding(entry) {
+        const clear=await page.evaluate(e=>{
+            const p=T.player.player,m=T.win.currentMap(),n=Math.ceil(Math.hypot(p.x-e.x,p.y-e.y)/.04);
+            for(let k=0;k<=n;k++){const t=n?k/n:0,x=p.x+(e.x-p.x)*t,y=p.y+(e.y-p.y)*t;
+                if(m.solidRect(x+.22,y+.62,x+.78,y+.96)||m.exits.some(ex=>T.map.containsExit(ex,x+.5,y+.8)))return false;}
+            return true;
+        },entry);
+        if(!clear)return W.walkToPoint(entry.x,entry.y,30000,.4);
+        // Do not round a collision-safe start onto a blocked grid point beside a doorway post.
+        const pad=await W.padBox();await W.touch('touchStart',pad.x,pad.y);
+        let arrived=false;
+        for(let k=0;k<160;k++){
+            const me=await where(),dx=entry.x-me.x,dy=entry.y-me.y,d=Math.hypot(dx,dy);
+            if(d<.18){arrived=true;break;}
+            const speed=Math.max(.15,Math.min(1,d/.6));
+            await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(50);
+        }
+        await W.touch('touchEnd');await sleep(150);return arrived;
+    }
     try {
         await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
         await boot();
@@ -183,7 +202,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             // Held input may carry the party away from its landing, even to the doorway wall.
             // Walk back (never teleport) before the separate landing-neighbourhood checks.
             if(CONNECTIONS && leg >= PAIRS.length && held.map===to) {
-                ok(await W.walkToPoint(entry.x,entry.y,30000,.4),`${name}: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴`);
+                ok(await walkBackToLanding(entry),`${name}: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴`);
             }
             // short steps every way
             const back = [];
