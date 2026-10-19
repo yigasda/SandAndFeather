@@ -1807,3 +1807,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_talk.sf_attack > *, #sf_game[data-ui-theme] .sf_talk.sf_attack > * { opacity: 1; }
 #sf_game .sf_talk.sf_attack i { display: none; }
 #sf_game .sf_talk.sf_attack span { color: #fff4dc; font-size: 17px; font-weight: 900; text-shadow: 0 1px 2px #0008; }
+/* 15 열주홀 빛 퍼즐: the small panel of what the device by her can do (the map stays seen and played around it) */
+#sf_game .sf_dev { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(150px + env(safe-area-inset-bottom, 0px)); z-index: 5; width: min(330px, calc(100% - 24px)); padding: 6px 8px; border-radius: 10px; background: #2b2018e6; color: #fbf3ea; box-shadow: 0 2px 8px #0006; }
+#sf_game .sf_dev b { display: block; font-size: 13px; font-weight: 800; color: #f2c66e; }
+#sf_game .sf_dev_say { margin: 2px 0 5px; font-size: 12px; line-height: 1.35; }
+#sf_game .sf_dev_btns { display: flex; flex-wrap: wrap; gap: 6px; }
+#sf_game .sf_dev_btns button { flex: 1 0 auto; min-width: 52px; min-height: 34px; padding: 3px 6px; border-radius: 8px; border: 1px solid #f2c66e; background: #5a3e26; color: #fff4dc; font-size: 13px; font-weight: 700; cursor: pointer; }

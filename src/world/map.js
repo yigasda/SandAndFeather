@@ -55,6 +55,9 @@ export class GameMap {
         }
         this.base = this.block.slice(); // without people, who can step aside
         this.setAway([]);
+        // things a pack moves about on the map (a puzzle's stone pillar): boxes in tiles { x0, y0, x1, y1 } that stop feet
+        // as walls do, over the drawn collision (which stays as the user made it); set by the pack, cleared on its map only
+        this.dynamic = [];
     }
     mark(x, y) { if (x >= 0 && y >= 0 && x < this.w && y < this.h) this.block[y * this.w + x] = 1; }
     char(x, y) { return this.rows[y]?.[x] ?? 'r'; }
@@ -77,7 +80,7 @@ export class GameMap {
     // Duat uses every original-art pixel covered by the feet, including thin edges between corners.
     solidRect(x0,y0,x1,y1) {
         const m=this.authored?.pixelWalk;
-        if (!m) return this.solidAt(x0,y0)||this.solidAt(x1,y0)||this.solidAt(x0,y1)||this.solidAt(x1,y1);
+        if (!m) return this.solidAt(x0,y0)||this.solidAt(x1,y0)||this.solidAt(x0,y1)||this.solidAt(x1,y1)||this.dynamicAt(x0,y0,x1,y1);
         const a=Math.floor(x0*m.pixelsPerTile), b=Math.floor(x1*m.pixelsPerTile);
         const c=Math.floor(y0*m.pixelsPerTile), d=Math.floor(y1*m.pixelsPerTile);
         if(a<0||c<0||b>=m.width||d>=m.height) return true;
@@ -89,8 +92,9 @@ export class GameMap {
         }
         for(let y=Math.floor(y0);y<=Math.floor(y1);y++) for(let x=Math.floor(x0);x<=Math.floor(x1);x++)
             if(this.npcCells.has(`${x},${y}`)) return true;
-        return false;
+        return this.dynamicAt(x0, y0, x1, y1);
     }
+    dynamicAt(x0, y0, x1, y1 = y0) { return this.dynamic.some(b => x1 > b.x0 && x0 < b.x1 && y1 > b.y0 && y0 < b.y1); }
     solidAt(x, y) {
         const ix = Math.floor(x), iy = Math.floor(y);
         if (ix < 0 || iy < 0 || ix >= this.w || iy >= this.h) return true;

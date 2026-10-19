@@ -1,4 +1,5 @@
-// 사막 B2: 15 열주홀 반사광 입문(전용 퍼즐 화면). 터치로만 조작한다(CDP 터치 → 말 걸기 버튼, 퍼즐 그림, 버튼).
+// 사막 B2: 15 열주홀 반사광 입문(전용 퍼즐 화면) — 2026-10-19부터 맵에는 없고 기능 시제품으로만 남음(사용자: 15는 맵 안 조작,
+// colonnade-lift.js). 화면은 openColonnadeDemo로 직접 열고, 안의 조작은 터치로만 한다(CDP 터치 → 퍼즐 그림, 버튼).
 //   - 받침 앞에서 말 걸기 → 퍼즐 화면(카드)이 열린다. 열린 동안 조이스틱을 밀어도 캐릭터가 움직이지 않는다
 //   - 반사판을 눌러 45°씩: / → — → \ 에서 수신부가 켜지고 "해결" 기록(solvedEver, solvedDay), 보상 수령(claimed)은 비어 있음
 //   - 닫으면 맵에 수신부 빛, 다시 열면 그 각도 그대로, 처음으로 → 각도만 처음으로(해결 기록은 남음)
@@ -14,7 +15,7 @@ let fail = 0; const res = [];
 const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.log(line); res.push(line); if (!c) fail++; };
 
 (async () => {
-    const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : {});
+    const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : { args: ['--no-sandbox'] });
     const context = await browser.newContext({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true,
         recordVideo: { dir: OUT, size: { width: 412, height: 900 } } });
     const page = await context.newPage();
@@ -46,7 +47,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         await page.waitForSelector('#sf_open', { state: 'attached' });
         await page.evaluate(async base => {
             window.T = {};
-            for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes' })) T[k] = await import(base + 'src/' + f + '.js');
+            for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', demo: 'packs/puzzle/colonnade' })) T[k] = await import(base + 'src/' + f + '.js');
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'horus'); T.heroes.setWith(s, 'set');
         }, BASE);
         await openGameAt();
@@ -55,9 +56,9 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         await page.waitForTimeout(1800);
         await shot('1-map-before.png');
         ok(await pz() === null, '처음엔 퍼즐 기록 없음');
-        await tapEl('.sf_talk');
+        await page.evaluate(() => T.demo.openColonnadeDemo(T.win.gameUi()));
         await page.waitForTimeout(800);
-        ok(await page.locator('.sf_pop_wrap[data-kind="puzzle"]').count() === 1, '받침 앞 말 걸기(터치) → 퍼즐 화면이 열림');
+        ok(await page.locator('.sf_pop_wrap[data-kind="puzzle"]').count() === 1, '시제품 퍼즐 화면이 열림');
         await shot('2-screen-open.png');
         // the stick does nothing behind the screen
         const before = await page.evaluate(() => [T.player.player.x, T.player.player.y, T.player.player.map]);
@@ -94,7 +95,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         // back to the pedestal, reopen: the angle as it was
         await page.evaluate(async ([x, y]) => T.win.travel('desert_colonnade', { x, y, dir: 'up' }), [1248 / PX - 0.5, 640 / PX - 0.8]);
         await page.waitForTimeout(1200);
-        await tapEl('.sf_talk');
+        await page.evaluate(() => T.demo.openColonnadeDemo(T.win.gameUi()));
         await page.waitForTimeout(800);
         ok((await say()).includes('수신부에 빛이 닿았다'), `다시 열면 그 각도 그대로: ${await say()}`);
         await tapButton('처음으로');
@@ -119,7 +120,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         await openGameAt();
         await page.evaluate(async ([x, y]) => T.win.travel('desert_colonnade', { x, y, dir: 'up' }), [1248 / PX - 0.5, 640 / PX - 0.8]);
         await page.waitForTimeout(1200);
-        await tapEl('.sf_talk');
+        await page.evaluate(() => T.demo.openColonnadeDemo(T.win.gameUi()));
         await page.waitForTimeout(800);
         const cvBox = await page.locator('.sf_puzzle_cv').boundingBox();
         const aBefore = JSON.stringify((await pz()).orient);

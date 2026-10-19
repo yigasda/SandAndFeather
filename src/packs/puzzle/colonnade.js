@@ -7,13 +7,10 @@
 // attached (none is decided yet), claimed{} stays empty until one is.
 
 import { getState } from '../../core/state.js';
-import { addThings } from '../../world/things.js';
-import { openPuzzle, savedOrient } from './screen.js';
+import { openPuzzle } from './screen.js';
 import { COLONNADE_ANSWERS, COLONNADE_OPTICS } from './defs.js';
-import { mirrorEnds, trace } from './optics.js';
+import { mirrorEnds } from './optics.js';
 
-const MAP = 'desert_colonnade', PX = 52 / 1.55;   // tools/maps/desert.py: the detail maps' scale
-const art = (x, y) => ({ x: x / PX, y: y / PX });  // art px → tiles
 
 export const COLONNADE = {
     id: 'desert.colonnade.mirror', version: 1, title: '열주홀의 반사판', size: [100, 60],
@@ -62,15 +59,8 @@ export const COLONNADE = {
     },
 };
 
-// the pedestal on the map: stand in front of it to open the screen; the receiver glows on the map while lit
-addThings((mapId, s) => {
-    if (mapId !== MAP) return [];
-    const lit = !!trace(COLONNADE.optics, savedOrient(s, COLONNADE)).lit.r1;
-    const at = art(1248, 605), ring = art(1250, 270);
-    return [
-        { id: 'puzzle:colonnade', x: at.x - 0.5, y: at.y - 0.8, label: '반사판', sprite: 'none', pose: 'interact', act: ui => openPuzzle(ui, COLONNADE) },
-        ...(lit ? [{ id: 'puzzle:colonnade:lit', x: ring.x - 0.5, y: ring.y - 0.5, sprite: 'glow' }] : []),
-    ];
-});
+// 2026-10-19: no longer on the map (사용자: 15는 맵 안에서 조작, colonnade-lift.js). Kept as the working sample of the
+// puzzle screen and its saving (tools/st-test/desert-b2.cjs opens it directly).
+export const openColonnadeDemo = ui => openPuzzle(ui, COLONNADE);
 
 export const colonnadeSolved = (s = getState()) => !!s?.puzzles?.[COLONNADE.id]?.solvedEver;

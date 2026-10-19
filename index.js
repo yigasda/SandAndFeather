@@ -31,6 +31,7 @@ import './src/packs/world/obelisk.js';
 import './src/packs/world/explore.js';
 import './src/packs/world/treasure.js';
 import './src/packs/puzzle/colonnade.js';
+import './src/packs/puzzle/colonnade-lift.js';
 import './src/packs/adventure/gen.js';
 
 (function init() {
