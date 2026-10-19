@@ -119,8 +119,9 @@ const log = msg => { console.log(msg); res.push(msg); };
             const t0 = await page.evaluate(() => T.field.testNow()); await page.evaluate(() => T.field.testEvents(true));
             await page.evaluate(() => T.field.attack());
             await page.waitForFunction(() => T.field.fieldState().mobs[0]?.st === 'guard', null, { timeout: 2000 }).catch(() => {});
-            // the 기술 the moment she is free again (the attack shows 0.2 + 0.35 s from the press)
-            await page.waitForFunction(t0 => T.field.testNow() - t0 > 0.58, t0, { timeout: 2000 });
+            // the 기술 the moment she is free again: the blow lands 0.2 s after the press (a timer, later on a busy machine)
+            // and shows 0.35 s
+            await page.waitForFunction(() => { const b = T.field.testEvents().find(e => e.ev === 'blow'); return b && T.field.testNow() - b.t > 0.37; }, null, { timeout: 3000 });
             const g0 = await page.evaluate(() => T.field.fieldState().mobs[0]?.st);
             await page.evaluate(() => T.field.skill());
             let st = null;

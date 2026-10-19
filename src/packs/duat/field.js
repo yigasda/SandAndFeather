@@ -255,8 +255,8 @@ function stepMob(m, o, dt, s) {
         for (const q of mobs) if (q !== o && q.st !== 'dead') { const e = centre(q), ex = c.x - e.x, ey = c.y - e.y, ed = Math.hypot(ex, ey); if (ed < 0.9 && ed > 0.01) { nx += ex / ed * speed * dt * 0.5; ny += ey / ed * speed * dt * 0.5; } }
         let moved = false;
         const free = provokedNow(o);
-        if (!solid(map(), nx, o.y) && (free || !intoSafe(o.x, o.y, nx, o.y))) { o.x = nx; moved = true; }
-        if (!solid(map(), o.x, ny) && (free || !intoSafe(o.x, o.y, o.x, ny))) { o.y = ny; moved = true; }
+        if (!solid(map(), nx, o.y) && (free || !intoSafe(o.x, o.y, nx, o.y))) { if (free && intoSafe(o.x, o.y, nx, o.y)) o.chased = true; o.x = nx; moved = true; }
+        if (!solid(map(), o.x, ny) && (free || !intoSafe(o.x, o.y, o.x, ny))) { if (free && intoSafe(o.x, o.y, o.x, ny)) o.chased = true; o.y = ny; moved = true; }
         return !moved;
     };
     // along the way round walls to a point
@@ -280,7 +280,7 @@ function stepMob(m, o, dt, s) {
                 const d = o.e.dash, v = d.dist / d.time;
                 if (o.t <= d.time) {
                     const nx = o.x + o.aim.dx * v * dt, ny = o.y + o.aim.dy * v * dt;
-                    if (solid(map(), nx, ny) || (!provokedNow(o) && intoSafe(o.x, o.y, nx, ny))) o.t = d.time; else { o.x = nx; o.y = ny; }
+                    if (solid(map(), nx, ny) || (!provokedNow(o) && intoSafe(o.x, o.y, nx, ny))) o.t = d.time; else { if (intoSafe(o.x, o.y, nx, ny)) o.chased = true; o.x = nx; o.y = ny; }
                     const cc = centre(o);
                     for (const p of targets(s)) if (!o.struck.has(p.who) && !sheltered(o, p) && Math.hypot(p.x - cc.x, p.y - cc.y) < d.hit) { o.struck.add(p.who); hurt(s, p.who, o.e.atk); }
                     return;
@@ -292,8 +292,10 @@ function stepMob(m, o, dt, s) {
             if (o.t > T.recover) { o.st = 'chase'; o.t = 0; o.restAt = now() + T.rest; }
             return;
     }
-    // in a zone (it came in after someone who struck it) and left alone: straight out the shortest way first
-    const out = safeDepth(c) > 0 && !provokedNow(o) && outOfSafe(c);
+    // it came into a zone after someone who struck it and is left alone now: straight out the shortest way first
+    // (only one that came in so; one standing there from the start is left where it is)
+    if (o.chased && !(safeDepth(c) > 0)) o.chased = false;
+    const out = o.chased && !provokedNow(o) && outOfSafe(c);
     if (out) { o.st = 'wander'; o.tx = out.x; o.ty = out.y; move(out.x, out.y, o.e.speed); return; }
     // drifting about, or coming at whoever it sees
     if (near) {
@@ -736,7 +738,7 @@ function stepUlt(s) {
     }
     storms = storms.filter(st => t <= st.until);
     for (const [k, v] of Object.entries(wards)) if (t > v.until || v.left <= 0) delete wards[k];
-    ultShows = ultShows.filter(u => t - u.at < 3);
+    ultShows = ultShows.filter(u => u.hold != null || t - u.at < 3);
 }
 export function spell() {
     const s = getState();
@@ -1007,7 +1009,7 @@ function drawUlt(g, z, ts, cx, cy) {
     }
     for (const u of ultShows) {
         const fx = F().ult?.fx?.[u.who]; if (!fx) continue;
-        let el = (t - u.at) * 1000, fr = null;
+        let el = u.hold ?? (t - u.at) * 1000, fr = null;
         for (const f of fx.frames) { if (el < f.ms) { fr = f; break; } el -= f.ms; }
         if (!fr) continue;
         const img = spriteFile(fr.file); if (!img) continue;
@@ -1168,6 +1170,8 @@ export function testStrikeBy(who) { const s = getState(), o = mobs[0]; if (!s ||
 // tests only: someone hit by a creature's blow of `atk` (as a creature's blow does)
 export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, atk); }
 // tests only: the 궁 gauges (read, or set some), what is going on with the 궁
+// tests only: one 궁 picture held still `ms` into its playing, round the one in front (the shown sizes compared)
+export function testUltFrame(who, ms) { const f = feet(); ultShows = ms == null ? [] : [{ who, at: now(), hold: ms, x: f.x, y: f.y }]; }
 export function testUlt(set) { const s = getState(); if (set) { const { cd, ...g } = set; Object.assign(gauge(s), g); if (cd === 0) me.cdUlt = 0; } return { g: { ...gauge(s) }, ready: ultReady(s), cd: +Math.max(0, me.cdUlt - now()).toFixed(2), storms: storms.length, wards: JSON.parse(JSON.stringify(wards)), shield: me.shield > now(), shows: ultShows.length }; }
 // tests only: how deep a point (feet, tiles) is in this map's entrance safe zones, and the zones
 export const testSafe = (x, y) => safeDepth({ x, y });
