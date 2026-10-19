@@ -180,6 +180,38 @@ function aimAt(o, s) {
     o.look = { dx: dx / d, dy: dy / d };
     if (Math.abs(dx) > 0.1) o.faceR = dx > 0;
 }
+// 입구 안전구역(사용자 10-19: 입장하자마자 공격받거나 출구가 몹에게 막히지 않게; 착지는 옮기지 않음): on a desert map,
+// round each landing and along the way from it to its own exit (the exit of the same name), SAFE_R people-widths wide.
+// A creature does not walk or dash into it, does not pick a wandering point in it, and does not start a blow at someone
+// in it — unless they struck it from there in the last PROVOKED seconds (no hitting it from shelter for free); it still
+// stays out. The Duat's fights are as approved (no zones there).
+const SAFE_R = 2.5, PROVOKED = 3;
+let safeOf = null;   // [the map object, its zones]
+function safeZones() {
+    const m = map();
+    if (!m || !isDesert(m.id)) return [];
+    if (safeOf?.[0] === m) return safeOf[1];
+    const r = SAFE_R * (m.d.actorScale || 1), zones = [];
+    for (const [k, e] of Object.entries(m.d.entries || {})) {
+        const a = { x: e.x + 0.5, y: e.y + 0.8 }, own = (m.d.exits || []).find(x => x.id === k);
+        zones.push({ a, b: own ? { x: (own.x0 + own.x1) / 2, y: (own.y0 + own.y1) / 2 } : a, r });
+    }
+    safeOf = [m, zones];
+    return zones;
+}
+// how deep a point (feet) is inside the zones, in tiles; 0 outside
+function safeDepth(p) {
+    let d = 0;
+    for (const z of safeZones()) {
+        const vx = z.b.x - z.a.x, vy = z.b.y - z.a.y, L = vx * vx + vy * vy;
+        const t = L ? Math.max(0, Math.min(1, ((p.x - z.a.x) * vx + (p.y - z.a.y) * vy) / L)) : 0;
+        d = Math.max(d, z.r - Math.hypot(p.x - z.a.x - t * vx, p.y - z.a.y - t * vy));
+    }
+    return d;
+}
+const sheltered = (o, p) => safeDepth(p) > 0 && !(now() - (o.provoked?.[p.who] ?? -99) < PROVOKED);
+// a step from (x, y) to (nx, ny) (top-left) that takes its feet deeper into a zone
+const intoSafe = (x, y, nx, ny) => { const d1 = safeDepth({ x: nx + 0.5, y: ny + 0.8 }); return d1 > 0 && d1 > safeDepth({ x: x + 0.5, y: y + 0.8 }) - 1e-6; };
 function stepMob(m, o, dt, s) {
     o.t += dt;
     const T = timing(o), c = centre(o), tg = targets(s).map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d);
@@ -201,8 +233,8 @@ function stepMob(m, o, dt, s) {
         // not on top of another creature: a little push away from any within 0.9
         for (const q of mobs) if (q !== o && q.st !== 'dead') { const e = centre(q), ex = c.x - e.x, ey = c.y - e.y, ed = Math.hypot(ex, ey); if (ed < 0.9 && ed > 0.01) { nx += ex / ed * speed * dt * 0.5; ny += ey / ed * speed * dt * 0.5; } }
         let moved = false;
-        if (!solid(map(), nx, o.y)) { o.x = nx; moved = true; }
-        if (!solid(map(), o.x, ny)) { o.y = ny; moved = true; }
+        if (!solid(map(), nx, o.y) && !intoSafe(o.x, o.y, nx, o.y)) { o.x = nx; moved = true; }
+        if (!solid(map(), o.x, ny) && !intoSafe(o.x, o.y, o.x, ny)) { o.y = ny; moved = true; }
         return !moved;
     };
     // along the way round walls to a point
@@ -211,7 +243,7 @@ function stepMob(m, o, dt, s) {
         case 'dead': if (o.t > T.die[0] + T.die[1]) o.gone = true; return;
         case 'hit': if (o.t > o.stun) { o.st = 'chase'; o.t = 0; } return;
         case 'guard':   // it opens and strikes back, the whole warning first
-            if (o.t > T.guard) { o.t = 0; note({ ev: 'guardEnd', mob: o.i }); if (near) warn(o, near.p); else o.st = 'chase'; }
+            if (o.t > T.guard) { o.t = 0; note({ ev: 'guardEnd', mob: o.i }); if (near && !sheltered(o, near.p)) warn(o, near.p); else o.st = 'chase'; }
             return;
         case 'prepare':
             if (o.t < T.prepare[0]) { aimAt(o, s); return; }
@@ -226,9 +258,9 @@ function stepMob(m, o, dt, s) {
                 const d = o.e.dash, v = d.dist / d.time;
                 if (o.t <= d.time) {
                     const nx = o.x + o.aim.dx * v * dt, ny = o.y + o.aim.dy * v * dt;
-                    if (solid(map(), nx, ny)) o.t = d.time; else { o.x = nx; o.y = ny; }
+                    if (solid(map(), nx, ny) || intoSafe(o.x, o.y, nx, ny)) o.t = d.time; else { o.x = nx; o.y = ny; }
                     const cc = centre(o);
-                    for (const p of targets(s)) if (!o.struck.has(p.who) && Math.hypot(p.x - cc.x, p.y - cc.y) < d.hit) { o.struck.add(p.who); hurt(s, p.who, o.e.atk); }
+                    for (const p of targets(s)) if (!o.struck.has(p.who) && !sheltered(o, p) && Math.hypot(p.x - cc.x, p.y - cc.y) < d.hit) { o.struck.add(p.who); hurt(s, p.who, o.e.atk); }
                     return;
                 }
             } else if (o.t <= 0.2) return;
@@ -242,7 +274,7 @@ function stepMob(m, o, dt, s) {
     if (near) {
         o.st = 'chase';
         const p = near.p, seen = clearLine(c, p);
-        if (near.d <= o.e.range && seen && now() >= o.restAt) { warn(o, p); return; }
+        if (near.d <= o.e.range && seen && now() >= o.restAt && !sheltered(o, p)) { warn(o, p); return; }
         const shot = o.e.attack === 'shot', keep = shot ? o.e.range * 0.6 : 0.9;   // the hourglass keeps its distance
         const ax = (c.x - p.x) / (near.d || 1), ay = (c.y - p.y) / (near.d || 1);
         o.orbit ||= Math.random() < 0.5 ? 1 : -1;
@@ -261,7 +293,7 @@ function stepMob(m, o, dt, s) {
     if (o.wait > 0) { o.wait -= dt; return; }
     const stuck = go(o.tx, o.ty, o.e.speed * 0.5);
     if (stuck || Math.hypot(o.tx - c.x, o.ty - c.y) < 0.15) {
-        for (let k = 0; k < 20; k++) { const tx = c.x + rand(-4, 4), ty = c.y + rand(-4, 4); if (!solid(map(), tx - 0.5, ty - 0.8)) { o.tx = tx; o.ty = ty; break; } }
+        for (let k = 0; k < 20; k++) { const tx = c.x + rand(-4, 4), ty = c.y + rand(-4, 4); if (!solid(map(), tx - 0.5, ty - 0.8) && !safeDepth({ x: tx, y: ty })) { o.tx = tx; o.ty = ty; break; } }
         o.wait = rand(0.4, 1.6);
     }
 }
@@ -438,7 +470,7 @@ function damage(s, o, n, push = 0, from = null, kind = '') {
 function damage0(s, o, n, push, from, kind) {
     const T = timing(o), c = centre(o);
     o.shownAt = now();
-    if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) o.foe = q.who; }
+    if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) { o.foe = q.who; (o.provoked ||= {})[q.who] = now(); } }
     let st = '';
     if (o.st === 'guard') {
         if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); note({ ev: 'break', mob: o.i }); }
@@ -831,6 +863,13 @@ const SAND = ['#f3dca4', '#e2bd7c', '#c9995a'];
 function drawRanges(g, z, ts, cx, cy) {
     const P = (x, y) => [x * ts - cx, y * ts - cy];
     g.save(); g.lineWidth = 2 * z;
+    // the entrance safe zones (cyan): round each landing and along to its exit
+    for (const zn of safeZones()) {
+        const [ax, ay] = P(zn.a.x, zn.a.y), [bx, by] = P(zn.b.x, zn.b.y);
+        g.strokeStyle = 'rgba(60,220,255,.9)'; g.fillStyle = 'rgba(60,220,255,.12)'; g.lineCap = 'round';
+        g.lineWidth = zn.r * 2 * ts; g.strokeStyle = 'rgba(60,220,255,.14)'; g.beginPath(); g.moveTo(ax, ay); g.lineTo(bx, by); g.stroke();
+        g.lineWidth = 2 * z; g.strokeStyle = 'rgba(60,220,255,.9)'; g.beginPath(); g.arc(ax, ay, zn.r * ts, 0, Math.PI * 2); g.stroke();
+    }
     for (const o of mobs) {
         if (o.st === 'dead') continue;
         const h = hurtArea(o), [hx, hy] = P(h.x, h.y), c = centre(o), [px, py] = P(c.x, c.y);
@@ -983,6 +1022,9 @@ export function testReset() {
     bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
 }
 export const testFade = () => mobs[0]?.fade || 0;
+// tests only: how deep a point (feet, tiles) is in this map's entrance safe zones, and the zones
+export const testSafe = (x, y) => safeDepth({ x, y });
+export const testZones = () => safeZones().map(z => ({ ...z }));
 export const testCover = () => mobs[0]?.cover || [];
 // tests only: hold the creatures in a state (e.g. { st: "hit", stun: 999 }: one picture, for comparing pictures)
 export function testSet(fields) { for (const o of mobs) Object.assign(o, typeof fields === 'function' ? fields(o) : fields); }

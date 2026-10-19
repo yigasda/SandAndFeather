@@ -74,6 +74,23 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             res.push(`  ${tag} 입력 기록: ${all.filter(e => e.ev === 'press' || e.ev === 'ignored').map(e => e.t + ' ' + e.ev + ':' + e.what + (e.why ? '(' + e.why + ')' : '')).join(', ')}`);
             ok(ev.includes('attack') && ev.includes('skill'), `${tag} 움직이는 중 다른 손가락으로 공격·스킬 (${ev.join(', ') || '없음'})`);
             ok(x1 > x0 + 0.5 && x2 > x1 + 0.3, `${tag} 누르는 동안에도 계속 움직임 (x ${x0.toFixed(1)} → ${x1.toFixed(1)} → ${x2.toFixed(1)})`);
+            // 4. the second thumb on a battle button: once on lifting there; nothing when it slides off or is cancelled;
+            //    once when the pad's finger lifts first; once for a single tap without the pad
+            const fired = async (what, act) => {
+                await page.evaluate(() => { T.field.testReset(); T.field.testEvents(true); });
+                await act(); await sleep(900);
+                return page.evaluate(what => T.field.testEvents(true).filter(e => (e.ev === 'press' || e.ev === 'ignored') && e.what === what).length, what);
+            };
+            const off = [atk.cx, atk.y0 - 120];   // the map above the buttons
+            for (const [sel, what, name] of [['.sf_talk', 'attack', '공격'], ['.sf_duat_skill', 'skill', '스킬']]) {
+                const b = await box(sel);
+                const lift = await fired(what, async () => { await touches('touchStart', [[pad.cx, pad.cy, 1]]); await touches('touchStart', [[pad.cx, pad.cy, 1], [b.cx, b.cy, 2]]); await sleep(80); await touches('touchEnd', [[b.cx, b.cy, 2]]); await sleep(100); await touches('touchEnd', [[pad.cx, pad.cy, 1]]); });
+                const slide = await fired(what, async () => { await touches('touchStart', [[pad.cx, pad.cy, 1]]); await touches('touchStart', [[pad.cx, pad.cy, 1], [b.cx, b.cy, 2]]); for (let k = 1; k <= 5; k++) { await touches('touchMove', [[pad.cx, pad.cy, 1], [b.cx + (off[0] - b.cx) * k / 5, b.cy + (off[1] - b.cy) * k / 5, 2]]); await sleep(30); } await touches('touchEnd', [[off[0], off[1], 2]]); await touches('touchEnd', [[pad.cx, pad.cy, 1]]); });
+                const cancel = await fired(what, async () => { await touches('touchStart', [[pad.cx, pad.cy, 1]]); await touches('touchStart', [[pad.cx, pad.cy, 1], [b.cx, b.cy, 2]]); await sleep(80); await touches('touchCancel', []); });
+                const padFirst = await fired(what, async () => { await touches('touchStart', [[pad.cx, pad.cy, 1]]); await touches('touchStart', [[pad.cx, pad.cy, 1], [b.cx, b.cy, 2]]); await sleep(80); await touches('touchEnd', [[pad.cx, pad.cy, 1]]); await sleep(80); await touches('touchEnd', [[b.cx, b.cy, 2]]); });
+                const single = await fired(what, async () => { await touches('touchStart', [[b.cx, b.cy, 1]]); await sleep(60); await touches('touchEnd', [[b.cx, b.cy, 1]]); });
+                ok(lift === 1 && slide === 0 && cancel === 0 && padFirst === 1 && single === 1, `${tag} ${name}: 두 번째 손가락 떼기 ${lift}번 · 밖으로 빼고 떼기 ${slide} · 취소 ${cancel} · 조이스틱 먼저 떼고 ${padFirst}번 · 한 손가락 탭 ${single}번 (기대 1·0·0·1·1)`);
+            }
             ok(!errors.length, `${tag} 페이지 오류 없음 ${errors.join('; ')}`);
         } finally { await context.close(); }
     }
