@@ -1,0 +1,31 @@
+{
+  "map": "desert_forecourt_east",
+  "exit": "east",
+  "polygon": [
+    [
+      1665,
+      254
+    ],
+    [
+      1684,
+      248
+    ],
+    [
+      1733,
+      319
+    ],
+    [
+      1733,
+      340
+    ],
+    [
+      1727,
+      342
+    ]
+  ],
+  "landing": [
+    1621,
+    369
+  ],
+  "source": "Parent visually registered latest user JPEG libfile_a8048b5a80c8819194e7209ce5dac6f1; registration \u00b11px, annotation \u00b14px, landing \u00b12px. Review only; runtime not changed."
+}

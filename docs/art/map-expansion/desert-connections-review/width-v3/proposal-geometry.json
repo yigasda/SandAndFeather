@@ -1,0 +1,17 @@
+{
+  "polygonValid": true,
+  "polygonAreaPx2": 1861.5,
+  "landingFeet": [
+    1621,
+    369
+  ],
+  "landingFootToPolygonPx": 91.0468063263135,
+  "aabb": [
+    1665.0,
+    248.0,
+    1733.0,
+    342.0
+  ],
+  "polygonSupport": "not applied; coordination pending",
+  "footFullyWalkable": true
+}

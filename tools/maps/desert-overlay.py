@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from scipy import ndimage as nd
+from shapely.geometry import Point, Polygon
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/art/map-expansion/desert-connections-review'
@@ -33,7 +34,7 @@ def walk_mask(pw):
 def edge(m): return m ^ nd.binary_erosion(m)
 
 
-def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)"):
+def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)", proposal=None):
     out.mkdir(parents=True, exist_ok=True)
     for ident in ids:
         d = json.loads((ROOT / f'data/maps/{ident}.json').read_text())
@@ -41,6 +42,14 @@ def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)"):
         art = Image.open(ROOT / unicodedata.normalize('NFC', src['art'])).convert('RGB')
         user = np.asarray(Image.open(ROOT / unicodedata.normalize('NFC', src['collision'])).convert('RGBA'))[..., 3] >= src['floorAlphaAtLeast']
         pw = d['authoredCollision']['pixelWalk']; applied = walk_mask(pw); PX = pw['pixelsPerTile']
+        # Review-only source-pixel proposal; never writes runtime map data.
+        if proposal and ident == proposal['map']:
+            e = next(e for e in d['exits'] if e['id'] == proposal['exit'])
+            e['polygon'] = [[x / PX, y / PX] for x, y in proposal['polygon']]
+            xs, ys = zip(*e['polygon'])
+            e.update(x0=min(xs), y0=min(ys), x1=max(xs), y1=max(ys))
+            x, y = proposal['landing']
+            d['entries'][proposal['exit']].update(x=x / PX - .5, y=y / PX - .8)
         diff = user != applied
         im = np.asarray(art).astype(float) * 0.75
         im[edge(user)] = [255, 40, 40]
@@ -49,7 +58,11 @@ def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)"):
         img = Image.fromarray(im.astype('uint8')); g = ImageDraw.Draw(img); F = font()
         for e in d['exits']:
             box = [e['x0'] * PX, e['y0'] * PX, e['x1'] * PX, e['y1'] * PX]
-            g.rectangle(box, outline=(220, 0, 255), width=3)
+            if e.get('polygon'):
+                points = [(x * PX, y * PX) for x, y in e['polygon']]
+                g.line(points + [points[0]], fill=(220, 0, 255), width=3)
+            else:
+                g.rectangle(box, outline=(220, 0, 255), width=3)
             g.text((box[0] + 4, box[1] + 4), f"출구 {e['id']} → {e['to']}:{e['at']}", fill=(255, 255, 255), font=F, stroke_width=2, stroke_fill=(0, 0, 0))
         rows = []
         for k, p in d['entries'].items():
@@ -57,7 +70,7 @@ def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)"):
             fy0, fy1 = (p['y'] + FOOT['y0']) * PX, (p['y'] + FOOT['y1']) * PX
             clear = bool(applied[int(fy0):int(fy1) + 1, int(fx0):int(fx1) + 1].all())
             cx, cy = (p['x'] + 0.5), (p['y'] + 0.8)
-            inside = [e['id'] for e in d['exits'] if e['x0'] <= cx <= e['x1'] and e['y0'] <= cy <= e['y1']]
+            inside = [e['id'] for e in d['exits'] if (Polygon(e['polygon']).covers(Point(cx, cy)) if e.get('polygon') else e['x0'] <= cx <= e['x1'] and e['y0'] <= cy <= e['y1'])]
             # Circle = landing; the small rectangle inside it is the actual collision foot.
             g.ellipse([cx * PX - 17, cy * PX - 17, cx * PX + 17, cy * PX + 17], outline=(0, 255, 90), width=2)
             g.rectangle([fx0, fy0, fx1, fy1], outline=(0, 255, 90), width=3)
@@ -76,5 +89,6 @@ if __name__ == '__main__':
     parser.add_argument('ids', nargs='*')
     parser.add_argument('--out', type=Path, default=OUT)
     parser.add_argument('--label', default='DATA OVERLAY (not a game capture)')
+    parser.add_argument('--proposal', type=Path, help='Review-only JSON: map, exit, source-pixel polygon and landing')
     args = parser.parse_args()
-    main(args.ids or sorted(p.stem for p in (ROOT / 'data/maps').glob('desert_*.json')), args.out, args.label)
+    main(args.ids or sorted(p.stem for p in (ROOT / 'data/maps').glob('desert_*.json')), args.out, args.label, json.loads(args.proposal.read_text()) if args.proposal else None)
