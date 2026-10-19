@@ -21,7 +21,9 @@
 // struck or was struck), the combat pictures (looks.<who>.combat: ready standing, the armed walk walking left or right,
 // facing left or right). Fighting ends when no awake creature is within 6 tiles for 4 s. So that she does not flicker
 // between the two sets, the change happens only when she stands still (or on a button / a hit) and holds 2 s at least.
-// Walking up or down while fighting she shows her ordinary up / down walk (no armed front / back pictures yet, user "가").
+// Fighting, she also faces up or down (me.vdir: after walking that way, or a creature mostly above or below her): the
+// armed front / back pictures (ready, walk, the thrust), and 공격 strikes that way; 기술·주문·피격·지침 have side
+// pictures only and keep to the way she faces sideways (me.face).
 // Fighting, the one with her leaves her heels and takes a place of their own beside the creature (1.5 tiles from her).
 
 import { DATA, spriteFile } from '../../core/data.js';
@@ -49,8 +51,8 @@ const now = () => performance.now() / 1000;
 
 let mobs = [], bolts = [], pops = [], fx = [], mapId = '', mapObj = null, runObj = null, ui = null;
 // what she and the one with her are doing now: { name, at, until, lift, face }
-const me = { act: null, face: 'right', cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
-const mate = { act: null, face: 'right', cd: 0, cdSkill: 0, hurtAt: -9, down: false, shown: false, vert: false };
+const me = { act: null, face: 'right', vdir: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
+const mate = { act: null, face: 'right', cd: 0, cdSkill: 0, hurtAt: -9, down: false, shown: false };
 // fighting or calm: on (what she shows), since (when it last changed), last (the last time a fight was going on)
 const stance = { on: false, since: -9, last: -9 };
 
@@ -95,6 +97,45 @@ function targets(s) {
     return out;
 }
 const wall = (x, y) => map().solidRect(x - 0.08, y - 0.08, x + 0.08, y + 0.08);
+// a clear line between two points (no wall along it): a shot or a rush only when it can reach
+function clearLine(a, b) {
+    const d = Math.hypot(b.x - a.x, b.y - a.y), n = Math.ceil(d / 0.2);
+    for (let k = 1; k < n; k++) if (wall(a.x + (b.x - a.x) * k / n, a.y + (b.y - a.y) * k / n)) return false;
+    return true;
+}
+// the way round walls (user: they stood stuck against a wall): breadth-first over half-tile cells where its body fits,
+// at most 14 tiles out; the next point along the way (or null when there is none). Asked again every 0.3 s at most.
+const CELL = 0.5, fits = (x, y) => !solid(map(), x - 0.5, y - 0.8);
+function wayTo(o, gx, gy) {
+    const c = centre(o), t = now();
+    if (o.way && t - o.way.at < 0.3 && Math.hypot(o.way.gx - gx, o.way.gy - gy) < 0.6) return o.way.next;
+    const m = map(), W = Math.ceil(m.w / CELL), H = Math.ceil(m.h / CELL), R = 28;
+    const sx = Math.floor(c.x / CELL), sy = Math.floor(c.y / CELL), tx = Math.floor(gx / CELL), ty = Math.floor(gy / CELL);
+    const key = (x, y) => y * W + x, from = new Map([[key(sx, sy), -1]]), q = [[sx, sy]];
+    const ok = (x, y) => x >= 0 && y >= 0 && x < W && y < H && Math.abs(x - sx) <= R && Math.abs(y - sy) <= R && fits((x + 0.5) * CELL, (y + 0.5) * CELL);
+    let end = null, best = null, bd = 1e9;
+    for (let i = 0; i < q.length && !end; i++) {
+        const [x, y] = q[i], d = Math.hypot(x - tx, y - ty);
+        if (d < bd) { bd = d; best = [x, y]; }
+        if (d <= 1) { end = [x, y]; break; }
+        for (const [ax, ay] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+            const nx = x + ax, ny = y + ay;
+            if (from.has(key(nx, ny)) || !ok(nx, ny) || (ax && ay && (!ok(x + ax, y) || !ok(x, y + ay)))) continue;
+            from.set(key(nx, ny), key(x, y)); q.push([nx, ny]);
+        }
+    }
+    end ||= best;   // cannot get there: as close as it can
+    const cells = [];
+    for (let k = key(end[0], end[1]); k !== -1 && k !== undefined; k = from.get(k)) cells.push(k);
+    cells.reverse();
+    // the farthest cell of the first few that it can go to in a straight line
+    let next = null;
+    for (const k of cells.slice(1, 6)) { const p = { x: (k % W + 0.5) * CELL, y: (Math.floor(k / W) + 0.5) * CELL }; if (clearLine(c, p)) next = p; else break; }
+    if (!next && cells.length > 1) next = { x: (cells[1] % W + 0.5) * CELL, y: (Math.floor(cells[1] / W) + 0.5) * CELL };
+    if (cells.length <= 1) next = { x: gx, y: gy };
+    o.way = { at: t, gx, gy, next };
+    return next;
+}
 // the warning: fix whom it means; while 준비 0 its eye follows them, at 준비 1 the line is fixed
 function warn(o, p) { o.st = 'prepare'; o.t = 0; o.target = p.who; o.aim = null; }
 function aimAt(o, s) {
@@ -102,19 +143,29 @@ function aimAt(o, s) {
     if (!p) return;
     const dx = p.x - c.x, dy = p.y - c.y, d = Math.hypot(dx, dy) || 1;
     o.look = { dx: dx / d, dy: dy / d };
+    if (Math.abs(dx) > 0.1) o.faceR = dx > 0;
 }
 function stepMob(m, o, dt, s) {
     o.t += dt;
-    const T = timing(o), c = centre(o), tg = targets(s), near = tg.map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d)[0];
+    const T = timing(o), c = centre(o), tg = targets(s).map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d);
+    // whom it goes for: the one it already fights (or who last struck it) while they stay in reach, else the nearest
+    let near = tg.find(q => q.p.who === o.foe && q.d < AGGRO + 2.5) || tg[0];
+    if (near && near.d >= AGGRO && near.p.who !== o.foe) near = null;
+    o.foe = near ? near.p.who : (tg[0]?.d < AGGRO ? tg[0].p.who : null);
     const move = (tx, ty, speed) => {
         const dx = tx - c.x, dy = ty - c.y, d = Math.hypot(dx, dy);
         if (d < 0.05) return true;
-        const k = Math.min(d, speed * dt) / d, nx = o.x + dx * k, ny = o.y + dy * k;
+        if (Math.abs(dx) > 0.05) o.faceR = dx > 0;
+        let k = Math.min(d, speed * dt) / d, nx = o.x + dx * k, ny = o.y + dy * k;
+        // not on top of another creature: a little push away from any within 0.9
+        for (const q of mobs) if (q !== o && q.st !== 'dead') { const e = centre(q), ex = c.x - e.x, ey = c.y - e.y, ed = Math.hypot(ex, ey); if (ed < 0.9 && ed > 0.01) { nx += ex / ed * speed * dt * 0.5; ny += ey / ed * speed * dt * 0.5; } }
         let moved = false;
         if (!solid(map(), nx, o.y)) { o.x = nx; moved = true; }
         if (!solid(map(), o.x, ny)) { o.y = ny; moved = true; }
         return !moved;
     };
+    // along the way round walls to a point
+    const go = (tx, ty, speed) => { const w = wayTo(o, tx, ty); return w ? move(w.x, w.y, speed) : true; };
     switch (o.st) {
         case 'dead': if (o.t > T.die[0] + T.die[1]) o.gone = true; return;
         case 'hit': if (o.t > o.stun) { o.st = 'chase'; o.t = 0; } return;
@@ -147,16 +198,27 @@ function stepMob(m, o, dt, s) {
             return;
     }
     // drifting about, or coming at whoever it sees
-    if (near && near.d < AGGRO) {
+    if (near) {
         o.st = 'chase';
-        if (near.d <= o.e.range && now() >= o.restAt) { warn(o, near.p); return; }
-        const keep = o.e.attack === 'shot' ? o.e.range * 0.75 : 0.6;   // the hourglass keeps its distance
-        if (near.d > keep && move(near.p.x, near.p.y, o.e.speed)) { o.tx = c.x + rand(-2, 2); o.ty = c.y + rand(-2, 2); }
+        const p = near.p, seen = clearLine(c, p);
+        if (near.d <= o.e.range && seen && now() >= o.restAt) { warn(o, p); return; }
+        const shot = o.e.attack === 'shot', keep = shot ? o.e.range * 0.6 : 0.9;   // the hourglass keeps its distance
+        const ax = (c.x - p.x) / (near.d || 1), ay = (c.y - p.y) / (near.d || 1);
+        o.orbit ||= Math.random() < 0.5 ? 1 : -1;
+        if (now() < o.restAt || (seen && near.d < keep)) {
+            // resting after a blow, or too close: step round them at its distance (not standing still)
+            const want = shot ? o.e.range * 0.8 : Math.max(1.4, o.e.range * 0.75), a = Math.atan2(ay, ax) + o.orbit * 0.9;
+            const gx = p.x + Math.cos(a) * want, gy = p.y + Math.sin(a) * want;
+            if (!fits(gx, gy) || move(gx, gy, o.e.speed * 0.6)) o.orbit = -o.orbit;
+            o.faceR = p.x > c.x;
+            return;
+        }
+        go(p.x, p.y, o.e.speed);
         return;
     }
     o.st = 'wander';
     if (o.wait > 0) { o.wait -= dt; return; }
-    const stuck = move(o.tx, o.ty, o.e.speed * 0.5);
+    const stuck = go(o.tx, o.ty, o.e.speed * 0.5);
     if (stuck || Math.hypot(o.tx - c.x, o.ty - c.y) < 0.15) {
         for (let k = 0; k < 20; k++) { const tx = c.x + rand(-4, 4), ty = c.y + rand(-4, 4); if (!solid(map(), tx - 0.5, ty - 0.8)) { o.tx = tx; o.ty = ty; break; } }
         o.wait = rand(0.4, 1.6);
@@ -200,8 +262,12 @@ function nearestMob(from) {
 }
 function faceMob() {
     const f = feet(), n = nearestMob(f);
-    if (n) me.face = centre(n.o).x >= f.x ? 'right' : 'left';
-    else if (player.dir === 'left' || player.dir === 'right') me.face = player.dir;
+    if (n) {
+        const dx = centre(n.o).x - f.x, dy = centre(n.o).y - f.y;
+        me.face = dx >= 0 ? 'right' : 'left';
+        me.vdir = Math.abs(dy) > Math.abs(dx) * VERT ? (dy > 0 ? 'down' : 'up') : null;
+    } else if (player.dir === 'left' || player.dir === 'right') { me.face = player.dir; me.vdir = null; }
+    else me.vdir = player.dir;
 }
 // a button, a hit: fighting at once (she is doing something, so the change does not show as a flicker)
 function engage() {
@@ -278,6 +344,7 @@ function damage(s, o, n, push = 0, from = null, kind = '') {
     if (o.st === 'dead') return;
     const T = timing(o), c = centre(o);
     o.shownAt = now();
+    if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) o.foe = q.who; }
     let st = '';
     if (o.st === 'guard') {
         if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); }
@@ -304,13 +371,15 @@ function damage(s, o, n, push = 0, from = null, kind = '') {
     }
 }
 const power = (s, who) => 3 + Math.floor((statsOf(s, who)?.strength || 0) / 2) + (who === 'set' ? 1 : 0);
-// her blow: everything in front of her, from her feet out to her reach, a little up and down
+// her blow: everything in front of her, from her feet out to her reach, a little to either side (face: left, right,
+// or up / down for the thrust from the front / back pictures)
 function strike(s, who, from, face, mult = 1, reach = null) {
     reach ??= F().reach?.[who] || 1.4;
+    const v = face === 'up' || face === 'down', sign = face === 'right' || face === 'down' ? 1 : -1;
     let hit = 0;
     for (const o of mobs) {
-        const c = centre(o), dx = (c.x - from.x) * (face === 'right' ? 1 : -1);
-        if (o.st !== 'dead' && dx > -0.2 && dx < reach && Math.abs(c.y - from.y) < 0.75) { damage(s, o, power(s, who) * mult, 0.25, from); hit++; me.target = o; }
+        const c = centre(o), along = ((v ? c.y - from.y : c.x - from.x)) * sign, across = Math.abs(v ? c.x - from.x : c.y - from.y);
+        if (o.st !== 'dead' && along > -0.2 && along < reach && across < 0.75) { damage(s, o, power(s, who) * mult, 0.25, from); hit++; me.target = o; }
     }
     return hit;
 }
@@ -326,7 +395,7 @@ export function attack() {
     setTimeout(() => {
         if (me.down) return;
         me.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
-        strike(s, leadOf(s), feet(), me.face);
+        strike(s, leadOf(s), feet(), me.vdir || me.face);
     }, SHOW.anticipation * 1000);
 }
 export function skill() {
@@ -414,17 +483,18 @@ onFrame((dt, m, u) => {
     // a new map object each time she arrives (enterMap), or a new run: the creatures of this map again
     if (m !== mapObj || s.duatField !== runObj) {
         mapId = m.id; mapObj = m; runObj = run(s);
-        Object.assign(me, { act: null, down: false, shield: 0, target: null }); Object.assign(mate, { act: null, down: false, shown: false, cdSkill: now() + 3 });
+        Object.assign(me, { act: null, vdir: null, down: false, shield: 0, target: null }); Object.assign(mate, { act: null, down: false, shown: false, cdSkill: now() + 3 });
         Object.assign(stance, { on: false, since: -9, last: -9 }); mateWalk.pos = null;
         spawn(m, s);
     }
     hud(true, s, m);
-    // the way she faces sideways (fighting she always faces left or right, except walking up or down)
+    // the way she faces: sideways (me.face), and up or down after walking that way until she walks sideways again
     if (input.dx > 0.2) me.face = 'right'; else if (input.dx < -0.2) me.face = 'left';
     const ax = Math.abs(input.dx), ay = Math.abs(input.dy);
     if (ay > ax * VERT) me.vert = true; else if (ax > ay * VERT) me.vert = false;
+    if (player.moving) me.vdir = me.vert ? (input.dy > 0 ? 'down' : 'up') : null;
     stepStance();
-    if (stance.on && !(player.moving && me.vert)) player.dir = me.face;
+    if (stance.on) player.dir = me.vdir || me.face;
     // Horus's dive moves him while the skill plays
     const j = me.act?.jump;
     if (j) { const k = Math.min(1, (now() - me.act.at) / SHOW.jump); player.x = j.x0 + (j.x1 - j.x0) * k; me.act.lift = Math.sin(Math.PI * k) * 1.2; }
@@ -468,20 +538,19 @@ onDraw(scene => {
     if (!isDuat(mapId) || !isDuat(scene.map?.id)) return;
     const s = getState(); if (!s) return;
     const t = now(), blink = st => t - st.hurtAt < INVULN;
-    // her: calm = her ordinary pictures; fighting = the combat ones, except walking up or down
-    if (stance.on && !(player.moving && me.vert)) {
+    // her: calm = her ordinary pictures; fighting = the combat ones, all four ways
+    if (stance.on) {
         const c = actNow(me, leadOf(s), player.moving ? player.walkT || 0.001 : 0);
         scene.lead.combat = { ...c, face: me.face, blink: blink(me) };
-        scene.lead.dir = me.face;
+        scene.lead.dir = me.vdir || me.face;
     }
     for (const p of scene.people) if (p.mate) {
         // the one with her takes up the fighting pictures (or puts them down) only while standing, as she does
         if (!p.moving || mate.act) mate.shown = stance.on || mate.down;
-        const pv = p.dir === 'up' || p.dir === 'down';
-        if (p.moving) mate.vert = pv;
-        if (!mate.shown || (p.moving && mate.vert && !mate.down)) continue;
+        if (!mate.shown) continue;
+        // walking up or down: the armed front / back walk; otherwise sideways, the way they face
         if (p.moving && (p.dir === 'left' || p.dir === 'right')) mate.face = p.dir;
-        p.dir = mate.face;
+        if (!(p.moving && (p.dir === 'up' || p.dir === 'down') && !mate.down)) p.dir = mate.face;
         const mc = actNow(mate, withOf(s), mate.down ? 0 : p.moving ? p.walkT || 0.001 : 0);
         p.combat = { ...mc, face: mate.face, blink: blink(mate) }; p.act = null;
     }
@@ -511,7 +580,8 @@ function drawMob(g, o, sx, sy, z, ts) {
     const shake = warn1 ? Math.sin(t * 60) * z * 0.6 : 0;
     g.save();
     g.globalAlpha = o.st === 'dead' ? Math.max(0, 1 - die) : 1;
-    g.translate(gx + shake, baseY);   // never mirrored: the carvings (an ankh, the eye) read one way
+    g.translate(gx + shake, baseY);
+    if (o.faceR) g.scale(-1, 1);   // the pictures face left: mirrored to face someone on its right (user: it looked away)
     g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
     g.drawImage(DATA.spriteArt[a.file], r[0], r[1], r[2], r[3], -r[4] * k, -r[5] * k, r[2] * k, r[3] * k);
     g.restore();
@@ -633,5 +703,7 @@ function hud(show, s, m) {
 }
 
 // for tests: what is going on down here, one creature put by her, numbers over the data
-export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: getState()?.duatField });
+// tests only: turn her a way (left, right, up, down) as walking that way would
+export function testFace(d) { if (d === 'left' || d === 'right') { me.face = d; me.vdir = null; } else me.vdir = d; }
+export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: getState()?.duatField });
 export function testOnly(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs = [makeMob(99, kind, x, y)]; bolts = []; fx = []; }

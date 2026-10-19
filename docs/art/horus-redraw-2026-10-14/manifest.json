@@ -2,7 +2,7 @@
   "status": "user-approved-art-only",
   "runtimeApplied": false,
   "pixelProcessing": "Lossless extraction, no resizing/repainting; transparent padding 16 px",
-  "count": 60,
+  "count": 59,
   "sprites": [
     {
       "file": "png/horus-front-walk-0.png",
@@ -25,7 +25,7 @@
         454,
         1020
       ],
-      "sha256": "9b5b518eb70acbaf431dfa459b5b48967a9acc923340567116f5852e80675133",
+      "sha256": "fe2f5dc768051ab551121f6deaf105a29c47919f96c5f53957bf28c50606ca92",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -34,7 +34,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리(목 위)를 가로세로 같이 87 %로 줄임, 목 208,339 기준 70행에 걸쳐 1로(tools/art/fix/headshrink.py), 몸 그대로. 원본 sources/horus-front-walk-0-비율전.png. 사용자: \"신 스프라이트 정지 정면 머리 폭, 머리 비율, 몸 비율로 … 정확히 맞춘다\", 시안 중 \"중 87로 해\"",
         "2026-10-17 오푸스: 머리 가로폭만 95.5 %(x 208 기준, 머리 위끝~턱 같은 비율, 턱 아래 70행에 걸쳐 1로, tools/art/fix/faceslim.py 208 0 30 339 409 0.955 0.955 0), 세로 그대로. 정지 정면 귀~귀 폭 비율 0.844에 맞춤. 사용자: \"머리 가로폭만 조절\", 시안 중 \"95.5\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-walk-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-walk-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-walk-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -58,7 +59,7 @@
         959,
         1018
       ],
-      "sha256": "7bd769f9e148569e62195856b6c31a703d55dfb4ee732788011bbc8d43782734",
+      "sha256": "15663437e1eac0369def6556ae536bbe647e73ac9fc2a75b13c0faab16ec8fff",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -67,7 +68,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리(목 위)를 가로세로 같이 87 %로 줄임, 목 208,339 기준 70행에 걸쳐 1로(tools/art/fix/headshrink.py), 몸 그대로. 원본 sources/horus-front-walk-1-비율전.png. 사용자: \"신 스프라이트 정지 정면 머리 폭, 머리 비율, 몸 비율로 … 정확히 맞춘다\", 시안 중 \"중 87로 해\"",
         "2026-10-17 오푸스: 머리 가로폭만 95.5 %(x 208 기준, 머리 위끝~턱 같은 비율, 턱 아래 70행에 걸쳐 1로, tools/art/fix/faceslim.py 208 0 30 339 409 0.955 0.955 0), 세로 그대로. 정지 정면 귀~귀 폭 비율 0.844에 맞춤. 사용자: \"머리 가로폭만 조절\", 시안 중 \"95.5\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-walk-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-walk-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-walk-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -91,7 +93,7 @@
         1477,
         1020
       ],
-      "sha256": "cc12bf97578611841551b7d2d7b7872f7a25eab0a756cd5042269223ed62f5f3",
+      "sha256": "af1e53905e8d4db8ada87756dd2cbe24b689e36648e08f1c54fdef1ef94baa10",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -100,7 +102,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리(목 위)를 가로세로 같이 87 %로 줄임, 목 208,339 기준 70행에 걸쳐 1로(tools/art/fix/headshrink.py), 몸 그대로. 원본 sources/horus-front-walk-2-비율전.png. 사용자: \"신 스프라이트 정지 정면 머리 폭, 머리 비율, 몸 비율로 … 정확히 맞춘다\", 시안 중 \"중 87로 해\"",
         "2026-10-17 오푸스: 머리 가로폭만 95.5 %(x 208 기준, 머리 위끝~턱 같은 비율, 턱 아래 70행에 걸쳐 1로, tools/art/fix/faceslim.py 208 0 30 339 409 0.955 0.955 0), 세로 그대로. 정지 정면 귀~귀 폭 비율 0.844에 맞춤. 사용자: \"머리 가로폭만 조절\", 시안 중 \"95.5\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-walk-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-walk-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-walk-2-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -124,7 +127,7 @@
         368,
         443
       ],
-      "sha256": "118e72aa44447ba6f5feb1d6ab3c7275c41f1bbcb92edba5fbb11fecda4be7db",
+      "sha256": "08e1ec9ab9fb6d9e9f1a33c04f0e4da4c93b6549aa5b756ab22d38065e03dce3",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -132,7 +135,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 93 %(목 166,291 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 94.3 %(faceslim.py 166 0 30 291 361), 정지 정면 몸÷머리 0.612·귀 높이 얼굴폭 0.844에 맞춤. 원본 sources/horus-front-interact-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 잰 값 시안 \"ㄱㄱ\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-interact-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -156,7 +160,7 @@
         814,
         449
       ],
-      "sha256": "a4c40c78603ec119298c11212c22bff909e9d78faae410339d33408762af143c",
+      "sha256": "f4e961bc7a754fb5e9a78cdfd2cf23ee1b719da83feb77897380aeea759fed1d",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -164,7 +168,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 93 %(목 166,291 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 94.3 %(faceslim.py 166 0 30 291 361), 정지 정면 몸÷머리 0.612·귀 높이 얼굴폭 0.844에 맞춤. 원본 sources/horus-front-interact-1-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 잰 값 시안 \"ㄱㄱ\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-interact-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -188,7 +193,7 @@
         1250,
         445
       ],
-      "sha256": "fe62b8fe0e147a8300b703ef39ae679f95486da37ddd9b12bad63b61d2d05a39",
+      "sha256": "78c84961e960f6bde19a1b8caa73c40b3f3903c2b34e52826d26f0de19ce4235",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -196,7 +201,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 90.6 %(목=깃 위끝 176,290 기준 가로세로 같이, headshrink.py 70행 — 정지 정면 비율값에서 3 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 원본 sources/horus-back-interact-0-비율전.png. 사용자: -4 % 채택 뒤 \"중간 단위로 보여줘\", -3 % 열에 동그라미 \"이걸로\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-interact-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -220,7 +226,7 @@
         1692,
         447
       ],
-      "sha256": "fdbfb20ac3b3603d51556d248ae3f073d252fde920b2edd4de2612590b8c1093",
+      "sha256": "b065f0c9758e7193b226a200514378f32642fb44fb8ee15934957860c11a4b51",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -228,7 +234,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 90.6 %(목=깃 위끝 179,290 기준 가로세로 같이, headshrink.py 70행 — 정지 정면 비율값에서 3 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 원본 sources/horus-back-interact-1-비율전.png. 사용자: -4 % 채택 뒤 \"중간 단위로 보여줘\", -3 % 열에 동그라미 \"이걸로\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-interact-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -252,7 +259,7 @@
         366,
         877
       ],
-      "sha256": "66177e2c54e624fdb5ec9645cd05346f3b39f1c9ff4ddfe9f36f8c040c1cc7cd",
+      "sha256": "4ef1a85debc3b4bf75582cfeae9d7e01d3bdce863d23c0ed68525ecdef37bbb1",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -261,7 +268,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 96.8 %(목 156,272 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 96.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 원본 sources/horus-left-interact-0-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 156,272 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-left-interact-0-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-interact-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -285,7 +293,7 @@
         809,
         879
       ],
-      "sha256": "f6c6fd80bc2f969a39a6d2a79db129686559b6cfcb2cc99b6f95b8fb880517ee",
+      "sha256": "61c40a372c1d3522bc68c2454e1aedb0c7bc999e9a3770756a32f0c7777d6b76",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -294,7 +302,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 96.8 %(목 165,272 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 96.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 원본 sources/horus-left-interact-1-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 165,272 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-left-interact-1-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-interact-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -318,7 +327,7 @@
         1232,
         877
       ],
-      "sha256": "6c4263e581853cdaab79434995188fd712861845da6782473beae79edcf89e71",
+      "sha256": "663c1343872e7d175b4a6268008aa0e55df14846a1f2f650c6b7256c0cba43ec",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -327,7 +336,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 106.6 %(목 171,262 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 93.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 16px·좌우 22px 늘림(anchor 같이 옮김). 원본 sources/horus-right-interact-0-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 193,278 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-right-interact-0-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-interact-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-interact-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -351,7 +361,7 @@
         1688,
         878
       ],
-      "sha256": "423c64bb8c96782cfab8a491fd9b73f73f0501bee7c76fe732e41e72967ebf5b",
+      "sha256": "7e5e4d17197a7bcc07508b4a90bee24274cd1e7641d97f36a3524573acb174d3",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -360,7 +370,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 106.6 %(목 178,265 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 93.7 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 14px·좌우 22px 늘림(anchor 같이 옮김). 원본 sources/horus-right-interact-1-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 200,279 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-right-interact-1-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-interact-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-interact-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -377,7 +388,7 @@
         1160
       ],
       "source": "sources/horus-back-sit-floor-0-사용자-새그림.png",
-      "sha256": "bce728b941e7b5d8398db6a25ae7d43d66b58f8b87e74b4fc9f46d311fc45f04",
+      "sha256": "94489a605864e77565d71298135301b3cce701bb6da9e4c65b73809d9034504f",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -387,7 +398,8 @@
         "2026-10-17 오푸스: 사용자가 새로 뽑아 온 뒷모습 방석 앉기로 교체(옛 그림 sources/horus-back-sit-floor-0-옛그림.png: 다리가 쩍벌). 받은 그림(1201×1310, 투명)의 흐린 티끌을 지우고 여백 16px로 자름(943×1176). 머리 90 %(목=깃 위끝 489,795 기준 가로세로 같이, headshrink.py 70행), 머리색 tonematch.py horus hair (기준 뒷모습 정지), 파란 하이라이트 줄 hairhl.py(기준 뒷모습 정지). 게임 크기는 세트·소망 뒷모습 바닥 앉기 키(319·327 /576 기준)에 맞출 것. 사용자: \"그냥 back sit 방석 이걸로 하자\", \"-10\", \"색 맞춤 하이라이트도\", \"ㄱㄱ\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 990.3 — 세트·소망 같은 자리(back floor) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-sit-floor-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 머리 94 %(목=깃 위끝 489,795 기준 가로세로 같이, headshrink.py 70행), 몸·게임 크기(referenceVisibleHeight 990.3) 그대로. 사용자: \"back sit floor 머리 크기 좀만 줄이자\", \"방식앉기 -6%\""
+        "2026-10-17 오푸스: 머리 94 %(목=깃 위끝 489,795 기준 가로세로 같이, headshrink.py 70행), 몸·게임 크기(referenceVisibleHeight 990.3) 그대로. 사용자: \"back sit floor 머리 크기 좀만 줄이자\", \"방식앉기 -6%\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-sit-floor-0-색전.png에서 다시, 그 뒤 머리 94 %(목 489,795, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 990.3
     },
@@ -412,7 +424,7 @@
         942,
         505
       ],
-      "sha256": "22dee9231451d29d23da9e1f072e567220b06b0889a154be98ce0ea98d53d8b2",
+      "sha256": "fff4ea8bf08ae896cf079565e9d92b7ecdeb1fc6b261cfa9dc82b7322f267c3f",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -421,7 +433,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 90.6 %(목 190,315 기준 가로세로 같이, headshrink.py 70행 — 뒷모습 상호작용와 같은 값) 뒤 가로폭 95.7 %(faceslim.py). 몸 그대로. 원본 sources/horus-back-sit-stool-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 485.3 — 세트·소망 같은 자리(back stool) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-sit-stool-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-sit-stool-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-sit-stool-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 485.3
     },
@@ -439,14 +452,15 @@
         1190
       ],
       "source": "사용자 그림, 구글 드라이브 \"좌향 00.png\" (2026-10-17)",
-      "sha256": "dd41fa4205bbe3f5a5ddc4637795f2128c5fad0017ace9725d65ccf00c4b111e",
+      "sha256": "7875ecfe11386bff330b39294badd44b655d65d9b4add5a4770545e2eb3c9d66",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-sit-floor-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-sit-floor-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-sit-floor-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -470,7 +484,7 @@
         385,
         1008
       ],
-      "sha256": "7da31040d9d5e395e0f3f0a29c29dce32b4d3a1c5b2954eae43c994b4ddbab5c",
+      "sha256": "cf15f811683d1ffbe30199adb42439384b3d0922368b62df3332517358898a4f",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -480,7 +494,8 @@
         "2026-10-17 오푸스: 머리 106.6 %(목 185,285 기준 가로세로 같이, headshrink.py 70행 — 오른쪽 상호작용와 같은 값) 뒤 가로폭 93.7 %(faceslim.py). 몸 그대로. 캔버스 위 22px·좌우 23px 늘림(anchor 같이 옮김). 원본 sources/horus-right-sit-bench-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 486.2 — 세트·소망 같은 자리(right bench) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 208,307 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93), 몸 그대로, 게임 크기 referenceVisibleHeight 그대로(몸 크기 같음). 원본 sources/horus-right-sit-bench-0-옆머리전.png. 사용자: \"옆 정지랑 앉기(쿠션 앉기 빼고)도 해야지\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sit-bench-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sit-bench-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-sit-bench-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 486.2
     },
@@ -498,14 +513,15 @@
         1191
       ],
       "source": "사용자 그림, 구글 드라이브 \"우향 00.png\" (2026-10-17)",
-      "sha256": "cedb248c0afa200abf1422a4fc3e352114a58e20eed136d8b128d5320229c8d7",
+      "sha256": "3927b8b00e1ee21f91b3e30be9fd3c390167758e5e9e622ac5e5b5e82d8de058",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sit-floor-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sit-floor-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-sit-floor-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -529,7 +545,7 @@
         1488,
         1007
       ],
-      "sha256": "7587c04318c6611f7d0fff6643a67028a2c42d75b72986580673b01f9741d3b8",
+      "sha256": "dc0bd031cdbb2140dd9121f337efd7849f226d4aa25b138d9f0b3244af445ef5",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -539,7 +555,8 @@
         "2026-10-17 오푸스: 머리 96.8 %(목 180,290 기준 가로세로 같이, headshrink.py 70행 — 왼쪽 상호작용와 같은 값) 뒤 가로폭 96.7 %(faceslim.py). 몸 그대로. 원본 sources/horus-left-sit-bench-0-비율전.png. 게임 크기는 세트·소망 같은 자리 앉기 키에 맞출 것. 사용자: 시트 =상호작용 열에 동그라미 \"ㄱㄱ\", \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 460.2 — 세트·소망 같은 자리(left bench) 앉기 키 평균에 맞춤. 사용자: \"기왕이면 앉기는 세트랑 소망이랑 비율 크기 비슷해야됨\", \"애들 크기에 맞춰줘\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 180,290 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93), 몸 그대로, 게임 크기 referenceVisibleHeight 그대로(몸 크기 같음). 원본 sources/horus-left-sit-bench-0-옆머리전.png. 사용자: \"옆 정지랑 앉기(쿠션 앉기 빼고)도 해야지\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-sit-bench-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-sit-bench-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-sit-bench-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 460.2
     },
@@ -564,7 +581,7 @@
         397,
         451
       ],
-      "sha256": "d8f9603c1db53173905ce9c0bd2037f9db176bb56e4ff8c2e97c24fadd952be3",
+      "sha256": "240661d203aac35d5bffc69b975354143624b0fba21d56449472a0d50463141e",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -572,7 +589,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 86.1 %(목 190,300 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-back-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-pickup-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -596,7 +614,7 @@
         812,
         449
       ],
-      "sha256": "231ffda6abccf6977d1070f82bd9d13f6add7068547a173a7763ace3c4ce0a57",
+      "sha256": "8c8114ab3c2d49017fd18a0c404dc3eaed01ccf9139e94c7ce1ae6fbe897b950",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -604,7 +622,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 86.1 %(목 205,297 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 95.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-back-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-pickup-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -628,7 +647,7 @@
         1273,
         449
       ],
-      "sha256": "42a9fdbddf78af755410ae623fee4b9eb50a51c2d5dd588af2d2fbaf25247d63",
+      "sha256": "89cd588f4b8d68b0de0a7962af024e7fe8c92f1d83feed10bf3c42c3d0b209e3",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -636,7 +655,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 93.0 %(목 200,340 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용과 같은 값) 뒤 가로폭 94.3 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-front-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-pickup-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -660,7 +680,7 @@
         1721,
         461
       ],
-      "sha256": "fee7188bc7194969134723d06131b1e1130d195ff9ba55587a045a71f1c9ea77",
+      "sha256": "8a5a7b2001bdc0fc71ed3c6f0f2a5427dae584ecc11fafafcd375d075d58a28a",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -668,7 +688,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 93.0 %(목 215,340 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용과 같은 값) 뒤 가로폭 94.3 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-front-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-pickup-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -692,7 +713,7 @@
         394,
         864
       ],
-      "sha256": "da1dd986e1130062707a89af9a09a301bfad8cbb6c23250fa3dae65a4fdfba49",
+      "sha256": "e5e006fcee41c91910466a2966633daeb6c53a9a90c2b954129d84b650e0ba64",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -701,7 +722,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 92.0 %(목 205,287 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 96.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-left-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 406.0 고정 — 0.9.77에 상호작용 머리로 계산된 값 그대로. 옆 상호작용 머리를 바꾸며 줍기 크기가 따라 바뀌지 않게(사용자: \"잠, 줍기는 건드리지 마\")",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-pickup-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 406.0
     },
@@ -726,7 +748,7 @@
         820,
         866
       ],
-      "sha256": "054915e73d0cc2b845f1fa9dbe93f59bba49f4ae4c332982d1ece4242871ade1",
+      "sha256": "f38c535edc998991ec2aee8571b1f56b0bf6f3b7667a65c6955f3a38e898a75e",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -735,7 +757,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 92.0 %(목 235,280 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 5 % 작게) 뒤 가로폭 96.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-left-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 394.4 고정 — 0.9.77에 상호작용 머리로 계산된 값 그대로. 옆 상호작용 머리를 바꾸며 줍기 크기가 따라 바뀌지 않게(사용자: \"잠, 줍기는 건드리지 마\")",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-pickup-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 394.4
     },
@@ -760,7 +783,7 @@
         1267,
         865
       ],
-      "sha256": "3ae816e4cf31713437a7e188d84c0dace19354dcc5d030a71d3b41d2fcd318bd",
+      "sha256": "d06a6b98779aeee8d06d7dbef49a343fb9c3090ff8eeadfb7c5332208f765f9a",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -769,7 +792,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 99.1 %(목 195,268 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 7 % 작게) 뒤 가로폭 93.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-right-pickup-0-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 406.9 고정 — 0.9.77에 상호작용 머리로 계산된 값 그대로. 옆 상호작용 머리를 바꾸며 줍기 크기가 따라 바뀌지 않게(사용자: \"잠, 줍기는 건드리지 마\")",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-pickup-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-pickup-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 406.9
     },
@@ -794,7 +818,7 @@
         1724,
         865
       ],
-      "sha256": "d8ed9aff59040076feab2fa5a29fadf96ce231887b49bfc123c614eaf6107a7d",
+      "sha256": "f554302feb190c5e8670f71fbe110c0f60514e71ce1f1582663017533ac83f4d",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -803,7 +827,8 @@
       "edits": [
         "2026-10-17 오푸스: 머리 99.1 %(목 165,270 기준 가로세로 같이, headshrink.py 70행 — 같은 방향 상호작용 값에서 7 % 작게) 뒤 가로폭 93.7 %(faceslim.py, 같은 방향 상호작용 값). 몸 그대로. 원본 sources/horus-right-pickup-1-비율전.png. 사용자: 시트에 정면 =상호작용·뒷 -5 %·왼 -5 % 동그라미, \"마지막만 7%\", \"당연히 -7\"",
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 408.5 고정 — 0.9.77에 상호작용 머리로 계산된 값 그대로. 옆 상호작용 머리를 바꾸며 줍기 크기가 따라 바뀌지 않게(사용자: \"잠, 줍기는 건드리지 마\")",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-pickup-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-pickup-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ],
       "referenceVisibleHeight": 408.5
     },
@@ -828,7 +853,7 @@
         628,
         547
       ],
-      "sha256": "12c1172fdee62fdea947dc396606009658ece5672fa0c8a91ff9d75897c6b19e",
+      "sha256": "f877f5618757904c6a5577c68ddb385d0c7bcc549106901a0e51337a41170af4",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -837,7 +862,8 @@
       "referenceVisibleHeight": 537.5,
       "edits": [
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 537.5(그림 px, 서 있는 키 576과 같은 단위). 정면 잠: 세트·소망 정면 잠 키 평균에 맞춤. 사용자 \"정면 잠은 채택\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-sleep-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-sleep-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-sleep-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -861,7 +887,7 @@
         1314,
         551
       ],
-      "sha256": "72a5b2d6f1022fb0cc8b1a719f6ec93feb1a818807f533099f8ce90b10ab6c72",
+      "sha256": "eeafe0f486b9ff04a77579cbb166e773ddfa541e8f9159b34c3ceb92e76e25e2",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -870,7 +896,8 @@
       "referenceVisibleHeight": 537.5,
       "edits": [
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 537.5(그림 px, 서 있는 키 576과 같은 단위). 정면 잠: 0프레임과 같은 배율. 사용자 \"정면 잠은 채택\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-sleep-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-sleep-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-sleep-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -894,7 +921,7 @@
         812,
         854
       ],
-      "sha256": "7106e7a6d695c769c5411b50417b676aaaede6d7f21119afd214269dbc059ac9",
+      "sha256": "ccdf9038e3876d81c8d9f0759f2060f31ba08ad565aeb7d60bdc1aa78644aefa",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -903,7 +930,8 @@
       "referenceVisibleHeight": 821.2,
       "edits": [
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 821.2(그림 px, 서 있는 키 576과 같은 단위). 옆잠: 세트 옆잠 키에 맞춘 값(837.6)에서 2 % 크게. 사용자 \"옆잠 2%\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sleep-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sleep-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-sleep-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -927,7 +955,7 @@
         1604,
         859
       ],
-      "sha256": "8061af0e2dffee8992509da2c314a6e17f2caa17aa5b60acc8dc47ba6ee25cf1",
+      "sha256": "f4daa063501a20dd618181f9be91c63319ab89835cb7411ebfddf5948204401c",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -936,7 +964,8 @@
       "referenceVisibleHeight": 821.2,
       "edits": [
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 821.2(그림 px, 서 있는 키 576과 같은 단위). 옆잠: 0프레임과 같은 배율. 사용자 \"옆잠 2%\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sleep-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-sleep-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-sleep-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -960,7 +989,7 @@
         431,
         484
       ],
-      "sha256": "d577bc999bb9e932ac4e99770802d0c06bc69d6e579d55db95d9972c9f639a9f",
+      "sha256": "9259e7b7a0f61f1309fe261ce8ae2a4ead10f4d8dc9ea5a5a5a608a9fad94ee3",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -969,7 +998,8 @@
       "referenceVisibleHeight": 435.5,
       "edits": [
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 435.5(그림 px, 서 있는 키 576과 같은 단위). 낚시: 세트·소망 낚시 0프레임 키 평균에 맞춤. 발밑 점(465행 아래, x 150 오른쪽) 지움 원본 sources/horus-front-fish-0-점전.png.",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-fish-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-fish-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-fish-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -993,7 +1023,7 @@
         903,
         484
       ],
-      "sha256": "5412b05993a191ebf6acc9534ed0a2f7a45db0d02927b5abed23215f28edbbbe",
+      "sha256": "20ee7f9154b31dbfc9c332a96a98a3a03a1a6eb94106fb102650462e72613eee",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -1002,7 +1032,8 @@
       "referenceVisibleHeight": 366.0,
       "edits": [
         "2026-10-17 오푸스: 게임 크기 referenceVisibleHeight 366.0(그림 px, 서 있는 키 576과 같은 단위). 낚시 1프레임: 0프레임 배율에서 19 % 크게(당기는 그림이 작게 그려져 있음). 발밑 점(478행 아래) 지움. 사용자 \"fish 1 19%\" 원본 sources/horus-front-fish-1-점전.png.",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-fish-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-fish-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-fish-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1026,7 +1057,7 @@
         1280,
         484
       ],
-      "sha256": "0c47bc08e9f0307e42cd0c9f39f9437c538c298a2b5d22198d292d929eb27b2a",
+      "sha256": "94cb5daa81faf109dd179d25b228e5674024b2f3892bc77de4c2b7d66207eddc",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -1034,7 +1065,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 발밑 점(457~466행)과 1~2px 티끌을 지움(456행 아래 투명). 그다음 머리 87.5 %(목 173,288 기준 가로세로 같이, headshrink.py 70행 — 정지 정면 비율값 100.6 %에서 13 % 작게) 뒤 가로폭 98.7 %(faceslim.py). 원본 sources/horus-back-cook-0-비율전.png. 사용자: \"Cook 대갈이 너무 크고 몸길이가 짧음 점도 없애줘\", \"머리도 더 줄이자\", \"-13% ㄱㄱ\" 발 기준점 anchor y 467 → 456(점이 아닌 실제 발 끝).",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-cook-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-cook-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-cook-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1058,7 +1090,7 @@
         1738,
         481
       ],
-      "sha256": "a0fd3ef2b9d452fb9652fae13778dee62217cf845ce2b13e494352cc9ec55248",
+      "sha256": "8838334ef60d9a8a0c5551de84c6c30165d23d78039388a44d3af73a9546f5c8",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -1066,35 +1098,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 89.5 %(목 165,303 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 103.1 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 원본 sources/horus-front-read-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-read-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
-      ]
-    },
-    {
-      "file": "png/horus-right-drink-0.png",
-      "character": "horus",
-      "direction": "right",
-      "frame": "0",
-      "size": [
-        345,
-        426
-      ],
-      "anchor": [
-        172,
-        410
-      ],
-      "source": "sources/life.png",
-      "sourceCell": 8,
-      "sourceBox": [
-        1393,
-        489,
-        1706,
-        883
-      ],
-      "sha256": "d4449eb7edec713cd13d968a5567208798f5f3ad427e1d642160e5403674efa3",
-      "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
-      "alphaExtrema": [
-        0,
-        255
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-read-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-read-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1111,7 +1116,7 @@
         639
       ],
       "source": "사용자 그림, 구글 드라이브 \"정면 해피.png\" (2026-10-17)",
-      "sha256": "151c835b9da5e89cfd8ab6dd77befa4ca330a73b63f51015d321d479718ef9c5",
+      "sha256": "89e02d5cebb1becb955c964271874144548cc9cb351a620804a6d8e279aad778",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
@@ -1119,7 +1124,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 113.6 %(목 205,358 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 96.2 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 캔버스 위 45px·좌우 40px 늘림(anchor 같이 옮김). 원본 sources/horus-front-happy-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-happy-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-happy-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-happy-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1143,7 +1149,7 @@
         767,
         958
       ],
-      "sha256": "3df57f7e35673b31451a877d8c4374c371703b3e4faefbe5b49812853f0837a5",
+      "sha256": "6aa806c2529a42e484aeb3b76dbf16708380de750db867bd91a0f2984f53787b",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -1151,7 +1157,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 114.5 %(목 290,567 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 100.8 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 캔버스 위 81px·좌우 58px 늘림(anchor 같이 옮김). 원본 sources/horus-front-shy-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-shy-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-shy-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-shy-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1175,7 +1182,7 @@
         1453,
         960
       ],
-      "sha256": "3711c0baec4e0bde925b723fade6b53963ee43b2b3788b384fb9248546979abb",
+      "sha256": "312301e41bf6dd7cea58f2aa852facc97b475761189df87ddcd15905cf2157db",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
@@ -1183,7 +1190,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 정지 정면 비율에 맞춤 — 머리 115.8 %(목 290,565 기준 가로세로 같이, headshrink.py 70행) 뒤 가로폭 99.5 %(faceslim.py, 턱 아래 70행에 걸쳐 1로). 몸÷머리 0.614·귀 높이 얼굴폭 0.844. 캔버스 위 88px·좌우 62px 늘림(anchor 같이 옮김). 원본 sources/horus-front-surprised-0-비율전.png. 사용자: \"정지 정면이랑 모든 비율이 똑같아야 해\", 시트대로 \"1ㄱㄱ\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-surprised-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-front-surprised-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-front-surprised-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1207,14 +1215,15 @@
         564,
         512
       ],
-      "sha256": "871f55635a9740f5f0c3f64c90125fc4e989d5b2f034bc9f8a0db6837e445c9c",
+      "sha256": "f3bada106d83090dc2220ed8f2ff22e7f07483e743241319dcce60de365425b6",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-anticipation-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-anticipation-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-combat-anticipation-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1238,14 +1247,15 @@
         1114,
         508
       ],
-      "sha256": "89d05ac93a16114000c32820081834a593df00468533c6b5c0160ab3d1f9093a",
+      "sha256": "3955e1c03383ce1c3e2897197b5b7050302166e9f7935e534880633c88a70bcd",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-attack-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-attack-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-combat-attack-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1269,14 +1279,15 @@
         1508,
         514
       ],
-      "sha256": "7916bec9122a2f48eabc88dbb79486ca35ce8ec3aba01c6ef074259b2b6ba8fb",
+      "sha256": "506431b22ef78e19dff273ae1f01413616c0775325563c45804173dc22e160d3",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-hit-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-hit-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-combat-hit-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1300,14 +1311,15 @@
         565,
         1004
       ],
-      "sha256": "7a72a85a835e4c329ddc402bd4e85b706927227b22f34d60681116b6334ddaf7",
+      "sha256": "c78f4f6efd56b046469b3c3cfd63955235c1d38749d67a97986b3fd4ed8ac590",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-idle-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-idle-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-combat-idle-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1331,14 +1343,15 @@
         1083,
         1004
       ],
-      "sha256": "dac471fb7cee4b2683f5a65bb47196d7161db328efe033df8b413545d0b70188",
+      "sha256": "2a20c61dcb35289e84dc9926fd04ef9a4e33f7d77f744389971c90312153c5c8",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-idle-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-idle-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-combat-idle-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1362,14 +1375,15 @@
         1518,
         1004
       ],
-      "sha256": "8d3380da473097c8a4e9ecfa1719fe315dc004dd37810475d4115ed21e9bcbb6",
+      "sha256": "ec88ce21ab94dca50cf1bd2bb54c043cb621277151b3cf0e319d1d052030989f",
       "approvalEvidence": "사용자: 채택본들 다 개별 png로 메인브랜치에 올려줘; 각 묶음 채택 근거는 README 참조",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-idle-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-combat-idle-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-combat-idle-2-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1393,7 +1407,7 @@
         384,
         496
       ],
-      "sha256": "dfffb9579a188ced3c8ddb4f2935ce7bba48f8695b8509d1c90b8ffdd8edc1ff",
+      "sha256": "be4f5a001ef58a90e2babc8acaa476250c86bed55f53dba3ef3aa2d2cc2f5b39",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1403,7 +1417,8 @@
         "2026-10-17 오푸스: 머리 112.7 %(목 200,292 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 107.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 35px·좌우 37px 늘림(anchor 같이 옮김). 원본 sources/horus-left-idle-0-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 237,327 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-left-idle-0-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-idle-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 237,327 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-idle-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 237,327 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-idle-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-idle-0-색전.png에서 다시, 그 뒤 머리 91 %(목 237,327, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1427,7 +1442,7 @@
         768,
         508
       ],
-      "sha256": "7f02737160d6ba792d55a6d61258a34f94767f7ee79dc026c983fa5b95f9e635",
+      "sha256": "b01a13a8023d6861bf5f7bc817fbd947a04fe0e0d08ece367458b612e7e978b1",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1437,7 +1452,8 @@
         "2026-10-17 오푸스: 머리 109.5 %(목 215,289 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 106.8 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 26px·좌우 30px 늘림(anchor 같이 옮김). 원본 sources/horus-left-walk-0-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 245,315 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-left-walk-0-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-walk-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 245,315 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-walk-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 245,315 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-walk-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-walk-0-색전.png에서 다시, 그 뒤 머리 91 %(목 245,315, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1461,7 +1477,7 @@
         1152,
         502
       ],
-      "sha256": "b54f02c2ea20fa29fe4877f532782357117b3d1045328399fac04cca6b9eb1e8",
+      "sha256": "468704506257dd5221bce4403f0d82253c3d2e8dab669df69084ecbd45214bd1",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1471,7 +1487,8 @@
         "2026-10-17 오푸스: 머리 109.5 %(목 202,294 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 106.8 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 28px·좌우 30px 늘림(anchor 같이 옮김). 원본 sources/horus-left-walk-1-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 232,322 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-left-walk-1-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-walk-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 232,322 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-walk-1-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 232,322 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-walk-1-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-walk-1-색전.png에서 다시, 그 뒤 머리 91 %(목 232,322, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1495,7 +1512,7 @@
         1524,
         496
       ],
-      "sha256": "6b50f2f8b9196a10419a0db9e99a6f2ae2e3edce98a047547f3ed390dc011c44",
+      "sha256": "08896dc70abfb5294d37f2985308766d6636bee3e49e208bdb0ba3173fa47f02",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1505,7 +1522,8 @@
         "2026-10-17 오푸스: 머리 109.5 %(목 222,296 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 106.8 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 27px·좌우 30px 늘림(anchor 같이 옮김). 원본 sources/horus-left-walk-2-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 252,323 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-left-walk-2-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-walk-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 252,323 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-walk-2-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 252,323 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-left-walk-2-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-walk-2-색전.png에서 다시, 그 뒤 머리 91 %(목 252,323, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1529,7 +1547,7 @@
         384,
         1000
       ],
-      "sha256": "eaf16f258d26ca0d0626c9e021628d294ec88daeac5c04fb7ca6b898d18b2d7f",
+      "sha256": "d09e49b5ad5aff75070388e867305b8468bd8a0f7d244b0a7e95f7abcb98f8c2",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1539,7 +1557,8 @@
         "2026-10-17 오푸스: 머리 113.6 %(목 202,290 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 103.1 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 38px·좌우 39px 늘림(anchor 같이 옮김). 원본 sources/horus-right-idle-0-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 241,328 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-right-idle-0-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-idle-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 241,328 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-idle-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 241,328 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-idle-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-idle-0-색전.png에서 다시, 그 뒤 머리 91 %(목 241,328, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1563,7 +1582,7 @@
         768,
         992
       ],
-      "sha256": "a839a4f956981847094ebd196daddc98523429f82e2e8fc87eb07f42e115a22e",
+      "sha256": "698a9f4de23cd5fd7f63c0c532ea3baca835cd86fed35fb5fa9c4ad5da906b30",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1573,7 +1592,8 @@
         "2026-10-17 오푸스: 머리 114.7 %(목 204,290 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 101.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 40px·좌우 41px 늘림(anchor 같이 옮김). 원본 sources/horus-right-walk-0-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 245,330 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-right-walk-0-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-walk-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 245,330 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-walk-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 245,330 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-walk-0-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-walk-0-색전.png에서 다시, 그 뒤 머리 91 %(목 245,330, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1597,7 +1617,7 @@
         1152,
         996
       ],
-      "sha256": "f4c022c2d085b5ba83df154f31d9974d2fa3e0e2c655c4e47ae5f68db8f2c25b",
+      "sha256": "4d3a95f03cce1923597462ac3f37afba2e692e994d0abc39ebfe1f3fa5a12a98",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1607,7 +1627,8 @@
         "2026-10-17 오푸스: 머리 114.7 %(목 202,292 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 101.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 38px·좌우 41px 늘림(anchor 같이 옮김). 원본 sources/horus-right-walk-1-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 243,330 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-right-walk-1-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-walk-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 243,330 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-walk-1-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 243,330 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-walk-1-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-walk-1-색전.png에서 다시, 그 뒤 머리 91 %(목 243,330, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1631,7 +1652,7 @@
         1535,
         990
       ],
-      "sha256": "55d92ea5bf642a8fafb07f5f119cf90288bf9840a09d984cc06afe80e96a75fd",
+      "sha256": "ab20aad918e683e347ae45d24e3167a93a86c9ce2cd77ef9da0a4f13fb349190",
       "approvalEvidence": "사용자 1000482937.png 첨부: 이거 메인에 넣어줭",
       "alphaExtrema": [
         0,
@@ -1641,7 +1662,8 @@
         "2026-10-17 오푸스: 머리 114.7 %(목 240,290 기준 가로세로 같이, headshrink.py 70행, 같은 묶음 같은 값 — 정지 정면 비율값에서 4.5 % 작게) 뒤 가로폭 101.2 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 36px·좌우 41px 늘림(anchor 같이 옮김). 원본 sources/horus-right-walk-2-비율전.png. 사용자: \"-4가 젤 낫다\", \"채택 ㄱㄱ\", 이어서 \"옆모습 -4.5로 하자\"",
         "2026-10-17 오푸스: 옆머리를 세트처럼 — 머리 높이만 93 %(지금 그림의 목 281,326 기준; headshrink.py 0.93 70행 뒤 faceslim.py 폭 1/0.93, 결과 폭은 그대로), 몸 그대로. 원본 sources/horus-right-walk-2-옆머리전.png. 사용자: \"조금 아래로 머리 찌부시키고 옆으로 늘리고 대갈 전체 크기 좀만 줄이면\", 시안 -7 % 동그라미, \"걷기, 상호작용만 해\", \"ㄱㄱ 옆 정지들도 해야지\"",
         "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-walk-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
-        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 281,326 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-walk-2-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\""
+        "2026-10-17 오푸스: 피부색을 기준 그림에 한 번 더(tonematch.py horus skin, 옆 정지 그림자가 어둡게 남아 있었음), 뒤 머리 91 %(목 281,326 기준 가로세로 같이, headshrink.py 70행), 몸 그대로. 원본 sources/horus-right-walk-2-피부머리91전.png. 사용자: \"피부만. 그리고 -9%\", \"옆 앉기는 바꾸지 말자\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-walk-2-색전.png에서 다시, 그 뒤 머리 91 %(목 281,326, headshrink.py 70행)는 같은 값으로 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1682,7 +1704,7 @@
         887
       ],
       "source": "사용자 그림, ../horus-replacement-originals-2026-10-17/horus-back-idle-v1.png",
-      "sha256": "15fec605aac11ab942407ef8915a78dd984a29115f92556f4a4125c6e8551357",
+      "sha256": "8b38037a56da2848f6a766e53dd36080b8f6f28ff576b2b8905a506fe2f9c92a",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
@@ -1690,7 +1712,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 머리 100.4 %(목=깃 위끝 429,537 기준 가로세로 같이, headshrink.py 70행 — 정지 정면 비율값에서 3 % 작게) 뒤 가로폭 98.9 %(faceslim.py, 머리 폭÷높이를 정면 정지 1.123에). 캔버스 위 12px·좌우 12px 늘림(anchor 같이 옮김). 원본 sources/horus-back-idle-0-비율전.png. 사용자: -4 % 채택 뒤 \"중간 단위로 보여줘\", -3 % 열에 동그라미 \"이걸로\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-idle-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-idle-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-idle-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1707,14 +1730,15 @@
         1191
       ],
       "source": "사용자 그림, 구글 드라이브 \"좌향 01.png\" (2026-10-17), 좌향 먹기 눈 뜸",
-      "sha256": "07fa078d26c79f6155b537641375bb242c34ea8fe3a5646fd54aff101107332d",
+      "sha256": "5a2cb384c352429d4fc7e1c0aa50c5c6eeb308491442e501e4421dce589fcb4d",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-eat-eyes-open-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-eat-eyes-open-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-eat-eyes-open-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1731,14 +1755,15 @@
         1191
       ],
       "source": "사용자 그림, 구글 드라이브 \"죄향 02.png\" (2026-10-17), 좌향 먹기 눈 감음",
-      "sha256": "72136dc4df1f4dfbb722704433140bf52dfc6e1450e889dc828e2b9d68587656",
+      "sha256": "0d2f6c09e9d7713003178a5cbf760308beddeba0f2b60c1a5caa5f18bb40ff55",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-eat-eyes-closed-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-left-eat-eyes-closed-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-left-eat-eyes-closed-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1755,14 +1780,15 @@
         1193
       ],
       "source": "사용자 그림, 구글 드라이브 \"우향 01.png\" (2026-10-17), 우향 먹기 눈 뜸",
-      "sha256": "13e02c515bfbd6552b64deec3434e6e2ecbe4ca10d83b48ec1f4d594384fd3b3",
+      "sha256": "a73c4617e28ae1ce984151abed697da1d0678444e2013a1ea1d1038673034012",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-eat-eyes-open-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-eat-eyes-open-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-eat-eyes-open-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1779,14 +1805,15 @@
         1191
       ],
       "source": "사용자 그림, 구글 드라이브 \"우향 02.png\" (2026-10-17), 우향 먹기 눈 감음",
-      "sha256": "34a1c2980b2330965135c33e6d706b7036a25f9cd2eec4b2b1079d9af0ae4f0a",
+      "sha256": "e47958a7a3313d5dbd16dc6f8cdb2bdef743bd2dca28e9fc18834fbbe49ffbd9",
       "approvalEvidence": "사용자 2026-10-17: \"정면 정지(내 수정본)랑 정지 뒷면, 미소, 좌우향 앉기 012 메인에 올리고 기존본 지워\", \"51종 png 한꺼번에 있는 폴더에 오늘 걸로 대체하라고\"",
       "alphaExtrema": [
         0,
         255
       ],
       "edits": [
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-eat-eyes-closed-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-right-eat-eyes-closed-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-right-eat-eyes-closed-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1810,7 +1837,7 @@
         420,
         513
       ],
-      "sha256": "c81b896cd6e7f87b431a581fc5abb321d611617f8d7880228090d8bc8ab9c21e",
+      "sha256": "35a67a95bc3445d212e8f15654fe4a6be54666a7fdbcd7ac6996bd58761a6b51",
       "approvalEvidence": "채택 시트 walk.png 윗줄(뒷면 걷기). 사용자 2026-10-17 \"뒷면 걷기…도 싹 다 바뀌었는데\": 오푸스가 시트에서 잘라 넣음(알파 1~9 연무만 지움)",
       "alphaExtrema": [
         0,
@@ -1818,7 +1845,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 채택한 뒷모습(정지·상호작용, 몸÷머리 0.633·머리 폭÷높이 1.124)에 맞춤 — 머리 101.6 %(목=깃 위끝 190,316 기준 가로세로 같이, headshrink.py 70행, 세 프레임 같은 값), 가로폭은 이미 같아서 그대로. 캔버스 위 8px·좌우 14px 늘림(anchor 같이 옮김). 원본 sources/horus-back-walk-0-비율전.png. 사용자: \"뒷모습 걷기 012 머리 크기랑 비율 기존 뒷모습에 맞춰서 메인에 올려\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-walk-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-walk-0-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-walk-0-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1842,7 +1870,7 @@
         920,
         513
       ],
-      "sha256": "0f5ec71f44ae26d2ac41c65a861a6d43319f88f90394c4b10eaa9940e02c1a89",
+      "sha256": "9f78cb350fbf5592c25b2d194a6e5e01593f003743d2267dc1e9f60fb559f1f9",
       "approvalEvidence": "채택 시트 walk.png 윗줄(뒷면 걷기). 사용자 2026-10-17 \"뒷면 걷기…도 싹 다 바뀌었는데\": 오푸스가 시트에서 잘라 넣음(알파 1~9 연무만 지움)",
       "alphaExtrema": [
         0,
@@ -1850,7 +1878,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 채택한 뒷모습(정지·상호작용, 몸÷머리 0.633·머리 폭÷높이 1.124)에 맞춤 — 머리 101.6 %(목=깃 위끝 190,316 기준 가로세로 같이, headshrink.py 70행, 세 프레임 같은 값), 가로폭은 이미 같아서 그대로. 캔버스 위 8px·좌우 14px 늘림(anchor 같이 옮김). 원본 sources/horus-back-walk-1-비율전.png. 사용자: \"뒷모습 걷기 012 머리 크기랑 비율 기존 뒷모습에 맞춰서 메인에 올려\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-walk-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-walk-1-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-walk-1-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     },
     {
@@ -1874,7 +1903,7 @@
         1433,
         516
       ],
-      "sha256": "8dec9c152aeead95f5a5e767e579d82d134de40bd862039a5810441789513c4a",
+      "sha256": "ef1705d914d4008b88092b632ec9335603477494f15f7e5abc1bda8c7e71912e",
       "approvalEvidence": "채택 시트 walk.png 윗줄(뒷면 걷기). 사용자 2026-10-17 \"뒷면 걷기…도 싹 다 바뀌었는데\": 오푸스가 시트에서 잘라 넣음(알파 1~9 연무만 지움)",
       "alphaExtrema": [
         0,
@@ -1882,7 +1911,8 @@
       ],
       "edits": [
         "2026-10-17 오푸스: 채택한 뒷모습(정지·상호작용, 몸÷머리 0.633·머리 폭÷높이 1.124)에 맞춤 — 머리 101.6 %(목=깃 위끝 190,316 기준 가로세로 같이, headshrink.py 70행, 세 프레임 같은 값), 가로폭은 이미 같아서 그대로. 캔버스 위 8px·좌우 14px 늘림(anchor 같이 옮김). 원본 sources/horus-back-walk-2-비율전.png. 사용자: \"뒷모습 걷기 012 머리 크기랑 비율 기존 뒷모습에 맞춰서 메인에 올려\"",
-        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-walk-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\""
+        "2026-10-17 오푸스: 머리색·파란 하이라이트·피부색을 사용자가 보낸 정면 그림(sources/horus-color-reference-2026-10-17.png) 색으로 — tonematch.py horus hair, tonematch.py horus skin, hairhl.py(모양·명암·외곽선 그대로, 색만). 원본 sources/horus-back-walk-2-색전.png. 사용자: \"모든 스프라이트 머리색(하이라이트 포함) 피부색을 이걸로 바꿔 그대로\", \"머리색 피부색 괜찮음\"",
+        "2026-10-18 오푸스: 머리색·파란 하이라이트·피부색을 정면 정지(png/horus-front-idle-0.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_ONLY_LARGEST HAIR_INK → hairhl.py / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38 SKIN_SATMIN=0.12 SKIN_GROW). 예전 방식(2026-10-17 색 맞춤)은 버리고 그 전 원본 docs/art/horus-redraw-2026-10-14/sources/horus-back-walk-2-색전.png에서 다시. 모양 그대로, 색만. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
       ]
     }
   ]

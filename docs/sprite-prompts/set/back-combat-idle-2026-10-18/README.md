@@ -12,7 +12,7 @@
 
 최초 각 프레임의 입력 1은 references/set-front-combat-idle-{0,1,2}.png 중 해당 번호의 팔장식 수정 정면 대기였다. 입력 2는 동일 references/back-guide.png (원파일 1000483757(1).png)였다.
 
-사용자는 세 번째 프레임만 수정하도록 명시했다. 현재 0·1은 최초 생성 원본을 그대로 유지한다. 이후 불필요하게 재생성된 1번 결과는 채택하지 않았고 이 폴더에 넣지 않았다.
+사용자는 세 번째 프레임만 수정하도록 명시했다. 현재 0·1은 최초 생성 원본을 그대로 유지한다.
 
 채택 2는 fix2-prompt.txt로 생성한 로컬 set-back-combat-idle-2-v2.png이다. 수정 입력 순서는 다음과 같다.
 1. references/original-back-idle-2-before-fix.png — 최초 뒷대기 2

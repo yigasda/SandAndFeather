@@ -43,7 +43,7 @@
     ]
    },
    "referenceVisibleHeight": 527.2,
-   "sha256": "78bd98cdfa94b42667dade5713692f1887d0bab4f9d8a1b10902fc5cc3338000",
+   "sha256": "f4e9d6ec0bf6fd58324d766d82afcfba491d428722d0d0101f4ef3e3518eb68c",
    "source": "메인1/somang-front-fish-0.png",
    "canvas": [
     620,
@@ -52,6 +52,9 @@
    "tip": [
     14,
     691
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   },
   {
@@ -67,7 +70,7 @@
     ]
    },
    "referenceVisibleHeight": 527.2,
-   "sha256": "2518001f3085633bfdc3fbdec41c292966128bf1767e9df91de602aab1e03076",
+   "sha256": "f7b5239d7802a09e47226ace66da62a35a8cdf3b20aa5d055c7f7c3b9303ec9d",
    "source": "메인1/somang-front-fish-1.png",
    "canvas": [
     620,
@@ -76,6 +79,9 @@
    "tip": [
     29,
     134
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ]
   }
  ]

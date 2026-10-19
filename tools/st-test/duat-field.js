@@ -35,6 +35,15 @@ const MATE = { horus: 'set', set: 'somang', somang: 'horus' };
     ok(st.stance === true, `${lead}: 공격하면 전투 자세`);
     const hp1 = st.mobs.reduce((a, m) => a + m.hp, 0);
     ok(hp1 < hp0 || st.mobs.length < 5, `${lead}: 공격으로 몹 체력 줄어듦 ${hp0}→${hp1}`);
+    // up and down: the armed front / back walk, and the thrust down onto a creature below her
+    await p.keyboard.down('ArrowDown'); await sleep(450); await p.screenshot({ path: `${OUT}/${lead}-walk-down.png` }); await p.keyboard.up('ArrowDown'); await sleep(200);
+    st = await E(F => F.fieldState());
+    ok(st.stance === true && st.me.vdir === 'down', `${lead}: 전투 중 아래로 걸으면 아래를 봄(vdir ${st.me.vdir})`);
+    const hp2 = st.mobs.reduce((a, m) => a + m.hp, 0);
+    for (let k = 0; k < 3; k++) { await E((F, P) => { const m = F.fieldState().mobs.find(o => o.st !== 'dead'); if (m) { P.player.x = m.x; P.player.y = m.y - 0.9; } F.testFace('down'); F.attack(); }); await sleep(150); if (k === 0) await p.screenshot({ path: `${OUT}/${lead}-attack-down.png` }); await sleep(400); }
+    st = await E(F => F.fieldState());
+    ok(st.mobs.reduce((a, m) => a + m.hp, 0) < hp2 || st.mobs.length < 5, `${lead}: 아래 찌르기로 몹 체력 줄어듦`);
+    await E(F => F.testFace('right'));
     await E(F => F.skill()); await sleep(200); await p.screenshot({ path: `${OUT}/${lead}-skill.png` }); await sleep(600);
     await E(F => F.spell()); await sleep(200); await p.screenshot({ path: `${OUT}/${lead}-spell.png` });
     await sleep(3000);

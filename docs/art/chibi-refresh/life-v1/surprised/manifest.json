@@ -38,14 +38,15 @@
     ]
    },
    "referenceVisibleHeight": 576,
-   "sha256": "0c9ebffc1f442199c4aa2f9e884e4805aef270b09c3fa48dbc275bde45d2ab3f",
+   "sha256": "243dd2f9516ab3b0487041c85d0d8d3cb99e1c07197a8d4267289d1aa2ba7e9e",
    "source": "메인1/somang-front-surprised-0.png",
    "canvas": [
     620,
     720
    ],
    "edits": [
-    "headshrink [0.96, 300, 455, 50] pad 0: 머리 104% → 100%"
+    "headshrink [0.96, 300, 455, 50] pad 0: 머리 104% → 100%",
+    "2026-10-18 오푸스: 머리색·피부색을 docs/art/chibi-refresh/final/somang/idle/somang-front.png에 — TONE_FLAT=1 HAIR_SOFT=1 tonematch.py hair, SKIN_TIGHT=1 SKIN_CORE=3 SKIN_PLAIN=1 TONE_FLAT=1 SKIN_SOFT=1 tonematch.py skin(볼터치 뺀 맨 피부색끼리, 한 번에 부드럽게). 모양 그대로. 원본 sources/색전/. 사용자: \"채택\""
    ],
    "sourceSha256": "496de9f83b954029df99b984e46a3bf35dc67e02013c139f78c0879b9dd24edd"
   },
@@ -62,11 +63,14 @@
     ]
    },
    "referenceVisibleHeight": 576,
-   "sha256": "052a7e021d4906a82d5c881898180afd1ae4ce95c1d58c87b8abf80ffcf362ad",
+   "sha256": "f6e2aa9f1e8712d6c18e285fc033db3cec99113e02ab1a65828f0caeb7d27be4",
    "source": "메인1/set-front-surprised-0.png",
    "canvas": [
     620,
     720
+   ],
+   "edits": [
+    "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/life-v1/surprised/png/sources/색전/set-front-surprised-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
    ]
   }
  ]

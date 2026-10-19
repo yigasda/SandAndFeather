@@ -41,10 +41,13 @@
       "gameDirection": "down",
       "frame": 0,
       "phase": "reach-start",
-      "sha256": "ef104898a5576e4e92756aa6351a131a78545d8d0cc214726583dc18672b12a3",
+      "sha256": "f1a5e30a944e72364206f26a1b9e6af041f9cce58046ac847e252f5da038dbf2",
       "sourceIdle": "../final/set/idle/set-front.png",
       "guide": "../pose-guides/set-front-guide.png",
-      "fitReport": "checks/delivery/front-0/fit.json"
+      "fitReport": "checks/delivery/front-0/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-front-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     },
     {
       "path": "png/set-front-1.png",
@@ -53,10 +56,13 @@
       "gameDirection": "down",
       "frame": 1,
       "phase": "contact",
-      "sha256": "e6680901a07f8e0c7d96b7c02870d023be5cba0a1912f0be4877f54c11bb676d",
+      "sha256": "9f2d3d26da972dce30804ca95f99b3bff78d02ba334629fc9136fa8ac480a2d6",
       "sourceIdle": "../final/set/idle/set-front.png",
       "guide": "../pose-guides/set-front-guide.png",
-      "fitReport": "checks/delivery/front-1/fit.json"
+      "fitReport": "checks/delivery/front-1/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-front-1.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     },
     {
       "path": "png/set-back-0.png",
@@ -65,10 +71,13 @@
       "gameDirection": "up",
       "frame": 0,
       "phase": "reach-start",
-      "sha256": "a3e2fd0bb2d79be47f019a14e20e9798b8216beb7d35afabfd8768ffb0734a93",
+      "sha256": "fa6c3597ebc7ebccd128f631cbfb0dba735430aae86c7e17dfd8025de3430c6e",
       "sourceIdle": "../final/set/idle/set-back.png",
       "guide": "../pose-guides/set-back-guide.png",
-      "fitReport": "checks/delivery/back-0/fit.json"
+      "fitReport": "checks/delivery/back-0/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-back-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     },
     {
       "path": "png/set-back-1.png",
@@ -77,10 +86,13 @@
       "gameDirection": "up",
       "frame": 1,
       "phase": "contact",
-      "sha256": "8cf40068a50173e50e4870ce3e4ed475fcade935a57d408e364537ca4356e4d0",
+      "sha256": "8abfb80ba6c6b8267bde497846946d122f87fd7659751468d9d53e771fa39602",
       "sourceIdle": "../final/set/idle/set-back.png",
       "guide": "../pose-guides/set-back-guide.png",
-      "fitReport": "checks/delivery/back-1/fit.json"
+      "fitReport": "checks/delivery/back-1/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-back-1.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     },
     {
       "path": "png/set-left-0.png",
@@ -89,10 +101,13 @@
       "gameDirection": "left",
       "frame": 0,
       "phase": "reach-start",
-      "sha256": "27c3c6a24773afa2dd40b2a54905f6a5d8b267c59eb9a5057f4de82aad6e739f",
+      "sha256": "5da4be41b1f70c8a1969baed9a19dd61d7f6bf6f7d976370dc99aff3513c9f17",
       "sourceIdle": "../final/set/idle/set-left.png",
       "guide": "../pose-guides/set-left-guide.png",
-      "fitReport": "checks/delivery/left-0/fit.json"
+      "fitReport": "checks/delivery/left-0/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-left-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     },
     {
       "path": "png/set-left-1.png",
@@ -101,10 +116,13 @@
       "gameDirection": "left",
       "frame": 1,
       "phase": "contact",
-      "sha256": "0fffb7429063157fc79fce4a047ec70a635240d1498a61307805c937b29367a2",
+      "sha256": "517d047949f1b24fc00052b7f4a543baee1add5cb5d36d4908739f287514359a",
       "sourceIdle": "../final/set/idle/set-left.png",
       "guide": "../pose-guides/set-left-guide.png",
-      "fitReport": "checks/delivery/left-1/fit.json"
+      "fitReport": "checks/delivery/left-1/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-left-1.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     },
     {
       "path": "png/set-right-0.png",
@@ -113,10 +131,13 @@
       "gameDirection": "right",
       "frame": 0,
       "phase": "reach-start",
-      "sha256": "5f65eac1c53c8c42bb9447890ddeba04afc1a86593afc312d952af9fcf350533",
+      "sha256": "0a439b935197a72cefc9d1dfdd6072b9d8ae12a4de0baa14b036ead9397e44c2",
       "sourceIdle": "../final/set/idle/set-right.png",
       "guide": "../pose-guides/set-right-guide.png",
-      "fitReport": "checks/delivery/right-0/fit.json"
+      "fitReport": "checks/delivery/right-0/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-right-0.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     },
     {
       "path": "png/set-right-1.png",
@@ -125,10 +146,13 @@
       "gameDirection": "right",
       "frame": 1,
       "phase": "contact",
-      "sha256": "73d01224bf837a91ec83a1d2a3ec0d0d419608f8d930f558cb03d0f2445f34c4",
+      "sha256": "63afe7dd092d88f9d8b8729fce6a0ea6c02eb15c4b34b779dc65a615986055e2",
       "sourceIdle": "../final/set/idle/set-right.png",
       "guide": "../pose-guides/set-right-guide.png",
-      "fitReport": "checks/delivery/right-1/fit.json"
+      "fitReport": "checks/delivery/right-1/fit.json",
+      "edits": [
+        "2026-10-18 오푸스: 머리색·피부색을 정면 정지(docs/art/chibi-refresh/final/set/idle/set-front.png)에 — 인수인계 방식(한 번에 부드럽게: tonematch.py TONE_FLAT HAIR_SOFT HAIR_HUE=25 HAIR_INK / SKIN_TIGHT SKIN_CORE=3 SKIN_PLAIN TONE_FLAT SKIN_SOFT SKIN_SATMAX=0.38). 모양 그대로, 색만. 원본 docs/art/chibi-refresh/interaction-set-v174/png/sources/색전/set-right-1.png. 사용자: \"세트 호루스 모든 스프라이트를 정지 정면 머리색 하이라이트 피부색으로\", \"싹다 합격\""
+      ]
     }
   ],
   "alphaExport": "Near-opaque alpha>=0.85 exported as fully opaque; RGB and lower-alpha edge values unchanged.",

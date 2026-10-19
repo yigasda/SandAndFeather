@@ -1,0 +1,233 @@
+{
+ "purpose": "두아트 필드 전투 앞(down)·뒤(up) 그림의 게임 크기와 기준점(pack-trio-motion.py combat_frames가 읽음). 그림은 색 맞춤 0.9.86 채택본, 이 숫자는 사용자 \"합격\"(크기 시트) · 전투 모음 움짤 채택(2026-10-18).",
+ "size": "referenceVisibleHeight = 이 그림에서 호루스/세트/소망 한 사람 키에 해당하는 px(같은 방향 일반 정지 머리에 register.py로 겹쳐 잰 배율 × 기준 refVH; 호루스 앞 대기는 1안 머리 고정: 장마다 얼굴을 0번에 겹친 배율과 자리)",
+ "pivot": "발 기준점(옷 큰 덩어리 아래 가운데, 샌들 바닥 행; 흔들리는 장은 머리 가로 자리를 0번에 맞춤)",
+ "files": [
+  {
+   "file": "combat-idle/set-front-combat-idle-0.png",
+   "view": "front",
+   "motion": "combat-idle",
+   "phase": 0,
+   "sha256": "1325e7ef53642420e016b5765cdb7783d98fd38a0d99aad97fef657a08718252",
+   "referenceVisibleHeight": 694.1,
+   "pivot": [
+    671.1,
+    975
+   ]
+  },
+  {
+   "file": "combat-idle/set-front-combat-idle-1.png",
+   "view": "front",
+   "motion": "combat-idle",
+   "phase": 1,
+   "sha256": "55a4161c719c4d9a4fc9f84eb0f275c4350b9ca39e778e577628165faaf6f292",
+   "referenceVisibleHeight": 694.1,
+   "pivot": [
+    668.8,
+    966
+   ]
+  },
+  {
+   "file": "combat-idle/set-front-combat-idle-2.png",
+   "view": "front",
+   "motion": "combat-idle",
+   "phase": 2,
+   "sha256": "a05d6982cebcc5d9c5a0796c7f7d04d4cb624834818eb87b00c11c3d78eba70f",
+   "referenceVisibleHeight": 694.1,
+   "pivot": [
+    674.3,
+    964
+   ]
+  },
+  {
+   "file": "armed-walk/set-front-armed-walk-0.png",
+   "view": "front",
+   "motion": "armed-walk",
+   "phase": 0,
+   "sha256": "99f8e8be373d1671682a5b6c0a8e4c805eb03b085c3741a4115f808652356e35",
+   "referenceVisibleHeight": 693.4,
+   "pivot": [
+    674.8,
+    916
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.999"
+   ]
+  },
+  {
+   "file": "armed-walk/set-front-armed-walk-1.png",
+   "view": "front",
+   "motion": "armed-walk",
+   "phase": 1,
+   "sha256": "e35f3705cd761e66fca40f875029b2e00ba2e447d11720733516271d4cb533cd",
+   "referenceVisibleHeight": 693.4,
+   "pivot": [
+    671.2,
+    929
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.999"
+   ]
+  },
+  {
+   "file": "armed-walk/set-front-armed-walk-2.png",
+   "view": "front",
+   "motion": "armed-walk",
+   "phase": 2,
+   "sha256": "3cf7c2b1a76e7948a6146cb55e11c62d239f420cb2b60f946b118513e188849a",
+   "referenceVisibleHeight": 693.4,
+   "pivot": [
+    680.4,
+    954
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.999"
+   ]
+  },
+  {
+   "file": "combat-attack/set-front-combat-attack-0.png",
+   "view": "front",
+   "motion": "combat-attack",
+   "phase": 0,
+   "sha256": "c7415e1c6982426e909c2037cf56a9fb54b498755e1ba7b3741740242b4d2475",
+   "referenceVisibleHeight": 764.2,
+   "pivot": [
+    765.7,
+    997
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.101"
+   ]
+  },
+  {
+   "file": "combat-attack/set-front-combat-attack-1.png",
+   "view": "front",
+   "motion": "combat-attack",
+   "phase": 1,
+   "sha256": "a3a636d8249b7f433fd3f4e2ce0961077155d3e009bb231ce072fa82a9c0474e",
+   "referenceVisibleHeight": 764.2,
+   "pivot": [
+    763.5,
+    971
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.101"
+   ]
+  },
+  {
+   "file": "combat-idle/set-back-combat-idle-0.png",
+   "view": "back",
+   "motion": "combat-idle",
+   "phase": 0,
+   "sha256": "1745ec17f055f5be308e797af0ebd5a85a0a86eff969c018c0b75b463a2734f7",
+   "referenceVisibleHeight": 720.0,
+   "pivot": [
+    702.0,
+    1008
+   ]
+  },
+  {
+   "file": "combat-idle/set-back-combat-idle-1.png",
+   "view": "back",
+   "motion": "combat-idle",
+   "phase": 1,
+   "sha256": "c00f624d47b9ec107b181dacf5ad835828e114758edd494a14026e320c437d93",
+   "referenceVisibleHeight": 720.0,
+   "pivot": [
+    691.7,
+    988
+   ]
+  },
+  {
+   "file": "combat-idle/set-back-combat-idle-2.png",
+   "view": "back",
+   "motion": "combat-idle",
+   "phase": 2,
+   "sha256": "7fa0729beb122691e47997541fd8e39f5518db6e0f70a45637574ed9c3a701d7",
+   "referenceVisibleHeight": 720.0,
+   "pivot": [
+    679.2,
+    1007
+   ]
+  },
+  {
+   "file": "armed-walk/set-back-armed-walk-0.png",
+   "view": "back",
+   "motion": "armed-walk",
+   "phase": 0,
+   "sha256": "ac04cc3a48d3f99f2a302b0c3bbb00c87c4361706df1bcc80a35e06762235204",
+   "referenceVisibleHeight": 694.1,
+   "pivot": [
+    700,
+    963
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.964",
+    "기준점 눈금 확대로 직접"
+   ]
+  },
+  {
+   "file": "armed-walk/set-back-armed-walk-1.png",
+   "view": "back",
+   "motion": "armed-walk",
+   "phase": 1,
+   "sha256": "49fd697ab1d275802cb004eaa017a27eba3f73fe8c2d64e3f2931951063e0b0b",
+   "referenceVisibleHeight": 694.1,
+   "pivot": [
+    690,
+    1000
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.964",
+    "기준점 눈금 확대로 직접"
+   ]
+  },
+  {
+   "file": "armed-walk/set-back-armed-walk-2.png",
+   "view": "back",
+   "motion": "armed-walk",
+   "phase": 2,
+   "sha256": "2bd6731f4c02e2553c1fe49ce61d0554fb73ce27ae6398f115d5d3c4a477f9a3",
+   "referenceVisibleHeight": 694.1,
+   "pivot": [
+    698,
+    951
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×0.964",
+    "기준점 눈금 확대로 직접"
+   ]
+  },
+  {
+   "file": "combat-attack/set-back-combat-attack-0.png",
+   "view": "back",
+   "motion": "combat-attack",
+   "phase": 0,
+   "sha256": "dc96d36e1dc722111f1356d0aa980efd587249d9387bcd411188e95295d3a883",
+   "referenceVisibleHeight": 727.9,
+   "pivot": [
+    755,
+    984
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.011",
+    "기준점 눈금 확대로 직접"
+   ]
+  },
+  {
+   "file": "combat-attack/set-back-combat-attack-1.png",
+   "view": "back",
+   "motion": "combat-attack",
+   "phase": 1,
+   "sha256": "dadf3e56e403b0adabafc4fc3fbda6edbc0c14e2348347dfade8c187376f022e",
+   "referenceVisibleHeight": 727.9,
+   "pivot": [
+    606.5,
+    1031.0
+   ],
+   "notes": [
+    "전투 대기 0에 머리 겹침 ×1.011"
+   ]
+  }
+ ]
+}
