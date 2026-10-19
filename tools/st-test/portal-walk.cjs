@@ -176,8 +176,21 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const near = await page.evaluate(([from, exitId]) => T.win.currentMap().d.entries[exitId], [from, exitId]);
             if (WIDTHS) {
                 const lane=Math.floor(leg/PAIRS.length);
-                const approach=await page.evaluate(([exitId,lane,temple])=>{
+                const approach=await page.evaluate(([exitId,lane,temple,votive])=>{
                     const m=T.win.currentMap(),e=m.d.exits.find(x=>x.id===exitId);
+                    if(votive) {
+                        const x=e.x1-.08, free=(x,y)=>!m.solidRect(x-.28,y-.18,x+.28,y+.16),slots=[];
+                        for(let y=e.y0;y<=e.y1;y+=.02) {
+                            if(!T.map.containsExit(e,x,y)||!free(x,y))continue;
+                            for(const d of [1.5,1,.6,.4]) {
+                                let clear=true;for(let t=0;t<=d;t+=.02)if(!free(x+t,y)){clear=false;break;}
+                                if(clear&&!m.exits.some(e=>T.map.containsExit(e,x+d,y))){slots.push({y,pre:{x:x+d-.5,y:y-.8}});break;}
+                            }
+                        }
+                        if(!slots.length)return null;
+                        const selected=slots[Math.round((slots.length-1)*[.12,.5,.88][lane])];
+                        return {cx:x,cy:selected.y,pre:selected.pre,vertical:false,lane,t:selected.y,range:[slots[0].y,slots.at(-1).y]};
+                    }
                     if(temple) {
                         // These two thresholds are crossed vertically; sample across their full width.
                         const n=m.id==='desert_buried_temple'?-1:1;
@@ -225,7 +238,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                     let pre=null;
                     for(const d of [1.5,1,2,.6,2.5]){const x=selected.x-n[0]*d,y=selected.y-n[1]*d;if(free(x,y)&&!m.exits.some(e=>T.map.containsExit(e,x,y))){pre={x:x-.5,y:y-.8};break;}}
                     return pre?{cx:selected.x,cy:selected.y,pre,vertical,lane,t:selected.t,range:[slots[0].t,slots.at(-1).t]}:null;
-                },[exitId,lane,TEMPLE]);
+                },[exitId,lane,TEMPLE,VOTIVE]);
                 ok(!!approach,`${name}: 문 폭 ${['왼쪽/위','중앙','오른쪽/아래'][lane]} 보행 가능한 접근`);
                 if(!approach)throw new Error('no lane '+name);
                 ex=approach;
