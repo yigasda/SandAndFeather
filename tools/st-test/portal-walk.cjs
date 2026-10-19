@@ -212,7 +212,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 }});
             });
         });
-        const trips = ARRIVALS ? PAIRS : WIDTHS ? [...PAIRS,...PAIRS,...PAIRS] : CONNECTIONS ? [...PAIRS, ...PAIRS] : PAIRS;
+        const trips = ARRIVALS ? PAIRS : WIDTHS ? (KEYBOARD ? [...PAIRS,...PAIRS] : [...PAIRS,...PAIRS,...PAIRS]) : CONNECTIONS ? [...PAIRS, ...PAIRS] : PAIRS;
         let leg = 0;
         for (const [from, at, exitId, to, land] of trips) {
             const name = `${from.replace('desert_', '')} → ${to.replace('desert_', '')}`;
@@ -225,7 +225,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             // walk (stick) to the landing that belongs to this exit (the way in from it), then on into the exit
             const near = await page.evaluate(([from, exitId]) => T.win.currentMap().d.entries[exitId], [from, exitId]);
             if (WIDTHS) {
-                const lane=Math.floor(leg/PAIRS.length);
+                const lane=KEYBOARD?1:Math.floor(leg/PAIRS.length);
                 const approach=await page.evaluate(([exitId,lane,temple,votive])=>{
                     const m=T.win.currentMap(),e=m.d.exits.find(x=>x.id===exitId);
                     if(votive) {
