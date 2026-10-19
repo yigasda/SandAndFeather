@@ -181,18 +181,21 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                         const free=(x,y)=>!m.solidRect(x-.28,y-.18,x+.28,y+.16);
                         for(let x=e.x0;x<=e.x1;x+=.02){if(T.map.containsExit(e,x,y)&&free(x,y))slots.push(x);}
                         if(!slots.length)return null;
-                        const x=slots[Math.round((slots.length-1)*[.12,.5,.88][lane])];
-                        // The south floor narrows inland: a fixed 1.5-tile setback can be wall.
-                        // Keep the selected threshold lane, choosing a clear continuous approach.
-                        let pre=null;
-                        for(const d of [1.5,1,.6,2,2.5]) {
-                            const py=y-n*d;
-                            if(m.exits.some(e=>T.map.containsExit(e,x,py)))continue;
-                            let clear=true;
-                            for(let t=0;t<=d;t+=.02)if(!free(x,y-n*t)){clear=false;break;}
-                            if(clear){pre={x:x-.5,y:py-.8};break;}
+                        // Only lanes with a continuous inland approach are usable door width.
+                        const approaches=[];
+                        for(const x of slots) {
+                            for(const d of [1.5,1,.6,.4,.3,2,2.5]) {
+                                const py=y-n*d;
+                                if(m.exits.some(e=>T.map.containsExit(e,x,py)))continue;
+                                let clear=true;
+                                for(let t=0;t<=d;t+=.02)if(!free(x,y-n*t)){clear=false;break;}
+                                if(clear){approaches.push({x,pre:{x:x-.5,y:py-.8}});break;}
+                            }
                         }
-                        return pre?{cx:x,cy:y,pre,vertical:true,lane,t:x,range:[slots[0],slots.at(-1)]}:null;
+                        if(!approaches.length)return null;
+                        const selected=approaches[Math.round((approaches.length-1)*[.12,.5,.88][lane])];
+                        return {cx:selected.x,cy:y,pre:selected.pre,vertical:true,lane,t:selected.x,
+                            range:[approaches[0].x,approaches.at(-1).x],thresholdRange:[slots[0],slots.at(-1)]};
                     }
                     if(e.polygon) {
                         // Approach the registered threshold's long inner edge along its normal.
