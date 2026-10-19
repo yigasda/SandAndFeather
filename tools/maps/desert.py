@@ -100,9 +100,10 @@ PLACES = [
       ('door', (640, 312, 790, 352), 'desert_city_plaza', 'east')]),
     # 17 잊힌 지하 도시의 광장: 오른쪽 계단 위가 11의 문 (guide: 17 우측 계단); 왼쪽 집 주거실·오른쪽 집 18 기록고는 다음
     ('desert_city_plaza', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
-     # the landing a little inside so all of her and the companion show (the camera stops at the map's right edge;
-     # user: "캐릭터 전체가 화면 안에 보이도록 조금 안쪽으로"), the exit as it was
-     {'east': ((1690, 505), 'left')},
+     # the landing inside so all of her and the companion show (the camera stops at the map's right edge), on the walk at
+     # the top of the stairs in the user's blue circle ("착지 파란색이 더 안전할 듯"): the point there furthest from walls.
+     # The exit as it was (the user's red mark is the same right edge, "출구는 빨간색")
+     {'east': ((1651, 564), 'left')},
      [('east', (1760, 402, 1774, 537), 'desert_city_gate', 'door')]),
 ]
 

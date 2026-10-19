@@ -68,7 +68,7 @@ fs.mkdirSync(OUT, { recursive: true });
             ['desert_quiet_dunes', 'east', 1, 'desert_buried_temple', 'west'], ['desert_buried_temple', 'west', -1, 'desert_quiet_dunes', 'east'],
             ['desert_quiet_dunes', 'west', -1, 'desert_dry_flats', 'east'], ['desert_dry_flats', 'west', -1, 'desert_golden_dunes', 'east']];
         legs.push(['desert_buried_temple', 'door', [0, -1], 'desert_city_gate', 'outside'], ['desert_city_gate', 'door', [0, -1], 'desert_city_plaza', 'east'],
-            ['desert_city_plaza', 'east', [1, 0], 'desert_city_gate', 'door'], ['desert_city_gate', 'outside', [-1, 0], 'desert_buried_temple', 'door']);
+            ['desert_city_plaza', 'east', [1, -0.5], 'desert_city_gate', 'door'], ['desert_city_gate', 'outside', [-1, 0], 'desert_buried_temple', 'door']);
         for (const [from, at, dx, to, land] of legs) {
             await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
             await page.waitForTimeout(600);
