@@ -488,11 +488,12 @@ onFrame((dt, m, u) => {
         spawn(m, s);
     }
     hud(true, s, m);
-    // the way she faces: sideways (me.face), and up or down after walking that way until she walks sideways again
+    // the way she faces: sideways (me.face), and up or down after going that way until she goes sideways again
     if (input.dx > 0.2) me.face = 'right'; else if (input.dx < -0.2) me.face = 'left';
     const ax = Math.abs(input.dx), ay = Math.abs(input.dy);
     if (ay > ax * VERT) me.vert = true; else if (ax > ay * VERT) me.vert = false;
-    if (player.moving) me.vdir = me.vert ? (input.dy > 0 ? 'down' : 'up') : null;
+    // by the stick, not by moving: against a wall she still turns the way it is pushed
+    if (ax > 0.2 || ay > 0.2) me.vdir = me.vert ? (input.dy > 0 ? 'down' : 'up') : null;
     stepStance();
     if (stance.on) player.dir = me.vdir || me.face;
     // Horus's dive moves him while the skill plays
