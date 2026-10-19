@@ -5,14 +5,21 @@
 //   4. 일부러 다시 출구로 걸어가면 정상 귀환(같은 입력으로 두 번 넘어가지 않음)
 //   5. 저장·다시 불러오기(새로고침 뒤 게임 다시 열기) → 같은 맵·같은 자리
 // 양방향 영상과 도착 화면을 out에 남긴다.
-//   node tools/st-test/portal-walk.cjs [out]
+//   node tools/st-test/portal-walk.cjs [out] [--connections]
+// --connections: T1W -> T1E -> 15 -> T1E -> T1W twice, one initial fixture placement only.
 const { chromium } = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
-const PAIRS = [['desert_buried_temple', 'west', 'temple', 'desert_forecourt_west', 'south'], ['desert_forecourt_west', 'yard', 'south', 'desert_buried_temple', 'temple']];
+const CONNECTIONS = process.argv.includes('--connections');
+const PAIRS = CONNECTIONS ? [
+    ['desert_forecourt_west', 'east', 'east', 'desert_forecourt_east', 'west'],
+    ['desert_forecourt_east', 'west', 'east', 'desert_colonnade', 'forecourt'],
+    ['desert_colonnade', 'forecourt', 'forecourt', 'desert_forecourt_east', 'east'],
+    ['desert_forecourt_east', 'east', 'west', 'desert_forecourt_west', 'east'],
+] : [['desert_buried_temple', 'west', 'temple', 'desert_forecourt_west', 'south'], ['desert_forecourt_west', 'yard', 'south', 'desert_buried_temple', 'temple']];
 fs.mkdirSync(OUT, { recursive: true });
 let fail = 0; const res = [];
 const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; console.log(line); res.push(line); if (!c) fail++; };
@@ -33,11 +40,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.waitForFunction(() => SillyTavern.getContext().characters?.length > 0, null, { timeout: 30000 });
         await page.evaluate(() => SillyTavern.getContext().selectCharacterById(0)); await page.waitForFunction(() => !!SillyTavern.getContext().chatId);
         await page.waitForSelector('#sf_open', { state: 'attached' });
-        await page.evaluate(async base => { window.T = {}; for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', ledger: 'core/ledger', map: 'world/map', data: 'core/data' })) T[k] = await import(base + 'src/' + f + '.js'); }, BASE);
+        await page.evaluate(async base => { window.T = {}; for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', ledger: 'core/ledger', map: 'world/map', data: 'core/data', field: 'packs/duat/field' })) T[k] = await import(base + 'src/' + f + '.js'); }, BASE);
     };
     const where = () => page.evaluate(() => {
         const p = T.player.player, m = T.win.currentMap(), q = T.player.follower();
-        return { map: m.id, x: p.x, y: p.y, inExit: !!m.exitAt(p.x + 0.5, p.y + 0.8), mateInExit: !!m.exitAt(q.x + 0.5, q.y + 0.8) };
+        return { map: m.id, x: p.x, y: p.y, inExit: !!m.exitAt(p.x + 0.5, p.y + 0.8), mateInExit: !!m.exitAt(q.x + 0.5, q.y + 0.8), mate: {x:q.x,y:q.y}, floor: !m.solidRect(p.x+.22,p.y+.62,p.x+.78,p.y+.96), mateFloor: !m.solidRect(q.x+.22,q.y+.62,q.x+.78,q.y+.96) };
     });
     try {
         await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
@@ -46,9 +53,45 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
         });
         let shot = 0;
-        for (const [from, at, exitId, to, land] of PAIRS) {
+        if (CONNECTIONS) {
+            // One fixture placement, then two continuous touch-only round trips, with no travel between legs.
+            await page.evaluate(async () => T.win.travel('desert_forecourt_west', 'east'));
+            await sleep(1200);
+            await page.evaluate(() => {
+                T.moves = [];
+                // Observe the map assignment without changing movement or inputs. The microtask runs
+                // after placePlayer completes, before the next requestAnimationFrame can walk again.
+                const p = T.player.player; let current = p.map;
+                Object.defineProperty(p, 'map', { configurable: true, enumerable: true,
+                    get: () => current,
+                    set: value => { const from = current; current = value; if (from === value) return;
+                        queueMicrotask(() => { const q=T.player.follower();
+                            T.moves.push({from,to:p.map,x:p.x,y:p.y,dir:p.dir,mate:{x:q.x,y:q.y}});
+                        });
+                    }
+                });
+            });
+        }
+        if (CONNECTIONS) await page.evaluate(() => {
+            T.overlay = false;
+            T.win.onDraw(scene => {
+                if (!T.overlay) return;
+                scene.extra.push({x:0,y:10000,draw(g,sx,sy,z,ts) {
+                    const oy=sy-10000*ts; g.save(); g.lineWidth=3;
+                    for(const e of T.win.currentMap().d.exits) {g.strokeStyle='#ff40ed';g.strokeRect(sx+e.x0*ts,oy+e.y0*ts,(e.x1-e.x0)*ts,(e.y1-e.y0)*ts);}
+                    for(const [p,color] of [[T.player.player,'#00ff55'],[T.player.follower(),'#00ffff']]) {
+                        g.strokeStyle=color;g.strokeRect(sx+(p.x+.22)*ts,oy+(p.y+.62)*ts,.56*ts,.34*ts);
+                    }
+                    g.restore();
+                }});
+            });
+        });
+        const trips = CONNECTIONS ? [...PAIRS, ...PAIRS] : PAIRS;
+        let leg = 0;
+        for (const [from, at, exitId, to, land] of trips) {
             const name = `${from.replace('desert_', '')} → ${to.replace('desert_', '')}`;
-            await page.evaluate(async ([from, at]) => T.win.travel(from, at), [from, at]); await sleep(1200);
+            if (!CONNECTIONS) { await page.evaluate(async ([from, at]) => T.win.travel(from, at), [from, at]); await sleep(1200); }
+            ok((await where()).map === from, `${name}: 연속 왕복의 출발 맵`);
             // walk to just before the exit (its middle, a step back toward the start), then push into it and keep pushing
             const ex = await page.evaluate(([from, exitId]) => { const e = T.win.currentMap().d.exits.find(x => x.id === exitId); return { cx: (e.x0 + e.x1) / 2, cy: (e.y0 + e.y1) / 2 }; }, [from, exitId]);
             const me = await where();
@@ -61,13 +104,21 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             await W.touch('touchStart', p.x, p.y); await W.touch('touchMove', p.x + gx / gn * p.lim, p.y + gy / gn * p.lim);
             await page.waitForFunction(to => T.win.currentMap()?.id === to, to, { timeout: 15000 }).catch(() => {});
             const arrivedAt = await where();
+            if (CONNECTIONS && leg < 4) {
+                await W.touch('touchEnd');
+                await page.screenshot({path:path.join(OUT, `${String(shot++).padStart(2,'0')}-arrival-${to}-${land}.png`)});
+                await page.evaluate(()=>{T.overlay=true}); await sleep(180);
+                await page.screenshot({path:path.join(OUT, `${String(shot-1).padStart(2,'0')}-arrival-overlay-${to}-${land}.png`)});
+                await page.evaluate(()=>{T.overlay=false});
+                console.log('ARRIVAL_CAPTURE', to, land);
+            }
             await sleep(1200);   // still pushing, 1.2 s after arriving
             const held = await where();
-            await W.touch('touchEnd'); await sleep(500);
+            if (!CONNECTIONS || leg >= 4) await W.touch('touchEnd'); await sleep(500);
             const entry = await page.evaluate(([to, land]) => T.map.getMap(to).d.entries[land], [to, land]);
             res.push(`  ${name}: 출구 앞 ${now.map.replace('desert_', '')} (${now.x.toFixed(1)}, ${now.y.toFixed(1)}) → 도착 ${arrivedAt.map.replace('desert_', '')} (${arrivedAt.x.toFixed(1)}, ${arrivedAt.y.toFixed(1)})`);
             ok(arrivedAt.map === to && Math.hypot(arrivedAt.x - entry.x, arrivedAt.y - entry.y) < 0.6 && !arrivedAt.inExit, `${name}: 걸어서 도착, 착지 ${land}(${entry.x.toFixed(1)}, ${entry.y.toFixed(1)}) 자리, 트리거 밖`);
-            ok(held.map === to && !held.inExit, `${name}: 도착 뒤 1.2초 더 누르고 있어도 되돌아가지 않음 (${held.map.replace('desert_', '')})`);
+            ok(held.map === to && !held.inExit, `${name}: 도착 뒤 1.2초 ${CONNECTIONS && leg < 4 ? '정지' : '입력 유지'}에도 되돌아가지 않음 (${held.map.replace('desert_', '')})`);
             await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${to.replace('desert_', '')}-${land}.png`) });
             // short steps every way
             const back = [];
@@ -78,8 +129,16 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             }
             ok(!back.length, `${name}: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 ${back.join(' ')}`);
             const mate = await where();
-            ok(!mate.mateInExit, `${name}: 동행도 트리거 밖`);
+            ok(!mate.mateInExit && mate.floor && mate.mateFloor, `${name}: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖`);
+            if(CONNECTIONS) {
+                const move=await page.evaluate(()=>T.moves.at(-1));
+                ok(move?.to===to && Math.hypot(move.x-entry.x,move.y-entry.y)<0.05, `${name}: 첫 도착 프레임 정확한 착지`);
+                fs.writeFileSync(path.join(OUT,'moves.json'), JSON.stringify(await page.evaluate(()=>T.moves),null,2));
+                fs.writeFileSync(path.join(OUT,'result.txt'),res.join('\n')+'\n');
+            }
+            leg++;
         }
+        if (!CONNECTIONS) {
         // the return on purpose and save / load: from T1W's landing, walk back into its exit; then reload where she is
         await page.evaluate(async () => T.win.travel('desert_forecourt_west', 'south')); await sleep(1200);
         const ex = await page.evaluate(() => { const e = T.win.currentMap().d.exits.find(x => x.id === 'south'); return { cx: (e.x0 + e.x1) / 2, cy: (e.y0 + e.y1) / 2 }; });
@@ -92,6 +151,9 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await sleep(800);
         const twice = await where();
         ok(twice.map === 'desert_buried_temple' && !twice.inExit, '같은 입력으로 두 번 넘어가지 않음');
+        } else {
+            ok(await page.evaluate(()=>T.moves.length) === 8, '연속 왕복 2회: 정확히 8번 전환, 튕김 없음');
+        }
         // reload: fold the game (saves where she is), reload the page, open it again
         await page.evaluate(async () => T.win.foldGame()); await sleep(800);
         const before = await page.evaluate(() => { const s = T.state.getState(); return s.pos; });

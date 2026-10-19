@@ -726,5 +726,17 @@
     "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
     "tintActors": false,
     "tintWorld": false
+  },
+  "desert_forecourt_east": {
+    "file": "../docs/art/map-expansion/desert-T1E.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "tintActors": false,
+    "tintWorld": false
   }
 }

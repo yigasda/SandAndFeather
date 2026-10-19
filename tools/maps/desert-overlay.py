@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont
 from scipy import ndimage as nd
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'docs/consult/desert/maps'
+OUT = ROOT / 'docs/art/map-expansion/desert-connections-review'
 FOOT = {'x0': 0.22, 'x1': 0.78, 'y0': 0.62, 'y1': 0.96}   # src/world/player.js
 def font(size=22):
     for f in ('/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc', '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'):
@@ -34,6 +34,7 @@ def edge(m): return m ^ nd.binary_erosion(m)
 
 
 def main(ids):
+    OUT.mkdir(parents=True, exist_ok=True)
     for ident in ids:
         d = json.loads((ROOT / f'data/maps/{ident}.json').read_text())
         src = d['source']
@@ -62,6 +63,7 @@ def main(ids):
             g.line([mx, my, mx + ax * PX, my + ay * PX], fill=(0, 255, 90), width=3)
             g.text((fx1 + 4, fy0), f'착지 {k}', fill=(0, 255, 90), font=F, stroke_width=2, stroke_fill=(0, 0, 0))
             rows.append(f"  착지 {k}: 발 상자 {'바닥 안' if clear else '막힌 곳에 걸림'}, 출구 트리거 {'안: ' + ','.join(inside) if inside else '밖'}")
+        g.text((12, 12), 'DATA OVERLAY (not a game capture)', fill='white', font=F, stroke_width=2, stroke_fill='black')
         img.save(OUT / f'{ident}-overlay.png')
         print(f"{ident}: 원본 {user.shape[1]}×{user.shape[0]} / 적용 {pw['width']}×{pw['height']}, 경계 차이 {int(diff.sum())}px, 출구 {len(d['exits'])}개")
         print('\n'.join(rows))
