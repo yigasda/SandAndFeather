@@ -83,8 +83,12 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
     async function walkBackToLanding(entry) {
         const clear=await page.evaluate(e=>{
             const p=T.player.player,m=T.win.currentMap(),n=Math.ceil(Math.hypot(p.x-e.x,p.y-e.y)/.04);
+            let leftExit=false;
             for(let k=0;k<=n;k++){const t=n?k/n:0,x=p.x+(e.x-p.x)*t,y=p.y+(e.y-p.y)*t;
-                if(m.solidRect(x+.22,y+.62,x+.78,y+.96)||m.exits.some(ex=>T.map.containsExit(ex,x+.5,y+.8)))return false;}
+                if(m.solidRect(x+.22,y+.62,x+.78,y+.96))return false;
+                const inExit=m.exits.some(ex=>T.map.containsExit(ex,x+.5,y+.8));
+                if(inExit&&leftExit)return false;
+                if(!inExit)leftExit=true;}
             return true;
         },entry);
         if(!clear)return W.walkToPoint(entry.x,entry.y,30000,.4);
