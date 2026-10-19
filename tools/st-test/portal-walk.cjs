@@ -14,12 +14,16 @@ const path = require('node:path');
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
+const VOTIVE = process.argv.includes('--temple-15-t2');
 const TEMPLE = process.argv.includes('--temple-02-15');
 const ARRIVALS = process.argv.includes('--arrivals');
 const INNER = process.argv.includes('--widths-inner');
 const WIDTHS = INNER || process.argv.includes('--widths');
-const CONNECTIONS = TEMPLE || ARRIVALS || WIDTHS || process.argv.includes('--connections');
-const PAIRS = TEMPLE ? [
+const CONNECTIONS = VOTIVE || TEMPLE || ARRIVALS || WIDTHS || process.argv.includes('--connections');
+const PAIRS = VOTIVE ? [
+    ['desert_colonnade','stair','stair','desert_votive_hall','west'],
+    ['desert_votive_hall','west','west','desert_colonnade','stair'],
+] : TEMPLE ? [
     ['desert_buried_temple','temple','temple','desert_colonnade','south'],
     ['desert_colonnade','south','south','desert_buried_temple','temple'],
 ] : INNER ? [
@@ -113,7 +117,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             fs.writeFileSync(path.join(OUT,'follower-contract.json'),JSON.stringify(probe,null,2));
             ok(!probe.failures.length,`동행 초기화·첫 걸음·교대·전투 위치 우선 계약: ${probe.checked} 조합, 실패 ${probe.failures.length}`);
         }
-        if(WIDTHS && !TEMPLE) {
+        if(WIDTHS && !TEMPLE && !VOTIVE) {
             const checks=await page.evaluate(()=>{
                 const m=T.map.getMap('desert_forecourt_east'),e=m.d.exits.find(e=>e.id==='east'),px=m.d.authoredCollision.pixelWalk.pixelsPerTile;
                 const p=(x,y)=>T.map.containsExit(e,x/px,y/px);

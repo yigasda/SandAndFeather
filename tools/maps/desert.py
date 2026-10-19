@@ -37,7 +37,7 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
       'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
-      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E'}
+      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자", then "1.4로 늘리고")
 WALK = {'big': 1.4, 'detail': 1.0}
@@ -54,6 +54,10 @@ ALPHA = 128
 GAP = 3
 # Parent-registered latest user mark, source pixels. AABB remains in each runtime exit.
 EXIT_POLYGONS = {
+    # Registered blue side passage; original collision and doorway perspective preserved.
+    ('desert_votive_hall', 'west'): [(0,524),(20,524),(20,580),(0,581)],
+    # Upper-left stair ends at the outer edge, not the torch recess behind it.
+    ('desert_colonnade', 'stair'): [(0,380),(12,381),(12,414),(30,415),(30,462),(0,463)],
     # Deep walkable doorway, following the perspective of the left inner jamb.
     ('desert_buried_temple', 'temple'): [(929,315),(956,315),(955,340),(910,340)],
     # Full southern paved opening between the broken walls; open edge, not a wall niche.
@@ -129,8 +133,12 @@ PLACES = [
     # 위층 뒷벽 수신부); 받침 앞 바닥에서 퍼즐 화면을 연다(src/packs/puzzle/colonnade.js). T2·16 출입은 아직 없음:
     # east 시험 착지와 과거 forecourt 착지는 보존. 현재 실제 02 왕복은 남쪽 south를 쓴다.
     ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
-     {'east': ((1680, 620), 'left'), 'forecourt': ((1645, 620), 'left'), 'south': ((995, 795), 'up')},
-     [('south', (780, 860, 1210, 887), 'desert_buried_temple', 'temple')]),
+     {'east': ((1680, 620), 'left'), 'forecourt': ((1645, 620), 'left'), 'south': ((995, 795), 'up'), 'stair': ((110,490), 'right')},
+     [('south', (780, 860, 1210, 887), 'desert_buried_temple', 'temple'),
+      ('stair', (0,380,30,463), 'desert_votive_hall', 'west')]),
+    ('desert_votive_hall', '무너진 봉헌품 회랑', 'T2_무너진봉헌품회랑.png', 'T2_무너진봉헌품회랑.png',
+     {'west': ((115,550), 'right')},
+     [('west', (0,524,20,581), 'desert_colonnade', 'stair')]),
     # T1W: existing combat fixture and user landings preserved. New 15/east-court routes pending.
     # yard remains the historical test entry; no retired route may bypass the new structure.
     ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
@@ -194,6 +202,8 @@ def main(review_ids=None):
                 if (ident, k) == ('desert_colonnade', 'forecourt'): need = 60
                 # South arrival follows the near opening's centre; validate actual feet/follower, not 3x spacing.
                 if (ident, k) == ('desert_colonnade', 'south'): need = 60
+                # Near natural side/stair approaches: validate actual feet and held-input return.
+                if (ident,k) in {('desert_colonnade','stair'),('desert_votive_hall','west')}: need = 80
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         for item in ex:
