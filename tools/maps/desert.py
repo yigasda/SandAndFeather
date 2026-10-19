@@ -46,6 +46,13 @@ WALK = {'big': 1.4, 'detail': 1.0}
 CAMERA = {'big': 0.6, 'detail': 0.8}
 ACTOR = {'big': 1.6, 'detail': 1.4}
 ALPHA = 128
+# every landing at least GAP people-widths (tiles × the map's actorScale) from every exit, so walking about where she
+# lands, left or right, never takes her back (user: "좌우로 움직이다가 다시 전 맵으로 돌아가는 일이 없게", "착지랑 출구
+# 사이를 좀 더 멀리"); checked below, the build stops when one is closer
+GAP = 3
+# landings the user put by hand (their mark wins over GAP; still at least 2 people-widths): 11 door, the blue mark on the
+# stairs below the door ("파란색으로 수정", docs/consult/desert/maps/user-11-door-landing.jpg), 2.47
+BY_USER = {('desert_city_gate', 'door')}
 # collision pictures the user did not draw: made by tools/maps/desert-collision.py to the user's 01·02 rules
 MADE = {'03_고요한사구_06통합.png', '04_메마른모래벌판.png'}
 SRC = ROOT / '사막맵'
@@ -74,36 +81,37 @@ FRONT = {
                   (345, [[1342, 200], [1390, 200], [1390, 345], [1342, 345]])],
 }
 # Ombos: the landing when coming back (just inside the east edge, on the grass) and the exit rectangle (tiles of ombos.json)
-OMBOS_BACK = {'x': 39.6, 'y': 22.4, 'dir': 'left'}
+OMBOS_BACK = {'x': 37.5, 'y': 22.4, 'dir': 'left'}   # 3.2 tiles from the exit (GAP)
 
 # id, name, art file, collision file, ways in {name: (source px, facing)}, exits [(name, source box x0,y0,x1,y1, to, at)]. The big maps run 01 → 04 → 03 → 02 across their side edges (docs/ASTRA-DESERT-05-20-GUIDE.md
 # "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's temple door
 # (T1W), its lower right stone exit (11) and its right side (10) wait for those places.
 PLACES = [
     ('desert_golden_dunes', '황금 사구해', '01_황금사구해_닫힘.png', '01.png',
-     {'west': ((42, 265), 'right'), 'east': ((1556, 750), 'left')},
+     {'west': ((85, 294), 'right'), 'east': ((1501, 750), 'left')},
      [('west', (0, 150, 14, 300), 'ombos', OMBOS_BACK), ('east', (1572, 676, 1586, 822), 'desert_dry_flats', 'west')]),
     ('desert_dry_flats', '메마른 모래벌판', '04_메마른모래벌판.png', '04_메마른모래벌판.png',
-     {'west': ((44, 700), 'right'), 'east': ((1730, 300), 'left')},
+     {'west': ((85, 700), 'right'), 'east': ((1689, 300), 'left')},
      [('west', (0, 366, 14, 884), 'desert_golden_dunes', 'east'), ('east', (1760, 4, 1774, 590), 'desert_quiet_dunes', 'west')]),
     ('desert_quiet_dunes', '고요한 사구', '03_고요한사구_06통합.png', '03_고요한사구_06통합.png',
-     {'west': ((44, 430), 'right'), 'east': ((1730, 505), 'left')},
+     {'west': ((85, 430), 'right'), 'east': ((1689, 505), 'left')},
      [('west', (0, 355, 14, 884), 'desert_dry_flats', 'east'), ('east', (1760, 450, 1774, 561), 'desert_buried_temple', 'west')]),
     ('desert_buried_temple', '매몰 신전 사막', '02_매몰신전사막.png', '02_매몰신전사막.png',
-     # the west way out only where the paved path meets the edge, the door landing just inside the door (user's circle and mark)
-     {'west': ((44, 330), 'right'), 'door': ((1486, 684), 'down')},
+     # the west way out only where the paved path meets the edge (user's circle); the door landing on the stone path below
+     # the door, GAP from it (it was just inside the door, user's mark, until the GAP rule)
+     {'west': ((85, 330), 'right'), 'door': ((1438, 738), 'down')},
      [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_city_gate', 'outside')]),
     # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
     ('desert_city_gate', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
-     {'outside': ((300, 1350), 'up'), 'door': ((710, 390), 'down')},
+     {'outside': ((300, 1350), 'up'), 'door': ((672, 468), 'down')},
      [('left', (0, 335, 14, 1536), 'desert_buried_temple', 'door'), ('bottom', (0, 1522, 644, 1536), 'desert_buried_temple', 'door'),
       ('door', (640, 312, 790, 352), 'desert_city_plaza', 'east')]),
     # 17 잊힌 지하 도시의 광장: 오른쪽 계단 위가 11의 문 (guide: 17 우측 계단); 왼쪽 집 주거실·오른쪽 집 18 기록고는 다음
     ('desert_city_plaza', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
      # the landing inside so all of her and the companion show (the camera stops at the map's right edge), on the walk at
-     # the top of the stairs in the user's blue circle ("착지 파란색이 더 안전할 듯"): the point there furthest from walls.
+     # the top of the stairs in the user's blue circle ("착지 파란색이 더 안전할 듯"), GAP from the exit.
      # The exit as it was (the user's red mark is the same right edge, "출구는 빨간색")
-     {'east': ((1651, 564), 'left')},
+     {'east': ((1623, 570), 'left')},
      [('east', (1760, 402, 1774, 537), 'desert_city_gate', 'door')]),
 ]
 
@@ -138,6 +146,11 @@ def main():
         first = next(iter(ways.values()))[0]
         route, steps = P.path(safe, first, mid)
         P.review(image, mask, route, REVIEW, int(NO[ident]))
+        for k, ((x, y), _) in ways.items():
+            for e, (x0, y0, x1, y1), *_ in exits:
+                g = math.hypot(max(x0 - x, 0, x - x1), max(y0 - y, 0, y - y1))
+                need = (2 if (ident, k) in BY_USER else GAP) * (ACTOR['big' if ident in BIG else 'detail']) * PX
+                assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         W, H = math.ceil(w / PX), math.ceil(h / PX)
         data = {'id': ident, 'name': name, 'tile': 16, 'scene': 'desert', 'referenceScenes': [ident], 'legend': {'.': {'t': 'sand'}},

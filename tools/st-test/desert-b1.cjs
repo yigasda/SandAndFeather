@@ -1,7 +1,7 @@
 // 사막 B1 마무리 (OPUS 사막 계획서 19절 B1, 사용자 보완 지시 3): 02 돌 문 → 11 → 17 → 11 → 02를 화면 터치 조이스틱으로
 // 걷는다(CDP 터치 이벤트 → .sf_pad의 pointer 이벤트, 키보드·순간이동 없음). 영상으로 남기고 다음을 검사한다.
-//   - 출구 진입·이탈·재진입, 한 번 밟을 때 이동 한 번(맵 바뀜을 매 프레임 기록), 착지 출구 안에 서 있어도 다시 안 넘어감
-//   - 착지 발 상자가 바닥 안이고 출구 밖(02 돌 문은 문 안 착지: 가만히 있으면 안 넘어감)
+//   - 출구 진입·이탈·재진입, 한 번 밟을 때 이동 한 번(맵 바뀜을 매 프레임 기록), 착지에 서 있어도 다시 안 넘어감
+//   - 착지 발 상자가 바닥 안이고 출구 밖(모든 착지는 출구에서 사람 폭 3배 이상, 사용자가 찍은 11 문 착지는 2.47배)
 //   - 게임 창 닫기(자리 저장) → 새로고침 → 같은 채팅 다시 열기 → 같은 맵·자리, 새 채팅으로 갔다 와도 그대로
 //   node tools/st-test/desert-b1.cjs [out]
 const { chromium } = require('playwright');
@@ -132,18 +132,18 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         });
         await page.waitForTimeout(1000);
 
-        // 1. 02 돌 문: the landing is inside the door; standing still must not move her
+        // 1. 02 돌 문: the landing on the stone path below the door; standing still must not move her
         await page.evaluate(async () => T.win.travel('desert_buried_temple', 'door'));
         await page.waitForTimeout(2500);
         let L = await landing('desert_buried_temple', 'door');
         let me = await where();
-        ok(me.map === 'desert_buried_temple' && L.at && L.floor, `02 돌 문 착지: 바닥 안 (${JSON.stringify(L)})`);
-        ok(me.map === 'desert_buried_temple', '02 돌 문 착지가 문 안이어도 가만히 2.5초: 안 넘어감');
+        ok(me.map === 'desert_buried_temple' && L.at && L.floor && !L.inExit.length, `02 돌 문 착지: 바닥 안, 출구 밖 (${JSON.stringify(L)})`);
+        ok(me.map === 'desert_buried_temple', '02 돌 문 착지에 가만히 2.5초: 안 넘어감');
         await page.screenshot({ path: path.join(OUT, '1-02-door.png') });
         // step off the door, then into it again with the pad
         await hold(0, 1, 500);
         await page.waitForTimeout(300);
-        ok((await where()).map === 'desert_buried_temple', '조이스틱 아래로 문에서 물러남: 그대로 02');
+        ok((await where()).map === 'desert_buried_temple', '조이스틱으로 조금 움직여도(아래로 0.5초): 그대로 02');
         let n0 = await page.evaluate(() => T.moves.length);
         const walkStart = n0;
         let r = await walkTo('door');
@@ -183,7 +183,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         ok(r.reached && me.map === 'desert_buried_temple', `조이스틱으로 11 아래 → 02 돌 문 (${r.ms} ms)`);
         ok(await page.evaluate(n0 => T.moves.length - n0, n0) === 1, '한 번 밟아 이동 한 번');
         await page.waitForTimeout(2000);
-        ok((await where()).map === 'desert_buried_temple', '02 돌 문 착지(문 안)에 가만히 2초: 11로 되돌아가지 않음');
+        ok((await where()).map === 'desert_buried_temple', '02 돌 문 착지에 가만히 2초: 11로 되돌아가지 않음');
         const moves = await page.evaluate(n => T.moves.slice(n).map(m => `${m.from}→${m.to}`), walkStart);
         ok(moves.join(' ') === 'desert_buried_temple→desert_city_gate desert_city_gate→desert_city_plaza desert_city_plaza→desert_city_gate desert_city_gate→desert_buried_temple',
             `조이스틱으로 걸은 동안 맵 바뀜 전체(네 번, 중복 없음): ${moves.join(', ')}`);

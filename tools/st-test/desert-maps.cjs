@@ -44,7 +44,43 @@ fs.mkdirSync(OUT, { recursive: true });
             }
             return { from, at: [p.x, p.y], steps: n };
         }, { dx, dy, to });
-        await page.evaluate(async () => T.win.travel('ombos', { x: 39.6, y: 22.4, dir: 'right' }));
+        // walk along the floor to a named exit (landings sit GAP inside, so the way out is not always a straight line):
+        // a route on a 0.25-tile grid with her own foot box, followed with stepPlayer until the exit is under her feet
+        const walkTo = exitId => page.evaluate(exitId => {
+            const p = T.player.player, from = p.map, m = T.map.getMap(p.map), e = m.d.exits.find(x => x.id === exitId);
+            const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96), key = (x, y) => x + ',' + y;
+            // within one grid step of the exit (an exit along the very edge can be narrower than the grid); the last bit below walks in
+            const inExit = (x, y) => { const fx = x * S + 0.5, fy = y * S + 0.8; return fx >= e.x0 - S && fx <= e.x1 + S && fy >= e.y0 - S && fy <= e.y1 + S; };
+            const g0 = [Math.round(p.x / S), Math.round(p.y / S)], prev = new Map([[key(...g0), null]]), q = [g0]; let end = null;
+            while (q.length && !end) {
+                const [x, y] = q.shift();
+                for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+                    const nx = x + dx, ny = y + dy, k = key(nx, ny);
+                    if (prev.has(k) || nx * S < -2 || ny * S < -2 || nx * S > m.w + 1 || ny * S > m.h + 1) continue;
+                    if (!free(nx * S, ny * S) || (dx && dy && (!free((x + dx) * S, y * S) || !free(x * S, (y + dy) * S)))) continue;
+                    prev.set(k, [x, y]); if (inExit(nx, ny)) { end = [nx, ny]; break; } q.push([nx, ny]);
+                }
+            }
+            if (!end) return { from, at: [p.x, p.y], noRoute: exitId };
+            const route = []; for (let c = end; c; c = prev.get(key(...c))) route.unshift([c[0] * S, c[1] * S]);
+            let n = 0;
+            for (const [tx, ty] of route) {
+                while (Math.hypot(tx - p.x, ty - p.y) > 0.05 && n < 20000) {
+                    const ox = p.x, oy = p.y;
+                    T.player.stepPlayer(m, tx - p.x, ty - p.y, 0.015); n++;
+                    if (Math.hypot(p.x - ox, p.y - oy) < 1e-6) break;   // a grid point she cannot stand on exactly: the next one
+                    const x = m.exitAt(p.x + .5, p.y + .8); if (x) return { from, at: [p.x, p.y], exit: x.to, steps: n };
+                }
+            }
+            // the last bit: on toward the middle of the exit
+            const cx = (e.x0 + e.x1) / 2 - 0.5, cy = (e.y0 + e.y1) / 2 - 0.8;
+            for (let i = 0; i < 400; i++) {
+                T.player.stepPlayer(m, cx - p.x, cy - p.y, 0.015); n++;
+                const x = m.exitAt(p.x + .5, p.y + .8); if (x) return { from, at: [p.x, p.y], exit: x.to, steps: n };
+            }
+            return { from, at: [p.x, p.y], steps: n };
+        }, exitId);
+        await page.evaluate(async () => T.win.travel('ombos', { x: 37.5, y: 22.4, dir: 'right' }));
         await page.waitForTimeout(800);
         await page.screenshot({ path: path.join(OUT, 'ombos-east-edge-412.png') });
         let r = await walk(1, 0); log.push(r);
@@ -58,28 +94,40 @@ fs.mkdirSync(OUT, { recursive: true });
         await page.screenshot({ path: path.join(OUT, 'desert_golden_dunes-inside-412.png') });
         await page.evaluate(async () => T.win.travel('desert_golden_dunes', 'west'));
         await page.waitForTimeout(800);
-        r = await walk(-1, 0); log.push(r);
+        r = await walkTo('west'); log.push(r);
         await page.waitForFunction(() => T.player.player.map === 'ombos', null, { timeout: 15000 });
         await page.waitForTimeout(1200);
         log.push({ back: await page.evaluate(() => ({ map: T.player.player.map, x: T.player.player.x, y: T.player.player.y })) });
         await page.screenshot({ path: path.join(OUT, 'ombos-back-412.png') });
         // the big maps edge to edge: start at the way in next to the exit, walk out, land on the next map's way in
-        const legs = [['desert_golden_dunes', 'east', 1, 'desert_dry_flats', 'west'], ['desert_dry_flats', 'east', 1, 'desert_quiet_dunes', 'west'],
-            ['desert_quiet_dunes', 'east', 1, 'desert_buried_temple', 'west'], ['desert_buried_temple', 'west', -1, 'desert_quiet_dunes', 'east'],
-            ['desert_quiet_dunes', 'west', -1, 'desert_dry_flats', 'east'], ['desert_dry_flats', 'west', -1, 'desert_golden_dunes', 'east']];
-        legs.push(['desert_buried_temple', 'door', [0, -1], 'desert_city_gate', 'outside'], ['desert_city_gate', 'door', [0, -1], 'desert_city_plaza', 'east'],
-            ['desert_city_plaza', 'east', [1, -0.5], 'desert_city_gate', 'door'], ['desert_city_gate', 'outside', [-1, 0], 'desert_buried_temple', 'door']);
-        for (const [from, at, dx, to, land] of legs) {
+        const legs = [['desert_golden_dunes', 'east', 'east', 'desert_dry_flats', 'west'], ['desert_dry_flats', 'east', 'east', 'desert_quiet_dunes', 'west'],
+            ['desert_quiet_dunes', 'east', 'east', 'desert_buried_temple', 'west'], ['desert_buried_temple', 'west', 'west', 'desert_quiet_dunes', 'east'],
+            ['desert_quiet_dunes', 'west', 'west', 'desert_dry_flats', 'east'], ['desert_dry_flats', 'west', 'west', 'desert_golden_dunes', 'east']];
+        legs.push(['desert_buried_temple', 'door', 'door', 'desert_city_gate', 'outside'], ['desert_city_gate', 'door', 'door', 'desert_city_plaza', 'east'],
+            ['desert_city_plaza', 'east', 'east', 'desert_city_gate', 'door'], ['desert_city_gate', 'outside', 'left', 'desert_buried_temple', 'door']);
+        for (const [from, at, exitId, to, land] of legs) {
             await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
             await page.waitForTimeout(600);
-            // a landing inside its own way out (02's stone door): step back off it first, as a player must (doorArmed)
-            const off = await page.evaluate(([dx, dy]) => {
-                const p = T.player.player, map = T.map.getMap(p.map); let n = 0;
-                while (map.exitAt(p.x + .5, p.y + .8) && n < 400) { T.player.stepPlayer(map, -dx, -dy, 0.015); n++; }
-                return n;
-            }, Array.isArray(dx) ? dx : [dx, 0]);
-            if (off) await page.waitForTimeout(400);
-            r = Array.isArray(dx) ? await walk(dx[0], dx[1]) : await walk(dx, 0); log.push(r);
+            // GAP: the landing is not in any exit, and standing there a moment takes her nowhere
+            const still = await page.evaluate(({ from, at }) => { const p = T.player.player, m = T.map.getMap(from); return { map: p.map, exit: !!m.exitAt(p.x + .5, p.y + .8) }; }, { from, at });
+            if (still.map !== from || still.exit) throw Error(`${from} ${at}: landing in an exit ${JSON.stringify(still)}`);
+            // and walking about there, left and right (and up and down) by 1.5 people-widths, never reaches an exit
+            const wiggle = await page.evaluate(() => {
+                const p = T.player.player, m = T.map.getMap(p.map), x0 = p.x, y0 = p.y, reach = 1.5 * (m.d.actorScale || 1), hit = [];
+                for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
+                    p.x = x0; p.y = y0;
+                    for (let n = 0; n < 2000 && Math.hypot(p.x - x0, p.y - y0) < reach; n++) {
+                        const ox = p.x, oy = p.y; T.player.stepPlayer(m, dx, dy, 0.015);
+                        if (m.exitAt(p.x + .5, p.y + .8)) { hit.push([dx, dy]); break; }
+                        if (Math.hypot(p.x - ox, p.y - oy) < 1e-6) break;
+                    }
+                }
+                p.x = x0; p.y = y0;
+                return hit;
+            });
+            if (wiggle.length) throw Error(`${from} ${at}: walking about the landing reaches an exit ${JSON.stringify(wiggle)}`);
+            log.push({ wiggle: `${from}:${at}`, ok: true });
+            r = await walkTo(exitId); log.push(r);
             if (r.exit !== to) throw Error(`${from} ${at}: ${JSON.stringify(r)}`);
             await page.waitForFunction(id => T.player.player.map === id, to, { timeout: 15000 });
             await page.waitForTimeout(1200);
