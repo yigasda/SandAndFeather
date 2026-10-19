@@ -31,8 +31,9 @@ HIT = {
     'desert_sealed_jar': (255, 140, None), 'desert_leather_shield': (375, 48, 150), 'desert_sealed_shield': (365, 50, 118),
     'desert_walking_stela': (215, 130, None), 'desert_sun_mirror': (237, 150, None), 'desert_balance_sentinel': (290, 45, None),
     'desert_mask_priest_mantle': (255, 95, None), 'desert_mask_priest_shroud': (250, 90, None),
-    'desert_royal_mask_warden': (240, 90, 102), 'desert_temple_warden': (235, 95, 45), 'desert_throne_warden': (285, 115, 71),
-    'desert_broken_tomb_warden': (265, 70, 34),
+    # wardens: front to the middle of the fists, not their leading edge (사용자 10-19: 수문장에게는 더 가깝게 다가가야)
+    'desert_royal_mask_warden': (240, 90, 150), 'desert_temple_warden': (235, 95, 100), 'desert_throne_warden': (285, 115, 125),
+    'desert_broken_tomb_warden': (265, 70, 100),
 }
 PACK = list(HEIGHT_K)
 # one kind's 10 motions to its own sheets (사용자 10-19): rows within MAX × MAX; what does not fit goes on the kind's next

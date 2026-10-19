@@ -2685,7 +2685,7 @@
    },
    "hit": {
     "body": 1.003,
-    "front": 1.537,
+    "front": 1.003,
     "frontKind": "body"
    },
    "source": "몹/사막/09_왕면수문장"
@@ -2731,7 +2731,7 @@
    },
    "hit": {
     "body": 1.13,
-    "front": 2.261,
+    "front": 1.606,
     "frontKind": "body"
    },
    "source": "몹/사막/10_신전수문장"
@@ -2777,7 +2777,7 @@
    },
    "hit": {
     "body": 1.433,
-    "front": 2.667,
+    "front": 1.994,
     "frontKind": "body"
    },
    "source": "몹/사막/11_왕좌수문장"
@@ -2823,7 +2823,7 @@
    },
    "hit": {
     "body": 0.942,
-    "front": 3.11,
+    "front": 2.221,
     "frontKind": "body"
    },
    "source": "몹/사막/12_파릉수문장"

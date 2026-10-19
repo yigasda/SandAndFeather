@@ -869,6 +869,7 @@ export function testReset() {
     for (const k of Object.keys(tune)) delete tune[k];
     bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
 }
+export function testMobFace(right) { for (const o of mobs) o.faceR = !!right; }
 export function testFace(d) { if (d === 'left' || d === 'right') { me.face = d; me.vdir = null; } else me.vdir = d; }
 export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: runNow(getState()), fight: getState()?.desertFight || null });
 // tests only: numbers over a kind's data for the creatures made from now on (the next time she comes into the map)

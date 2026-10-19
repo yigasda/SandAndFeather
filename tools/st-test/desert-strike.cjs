@@ -1,5 +1,6 @@
 // 일반 공격 판정(사용자 10-19): 캐릭터 앞의 공격 범위(발 바로 뒤에서 사거리까지, 좌우 0.75칸 — 길이·방향·피해 그대로)와
-// 몹의 피격 도형(몸통 원, 방패 = 방어 표면, 수문장 주먹 = 몸)이 겹치는지. 세트·호루스·소망 × 항아리(일반)·가죽 방패병·신전 수문장.
+// 몹의 피격 도형(몸통 원, 방패 = 방어 표면, 수문장 주먹 = 몸)이 겹치는지. 세트·호루스·소망 × 항아리(일반)·가죽 방패병·신전 수문장,
+// 위·아래·왼쪽·오른쪽 네 방향(몹은 캐릭터 쪽을 봄).
 //   정면 몸통 끝 — 중심이 사거리 밖이어도 몸이 닿으면 맞음(전부 피해)      빈 공간 — 몸 끝보다 더 멀면 안 맞음(공격이 늘지 않음)
 //   방패만 닿음 — 막힘(가드 규칙: max(1, round(피해 × 0.3)), 움찔 없음)     주먹만 닿음(수문장) — 몸이라 전부 피해
 //   옆 — 좌우 폭 안이면 맞음, 밖이면 안 맞음      뒤 — 안 맞음      벽 — 벽 너머는 안 맞음, 벽 앞은 맞음
@@ -41,17 +42,29 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             await page.evaluate(lead => { const s = T.state.getState(); s.ledger.gday = T.ledger.today(s) + 1; T.heroes.setLead(s, lead); T.heroes.setWith(s, null); }, lead);
             await page.evaluate(async m => T.win.travel(m, 'yard'), MAP); await sleep(700);
             await page.evaluate(() => { T.field.testReset(); T.field.testRanges(true); });
+            // an open place: from her feet nothing stops a blow for 8 tiles each way (the yard's landing is near rubble)
+            await page.evaluate(() => {
+                const m = T.win.currentMap(), wall = (x, y) => m.solidRect(x - 0.08, y - 0.08, x + 0.08, y + 0.08);
+                const open = (x, y) => [[1, 0], [-1, 0], [0, 1], [0, -1]].every(([dx, dy]) => { for (let k = 0; k <= 80; k++) if (wall(x + 0.5 + dx * k * 0.1, y + 0.8 + dy * k * 0.1)) return false; return true; });
+                for (let r = 0; r < 30; r += 0.5) for (let a = 0; a < 6.28; a += 0.3) {
+                    const p = T.player.player, x = Math.round((p.x + Math.cos(a) * r) * 4) / 4, y = Math.round((p.y + Math.sin(a) * r) * 4) / 4;
+                    if (!T.solid(x, y) && open(x, y)) { p.x = x; p.y = y; return; }
+                }
+            });
         };
-        // one blow at a creature dx ahead, dy across (her feet's middle to its feet's middle); → the blow's event or null
-        const blow = (kind, dx, dy = 0, at = null) => page.evaluate(async ([kind, dx, dy, at]) => {
+        // one blow toward dir at a creature d ahead (along that way) and off sideways (her feet's middle to its feet's
+        // middle); the creature turned to face her. → the blow's event or null
+        const blow = (kind, d, off = 0, at = null, dir = 'right') => page.evaluate(async ([kind, d, off, at, dir]) => {
             const p = T.player.player; if (at) { p.x = at[0]; p.y = at[1]; }
+            const v = { right: [1, 0], left: [-1, 0], up: [0, -1], down: [0, 1] }[dir];
             const base = T.data.DATA.desert.enemies.desert_leather_shield;
             T.field.testReset(); T.field.testRanges(true);
-            T.field.testOnly(kind, p.x + dx, p.y + dy, { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true });
-            T.field.testFace('right'); T.field.testEvents(true); T.field.attack();
+            T.field.testOnly(kind, p.x + v[0] * d + (v[0] ? 0 : off), p.y + v[1] * d + (v[0] ? off : 0), { ...base, hp: 999, guard: 0, speed: 0, range: 0, nopush: true });
+            T.field.testMobFace(dir === 'left');
+            T.field.testFace(dir); T.field.testEvents(true); T.field.attack();
             await new Promise(r => setTimeout(r, 650));
             return T.field.testEvents(true).find(e => e.ev === 'blow') || null;
-        }, [kind, dx, dy, at]);
+        }, [kind, d, off, at, dir]);
         let shot = 0;
         for (const lead of ['set', 'horus', 'somang']) {
             await scene(lead);
@@ -60,25 +73,29 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 const h = await page.evaluate(k => T.data.DATA.sprites.enemies[k].hit, kind);
                 const R = info.reach, r = h.body * info.t, fr = (h.front || 0) * info.t;
                 const name = `${WHO[lead]}→${ko}`;
-                // 정면: the torso's near edge just inside her reach, its middle beyond
-                let e = await blow(kind, R + r - 0.1);
-                const full = e?.dmg;
-                ok(e && e.by === 'attack' && R + r - 0.1 > R, `${name} 정면 몸통 끝(중심 ${(R + r - 0.1).toFixed(2)}칸 > 사거리 ${R}): 맞음 ${e?.dmg ?? '-'}`);
-                await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${lead}-${kind}-front.png`) });
-                // 빈 공간: a little further than the torso's edge (and than a shield or fists)
-                e = await blow(kind, Math.max(R + r, R + fr) + 0.35);
-                ok(!e, `${name} 빈 공간(몸·앞 몸체 끝보다 0.35칸 멀리): 안 맞음`);
-                if (h.frontKind === 'shield') {
-                    // only the shield in reach: the torso beyond, the shield's face inside
-                    const d = Math.min(R + fr - 0.15, R + r + 0.6);
-                    e = await blow(kind, d);
-                    ok(e && e.by === 'shield' && e.dmg === Math.max(1, Math.round(full * 0.3)), `${name} 방패만 닿음(중심 ${d.toFixed(2)}칸): 막힘 ${e?.dmg ?? '-'} = max(1, round(${full}×0.3))`);
-                    await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${lead}-${kind}-shield.png`) });
-                } else if (h.frontKind === 'body') {
-                    const d = R + fr - 0.15;
-                    e = await blow(kind, d);
-                    ok(e && e.by === 'attack' && e.dmg === full, `${name} 주먹만 닿음(중심 ${d.toFixed(2)}칸): 몸이라 전부 ${e?.dmg ?? '-'}`);
-                    await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${lead}-${kind}-fist.png`) });
+                const DIRK = { right: '오른쪽', left: '왼쪽', up: '위', down: '아래' };
+                let full = null;
+                for (const dir of ['right', 'left', 'up', 'down']) {
+                    // 몸통 끝: the torso's near edge just inside her reach, its middle beyond
+                    let e = await blow(kind, R + r - 0.1, 0, null, dir);
+                    full ??= e?.dmg;
+                    ok(e && e.by === 'attack' && R + r - 0.1 > R, `${name} ${DIRK[dir]} 몸통 끝(중심 ${(R + r - 0.1).toFixed(2)}칸 > 사거리 ${R}): 맞음 ${e?.dmg ?? '-'}`);
+                    await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${lead}-${kind}-${dir}.png`) });
+                    // 빈 공간: a little further than the torso's edge (and, sideways, than a shield or fists)
+                    const side = dir === 'left' || dir === 'right';
+                    e = await blow(kind, Math.max(R + r, side ? R + fr : 0) + 0.35, 0, null, dir);
+                    ok(!e, `${name} ${DIRK[dir]} 빈 공간(몸${side && fr ? '·앞 몸체' : ''} 끝보다 0.35칸 멀리): 안 맞음`);
+                    if (!side || !h.frontKind) continue;
+                    if (h.frontKind === 'shield') {
+                        const d = Math.min(R + fr - 0.15, R + r + 0.6);
+                        e = await blow(kind, d, 0, null, dir);
+                        ok(e && e.by === 'shield' && e.dmg === Math.max(1, Math.round(full * 0.3)), `${name} ${DIRK[dir]} 방패만 닿음(중심 ${d.toFixed(2)}칸): 막힘 ${e?.dmg ?? '-'} = max(1, round(${full}×0.3))`);
+                    } else {
+                        const d = R + fr - 0.15;
+                        e = await blow(kind, d, 0, null, dir);
+                        ok(e && e.by === 'attack' && e.dmg === full, `${name} ${DIRK[dir]} 주먹만 닿음(중심 ${d.toFixed(2)}칸): 몸이라 전부 ${e?.dmg ?? '-'}`);
+                    }
+                    await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${lead}-${kind}-${dir}-front.png`) });
                 }
                 // 옆: across inside 0.75 + its torso, and outside
                 e = await blow(kind, Math.min(R, 0.8), 0.75 + r - 0.15);
