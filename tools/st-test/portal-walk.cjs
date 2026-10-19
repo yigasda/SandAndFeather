@@ -183,7 +183,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             // Held input may carry the party away from its landing, even to the doorway wall.
             // Walk back (never teleport) before the separate landing-neighbourhood checks.
             if(CONNECTIONS && leg >= PAIRS.length && held.map===to) {
-                ok(await W.walkToPoint(entry.x,entry.y,90000,.12),`${name}: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴`);
+                ok(await W.walkToPoint(entry.x,entry.y,30000,.4),`${name}: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴`);
             }
             // short steps every way
             const back = [];
