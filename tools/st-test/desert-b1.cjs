@@ -21,7 +21,8 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
     const errors = [];
-    page.on('pageerror', e => errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 4).map(s => s.trim()).join(' < ')));
+    // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+    page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 4).map(s => s.trim()).join(' < ')));
 
     const boot = async charId => {
         await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 });

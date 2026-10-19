@@ -11,7 +11,9 @@ const BASE = '/scripts/extensions/third-party/SandAndFeather/', MAP = 'desert_fo
 (async () => {
     const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : { args: ['--no-sandbox'] });
     const page = await browser.newPage({ viewport: { width: 412, height: 900 } });
-    const errors = []; page.on('pageerror', e => errors.push(e.message));
+    // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+    const errors = [];
+    page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
     const sleep = ms => page.waitForTimeout(ms);
     await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 }); await sleep(2500);

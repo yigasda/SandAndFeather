@@ -20,7 +20,8 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
     const errors = [];
-    page.on('pageerror', e => errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 3).map(s => s.trim()).join(' < ')));
+    // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
+    page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message + ' @ ' + (e.stack || '').split('\n').slice(1, 3).map(s => s.trim()).join(' < ')));
     const touch = (type, x, y, id = 1) => cdp.send('Input.dispatchTouchEvent', { type, touchPoints: type === 'touchEnd' ? [] : [{ x, y, id }] });
     const tapEl = async sel => { const b = await page.locator(sel).first().boundingBox(); if (!b) return false; await touch('touchStart', b.x + b.width / 2, b.y + b.height / 2); await page.waitForTimeout(50); await touch('touchEnd'); return true; };
     const fs_ = () => page.evaluate(() => T.field.fieldState());
@@ -56,6 +57,8 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
 
         // 2. the fight: walk at it with the stick; when close, face it and tap 공격; 기술 when it guards
         const seen = new Set(), P = await pad();
+        // every state it goes through, recorded in the page each frame (the rush is 0.32 s: polling from here missed it)
+        await page.evaluate(() => { window.__seen = new Set(); const tick = () => { const o = T.field.fieldState().mobs[0]; if (o) window.__seen.add(o.st); window.__seenRaf = requestAnimationFrame(tick); }; tick(); });
         let hurt = 0, guardHit = null, broke = false, t0 = Date.now(), held = false, lastHp = null, strikes = 0;
         const hp0 = (await fs_()).run.hp.horus;
         while (Date.now() - t0 < 60000) {
@@ -93,6 +96,7 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
             await page.waitForTimeout(350);
         }
         if (held) await touch('touchEnd');
+        for (const x of await page.evaluate(() => { cancelAnimationFrame(window.__seenRaf); return [...window.__seen]; })) seen.add(x);
         st = await fs_();
         const f = st.fight, day = await today();
         ok(['chase', 'prepare', 'attack', 'recover'].every(x => seen.has(x)), `다가옴·준비·돌진·후딜을 다 보임 (${[...seen].join(', ')})`);
@@ -155,7 +159,13 @@ const ok = (c, msg) => { const line = `${c ? 'PASS' : 'FAIL'} ${msg}`; console.l
         await page.evaluate(async base => { const L = await import(base + 'src/core/ledger.js'); const s = T.state.getState(); s.ledger.gday = L.today(s) + 1; }, BASE);
         await enter('yard');
 
-        // 4. going down: back at the way in, 체력 full again, who fell stays
+        // 4. going down: back at the way in, 체력 full again, who fell stays. Alone, and with the guard part's test numbers
+        // cleared (testReset): a real one that comes and rushes at her (with those numbers left it never struck first,
+        // and the one with her sometimes struck it down before it reached her)
+        await page.evaluate(() => { const s = T.state.getState(); T.heroes.setWith(s, null); T.field.testReset(); });
+        await page.evaluate(async () => T.win.travel('desert_buried_temple', 'west'));
+        await page.waitForTimeout(600);
+        await enter('yard');
         await page.evaluate(() => { const r = T.field.fieldState().fight.run; r.hp.horus = 1; });
         const P2 = await pad(); let t1 = Date.now(), down = false; held = false;
         while (Date.now() - t1 < 40000) {
