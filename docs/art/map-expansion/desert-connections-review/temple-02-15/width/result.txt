@@ -5,7 +5,7 @@
   buried_temple → colonnade: 출구 앞 buried_temple (61.7, 23.8) → 도착 colonnade (29.2, 22.8)
 통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
 통과 buried_temple → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
-통과 buried_temple → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 buried_temple → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
 통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
 통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
 통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
