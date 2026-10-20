@@ -81,3 +81,39 @@ export function bindPad(el, knob) {
     el.addEventListener('pointerup', end);
     el.addEventListener('pointercancel', end);
 }
+
+// Only two touches that both started on the map can zoom. A pad/button finger
+// never joins a pinch, even if it slides over the canvas. No browser page zoom.
+export function bindMapZoom(canvas, root, enabled, getZoom, setZoom) {
+    const touches = new Map();
+    let start = null;
+    const reset = () => { touches.clear(); start = null; };
+    const pair = () => {
+        const pts = [...touches.values()];
+        return pts.length === 2 && pts.every(p => p.map) && enabled() ? pts : null;
+    };
+    const distance = pts => Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+    root.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'touch') return;
+        touches.set(e.pointerId, { x: e.clientX, y: e.clientY, map: e.target === canvas });
+        const pts = pair();
+        start = pts ? { distance: Math.max(1, distance(pts)), zoom: getZoom() } : null;
+        if (e.target === canvas) canvas.setPointerCapture(e.pointerId);
+    }, true);
+    root.addEventListener('pointermove', e => {
+        const p = touches.get(e.pointerId);
+        if (!p) return;
+        p.x = e.clientX; p.y = e.clientY;
+        const pts = pair();
+        if (!pts) { start = null; return; }
+        if (start) {
+            e.preventDefault();
+            setZoom(start.zoom * distance(pts) / start.distance);
+        }
+    }, { capture: true, passive: false });
+    const end = e => { touches.delete(e.pointerId); start = null; };
+    for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture']) root.addEventListener(ev, end, true);
+    window.addEventListener('blur', reset);
+    window.addEventListener('resize', reset);
+    document.addEventListener('visibilitychange', reset);
+}

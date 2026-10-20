@@ -8,7 +8,7 @@ import { settings } from '../core/settings.js';
 import { hasChat } from '../core/st.js';
 import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
-import { bindPad, bindPress, input, startInput, stopInput } from '../world/input.js';
+import { bindPad, bindPress, bindMapZoom, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
 import { endPose, feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
 import { clearFx, fxBusy } from '../world/fx.js';
@@ -35,6 +35,7 @@ const FPS = { walk: 30, still: 8, card: 4 };
 
 export const gameMode = () => mode;
 // tests only: why a door did or did not take her (armed once her feet were off every exit, mid map change, a card open)
+export const testCamera = () => ({ zoom: renderer?.zoom, min: renderer?.zoomLimits().min, max: renderer?.zoomLimits().max, cam: renderer?.cam, width: renderer?.cv.width, height: renderer?.cv.height, mapWidth: map?.w, mapHeight: map?.h });
 export const testDoor = () => ({ armed: doorArmed, moving, mode, card: cardOpen() });
 
 // what packs get to show things with: cards, a toast, folding the window
@@ -119,6 +120,16 @@ function build() {
     document.addEventListener('visibilitychange', () => { if (!document.hidden && mode === 'open') { renderer.repaint(); frameNow(); } });
     hud.view.addEventListener('contextrestored', () => { renderer.repaint(); if (mode === 'open') frameNow(); });
     bindPad(hud.pad, hud.knob);
+    bindMapZoom(hud.view, root, () => mode === 'open' && !moving && !cardOpen(),
+        () => renderer.zoom, z => { renderer.setUserZoom(z); frameNow(); });
+    const menu = open => {
+        root.classList.toggle('sf_menu_open', open);
+        hud.menu.setAttribute('aria-expanded', String(open));
+    };
+    hud.menu.addEventListener('click', () => menu(!root.classList.contains('sf_menu_open')));
+    hud.view.addEventListener('pointerdown', () => menu(false));
+    hud.tabs.querySelector('.sf_menu_fold').addEventListener('click', foldGame);
+    hud.tabs.querySelector('.sf_menu_close').addEventListener('click', closeGame);
     hud.close.addEventListener('click', closeGame);
     hud.collapse.addEventListener('click', foldGame);
     bindPress(hud.talk, talk);   // 공격 in a fight: also a second thumb while the other holds the pad
@@ -127,7 +138,7 @@ function build() {
     hud.appearance.addEventListener('click', () => { if (!cardOpen()) appearanceCard(ui, applyTheme); });
     hud.dateCard.addEventListener('click', openToday);
     hud.mini.addEventListener('click', openMap);
-    hud.tabs.addEventListener('click', e => { const b = e.target.closest('.sf_tab'); if (b) pickTab(b.dataset.tab); });
+    hud.tabs.addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) { menu(false); pickTab(b.dataset.tab); } });
 
     chip = document.createElement('button');
     chip.type = 'button';
@@ -213,6 +224,8 @@ export async function openGame() {
     build();
     applyTheme();
     document.activeElement?.blur?.();
+    root.classList.remove('sf_menu_open');
+    hud.menu.setAttribute('aria-expanded', 'false');
     root.hidden = false;
     chip.hidden = true;
     mode = 'open';

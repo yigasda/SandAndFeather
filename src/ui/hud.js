@@ -43,20 +43,23 @@ export function buildHud(root) {
       <button type="button" class="sf_hint_pill" hidden></button>
       <button type="button" class="sf_icon_btn sf_appearance" title="화면 설정" aria-label="화면 설정"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
       <button type="button" class="sf_round sf_bag"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i><span>가방</span></button>
+      <button type="button" class="sf_icon_btn sf_menu" title="메뉴" aria-label="메뉴" aria-expanded="false" aria-controls="sf_game_tabs"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
       <div class="sf_bubble" hidden></div>
       <div class="sf_controls">
-        <div class="sf_pad"><span class="sf_pad_arrows" aria-hidden="true"><i>▴</i><i>◂</i><i>▸</i><i>▾</i></span><div class="sf_knob"></div></div>
+        <div class="sf_pad"><div class="sf_knob"></div></div>
         <div class="sf_actions">
           <button type="button" class="sf_btn sf_climb" hidden></button>
           <button type="button" class="sf_round sf_talk"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i><span>말 걸기</span></button>
         </div>
       </div>
-      <nav class="sf_tabs">
+      <nav class="sf_tabs" id="sf_game_tabs" aria-label="게임 메뉴">
         ${TABS.map(t => `<button type="button" class="sf_tab${t.id === 'world' ? ' sf_on' : ''}" data-tab="${t.id}"><i class="fa-solid ${t.icon}"></i><span>${t.label}</span></button>`).join('')}
+        <button type="button" class="sf_tab sf_menu_fold">접기</button>
+        <button type="button" class="sf_tab sf_menu_close">게임 닫기</button>
       </nav>`;
     const q = s => root.querySelector(s);
     return {
-        root, view: q('.sf_view'), dateCard: q('.sf_date_card'), date: q('.sf_date'), season: q('.sf_season'), dot: q('.sf_dot'), sync: q('.sf_sync'),
+        root, menu: q('.sf_menu'), view: q('.sf_view'), dateCard: q('.sf_date_card'), date: q('.sf_date'), season: q('.sf_season'), dot: q('.sf_dot'), sync: q('.sf_sync'),
         collapse: q('.sf_collapse'), close: q('.sf_close'), appearance: q('.sf_appearance'), mini: q('.sf_mini'), miniCv: q('.sf_mini_cv'), miniName: q('.sf_mini_name'),
         bubble: q('.sf_bubble'), sun: q('.sf_chip_sun'), deben: q('.sf_chip_deben'), rank: q('.sf_chip_rank b'), rankBar: q('.sf_chip_rank s'), hint: q('.sf_hint_pill'), pad: q('.sf_pad'), knob: q('.sf_knob'), bag: q('.sf_bag'), talk: q('.sf_talk'), climb: q('.sf_climb'), tabs: q('.sf_tabs'),
     };
