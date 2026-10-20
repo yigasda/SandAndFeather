@@ -5,7 +5,7 @@ import { getState } from '../core/state.js';
 import { containsExit } from './map.js';
 
 const SPEED = 4.2; // tiles a second
-const FOOT = { x0: 0.22, x1: 0.78, y0: 0.62, y1: 0.96 };
+export const FOOT = { x0: 0.22, x1: 0.78, y0: 0.62, y1: 0.96 };
 
 // moving: her position changed this frame (pushing into a wall is standing); walkT: seconds walked since she
 // started, for the walking poses (it keeps going through turns and starts again at 0 when she stops)

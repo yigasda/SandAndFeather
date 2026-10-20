@@ -9,8 +9,8 @@ import { hasChat } from '../core/st.js';
 import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
 import { bindPad, bindPress, input, startInput, stopInput } from '../world/input.js';
-import { getMap } from '../world/map.js';
-import { endPose, feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
+import { containsExit, getMap } from '../world/map.js';
+import { FOOT, endPose, feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
 import { clearFx, fxBusy } from '../world/fx.js';
 import { partNow } from '../core/rest.js';
 import { thingsOn } from '../world/things.js';
@@ -29,14 +29,29 @@ let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
 let raf = 0, last = 0, miniAt = 0, drawnAt = 0, near = null;
 // doors: one fires only after her feet have been off every exit once (no bouncing back on arrival); one move at a time
-let doorArmed = false, moving = false, doorNeedsNeutral = false;
+// heldExits: the exits her feet's box (the one walls stop, player.js FOOT) touches when she arrives — each stays shut
+// until that box has left it (no bouncing back on arrival, the stick still held); once left, it works again. Every other
+// exit works from the start, the stick held or not (user 10-20: no let-go-the-stick rule; holding on through the
+// corridor, Horus's door takes her in). An exit still fires by her feet's middle, as before
+// cameBy: the one exit she came in by (the nearest to where she lands of those leading back where she came from) — held
+// too, only just after arriving: free once she is 0.75 tiles off the landing, or has stepped into it and out again (the
+// stick still held the way she came, she does not walk straight back; walking back on purpose works). Other exits, to
+// that map too, are free
+let moving = false, heldExits = new Set(), cameFrom = null, cameBy = null;
+// how far a point (feet) is from an exit's box, in tiles
+const exitGap = (e, f) => Math.hypot(Math.max(e.x0 - f.x, 0, f.x - e.x1), Math.max(e.y0 - f.y, 0, f.y - e.y1));
+const footIn = e => {
+    const x0 = player.x + FOOT.x0, x1 = player.x + FOOT.x1, y0 = player.y + FOOT.y0, y1 = player.y + FOOT.y1;
+    for (const x of [x0, (x0 + x1) / 2, x1]) for (const y of [y0, (y0 + y1) / 2, y1]) if (containsExit(e, x, y)) return true;
+    return false;
+};
 // frames drawn a second: walking, standing (only the river moves), a card is open
 const FPS = { walk: 30, still: 8, card: 4 };
 
 export const gameMode = () => mode;
 // tests only: why a door did or did not take her (armed after she stood outside an exit, waiting for a let-go stick,
 // mid map change, a card open)
-export const testDoor = () => ({ armed: doorArmed, needsNeutral: doorNeedsNeutral, moving, mode, card: cardOpen() });
+export const testDoor = () => ({ held: [...heldExits].map(e => e.id || e.to), cameBy: cameBy && (cameBy.e.id || cameBy.e.to), moving, mode, card: cardOpen() });
 
 // what packs get to show things with: cards, a toast, folding the window
 const ui = {
@@ -163,7 +178,13 @@ async function enterMap() {
     catch (e) { console.error('[SandAndFeather] scene art', e); toast(root, '그림을 못 불러와서 옴보스로 돌아왔어'); s.pos = { map: 'ombos', x: null, y: null, dir: 'down' }; }
     map = getMap(s.pos.map);
     placePlayer(map);
-    doorArmed = false;
+    heldExits = new Set(map.exits.filter(footIn));
+    cameBy = null;
+    if (cameFrom) {
+        const f = feet(), back = map.exits.filter(e => e.to === cameFrom).sort((a, b) => exitGap(a, f) - exitGap(b, f))[0];
+        if (back) { cameBy = { e: back, x: f.x, y: f.y, touched: footIn(back) }; heldExits.add(back); }
+        cameFrom = null;
+    }
     swapMap();
 }
 // the current map as the game has it now, without moving her
@@ -193,11 +214,11 @@ export async function travel(mapId, pos = null) {
 // through a door she walked into, or up and down the stairs
 async function useExit(ex) {
     if (!ex || !getState() || !DATA.maps[ex.to] || moving) return;
-    doorNeedsNeutral = true;
+    cameFrom = map?.id ?? null;
     try { await travel(ex.to, ex.at); }
     catch (error) {
-        // Keep disarmed until neutral input and a fresh exit departure.
-        doorArmed = false;
+        // still standing in it: shut until she steps out, not tried again every frame
+        heldExits.add(ex);
         console.error('[SandAndFeather] exit travel', error);
     }
 }
@@ -339,19 +360,18 @@ function frame(t) {
     let dt = last ? Math.min(0.2, (t - last) / 1000) : 0;
     last = t;
     const dtAll = dt;
-    // Observe neutral after arrival, not transient input while loading a map.
-    if (!moving && !input.dx && !input.dy) doorNeedsNeutral = false;
     if (!cardOpen() && !moving) {
         for (; dt > 1e-6 && !moving; dt -= 0.05) {
             stepPlayer(map, input.dx, input.dy, Math.min(0.05, dt));
-            const f = feet(), ex = map.exitAt(f.x, f.y);
-            if (!ex) {
-                if (!doorNeedsNeutral) doorArmed = true;
-            } else if (ex && doorArmed && !doorNeedsNeutral) {
-                doorArmed = false;
-                useExit(ex);
-                break;
+            const f = feet();
+            for (const e of heldExits) {
+                if (cameBy?.e === e) {   // the way she came in: free once stepped in and out, or 1.5 tiles off the landing
+                    if (footIn(e)) cameBy.touched = true;
+                    else if (cameBy.touched || Math.hypot(f.x - cameBy.x, f.y - cameBy.y) >= 0.75) { heldExits.delete(e); cameBy = null; }
+                } else if (!footIn(e)) heldExits.delete(e);
             }
+            const ex = map.exits.find(e => containsExit(e, f.x, f.y) && !heldExits.has(e));
+            if (ex) { useExit(ex); break; }
         }
         if (!moving) tileCheck();
         if (!moving) for (const fn of frameFns) { try { fn(dtAll, map, ui); } catch (e) { console.error('[SandAndFeather] frame', e); } }

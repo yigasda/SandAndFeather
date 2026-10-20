@@ -10,7 +10,9 @@ module.exports = (page, cdp) => {
         const b = await loc.boundingBox(); if (!b) throw new Error('no ' + sel + ' ' + (text || ''));
         await tap(b.x + b.width / 2, b.y + b.height / 2);
     };
-    async function walkToPoint(gx, gy, limitMs = 30000, near = 0.3) {
+    // opts.held: the stick is already down (no new touch: the same thumb goes on from a map change); opts.keep: leave it
+    // down at the end. If the map changes on the way it stops there and returns 'map'
+    async function walkToPoint(gx, gy, limitMs = 30000, near = 0.3, opts = {}) {
         const route = await page.evaluate(([gx, gy, near]) => {
             const p = T.player.player, m = T.win.currentMap();
             const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96);
@@ -33,10 +35,11 @@ module.exports = (page, cdp) => {
             return out;
         }, [gx, gy, near]);
         if (!route) return false;
-        const p = await padBox(); await touch('touchStart', p.x, p.y);
-        const t0 = Date.now(); let i = 0, done = false;
+        const p = await padBox(); if (!opts.held) await touch('touchStart', p.x, p.y);
+        const t0 = Date.now(), map0 = await page.evaluate(() => T.player.player.map); let i = 0, done = false;
         while (Date.now() - t0 < limitMs) {
-            const me = await page.evaluate(() => ({ x: T.player.player.x, y: T.player.player.y }));
+            const me = await page.evaluate(() => ({ x: T.player.player.x, y: T.player.player.y, map: T.player.player.map }));
+            if (me.map !== map0) { done = 'map'; break; }
             const last = route[route.length - 1];
             if (Math.hypot(last[0] - me.x, last[1] - me.y) < 0.12) { done = true; break; }
             { let bi = i, bd = Infinity; for (let k = i; k < Math.min(route.length, i + 40); k++) { const d = Math.hypot(route[k][0] - me.x, route[k][1] - me.y); if (d < bd) { bd = d; bi = k; } } i = bi; }
@@ -56,7 +59,7 @@ module.exports = (page, cdp) => {
             await touch('touchMove', p.x + dx / n * p.lim * k, p.y + dy / n * p.lim * k);
             await page.waitForTimeout(50);
         }
-        await touch('touchEnd'); await page.waitForTimeout(150);
+        if (!opts.keep) { await touch('touchEnd'); await page.waitForTimeout(150); }
         return done;
     }
     // turn her to face a way with a short push of the stick

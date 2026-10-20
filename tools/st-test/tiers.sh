@@ -57,6 +57,12 @@ if [ $n -eq 0 ]; then echo "문법: 검사한 파일 0개 — 통과 아님, 검
 else echo "문법: $B 이후 바뀐 JS $n개 통과" | tee -a "$OUT/summary.txt"; fi
 # nothing checked and no test named: not a pass (exit 3)
 [ ${#want[@]} -eq 0 ] && exit $([ $n -eq 0 ] && echo 3 || echo 0)
+# the test server dies with the container: start it again when it does not answer
+if ! curl -s -o /dev/null http://127.0.0.1:8000/; then
+  (cd /home/user/sillytavern/sillytavern && exec nohup node server.js --port 8000 --listen false > /tmp/st-server.log 2>&1) 9>&- &   # nothing of it holds the lock
+  for i in $(seq 60); do curl -s -o /dev/null http://127.0.0.1:8000/ && break; sleep 2; done
+  echo "시험 서버 다시 켬" | tee -a "$OUT/summary.txt"
+fi
 # the code onto the test server (the 궁 size candidates rebuilt for ult-memory / ult-fx-view)
 rm -rf "$EXT/src" "$EXT/data" && cp -r "$ROOT/src" "$ROOT/data" "$EXT/" && cp "$ROOT/style.css" "$ROOT/index.js" "$ROOT/manifest.json" "$EXT/"
 # the pictures in docs/ that data/*.json points to ("../docs/..."), as tools/release.sh packs them: without them a map
