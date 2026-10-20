@@ -1,0 +1,41 @@
+INPUTTRACE {"kind":"focus","target":"DIALOG","active":"DIALOG","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"DIALOG","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"TEXTAREA","active":"TEXTAREA","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"TEXTAREA","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keydown","code":"ArrowDown","key":"ArrowDown","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowDown","key":"ArrowDown","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"BUTTON","active":"BUTTON","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"BUTTON","active":"BODY","popup":true,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+page.waitForFunction: Timeout 5000ms exceeded.
+    at /workspace/SandAndFeather/tools/art/verify-full-map.cjs:30:95 {
+  name: 'TimeoutError'
+}

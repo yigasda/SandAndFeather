@@ -1,0 +1,228 @@
+{
+  "recovery": [
+    {
+      "kind": "main-context",
+      "original": 2125,
+      "count": 0
+    },
+    {
+      "kind": "sprite-context",
+      "original": 2125,
+      "count": 0
+    },
+    {
+      "kind": "visibility",
+      "original": 2125,
+      "count": 0
+    },
+    {
+      "kind": "reopen",
+      "original": 2125,
+      "count": 0
+    }
+  ],
+  "rows": [
+    {
+      "theme": "classic",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 66,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "classic",
+      "w": 390,
+      "h": 844,
+      "hintTop": 221,
+      "chipBottom": 235,
+      "hintRight": 244.53125,
+      "viewport": 390,
+      "overlap": true
+    },
+    {
+      "theme": "classic",
+      "w": 640,
+      "h": 360,
+      "hintTop": 72,
+      "chipBottom": 117,
+      "hintRight": 430.53125,
+      "viewport": 640,
+      "overlap": true
+    },
+    {
+      "theme": "classic",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 66,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "walnut",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "walnut",
+      "w": 390,
+      "h": 844,
+      "hintTop": 221,
+      "chipBottom": 233,
+      "hintRight": 244.53125,
+      "viewport": 390,
+      "overlap": true
+    },
+    {
+      "theme": "walnut",
+      "w": 640,
+      "h": 360,
+      "hintTop": 72,
+      "chipBottom": 113,
+      "hintRight": 430.53125,
+      "viewport": 640,
+      "overlap": true
+    },
+    {
+      "theme": "walnut",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "journal",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "journal",
+      "w": 390,
+      "h": 844,
+      "hintTop": 221,
+      "chipBottom": 233,
+      "hintRight": 244.53125,
+      "viewport": 390,
+      "overlap": true
+    },
+    {
+      "theme": "journal",
+      "w": 640,
+      "h": 360,
+      "hintTop": 72,
+      "chipBottom": 113,
+      "hintRight": 430.53125,
+      "viewport": 640,
+      "overlap": true
+    },
+    {
+      "theme": "journal",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "temple",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "temple",
+      "w": 390,
+      "h": 844,
+      "hintTop": 221,
+      "chipBottom": 233,
+      "hintRight": 244.53125,
+      "viewport": 390,
+      "overlap": true
+    },
+    {
+      "theme": "temple",
+      "w": 640,
+      "h": 360,
+      "hintTop": 72,
+      "chipBottom": 113,
+      "hintRight": 430.53125,
+      "viewport": 640,
+      "overlap": true
+    },
+    {
+      "theme": "temple",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "cozy",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    },
+    {
+      "theme": "cozy",
+      "w": 390,
+      "h": 844,
+      "hintTop": 221,
+      "chipBottom": 233,
+      "hintRight": 244.53125,
+      "viewport": 390,
+      "overlap": true
+    },
+    {
+      "theme": "cozy",
+      "w": 640,
+      "h": 360,
+      "hintTop": 72,
+      "chipBottom": 113,
+      "hintRight": 430.53125,
+      "viewport": 640,
+      "overlap": true
+    },
+    {
+      "theme": "cozy",
+      "w": 844,
+      "h": 390,
+      "hintTop": 72,
+      "chipBottom": 64,
+      "hintRight": 475.96875,
+      "viewport": 844,
+      "overlap": false
+    }
+  ],
+  "shrunk": 72,
+  "errors": []
+}

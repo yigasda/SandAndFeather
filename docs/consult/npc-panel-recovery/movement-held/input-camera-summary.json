@@ -1,0 +1,47 @@
+[
+  {
+    "version": "0.9.91",
+    "canvas": [
+      780,
+      1688
+    ],
+    "zoom": [
+      4
+    ],
+    "cameraMaxError": 0.0,
+    "inputToDrawMaxMs": 17.200000000186265,
+    "inputToDrawMedianMs": 1.8500000000931323,
+    "nonZeroInputDraws": 179,
+    "draws": 180
+  },
+  {
+    "version": "0.9.92",
+    "canvas": [
+      780,
+      1688
+    ],
+    "zoom": [
+      4
+    ],
+    "cameraMaxError": 0.0,
+    "inputToDrawMaxMs": 17.0,
+    "inputToDrawMedianMs": 2.549999999930151,
+    "nonZeroInputDraws": 186,
+    "draws": 186
+  },
+  {
+    "version": "candidate",
+    "canvas": [
+      780,
+      1688
+    ],
+    "zoom": [
+      4
+    ],
+    "cameraMaxError": 0.0,
+    "inputToDrawMaxMs": 16.600000000093132,
+    "inputToDrawMedianMs": 2.400000000023283,
+    "nonZeroInputDraws": 186,
+    "draws": 186
+  }
+]

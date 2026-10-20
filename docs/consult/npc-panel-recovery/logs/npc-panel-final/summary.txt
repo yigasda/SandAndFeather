@@ -1,0 +1,13 @@
+== 2026-10-20 20:14:06 기준 코드 56cd1507+수정13c2f74 · 검사: cache-layout-recovery npc-asset-retry npc-visibility portrait-zoom pad-tabs landscape portal-walk:--exit-lifecycle verify-cozy-ui verify-ui-themes verify-full-map
+문법: 56cd1507 이후 바뀐 JS 4개 통과
+cache-layout-recovery exit 0  통과 1 실패 0  18s
+npc-asset-retry      exit 0  통과 1 실패 0  8s
+npc-visibility       exit 0  통과 1 실패 0  26s
+portrait-zoom        exit 0  통과 7 실패 0  41s
+pad-tabs             exit 0  통과 16 실패 0  61s
+landscape            exit 0  통과 11 실패 0  48s
+portal-walk_--exit-lifecycle exit 1  통과 0 실패 0  1s
+verify-cozy-ui       exit 0  통과 0 실패 0  17s
+verify-ui-themes     exit 0  통과 0 실패 0  68s
+verify-full-map      exit 0  통과 0 실패 0  19s
+주의: 검사 도중 코드가 바뀜 (56cd1507+수정13c2f74 → 56cd1507+수정a9c9e40). 위 결과는 시작 때 복사한 56cd1507+수정13c2f74 기준이다.

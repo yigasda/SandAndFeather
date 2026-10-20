@@ -177,7 +177,9 @@ async function enterMap() {
     map = getMap(s.pos.map);
     placePlayer(map);
     doorArmed = false;
-    doorNeedsNeutral = true;
+    // A neutral arrival already satisfies release. Waiting for a later frame can
+    // miss it if a new press arrives first, leaving the next door locked.
+    doorNeedsNeutral = Math.hypot(input.dx, input.dy) > 0.15;
     swapMap();
 }
 // the current map as the game has it now, without moving her

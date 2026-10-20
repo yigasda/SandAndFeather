@@ -1,0 +1,4 @@
+== 2026-10-20 20:28:15 기준 코드 56cd1507+수정a9c9e40 · 검사: cache-layout-recovery hud-design-regression
+문법: 56cd1507 이후 바뀐 JS 8개 통과
+cache-layout-recovery exit 0  통과 1 실패 0  20s
+hud-design-regression exit 0  통과 1 실패 0  12s

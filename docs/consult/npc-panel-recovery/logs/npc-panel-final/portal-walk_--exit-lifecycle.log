@@ -1,0 +1,18 @@
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+browserContext.newPage: Executable doesn't exist at /tmp/hud-playwright/ffmpeg-1011/ffmpeg-linux
+╔═════════════════════════════════════════════════════════════════════════╗
+║ Looks like Playwright Test or Playwright was just installed or updated. ║
+║ Please run the following command to download new browsers:              ║
+║                                                                         ║
+║     npx playwright install                                              ║
+║                                                                         ║
+║ <3 Playwright Team                                                      ║
+╚═════════════════════════════════════════════════════════════════════════╝
+    at /workspace/SandAndFeather/tools/st-test/portal-walk.cjs:101:32 {
+  name: 'Error'
+}
+
+Node.js v24.19.0

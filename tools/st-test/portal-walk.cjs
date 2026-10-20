@@ -186,6 +186,8 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             ok(!(await gate()).doorArmed&&(await gate()).doorNeedsNeutral,'실제 패드 유지: 출구 밖이어도 중립 전 재무장 금지');
             await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});await sleep(100);
             ok((await gate()).dx===0&&!(await gate()).doorNeedsNeutral&&(await gate()).doorArmed,'실제 touchCancel: 중립 후 출구 밖 재무장');
+            await page.evaluate(()=>document.activeElement?.blur());
+            if(await page.evaluate(()=>/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName)))throw new Error('keyboard fixture still typing');
             await page.keyboard.down('ArrowRight');await set(false,true);await W.touch('touchStart',pad.x,pad.y);
             await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});await sleep(100);
             ok((await gate()).dx!==0&&(await gate()).doorNeedsNeutral,'키보드 유지+패드 취소: 남은 이동 입력을 중립으로 오인하지 않음');

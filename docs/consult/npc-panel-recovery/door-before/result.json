@@ -1,0 +1,19 @@
+{
+  "before": {
+    "doorNeedsNeutral": true,
+    "doorArmed": false,
+    "dx": 0,
+    "dy": 0
+  },
+  "after": {
+    "gate": {
+      "doorNeedsNeutral": true,
+      "doorArmed": false,
+      "dx": 0,
+      "dy": 0
+    },
+    "map": "ombos",
+    "x": 24.9,
+    "y": 9.193420000000392
+  }
+}

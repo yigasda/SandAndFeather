@@ -26,14 +26,14 @@ const out=path.resolve(process.argv[2]||'/tmp/landscape');fs.mkdirSync(out,{recu
   const rows=[];
   for(const [w,h]of [[390,844],[844,390],[390,844],[844,390]]){
    await p.setViewportSize({width:w,height:h});
-   for(const part of ['morning','day','evening','night']){
-    await p.evaluate(async part=>{const s=T.state.getState();s.part=part;s.wake=null;await T.win.travel('set_room');await T.win.travel('ombos',{x:13,y:19});},part);await p.waitForTimeout(200);
+   for(const part of ['dawn','day','evening','night']){
+    await p.evaluate(async part=>{const s=T.state.getState();s.date={year:1,month:2,day:8};s.part=part;s.wake=null;await T.win.travel('set_room');await T.win.travel('ombos',{x:13,y:19});},part);await p.waitForTimeout(200);
     const result=await p.evaluate(()=>{
      const {renderer:r,scene}=npcScene,n=T.win.currentMap().npcs.find(n=>n.id==='merchant');
      const compare=()=>{window.hideMerchant=false;r.draw(scene);const yes=r.g.getImageData(0,0,r.cv.width,r.cv.height).data;window.hideMerchant=true;r.draw(scene);const no=r.g.getImageData(0,0,r.cv.width,r.cv.height).data;let diff=0;for(let i=0;i<yes.length;i+=4)if(yes[i]!==no[i]||yes[i+1]!==no[i+1]||yes[i+2]!==no[i+2])diff++;window.hideMerchant=false;r.draw(scene);return diff;};
      const initial=compare();const saved=r.map.d.referenceScenes; r.map.d.referenceScenes=[];const withoutOcclusion=compare();r.map.d.referenceScenes=saved;r.draw(scene);
      return{map:T.win.currentMap().id,npcs:T.win.currentMap().npcs,people:scene.people,part:scene.part,zoom:r.zoom,cam:r.cam,diff:initial,withoutOcclusion};
-    });rows.push({w,h,part,...result});console.log(JSON.stringify({w,h,part,diff:result.diff,withoutOcclusion:result.withoutOcclusion,people:result.people.map(p=>p.look)}));
+    });assert.equal(result.part,part);rows.push({w,h,part,...result});console.log(JSON.stringify({w,h,part,diff:result.diff,withoutOcclusion:result.withoutOcclusion,people:result.people.map(p=>p.look)}));
     await p.screenshot({path:path.join(out,`${rows.length}-${w}-${part}.png`)});
    }
   }

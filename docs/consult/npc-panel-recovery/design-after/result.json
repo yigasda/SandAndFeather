@@ -1,0 +1,70 @@
+[
+  {
+    "label": "landscape",
+    "w": 844,
+    "h": 390,
+    "dateHeight": 34,
+    "dateRatio": 2.4285714285714284,
+    "gap": 6,
+    "left": 0,
+    "right": 0,
+    "order": [
+      "9/18",
+      "189",
+      "모험 등급 6"
+    ],
+    "gameWidth": 844,
+    "gameHeight": 390
+  },
+  {
+    "label": "portrait",
+    "w": 390,
+    "h": 844,
+    "dateHeight": 56,
+    "dateRatio": 4,
+    "gap": 6,
+    "left": 0,
+    "right": 0,
+    "order": [
+      "9/18",
+      "189",
+      "모험 등급 6"
+    ],
+    "gameWidth": 390,
+    "gameHeight": 844
+  },
+  {
+    "label": "landscape-return",
+    "w": 844,
+    "h": 390,
+    "dateHeight": 34,
+    "dateRatio": 2.4285714285714284,
+    "gap": 6,
+    "left": 0,
+    "right": 0,
+    "order": [
+      "9/18",
+      "189",
+      "모험 등급 6"
+    ],
+    "gameWidth": 844,
+    "gameHeight": 390
+  },
+  {
+    "label": "small-landscape",
+    "w": 640,
+    "h": 360,
+    "dateHeight": 34,
+    "dateRatio": 2.4285714285714284,
+    "gap": 6,
+    "left": 0,
+    "right": 0,
+    "order": [
+      "9/18",
+      "189",
+      "모험 등급 6"
+    ],
+    "gameWidth": 640,
+    "gameHeight": 360
+  }
+]

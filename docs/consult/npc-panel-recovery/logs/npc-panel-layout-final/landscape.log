@@ -1,0 +1,11 @@
+PASS 900x412: five themes, HUD columns/labels/bounds, four menu destinations
+PASS 740x360: five themes, HUD columns/labels/bounds, four menu destinations
+PASS 640x360: five themes, HUD columns/labels/bounds, four menu destinations
+PASS map-only two-finger pinch zooms in
+PASS joystick plus map finger does not zoom
+PASS popup touches never zoom the map
+PASS cancel clears pinch state
+PASS four map sizes clamp zoom-out and both camera edges
+PASS portrait menu opens existing destinations
+PASS landscape menu fold/reopen/close work
+PASS no game page errors

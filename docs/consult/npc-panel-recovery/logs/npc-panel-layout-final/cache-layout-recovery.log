@@ -1,0 +1,12 @@
+{"recovery":[{"kind":"main-context","original":2125,"count":2125},{"kind":"sprite-context","original":2125,"count":2125},{"kind":"visibility","original":2125,"count":2125},{"kind":"reopen","original":2125,"count":2125}],"overlaps":[],"shrunk":49,"errors":[]}
+AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+
+'none'
+    at /workspace/SandAndFeather/tools/st-test/cache-layout-recovery.cjs:59:364 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'none',
+  expected: 'none',
+  operator: 'notStrictEqual',
+  diff: 'simple'
+}

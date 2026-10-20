@@ -1,0 +1,23 @@
+{
+  before: { doorNeedsNeutral: true, doorArmed: false, dx: 0, dy: 0 },
+  after: {
+    gate: { doorNeedsNeutral: true, doorArmed: false, dx: 0, dy: 0 },
+    map: 'ombos',
+    x: 24.9,
+    y: 9.193420000000392
+  }
+}
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'ombos'
+- 'temple_courtyard'
+
+    at /workspace/SandAndFeather/tools/st-test/door-neutral-arrival.cjs:14:122 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'ombos',
+  expected: 'temple_courtyard',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

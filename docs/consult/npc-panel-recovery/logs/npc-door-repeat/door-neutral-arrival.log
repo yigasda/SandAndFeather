@@ -1,0 +1,25 @@
+INPUTTRACE {"kind":"focus","target":"DIALOG","active":"DIALOG","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"DIALOG","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"focus","target":"TEXTAREA","active":"TEXTAREA","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"TEXTAREA","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+{"run":0,"before":{"doorNeedsNeutral":false,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":0,"map":"ombos","x":24.9,"y":10.6,"feet":{"x":25.4,"y":11.4},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"atHeld":{"doorNeedsNeutral":true,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":-1,"map":"temple_courtyard","x":12.59,"y":5.980139999999997,"feet":{"x":13.09,"y":6.780139999999997},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"after":{"gate":{"doorNeedsNeutral":true,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":0,"map":"temple_courtyard","x":12.59,"y":5.980139999999997,"feet":{"x":13.09,"y":6.780139999999997},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"map":"temple_courtyard","x":12.59,"y":5.980139999999997},"errors":["Unexpected token 'I', \"Internal S\"... is not valid JSON"]}
+PASS neutral arrival then immediate key must enter temple without another release
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+PASS held arrival still requires release; no chained doorway transition
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+{"run":1,"before":{"doorNeedsNeutral":false,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":0,"map":"ombos","x":24.9,"y":10.6,"feet":{"x":25.4,"y":11.4},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"atHeld":{"doorNeedsNeutral":true,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":-1,"map":"temple_courtyard","x":12.59,"y":5.979719999999999,"feet":{"x":13.09,"y":6.779719999999998},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"after":{"gate":{"doorNeedsNeutral":false,"doorArmed":true,"moving":false,"card":false,"dx":0,"dy":0,"map":"temple_courtyard","x":12.59,"y":5.979719999999999,"feet":{"x":13.09,"y":6.779719999999998},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"map":"temple_courtyard","x":12.59,"y":5.979719999999999},"errors":["Unexpected token 'I', \"Internal S\"... is not valid JSON"]}
+PASS neutral arrival then immediate key must enter temple without another release
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+PASS held arrival still requires release; no chained doorway transition
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+{"run":2,"before":{"doorNeedsNeutral":false,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":0,"map":"ombos","x":24.9,"y":10.6,"feet":{"x":25.4,"y":11.4},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"atHeld":{"doorNeedsNeutral":true,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":-1,"map":"temple_courtyard","x":12.59,"y":5.98014,"feet":{"x":13.09,"y":6.780139999999999},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"after":{"gate":{"doorNeedsNeutral":true,"doorArmed":false,"moving":false,"card":false,"dx":0,"dy":0,"map":"temple_courtyard","x":12.59,"y":5.98014,"feet":{"x":13.09,"y":6.780139999999999},"exit":null,"solidAtFeet":false,"overlays":[],"focus":"BODY"},"map":"temple_courtyard","x":12.59,"y":5.98014},"errors":["Unexpected token 'I', \"Internal S\"... is not valid JSON"]}
+PASS neutral arrival then immediate key must enter temple without another release
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+PASS held arrival still requires release; no chained doorway transition

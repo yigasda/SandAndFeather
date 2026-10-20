@@ -1,0 +1,17 @@
+INPUTTRACE {"kind":"focus","target":"DIALOG","active":"DIALOG","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"blur","target":"DIALOG","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+{
+  before: { doorNeedsNeutral: false, doorArmed: false, dx: 0, dy: 0 },
+  after: {
+    gate: { doorNeedsNeutral: true, doorArmed: false, dx: 0, dy: 0 },
+    map: 'temple_courtyard',
+    x: 12.59,
+    y: 5.980140000000003
+  }
+}
+PASS neutral arrival then immediate key must enter temple without another release
+INPUTTRACE {"kind":"keydown","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+INPUTTRACE {"kind":"keyup","code":"ArrowUp","key":"ArrowUp","target":"BODY","active":"BODY","popup":false,"hidden":false,"focused":true}
+PASS held arrival still requires release; no chained doorway transition

@@ -1,0 +1,81 @@
+{
+  "before": {
+    "doorNeedsNeutral": true,
+    "doorArmed": false,
+    "moving": false,
+    "card": false,
+    "dx": 0,
+    "dy": 0,
+    "map": "ombos",
+    "x": 24.9,
+    "y": 10.6,
+    "feet": {
+      "x": 25.4,
+      "y": 11.4
+    },
+    "exit": null,
+    "solidAtFeet": false,
+    "overlays": [],
+    "focus": "BODY"
+  },
+  "atHeld": {
+    "doorNeedsNeutral": true,
+    "doorArmed": false,
+    "moving": false,
+    "card": false,
+    "dx": 0,
+    "dy": -1,
+    "map": "ombos",
+    "x": 24.9,
+    "y": 9.1967800000002,
+    "feet": {
+      "x": 25.4,
+      "y": 9.9967800000002
+    },
+    "exit": {
+      "x0": 24.75,
+      "y0": 9.45,
+      "x1": 26.05,
+      "y1": 10.05,
+      "to": "temple_courtyard",
+      "at": "south"
+    },
+    "solidAtFeet": false,
+    "overlays": [],
+    "focus": "BODY"
+  },
+  "after": {
+    "gate": {
+      "doorNeedsNeutral": true,
+      "doorArmed": false,
+      "moving": false,
+      "card": false,
+      "dx": 0,
+      "dy": 0,
+      "map": "ombos",
+      "x": 24.9,
+      "y": 9.1967800000002,
+      "feet": {
+        "x": 25.4,
+        "y": 9.9967800000002
+      },
+      "exit": {
+        "x0": 24.75,
+        "y0": 9.45,
+        "x1": 26.05,
+        "y1": 10.05,
+        "to": "temple_courtyard",
+        "at": "south"
+      },
+      "solidAtFeet": false,
+      "overlays": [],
+      "focus": "BODY"
+    },
+    "map": "ombos",
+    "x": 24.9,
+    "y": 9.1967800000002
+  },
+  "errors": [
+    "Unexpected token 'I', \"Internal S\"... is not valid JSON"
+  ]
+}

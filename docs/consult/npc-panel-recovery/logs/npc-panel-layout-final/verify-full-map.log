@@ -1,0 +1,4 @@
+page.waitForFunction: Timeout 5000ms exceeded.
+    at /workspace/SandAndFeather/tools/art/verify-full-map.cjs:30:95 {
+  name: 'TimeoutError'
+}

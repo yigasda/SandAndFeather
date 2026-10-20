@@ -1845,15 +1845,16 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 @media (orientation: landscape) and (max-height: 540px) {
     #sf_game[data-ui-theme] { top:0;left:0;transform:none;width:100vw;height:100dvh;--hud-left:calc(18px + env(safe-area-inset-left,0px));--hud-right:calc(18px + env(safe-area-inset-right,0px));--hud-top:calc(14px + env(safe-area-inset-top,0px));--hud-column:clamp(174px,26vw,220px);--hud-middle:calc(var(--hud-left) + var(--hud-column) + 12px); }
     #sf_game[data-ui-theme] .sf_top { left:var(--hud-left);right:var(--hud-right);top:var(--hud-top); }
-    #sf_game[data-ui-theme] .sf_date_card { width:var(--hud-column);min-height:56px;height:auto; }
+    #sf_game[data-ui-theme] .sf_date_card { width:var(--hud-column);min-height:34px;height:34px;padding:0 2px;border-width:5px;gap:0;background-size:auto 100%;background-repeat:repeat-x; }
     #sf_game[data-ui-theme] .sf_mini { width:104px;height:86px; }
-    #sf_game[data-ui-theme] .sf_date { font-size:14px; }
-    #sf_game[data-ui-theme] .sf_date_sub { font-size:9px; }
+    #sf_game[data-ui-theme] .sf_date { font-size:14px;line-height:18px; }
+    #sf_game[data-ui-theme] .sf_date::before { width:18px;height:18px; }
+    #sf_game[data-ui-theme] .sf_date_sub { display:none; }
     #sf_game[data-ui-theme] .sf_side_btns { display:none; }
     #sf_game[data-ui-theme] .sf_chips { left:var(--hud-middle);top:var(--hud-top);max-width:calc(100% - var(--hud-middle) - var(--hud-right) - 116px);flex-wrap:wrap;gap:2px; }
-    #sf_game[data-ui-theme] .sf_chip_rank { order:-1;display:inline-flex; }
-    #sf_game[data-ui-theme] .sf_hint_pill { left:var(--hud-middle);top:calc(var(--hud-top) + 58px);max-width:calc(100% - var(--hud-middle) - var(--hud-right) - 116px);white-space:normal;text-align:left; }
-    #sf_game[data-ui-theme] .sf_duat_hud { left:var(--hud-left)!important;top:calc(var(--hud-top) + 62px)!important;width:var(--hud-column);box-sizing:border-box; }
+    #sf_game[data-ui-theme] .sf_chip_rank { order:0;display:inline-flex; }
+    #sf_game[data-ui-theme] .sf_hint_pill { left:var(--hud-middle);top:var(--sf-status-bottom,calc(var(--hud-top) + 38px));width:var(--sf-status-width,auto);max-width:calc(100% - var(--hud-middle) - var(--hud-right) - 116px);white-space:normal;text-align:left; }
+    #sf_game[data-ui-theme] .sf_duat_hud { left:var(--hud-left)!important;top:calc(var(--hud-top) + 40px)!important;width:var(--hud-column);box-sizing:border-box; }
     #sf_game[data-ui-theme] :is(.sf_menu,.sf_appearance,.sf_bag) { display:grid;place-items:center;top:calc(var(--hud-top) + 92px);width:32px;height:34px;min-width:0;padding:2px;border:3px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;border-radius:0;box-shadow:none;background:#463322;background-clip:padding-box;color:#f8e9cf;z-index:4; }
     #sf_game[data-ui-theme] .sf_menu { position:absolute;right:calc(var(--hud-right) + 72px); }
     #sf_game[data-ui-theme] .sf_appearance { right:calc(var(--hud-right) + 36px); }
@@ -1990,8 +1991,8 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  #sf_game[data-ui-theme] .sf_side_btns { display:none; }
  #sf_game[data-ui-theme] .sf_duat_hud { left:var(--hud-left)!important;top:calc(var(--hud-top) + 62px)!important;width:calc(100% - 190px);box-sizing:border-box; }
  #sf_game[data-ui-theme] .sf_chips { left:var(--hud-left);top:calc(var(--hud-top) + 164px);max-width:calc(100% - 36px);height:auto;flex-wrap:wrap;gap:2px; }
- #sf_game[data-ui-theme] .sf_chip_rank { order:-1;display:inline-flex; }
- #sf_game[data-ui-theme] .sf_hint_pill { left:var(--hud-left);top:calc(var(--hud-top) + 202px);max-width:calc(100% - 36px);white-space:normal;text-align:left; }
+ #sf_game[data-ui-theme] .sf_chip_rank { order:0;display:inline-flex; }
+ #sf_game[data-ui-theme] .sf_hint_pill { left:var(--hud-left);top:var(--sf-status-bottom,calc(var(--hud-top) + 202px));width:var(--sf-status-width,auto);max-width:calc(100% - 36px);white-space:normal;text-align:left; }
  #sf_game[data-ui-theme] :is(.sf_menu,.sf_appearance,.sf_bag) { display:grid;place-items:center;position:absolute;top:calc(var(--hud-top) + 92px);width:32px;height:34px;min-width:0;padding:2px;border:3px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;border-radius:0;box-shadow:none;background:#463322;background-clip:padding-box;color:#f8e9cf;z-index:4; }
  #sf_game[data-ui-theme] .sf_menu { right:calc(var(--hud-right) + 72px); }
  #sf_game[data-ui-theme] .sf_appearance { right:calc(var(--hud-right) + 36px); }

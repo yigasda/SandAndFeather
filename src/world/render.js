@@ -46,6 +46,7 @@ export class Renderer {
         const make = (rows, colors, flip = false) => {
             // usually 16×16; a wider or taller one (wings) is centred on the tile and stands on its bottom
             const c = document.createElement('canvas');
+            c.addEventListener('contextrestored', () => this.setSprites(data));
             c.width = Math.max(1, ...rows.map(r => String(r).length)); c.height = rows.length;
             const g = c.getContext('2d');
             rows.forEach((r, y) => [...String(r)].forEach((ch, x) => {
@@ -67,6 +68,7 @@ export class Renderer {
                 if (!frame) continue;
                 const [sx, sy, w, h] = frame;
                 const c = document.createElement('canvas'); c.width = w; c.height = h;
+                c.addEventListener('contextrestored', () => this.setSprites(data));
                 const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
                 g.drawImage(image, sx, sy, w, h, 0, 0, w, h);
                 this.art.set(`${look}|${dir}`, c);
@@ -168,7 +170,12 @@ export class Renderer {
     }
     // a phone browser can throw canvas pictures away while the tab is in the background (the GPU memory is
     // taken back); the ground painted once is then blank. Painting it again brings the map back.
-    repaint() { if (this.map) this.paintGround(); }
+    repaint() {
+        // Static NPCs use cached canvases, unlike the trio's live image atlases.
+        // Rebuild those too after context restoration, tab resume or reopening.
+        this.setSprites(DATA.sprites);
+        if (this.map) this.paintGround();
+    }
     // folded or closed: give the pictures' memory back (about 10MB on a phone); setMap paints them again on open
     release() {
         for (const c of [this.cv, this.ground, this.top, this.referenceActors]) { c.width = 1; c.height = 1; }

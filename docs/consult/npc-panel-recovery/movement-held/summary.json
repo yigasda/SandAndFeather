@@ -1,0 +1,65 @@
+[
+  {
+    "version": "0.9.91",
+    "map": "ombos",
+    "start": {
+      "x": 23,
+      "y": 4,
+      "map": "ombos"
+    },
+    "calls": {
+      "draw": 180,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 21.9000000001397,
+    "drawGapP95": 50,
+    "rafGapP95": 33.400000000000546,
+    "rafGapMax": 66.69999999999982,
+    "longTasks": 5,
+    "movedFrames": 173
+  },
+  {
+    "version": "0.9.92",
+    "map": "ombos",
+    "start": {
+      "x": 23,
+      "y": 4,
+      "map": "ombos"
+    },
+    "calls": {
+      "draw": 186,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 15.299999999813735,
+    "drawGapP95": 39.10000000009313,
+    "rafGapP95": 16.80000000000109,
+    "rafGapMax": 83.29999999999927,
+    "longTasks": 1,
+    "movedFrames": 178
+  },
+  {
+    "version": "candidate",
+    "map": "ombos",
+    "start": {
+      "x": 23,
+      "y": 4,
+      "map": "ombos"
+    },
+    "calls": {
+      "draw": 186,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 17.100000000093132,
+    "drawGapP95": 39,
+    "rafGapP95": 16.80000000000109,
+    "rafGapMax": 50.100000000000364,
+    "longTasks": 1,
+    "movedFrames": 178
+  }
+]

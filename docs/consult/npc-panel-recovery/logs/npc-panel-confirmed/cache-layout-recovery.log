@@ -1,0 +1,2 @@
+{"recovery":[{"kind":"main-context","original":2125,"count":2125},{"kind":"sprite-context","original":2125,"count":2125},{"kind":"visibility","original":2125,"count":2125},{"kind":"reopen","original":2125,"count":2125}],"overlaps":[],"shrunk":49,"errors":[]}
+PASS four NPC recovery paths and five-theme viewport/text reflow sequences

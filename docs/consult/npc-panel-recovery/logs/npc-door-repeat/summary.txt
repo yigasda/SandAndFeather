@@ -1,0 +1,6 @@
+== 2026-10-20 20:36:05 기준 코드 56cd1507+수정4ee74e8 · 검사: door-neutral-arrival portal-walk:--exit-lifecycle portal-walk:--exit-lifecycle portal-walk:--exit-lifecycle
+문법: 56cd1507 이후 바뀐 JS 12개 통과
+door-neutral-arrival exit 0  통과 6 실패 0  25s
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  16s
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  11s
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  11s

@@ -1,0 +1,8 @@
+PASS 390x844 five themes: home parity, readable HUD, menu art/navigation/bounds
+PASS 320x740 five themes: home parity, readable HUD, menu art/navigation/bounds
+PASS 412x900 five themes: home parity, readable HUD, menu art/navigation/bounds
+PASS 844x390 five themes: home parity, readable HUD, menu art/navigation/bounds
+scroll { top: 159, height: 528, content: 687, action: 'pan-y' }
+PASS 390x844: pinch, map round trip with limits, four camera corners, mixed touches, movement, popup exclusion, fold/reopen
+PASS 844x390: pinch, map round trip with limits, four camera corners, mixed touches, movement, popup exclusion, fold/reopen
+PASS no page errors

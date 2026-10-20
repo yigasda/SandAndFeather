@@ -1,0 +1,4 @@
+== 2026-10-20 20:24:39 기준 코드 56cd1507+수정a9c9e40 · 검사: portal-walk:--exit-lifecycle verify-full-map
+문법: 56cd1507 이후 바뀐 JS 8개 통과
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  11s
+verify-full-map      exit 0  통과 0 실패 0  19s

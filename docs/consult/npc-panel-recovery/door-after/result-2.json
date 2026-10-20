@@ -1,0 +1,67 @@
+{
+  "before": {
+    "doorNeedsNeutral": false,
+    "doorArmed": false,
+    "moving": false,
+    "card": false,
+    "dx": 0,
+    "dy": 0,
+    "map": "ombos",
+    "x": 24.9,
+    "y": 10.6,
+    "feet": {
+      "x": 25.4,
+      "y": 11.4
+    },
+    "exit": null,
+    "solidAtFeet": false,
+    "overlays": [],
+    "focus": "BODY"
+  },
+  "atHeld": {
+    "doorNeedsNeutral": true,
+    "doorArmed": false,
+    "moving": false,
+    "card": false,
+    "dx": 0,
+    "dy": -1,
+    "map": "temple_courtyard",
+    "x": 12.59,
+    "y": 5.98014,
+    "feet": {
+      "x": 13.09,
+      "y": 6.780139999999999
+    },
+    "exit": null,
+    "solidAtFeet": false,
+    "overlays": [],
+    "focus": "BODY"
+  },
+  "after": {
+    "gate": {
+      "doorNeedsNeutral": true,
+      "doorArmed": false,
+      "moving": false,
+      "card": false,
+      "dx": 0,
+      "dy": 0,
+      "map": "temple_courtyard",
+      "x": 12.59,
+      "y": 5.98014,
+      "feet": {
+        "x": 13.09,
+        "y": 6.780139999999999
+      },
+      "exit": null,
+      "solidAtFeet": false,
+      "overlays": [],
+      "focus": "BODY"
+    },
+    "map": "temple_courtyard",
+    "x": 12.59,
+    "y": 5.98014
+  },
+  "errors": [
+    "Unexpected token 'I', \"Internal S\"... is not valid JSON"
+  ]
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "version": "0.9.91",
+    "map": "ombos",
+    "start": {
+      "x": 23,
+      "y": 4,
+      "map": "ombos"
+    },
+    "calls": {
+      "draw": 175,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 32.5,
+    "drawGapP95": 103.80000000004657,
+    "rafGapP95": 66.70000000000073,
+    "rafGapMax": 183.29999999999927,
+    "longTasks": 25,
+    "movedFrames": 169
+  },
+  {
+    "version": "0.9.91",
+    "map": "desert_golden_dunes",
+    "start": {
+      "x": 40,
+      "y": 8,
+      "map": "desert_golden_dunes"
+    },
+    "calls": {
+      "draw": 187,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 3.300000000046566,
+    "drawGapP95": 78.5,
+    "rafGapP95": 50,
+    "rafGapMax": 116.70000000000073,
+    "longTasks": 13,
+    "movedFrames": 177
+  },
+  {
+    "version": "0.9.92",
+    "map": "ombos",
+    "start": {
+      "x": 23,
+      "y": 4,
+      "map": "ombos"
+    },
+    "calls": {
+      "draw": 187,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 16.600000000093132,
+    "drawGapP95": 53.0999999998603,
+    "rafGapP95": 33.29999999999927,
+    "rafGapMax": 50.099999999998545,
+    "longTasks": 2,
+    "movedFrames": 179
+  },
+  {
+    "version": "0.9.92",
+    "map": "desert_golden_dunes",
+    "start": {
+      "x": 40,
+      "y": 8,
+      "map": "desert_golden_dunes"
+    },
+    "calls": {
+      "draw": 171,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 5.800000000046566,
+    "drawGapP95": 103.89999999990687,
+    "rafGapP95": 83.29999999999927,
+    "rafGapMax": 283.2000000000007,
+    "longTasks": 42,
+    "movedFrames": 163
+  },
+  {
+    "version": "candidate",
+    "map": "ombos",
+    "start": {
+      "x": 23,
+      "y": 4,
+      "map": "ombos"
+    },
+    "calls": {
+      "draw": 187,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 16.5,
+    "drawGapP95": 89.89999999990687,
+    "rafGapP95": 33.30000000000109,
+    "rafGapMax": 66.60000000000036,
+    "longTasks": 3,
+    "movedFrames": 177
+  },
+  {
+    "version": "candidate",
+    "map": "desert_golden_dunes",
+    "start": {
+      "x": 40,
+      "y": 8,
+      "map": "desert_golden_dunes"
+    },
+    "calls": {
+      "draw": 188,
+      "resize": 0,
+      "setSprites": 0
+    },
+    "rect": 10,
+    "drawMsP95": 3.1000000000931323,
+    "drawGapP95": 72.9000000001397,
+    "rafGapP95": 49.900000000001455,
+    "rafGapMax": 83.30000000000291,
+    "longTasks": 8,
+    "movedFrames": 182
+  }
+]

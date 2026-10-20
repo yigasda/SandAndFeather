@@ -1,0 +1,6 @@
+== 2026-10-20 20:34:01 기준 코드 56cd1507+수정4ee74e8 · 검사: door-neutral-arrival portal-walk:--exit-lifecycle verify-full-map landscape
+문법: 56cd1507 이후 바뀐 JS 12개 통과
+door-neutral-arrival exit 0  통과 2 실패 0  11s
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  12s
+verify-full-map      exit 0  통과 0 실패 0  23s
+landscape            exit 0  통과 11 실패 0  40s
