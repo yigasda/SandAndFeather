@@ -8,7 +8,7 @@ import { settings } from '../core/settings.js';
 import { hasChat } from '../core/st.js';
 import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
-import { bindPad, input, startInput, stopInput } from '../world/input.js';
+import { bindPad, bindPress, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
 import { endPose, feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
 import { clearFx, fxBusy } from '../world/fx.js';
@@ -29,11 +29,14 @@ let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
 let raf = 0, last = 0, miniAt = 0, drawnAt = 0, near = null;
 // doors: one fires only after her feet have been off every exit once (no bouncing back on arrival); one move at a time
-let doorArmed = false, moving = false;
+let doorArmed = false, moving = false, doorNeedsNeutral = false;
 // frames drawn a second: walking, standing (only the river moves), a card is open
 const FPS = { walk: 30, still: 8, card: 4 };
 
 export const gameMode = () => mode;
+// tests only: why a door did or did not take her (armed after she stood outside an exit, waiting for a let-go stick,
+// mid map change, a card open)
+export const testDoor = () => ({ armed: doorArmed, needsNeutral: doorNeedsNeutral, moving, mode, card: cardOpen() });
 
 // what packs get to show things with: cards, a toast, folding the window
 const ui = {
@@ -119,7 +122,7 @@ function build() {
     bindPad(hud.pad, hud.knob);
     hud.close.addEventListener('click', closeGame);
     hud.collapse.addEventListener('click', foldGame);
-    hud.talk.addEventListener('click', talk);
+    bindPress(hud.talk, talk);   // 공격 in a fight: also a second thumb while the other holds the pad
     hud.climb.addEventListener('click', climb);
     hud.bag.addEventListener('click', () => { if (!cardOpen()) bagCard(ui, map); });
     hud.appearance.addEventListener('click', () => { if (!cardOpen()) appearanceCard(ui, applyTheme); });
@@ -188,7 +191,16 @@ export async function travel(mapId, pos = null) {
     } finally { moving = false; }
 }
 // through a door she walked into, or up and down the stairs
-function useExit(ex) { travel(ex.to, ex.at); }
+async function useExit(ex) {
+    if (!ex || !getState() || !DATA.maps[ex.to] || moving) return;
+    doorNeedsNeutral = true;
+    try { await travel(ex.to, ex.at); }
+    catch (error) {
+        // Keep disarmed until neutral input and a fresh exit departure.
+        doorArmed = false;
+        console.error('[SandAndFeather] exit travel', error);
+    }
+}
 function climb() {
     const c = near?.climb;
     if (!c || moving || mode !== 'open') return;
@@ -272,7 +284,8 @@ export function refresh() {
     frameNow();
 }
 
-function frameNow() { if (map && renderer.cv.width > 1) draw(performance.now()); }
+// not before the renderer has the map: reopening, a resize can come while the map's pictures still load (enterMap)
+function frameNow() { if (map && renderer.map && renderer.cv.width > 1) draw(performance.now()); }
 
 // what she can use from where she stands, worked out now (also when the button is pressed between frames)
 // the leader and the one walking with them are not also standing about the map as people
@@ -326,12 +339,19 @@ function frame(t) {
     let dt = last ? Math.min(0.2, (t - last) / 1000) : 0;
     last = t;
     const dtAll = dt;
+    // Observe neutral after arrival, not transient input while loading a map.
+    if (!moving && !input.dx && !input.dy) doorNeedsNeutral = false;
     if (!cardOpen() && !moving) {
         for (; dt > 1e-6 && !moving; dt -= 0.05) {
             stepPlayer(map, input.dx, input.dy, Math.min(0.05, dt));
             const f = feet(), ex = map.exitAt(f.x, f.y);
-            if (!ex) doorArmed = true;
-            else if (doorArmed) { doorArmed = false; useExit(ex); break; }
+            if (!ex) {
+                if (!doorNeedsNeutral) doorArmed = true;
+            } else if (ex && doorArmed && !doorNeedsNeutral) {
+                doorArmed = false;
+                useExit(ex);
+                break;
+            }
         }
         if (!moving) tileCheck();
         if (!moving) for (const fn of frameFns) { try { fn(dtAll, map, ui); } catch (e) { console.error('[SandAndFeather] frame', e); } }
@@ -409,8 +429,8 @@ function openMap() {
     box.append(cv);
     const note = document.createElement('div');
     note.className = 'sf_note';
-    note.textContent = map.d.note || (map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.');
-    box.append(note);
+    note.textContent = map.d.note ?? (map.id === 'ombos' ? '선착장의 배를 고치고 모험 등급 3이 되면 강 건너 무너진 신전에 갈 수 있어.' : '배를 타면 옴보스로 돌아가.');
+    if (note.textContent) box.append(note);
     for (const fn of mapParts) { try { const el = fn(ui, map); if (el) box.append(el); } catch (e) { console.error('[SandAndFeather] map part', e); } }
     showCard(root, { title: map.d.name || '지도', body: box, wide: true, onClose: () => setTab(hud, 'world') });
 }

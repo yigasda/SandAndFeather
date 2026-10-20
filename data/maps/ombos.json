@@ -640,7 +640,7 @@
   "exits": [
     { "x0": 24.75, "y0": 9.45, "x1": 26.05, "y1": 10.05, "to": "temple_courtyard", "at": "south" },
     { "x0": 24.2, "y0": 28.55, "x1": 26.8, "y1": 30.6, "to": "dock_pier", "at": "path" },
-    { "x0": 41.2, "y0": 20.8, "x1": 42, "y1": 25.2, "to": "desert_01", "at": "west" }
+    { "x0": 41.2, "y0": 20.8, "x1": 42, "y1": 25.2, "to": "desert_golden_dunes", "at": "west" }
   ],
   "companionSpots": {
     "set": {

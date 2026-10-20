@@ -19,14 +19,14 @@ export async function loadJson(name) {
     return j;
 }
 
-export const DATA = { bond: null, calendar: null, places: null, items: null, finds: null, talk: null, market: null, recipes: null, works: null, duat: null, daily: null, adventures: null, lessons: null, festivals: null, records: null, sprites: null, tiles: null, maps: {} };
-const FILES = ['bond', 'calendar', 'places', 'items', 'finds', 'talk', 'market', 'recipes', 'works', 'duat', 'daily', 'adventures', 'lessons', 'festivals', 'records', 'sprites', 'tiles'];
+export const DATA = { bond: null, calendar: null, places: null, items: null, finds: null, talk: null, market: null, recipes: null, works: null, duat: null, desert: null, daily: null, adventures: null, lessons: null, festivals: null, records: null, sprites: null, tiles: null, maps: {} };
+const FILES = ['bond', 'calendar', 'places', 'items', 'finds', 'talk', 'market', 'recipes', 'works', 'duat', 'desert', 'daily', 'adventures', 'lessons', 'festivals', 'records', 'sprites', 'tiles'];
 // the residence behind the Ombos temple door: one map a room or hall (tools/maps/residence.py)
 export const RESIDENCE = ['temple_courtyard', 'courtyard_colonnade', 'temple_inner_corridor', 'temple_central_gallery', 'temple_east_gallery',
     'temple_west_gallery', 'room_entrances_wide', 'set_room', 'horus_room', 'somang_room', 'temple_kitchen', 'temple_dining',
     'temple_sanctuary', 'temple_colonnade', 'temple_roof'];
 // the desert east of the village, one map a picture (tools/maps/desert.py; only the places built so far)
-export const DESERT = ['desert_01', 'desert_04', 'desert_03', 'desert_02'];
+export const DESERT = ['desert_golden_dunes', 'desert_dry_flats', 'desert_quiet_dunes', 'desert_buried_temple', 'desert_city_gate', 'desert_city_plaza', 'desert_colonnade', 'desert_forecourt_west', 'desert_forecourt_east', 'desert_votive_hall', 'desert_guardian_gate', 'desert_city_dwelling', 'desert_old_sanctuary'];
 // the dock below the village, its own picture (tools/maps/dock.py)
 export const MAPS = ['ombos', 'ruins', 'dock_pier', ...Array.from({ length: 7 }, (_, i) => `duat_${String(i + 1).padStart(2, '0')}`), ...DESERT, ...RESIDENCE];
 
@@ -89,14 +89,20 @@ export async function ensureSceneArt(mapId) {
     }
 }
 
-// a sprite picture loaded on first need (the large trio atlas): null until it has decoded
+// a sprite picture loaded on first need (the large trio atlas, a creature's sheets): null until it has decoded
 const spriteLoading = new Map();
+// let go of sprite pictures no longer needed (a map's creatures when she leaves it), so they do not pile up
+export function releaseSprites(files) {
+    for (const file of files) { if (DATA.spriteArt) delete DATA.spriteArt[file]; spriteLoading.delete(file); }
+}
 export function spriteFile(file) {
     if (DATA.spriteArt?.[file]) return DATA.spriteArt[file];
     if (!spriteLoading.has(file)) {
         const image = new Image();
         image.src = new URL(file, base).href;
-        spriteLoading.set(file, image.decode().then(() => { DATA.spriteArt[file] = image; }).catch(() => { spriteLoading.delete(file); }));
+        // kept only if nobody let it go while it decoded (releaseSprites)
+        const loading = image.decode().then(() => { if (spriteLoading.get(file) === loading) DATA.spriteArt[file] = image; }).catch(() => { if (spriteLoading.get(file) === loading) spriteLoading.delete(file); });
+        spriteLoading.set(file, loading);
     }
     return null;
 }

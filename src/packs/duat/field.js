@@ -25,17 +25,29 @@
 // armed front / back pictures (ready, walk, the thrust), and 공격 strikes that way; 기술·주문·피격·지침 have side
 // pictures only and keep to the way she faces sideways (me.face).
 // Fighting, the one with her leaves her heels and takes a place of their own beside the creature (1.5 tiles from her).
+// The desert maps that have creatures (data/desert.json, B3 onward) fight the same way with the Duat's shared timings,
+// reach and spells and their own creatures, put where the data says (spawnId), not at random. There a creature struck
+// down stays down until a game day has passed and she comes into the map again (user: bosses too); the first time each
+// one fell and the day it last fell are kept apart (s.desertFight.first / killed), and only her 체력·공포 of the fight
+// (s.desertFight.run) end when she leaves. Gone down there, she is back at the map's way in, nothing lost.
 
-import { DATA, spriteFile } from '../../core/data.js';
+import { DATA, releaseSprites, spriteFile } from '../../core/data.js';
 import { getState, saveState } from '../../core/state.js';
 import { HERO_NAME, leadOf, statsOf, withOf } from '../../core/heroes.js';
 import { behind, feet, follower, mateWalk, player } from '../../world/player.js';
-import { input } from '../../world/input.js';
+import { bindPress, input } from '../../world/input.js';
 import { currentMap, gameMode, onBusy, onDraw, onFrame, onTalkFirst, travel } from '../../ui/window.js';
 import { josa } from '../../core/ko.js';
+import { today } from '../../core/ledger.js';
 
-const F = () => DATA.duat?.field || {};
 const isDuat = id => /^duat_\d+$/.test(id || '');
+const isDesert = id => !!DATA.desert?.maps?.[id];
+const isField = id => isDuat(id) || isDesert(id);
+// the numbers: the Duat's own; a desert map the Duat's shared ones (timing, reach, spells) with its own creatures
+const F = () => isDesert(mapId) ? { ...(DATA.duat?.field || {}), enemies: DATA.desert.enemies } : DATA.duat?.field || {};
+const fight = s => (s.desertFight ||= { run: null, killed: {}, first: {} });
+// the fight going on now (체력, 공포, 주문): the Duat's run, or this desert visit's
+const runNow = s => (isDesert(mapId) ? s?.desertFight?.run : s?.duatField) || null;
 const FEAR_MAX = 10, AGGRO = 4, BOLT_LIFT = 0.8, BODY_MID = 0.9;
 const FLOAT = 0.35, BOB = 0.08, BOB_S = 1.8, IDLE_LOOP = ['idle-0', 'idle-1', 'idle-2', 'idle-1'];
 const SKILL_CD = 6, ATTACK_CD = 0.55, INVULN = 0.6, MATE_SKILL_CD = 8, TIRED_FEAR = 7;
@@ -50,8 +62,12 @@ const rand = (a, b) => a + Math.random() * (b - a);
 const now = () => performance.now() / 1000;
 
 let mobs = [], bolts = [], pops = [], fx = [], mapId = '', mapObj = null, runObj = null, ui = null;
+// tests only: what happened when (guard up / down, blows: the state just before, the damage, the state after); read, never acted on
+// tests only: the 기술 areas lately used, drawn with the creatures' hurt range when testRanges(true) (comparison pictures)
+const areas = []; let showRanges = false;
+const events = [], note = e => { events.push({ t: +now().toFixed(3), ...e }); if (events.length > 300) events.shift(); };
 // what she and the one with her are doing now: { name, at, until, lift, face }
-const me = { act: null, face: 'right', vdir: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
+const me = { act: null, face: 'right', vdir: null, cdAttack: 0, cdSkill: 0, cdUlt: 0, hurtAt: -9, shield: 0, down: false, vert: false, target: null };
 const mate = { act: null, face: 'right', cd: 0, cdSkill: 0, hurtAt: -9, down: false, shown: false };
 // fighting or calm: on (what she shows), since (when it last changed), last (the last time a fight was going on)
 const stance = { on: false, since: -9, last: -9 };
@@ -59,11 +75,12 @@ const stance = { on: false, since: -9, last: -9 };
 // ---- the run
 const maxHp = (s, who) => 13 + 3 * (statsOf(s, who)?.strength || 0);
 function run(s) {
-    if (s.duatField) return s.duatField;
+    if (runNow(s)) return runNow(s);
     const lead = leadOf(s), w = withOf(s), hp = {};
     for (const who of [lead, w].filter(Boolean)) hp[who] = maxHp(s, who);
-    s.duatField = { v: 1, hp, max: { ...hp }, fear: 0, spells: (statsOf(s, lead)?.faith || 0) > 0 ? F().spells || 3 : 0, cleared: {} };
-    return s.duatField;
+    const r = { v: 1, hp, max: { ...hp }, fear: 0, spells: (statsOf(s, lead)?.faith || 0) > 0 ? F().spells || 3 : 0, cleared: {} };
+    if (isDesert(mapId)) fight(s).run = r; else s.duatField = r;
+    return r;
 }
 let saveSoon = 0;
 const save = () => { clearTimeout(saveSoon); saveSoon = setTimeout(() => saveState(), 1200); };
@@ -74,8 +91,51 @@ function makeMob(i, kind, x, y) {
     const e = { ...F().enemies[kind], ...(tune[kind] || {}) };
     return { i, kind, e, x, y, hp: e.hp, st: 'wander', t: 0, tx: x, ty: y, wait: rand(0, 1.5), phase: rand(0, 6.28), shownAt: -9, guardAt: 0, steadyAt: 0, restAt: 0 };
 }
+// a creature's sheets (both sizes), and only the kinds this map has kept in memory: the rest let go (사용자 10-19: the
+// pictures of maps she has left do not pile up). A kind's sheets load when it is first drawn (drawMob → spriteFile).
+const kindFiles = kinds => kinds.flatMap(k => { const d = DATA.sprites?.enemies?.[k]; return d ? [...(d.sheets || [d.file]), ...(d.small?.sheets || [d.small?.file])].filter(Boolean) : []; });
+// the 궁 pictures of the two who are here (data/art/fx/ult, original pixels, field.ult.fx): asked for on coming into a
+// field so the first 궁 does not wait for them; let go when she leaves the fields
+const ultFiles = (whoList = ['set', 'horus', 'somang']) => whoList.flatMap(w => (F().ult?.fx?.[w]?.frames || []).map(f => f.file));
+// the 궁 pictures of the two in the field now (the one in front and the one with her), asked for and decoded on the way
+// in or when they change places; the third's let go (not all three kept: memory). artKey: whose they are
+let artKey = '', warmed = new Set(), warmOn = true;   // warmOn: off only to compare with the old way (tests)
+function ultArt(s) {
+    const w = withOf(s), keep = [leadOf(s), w].filter(Boolean), files = ultFiles(keep);
+    artKey = keep.join('|');
+    for (const f of files) spriteFile(f);
+    const gone = ultFiles().filter(f => !files.includes(f));
+    releaseSprites(gone); for (const f of gone) warmed.delete(f);
+}
+// decoded is not yet drawn: the first draw of a big picture onto the game canvas still costs (it goes up to the
+// graphics side then). So each picture loaded and not yet drawn is drawn once, one a frame, a single faint pixel in a
+// corner — before the 궁 is ever used (user 10-19: the first 궁 stuttered)
+function warmUlt(g) {
+    if (!warmOn) return;
+    for (const f of ultFiles(artKey.split('|').filter(Boolean))) {
+        if (warmed.has(f)) continue;
+        const img = spriteFile(f); if (!img) continue;
+        g.save(); g.globalAlpha = 0.004; g.drawImage(img, 0, 0, 1, 1); g.restore();
+        warmed.add(f); return;
+    }
+}
+function keepArt(kinds) {
+    const keep = new Set(kindFiles(kinds));
+    releaseSprites(kindFiles(Object.keys(DATA.sprites?.enemies || {})).filter(f => !keep.has(f)));
+}
 function spawn(m, s) {
     mobs = []; bolts = []; pops = []; fx = [];
+    try { spawnHere(m, s); } finally { keepArt([...new Set(mobs.map(o => o.kind))]); }
+}
+function spawnHere(m, s) {
+    if (isDesert(m.id)) {   // where the data puts them; one struck down today stays down
+        const f = fight(s), day = today(s);
+        DATA.desert.maps[m.id].spawns.forEach((sp, i) => {
+            if (f.killed[sp.id] != null && f.killed[sp.id] >= day) return;
+            mobs.push(Object.assign(makeMob(i, sp.kind, sp.x, sp.y), { sid: sp.id }));
+        });
+        return;
+    }
     const want = F().maps?.[m.id] || {}, dead = new Set(run(s).cleared[m.id] || []);
     const away = [...Object.values(m.d.entries || {}), { x: player.x, y: player.y }];
     let i = 0;
@@ -145,13 +205,68 @@ function aimAt(o, s) {
     o.look = { dx: dx / d, dy: dy / d };
     if (Math.abs(dx) > 0.1) o.faceR = dx > 0;
 }
+// 입구 안전구역(사용자 10-19: 입장하자마자 공격받거나 출구가 몹에게 막히지 않게; 착지는 옮기지 않음): on a desert map,
+// round each landing and along the way from it to its own exit (the exit of the same name), SAFE_R people-widths wide.
+// A creature does not walk or dash into it, does not pick a wandering point in it, and does not start a blow at someone
+// in it — unless they struck it in the last PROVOKED seconds: then it strikes back at them and may come in after them
+// (no hitting it from shelter for ever); left alone it walks out again. The Duat's fights are as approved (no zones).
+const SAFE_R = 2.5, PROVOKED = 3;
+let safeOf = null;   // [the map object, its zones]
+function safeZones() {
+    const m = map();
+    if (!m || !isDesert(m.id)) return [];
+    if (safeOf?.[0] === m) return safeOf[1];
+    const r = SAFE_R * (m.d.actorScale || 1), zones = [];
+    for (const [k, e] of Object.entries(m.d.entries || {})) {
+        const a = { x: e.x + 0.5, y: e.y + 0.8 }, own = (m.d.exits || []).find(x => x.id === k);
+        zones.push({ a, b: own ? { x: (own.x0 + own.x1) / 2, y: (own.y0 + own.y1) / 2 } : a, r });
+    }
+    safeOf = [m, zones];
+    return zones;
+}
+// how deep a point (feet) is inside the zones, in tiles; 0 outside
+function safeDepth(p) {
+    let d = 0;
+    for (const z of safeZones()) {
+        const vx = z.b.x - z.a.x, vy = z.b.y - z.a.y, L = vx * vx + vy * vy;
+        const t = L ? Math.max(0, Math.min(1, ((p.x - z.a.x) * vx + (p.y - z.a.y) * vy) / L)) : 0;
+        d = Math.max(d, z.r - Math.hypot(p.x - z.a.x - t * vx, p.y - z.a.y - t * vy));
+    }
+    return d;
+}
+const sheltered = (o, p) => safeDepth(p) > 0 && !(now() - (o.provoked?.[p.who] ?? -99) < PROVOKED);
+// struck lately (by either of the two): it may come into a zone after them, so no one hits it from shelter for ever;
+// left alone PROVOKED seconds it only walks out again
+const provokedNow = o => Object.values(o.provoked || {}).some(t => now() - t < PROVOKED);
+// the nearest point a little outside the zone a point is deepest in (away from the zone's line), or null
+function outOfSafe(p) {
+    let best = null;
+    for (const z of safeZones()) {
+        const vx = z.b.x - z.a.x, vy = z.b.y - z.a.y, L = vx * vx + vy * vy;
+        const t = L ? Math.max(0, Math.min(1, ((p.x - z.a.x) * vx + (p.y - z.a.y) * vy) / L)) : 0;
+        const qx = z.a.x + t * vx, qy = z.a.y + t * vy, d = Math.hypot(p.x - qx, p.y - qy), deep = z.r - d;
+        if (deep <= 0 || (best && deep <= best.deep)) continue;
+        // right on the line: out sideways
+        const ux = d > 1e-3 ? (p.x - qx) / d : (L ? -vy / Math.sqrt(L) : 1), uy = d > 1e-3 ? (p.y - qy) / d : (L ? vx / Math.sqrt(L) : 0);
+        best = { deep, x: qx + ux * (z.r + 0.3), y: qy + uy * (z.r + 0.3) };
+    }
+    return best;
+}
+// a step from (x, y) to (nx, ny) (top-left) that takes its feet deeper into a zone
+const intoSafe = (x, y, nx, ny) => { const d1 = safeDepth({ x: nx + 0.5, y: ny + 0.8 }); return d1 > 0 && d1 > safeDepth({ x: x + 0.5, y: y + 0.8 }) - 1e-6; };
 function stepMob(m, o, dt, s) {
     o.t += dt;
     const T = timing(o), c = centre(o), tg = targets(s).map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d);
+    // how near it notices: AGGRO from its feet's middle (the approved 4), and a kind's own `aggro` on top (data; a boss
+    // may watch its whole room). Its reach, keeping its distance and the dash stay from its feet's middle too
+    const A = AGGRO + (o.e.aggro || 0);
     // whom it goes for: the one it already fights (or who last struck it) while they stay in reach, else the nearest
-    let near = tg.find(q => q.p.who === o.foe && q.d < AGGRO + 2.5) || tg[0];
-    if (near && near.d >= AGGRO && near.p.who !== o.foe) near = null;
-    o.foe = near ? near.p.who : (tg[0]?.d < AGGRO ? tg[0].p.who : null);
+    let near = tg.find(q => q.p.who === o.foe && q.d < A + 2.5) || tg[0];
+    if (near && near.d >= A && near.p.who !== o.foe) near = null;
+    o.foe = near ? near.p.who : (tg[0]?.d < A ? tg[0].p.who : null);
+    // it looks at whom it fights, standing too (guarding, struck, open after a blow; user: they faced away), not while
+    // its line is fixed or it flies along it; walking, it faces the way it goes (move)
+    if (near && o.st !== 'dead' && o.st !== 'attack' && !(o.st === 'prepare' && o.aim)) { const dx = near.p.x - c.x; if (Math.abs(dx) > 0.3) o.faceR = dx > 0; }
     const move = (tx, ty, speed) => {
         const dx = tx - c.x, dy = ty - c.y, d = Math.hypot(dx, dy);
         if (d < 0.05) return true;
@@ -160,8 +275,9 @@ function stepMob(m, o, dt, s) {
         // not on top of another creature: a little push away from any within 0.9
         for (const q of mobs) if (q !== o && q.st !== 'dead') { const e = centre(q), ex = c.x - e.x, ey = c.y - e.y, ed = Math.hypot(ex, ey); if (ed < 0.9 && ed > 0.01) { nx += ex / ed * speed * dt * 0.5; ny += ey / ed * speed * dt * 0.5; } }
         let moved = false;
-        if (!solid(map(), nx, o.y)) { o.x = nx; moved = true; }
-        if (!solid(map(), o.x, ny)) { o.y = ny; moved = true; }
+        const free = provokedNow(o);
+        if (!solid(map(), nx, o.y) && (free || !intoSafe(o.x, o.y, nx, o.y))) { if (free && intoSafe(o.x, o.y, nx, o.y)) o.chased = true; o.x = nx; moved = true; }
+        if (!solid(map(), o.x, ny) && (free || !intoSafe(o.x, o.y, o.x, ny))) { if (free && intoSafe(o.x, o.y, o.x, ny)) o.chased = true; o.y = ny; moved = true; }
         return !moved;
     };
     // along the way round walls to a point
@@ -170,7 +286,7 @@ function stepMob(m, o, dt, s) {
         case 'dead': if (o.t > T.die[0] + T.die[1]) o.gone = true; return;
         case 'hit': if (o.t > o.stun) { o.st = 'chase'; o.t = 0; } return;
         case 'guard':   // it opens and strikes back, the whole warning first
-            if (o.t > T.guard) { o.t = 0; if (near) warn(o, near.p); else o.st = 'chase'; }
+            if (o.t > T.guard) { o.t = 0; note({ ev: 'guardEnd', mob: o.i }); if (near && !sheltered(o, near.p)) warn(o, near.p); else o.st = 'chase'; }
             return;
         case 'prepare':
             if (o.t < T.prepare[0]) { aimAt(o, s); return; }
@@ -185,9 +301,9 @@ function stepMob(m, o, dt, s) {
                 const d = o.e.dash, v = d.dist / d.time;
                 if (o.t <= d.time) {
                     const nx = o.x + o.aim.dx * v * dt, ny = o.y + o.aim.dy * v * dt;
-                    if (solid(map(), nx, ny)) o.t = d.time; else { o.x = nx; o.y = ny; }
+                    if (solid(map(), nx, ny) || (!provokedNow(o) && intoSafe(o.x, o.y, nx, ny))) o.t = d.time; else { if (intoSafe(o.x, o.y, nx, ny)) o.chased = true; o.x = nx; o.y = ny; }
                     const cc = centre(o);
-                    for (const p of targets(s)) if (!o.struck.has(p.who) && Math.hypot(p.x - cc.x, p.y - cc.y) < d.hit) { o.struck.add(p.who); hurt(s, p.who, o.e.atk); }
+                    for (const p of targets(s)) if (!o.struck.has(p.who) && !sheltered(o, p) && Math.hypot(p.x - cc.x, p.y - cc.y) < d.hit) { o.struck.add(p.who); hurt(s, p.who, o.e.atk); }
                     return;
                 }
             } else if (o.t <= 0.2) return;
@@ -197,11 +313,16 @@ function stepMob(m, o, dt, s) {
             if (o.t > T.recover) { o.st = 'chase'; o.t = 0; o.restAt = now() + T.rest; }
             return;
     }
+    // it came into a zone after someone who struck it and is left alone now: straight out the shortest way first
+    // (only one that came in so; one standing there from the start is left where it is)
+    if (o.chased && !(safeDepth(c) > 0)) o.chased = false;
+    const out = o.chased && !provokedNow(o) && outOfSafe(c);
+    if (out) { o.st = 'wander'; o.tx = out.x; o.ty = out.y; move(out.x, out.y, o.e.speed); return; }
     // drifting about, or coming at whoever it sees
     if (near) {
         o.st = 'chase';
         const p = near.p, seen = clearLine(c, p);
-        if (near.d <= o.e.range && seen && now() >= o.restAt) { warn(o, p); return; }
+        if (near.d <= o.e.range && seen && now() >= o.restAt && !sheltered(o, p)) { warn(o, p); return; }
         const shot = o.e.attack === 'shot', keep = shot ? o.e.range * 0.6 : 0.9;   // the hourglass keeps its distance
         const ax = (c.x - p.x) / (near.d || 1), ay = (c.y - p.y) / (near.d || 1);
         o.orbit ||= Math.random() < 0.5 ? 1 : -1;
@@ -220,7 +341,7 @@ function stepMob(m, o, dt, s) {
     if (o.wait > 0) { o.wait -= dt; return; }
     const stuck = go(o.tx, o.ty, o.e.speed * 0.5);
     if (stuck || Math.hypot(o.tx - c.x, o.ty - c.y) < 0.15) {
-        for (let k = 0; k < 20; k++) { const tx = c.x + rand(-4, 4), ty = c.y + rand(-4, 4); if (!solid(map(), tx - 0.5, ty - 0.8)) { o.tx = tx; o.ty = ty; break; } }
+        for (let k = 0; k < 20; k++) { const tx = c.x + rand(-4, 4), ty = c.y + rand(-4, 4); if (!solid(map(), tx - 0.5, ty - 0.8) && !safeDepth({ x: tx, y: ty })) { o.tx = tx; o.ty = ty; break; } }
         o.wait = rand(0.4, 1.6);
     }
 }
@@ -257,17 +378,57 @@ function mobFx(o, what) {
 const ACTIVE = ['chase', 'prepare', 'attack', 'recover', 'guard', 'hit'];
 function nearestMob(from) {
     let best = null, bd = 1e9;
-    for (const o of mobs) { if (o.st === 'dead') continue; const c = centre(o), d = Math.hypot(c.x - from.x, c.y - from.y); if (d < bd) { bd = d; best = o; } }
+    for (const o of mobs) { if (o.st === 'dead') continue; const d = toTorso(hurtArea(o), from).d; if (d < bd) { bd = d; best = o; } }   // to its torso's edge
     return best ? { o: best, d: bd } : null;
 }
+// where a creature is from her: the nearest point of its shapes (its torso, what it holds out) and how far
+function nearPoint(o, f) {
+    const t = toTorso(hurtArea(o), f), fl = frontLine(o);
+    if (!fl) return t;
+    const x = Math.min(Math.max(f.x, fl.x0), fl.x1), d = Math.hypot(x - f.x, fl.y - f.y);
+    return d < t.d ? { d, x, y: fl.y } : t;
+}
+const WAYS = ['left', 'right', 'up', 'down'];
+const wayOf = (dx, dy) => Math.abs(dy) > Math.abs(dx) * VERT ? (dy > 0 ? 'down' : 'up') : dx >= 0 ? 'right' : 'left';
+// the way to turn for a blow of this reach (사용자 10-19: 타겟팅): of the creatures her blow can meet one way or
+// another, the nearest (its torso or fists rather than only its shield), the way of those nearest to where it is;
+// none in reach: toward the nearest one's nearest point (within `far`). → { o, way } or null
+function aimWay(f, reach, far = Infinity, ways = WAYS) {
+    let best = null;
+    for (const o of mobs) {
+        if (o.st === 'dead') continue;
+        const p = nearPoint(o, f); if (p.d > far) continue;
+        // standing within its shape (its torso is over her on the floor): toward its torso's middle
+        const a = hurtArea(o), dx = p.d > 0.05 ? p.x - f.x : a.x - f.x, dy = p.d > 0.05 ? p.y - f.y : a.y - f.y, len = Math.hypot(dx, dy) || 1;
+        let way = null, wk = -1, rank = 3;
+        for (const w of ways) {
+            const m = blowMeets(o, f, w, reach); if (!m) continue;
+            const v = { left: [-1, 0], right: [1, 0], up: [0, -1], down: [0, 1] }[w], dot = (v[0] * dx + v[1] * dy) / len, r = m === 'shield' ? 1 : 0;
+            if (r < rank || (r === rank && dot > wk)) { rank = r; wk = dot; way = w; }
+        }
+        const key = [way ? rank : 3, p.d];
+        if (!best || key[0] < best.key[0] || (key[0] === best.key[0] && key[1] < best.key[1])) best = { o, way: way || (ways === WAYS ? wayOf(dx, dy) : dx >= 0 ? 'right' : 'left'), key };
+    }
+    return best;
+}
+function faceWay(way) {
+    if (way === 'left' || way === 'right') { me.face = way; me.vdir = null; } else me.vdir = way;
+    if (stance.on) player.dir = me.vdir || me.face;
+}
+let held = false;   // tests only: as if the stick were held
 function faceMob() {
-    const f = feet(), n = nearestMob(f);
-    if (n) {
-        const dx = centre(n.o).x - f.x, dy = centre(n.o).y - f.y;
-        me.face = dx >= 0 ? 'right' : 'left';
-        me.vdir = Math.abs(dy) > Math.abs(dx) * VERT ? (dy > 0 ? 'down' : 'up') : null;
-    } else if (player.dir === 'left' || player.dir === 'right') { me.face = player.dir; me.vdir = null; }
+    if (held) return;   // the stick held: its way (tests: testHold)
+    const a = aimWay(feet(), F().reach?.[leadOf(getState())] || 1.4);
+    if (a) faceWay(a.way);
+    else if (player.dir === 'left' || player.dir === 'right') { me.face = player.dir; me.vdir = null; }
     else me.vdir = player.dir;
+}
+// 공격 / 기술 with the stick let go: she turns the way her blow meets a creature (else toward the nearest within her
+// reach and a step), so she strikes the way she faces it (user: she faced away from it); the stick held, its way
+function turnToFoe(reach, ways) {
+    if (held || Math.abs(input.dx) > 0.2 || Math.abs(input.dy) > 0.2) return;
+    const a = aimWay(feet(), reach, reach + 1, ways);
+    if (a) faceWay(a.way);
 }
 // a button, a hit: fighting at once (she is doing something, so the change does not show as a flicker)
 function engage() {
@@ -276,7 +437,7 @@ function engage() {
 }
 function stepStance() {
     const t = now(), f = feet();
-    if (mobs.some(o => ACTIVE.includes(o.st) && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < FIGHT_NEAR)) stance.last = t;
+    if (mobs.some(o => ACTIVE.includes(o.st) && toTorso(hurtArea(o), f).d < FIGHT_NEAR)) stance.last = t;   // from its torso's edge
     const want = t - stance.last < CALM;
     if (want !== stance.on && t - stance.since >= HOLD && !player.moving) { stance.on = want; stance.since = t; if (want) faceMob(); }
 }
@@ -289,9 +450,10 @@ function stepMateWalk(dt, s) {
         const f = feet(), o = mateTarget(), reach = F().reach?.[w] || 1.4;
         if (o) {
             // on the creature's other side from her, level with it (so the blow lands where it is seen), else close to level
-            const c = centre(o), ps = f.x <= c.x ? -1 : 1;
+            // (사용자 10-19: 타겟팅) its shape: level with its torso, their reach from its edge
+            const c = hurtArea(o), ps = f.x <= c.x ? -1 : 1;
             for (const [side, dy] of [[-ps, 0], [-ps, 0.35], [-ps, -0.35], [ps, 0.9], [ps, -0.9]]) {
-                const gx = c.x + side * reach * 0.95, gy = c.y + dy;
+                const gx = c.x + side * (c.r + reach * 0.75), gy = c.y + dy;
                 if (Math.hypot(gx - f.x, gy - f.y) >= MATE_APART && !solid(map(), gx - 0.5, gy - 0.8)) { goal = { x: gx - 0.5, y: gy - 0.8 }; break; }
             }
         }
@@ -319,8 +481,16 @@ function hurt(s, who, atk) {
     if (now() - st.hurtAt < INVULN || st.down) return;
     engage();
     if (me.shield > now()) { pop(lead ? feet().x : follower().x + 0.5, (lead ? feet().y : follower().y + 0.8) - 2, '막음', '#9fd6ff'); return; }
-    const dmg = Math.max(1, atk + Math.round(rand(-1, 1)) - (who === 'set' ? 1 : 0));
+    let dmg = Math.max(1, atk + Math.round(rand(-1, 1)) - (who === 'set' ? 1 : 0));
+    // 소망's lotus ward takes the harm first, as far as it lasts
+    const wd = wards[who];
+    if (wd && wd.until > now() && wd.left > 0) {
+        const take = Math.min(wd.left, dmg); wd.left -= take; dmg -= take;
+        const q = lead ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 };
+        if (!dmg) { st.hurtAt = now(); pop(q.x, q.y - 2.1, `막음 ${take}`, '#ffe7a0'); return; }
+    }
     r.hp[who] = Math.max(0, (r.hp[who] ?? 0) - dmg);
+    note({ ev: 'hurt', who, dmg });
     r.fear = Math.min(FEAR_MAX, r.fear + 1);
     st.hurtAt = now(); st.act = { name: 'hit', at: now(), until: now() + SHOW.hit };
     const p = lead ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 };
@@ -333,53 +503,75 @@ function hurt(s, who, atk) {
 }
 async function carried() {
     const s = getState();
-    if (!s || !isDuat(mapId)) return;
+    if (!s || !isField(mapId)) return;
     const w = withOf(s);
+    if (isDesert(mapId)) {   // back at this map's way in, the fight over (체력 full again), nothing lost
+        const m = DATA.maps[mapId], at = Object.keys(m.entries || {})[0];
+        fight(s).run = null;
+        await travel(mapId, at);   // the move closes cards: the card after it
+        ui?.showCard({ tag: '전투', title: m.name, text: w ? `${josa(HERO_NAME[w], '가')} 부축해서 들어온 곳까지 물러났어.` : '들어온 곳까지 겨우 물러났어.' });
+        return;
+    }
     ui?.showCard({ tag: '원정', title: '두아트', text: w ? `${josa(HERO_NAME[w], '가')} 업고 올라왔어. 쉬고 다시 내려가자.` : '겨우 기어서 올라왔어. 쉬고 다시 내려가자.' });
     s.duatField = null;
     await travel('ombos', { x: 36, y: 10.6, dir: 'down' });
 }
 // a blow on a creature. kind: '' her or her companion's blow, 'skill' a 기술 (it breaks a guard)
-function damage(s, o, n, push = 0, from = null, kind = '') {
+function damage(s, o, n, push = 0, from = null, kind = '', actor = null) {
     if (o.st === 'dead') return;
+    const before = o.st, hp0 = o.hp;
+    try { return damage0(s, o, n, push, from, kind, actor); }
+    finally { note({ ev: 'blow', by: kind || 'attack', before, after: o.st, dmg: hp0 - o.hp, mob: o.i }); }
+}
+function damage0(s, o, n, push, from, kind, actor) {
     const T = timing(o), c = centre(o);
     o.shownAt = now();
-    if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) o.foe = q.who; }
+    if (from) { const q = targets(s).sort((a, b) => Math.hypot(a.x - from.x, a.y - from.y) - Math.hypot(b.x - from.x, b.y - from.y))[0]; if (q) { o.foe = q.who; (o.provoked ||= {})[q.who] = now(); } }
     let st = '';
     if (o.st === 'guard') {
-        if (kind === 'skill') { st = 'break'; mobFx(o, 'break'); }
+        if (kind === 'skill' || kind === 'ult') { st = 'break'; mobFx(o, 'break'); note({ ev: 'break', mob: o.i }); }
         else { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); }
-    } else mobFx(o, 'hit');
+    } else if (kind === 'shield') { n = Math.max(1, Math.round(n * T.guardTake)); mobFx(o, 'block'); st = 'shield'; }   // the guard's own rule
+    else mobFx(o, 'hit');
     o.hp -= n;
-    pop(c.x, c.y - 2.3, `${n}`, o.st === 'guard' && st !== 'break' ? '#cfe3ea' : '#fff3c4');
+    pop(c.x, c.y - 2.3, `${n}`, (o.st === 'guard' && st !== 'break') || st === 'shield' ? '#cfe3ea' : '#fff3c4');
     if (o.hp <= 0) {
         o.st = 'dead'; o.t = 0;
-        const r = run(s); (r.cleared[mapId] ||= []).push(o.i); save();
+        // 궁 게이지: the one who felled it, once for this creature (the next day's comes back as a new one), quietly
+        if (actor && !o.paid) { o.paid = true; charge(s, actor, U().kill ?? 15); }
+        if (o.sid) { const f = fight(s), day = today(s); f.killed[o.sid] = day; f.first[o.sid] ??= day; save(); }   // no reward is decided yet
+        else { const r = run(s); (r.cleared[mapId] ||= []).push(o.i); save(); }
         return;
     }
     if (st === 'break') { o.st = 'hit'; o.t = 0; o.stun = T.stagger; o.steadyAt = now() + T.stagger + T.steady; return; }   // no counter
+    if (st === 'shield') return;   // stopped on the shield: no flinch, no closing up
     if (o.st === 'guard') return;
     // the first blow lands in full, then it may close up
     if ((o.st === 'wander' || o.st === 'chase') && now() >= o.guardAt && Math.random() < (o.e.guard || 0)) {
-        o.st = 'guard'; o.t = 0; o.guardAt = now() + T.guardCd; mobFx(o, 'guard');
+        o.st = 'guard'; o.t = 0; o.guardAt = now() + T.guardCd; mobFx(o, 'guard'); note({ ev: 'guard', mob: o.i, until: +(now() + T.guard).toFixed(3) });
         return;
     }
     // flinch (not in the warning or the blow itself, and not again right after the last flinch)
     if (['wander', 'chase', 'recover'].includes(o.st) && now() >= o.steadyAt) {
         o.st = 'hit'; o.t = 0; o.stun = T.hit; o.steadyAt = now() + T.hit + T.steady;
-        if (push && from) { const dx = c.x - from.x, dy = c.y - from.y, d = Math.hypot(dx, dy) || 1, nx = o.x + dx / d * push, ny = o.y + dy / d * push; if (!solid(map(), nx, ny)) { o.x = nx; o.y = ny; } }
+        if (push && from && !o.e.nopush) { const dx = c.x - from.x, dy = c.y - from.y, d = Math.hypot(dx, dy) || 1, nx = o.x + dx / d * push, ny = o.y + dy / d * push; if (!solid(map(), nx, ny)) { o.x = nx; o.y = ny; } }
     }
 }
 const power = (s, who) => 3 + Math.floor((statsOf(s, who)?.strength || 0) / 2) + (who === 'set' ? 1 : 0);
 // her blow: everything in front of her, from her feet out to her reach, a little to either side (face: left, right,
 // or up / down for the thrust from the front / back pictures)
-function strike(s, who, from, face, mult = 1, reach = null) {
+function strike(s, who, from, face, mult = 1, reach = null, kind = '', push = 0.25) {
     reach ??= F().reach?.[who] || 1.4;
-    const v = face === 'up' || face === 'down', sign = face === 'right' || face === 'down' ? 1 : -1;
     let hit = 0;
     for (const o of mobs) {
-        const c = centre(o), along = ((v ? c.y - from.y : c.x - from.x)) * sign, across = Math.abs(v ? c.x - from.x : c.y - from.y);
-        if (o.st !== 'dead' && along > -0.2 && along < reach && across < 0.75) { damage(s, o, power(s, who) * mult, 0.25, from); hit++; me.target = o; }
+        if (o.st === 'dead') continue;
+        const m = blowMeets(o, from, face, reach);
+        if (!m) continue;
+        // on the shield alone: blocked as by a guard (사용자 10-19); on the torso or a boss's fists: a blow
+        const hp0 = o.hp;
+        damage(s, o, Math.round(power(s, who) * mult), m === 'shield' ? 0 : push, from, m === 'shield' && kind !== 'skill' ? 'shield' : kind, who);
+        if (o.hp < hp0) hit++;
+        me.target = o;
     }
     return hit;
 }
@@ -388,10 +580,10 @@ function strike(s, who, from, face, mult = 1, reach = null) {
 const busy = () => me.act && me.act.until > now();
 export function attack() {
     const s = getState();
-    if (!s || !isDuat(mapId) || me.down || busy() || me.cdAttack > now()) return;
-    engage();
+    if (!s || !isField(mapId) || me.down || busy() || me.cdAttack > now()) { if (s && isField(mapId)) note({ ev: 'ignored', what: 'attack', why: me.down ? 'down' : busy() ? `busy:${me.act.name}` : 'cooldown' }); return; }
+    engage(); turnToFoe(F().reach?.[leadOf(s)] || 1.4);
     me.cdAttack = now() + ATTACK_CD;
-    me.act = { name: 'anticipation', at: now(), until: now() + SHOW.anticipation };
+    me.act = { name: 'anticipation', at: now(), until: now() + SHOW.anticipation }; note({ ev: 'press', what: 'attack' });
     setTimeout(() => {
         if (me.down) return;
         me.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
@@ -400,35 +592,187 @@ export function attack() {
 }
 export function skill() {
     const s = getState();
-    if (!s || !isDuat(mapId) || me.down || busy() || me.cdSkill > now()) return;
-    engage();
+    if (!s || !isField(mapId) || me.down || busy() || me.cdSkill > now()) { if (s && isField(mapId)) note({ ev: 'ignored', what: 'skill', why: me.down ? 'down' : busy() ? `busy:${me.act.name}` : 'cooldown' }); return; }
+    engage(); if (leadOf(s) === 'horus') turnToFoe(2.5, ['left', 'right']); else turnToFoe(leadOf(s) === 'set' ? 2 : 1.5);   // his dive goes sideways
     me.cdSkill = now() + SKILL_CD;
-    me.act = { name: 'skill', at: now(), until: now() + SHOW.skill };
+    me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'skill', who: leadOf(s) });
     useSkill(s, leadOf(s), feet(), me.face, true);
+}
+// a creature's size against the people, in tiles: its picture is a character's height (31.2 px at zoom 1, 16 px a
+// tile) times the map's actorScale; its shape is given in parts of that height (as drawMob draws it)
+const charTiles = () => 31.2 / 16 * (map()?.d?.actorScale || 1);
+// its shape (사용자 10-19), measured once a kind on its standing picture (tools/art/desert-mob-pack.py → sprites.json
+// enemies.<kind>.hit), the same in every frame; weapons, flashes and empty margins are not in it. Its feet's middle is
+// the middle of its body on the ground (the pivot), so:
+//   body  — the torso, on the floor an ellipse round its feet's middle: that wide to either side, DEPTH of it to the
+//           front and back (a body seen from above-front is wide and shallow; user: a warden was struck from far below)
+//   back  — a warden's: its feet's middle is the front of its fists on the ground, the torso stands this far behind
+//   front, frontKind — what it holds out in front, from its feet's middle: 'shield' a guard surface (a blow on the shield
+//           alone is blocked as by a guard; Horus's 기술 counts it), 'body' part of it (a boss's fists: struck as the torso)
+// Every Duat creature has none of it: a point, as before. Tests may put another in its place (testTune … { hit }).
+const shape = o => o.e.hit || DATA.sprites?.enemies?.[o.kind]?.hit || {};
+const DEPTH = 0.4;
+function hurtArea(o) { const h = shape(o), c = centre(o), r = (h.body || 0) * charTiles(); return { x: c.x, y: c.y - (h.back || 0) * charTiles(), r, ry: r * DEPTH }; }
+// from p to the torso's edge (0 inside it), and the nearest point of it
+function toTorso(a, p) {
+    if (!a.r) return { d: Math.hypot(p.x - a.x, p.y - a.y), x: a.x, y: a.y };
+    const ex = (p.x - a.x) / a.r, ey = (p.y - a.y) / a.ry;
+    if (ex * ex + ey * ey <= 1) return { d: 0, x: p.x, y: p.y };
+    let best = { d: Infinity };
+    for (let k = 0; k < 96; k++) { const t = k / 96 * Math.PI * 2, x = a.x + Math.cos(t) * a.r, y = a.y + Math.sin(t) * a.ry, d = Math.hypot(p.x - x, p.y - y); if (d < best.d) best = { d, x, y }; }
+    return best;
+}
+// what it holds out, as a line on the floor from its feet's middle forward: { x0, x1, y, kind } or null
+function frontLine(o) {
+    const h = shape(o); if (!h.front || !h.frontKind) return null;
+    const c = centre(o), fx = c.x + (o.faceR ? 1 : -1) * h.front * charTiles();
+    return { x0: Math.min(c.x, fx), x1: Math.max(c.x, fx), y: c.y, kind: h.frontKind };
+}
+// how far from its feet's middle he comes down: past what it holds out or its torso, and his own room (LAND_GAP)
+const LAND_GAP = 0.6;
+function room(o) { const h = shape(o); return (h.frontKind ? h.front || 0 : h.body || 0) * charTiles() + LAND_GAP; }
+// a 기술 around g with reach r: 'torso' / 'body' (a boss's fists) for everyone, 'shield' for Horus only (C안); else null
+// ry: an oval on the floor instead (a 궁's ring as drawn: r wide, ry deep), tested with the depth stretched to r
+function touches(o, g, r, horus = false, ry = r) {
+    const k = r / ry, a = hurtArea(o), sa = { ...a, y: g.y + (a.y - g.y) * k, ry: a.ry * k };
+    if (toTorso(sa, g).d < r) return 'torso';
+    const f = frontLine(o);
+    if (!f || (f.kind === 'shield' && !horus)) return null;
+    const px = Math.min(Math.max(g.x, f.x0), f.x1);
+    return Math.hypot(px - g.x, (f.y - g.y) * k) < r ? f.kind : null;
+}
+// a blow's reach in front of her (the box the old check used on its middle: from just behind her feet out to reach,
+// 0.75 to either side) against its shapes: the torso ellipse, what it holds out. No wall between her and where it lands.
+// → 'torso' / 'body' / 'shield' (only the shield in reach) / null
+function blowMeets(o, from, face, reach) {
+    const v = face === 'up' || face === 'down', sign = face === 'right' || face === 'down' ? 1 : -1;
+    const local = (x, y) => ({ along: (v ? y - from.y : x - from.x) * sign, across: v ? x - from.x : y - from.y });
+    const inBox = (x, y) => { const l = local(x, y); return l.along > -0.2 && l.along < reach && Math.abs(l.across) < 0.75; };
+    const seen = (x, y) => clearLine(from, { x, y });
+    // the torso: its middle clamped into the box, measured with the floor squashed so the ellipse is a circle (the box
+    // stays a box) — the point of the box nearest it
+    const a = hurtArea(o), l = local(a.x, a.y);
+    const al = Math.min(Math.max(l.along, -0.2 + 1e-6), reach - 1e-6), ac = Math.min(Math.max(l.across, -0.75 + 1e-6), 0.75 - 1e-6);
+    const nx = v ? from.x + ac : from.x + al * sign, ny = v ? from.y + al * sign : from.y + ac;
+    if (a.r && Math.hypot((nx - a.x) / a.r, (ny - a.y) / a.ry) <= 1 + 1e-6 && inBox(nx, ny) && seen(nx, ny)) return 'torso';
+    if (a.r === 0 && inBox(a.x, a.y) && seen(a.x, a.y)) return 'torso';
+    const f = frontLine(o);
+    if (f) for (let x = f.x0; x <= f.x1 + 1e-6; x += 0.05) if (inBox(x, f.y) && seen(x, f.y)) return f.kind;
+    return null;
+}
+// the nearest creature ahead on his leap: in front, across no more than his blow's width (plus its torso), no wall
+// between, and one he can come down short of before the wall or the leap's end
+function leapTarget(f, dir, x0, x1) {
+    let best = null, bestAlong = Infinity;
+    for (const o of mobs) {
+        if (o.st === 'dead') continue;
+        const c = centre(o), along = (c.x - f.x) * dir, dy = Math.abs(c.y - f.y);
+        const a = hurtArea(o);   // across his blow's width: its torso, or what it holds out on the ground (on its feet's line)
+        if (along <= 0 || (Math.abs(a.y - f.y) >= 0.75 + a.ry && (!frontLine(o) || dy >= 0.75)) || !clearLine(f, c)) continue;
+        const gx = Math.sqrt(Math.max(0, room(o) ** 2 - dy ** 2));
+        if (along - gx > (x1 - x0) * dir + 1e-6) continue;   // too far: his leap ends (or a wall stops it) first
+        if (along < bestAlong) { best = o; bestAlong = along; }
+    }
+    return best;
 }
 // each one's own 기술 (no name is shown, user: "오글거린다"); the one with her uses theirs too (MATE_SKILL_CD)
 function useSkill(s, who, f, face, lead) {
-    const hits = (g, r, n, push) => { for (const o of mobs) { const c = centre(o); if (o.st !== 'dead' && Math.hypot(c.x - g.x, c.y - g.y) < r) damage(s, o, n, push, g, 'skill'); } };
+    // what it really hurt (a guard broken counts; nothing for the air): one 스킬, one charge of the 궁 gauge
+    const hits = (g, r, n, push) => {
+        areas.push({ x: g.x, y: g.y, r, who, at: now() }); if (areas.length > 8) areas.shift();
+        let got = 0;
+        for (const o of mobs) if (o.st !== 'dead' && touches(o, g, r, who === 'horus')) { const hp0 = o.hp; damage(s, o, n, push, g, 'skill', who); if (o.hp < hp0) got++; }
+        note({ ev: 'skillHit', who, got, alive: mobs.filter(o => o.st !== 'dead').length, same: s === getState() });   // tests: what one 스킬 really hurt
+        chargeSkill(s, who, got);
+    };
     if (who === 'set') hits(f, 2, power(s, who) * 2, 0.8);              // 모래폭풍 강타: everything around, twice as hard, pushed away
     else if (who === 'horus') {                                          // 하늘에서 내리꽂기
-        if (lead) {   // up, 2.5 tiles ahead, down on everything around where he lands
+        if (lead) {   // up, at most 2.5 tiles ahead, down on everything around where he lands
             const dir = face === 'right' ? 1 : -1, x0 = player.x;
             let x1 = x0;
             for (let k = 1; k <= 25; k++) { const x = x0 + dir * k * 0.1; if (solid(map(), x, player.y)) break; x1 = x; }
+            // user (A안): not over the nearest one ahead on his way: he comes down just short of it, its body inside his reach
+            const o = leapTarget(f, dir, x0, x1);
+            if (o) { const c = centre(o), gx = Math.sqrt(Math.max(0, room(o) ** 2 - (c.y - f.y) ** 2)); x1 = c.x - dir * gx - 0.5; if ((x1 - x0) * dir < 0) x1 = x0; }
             me.act.jump = { x0, x1 };
             setTimeout(() => hits(feet(), 1.2, power(s, who) * 2, 0.5), SHOW.jump * 1000);
         } else {      // the one with her: up and down in their place, onto what is in front
             mate.act.hop = true;
             setTimeout(() => hits({ x: f.x + (face === 'right' ? 0.8 : -0.8), y: f.y }, 1.2, power(s, who) * 2, 0.5), SHOW.jump * 1000);
         }
-    } else {                                                             // 엄호: 2 seconds no harm to either, what is close pushed back
-        me.shield = now() + 2;
-        hits(f, 1.5, 1, 0.5);
+    } else {                                                             // 봉으로 치기 (사용자 10-19: 엄호는 궁 연꽃 방패로)
+        // a longer, harder blow in front than her ordinary one; it breaks a guard and pushes
+        const k = F().somangSkill || {}, reach = (F().reach?.somang || 1.1) + (k.reach ?? 0.5);
+        const way = lead ? me.vdir || me.face : face;
+        const got = strike(s, who, f, way, k.mult ?? 1.8, reach, 'skill', k.push ?? 0.6);
+        note({ ev: 'skillHit', who, got, alive: mobs.filter(o => o.st !== 'dead').length, same: s === getState() });
+        chargeSkill(s, who, got);
     }
+}
+// ---- 궁 (사용자 10-19, 시제품): a gauge each (s.ult), filled by 스킬 that really hurt and by felling; full and its own
+// cooldown over → 궁, the gauge empties the moment it goes. Its own blows fill nothing (felling with it does)
+const U = () => F().ult || {};
+const gauge = s => (s.ult ||= { set: 0, horus: 0, somang: 0 });
+// one happening, given out once: the one who did it all of it, their partner a share
+function charge(s, who, amt) {
+    if (!amt || !s || s !== getState()) return;   // a late blow (Horus's dive) after the chat changed: not into the new one
+    const u = U(), g = gauge(s), max = u.max || 100, lead = leadOf(s), w = withOf(s), other = who === lead ? w : who === w ? lead : null;
+    g[who] = Math.min(max, (g[who] || 0) + amt);
+    if (other) g[other] = Math.min(max, (g[other] || 0) + Math.round(amt * (u.share ?? 0.4)));
+    note({ ev: 'charge', who, amt, g: { ...g } });
+    save();
+}
+function chargeSkill(s, who, n) { if (n > 0) { const u = U(); charge(s, who, Math.min(u.skillCap ?? 35, (u.skillFirst ?? 25) + (u.skillEach ?? 5) * (n - 1))); } }
+let storms = [], wards = {}, ultShows = [];   // 세트's storm going on, 소망's lotus wards (who → { left, until }), the pictures playing
+// where a 궁 hurts: the main part of its picture as drawn (fx.<who>.area, character heights; not the faint glow round it),
+// else the round reach r in tiles
+const ultArea = who => { const a = F().ult?.fx?.[who]?.area, k = U()[who] || {}; return a ? { rx: a.rx * charTiles(), ry: a.ry * charTiles() } : { rx: k.r ?? 3, ry: k.r ?? 3 }; };
+const ultReady = s => { const u = U(); return (gauge(s)[leadOf(s)] || 0) >= (u.max || 100) && me.cdUlt <= now(); };
+export function ult() {
+    const s = getState();
+    if (!s || !isField(mapId) || me.down || busy() || !ultReady(s)) { if (s && isField(mapId)) note({ ev: 'ignored', what: 'ult', why: me.down ? 'down' : busy() ? `busy:${me.act.name}` : 'not ready' }); return; }
+    const who = leadOf(s), u = U(), k = u[who] || {}, f = feet(), w = withOf(s);
+    engage();
+    gauge(s)[who] = 0; me.cdUlt = now() + (u.cd ?? 12); saveState();   // spent the moment it goes (and kept so)
+    me.act = { name: 'skill', at: now(), until: now() + SHOW.skill }; note({ ev: 'press', what: 'ult', who });
+    ultShows.push({ who, at: now(), lead: true, x: f.x, y: f.y, pair: who === 'somang' && w && !mate.down ? [who, w] : null });
+    const ar = ultArea(who);
+    if (who === 'set') areas.push({ x: f.x, y: f.y, r: ar.rx, ry: ar.ry, who, at: now() });
+    if (who === 'set') storms.push({ who, lead: true, until: now() + (k.time ?? 3), next: now(), r: ar.rx, ry: ar.ry, every: k.every ?? 0.5, n: Math.max(1, Math.round(power(s, who) * (k.mult ?? 0.8))), push: k.push ?? 0.3 });
+    else if (who === 'horus') {   // one strong blow round him: each one once
+        const n = Math.round(power(s, who) * (k.mult ?? 4));
+        areas.push({ x: f.x, y: f.y, r: ar.rx, ry: ar.ry, who, at: now() });
+        for (const o of mobs) if (o.st !== 'dead' && touches(o, f, ar.rx, true, ar.ry)) damage(s, o, n, k.push ?? 1, f, 'ult', who);
+    } else {   // 연꽃 방패: each of the two takes up to `ward` of harm (not no harm at all), until it is used up or ends
+        const until = now() + (k.time ?? 6);
+        for (const x of [who, w]) if (x && !(x === w && mate.down)) wards[x] = { left: k.ward ?? 8, max: k.ward ?? 8, until };
+        for (const o of mobs) if (o.st !== 'dead' && touches(o, f, k.r ?? 1.6)) shove(o, f, k.push ?? 0.6);
+    }
+}
+function shove(o, from, d) {
+    if (o.e.nopush) return;
+    const c = centre(o), dx = c.x - from.x, dy = c.y - from.y, n = Math.hypot(dx, dy) || 1, nx = o.x + dx / n * d, ny = o.y + dy / n * d;
+    if (!solid(map(), nx, ny) && !intoSafe(o.x, o.y, nx, ny)) { o.x = nx; o.y = ny; }
+}
+// the storm goes round 세트 wherever he walks, a blow every `every` seconds
+function stepUlt(s) {
+    const t = now();
+    for (const st of storms) {
+        if (t > st.until) continue;
+        const lead = st.who === leadOf(s), c = lead ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 };
+        st.x = c.x; st.y = c.y;
+        while (st.next <= t && st.next <= st.until) {
+            st.next += st.every;
+            for (const o of mobs) if (o.st !== 'dead' && touches(o, c, st.r, false, st.ry)) damage(s, o, st.n, st.push, c, 'ult', st.who);
+        }
+    }
+    storms = storms.filter(st => t <= st.until);
+    for (const [k, v] of Object.entries(wards)) if (t > v.until || v.left <= 0) delete wards[k];
+    ultShows = ultShows.filter(u => u.hold != null || t - u.at < 3);
 }
 export function spell() {
     const s = getState();
-    if (!s || !isDuat(mapId) || me.down || busy()) return;
+    if (!s || !isField(mapId) || me.down || busy()) return;
     const r = run(s);
     if (r.spells <= 0) { ui?.toast((statsOf(s, leadOf(s))?.faith || 0) > 0 ? '이번 원정의 주문은 다 썼어' : '신앙이 있어야 주문을 쓸 수 있어'); return; }
     r.spells--; engage();
@@ -443,7 +787,7 @@ export function spell() {
 // ---- the one walking with her fights by themselves
 // whom the one with her fights: the creature she last struck (both on one), else the one nearest her
 function mateTarget() {
-    const f = feet(), ok = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < FIGHT_NEAR;
+    const f = feet(), ok = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && toTorso(hurtArea(o), f).d < FIGHT_NEAR;
     if (ok(me.target)) return me.target;
     const n = nearestMob(f);
     return n && n.d < FIGHT_NEAR ? n.o : null;
@@ -455,9 +799,11 @@ function stepMate(dt, s) {
     if (mate.cd > now() || (mate.act && mate.act.until > now())) return;
     const p = follower(), c = { x: p.x + 0.5, y: p.y + 0.8 }, reach = F().reach?.[w] || 1.4, o = mateTarget();
     if (!o) return;
-    const oc = centre(o), dx = oc.x - c.x, dy = oc.y - c.y;
+    const oc = hurtArea(o), dx = oc.x - c.x;
     mate.face = dx >= 0 ? 'right' : 'left';
-    if (p.moving || Math.abs(dy) > 0.6 || Math.abs(dx) > reach + 0.2) return;
+    // their blow as hers: its box against the creature's shapes (a shield alone is guarded)
+    const meet = blowMeets(o, c, mate.face, reach + 0.2);
+    if (p.moving || !meet) return;
     if (mate.cdSkill <= now()) {
         mate.cdSkill = now() + MATE_SKILL_CD; mate.cd = now() + 1.2; engage();
         mate.act = { name: 'skill', at: now(), until: now() + SHOW.skill };
@@ -466,7 +812,7 @@ function stepMate(dt, s) {
     }
     mate.cd = now() + 1.2; engage();
     mate.act = { name: 'attack', at: now(), until: now() + SHOW.attack };
-    damage(s, o, Math.max(1, power(s, w) - 1), 0.2, c);
+    damage(s, o, Math.max(1, power(s, w) - 1), meet === 'shield' ? 0 : 0.2, c, meet === 'shield' ? 'shield' : '', w);
 }
 
 // ---- every frame
@@ -475,18 +821,22 @@ onFrame((dt, m, u) => {
     ui = u;
     const s = getState();
     if (!s) return;
-    if (!isDuat(m.id)) {
-        if (s.duatField) { s.duatField = null; saveState(); }
-        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); }
+    if (!isDuat(m.id) && s.duatField) { s.duatField = null; saveState(); }
+    if (!isDesert(m.id) && s.desertFight?.run) { s.desertFight.run = null; saveState(); }   // the fight's 체력 ends, who fell when stays
+    if (!isField(m.id)) {
+        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); keepArt([]); storms = []; wards = {}; ultShows = []; releaseSprites(ultFiles()); artKey = ''; warmed.clear(); }
         return;
     }
     // a new map object each time she arrives (enterMap), or a new run: the creatures of this map again
-    if (m !== mapObj || s.duatField !== runObj) {
+    if (m !== mapObj || (m.id === mapId && runNow(s) !== runObj)) {
         mapId = m.id; mapObj = m; runObj = run(s);
         Object.assign(me, { act: null, vdir: null, down: false, shield: 0, target: null }); Object.assign(mate, { act: null, down: false, shown: false, cdSkill: now() + 3 });
         Object.assign(stance, { on: false, since: -9, last: -9 }); mateWalk.pos = null;
+        storms = []; wards = {}; ultShows = [];   // a storm or a ward does not come along to the next map
         spawn(m, s);
+        ultArt(s);
     }
+    if ([leadOf(s), withOf(s)].filter(Boolean).join('|') !== artKey) ultArt(s);   // they changed places, or another came along
     hud(true, s, m);
     // the way she faces: sideways (me.face), and up or down after going that way until she goes sideways again
     if (input.dx > 0.2) me.face = 'right'; else if (input.dx < -0.2) me.face = 'left';
@@ -502,6 +852,7 @@ onFrame((dt, m, u) => {
     // the one with her, in Horus's dive: up and down where they stand
     if (mate.act?.hop) { const k = Math.min(1, (now() - mate.act.at) / SHOW.jump); mate.act.lift = Math.sin(Math.PI * k) * 1.2; }
     for (const o of mobs) stepMob(m, o, dt, s);
+    stepUlt(s);
     mobs = mobs.filter(o => !o.gone);
     stepBolts(dt, s);
     stepMateWalk(dt, s);
@@ -509,17 +860,17 @@ onFrame((dt, m, u) => {
     pops = pops.filter(p => now() - p.at < 1);
     fx = fx.filter(e => now() - e.at < e.dur);
 });
-onBusy(() => isDuat(mapId) && (mobs.length > 0 || pops.length > 0 || fx.length > 0));
+onBusy(() => isField(mapId) && (mobs.length > 0 || pops.length > 0 || fx.length > 0));
 // 말 걸기 is 공격 down here, unless a place is right by her and nothing is close
 onTalkFirst(nearSpot => {
-    if (!isDuat(mapId) || gameMode() !== 'open') return false;
+    if (!isField(mapId) || gameMode() !== 'open') return false;
     const f = feet(), threat = mobs.some(o => o.st !== 'dead' && Math.hypot(centre(o).x - f.x, centre(o).y - f.y) < 2);
     if (nearSpot && !threat) return false;
     attack();
     return true;
 });
 window.addEventListener('keydown', e => {
-    if (!isDuat(mapId) || gameMode() !== 'open' || e.repeat || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName)) return;
+    if (!isField(mapId) || gameMode() !== 'open' || e.repeat || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName)) return;
     if (e.code === 'KeyJ' || e.code === 'KeyZ') { attack(); e.preventDefault(); }
     else if (e.code === 'KeyK' || e.code === 'KeyX') { skill(); e.preventDefault(); }
     else if (e.code === 'KeyL' || e.code === 'KeyC') { spell(); e.preventDefault(); }
@@ -532,11 +883,11 @@ const actNow = (st, who, walkT = 0) => {
     if (st.act && (st.act.until > t || st.down)) return { name: st.act.name, t: t - st.act.at, lift: st.act.lift || 0 };
     if (walkT && DATA.sprites?.looks?.[who]?.combat?.acts?.walk) return { name: 'walk', t: walkT, lift: 0 };
     // 공포 7 and over: standing, the tired picture instead of ready (the fear shows on them)
-    if (!walkT && (getState()?.duatField?.fear || 0) >= TIRED_FEAR && DATA.sprites?.looks?.[who]?.combat?.acts?.tired) return { name: 'tired', t: 0, lift: 0 };
+    if (!walkT && (runNow(getState())?.fear || 0) >= TIRED_FEAR && DATA.sprites?.looks?.[who]?.combat?.acts?.tired) return { name: 'tired', t: 0, lift: 0 };
     return { name: 'ready', t, lift: walkT ? Math.abs(Math.sin(Math.PI * walkT / STEP_S)) * STEP_BOB : 0 };
 };
 onDraw(scene => {
-    if (!isDuat(mapId) || !isDuat(scene.map?.id)) return;
+    if (!isField(mapId) || !isField(scene.map?.id)) return;
     const s = getState(); if (!s) return;
     const t = now(), blink = st => t - st.hurtAt < INVULN;
     // her: calm = her ordinary pictures; fighting = the combat ones, all four ways
@@ -556,49 +907,161 @@ onDraw(scene => {
         p.combat = { ...mc, face: mate.face, blink: blink(mate) }; p.act = null;
     }
     for (const o of mobs) scene.extra.push({ x: o.x, y: o.y, draw: (g, sx, sy, z, ts) => drawMob(g, o, sx, sy, z, ts) });
+    scene.extra.push({ x: 0, y: -1e6, draw: (g, sx, sy, z, ts) => drawUlt(g, z, ts, -sx, -(sy + 1e6 * ts), true) });
+    const y0 = Math.min(player.y, follower().y) - 0.01;
+    scene.extra.push({ x: 0, y: y0, draw: (g, sx, sy, z, ts) => drawUlt(g, z, ts, -sx, y0 * ts - sy) });
     scene.extra.push({ x: 0, y: 1e6, draw: (g, sx, sy, z, ts) => drawTop(g, z, ts, sx, sy) });
 });
+// is the frame's pixel (fx, fy) opaque — the frame read once, at a quarter of its size (tests whether she is hidden)
+const alphaOf = new Map();
+function opaque(img, r, fx, fy) {
+    if (fx < 0 || fy < 0 || fx >= r[2] || fy >= r[3]) return false;
+    const key = `${img.src}|${r[0]},${r[1]}`;
+    let a = alphaOf.get(key);
+    if (!a) {
+        const w = Math.max(1, Math.ceil(r[2] / 4)), h = Math.max(1, Math.ceil(r[3] / 4)), c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        const cx = c.getContext('2d', { willReadFrequently: true }); cx.drawImage(img, r[0], r[1], r[2], r[3], 0, 0, w, h);
+        let d; try { d = cx.getImageData(0, 0, w, h).data; } catch { d = null; }
+        a = { w, d };
+        if (alphaOf.size > 64) alphaOf.clear();
+        alphaOf.set(key, a);
+    }
+    return !!a.d && a.d[((fy >> 2) * a.w + (fx >> 2)) * 4 + 3] >= 128;
+}
 function drawMob(g, o, sx, sy, z, ts) {
     const d = DATA.sprites?.enemies?.[o.kind];
     if (!d) return;
-    const a = (31.2 * z <= d.small.visible + 1 && spriteFile(d.small.file)) ? d.small : spriteFile(d.file) ? d : spriteFile(d.small.file) ? d.small : null;
+    // as large against the people as the map draws them (map.d.actorScale: the desert maps draw people larger)
+    const H = 31.2 * z * (map()?.d?.actorScale || 1);
     const gx = sx + 8 * z, gy = sy + 16 * z, t = now(), T = timing(o);
     // the shadow on the floor: smaller and lighter while it is high
     const bob = Math.sin((t / BOB_S) * Math.PI * 2 + o.phase), warn1 = o.st === 'prepare' && o.t >= T.prepare[0];
-    const up = o.st === 'prepare' ? 0.1 * Math.min(1, o.t / T.prepare[0]) : 0;
+    const fl = o.e.float === false ? 0 : 1;   // a creature on its feet (data float: false): no lift, no bob, the shadow still
+    const up = fl * (o.st === 'prepare' ? 0.1 * Math.min(1, o.t / T.prepare[0]) : 0);
     g.fillStyle = `rgba(20,12,6,${o.st === 'dead' ? 0.12 : 0.24 - 0.05 * bob})`;
-    g.beginPath(); g.ellipse(gx, gy - 0.5 * z, 0.45 * ts * (1 - 0.15 * bob), 0.13 * ts, 0, 0, Math.PI * 2); g.fill();
-    if (!a) return;
+    const wide = Math.max(1, (d.height || 1) / 1.3);   // a big one's shadow as big as it is
+    g.beginPath(); g.ellipse(gx, gy - 0.5 * z, 0.45 * ts * wide * (1 - 0.15 * bob * fl), 0.13 * ts * wide, 0, 0, Math.PI * 2); g.fill();
     const motion = o.st === 'dead' ? 'disappear' : o.st === 'hit' ? 'hit' : o.st === 'guard' ? 'guard'
         : o.st === 'prepare' ? (warn1 ? 'prepare-1' : 'prepare-0')
         : o.st === 'attack' ? 'attack-0' : o.st === 'recover' ? 'attack-1'
         : IDLE_LOOP[Math.floor((t + o.phase) / T.idle) % IDLE_LOOP.length];
-    const r = a.frames[motion] || a.frames['idle-0'], k = 31.2 * z / a.visible;   // the atlas has a character's height in `visible` px
+    // a kind's pictures are on its own sheets (one or more, tools/art/desert-mob-pack.py: frame [x, y, w, h, px, py, sheet]);
+    // only the sheet this frame is on is asked for, the small set when it is drawn small, the other while that one loads
+    const pick = v => { const r = v.frames[motion] || v.frames['idle-0'], img = spriteFile((v.sheets || [v.file])[r[6] || 0]); return img && { a: v, r, img }; };
+    const wantSmall = H <= d.small.visible + 1, got = (wantSmall && pick(d.small)) || pick(d) || pick(d.small);
+    if (!got) return;
+    // drawn from the set it wants: the other set (asked for only to show something while this one loaded) is let go
+    // (a kind whose small set would be bigger than its picture shares the big set's sheets: nothing of those let go)
+    if (got.a === (wantSmall ? d.small : d)) {
+        const used = new Set(got.a.sheets || [got.a.file]), other = wantSmall ? d : d.small;
+        releaseSprites((other.sheets || [other.file]).filter(f => !used.has(f)));
+    }
+    const { a, r, img } = got, k = H / a.visible;   // the atlas has a character's height in `visible` px
     // floating: lifted off the floor and bobbing, except while it warns, strikes, is hit, guards or breaks
     const still = !['wander', 'chase'].includes(o.st);
     const die = o.st === 'dead' ? Math.max(0, o.t - T.die[0]) / T.die[1] : 0;   // the broken picture holds, then sinks away
-    const baseY = gy - (FLOAT + up + (still ? 0 : BOB * bob) - Math.min(1, die) * 0.3) * ts;   // the bottom of its body
+    const baseY = gy - (fl * (FLOAT + (still ? 0 : BOB * bob)) + up - Math.min(1, die) * 0.3 * fl) * ts;   // the bottom of its body
     const shake = warn1 ? Math.sin(t * 60) * z * 0.6 : 0;
     g.save();
-    g.globalAlpha = o.st === 'dead' ? Math.max(0, 1 - die) : 1;
+    // 사용자 10-19: a big one hid her whole behind it — drawn see-through (no silhouette) only while one of the two
+    // stands behind it with their whole body covered by its picture (사용자: 몸이 100% 겹쳤을 때만): every point of
+    // their body's box falls on its opaque pixels
+    const toS = p => ({ x: sx + (p.x - o.x) * ts, y: sy + (p.y - o.y) * ts }), ch = charTiles() * ts;
+    const people = [feet()]; { const st = getState(); if (st && withOf(st) && !mate.down) { const q = follower(); people.push({ x: q.x + 0.5, y: q.y + 0.8 }); } }
+    // against its standing picture (idle-0), one shape whatever it does, so it does not flicker as the frames change
+    const ir = a.frames['idle-0'], stand = ir && spriteFile((a.sheets || [a.file])[ir[6] || 0]), [iimg, rr] = stand ? [stand, ir] : [img, r];
+    const covered = (X, Y) => opaque(iimg, rr, o.faceR ? rr[4] - (X - gx) / k : (X - gx) / k + rr[4], (Y - baseY) / k + rr[5]);
+    o.cover = people.map(p => {   // the share of each one's body box on its opaque pixels (behind it only)
+        if (p.y >= centre(o).y) return 0;   // in front of it: drawn over it
+        const q = toS(p); let n = 0;
+        for (let i = 0; i <= 4; i++) for (let j = 0; j <= 6; j++) if (covered(q.x + (i / 4 - 0.5) * 0.4 * ch, q.y - j / 6 * 0.9 * ch)) n++;
+        return n / 35;
+    });
+    const hidden = o.cover.some(c => c >= 1);
+    o.fade = Math.max(0, Math.min(1, (o.fade || 0) + (hidden ? 1 : -1) * 0.12));
+    g.globalAlpha = (o.st === 'dead' ? Math.max(0, 1 - die) : 1) * (1 - 0.55 * o.fade);
     g.translate(gx + shake, baseY);
     if (o.faceR) g.scale(-1, 1);   // the pictures face left: mirrored to face someone on its right (user: it looked away)
     g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
-    g.drawImage(DATA.spriteArt[a.file], r[0], r[1], r[2], r[3], -r[4] * k, -r[5] * k, r[2] * k, r[3] * k);
+    g.drawImage(img, r[0], r[1], r[2], r[3], -r[4] * k, -r[5] * k, r[2] * k, r[3] * k);
     g.restore();
     // its 체력 as a straight bar over it: hidden while it drifts on its own, shown once it has met them and for a
     // while after a hit (a dot-art bar comes later, user)
     if ((o.st !== 'wander' || t - o.shownAt < 3) && o.st !== 'dead') {
-        const w = 0.9 * ts, x = gx - w / 2, y = baseY - (r[5] * k) - 4 * z;
-        g.fillStyle = 'rgba(20,12,6,.8)'; g.fillRect(x - z, y - z, w + 2 * z, 4 * z);
-        g.fillStyle = '#e8584a'; g.fillRect(x, y, w * Math.max(0, o.hp) / o.e.hp, 2 * z);
+        // as wide as it is big (사용자 10-19: 수문장을 키웠으니 체력바도), thicker up to twice
+        const big = Math.max(1, (d.height || 1) / 1.5), th = 2 * z * Math.min(2, big);
+        const w = 0.9 * ts * big, x = gx - w / 2, y = baseY - (r[5] * k) - th - 2 * z;
+        g.fillStyle = 'rgba(20,12,6,.8)'; g.fillRect(x - z, y - z, w + 2 * z, th + 2 * z);
+        g.fillStyle = '#e8584a'; g.fillRect(x, y, w * Math.max(0, o.hp) / o.e.hp, th);
     }
     g.imageSmoothingEnabled = false;
 }
 const SAND = ['#f3dca4', '#e2bd7c', '#c9995a'];
+// tests only: green — where a 기술 hurts it (torso), blue — a shield (a blow on it alone is blocked; Horus's 기술 counts it), a green line — a boss's fists (body), the leap's
+// landing (magenta ×) and each 기술's reach (orange: Horus, yellow: Set) as circles on the floor
+function drawRanges(g, z, ts, cx, cy) {
+    const P = (x, y) => [x * ts - cx, y * ts - cy];
+    g.save(); g.lineWidth = 2 * z;
+    // the entrance safe zones (cyan): round each landing and along to its exit
+    for (const zn of safeZones()) {
+        const [ax, ay] = P(zn.a.x, zn.a.y), [bx, by] = P(zn.b.x, zn.b.y);
+        g.strokeStyle = 'rgba(60,220,255,.9)'; g.fillStyle = 'rgba(60,220,255,.12)'; g.lineCap = 'round';
+        g.lineWidth = zn.r * 2 * ts; g.strokeStyle = 'rgba(60,220,255,.14)'; g.beginPath(); g.moveTo(ax, ay); g.lineTo(bx, by); g.stroke();
+        g.lineWidth = 2 * z; g.strokeStyle = 'rgba(60,220,255,.9)'; g.beginPath(); g.arc(ax, ay, zn.r * ts, 0, Math.PI * 2); g.stroke();
+    }
+    for (const o of mobs) {
+        if (o.st === 'dead') continue;
+        const h = hurtArea(o), [hx, hy] = P(h.x, h.y), c = centre(o), [px, py] = P(c.x, c.y);
+        g.strokeStyle = '#30d070'; g.fillStyle = 'rgba(48,208,112,.25)'; g.beginPath(); g.ellipse(hx, hy, Math.max(2 * z, h.r * ts), Math.max(2 * z, h.ry * ts), 0, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.fillStyle = '#ffffff'; g.fillRect(px - 2 * z, py - 2 * z, 4 * z, 4 * z);
+        const fl = frontLine(o);
+        if (fl) { const [ax] = P(fl.x0, fl.y), [bx] = P(fl.x1, fl.y); g.strokeStyle = fl.kind === 'shield' ? '#3080ff' : '#30d070'; g.lineWidth = 4 * z; g.beginPath(); g.moveTo(ax, py); g.lineTo(bx, py); g.stroke(); g.lineWidth = 2 * z; }
+    }
+    for (const a of areas.slice(-4)) {
+        const [x, y] = P(a.x, a.y);
+        g.strokeStyle = a.who === 'set' ? '#ffd030' : '#ff8a20'; g.fillStyle = a.who === 'set' ? 'rgba(255,208,48,.12)' : 'rgba(255,138,32,.14)';
+        g.beginPath(); g.ellipse(x, y, a.r * ts, (a.ry ?? a.r) * ts, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.strokeStyle = '#ff40d0'; g.beginPath(); g.moveTo(x - 6 * z, y - 6 * z); g.lineTo(x + 6 * z, y + 6 * z); g.moveTo(x + 6 * z, y - 6 * z); g.lineTo(x - 6 * z, y + 6 * z); g.stroke();
+    }
+    g.restore();
+}
+// 궁: its picture played once (the approved frames, their own times, field.ult.fx), then what goes on shows on the
+// floor: the storm a sand ring round 세트 while it lasts, each lotus ward a gold ring under the one it keeps, as thick
+// as what is left of it
+// under: 소망's lotus and the wards on the ground, under everyone (the two stand inside its ring); otherwise 세트's storm and
+// 호루스's shock wave, just behind the two (user 10-19: the 궁 never hides his body or face; what stands further back it covers)
+function drawUlt(g, z, ts, cx, cy, under = false) {
+    if (under) warmUlt(g);
+    const s = getState(), t = now(), at = who => (s && who === leadOf(s) ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 });
+    if (!under) for (const st of storms) {
+        const x = st.x * ts - cx, y = st.y * ts - cy, k = 0.5 + 0.5 * Math.sin(t * 6);
+        g.save(); g.setLineDash([10 * z, 7 * z]); g.lineDashOffset = -t * 40 * z; g.lineWidth = 3 * z;
+        g.strokeStyle = `rgba(226,189,124,${0.55 + 0.3 * k})`; g.beginPath(); g.ellipse(x, y, st.r * ts, (st.ry ?? st.r * 0.5) * ts, 0, 0, Math.PI * 2); g.stroke(); g.restore();
+    }
+    if (under) for (const [who, wd] of Object.entries(wards)) {
+        const p = at(who), x = p.x * ts - cx, y = p.y * ts - cy;
+        g.save(); g.lineWidth = Math.max(1.5, 5 * z * wd.left / wd.max); g.strokeStyle = 'rgba(255,214,120,.85)';
+        g.beginPath(); g.ellipse(x, y - 0.05 * ts, 0.6 * ts, 0.22 * ts, 0, 0, Math.PI * 2); g.stroke(); g.restore();
+    }
+    for (const u of ultShows) {
+        if ((u.who === 'somang') !== under) continue;
+        const fx = F().ult?.fx?.[u.who]; if (!fx) continue;
+        let el = u.hold ?? (t - u.at) * 1000, fr = null;
+        for (const f of fx.frames) { if (el < f.ms) { fr = f; break; } el -= f.ms; }
+        if (!fr) continue;
+        const img = spriteFile(fr.file); if (!img) continue;
+        // about four character heights (data); 소망's ring round the middle of the two it guards, 세트's storm on him
+        const two = (u.pair || [u.who]).map(at), p = u.who === 'horus' ? u : { x: two.reduce((a, q) => a + q.x, 0) / two.length, y: two.reduce((a, q) => a + q.y, 0) / two.length };
+        const k = fx.heightsPerPx * charTiles() * ts, x = p.x * ts - cx, y = p.y * ts - cy;
+        g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+        g.drawImage(img, x - fr.ax * k, y - fr.ay * k, fr.w * k, fr.h * k);
+    }
+}
 function drawTop(g, z, ts, ox, oy) {
     // ox, oy: where (0, 1e6) landed; the camera is ox, oy − 1e6·ts
     const cx = -ox, cy = -(oy - 1e6 * ts), t = now();
+    if (showRanges) drawRanges(g, z, ts, cx, cy);
     // sand shots: a small bunch of grains turning about its middle, a few dropping behind, a shadow under it
     for (const b of bolts) {
         const x = b.x * ts - cx, y = (b.y - BOLT_LIFT) * ts - cy, gy = b.y * ts - cy, R = 0.11 * ts, sp = Math.hypot(b.vx, b.vy) || 1;
@@ -660,6 +1123,14 @@ function drawTop(g, z, ts, ox, oy) {
     g.globalAlpha = 1;
 }
 
+const mobName = o => DATA.desert?.names?.[o.kind] || o.e.ko || '';
+function hudFoe() {
+    const f = feet(), near = o => o && o.st !== 'dead' && !o.gone && mobs.includes(o) && toTorso(hurtArea(o), f).d < FIGHT_NEAR;
+    if (near(me.target)) return me.target;
+    let best = null, bd = FIGHT_NEAR;
+    for (const o of mobs) if (ACTIVE.includes(o.st) && near(o)) { const d = toTorso(hurtArea(o), f).d; if (d < bd) { bd = d; best = o; } }
+    return best;
+}
 // ---- the HUD down here: 체력 each, 공포, where (a small box right under the hint line, on its left edge), and the 기술 · 주문 buttons over 공격
 let el = null;
 function hud(show, s, m) {
@@ -669,18 +1140,22 @@ function hud(show, s, m) {
         el = { box: document.createElement('div'), btns: document.createElement('div') };
         el.box.className = 'sf_duat_hud';
         el.btns.className = 'sf_duat_btns';
-        el.btns.innerHTML = '<button type="button" class="sf_duat_skill">기술</button><button type="button" class="sf_duat_spell">주문<em></em></button>';
-        el.btns.querySelector('.sf_duat_skill').addEventListener('click', skill);
-        el.btns.querySelector('.sf_duat_spell').addEventListener('click', spell);
+        el.btns.innerHTML = '<button type="button" class="sf_duat_skill"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span>스킬</span><s></s></button><button type="button" class="sf_duat_spell">주문<em></em></button>';
+        // 궁 where 가방 was (가방 is up under the gear now): the lead's picture inside, its rim the gauge
+        el.ult = document.createElement('button'); el.ult.type = 'button'; el.ult.className = 'sf_ult'; el.ult.setAttribute('aria-label', '궁'); el.ult.innerHTML = '<b></b>';
+        bindPress(el.ult, ult);
+        bindPress(el.btns.querySelector('.sf_duat_skill'), skill);
+        bindPress(el.btns.querySelector('.sf_duat_spell'), spell);
     }
     const actions = root.querySelector('.sf_actions'), talk = root.querySelector('.sf_talk');
     if (!show) {
-        el.box.remove(); el.btns.remove();
+        el.box.remove(); el.btns.remove(); el.ult.remove();
         if (talk?.dataset.duat) { talk.querySelector('span').textContent = '말 걸기'; delete talk.dataset.duat; talk.classList.remove('sf_attack'); }
         return;
     }
     if (!el.box.isConnected) root.append(el.box);
     if (!el.btns.isConnected && actions) actions.append(el.btns);
+    if (!el.ult.isConnected && actions) actions.insertBefore(el.ult, talk || null);
     if (talk && !talk.dataset.duat) { talk.dataset.duat = '1'; talk.querySelector('span').textContent = '공격'; talk.classList.add('sf_attack'); }
     // right under the hint line (or the chips when there is no hint), whatever the theme puts them
     const hint = root.querySelector('.sf_hint_pill'), chips = root.querySelector('.sf_chip_sun')?.parentElement;
@@ -692,19 +1167,79 @@ function hud(show, s, m) {
     }
     const r = run(s), t = now(), no = Number(m.id.slice(5));
     const bar = (label, v, max, cls) => `<div class="sf_duat_bar ${cls}"><span>${label} ${v}/${max}</span><i style="width:${Math.round(100 * Math.max(0, v) / max)}%"></i></div>`;
-    const html = `<b>${m.d.name || ''} ${no}/7</b>` + Object.keys(r.hp).map(w => bar(HERO_NAME[w], r.hp[w], r.max[w], 'sf_hp')).join('') + bar('공포', r.fear, FEAR_MAX, 'sf_fear');
+    // the title: the creature she is fighting (사용자 10-19: 맵 이름 말고 몹 이름) — the one she last struck while it is
+    // near, else the nearest one coming at her; none about, the place as before
+    const foe = hudFoe(), title = foe ? mobName(foe) : `${m.d.name || ''}${isDuat(m.id) ? ` ${no}/7` : ''}`;
+    const html = `<b>${title}</b>` + Object.keys(r.hp).map(w => bar(HERO_NAME[w], r.hp[w], r.max[w], 'sf_hp')).join('') + bar('공포', r.fear, FEAR_MAX, 'sf_fear');
     if (el.box._html !== html) { el.box.innerHTML = html; el.box._html = html; }
     // 기술: the time left darkens it round like a clock; 주문: how many are left in the corner
     const sk = el.btns.querySelector('.sf_duat_skill'), sp = el.btns.querySelector('.sf_duat_spell');
-    const left = Math.max(0, me.cdSkill - t), cd = (left / SKILL_CD).toFixed(3);
+    const left = Math.max(0, me.cdSkill - t), cd = (left / SKILL_CD).toFixed(3), sec = left > 0 ? String(Math.ceil(left)) : '';
     if (sk.style.getPropertyValue('--cd') !== cd) sk.style.setProperty('--cd', cd);
     sk.disabled = left > 0 || me.down;
+    const secEl = sk.querySelector('s'); if (secEl.textContent !== sec) { secEl.textContent = sec; sk.classList.toggle('sf_cd', !!sec); }
+    // 궁: the rim filled as far as the gauge; ready (full and its cooldown over) it glows softly
+    const who = leadOf(s), gv = ((gauge(s)[who] || 0) / (U().max || 100)).toFixed(3), ready = ultReady(s);
+    if (el.ult.style.getPropertyValue('--g') !== gv) el.ult.style.setProperty('--g', gv);
+    if (el.ult.dataset.who !== who) { el.ult.dataset.who = who; el.ult.style.setProperty('--icon', `url(${new URL(`../../../data/art/ui/ult-${who}.png`, import.meta.url).href})`); }
+    el.ult.classList.toggle('sf_full', ready); el.ult.disabled = me.down;
     const em = sp.querySelector('em'); if (em.textContent !== String(r.spells)) em.textContent = r.spells;
     sp.classList.toggle('sf_empty', r.spells <= 0); sp.disabled = me.down;
 }
 
 // for tests: what is going on down here, one creature put by her, numbers over the data
 // tests only: turn her a way (left, right, up, down) as walking that way would
+export const testEvents = (clear = false) => { const out = events.slice(); if (clear) events.length = 0; return out; };
+export const testNow = () => +now().toFixed(3);
+// tests only: the creature pictures in memory now, and what they take decoded (width × height × 4)
+export const testArt = () => { const files = kindFiles(Object.keys(DATA.sprites?.enemies || {})).filter(f => DATA.spriteArt?.[f]); return { files, bytes: files.reduce((n, f) => n + DATA.spriteArt[f].naturalWidth * DATA.spriteArt[f].naturalHeight * 4, 0) }; };
+export const testTouch = (x, y, r, withFront = false) => mobs.filter(o => o.st !== 'dead').map(o => touches(o, { x, y }, r, withFront));
+export const testRanges = (on = true) => { showRanges = on; if (!on) areas.length = 0; };
+export const testHurt = () => mobs.filter(o => o.st !== 'dead').map(o => ({ ...hurtArea(o), cx: centre(o).x, faceR: !!o.faceR, tiles: charTiles(), front: frontLine(o) }));
+// tests only: a clean start for one check (her and the companion's cooldowns, poses, down, shield; numbers over the data)
+export function testReset() {
+    Object.assign(me, { act: null, cdAttack: 0, cdSkill: 0, hurtAt: -9, shield: 0, down: false, target: null });
+    Object.assign(mate, { act: null, cd: 0, cdSkill: 0, hurtAt: -9, down: false });
+    for (const k of Object.keys(tune)) delete tune[k];
+    bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
+}
+export const testFade = () => mobs[0]?.fade || 0;
+// tests only: the first creature struck by one of the two (from where they stand), for the safe-zone checks
+export function testStrikeBy(who) { const s = getState(), o = mobs[0]; if (!s || !o) return; const f = who === leadOf(s) ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 }; damage(s, o, 1, 0, f, '', who); }
+// tests only: someone hit by a creature's blow of `atk` (as a creature's blow does)
+export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, atk); }
+// tests only: the 궁 gauges (read, or set some), what is going on with the 궁
+// tests only: can one stand at a (feet) and see b — no wall there or between (where a check may put her by a creature)
+export const testClear = (ax, ay, bx, by) => !wall(ax, ay) && clearLine({ x: ax, y: ay }, { x: bx, y: by });
+// tests only: the old way (pictures decoded but not drawn before the first 궁), to compare in the same run
+export const testWarm = on => { warmOn = on; };
+// tests only: whose 궁 pictures are kept, how many loaded and drawn once (warmed) of how many
+export const testUltArt = () => { const files = ultFiles(artKey.split('|').filter(Boolean)); return { key: artKey, files: files.length, loaded: files.filter(f => DATA.spriteArt?.[f]).length, warmed: warmOn ? files.filter(f => warmed.has(f)).length : files.filter(f => DATA.spriteArt?.[f]).length, held: Object.keys(DATA.spriteArt || {}).filter(f => f.includes('fx/ult')).length }; };
+// tests only: what her blow would meet now, each creature (why nothing was hurt)
+export function testBlow() { const s = getState(), f = feet(), face = me.vdir || me.face, reach = F().reach?.[leadOf(s)] || 1.4; return { at: { x: +f.x.toFixed(2), y: +f.y.toFixed(2) }, face, act: me.act?.name || '', mobs: mobs.filter(o => o.st !== 'dead').map(o => { const a = hurtArea(o); return { kind: o.kind, st: o.st, a: [+a.x.toFixed(2), +a.y.toFixed(2), +a.r.toFixed(2)], meets: blowMeets(o, f, face, reach), seen: clearLine(f, { x: a.x, y: a.y }) }; }) }; }
+// tests only: one 궁 picture held still `ms` into its playing, round the one in front (the shown sizes compared), and
+// where it hurts (drawn with testRanges)
+export function testUltFrame(who, ms) {
+    const f = feet(), w = withOf(getState());
+    ultShows = ms == null ? [] : [{ who, at: now(), hold: ms, x: f.x, y: f.y, pair: who === 'somang' && w ? [who, w] : null }];
+    areas.length = 0;
+    if (ms != null && who !== 'somang') { const ar = ultArea(who); areas.push({ x: f.x, y: f.y, r: ar.rx, ry: ar.ry, who, at: now() }); }
+}
+export function testUlt(set) { const s = getState(); if (set) { const { cd, ...g } = set; Object.assign(gauge(s), g); if (cd === 0) me.cdUlt = 0; } return { g: { ...gauge(s) }, ready: ultReady(s), cd: +Math.max(0, me.cdUlt - now()).toFixed(2), storms: storms.length, wards: JSON.parse(JSON.stringify(wards)), shield: me.shield > now(), shows: ultShows.length }; }
+// tests only: how deep a point (feet, tiles) is in this map's entrance safe zones, and the zones
+export const testSafe = (x, y) => safeDepth({ x, y });
+// tests only: the deepest any living creature's feet are in a zone now (its exact place, not fieldState's rounded one)
+export const testMobDeep = () => Math.max(0, ...mobs.filter(o => o.st !== 'dead').map(o => safeDepth(centre(o))));
+export const testZones = () => safeZones().map(z => ({ ...z }));
+export const testCover = () => mobs[0]?.cover || [];
+// tests only: hold the creatures in a state (e.g. { st: "hit", stun: 999 }: one picture, for comparing pictures)
+export function testSet(fields) { for (const o of mobs) Object.assign(o, typeof fields === 'function' ? fields(o) : fields); }
+export function testMobFace(right) { for (const o of mobs) o.faceR = !!right; }
+export function testHold(on = true) { held = !!on; }
 export function testFace(d) { if (d === 'left' || d === 'right') { me.face = d; me.vdir = null; } else me.vdir = d; }
-export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: getState()?.duatField });
+export const fieldState = () => ({ map: mapId, mobs: mobs.map(o => ({ kind: o.kind, st: o.st, t: +o.t.toFixed(2), hp: o.hp, x: +o.x.toFixed(2), y: +o.y.toFixed(2) })), me: { act: me.act?.name || '', down: me.down, face: me.face, vdir: me.vdir }, stance: stance.on, mateAt: mateWalk.pos ? { x: +mateWalk.pos.x.toFixed(2), y: +mateWalk.pos.y.toFixed(2) } : null, mate: { act: mate.act?.name || '', down: mate.down }, run: runNow(getState()), fight: getState()?.desertFight || null });
+// tests only: numbers over a kind's data for the creatures made from now on (the next time she comes into the map)
+export function testTune(kind, numbers = {}) { tune[kind] = numbers; }
+// tests only: one more creature beside those there (its pictures kept as a map's would be)
+export function testAdd(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs.push(makeMob(mobs.length + 100, kind, x, y)); keepArt([...new Set(mobs.map(o => o.kind))]); }
 export function testOnly(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs = [makeMob(99, kind, x, y)]; bolts = []; fx = []; }

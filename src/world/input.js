@@ -47,6 +47,22 @@ export function stopInput() {
     document.removeEventListener('visibilitychange', hidden);
 }
 
+// a button pressed by a thumb while the other one holds the pad (사용자 10-19: 이동하면서 공격·스킬): the browser makes no
+// click for a second finger, so such a touch counts when it lifts on the button; the first finger and the mouse still
+// go by click (never both)
+export function bindPress(el, fn) {
+    let id = null;
+    el.addEventListener('pointerdown', e => { if (e.pointerType === 'touch' && !e.isPrimary) id = e.pointerId; });
+    el.addEventListener('pointerup', e => {
+        if (e.pointerId !== id) return;
+        id = null;
+        const r = el.getBoundingClientRect();
+        if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom && !el.disabled) fn(e);
+    });
+    el.addEventListener('pointercancel', e => { if (e.pointerId === id) id = null; });
+    el.addEventListener('click', fn);
+}
+
 // the round pad: drag from its middle; the knob follows up to its rim
 export function bindPad(el, knob) {
     let id = null;

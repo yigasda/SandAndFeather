@@ -365,6 +365,14 @@ export class Renderer {
             case 'chest':
                 P(3, 13, 10, 2, 'rgba(40,25,10,.25)'); P(3, 7, 10, 7, '#8E6A44'); P(3, 7, 10, 2, '#6A4C2E'); P(7, 9, 2, 2, '#E0B040');
                 break;
+            case 'none': break;   // a device drawn in the map's picture already: nothing over it
+            case 'glow': { // a device in the picture lit (the 15 receiver after its puzzle): a soft pulse over it, no drawn body
+                const k = 0.75 + 0.25 * Math.sin(time * 3), cx = x + 8 * z, cy = y + 8 * z, rr = 14 * z;
+                const gr = g.createRadialGradient(cx, cy, 0, cx, cy, rr);
+                gr.addColorStop(0, `rgba(255,236,150,${0.85 * k})`); gr.addColorStop(0.45, `rgba(255,214,90,${0.35 * k})`); gr.addColorStop(1, 'rgba(255,214,90,0)');
+                g.fillStyle = gr; g.fillRect(cx - rr, cy - rr, rr * 2, rr * 2);
+                break;
+            }
             case 'sluice':
                 P(3, 4, 2, 11, '#6A4C2E'); P(11, 4, 2, 11, '#6A4C2E'); P(5, t.open ? 4 : 8, 6, 5, '#8E6A44');
                 if (t.open) P(5, 11, 6, 4, '#5FA7A3');
