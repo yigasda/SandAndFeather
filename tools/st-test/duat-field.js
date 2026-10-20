@@ -15,6 +15,9 @@ const MATE = { horus: 'set', set: 'somang', somang: 'horus' };
     return eval(src)(F, P, S, W, arg);
   }, [base, fn.toString(), arg]);
   const ok = (c, m) => console.log(c ? 'PASS' : 'FAIL', m);
+  // beside a living creature at one of the offsets (top-left, like the creature's), where she stands clear of walls and
+  // sees it — not into a wall (her blow does not go through one)
+  await p.evaluate(() => { window.by = (F, offs) => { for (const m of F.fieldState().mobs.filter(o => o.st !== 'dead')) for (const [dx, dy, face] of offs) { const x = m.x + dx, y = m.y + dy; if (F.testClear(x + 0.5, y + 0.8, m.x + 0.5, m.y + 0.8)) return { x, y, face }; } return null; }; });
   for (const lead of WHO) {
     await E((F, P, S, W, a) => { const s = S.getState(); s.party = { ...(s.party || {}), lead: a[0], with: a[1] }; s.duatField = null; return W.travel('duat_04', 'bottom'); }, [lead, MATE[lead]]);
     await sleep(2500);
@@ -31,7 +34,7 @@ const MATE = { horus: 'set', set: 'somang', somang: 'horus' };
     await p.screenshot({ path: `${OUT}/${lead}-near.png` });
     const hp0 = st.mobs.reduce((a, m) => a + m.hp, 0);
     await E(F => F.testEvents(true));
-    for (let k = 0; k < 4; k++) { await E((F, P) => { const m = F.fieldState().mobs.find(o => o.st !== 'dead'); if (m) { P.player.x = m.x - 0.9; P.player.y = m.y; } F.attack(); }); await sleep(150); if (k === 0) await p.screenshot({ path: `${OUT}/${lead}-attack.png` }); await sleep(400); }
+    for (let k = 0; k < 4; k++) { await E((F, P) => { const q = by(F, [[-0.9, 0, 'right'], [0.9, 0, 'left']]); if (q) { P.player.x = q.x; P.player.y = q.y; F.testFace(q.face); } F.attack(); }); await sleep(150); if (k === 0) await p.screenshot({ path: `${OUT}/${lead}-attack.png` }); await sleep(400); }
     st = await E(F => F.fieldState());
     ok(st.stance === true, `${lead}: 공격하면 전투 자세`);
     const hp1 = st.mobs.reduce((a, m) => a + m.hp, 0);
@@ -46,7 +49,7 @@ const MATE = { horus: 'set', set: 'somang', somang: 'horus' };
     await p.keyboard.up('ArrowDown'); await sleep(200);
     ok(st.stance === true && st.me.vdir === 'down', `${lead}: 전투 중 아래로 걸으면 아래를 봄(vdir ${st.me.vdir})`);
     const hp2 = st.mobs.reduce((a, m) => a + m.hp, 0);
-    for (let k = 0; k < 3; k++) { await E((F, P) => { const m = F.fieldState().mobs.find(o => o.st !== 'dead'); if (m) { P.player.x = m.x; P.player.y = m.y - 0.9; } F.testFace('down'); F.attack(); }); await sleep(150); if (k === 0) await p.screenshot({ path: `${OUT}/${lead}-attack-down.png` }); await sleep(400); }
+    for (let k = 0; k < 3; k++) { await E((F, P) => { const q = by(F, [[0, -0.9, 'down']]); if (q) { P.player.x = q.x; P.player.y = q.y; } F.testFace('down'); F.attack(); }); await sleep(150); if (k === 0) await p.screenshot({ path: `${OUT}/${lead}-attack-down.png` }); await sleep(400); }
     st = await E(F => F.fieldState());
     ok(st.mobs.reduce((a, m) => a + m.hp, 0) < hp2 || st.mobs.length < 5, `${lead}: 아래 찌르기로 몹 체력 줄어듦`);
     await E(F => F.testFace('right'));
