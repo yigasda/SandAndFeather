@@ -10,7 +10,8 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from scipy import ndimage as nd
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point, Polygon, box as shape_box
+from shapely.ops import nearest_points
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/art/map-expansion/desert-connections-review'
@@ -84,11 +85,71 @@ def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)", proposal=None)
         print('\n'.join(rows))
 
 
+def atlas(ids, out, fixtures, label):
+    """Full-resolution source plus a separate legend panel; never edits source art."""
+    out.mkdir(parents=True, exist_ok=True)
+    colors={'exit':'#ed5cff','feet':'#52ff8a','mate':'#54e6ff','gap':'#fff176','old':'#acb3bd'}
+    for ident in ids:
+        d=json.loads((ROOT/f'data/maps/{ident}.json').read_text());src=d['source']
+        art=Image.open(ROOT/src['art']).convert('RGB');w,h=art.size;px=d['authoredCollision']['pixelWalk']['pixelsPerTile']
+        mask=np.asarray(Image.open(ROOT/src['collision']).convert('RGBA'))[...,3]>=128
+        applied=walk_mask(d['authoredCollision']['pixelWalk']);arr=np.asarray(art).copy();arr[edge(mask)]=[255,72,62]
+        arr[mask!=applied]=[255,230,0]
+        names=list(dict.fromkeys([e['id']for e in d['exits']]+list(d['entries'])))
+        top=82;panel=w+48;H=max(h+top+30,260+len(names)*145)
+        im=Image.new('RGB',(w+790,H),'#151e28');im.paste(Image.fromarray(arr),(24,top));g=ImageDraw.Draw(im)
+        def txt(x,y,t,c='white',size=23):g.text((x,y),t,font=font(size),fill=c)
+        def pt(x,y):return (x+24,y+top)
+        def tag(x,y,t,c):
+            x=max(39,min(w+9,x+24));y=max(top+15,min(h+top-15,y+top))
+            g.ellipse((x-16,y-16,x+16,y+16),fill='#10151d',outline=c,width=3);g.text((x-8,y-14),str(t),font=font(21),fill=c)
+        def foot(p,c):
+            b=[(p['x']+.22)*px,(p['y']+.62)*px,(p['x']+.78)*px,(p['y']+.96)*px]
+            g.rectangle((b[0]+24,b[1]+top,b[2]+24,b[3]+top),outline=c,width=3)
+            return b
+        txt(24,13,d['name']+' / '+ident,size=26);txt(24,47,f'원본 {w}×{h} · 전체 그림 유지 · '+label,size=18)
+        txt(panel,18,'출입구·착지 정밀 오버레이',size=27)
+        for j,(c,t) in enumerate([('#ff483e','빨강: 승인 충돌 경계'),(colors['exit'],'보라: 실제 출구 / 녹색: 착지 발·진입 방향'),(colors['mate'],'하늘: 동행 발 / 노랑: 발↔출구 최소 간격')]):txt(panel,58+j*30,t,c,size=21)
+        txt(panel,151,'번호: 출구 / L: 착지 / F: 초기 동행 (세트→호루스)',size=18)
+        txt(panel,177,'동행은 실제 초기배치 fixture. 보행 검증 여부는 각 항목 표시.',size=17)
+        rows=[]
+        for i,name in enumerate(names,1):
+            e=next((e for e in d['exits']if e['id']==name),None);p=d['entries'].get(name);y=225+(i-1)*145
+            color=colors['exit']if e else colors['old'];txt(panel,y,f'{i}. {name}'+('  [현재 출구]'if e else '  [보존 착지·출구 없음]'),color,size=23)
+            shape=None
+            if e:
+                points=[(x*px,y*px)for x,y in e.get('polygon',[(e['x0'],e['y0']),(e['x1'],e['y0']),(e['x1'],e['y1']),(e['x0'],e['y1'])])];shape=Polygon(points)
+                g.line([pt(*p)for p in points+[points[0]]],fill=color,width=4);tag(shape.centroid.x,shape.centroid.y,i,color)
+                txt(panel,y+30,'→ '+e['to']+' / '+str(e['at']),size=20)
+            gap=None;f=fixtures.get(ident,{}).get(name,{}).get('follower')
+            if p:
+                b=foot(p,colors['feet']);cx=(p['x']+.5)*px;cy=(p['y']+.8)*px;ax,ay=ARROW[p['dir']]
+                end=(cx+ax*38,cy+ay*38);g.line([pt(cx,cy),pt(*end)],fill=colors['feet'],width=3)
+                g.polygon([pt(*end),pt(end[0]-ax*10+ay*6,end[1]-ay*10-ax*6),pt(end[0]-ax*10-ay*6,end[1]-ay*10+ax*6)],fill=colors['feet'])
+                g.text(pt(cx+13,cy-23),f'{i}L',font=font(18),fill=colors['feet'],stroke_width=2,stroke_fill='black')
+                if f:
+                    foot(f,colors['mate']);g.text(pt((f['x']+.5)*px-25,(f['y']+.8)*px+8),f'{i}F',font=font(18),fill=colors['mate'],stroke_width=2,stroke_fill='black')
+                if shape:
+                    a,z=nearest_points(shape_box(*b),shape);gap=a.distance(z);g.line([pt(a.x,a.y),pt(z.x,z.y)],fill=colors['gap'],width=2)
+                txt(panel,y+58,f'착지 발 중심 ({cx:.0f}, {cy:.0f}) / {p["dir"]}',colors['feet'],size=20)
+                txt(panel,y+85,('발↔짝 출구 '+f'{gap:.1f}px')if gap is not None else '짝 출구 없음 / 기존 시험·저장 착지 보존',colors['gap']if gap is not None else colors['old'],size=19)
+            else:txt(panel,y+58,'같은 이름 착지 없음: 목적지의 지정 착지 사용',colors['old'],size=18)
+            tested=(ident,name)in{('desert_buried_temple','temple'),('desert_colonnade','south'),('desert_colonnade','stair'),('desert_votive_hall','west')}
+            txt(panel,y+112,'실제 왕복 검증 완료'if tested else '현재 묶음 실보행 미검증 / 보존 상태', '#87e8ac'if tested else '#ffc66d',size=18)
+            rows.append({'number':i,'name':name,'exit':e,'landing':p,'follower':f,'footGapPx':gap,'testedCurrentBundle':tested})
+        txt(24,H-26,f'충돌 원본/적용 차이 {int((mask!=applied).sum())}px · 원본 좌표 기준 · 잠금/미구현 연결을 임의 활성화하지 않음',size=18)
+        im.save(out/f'{ident}-full-overlay.png');(out/f'{ident}-full-overlay.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('ids', nargs='*')
     parser.add_argument('--out', type=Path, default=OUT)
     parser.add_argument('--label', default='DATA OVERLAY (not a game capture)')
     parser.add_argument('--proposal', type=Path, help='Review-only JSON: map, exit, source-pixel polygon and landing')
+    parser.add_argument('--atlas-fixtures', type=Path, help='Full source + separate legend with runtime initial follower fixtures')
     args = parser.parse_args()
+    if args.atlas_fixtures:
+        atlas(args.ids, args.out, json.loads(args.atlas_fixtures.read_text()), args.label)
+        sys.exit(0)
     main(args.ids or sorted(p.stem for p in (ROOT / 'data/maps').glob('desert_*.json')), args.out, args.label, json.loads(args.proposal.read_text()) if args.proposal else None)

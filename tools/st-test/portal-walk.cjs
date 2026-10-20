@@ -109,6 +109,19 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.evaluate(async () => {
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
         });
+        if(process.argv.includes('--overlay-fixtures')) {
+            const fixtures=await page.evaluate(()=>{
+                const s=T.state.getState(),saved=structuredClone(s.pos),out={};
+                for(const id of T.data.DESERT){const m=T.map.getMap(id);out[id]={};
+                    for(const [name,e]of Object.entries(m.d.entries||{})){
+                        s.pos={map:id,...e};T.player.placePlayer(m);const f=T.player.follower();
+                        out[id][name]={player:{x:T.player.player.x,y:T.player.player.y},follower:{x:f.x,y:f.y},kind:'initial placement fixture, not walking evidence'};
+                    }}
+                s.pos=saved;T.player.placePlayer(T.map.getMap(saved.map));return out;
+            });
+            fs.writeFileSync(path.join(OUT,'overlay-fixtures.json'),JSON.stringify(fixtures,null,2));
+            ok(true,'원본 전체 오버레이용 실제 초기 동행 좌표 기록 (보행 시험 아님)');return;
+        }
         if(LIFECYCLE) {
             // Isolated state fixtures supplement, never replace, the real round-trip modes.
             await page.evaluate(()=>T.win.travel('desert_votive_hall','west'));await sleep(300);
