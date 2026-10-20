@@ -10,12 +10,14 @@ module.exports = (page, cdp) => {
         const b = await loc.boundingBox(); if (!b) throw new Error('no ' + sel + ' ' + (text || ''));
         await tap(b.x + b.width / 2, b.y + b.height / 2);
     };
-    // opts.held: the stick is already down (no new touch: the same thumb goes on from a map change); opts.keep: leave it
+    // opts.avoidExits: the way round other exits (T.map must be loaded); opts.held: the stick is already down (no new touch: the same thumb goes on from a map change); opts.keep: leave it
     // down at the end. If the map changes on the way it stops there and returns 'map'
     async function walkToPoint(gx, gy, limitMs = 30000, near = 0.3, opts = {}) {
-        const route = await page.evaluate(([gx, gy, near]) => {
+        const route = await page.evaluate(([gx, gy, near, avoid]) => {
             const p = T.player.player, m = T.win.currentMap();
-            const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96);
+            // avoid: also keep her feet out of every exit but the goal's (a player going past a door, not through it)
+            const inExit = (x, y) => avoid && m.exits.some(e => T.map.containsExit(e, x + 0.5, y + 0.8) && !T.map.containsExit(e, gx + 0.5, gy + 0.8));
+            const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96) && !inExit(x, y);
             const sx = Math.round(p.x / S), sy = Math.round(p.y / S), key = (x, y) => x + ',' + y;
             const prev = new Map([[key(sx, sy), null]]), q = [[sx, sy]]; let end = null;
             if (Math.hypot(sx * S - gx, sy * S - gy) <= near) end = [sx, sy];
@@ -33,7 +35,7 @@ module.exports = (page, cdp) => {
             if (!end) return null;
             const out = []; for (let c = end; c; c = prev.get(key(...c))) out.unshift([c[0] * S, c[1] * S]);
             return out;
-        }, [gx, gy, near]);
+        }, [gx, gy, near, !!opts.avoidExits]);
         if (!route) return false;
         const p = await padBox(); if (!opts.held) await touch('touchStart', p.x, p.y);
         const t0 = Date.now(), map0 = await page.evaluate(() => T.player.player.map); let i = 0, done = false;

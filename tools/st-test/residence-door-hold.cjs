@@ -1,8 +1,8 @@
 // 옴보스 안채 문 회귀(사용자 10-20, 0.9.80 → 0.9.90): 서쪽 회랑에서 방 입구 회랑으로 걸어 들어온 뒤 호루스 방 문으로.
 //   A) 스틱을 놓지 않고 그대로 왼쪽으로 밀어 문까지   B) 도착 뒤 한 번 놓았다가 다시 왼쪽으로
-// 둘 다 호루스 방으로 가야 한다(0.9.80 동작). 출구 규칙(사용자 10-20): 도착 때 발이 겹친 출구만 벗어날 때까지 막고, 다른
-// 출구는 처음부터 — C) 문 안에 도착하면 넘어가지 않고, 벗어났다 다시 들어가면 넘어감, D) 도착 직후 스틱을 유지한 채 들어온
-// 출구로 가도 바로 돌아가지 않고, 벗어났다 다시 들어가면 돌아감.
+// 둘 다 호루스 방으로 가야 한다. 출구 규칙은 0.9.80과 같다(사용자 10-20): 발이 모든 출구 밖에 한 번 있어야 출구가 켜짐 —
+// C) 문 안에 도착하면 넘어가지 않고, 벗어났다 다시 들어가면 넘어감, D) 도착 직후 서 있으면 다시 전환 없음, 들어온 출구로
+// 걸어가면 돌아감.
 //   node tools/st-test/residence-door-hold.cjs [out]
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -30,7 +30,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.evaluate(() => SillyTavern.getContext().selectCharacterById(0)); await page.waitForFunction(() => !!SillyTavern.getContext().chatId);
         await page.waitForSelector('#sf_open', { state: 'attached' });
         await page.evaluate(async base => {
-            window.T = {}; for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes' })) T[k] = await import(base + 'src/' + f + '.js');
+            window.T = {}; for (const [k, f] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', map: 'world/map' })) T[k] = await import(base + 'src/' + f + '.js');
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
         }, BASE);
         const where = () => page.evaluate(() => ({ map: T.player.player.map, x: +T.player.player.x.toFixed(2), y: +T.player.player.y.toFixed(2) }));
@@ -50,7 +50,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             if (letGo) { await W.touch('touchEnd'); await sleep(300); }
             // along the walkable way to the middle of Horus's door (feet in it), the thumb on the stick all along in A
             const door = await page.evaluate(() => { const e = T.win.currentMap().exits.find(x => x.to === 'horus_room'); return { x: (e.x0 + e.x1) / 2 - 0.5, y: e.y1 - 0.3 - 0.8 }; });
-            await W.walkToPoint(door.x, door.y, 12000, 0.3, { held: !letGo, keep: true });
+            await W.walkToPoint(door.x, door.y, 12000, 0.3, { held: !letGo, keep: true, avoidExits: true });   // past the corridor's other doors
             const reached = await until('horus_room', 3000), end = await where();
             await W.touch('touchEnd'); await sleep(300);
             ok(reached, `${name}: 도착 ${JSON.stringify(at)} → 끝 ${JSON.stringify(end)}`);
@@ -73,19 +73,17 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await W.touch('touchMove', pad.x, pad.y - pad.lim);                                                                  // and back up into it
         const backIn = await until('horus_room', 4000); await W.touch('touchEnd'); await sleep(300);
         ok(backIn, `C 벗어났다가 다시 들어가면 정상 이동 (${JSON.stringify(await where())})`);
-        // D: just arrived in the corridor, the thumb still on the stick, straight back into the exit she came in by: held
-        // (no bounce); out of it and in again: back to the west gallery
+        // D: just arrived in the corridor through the west gallery's door and standing still: no second change of map
+        // on its own; walking back into the exit she came through takes her back (0.9.80)
         {
             const { pad, got } = await intoCorridor();
-            const arrived = await page.evaluate(() => T.win.testDoor?.());
+            await W.touch('touchEnd'); await sleep(1500);
+            const still = await where();
+            ok(got && still.map === 'room_entrances_wide', `D 도착 직후 그대로 있으면 다시 전환 없음 (${JSON.stringify(still)})`);
             const back = await page.evaluate(() => { const e = T.win.currentMap().exits.find(x => x.to === 'temple_west_gallery'); return { x: (e.x0 + e.x1) / 2 - 0.5, y: (e.y0 + e.y1) / 2 - 0.8 }; });
-            if (got) await W.walkToPoint(back.x, back.y, 4000, 0.2, { held: true, keep: true });
-            const held = (await where()).map === 'room_entrances_wide';
-            await W.touch('touchMove', pad.x, pad.y + pad.lim); await sleep(600);   // down, out of it
-            await W.touch('touchMove', pad.x, pad.y - pad.lim);                       // and up into it again
-            const ret = await until('temple_west_gallery', 4000); await W.touch('touchEnd'); await sleep(300);
-            ok(got && held, `D 도착 직후 스틱 유지로 들어온 출구에 다시 들어가도 바로 돌아가지 않음 (도착 때 막힌 출구 ${JSON.stringify(arrived?.held)})`);
-            ok(ret, `D 그 출구에서 벗어났다가 다시 들어가면 돌아감 (${JSON.stringify(await where())})`);
+            await W.walkToPoint(back.x, back.y, 5000, 0.2, { keep: true });
+            const ret = await until('temple_west_gallery', 3000); await W.touch('touchEnd'); await sleep(300);
+            ok(ret, `D 들어온 출구로 다시 걸어가면 돌아감 (${JSON.stringify(await where())})`);
         }
         ok(!errors.length, `페이지 오류 없음 ${errors.join('; ')}`);
     } finally {
