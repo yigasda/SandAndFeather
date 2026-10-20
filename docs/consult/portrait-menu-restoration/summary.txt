@@ -1,0 +1,4 @@
+== 2026-10-20 20:44:22 기준 코드 b79b2b1c+수정122e90d · 검사: portrait-menu-restore hud-design-regression
+문법: b79b2b1c 이후 바뀐 JS 1개 통과
+portrait-menu-restore exit 0  통과 1 실패 0  12s
+hud-design-regression exit 0  통과 1 실패 0  10s

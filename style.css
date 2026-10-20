@@ -1869,9 +1869,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 }
 
 /* Runtime original10 menu adaptation. Source: docs/handoff/menu-original10.
-   Shared phone menu art; portrait stacks the same content below. */
+   Scoped to compact landscape menus; portrait keeps its established layout. */
 #sf_game :is(.sf_menu_header_art,.sf_menu_current,.sf_menu_nav,.sf_bond_selection_context,.sf_bond_record_count,.sf_bond_gift_name) { display:none; }
-@media (orientation:landscape) and (max-height:540px), (orientation:portrait) and (max-width:600px) {
+@media (orientation:landscape) and (max-height:540px) {
  #sf_game[data-ui-theme] .sf_pop_wrap.sf_menu_window { padding:0;background:var(--sf-card); }
  #sf_game[data-ui-theme] .sf_menu_window > .sf_pop { width:100%;height:100%;max-width:100%;max-height:100%;padding:10px;border:0;border-radius:0;gap:0;box-shadow:none;background:var(--sf-card) var(--menu-paper) repeat;overflow:hidden; }
  #sf_game[data-ui-theme] .sf_menu_window > .sf_pop::before { inset:0;border:10px solid transparent;border-image:var(--menu-frame) var(--slice-frame) stretch;border-image-width:10px;clip-path:inset(44px 0 0);pointer-events:none;z-index:3; }
@@ -1973,7 +1973,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 
 /* Approved original10: walnut semantic symbols use its readable foreground. */
 .sf_bond_semantic { display:contents; }
-@media (orientation:landscape) and (max-height:540px), (orientation:portrait) and (max-width:600px) {
+@media (orientation:landscape) and (max-height:540px) {
  #sf_game .sf_menu_window .sf_bond_semantic { position:relative;display:inline-flex;flex:none;width:18px;height:18px; }
  #sf_game .sf_menu_window .sf_bond_motto .sf_bond_semantic { height:20px; }
  #sf_game[data-ui-theme='walnut'] .sf_menu_window .sf_bond_semantic > img { visibility:hidden; }
@@ -2003,22 +2003,5 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  #sf_game[data-ui-theme] .sf_tabs { display:none;left:auto;right:var(--hud-right);top:calc(var(--hud-top) + 132px);bottom:auto;width:180px;max-height:calc(100% - 180px);overflow-y:auto;z-index:5; }
  #sf_game[data-ui-theme].sf_menu_open .sf_tabs { display:flex;flex-direction:column; }
  #sf_game[data-ui-theme] .sf_tabs .sf_tab { display:flex;flex-direction:row;gap:8px;flex:none;min-height:40px;width:100%;justify-content:center; }
- /* Title art stays at its native 44px height; navigation gets its own touch row. */
- #sf_game[data-ui-theme] .sf_menu_window > .sf_pop > .sf_pop_head { height:92px;min-height:92px;align-items:flex-start;padding:8px 28px 0; }
- #sf_game[data-ui-theme='temple'] .sf_menu_window > .sf_pop > .sf_pop_head { padding-left:70px; }
- #sf_game[data-ui-theme] .sf_menu_header_art { height:44px; }
- #sf_game[data-ui-theme] .sf_menu_nav { left:10px;right:10px;top:46px;gap:12px;background:var(--sf-card2);color:var(--sf-ink); }
- #sf_game[data-ui-theme] .sf_menu_link { color:var(--sf-ink); }
- #sf_game[data-ui-theme] .sf_menu_window > .sf_pop::before { clip-path:inset(92px 0 0); }
- #sf_game[data-ui-theme] .sf_menu_window[data-kind='bond'] > .sf_pop > .sf_pop_scroll { overflow:auto; }
- #sf_game[data-ui-theme] .sf_menu_window[data-kind='bond'] .sf_pop_body { height:auto;padding:0 8px; }
- #sf_game .sf_menu_window .sf_bond { height:auto; }
- #sf_game .sf_menu_window .sf_bond_tabs { flex-wrap:wrap;height:auto; }
- #sf_game .sf_menu_window .sf_bond_selection_context { width:100%;margin:0 0 6px; }
- #sf_game .sf_menu_window .sf_bond_columns { display:flex;flex-direction:column;gap:16px; }
- #sf_game .sf_menu_window .sf_bond_left { overflow:visible; }
- #sf_game .sf_menu_window .sf_bond_records { max-height:220px;flex:none;border-right:0;padding:0; }
- #sf_game .sf_menu_window .sf_bond_right { overflow:visible;border-left:0;padding-left:0; }
- #sf_game .sf_menu_window .sf_bond_footer { display:flex;flex-direction:column;align-items:stretch;padding-top:10px; }
- #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_btn.sf_bond_memory { align-self:flex-end; }
+
 }
