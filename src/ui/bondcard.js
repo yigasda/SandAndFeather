@@ -17,7 +17,13 @@ const redrawn = new URL('../../data/art/ui/bond/redrawn/', import.meta.url);
 // only the icons the theme has no match for (the user's marked set); frames, cards, buttons and lines are the UI theme's
 const REDRAWN = {section_book:'27-section-book',section_plant:'28-section-sprout',section_gift:'29-section-gift',section_branch:'30-section-branch',bond_heart:'31-heart',reward_gift_red:'34-reward-red',reward_gift_gold:'36-reward-chest',reward_gift_open:'35-reward-gold',reward_80:'35-reward-gold',gift_icon_bow:'64-gift-cream',activity_fishing_icon:'43-fishing',activity_cooking_icon:'44-cooking',activity_study_icon:'45-study',activity_explore_icon:'46-exploration',footer_feather:'47-feather',memory_book_icon:'48-memory-book'};
 const node = (tag, cls = '', text = '') => { const e = document.createElement(tag); e.className = cls; e.textContent = text; return e; };
-function img(name, cls = '') { const e = node('img', cls); e.src = new URL(`${REDRAWN[name] || name}.png`, REDRAWN[name] ? redrawn : art).href; e.alt = ''; e.decoding = 'async'; return e; }
+function img(name, cls = '') {
+    const e = node('img', cls); e.src = new URL(`${REDRAWN[name] || name}.png`, REDRAWN[name] ? redrawn : art).href; e.alt = ''; e.decoding = 'async';
+    if (['section_book', 'section_gift', 'section_branch', 'footer_feather'].includes(name)) {
+        const wrap = node('span', 'sf_bond_semantic'); wrap.style.setProperty('--semantic-icon', `url("${e.src}")`); wrap.append(e); return wrap;
+    }
+    return e;
+}
 function button(text, fn, cls = 'sf_btn sf_small') {
     const b = node('button', cls, text); b.type = 'button';
     b.addEventListener('click', async () => { if (b.disabled) return; b.disabled = true; try { await fn(); } catch (e) { window.toastr?.error?.(e.message, '인연과 유대'); } finally { b.disabled = false; b.refreshDisabled?.(); } });

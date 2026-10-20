@@ -1969,3 +1969,12 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  #sf_game .sf_menu_window .sf_bond_activity img { width:18px;height:22px; }
  #sf_game .sf_menu_window .sf_bond_activity b { font-size:10px; }
 }
+
+/* Approved original10: walnut semantic symbols use its readable foreground. */
+.sf_bond_semantic { display:contents; }
+@media (orientation:landscape) and (max-height:540px) {
+ #sf_game .sf_menu_window .sf_bond_semantic { position:relative;display:inline-flex;flex:none;width:18px;height:18px; }
+ #sf_game .sf_menu_window .sf_bond_motto .sf_bond_semantic { height:20px; }
+ #sf_game[data-ui-theme='walnut'] .sf_menu_window .sf_bond_semantic > img { visibility:hidden; }
+ #sf_game[data-ui-theme='walnut'] .sf_menu_window .sf_bond_semantic::after { content:'';position:absolute;inset:0;background:var(--sf-ink);mask-image:var(--semantic-icon);mask-size:contain;mask-position:center;mask-repeat:no-repeat; }
+}
