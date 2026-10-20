@@ -85,20 +85,40 @@ def main(ids, out=OUT, label="DATA OVERLAY (not a game capture)", proposal=None)
         print('\n'.join(rows))
 
 
-def atlas(ids, out, fixtures, label):
+def atlas(ids, out, fixtures, label, plans=None):
     """Full-resolution source plus a separate legend panel; never edits source art."""
     out.mkdir(parents=True, exist_ok=True)
     colors={'exit':'#ed5cff','feet':'#52ff8a','mate':'#54e6ff','gap':'#fff176','old':'#acb3bd'}
     for ident in ids:
-        d=json.loads((ROOT/f'data/maps/{ident}.json').read_text());src=d['source']
-        art=Image.open(ROOT/src['art']).convert('RGB');w,h=art.size;px=d['authoredCollision']['pixelWalk']['pixelsPerTile']
+        plan=(plans or {}).get(ident,{})
+        data_path=ROOT/f'data/maps/{ident}.json';registered=data_path.exists()
+        d=json.loads(data_path.read_text()) if registered else {'name':plan['name'],'source':{'art':'사막맵/'+plan['file'],'collision':'사막맵/충돌/'+plan['file']},'entries':{},'exits':[]}
+        src=d['source'];art=Image.open(ROOT/src['art']).convert('RGB');w,h=art.size
+        px=d['authoredCollision']['pixelWalk']['pixelsPerTile'] if registered else 52/1.55
+        pending={}
+        for candidate in plan.get('candidates',[]):
+            name=candidate['id'];pending[name]=candidate
+            existing=next((e for e in d['exits']if e['id']==name),None)
+            if not existing:
+                points=candidate['polygon'];xs,ys=zip(*points)
+                d['exits'].append({'id':name,'polygon':[[x/px,y/px]for x,y in points],'x0':min(xs)/px,'y0':min(ys)/px,'x1':max(xs)/px,'y1':max(ys)/px,'to':candidate['to'],'at':candidate['at']})
+            if candidate.get('landing'):
+                x,y=candidate['landing'];d['entries'][name]={'x':x/px-.5,'y':y/px-.8,'dir':candidate.get('dir','up')}
+            if candidate.get('follower'):
+                x,y=candidate['follower'];fixtures.setdefault(ident,{})[name]={'follower':{'x':x/px-.5,'y':y/px-.8}}
+
         mask=np.asarray(Image.open(ROOT/src['collision']).convert('RGBA'))[...,3]>=128
-        applied=walk_mask(d['authoredCollision']['pixelWalk']);arr=np.asarray(art).copy();arr[edge(mask)]=[255,72,62]
+        applied=walk_mask(d['authoredCollision']['pixelWalk']) if registered else mask;arr=np.asarray(art).copy();arr[edge(mask)]=[255,72,62]
         arr[mask!=applied]=[255,230,0]
         names=list(dict.fromkeys([e['id']for e in d['exits']]+list(d['entries'])))
         top=82;panel=w+48;H=max(h+top+30,260+len(names)*145)
         im=Image.new('RGB',(w+790,H),'#151e28');im.paste(Image.fromarray(arr),(24,top));g=ImageDraw.Draw(im)
-        def txt(x,y,t,c='white',size=23):g.text((x,y),t,font=font(size),fill=c)
+        def txt(x,y,t,c='white',size=23):
+            limit=(w-24) if x<panel else im.width-x-24
+            while size>12 and g.textlength(t,font=font(size))>limit:size-=1
+            assert g.textlength(t,font=font(size))<=limit, f'overlay text overflow: {t}'
+            g.text((x,y),t,font=font(size),fill=c)
+        short={'desert_buried_temple':'02 매몰 신전','desert_colonnade':'15 열주홀','desert_votive_hall':'T2 봉헌품 회랑','desert_forecourt_west':'T1W 서쪽 앞뜰','desert_forecourt_east':'T1E 동쪽 앞뜰','desert_guardian_gate':'T3 수호문 전당','desert_lightwell':'16 빛우물','desert_city_gate':'11 도시 출입구','desert_city_plaza':'17 지하 광장','desert_quiet_dunes':'03 고요한 사구'}
         def pt(x,y):return (x+24,y+top)
         def tag(x,y,t,c):
             x=max(39,min(w+9,x+24));y=max(top+15,min(h+top-15,y+top))
@@ -115,12 +135,12 @@ def atlas(ids, out, fixtures, label):
         rows=[]
         for i,name in enumerate(names,1):
             e=next((e for e in d['exits']if e['id']==name),None);p=d['entries'].get(name);y=225+(i-1)*145
-            color=colors['exit']if e else colors['old'];txt(panel,y,f'{i}. {name}'+('  [현재 출구]'if e else '  [보존 착지·출구 없음]'),color,size=23)
+            color='#ffb84d' if name in pending else colors['exit']if e else colors['old'];txt(panel,y,f'{i}. {name}'+('  [결정 대기 / 후보]'if name in pending else '  [현재 출구]'if e else '  [보존 착지·출구 없음]'),color,size=23)
             shape=None
             if e:
                 points=[(x*px,y*px)for x,y in e.get('polygon',[(e['x0'],e['y0']),(e['x1'],e['y0']),(e['x1'],e['y1']),(e['x0'],e['y1'])])];shape=Polygon(points)
                 g.line([pt(*p)for p in points+[points[0]]],fill=color,width=4);tag(shape.centroid.x,shape.centroid.y,i,color)
-                txt(panel,y+30,'→ '+e['to']+' / '+str(e['at']),size=20)
+                txt(panel,y+30,('현재 '+short.get(e['to'],e['to'])+' / '+str(e['at'])) if name in pending and pending[name].get('currentConflict') else '→ '+short.get(e['to'],e['to'])+' / '+str(e['at']),size=20)
             gap=None;f=fixtures.get(ident,{}).get(name,{}).get('follower')
             if p:
                 b=foot(p,colors['feet']);cx=(p['x']+.5)*px;cy=(p['y']+.8)*px;ax,ay=ARROW[p['dir']]
@@ -133,11 +153,12 @@ def atlas(ids, out, fixtures, label):
                     a,z=nearest_points(shape_box(*b),shape);gap=a.distance(z);g.line([pt(a.x,a.y),pt(z.x,z.y)],fill=colors['gap'],width=2)
                 txt(panel,y+58,f'착지 발 중심 ({cx:.0f}, {cy:.0f}) / {p["dir"]}',colors['feet'],size=20)
                 txt(panel,y+85,('발↔짝 출구 '+f'{gap:.1f}px')if gap is not None else '짝 출구 없음 / 기존 시험·저장 착지 보존',colors['gap']if gap is not None else colors['old'],size=19)
-            else:txt(panel,y+58,'같은 이름 착지 없음: 목적지의 지정 착지 사용',colors['old'],size=18)
+            else:txt(panel,y+58,pending.get(name,{}).get('sharedLandingNote','같은 이름 착지 없음: 목적지의 지정 착지 사용'),colors['old'],size=18)
             tested=(ident,name)in{('desert_buried_temple','temple'),('desert_colonnade','south'),('desert_colonnade','stair'),('desert_votive_hall','west')}
-            txt(panel,y+112,'실제 왕복 검증 완료'if tested else '현재 묶음 실보행 미검증 / 보존 상태', '#87e8ac'if tested else '#ffc66d',size=18)
+            tested = tested or name in plan.get('verified',[])
+            txt(panel,y+112,pending[name]['note'] if name in pending else '실제 왕복 검증 완료'if tested else '현재 묶음 실보행 미검증 / 보존 상태', '#ffc66d'if name in pending else '#87e8ac'if tested else '#ffc66d',size=18)
             rows.append({'number':i,'name':name,'exit':e,'landing':p,'follower':f,'footGapPx':gap,'testedCurrentBundle':tested})
-        txt(24,H-26,f'충돌 원본/적용 차이 {int((mask!=applied).sum())}px · 원본 좌표 기준 · 잠금/미구현 연결을 임의 활성화하지 않음',size=18)
+        txt(24,H-26,(f'충돌 원본/적용 차이 {int((mask!=applied).sum())}px' if registered else '미등록 후보: 원본 충돌 기준')+' · 주황=미적용 후보 / 후보 동행은 설계 좌표, 보행 검증 아님',size=18)
         im.save(out/f'{ident}-full-overlay.png');(out/f'{ident}-full-overlay.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
 
 
@@ -148,8 +169,9 @@ if __name__ == '__main__':
     parser.add_argument('--label', default='DATA OVERLAY (not a game capture)')
     parser.add_argument('--proposal', type=Path, help='Review-only JSON: map, exit, source-pixel polygon and landing')
     parser.add_argument('--atlas-fixtures', type=Path, help='Full source + separate legend with runtime initial follower fixtures')
+    parser.add_argument('--atlas-plans', type=Path, help='Review-only unresolved routes, never writes runtime data')
     args = parser.parse_args()
     if args.atlas_fixtures:
-        atlas(args.ids, args.out, json.loads(args.atlas_fixtures.read_text()), args.label)
+        atlas(args.ids, args.out, json.loads(args.atlas_fixtures.read_text()), args.label, json.loads(args.atlas_plans.read_text()) if args.atlas_plans else None)
         sys.exit(0)
     main(args.ids or sorted(p.stem for p in (ROOT / 'data/maps').glob('desert_*.json')), args.out, args.label, json.loads(args.proposal.read_text()) if args.proposal else None)

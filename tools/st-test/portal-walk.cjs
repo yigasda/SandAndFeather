@@ -16,7 +16,10 @@ const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
 const LIFECYCLE = process.argv.includes('--exit-lifecycle');
 const KEYBOARD = process.argv.includes('--keyboard');
-const NEW_PAIRS = process.argv.includes('--temple-15-w') ? [
+const NEW_PAIRS = process.argv.includes('--temple-02-11') ? [
+    ['desert_buried_temple','door','door','desert_city_gate','outside'],
+    ['desert_city_gate','outside','left','desert_buried_temple','door'],
+] : process.argv.includes('--temple-15-w') ? [
     ['desert_colonnade','forecourt','forecourt','desert_forecourt_west','east'],
     ['desert_forecourt_west','east','east','desert_colonnade','forecourt'],
 ] : process.argv.includes('--temple-t2-e') ? [
