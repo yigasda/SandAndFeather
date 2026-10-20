@@ -1,0 +1,16 @@
+{
+  "passed": [
+    "missing/invalid theme falls back to cozy without modifying chat",
+    "classic: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+    "walnut: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+    "journal: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+    "temple: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+    "cozy: live choice, settings sync, bag/party/talk at 320/412/1280, dark brightness, no overflow",
+    "keyboard radio navigation wraps and supports Home/End",
+    "extension drawer applies immediately and selected theme survives full page reload"
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "generationRequests": [],
+  "output": "/tmp/portrait-zoom-final/verify-ui-themes"
+}

@@ -1,0 +1,22 @@
+{
+  "passed": [
+    "cozy HUD loads, status rows do not overlap",
+    "inventory groups/filter/detail retain individual UID/history and existing item actions",
+    "일행 shows 현재 동행, 자세히 shows the Set and Horus three-picture gallery; companion and 앞장 selection work",
+    "Somang character screen retains stats/lessons and shows her standing sprite",
+    "conversation card has no portraits or expression buttons and sends no chat",
+    "mobile finger swipe scrolls the character screen",
+    "320/360 mobile, landscape, desktop: all tabs and bag stay within screen with scrolling",
+    "light and dark variants remain readable",
+    "visit prepares chat input and folds game without sending a message"
+  ],
+  "hud": {
+    "dateBottom": 75,
+    "chipsTop": 183,
+    "chipsBottom": 212,
+    "hintTop": 221
+  },
+  "pageErrors": [],
+  "failedRequests": [],
+  "output": "/tmp/portrait-zoom-final/verify-cozy-ui"
+}

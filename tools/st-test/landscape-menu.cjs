@@ -1,5 +1,6 @@
 const { chromium } = require('playwright');
 const fs = require('fs'), path = require('path'), assert = require('node:assert/strict');
+const portrait = process.argv.includes('--portrait');
 const out = path.resolve(process.argv[2] || 'docs/bond-ui/screenshots'); fs.mkdirSync(out, { recursive: true });
 (async () => {
  const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] });
@@ -41,15 +42,15 @@ const out = path.resolve(process.argv[2] || 'docs/bond-ui/screenshots'); fs.mkdi
    ].reverse();
    bt.close(); bt.close=bt.ui.bondCard(bt.win.gameUi(),'set');
   });
-  const sizes=[{width:844,height:390},{width:640,height:360}];
+  const sizes=portrait?[{width:390,height:844},{width:320,height:740}]:[{width:844,height:390},{width:640,height:360}];
   const measurements=[];
   for(const theme of ['classic','walnut','journal','temple','cozy']) for(const brightness of ['light','dark']) for(const size of sizes){
    await p.setViewportSize(size);
    await p.evaluate(({theme,brightness})=>{bt.settings.settings().uiTheme=theme;bt.settings.settings().theme=brightness;bt.win.applyTheme();},{theme,brightness});
    await images(); await p.waitForTimeout(70);
-   const bounds=await modal().evaluate(e=>{const b=e.getBoundingClientRect(),scroll=e.querySelector('.sf_pop_scroll'),cols=e.querySelector('.sf_bond_columns');return{x:b.x,right:b.right,width:innerWidth,overflow:e.scrollWidth-e.clientWidth,scrollOverflow:scroll.scrollWidth-scroll.clientWidth,columns:getComputedStyle(cols).gridTemplateColumns,scrollable:scroll.scrollHeight>scroll.clientHeight};});
+   const bounds=await modal().evaluate(e=>{const b=e.getBoundingClientRect(),scroll=e.querySelector('.sf_pop_scroll'),cols=e.querySelector('.sf_bond_columns');return{x:b.x,right:b.right,width:innerWidth,overflow:e.scrollWidth-e.clientWidth,scrollOverflow:scroll.scrollWidth-scroll.clientWidth,layout:getComputedStyle(cols).display,columns:getComputedStyle(cols).gridTemplateColumns,scrollable:scroll.scrollHeight>scroll.clientHeight};});
    assert(bounds.x>=-1&&bounds.right<=size.width+1&&bounds.overflow<=2&&bounds.scrollOverflow<=2,JSON.stringify({theme,brightness,size,bounds}));
-   assert.equal(bounds.columns.split(' ').length,2);
+   if(portrait)assert.equal(bounds.layout,'flex');else assert.equal(bounds.columns.split(' ').length,2);
    assert(await modal().locator('.sf_bond_tab>span').evaluateAll(es=>es.every(e=>e.getBoundingClientRect().height<=parseFloat(getComputedStyle(e).lineHeight)+2)), 'Character names must stay on one line');
    // 0.9.66: the window is the UI theme's own card, so its frame (and the theme's clip under the title bar) is the theme's
    assert.equal((await modal().evaluate(e=>getComputedStyle(e).borderImageSource+getComputedStyle(e,'::before').borderImageSource)).includes('redrawn'),false,'The frame must be the theme frame, not a bond picture');
@@ -66,8 +67,8 @@ const out = path.resolve(process.argv[2] || 'docs/bond-ui/screenshots'); fs.mkdi
     }
    }
   }
-  passed.push('20 landscape theme/brightness/viewport combinations: bounds and two columns');
-  await p.setViewportSize({width:844,height:390});
+  passed.push(portrait?'20 portrait theme/brightness/viewport combinations: bounds and stacked sections':'20 landscape theme/brightness/viewport combinations: bounds and two columns');
+  await p.setViewportSize(portrait?{width:390,height:844}:{width:844,height:390});
   assert.equal(await modal().locator('.sf_menu_nav button').count(),5);
   await modal().locator('[data-bond-item="bread"]').focus();
   await p.keyboard.press('Enter');

@@ -42,6 +42,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             await page.evaluate(async m => T.win.travel(m, 'yard'), MAP); await sleep(1500);
             await page.evaluate(() => T.field.testOnly('desert_leather_shield', 0, 0, { hp: 999, speed: 0, range: 0 }));   // out of the way: no fight starting by itself
             const box = sel => page.evaluate(sel => { const r = document.querySelector(sel).getBoundingClientRect(); return { x0: r.left, y0: r.top, x1: r.right, y1: r.bottom, cx: r.left + r.width / 2, cy: r.top + r.height / 2 }; }, sel);
+            if(await page.locator('.sf_menu').isVisible())await page.locator('.sf_menu').click();
             const pad = await box('.sf_pad'), tabs = await box('.sf_tabs');
             const tabOn = () => page.evaluate(() => document.querySelector('.sf_tab.sf_on')?.dataset.tab);
             // 1. the overlap of the pad's margin and the tab bar: who takes a touch there
@@ -58,6 +59,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const card = await page.locator('.sf_pop_wrap').count();
             ok(await tabOn() === 'world' && card === 0, `${tag} 조이스틱을 잡고 탭(일행) 위에서 떼도 탭이 안 눌림 (탭 ${await tabOn()}, 카드 ${card})`);
             await page.screenshot({ path: path.join(OUT, `${tag}-drag-over-tab.png`) });
+            if(await page.locator('.sf_menu').getAttribute('aria-expanded')==='true')await page.locator('.sf_menu').click();
             // 3. moving with the pad (right), the other thumb on 공격 then 스킬
             const atk = await box('.sf_talk'), sk = await box('.sf_duat_skill');
             await page.evaluate(() => T.field.testEvents(true));

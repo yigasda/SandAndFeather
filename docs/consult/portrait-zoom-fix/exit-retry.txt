@@ -1,0 +1,3 @@
+== 2026-10-20 11:59:20 기준 코드 717fee00+수정2c7b3cf · 검사: portal-walk:--exit-lifecycle
+문법: 717fee00 이후 바뀐 JS 8개 통과
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  13s

@@ -39,7 +39,7 @@ const out=path.resolve(process.argv[2]||'/tmp/landscape');fs.mkdirSync(out,{recu
    for(const[x,y]of [[0,0],[999,999]]){await p.evaluate(({x,y})=>Object.assign(T.player.player,{x,y}),{x,y});await p.waitForTimeout(180);const a=await camera(),mw=a.mapWidth*16*a.zoom,mh=a.mapHeight*16*a.zoom;assert(mw<a.width||a.cam.x>=-0.01&&a.cam.x+a.width<=mw+.01);assert(mh<a.height||a.cam.y>=-.01&&a.cam.y+a.height<=mh+.01);}
   }
   pass('four map sizes clamp zoom-out and both camera edges');
-  await p.setViewportSize({width:412,height:900});await p.evaluate(()=>T.win.travel('ombos',{x:24,y:18}));assert(await p.locator('.sf_tabs').isVisible());assert(!await p.locator('.sf_menu').isVisible());await p.locator('[data-tab="party"]').click();await p.locator('.sf_pop_x').last().click();pass('portrait keeps original tabs');
+  await p.setViewportSize({width:412,height:900});await p.evaluate(()=>T.win.travel('ombos',{x:24,y:18}));assert(await p.locator('.sf_menu').isVisible());await p.locator('.sf_menu').click();assert(await p.locator('.sf_tabs').isVisible());await p.locator('[data-tab="party"]').click();await p.locator('.sf_pop_x').last().click();pass('portrait menu opens existing destinations');
   await p.setViewportSize({width:900,height:412});await p.locator('.sf_menu').click();await p.locator('.sf_menu_fold').click();assert(await p.locator('#sf_chip').isVisible());await p.locator('#sf_chip').click();await p.locator('.sf_menu').click();await p.locator('.sf_menu_close').click();assert(!await p.locator('#sf_game').isVisible());pass('landscape menu fold/reopen/close work');
   assert.deepEqual(errors,[]);pass('no game page errors');
  }finally{await b.close()}

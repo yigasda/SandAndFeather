@@ -1,0 +1,17 @@
+{"w":390,"h":844,"part":"morning","diff":3359,"withoutOcclusion":3359,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"day","diff":3359,"withoutOcclusion":3359,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"evening","diff":3259,"withoutOcclusion":3359,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"night","diff":3255,"withoutOcclusion":3342,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"morning","diff":7533,"withoutOcclusion":7533,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"day","diff":7533,"withoutOcclusion":7533,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"evening","diff":7302,"withoutOcclusion":7533,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"night","diff":7291,"withoutOcclusion":7491,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"morning","diff":3359,"withoutOcclusion":3359,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"day","diff":3359,"withoutOcclusion":3359,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"evening","diff":3259,"withoutOcclusion":3359,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"night","diff":3255,"withoutOcclusion":3342,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"morning","diff":7533,"withoutOcclusion":7533,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"day","diff":7533,"withoutOcclusion":7533,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"evening","diff":7302,"withoutOcclusion":7533,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"night","diff":7291,"withoutOcclusion":7491,"people":["townsman","set"]}
+PASS merchant visible through four orientations, four times, and room round trips

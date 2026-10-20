@@ -1,0 +1,5 @@
+== 2026-10-20 12:02:32 기준 코드 717fee00+수정7257a97 · 검사: landscape-menu:--portrait zoom-clamp-retention npc-visibility
+문법: 717fee00 이후 바뀐 JS 11개 통과
+landscape-menu_--portrait exit 0  통과 0 실패 0  19s
+zoom-clamp-retention exit 0  통과 2 실패 0  12s
+npc-visibility       exit 0  통과 1 실패 0  24s

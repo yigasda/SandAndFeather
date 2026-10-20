@@ -1,0 +1,2 @@
+PASS 390x844: low preference survives temporary minimum clamp
+PASS 844x390: low preference survives temporary minimum clamp

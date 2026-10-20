@@ -37,8 +37,7 @@ if(size.width===412)await shot(`${i+1}-${id}-world`);
 // 0.9.66: 「인연과 유대」 (bond) sits between 일행 and 임무; its glyph is the birds picture used as a mask in the theme's menu ink
 const TABS=['world','party','bond','quests','map'];
 for(const tab of TABS){
- await p.locator(`.sf_tab[data-tab="${tab}"]`).click();await bounds();
- assert.equal(await p.locator('.sf_tabs .sf_on').getAttribute('data-tab'),tab);
+ if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();
  const glyphs=await p.locator('.sf_tab i').evaluateAll(async els=>{
   return Promise.all(els.map(async e=>{
    const style=getComputedStyle(e),url=(style.backgroundImage==='none'?style.maskImage:style.backgroundImage).match(/url\(["']?(.*?)["']?\)/)?.[1];
@@ -54,6 +53,8 @@ for(const tab of TABS){
   assert(g.width===48&&g.height===48&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong icon`);
  }
  if(size.width===412)await p.locator('.sf_tabs').screenshot({path:path.join(out,`${i+1}-${id}-menu-${tab}.png`)});
+ await p.locator(`.sf_tab[data-tab="${tab}"]`).click();await bounds();
+ assert.equal(await p.locator('.sf_tabs .sf_on').getAttribute('data-tab'),tab);
  if(tab!=='world')await close();
 }
 await p.locator('.sf_bag').click();await bounds();
@@ -67,7 +68,7 @@ const detailLayout=await p.locator('.sf_inventory_detail').evaluate(e=>{
 if(size.width===1280)await last().locator('.sf_pop').screenshot({path:path.join(out,`${i+1}-${id}-bag-panel.png`)});
 if(size.width===412)await shot(`${i+1}-${id}-bag`);
 if(id==='journal')assert.equal(await p.locator('.sf_inventory_grid').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),1);
-await close();await p.locator('[data-tab="party"]').click();await bounds();if(size.width===412)await shot(`${i+1}-${id}-party`);await close();
+await close();if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();await p.locator('[data-tab="party"]').click();await bounds();if(size.width===412)await shot(`${i+1}-${id}-party`);await close();
 await p.locator('.sf_talk').click();await bounds();assert.equal(await last().locator('.sf_portrait').count(),0);if(size.width===412)await shot(`${i+1}-${id}-talk`);await close();
 }
 await p.setViewportSize({width:412,height:900});await p.locator('.sf_appearance').click();await p.getByLabel('밝기',{exact:true}).selectOption('dark');assert(await p.locator('#sf_game').evaluate(e=>e.classList.contains('sf_dark')));await close();

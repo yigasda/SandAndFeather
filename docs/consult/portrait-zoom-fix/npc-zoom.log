@@ -1,0 +1,5 @@
+{"w":390,"h":844,"part":"min","diff":2014,"withoutOcclusion":2014,"people":["townsman","set"]}
+{"w":390,"h":844,"part":"max","diff":16366,"withoutOcclusion":16366,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"min","diff":1332,"withoutOcclusion":1332,"people":["townsman","set"]}
+{"w":844,"h":390,"part":"max","diff":68053,"withoutOcclusion":68053,"people":["townsman","set"]}
+PASS merchant visible at minimum/maximum zoom in portrait/landscape

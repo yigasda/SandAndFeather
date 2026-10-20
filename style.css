@@ -1868,9 +1868,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 }
 
 /* Runtime original10 menu adaptation. Source: docs/handoff/menu-original10.
-   Scoped to compact landscape menus; portrait and ordinary interaction cards keep their layout. */
+   Shared phone menu art; portrait stacks the same content below. */
 #sf_game :is(.sf_menu_header_art,.sf_menu_current,.sf_menu_nav,.sf_bond_selection_context,.sf_bond_record_count,.sf_bond_gift_name) { display:none; }
-@media (orientation:landscape) and (max-height:540px) {
+@media (orientation:landscape) and (max-height:540px), (orientation:portrait) and (max-width:600px) {
  #sf_game[data-ui-theme] .sf_pop_wrap.sf_menu_window { padding:0;background:var(--sf-card); }
  #sf_game[data-ui-theme] .sf_menu_window > .sf_pop { width:100%;height:100%;max-width:100%;max-height:100%;padding:10px;border:0;border-radius:0;gap:0;box-shadow:none;background:var(--sf-card) var(--menu-paper) repeat;overflow:hidden; }
  #sf_game[data-ui-theme] .sf_menu_window > .sf_pop::before { inset:0;border:10px solid transparent;border-image:var(--menu-frame) var(--slice-frame) stretch;border-image-width:10px;clip-path:inset(44px 0 0);pointer-events:none;z-index:3; }
@@ -1972,9 +1972,52 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 
 /* Approved original10: walnut semantic symbols use its readable foreground. */
 .sf_bond_semantic { display:contents; }
-@media (orientation:landscape) and (max-height:540px) {
+@media (orientation:landscape) and (max-height:540px), (orientation:portrait) and (max-width:600px) {
  #sf_game .sf_menu_window .sf_bond_semantic { position:relative;display:inline-flex;flex:none;width:18px;height:18px; }
  #sf_game .sf_menu_window .sf_bond_motto .sf_bond_semantic { height:20px; }
  #sf_game[data-ui-theme='walnut'] .sf_menu_window .sf_bond_semantic > img { visibility:hidden; }
  #sf_game[data-ui-theme='walnut'] .sf_menu_window .sf_bond_semantic::after { content:'';position:absolute;inset:0;background:var(--sf-ink);mask-image:var(--semantic-icon);mask-size:contain;mask-position:center;mask-repeat:no-repeat; }
+}
+
+/* Portrait home parity: two stacked HUD columns, with room for the map and thumbs. */
+@media (orientation:portrait) and (max-width:600px) {
+ #sf_game[data-ui-theme] { --hud-left:18px;--hud-right:18px;--hud-top:calc(19px + env(safe-area-inset-top,0px));--hud-column:calc(100% - 154px); }
+ #sf_game[data-ui-theme] .sf_top { left:var(--hud-left);right:var(--hud-right);top:var(--hud-top); }
+ #sf_game[data-ui-theme] .sf_date_card { width:var(--hud-column);min-height:56px;height:auto;padding:2px;border-width:6px; }
+ #sf_game[data-ui-theme] .sf_date { font-size:14px; }
+ #sf_game[data-ui-theme] .sf_date_sub { font-size:9px; }
+ #sf_game[data-ui-theme] .sf_mini { width:104px;height:86px; }
+ #sf_game[data-ui-theme] .sf_side_btns { display:none; }
+ #sf_game[data-ui-theme] .sf_duat_hud { left:var(--hud-left)!important;top:calc(var(--hud-top) + 62px)!important;width:calc(100% - 190px);box-sizing:border-box; }
+ #sf_game[data-ui-theme] .sf_chips { left:var(--hud-left);top:calc(var(--hud-top) + 164px);max-width:calc(100% - 36px);height:auto;flex-wrap:wrap;gap:2px; }
+ #sf_game[data-ui-theme] .sf_chip_rank { order:-1;display:inline-flex; }
+ #sf_game[data-ui-theme] .sf_hint_pill { left:var(--hud-left);top:calc(var(--hud-top) + 202px);max-width:calc(100% - 36px);white-space:normal;text-align:left; }
+ #sf_game[data-ui-theme] :is(.sf_menu,.sf_appearance,.sf_bag) { display:grid;place-items:center;position:absolute;top:calc(var(--hud-top) + 92px);width:32px;height:34px;min-width:0;padding:2px;border:3px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;border-radius:0;box-shadow:none;background:#463322;background-clip:padding-box;color:#f8e9cf;z-index:4; }
+ #sf_game[data-ui-theme] .sf_menu { right:calc(var(--hud-right) + 72px); }
+ #sf_game[data-ui-theme] .sf_appearance { right:calc(var(--hud-right) + 36px); }
+ #sf_game[data-ui-theme] .sf_bag { right:var(--hud-right); }
+ #sf_game[data-ui-theme] .sf_bag span { display:none; }
+ #sf_game[data-ui-theme] .sf_bag i { width:22px;height:24px;opacity:1; }
+ #sf_game[data-ui-theme] .sf_controls { bottom:calc(30px + env(safe-area-inset-bottom,0px)); }
+ #sf_game[data-ui-theme] .sf_tabs { display:none;left:auto;right:var(--hud-right);top:calc(var(--hud-top) + 132px);bottom:auto;width:180px;max-height:calc(100% - 180px);overflow-y:auto;z-index:5; }
+ #sf_game[data-ui-theme].sf_menu_open .sf_tabs { display:flex;flex-direction:column; }
+ #sf_game[data-ui-theme] .sf_tabs .sf_tab { display:flex;flex-direction:row;gap:8px;flex:none;min-height:40px;width:100%;justify-content:center; }
+ /* Title art stays at its native 44px height; navigation gets its own touch row. */
+ #sf_game[data-ui-theme] .sf_menu_window > .sf_pop > .sf_pop_head { height:92px;min-height:92px;align-items:flex-start;padding:8px 28px 0; }
+ #sf_game[data-ui-theme='temple'] .sf_menu_window > .sf_pop > .sf_pop_head { padding-left:70px; }
+ #sf_game[data-ui-theme] .sf_menu_header_art { height:44px; }
+ #sf_game[data-ui-theme] .sf_menu_nav { left:10px;right:10px;top:46px;gap:12px;background:var(--sf-card2);color:var(--sf-ink); }
+ #sf_game[data-ui-theme] .sf_menu_link { color:var(--sf-ink); }
+ #sf_game[data-ui-theme] .sf_menu_window > .sf_pop::before { clip-path:inset(92px 0 0); }
+ #sf_game[data-ui-theme] .sf_menu_window[data-kind='bond'] > .sf_pop > .sf_pop_scroll { overflow:auto; }
+ #sf_game[data-ui-theme] .sf_menu_window[data-kind='bond'] .sf_pop_body { height:auto;padding:0 8px; }
+ #sf_game .sf_menu_window .sf_bond { height:auto; }
+ #sf_game .sf_menu_window .sf_bond_tabs { flex-wrap:wrap;height:auto; }
+ #sf_game .sf_menu_window .sf_bond_selection_context { width:100%;margin:0 0 6px; }
+ #sf_game .sf_menu_window .sf_bond_columns { display:flex;flex-direction:column;gap:16px; }
+ #sf_game .sf_menu_window .sf_bond_left { overflow:visible; }
+ #sf_game .sf_menu_window .sf_bond_records { max-height:220px;flex:none;border-right:0;padding:0; }
+ #sf_game .sf_menu_window .sf_bond_right { overflow:visible;border-left:0;padding-left:0; }
+ #sf_game .sf_menu_window .sf_bond_footer { display:flex;flex-direction:column;align-items:stretch;padding-top:10px; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_btn.sf_bond_memory { align-self:flex-end; }
 }

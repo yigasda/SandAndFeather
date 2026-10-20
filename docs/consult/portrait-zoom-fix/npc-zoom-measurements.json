@@ -1,0 +1,266 @@
+[
+  {
+    "w": 390,
+    "h": 844,
+    "part": "day",
+    "map": "ombos",
+    "npcs": [
+      {
+        "id": "set",
+        "x": 24,
+        "y": 12,
+        "look": "set",
+        "label": "세트",
+        "en": "Set",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "horus",
+        "x": 28,
+        "y": 12,
+        "look": "horus",
+        "label": "호루스",
+        "en": "Horus",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "merchant",
+        "x": 12,
+        "y": 17,
+        "look": "townsman",
+        "label": "상인",
+        "text": "좌판 너머로 고개를 끄덕인다. 사고팔기는 생활 단계에서 열려."
+      }
+    ],
+    "people": [
+      {
+        "look": "townsman",
+        "x": 12,
+        "y": 17,
+        "dir": "down",
+        "step": 0,
+        "moving": false
+      },
+      {
+        "look": "set",
+        "x": 13.195015528100077,
+        "y": 17.902492235949964,
+        "dir": "down",
+        "step": 0,
+        "moving": false,
+        "walkT": 0,
+        "mate": true,
+        "top": 839.7751397647058
+      }
+    ],
+    "zoom": 3.1029411764705883,
+    "cam": {
+      "x": 329.88235294117646,
+      "y": 0
+    },
+    "diff": 2014,
+    "withoutOcclusion": 2014
+  },
+  {
+    "w": 390,
+    "h": 844,
+    "part": "day",
+    "map": "ombos",
+    "npcs": [
+      {
+        "id": "set",
+        "x": 24,
+        "y": 12,
+        "look": "set",
+        "label": "세트",
+        "en": "Set",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "horus",
+        "x": 28,
+        "y": 12,
+        "look": "horus",
+        "label": "호루스",
+        "en": "Horus",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "merchant",
+        "x": 12,
+        "y": 17,
+        "look": "townsman",
+        "label": "상인",
+        "text": "좌판 너머로 고개를 끄덕인다. 사고팔기는 생활 단계에서 열려."
+      }
+    ],
+    "people": [
+      {
+        "look": "townsman",
+        "x": 12,
+        "y": 17,
+        "dir": "down",
+        "step": 0,
+        "moving": false
+      },
+      {
+        "look": "set",
+        "x": 13.195015528100077,
+        "y": 17.902492235949964,
+        "dir": "down",
+        "step": 0,
+        "moving": false,
+        "walkT": 0,
+        "mate": true,
+        "top": 639.35325
+      }
+    ],
+    "zoom": 12,
+    "cam": {
+      "x": 2394,
+      "y": 2612
+    },
+    "diff": 16366,
+    "withoutOcclusion": 16366
+  },
+  {
+    "w": 844,
+    "h": 390,
+    "part": "day",
+    "map": "ombos",
+    "npcs": [
+      {
+        "id": "set",
+        "x": 24,
+        "y": 12,
+        "look": "set",
+        "label": "세트",
+        "en": "Set",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "horus",
+        "x": 28,
+        "y": 12,
+        "look": "horus",
+        "label": "호루스",
+        "en": "Horus",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "merchant",
+        "x": 12,
+        "y": 17,
+        "look": "townsman",
+        "label": "상인",
+        "text": "좌판 너머로 고개를 끄덕인다. 사고팔기는 생활 단계에서 열려."
+      }
+    ],
+    "people": [
+      {
+        "look": "townsman",
+        "x": 12,
+        "y": 17,
+        "dir": "down",
+        "step": 0,
+        "moving": false
+      },
+      {
+        "look": "set",
+        "x": 13.195015528100077,
+        "y": 17.902492235949964,
+        "dir": "down",
+        "step": 0,
+        "moving": false,
+        "walkT": 0,
+        "mate": true,
+        "top": 346.15130361904767
+      }
+    ],
+    "zoom": 2.511904761904762,
+    "cam": {
+      "x": 0,
+      "y": 333.42857142857144
+    },
+    "diff": 1332,
+    "withoutOcclusion": 1332
+  },
+  {
+    "w": 844,
+    "h": 390,
+    "part": "day",
+    "map": "ombos",
+    "npcs": [
+      {
+        "id": "set",
+        "x": 24,
+        "y": 12,
+        "look": "set",
+        "label": "세트",
+        "en": "Set",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "horus",
+        "x": 28,
+        "y": 12,
+        "look": "horus",
+        "label": "호루스",
+        "en": "Horus",
+        "talk": true,
+        "where": "in the temple courtyard of Ombos",
+        "whereKo": "신전 앞마당"
+      },
+      {
+        "id": "merchant",
+        "x": 12,
+        "y": 17,
+        "look": "townsman",
+        "label": "상인",
+        "text": "좌판 너머로 고개를 끄덕인다. 사고팔기는 생활 단계에서 열려."
+      }
+    ],
+    "people": [
+      {
+        "look": "townsman",
+        "x": 12,
+        "y": 17,
+        "dir": "down",
+        "step": 0,
+        "moving": false
+      },
+      {
+        "look": "set",
+        "x": 13.195015528100077,
+        "y": 17.902492235949964,
+        "dir": "down",
+        "step": 0,
+        "moving": false,
+        "walkT": 0,
+        "mate": true,
+        "top": 83.52987499999995
+      }
+    ],
+    "zoom": 18,
+    "cam": {
+      "x": 3332,
+      "y": 4794
+    },
+    "diff": 68053,
+    "withoutOcclusion": 68053
+  }
+]

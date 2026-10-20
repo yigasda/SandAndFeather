@@ -31,7 +31,7 @@ export class Renderer {
         this.top = document.createElement('canvas');
         this.referenceActors = document.createElement('canvas');
         this.map = null; this.season = null;
-        this.userZoom = 1; this.zoom = 2; this.cam = { x: 0, y: 0 };
+        this.userZoom = null; this.zoom = 2; this.cam = { x: 0, y: 0 };
         this.art = new Map(); // drawn pictures from data/sprites.json, one small canvas each
         this.artScale = new Map();
         this.motion = new Map(); // look → standing/walking frames in their atlas (Set, Somang, Horus)
@@ -162,7 +162,6 @@ export class Renderer {
     }
     setMap(map, season) {
         if (this.map === map && this.season === season) return;
-        if (this.map?.id !== map.id) this.userZoom = 1;
         this.map = map; this.season = season;
         this.fitZoom();
         this.paintGround();
@@ -191,14 +190,16 @@ export class Renderer {
         // Preserve any margin already present at the original view; never enlarge it by zooming out.
         return { base, min: Math.min(base, cover), max: Math.max(base, cover) * 3 };
     }
+    // Keep the chosen scale across maps. A small map may clamp the view temporarily,
+    // without replacing the preference; untouched cameras still use each map default.
     fitZoom() {
         const { base, min, max } = this.zoomLimits();
-        this.zoom = Math.max(min, Math.min(max, base * this.userZoom));
+        this.zoom = Math.max(min, Math.min(max, this.userZoom === null ? base : (this.baseZoom || 2) * this.userZoom));
     }
     setUserZoom(value) {
-        const { base, min, max } = this.zoomLimits();
+        const { min, max } = this.zoomLimits();
         this.zoom = Math.max(min, Math.min(max, value));
-        this.userZoom = this.zoom / base;
+        this.userZoom = this.zoom / (this.baseZoom || 2);
     }
     // and the people drawn larger than their tile (map.d.actorScale), so they do not shrink with the camera
     actorScale() { return this.map?.d?.actorScale || 1; }

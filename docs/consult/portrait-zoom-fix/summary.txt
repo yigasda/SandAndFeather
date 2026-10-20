@@ -1,0 +1,10 @@
+== 2026-10-20 11:53:37 기준 코드 717fee00+수정2c7b3cf · 검사: portrait-zoom hint-rotation pad-tabs landscape portal-walk:--exit-lifecycle verify-cozy-ui verify-ui-themes verify-full-map
+문법: 717fee00 이후 바뀐 JS 8개 통과
+portrait-zoom        exit 0  통과 7 실패 0  54s
+hint-rotation        exit 0  통과 8 실패 0  30s
+pad-tabs             exit 0  통과 16 실패 0  70s
+landscape            exit 0  통과 11 실패 0  49s
+portal-walk_--exit-lifecycle exit 1  통과 0 실패 0  1s
+verify-cozy-ui       exit 0  통과 0 실패 0  23s
+verify-ui-themes     exit 0  통과 0 실패 0  75s
+verify-full-map      exit 0  통과 0 실패 0  23s

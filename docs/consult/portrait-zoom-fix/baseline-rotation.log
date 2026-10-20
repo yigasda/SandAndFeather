@@ -1,0 +1,8 @@
+PASS classic event hint rotation stable
+PASS walnut event hint rotation stable
+PASS journal event hint rotation stable
+PASS temple event hint rotation stable
+PASS cozy event hint rotation stable
+PASS 390x844 pinch recovers after rotation/cancel
+PASS 844x390 pinch recovers after rotation/cancel
+PASS 390x844 pinch recovers after rotation/cancel

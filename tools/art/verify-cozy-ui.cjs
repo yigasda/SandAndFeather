@@ -32,14 +32,14 @@ assert.equal(await p.evaluate(()=>JSON.stringify(cozyTest.state.getState().bag.i
 assert.equal(await p.locator('.sf_inventory_detail button,.sf_inventory_detail small').count(),0);
 assert.equal(await p.locator('.sf_inventory_icon_frame > *').count(),1);
 await p.locator('.sf_inventory_slot[aria-pressed="true"]').click();assert((await last().innerText()).includes('지금 꺼내기'));await close();passed.push('inventory groups/filter/detail retain individual UID/history and existing item actions');
-await p.locator('[data-tab="party"]').click();await capture('03-party-mobile');await bounds();
+if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();await p.locator('[data-tab="party"]').click();await capture('03-party-mobile');await bounds();
 assert((await last().locator('.sf_party_now').innerText()).includes('동행'));for(const id of ['set','horus']){await p.locator(`[data-detail="${id}"]`).click();await images();assert.equal(await last().locator('.sf_portrait_full').count(),1);assert.equal(await last().locator('.sf_gallery_dot').count(),3);await bounds();if(id==='set')await capture('04-set-full');await close();}
 const setRow=last().locator('.sf_list_row').filter({has:p.locator('b',{hasText:/^세트$/})});await setRow.getByRole('button',{name:'고르기'}).click();
 assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.with),'set');
 await last().locator('[data-lead="set"]').click();await p.waitForTimeout(100);assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.lead),'set');
 await last().locator('[data-lead="somang"]').click();await p.waitForTimeout(100);assert.equal(await p.evaluate(()=>cozyTest.state.getState().party.lead),'somang');
 await close();passed.push('일행 shows 현재 동행, 자세히 shows the Set and Horus three-picture gallery; companion and 앞장 selection work');
-await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();assert((await last().locator('.sf_portrait img').getAttribute('src')).includes('gallery/somang-1.webp'));
+if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();assert((await last().locator('.sf_portrait img').getAttribute('src')).includes('gallery/somang-1.webp'));
 await capture('05-somang-character');await bounds();await close();await close();passed.push('Somang character screen retains stats/lessons and shows her standing sprite');
 await p.evaluate(async()=>{cozyTest.state.getState().party.with='';await cozyTest.win.travel('ombos',{x:24,y:13});});
 await p.waitForTimeout(150);await p.locator('.sf_talk').click();assert.equal(await last().getAttribute('data-kind'),'conversation');await images();await capture('06-conversation-calm');
@@ -47,7 +47,7 @@ assert.equal(await last().locator('.sf_portrait').count(),0);assert.equal(await 
 assert.equal(await p.evaluate(()=>document.querySelector('#send_textarea').value),await p.evaluate(()=>cozyTest.text));passed.push('conversation card has no portraits or expression buttons and sends no chat');await close();
 await p.evaluate(()=>cozyTest.win.travel('ombos',{x:28,y:13}));await p.waitForTimeout(150);await p.locator('.sf_talk').click();await images();
 assert.equal(await last().locator('.sf_portrait').count(),0);await capture('11-horus-conversation');await close();
-await p.setViewportSize({width:320,height:740});await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();
+await p.setViewportSize({width:320,height:740});if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();await p.locator('[data-tab="party"]').click();await last().getByRole('button',{name:'소망 자세히'}).click();await images();
 const scrollBox=await last().locator('.sf_pop').boundingBox(),cdp=await p.context().newCDPSession(p);
 const x=scrollBox.x+scrollBox.width/2,y=Math.min(620,scrollBox.y+scrollBox.height-70);
 await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
