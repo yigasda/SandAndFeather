@@ -1,0 +1,23 @@
+/* Preview only. Original PNG pieces, with uniform scaling of ornaments. */
+#sf_game .sf_pop_wrap[data-kind=bond] .sf_pop_head{width:calc(100% + 20px)!important;margin:-10px -10px 10px!important;padding:0 28px!important;background:none!important;border:0!important;box-shadow:none!important;isolation:isolate;color:var(--header-ink)!important}
+#sf_game .source-header{position:absolute;inset:0;z-index:-1;pointer-events:none}
+#sf_game .sf_pop_wrap[data-kind=bond] .sf_pop_head::after,#sf_game .art-header-rule{display:none!important}
+#sf_game[data-ui-theme=classic],#sf_game[data-ui-theme=walnut],#sf_game[data-ui-theme=cozy]{--header-ink:#f8e1b9}
+#sf_game[data-ui-theme=journal],#sf_game[data-ui-theme=temple]{--header-ink:#39281a}
+#sf_game .integrated-nav .sf_btn,#sf_game .sf_pop_wrap[data-kind=bond] .sf_pop_title,#sf_game .sf_pop_wrap[data-kind=bond] .sf_pop_x{color:var(--header-ink)!important}
+#sf_game .current-section-icon{background:var(--header-ink)!important}
+#sf_game .integrated-nav .sf_btn[aria-selected=true]::after{background:var(--header-ink)!important}
+/* Whole title owns the upper corners. The original body frame starts below it. */
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind=bond] .sf_pop::before{border-image-source:var(--art-frame)!important;border-image-slice:var(--slice-frame)!important;border-top-width:0!important;clip-path:inset(44px 0 0)!important;-webkit-clip-path:inset(44px 0 0)!important}
+/* Keep focus internal and distinct from selected PNG. No outer rectangular ring. */
+#sf_game .sf_bond button:focus-visible,#sf_game .integrated-nav button:focus-visible,#sf_game .sf_pop_x:focus-visible{outline:none!important;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+#sf_game .sf_bond [data-preview-state=focus]{outline:none!important}
+/* Use original slot and selected art, not substituted button or primary art. */
+#sf_game[data-ui-theme=journal] .sf_bond .sf_inventory_slot.sf_bond_slot{border-image:var(--art-slot) var(--slice-slot) stretch!important;outline:none!important;background:var(--sf-card2) var(--art-paper) repeat!important;background-clip:padding-box!important}
+#sf_game[data-ui-theme=journal] .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed=true]{border-image:var(--art-selected) var(--slice-selected) stretch!important}
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind=bond] .sf_pop_head::after{display:none!important}
+#sf_game[data-ui-theme] .sf_pop_wrap[data-kind=bond] .sf_pop_x{background:none!important;box-shadow:none!important;border:0!important}
+#sf_game[data-ui-theme=cozy] .sf_pop_wrap[data-kind=bond] .sf_pop_x{right:44px!important}
+#sf_game[data-ui-theme=temple] .sf_pop_wrap[data-kind=bond] .sf_pop_head{padding-left:70px!important}
+#sf_game[data-ui-theme=walnut] .integrated-nav i{transform:translateY(-5px)}
+#sf_game .integrated-nav button:focus-visible i{filter:brightness(1.35);translate:0 -2px}

@@ -1,0 +1,13 @@
+{
+  "source": "bond-original10",
+  "sourceLibraryZip": "libfile_ca45e7eb64148191b9dad256bf774fbb",
+  "baseCommit": "c5569cc53fcb6cfdab44fcb54f9abdab04cbd6c4",
+  "originalSha256": {
+    "preview.css": "5cb403ba78731541180a2d6968cf0295d2e240a105f4c29798efe19401e95590",
+    "components-art.css": "8557d215e69331cbcb93ce75f71526233439ab044802d17d006f8b50e62ebdb3",
+    "original-art.css": "1395a738086e78be27001a4051a9c8fe99b23a68a530a2e92fa5b5fa27ca7c0d",
+    "icon-fit.json": "7172e2352a7a6538beac8171a5465beb4341ddfe0425d9f8c7f8e1b19fe4668f",
+    "capture.cjs": "e815a04f242fa5e7fe40b0d2c83e005a5f33dfdf1f5d90667cb1f57b92ce63dd"
+  },
+  "changes": "CSS and icon-fit copied byte-for-byte. Capture only: portable paths, loopback/disposable guard, configurable Chromium, no full host HTML export."
+}
