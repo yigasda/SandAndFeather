@@ -58,6 +58,31 @@ export function buildHud(root) {
         <button type="button" class="sf_tab sf_menu_close">게임 닫기</button>
       </nav>`;
     const q = s => root.querySelector(s);
+    // Font loading, browser text scaling and rotation can wrap the status chips.
+    // Their painted bottom (not a fixed row height) determines where the hint starts.
+    const chips = q('.sf_chips'), hint = q('.sf_hint_pill'), dateCard = q('.sf_date_card');
+    let layoutFrame = 0;
+    const scheduleLayout = () => {
+        cancelAnimationFrame(layoutFrame);
+        layoutFrame = requestAnimationFrame(() => {
+            if (root.hidden || !root.getBoundingClientRect().width) return;
+            const bounds = root.getBoundingClientRect();
+            const sx = bounds.width / root.offsetWidth || 1, sy = bounds.height / root.offsetHeight || 1;
+            const dateBottom = `${Math.ceil((dateCard.getBoundingClientRect().bottom - bounds.top) / sy - root.clientTop + 6)}px`;
+            if (root.style.getPropertyValue('--sf-date-bottom') !== dateBottom) root.style.setProperty('--sf-date-bottom', dateBottom);
+            const rects = [...chips.children].map(e => e.getBoundingClientRect());
+            const bottom = Math.max(...rects.map(r => r.bottom)), left = Math.min(...rects.map(r => r.left)), right = Math.max(...rects.map(r => r.right));
+            const values = { '--sf-status-bottom': `${Math.ceil((bottom - bounds.top) / sy - root.clientTop + 6)}px`, '--sf-status-width': `${(right - left) / sx}px` };
+            for (const [key, value] of Object.entries(values)) if (root.style.getPropertyValue(key) !== value) root.style.setProperty(key, value);
+            const hintBottom = `${Math.ceil((hint.getBoundingClientRect().bottom - bounds.top) / sy - root.clientTop + 6)}px`;
+            if (root.style.getPropertyValue('--sf-hint-bottom') !== hintBottom) root.style.setProperty('--sf-hint-bottom', hintBottom);
+        });
+    };
+    const layoutObserver = new ResizeObserver(scheduleLayout);
+    for (const el of [root, dateCard, chips, hint, ...chips.children]) layoutObserver.observe(el);
+    window.addEventListener('orientationchange', scheduleLayout);
+    window.addEventListener('resize', scheduleLayout);
+    window.visualViewport?.addEventListener('resize', scheduleLayout);
     return {
         root, menu: q('.sf_menu'), view: q('.sf_view'), dateCard: q('.sf_date_card'), date: q('.sf_date'), season: q('.sf_season'), dot: q('.sf_dot'), sync: q('.sf_sync'),
         collapse: q('.sf_collapse'), close: q('.sf_close'), appearance: q('.sf_appearance'), mini: q('.sf_mini'), miniCv: q('.sf_mini_cv'), miniName: q('.sf_mini_name'),
