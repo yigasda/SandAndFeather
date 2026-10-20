@@ -1211,7 +1211,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme] .sf_round i, #sf_game[data-ui-theme] .sf_tab i { display:block;background-position:center;background-size:contain;background-repeat:no-repeat;image-rendering:pixelated; }
 #sf_game[data-ui-theme] .sf_round i::before,#sf_game[data-ui-theme] .sf_tab i::before { content:none; }
 #sf_game[data-ui-theme] .sf_round i { width:26px;height:29px; }
-#sf_game[data-ui-theme] .sf_bag i { display:block;width:20px;height:22px;background:var(--skin-bag) center/contain no-repeat;image-rendering:pixelated; }
+#sf_game[data-ui-theme] .sf_bag i { display:block;width:var(--bag-crop-w);height:var(--bag-crop-h);background-image:var(--skin-action-bag);background-size:var(--bag-sheet-w) var(--bag-sheet-h);background-position:var(--bag-crop-x) var(--bag-crop-y);background-repeat:no-repeat;image-rendering:pixelated; }
 #sf_game[data-ui-theme] .sf_bag i::before { content:none; }
 #sf_game[data-ui-theme] .sf_talk i { background-image:var(--skin-talk); }
 #sf_game[data-ui-theme] .sf_tabs { left:7px;right:7px;bottom:5px;border:9px solid transparent;border-image:var(--skin-bar) var(--slice-bar) stretch;border-radius:0;background:#3c2b1f;background-clip:padding-box;box-shadow:none;padding:0 0 env(safe-area-inset-bottom,0px);gap:0; }
@@ -1819,6 +1819,21 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 /* 가방: always up under the gear (사용자 10-19: 평상시에도 위에, 공격 때처럼); 궁 takes its old place by 공격 in a fight */
 #sf_game .sf_bag { top: calc(98px + 34px + 8px + env(safe-area-inset-top, 0px)); }
 #sf_game[data-ui-theme] .sf_bag { top: calc(114px + 31px + 8px + env(safe-area-inset-top, 0px)); }
+/* The original action-bag artwork, cropped to its icon: no replacement symbol or recolouring.
+   Source rectangles exclude the baked label and rim; preserve each theme's aspect ratio. */
+#sf_game[data-ui-theme='classic'] { --bag-sheet-w:52.0000px; --bag-sheet-h:52.5000px; --bag-crop-x:-15.0000px; --bag-crop-y:-10.0000px; --bag-crop-w:22.0000px; --bag-crop-h:22.0000px; }
+#sf_game[data-ui-theme='walnut'] { --bag-sheet-w:56.2222px; --bag-sheet-h:55.6111px; --bag-crop-x:-17.1111px; --bag-crop-y:-11.0000px; --bag-crop-w:22.0000px; --bag-crop-h:20.7778px; }
+#sf_game[data-ui-theme='journal'] { --bag-sheet-w:58.2703px; --bag-sheet-h:58.8649px; --bag-crop-x:-18.4324px; --bag-crop-y:-10.7027px; --bag-crop-w:20.8108px; --bag-crop-h:22.0000px; }
+#sf_game[data-ui-theme='temple'] { --bag-sheet-w:62.2439px; --bag-sheet-h:62.7805px; --bag-crop-x:-20.3902px; --bag-crop-y:-13.4146px; --bag-crop-w:21.4634px; --bag-crop-h:22.0000px; }
+#sf_game[data-ui-theme='cozy'] { --bag-sheet-w:48.4000px; --bag-sheet-h:52.2500px; --bag-crop-x:-14.3000px; --bag-crop-y:-7.7000px; --bag-crop-w:20.9000px; --bag-crop-h:22.0000px; }
+/* Same frame source and title backing as the current theme's minimap/title panel. */
+#sf_game[data-ui-theme] .sf_icon_btn:is(.sf_appearance, .sf_bag, .sf_collapse, .sf_close) {
+ border:4px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;
+ border-radius:0;background:#423023d9;background-clip:padding-box;color:#f8e9cf;box-shadow:none;padding:0;
+}
+#sf_game[data-ui-theme='temple'] .sf_icon_btn:is(.sf_appearance, .sf_bag, .sf_collapse, .sf_close) {
+ border-image:var(--skin-button) var(--slice-button) stretch;
+}
 /* 궁: the lead's picture in the middle, its rim the gauge; ready, a soft glow; filling, the picture a little darker */
 #sf_game .sf_ult { position: relative; width: 64px; height: 64px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; align-self: flex-end;
   background: conic-gradient(#ffd25e calc(var(--g, 0) * 1turn), #2a1a10 0); box-shadow: 0 0 0 2px #4a2414; touch-action: manipulation; }
