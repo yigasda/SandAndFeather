@@ -232,6 +232,7 @@ python3 tools/art/desert-mob-pack.py --hit [종 …]   # 시트는 두고 피격
 | `mob-art-load.cjs [out]` | (이름으로) | 몹 그림 로딩·메모리 | 측정 |
 | `tools/art/verify-full-map.cjs`·`verify-cozy-ui.cjs`·`verify-ui-themes.cjs` | ui | 옴보스 낮밤·UI·테마 | 통과 |
 
+- **원인 미확인 기록 — 호루스 궁 게이지(10-20):** `desert-ult.cjs` 영상 장면(자동 조작 60초)에서 한 번 호루스 게이지가 60초 안에 차지 않았다(그 실행의 규칙 검사는 모두 통과). 이후 desert-ult 3회와 호루스만 따로 `ult-horus-scene.cjs` 5회, 모두 14~16초 안에 참: 스킬 착지마다 맞힘·충전 있음(맞혔는데 충전 없음 0), 몹 전멸 시간 0, 쓰러짐 0, 무시된 누름은 공격·맞음 동작 중 누른 것뿐. **원인은 확정하지 못했다**(자동 조작 쪽인지 게임 쪽인지 모름). 확인된 버그가 아니어서 출시를 막지 않았고 게이지 수치는 바꾸지 않았다. 남은 위험: 드물게 호루스 궁이 1분 안에 안 찰 수 있음(멈춤·저장 손상은 아님). 다시 나오면 두 검사가 원인(충전 오류·기회 없음·빗나감·못 누름·쓰러짐·궁 쿨)을 실패 줄에 남긴다. 반복 검사는 여기서 끝냈다.
 - **시험 전용 훅(field.js):** `testOnly(kind, x, y, 수치)`, `testFace(dir)`, `testHold(true)`(스틱을 기울인 것처럼: 정해진 방향 공격 검사에 필수 — 안 쓰면 자동 돌기가 끼어듦), `testMobFace(right)`, `testRanges(true)`(초록 몸통 타원·파랑 방패·초록 주먹 줄·주황/노랑 기술 원), `testEvents`, `testHurt`, `testTouch`, `testArt`, `testReset`, `fieldState`; 궁 `testUlt({게이지, cd})`·`testUltFrame(who, ms)`(궁 그림 한 장면 멈춤 + 타격 범위); 안전구역 `testZones`·`testSafe(x, y)`·`testMobDeep()`; 맞음·때림 `testHit(who, atk)`·`testStrikeBy(who)`; 진단 `testBlow()`(지금 공격이 각 몹에 닿는지·벽 가림)·`testClear(ax, ay, bx, by)`(그 자리에 설 수 있고 몹이 보이는지 — 몹 옆에 세울 때). 시험 몹은 `nopush`(밀려나지 않음)로 거리 측정.
 - 시험에서 쓰는 거리 계산은 게임 함수를 쓰지 않고 시험 안에서 다시 계산한다(타원·주먹 줄·공격 상자). 도형 규칙을 바꾸면 시험의 `DEPTH`·`edge()`도 같이 바꾼다.
 
