@@ -16,7 +16,7 @@
 #   hit    타격·조준 desert-strike(2분) desert-target(5분) desert-horus-leap(1분) duat-field(1분)
 #   mob    몹 행동·안전구역 desert-entry-safe(3.5분) desert-b3(1분) desert-mob-hits(2분)
 #   input  버튼·조이스틱 pad-tabs(2분)
-#   map    출입·착지·동행·저장 이관 portal-walk 연결별(--connections, --temple-*; 기본값은 옛 02↔T1W라 쓰지 않음, 각 1~3분)
+#   map    출입·착지·동행·저장 이관 portal-walk 현재 연결별(--temple-*; 기본값은 옛 02↔T1W라 쓰지 않음, 각 1~3분)
 #          desert-maps(1분) desert-save-move(1분)
 #   ui     화면 verify-cozy-ui(0.5분) verify-ui-themes(1분) verify-full-map(옴보스 낮밤·이동)
 #   art    그림·메모리 desert-boss-view(0.5분) ult-memory(1.5분)
@@ -29,7 +29,7 @@ OUT=${OUT:-/tmp/st-tiers}
 BASE=HEAD   # --since <커밋>: 그 커밋 이후 바뀐 JS의 문법을 본다(커밋까지 한 변경도 포함)
 declare -A G=(
   [ult]="desert-ult ult-fx-view" [hit]="desert-strike desert-target desert-horus-leap duat-field"
-  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs landscape" [map]="portal-walk:--connections portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 portal-walk:--temple-w-e portal-walk:--temple-t2-11 portal-walk:--temple-e-17 portal-walk:--city-dwelling portal-walk:--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-maps desert-save-move"
+  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs landscape" [map]="portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 portal-walk:--temple-w-e portal-walk:--temple-t2-11 portal-walk:--temple-e-17 portal-walk:--city-dwelling portal-walk:--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-maps desert-save-move"
   [ui]="verify-cozy-ui verify-ui-themes verify-full-map" [art]="desert-boss-view ult-memory"
 )
 G[full]="${G[ult]} ${G[hit]} ${G[mob]} ${G[input]} ${G[map]} ${G[ui]} ${G[art]}"

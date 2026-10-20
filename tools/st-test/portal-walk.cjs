@@ -146,7 +146,10 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const me=await where(),dx=entry.x-me.x,dy=entry.y-me.y,d=Math.hypot(dx,dy);
             if(d<(INDEPENDENT_TILES?.02:.18)){arrived=true;break;}
             const speed=Math.max(INDEPENDENT_TILES?.2:.15,Math.min(1,d/.6));
-            await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(INDEPENDENT_TILES?20:50);
+            await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(20);
+            // Neutral before measuring: CDP round trips/video encoding must not leave
+            // the stick moving after the measured position (especially at pace 1.6).
+            await W.touch('touchMove',pad.x,pad.y);
         }
         await W.touch('touchEnd');await sleep(150);return arrived;
     }
@@ -417,13 +420,17 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             if(CONNECTIONS && leg>=PAIRS.length) ok((await where()).map===to,`${name}: 입력 중립 후 출구 안에서도 즉시 재전환 없음`);
             const entry = await page.evaluate(([to, land]) => T.map.getMap(to).d.entries[land], [to, land]);
             res.push(`  ${name}: 출구 앞 ${now.map.replace('desert_', '')} (${now.x.toFixed(1)}, ${now.y.toFixed(1)}) → 도착 ${arrivedAt.map.replace('desert_', '')} (${arrivedAt.x.toFixed(1)}, ${arrivedAt.y.toFixed(1)})`);
-            ok(arrivedAt.map === to && Math.hypot(arrivedAt.x - entry.x, arrivedAt.y - entry.y) < 0.6 && !arrivedAt.inExit, `${name}: 걸어서 도착, 착지 ${land}(${entry.x.toFixed(1)}, ${entry.y.toFixed(1)}) 자리, 트리거 밖`);
+            // The page polling result may arrive several moving frames after transition.
+            // Check the synchronous arrival observation, without changing gameplay input.
+            const landing = transition?.to === to ? {map:transition.to,x:transition.x,y:transition.y} : arrivedAt;
+            const landingInExit = await page.evaluate(p=>!!T.win.currentMap().exitAt(p.x+.5,p.y+.8),landing);
+            ok(landing.map === to && Math.hypot(landing.x - entry.x, landing.y - entry.y) < 0.6 && !landingInExit, `${name}: 걸어서 도착, 착지 ${land}(${entry.x.toFixed(1)}, ${entry.y.toFixed(1)}) 자리, 트리거 밖`);
             res.push('  held exit occupancy '+JSON.stringify({inExit:held.inExit,contract:'walking may enter threshold; no transition before neutral then departure/re-entry'}));
             ok(held.map === to, `${name}: 도착 뒤 1.2초 ${CONNECTIONS && leg < PAIRS.length ? '정지' : '입력 유지'}에도 되돌아가지 않음 (${held.map.replace('desert_', '')})`);
             await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-${to.replace('desert_', '')}-${land}.png`) });
             // Held input may carry the party away from its landing, even to the doorway wall.
             // Walk back (never teleport) before the separate landing-neighbourhood checks.
-            if(CONNECTIONS && leg >= PAIRS.length && held.map===to) {
+            if(CONNECTIONS && held.map===to) {
                 const count=await page.evaluate(()=>T.moves.length);
                 ok(await walkBackToLanding(entry),`${name}: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴`);
                 ok((await where()).map===to&&!(await where()).inExit&&await page.evaluate(()=>T.moves.length)===count,`${name}: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용`);
