@@ -2,7 +2,7 @@
 
 세트·호루스 RP 채팅 옆에서 돌아가는 이집트 오픈월드 게임이다. SillyTavern 확장으로 동작한다.
 
-**현재 버전 0.9.89.** 버전별 변경 내역은 [CHANGELOG.md](CHANGELOG.md)에 있다.
+**현재 버전 0.9.90.** 버전별 변경 내역은 [CHANGELOG.md](CHANGELOG.md)에 있다.
 
 ## 어디로 갈까요?
 

@@ -67,7 +67,7 @@ case " ${want[*]} " in *" ult-memory "*|*" ult-fx-view "*) python3 "$ROOT/tools/
 bad=0
 for t in "${want[@]}"; do
   # name:--flag,--flag → the script with those flags (portal-walk's connection sets)
-  n=${t%%:*}; args=(); [ "$n" != "$t" ] && IFS=',' read -ra args <<< "${t#*:}"; t=${t//[:,/.]/_}
+  n=${t%%:*}; args=(); [ "$n" != "$t" ] && IFS=',' read -ra args <<< "${t#*:}"; t=$(printf %s "$t" | tr ":,/." "____")
   f=$ROOT/tools/st-test/$n.cjs; [ -f "$f" ] || f=$ROOT/tools/st-test/$n.js; [ -f "$f" ] || f=$ROOT/tools/art/$n.cjs
   s=$(date +%s); (cd "$ROOT" && timeout 2400 node "$f" "$OUT/$t" "${args[@]}" > "$OUT/$t.log" 2>&1); e=$?
   printf '%-20s exit %s  통과 %s 실패 %s  %ss\n' "$t" "$e" "$(grep -c '^통과\|^PASS' "$OUT/$t.log")" "$(grep -c '^실패\|^FAIL' "$OUT/$t.log")" "$(( $(date +%s) - s ))" | tee -a "$OUT/summary.txt"
