@@ -168,6 +168,60 @@ def atlas(ids, out, fixtures, label, plans=None):
         im.save(out/f'{ident}-full-overlay.png');(out/f'{ident}-full-overlay.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
 
 
+def city_review(out):
+    """Review original 11/17 passages without proposing new runtime geometry."""
+    out.mkdir(parents=True, exist_ok=True)
+    maps=[json.loads((ROOT/f'data/maps/{ident}.json').read_text()) for ident in ('desert_city_gate','desert_city_plaza')]
+    arts=[Image.open(ROOT/d['source']['art']).convert('RGB') for d in maps]
+    offsets=[(24,210),(1080,210)]
+    im=Image.new('RGB',(2878,1840),'#151e28');g=ImageDraw.Draw(im)
+    def text(x,y,s,width,size=27,color='white'):
+        # Wrap by measured glyph width; retain legibility rather than shrink long labels.
+        line=''
+        for char in s:
+            if g.textlength(line+char,font=font(size))>width:
+                g.text((x,y),line,font=font(size),fill=color);y+=size+10;line=''
+            line+=char
+        if line:g.text((x,y),line,font=font(size),fill=color);y+=size+10
+        assert y<im.height-20, 'city review legend exceeds canvas'
+        return y
+    text(24,16,'11 · 17 원본 통로 비교 — 연결 결정용 / 런타임 변경 없음',2800,37)
+    text(24,72,'현재 도시 길: 02 작은 문 → 11 바깥길 → 11-A 석문 → 17-A 계단',2800)
+    text(24,112,'신규 신전 순환안: 02 큰 문 → 15 → T2 남쪽 → 같은 11-A 석문 → 11 바깥길 → 02 작은 문',2800,27,'#ffbc65')
+    for art,(ox,oy),title in zip(arts,offsets,('11 매몰도시 출입구 · 원본 1024×1536','17 지하도시 광장 · 원본 1774×887')):
+        im.paste(art,(ox,oy));text(ox,170,title,art.width,25)
+    def mark(index,xy,label,color='#ffbc65'):
+        ox,oy=offsets[index];x,y=xy[0]+ox,xy[1]+oy
+        g.ellipse((x-28,y-28,x+28,y+28),fill='#151e28',outline=color,width=4)
+        g.text((x-10,y-19),label,font=font(28),fill=color)
+    mark(0,(715,330),'A');mark(1,(1740,470),'A','#ed5cff')
+    for xy,label in [((180,355),'B'),((617,295),'C'),((1265,290),'D'),((885,205),'E')]:mark(1,xy,label,'#54e6ff')
+    # These broad boundary boxes are historical values, not newly selected doors.
+    d=maps[0];px=d['authoredCollision']['pixelWalk']['pixelsPerTile'];ox,oy=offsets[0]
+    historical=[]
+    for e in d['exits']:
+        if e['id'] not in ('left','bottom'):continue
+        x0,y0,x1,y1=[e[k]*px for k in ('x0','y0','x1','y1')]
+        historical.append({'id':e['id'],'sourceBox':[x0,y0,x1,y1]})
+        for x in np.arange(x0,x1,20):
+            for y in (y0,y1):g.line((ox+x,oy+y,ox+min(x+10,x1),oy+y),fill='#aab2bb',width=4)
+        for y in np.arange(y0,y1,20):
+            for x in (x0,x1):g.line((ox+x,oy+y,ox+x,oy+min(y+10,y1)),fill='#aab2bb',width=4)
+    x=1100;y=1125
+    rows=[('11-A ↔ 17-A', '현재 한 쌍인 석문·오른쪽 계단. T2 남쪽도 11-A를 요청하여 목적지가 충돌합니다.', '#ffbc65'),
+          ('11 회색 점선', '왼쪽 전체 범위·아래쪽 출구는 과거부터 보존된 경계값입니다. 새 문턱 승인이나 별도 석문을 뜻하지 않습니다.', '#aab2bb'),
+          ('17-B / C / D', '그림상 왼쪽 작은 문 / 중앙 주거 문 / 오른쪽 기록보관소 문. 기존 주거·18 역할 확인 없이 외부 연결로 재지정하지 않습니다.', '#54e6ff'),
+          ('17-E 뒤쪽 골목', '화면 위로 이어지는 독립 통로로 확정할 수 없습니다. 승인 충돌에서 위쪽 151개 행(y=0…150)에 걸을 수 있는 픽셀이 없습니다.', '#54e6ff'),
+          ('남은 결정', '11-A의 도시 연결을 유지할지, T2 연결로 바꿀 경우 17 접근을 어디에 둘지 사용자 지정이 필요합니다. 새 통로·착지·문턱은 적용하지 않았습니다.', '#ffbc65')]
+    for title,body,color in rows:
+        y=text(x,y,title,1720,27,color);y=text(x,y,body,1720,25)+15
+    text(24,1760,'원본 무수정 · 그림 표식은 통로 식별용이며 출구 트리거 후보 폴리곤이 아닙니다.',2800,25)
+    im.save(out/'11-17-passage-review.png')
+    mask=np.asarray(Image.open(ROOT/maps[1]['source']['collision']).convert('RGBA'))[...,3]>=128
+    evidence={'runtimeCommit':'dea6fedbd6445e6902891658a7b60e490ff5bcc9','sourceSizes':[list(a.size)for a in arts], 'historicalBoundaries':historical,'plazaTop151RowsWalkablePixels':int(mask[:151].sum()),'runtimeChanged':False,'decision':'11-A current 17 vs proposed T2; no alternate external route approved'}
+    (out/'11-17-passage-review.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('ids', nargs='*')
@@ -176,7 +230,11 @@ if __name__ == '__main__':
     parser.add_argument('--proposal', type=Path, help='Review-only JSON: map, exit, source-pixel polygon and landing')
     parser.add_argument('--atlas-fixtures', type=Path, help='Full source + separate legend with runtime initial follower fixtures')
     parser.add_argument('--atlas-plans', type=Path, help='Review-only unresolved routes, never writes runtime data')
+    parser.add_argument('--city-review', action='store_true', help='Side-by-side original 11/17 passage decision review only')
     args = parser.parse_args()
+    if args.city_review:
+        city_review(args.out)
+        sys.exit(0)
     if args.atlas_fixtures:
         atlas(args.ids, args.out, json.loads(args.atlas_fixtures.read_text()), args.label, json.loads(args.atlas_plans.read_text()) if args.atlas_plans else None)
         sys.exit(0)
