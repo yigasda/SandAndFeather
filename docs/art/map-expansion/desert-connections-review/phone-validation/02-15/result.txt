@@ -1,0 +1,120 @@
+통과 왕복 데이터 계약 desert_buried_temple/temple → desert_colonnade
+통과 왕복 데이터 계약 desert_colonnade/south → desert_buried_temple
+통과 buried_temple → colonnade: 연속 왕복의 출발 맵
+통과 buried_temple → colonnade: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":0,"arrival":{"map":"desert_colonnade","x":29.18872282615548,"y":22.833747620234718,"inExit":false,"mateInExit":false,"mate":{"x":28.09441069286418,"y":23.42923696126022},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":29.368776598620354,"y":22.454299929332503,"inExit":false,"mateInExit":false,"mate":{"x":28.470070018434416,"y":23.2414072984751},"floor":true,"mateFloor":true}}
+  buried_temple → colonnade: 출구 앞 buried_temple (60.8, 25.5) → 도착 colonnade (29.2, 22.8)
+통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 buried_temple → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 buried_temple → colonnade: 거리 시험 전 실제 최초 착지로 복귀
+  distance target {"target":1,"travelled":1.0091926995554203,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.0091926995554203 도달
+  independent excursion {"direction":[0,-1],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":28.793837374585188,"y":23.079523620399716},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.153816877824205,"y":22.907308998221506,"inExit":false,"mateInExit":false,"mate":{"x":28.793837374585188,"y":23.079523620399716},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":29.153816877824205,"y":21.887922685059966,"inExit":false,"mateInExit":false,"mate":{"x":29.279693680555706,"y":22.642034504280005},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":-1.0193863131615402,"distance":1.0193863131615402}}
+통과 buried_temple → colonnade: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0064772582447148,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.0064772582447148 도달
+  independent excursion {"direction":[0,1],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":28.793837374585188,"y":23.079523620399716},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.1586284402933,"y":22.891815397061684,"inExit":false,"mateInExit":false,"mate":{"x":29.153816877824205,"y":22.371148849399308},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":29.1586284402933,"y":23.9035926428601,"inExit":false,"mateInExit":false,"mate":{"x":29.157438740522867,"y":22.64359509180636},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":1.0117772457984167,"distance":1.0117772457984167}}
+통과 buried_temple → colonnade: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0243027664794973,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.0243027664794973 도달
+  independent excursion {"direction":[-1,0],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":28.793837374585188,"y":23.079523620399716},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.15865411695907,"y":22.887368284270686,"inExit":false,"mateInExit":false,"mate":{"x":29.1586284402933,"y":23.436561193648924},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":28.13435107967435,"y":22.887368284270686,"inExit":false,"mateInExit":false,"mate":{"x":29.158646808163283,"y":23.176555912236452},"floor":true,"mateFloor":true},"displacement":{"x":-1.0243030372847208,"y":0,"distance":1.0243030372847208}}
+통과 buried_temple → colonnade: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0110755592933032,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.0110755592933032 도달
+  independent excursion {"direction":[1,0],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":28.793837374585188,"y":23.079523620399716},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.164305124009374,"y":22.897169097283584,"inExit":false,"mateInExit":false,"mate":{"x":28.4483480324476,"y":22.887368284270686},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":30.16972940544715,"y":22.897169097283584,"inExit":false,"mateInExit":false,"mate":{"x":28.909738960518016,"y":22.89474675670321},"floor":true,"mateFloor":true},"displacement":{"x":1.0054242814377758,"y":0,"distance":1.0054242814377758}}
+통과 buried_temple → colonnade: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로
+통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
+통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
+통과 colonnade → buried_temple: 연속 왕복의 출발 맵
+통과 colonnade → buried_temple: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":1,"arrival":{"map":"desert_buried_temple","x":60.64051171031734,"y":25.81286072117363,"inExit":false,"mateInExit":false,"mate":{"x":59.56014532949236,"y":26.177138873715364},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":60.60731062573095,"y":26.006425970240404,"inExit":false,"mateInExit":false,"mate":{"x":59.7358036743872,"y":26.089309701267943},"floor":true,"mateFloor":true}}
+  colonnade → buried_temple: 출구 앞 colonnade (29.5, 23.0) → 도착 buried_temple (60.6, 25.8)
+통과 colonnade → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 colonnade → buried_temple: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (buried_temple)
+통과 colonnade → buried_temple: 거리 시험 전 실제 최초 착지로 복귀
+  distance target {"target":1,"travelled":1.0424350319953497,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.0424350319953497 도달
+  independent excursion {"direction":[0,-1],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.09647299005329,"y":25.908975043434896},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.675480470832106,"y":25.608989413922675,"inExit":false,"mateInExit":false,"mate":{"x":60.09647299005329,"y":25.908975043434896},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":60.675480470832106,"y":24.578019513459196,"inExit":false,"mateInExit":false,"mate":{"x":60.60828937844947,"y":26.00071975563643},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":-1.0309699004634787,"distance":1.0309699004634787}}
+통과 colonnade → buried_temple: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0473414658270777,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.0473414658270777 도달
+  independent excursion {"direction":[0,1],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.09647299005329,"y":25.908975043434896},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.673448089891295,"y":25.655389904665025,"inExit":false,"mateInExit":false,"mate":{"x":60.675480470832106,"y":24.940647205285604},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":60.673448089891295,"y":26.667796011281624,"inExit":false,"mateInExit":false,"mate":{"x":60.67425468227899,"y":25.227796706746016},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":1.0124061066165986,"distance":1.0124061066165986}}
+통과 colonnade → buried_temple: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0422320623390178,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.0422320623390178 도달
+  independent excursion {"direction":[-1,0],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.09647299005329,"y":25.908975043434896},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.67351488770767,"y":25.60616518631274,"inExit":false,"mateInExit":false,"mate":{"x":60.673448089891295,"y":26.17182735121324},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":59.631281923674976,"y":25.60616518631274,"inExit":false,"mateInExit":false,"mate":{"x":60.673486688382845,"y":26.054013470195546},"floor":true,"mateFloor":true},"displacement":{"x":-1.0422329640326922,"y":0,"distance":1.0422329640326922}}
+통과 colonnade → buried_temple: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0276427191226034,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.0276427191226034 도달
+  independent excursion {"direction":[1,0],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.09647299005329,"y":25.908975043434896},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.68730809876784,"y":25.620643822875945,"inExit":false,"mateInExit":false,"mate":{"x":60.05466803529836,"y":25.60616518631274},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":61.7011567051366,"y":25.620643822875945,"inExit":false,"mateInExit":false,"mate":{"x":60.26119189370651,"y":25.61480151067927},"floor":true,"mateFloor":true},"displacement":{"x":1.0138486063687537,"y":0,"distance":1.0138486063687537}}
+통과 colonnade → buried_temple: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → buried_temple: 최초 도착 동행 간격 유지
+통과 colonnade → buried_temple: 첫 도착 프레임 정확한 착지
+통과 buried_temple → colonnade: 연속 왕복의 출발 맵
+통과 buried_temple → colonnade: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":2,"arrival":{"map":"desert_colonnade","x":29.211866705369125,"y":22.76777403024526,"inExit":false,"mateInExit":false,"mate":{"x":28.156770091644027,"y":23.398057261870296},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":31.12944721763128,"y":18.106824323214095,"inExit":false,"mateInExit":false,"mate":{"x":30.65005177998328,"y":19.272062502455697},"floor":true,"mateFloor":true}}
+통과 buried_temple → colonnade: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  buried_temple → colonnade: 출구 앞 buried_temple (61.0, 25.5) → 도착 colonnade (29.2, 22.8)
+통과 buried_temple → colonnade: 걸어서 도착, 착지 south(29.2, 22.9) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 buried_temple → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 buried_temple → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 buried_temple → colonnade: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 buried_temple → colonnade: 거리 시험 전 실제 최초 착지로 복귀
+  distance target {"target":1,"travelled":1.0101121518534875,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.0101121518534875 도달
+  independent excursion {"direction":[0,-1],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":29.63799197273987,"y":21.732015274192182},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.158596948067533,"y":22.897253623337676,"inExit":false,"mateInExit":false,"mate":{"x":29.63799197273987,"y":21.732015274192182},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":29.158596948067533,"y":21.8870032327619,"inExit":false,"mateInExit":false,"mate":{"x":29.263911048574712,"y":22.641272326035487},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":-1.0102503905757771,"distance":1.0102503905757771}}
+통과 buried_temple → colonnade: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0258166220880085,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.0258166220880085 도달
+  independent excursion {"direction":[0,1],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":29.63799197273987,"y":21.732015274192182},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.158654360584215,"y":22.90587769821204,"inExit":false,"mateInExit":false,"mate":{"x":29.158596948067533,"y":22.184072521746632},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":29.158654360584215,"y":23.922932006703395,"inExit":false,"mateInExit":false,"mate":{"x":29.15864062735045,"y":22.662932007022444},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":1.0170543084913533,"distance":1.0170543084913533}}
+통과 buried_temple → colonnade: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0102520720672743,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.0102520720672743 도달
+  independent excursion {"direction":[-1,0],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":29.63799197273987,"y":21.732015274192182},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.158653837663053,"y":22.89111145449275,"inExit":false,"mateInExit":false,"mate":{"x":29.158654360584215,"y":23.69475255891418},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":28.148401774086572,"y":22.89111145449275,"inExit":false,"mateInExit":false,"mate":{"x":29.158654027559294,"y":23.201591510328228},"floor":true,"mateFloor":true},"displacement":{"x":-1.0102520635764805,"y":0,"distance":1.0102520635764805}}
+통과 buried_temple → colonnade: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.025639743390208,"blocked":false}
+통과 buried_temple → colonnade: 독립 1칸 실측 1.025639743390208 도달
+  independent excursion {"direction":[1,0],"origin":{"map":"desert_colonnade","x":29.158653846153847,"y":22.897115384615386,"inExit":false,"mateInExit":false,"mate":{"x":29.63799197273987,"y":21.732015274192182},"floor":true,"mateFloor":true},"start":{"map":"desert_colonnade","x":29.167197157816805,"y":22.89716615946652,"inExit":false,"mateInExit":false,"mate":{"x":28.445363832889687,"y":22.89111145449275},"floor":true,"mateFloor":true},"end":{"map":"desert_colonnade","x":30.184293589544055,"y":22.89716615946652,"inExit":false,"mateInExit":false,"mate":{"x":28.92429710492912,"y":22.89572273749303},"floor":true,"mateFloor":true},"displacement":{"x":1.01709643172725,"y":0,"distance":1.01709643172725}}
+통과 buried_temple → colonnade: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로
+통과 buried_temple → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → colonnade: 최초 도착 동행 간격 유지
+통과 buried_temple → colonnade: 첫 도착 프레임 정확한 착지
+통과 colonnade → buried_temple: 연속 왕복의 출발 맵
+통과 colonnade → buried_temple: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":3,"arrival":{"map":"desert_buried_temple","x":60.656699620427396,"y":25.716603382025347,"inExit":false,"mateInExit":false,"mate":{"x":59.47284208023323,"y":26.22079049834493},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":59.40747329043036,"y":32.85999857134948,"inExit":false,"mateInExit":false,"mate":{"x":59.65553376134156,"y":31.441525447609973},"floor":true,"mateFloor":true}}
+통과 colonnade → buried_temple: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  colonnade → buried_temple: 출구 앞 colonnade (29.6, 23.0) → 도착 buried_temple (60.7, 25.7)
+통과 colonnade → buried_temple: 걸어서 도착, 착지 temple(60.7, 25.6) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 colonnade → buried_temple: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (buried_temple)
+통과 colonnade → buried_temple: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → buried_temple: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 colonnade → buried_temple: 거리 시험 전 실제 최초 착지로 복귀
+  distance target {"target":1,"travelled":1.0463689226583597,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.0463689226583597 도달
+  independent excursion {"direction":[0,-1],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.426747785781345,"y":27.031525714041013},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.67480840402357,"y":25.613052616066557,"inExit":false,"mateInExit":false,"mate":{"x":60.426747785781345,"y":27.031525714041013},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":60.67480840402357,"y":24.574085622796186,"inExit":false,"mateInExit":false,"mate":{"x":60.605591930093496,"y":26.008849465311997},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":-1.0389669932703711,"distance":1.0389669932703711}}
+통과 colonnade → buried_temple: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0299020591118193,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.0299020591118193 도달
+  independent excursion {"direction":[0,1],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.426747785781345,"y":27.031525714041013},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.673474166931044,"y":25.652659894951952,"inExit":false,"mateInExit":false,"mate":{"x":60.67480840402357,"y":25.131431158814877},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":60.673474166931044,"y":26.650356604566365,"inExit":false,"mateInExit":false,"mate":{"x":60.67402130046836,"y":25.21035690197435},"floor":true,"mateFloor":true},"displacement":{"x":0,"y":0.9976967096144129,"distance":0.9976967096144129}}
+통과 colonnade → buried_temple: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.044628772988581,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.044628772988581 도달
+  independent excursion {"direction":[-1,0],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.426747785781345,"y":27.031525714041013},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.673514687174546,"y":25.60207749222425,"inExit":false,"mateInExit":false,"mate":{"x":60.673474166931044,"y":26.10175800170716},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":59.62888521302541,"y":25.60207749222425,"inExit":false,"mateInExit":false,"mate":{"x":60.673497451968196,"y":26.04827751568241},"floor":true,"mateFloor":true},"displacement":{"x":-1.0446294741491329,"y":0,"distance":1.0446294741491329}}
+통과 colonnade → buried_temple: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+  distance target {"target":1,"travelled":1.0304375066179574,"blocked":false}
+통과 colonnade → buried_temple: 독립 1칸 실측 1.0304375066179574 도달
+  independent excursion {"direction":[1,0],"origin":{"map":"desert_buried_temple","x":60.673513986013994,"y":25.620454545454546,"inExit":false,"mateInExit":false,"mate":{"x":60.426747785781345,"y":27.031525714041013},"floor":true,"mateFloor":true},"start":{"map":"desert_buried_temple","x":60.70807013532429,"y":25.6210625795074,"inExit":false,"mateInExit":false,"mate":{"x":60.18543218935327,"y":25.60207749222425},"floor":true,"mateFloor":true},"end":{"map":"desert_buried_temple","x":61.70395149263195,"y":25.6210625795074,"inExit":false,"mateInExit":false,"mate":{"x":60.26401261166754,"y":25.613250727107296},"floor":true,"mateFloor":true},"displacement":{"x":0.9958813573076597,"y":0,"distance":0.9958813573076597}}
+통과 colonnade → buried_temple: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → buried_temple: 최초 도착 동행 간격 유지
+통과 colonnade → buried_temple: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: buried_temple (61.7, 25.6) 그대로, 트리거 밖
+통과 페이지 오류 없음
+통과 실행 중 런타임·맵·시험 코드 동일
