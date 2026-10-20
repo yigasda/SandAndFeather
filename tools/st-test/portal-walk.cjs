@@ -16,13 +16,23 @@ const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
 const LIFECYCLE = process.argv.includes('--exit-lifecycle');
 const KEYBOARD = process.argv.includes('--keyboard');
+const NEW_PAIRS = process.argv.includes('--temple-15-w') ? [
+    ['desert_colonnade','forecourt','forecourt','desert_forecourt_west','east'],
+    ['desert_forecourt_west','east','east','desert_colonnade','forecourt'],
+] : process.argv.includes('--temple-t2-e') ? [
+    ['desert_votive_hall','east','east','desert_forecourt_east','east'],
+    ['desert_forecourt_east','east','east','desert_votive_hall','east'],
+] : process.argv.includes('--temple-t2-t3') ? [
+    ['desert_votive_hall','north','north','desert_guardian_gate','south'],
+    ['desert_guardian_gate','south','south','desert_votive_hall','north'],
+] : null;
 const VOTIVE = process.argv.includes('--temple-15-t2');
 const TEMPLE = process.argv.includes('--temple-02-15');
 const ARRIVALS = process.argv.includes('--arrivals');
 const INNER = process.argv.includes('--widths-inner');
 const WIDTHS = INNER || process.argv.includes('--widths');
-const CONNECTIONS = VOTIVE || TEMPLE || ARRIVALS || WIDTHS || process.argv.includes('--connections');
-const PAIRS = VOTIVE ? [
+const CONNECTIONS = !!NEW_PAIRS || VOTIVE || TEMPLE || ARRIVALS || WIDTHS || process.argv.includes('--connections');
+const PAIRS = NEW_PAIRS || (VOTIVE ? [
     ['desert_colonnade','stair','stair','desert_votive_hall','west'],
     ['desert_votive_hall','west','west','desert_colonnade','stair'],
 ] : TEMPLE ? [
@@ -43,7 +53,7 @@ const PAIRS = VOTIVE ? [
     ['desert_forecourt_east', 'west', 'east', 'desert_colonnade', 'forecourt'],
     ['desert_colonnade', 'forecourt', 'forecourt', 'desert_forecourt_east', 'east'],
     ['desert_forecourt_east', 'east', 'west', 'desert_forecourt_west', 'east'],
-] : [['desert_buried_temple', 'west', 'temple', 'desert_forecourt_west', 'south'], ['desert_forecourt_west', 'yard', 'south', 'desert_buried_temple', 'temple']];
+] : [['desert_buried_temple', 'west', 'temple', 'desert_forecourt_west', 'south'], ['desert_forecourt_west', 'yard', 'south', 'desert_buried_temple', 'temple']]);
 fs.mkdirSync(OUT, { recursive: true });
 let fail = 0; const res = [];
 const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; console.log(line); res.push(line); if (!c) fail++; };
@@ -180,7 +190,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             fs.writeFileSync(path.join(OUT,'follower-contract.json'),JSON.stringify(probe,null,2));
             ok(!probe.failures.length,`동행 초기화·첫 걸음·교대·전투 위치 우선 계약: ${probe.checked} 조합, 실패 ${probe.failures.length}`);
         }
-        if(WIDTHS && !TEMPLE && !VOTIVE) {
+        if(WIDTHS && !TEMPLE && !VOTIVE && !NEW_PAIRS) {
             const checks=await page.evaluate(()=>{
                 const m=T.map.getMap('desert_forecourt_east'),e=m.d.exits.find(e=>e.id==='east'),px=m.d.authoredCollision.pixelWalk.pixelsPerTile;
                 const p=(x,y)=>T.map.containsExit(e,x/px,y/px);
