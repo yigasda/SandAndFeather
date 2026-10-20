@@ -209,30 +209,30 @@ python3 tools/art/desert-mob-pack.py --hit [종 …]   # 시트는 두고 피격
 
 ## 7. 시험 (실행법)
 
-```sh
-cd /home/user/sillytavern/sillytavern && node server.js --port 8000 --listen false   # 컨테이너가 다시 뜨면 서버가 죽어 있음 → 다시 켬
-EXT=/home/user/sillytavern/sillytavern/data/default-user/extensions/SandAndFeather
-cp -r src data index.js manifest.json style.css README.md "$EXT"/
-export NODE_PATH=/opt/node-tools/node_modules
-node --experimental-default-type=module --check src/packs/duat/field.js   # 문법 검사는 모듈 모드로(중복 선언을 잡음)
-```
+실행·고르는 기준·결과 재사용·실패 재검사·진단 반복은 [작업·검수 절차](OPUS-RELEASE-CHECKS.md#작업검수-절차-단계별-검사)를 따른다. 실행은 `bash tools/st-test/tiers.sh <묶음|검사>`(서버 복사·잠금·기준 코드 기록). 시험 서버가 죽어 있으면 `cd /home/user/sillytavern/sillytavern && node server.js --port 8000 --listen false`.
 
 - 브라우저: `/usr/bin/chromium`이 없으면 Playwright 기본 chromium + `--no-sandbox`(스크립트가 알아서 고름). ST 첫 화면은 Save 버튼을 누르고 캐릭터가 뜰 때까지 기다린다(스크립트에 들어 있음).
+- 마지막 결과는 기록 시점(2026-10-19~20, 브랜치 `ccr-3d224608-3ozn95`)의 것이다. 재사용하려면 그 뒤 변경이 그 검사가 보는 코드를 건드렸는지 먼저 본다.
 
-| 스크립트 | 보는 것 | 마지막 결과 |
-|---|---|---|
-| `desert-target.cjs [out]` | 12종 × 세 사람, 여덟 방향 스틱 뗀 공격: 돌아서 침·그림 방향·몹이 봄, 닿지 않는 곳은 돌기만, 동행이 12종을 실제로 침 | 76 통과 |
-| `desert-strike.cjs [out]` | 일반 공격 네 방향(몸 끝·빈 공간·방패만·주먹만·옆·뒤·벽), 손 뗀 돌기, 막는 수문장이 봄 | 130 통과 |
-| `desert-mob-hits.cjs [out]` | 12종 × 호루스 착지·명중, 세트·소망 기술 닿는 거리 | 37 통과 |
-| `desert-horus-leap.cjs [out]` | 호루스 A안 착지, 가드 깨기(세 사람) | 16 통과 |
-| `desert-b3.cjs [out]` | T1W 가죽 방패병 한 마리 전투 전체 | 통과 |
-| `desert-b2.cjs`, `desert-15-lift.cjs`, `puzzle-lift.mjs`, `puzzle-optics.mjs` | 15 퍼즐 | 통과 |
-| `desert-maps.cjs`, `desert-b1.cjs`, `desert-save-move.cjs` | 사막 걷기·출구·저장 이관 | 통과 |
-| `mob-art-load.cjs [out]` | 몹 그림 로딩·메모리 | 측정 |
-| `duat-field.js <out>` | 두아트 전투(같은 코드) | 통과(이전 전체 실행 한 번에서 세트 공격 한 항목 실패 기록, 원인 미확정 — 그때 세트가 맞는 중) |
-| `tools/art/verify-full-map.cjs`·`verify-cozy-ui.cjs`·`verify-ui-themes.cjs` | 옴보스 낮밤·UI·테마 | 통과 |
+| 스크립트 | 묶음 | 보는 것 | 마지막 결과 |
+|---|---|---|---|
+| `desert-ult.cjs [out]` | ult | 궁 게이지 규칙(스킬 1회 상한·처치 보너스·빗나감·저장/맵 이동/교대), 세트 폭풍 0.5초 간격, 호루스 한 번씩, 소망 흡수 방패(옛 2초 무적 없음·동행 따로·6초), 세 사람 실제 전투 영상 | 21 통과, 채팅 전환 미실행(채팅 하나) |
+| `ult-fx-view.cjs [out]` | ult | 궁 해상도 후보 실제 표시 크기 나란히, 세트·호루스 타격 범위 겹친 화면 | 캡처 |
+| `desert-target.cjs [out]` | hit | 12종 × 세 사람, 여덟 방향 스틱 뗀 공격: 돌아서 침·그림 방향·몹이 봄, 닿지 않는 곳은 돌기만, 동행이 12종을 실제로 침 | 76 통과 |
+| `desert-strike.cjs [out]` | hit | 일반 공격 네 방향(몸 끝·빈 공간·방패만·주먹만·옆·뒤·벽), 손 뗀 돌기, 막는 수문장이 봄 | 130 통과 |
+| `desert-horus-leap.cjs [out]` | hit | 호루스 A안 착지, 가드 깨기(세 사람) | 16 통과 |
+| `duat-field.js <out>` | hit | 두아트 전투(같은 코드) | 23 통과 ×4 (간헐 실패 원인은 시험이 몹을 벽 너머에 세운 것 — 고침, 4b2252c) |
+| `desert-entry-safe.cjs [out]` | mob | 입구 안전구역: 도착 12초·가장자리 몹·밖에서 맞음·안에서 먼저 치면 반격·3초 뒤 나감·동행 먼저 | 7 통과 |
+| `desert-mob-hits.cjs [out]` | mob | 12종 × 호루스 착지·명중, 세트·소망 기술 닿는 거리 | 37 통과 |
+| `desert-b3.cjs [out]` | mob | T1W 가죽 방패병 한 마리 전투 전체 | 통과 |
+| `pad-tabs.cjs [out]` | input | 조이스틱·탭 겹침, 이동 중 공격·스킬·궁(떼기 1번·밖으로 빼기·취소·한 손가락) | 16 통과 |
+| `portal-walk.cjs`, `desert-maps.cjs`, `desert-save-move.cjs` | map | 사막 걷기·출구·착지·동행·저장 이관 | 통과 |
+| `desert-boss-view.cjs`, `ult-memory.cjs` | art | 보스 가림 반투명, 궁 메모리·첫 발동 끊김 | 통과·측정 |
+| `desert-b1.cjs`, `desert-b2.cjs`, `desert-15-lift.cjs`, `puzzle-lift.mjs`, `puzzle-optics.mjs` | (이름으로) | 사막 출구, 15 퍼즐 | 통과 |
+| `mob-art-load.cjs [out]` | (이름으로) | 몹 그림 로딩·메모리 | 측정 |
+| `tools/art/verify-full-map.cjs`·`verify-cozy-ui.cjs`·`verify-ui-themes.cjs` | ui | 옴보스 낮밤·UI·테마 | 통과 |
 
-- **시험 전용 훅(field.js):** `testOnly(kind, x, y, 수치)`, `testFace(dir)`, `testHold(true)`(스틱을 기울인 것처럼: 정해진 방향 공격 검사에 필수 — 안 쓰면 자동 돌기가 끼어듦), `testMobFace(right)`, `testRanges(true)`(초록 몸통 타원·파랑 방패·초록 주먹 줄·주황/노랑 기술 원), `testEvents`, `testHurt`, `testTouch`, `testArt`, `testReset`, `fieldState`. 시험 몹은 `nopush`(밀려나지 않음)로 거리 측정.
+- **시험 전용 훅(field.js):** `testOnly(kind, x, y, 수치)`, `testFace(dir)`, `testHold(true)`(스틱을 기울인 것처럼: 정해진 방향 공격 검사에 필수 — 안 쓰면 자동 돌기가 끼어듦), `testMobFace(right)`, `testRanges(true)`(초록 몸통 타원·파랑 방패·초록 주먹 줄·주황/노랑 기술 원), `testEvents`, `testHurt`, `testTouch`, `testArt`, `testReset`, `fieldState`; 궁 `testUlt({게이지, cd})`·`testUltFrame(who, ms)`(궁 그림 한 장면 멈춤 + 타격 범위); 안전구역 `testZones`·`testSafe(x, y)`·`testMobDeep()`; 맞음·때림 `testHit(who, atk)`·`testStrikeBy(who)`; 진단 `testBlow()`(지금 공격이 각 몹에 닿는지·벽 가림)·`testClear(ax, ay, bx, by)`(그 자리에 설 수 있고 몹이 보이는지 — 몹 옆에 세울 때). 시험 몹은 `nopush`(밀려나지 않음)로 거리 측정.
 - 시험에서 쓰는 거리 계산은 게임 함수를 쓰지 않고 시험 안에서 다시 계산한다(타원·주먹 줄·공격 상자). 도형 규칙을 바꾸면 시험의 `DEPTH`·`edge()`도 같이 바꾼다.
 
 ---

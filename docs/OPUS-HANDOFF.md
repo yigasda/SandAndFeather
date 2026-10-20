@@ -2,6 +2,8 @@
 
 > **2026-10-19 신전 연결 갱신:** [신전 최신 연결 기준](DESERT-TEMPLE-CONNECTIONS.md)과 [정리 지도](consult/desert/temple-route-2026-10-19/route.png)를 먼저 확인한다. 새 설계와 현재 구현을 구분하며, 원본·생성 프롬프트·피라미드는 보존한다. 게임 적용 완료를 뜻하지 않는다.
 
+> **검사는 단계별로:** 빠른 검사 → 영향받는 묶음 → 병합 전 전체. 작은 수정마다 전체 회귀를 다시 돌리지 않는다. 사용법·고르는 기준·시간·실패 재검사·진단 반복: [작업·검수 절차](OPUS-RELEASE-CHECKS.md#작업검수-절차-단계별-검사) (`tools/st-test/tiers.sh`).
+
 여기서 **지금 할 일 → 해당 파트 → 원본 자료 → 완료 검사** 순서로 간다. 사용자의 최신 요청과 지정 범위를 먼저 확인하고, 필요한 파트·절만 읽는다. 매 프레임마다 전 문서를 다시 읽거나 모든 파트를 순서대로 읽지 않는다.
 
 ## 지금 할 일 고르기
@@ -13,9 +15,9 @@
 | 앉는 자리·동행 자리·가구 가림 | [맵·자리·가림](OPUS-MAPS.md) | [안채 기록](RESIDENCE-096.md), [옴보스 기록](OMBOS-097.md), 채택 배경·생성기 | 자리별 실제 화면·조합·외곽선, [검증](OPUS-RELEASE-CHECKS.md) |
 | 사용자 요청 그림 부분 손질·색·비율 | [그림 손질](OPUS-ART-EDIT.md) | 해당 원본·채택본·manifest | 같은 배율 비교·변경 픽셀·채택 확인 후 [적용](OPUS-SPRITE-INTEGRATION.md) |
 | 채택 동작 검사·패킹·게임 적용 | [스프라이트 적용](OPUS-SPRITE-INTEGRATION.md) | 해당 동작 README·manifest, [스프라이트 구조 기록](TRIO-MOTION-098.md) | 방향·기준점·아틀라스·게임 화면, [검증](OPUS-RELEASE-CHECKS.md) |
-| 전투 구현·몹 | [두아트 필드 전투 계획](DUAT-FIELD-COMBAT-PLAN.md), [사막 구현 인수인계](DESERT-OPUS-HANDOFF.md) | [사막 전투 조사](DESERT-COMBAT-SURVEY.md), [사막 몹](DESERT-MOBS.md), [기록된 상태와 코드 경로](OPUS-CURRENT-STATE.md) | 해당 전투 시험과 [검증](OPUS-RELEASE-CHECKS.md) |
+| 전투 구현·몹 | [두아트 필드 전투 계획](DUAT-FIELD-COMBAT-PLAN.md), [사막 구현 인수인계](DESERT-OPUS-HANDOFF.md) | [사막 전투 조사](DESERT-COMBAT-SURVEY.md), [사막 몹](DESERT-MOBS.md), [기록된 상태와 코드 경로](OPUS-CURRENT-STATE.md) | [변경 유형별 묶음](OPUS-RELEASE-CHECKS.md#3-변경-유형별-검사-고르기)(ult·hit·mob·input)과 [검증](OPUS-RELEASE-CHECKS.md) |
 | 저장·진행·인연·유대 | [기록된 상태의 해당 영역](OPUS-CURRENT-STATE.md) | [저장 코드](../src/core/state.js), [사막 저장 이관](OPUS-DESERT-MAPS.md#save), [인연·유대 계획](BOND-PLAN.md), [구현·검증 보고](bond-ui/README.md) | 해당 저장/로드·중복 지급·진행 시험과 [검증](OPUS-RELEASE-CHECKS.md) |
-| 버전·배포·성능·UI 검사 | [검증과 배포](OPUS-RELEASE-CHECKS.md) | [성능 기록](PERF-0917.md), 최신 manifest·CHANGELOG·README | 해당 검사 후 전체 회귀·release 확인 |
+| 버전·배포·성능·UI 검사 | [검증과 배포](OPUS-RELEASE-CHECKS.md) | [성능 기록](PERF-0917.md), 최신 manifest·CHANGELOG·README | [단계별 검사](OPUS-RELEASE-CHECKS.md#작업검수-절차-단계별-검사) 후 병합 전 전체 검사·release 확인 |
 | 기존 구현 위치·예전 대기 목록 확인 | [기록된 상태와 대기](OPUS-CURRENT-STATE.md) | 표의 상세 기록과 최신 코드 | 기록 시점과 최신 요청을 대조 |
 
 **맵 작업의 최신 공통 기준:** 자연스럽게 입구에서 이어지는 길 위에 착지하고, 출구 트리거 바로 옆이나 임의 빈 바닥에 보내지 않는다. 발 도형·동행·재전환 방지·의도한 귀환을 담당자가 먼저 검수한다. 맵마다 사용자에게 수동 좌표를 다시 지정하게 하지 않는다. 세부 조건은 [맵 공통 기준](OPUS-MAPS.md)에 한 번만 둔다.
