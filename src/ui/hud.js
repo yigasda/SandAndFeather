@@ -60,7 +60,7 @@ export function buildHud(root) {
     const q = s => root.querySelector(s);
     // Font loading, browser text scaling and rotation can wrap the status chips.
     // Their painted bottom (not a fixed row height) determines where the hint starts.
-    const chips = q('.sf_chips');
+    const chips = q('.sf_chips'), hint = q('.sf_hint_pill');
     let layoutFrame = 0;
     const scheduleLayout = () => {
         cancelAnimationFrame(layoutFrame);
@@ -71,10 +71,12 @@ export function buildHud(root) {
             const bottom = Math.max(...rects.map(r => r.bottom)), left = Math.min(...rects.map(r => r.left)), right = Math.max(...rects.map(r => r.right));
             const values = { '--sf-status-bottom': `${Math.ceil((bottom - bounds.top) / sy - root.clientTop + 6)}px`, '--sf-status-width': `${(right - left) / sx}px` };
             for (const [key, value] of Object.entries(values)) if (root.style.getPropertyValue(key) !== value) root.style.setProperty(key, value);
+            const hintBottom = `${Math.ceil((hint.getBoundingClientRect().bottom - bounds.top) / sy - root.clientTop + 6)}px`;
+            if (root.style.getPropertyValue('--sf-hint-bottom') !== hintBottom) root.style.setProperty('--sf-hint-bottom', hintBottom);
         });
     };
     const layoutObserver = new ResizeObserver(scheduleLayout);
-    for (const el of [root, chips, ...chips.children]) layoutObserver.observe(el);
+    for (const el of [root, chips, hint, ...chips.children]) layoutObserver.observe(el);
     window.addEventListener('orientationchange', scheduleLayout);
     window.addEventListener('resize', scheduleLayout);
     window.visualViewport?.addEventListener('resize', scheduleLayout);

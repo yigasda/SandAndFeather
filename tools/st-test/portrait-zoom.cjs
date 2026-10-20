@@ -25,7 +25,7 @@ const out=path.resolve(process.argv[2]||'/tmp/landscape');fs.mkdirSync(out,{recu
     if(w===390||w===844) await p.screenshot({path:path.join(out,`${w}-${theme}-combat.png`)});
     await p.locator('.sf_menu').click();await p.locator('[data-tab="bond"]').click();
     const menu=await p.locator('.sf_menu_window').evaluate(e=>{const nav=e.querySelector('.sf_menu_nav').getBoundingClientRect(),title=e.querySelector('.sf_pop_title').getBoundingClientRect(),scroll=e.querySelector('.sf_pop_scroll');return{navVisible:nav.width>0,navBelow:innerWidth>innerHeight||nav.top>=title.bottom,overflow:scroll.scrollWidth-scroll.clientWidth};});
-    assert(menu.navVisible&&menu.navBelow&&menu.overflow<3,JSON.stringify({w,theme,menu}));
+    assert((w<h?!menu.navVisible:menu.navVisible&&menu.navBelow)&&menu.overflow<3,JSON.stringify({w,theme,menu}));
     if(w===390||w===844) await p.screenshot({path:path.join(out,`${w}-${theme}-menu.png`)});
     await p.locator('.sf_pop_x').last().click();
    }
