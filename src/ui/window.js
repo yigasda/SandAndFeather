@@ -24,6 +24,7 @@ import { bondCard } from './bondcard.js';
 import { leadOf, withOf } from '../core/heroes.js';
 import { cardOpen, closeCards, showCard, toast } from './popups.js';
 import { appearanceCard } from './appearance.js';
+import { refreshMenuHeaders } from './menu-header.js';
 
 let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
@@ -104,6 +105,7 @@ export function applyTheme() {
     const themeSelect=document.getElementById('sf_ui_theme'), brightness=document.getElementById('sf_theme');
     if(themeSelect)themeSelect.value=s.uiTheme;
     if(brightness)brightness.value=s.theme;
+    refreshMenuHeaders(root);
 }
 
 function build() {
@@ -138,6 +140,7 @@ function build() {
     hud.appearance.addEventListener('click', () => { if (!cardOpen()) appearanceCard(ui, applyTheme); });
     hud.dateCard.addEventListener('click', openToday);
     hud.mini.addEventListener('click', openMap);
+    root.addEventListener('sf:navigate', e => { menu(false); pickTab(e.detail); });
     hud.tabs.addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) { menu(false); pickTab(b.dataset.tab); } });
 
     chip = document.createElement('button');

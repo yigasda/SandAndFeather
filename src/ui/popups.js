@@ -1,3 +1,5 @@
+import { attachMenuHeader } from './menu-header.js';
+
 // Cards that open over the map inside the game window: a place, a person, "not yet". Not SillyTavern popups,
 // so the map stays behind them and the window keeps its size on a phone.
 //   showCard(root, { tag, title, text, body, buttons: [{ label, primary, onClick }], onClose }) → close()
@@ -41,10 +43,11 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
     if (body) wrap.querySelector('.sf_pop_body').append(body);
     else wrap.querySelector('.sf_pop_body').remove();
     const btns = wrap.querySelector('.sf_pop_btns');
-    let closed = false;
+    let closed = false, detachMenu = null;
     const close = () => {
         if (closed) return;
         closed = true; openCount--;
+        detachMenu?.();
         wrap.remove();
         keepGameInViewport(root);
         onClose?.();
@@ -61,8 +64,11 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
     wrap.sfClose = close;
     wrap.querySelector('.sf_pop_x').addEventListener('click', close);
     wrap.addEventListener('pointerdown', e => { if (e.target === wrap && !modal) close(); });
+    const active = root.querySelector('.sf_tabs [data-tab].sf_on')?.dataset.tab;
+    const menu = root.id === 'sf_game' && openCount === 0 && (kind === 'bond' || (active && active !== 'world'));
     openCount++;
     root.append(wrap);
+    if (menu) detachMenu = attachMenuHeader(root, wrap, kind === 'bond' ? 'bond' : active);
     keepGameInViewport(root);
     return close;
 }

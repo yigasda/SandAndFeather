@@ -1866,3 +1866,106 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
     #sf_game[data-ui-theme].sf_menu_open .sf_tabs { display:flex;flex-direction:column; }
     #sf_game[data-ui-theme] .sf_tabs .sf_tab { display:flex;flex-direction:row;gap:8px;flex:none;min-height:36px;width:100%;justify-content:center; }
 }
+
+/* Runtime original10 menu adaptation. Source: docs/handoff/menu-original10.
+   Scoped to compact landscape menus; portrait and ordinary interaction cards keep their layout. */
+#sf_game :is(.sf_menu_header_art,.sf_menu_current,.sf_menu_nav,.sf_bond_selection_context,.sf_bond_record_count,.sf_bond_gift_name) { display:none; }
+@media (orientation:landscape) and (max-height:540px) {
+ #sf_game[data-ui-theme] .sf_pop_wrap.sf_menu_window { padding:0;background:var(--sf-card); }
+ #sf_game[data-ui-theme] .sf_menu_window > .sf_pop { width:100%;height:100%;max-width:100%;max-height:100%;padding:10px;border:0;border-radius:0;gap:0;box-shadow:none;background:var(--sf-card) var(--menu-paper) repeat;overflow:hidden; }
+ #sf_game[data-ui-theme] .sf_menu_window > .sf_pop::before { inset:0;border:10px solid transparent;border-image:var(--menu-frame) var(--slice-frame) stretch;border-image-width:10px;clip-path:inset(44px 0 0);pointer-events:none;z-index:3; }
+ #sf_game[data-ui-theme='temple'] .sf_menu_window > .sf_pop::before { border-image-slice:12; }
+ #sf_game[data-ui-theme] .sf_menu_window > .sf_pop > .sf_pop_head { position:relative;isolation:isolate;flex:none;width:calc(100% + 20px);height:44px;min-height:44px;aspect-ratio:auto;margin:-10px -10px 10px;padding:0 28px;gap:8px;align-items:center;justify-content:flex-start;border:0;background:none;box-shadow:none;overflow:hidden;color:var(--menu-ink); }
+ #sf_game[data-ui-theme] .sf_menu_window > .sf_pop > .sf_pop_head::before,#sf_game[data-ui-theme] .sf_menu_window > .sf_pop > .sf_pop_head::after { display:none; }
+ #sf_game[data-ui-theme] { --menu-ink:#f8e1b9; }
+ #sf_game:is([data-ui-theme='journal'],[data-ui-theme='temple']) { --menu-ink:#39281a; }
+ #sf_game[data-ui-theme='temple'] .sf_menu_window > .sf_pop > .sf_pop_head { padding-left:70px; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_pop_title { position:static;transform:none;display:block;flex:none;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:18px;color:inherit;background:none; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_pop_head > .sf_tag { display:none; }
+ #sf_game[data-ui-theme] .sf_menu_header_art { display:block;position:absolute;inset:0;z-index:-1;pointer-events:none; }
+ #sf_game .sf_menu_header_art span { position:absolute;top:0;height:44px;overflow:hidden; }
+ #sf_game .sf_menu_header_art img { position:absolute;top:0;height:44px;max-width:none;image-rendering:pixelated; }
+ #sf_game[data-ui-theme] .sf_menu_current { display:block;width:25px;height:24px;flex:none;background:var(--menu-ink);mask-size:contain;mask-position:center;mask-repeat:no-repeat; }
+ #sf_game[data-ui-theme] .sf_menu_nav { display:flex;position:absolute;left:270px;right:66px;top:0;height:44px;gap:16px;justify-content:center;align-items:center; }
+ #sf_game[data-ui-theme] .sf_menu_link { position:relative;display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;color:var(--menu-ink);cursor:pointer; }
+ #sf_game[data-ui-theme] .sf_menu_link i { display:block;width:36px;height:28px;background:currentColor;mask-repeat:no-repeat; }
+ #sf_game[data-ui-theme='walnut'] .sf_menu_link i { transform:translateY(-5px); }
+ #sf_game .sf_menu_link[aria-current='page']::after { content:'';position:absolute;bottom:0;left:4px;right:4px;height:2px;background:currentColor; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_pop_head > .sf_pop_x { position:absolute;top:0;right:6px;transform:none;width:44px;height:44px;min-height:44px;border:0;box-shadow:none;background:none;color:var(--menu-ink);font-size:20px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window .sf_pop_head > .sf_pop_x { right:44px; }
+ #sf_game .sf_menu_window button:focus-visible { outline:none;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px; }
+ #sf_game .sf_menu_link:focus-visible i { filter:brightness(1.35);translate:0 -2px; }
+ #sf_game[data-ui-theme] .sf_menu_window > .sf_pop > .sf_pop_scroll { min-height:0;flex:1;overflow:auto; }
+ #sf_game[data-ui-theme] .sf_menu_window[data-kind='bond'] > .sf_pop > .sf_pop_scroll { overflow:hidden; }
+ #sf_game[data-ui-theme] .sf_menu_window[data-kind='bond'] .sf_pop_body { height:100%;padding:0 20px;min-height:0; }
+ #sf_game .sf_menu_window .sf_bond { height:100%;display:flex;flex-direction:column;min-height:0; }
+ #sf_game .sf_menu_window .sf_bond_subtitle { display:none; }
+ #sf_game .sf_menu_window .sf_bond_tabs { display:flex;align-items:center;gap:8px;height:44px;min-height:44px;padding:0;border:0;flex:none; }
+ #sf_game .sf_menu_window .sf_bond_selection_context { display:block;margin-left:8px;font-size:11px;color:var(--sf-dim); }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_btn.sf_bond_tab { flex:none;width:112px;height:44px;min-height:44px;font-size:14px;gap:8px;padding:0 4px;border:5px solid transparent;border-image:var(--menu-button) var(--slice-button) stretch;border-radius:0;box-shadow:none;background:var(--sf-card2) var(--menu-button-fill) repeat;background-clip:padding-box;color:var(--sf-ink); }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_btn.sf_bond_tab.sf_on { border-image:var(--menu-selected) var(--slice-selected) stretch;box-shadow:none; }
+ #sf_game .sf_menu_window .sf_bond_tab img.sf_bond_portrait { width:38px;height:28px;align-self:center; }
+ #sf_game .sf_menu_window .sf_bond_columns { flex:1;min-height:0;padding-top:0;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);grid-template-rows:minmax(0,1fr) 40px;gap:8px 24px; }
+ #sf_game .sf_menu_window .sf_bond_left { display:flex;flex-direction:column;min-height:0;overflow:auto;border:0;padding:0; }
+ #sf_game .sf_menu_window .sf_bond_left > .sf_bond_section { display:flex;flex-direction:column;min-height:0;flex:1; }
+ #sf_game .sf_menu_window .sf_bond_section { padding:0;border:0; }
+ #sf_game .sf_menu_window .sf_bond_section_head { height:22px;min-height:22px;margin:0;gap:6px;flex-wrap:nowrap; }
+ #sf_game .sf_menu_window .sf_bond_section_head h3 { font-size:14px; }
+ #sf_game .sf_menu_window .sf_bond_section_head img { width:18px;height:18px; }
+ #sf_game .sf_menu_window .sf_bond_section_head small { display:none; }
+ #sf_game .sf_menu_window .sf_bond_section_head .sf_bond_record_count { display:block;max-width:none;font-size:10px; }
+ #sf_game .sf_menu_window .sf_bond_records { flex:1;min-height:0;max-height:none;overflow:auto;gap:0;padding-right:10px;border-right:2px solid var(--sf-line);scrollbar-width:thin;scrollbar-color:var(--sf-line) var(--sf-card2); }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_list_row.sf_bond_record { flex:none;padding:4px 0;margin:0;border:0;border-image:none;border-bottom:1px solid var(--sf-line);background:none;box-shadow:none; }
+ #sf_game .sf_menu_window .sf_bond_record small { font-size:10px;line-height:14px; }
+ #sf_game .sf_menu_window .sf_bond_record b { font-size:13px;line-height:19px;font-weight:600; }
+ #sf_game .sf_menu_window .sf_bond_record details { font-size:10px;line-height:16px; }
+ #sf_game .sf_menu_window .sf_bond_management { flex:none;margin:0;font-size:11px;max-height:70%;overflow:auto; }
+ #sf_game .sf_menu_window .sf_bond_management summary { padding:5px 0; }
+ #sf_game .sf_menu_window .sf_bond_right { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:22px 20px 44px 22px 44px 22px 44px;gap:2px 6px;padding-left:20px;border-left:1px solid var(--sf-line);overflow:auto;min-height:0; }
+ #sf_game .sf_menu_window .sf_bond_right > .sf_bond_section,#sf_game .sf_menu_window .sf_bond .sf_list_row.sf_bond_progress_panel,#sf_game .sf_menu_window .sf_bond_giftrow,#sf_game .sf_menu_window .sf_bond_activity_grid { display:contents; }
+ #sf_game .sf_menu_window .sf_bond_right > .sf_bond_section > .sf_bond_section_head { grid-column:1/-1;align-self:center; }
+ #sf_game .sf_menu_window .sf_bond_right > .sf_bond_section:nth-child(1) > .sf_bond_section_head { grid-row:1; }
+ #sf_game .sf_menu_window .sf_bond_right > .sf_bond_section:nth-child(2) > .sf_bond_section_head { grid-row:4; }
+ #sf_game .sf_menu_window .sf_bond_right > .sf_bond_section:nth-child(3) > .sf_bond_section_head { grid-row:6; }
+ #sf_game .sf_menu_window .sf_bond_progress { display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;align-items:center;grid-column:1/-1;grid-row:2;margin:0; }
+ #sf_game .sf_menu_window .sf_bond_progress > img { width:20px;height:18px; }
+ #sf_game .sf_menu_window .sf_bond_track { width:100%;height:18px;background:var(--sf-card2);border:2px solid var(--sf-line);border-radius:3px;box-shadow:inset 0 1px 2px #0004; }
+ #sf_game .sf_menu_window .sf_bond_track b { font-size:11px;line-height:14px; }
+ #sf_game .sf_menu_window .sf_bond_stages { grid-column:1/-1;grid-row:3;margin:0; }
+ #sf_game .sf_menu_window .sf_bond_stages::before { top:17px; }
+ #sf_game .sf_menu_window .sf_bond_stage { height:44px;min-height:44px;justify-content:center;font-size:10px;line-height:12px; }
+ #sf_game .sf_menu_window .sf_bond_stage img { width:22px;height:22px; }
+ #sf_game .sf_menu_window .sf_bond_stage:last-child img { width:25px;height:23px;margin-top:-1px; }
+ #sf_game .sf_menu_window .sf_bond_gift_name { display:block;margin-left:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:var(--sf-dim); }
+ #sf_game .sf_menu_window .sf_bond_slots { grid-column:1/4;grid-row:5;display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 18px)/4);gap:6px;width:100%;padding:0;overflow-x:auto;overflow-y:hidden; }
+ #sf_game .sf_menu_window .sf_bond_cell { width:auto;max-width:none;min-width:0; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_inventory_slot.sf_bond_slot { width:100%;height:44px;max-width:none;min-width:0;min-height:44px;padding:0 7px 8px 0;border:5px solid transparent;border-image:var(--menu-slot) var(--slice-slot) stretch;border-radius:0;box-shadow:none;outline:none;background:var(--sf-card2) var(--menu-paper) repeat;background-clip:padding-box;filter:none; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] { border-image:var(--menu-selected) var(--slice-selected) stretch;box-shadow:none;filter:none; }
+ #sf_game .sf_menu_window .sf_bond_cell::before,#sf_game .sf_menu_window .sf_bond_cell::after,#sf_game .sf_menu_window .sf_bond_slot::before,#sf_game .sf_menu_window .sf_bond_slot::after { display:none; }
+ #sf_game .sf_menu_window .sf_bond_slot img,#sf_game .sf_menu_window .sf_bond_slot .sf_item_art { width:26px;height:26px;max-width:26px;max-height:26px; }
+ #sf_game .sf_menu_window .sf_bond_count { right:0;bottom:-2px;font-size:10px;line-height:11px;color:var(--sf-ink);background:none; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_btn.sf_bond_give { grid-column:4;grid-row:5;margin:0;width:100%;min-width:0;height:44px;min-height:44px;border:5px solid transparent;border-image:var(--menu-primary) var(--slice-primary) stretch;background:var(--sf-accent) var(--menu-primary-fill) repeat;background-clip:padding-box;border-radius:0;box-shadow:none;padding:0 1px;gap:3px;font-size:12px; }
+ #sf_game .sf_menu_window .sf_bond_give img { width:18px;height:18px; }
+ #sf_game .sf_menu_window .sf_bond_gift_help { grid-column:1/-1;grid-row:8;font-size:10px; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_list_row.sf_bond_activity { grid-row:7;width:100%;min-width:0;min-height:44px;height:44px;border:5px solid transparent;border-image:var(--menu-button) var(--slice-button) stretch;background:var(--sf-card2) var(--menu-button-fill) repeat;background-clip:padding-box;border-radius:0;box-shadow:none;padding:0 2px;grid-template-columns:22px minmax(0,1fr);grid-template-areas:'pic name';gap:3px; }
+ #sf_game .sf_menu_window .sf_bond_activity:nth-child(1) { grid-column:1; } #sf_game .sf_menu_window .sf_bond_activity:nth-child(2) { grid-column:2; } #sf_game .sf_menu_window .sf_bond_activity:nth-child(3) { grid-column:3; } #sf_game .sf_menu_window .sf_bond_activity:nth-child(4) { grid-column:4; }
+ #sf_game .sf_menu_window .sf_bond_activity img { width:22px;height:24px; }
+ #sf_game .sf_menu_window .sf_bond_activity b { font-size:12px; }
+ #sf_game .sf_menu_window .sf_bond_activity small,#sf_game .sf_menu_window .sf_bond_arrow { display:none; }
+ #sf_game .sf_menu_window .sf_bond_footer { grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) 148px;align-items:center;gap:10px;border-top:1px solid var(--sf-line);padding:0; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_list_row.sf_bond_motto { margin:0;padding:0;border:0;border-image:none;background:none;box-shadow:none;font-size:10.5px; }
+ #sf_game .sf_menu_window .sf_bond_motto img { width:18px;height:20px; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_btn.sf_bond_memory { width:148px;height:40px;min-height:40px;font-size:13px;padding:0 6px;border:6px solid transparent;border-image:var(--menu-button) var(--slice-button) stretch;background:var(--sf-card2) var(--menu-button-fill) repeat;background-clip:padding-box;border-radius:0;box-shadow:none;color:var(--sf-ink); }
+ #sf_game .sf_menu_window .sf_bond_memory img { width:22px;height:21px; }
+}
+@media (orientation:landscape) and (max-height:540px) and (max-width:740px) {
+ #sf_game[data-ui-theme] .sf_menu_nav { left:210px;right:66px;gap:4px; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_pop_title { max-width:130px;font-size:15px; }
+ #sf_game[data-ui-theme='temple'] .sf_menu_window > .sf_pop > .sf_pop_head { padding-left:40px; }
+ #sf_game[data-ui-theme] .sf_menu_window[data-kind='bond'] .sf_pop_body { padding:0 10px; }
+ #sf_game .sf_menu_window .sf_bond_columns { gap:8px 12px; }
+ #sf_game .sf_menu_window .sf_bond_right { padding-left:10px; }
+ #sf_game[data-ui-theme] .sf_menu_window .sf_bond .sf_list_row.sf_bond_activity { grid-template-columns:18px minmax(0,1fr);gap:1px;padding:0; }
+ #sf_game .sf_menu_window .sf_bond_activity img { width:18px;height:22px; }
+ #sf_game .sf_menu_window .sf_bond_activity b { font-size:10px; }
+}

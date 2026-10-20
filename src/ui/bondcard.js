@@ -70,13 +70,18 @@ export function bondCard(ui, initial = 'set', onBack = null) {
     scanReady().then(v => { ready = v; if (!closed) draw(); });
 
     function draw() {
+        const focused = document.activeElement;
+        const focusWho = focused?.dataset?.bondWho, focusItem = focused?.dataset?.bondItem;
+        const giftFocus = focused?.classList?.contains('sf_bond_give');
+        const slotScroll = content.querySelector('.sf_bond_slots')?.scrollLeft || 0;
         tabs.replaceChildren(); content.replaceChildren();
         for (const id of ['set', 'horus']) {
-            const tab = button('', () => { who = id; selected = ''; draw(); }, `sf_btn sf_bond_tab${who === id ? ' sf_on' : ''}`);
+            const tab = button('', () => { who = id; selected = ''; draw(); tabs.querySelector(`[data-bond-who="${id}"]`)?.focus({ preventScroll: true }); }, `sf_btn sf_bond_tab${who === id ? ' sf_on' : ''}`);
             tab.setAttribute('aria-pressed', String(who === id));
             const portrait = node('img', 'sf_bond_portrait'); portrait.src = new URL(id === 'set' ? '25-set-symbol.png' : '26-horus-symbol.png', redrawn).href; portrait.alt = '';
             tab.append(portrait, node('span', '', BOND_NAMES[id])); tab.setAttribute('role', 'tab'); tab.setAttribute('aria-selected', String(who === id)); tab.dataset.bondWho = id; tabs.append(tab);
         }
+        tabs.append(node('span', 'sf_bond_selection_context', `${BOND_NAMES[who]}와의 기록과 교류`));
         const left = node('div', 'sf_bond_left'), right = node('div', 'sf_bond_right');
         const records = section('인연의 기록', 'section_book', '함께한 순간들이, 소중한 이야기가 됩니다.');
         const recordsBox = node('div', 'sf_bond_records');
@@ -94,6 +99,8 @@ export function bondCard(ui, initial = 'set', onBack = null) {
                 ui.showCard({ title: '기록을 지울까?', text: tie.title, buttons: [{ label: '취소' }, { label: '지우기', onClick: () => { assertState(s); b.ties = b.ties.filter(t => t.id !== tie.id); saveState(); draw(); } }] });
             })); text.append(details); card.append(text); recordsBox.append(card);
         }
+        const recordCount = node('small', 'sf_bond_record_count', `기록 ${ties.length}개`);
+        records.querySelector('.sf_bond_section_head').append(recordCount);
         records.append(recordsBox);
         const ai = button('AI로 인연 찾아오기', () => scanCard(ui, s)); ai.disabled = !ready;
         const sync = button('새로운 인연 동기화', () => scanCard(ui, s, 'sync')); sync.disabled = !ready;
@@ -127,7 +134,8 @@ export function bondCard(ui, initial = 'set', onBack = null) {
         }
         if (!selected || !s.bag.items.some(it => it.uid === selected)) selected = groups.values().next().value?.[0]?.uid || '';
         for (const [id, items] of groups) {
-            const slot = button('', () => { selected = items[0].uid; draw(); }, `sf_inventory_slot sf_bond_slot${items.some(it => it.uid === selected) ? ' sf_on' : ''}`);
+            const slot = button('', () => { selected = items[0].uid; draw(); [...content.querySelectorAll('[data-bond-item]')].find(e => e.dataset.bondItem === id)?.focus({ preventScroll: true }); }, `sf_inventory_slot sf_bond_slot${items.some(it => it.uid === selected) ? ' sf_on' : ''}`);
+            slot.dataset.bondItem = id;
             const icon = itemArt(id);
             slot.append(icon, node('span', 'sf_bond_count', String(items.length))); slot.title = itemInfo(id).ko; slot.setAttribute('aria-label', `${itemInfo(id).ko} ${items.length}개`); slot.setAttribute('aria-pressed', String(items.some(it => it.uid === selected)));
             const cell = node('span', 'sf_bond_cell'); cell.append(slot); slots.append(cell);
@@ -147,8 +155,10 @@ export function bondCard(ui, initial = 'set', onBack = null) {
         }, 'sf_btn sf_primary sf_bond_give');
         gift.prepend(img('gift_icon_bow'));
         gift.disabled = giftBusy(s) || !selected || !bondMembers(s).includes(who) || !!s.duat;
+        const selectedItem = s.bag.items.find(it => it.uid === selected);
+        gifts.querySelector('.sf_bond_section_head').append(node('span', 'sf_bond_gift_name', selectedItem ? `${itemInfo(selectedItem.id).ko} 선택` : ''));
         giftrow.append(slots, gift); gifts.append(giftrow);
-        if (!bondMembers(s).includes(who)) gifts.append(node('small', '', `소망과 ${BOND_NAMES[who]}가 같은 일행일 때 선물할 수 있어.`));
+        if (!bondMembers(s).includes(who)) gifts.append(node('small', 'sf_bond_gift_help', `소망과 ${BOND_NAMES[who]}가 같은 일행일 때 선물할 수 있어.`));
         right.append(gifts);
 
         const activities = section('함께하는 활동', 'section_branch', '함께하는 시간을 더 많이 만들어 보세요.');
@@ -162,6 +172,10 @@ export function bondCard(ui, initial = 'set', onBack = null) {
         note.append(img('footer_feather'), node('span', '', '인연은 이어지고, 유대는 오늘부터 쌓입니다.'));
         const memory = button('', () => memoryCard(ui, s, who), 'sf_btn sf_primary sf_bond_memory'); memory.append(img('memory_book_icon'), node('span', '', '추억 수첩'), node('span', '', '›'));
         footer.append(note, memory); content.append(left, right, footer);
+        slots.scrollLeft = slotScroll;
+        const restore = focusWho ? [...tabs.querySelectorAll('[data-bond-who]')].find(e => e.dataset.bondWho === focusWho)
+            : focusItem ? [...slots.querySelectorAll('[data-bond-item]')].find(e => e.dataset.bondItem === focusItem) : giftFocus ? gift : null;
+        restore?.focus({ preventScroll: true });
     }
     draw(); return close;
 }
