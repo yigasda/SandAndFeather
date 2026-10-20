@@ -13,7 +13,9 @@
     "T1E-A ↔ T2-C"
   ],
   "city": [
-    "T1E-C ↔ 17-A"
+    "T1E-C ↔ 17-A",
+    "17-C ↔ dwelling south door",
+    "17-D ↔ archive south door"
   ],
   "lightwell": [
     "T2-A ↔ T3-A",
@@ -36,5 +38,8 @@
     "route": "libfile_3729c1c831e88191953dc7d9afb94282",
     "overlay": "libfile_46183ab7cb808191932ddb341db9f41d"
   },
-  "note": "Earlier city-review, W-split-candidate and temple-atlas plans are historical, superseded by this review graph. Runtime remains unchanged."
+  "note": "Earlier city-review, W-split-candidate and temple-atlas plans are historical, superseded by this review graph. Runtime remains unchanged.",
+  "libraryRouteVersion": 1,
+  "layout": "11 distinct maps, each once; 2 bridge crossings; source orientation preserved",
+  "blocker": "Archive original alpha walkmask separates door and interior; no collision edits authorized"
 }

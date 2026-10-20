@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from scipy import ndimage as nd
-from shapely.geometry import Point, Polygon, box as shape_box
+from shapely.geometry import Point, Polygon, LineString, box as shape_box
 from shapely.ops import nearest_points
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -274,50 +274,103 @@ def city_reroute_review(out):
         results.append({'map':ident,'polygon':poly,'landing':landing,'dir':direction,'followerCandidate':mate,'landingFeetClear':clear,'followerFeetClear':mateclear,'polygonBlockedPixels':blocked,'footGapPx':gap,'straightFootPathClear':pathclear})
     im.save(out/'T1E-C-17-A-candidates.png')
     (out/'checks.json').write_text(json.dumps({'runtimeChanged':False,'candidates':results},ensure_ascii=False,indent=2)+'\n')
-    # Expanded route strips repeat a map only to keep every connection legible.
-    # All ports use source-image coordinates; originals are uniformly scaled to 50%.
-    im=Image.new('RGB',(6500,5250),'#151e28');g=ImageDraw.Draw(im)
-    files={'02':'02_매몰신전사막.png','15':'15_열주홀.png','T2':'T2_무너진봉헌품회랑.png','11':'11_매몰도시출입구.png','T1W':'T1W_서쪽제례앞뜰.png','T1E':'T1E_동쪽제례앞뜰.png','17':'17_지하도시광장.png','T3':'T3_신전수호문전당.png','16':'16_빛우물.png'}
-    ports={'02':{'A':(935,328),'B':(1500,676)},'15':{'A':(1720,615),'C':(10,420),'D':(995,875)},'T2':{'A':(887,85),'B':(10,550),'C':(1763,550),'D':(885,875)},'11':{'A':(715,332),'바깥길':(300,1450)},'T1W':{'A':(1515,117),'B':(1230,880)},'T1E':{'A':(1700,295),'B':(310,760),'C':(1000,875)},'17':{'A':(1763,475)},'T3':{'A':(512,1520),'N':(512,420)},'16':{'A':(512,1520)}}
-    strips=[('필수 신전 순환 · 11은 전체 신전 출구', ['02','15','T2','11','02'], [('A','D'),('C','B'),('D','A'),('바깥길','B')], '#e4b95f'),
-            ('앞뜰 순환 · 민트 하나만 유지', ['15','T1W','T1E','T2'], [('A','A'),('B','B'),('A','C')], '#62e5ca'),
-            ('도시 분기 · 기존 11↔17 대체', ['T1E','17'], [('C','A')], '#65baff'),
-            ('빛우물 경로 · T3 북문 잠금 조건 미정', ['T2','T3','16'], [('A','A'),('N','A')], '#aaaabb')]
-    g.text((60,25),'신전 + 도시 최신 연결 검토도',font=font(50),fill='white')
-    g.text((60,95),'모든 선은 왕복 · 같은 이름의 반복 그림은 같은 맵 · 실제 포트 표식 / 그림 50% 동일 배율 · 런타임 미적용',font=font(30),fill='white')
-    for r,(title,names,links,color) in enumerate(strips):
-        top=300+r*1200;g.text((60,top-140),title,font=font(38),fill=color)
-        placed=[]
-        for j,name in enumerate(names):
-            art=Image.open(ROOT/'사막맵'/files[name]).convert('RGB');art=art.resize((art.width//2,art.height//2),Image.Resampling.LANCZOS)
-            ox=200+j*1250;oy=top;im.paste(art,(ox,oy));placed.append((ox,oy,art.width,art.height))
-            g.text((ox,oy-55),name,font=font(36),fill='white')
-        def point(j,key):
-            ox,oy,w,h=placed[j];sx,sy=ports[names[j]][key];return (ox+sx*.5,oy+sy*.5)
-        # Alternating outside lanes separate incoming and outgoing segments.
-        for j,(pa,pb)in enumerate(links):
-            start=point(j,pa);end=point(j+1,pb);lane=top+850 if j%2==0 else top-85
-            # Each connector reaches a dedicated gutter by the shortest horizontal
-            # segment to the nearest picture side, then stays in dark canvas.
-            pts=[]
-            for idx,pnt in [(j,start),(j+1,end)]:
-                ox,oy,w,h=placed[idx];side=ox-45 if pnt[0]<ox+w/2 else ox+w+45
-                if idx==j and names[idx] in ('T1W','T3'):side=ox-85
-                pts.append((pnt,(side,pnt[1]),(side,lane)))
-            path=list(pts[0])+list(reversed(pts[1]));g.line(path,fill=color,width=5)
-            label=f'{names[j]}-{pa} ↔ {names[j+1]}-{pb}'
-            if names[j]=='T3':label+=' / 잠금 미정'
-            xx=(pts[0][-1][0]+pts[1][-1][0])/2;tw=g.textlength(label,font=font(29))
-            g.rectangle((xx-tw/2-14,lane-24,xx+tw/2+14,lane+24),fill='#151e28');g.text((xx-tw/2,lane-21),label,font=font(29),fill=color)
-            for pnt,key in [(start,pa),(end,pb)]:
-                x,y=pnt;g.ellipse((x-21,y-21,x+21,y+21),fill='#151e28',outline=color,width=4)
-                if key=='바깥길':key='길'
-                g.text((x-g.textlength(key,font=font(25))/2,y-17),key,font=font(25),fill=color)
-        if r==2:
-            for k,line in enumerate(['17-C·D: 기존 세부맵 연결 보존','17-B·E: 사용자 X 제외 / 대체 출구로 사용하지 않음','폐기: T1E-C ↔ T1W-B 노란 연결 및 W-B 좌우 분할안']):
-                g.text((2900,top+150+k*65),line,font=font(32),fill='white')
-    g.text((60,5120),'11 왼쪽·아래 출구는 과거 보존 경계값. 그림의 길 표식은 대표 위치이며 새 문턱 승인이 아닙니다.',font=font(30),fill='white')
+    single_route_review(out)
+
+
+def single_route_review(out):
+    """Each source appears once; route orthogonal wires around image obstacles."""
+    import heapq
+    im=Image.new('RGB',(9000,4700),'#151e28');g=ImageDraw.Draw(im)
+    files={'02':'02_매몰신전사막.png','15':'15_열주홀.png','T2':'T2_무너진봉헌품회랑.png','11':'11_매몰도시출입구.png','T1W':'T1W_서쪽제례앞뜰.png','T1E':'T1E_동쪽제례앞뜰.png','17':'17_지하도시광장.png','T3':'T3_신전수호문전당.png','16':'16_빛우물.png','주거실':'17_추가_주거실.png','18 기록고':'18_옛기록고.png'}
+    loc={'02':(500,3200),'15':(2200,3200),'T2':(2200,1800),'11':(500,1800),'T1W':(4100,3200),'T1E':(4100,1800),'17':(5900,1800),'T3':(2200,300),'16':(4100,300),'주거실':(5900,300),'18 기록고':(7600,300)}
+    ports={'02':{'A':(935,328,'top'),'B':(1500,676,'bottom')},'15':{'A':(1720,615,'right'),'C':(10,420,'left'),'D':(995,875,'bottom')},'T2':{'A':(887,85,'top'),'B':(10,550,'left'),'C':(1763,550,'right'),'D':(885,875,'bottom')},'11':{'A':(715,332,'top'),'길':(300,1450,'bottom')},'T1W':{'A':(1515,117,'top'),'B':(1230,880,'bottom')},'T1E':{'A':(1700,295,'right'),'B':(310,760,'bottom'),'C':(1000,875,'bottom')},'17':{'A':(1763,475,'right'),'C':(617,295,'top'),'D':(1265,290,'top')},'T3':{'A':(512,1520,'bottom'),'N':(512,420,'top')},'16':{'A':(512,1520,'bottom')},'주거실':{'문':(887,830,'bottom')},'18 기록고':{'문':(887,830,'bottom')}}
+    boxes={};obstacles=set();grid=20;nx=450;ny=215
+    for name in files:
+        art=Image.open(ROOT/'사막맵'/files[name]).convert('RGB');art=art.resize((art.width//2,art.height//2),Image.Resampling.LANCZOS)
+        x,y=loc[name];im.paste(art,(x,y));boxes[name]=(x,y,art.width,art.height)
+        # Map titles sit inside their reserved obstacle, outside the source art.
+        g.text((x,y-65),name,font=font(42),fill='white')
+        for gx in range((x-35)//grid,(x+art.width+35)//grid+1):
+            for gy in range((y-85)//grid,(y+art.height+35)//grid+1):obstacles.add((gx,gy))
+    def endpoint(name,port):
+        x,y,w,h=boxes[name];sx,sy,side=ports[name][port];p=(x+sx/2,y+sy/2)
+        if side=='top':q=(round(p[0]/grid)*grid,y-120)
+        elif side=='bottom':q=(round(p[0]/grid)*grid,((y+h+80)//grid)*grid)
+        elif side=='left':q=(x-100,round(p[1]/grid)*grid)
+        else:q=(((x+w+100)//grid)*grid,round(p[1]/grid)*grid)
+        # One short port leader; the route itself never enters any image.
+        bend=(p[0],q[1])if side in ('top','bottom')else(q[0],p[1])
+        return p,bend,q,(int(q[0]/grid),int(q[1]/grid))
+    edges=[('02','A','15','D','본선','#e4b95f'),('15','C','T2','B','본선','#e4b95f'),('T2','D','11','A','신전 출구','#e4b95f'),('11','길','02','B','02로 귀환','#e4b95f'),('15','A','T1W','A','앞뜰','#62e5ca'),('T1W','B','T1E','B','민트 유지','#62e5ca'),('T1E','A','T2','C','앞뜰','#62e5ca'),('T1E','C','17','A','도시 분기','#65baff'),('T2','A','T3','A','빛우물 경로','#62e5ca'),('T3','N','16','A','잠금 미정','#aaaabb'),('17','C','주거실','문','세부맵','#b6a8ed'),('17','D','18 기록고','문','세부맵','#b6a8ed')]
+    # Reserve all short port leaders as well, so wires cannot cross them.
+    for a,pa,b,pb,_,_ in edges:
+        for name,port in [(a,pa),(b,pb)]:
+            ep=endpoint(name,port)
+            for first,last in [(ep[0],ep[1]),(ep[1],ep[2])]:
+                for t in np.linspace(0,1,max(2,int(abs(first[0]-last[0])+abs(first[1]-last[1])))):
+                    gx=round((first[0]+(last[0]-first[0])*t)/grid);gy=round((first[1]+(last[1]-first[1])*t)/grid)
+                    obstacles.add((gx,gy))
+    used=set();all_routes=[];labels=[];crossings=[]
+    def route(start,goal,strict):
+        dirs=[(1,0),(-1,0),(0,1),(0,-1)];queue=[(0,0,start[0],start[1],4)];cost={(start[0],start[1],4):0};prev={};end=None
+        while queue:
+            _,c,x,y,di=heapq.heappop(queue);state=(x,y,di)
+            if c!=cost.get(state):continue
+            if (x,y)==goal:end=state;break
+            for nd,(dx,dy)in enumerate(dirs):
+                xx,yy=x+dx,y+dy;cell=(xx,yy)
+                if not(5<xx<nx-5 and 8<yy<ny-5)or (cell in obstacles and cell not in (start,goal)):continue
+                if strict and cell in used and cell not in (start,goal):continue
+                nc=c+1+(5 if di!=nd and di!=4 else 0)+(150 if cell in used else 0)
+                ns=(xx,yy,nd)
+                if nc<cost.get(ns,1e12):cost[ns]=nc;prev[ns]=state;heapq.heappush(queue,(nc+abs(xx-goal[0])+abs(yy-goal[1]),nc,xx,yy,nd))
+        if end is None:return None
+        result=[]
+        while end in prev:result.append(end[:2]);end=prev[end]
+        result.append(start);return result[::-1]
+    for a,pa,b,pb,label,color in edges:
+        ea=endpoint(a,pa);eb=endpoint(b,pb)
+        path=route(ea[3],eb[3],True)
+        if path is None:path=route(ea[3],eb[3],False)
+        assert path, f'no route {a}-{b}'
+        overlap=[pt for pt in path if pt in used];crossings.extend(overlap)
+        used.update(path)
+        for gx,gy in path:
+            for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:used.add((gx+dx,gy+dy))
+        # Keep one grid cell free around earlier lines where practical.
+        points=[(x*grid,y*grid)for x,y in path];turns=[points[0]]
+        for j in range(1,len(points)-1):
+            if (points[j][0]-points[j-1][0],points[j][1]-points[j-1][1])!=(points[j+1][0]-points[j][0],points[j+1][1]-points[j][1]):turns.append(points[j])
+        turns.append(points[-1]);g.line([ea[0],ea[1]]+turns+[eb[1],eb[0]],fill=color,width=7)
+        text=f'{a}-{pa} ↔ {b}-{pb} · {label}'
+        # A separate small legend row avoids covering routes with long labels.
+        labels.append((text,color));all_routes.append({'from':a+'-'+pa,'to':b+'-'+pb,'route':turns,'fullRoute':[ea[0],ea[1]]+turns+[eb[1],eb[0]],'color':color,'crossingCells':len(overlap)})
+        for name,port,e in [(a,pa,ea),(b,pb,eb)]:
+            x,y=e[0];g.ellipse((x-23,y-23,x+23,y+23),fill='#151e28',outline=color,width=4);g.text((x-g.textlength(port,font=font(27))/2,y-19),port,font=font(27),fill=color)
+    # Render actual perpendicular intersections as bridges, never junction dots.
+    bridge_points=[]
+    for i,new in enumerate(all_routes):
+        line=LineString(new['fullRoute'])
+        for old in all_routes[:i]:
+            inter=line.intersection(LineString(old['fullRoute']))
+            points=[inter]if inter.geom_type=='Point'else list(inter.geoms)if inter.geom_type=='MultiPoint'else []
+            for point in points:
+                x,y=point.x,point.y
+                if any(abs(x-a)<3 and abs(y-b)<3 for a,b in bridge_points):continue
+                bridge_points.append((x,y))
+                # Preserve the horizontal wire; bridge the vertical wire over it.
+                vertical=any(abs(p[0]-q[0])<.01 and abs(x-p[0])<.01 and min(p[1],q[1])<y<max(p[1],q[1]) for p,q in zip(new['fullRoute'],new['fullRoute'][1:]))
+                vc=new['color']if vertical else old['color'];hc=old['color']if vertical else new['color']
+                g.rectangle((x-24,y-25,x+25,y+25),fill='#151e28')
+                g.line((x-25,y,x+25,y),fill=hc,width=7)
+                g.arc((x-20,y-20,x+20,y+20),-90,90,fill=vc,width=7)
+                g.line((x,y-26,x,y-20),fill=vc,width=7);g.line((x,y+20,x,y+26),fill=vc,width=7)
+    g.text((60,28),'신전 + 도시 · 각 맵 한 번 · 원본 방향 유지',font=font(48),fill='white')
+    g.text((60,95),'금색: 02 → 15 → T2 → 11 → 02 필수 순환 / 민트: 앞뜰 / 파랑: 도시 / 회색: 잠금 미정',font=font(31),fill='white')
+    for j,(text,color)in enumerate(labels):g.text((60+(j%3)*2350,4350+(j//3)*70),text,font=font(31),fill=color)
+    g.text((60,4650),'검토용 · 런타임 미적용 · 다리 모양 교차는 접속점 아님 · 17-C·D 세부맵 보존 / 17-B·E 제외 / 노란 E-C↔W-B 및 W 분할안 폐기',font=font(29),fill='white')
     im.save(out/'route-review.png')
+    (out/'route-layout.json').write_text(json.dumps({'maps':list(files),'mapCounts':{k:1 for k in files},'routes':all_routes,'crossingCells':len(crossings),'bridgeCrossings':bridge_points,'runtimeChanged':False},ensure_ascii=False,indent=2)+'\n')
 
 
 if __name__ == '__main__':
