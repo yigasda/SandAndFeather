@@ -710,14 +710,10 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_hint_pill { top: calc(136px + env(safe-area-inset-top, 0px)); min-height: 32px; border: 1px solid #d0ac71; border-radius: 2px; background: #443024ed; box-shadow: 0 0 0 2px #503c2b; }
 #sf_game .sf_bubble { border-radius: 3px; border: 1px solid #f9cf88; box-shadow: 0 0 0 2px #794329; background: #bd602ded; }
 #sf_game .sf_controls { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
-#sf_game .sf_pad { width: 112px; height: 112px; background: #e6cd9e5c; border: 2px solid #fff0c4bd; box-shadow: 0 0 0 2px #8b64385e; }
-#sf_game .sf_knob { background: #fff0cfe6; box-shadow: 0 2px 0 #66472877; border: 1px solid #ac8859; }
-#sf_game .sf_pad_arrows { position: absolute; inset: 0; pointer-events: none; color: #fff2d0; text-shadow: 0 1px #765335; }
-#sf_game .sf_pad_arrows i { position: absolute; font-style: normal; font-size: 21px; line-height: 1; }
-#sf_game .sf_pad_arrows i:nth-child(1) { left: 45px; top: 2px; }
-#sf_game .sf_pad_arrows i:nth-child(2) { left: 6px; top: 41px; }
-#sf_game .sf_pad_arrows i:nth-child(3) { right: 6px; top: 41px; }
-#sf_game .sf_pad_arrows i:nth-child(4) { left: 45px; bottom: 2px; }
+/* Shared integer-grid pixel art. Keep the pad/knob boxes and enlarged touch area unchanged. */
+#sf_game .sf_pad { width:112px;height:112px;border:2px solid transparent;border-radius:0;background:url('data/art/ui/controls/joystick-base.svg') center/100% 100% no-repeat;border-image:none;background-origin:border-box;box-shadow:none;image-rendering:pixelated; }
+#sf_game .sf_knob { border:1px solid transparent;border-radius:0;background:url('data/art/ui/controls/joystick-knob.svg') center/100% 100% no-repeat;background-origin:border-box;box-shadow:none;image-rendering:pixelated; }
+#sf_game .sf_pad:active .sf_knob { outline:1px solid #f8e6bb;outline-offset:-8px; }
 #sf_game .sf_round { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; border: 2px solid #d9b578; border-radius: 20px; background: #59422eee; box-shadow: 0 0 0 2px #493320, inset 0 0 0 1px #f2d8a3; }
 #sf_game .sf_round i { font-size: 20px; color: #f9dd9e; }
 #sf_game .sf_talk { border-radius: 22px; background: #be5e2eee; }
@@ -823,7 +819,6 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 @media (max-height: 540px) and (orientation: landscape) {
     #sf_game .sf_controls { bottom: 71px; }
     #sf_game .sf_pad { width: 90px; height: 90px; }
-    #sf_game .sf_pad_arrows { display: none; }
     #sf_game .sf_character_detail .sf_portrait_full { height: 60dvh; }
 }
 #sf_game .sf_character_stat { padding: 9px; border: 1px solid var(--sf-line); font-size: 13px; font-weight: 700; text-align: center; background: #fff5df55; }

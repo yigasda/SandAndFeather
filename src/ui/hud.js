@@ -45,7 +45,7 @@ export function buildHud(root) {
       <button type="button" class="sf_icon_btn sf_bag" title="가방" aria-label="가방"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></button>
       <div class="sf_bubble" hidden></div>
       <div class="sf_controls">
-        <div class="sf_pad"><span class="sf_pad_arrows" aria-hidden="true"><i>▴</i><i>◂</i><i>▸</i><i>▾</i></span><div class="sf_knob"></div></div>
+        <div class="sf_pad"><div class="sf_knob"></div></div>
         <div class="sf_actions">
           <button type="button" class="sf_btn sf_climb" hidden></button>
           <button type="button" class="sf_round sf_talk"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i><span>말 걸기</span></button>
