@@ -37,7 +37,7 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
       'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
-      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3'}
+      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자", then "1.4로 늘리고")
 WALK = {'big': 1.4, 'detail': 1.0}
@@ -54,6 +54,13 @@ ALPHA = 128
 GAP = 3
 # Parent-registered latest user mark, source pixels. AABB remains in each runtime exit.
 EXIT_POLYGONS = {
+    ('desert_forecourt_west', 'south'): [(1052,873),(1415,873),(1415,886),(1048,886)],
+    ('desert_forecourt_east', 'west'): [(227,748),(396,748),(396,772),(227,772)],
+    ('desert_forecourt_east', 'south'): [(800,860),(1210,860),(1230,886),(780,886)],
+    ('desert_votive_hall', 'south'): [(700,860),(1070,860),(1070,886),(680,886)],
+    ('desert_city_plaza', 'east'): [(1754,430),(1773,430),(1773,515),(1754,515)],
+    ('desert_city_plaza', 'dwelling'): [(590,302),(635,302),(646,317),(590,317)],
+    ('desert_city_dwelling', 'south'): [(765,850),(1010,850),(1010,870),(765,870)],
     ('desert_colonnade', 'forecourt'): [(1706,582),(1720,580),(1736,644),(1728,650)],
     ('desert_forecourt_west', 'east'): [(1439,107),(1595,107),(1595,127),(1435,127)],
     ('desert_forecourt_east', 'east'): [(1665,254),(1684,248),(1732,319),(1732,340),(1727,342)],
@@ -127,14 +134,18 @@ PLACES = [
     ('desert_city_gate', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
      {'outside': ((300, 1350), 'up'), 'door': ((672, 468), 'down')},
      [('left', (0, 335, 14, 1536), 'desert_buried_temple', 'door'), ('bottom', (0, 1522, 644, 1536), 'desert_buried_temple', 'door'),
-      ('door', (640, 312, 790, 352), 'desert_city_plaza', 'east')]),
+      ('door', (640, 312, 790, 352), 'desert_votive_hall', 'south')]),
     # 17 잊힌 지하 도시의 광장: 오른쪽 계단 위가 11의 문 (guide: 17 우측 계단); 왼쪽 집 주거실·오른쪽 집 18 기록고는 다음
     ('desert_city_plaza', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
      # the landing inside so all of her and the companion show (the camera stops at the map's right edge), on the walk at
      # the top of the stairs in the user's blue circle ("착지 파란색이 더 안전할 듯"), GAP from the exit.
      # The exit as it was (the user's red mark is the same right edge, "출구는 빨간색")
-     {'east': ((1623, 570), 'left')},
-     [('east', (1760, 402, 1774, 537), 'desert_city_gate', 'door')]),
+     {'east': ((1623, 570), 'left'), 'dwelling': ((625,400), 'down')},
+     [('east', (1754,430,1773,515), 'desert_forecourt_east', 'south'),
+      ('dwelling', (590,302,646,317), 'desert_city_dwelling', 'south')]),
+    ('desert_city_dwelling', '지하 도시 부속 주거실', '17_추가_주거실.png', '17_추가_주거실.png',
+     {'south': ((887,755), 'up')},
+     [('south', (765,850,1010,870), 'desert_city_plaza', 'dwelling')]),
     # 15 매몰 신전의 열주홀 (desert_colonnade): 반사광 입문 퍼즐(B2). 장치는 그림 그대로(오른쪽 광원, 가운데 받침 위 반사판,
     # 위층 뒷벽 수신부); 받침 앞 바닥에서 퍼즐 화면을 연다(src/packs/puzzle/colonnade.js). T2·16 출입은 아직 없음:
     # east 시험 착지와 과거 forecourt 착지는 보존. 현재 실제 02 왕복은 남쪽 south를 쓴다.
@@ -144,10 +155,11 @@ PLACES = [
       ('stair', (0,380,30,463), 'desert_votive_hall', 'west'),
       ('forecourt', (1706,580,1738,652), 'desert_forecourt_west', 'east')]),
     ('desert_votive_hall', '무너진 봉헌품 회랑', 'T2_무너진봉헌품회랑.png', 'T2_무너진봉헌품회랑.png',
-     {'west': ((115,550), 'right'), 'east': ((1655,550), 'left'), 'north': ((890,195), 'down')},
+     {'west': ((115,550), 'right'), 'east': ((1655,550), 'left'), 'north': ((890,195), 'down'), 'south': ((885,780), 'up')},
      [('west', (0,524,20,581), 'desert_colonnade', 'stair'),
       ('east', (1754,523,1773,580), 'desert_forecourt_east', 'east'),
-      ('north', (860,75,910,100), 'desert_guardian_gate', 'south')]),
+      ('north', (860,75,910,100), 'desert_guardian_gate', 'south'),
+      ('south', (680,860,1070,886), 'desert_city_gate', 'door')]),
     ('desert_guardian_gate', '신전 수호문 전당', 'T3_신전수호문전당.png', 'T3_신전수호문전당.png',
      {'south': ((512,1420), 'up')},
      [('south', (362,1510,660,1535), 'desert_votive_hall', 'north')]),
@@ -157,12 +169,15 @@ PLACES = [
      # east: latest user annotation registered by parent to source pixels (1523,241), exit (1434,107,1596,127).
      # south: the user's blue circle on the stone yard (centre about 1273, 795; inside it, 2 people-widths from the exit)
      {'yard': ((900, 650), 'right'), 'south': ((1273, 778), 'up'), 'east': ((1523, 241), 'down')},
-     [('east', (1434,107,1596,127), 'desert_colonnade', 'forecourt')]),
+     [('east', (1434,107,1596,127), 'desert_colonnade', 'forecourt'),
+      ('south', (1048,873,1415,886), 'desert_forecourt_east', 'west')]),
     # T1E: old exits retired; new T2 / two T1W routes pending their separate implementation.
     # Land along the paved approach, not at the yard's centre. Entry/exit names match field.js safeZones.
     ('desert_forecourt_east', '동쪽 제례 앞뜰', 'T1E_동쪽제례앞뜰.png', 'T1E_동쪽제례앞뜰.png',
-     {'west': ((325, 610), 'up'), 'east': ((1621, 369), 'left')},
-     [('east', (1665,248,1733,342), 'desert_votive_hall', 'east')]),
+     {'west': ((325, 610), 'up'), 'east': ((1621, 369), 'left'), 'south': ((1000,780), 'up')},
+     [('east', (1665,248,1733,342), 'desert_votive_hall', 'east'),
+      ('west', (222,748,399,772), 'desert_forecourt_west', 'south'),
+      ('south', (780,860,1230,886), 'desert_city_plaza', 'east')]),
 ]
 
 
@@ -216,6 +231,7 @@ def main(review_ids=None):
                 if (ident, k) == ('desert_colonnade', 'south'): need = 60
                 # Near natural side/stair approaches: validate actual feet and held-input return.
                 if (ident,k) in {('desert_colonnade','stair'),('desert_votive_hall','west'),('desert_votive_hall','east'),('desert_votive_hall','north'),('desert_guardian_gate','south')}: need = 80
+                if (ident,k) in {('desert_forecourt_east','south'),('desert_votive_hall','south'),('desert_city_plaza','dwelling'),('desert_city_dwelling','south')}: need = 80
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         for item in ex:
