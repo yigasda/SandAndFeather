@@ -39,8 +39,9 @@ NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_d
       'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
       'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
-# the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자", then "1.4로 늘리고")
-WALK = {'big': 1.4, 'detail': 1.0}
+# User preview (2026-10-20): both desert kinds use 1.6 × the base 4.2 tiles/s, with walking animation in step.
+# This is only map.walkSpeed; actor size, camera, collision and the global base speed stay unchanged.
+WALK = {'big': 1.6, 'detail': 1.6}
 # the big maps' camera further out (user: "75", then "60%로 카메라") and the people a little larger than their tile so they
 # are not specks (user: "캐릭터도 좀만 키우자", then "1.6"); src/world/render.js fitZoom / actorScale
 # the detail maps too: camera a little further out and the people larger (user: "사막 세부맵에선 아바타를 좀 키워 그리고
