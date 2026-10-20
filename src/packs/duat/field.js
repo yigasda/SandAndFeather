@@ -97,7 +97,28 @@ const kindFiles = kinds => kinds.flatMap(k => { const d = DATA.sprites?.enemies?
 // the 궁 pictures of the two who are here (data/art/fx/ult, original pixels, field.ult.fx): asked for on coming into a
 // field so the first 궁 does not wait for them; let go when she leaves the fields
 const ultFiles = (whoList = ['set', 'horus', 'somang']) => whoList.flatMap(w => (F().ult?.fx?.[w]?.frames || []).map(f => f.file));
-function ultArt(s) { const w = withOf(s), keep = [leadOf(s), w].filter(Boolean); for (const f of ultFiles(keep)) spriteFile(f); releaseSprites(ultFiles().filter(f => !ultFiles(keep).includes(f))); }
+// the 궁 pictures of the two in the field now (the one in front and the one with her), asked for and decoded on the way
+// in or when they change places; the third's let go (not all three kept: memory). artKey: whose they are
+let artKey = '', warmed = new Set(), warmOn = true;   // warmOn: off only to compare with the old way (tests)
+function ultArt(s) {
+    const w = withOf(s), keep = [leadOf(s), w].filter(Boolean), files = ultFiles(keep);
+    artKey = keep.join('|');
+    for (const f of files) spriteFile(f);
+    const gone = ultFiles().filter(f => !files.includes(f));
+    releaseSprites(gone); for (const f of gone) warmed.delete(f);
+}
+// decoded is not yet drawn: the first draw of a big picture onto the game canvas still costs (it goes up to the
+// graphics side then). So each picture loaded and not yet drawn is drawn once, one a frame, a single faint pixel in a
+// corner — before the 궁 is ever used (user 10-19: the first 궁 stuttered)
+function warmUlt(g) {
+    if (!warmOn) return;
+    for (const f of ultFiles(artKey.split('|').filter(Boolean))) {
+        if (warmed.has(f)) continue;
+        const img = spriteFile(f); if (!img) continue;
+        g.save(); g.globalAlpha = 0.004; g.drawImage(img, 0, 0, 1, 1); g.restore();
+        warmed.add(f); return;
+    }
+}
 function keepArt(kinds) {
     const keep = new Set(kindFiles(kinds));
     releaseSprites(kindFiles(Object.keys(DATA.sprites?.enemies || {})).filter(f => !keep.has(f)));
@@ -800,7 +821,7 @@ onFrame((dt, m, u) => {
     if (!isDuat(m.id) && s.duatField) { s.duatField = null; saveState(); }
     if (!isDesert(m.id) && s.desertFight?.run) { s.desertFight.run = null; saveState(); }   // the fight's 체력 ends, who fell when stays
     if (!isField(m.id)) {
-        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); keepArt([]); storms = []; wards = {}; ultShows = []; releaseSprites(ultFiles()); }
+        if (mapId) { mapId = ''; mapObj = null; runObj = null; mobs = []; bolts = []; mateWalk.pos = null; stance.on = false; hud(false); keepArt([]); storms = []; wards = {}; ultShows = []; releaseSprites(ultFiles()); artKey = ''; warmed.clear(); }
         return;
     }
     // a new map object each time she arrives (enterMap), or a new run: the creatures of this map again
@@ -812,6 +833,7 @@ onFrame((dt, m, u) => {
         spawn(m, s);
         ultArt(s);
     }
+    if ([leadOf(s), withOf(s)].filter(Boolean).join('|') !== artKey) ultArt(s);   // they changed places, or another came along
     hud(true, s, m);
     // the way she faces: sideways (me.face), and up or down after going that way until she goes sideways again
     if (input.dx > 0.2) me.face = 'right'; else if (input.dx < -0.2) me.face = 'left';
@@ -1007,6 +1029,7 @@ function drawRanges(g, z, ts, cx, cy) {
 // under: 소망's lotus and the wards on the ground, under everyone (the two stand inside its ring); otherwise 세트's storm and
 // 호루스's shock wave, just behind the two (user 10-19: the 궁 never hides his body or face; what stands further back it covers)
 function drawUlt(g, z, ts, cx, cy, under = false) {
+    if (under) warmUlt(g);
     const s = getState(), t = now(), at = who => (s && who === leadOf(s) ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 });
     if (!under) for (const st of storms) {
         const x = st.x * ts - cx, y = st.y * ts - cy, k = 0.5 + 0.5 * Math.sin(t * 6);
@@ -1185,6 +1208,10 @@ export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, at
 // tests only: the 궁 gauges (read, or set some), what is going on with the 궁
 // tests only: can one stand at a (feet) and see b — no wall there or between (where a check may put her by a creature)
 export const testClear = (ax, ay, bx, by) => !wall(ax, ay) && clearLine({ x: ax, y: ay }, { x: bx, y: by });
+// tests only: the old way (pictures decoded but not drawn before the first 궁), to compare in the same run
+export const testWarm = on => { warmOn = on; };
+// tests only: whose 궁 pictures are kept, how many loaded and drawn once (warmed) of how many
+export const testUltArt = () => { const files = ultFiles(artKey.split('|').filter(Boolean)); return { key: artKey, files: files.length, loaded: files.filter(f => DATA.spriteArt?.[f]).length, warmed: warmOn ? files.filter(f => warmed.has(f)).length : files.filter(f => DATA.spriteArt?.[f]).length, held: Object.keys(DATA.spriteArt || {}).filter(f => f.includes('fx/ult')).length }; };
 // tests only: what her blow would meet now, each creature (why nothing was hurt)
 export function testBlow() { const s = getState(), f = feet(), face = me.vdir || me.face, reach = F().reach?.[leadOf(s)] || 1.4; return { at: { x: +f.x.toFixed(2), y: +f.y.toFixed(2) }, face, act: me.act?.name || '', mobs: mobs.filter(o => o.st !== 'dead').map(o => { const a = hurtArea(o); return { kind: o.kind, st: o.st, a: [+a.x.toFixed(2), +a.y.toFixed(2), +a.r.toFixed(2)], meets: blowMeets(o, f, face, reach), seen: clearLine(f, { x: a.x, y: a.y }) }; }) }; }
 // tests only: one 궁 picture held still `ms` into its playing, round the one in front (the shown sizes compared), and
