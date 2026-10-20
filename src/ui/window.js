@@ -30,7 +30,7 @@ let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
 let raf = 0, last = 0, miniAt = 0, drawnAt = 0, near = null;
 // doors: one fires only after her feet have been off every exit once (no bouncing back on arrival); one move at a time
-let doorArmed = false, moving = false;
+let doorArmed = false, doorNeedsNeutral = false, moving = false;
 // frames drawn a second: walking, standing (only the river moves), a card is open
 const FPS = { walk: 30, still: 8, card: 4 };
 
@@ -177,6 +177,7 @@ async function enterMap() {
     map = getMap(s.pos.map);
     placePlayer(map);
     doorArmed = false;
+    doorNeedsNeutral = true;
     swapMap();
 }
 // the current map as the game has it now, without moving her
@@ -354,10 +355,19 @@ function frame(t) {
     const dtAll = dt;
     if (!cardOpen() && !moving) {
         for (; dt > 1e-6 && !moving; dt -= 0.05) {
+            // While that same input is held, stop at a further doorway instead of
+            // walking through its disabled trigger to the far side of the map.
+            const before = feet();
+            if (doorNeedsNeutral && Math.hypot(input.dx, input.dy) > 0.15 && map.exitAt(before.x, before.y)) { stand(); break; }
             stepPlayer(map, input.dx, input.dy, Math.min(0.05, dt));
             const f = feet(), ex = map.exitAt(f.x, f.y);
-            if (!ex) doorArmed = true;
-            else if (doorArmed) { doorArmed = false; useExit(ex); break; }
+            // A held thumb may reach the next threshold at the faster desert pace.
+            // Release once, then leave/re-enter a threshold before another transition.
+            if (doorNeedsNeutral && Math.hypot(input.dx, input.dy) <= 0.15) doorNeedsNeutral = false;
+            if (!doorNeedsNeutral) {
+                if (!ex) doorArmed = true;
+                else if (doorArmed) { doorArmed = false; useExit(ex); break; }
+            }
         }
         if (!moving) tileCheck();
         if (!moving) for (const fn of frameFns) { try { fn(dtAll, map, ui); } catch (e) { console.error('[SandAndFeather] frame', e); } }
