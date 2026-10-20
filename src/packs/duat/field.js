@@ -682,6 +682,7 @@ function useSkill(s, who, f, face, lead) {
         areas.push({ x: g.x, y: g.y, r, who, at: now() }); if (areas.length > 8) areas.shift();
         let got = 0;
         for (const o of mobs) if (o.st !== 'dead' && touches(o, g, r, who === 'horus')) { const hp0 = o.hp; damage(s, o, n, push, g, 'skill', who); if (o.hp < hp0) got++; }
+        note({ ev: 'skillHit', who, got, alive: mobs.filter(o => o.st !== 'dead').length, same: s === getState() });   // tests: what one 스킬 really hurt
         chargeSkill(s, who, got);
     };
     if (who === 'set') hits(f, 2, power(s, who) * 2, 0.8);              // 모래폭풍 강타: everything around, twice as hard, pushed away
@@ -703,7 +704,9 @@ function useSkill(s, who, f, face, lead) {
         // a longer, harder blow in front than her ordinary one; it breaks a guard and pushes
         const k = F().somangSkill || {}, reach = (F().reach?.somang || 1.1) + (k.reach ?? 0.5);
         const way = lead ? me.vdir || me.face : face;
-        chargeSkill(s, who, strike(s, who, f, way, k.mult ?? 1.8, reach, 'skill', k.push ?? 0.6));
+        const got = strike(s, who, f, way, k.mult ?? 1.8, reach, 'skill', k.push ?? 0.6);
+        note({ ev: 'skillHit', who, got, alive: mobs.filter(o => o.st !== 'dead').length, same: s === getState() });
+        chargeSkill(s, who, got);
     }
 }
 // ---- 궁 (사용자 10-19, 시제품): a gauge each (s.ult), filled by 스킬 that really hurt and by felling; full and its own
