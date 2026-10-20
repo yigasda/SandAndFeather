@@ -21,6 +21,7 @@
 | 새 작업 시작·기준 확인 | [START](docs/ASTRA-START.md) → 공통 그림 규칙 [HANDOFF](docs/ASTRA-HANDOFF.md) |
 | 진행 상태·다음 할 일 확인 | [DRAW-STATE](docs/ASTRA-DRAW-STATE.md) · [PLAN](docs/ASTRA-PLAN.md) |
 | 캐릭터 스프라이트 제작·검사 | [SPRITE](docs/ASTRA-SPRITE.md) |
+| UI 테마 부품 제작·조립·검수 | [UI 테마 제작 인수인계](docs/art/ui-theme-production-handoff.md) |
 | 맵 아트 제작·프롬프트 확인 | [MAP](docs/ASTRA-MAP.md) · [MAP-PROMPTS](docs/ASTRA-MAP-PROMPTS.md) |
 | 사막 맵 작업 | [DESERT-HANDOFF](docs/ASTRA-DESERT-HANDOFF.md) → [05–20 GUIDE](docs/ASTRA-DESERT-05-20-GUIDE.md) |
 | 몬스터·스킬 이펙트 제작 | [MOB](docs/ASTRA-MOB.md) · [스킬 이펙트 프롬프트](docs/skill-effect-prompts/README.md) |
