@@ -15,6 +15,8 @@ module.exports = (page, cdp) => {
     async function walkToPoint(gx, gy, limitMs = 30000, near = 0.3, opts = {}) {
         const route = await page.evaluate(([gx, gy, near, avoid]) => {
             const p = T.player.player, m = T.win.currentMap();
+            // Already within the caller's goal radius: do not round onto a blocked doorway grid cell.
+            if (Math.hypot(p.x-gx,p.y-gy)<=near) return [[p.x,p.y]];
             // avoid: also keep her feet out of every exit but the goal's (a player going past a door, not through it)
             const inExit = (x, y) => avoid && m.exits.some(e => T.map.containsExit(e, x + 0.5, y + 0.8) && !T.map.containsExit(e, gx + 0.5, gy + 0.8));
             const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96) && !inExit(x, y);
@@ -57,9 +59,10 @@ module.exports = (page, cdp) => {
             }, [route, i]);
             const [tx, ty] = route[j], dx = tx - me.x, dy = ty - me.y, n = Math.hypot(dx, dy) || 1;
             // slow down at the end so she stops where asked
-            const k = j === route.length - 1 ? Math.max(0.35, Math.min(1, n / 0.6)) : 1;
+            const k = j === route.length - 1 ? Math.max(0.16, Math.min(1, n / 0.6)) : 1;
             await touch('touchMove', p.x + dx / n * p.lim * k, p.y + dy / n * p.lim * k);
-            await page.waitForTimeout(50);
+            await page.waitForTimeout(j === route.length - 1 ? 20 : 50);
+            if (j === route.length - 1) await touch('touchMove', p.x, p.y);
         }
         if (!opts.keep) { await touch('touchEnd'); await page.waitForTimeout(150); }
         return done;

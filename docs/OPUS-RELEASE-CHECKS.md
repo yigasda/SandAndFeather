@@ -64,8 +64,8 @@
 | 궁 규칙·게이지·궁 그림·크기·층·궁 타격 범위 | `ult` (desert-ult, ult-fx-view) | 3분 |
 | 타격 판정·조준·방향(`blowMeets`·`touches`·`aimWay`·`turnToFoe`), 기술 | `hit` (desert-strike, desert-target, desert-horus-leap, duat-field) | 9분 |
 | 몹 행동·추격·공격·안전구역·가드 | `mob` (desert-entry-safe, desert-b3, desert-mob-hits) | 6분 |
-| 버튼·조이스틱·터치(`input.js`, HUD 버튼) | `input` (pad-tabs, landscape) | 2분 |
-| 출구·착지·동행 경로·맵 데이터(`map.js`·`player.js`·`window.js` 출구·`tools/maps`) | `map` (portal-walk 현재 연결별 `--temple-*`·`--city-dwelling`·`--pair-file` — 기본값과 `--connections`는 폐기된 옛 그래프라 현재 묶음에서 제외, desert-maps, desert-save-move) | 10~15분 |
+| 버튼·조이스틱·터치(`input.js`, HUD 버튼) | `input` (pad-tabs, landscape, portal-walk --exit-lifecycle) | 2분 |
+| 출구·착지·동행 경로·맵 데이터(`map.js`·`player.js`·`window.js` 출구·`tools/maps`) | `map` (portal-walk 현재 연결별 `--temple-*`·`--city-dwelling`·`--pair-file` — 기본값과 `--connections`는 폐기된 옛 그래프라 현재 묶음에서 제외, 독립 짧은 이동은 `--independent-tiles 2.1`로 실측, desert-maps, desert-save-move) | 10~15분 |
 | HUD·CSS·카드·테마, 옴보스 맵 | `ui` (verify-cozy-ui, verify-ui-themes, verify-full-map — 위 검증 스크립트 세 개) | 3분 |
 | 몹·궁 그림 패킹·해상도·메모리·보스 가림 | `art` (desert-boss-view, ult-memory) | 2분 |
 | 두 갈래 이상, 공통 파일(`field.js` 전역 구조·`state.js` 저장) | 해당 묶음 모두. 저장을 바꿨으면 desert-ult(저장·다시 불러오기)·desert-save-move 포함 | |

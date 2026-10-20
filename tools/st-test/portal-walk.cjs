@@ -145,7 +145,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         for(let k=0;k<160;k++){
             const me=await where(),dx=entry.x-me.x,dy=entry.y-me.y,d=Math.hypot(dx,dy);
             if(d<(INDEPENDENT_TILES?.02:.18)){arrived=true;break;}
-            const speed=Math.max(INDEPENDENT_TILES?.2:.15,Math.min(1,d/.6));
+            const speed=Math.max(INDEPENDENT_TILES?.16:.15,Math.min(1,d/.6));
             await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(20);
             // Neutral before measuring: CDP round trips/video encoding must not leave
             // the stick moving after the measured position (especially at pace 1.6).
@@ -457,11 +457,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                         const pos=await where();if(pos.map!==start.map)break;
                         const travelled=(pos.x-excursionOrigin.x)*dx+(pos.y-excursionOrigin.y)*dy;
                         const remaining=INDEPENDENT_TILES-travelled;
-                        if(remaining<=.01)break;
+                        if(Math.abs(remaining)<=.02)break;
                         if(Math.abs(travelled-last)<.001)stalled++;else stalled=0;
                         if(stalled>20){blocked=await page.evaluate(([dx,dy])=>{const p=T.player.player,m=T.win.currentMap();return m.solidRect(p.x+dx*.08+.22,p.y+dy*.08+.62,p.x+dx*.08+.78,p.y+dy*.08+.96);},[dx,dy]);break;}last=travelled;
-                        const amp=Math.max(.2,Math.min(1,remaining/.6));
-                        await W.touch('touchMove',p.x+dx*p.lim*amp,p.y+dy*p.lim*amp);await sleep(20);
+                        const amp=Math.max(.16,Math.min(1,Math.abs(remaining)/.6));
+                        await W.touch('touchMove',p.x+dx*p.lim*amp*Math.sign(remaining),p.y+dy*p.lim*amp*Math.sign(remaining));await sleep(20);await W.touch('touchMove',p.x,p.y);
                     }
                 }else{await W.touch('touchMove',p.x+dx*p.lim,p.y+dy*p.lim);await sleep(260);}
                 await W.touch('touchEnd');await sleep(350);
