@@ -1,0 +1,15 @@
+== 2026-10-20 08:56:16 기준 코드 ed2b2d2d · 검사: desert-ult ult-fx-view desert-strike desert-target desert-horus-leap duat-field desert-entry-safe desert-b3 desert-mob-hits portal-walk:--connections portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 portal-walk:--temple-w-e portal-walk:--temple-t2-11 portal-walk:--temple-e-17 portal-walk:--city-dwelling portal-walk:--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-maps desert-save-move desert-boss-view ult-memory
+문법: 237b926b 이후 바뀐 JS 14개 통과
+desert-ult           exit 1  통과 20 실패 2  115s
+ult-fx-view          exit 0  통과 0 실패 0  63s
+desert-strike        exit 0  통과 130 실패 0  142s
+desert-target        exit 0  통과 76 실패 0  321s
+desert-horus-leap    exit 0  통과 16 실패 0  70s
+duat-field           exit 0  통과 23 실패 0  73s
+desert-entry-safe    exit 1  통과 6 실패 2  67s
+desert-b3            exit 0  통과 14 실패 0  45s
+desert-mob-hits      exit 0  통과 37 실패 0  151s
+portal-walk_--connections exit 1  통과 1 실패 4  27s
+portal-walk_--temple-02-15 exit 1  통과 11 실패 5  63s
+portal-walk_--temple-15-w exit 1  통과 11 실패 5  33s
+portal-walk_--temple-15-t2 exit 1  통과 24 실패 4  40s

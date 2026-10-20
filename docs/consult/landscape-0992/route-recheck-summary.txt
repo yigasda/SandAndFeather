@@ -1,0 +1,3 @@
+temple-15-w exit 0
+temple-e-17 exit 1
+city-dwelling exit 0

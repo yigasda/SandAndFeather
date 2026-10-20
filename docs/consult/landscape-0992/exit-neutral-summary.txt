@@ -1,0 +1,4 @@
+== 2026-10-20 09:30:53 기준 코드 acd631b1+수정364254b · 검사: portal-walk:--exit-lifecycle portal-walk:--temple-w-e,--independent-tiles,2.1
+문법: acd631b1 이후 바뀐 JS 3개 통과
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  18s
+portal-walk_--temple-w-e_--independent-tiles_2_1 exit 0  통과 80 실패 0  72s

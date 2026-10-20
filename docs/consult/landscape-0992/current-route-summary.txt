@@ -1,0 +1,6 @@
+temple-02-15 exit 0 74s
+temple-15-w exit 1 91s
+temple-15-t2 exit 0 72s
+temple-t2-e exit 0 65s
+temple-t2-t3 exit 0 71s
+temple-02-11 exit 0 70s

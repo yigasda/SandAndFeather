@@ -1,0 +1,84 @@
+통과 왕복 데이터 계약 desert_forecourt_east/south → desert_city_plaza
+통과 왕복 데이터 계약 desert_city_plaza/east → desert_forecourt_east
+통과 forecourt_east → city_plaza: 연속 왕복의 출발 맵
+통과 forecourt_east → city_plaza: 문 앞 착지까지 실제 조이스틱 접근
+ARRIVAL_CAPTURE desert_city_plaza east
+통과 forecourt_east → city_plaza: 걸어서 도착, 착지 east(47.9, 16.2) 자리, 트리거 밖
+통과 forecourt_east → city_plaza: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (city_plaza)
+통과 forecourt_east → city_plaza: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → city_plaza: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 forecourt_east → city_plaza: 거리 시험 전 실제 최초 착지로 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 0.4637998913180361 충돌로 막힘
+통과 forecourt_east → city_plaza: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 1.7426058070028958 도달
+통과 forecourt_east → city_plaza: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 0.6719999648555657 충돌로 막힘
+통과 forecourt_east → city_plaza: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 1.7549248082058995 도달
+통과 forecourt_east → city_plaza: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → city_plaza: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → city_plaza: 최초 도착 동행 간격 유지
+통과 forecourt_east → city_plaza: 첫 도착 프레임 정확한 착지
+통과 city_plaza → forecourt_east: 연속 왕복의 출발 맵
+통과 city_plaza → forecourt_east: 문 앞 착지까지 실제 조이스틱 접근
+ARRIVAL_CAPTURE desert_forecourt_east south
+통과 city_plaza → forecourt_east: 걸어서 도착, 착지 south(29.3, 22.4) 자리, 트리거 밖
+통과 city_plaza → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 city_plaza → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 city_plaza → forecourt_east: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 city_plaza → forecourt_east: 거리 시험 전 실제 최초 착지로 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.7409619782479346 도달
+통과 city_plaza → forecourt_east: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.741321548954211 도달
+통과 city_plaza → forecourt_east: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.7562701261193432 도달
+통과 city_plaza → forecourt_east: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.7392309054070267 도달
+통과 city_plaza → forecourt_east: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로 
+통과 city_plaza → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_plaza → forecourt_east: 최초 도착 동행 간격 유지
+통과 city_plaza → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → city_plaza: 연속 왕복의 출발 맵
+통과 forecourt_east → city_plaza: 문 앞 착지까지 실제 조이스틱 접근
+통과 forecourt_east → city_plaza: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+통과 forecourt_east → city_plaza: 걸어서 도착, 착지 east(47.9, 16.2) 자리, 트리거 밖
+통과 forecourt_east → city_plaza: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (city_plaza)
+통과 forecourt_east → city_plaza: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → city_plaza: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 forecourt_east → city_plaza: 거리 시험 전 실제 최초 착지로 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 0.5455587159031872 충돌로 막힘
+통과 forecourt_east → city_plaza: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 1.7395792837975392 도달
+통과 forecourt_east → city_plaza: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 0.6719999645121035 충돌로 막힘
+통과 forecourt_east → city_plaza: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 forecourt_east → city_plaza: 독립 1.7472칸 실측 1.7322686846165993 도달
+통과 forecourt_east → city_plaza: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → city_plaza: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → city_plaza: 최초 도착 동행 간격 유지
+통과 forecourt_east → city_plaza: 첫 도착 프레임 정확한 착지
+통과 city_plaza → forecourt_east: 연속 왕복의 출발 맵
+통과 city_plaza → forecourt_east: 문 앞 착지까지 실제 조이스틱 접근
+통과 city_plaza → forecourt_east: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+통과 city_plaza → forecourt_east: 걸어서 도착, 착지 south(29.3, 22.4) 자리, 트리거 밖
+통과 city_plaza → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 city_plaza → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 city_plaza → forecourt_east: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 city_plaza → forecourt_east: 거리 시험 전 실제 최초 착지로 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.7583624772658233 도달
+통과 city_plaza → forecourt_east: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.7301168801504403 도달
+통과 city_plaza → forecourt_east: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.7394825011556883 도달
+통과 city_plaza → forecourt_east: 다음 독립 방향 전 원점으로 실제 걸어 복귀
+통과 city_plaza → forecourt_east: 독립 1.7472칸 실측 1.7323605595348752 도달
+통과 city_plaza → forecourt_east: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로 
+통과 city_plaza → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_plaza → forecourt_east: 최초 도착 동행 간격 유지
+통과 city_plaza → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: forecourt_east (31.0, 22.4) 그대로, 트리거 밖
+통과 페이지 오류 없음 
+통과 실행 중 런타임·맵·시험 코드 동일
+
+ALL PASS (0 failed)

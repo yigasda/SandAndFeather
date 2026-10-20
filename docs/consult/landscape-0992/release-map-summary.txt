@@ -1,0 +1,7 @@
+Actual shallow release clone 3dbbde3d4b94a291f7f6ffa81af2abc2d7426de5; isolated server 8001; test source 713bafbe1fa6bb7328c315139e9a2d0bc014ca2d
+t2-11 exit 0 77s
+e-17 exit 1 78s
+city-dwelling exit 1 82s
+sanctuary exit 0 79s
+desert-maps exit 0 295s
+desert-save-move exit 0 17s

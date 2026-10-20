@@ -1,0 +1,7 @@
+== 2026-10-20 09:49:19 기준 코드 97351b29 · 검사: pad-tabs landscape verify-cozy-ui verify-ui-themes verify-full-map
+문법: 237b926b 이후 바뀐 JS 17개 통과
+pad-tabs             exit 0  통과 16 실패 0  68s
+landscape            exit 0  통과 11 실패 0  57s
+verify-cozy-ui       exit 0  통과 0 실패 0  38s
+verify-ui-themes     exit 0  통과 0 실패 0  110s
+verify-full-map      exit 0  통과 0 실패 0  31s

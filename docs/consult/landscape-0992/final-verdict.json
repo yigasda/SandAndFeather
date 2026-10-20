@@ -1,0 +1,169 @@
+{
+  "runtime_commit": "713bafbe1fa6bb7328c315139e9a2d0bc014ca2d",
+  "test_commit": "97351b29",
+  "version": "0.9.92",
+  "full_suite_cases": [
+    {
+      "test": "desert-ult",
+      "status": "passed",
+      "evidence": "/tmp/release-ult-isolated.log"
+    },
+    {
+      "test": "ult-fx-view",
+      "status": "passed",
+      "evidence": "/tmp/landscape-final-regression/summary.txt"
+    },
+    {
+      "test": "desert-strike",
+      "status": "passed",
+      "evidence": "/tmp/landscape-final-regression/summary.txt"
+    },
+    {
+      "test": "desert-target",
+      "status": "passed",
+      "evidence": "/tmp/landscape-final-regression/summary.txt"
+    },
+    {
+      "test": "desert-horus-leap",
+      "status": "passed",
+      "evidence": "/tmp/landscape-final-regression/summary.txt"
+    },
+    {
+      "test": "duat-field",
+      "status": "passed",
+      "evidence": "/tmp/landscape-final-regression/summary.txt"
+    },
+    {
+      "test": "desert-b3",
+      "status": "passed",
+      "evidence": "/tmp/landscape-final-regression/summary.txt"
+    },
+    {
+      "test": "desert-mob-hits",
+      "status": "passed",
+      "evidence": "/tmp/landscape-final-regression/summary.txt"
+    },
+    {
+      "test": "desert-entry-safe",
+      "status": "passed",
+      "evidence": "/tmp/release-entry-standard.log"
+    },
+    {
+      "test": "pad-tabs",
+      "status": "passed",
+      "evidence": "/tmp/final-ui-input/summary.txt"
+    },
+    {
+      "test": "landscape",
+      "status": "passed",
+      "evidence": "/tmp/final-ui-input/summary.txt"
+    },
+    {
+      "test": "verify-cozy-ui",
+      "status": "passed",
+      "evidence": "/tmp/final-ui-input/summary.txt"
+    },
+    {
+      "test": "verify-ui-themes",
+      "status": "passed",
+      "evidence": "/tmp/final-ui-input/summary.txt"
+    },
+    {
+      "test": "verify-full-map",
+      "status": "passed",
+      "evidence": "/tmp/final-ui-input/summary.txt"
+    },
+    {
+      "test": "exit-lifecycle",
+      "status": "passed",
+      "evidence": "/tmp/exit-neutral-final/summary.txt"
+    },
+    {
+      "test": "temple-02-15",
+      "status": "passed",
+      "evidence": "/tmp/final-current-routes/summary.txt"
+    },
+    {
+      "test": "temple-15-t2",
+      "status": "passed",
+      "evidence": "/tmp/final-current-routes/summary.txt"
+    },
+    {
+      "test": "temple-t2-e",
+      "status": "passed",
+      "evidence": "/tmp/final-current-routes/summary.txt"
+    },
+    {
+      "test": "temple-t2-t3",
+      "status": "passed",
+      "evidence": "/tmp/final-current-routes/summary.txt"
+    },
+    {
+      "test": "temple-02-11",
+      "status": "passed",
+      "evidence": "/tmp/final-current-routes/summary.txt"
+    },
+    {
+      "test": "temple-15-w",
+      "status": "passed",
+      "evidence": "/tmp/final-three-routes/summary.txt"
+    },
+    {
+      "test": "city-dwelling",
+      "status": "passed",
+      "evidence": "/tmp/final-three-routes/summary.txt"
+    },
+    {
+      "test": "temple-e-17",
+      "status": "passed",
+      "evidence": "/tmp/final-e17-retry.log"
+    },
+    {
+      "test": "temple-w-e",
+      "status": "passed",
+      "evidence": "/tmp/exit-neutral-final/summary.txt"
+    },
+    {
+      "test": "t2-11",
+      "status": "passed",
+      "evidence": "/tmp/final-gate-b/summary.txt"
+    },
+    {
+      "test": "sanctuary",
+      "status": "passed",
+      "evidence": "/tmp/final-gate-b/summary.txt"
+    },
+    {
+      "test": "desert-maps",
+      "status": "passed",
+      "evidence": "/tmp/final-gate-b/summary.txt"
+    },
+    {
+      "test": "desert-save-move",
+      "status": "passed",
+      "evidence": "/tmp/final-gate-b/summary.txt"
+    },
+    {
+      "test": "desert-boss-view",
+      "status": "passed",
+      "evidence": "/tmp/final-art/summary.txt"
+    },
+    {
+      "test": "ult-memory",
+      "status": "passed",
+      "evidence": "/tmp/final-memory/summary.txt"
+    }
+  ],
+  "additional_release_menu": {
+    "passed": [
+      "20 landscape theme/brightness/viewport combinations: bounds and two columns",
+      "internal scroll and Set/Horus tabs",
+      "gauge 0/12/100 uses saved points",
+      "real gift button consumes once; repeat requires confirmation; Somang absent disables",
+      "all five real header navigation events"
+    ],
+    "errors": [],
+    "failed": []
+  },
+  "notes": "Aggregate verified coverage with individual repairs/rechecks and reuse of unchanged passing scopes; not a single uninterrupted zero-failure full invocation."
+}

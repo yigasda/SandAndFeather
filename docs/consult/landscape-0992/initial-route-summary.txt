@@ -1,0 +1,9 @@
+== 2026-10-20 09:19:38 기준 코드 acd631b1 · 검사: portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 portal-walk:--temple-w-e portal-walk:--temple-t2-11 portal-walk:--temple-e-17 portal-walk:--city-dwelling portal-walk:--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-save-move desert-boss-view ult-memory
+문법: 237b926b 이후 바뀐 JS 16개 통과
+portal-walk_--temple-15-w exit 0  통과 60 실패 0  59s
+portal-walk_--temple-15-t2 exit 1  통과 30 실패 1  118s
+portal-walk_--temple-t2-e exit 1  통과 30 실패 3  41s
+portal-walk_--temple-t2-t3 exit 0  통과 60 실패 0  55s
+portal-walk_--temple-02-11 exit 0  통과 60 실패 0  58s
+portal-walk_--temple-w-e exit 1  통과 45 실패 9  56s
+portal-walk_--temple-t2-11 exit 0  통과 60 실패 0  69s

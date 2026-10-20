@@ -1,0 +1,10 @@
+{
+  "src/ui/window.js": "fec0ce24a79e29dac556a23858643809c1a18957d9986bb6cbda850c89d19014",
+  "src/world/input.js": "00c2f4b8fe1bd155fb4d4d09c882f122cd377f10b590fbbecc65207703b254bf",
+  "src/world/render.js": "09e73b35000701cfaf84d9f6d9e20e4674b52c91353b2ef887067a39cac33026",
+  "src/ui/menu-header.js": "77b3868387e47ca536d76e1be634e34225542b527ae803d441af76a82e76aff7",
+  "style.css": "00b667f3428540cabb2ccf687a9551dfd7a7931b75431b0242da6dace09692a6",
+  "tools/st-test/portal-walk.cjs": "5a23ece69d95cb96c9712e615b4c39a3b2dca9c794362360c91c0efc4ce01918",
+  "tools/st-test/touch-walk.cjs": "300e50e7bbdc18ebece05d3696d4f8e6d34c2adca4f642ede56e730ee3988a40",
+  "tools/st-test/tiers.sh": "cb11a6d8797f26e7afcca7314ca3c227555b660462578fed181c18494f1adfdb"
+}
