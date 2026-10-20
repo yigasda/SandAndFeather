@@ -1,5 +1,5 @@
 // 사막 01: 옴보스 오른쪽 아래 끝 → 사막 01 서쪽 → 다시 옴보스. 대형맵 01 → 04 → 03 → 02와 돌아오기(가장자리 출구).
-// 신전 도시 연결(02↔11·15, 15↔T1W·T2, W↔E, T2↔T1E·T3·11, E↔17, 17↔주거실) 왕복. 폰 화면(412×900), 걸어서 출구를 밟는다.
+// 신전 도시 연결(02↔11·15, 15↔T1W·T2, W↔E, T2↔T1E·T3·11, E↔17, 17↔주거실)과 01↔09 왕복. 폰 화면(412×900), 걸어서 출구를 밟는다.
 // 착지마다: 착지 자체가 출구 밖, 네 방향 각각 착지에서 실제 조이스틱으로 약 1칸 가고 놓아도 출구에 안 들어감(사용자 10-20).
 //   python3 tools/maps/desert.py && node tools/st-test/desert-maps.cjs [out]
 const { chromium } = require('playwright');
@@ -54,7 +54,8 @@ fs.mkdirSync(OUT, { recursive: true });
             const p = T.player.player, from = p.map, m = T.map.getMap(p.map), e = m.d.exits.find(x => x.id === exitId);
             const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96), key = (x, y) => x + ',' + y;
             // within one grid step of the exit (an exit along the very edge can be narrower than the grid); the last bit below walks in
-            const inExit = (x, y) => { const fx = x * S + 0.5, fy = y * S + 0.8; return fx >= e.x0 - S && fx <= e.x1 + S && fy >= e.y0 - S && fy <= e.y1 + S; };
+            // a slanted exit (polygon, maps/desert-verified-abc934a7): a grid point really in it, as the game tests (exitAt)
+            const inExit = (x, y) => { const fx = x * S + 0.5, fy = y * S + 0.8; return e.polygon ? m.exitAt(fx, fy)?.id === exitId : fx >= e.x0 - S && fx <= e.x1 + S && fy >= e.y0 - S && fy <= e.y1 + S; };
             const g0 = [Math.round(p.x / S), Math.round(p.y / S)], prev = new Map([[key(...g0), null]]), q = [g0]; let end = null;
             while (q.length && !end) {
                 const [x, y] = q.shift();
@@ -124,7 +125,9 @@ fs.mkdirSync(OUT, { recursive: true });
             ['desert_votive_hall', 'south', 'south', 'desert_city_gate', 'door'], ['desert_city_gate', 'door', 'door', 'desert_votive_hall', 'south'],
             // T1E ↔ 17, 17 ↔ 주거실
             ['desert_forecourt_east', 'south', 'south', 'desert_city_plaza', 'east'], ['desert_city_plaza', 'east', 'east', 'desert_forecourt_east', 'south'],
-            ['desert_city_plaza', 'dwelling', 'dwelling', 'desert_city_dwelling', 'south'], ['desert_city_dwelling', 'south', 'south', 'desert_city_plaza', 'dwelling']);
+            ['desert_city_plaza', 'dwelling', 'dwelling', 'desert_city_dwelling', 'south'], ['desert_city_dwelling', 'south', 'south', 'desert_city_plaza', 'dwelling'],
+            // 01 ↔ 09 (옛 성소, 0bf38d7)
+            ['desert_golden_dunes', 'sanctuary', 'sanctuary', 'desert_old_sanctuary', 'south'], ['desert_old_sanctuary', 'south', 'south', 'desert_golden_dunes', 'sanctuary']);
         for (const [from, at, exitId, to, land] of legs) {
             await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
             await page.waitForTimeout(600);

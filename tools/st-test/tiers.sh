@@ -27,7 +27,7 @@ OUT=${OUT:-/tmp/st-tiers}
 BASE=HEAD   # --since <커밋>: 그 커밋 이후 바뀐 JS의 문법을 본다(커밋까지 한 변경도 포함)
 declare -A G=(
   [ult]="desert-ult ult-fx-view" [hit]="desert-strike desert-target desert-horus-leap duat-field"
-  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs" [map]="portal-walk:--connections portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 desert-maps desert-save-move"
+  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs" [map]="portal-walk:--connections portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 portal-walk:--temple-w-e portal-walk:--temple-t2-11 portal-walk:--temple-e-17 portal-walk:--city-dwelling portal-walk:--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-maps desert-save-move"
   [ui]="verify-cozy-ui verify-ui-themes verify-full-map" [art]="desert-boss-view ult-memory"
 )
 G[full]="${G[ult]} ${G[hit]} ${G[mob]} ${G[input]} ${G[map]} ${G[ui]} ${G[art]}"
@@ -63,7 +63,7 @@ case " ${want[*]} " in *" ult-memory "*|*" ult-fx-view "*) python3 "$ROOT/tools/
 bad=0
 for t in "${want[@]}"; do
   # name:--flag,--flag → the script with those flags (portal-walk's connection sets)
-  n=${t%%:*}; args=(); [ "$n" != "$t" ] && IFS=',' read -ra args <<< "${t#*:}"; t=${t//[:,]/_}
+  n=${t%%:*}; args=(); [ "$n" != "$t" ] && IFS=',' read -ra args <<< "${t#*:}"; t=${t//[:,/.]/_}
   f=$ROOT/tools/st-test/$n.cjs; [ -f "$f" ] || f=$ROOT/tools/st-test/$n.js; [ -f "$f" ] || f=$ROOT/tools/art/$n.cjs
   s=$(date +%s); (cd "$ROOT" && timeout 2400 node "$f" "$OUT/$t" "${args[@]}" > "$OUT/$t.log" 2>&1); e=$?
   printf '%-20s exit %s  통과 %s 실패 %s  %ss\n' "$t" "$e" "$(grep -c '^통과\|^PASS' "$OUT/$t.log")" "$(grep -c '^실패\|^FAIL' "$OUT/$t.log")" "$(( $(date +%s) - s ))" | tee -a "$OUT/summary.txt"
