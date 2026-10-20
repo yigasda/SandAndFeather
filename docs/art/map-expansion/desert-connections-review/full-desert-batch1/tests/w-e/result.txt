@@ -1,0 +1,56 @@
+통과 왕복 데이터 계약 desert_forecourt_west/south → desert_forecourt_east
+통과 왕복 데이터 계약 desert_forecourt_east/west → desert_forecourt_west
+통과 forecourt_west → forecourt_east: 연속 왕복의 출발 맵
+통과 forecourt_west → forecourt_east: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":0,"arrival":{"map":"desert_forecourt_east","x":8.960735311661338,"y":17.89457217223346,"inExit":false,"mateInExit":false,"mate":{"x":8.561275746493315,"y":17.69580443444565},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":8.93232593210203,"y":17.958701157513563,"inExit":false,"mateInExit":false,"mate":{"x":8.624010869670053,"y":17.664436872857284},"floor":true,"mateFloor":true}}
+  forecourt_west → forecourt_east: 출구 앞 forecourt_west (37.5, 22.5) → 도착 forecourt_east (9.0, 17.9)
+통과 forecourt_west → forecourt_east: 걸어서 도착, 착지 west(9.2, 17.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_west → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 forecourt_west → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → forecourt_east: 최초 도착 동행 간격 유지
+통과 forecourt_west → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → forecourt_west: 연속 왕복의 출발 맵
+통과 forecourt_east → forecourt_west: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":1,"arrival":{"map":"desert_forecourt_west","x":37.43798025543932,"y":22.46015280410729,"inExit":false,"mateInExit":false,"mate":{"x":36.380949133581126,"y":22.922506202440207},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":37.423599336874986,"y":22.599271407967464,"inExit":false,"mateInExit":false,"mate":{"x":36.50604364747765,"y":22.859958945491947},"floor":true,"mateFloor":true}}
+  forecourt_east → forecourt_west: 출구 앞 forecourt_east (9.2, 17.8) → 도착 forecourt_west (37.4, 22.5)
+통과 forecourt_east → forecourt_west: 걸어서 도착, 착지 south(37.4, 22.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_east → forecourt_west: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_west)
+통과 forecourt_east → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → forecourt_west: 최초 도착 동행 간격 유지
+통과 forecourt_east → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → forecourt_east: 연속 왕복의 출발 맵
+통과 forecourt_west → forecourt_east: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":2,"arrival":{"map":"desert_forecourt_east","x":9.128200649794216,"y":17.509358825230176,"inExit":false,"mateInExit":false,"mate":{"x":8.185616326273351,"y":17.883634144555632},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":6.991287128865054,"y":22.07391801578404,"inExit":true,"mateInExit":false,"mate":{"x":7.525515509097349,"y":20.932778218145568},"floor":true,"mateFloor":true}}
+통과 forecourt_west → forecourt_east: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  forecourt_west → forecourt_east: 출구 앞 forecourt_west (37.5, 22.7) → 도착 forecourt_east (9.1, 17.5)
+통과 forecourt_west → forecourt_east: 걸어서 도착, 착지 west(9.2, 17.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":true,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_west → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 forecourt_west → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_west → forecourt_east: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 forecourt_west → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → forecourt_east: 최초 도착 동행 간격 유지
+통과 forecourt_west → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → forecourt_west: 연속 왕복의 출발 맵
+통과 forecourt_east → forecourt_west: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":3,"arrival":{"map":"desert_forecourt_west","x":37.43387400006874,"y":22.530207268458216,"inExit":false,"mateInExit":false,"mate":{"x":36.44368429338589,"y":22.891138622537824},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":37.02160295052281,"y":25.460203522536272,"inExit":true,"mateInExit":false,"mate":{"x":37.2842319910701,"y":24.378835473781354},"floor":true,"mateFloor":true}}
+통과 forecourt_east → forecourt_west: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  forecourt_east → forecourt_west: 출구 앞 forecourt_east (9.1, 17.5) → 도착 forecourt_west (37.4, 22.5)
+통과 forecourt_east → forecourt_west: 걸어서 도착, 착지 south(37.4, 22.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":true,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_east → forecourt_west: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_west)
+통과 forecourt_east → forecourt_west: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → forecourt_west: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 forecourt_east → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → forecourt_west: 최초 도착 동행 간격 유지
+통과 forecourt_east → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: forecourt_west (37.4, 22.5) 그대로, 트리거 밖
+통과 페이지 오류 없음 
+통과 실행 중 런타임·맵·시험 코드 동일

@@ -6705,8 +6705,8 @@
    "y0": 9.3,
    "x1": 23.548076923076923,
    "y1": 10.492307692307692,
-   "to": "desert_city_plaza",
-   "at": "east"
+   "to": "desert_votive_hall",
+   "at": "south"
   }
  ],
  "spots": [],

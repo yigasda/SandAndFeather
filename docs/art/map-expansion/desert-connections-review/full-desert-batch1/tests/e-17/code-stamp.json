@@ -1,0 +1,16 @@
+{
+  "start": {
+    "commit": "3f140c4cc9708c8802d1a72672ff8013242b8314",
+    "runtimeAndTestSha256": "5afda4c3fbc24d2d16255e223a481fec0a570bac2a99389a72fb803407121dea",
+    "files": 119
+  },
+  "end": {
+    "commit": "3f140c4cc9708c8802d1a72672ff8013242b8314",
+    "runtimeAndTestSha256": "5afda4c3fbc24d2d16255e223a481fec0a570bac2a99389a72fb803407121dea",
+    "files": 119
+  },
+  "arguments": [
+    "/tmp/desert-latest-e-17",
+    "--temple-e-17"
+  ]
+}

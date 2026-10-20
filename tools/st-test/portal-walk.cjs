@@ -7,16 +7,45 @@
 // 양방향 영상과 도착 화면을 out에 남긴다.
 //   node tools/st-test/portal-walk.cjs [out] [--connections]
 // --temple-02-15: current 02-A <-> 15-D, one fixture then real round trips.
+// --temple-w-e, --temple-t2-11, --temple-e-17, --city-dwelling: latest approved pairs.
+// --pair-file /tmp/pairs.json: explicit continuous [from,start,exit,to,landing] route; no implicit links.
 // --connections: historical retired graph; use only against its historical code. T1W -> T1E -> 15 -> T1E -> T1W twice, one initial fixture placement only.
 const { chromium } = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
+const crypto = require('node:crypto');
+const { execFileSync } = require('node:child_process');
+const ROOT = path.resolve(__dirname,'../..');
+function codeStamp() {
+    const files=[];
+    function scan(dir,ext){for(const ent of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,ent.name);if(ent.isDirectory())scan(p,ext);else if(ext.test(ent.name))files.push(p);}}
+    scan(path.join(ROOT,'src'),/\.js$/);scan(path.join(ROOT,'data/maps'),/\.json$/);
+    files.push(path.join(ROOT,'data/scene-art.json'),__filename);
+    const hash=crypto.createHash('sha256');
+    for(const file of files.sort())hash.update(path.relative(ROOT,file)).update(fs.readFileSync(file));
+    return {commit:execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),runtimeAndTestSha256:hash.digest('hex'),files:files.length};
+}
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
 const LIFECYCLE = process.argv.includes('--exit-lifecycle');
 const KEYBOARD = process.argv.includes('--keyboard');
-const NEW_PAIRS = process.argv.includes('--temple-02-11') ? [
+const pairFileIndex = process.argv.indexOf('--pair-file');
+const FILE_PAIRS = pairFileIndex < 0 ? null : JSON.parse(fs.readFileSync(process.argv[pairFileIndex + 1], 'utf8'));
+if (FILE_PAIRS && (!Array.isArray(FILE_PAIRS) || !FILE_PAIRS.length || FILE_PAIRS.some(p => !Array.isArray(p) || p.length !== 5 || p.some(v => typeof v !== 'string')))) throw new Error('--pair-file requires nonempty five-string route tuples');
+const NEW_PAIRS = FILE_PAIRS || (process.argv.includes('--temple-w-e') ? [
+    ['desert_forecourt_west','south','south','desert_forecourt_east','west'],
+    ['desert_forecourt_east','west','west','desert_forecourt_west','south'],
+] : process.argv.includes('--temple-t2-11') ? [
+    ['desert_votive_hall','south','south','desert_city_gate','door'],
+    ['desert_city_gate','door','door','desert_votive_hall','south'],
+] : process.argv.includes('--temple-e-17') ? [
+    ['desert_forecourt_east','south','south','desert_city_plaza','east'],
+    ['desert_city_plaza','east','east','desert_forecourt_east','south'],
+] : (process.argv.includes('--city-dwelling') || process.argv.includes('--temple-17-dwelling')) ? [
+    ['desert_city_plaza','dwelling','dwelling','desert_city_dwelling','south'],
+    ['desert_city_dwelling','south','south','desert_city_plaza','dwelling'],
+] : process.argv.includes('--temple-02-11') ? [
     ['desert_buried_temple','door','door','desert_city_gate','outside'],
     ['desert_city_gate','outside','left','desert_buried_temple','door'],
 ] : process.argv.includes('--temple-15-w') ? [
@@ -28,7 +57,7 @@ const NEW_PAIRS = process.argv.includes('--temple-02-11') ? [
 ] : process.argv.includes('--temple-t2-t3') ? [
     ['desert_votive_hall','north','north','desert_guardian_gate','south'],
     ['desert_guardian_gate','south','south','desert_votive_hall','north'],
-] : null;
+] : null);
 const VOTIVE = process.argv.includes('--temple-15-t2');
 const TEMPLE = process.argv.includes('--temple-02-15');
 const ARRIVALS = process.argv.includes('--arrivals');
@@ -58,6 +87,8 @@ const PAIRS = NEW_PAIRS || (VOTIVE ? [
     ['desert_forecourt_east', 'east', 'west', 'desert_forecourt_west', 'east'],
 ] : [['desert_buried_temple', 'west', 'temple', 'desert_forecourt_west', 'south'], ['desert_forecourt_west', 'yard', 'south', 'desert_buried_temple', 'temple']]);
 fs.mkdirSync(OUT, { recursive: true });
+const initialCodeStamp=codeStamp();
+fs.writeFileSync(path.join(OUT,'code-stamp.json'),JSON.stringify({start:initialCodeStamp,arguments:process.argv.slice(2)},null,2));
 let fail = 0; const res = [];
 const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; console.log(line); res.push(line); if (!c) fail++; };
 
@@ -206,6 +237,13 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         }
         let shot = 0;
         if (CONNECTIONS) {
+            const contracts=await page.evaluate(pairs=>pairs.map(([from,start,id,to,land],i)=>{
+                const m=T.data.DATA.maps[from],target=T.data.DATA.maps[to];
+                const e=m?.exits?.find(e=>e.id===id);
+                return {from,id,to,valid:!!m?.entries?.[start]&&!!target?.entries?.[land]&&e?.to===to&&e?.at===land&&pairs[(i+1)%pairs.length][0]===to};
+            }),PAIRS);
+            for(const c of contracts)ok(c.valid,`왕복 데이터 계약 ${c.from}/${c.id} → ${c.to}`);
+            if(contracts.some(c=>!c.valid))throw new Error('route data does not match explicit test contract');
             // One fixture placement, then two continuous touch-only round trips, with no travel between legs.
             await page.evaluate(async start => T.win.travel(start[0], start[1]), PAIRS[0]);
             await sleep(1200);
@@ -252,8 +290,33 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             const near = await page.evaluate(([from, exitId]) => T.win.currentMap().d.entries[exitId], [from, exitId]);
             if (WIDTHS) {
                 const lane=KEYBOARD?1:Math.floor(leg/PAIRS.length);
-                const approach=await page.evaluate(([exitId,lane,temple,votive])=>{
+                const approach=await page.evaluate(([exitId,lane,temple,votive,newPair])=>{
                     const m=T.win.currentMap(),e=m.d.exits.find(x=>x.id===exitId);
+                    if(newPair) {
+                        const entry=m.d.entries[exitId];if(!entry)return null;
+                        const n={up:[0,1],down:[0,-1],left:[1,0],right:[-1,0]}[entry.dir];if(!n)return null;
+                        const vertical=!!n[1],lo=vertical?e.x0:e.y0,hi=vertical?e.x1:e.y1;
+                        const nlo=vertical?e.y0:e.x0,nhi=vertical?e.y1:e.x1,sign=vertical?n[1]:n[0];
+                        const free=(x,y)=>!m.solidRect(x-.28,y-.18,x+.28,y+.16),slots=[];
+                        for(let t=lo;t<=hi;t+=.04){
+                            let selected=null;
+                            for(let z=0;z<=nhi-nlo;z+=.04){
+                                const v=sign>0?nlo+z:nhi-z,x=vertical?t:v,y=vertical?v:t;
+                                if(!T.map.containsExit(e,x,y)||!free(x,y))continue;
+                                for(const dist of [1.2,.8,.5,1.8,2.5]){
+                                    const pre={x:x-n[0]*dist-.5,y:y-n[1]*dist-.8};
+                                    if(m.exits.some(ex=>T.map.containsExit(ex,pre.x+.5,pre.y+.8)))continue;
+                                    let clear=true;for(let d=0;d<=dist;d+=.025)if(!free(x-n[0]*d,y-n[1]*d)){clear=false;break;}
+                                    if(clear){selected={cx:x,cy:y,pre,vertical,lane,t};break;}
+                                }
+                                if(selected)break;
+                            }
+                            if(selected)slots.push(selected);
+                        }
+                        if(!slots.length)return null;
+                        const chosen=slots[Math.round((slots.length-1)*[.12,.5,.88][lane])];
+                        return {...chosen,range:[slots[0].t,slots.at(-1).t]};
+                    }
                     if(votive) {
                         const x=e.x1-.08, free=(x,y)=>!m.solidRect(x-.28,y-.18,x+.28,y+.16),slots=[];
                         for(let y=e.y0;y<=e.y1;y+=.02) {
@@ -314,7 +377,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                     let pre=null;
                     for(const d of [1.5,1,2,.6,2.5]){const x=selected.x-n[0]*d,y=selected.y-n[1]*d;if(free(x,y)&&!m.exits.some(e=>T.map.containsExit(e,x,y))){pre={x:x-.5,y:y-.8};break;}}
                     return pre?{cx:selected.x,cy:selected.y,pre,vertical,lane,t:selected.t,range:[slots[0].t,slots.at(-1).t]}:null;
-                },[exitId,lane,TEMPLE,VOTIVE]);
+                },[exitId,lane,TEMPLE,VOTIVE,!!NEW_PAIRS]);
                 ok(!!approach,`${name}: 문 폭 ${['왼쪽/위','중앙','오른쪽/아래'][lane]} 보행 가능한 접근`);
                 if(!approach)throw new Error('no lane '+name);
                 ex=approach;
@@ -323,7 +386,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                     const px=52/1.55;ok(await W.walkToPoint(1530/px-.5,650/px-.8,90000,.4),'T1W 기존 몹을 바꾸지 않고 동쪽 석재 길로 걷기');
                 }
                 ok(await W.walkToPoint(ex.pre.x,ex.pre.y,90000,.2),`${name}: 지정 폭 접근점까지 실제 조이스틱`);
-            } else if (near) await W.walkToPoint(near.x, near.y, 90000, 0.4); else await W.walkToPoint(ex.cx - ux * 2 - 0.5, ex.cy - uy * 2 - 0.8, 90000, 0.5);
+            } else {
+                const walked=near?await W.walkToPoint(near.x,near.y,90000,.4):await W.walkToPoint(ex.cx-ux*2-.5,ex.cy-uy*2-.8,90000,.5);
+                ok(walked,`${name}: 문 앞 착지까지 실제 조이스틱 접근`);
+                if(!walked)throw new Error('could not walk to departure approach '+name);
+            }
             const p = await W.padBox();
             const now = await where(), gx = ex.cx - (now.x + 0.5), gy = ex.cy - (now.y + 0.8), gn = Math.hypot(gx, gy) || 1;
             if(KEYBOARD){if(!VOTIVE||!WIDTHS)throw new Error('--keyboard requires --temple-15-t2 --widths');await page.evaluate(()=>document.activeElement?.blur?.());await page.keyboard.down('ArrowLeft');
@@ -405,6 +472,9 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-after-reload.png`) });
         ok(!errors.length, `페이지 오류 없음 ${errors.join('; ')}`);
     } finally {
+        const end=codeStamp();
+        ok(end.runtimeAndTestSha256===initialCodeStamp.runtimeAndTestSha256,'실행 중 런타임·맵·시험 코드 동일');
+        fs.writeFileSync(path.join(OUT,'code-stamp.json'),JSON.stringify({start:initialCodeStamp,end,arguments:process.argv.slice(2)},null,2));
         fs.writeFileSync(path.join(OUT, 'result.txt'), res.join('\n') + '\n');
         const v = page.video(); await context.close(); await browser.close();
         if (v) { try { fs.renameSync(await v.path(), path.join(OUT, 'portal.webm')); } catch {} }

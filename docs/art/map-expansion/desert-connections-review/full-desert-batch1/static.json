@@ -1,0 +1,62 @@
+[
+  {
+    "map": "desert_forecourt_west",
+    "exit": "east",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_forecourt_west",
+    "exit": "south",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_forecourt_east",
+    "exit": "east",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_forecourt_east",
+    "exit": "west",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_forecourt_east",
+    "exit": "south",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_votive_hall",
+    "exit": "west",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_votive_hall",
+    "exit": "east",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_votive_hall",
+    "exit": "north",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_votive_hall",
+    "exit": "south",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_city_plaza",
+    "exit": "east",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_city_plaza",
+    "exit": "dwelling",
+    "blockedPolygonPixels": 0
+  },
+  {
+    "map": "desert_city_dwelling",
+    "exit": "south",
+    "blockedPolygonPixels": 0
+  }
+]
