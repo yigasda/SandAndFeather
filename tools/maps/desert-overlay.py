@@ -222,6 +222,104 @@ def city_review(out):
     (out/'11-17-passage-review.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
 
 
+def city_reroute_review(out):
+    """Latest user route proposal: drawings and static checks only."""
+    out.mkdir(parents=True, exist_ok=True)
+    px=52/1.55
+    specs=[('desert_forecourt_east','T1E-C · 중앙 남쪽 → 17-A',[(800,860),(1210,860),(1230,886),(780,886)],(1000,780),'up',(970,810)),
+           ('desert_city_plaza','17-A · 오른쪽 계단 → T1E-C',[(1754,430),(1773,430),(1773,515),(1754,515)],(1623,570),'left',(1593,600))]
+    im=Image.new('RGB',(3620,1320),'#151e28');g=ImageDraw.Draw(im);results=[]
+    def text(x,y,t,width=1740,size=25,color='white'):
+        line=''
+        for ch in t:
+            if g.textlength(line+ch,font=font(size))>width:
+                g.text((x,y),line,font=font(size),fill=color);y+=size+9;line=''
+            line+=ch
+        g.text((x,y),line,font=font(size),fill=color)
+        assert y+size<im.height
+        return y+size+12
+    text(24,15,'최신 도시 접근안: T1E-C ↔ 17-A / 후보 검토만 · 게임 연결 미변경',3500,35)
+    text(24,65,'빨강: 수동 충돌 경계 · 주황: 문턱 후보 · 초록: 착지 발/진입방향 · 하늘: 동행 후보 · 보라: 17 기존 출구',3500)
+    for i,(ident,title,poly,landing,direction,mate) in enumerate(specs):
+        d=json.loads((ROOT/f'data/maps/{ident}.json').read_text());art=Image.open(ROOT/d['source']['art']).convert('RGB')
+        mask=np.asarray(Image.open(ROOT/d['source']['collision']).convert('RGBA'))[...,3]>=128
+        arr=np.asarray(art).copy();arr[edge(mask)]=[255,65,65];ox=24+i*1810;oy=160
+        im.paste(Image.fromarray(arr),(ox,oy));text(ox,115,title)
+        g.line([(ox+x,oy+y)for x,y in poly+[poly[0]]],fill='#ffb84d',width=4)
+        if i==1:
+            g.rectangle((ox+1760,oy+402,ox+1773,oy+537),outline='#ed5cff',width=2)
+            for x,y in [(180,355),(885,205)]:
+                g.line((ox+x-20,oy+y-20,ox+x+20,oy+y+20),fill='#ff6060',width=5)
+                g.line((ox+x-20,oy+y+20,ox+x+20,oy+y-20),fill='#ff6060',width=5)
+            for x,y,t in [(617,295,'C 세부맵 보존'),(1265,290,'D 세부맵 보존')]:
+                g.text((ox+x-80,oy+y-50),t,font=font(23),fill='white',stroke_width=3,stroke_fill='black')
+        def feet(c,color):
+            x,y=c;b=(x-.28*px,y-.18*px,x+.28*px,y+.16*px)
+            g.rectangle(tuple(v+(ox if j%2==0 else oy)for j,v in enumerate(b)),outline=color,width=3)
+            return bool(mask[int(b[1]):int(b[3])+1,int(b[0]):int(b[2])+1].all()),b
+        clear,b=feet(landing,'#52ff8a');mateclear,_=feet(mate,'#54e6ff')
+        ax,ay=ARROW[direction];x,y=landing;end=(x+ax*65,y+ay*65)
+        g.line((ox+x,oy+y,ox+end[0],oy+end[1]),fill='#52ff8a',width=5)
+        g.polygon([(ox+end[0],oy+end[1]),(ox+end[0]-ax*15+ay*9,oy+end[1]-ay*15-ax*9),(ox+end[0]-ax*15-ay*9,oy+end[1]-ay*15+ax*9)],fill='#52ff8a')
+        shape=Polygon(poly);pm=Image.new('1',art.size);ImageDraw.Draw(pm).polygon(poly,fill=1)
+        blocked=int((np.asarray(pm)&~mask).sum());gap=shape.distance(shape_box(*b))
+        target=(1000,865)if i==0 else (1763,475)
+        pathclear=True
+        for t in np.linspace(0,1,301):
+            xx=x+(target[0]-x)*t;yy=y+(target[1]-y)*t
+            if not mask[int(yy-.18*px):int(yy+.16*px)+1,int(xx-.28*px):int(xx+.28*px)+1].all():pathclear=False
+        ytext=text(ox,1070,f'착지 ({x}, {y}) {direction} / 발↔문턱 {gap:.1f}px / 문턱 내부 막힌 픽셀 {blocked}',size=25)
+        ytext=text(ox,ytext,('중앙 열린 길에서 안쪽 광장으로 진입. 이전 후보 좌표 유지.'if i==0 else '사용자 기존 착지 유지. 기존 출구의 막힌 모서리를 피한 문턱 후보.'),size=25)
+        text(ox,ytext,'동행·착지 발 정합 및 직선 발 경로는 정적 검사. 실제 왕복·카메라·입력 유지·저장 검증 전.',size=24)
+        results.append({'map':ident,'polygon':poly,'landing':landing,'dir':direction,'followerCandidate':mate,'landingFeetClear':clear,'followerFeetClear':mateclear,'polygonBlockedPixels':blocked,'footGapPx':gap,'straightFootPathClear':pathclear})
+    im.save(out/'T1E-C-17-A-candidates.png')
+    (out/'checks.json').write_text(json.dumps({'runtimeChanged':False,'candidates':results},ensure_ascii=False,indent=2)+'\n')
+    # Expanded route strips repeat a map only to keep every connection legible.
+    # All ports use source-image coordinates; originals are uniformly scaled to 50%.
+    im=Image.new('RGB',(6500,5250),'#151e28');g=ImageDraw.Draw(im)
+    files={'02':'02_매몰신전사막.png','15':'15_열주홀.png','T2':'T2_무너진봉헌품회랑.png','11':'11_매몰도시출입구.png','T1W':'T1W_서쪽제례앞뜰.png','T1E':'T1E_동쪽제례앞뜰.png','17':'17_지하도시광장.png','T3':'T3_신전수호문전당.png','16':'16_빛우물.png'}
+    ports={'02':{'A':(935,328),'B':(1500,676)},'15':{'A':(1720,615),'C':(10,420),'D':(995,875)},'T2':{'A':(887,85),'B':(10,550),'C':(1763,550),'D':(885,875)},'11':{'A':(715,332),'바깥길':(300,1450)},'T1W':{'A':(1515,117),'B':(1230,880)},'T1E':{'A':(1700,295),'B':(310,760),'C':(1000,875)},'17':{'A':(1763,475)},'T3':{'A':(512,1520),'N':(512,420)},'16':{'A':(512,1520)}}
+    strips=[('필수 신전 순환 · 11은 전체 신전 출구', ['02','15','T2','11','02'], [('A','D'),('C','B'),('D','A'),('바깥길','B')], '#e4b95f'),
+            ('앞뜰 순환 · 민트 하나만 유지', ['15','T1W','T1E','T2'], [('A','A'),('B','B'),('A','C')], '#62e5ca'),
+            ('도시 분기 · 기존 11↔17 대체', ['T1E','17'], [('C','A')], '#65baff'),
+            ('빛우물 경로 · T3 북문 잠금 조건 미정', ['T2','T3','16'], [('A','A'),('N','A')], '#aaaabb')]
+    g.text((60,25),'신전 + 도시 최신 연결 검토도',font=font(50),fill='white')
+    g.text((60,95),'모든 선은 왕복 · 같은 이름의 반복 그림은 같은 맵 · 실제 포트 표식 / 그림 50% 동일 배율 · 런타임 미적용',font=font(30),fill='white')
+    for r,(title,names,links,color) in enumerate(strips):
+        top=300+r*1200;g.text((60,top-140),title,font=font(38),fill=color)
+        placed=[]
+        for j,name in enumerate(names):
+            art=Image.open(ROOT/'사막맵'/files[name]).convert('RGB');art=art.resize((art.width//2,art.height//2),Image.Resampling.LANCZOS)
+            ox=200+j*1250;oy=top;im.paste(art,(ox,oy));placed.append((ox,oy,art.width,art.height))
+            g.text((ox,oy-55),name,font=font(36),fill='white')
+        def point(j,key):
+            ox,oy,w,h=placed[j];sx,sy=ports[names[j]][key];return (ox+sx*.5,oy+sy*.5)
+        # Alternating outside lanes separate incoming and outgoing segments.
+        for j,(pa,pb)in enumerate(links):
+            start=point(j,pa);end=point(j+1,pb);lane=top+850 if j%2==0 else top-85
+            # Each connector reaches a dedicated gutter by the shortest horizontal
+            # segment to the nearest picture side, then stays in dark canvas.
+            pts=[]
+            for idx,pnt in [(j,start),(j+1,end)]:
+                ox,oy,w,h=placed[idx];side=ox-45 if pnt[0]<ox+w/2 else ox+w+45
+                if idx==j and names[idx] in ('T1W','T3'):side=ox-85
+                pts.append((pnt,(side,pnt[1]),(side,lane)))
+            path=list(pts[0])+list(reversed(pts[1]));g.line(path,fill=color,width=5)
+            label=f'{names[j]}-{pa} ↔ {names[j+1]}-{pb}'
+            if names[j]=='T3':label+=' / 잠금 미정'
+            xx=(pts[0][-1][0]+pts[1][-1][0])/2;tw=g.textlength(label,font=font(29))
+            g.rectangle((xx-tw/2-14,lane-24,xx+tw/2+14,lane+24),fill='#151e28');g.text((xx-tw/2,lane-21),label,font=font(29),fill=color)
+            for pnt,key in [(start,pa),(end,pb)]:
+                x,y=pnt;g.ellipse((x-21,y-21,x+21,y+21),fill='#151e28',outline=color,width=4)
+                if key=='바깥길':key='길'
+                g.text((x-g.textlength(key,font=font(25))/2,y-17),key,font=font(25),fill=color)
+        if r==2:
+            for k,line in enumerate(['17-C·D: 기존 세부맵 연결 보존','17-B·E: 사용자 X 제외 / 대체 출구로 사용하지 않음','폐기: T1E-C ↔ T1W-B 노란 연결 및 W-B 좌우 분할안']):
+                g.text((2900,top+150+k*65),line,font=font(32),fill='white')
+    g.text((60,5120),'11 왼쪽·아래 출구는 과거 보존 경계값. 그림의 길 표식은 대표 위치이며 새 문턱 승인이 아닙니다.',font=font(30),fill='white')
+    im.save(out/'route-review.png')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('ids', nargs='*')
@@ -231,7 +329,11 @@ if __name__ == '__main__':
     parser.add_argument('--atlas-fixtures', type=Path, help='Full source + separate legend with runtime initial follower fixtures')
     parser.add_argument('--atlas-plans', type=Path, help='Review-only unresolved routes, never writes runtime data')
     parser.add_argument('--city-review', action='store_true', help='Side-by-side original 11/17 passage decision review only')
+    parser.add_argument('--city-reroute-review', action='store_true', help='Review latest T1E-C to 17-A proposal without runtime edits')
     args = parser.parse_args()
+    if args.city_reroute_review:
+        city_reroute_review(args.out)
+        sys.exit(0)
     if args.city_review:
         city_review(args.out)
         sys.exit(0)

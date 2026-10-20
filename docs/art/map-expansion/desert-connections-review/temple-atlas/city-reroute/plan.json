@@ -1,0 +1,40 @@
+{
+  "status": "review-only; not runtime applied",
+  "runtimeCommit": "3bc6b8cd4cbbd52e3eedcfdb07d2e220fa475a36",
+  "requiredLoop": [
+    "02-A ↔ 15-D",
+    "15-C ↔ T2-B",
+    "T2-D ↔ 11-A",
+    "11 outside ↔ 02-B"
+  ],
+  "forecourt": [
+    "15-A ↔ T1W-A",
+    "T1W-B ↔ T1E-B",
+    "T1E-A ↔ T2-C"
+  ],
+  "city": [
+    "T1E-C ↔ 17-A"
+  ],
+  "lightwell": [
+    "T2-A ↔ T3-A",
+    "T3-N ↔ 16-A (lock undecided)"
+  ],
+  "retired": [
+    "T1E-C ↔ T1W-B yellow",
+    "T1W-B split",
+    "11-A ↔ 17-A"
+  ],
+  "preserved": [
+    "17-C detail map",
+    "17-D detail map"
+  ],
+  "excluded": [
+    "17-B",
+    "17-E"
+  ],
+  "library": {
+    "route": "libfile_3729c1c831e88191953dc7d9afb94282",
+    "overlay": "libfile_46183ab7cb808191932ddb341db9f41d"
+  },
+  "note": "Earlier city-review, W-split-candidate and temple-atlas plans are historical, superseded by this review graph. Runtime remains unchanged."
+}
