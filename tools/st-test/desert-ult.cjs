@@ -157,9 +157,12 @@ const log = m => { console.log(m); res.push(m); };
             await page.evaluate(lead => { const r = T.field.fieldState().run; r.hp[lead] = 99; r.max[lead] = 99; }, lead);
             await page.evaluate(() => { const p = T.player.player; for (const [i, [dx, dy]] of [[3, -2], [5, 0], [3, 2]].entries()) (i ? T.field.testAdd : T.field.testOnly)('desert_leather_shield', p.x + dx, p.y + dy, {}); T.field.testEvents(true); });
             const t0 = Date.now(); let skills = 0, readyAt = null, ultAt = null;
+            // what the game did in this fight (read and cleared each turn: the event list keeps only the last 300)
+            const tally = {}; const count = evs => { for (const e of evs) { const k = e.ev === 'charge' ? `charge:${e.who}` : e.ev === 'ignored' ? `ignored:${e.what}(${e.why})` : e.ev === 'press' ? `press:${e.what}` : e.ev === 'blow' ? `blow:${e.by || 'attack'}` : e.ev; tally[k] = (tally[k] || 0) + (e.ev === 'charge' ? e.amt : 1); } };
             const pad = await W.padBox();
             while (Date.now() - t0 < 60000) {
-                const st = await page.evaluate(() => ({ f: T.field.fieldState(), u: T.field.testUlt(), me: { x: T.player.player.x, y: T.player.player.y } }));
+                const st = await page.evaluate(() => ({ f: T.field.fieldState(), u: T.field.testUlt(), me: { x: T.player.player.x, y: T.player.player.y }, ev: T.field.testEvents(true) }));
+                count(st.ev);
                 if (st.u.ready && !readyAt) { readyAt = Date.now(); log(`  ${WHO[lead]}: 궁 준비까지 스킬 ${skills}번, ${((readyAt - t0) / 1000).toFixed(1)}초 (게이지 ${JSON.stringify(st.u.g)})`); }
                 if (st.u.ready) { await W.tapEl('.sf_ult'); ultAt = Date.now(); await sleep(2500); await page.screenshot({ path: path.join(OUT, `ult-${lead}.png`) }); break; }
                 const alive = st.f.mobs.filter(o => o.st !== 'dead');
@@ -170,6 +173,10 @@ const log = m => { console.log(m); res.push(m); };
                 const skOn = await page.evaluate(() => !document.querySelector('.sf_duat_skill').disabled);
                 if (skOn) { await W.tapEl('.sf_duat_skill'); skills++; } else await W.tapEl('.sf_talk');
                 await sleep(120);
+            }
+            if (!readyAt) {   // why not: the presses, what was let pass, what charged whom, how the fight went
+                const end = await page.evaluate(() => ({ u: T.field.testUlt(), run: T.field.fieldState().run, me: T.field.fieldState().me, mobs: T.field.fieldState().mobs.map(o => `${o.st}:${o.hp}`) }));
+                log(`    준비 안 됨: 스킬 버튼 ${skills}번 · 게이지 ${JSON.stringify(end.u.g)} · ${JSON.stringify(tally)} · 체력 ${JSON.stringify(end.run?.hp)} · 앞장 ${JSON.stringify(end.me)} · 몹 ${end.mobs.join(',')}`);
             }
             ok(!!ultAt, `${WHO[lead]}: 궁 버튼으로 발동 (${readyAt ? ((readyAt - t0) / 1000).toFixed(1) + '초' : '준비 안 됨'})`);
         }
