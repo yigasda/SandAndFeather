@@ -1,0 +1,56 @@
+통과 왕복 데이터 계약 desert_golden_dunes/sanctuary → desert_old_sanctuary
+통과 왕복 데이터 계약 desert_old_sanctuary/south → desert_golden_dunes
+통과 golden_dunes → old_sanctuary: 연속 왕복의 출발 맵
+통과 golden_dunes → old_sanctuary: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":0,"arrival":{"map":"desert_old_sanctuary","x":37.07685282152801,"y":17.613297056433787,"inExit":false,"mateInExit":false,"mate":{"x":35.993449170209146,"y":18.21289079951081},"floor":true,"mateFloor":true},"held":{"map":"desert_old_sanctuary","x":37.153265409639246,"y":17.344216409084073,"inExit":false,"mateInExit":false,"mate":{"x":36.24363834407564,"y":18.08779621257756},"floor":true,"mateFloor":true}}
+  golden_dunes → old_sanctuary: 출구 앞 golden_dunes (18.3, 16.3) → 도착 old_sanctuary (37.1, 17.6)
+통과 golden_dunes → old_sanctuary: 걸어서 도착, 착지 south(37.1, 17.7) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 golden_dunes → old_sanctuary: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (old_sanctuary)
+통과 golden_dunes → old_sanctuary: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 golden_dunes → old_sanctuary: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 golden_dunes → old_sanctuary: 최초 도착 동행 간격 유지
+통과 golden_dunes → old_sanctuary: 첫 도착 프레임 정확한 착지
+통과 old_sanctuary → golden_dunes: 연속 왕복의 출발 맵
+통과 old_sanctuary → golden_dunes: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":1,"arrival":{"map":"desert_golden_dunes","x":18.15338479263694,"y":16.23151231149595,"inExit":false,"mateInExit":false,"mate":{"x":16.929661686737635,"y":16.736261813973844},"floor":true,"mateFloor":true},"held":{"map":"desert_golden_dunes","x":18.17682071272469,"y":16.32626501240006,"inExit":false,"mateInExit":false,"mate":{"x":17.016964913156748,"y":16.692610200764285},"floor":true,"mateFloor":true}}
+  old_sanctuary → golden_dunes: 출구 앞 old_sanctuary (37.2, 17.4) → 도착 golden_dunes (18.2, 16.2)
+통과 old_sanctuary → golden_dunes: 걸어서 도착, 착지 sanctuary(18.1, 16.1) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 old_sanctuary → golden_dunes: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (golden_dunes)
+통과 old_sanctuary → golden_dunes: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 old_sanctuary → golden_dunes: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 old_sanctuary → golden_dunes: 최초 도착 동행 간격 유지
+통과 old_sanctuary → golden_dunes: 첫 도착 프레임 정확한 착지
+통과 golden_dunes → old_sanctuary: 연속 왕복의 출발 맵
+통과 golden_dunes → old_sanctuary: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":2,"arrival":{"map":"desert_old_sanctuary","x":37.07618699943004,"y":17.61354702627157,"inExit":false,"mateInExit":false,"mate":{"x":35.993073510788925,"y":18.21307862922092},"floor":true,"mateFloor":true},"held":{"map":"desert_old_sanctuary","x":38.41315266721846,"y":12.754110556560777,"inExit":false,"mateInExit":false,"mate":{"x":38.07891125027136,"y":13.96896967398847},"floor":true,"mateFloor":true}}
+통과 golden_dunes → old_sanctuary: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  golden_dunes → old_sanctuary: 출구 앞 golden_dunes (18.3, 16.3) → 도착 old_sanctuary (37.1, 17.6)
+통과 golden_dunes → old_sanctuary: 걸어서 도착, 착지 south(37.1, 17.7) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 golden_dunes → old_sanctuary: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (old_sanctuary)
+통과 golden_dunes → old_sanctuary: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 golden_dunes → old_sanctuary: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 golden_dunes → old_sanctuary: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 golden_dunes → old_sanctuary: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 golden_dunes → old_sanctuary: 최초 도착 동행 간격 유지
+통과 golden_dunes → old_sanctuary: 첫 도착 프레임 정확한 착지
+통과 old_sanctuary → golden_dunes: 연속 왕복의 출발 맵
+통과 old_sanctuary → golden_dunes: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":3,"arrival":{"map":"desert_golden_dunes","x":18.188095973471498,"y":16.32311575599605,"inExit":false,"mateInExit":false,"mate":{"x":17.01696495897436,"y":16.69261017785548},"floor":true,"mateFloor":true},"held":{"map":"desert_golden_dunes","x":20.31780623449247,"y":23.152966018667907,"inExit":false,"mateInExit":false,"mate":{"x":19.889137132350154,"y":21.7782504841414},"floor":true,"mateFloor":true}}
+통과 old_sanctuary → golden_dunes: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  old_sanctuary → golden_dunes: 출구 앞 old_sanctuary (37.0, 17.5) → 도착 golden_dunes (18.2, 16.3)
+통과 old_sanctuary → golden_dunes: 걸어서 도착, 착지 sanctuary(18.1, 16.1) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 old_sanctuary → golden_dunes: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (golden_dunes)
+통과 old_sanctuary → golden_dunes: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 old_sanctuary → golden_dunes: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 old_sanctuary → golden_dunes: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 old_sanctuary → golden_dunes: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 old_sanctuary → golden_dunes: 최초 도착 동행 간격 유지
+통과 old_sanctuary → golden_dunes: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: golden_dunes (18.0, 15.6) 그대로, 트리거 밖
+통과 페이지 오류 없음 
+통과 실행 중 런타임·맵·시험 코드 동일

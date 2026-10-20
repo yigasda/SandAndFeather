@@ -1380,3 +1380,9 @@ bfe34f70 기본 실제 왕복33통과/0실패(4전환), 632838e6 상중하 폭 �
 W-B↔E-B, T2-D↔11-A, E-C↔17-A,17-C↔주거실을 생성기에서 구현했다. 기존 파란 착지와15 east/W yard 보존. E-B 문턱은 수동 충돌 안쪽 x227…396,y748…772로 정리했다. 17-C 문턱은 실제 집 문 안쪽 다각형, 착지(625,400)down. 주거실은 아래 중앙 문턱과 착지(887,755)up. 기록고 단절 및 T3 잠금은 보류한다.
 
 코드3f140c4c에서 각 쌍44통과/0실패, 실제 조이스틱4회 전환씩 총16회. 유지입력·중립·이탈·재진입·동행 발·짧은 이동·저장/로드 검사 포함. 시험 시작/끝 코드해시 동일 확인. 전체폭3lane 검사는 이번 묶음에서 미실행. 초기 동행 fixture는 별도 캡처이며 실제 왕복 대용이 아니다. 근거는 [full-desert-batch1](art/map-expansion/desert-connections-review/full-desert-batch1/). 새 활성 다각형 내부 막힌 픽셀0. field.js 동일이름 entry/exit 안전구역 계약을 다시 확인했고 전투·공통코드 변경 없음.
+
+### 01↔09 검수 완료 — ca13f9dd
+
+구현 커밋 제목의 for validation은 구현시점 제목이다. 이후 동일코드 ca13f9dd0133a4e9b860fe7a5fb4e3b24c3b2ad7에서 기본44/0(실제4전환), 폭78/0(좌·중·우,실제6전환)을 완료한 뒤 공유브랜치에 올렸다. 시작·종료 runtimeAndTestSha256는 두 시험 모두 b80b951b5f947a0c202312ddf0ddfc4514df03bae3e3ef9a175c0855ee2b3a83로 동일하다. 유지입력·중립·재진입·동행·저장/로드 및 양방향 도착화면 검수 포함. [로그·코드해시·캡처·출입구 오버레이](art/map-expansion/desert-connections-review/sanctuary-validated/).
+
+이 근거 커밋은 ca13f9dd에 문서·시험산출물만 더하며, 미검수 피라미드 dc2073bb를 포함하지 않는다. main/release 변경 없음.

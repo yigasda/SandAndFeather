@@ -1,0 +1,16 @@
+[
+  [
+    "desert_golden_dunes",
+    "sanctuary",
+    "sanctuary",
+    "desert_old_sanctuary",
+    "south"
+  ],
+  [
+    "desert_old_sanctuary",
+    "south",
+    "south",
+    "desert_golden_dunes",
+    "sanctuary"
+  ]
+]
