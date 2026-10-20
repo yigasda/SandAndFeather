@@ -711,8 +711,10 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_bubble { border-radius: 3px; border: 1px solid #f9cf88; box-shadow: 0 0 0 2px #794329; background: #bd602ded; }
 #sf_game .sf_controls { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
 /* Shared integer-grid pixel art. Keep the pad/knob boxes and enlarged touch area unchanged. */
-#sf_game .sf_pad { width:112px;height:112px;border:2px solid transparent;border-radius:0;background:url('data/art/ui/controls/joystick-base.svg') center/100% 100% no-repeat;border-image:none;background-origin:border-box;box-shadow:none;image-rendering:pixelated; }
-#sf_game .sf_knob { border:1px solid transparent;border-radius:0;background:url('data/art/ui/controls/joystick-knob.svg') center/100% 100% no-repeat;background-origin:border-box;box-shadow:none;image-rendering:pixelated; }
+#sf_game .sf_pad { width:112px;height:112px;border:2px solid transparent;border-radius:0;background:url('data/art/ui/controls/joystick-base.png') center/100% 100% no-repeat;border-image:none;background-origin:border-box;box-shadow:none;image-rendering:pixelated; }
+#sf_game .sf_knob { position:relative;border:1px solid transparent;border-radius:0;background:none;box-shadow:none;image-rendering:pixelated; }
+/* B's two-pixel round shadow travels with the thumb without enlarging its input/layout box. */
+#sf_game .sf_knob::before { content:'';position:absolute;left:-1px;top:-1px;width:calc(100% + 2px);height:calc(100% + 4px);background:url('data/art/ui/controls/joystick-knob.png') center/100% 100% no-repeat;pointer-events:none; }
 #sf_game .sf_pad:active .sf_knob { opacity:.92; }
 #sf_game .sf_round { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; border: 2px solid #d9b578; border-radius: 20px; background: #59422eee; box-shadow: 0 0 0 2px #493320, inset 0 0 0 1px #f2d8a3; }
 #sf_game .sf_round i { font-size: 20px; color: #f9dd9e; }
