@@ -16,7 +16,8 @@
 #   hit    타격·조준 desert-strike(2분) desert-target(5분) desert-horus-leap(1분) duat-field(1분)
 #   mob    몹 행동·안전구역 desert-entry-safe(3.5분) desert-b3(1분) desert-mob-hits(2분)
 #   input  버튼·조이스틱 pad-tabs(2분)
-#   map    출입·착지·동행·저장 이관 portal-walk(1분) desert-maps(1분) desert-save-move(1분)
+#   map    출입·착지·동행·저장 이관 portal-walk 연결별(--connections, --temple-*; 기본값은 옛 02↔T1W라 쓰지 않음, 각 1~3분)
+#          desert-maps(1분) desert-save-move(1분)
 #   ui     화면 verify-cozy-ui(0.5분) verify-ui-themes(1분) verify-full-map(옴보스 낮밤·이동)
 #   art    그림·메모리 desert-boss-view(0.5분) ult-memory(1.5분)
 #   full   위 전부(약 30분) — 병합 전에만
@@ -26,7 +27,7 @@ OUT=${OUT:-/tmp/st-tiers}
 BASE=HEAD   # --since <커밋>: 그 커밋 이후 바뀐 JS의 문법을 본다(커밋까지 한 변경도 포함)
 declare -A G=(
   [ult]="desert-ult ult-fx-view" [hit]="desert-strike desert-target desert-horus-leap duat-field"
-  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs" [map]="portal-walk desert-maps desert-save-move"
+  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs" [map]="portal-walk:--connections portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 desert-maps desert-save-move"
   [ui]="verify-cozy-ui verify-ui-themes verify-full-map" [art]="desert-boss-view ult-memory"
 )
 G[full]="${G[ult]} ${G[hit]} ${G[mob]} ${G[input]} ${G[map]} ${G[ui]} ${G[art]}"
@@ -61,8 +62,10 @@ rm -rf "$EXT/src" "$EXT/data" && cp -r "$ROOT/src" "$ROOT/data" "$EXT/" && cp "$
 case " ${want[*]} " in *" ult-memory "*|*" ult-fx-view "*) python3 "$ROOT/tools/art/ult-fx-candidates.py" "$EXT/data" > /dev/null ;; esac
 bad=0
 for t in "${want[@]}"; do
-  f=$ROOT/tools/st-test/$t.cjs; [ -f "$f" ] || f=$ROOT/tools/st-test/$t.js; [ -f "$f" ] || f=$ROOT/tools/art/$t.cjs
-  s=$(date +%s); (cd "$ROOT" && timeout 2400 node "$f" "$OUT/$t" > "$OUT/$t.log" 2>&1); e=$?
+  # name:--flag,--flag → the script with those flags (portal-walk's connection sets)
+  n=${t%%:*}; args=(); [ "$n" != "$t" ] && IFS=',' read -ra args <<< "${t#*:}"; t=${t//[:,]/_}
+  f=$ROOT/tools/st-test/$n.cjs; [ -f "$f" ] || f=$ROOT/tools/st-test/$n.js; [ -f "$f" ] || f=$ROOT/tools/art/$n.cjs
+  s=$(date +%s); (cd "$ROOT" && timeout 2400 node "$f" "$OUT/$t" "${args[@]}" > "$OUT/$t.log" 2>&1); e=$?
   printf '%-20s exit %s  통과 %s 실패 %s  %ss\n' "$t" "$e" "$(grep -c '^통과\|^PASS' "$OUT/$t.log")" "$(grep -c '^실패\|^FAIL' "$OUT/$t.log")" "$(( $(date +%s) - s ))" | tee -a "$OUT/summary.txt"
   [ $e -ne 0 ] && bad=1
 done

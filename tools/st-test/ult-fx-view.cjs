@@ -1,5 +1,5 @@
 // 궁 이펙트 해상도 후보를 실제 표시 크기로 나란히(사용자 10-19: 원본 보존, 확정 전). 폰 412×900 dpr 2, T1W, 앞장·동행 + 몹 하나(크기 비교용).
-// 후보(full 원본 해상도 · half · third — tools/art/ult-fx-candidates.py가 시험 서버에 만든 것)마다 캐릭터별로 가장 활짝 핀 셋째 장면의
+// 후보(full 원본 해상도 · half · third — tools/art/ult-fx-candidates.py가 시험 서버에 만든 것)마다 캐릭터별로 가장 넓은 장면(세트 5·호루스 4·소망 3번째)의
 // 한가운데 순간을 멈춰 세우고(testUltFrame) 화면을 찍는다. 줄이지 않은 화면 픽셀 그대로 잘라 붙인다.
 // 세트·호루스는 타격 범위(그림의 주된 부분, 희미한 빛 제외)를 겹친 화면도 남긴다(area-<who>.png).
 //   node tools/st-test/ult-fx-view.cjs [out]   → out/<tag>-<who>.png, out/sheet-<who>.png (왼쪽부터 full · half · third)
@@ -40,11 +40,15 @@ fs.mkdirSync(OUT, { recursive: true });
                 await sleep(2500);
                 const ms = await page.evaluate(who => {
                     const fr = T.data.DATA.duat.field.ult.fx[who].frames; let at = 0, best = 0;
-                    for (const [i, f] of fr.entries()) { if (i === 2) best = at + f.ms / 2; at += f.ms; }   // the third: each one at its fullest
+                    const pick = { set: 4, horus: 3, somang: 2 }[who];   // each at its widest (as the area is measured)
+                    for (const [i, f] of fr.entries()) { if (i === pick) best = at + f.ms / 2; at += f.ms; }
                     const p = T.player.player; T.field.testOnly('desert_leather_shield', p.x + 2.6, p.y, { hp: 999, atk: 0, speed: 0, range: 0, guard: 0, nopush: true });
-                    T.field.testUltFrame(who, best); return best;
+                    return best;
                 }, who);
                 await sleep(1500);
+                // the same moment without the 궁 (where the picture is: the zoomed patches are taken only there)
+                if (tag === 'full') await page.screenshot({ path: path.join(OUT, `none-${who}.png`) });
+                await page.evaluate(([who, ms]) => T.field.testUltFrame(who, ms), [who, ms]); await sleep(150);
                 await page.screenshot({ path: path.join(OUT, `${tag}-${who}.png`) });
                 // where it hurts over the picture (yellow 세트, orange 호루스: the main part, not the faint glow), full only
                 if (tag === 'full' && who !== 'somang') {

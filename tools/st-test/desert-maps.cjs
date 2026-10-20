@@ -107,7 +107,9 @@ fs.mkdirSync(OUT, { recursive: true });
         legs.push(['desert_buried_temple', 'door', 'door', 'desert_city_gate', 'outside'], ['desert_city_gate', 'door', 'door', 'desert_city_plaza', 'east'],
             ['desert_city_plaza', 'east', 'east', 'desert_city_gate', 'door'], ['desert_city_gate', 'outside', 'left', 'desert_buried_temple', 'door'],
             // 02 신전 문 ↔ T1W 석재 마당 아래 끝(착지: 사용자 파란 원)
-            ['desert_buried_temple', 'temple', 'temple', 'desert_forecourt_west', 'south'], ['desert_forecourt_west', 'south', 'south', 'desert_buried_temple', 'temple']);
+            // 02 ↔ 15 ↔ T1W (maps/desert-verified-abc934a7; the old 02 ↔ T1W straight way is gone), as in portal-walk.cjs
+            ['desert_buried_temple', 'temple', 'temple', 'desert_colonnade', 'south'], ['desert_colonnade', 'south', 'south', 'desert_buried_temple', 'temple'],
+            ['desert_colonnade', 'forecourt', 'forecourt', 'desert_forecourt_west', 'east'], ['desert_forecourt_west', 'east', 'east', 'desert_colonnade', 'forecourt']);
         for (const [from, at, exitId, to, land] of legs) {
             await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
             await page.waitForTimeout(600);

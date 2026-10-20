@@ -1,6 +1,6 @@
 // 입구 안전구역(사용자 10-19: T1W 착지에 몹이 다가와 입장하자마자 공격받거나 출구가 막히지 않게, 착지는 옮기지 않음).
 // 가죽 방패병은 승인 수치 그대로(data/desert.json). 화면 터치(조이스틱·공격 버튼)로:
-//   1. 02 신전 문으로 걸어 들어와(동행 함께) 12초 그대로 — 맞지 않음, 몹이 구역(착지 둘레·출구까지)에 안 들어옴
+//   1. 15에서 앞뜰 출구로 걸어 들어와(동행 함께, T1W east 착지) 12초 그대로 — 맞지 않음, 몹이 구역(착지 둘레·출구까지)에 안 들어옴
 //   2. 몹을 구역 바로 바깥에 세워 두고 10초 — 공격을 시작하지 않음, 구역에 안 들어옴
 //   3. 구역 밖으로 걸어 나가면 — 정상으로 공격받음
 //   4. 구역 안에서 먼저 때리면 — 반격(공격 준비)은 오지만 몹은 여전히 구역 밖
@@ -41,11 +41,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         const hp = () => page.evaluate(() => T.field.fieldState().run?.hp?.set ?? null);
         const deep = () => page.evaluate(() => T.deep);
         // 1. in through 02's temple door, on foot
-        await page.evaluate(async () => T.win.travel('desert_buried_temple', 'temple')); await sleep(1000);
+        await page.evaluate(async () => T.win.travel('desert_colonnade', 'forecourt')); await sleep(1000);
         await page.evaluate(() => { const s = T.state.getState(); s.ledger.gday = T.ledger.today(s) + 1; });
         const p = await W.padBox();
-        // toward the middle of the temple door (it is up and a little right of the steps' landing)
-        const v = await page.evaluate(() => { const m = T.win.currentMap(), e = m.d.exits.find(x => x.id === 'temple'), q = T.player.player, dx = (e.x0 + e.x1) / 2 - q.x - 0.5, dy = (e.y0 + e.y1) / 2 - q.y - 0.8, n = Math.hypot(dx, dy); return [dx / n, dy / n]; });
+        // toward the middle of 15's way to the forecourt (its exit box: a polygon exit keeps the box round it)
+        const v = await page.evaluate(() => { const m = T.win.currentMap(), e = m.d.exits.find(x => x.id === 'forecourt'), q = T.player.player, dx = (e.x0 + e.x1) / 2 - q.x - 0.5, dy = (e.y0 + e.y1) / 2 - q.y - 0.8, n = Math.hypot(dx, dy); return [dx / n, dy / n]; });
         await W.touch('touchStart', p.x, p.y); await W.touch('touchMove', p.x + v[0] * p.lim, p.y + v[1] * p.lim);
         await page.waitForFunction(() => T.win.currentMap()?.id === 'desert_forecourt_west', null, { timeout: 15000 });
         await W.touch('touchEnd');
@@ -57,15 +57,17 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         ok((await hp()) === h0 && (await deep()) <= 0, `들어와서 12초: 체력 ${h0} → ${await hp()}, 몹이 구역에 들어간 깊이 ${(await deep()).toFixed(2)}칸 (구역 ${z.length}곳, 반경 ${z[0]?.r.toFixed(1)}칸)`);
         await page.screenshot({ path: path.join(OUT, '2-after-12s.png') });
         // 2–4 her alone (the one with her walks out to fight and takes its attention), in again at the same landing
-        await page.evaluate(async () => { const s = T.state.getState(); T.heroes.setWith(s, null); await T.win.travel('desert_buried_temple', 'temple'); });
+        await page.evaluate(async () => { const s = T.state.getState(); T.heroes.setWith(s, null); await T.win.travel('desert_colonnade', 'forecourt'); });
         await sleep(800);
-        await page.evaluate(async () => { const s = T.state.getState(); s.ledger.gday = T.ledger.today(s) + 1; await T.win.travel('desert_forecourt_west', 'south'); });
+        await page.evaluate(async () => { const s = T.state.getState(); s.ledger.gday = T.ledger.today(s) + 1; await T.win.travel('desert_forecourt_west', 'east'); });
         await sleep(1200);
         await page.evaluate(() => { T.field.testRanges(true); T.field.testReset(); });
         // 2. one right outside the zone, toward her
         const at = await page.evaluate(() => ({ x: T.player.player.x, y: T.player.player.y }));
-        const r = z.find(q => Math.hypot(q.a.x - at.x - 0.5, q.a.y - at.y - 0.8) < 0.5)?.r || 3.5;
-        await page.evaluate(([x, y]) => { T.field.testOnly('desert_leather_shield', x, y, {}); T.watch(); T.field.testEvents(true); }, [at.x, at.y - r - 0.6]);
+        const zone = z.find(q => Math.hypot(q.a.x - at.x - 0.5, q.a.y - at.y - 0.8) < 0.5), r = zone?.r || 3.5;
+        // the side away from its exit (the zone runs from the landing to the exit): out there is outside the zone
+        const sg = zone && zone.b.y < zone.a.y ? 1 : -1;
+        await page.evaluate(([x, y]) => { T.field.testOnly('desert_leather_shield', x, y, {}); T.watch(); T.field.testEvents(true); }, [at.x, at.y + sg * (r + 0.6)]);
         const h1 = await hp();
         await sleep(10000);
         const ev = await page.evaluate(() => T.field.testEvents(true).filter(e => e.ev === 'prepare' || e.ev === 'hurt').length);
@@ -73,15 +75,15 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.screenshot({ path: path.join(OUT, '3-edge.png') });
         // 3. out of the zone toward it: it strikes as usual
         const h2 = await hp();
-        await W.walkToPoint(at.x, at.y - r - 2, 15000, 0.4);
+        await W.walkToPoint(at.x, at.y + sg * (r + 2), 15000, 0.4);
         let hurt = false;
         for (let k = 0; k < 40 && !hurt; k++) { await sleep(250); hurt = (await hp()) < h2; }
         ok(hurt, `구역 밖으로 나가면 정상으로 공격받음 (체력 ${h2} → ${await hp()})`);
         await page.screenshot({ path: path.join(OUT, '4-outside.png') });
         // 4. back in, just inside the edge; she strikes it from there: it may come in after her and strike back (no hitting
         //    it from shelter for ever); left alone 3 s, it walks out again and leaves her be
-        await W.walkToPoint(at.x, at.y - r + 1.0, 15000, 0.25);
-        await page.evaluate(([x, y]) => { T.field.testOnly('desert_leather_shield', x, y, { guard: 0 }); T.watch(); }, [at.x, at.y - r - 0.5]);
+        await W.walkToPoint(at.x, at.y + sg * (r - 1.0), 15000, 0.25);
+        await page.evaluate(([x, y]) => { T.field.testOnly('desert_leather_shield', x, y, { guard: 0 }); T.watch(); }, [at.x, at.y + sg * (r + 0.5)]);
         await sleep(400);
         const h4 = await hp();
         await page.evaluate(() => { T.field.testReset(); T.field.testEvents(true); });
@@ -98,11 +100,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await sleep(5000);
         ok((await hp()) === h5 && (await deep()) <= 0, `3초 넘게 안 때리면 몹은 구역 밖으로 나가고 더 공격하지 않음 (체력 ${h5} → ${await hp()}, 깊이 ${(await deep()).toFixed(2)}칸)`);
         // 5. the one with her strikes first: it goes for them only; she, in the zone, is not hurt
-        await page.evaluate(async () => { const s = T.state.getState(); T.heroes.setWith(s, 'horus'); await T.win.travel('desert_buried_temple', 'temple'); });
+        await page.evaluate(async () => { const s = T.state.getState(); T.heroes.setWith(s, 'horus'); await T.win.travel('desert_colonnade', 'forecourt'); });
         await sleep(800);
-        await page.evaluate(async () => { const s = T.state.getState(); s.ledger.gday = T.ledger.today(s) + 1; await T.win.travel('desert_forecourt_west', 'south'); });
+        await page.evaluate(async () => { const s = T.state.getState(); s.ledger.gday = T.ledger.today(s) + 1; await T.win.travel('desert_forecourt_west', 'east'); });
         await sleep(1500);
-        await page.evaluate(([x, y]) => { T.field.testRanges(true); T.field.testReset(); T.field.testOnly('desert_leather_shield', x, y, { guard: 0 }); T.watch(); }, [at.x + 1, at.y - r - 0.6]);
+        await page.evaluate(([x, y]) => { T.field.testRanges(true); T.field.testReset(); T.field.testOnly('desert_leather_shield', x, y, { guard: 0 }); T.watch(); }, [at.x + 1, at.y + sg * (r + 0.6)]);
         await sleep(300);
         const h6 = await hp();
         await page.evaluate(() => { T.field.testEvents(true); T.field.testStrikeBy('horus'); });
