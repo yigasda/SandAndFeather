@@ -29,14 +29,13 @@ let root = null, chip = null, hud = null, renderer = null, map = null;
 let mode = 'closed'; // 'open' | 'folded' | 'closed'
 let raf = 0, last = 0, miniAt = 0, drawnAt = 0, near = null;
 // doors: one fires only after her feet have been off every exit once (no bouncing back on arrival); one move at a time
-let doorArmed = false, moving = false, doorNeedsNeutral = false;
+let doorArmed = false, moving = false;
 // frames drawn a second: walking, standing (only the river moves), a card is open
 const FPS = { walk: 30, still: 8, card: 4 };
 
 export const gameMode = () => mode;
-// tests only: why a door did or did not take her (armed after she stood outside an exit, waiting for a let-go stick,
-// mid map change, a card open)
-export const testDoor = () => ({ armed: doorArmed, needsNeutral: doorNeedsNeutral, moving, mode, card: cardOpen() });
+// tests only: why a door did or did not take her (armed once her feet were off every exit, mid map change, a card open)
+export const testDoor = () => ({ armed: doorArmed, moving, mode, card: cardOpen() });
 
 // what packs get to show things with: cards, a toast, folding the window
 const ui = {
@@ -193,11 +192,9 @@ export async function travel(mapId, pos = null) {
 // through a door she walked into, or up and down the stairs
 async function useExit(ex) {
     if (!ex || !getState() || !DATA.maps[ex.to] || moving) return;
-    doorNeedsNeutral = true;
     try { await travel(ex.to, ex.at); }
     catch (error) {
-        // Keep disarmed until neutral input and a fresh exit departure.
-        doorArmed = false;
+        doorArmed = false;   // still standing in it: not tried again every frame
         console.error('[SandAndFeather] exit travel', error);
     }
 }
@@ -339,19 +336,12 @@ function frame(t) {
     let dt = last ? Math.min(0.2, (t - last) / 1000) : 0;
     last = t;
     const dtAll = dt;
-    // Observe neutral after arrival, not transient input while loading a map.
-    if (!moving && !input.dx && !input.dy) doorNeedsNeutral = false;
     if (!cardOpen() && !moving) {
         for (; dt > 1e-6 && !moving; dt -= 0.05) {
             stepPlayer(map, input.dx, input.dy, Math.min(0.05, dt));
             const f = feet(), ex = map.exitAt(f.x, f.y);
-            if (!ex) {
-                if (!doorNeedsNeutral) doorArmed = true;
-            } else if (ex && doorArmed && !doorNeedsNeutral) {
-                doorArmed = false;
-                useExit(ex);
-                break;
-            }
+            if (!ex) doorArmed = true;
+            else if (doorArmed) { doorArmed = false; useExit(ex); break; }
         }
         if (!moving) tileCheck();
         if (!moving) for (const fn of frameFns) { try { fn(dtAll, map, ui); } catch (e) { console.error('[SandAndFeather] frame', e); } }
