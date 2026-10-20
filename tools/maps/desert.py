@@ -181,6 +181,21 @@ PLACES = [
 ]
 
 
+# Confirmed old-sanctuary doorway pair; original collision and existing 01 entries preserved.
+NO.update({'desert_old_sanctuary': '09'})
+PLACES.extend([('desert_old_sanctuary',
+  '모래에 잠긴 옛 성소',
+  '09_옛성소.png',
+  '09_옛성소.png',
+  {'south': ((1260, 620), 'up')},
+  [('south', (1180, 700, 1410, 764), 'desert_golden_dunes', 'sanctuary')])])
+for _place in PLACES:
+    if _place[0] == 'desert_golden_dunes':
+        _place[4].update({'sanctuary': ((275, 250), 'down')})
+        _place[5].extend([('sanctuary', (272, 175, 321, 190), 'desert_old_sanctuary', 'south')])
+EXIT_POLYGONS.update({('desert_old_sanctuary', 'south'): [(1180, 744), (1410, 700), (1410, 719), (1180, 764)], ('desert_golden_dunes', 'sanctuary'): [(289, 175), (321, 175), (318, 190), (272, 190)]})
+LANDING_MIN_GAP = {('desert_old_sanctuary', 'south'): 90, ('desert_golden_dunes', 'sanctuary'): 55}
+
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
@@ -232,6 +247,7 @@ def main(review_ids=None):
                 # Near natural side/stair approaches: validate actual feet and held-input return.
                 if (ident,k) in {('desert_colonnade','stair'),('desert_votive_hall','west'),('desert_votive_hall','east'),('desert_votive_hall','north'),('desert_guardian_gate','south')}: need = 80
                 if (ident,k) in {('desert_forecourt_east','south'),('desert_votive_hall','south'),('desert_city_plaza','dwelling'),('desert_city_dwelling','south')}: need = 80
+                need = LANDING_MIN_GAP.get((ident,k), need)
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         for item in ex:

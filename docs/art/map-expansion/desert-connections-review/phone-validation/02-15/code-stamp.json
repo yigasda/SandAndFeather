@@ -1,0 +1,18 @@
+{
+  "start": {
+    "commit": "71d12d7a4a0f53e759c9d01acf5ff2c7d15a8eb8",
+    "runtimeAndTestSha256": "e3fd8736773d7ac365ed7fe75367ce04e63174fb05cdedb6dd1e965f22905425",
+    "files": 120
+  },
+  "end": {
+    "commit": "71d12d7a4a0f53e759c9d01acf5ff2c7d15a8eb8",
+    "runtimeAndTestSha256": "e3fd8736773d7ac365ed7fe75367ce04e63174fb05cdedb6dd1e965f22905425",
+    "files": 120
+  },
+  "arguments": [
+    "/tmp/desert-phone-02-15",
+    "--temple-02-15",
+    "--independent-tiles",
+    "1"
+  ]
+}

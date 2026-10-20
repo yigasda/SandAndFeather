@@ -1,0 +1,423 @@
+{
+  "kind": "independent real joystick excursions from exact entry fixture; not roundtrip proof",
+  "start": {
+    "commit": "a43af96083bcf5b780165239543096222b949bb5",
+    "dirtyStatus": " M data/maps/desert_barque_shrine.json\n M data/maps/desert_burial_passage.json\n M data/maps/desert_collapsed_crypt.json\n M data/maps/desert_descent_lower.json\n M data/maps/desert_descent_upper.json\n M data/maps/desert_funerary_maze.json\n M data/maps/desert_golden_dunes.json\n M data/maps/desert_golden_vault.json\n M data/maps/desert_pyramid_base.json\n M data/maps/desert_royal_records.json\n M data/maps/desert_sarcophagus_hall.json\n M tools/maps/desert-overlay.py\n M tools/maps/desert.py\n?? docs/art/map-expansion/desert-connections-review/full-desert-batch2/\n?? tools/maps/__pycache__/desert.cpython-312.pyc\n?? tools/maps/__pycache__/duat-pixel.cpython-312.pyc\n?? tools/maps/__pycache__/residence.cpython-312.pyc\n",
+    "sha256": "954aa81bb4d482e1d562a41528104d1043ee37a19094533c795f99ef3fbde23f"
+  },
+  "end": {
+    "commit": "a43af96083bcf5b780165239543096222b949bb5",
+    "dirtyStatus": " M data/maps/desert_barque_shrine.json\n M data/maps/desert_burial_passage.json\n M data/maps/desert_collapsed_crypt.json\n M data/maps/desert_descent_lower.json\n M data/maps/desert_descent_upper.json\n M data/maps/desert_funerary_maze.json\n M data/maps/desert_golden_dunes.json\n M data/maps/desert_golden_vault.json\n M data/maps/desert_pyramid_base.json\n M data/maps/desert_royal_records.json\n M data/maps/desert_sarcophagus_hall.json\n M tools/maps/desert-overlay.py\n M tools/maps/desert.py\n?? docs/art/map-expansion/desert-connections-review/full-desert-batch2/\n?? tools/maps/__pycache__/desert.cpython-312.pyc\n?? tools/maps/__pycache__/duat-pixel.cpython-312.pyc\n?? tools/maps/__pycache__/residence.cpython-312.pyc\n",
+    "sha256": "954aa81bb4d482e1d562a41528104d1043ee37a19094533c795f99ef3fbde23f"
+  },
+  "unchanged": true,
+  "results": [
+    {
+      "targetTiles": 1,
+      "origin": {
+        "map": "desert_colonnade",
+        "x": 29.158653846153847,
+        "y": 22.897115384615386,
+        "foot": {
+          "x": 29.658653846153847,
+          "y": 23.697115384615387
+        },
+        "inExit": false
+      },
+      "end": {
+        "map": "desert_colonnade",
+        "x": 29.158653846153847,
+        "y": 23.916422140665745,
+        "foot": {
+          "x": 29.658653846153847,
+          "y": 24.716422140665745
+        },
+        "inExit": false
+      },
+      "changedMap": false,
+      "displacementInOriginMap": {
+        "x": 0,
+        "y": 1.0193067560503586
+      },
+      "samples": [
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 22.897115384615386,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 23.697115384615387
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.485115774452836,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.285115774452837
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.826343527876713,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.626343527876713
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.90247820145676,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.70247820145676
+          },
+          "inExit": false
+        }
+      ]
+    },
+    {
+      "targetTiles": 2.1,
+      "origin": {
+        "map": "desert_colonnade",
+        "x": 29.158653846153847,
+        "y": 22.897115384615386,
+        "foot": {
+          "x": 29.658653846153847,
+          "y": 23.697115384615387
+        },
+        "inExit": false
+      },
+      "end": {
+        "map": "desert_buried_temple",
+        "x": 60.673513986013994,
+        "y": 25.72064958152436,
+        "foot": {
+          "x": 61.173513986013994,
+          "y": 26.52064958152436
+        },
+        "inExit": false
+      },
+      "changedMap": true,
+      "displacementInOriginMap": null,
+      "samples": [
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 22.897115384615386,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 23.697115384615387
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 22.995017449523324,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 23.795017449523325
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.093213514626182,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 23.893213514626183
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.14201754698269,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 23.94201754698269
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.240213612085547,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.040213612085548
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.338115676993482,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.138115676993483
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.43601774190142,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.23601774190142
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.48482177425793,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.28482177425793
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.583017839360785,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.383017839360786
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.681213904463643,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.481213904463644
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.73001793682015,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.53001793682015
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.82792000172809,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.62792000172809
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.925822066636027,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.725822066636027
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 23.974920099187454,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.774920099187455
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.072822164095392,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.872822164095393
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.171018229198246,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 24.971018229198247
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.220116261749673,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.020116261749674
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.31801832665761,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.118018326657612
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.36711635920904,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.16711635920904
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.465018424116977,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.265018424116978
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.562920489024915,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.362920489024916
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.612018521576342,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.412018521576343
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.705864869754347,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.505864869754348
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.784726067933533,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.584726067933534
+          },
+          "inExit": false
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.84360161208164,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.64360161208164
+          },
+          "inExit": true
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.84360161208164,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.64360161208164
+          },
+          "inExit": true
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.84360161208164,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.64360161208164
+          },
+          "inExit": true
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.84360161208164,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.64360161208164
+          },
+          "inExit": true
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.84360161208164,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.64360161208164
+          },
+          "inExit": true
+        },
+        {
+          "map": "desert_colonnade",
+          "x": 29.158653846153847,
+          "y": 24.84360161208164,
+          "foot": {
+            "x": 29.658653846153847,
+            "y": 25.64360161208164
+          },
+          "inExit": true
+        },
+        {
+          "map": "desert_buried_temple",
+          "x": 60.673513986013994,
+          "y": 25.64557852597055,
+          "foot": {
+            "x": 61.173513986013994,
+            "y": 26.44557852597055
+          },
+          "inExit": false
+        }
+      ]
+    }
+  ]
+}

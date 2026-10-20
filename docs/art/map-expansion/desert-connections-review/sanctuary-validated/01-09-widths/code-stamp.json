@@ -1,0 +1,18 @@
+{
+  "start": {
+    "commit": "ca13f9dd0133a4e9b860fe7a5fb4e3b24c3b2ad7",
+    "runtimeAndTestSha256": "b80b951b5f947a0c202312ddf0ddfc4514df03bae3e3ef9a175c0855ee2b3a83",
+    "files": 120
+  },
+  "end": {
+    "commit": "ca13f9dd0133a4e9b860fe7a5fb4e3b24c3b2ad7",
+    "runtimeAndTestSha256": "b80b951b5f947a0c202312ddf0ddfc4514df03bae3e3ef9a175c0855ee2b3a83",
+    "files": 120
+  },
+  "arguments": [
+    "/tmp/desert-latest-01-09-widths",
+    "--pair-file",
+    "/tmp/desert-pair-files/01-09.json",
+    "--widths"
+  ]
+}

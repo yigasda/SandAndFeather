@@ -26,6 +26,9 @@ function codeStamp() {
     return {commit:execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),runtimeAndTestSha256:hash.digest('hex'),files:files.length};
 }
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
+const independentIndex=process.argv.indexOf('--independent-tiles');
+const INDEPENDENT_TILES=independentIndex<0?null:Number(process.argv[independentIndex+1]);
+if(INDEPENDENT_TILES!==null&&!(INDEPENDENT_TILES>0&&INDEPENDENT_TILES<10))throw new Error('invalid independent tiles');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
 const LIFECYCLE = process.argv.includes('--exit-lifecycle');
@@ -141,9 +144,9 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         let arrived=false;
         for(let k=0;k<160;k++){
             const me=await where(),dx=entry.x-me.x,dy=entry.y-me.y,d=Math.hypot(dx,dy);
-            if(d<.18){arrived=true;break;}
-            const speed=Math.max(.15,Math.min(1,d/.6));
-            await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(50);
+            if(d<(INDEPENDENT_TILES?.02:.18)){arrived=true;break;}
+            const speed=Math.max(INDEPENDENT_TILES?.2:.15,Math.min(1,d/.6));
+            await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(INDEPENDENT_TILES?20:50);
         }
         await W.touch('touchEnd');await sleep(150);return arrived;
     }
@@ -425,14 +428,42 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 ok(await walkBackToLanding(entry),`${name}: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴`);
                 ok((await where()).map===to&&!(await where()).inExit&&await page.evaluate(()=>T.moves.length)===count,`${name}: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용`);
             }
-            // short steps every way
-            const back = [];
+            // Independent short excursions: each direction starts at the same origin.
+            // The old up/down/left/right sequence mainly cancelled the previous move;
+            // retain 260ms input duration, but physically walk back between directions.
+            // The separate 2.1-tile desert-maps fixture is not this joystick contract.
+            if(INDEPENDENT_TILES)ok(await walkBackToLanding(entry),`${name}: 거리 시험 전 실제 최초 착지로 복귀`);
+            const back = [], excursionOrigin=INDEPENDENT_TILES?{...await where(),x:entry.x,y:entry.y}:await where();let excursion=0;
             for (const [dx, dy] of [[0, -1], [0, 1], [-1, 0], [1, 0]]) {
-                await W.touch('touchStart', p.x, p.y); await W.touch('touchMove', p.x + dx * p.lim, p.y + dy * p.lim); await sleep(260); await W.touch('touchEnd'); await sleep(350);
-                const w = await where(); if (w.map !== to) back.push(`${dx},${dy}`);
-                if (w.map !== to) break;
+                if(excursion++) {
+                    const restored=await walkBackToLanding(excursionOrigin),atOrigin=await where();
+                    const same=restored&&atOrigin.map===to&&Math.hypot(atOrigin.x-excursionOrigin.x,atOrigin.y-excursionOrigin.y)<(INDEPENDENT_TILES?.05:.2);
+                    ok(same,`${name}: 다음 독립 방향 전 원점으로 실제 걸어 복귀`);
+                    if(!same){back.push('origin-return');break;}
+                }
+                const start=await where();
+                let blocked=false;
+                await W.touch('touchStart', p.x, p.y);
+                if(INDEPENDENT_TILES) {
+                    let last=0,stalled=0;
+                    for(let tick=0;tick<240;tick++) {
+                        const pos=await where();if(pos.map!==start.map)break;
+                        const travelled=(pos.x-excursionOrigin.x)*dx+(pos.y-excursionOrigin.y)*dy;
+                        const remaining=INDEPENDENT_TILES-travelled;
+                        if(remaining<=.01)break;
+                        if(Math.abs(travelled-last)<.001)stalled++;else stalled=0;
+                        if(stalled>20){blocked=await page.evaluate(([dx,dy])=>{const p=T.player.player,m=T.win.currentMap();return m.solidRect(p.x+dx*.08+.22,p.y+dy*.08+.62,p.x+dx*.08+.78,p.y+dy*.08+.96);},[dx,dy]);break;}last=travelled;
+                        const amp=Math.max(.2,Math.min(1,remaining/.6));
+                        await W.touch('touchMove',p.x+dx*p.lim*amp,p.y+dy*p.lim*amp);await sleep(20);
+                    }
+                }else{await W.touch('touchMove',p.x+dx*p.lim,p.y+dy*p.lim);await sleep(260);}
+                await W.touch('touchEnd');await sleep(350);
+                const w=await where();
+                if(INDEPENDENT_TILES){const travelled=w.map===start.map?(w.x-excursionOrigin.x)*dx+(w.y-excursionOrigin.y)*dy:null;res.push('  distance target '+JSON.stringify({target:INDEPENDENT_TILES,travelled,blocked}));ok(w.map===to&&(blocked||Math.abs(travelled-INDEPENDENT_TILES)<=.05),`${name}: 독립 ${INDEPENDENT_TILES}칸 실측 ${travelled} ${blocked?'충돌로 막힘':'도달'}`);}
+                res.push('  independent excursion '+JSON.stringify({direction:[dx,dy],origin:excursionOrigin,start,end:w,displacement:w.map===start.map?{x:w.x-start.x,y:w.y-start.y,distance:Math.hypot(w.x-start.x,w.y-start.y)}:null}));
+                if(w.map!==to){back.push(`${dx},${dy}`);break;}
             }
-            ok(!back.length, `${name}: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 ${back.join(' ')}`);
+            ok(!back.length, `${name}: 같은 원점에서 독립 앞·뒤·좌·우로 움직여도 그대로 ${back.join(' ')}`);
             const mate = await where();
             ok(!mate.mateInExit && mate.floor && mate.mateFloor, `${name}: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖`);
             if(CONNECTIONS) {
