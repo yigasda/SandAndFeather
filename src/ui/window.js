@@ -34,6 +34,9 @@ let doorArmed = false, moving = false, doorNeedsNeutral = false;
 const FPS = { walk: 30, still: 8, card: 4 };
 
 export const gameMode = () => mode;
+// tests only: why a door did or did not take her (armed after she stood outside an exit, waiting for a let-go stick,
+// mid map change, a card open)
+export const testDoor = () => ({ armed: doorArmed, needsNeutral: doorNeedsNeutral, moving, mode, card: cardOpen() });
 
 // what packs get to show things with: cards, a toast, folding the window
 const ui = {

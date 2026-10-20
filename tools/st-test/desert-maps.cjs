@@ -28,7 +28,7 @@ fs.mkdirSync(OUT, { recursive: true });
         await page.waitForSelector('#sf_open', { state: 'attached' });
         await page.evaluate(async ({ base }) => {
             window.T = {};
-            for (const [key, file] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', map: 'world/map' }))
+            for (const [key, file] of Object.entries({ win: 'ui/window', state: 'core/state', player: 'world/player', heroes: 'core/heroes', map: 'world/map', input: 'world/input' }))
                 T[key] = await import(base + 'src/' + file + '.js');
             T.state.resetState();
             const s = T.state.getState(); s.part = 'day'; s.wake = null;
@@ -163,7 +163,17 @@ fs.mkdirSync(OUT, { recursive: true });
             log.push({ wiggle: `${from}:${at}`, ok: true });
             r = await walkTo(exitId); log.push(r);
             if (r.exit !== to) throw Error(`${from} ${at}: ${JSON.stringify(r)}`);
-            await page.waitForFunction(id => T.player.player.map === id, to, { timeout: 15000 });
+            // not taken within 15 s: the moment as the game saw it (where, which exit the game finds there, armed or waiting
+            // for a let-go stick, a map change under way, a card open, the game's mode, the stick), then fail
+            if (!await page.waitForFunction(id => T.player.player.map === id, to, { timeout: 15000 }).then(() => true, () => false)) {
+                const why = await page.evaluate(exitId => {
+                    const p = T.player.player, m = T.map.getMap(p.map), fx = p.x + .5, fy = p.y + .8, ex = m.exitAt(fx, fy), e = m.d.exits.find(x => x.id === exitId);
+                    return { map: p.map, feet: [+fx.toFixed(3), +fy.toFixed(3)], exitAt: ex?.id || null, target: { box: [e.x0, e.y0, e.x1, e.y1].map(v => +v.toFixed(2)), polygon: !!e.polygon }, door: T.win.testDoor?.(),
+                        cards: [...document.querySelectorAll('.sf_pop_wrap')].map(w => w.textContent.trim().slice(0, 80)), input: T.input ? { dx: T.input.input.dx, dy: T.input.input.dy } : null };
+                }, exitId);
+                await page.screenshot({ path: path.join(OUT, `stuck-${from}-${exitId}.png`) });
+                throw Error(`${from} ${at} → ${to}: not taken in 15 s ${JSON.stringify(why)}`);
+            }
             await page.waitForTimeout(1200);
             const e = await page.evaluate(({ to, land }) => { const p = T.player.player, w = T.map.getMap(to).d.entries[land]; return { map: p.map, x: p.x, y: p.y, entry: [w.x, w.y] }; }, { to, land });
             if (Math.hypot(e.x - e.entry[0], e.y - e.entry[1]) > 0.05) throw Error(`${to}: landed ${e.x},${e.y} not at ${land}`);
