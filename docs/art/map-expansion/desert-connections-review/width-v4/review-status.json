@@ -1,0 +1,32 @@
+{
+  "runtimeCommit": "ab2320f0",
+  "baseCommit": "1add5d4fe1020dff9f32053e20a9e621d1c7cc4d",
+  "pass": 95,
+  "fail": 8,
+  "actualTransitions": 13,
+  "complete18LegRun": false,
+  "failure": "Held diagonal input causes re-entry between two nearby perspective thresholds; later exact-arrival/lane assertions cascade. Not accepted.",
+  "pending": [
+    "Opus coordination for src/ui/window.js neutral-input exit rearm guard (draft only)",
+    "15 rightmost polygon tip 1px trim to exclude 3 blocked source pixels"
+  ],
+  "unchanged": [
+    "User blue landing coordinates",
+    "15 east test entry",
+    "Original collision PNG",
+    "Combat/input/window code"
+  ],
+  "remotePush": false,
+  "followerUpdate": {
+    "code": "857f24ae",
+    "contractCode": "2e4d9067",
+    "fixtures": 120,
+    "fixtureFailures": 0,
+    "actualReleasedInputTransitions": 4,
+    "heldInputFix": false
+  },
+  "failureBreakdown": {
+    "heldInputDirections": 2,
+    "downstreamAssertions": 6
+  }
+}

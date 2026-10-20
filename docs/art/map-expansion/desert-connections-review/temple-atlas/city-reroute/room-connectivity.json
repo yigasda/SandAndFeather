@@ -1,0 +1,38 @@
+[
+  {
+    "source": "사막맵/충돌/17_추가_주거실.png",
+    "sha256": "3aa166489fee4cc1e398d451258ec344e9dbb52b8a033cc830fa1ef1b0e56e01",
+    "floorMeaning": "alpha>=128",
+    "components": 1,
+    "doorSample": [
+      887,
+      810,
+      1
+    ],
+    "interiorSample": [
+      887,
+      530,
+      1
+    ],
+    "connected": true,
+    "runtimeChanged": false
+  },
+  {
+    "source": "사막맵/충돌/18_옛기록고.png",
+    "sha256": "84975e2b0aea877d62af70ffec5ab0fa2ba5be9160f369931576e008e9f43d32",
+    "floorMeaning": "alpha>=128",
+    "components": 4,
+    "doorSample": [
+      887,
+      810,
+      2
+    ],
+    "interiorSample": [
+      887,
+      530,
+      1
+    ],
+    "connected": false,
+    "runtimeChanged": false
+  }
+]

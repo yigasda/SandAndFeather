@@ -1,0 +1,27 @@
+{
+  "desert_colonnade": {
+    "south": 0,
+    "stair": 0,
+    "forecourt": 0
+  },
+  "desert_forecourt_west": {
+    "east": 0
+  },
+  "desert_forecourt_east": {
+    "east": 0
+  },
+  "desert_votive_hall": {
+    "west": 0,
+    "east": 0,
+    "north": 0
+  },
+  "desert_guardian_gate": {
+    "south": 0
+  },
+  "reproduction": {
+    "returncode": 0,
+    "count": 12,
+    "changed": []
+  },
+  "protectedSourceUnchanged": true
+}

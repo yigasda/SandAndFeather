@@ -1,0 +1,32 @@
+{
+  "branch": "maps/desert-connections",
+  "base": "1add5d4fe1020dff9f32053e20a9e621d1c7cc4d",
+  "testedCode": "2e4d9067",
+  "polygonImplementation": "ab2320f0",
+  "followerImplementation": "857f24ae",
+  "acceptedComplete": false,
+  "blocking": "window.js neutral-input exit rearm patch awaiting Opus coordination; held-input re-entry remains",
+  "latestGeometry": "width-v4",
+  "latestFollowerTests": "follower-v1",
+  "regressionCounts": {
+    "follower-v1/entry-safe.log": {
+      "pass": 5,
+      "fail": 0
+    },
+    "follower-v1/ult.log": {
+      "pass": 17,
+      "fail": 1
+    },
+    "follower-v1/ult-baseline.log": {
+      "pass": 17,
+      "fail": 1
+    },
+    "follower-v1/puzzle15.log": {
+      "pass": 21,
+      "fail": 0
+    }
+  },
+  "generalExploration": "full-map/cozy-ui/themes all exit0 after follower change",
+  "otherReview": "15 rightmost polygon tip x1739->1738 would exclude 3 blocked pixels; not changed",
+  "remotePush": false
+}

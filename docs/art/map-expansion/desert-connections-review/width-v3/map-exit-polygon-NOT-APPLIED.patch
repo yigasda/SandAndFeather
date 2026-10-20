@@ -1,0 +1,14 @@
+--- a/src/world/map.js
++++ b/src/world/map.js
+@@ -107,7 +107,10 @@
+         for (const n of this.npcs) if (!ids.includes(n.id)) { this.mark(n.x, n.y); this.npcCells.add(`${n.x},${n.y}`); }
+     }
+     anchor(id) { return this.anchors.find(a => a.id === id) || null; }
+-    exitAt(fx, fy) { return this.exits.find(e => fx >= e.x0 && fx <= e.x1 && fy >= e.y0 && fy <= e.y1) || null; }
++    exitAt(fx, fy) {
++        return this.exits.find(e => fx >= e.x0 && fx <= e.x1 && fy >= e.y0 && fy <= e.y1
++            && (!e.polygon || inPolygon(fx, fy, e.polygon))) || null;
++    }
+     // what is close enough to use from (x, y): the nearest spot (its middle), person or thing (feet to feet)
+     nearest(x, y, things = [], away = [], reach = 1.6) {
+         let best = null, dist = reach;

@@ -1,0 +1,1 @@
+PASS: all 9 desert map JSON files and scene-art byte-identical after regeneration

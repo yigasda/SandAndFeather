@@ -1,0 +1,38 @@
+{
+  "annotation": "libfile_1898f51b3a688191b1e81f0d033f2d01",
+  "source": "사막맵/T2_무너진봉헌품회랑.png",
+  "sourceSize": [
+    1774,
+    887
+  ],
+  "registrationBy": "parent",
+  "transform": {
+    "x": "2.74028031*u-80.99835652",
+    "y": "2.74175556*v-266.47226262"
+  },
+  "independentPatches": 8,
+  "rmsPx": 0.7,
+  "maxResidualPx": 1.18,
+  "transformUncertaintyPx": 2,
+  "leftInkCenter": [
+    3.8,
+    566.8
+  ],
+  "leftInkBounds": [
+    -37.2,
+    495.7,
+    47.8,
+    641.0
+  ],
+  "rightInkCenter": [
+    1767.8,
+    552.5
+  ],
+  "rightInkBounds": [
+    1700.2,
+    487.5,
+    1815.3,
+    619.1
+  ],
+  "note": "Ink describes intended opening, not collision or exact trigger. Right side collision not audited."
+}

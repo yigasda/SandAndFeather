@@ -15,7 +15,8 @@ Only the places with a collision picture and a decided way in are built (user: o
   desert_buried_temple 매몰 신전 사막 — in from 03 on its left edge; its lower right stone door goes down to desert_city_gate.
   desert_city_gate 매몰 도시의 출입구 → desert_city_plaza 잊힌 지하 도시의 광장 (detail maps: the Duat's scale, camera 0.8, people ×1.4).
 Requires shapely and scipy (duat-pixel.py)."""
-import hashlib, json, math, shutil
+import argparse, hashlib, json, math, shutil
+from shapely.geometry import Point, Polygon
 from pathlib import Path
 import importlib.util
 import numpy as np
@@ -36,7 +37,7 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
       'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
-      'desert_forecourt_west': 'T1W'}
+      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # the big maps are wide at 44 %: walking is 1.4 times as quick there, the walking pictures with it (user: "1, 1.4", then "1.25배로 하자", then "1.4로 늘리고")
 WALK = {'big': 1.4, 'detail': 1.0}
@@ -51,14 +52,31 @@ ALPHA = 128
 # lands, left or right, never takes her back (user: "좌우로 움직이다가 다시 전 맵으로 돌아가는 일이 없게", "착지랑 출구
 # 사이를 좀 더 멀리"); checked below, the build stops when one is closer
 GAP = 3
+# Parent-registered latest user mark, source pixels. AABB remains in each runtime exit.
+EXIT_POLYGONS = {
+    ('desert_colonnade', 'forecourt'): [(1706,582),(1720,580),(1736,644),(1728,650)],
+    ('desert_forecourt_west', 'east'): [(1439,107),(1595,107),(1595,127),(1435,127)],
+    ('desert_forecourt_east', 'east'): [(1665,254),(1684,248),(1732,319),(1732,340),(1727,342)],
+    ('desert_votive_hall', 'east'): [(1754,523),(1773,523),(1773,579),(1754,580)],
+    ('desert_votive_hall', 'north'): [(864,75),(909,75),(910,100),(860,100)],
+    ('desert_guardian_gate', 'south'): [(362,1510),(660,1510),(660,1535),(362,1535)],
+    # Registered blue side passage; original collision and doorway perspective preserved.
+    ('desert_votive_hall', 'west'): [(0,524),(20,524),(20,580),(0,581)],
+    # Upper-left stair ends at the outer edge, not the torch recess behind it.
+    ('desert_colonnade', 'stair'): [(0,380),(11,381),(11,414),(30,415),(30,462),(0,463)],
+    # Deep walkable doorway, following the perspective of the left inner jamb.
+    ('desert_buried_temple', 'temple'): [(929,315),(956,315),(955,340),(910,340)],
+    # Full southern paved opening between the broken walls; open edge, not a wall niche.
+    ('desert_colonnade', 'south'): [(800,860),(1190,860),(1210,887),(780,887)],
+}
 # landings the user put by hand (their mark wins over GAP; still at least 2 people-widths): 11 door, the blue mark on the
 # stairs below the door ("파란색으로 수정", docs/consult/desert/maps/user-11-door-landing.jpg), 2.47
-BY_USER = {('desert_city_gate', 'door'), ('desert_forecourt_west', 'south'), ('desert_buried_temple', 'temple')}   # the user's blue circles (사용자 10-19): T1W yard's foot, 02 temple steps
+BY_USER = {('desert_city_gate', 'door'), ('desert_forecourt_west', 'south'), ('desert_forecourt_west', 'east'), ('desert_buried_temple', 'temple')}   # user marks: T1W south/east, 02 temple steps, 11 door
 # collision pictures the user did not draw: made by tools/maps/desert-collision.py to the user's 01·02 rules
 MADE = {'03_고요한사구_06통합.png', '04_메마른모래벌판.png'}
 SRC = ROOT / '사막맵'
 OUT_ART = ROOT / 'docs/art/map-expansion'
-REVIEW = ROOT / 'docs/consult/desert/maps'
+REVIEW = OUT_ART / 'desert-connections-review'
 # what stands in front of her when she walks in under it (scene-art occluders, src/world/reference-scene.js): (foot, polygon),
 # art px; whoever's feet are above the foot line is drawn behind the polygon. Outlines from the art's pixels, the way of
 # docs/OPUS-HANDOFF.md "가구에 몸 가리기": straight edges measured at 5-6x on the rows they cross, joined as corners
@@ -86,10 +104,9 @@ OMBOS_BACK = {'x': 37.5, 'y': 22.4, 'dir': 'left'}   # 3.2 tiles from the exit (
 
 # id, name, art file, collision file, ways in {name: (source px, facing)}, exits [(name, source box x0,y0,x1,y1, to, at)]. The big maps run 01 → 04 → 03 → 02 across their side edges (docs/ASTRA-DESERT-05-20-GUIDE.md
 # "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's right side (10)
-# waits for that place. 02's temple door ↔ T1W (OPUS 사막 계획서 3절 "02 ↔ T1W ↔ T1E ↔ 15", 02 "연결: 03·T1W·11·10";
-# ASTRA-DESERT-05-20-GUIDE T1W "양쪽 끝의 02·15 연결", "한쪽 벽을 넘은 큰 모래 경사"): in 02 the doorway of the small
-# temple (walkable inside it in the user's collision up to y 310), in T1W the bottom edge of the stone yard below the
-# user's blue circle (the landing, 사용자 10-19); T1W's right gate is T1E's (later)
+# waits for that place. Current temple route: docs/DESERT-TEMPLE-CONNECTIONS.md.
+# First implemented pair: 02-A temple <-> 15-D south. Retired linear exits stay disabled;
+# historical entries remain for test/save compatibility while their new routes are staged.
 PLACES = [
     ('desert_golden_dunes', '황금 사구해', '01_황금사구해_닫힘.png', '01.png',
      {'west': ((85, 294), 'right'), 'east': ((1501, 750), 'left')},
@@ -105,7 +122,7 @@ PLACES = [
      # the door, GAP from it (it was just inside the door, user's mark, until the GAP rule)
      {'west': ((85, 330), 'right'), 'door': ((1438, 738), 'down'), 'temple': ((903, 390), 'down')},   # temple: the user's blue circle on the temple steps
      [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_city_gate', 'outside'),
-      ('temple', (912, 296, 956, 326), 'desert_forecourt_west', 'south')]),
+      ('temple', (910, 315, 956, 340), 'desert_colonnade', 'south')]),
     # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
     ('desert_city_gate', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
      {'outside': ((300, 1350), 'up'), 'door': ((672, 468), 'down')},
@@ -119,24 +136,40 @@ PLACES = [
      {'east': ((1623, 570), 'left')},
      [('east', (1760, 402, 1774, 537), 'desert_city_gate', 'door')]),
     # 15 매몰 신전의 열주홀 (desert_colonnade): 반사광 입문 퍼즐(B2). 장치는 그림 그대로(오른쪽 광원, 가운데 받침 위 반사판,
-    # 위층 뒷벽 수신부); 받침 앞 바닥에서 퍼즐 화면을 연다(src/packs/puzzle/colonnade.js). T1E·T2·16 출입은 아직 없음:
-    # 오른쪽 문 안 착지 하나뿐(시험 이동으로만)
+    # 위층 뒷벽 수신부); 받침 앞 바닥에서 퍼즐 화면을 연다(src/packs/puzzle/colonnade.js). T2·16 출입은 아직 없음:
+    # east 시험 착지와 과거 forecourt 착지는 보존. 현재 실제 02 왕복은 남쪽 south를 쓴다.
     ('desert_colonnade', '매몰 신전의 열주홀', '15_열주홀.png', '15_열주홀.png',
-     {'east': ((1680, 620), 'left')},
-     []),
-    # T1W 서쪽 제례 앞뜰 (desert_forecourt_west): 가죽 방패병 한 마리 전투(B3, data/desert.json field). 02 ↔ 모래 경사 아래 끝
-    # (south); T1E 출입(오른쪽 문)은 아직. yard: 석재 마당 왼쪽 착지(시험들이 씀)
+     {'east': ((1680, 620), 'left'), 'forecourt': ((1645, 620), 'left'), 'south': ((995, 795), 'up'), 'stair': ((110,490), 'right')},
+     [('south', (780, 860, 1210, 887), 'desert_buried_temple', 'temple'),
+      ('stair', (0,380,30,463), 'desert_votive_hall', 'west'),
+      ('forecourt', (1706,580,1738,652), 'desert_forecourt_west', 'east')]),
+    ('desert_votive_hall', '무너진 봉헌품 회랑', 'T2_무너진봉헌품회랑.png', 'T2_무너진봉헌품회랑.png',
+     {'west': ((115,550), 'right'), 'east': ((1655,550), 'left'), 'north': ((890,195), 'down')},
+     [('west', (0,524,20,581), 'desert_colonnade', 'stair'),
+      ('east', (1754,523,1773,580), 'desert_forecourt_east', 'east'),
+      ('north', (860,75,910,100), 'desert_guardian_gate', 'south')]),
+    ('desert_guardian_gate', '신전 수호문 전당', 'T3_신전수호문전당.png', 'T3_신전수호문전당.png',
+     {'south': ((512,1420), 'up')},
+     [('south', (362,1510,660,1535), 'desert_votive_hall', 'north')]),
+    # T1W: existing combat fixture and user landings preserved. New 15/east-court routes pending.
+    # yard remains the historical test entry; no retired route may bypass the new structure.
     ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
+     # east: latest user annotation registered by parent to source pixels (1523,241), exit (1434,107,1596,127).
      # south: the user's blue circle on the stone yard (centre about 1273, 795; inside it, 2 people-widths from the exit)
-     {'yard': ((900, 650), 'right'), 'south': ((1273, 778), 'up')},
-     [('south', (1060, 873, 1420, 887), 'desert_buried_temple', 'temple')]),
+     {'yard': ((900, 650), 'right'), 'south': ((1273, 778), 'up'), 'east': ((1523, 241), 'down')},
+     [('east', (1434,107,1596,127), 'desert_colonnade', 'forecourt')]),
+    # T1E: old exits retired; new T2 / two T1W routes pending their separate implementation.
+    # Land along the paved approach, not at the yard's centre. Entry/exit names match field.js safeZones.
+    ('desert_forecourt_east', '동쪽 제례 앞뜰', 'T1E_동쪽제례앞뜰.png', 'T1E_동쪽제례앞뜰.png',
+     {'west': ((325, 610), 'up'), 'east': ((1621, 369), 'left')},
+     [('east', (1665,248,1733,342), 'desert_votive_hall', 'east')]),
 ]
 
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
-def main():
+def main(review_ids=None):
     manifest = {f['file']: f for f in json.loads((SRC / 'manifest.json').read_text())['files']}
     art = json.loads((ROOT / 'data/scene-art.json').read_text())
     REVIEW.mkdir(parents=True, exist_ok=True)
@@ -162,13 +195,36 @@ def main():
         ys, xs = np.nonzero(lab == big); mid = (int(xs[len(xs) // 2]), int(ys[len(ys) // 2]))
         first = next(iter(ways.values()))[0]
         route, steps = P.path(safe, first, mid)
-        P.review(image, mask, route, REVIEW, int(NO[ident]) if NO[ident].isdigit() else NO[ident])
+        if review_ids is None or ident in review_ids:
+            P.review(image, mask, route, REVIEW, int(NO[ident]) if NO[ident].isdigit() else NO[ident])
         for k, ((x, y), _) in ways.items():
             for e, (x0, y0, x1, y1), *_ in exits:
                 g = math.hypot(max(x0 - x, 0, x - x1), max(y0 - y, 0, y - y1))
+                polygon = EXIT_POLYGONS.get((ident, e))
+                if polygon: g = Polygon(polygon).distance(Point(x, y))
                 need = (2 if (ident, k) in BY_USER else GAP) * (ACTOR['big' if ident in BIG else 'detail']) * PX
+                # Keep the historical puzzle-test entry exactly where it was. No portal targets it.
+                # Its entire foot is outside the full-width door (30 px centre clearance); real arrivals use forecourt.
+                if (ident, k) == ('desert_colonnade', 'east'): need = 30
+                # Full-width thresholds follow the real doorway; do not move the landing for GAP.
+                # These approaches retain >= 130px centre clearance and are checked with held touch input.
+                if (ident, k) in {('desert_colonnade', 'forecourt'), ('desert_forecourt_east', 'west'), ('desert_forecourt_east', 'east')}: need = 130
+                # User's new doorway landing is fixed; do not move it for a generic gap rule.
+                if (ident, k) == ('desert_forecourt_east', 'east'): need = 90
+                if (ident, k) == ('desert_colonnade', 'forecourt'): need = 60
+                # South arrival follows the near opening's centre; validate actual feet/follower, not 3x spacing.
+                if (ident, k) == ('desert_colonnade', 'south'): need = 60
+                # Near natural side/stair approaches: validate actual feet and held-input return.
+                if (ident,k) in {('desert_colonnade','stair'),('desert_votive_hall','west'),('desert_votive_hall','east'),('desert_votive_hall','north'),('desert_guardian_gate','south')}: need = 80
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
+        for item in ex:
+            polygon = EXIT_POLYGONS.get((ident, item['id']))
+            if polygon:
+                shape = Polygon(polygon)
+                assert shape.is_valid and shape.area > 0
+                item['polygon'] = [[x / PX, y / PX] for x, y in polygon]
+                item.update(zip(('x0', 'y0', 'x1', 'y1'), [v / PX for v in shape.bounds]))
         W, H = math.ceil(w / PX), math.ceil(h / PX)
         data = {'id': ident, 'name': name, 'tile': 16, 'scene': 'desert', 'referenceScenes': [ident], 'legend': {'.': {'t': 'sand'}},
                 'rows': ['.' * W] * H,
@@ -191,4 +247,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--review-only", nargs="*", help="Only write collision review images for these runtime IDs (map generation is unchanged)")
+    main(parser.parse_args().review_only)

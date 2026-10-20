@@ -1,0 +1,90 @@
+[
+  {
+    "from": "desert_forecourt_west",
+    "to": "desert_forecourt_east",
+    "x": 9.1875,
+    "y": 17.38269230769231,
+    "dir": "up",
+    "mate": {
+      "x": 8.5875,
+      "y": 17.68269230769231
+    }
+  },
+  {
+    "from": "desert_forecourt_east",
+    "to": "desert_colonnade",
+    "x": 46.29807692307693,
+    "y": 17.68076923076923,
+    "dir": "left",
+    "mate": {
+      "x": 45.698076923076925,
+      "y": 17.98076923076923
+    }
+  },
+  {
+    "from": "desert_colonnade",
+    "to": "desert_forecourt_east",
+    "x": 44.21153846153846,
+    "y": 12.613461538461538,
+    "dir": "left",
+    "mate": {
+      "x": 43.61153846153846,
+      "y": 12.913461538461538
+    }
+  },
+  {
+    "from": "desert_forecourt_east",
+    "to": "desert_forecourt_west",
+    "x": 44.21153846153846,
+    "y": 11.421153846153846,
+    "dir": "down",
+    "mate": {
+      "x": 43.61153846153846,
+      "y": 11.721153846153847
+    }
+  },
+  {
+    "from": "desert_forecourt_west",
+    "to": "desert_forecourt_east",
+    "x": 9.1875,
+    "y": 17.38269230769231,
+    "dir": "up",
+    "mate": {
+      "x": 8.5875,
+      "y": 17.68269230769231
+    }
+  },
+  {
+    "from": "desert_forecourt_east",
+    "to": "desert_colonnade",
+    "x": 46.29807692307693,
+    "y": 17.68076923076923,
+    "dir": "left",
+    "mate": {
+      "x": 45.698076923076925,
+      "y": 17.98076923076923
+    }
+  },
+  {
+    "from": "desert_colonnade",
+    "to": "desert_forecourt_east",
+    "x": 44.21153846153846,
+    "y": 12.613461538461538,
+    "dir": "left",
+    "mate": {
+      "x": 43.61153846153846,
+      "y": 12.913461538461538
+    }
+  },
+  {
+    "from": "desert_forecourt_east",
+    "to": "desert_forecourt_west",
+    "x": 44.21153846153846,
+    "y": 11.421153846153846,
+    "dir": "down",
+    "mate": {
+      "x": 43.61153846153846,
+      "y": 11.721153846153847
+    }
+  }
+]

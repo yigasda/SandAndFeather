@@ -1,0 +1,40 @@
+통과 동행 초기화·첫 걸음·교대·전투 위치 우선 계약: 120 조합, 실패 0
+통과 forecourt_west → forecourt_east: 연속 왕복의 출발 맵
+  positions {"leg":0,"arrival":{"map":"desert_forecourt_east","x":9.181601738316166,"y":17.312800748050897,"inExit":false,"mateInExit":false,"mate":{"x":8.123256862516842,"y":17.91481387643389},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":9.15218106776147,"y":16.964179974510202,"inExit":false,"mateInExit":false,"mate":{"x":8.436181159560073,"y":17.758351727912274},"floor":true,"mateFloor":true}}
+  forecourt_west → forecourt_east: 출구 앞 forecourt_west (45.0, 6.5) → 도착 forecourt_east (9.2, 17.3)
+통과 forecourt_west → forecourt_east: 걸어서 도착, 착지 west(9.2, 17.4) 자리, 트리거 밖
+통과 forecourt_west → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 forecourt_west → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_west → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → forecourt_east: 최초 도착 동행 간격 유지
+통과 forecourt_west → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → colonnade: 연속 왕복의 출발 맵
+  positions {"leg":1,"arrival":{"map":"desert_colonnade","x":48.746483892899896,"y":17.49925713990166,"inExit":false,"mateInExit":false,"mate":{"x":47.65686474261958,"y":18.11916378253636},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":48.853218480907664,"y":17.408228553790902,"inExit":false,"mateInExit":false,"mate":{"x":47.782334980577474,"y":18.056428663557416},"floor":true,"mateFloor":true}}
+  forecourt_east → colonnade: 출구 앞 forecourt_east (47.5, 10.3) → 도착 colonnade (48.7, 17.5)
+통과 forecourt_east → colonnade: 걸어서 도착, 착지 forecourt(48.5, 17.7) 자리, 트리거 밖
+통과 forecourt_east → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 forecourt_east → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → colonnade: 최초 도착 동행 간격 유지
+통과 forecourt_east → colonnade: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_east: 연속 왕복의 출발 맵
+  positions {"leg":2,"arrival":{"map":"desert_forecourt_east","x":47.88658868053237,"y":10.185134110027153,"inExit":false,"mateInExit":false,"mate":{"x":46.75365043262715,"y":10.731347860609501},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":47.9553196932459,"y":10.17114599736216,"inExit":false,"mateInExit":false,"mate":{"x":46.816385554557726,"y":10.699980299644213},"floor":true,"mateFloor":true}}
+  colonnade → forecourt_east: 출구 앞 colonnade (48.8, 18.0) → 도착 forecourt_east (47.9, 10.2)
+통과 colonnade → forecourt_east: 걸어서 도착, 착지 east(47.8, 10.2) 자리, 트리거 밖
+통과 colonnade → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 colonnade → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 colonnade → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_east: 최초 도착 동행 간격 유지
+통과 colonnade → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → forecourt_west: 연속 왕복의 출발 맵
+  positions {"leg":3,"arrival":{"map":"desert_forecourt_west","x":44.8852554756193,"y":6.45278382962512,"inExit":false,"mateInExit":false,"mate":{"x":43.832872199032415,"y":6.915775438945332},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":44.82609796547713,"y":6.797605842987893,"inExit":false,"mateInExit":false,"mate":{"x":44.14579625615271,"y":6.759313410385187},"floor":true,"mateFloor":true}}
+  forecourt_east → forecourt_west: 출구 앞 forecourt_east (9.6, 17.2) → 도착 forecourt_west (44.9, 6.5)
+통과 forecourt_east → forecourt_west: 걸어서 도착, 착지 east(44.9, 6.4) 자리, 트리거 밖
+통과 forecourt_east → forecourt_west: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_west)
+통과 forecourt_east → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 forecourt_east → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → forecourt_west: 최초 도착 동행 간격 유지
+통과 forecourt_east → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: forecourt_west (44.8, 6.8) 그대로, 트리거 밖
+통과 페이지 오류 없음 

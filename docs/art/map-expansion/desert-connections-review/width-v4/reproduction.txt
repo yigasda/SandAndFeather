@@ -1,0 +1,1 @@
+PASS: 9 desert JSON + scene-art byte-identical after regeneration

@@ -1,0 +1,299 @@
+{
+  "desert_golden_dunes": {
+    "west": {
+      "player": {
+        "x": 5.258304195804197,
+        "y": 19.116958041958043
+      },
+      "follower": {
+        "x": 3.970329040764318,
+        "y": 19.760945619477983
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "east": {
+      "player": {
+        "x": 101.18487762237763,
+        "y": 50.00856643356644
+      },
+      "follower": {
+        "x": 99.89690246733775,
+        "y": 50.65255401108638
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_dry_flats": {
+    "west": {
+      "player": {
+        "x": 5.258304195804197,
+        "y": 46.621328671328676
+      },
+      "follower": {
+        "x": 3.9703290407643177,
+        "y": 47.26531624884861
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "east": {
+      "player": {
+        "x": 113.92089160839161,
+        "y": 19.523426573426576
+      },
+      "follower": {
+        "x": 112.63291645335174,
+        "y": 20.167414150946517
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_quiet_dunes": {
+    "west": {
+      "player": {
+        "x": 5.258304195804197,
+        "y": 28.330244755244756
+      },
+      "follower": {
+        "x": 3.970329040764318,
+        "y": 28.974232332764696
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "east": {
+      "player": {
+        "x": 113.92089160839161,
+        "y": 33.4111013986014
+      },
+      "follower": {
+        "x": 112.63291645335174,
+        "y": 34.05508897612134
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_buried_temple": {
+    "west": {
+      "player": {
+        "x": 5.258304195804197,
+        "y": 21.555769230769233
+      },
+      "follower": {
+        "x": 3.970329040764318,
+        "y": 22.199756808289173
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "door": {
+      "player": {
+        "x": 96.91695804195805,
+        "y": 49.195629370629376
+      },
+      "follower": {
+        "x": 95.62898288691818,
+        "y": 49.83961694814931
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "temple": {
+      "player": {
+        "x": 60.673513986013994,
+        "y": 25.620454545454546
+      },
+      "follower": {
+        "x": 59.38553883097411,
+        "y": 26.264442122974486
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_city_gate": {
+    "outside": {
+      "player": {
+        "x": 8.442307692307693,
+        "y": 39.44038461538462
+      },
+      "follower": {
+        "x": 7.3153294316477995,
+        "y": 40.00387374571457
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "door": {
+      "player": {
+        "x": 19.53076923076923,
+        "y": 13.15
+      },
+      "follower": {
+        "x": 18.403790970109338,
+        "y": 13.713489130329947
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_city_plaza": {
+    "east": {
+      "player": {
+        "x": 47.877884615384616,
+        "y": 16.190384615384616
+      },
+      "follower": {
+        "x": 46.75090635472472,
+        "y": 16.753873745714564
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_colonnade": {
+    "east": {
+      "player": {
+        "x": 49.57692307692308,
+        "y": 17.68076923076923
+      },
+      "follower": {
+        "x": 48.449944816263184,
+        "y": 18.244258361099178
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "forecourt": {
+      "player": {
+        "x": 48.53365384615385,
+        "y": 17.68076923076923
+      },
+      "follower": {
+        "x": 47.40667558549395,
+        "y": 18.244258361099178
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "south": {
+      "player": {
+        "x": 29.158653846153847,
+        "y": 22.897115384615386
+      },
+      "follower": {
+        "x": 28.031675585493954,
+        "y": 23.460604514945334
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "stair": {
+      "player": {
+        "x": 2.778846153846154,
+        "y": 13.805769230769231
+      },
+      "follower": {
+        "x": 1.6518678931862603,
+        "y": 14.369258361099178
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_forecourt_west": {
+    "yard": {
+      "player": {
+        "x": 26.326923076923077,
+        "y": 18.575
+      },
+      "follower": {
+        "x": 25.199944816263184,
+        "y": 19.138489130329948
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "south": {
+      "player": {
+        "x": 37.44519230769231,
+        "y": 22.390384615384615
+      },
+      "follower": {
+        "x": 36.31821404703241,
+        "y": 22.953873745714564
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "east": {
+      "player": {
+        "x": 44.89711538461539,
+        "y": 6.383653846153846
+      },
+      "follower": {
+        "x": 43.77013712395549,
+        "y": 6.947142976483793
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_forecourt_east": {
+    "west": {
+      "player": {
+        "x": 9.1875,
+        "y": 17.38269230769231
+      },
+      "follower": {
+        "x": 8.060521739340107,
+        "y": 17.946181438022258
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "east": {
+      "player": {
+        "x": 47.81826923076923,
+        "y": 10.19903846153846
+      },
+      "follower": {
+        "x": 46.691290970109335,
+        "y": 10.762527591868405
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_votive_hall": {
+    "west": {
+      "player": {
+        "x": 2.9278846153846154,
+        "y": 15.59423076923077
+      },
+      "follower": {
+        "x": 1.800906354724722,
+        "y": 16.157719899560718
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "east": {
+      "player": {
+        "x": 48.831730769230774,
+        "y": 15.59423076923077
+      },
+      "follower": {
+        "x": 47.70475250857088,
+        "y": 16.157719899560718
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    },
+    "north": {
+      "player": {
+        "x": 26.028846153846153,
+        "y": 5.0125
+      },
+      "follower": {
+        "x": 24.90186789318626,
+        "y": 5.575989130329948
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  },
+  "desert_guardian_gate": {
+    "south": {
+      "player": {
+        "x": 14.761538461538462,
+        "y": 41.52692307692308
+      },
+      "follower": {
+        "x": 13.63456020087857,
+        "y": 42.09041220725303
+      },
+      "kind": "initial placement fixture, not walking evidence"
+    }
+  }
+}

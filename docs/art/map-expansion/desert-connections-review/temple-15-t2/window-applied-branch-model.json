@@ -1,0 +1,6 @@
+{
+  "source": "actual applied window.js branch and neutral condition isolated in VM",
+  "code": "e159a0a1",
+  "passed": 12,
+  "runtimeWalking": false
+}

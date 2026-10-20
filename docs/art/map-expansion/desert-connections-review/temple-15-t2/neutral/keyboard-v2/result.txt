@@ -1,0 +1,69 @@
+통과 colonnade → votive_hall: 연속 왕복의 출발 맵
+통과 colonnade → votive_hall: 문 폭 중앙 보행 가능한 접근
+통과 colonnade → votive_hall: 지정 폭 접근점까지 실제 조이스틱
+  keyboard {"dx":-1,"dy":0,"talk":false,"focused":"BODY"}
+통과 실제 키보드 왼쪽 입력 전달
+  positions {"leg":0,"arrival":{"map":"desert_votive_hall","x":2.7880246153846184,"y":15.59423076923077,"inExit":false,"mateInExit":false,"mate":{"x":1.9260009416579664,"y":16.095172606094092},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":2.7880246153846184,"y":15.59423076923077,"inExit":false,"mateInExit":false,"mate":{"x":1.9260009416579664,"y":16.095172606094092},"floor":true,"mateFloor":true}}
+  colonnade → votive_hall: 출구 앞 colonnade (1.2, 12.5) → 도착 votive_hall (2.8, 15.6)
+통과 colonnade → votive_hall: 걸어서 도착, 착지 west(2.9, 15.6) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 colonnade → votive_hall: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (votive_hall)
+통과 colonnade → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → votive_hall: 최초 도착 동행 간격 유지
+통과 colonnade → votive_hall: 첫 도착 프레임 정확한 착지
+통과 colonnade → votive_hall: 실제 문턱 통과가 지정 폭 lane 1 안 (13.27 / 13.13)
+통과 votive_hall → colonnade: 연속 왕복의 출발 맵
+통과 votive_hall → colonnade: 문 폭 중앙 보행 가능한 접근
+통과 votive_hall → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  keyboard {"dx":-1,"dy":0,"talk":false,"focused":"BODY"}
+통과 실제 키보드 왼쪽 입력 전달
+  positions {"leg":1,"arrival":{"map":"desert_colonnade","x":2.6389861538461497,"y":13.805769230769231,"inExit":false,"mateInExit":false,"mate":{"x":1.7769624801195125,"y":14.306711067632552},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":2.6389861538461497,"y":13.805769230769231,"inExit":false,"mateInExit":false,"mate":{"x":1.7769624801195125,"y":14.306711067632552},"floor":true,"mateFloor":true}}
+  votive_hall → colonnade: 출구 앞 votive_hall (1.6, 15.8) → 도착 colonnade (2.6, 13.8)
+통과 votive_hall → colonnade: 걸어서 도착, 착지 stair(2.8, 13.8) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 votive_hall → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 votive_hall → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → colonnade: 최초 도착 동행 간격 유지
+통과 votive_hall → colonnade: 첫 도착 프레임 정확한 착지
+통과 votive_hall → colonnade: 실제 문턱 통과가 지정 폭 lane 1 안 (16.58 / 16.48)
+통과 colonnade → votive_hall: 연속 왕복의 출발 맵
+통과 colonnade → votive_hall: 문 폭 중앙 보행 가능한 접근
+통과 colonnade → votive_hall: 지정 폭 접근점까지 실제 조이스틱
+  keyboard {"dx":-1,"dy":0,"talk":false,"focused":"BODY"}
+통과 실제 키보드 왼쪽 입력 전달
+  positions {"leg":2,"arrival":{"map":"desert_votive_hall","x":2.7876046153846246,"y":15.59423076923077,"inExit":false,"mateInExit":false,"mate":{"x":1.9263766010781809,"y":16.094984776383985},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":-0.1519753846153814,"y":15.59423076923077,"inExit":true,"mateInExit":false,"mate":{"x":1.1080246153846183,"y":15.59423076923077},"floor":true,"mateFloor":true}}
+통과 colonnade → votive_hall: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  colonnade → votive_hall: 출구 앞 colonnade (1.3, 12.6) → 도착 votive_hall (2.8, 15.6)
+통과 colonnade → votive_hall: 걸어서 도착, 착지 west(2.9, 15.6) 자리, 트리거 밖
+  held exit occupancy {"inExit":true,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 colonnade → votive_hall: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (votive_hall)
+통과 colonnade → votive_hall: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → votive_hall: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 colonnade → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → votive_hall: 최초 도착 동행 간격 유지
+통과 colonnade → votive_hall: 첫 도착 프레임 정확한 착지
+통과 colonnade → votive_hall: 실제 문턱 통과가 지정 폭 lane 1 안 (13.36 / 13.13)
+통과 votive_hall → colonnade: 연속 왕복의 출발 맵
+통과 votive_hall → colonnade: 문 폭 중앙 보행 가능한 접근
+통과 votive_hall → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  keyboard {"dx":-1,"dy":0,"talk":false,"focused":"BODY"}
+통과 실제 키보드 왼쪽 입력 전달
+  positions {"leg":3,"arrival":{"map":"desert_colonnade","x":2.6385661538461482,"y":13.805769230769231,"inExit":false,"mateInExit":false,"mate":{"x":1.7773381395397339,"y":14.306523237922441},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":1.2387061538461515,"y":13.805769230769231,"inExit":false,"mateInExit":false,"mate":{"x":2.4987061538461512,"y":13.805769230769231},"floor":true,"mateFloor":true}}
+통과 votive_hall → colonnade: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  votive_hall → colonnade: 출구 앞 votive_hall (1.5, 15.8) → 도착 colonnade (2.6, 13.8)
+통과 votive_hall → colonnade: 걸어서 도착, 착지 stair(2.8, 13.8) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 votive_hall → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 votive_hall → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 votive_hall → colonnade: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 votive_hall → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → colonnade: 최초 도착 동행 간격 유지
+통과 votive_hall → colonnade: 첫 도착 프레임 정확한 착지
+통과 votive_hall → colonnade: 실제 문턱 통과가 지정 폭 lane 1 안 (16.55 / 16.48)
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: colonnade (3.0, 14.7) 그대로, 트리거 밖
+통과 페이지 오류 없음

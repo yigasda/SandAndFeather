@@ -1,0 +1,49 @@
+통과 votive_hall → forecourt_east: 연속 왕복의 출발 맵
+  positions {"leg":0,"arrival":{"map":"desert_forecourt_east","x":47.9580093373666,"y":10.204828298164557,"inExit":false,"mateInExit":false,"mate":{"x":46.81638555704259,"y":10.699980298401785},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":48.028089210645156,"y":10.207731909925993,"inExit":false,"mateInExit":false,"mate":{"x":46.87912068021932,"y":10.668612736813417},"floor":true,"mateFloor":true}}
+  votive_hall → forecourt_east: 출구 앞 votive_hall (48.8, 15.5) → 도착 forecourt_east (48.0, 10.2)
+통과 votive_hall → forecourt_east: 걸어서 도착, 착지 east(47.8, 10.2) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 votive_hall → forecourt_east: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_east)
+통과 votive_hall → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → forecourt_east: 최초 도착 동행 간격 유지
+통과 votive_hall → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → votive_hall: 연속 왕복의 출발 맵
+  positions {"leg":1,"arrival":{"map":"desert_votive_hall","x":48.881342330581354,"y":15.545245349151344,"inExit":false,"mateInExit":false,"mate":{"x":47.76711197232739,"y":16.12654016768246},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":48.931551621586756,"y":15.49566974328783,"inExit":false,"mateInExit":false,"mate":{"x":47.83022275492434,"y":16.094984776383985},"floor":true,"mateFloor":true}}
+  forecourt_east → votive_hall: 출구 앞 forecourt_east (48.0, 10.1) → 도착 votive_hall (48.9, 15.5)
+통과 forecourt_east → votive_hall: 걸어서 도착, 착지 east(48.8, 15.6) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_east → votive_hall: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (votive_hall)
+통과 forecourt_east → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 forecourt_east → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → votive_hall: 최초 도착 동행 간격 유지
+통과 forecourt_east → votive_hall: 첫 도착 프레임 정확한 착지
+통과 votive_hall → forecourt_east: 연속 왕복의 출발 맵
+  positions {"leg":2,"arrival":{"map":"desert_forecourt_east","x":47.88788205228668,"y":10.195174187482733,"inExit":false,"mateInExit":false,"mate":{"x":46.753650428308376,"y":10.731347862768887},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_east","x":50.82336247772133,"y":9.915852353779892,"inExit":false,"mateInExit":false,"mate":{"x":49.63723486385323,"y":10.098065945973577},"floor":true,"mateFloor":true}}
+통과 votive_hall → forecourt_east: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  votive_hall → forecourt_east: 출구 앞 votive_hall (49.0, 15.8) → 도착 forecourt_east (47.9, 10.2)
+통과 votive_hall → forecourt_east: 걸어서 도착, 착지 east(47.8, 10.2) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 votive_hall → forecourt_east: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_east)
+통과 votive_hall → forecourt_east: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 votive_hall → forecourt_east: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 votive_hall → forecourt_east: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → forecourt_east: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → forecourt_east: 최초 도착 동행 간격 유지
+통과 votive_hall → forecourt_east: 첫 도착 프레임 정확한 착지
+통과 forecourt_east → votive_hall: 연속 왕복의 출발 맵
+  positions {"leg":3,"arrival":{"map":"desert_votive_hall","x":48.88270029306057,"y":15.546046519352837,"inExit":false,"mateInExit":false,"mate":{"x":47.76748759792754,"y":16.126352354882385},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":50.307100099729254,"y":14.920805384709283,"inExit":false,"mateInExit":false,"mate":{"x":49.18293401020219,"y":15.26221933476231},"floor":true,"mateFloor":true}}
+통과 forecourt_east → votive_hall: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  forecourt_east → votive_hall: 출구 앞 forecourt_east (48.0, 10.0) → 도착 votive_hall (48.9, 15.5)
+통과 forecourt_east → votive_hall: 걸어서 도착, 착지 east(48.8, 15.6) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_east → votive_hall: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (votive_hall)
+통과 forecourt_east → votive_hall: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_east → votive_hall: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 forecourt_east → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 forecourt_east → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_east → votive_hall: 최초 도착 동행 간격 유지
+통과 forecourt_east → votive_hall: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: votive_hall (49.0, 16.2) 그대로, 트리거 밖
+통과 페이지 오류 없음

@@ -1,0 +1,40 @@
+통과 colonnade → votive_hall: 연속 왕복의 출발 맵
+통과 colonnade → votive_hall: 문 폭 왼쪽/위 보행 가능한 접근
+통과 colonnade → votive_hall: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":0,"arrival":{"map":"desert_votive_hall","x":2.7892448138130774,"y":15.57579642573273,"inExit":false,"mateInExit":false,"mate":{"x":1.9260009416579664,"y":16.095172606094092},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":2.7197167451570765,"y":15.566551574789267,"inExit":false,"mateInExit":false,"mate":{"x":1.9887360648347037,"y":16.063805044505724},"floor":true,"mateFloor":true}}
+  colonnade → votive_hall: 출구 앞 colonnade (1.0, 12.0) → 도착 votive_hall (2.8, 15.6)
+통과 colonnade → votive_hall: 걸어서 도착, 착지 west(2.9, 15.6) 자리, 트리거 밖
+통과 colonnade → votive_hall: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (votive_hall)
+통과 colonnade → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → votive_hall: 최초 도착 동행 간격 유지
+통과 colonnade → votive_hall: 첫 도착 프레임 정확한 착지
+통과 colonnade → votive_hall: 실제 문턱 통과가 지정 폭 lane 0 안 (12.71 / 12.71)
+통과 votive_hall → colonnade: 연속 왕복의 출발 맵
+통과 votive_hall → colonnade: 문 폭 왼쪽/위 보행 가능한 접근
+통과 votive_hall → colonnade: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":1,"arrival":{"map":"desert_colonnade","x":2.709303552999093,"y":13.800798829866698,"inExit":false,"mateInExit":false,"mate":{"x":1.7142273557734604,"y":14.338078629805578},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":2.6397609521520393,"y":13.795828428964166,"inExit":false,"mateInExit":false,"mate":{"x":1.7765868183606544,"y":14.306898898511982},"floor":true,"mateFloor":true}}
+  votive_hall → colonnade: 출구 앞 votive_hall (1.5, 15.2) → 도착 colonnade (2.7, 13.8)
+통과 votive_hall → colonnade: 걸어서 도착, 착지 stair(2.8, 13.8) 자리, 트리거 밖
+통과 votive_hall → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 votive_hall → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → colonnade: 최초 도착 동행 간격 유지
+통과 votive_hall → colonnade: 첫 도착 프레임 정확한 착지
+통과 votive_hall → colonnade: 실제 문턱 통과가 지정 폭 lane 0 안 (15.94 / 15.94)
+통과 colonnade → votive_hall: 연속 왕복의 출발 맵
+통과 colonnade → votive_hall: 문 폭 중앙 보행 가능한 접근
+통과 colonnade → votive_hall: 지정 폭 접근점까지 실제 조이스틱
+  positions {"leg":2,"arrival":{"map":"desert_votive_hall","x":2.7898267568738766,"y":15.569360986291903,"inExit":false,"mateInExit":false,"mate":{"x":1.9263766010781809,"y":16.094984776383985},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":1.1254586267713331,"y":13.483132196415594,"inExit":false,"mateInExit":false,"mate":{"x":2.3410967262623723,"y":13.726912921080963},"floor":true,"mateFloor":true}}
+  colonnade → votive_hall: 출구 앞 colonnade (1.2, 12.5) → 도착 votive_hall (2.8, 15.6)
+통과 colonnade → votive_hall: 걸어서 도착, 착지 west(2.9, 15.6) 자리, 트리거 밖
+실패 colonnade → votive_hall: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+실패 colonnade → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 0,-1
+통과 colonnade → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → votive_hall: 최초 도착 동행 간격 유지
+실패 colonnade → votive_hall: 첫 도착 프레임 정확한 착지
+실패 colonnade → votive_hall: 실제 문턱 통과가 지정 폭 lane 1 안 (15.87 / 13.13)
+STOP: unexpected re-entry; remaining route not run
+실패 연속 왕복: 정확히 6번 전환, 튕김 없음
+통과 저장·다시 불러오기: colonnade (1.1, 12.3) 그대로, 트리거 밖
+통과 페이지 오류 없음

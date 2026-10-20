@@ -1,0 +1,7 @@
+{
+  "returncode": 0,
+  "changed": [],
+  "files_checked": 10,
+  "output": "desert_golden_dunes 1586x992 px = 108x68 tiles, floor 52.9 %, path to middle 1677 px\ndesert_dry_flats 1774x887 px = 121x61 tiles, floor 63.9 %, path to middle 1092 px\ndesert_quiet_dunes 1774x887 px = 121x61 tiles, floor 63.3 %, path to middle 966 px\ndesert_buried_temple 1774x887 px = 121x61 tiles, floor 47.9 %, path to middle 643 px\ndesert_city_gate 1024x1536 px = 31x46 tiles, floor 49.8 %, path to middle 669 px\ndesert_city_plaza 1774x887 px = 53x27 tiles, floor 46.7 %, path to middle 1050 px\ndesert_colonnade 1774x887 px = 53x27 tiles, floor 38.9 %, path to middle 117 px\ndesert_forecourt_west 1774x887 px = 53x27 tiles, floor 43.7 %, path to middle 197 px\ndesert_forecourt_east 1774x887 px = 53x27 tiles, floor 58.1 %, path to middle 469 px\n",
+  "error": ""
+}

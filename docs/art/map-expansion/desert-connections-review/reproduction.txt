@@ -1,0 +1,12 @@
+desert_golden_dunes 1586x992 px = 108x68 tiles, floor 52.9 %, path to middle 1677 px
+desert_dry_flats 1774x887 px = 121x61 tiles, floor 63.9 %, path to middle 1092 px
+desert_quiet_dunes 1774x887 px = 121x61 tiles, floor 63.3 %, path to middle 966 px
+desert_buried_temple 1774x887 px = 121x61 tiles, floor 47.9 %, path to middle 643 px
+desert_city_gate 1024x1536 px = 31x46 tiles, floor 49.8 %, path to middle 669 px
+desert_city_plaza 1774x887 px = 53x27 tiles, floor 46.7 %, path to middle 1050 px
+desert_colonnade 1774x887 px = 53x27 tiles, floor 38.9 %, path to middle 117 px
+desert_forecourt_west 1774x887 px = 53x27 tiles, floor 43.7 %, path to middle 197 px
+desert_forecourt_east 1774x887 px = 53x27 tiles, floor 58.1 %, path to middle 469 px
+
+Generator exit: 0
+Byte-identical regeneration: True

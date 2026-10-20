@@ -1,0 +1,19 @@
+{
+  "runtimeCode": "857f24ae",
+  "testCode": "2e4d9067",
+  "fixtures": {
+    "combinations": 120,
+    "failures": 0,
+    "minGapTiles": 0.9
+  },
+  "actualTouch": {
+    "releasedInputTransitions": 4,
+    "saveReload": true,
+    "heldInputAccepted": false
+  },
+  "entrySafe": "all pass",
+  "puzzle15": "21 pass; prior button-locator timeouts retained",
+  "ult": "1 failed; same Set10/Horus25 failure reproduced with pre-follower player.js",
+  "windowGuard": "not applied, coordination pending",
+  "sourceContract": "feet/behind/follower/mateWalk preserved; mateWalk.pos priority unchanged"
+}

@@ -1,0 +1,30 @@
+{
+  "status": "proposal only; shared source unchanged",
+  "base": "a26fedd4",
+  "scope": [
+    "window.js state declaration",
+    "useExit validation and rejected promise handling",
+    "frame neutral observation and explicit exit guard"
+  ],
+  "semantics": [
+    "Held movement continues but no subsequent exit until neutral is observed after travel finishes.",
+    "Neutral inside a trigger does not arm it. Must leave all exits then deliberately re-enter.",
+    "Neutral outside a trigger arms it on the next movement substep.",
+    "Fold/close already call stopInput; reopen resets doorArmed in enterMap and observes zero input.",
+    "Rejected travel remains disarmed; neutral plus departure permits retry. Existing save/map rollback is not changed."
+  ],
+  "testsAfterApproval": [
+    "Actual touch 15/T2 upper-middle-lower both ways; hold 1.2 seconds; verify no bounce; release, leave, intentionally return.",
+    "Release inside destination trigger: no immediate switch, leave then re-enter exactly once.",
+    "Release outside trigger: next intentional entry switches exactly once.",
+    "Release during asynchronous travel and press again before arrival: held input on arrival remains blocked.",
+    "Pointercancel with no keyboard input clears movement; with held keyboard movement it must remain blocked.",
+    "Keyboard blur and touch pointercancel tested separately; blur alone does not currently clear pad.",
+    "Fold/close while holding; reopen and deliberate return; save/load preserves position.",
+    "Inject rejected saveState in isolated browser, verify no unhandled rejection/retry loop; do not claim state rollback.",
+    "Missing destination and null exit: no throw or travel; moving travel cannot reenter.",
+    "Exhaustive null/exit x armed x needsNeutral states, including null/true/true.",
+    "02/15 and 15 puzzle regression; existing other maps exit contract regression."
+  ],
+  "notExecuted": "Proposed runtime patch and failure-injection tests not executed before approval."
+}

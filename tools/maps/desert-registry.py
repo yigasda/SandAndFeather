@@ -11,7 +11,7 @@
     saveReady, playtestReady. A picture being approved does not set the others.
 Writes docs/DESERT-REGISTRY.md and tools/maps/desert-registry.json. Stops on a hash or size mismatch.
   python3 tools/maps/desert-registry.py"""
-import hashlib, json, unicodedata
+import argparse, hashlib, json, unicodedata
 from pathlib import Path
 from PIL import Image
 
@@ -104,7 +104,8 @@ INFO = ['18의 기록 → 01 원판 조사 → 19 개방 (18↔19 직통 문 없
 
 # what is built in the game (runtime) and what was actually walked in the game, per link (a, b) → state
 BUILT = {('옴보스', '01'): '걸어서 확인 (0.9.83)', ('01', '04'): '걸어서 확인 (0.9.84)', ('04', '03'): '걸어서 확인 (0.9.84)',
-         ('03', '02'): '걸어서 확인 (0.9.84)', ('02', '11'): '데이터만 (작업 브랜치, 걷기 확인 전)', ('11', '17'): '데이터만 (작업 브랜치, 걷기 확인 전)'}
+         ('03', '02'): '걸어서 확인 (0.9.84)', ('02', 'T1W'): '기준 1add5d4에 연결됨 (파란 착지 보존)',
+         ('T1W', 'T1E'): '지정 착지·동행 초기화 및 실제 왕복 확인 (전체 묶음은 window 조율 대기)', ('T1E', '15'): 'T1W/T1E/15 polygon·문 앞 착지 적용 (ab2320f0); 유지 입력 재전환 실패, window 재무장 조율 대기', ('02', '11'): '데이터만 (작업 브랜치, 걷기 확인 전)', ('11', '17'): '데이터만 (작업 브랜치, 걷기 확인 전)'}
 
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -113,7 +114,7 @@ def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def nfc(s): return unicodedata.normalize('NFC', s)
 
 
-def main():
+def main(json_output=None):
     manifest = {nfc(f['file']): f for f in json.loads((SRC / 'manifest.json').read_text())['files']}
     out, used = [], set()
     shipped = json.loads((ROOT / 'src/core/data.js').read_text().split('export const DESERT = ')[1].split(';')[0].replace("'", '"'))
@@ -145,7 +146,7 @@ def main():
     assert len(out) == 34, len(out)
     assert used == set(manifest), f'manifest pictures not registered: {set(manifest) - used}'
     links = [{'a': a, 'b': b, 'guide': st, 'note': n, 'built': BUILT.get((a, b), '없음')} for a, b, st, n in LINKS]
-    (ROOT / 'tools/maps/desert-registry.json').write_text(json.dumps({'places': out, 'links': links, 'info': INFO}, ensure_ascii=False, indent=1) + '\n')
+    (json_output or ROOT / 'tools/maps/desert-registry.json').write_text(json.dumps({'places': out, 'links': links, 'info': INFO}, ensure_ascii=False, indent=1) + '\n')
 
     L = ['# 사막 등록표', '', '`python3 tools/maps/desert-registry.py`가 만든다(손으로 고치지 않는다). 기준: 사막맵/manifest.json(34곳·PNG 40장), '
          'ASTRA-DESERT-05-20-GUIDE 1장 연결표, OPUS 사막 계획서 2·3·18·20절. 원본 해시·크기와 충돌 PNG 크기는 만들 때 검사한다.', '',
@@ -182,7 +183,7 @@ def main():
           '- 몹 이동: 태양거울·사제 두 종·천칭 파수꾼만 부유(그림 높이만, 충돌은 지상과 같음). 수문장 보스와 나머지는 지상. 모든 몹은 두아트 고대장치 전투 코드(main 0.9.89)를 공통 기반으로.',
           '- 태양거울 광선(사용자): 몹이 보는 쪽 수평(그림대로면 정왼쪽), 발사점은 사용자 표시점(06 (222, 299)·07 (210, 302), 프레임 캔버스). '
           '몹 그림이 좌우만 보므로 광선과 피해 판정도 좌우 수평 한 줄(플레이어 쪽 대각선 금지). 조준 방식은 B3 뒤 태양거울을 넣을 때 제안. 벽 차단·실제 피해 검사는 미완료.',
-          '- 착지와 출구 간격(사용자 10-19): 모든 착지는 모든 출구에서 사람 폭(타일 × 캐릭터 배율) 3배 이상, 생성기가 검사(desert.py GAP). 사용자가 직접 찍은 착지는 그 점을 따르고 2배 이상(11 문 672, 468 = 2.47배). 17 동쪽은 사용자 파란 동그라미 안 1623, 570, 옴보스 귀환 착지 37.5. 출구·충돌·카메라는 그대로. 걷기 검사가 착지에서 좌우·상하 1.5배 움직여도 출구에 안 닿는지 본다.',
+          '- 착지와 출구 간격: 사용자 지정 착지가 우선이며 일률적인 3배 기준으로 옮기지 않는다(OPUS-MAPS). 기존 02 temple (903,390)·T1W south (1273,778)·yard (900,650)·15 east (1680,620) 원본 좌표 보존. 새 연결은 길 중앙·발 도형·동행·입력 유지·의도한 귀환을 함께 검수한다. 15 east는 시험 호환 전용이며 실제 연결은 forecourt (1570,620)를 쓴다.',
           '- 배치 확정(사용자 10-19): 03 고요한 사구·04 메마른 모래벌판에 가죽·봉인 방패병 두 종류(마릿수·좌표는 B3 뒤 화면으로). P1은 천칭 파수꾼만, 다른 종 보류.',
           '- P2 왕면 수문장(사용자 확정): 첫 처치가 14 중심실 진입 조건. 첫 처치 뒤 통로 영구 개방(보스가 다시 나와도 안 잠김), 13으로 퇴각 가능, 출구 강제 잠금 없음, '
           '패배·퇴각으로 퍼즐·단서·탐험 기록 초기화 없음, 14 퍼즐·조사는 별개, 특정 동행·소모품 조건 없음.',
@@ -209,4 +210,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--json-output', type=Path, help='Optional generated registry location (keep task outputs in their allowed directory)')
+    main(parser.parse_args().json_output)

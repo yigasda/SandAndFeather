@@ -11,6 +11,12 @@ export const SOLID_DECOR = new Set(['seal', 'column', 'statue_set', 'statue_falc
 import { getState } from '../core/state.js';
 import { inPolygon } from './geometry.js';
 
+// Polygon exits retain their AABB for field safe-zone centres and quick rejection.
+export function containsExit(e, x, y) {
+    return x >= e.x0 && x <= e.x1 && y >= e.y0 && y <= e.y1
+        && (!e.polygon || inPolygon(x, y, e.polygon));
+}
+
 // Which time of the story the game is in. The residence keeps one set of rooms for every era; a spot, door or
 // person can say which eras it belongs to ("eras": ["now"]) so the first-meeting starts can leave out what was not
 // there yet (Horus living in the west room, Somang's things). Today every saved game is in 'now'.
@@ -107,7 +113,7 @@ export class GameMap {
         for (const n of this.npcs) if (!ids.includes(n.id)) { this.mark(n.x, n.y); this.npcCells.add(`${n.x},${n.y}`); }
     }
     anchor(id) { return this.anchors.find(a => a.id === id) || null; }
-    exitAt(fx, fy) { return this.exits.find(e => fx >= e.x0 && fx <= e.x1 && fy >= e.y0 && fy <= e.y1) || null; }
+    exitAt(fx, fy) { return this.exits.find(e => containsExit(e, fx, fy)) || null; }
     // what is close enough to use from (x, y): the nearest spot (its middle), person or thing (feet to feet)
     nearest(x, y, things = [], away = [], reach = 1.6) {
         let best = null, dist = reach;

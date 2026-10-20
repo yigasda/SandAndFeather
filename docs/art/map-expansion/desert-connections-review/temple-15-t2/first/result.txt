@@ -1,0 +1,41 @@
+통과 colonnade → votive_hall: 연속 왕복의 출발 맵
+  positions {"leg":0,"arrival":{"map":"desert_votive_hall","x":2.6437622681373973,"y":15.389363583207425,"inExit":false,"mateInExit":false,"mate":{"x":2.1142063031631366,"y":16.001069925341508},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":2.529977059527602,"y":15.307318451154911,"inExit":false,"mateInExit":false,"mate":{"x":2.2396765463027406,"y":15.938334803771706},"floor":true,"mateFloor":true}}
+  colonnade → votive_hall: 출구 앞 colonnade (2.8, 13.8) → 도착 votive_hall (2.6, 15.4)
+통과 colonnade → votive_hall: 걸어서 도착, 착지 west(2.9, 15.6) 자리, 트리거 밖
+통과 colonnade → votive_hall: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (votive_hall)
+통과 colonnade → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → votive_hall: 최초 도착 동행 간격 유지
+통과 colonnade → votive_hall: 첫 도착 프레임 정확한 착지
+통과 votive_hall → colonnade: 연속 왕복의 출발 맵
+  positions {"leg":1,"arrival":{"map":"desert_colonnade","x":2.7088115217883217,"y":13.801926066379906,"inExit":false,"mateInExit":false,"mate":{"x":1.7146030163629902,"y":14.337890799510813},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":2.6387768897304817,"y":13.798082901990579,"inExit":false,"mateInExit":false,"mate":{"x":1.777338139539727,"y":14.306523237922445},"floor":true,"mateFloor":true}}
+  votive_hall → colonnade: 출구 앞 votive_hall (2.7, 15.8) → 도착 colonnade (2.7, 13.8)
+통과 votive_hall → colonnade: 걸어서 도착, 착지 stair(2.8, 13.8) 자리, 트리거 밖
+통과 votive_hall → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 votive_hall → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → colonnade: 최초 도착 동행 간격 유지
+통과 votive_hall → colonnade: 첫 도착 프레임 정확한 착지
+통과 colonnade → votive_hall: 연속 왕복의 출발 맵
+  positions {"leg":2,"arrival":{"map":"desert_votive_hall","x":2.81545299212572,"y":15.511044611758098,"inExit":false,"mateInExit":false,"mate":{"x":1.9260009004210004,"y":16.095172626712575},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":1.9713717364282843,"y":15.011178242079977,"inExit":false,"mateInExit":false,"mate":{"x":2.8283870100990716,"y":15.64397957187354},"floor":true,"mateFloor":true}}
+  colonnade → votive_hall: 출구 앞 colonnade (3.0, 14.0) → 도착 votive_hall (2.8, 15.5)
+통과 colonnade → votive_hall: 걸어서 도착, 착지 west(2.9, 15.6) 자리, 트리거 밖
+통과 colonnade → votive_hall: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (votive_hall)
+통과 colonnade → votive_hall: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → votive_hall: 최초 도착 동행 간격 유지
+통과 colonnade → votive_hall: 첫 도착 프레임 정확한 착지
+통과 votive_hall → colonnade: 연속 왕복의 출발 맵
+  positions {"leg":3,"arrival":{"map":"desert_colonnade","x":2.7087988368180946,"y":13.802164653516495,"inExit":false,"mateInExit":false,"mate":{"x":1.714603016362997,"y":14.33789079951081},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":1.1014855502820864,"y":13.543174698692688,"inExit":false,"mateInExit":false,"mate":{"x":2.202598572533627,"y":13.776116004754718},"floor":true,"mateFloor":true}}
+  votive_hall → colonnade: 출구 앞 votive_hall (2.8, 15.8) → 도착 colonnade (2.7, 13.8)
+통과 votive_hall → colonnade: 걸어서 도착, 착지 stair(2.8, 13.8) 자리, 트리거 밖
+통과 votive_hall → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 votive_hall → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 votive_hall → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → colonnade: 최초 도착 동행 간격 유지
+통과 votive_hall → colonnade: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: colonnade (3.1, 14.7) 그대로, 트리거 밖
+통과 페이지 오류 없음

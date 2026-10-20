@@ -1,0 +1,36 @@
+{
+  "runtimeCommit": "dea6fedbd6445e6902891658a7b60e490ff5bcc9",
+  "sourceSizes": [
+    [
+      1024,
+      1536
+    ],
+    [
+      1774,
+      887
+    ]
+  ],
+  "historicalBoundaries": [
+    {
+      "id": "left",
+      "sourceBox": [
+        0.0,
+        335.0,
+        14.0,
+        1536.0
+      ]
+    },
+    {
+      "id": "bottom",
+      "sourceBox": [
+        0.0,
+        1522.0000000000002,
+        644.0,
+        1536.0
+      ]
+    }
+  ],
+  "plazaTop151RowsWalkablePixels": 0,
+  "runtimeChanged": false,
+  "decision": "11-A current 17 vs proposed T2; no alternate external route approved"
+}

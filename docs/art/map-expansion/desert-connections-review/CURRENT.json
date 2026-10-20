@@ -1,0 +1,135 @@
+{
+  "branch": "maps/desert-connections",
+  "base": "1add5d4fe1020dff9f32053e20a9e621d1c7cc4d",
+  "testedCode": "f60d6ff7",
+  "geometryCode": "883df652",
+  "scope": "02-A ↔ 15-D only; retired linear exits disabled",
+  "bundleTestsPassed": true,
+  "wholeGraphComplete": false,
+  "results": {
+    "basic": {
+      "pass": 33,
+      "fail": 0,
+      "transitions": 4
+    },
+    "widthV3": {
+      "pass": 67,
+      "fail": 0,
+      "transitions": 6
+    },
+    "puzzle15": {
+      "pass": 21,
+      "fail": 0
+    }
+  },
+  "supersededTestFailures": [
+    "width: fixed inland approach blocked",
+    "width-v2: right lane lacked continuous inland approach"
+  ],
+  "videoLibrary": "libfile_dc4d306dcd7881919abcfaa1aa64b6cd",
+  "windowPatchApplied": true,
+  "next": "User decisions for three unresolved subjects; existing 02/11 outside path preserved and tested; no push",
+  "evidence": "temple-02-15",
+  "nextPair": {
+    "scope": "15-C ↔ T2-B",
+    "geometryCode": "70d3c834",
+    "widthTestCode": "632838e6",
+    "basic": {
+      "pass": 33,
+      "fail": 0
+    },
+    "width": {
+      "pass": 28,
+      "fail": 5,
+      "lowerLane": "not run"
+    },
+    "regression02": {
+      "pass": 33,
+      "fail": 0
+    },
+    "puzzle15": {
+      "pass": 21,
+      "fail": 0
+    },
+    "complete": true,
+    "blocker": null,
+    "evidence": "temple-15-t2",
+    "videoLibrary": "libfile_57187a38de348191ac40abe9c6fdc92e",
+    "neutralFix": {
+      "runtimeCode": "e159a0a1",
+      "geometryCode": "70d3c834",
+      "touchTestCode": "9a48a795",
+      "keyboardAnd02TestCode": "7dfed219",
+      "touch": {
+        "pass": 75,
+        "fail": 0
+      },
+      "keyboard": {
+        "pass": 53,
+        "fail": 0
+      },
+      "lifecycle": {
+        "pass": 13,
+        "fail": 0
+      },
+      "02Regression": {
+        "pass": 37,
+        "fail": 0
+      },
+      "touchVideo": "libfile_d2ba2a78873c819183839a7c09d45db9",
+      "keyboardVideo": "libfile_a947febf77588191bf354d882448586a",
+      "runtimeScenarios": "Separate isolated lifecycle hooks; actual touch 6 trips, keyboard 4 trips, 02 touch 4 trips. No concurrent server tests.",
+      "priorPuzzle": "21/0 on70d3c834 before window patch; not rerun or relabeled as current pass",
+      "remaining": [
+        "Ombos/Duat/residence exits before merge",
+        "Opus combat integration checks after merging; combat code not fetched/merged here",
+        "11/17 routing decision before T2 south connection"
+      ]
+    }
+  },
+  "templeAtlas": {
+    "runtimeCode": "ccee3db9",
+    "results": {
+      "15-w": {
+        "pass": 37,
+        "fail": 0,
+        "code": "ccee3db9",
+        "transitions": 4
+      },
+      "t2-e": {
+        "pass": 37,
+        "fail": 0,
+        "code": "ccee3db9",
+        "transitions": 4
+      },
+      "t2-t3": {
+        "pass": 37,
+        "fail": 0,
+        "code": "ccee3db9",
+        "transitions": 4
+      },
+      "02-11": {
+        "pass": 37,
+        "fail": 0,
+        "runtimeCode": "ccee3db9",
+        "testCode": "bd0a388a",
+        "transitions": 4
+      }
+    },
+    "maps": 8,
+    "activeLatestDesignEdges": 6,
+    "pendingEdges": [
+      "T2-D↔11-A",
+      "T1W-B↔T1E-B",
+      "T1W-B↔T1E-C",
+      "T3-N↔16-A"
+    ],
+    "pendingDecisions": [
+      "11 existing17 external access",
+      "W-B shared opening destination selection",
+      "T3 north door passage conditions"
+    ],
+    "evidence": "temple-atlas",
+    "wholeGraphComplete": false
+  }
+}

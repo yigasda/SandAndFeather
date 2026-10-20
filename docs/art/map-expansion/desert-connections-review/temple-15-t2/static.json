@@ -1,0 +1,29 @@
+{
+  "desert_colonnade/stair": {
+    "blockedPolygonPixels": 0
+  },
+  "desert_votive_hall/west": {
+    "blockedPolygonPixels": 0
+  },
+  "src/packs/duat/field.js": {
+    "unchanged": true
+  },
+  "src/ui/window.js": {
+    "unchanged": true
+  },
+  "src/world/input.js": {
+    "unchanged": true
+  },
+  "src/ui/hud.js": {
+    "unchanged": true
+  },
+  "data/desert.json": {
+    "unchanged": true
+  },
+  "src/world/player.js": {
+    "unchanged": true
+  },
+  "src/world/map.js": {
+    "unchanged": true
+  }
+}

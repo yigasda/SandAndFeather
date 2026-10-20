@@ -1,0 +1,75 @@
+{
+  "runtimeChanged": false,
+  "candidates": [
+    {
+      "map": "desert_forecourt_east",
+      "polygon": [
+        [
+          800,
+          860
+        ],
+        [
+          1210,
+          860
+        ],
+        [
+          1230,
+          886
+        ],
+        [
+          780,
+          886
+        ]
+      ],
+      "landing": [
+        1000,
+        780
+      ],
+      "dir": "up",
+      "followerCandidate": [
+        970,
+        810
+      ],
+      "landingFeetClear": true,
+      "followerFeetClear": true,
+      "polygonBlockedPixels": 0,
+      "footGapPx": 74.63225806451612,
+      "straightFootPathClear": true
+    },
+    {
+      "map": "desert_city_plaza",
+      "polygon": [
+        [
+          1754,
+          430
+        ],
+        [
+          1773,
+          430
+        ],
+        [
+          1773,
+          515
+        ],
+        [
+          1754,
+          515
+        ]
+      ],
+      "landing": [
+        1623,
+        570
+      ],
+      "dir": "left",
+      "followerCandidate": [
+        1593,
+        600
+      ],
+      "landingFeetClear": true,
+      "followerFeetClear": true,
+      "polygonBlockedPixels": 0,
+      "footGapPx": 131.09285649467472,
+      "straightFootPathClear": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+통과 들어와 둘러보기만 하면 퍼즐 기록이 생기지 않음
+통과 조이스틱으로 받침 앞까지 걸어감
+통과 말 걸기 → 맵 위 작은 장치 창(화면 전환 없음): 낮은 빛이 단 앞 턱에 막혔다. 고리는 그보다 높은 곳에 있다.
+통과 힌트 1: 빛이 어디에서 멈추는지 봐. 고리는 단 위 높은 곳에 있어.
+통과 받침 두 번: 빛이 남쪽으로 (빛이 앞쪽 돌무더기에 닿았다.)
+통과 받침 한 번 더: 빛이 틀에 들어가 높아져서 온 쪽으로 돌아감 (높아진 빛이 벽에 닿았다.)
+통과 틀 앞으로 걸어감
+통과 틀에 말 걸기 → 틀 창
+통과 틀을 홈 따라 아래로 (a2)
+통과 틀 아래쪽으로 돌아감(틀이 길을 막아 돌아서)
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+locator.boundingBox: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.sf_dev_btns button').filter({ hasText: '▶ 밀기' }).first()[22m
+
+    at Object.tapEl (/workspace/SandAndFeather/tools/st-test/touch-walk.cjs:10:29)
+    at btn (/workspace/SandAndFeather/tools/st-test/desert-15-lift.cjs:31:42)
+    at /workspace/SandAndFeather/tools/st-test/desert-15-lift.cjs:80:15 {
+  log: [
+    "  - waiting for locator('.sf_dev_btns button').filter({ hasText: '▶ 밀기' }).first()"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0
