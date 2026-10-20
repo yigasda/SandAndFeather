@@ -1386,3 +1386,12 @@ W-B↔E-B, T2-D↔11-A, E-C↔17-A,17-C↔주거실을 생성기에서 구현했
 구현 커밋 제목의 for validation은 구현시점 제목이다. 이후 동일코드 ca13f9dd0133a4e9b860fe7a5fb4e3b24c3b2ad7에서 기본44/0(실제4전환), 폭78/0(좌·중·우,실제6전환)을 완료한 뒤 공유브랜치에 올렸다. 시작·종료 runtimeAndTestSha256는 두 시험 모두 b80b951b5f947a0c202312ddf0ddfc4514df03bae3e3ef9a175c0855ee2b3a83로 동일하다. 유지입력·중립·재진입·동행·저장/로드 및 양방향 도착화면 검수 포함. [로그·코드해시·캡처·출입구 오버레이](art/map-expansion/desert-connections-review/sanctuary-validated/).
 
 이 근거 커밋은 ca13f9dd에 문서·시험산출물만 더하며, 미검수 피라미드 dc2073bb를 포함하지 않는다. main/release 변경 없음.
+
+
+### 시연 후보 동결: 지정 착지 보존·독립 한 걸음 검사 (2026-10-20)
+
+검수공유2cc11cc3에서maps/desert-phone-ready를 분리했다. 피라미드 미검수확대00d1d50f는maps/desert-connections에만 보존하며 시연 후보에 포함하지 않는다.
+
+15south(995,795), 원본 충돌, 전체 문턱을 그대로 보존한다. 과거desert-maps의1.5×actorScale=2.1타일은58ad63b에서 도입된 일률적폭기준이다. OPUS-MAPS6·7절 및 후속 사용자지시에 따라 승인착지를 그 배수에 맞춰 이동하지 않는다. 2.1타일 독립아래진단은 실제02전환을 재현했으며 [원본진단](art/map-expansion/desert-connections-review/15-south-gap/past-2.1-diagnostic.json)을 보존한다. y775계산후보는 미적용으로 보류했다.
+
+기존portal-walk의위→아래260ms연속검사는 아래가 주로원점복귀였으므로 독립 아래이동안전을 증명하지 못했다. 새--independent-tiles 1은 최초entry에서 매방향 실제로 걸어복귀하고,1.00타일목표(실측±0.05)상하좌우를 독립 검사한다. 충돌막힘은별도로기록하며맵전환은실패다. 직접위치reset으로복귀하지 않는다. 입력유지·중립·의도적재진입·동행·저장검사는 유지한다. runtime맵변경없이 이검사로 현재규칙을 확인한다. 아직새실행결과전이며 옛통과수치를새조건통과로재사용하지 않는다. desert-maps.cjs는Opus소유이므로직접수정하지 않았다.
