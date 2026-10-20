@@ -1183,6 +1183,8 @@ export function testStrikeBy(who) { const s = getState(), o = mobs[0]; if (!s ||
 // tests only: someone hit by a creature's blow of `atk` (as a creature's blow does)
 export function testHit(who, atk) { const s = getState(); if (s) hurt(s, who, atk); }
 // tests only: the 궁 gauges (read, or set some), what is going on with the 궁
+// tests only: what her blow would meet now, each creature (why nothing was hurt)
+export function testBlow() { const s = getState(), f = feet(), face = me.vdir || me.face, reach = F().reach?.[leadOf(s)] || 1.4; return { at: { x: +f.x.toFixed(2), y: +f.y.toFixed(2) }, face, act: me.act?.name || '', mobs: mobs.filter(o => o.st !== 'dead').map(o => { const a = hurtArea(o); return { kind: o.kind, st: o.st, a: [+a.x.toFixed(2), +a.y.toFixed(2), +a.r.toFixed(2)], meets: blowMeets(o, f, face, reach), seen: clearLine(f, { x: a.x, y: a.y }) }; }) }; }
 // tests only: one 궁 picture held still `ms` into its playing, round the one in front (the shown sizes compared), and
 // where it hurts (drawn with testRanges)
 export function testUltFrame(who, ms) {
