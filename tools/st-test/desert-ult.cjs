@@ -65,6 +65,9 @@ const log = m => { console.log(m); res.push(m); };
         await sleep(300);
         const four = await U();
         ok(four.g.set === num.skillCap, `스킬이 네 마리: ${four.g.set} = 상한 ${num.skillCap} (${num.skillFirst} + ${num.skillEach}×3 = ${num.skillFirst + num.skillEach * 3}에서 잘림)`);
+        // Isolate the ordinary-blow rule from the companion's autonomous skill/kill shares.
+        // testHold fixes the lead's aim only; it does not stop the companion.
+        await page.evaluate(() => T.heroes.setWith(T.state.getState(), null));
         // ordinary blows: nothing; felling with one: the kill bonus, once
         await page.evaluate(() => { const p = T.player.player; T.field.testReset(); T.field.testUlt({ set: 0, horus: 0 }); T.field.testOnly('desert_leather_shield', p.x + 1, p.y, { hp: 9, speed: 0, range: 0, guard: 0, nopush: true }); T.field.testHold(true); T.field.testFace('right'); });
         await page.evaluate(() => T.field.attack()); await sleep(700);
@@ -74,7 +77,7 @@ const log = m => { console.log(m); res.push(m); };
         const g2 = await G('set');
         await page.evaluate(() => { T.field.testReset(); T.field.attack(); }); await sleep(700);   // at the fallen one: no more
         ok(g1 === 0 && dead && g2 === num.kill && (await G('set')) === num.kill, `일반 공격: 충전 없음(${g1}), 일반 공격으로 쓰러뜨림 → 처치 보너스 ${g2}(=${num.kill}) 한 번`);
-        await page.evaluate(() => T.field.testHold(false));
+        await page.evaluate(() => { T.field.testHold(false); T.heroes.setWith(T.state.getState(), 'horus'); });
         // the 궁: only full; spent the moment it goes; its blows fill nothing, its kill does
         await page.evaluate(() => { const p = T.player.player; T.field.testReset(); T.field.testUlt({ set: 60, horus: 0, cd: 0 }); T.field.testOnly('desert_leather_shield', p.x + 1, p.y, { hp: 999, speed: 0, range: 0, guard: 0, nopush: true }); T.field.ult(); });
         await sleep(200);
