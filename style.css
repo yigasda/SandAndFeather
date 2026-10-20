@@ -834,7 +834,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 
 /* Five window themes share maps, portraits and icons. Cozy remains the default. */
 #sf_game .sf_inventory_slot_name { display: none; }
-#sf_game .sf_appearance { position: absolute; z-index: 4; right: 10px; top: calc(98px + env(safe-area-inset-top, 0px)); width: 36px; height: 34px; border: 2px solid var(--sf-gold); border-radius: 3px; background: var(--sf-glass); color: #f8e9cf; }
+#sf_game :is(.sf_appearance, .sf_bag) { position: absolute; z-index: 4; right: 10px; top: calc(98px + env(safe-area-inset-top, 0px)); width: 36px; height: 34px; border: 2px solid var(--sf-gold); border-radius: 3px; background: var(--sf-glass); color: #f8e9cf; }
 #sf_game .sf_chips { max-width: calc(100% - 64px); }
 #sf_game .sf_theme_choices { display: grid; gap: 8px; }
 #sf_game .sf_theme_choice { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; padding: 10px; text-align: left; font-family: inherit; color: var(--sf-ink); background: var(--sf-card2); border: 1px solid var(--sf-line); border-radius: 3px; cursor: pointer; }
@@ -1204,14 +1204,15 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme] .sf_chip { padding:1px 3px;border:6px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;border-radius:0;box-shadow:none;background:#493726;background-clip:padding-box;font-size:10px;min-width:0;white-space:nowrap; }
 #sf_game[data-ui-theme] .sf_chip_rank i { display:none; }
 #sf_game[data-ui-theme] .sf_hint_pill { left:20px;top:calc(114px + env(safe-area-inset-top,0px));min-height:32px;max-width:calc(100% - 72px);padding:2px 8px;border:7px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;border-radius:0;box-shadow:none;background:#3e2e20;background-clip:padding-box;font-size:11px; }
-#sf_game[data-ui-theme] .sf_appearance { right:20px;top:calc(114px + env(safe-area-inset-top,0px));height:31px;width:31px; }
+#sf_game[data-ui-theme] :is(.sf_appearance, .sf_bag) { right:20px;top:calc(114px + env(safe-area-inset-top,0px));height:31px;width:31px; }
 #sf_game[data-ui-theme] .sf_controls { left:24px;right:22px;bottom:calc(84px + env(safe-area-inset-bottom,0px)); }
 #sf_game[data-ui-theme] .sf_round { width:65px;height:70px;border:7px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;border-radius:0;box-shadow:none;background:#483320;background-clip:padding-box;gap:4px;font-size:12px; }
 #sf_game[data-ui-theme] .sf_talk { border-image:var(--skin-primary) var(--slice-primary) stretch;background:#ba5729;opacity:1; }
 #sf_game[data-ui-theme] .sf_round i, #sf_game[data-ui-theme] .sf_tab i { display:block;background-position:center;background-size:contain;background-repeat:no-repeat;image-rendering:pixelated; }
 #sf_game[data-ui-theme] .sf_round i::before,#sf_game[data-ui-theme] .sf_tab i::before { content:none; }
 #sf_game[data-ui-theme] .sf_round i { width:26px;height:29px; }
-#sf_game[data-ui-theme] .sf_bag i { background-image:var(--skin-bag); }
+#sf_game[data-ui-theme] .sf_bag i { display:block;width:20px;height:22px;background:var(--skin-bag) center/contain no-repeat;image-rendering:pixelated; }
+#sf_game[data-ui-theme] .sf_bag i::before { content:none; }
 #sf_game[data-ui-theme] .sf_talk i { background-image:var(--skin-talk); }
 #sf_game[data-ui-theme] .sf_tabs { left:7px;right:7px;bottom:5px;border:9px solid transparent;border-image:var(--skin-bar) var(--slice-bar) stretch;border-radius:0;background:#3c2b1f;background-clip:padding-box;box-shadow:none;padding:0 0 env(safe-area-inset-bottom,0px);gap:0; }
 #sf_game[data-ui-theme] .sf_tab { border:0;border-right:1px solid #805c3744;min-height:49px;padding:3px 0;color:#f8e1b9;transform:none;box-shadow:none;background:none;border-radius:0;gap:4px; }
@@ -1816,8 +1817,8 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_dev_btns button { flex: 1 0 auto; min-width: 52px; min-height: 34px; padding: 3px 6px; border-radius: 8px; border: 1px solid #f2c66e; background: #5a3e26; color: #fff4dc; font-size: 13px; font-weight: 700; cursor: pointer; }
 
 /* 가방: always up under the gear (사용자 10-19: 평상시에도 위에, 공격 때처럼); 궁 takes its old place by 공격 in a fight */
-#sf_game .sf_bag { position: absolute; z-index: 4; right: 10px; top: calc(98px + 34px + 8px + env(safe-area-inset-top, 0px)); width: 52px; height: 52px; font-size: 11px; gap: 2px; }
-#sf_game[data-ui-theme] .sf_bag { right: 20px; top: calc(114px + 31px + 8px + env(safe-area-inset-top, 0px)); width: 52px; height: 52px; }
+#sf_game .sf_bag { top: calc(98px + 34px + 8px + env(safe-area-inset-top, 0px)); }
+#sf_game[data-ui-theme] .sf_bag { top: calc(114px + 31px + 8px + env(safe-area-inset-top, 0px)); }
 /* 궁: the lead's picture in the middle, its rim the gauge; ready, a soft glow; filling, the picture a little darker */
 #sf_game .sf_ult { position: relative; width: 64px; height: 64px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; align-self: flex-end;
   background: conic-gradient(#ffd25e calc(var(--g, 0) * 1turn), #2a1a10 0); box-shadow: 0 0 0 2px #4a2414; touch-action: manipulation; }
