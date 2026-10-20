@@ -1,0 +1,33 @@
+== 2026-10-20 20:59:45 기준 코드 bfe85856 · 검사: desert-ult ult-fx-view desert-strike desert-target desert-horus-leap duat-field desert-entry-safe desert-b3 desert-mob-hits pad-tabs landscape portal-walk:--exit-lifecycle portal-walk:--independent-tiles,1.7472,--temple-02-15 portal-walk:--independent-tiles,1.7472,--temple-15-w portal-walk:--independent-tiles,1.7472,--temple-15-t2 portal-walk:--independent-tiles,1.7472,--temple-t2-e portal-walk:--independent-tiles,1.7472,--temple-t2-t3 portal-walk:--independent-tiles,1.7472,--temple-02-11 portal-walk:--independent-tiles,1.7472,--temple-w-e portal-walk:--independent-tiles,1.7472,--temple-t2-11 portal-walk:--independent-tiles,1.7472,--temple-e-17 portal-walk:--independent-tiles,1.7472,--city-dwelling portal-walk:--independent-tiles,1.7472,--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-maps desert-save-move verify-cozy-ui verify-ui-themes verify-full-map desert-boss-view ult-memory
+문법: 717fee00 이후 바뀐 JS 23개 통과
+desert-ult           exit 0  통과 21 실패 0  111s
+ult-fx-view          exit 0  통과 0 실패 0  112s
+desert-strike        exit 0  통과 130 실패 0  121s
+desert-target        exit 0  통과 76 실패 0  302s
+desert-horus-leap    exit 1  통과 15 실패 2  63s
+duat-field           exit 0  통과 23 실패 0  70s
+desert-entry-safe    exit 0  통과 7 실패 0  61s
+desert-b3            exit 0  통과 14 실패 0  49s
+desert-mob-hits      exit 0  통과 37 실패 0  113s
+pad-tabs             exit 0  통과 16 실패 0  65s
+landscape            exit 0  통과 11 실패 0  50s
+portal-walk_--exit-lifecycle exit 0  통과 14 실패 0  11s
+portal-walk_--independent-tiles_1_7472_--temple-02-15 exit 0  통과 80 실패 0  63s
+portal-walk_--independent-tiles_1_7472_--temple-15-w exit 0  통과 80 실패 0  66s
+portal-walk_--independent-tiles_1_7472_--temple-15-t2 exit 0  통과 80 실패 0  69s
+portal-walk_--independent-tiles_1_7472_--temple-t2-e exit 0  통과 80 실패 0  63s
+portal-walk_--independent-tiles_1_7472_--temple-t2-t3 exit 0  통과 80 실패 0  68s
+portal-walk_--independent-tiles_1_7472_--temple-02-11 exit 0  통과 80 실패 0  73s
+portal-walk_--independent-tiles_1_7472_--temple-w-e exit 0  통과 80 실패 0  68s
+portal-walk_--independent-tiles_1_7472_--temple-t2-11 exit 0  통과 80 실패 0  66s
+portal-walk_--independent-tiles_1_7472_--temple-e-17 exit 0  통과 80 실패 0  67s
+portal-walk_--independent-tiles_1_7472_--city-dwelling exit 0  통과 80 실패 0  64s
+portal-walk_--independent-tiles_1_7472_--pair-file_docs_art_map-expansion_desert-connections-review_sanctuary-validated_pair_json exit 0  통과 80 실패 0  64s
+desert-maps          exit 0  통과 0 실패 0  290s
+desert-save-move     exit 0  통과 9 실패 0  13s
+verify-cozy-ui       exit 0  통과 0 실패 0  19s
+verify-ui-themes     exit 0  통과 0 실패 0  59s
+verify-full-map      exit 0  통과 0 실패 0  21s
+desert-boss-view     exit 0  통과 6 실패 0  20s
+ult-memory           exit 0  통과 8 실패 0  98s
+주의: 검사 도중 코드가 바뀜 (bfe85856 → bfe85856+수정d82f930). 위 결과는 시작 때 복사한 bfe85856 기준이다.

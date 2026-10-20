@@ -1,0 +1,23 @@
+guard timing {"lead":"horus","remainingAfterCapture":0.51,"held":0.804,"lastHit":{"now":11.084,"st":"hit","t":0.8},"exit":{"now":11.1,"st":"chase","t":0},"breakAt":10.296}
+통과 호루스 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.804초 이상 유지), 피해 6 · 0.00 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 3 · 0.60 press skill · 1.05 break · 1.05 blow[skill] guard→hit 피해 6 · 1.05 skillHit · 1.05 charge
+guard timing {"lead":"set","remainingAfterCapture":0.56,"held":0.789,"lastHit":{"now":15.182,"st":"hit","t":0.78},"exit":{"now":15.199,"st":"chase","t":0},"breakAt":14.41}
+통과 세트 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.789초 이상 유지), 피해 10 · 0.01 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 5 · 0.61 press skill · 0.61 break · 0.61 blow[skill] guard→hit 피해 10 · 0.61 skillHit · 0.61 charge
+guard timing {"lead":"somang","remainingAfterCapture":0.52,"held":0.799,"lastHit":{"now":19.299,"st":"hit","t":0.8},"exit":{"now":19.316,"st":"chase","t":0},"breakAt":18.517}
+통과 소망 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.799초 이상 유지), 피해 5 · 0.00 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 3 · 0.60 press skill · 0.60 break · 0.60 blow[skill] guard→hit 피해 5 · 0.60 skillHit · 0.60 charge
+guard timing {"lead":"horus","remainingAfterCapture":0.46,"held":0.83,"lastHit":{"now":23.73,"st":"hit","t":0.63},"exit":{"now":23.906,"st":"chase","t":0},"breakAt":23.076}
+통과 호루스 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.83초 이상 유지), 피해 6 · 0.00 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 3 · 0.61 press skill · 1.06 break · 1.06 blow[skill] guard→hit 피해 6 · 1.06 skillHit · 1.06 charge
+guard timing {"lead":"set","remainingAfterCapture":0.56,"held":0.808,"lastHit":{"now":28.465,"st":"hit","t":0.8},"exit":{"now":28.482,"st":"chase","t":0},"breakAt":27.674}
+통과 세트 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.808초 이상 유지), 피해 10 · 0.02 press attack · 0.22 guard · 0.22 blow[attack] chase→guard 피해 5 · 0.60 press skill · 0.60 break · 0.60 blow[skill] guard→hit 피해 10 · 0.60 skillHit · 0.60 charge
+guard timing {"lead":"somang","remainingAfterCapture":0.5,"held":0.813,"lastHit":{"now":32.594,"st":"hit","t":0.8},"exit":{"now":32.608,"st":"chase","t":0},"breakAt":31.795}
+통과 소망 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.813초 이상 유지), 피해 5 · 0.00 press attack · 0.20 guard · 0.20 blow[attack] chase→guard 피해 3 · 0.60 press skill · 0.60 break · 0.60 blow[skill] guard→hit 피해 5 · 0.60 skillHit · 0.60 charge
+guard timing {"lead":"horus","remainingAfterCapture":0.33,"held":0.807,"lastHit":{"now":37.22,"st":"hit","t":0.8},"exit":{"now":37.232,"st":"chase","t":0},"breakAt":36.425}
+통과 호루스 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.807초 이상 유지), 피해 6 · 0.01 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 3 · 0.63 press skill · 1.08 break · 1.08 blow[skill] guard→hit 피해 6 · 1.08 skillHit · 1.08 charge
+guard timing {"lead":"set","remainingAfterCapture":0.55,"held":0.799,"lastHit":{"now":41.415,"st":"hit","t":0.8},"exit":{"now":41.432,"st":"chase","t":0},"breakAt":40.633}
+통과 세트 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.799초 이상 유지), 피해 10 · 0.01 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 5 · 0.61 press skill · 0.61 break · 0.61 blow[skill] guard→hit 피해 10 · 0.61 skillHit · 0.61 charge
+guard timing {"lead":"somang","remainingAfterCapture":0.59,"held":0.81,"lastHit":{"now":45.665,"st":"hit","t":0.8},"exit":{"now":45.681,"st":"chase","t":0},"breakAt":44.871}
+통과 소망 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.81초 이상 유지), 피해 5 · 0.00 press attack · 0.20 guard · 0.20 blow[attack] chase→guard 피해 3 · 0.59 press skill · 0.59 break · 0.59 blow[skill] guard→hit 피해 5 · 0.59 skillHit · 0.59 charge
+통과 세트 가드 중 일반 공격: 원래 5 → max(1, round(5×0.3=1.50)) = 2, 게임 2
+통과 호루스 가드 중 일반 공격: 원래 3 → max(1, round(3×0.3=0.90)) = 1, 게임 1
+통과 페이지 오류 없음 
+
+ALL PASS (0 failed)

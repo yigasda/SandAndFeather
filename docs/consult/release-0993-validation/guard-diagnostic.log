@@ -1,0 +1,11 @@
+DURATION {"lead":"somang","beforeShot":{"now":11.993,"mob":{"kind":"desert_leather_shield","st":"hit","t":0.03,"hp":26,"x":27.23,"y":18.57}},"afterShot":{"now":12.523,"mob":{"kind":"desert_leather_shield","st":"hit","t":0.57,"hp":26,"x":27.23,"y":18.57}},"oldMeasured":0.24,"brk":{"t":11.955,"ev":"break","mob":99},"exit":{"now":12.748,"st":"chase","t":0},"lastHit":{"now":12.732,"st":"hit","t":0.78},"trueHeld":0.7929999999999993}
+통과 소망 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.24초 이상 유지), 피해 5 · 0.00 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 3 · 0.59 press skill · 0.59 break · 0.59 blow[skill] guard→hit 피해 5 · 0.59 skillHit · 0.59 charge
+DURATION {"lead":"somang","beforeShot":{"now":16.137,"mob":{"kind":"desert_leather_shield","st":"hit","t":0.03,"hp":26,"x":27.23,"y":18.57}},"afterShot":{"now":16.74,"mob":{"kind":"desert_leather_shield","st":"hit","t":0.63,"hp":26,"x":27.23,"y":18.57}},"oldMeasured":0.17,"brk":{"t":16.105,"ev":"break","mob":99},"exit":{"now":16.916,"st":"chase","t":0},"lastHit":{"now":16.9,"st":"hit","t":0.8},"trueHeld":0.8109999999999999}
+통과 소망 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.17초 이상 유지), 피해 5 · 0.01 press attack · 0.21 guard · 0.21 blow[attack] chase→guard 피해 3 · 0.59 press skill · 0.59 break · 0.59 blow[skill] guard→hit 피해 5 · 0.59 skillHit · 0.59 charge
+DURATION {"lead":"somang","beforeShot":{"now":20.289,"mob":{"kind":"desert_leather_shield","st":"hit","t":0.03,"hp":26,"x":27.23,"y":18.57}},"afterShot":{"now":21.669,"mob":{"kind":"desert_leather_shield","st":"hit","t":0.75,"hp":26,"x":27.23,"y":18.57}},"oldMeasured":0.04,"brk":{"t":20.255,"ev":"break","mob":99},"exit":{"now":21.716,"st":"chase","t":0},"lastHit":{"now":21.706,"st":"hit","t":0.8},"trueHeld":1.461000000000002}
+통과 소망 가드 깨기: 가드 중(guard) 기술 명중 → break → 가드 풀림·경직(st hit 0.04초 이상 유지), 피해 5 · 0.02 press attack · 0.22 guard · 0.22 blow[attack] chase→guard 피해 3 · 0.60 press skill · 0.60 break · 0.60 blow[skill] guard→hit 피해 5 · 0.60 skillHit · 0.61 charge
+통과 세트 가드 중 일반 공격: 원래 5 → max(1, round(5×0.3=1.50)) = 2, 게임 2
+통과 호루스 가드 중 일반 공격: 원래 3 → max(1, round(3×0.3=0.90)) = 1, 게임 1
+통과 페이지 오류 없음 
+
+ALL PASS (0 failed)

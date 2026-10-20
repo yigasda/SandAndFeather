@@ -27,7 +27,7 @@ const log = msg => { console.log(msg); res.push(msg); };
     const sleep = ms => page.waitForTimeout(ms);
     const shot = n => page.screenshot({ path: path.join(OUT, n) });
     try {
-        await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
+        await page.goto(process.env.BASE_URL || 'http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
         await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 }); await sleep(2500);
         const save = page.locator('button:visible, .menu_button:visible', { hasText: /^Save$/ });
         if (await save.count()) { await save.first().click(); await sleep(1500); }
@@ -39,6 +39,8 @@ const log = msg => { console.log(msg); res.push(msg); };
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; await T.win.openGame(); window.toastr?.clear();
             // the field's own foot box (field.js solid)
             T.solid = (x, y) => T.win.currentMap().solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96);
+            T.guardSamples = [];
+            T.win.onFrame(() => { if (T.watchGuard) { const o = T.field.fieldState().mobs[0]; T.guardSamples.push({ now:T.field.testNow(), st:o?.st, t:o?.t }); } });
         }, BASE);
         // one scene: out (ends the fight), a day on (fresh creatures), the party, in, clean
         const scene = async (lead, map = MAP, entry = 'yard') => {
@@ -60,6 +62,7 @@ const log = msg => { console.log(msg); res.push(msg); };
                 return { x0, x1: p.x, y: p.y, inWall: T.solid(p.x, p.y), gap: o ? Math.hypot(o.x + 0.5 - (p.x + 0.5), o.y + 0.8 - (p.y + 0.8)) : null, blows: ev.filter(e => e.ev === 'blow'), ev };
             }, x0);
         };
+        if (!process.argv.includes('--guard-only')) {
         const STILL = { guard: 0, speed: 0, range: 0, hit: {} };   // the leap's geometry alone: no shape (the shield's own: desert-mob-hits.cjs)
         // a standing place in T1W with clear floor 4.5 tiles to the right (the yard landing)
         const cases = [
@@ -112,8 +115,9 @@ const log = msg => { console.log(msg); res.push(msg); };
             const r = await leap();
             ok(r.blows.length === 1 && !r.inWall, `두아트 duat_04 고대장치 ${dx}칸 앞: ${(r.x1 - r.x0).toFixed(2)}칸 도약, 착지-중심 ${r.gap?.toFixed(2)}, 명중 ${r.blows.map(b => `${b.by} ${b.dmg}`).join(',') || '없음'}`);
         }
+        }
         // the guard break, Horus then Set: a still creature that always guards; a full blow → it closes up → the 기술
-        for (const lead of ['horus', 'set', 'somang']) {
+        for (const lead of Array.from({length:Number(process.env.GUARD_REPEATS || 1)},()=>['horus','set','somang']).flat()) {
             await scene(lead);
             await put(KIND, lead === 'somang' ? 0.9 : 1.1, 0, { guard: 1, speed: 0, range: 0 }); await sleep(300);   // inside her blow's reach (somang 1.1)
             const t0 = await page.evaluate(() => T.field.testNow()); await page.evaluate(() => T.field.testEvents(true));
@@ -123,19 +127,26 @@ const log = msg => { console.log(msg); res.push(msg); };
             // and shows 0.35 s
             await page.waitForFunction(() => { const b = T.field.testEvents().find(e => e.ev === 'blow'); return b && T.field.testNow() - b.t > 0.37; }, null, { timeout: 3000 });
             const g0 = await page.evaluate(() => T.field.fieldState().mobs[0]?.st);
-            await page.evaluate(() => T.field.skill());
+            await page.evaluate(() => { T.guardSamples=[]; T.watchGuard=true; T.field.skill(); });
             let st = null;
             for (let i = 0; i < 40 && !st; i++) { await sleep(25); st = await page.evaluate(() => { const o = T.field.fieldState().mobs[0]; return o.st === 'hit' ? o : null; }); }
             await shot(`break-${lead}.png`);
             // 경직: how long it stays struck (a flinch is 0.3 s, a broken guard 0.8 s)
             const h0 = await page.evaluate(() => T.field.testNow()); let h1 = h0;
             while (h1 - h0 < 2 && await page.evaluate(() => T.field.fieldState().mobs[0]?.st === 'hit')) { await sleep(20); h1 = await page.evaluate(() => T.field.testNow()); }
-            if (st) st.held = +(h1 - h0).toFixed(2);
+            const remainingAfterCapture = +(h1 - h0).toFixed(2);
             await sleep(300);
             const ev = await page.evaluate(() => T.field.testEvents(true));
             const tl = ev.map(e => `${(e.t - t0).toFixed(2)} ${e.ev}${e.by ? `[${e.by}] ${e.before}→${e.after} 피해 ${e.dmg}` : e.what ? ` ${e.what}${e.why ? ` (${e.why})` : ''}` : ''}`).join(' · ');
             const guard = ev.find(e => e.ev === 'guard'), brk = ev.find(e => e.ev === 'break'), sb = ev.find(e => e.ev === 'blow' && e.by === 'skill');
-            ok(g0 === 'guard' && guard && brk && sb && sb.before === 'guard' && sb.after === 'hit' && st && st.held > 0.5 && sb.t < guard.until,
+            // Capture/transport time is part of the hit interval, not time to subtract.
+            // Observe actual game frames so slow screenshots cannot shorten measured stun.
+            const samples = await page.evaluate(() => { T.watchGuard=false; return T.guardSamples; });
+            const lastHit = samples.filter(f => f.st === 'hit').at(-1);
+            const exit = samples.find(f => brk && f.now > brk.t && f.st !== 'hit');
+            if (st) st.held = exit && brk ? +(exit.now - brk.t).toFixed(3) : 0;
+            log('guard timing '+JSON.stringify({lead,remainingAfterCapture,held:st?.held,lastHit,exit,breakAt:brk?.t}));
+            ok(g0 === 'guard' && guard && brk && sb && sb.before === 'guard' && sb.after === 'hit' && st && st.held > 0.5 && lastHit?.t > 0.5 && sb.t < guard.until,
                 `${{ horus: '호루스', set: '세트', somang: '소망' }[lead]} 가드 깨기: 가드 중(${g0}) 기술 명중 → break → 가드 풀림·경직(${st ? `st ${st.st} ${st.held}초 이상 유지` : '경직 못 봄'}), 피해 ${sb?.dmg} · ${tl}`);
         }
         // the guarded ordinary blow: max(1, round(n × guardTake)) against what the game did
