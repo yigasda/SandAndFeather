@@ -138,7 +138,9 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 if(!inExit)leftExit=true;}
             return true;
         },entry);
-        if(!clear)return W.walkToPoint(entry.x,entry.y,30000,.4);
+        // Route around obstacles first, then finish the exact return below.
+        // The pathfinder's .4-tile goal radius is not a completed precision return.
+        if(!clear && !await W.walkToPoint(entry.x,entry.y,30000,.4,{avoidExits:true}))return false;
         // Do not round a collision-safe start onto a blocked grid point beside a doorway post.
         const pad=await W.padBox();await W.touch('touchStart',pad.x,pad.y);
         let arrived=false;
@@ -459,7 +461,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                         const remaining=INDEPENDENT_TILES-travelled;
                         if(Math.abs(remaining)<=.02)break;
                         if(Math.abs(travelled-last)<.001)stalled++;else stalled=0;
-                        if(stalled>20){blocked=await page.evaluate(([dx,dy])=>{const p=T.player.player,m=T.win.currentMap();return m.solidRect(p.x+dx*.08+.22,p.y+dy*.08+.62,p.x+dx*.08+.78,p.y+dy*.08+.96);},[dx,dy]);break;}last=travelled;
+                        if(stalled>20){blocked=await page.evaluate(([dx,dy])=>{const p=T.player.player,m=T.win.currentMap();const step=.05*4.2*(m.d.walkSpeed||1);for(let d=.02;d<=step+.02;d+=.02)if(m.solidRect(p.x+dx*d+.22,p.y+dy*d+.62,p.x+dx*d+.78,p.y+dy*d+.96))return true;return false;},[dx,dy]);break;}last=travelled;
                         const amp=Math.max(.16,Math.min(1,Math.abs(remaining)/.6));
                         await W.touch('touchMove',p.x+dx*p.lim*amp*Math.sign(remaining),p.y+dy*p.lim*amp*Math.sign(remaining));await sleep(20);await W.touch('touchMove',p.x,p.y);
                     }

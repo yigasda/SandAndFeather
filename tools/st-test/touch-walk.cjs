@@ -20,7 +20,16 @@ module.exports = (page, cdp) => {
             // avoid: also keep her feet out of every exit but the goal's (a player going past a door, not through it)
             const inExit = (x, y) => avoid && m.exits.some(e => T.map.containsExit(e, x + 0.5, y + 0.8) && !T.map.containsExit(e, gx + 0.5, gy + 0.8));
             const S = 0.25, free = (x, y) => !m.solidRect(x + 0.22, y + 0.62, x + 0.78, y + 0.96) && !inExit(x, y);
-            const sx = Math.round(p.x / S), sy = Math.round(p.y / S), key = (x, y) => x + ',' + y;
+            let sx = Math.round(p.x / S), sy = Math.round(p.y / S);
+            const reaches = (x,y) => { const n=Math.max(1,Math.ceil(Math.hypot(x-p.x,y-p.y)/.04)); for(let k=1;k<=n;k++) if(!free(p.x+(x-p.x)*k/n,p.y+(y-p.y)*k/n)) return false; return true; };
+            // A valid position beside a doorway can round into the doorway post.
+            // Start the grid route at a nearby reachable free cell, never that post.
+            if(!free(sx*S,sy*S)||!reaches(sx*S,sy*S)) {
+                const starts=[];for(let dx=-2;dx<=2;dx++)for(let dy=-2;dy<=2;dy++) {const x=sx+dx,y=sy+dy;if(free(x*S,y*S)&&reaches(x*S,y*S))starts.push([x,y]);}
+                starts.sort((a,b)=>Math.hypot(a[0]*S-p.x,a[1]*S-p.y)-Math.hypot(b[0]*S-p.x,b[1]*S-p.y));
+                if(!starts.length)return null;[sx,sy]=starts[0];
+            }
+            const key = (x, y) => x + ',' + y;
             const prev = new Map([[key(sx, sy), null]]), q = [[sx, sy]]; let end = null;
             if (Math.hypot(sx * S - gx, sy * S - gy) <= near) end = [sx, sy];
             while (q.length && !end) {
@@ -64,6 +73,7 @@ module.exports = (page, cdp) => {
             await page.waitForTimeout(j === route.length - 1 ? 20 : 50);
             if (j === route.length - 1) await touch('touchMove', p.x, p.y);
         }
+        if (!done) console.log('WALK_TIMEOUT',JSON.stringify({goal:[gx,gy],routeStart:route[0],routeEnd:route.at(-1),state:await page.evaluate(()=>({x:T.player.player.x,y:T.player.player.y,map:T.player.player.map}))}));
         if (!opts.keep) { await touch('touchEnd'); await page.waitForTimeout(150); }
         return done;
     }
