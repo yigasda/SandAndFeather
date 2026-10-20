@@ -104,12 +104,24 @@ fs.mkdirSync(OUT, { recursive: true });
         const legs = [['desert_golden_dunes', 'east', 'east', 'desert_dry_flats', 'west'], ['desert_dry_flats', 'east', 'east', 'desert_quiet_dunes', 'west'],
             ['desert_quiet_dunes', 'east', 'east', 'desert_buried_temple', 'west'], ['desert_buried_temple', 'west', 'west', 'desert_quiet_dunes', 'east'],
             ['desert_quiet_dunes', 'west', 'west', 'desert_dry_flats', 'east'], ['desert_dry_flats', 'west', 'west', 'desert_golden_dunes', 'east']];
-        legs.push(['desert_buried_temple', 'door', 'door', 'desert_city_gate', 'outside'], ['desert_city_gate', 'door', 'door', 'desert_city_plaza', 'east'],
-            ['desert_city_plaza', 'east', 'east', 'desert_city_gate', 'door'], ['desert_city_gate', 'outside', 'left', 'desert_buried_temple', 'door'],
-            // 02 신전 문 ↔ T1W 석재 마당 아래 끝(착지: 사용자 파란 원)
-            // 02 ↔ 15 ↔ T1W (maps/desert-verified-abc934a7; the old 02 ↔ T1W straight way is gone), as in portal-walk.cjs
+        // the temple city as connected now (maps/desert-verified-abc934a7 + batch1 76437a2; same legs as portal-walk.cjs
+        // per connection). The old 02 ↔ T1W straight way and 11 ↔ 17 are gone.
+        legs.push(
+            // 02 ↔ 11
+            ['desert_buried_temple', 'door', 'door', 'desert_city_gate', 'outside'], ['desert_city_gate', 'outside', 'left', 'desert_buried_temple', 'door'],
+            // 02 ↔ 15
             ['desert_buried_temple', 'temple', 'temple', 'desert_colonnade', 'south'], ['desert_colonnade', 'south', 'south', 'desert_buried_temple', 'temple'],
-            ['desert_colonnade', 'forecourt', 'forecourt', 'desert_forecourt_west', 'east'], ['desert_forecourt_west', 'east', 'east', 'desert_colonnade', 'forecourt']);
+            // 15 ↔ T1W, 15 ↔ T2
+            ['desert_colonnade', 'forecourt', 'forecourt', 'desert_forecourt_west', 'east'], ['desert_forecourt_west', 'east', 'east', 'desert_colonnade', 'forecourt'],
+            ['desert_colonnade', 'stair', 'stair', 'desert_votive_hall', 'west'], ['desert_votive_hall', 'west', 'west', 'desert_colonnade', 'stair'],
+            // T1W ↔ T1E (W south ↔ E west), T2 ↔ T1E, T2 ↔ T3, T2 ↔ 11
+            ['desert_forecourt_west', 'south', 'south', 'desert_forecourt_east', 'west'], ['desert_forecourt_east', 'west', 'west', 'desert_forecourt_west', 'south'],
+            ['desert_votive_hall', 'east', 'east', 'desert_forecourt_east', 'east'], ['desert_forecourt_east', 'east', 'east', 'desert_votive_hall', 'east'],
+            ['desert_votive_hall', 'north', 'north', 'desert_guardian_gate', 'south'], ['desert_guardian_gate', 'south', 'south', 'desert_votive_hall', 'north'],
+            ['desert_votive_hall', 'south', 'south', 'desert_city_gate', 'door'], ['desert_city_gate', 'door', 'door', 'desert_votive_hall', 'south'],
+            // T1E ↔ 17, 17 ↔ 주거실
+            ['desert_forecourt_east', 'south', 'south', 'desert_city_plaza', 'east'], ['desert_city_plaza', 'east', 'east', 'desert_forecourt_east', 'south'],
+            ['desert_city_plaza', 'dwelling', 'dwelling', 'desert_city_dwelling', 'south'], ['desert_city_dwelling', 'south', 'south', 'desert_city_plaza', 'dwelling']);
         for (const [from, at, exitId, to, land] of legs) {
             await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
             await page.waitForTimeout(600);
