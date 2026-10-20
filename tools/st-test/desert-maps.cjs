@@ -1,5 +1,6 @@
 // 사막 01: 옴보스 오른쪽 아래 끝 → 사막 01 서쪽 → 다시 옴보스. 대형맵 01 → 04 → 03 → 02와 돌아오기(가장자리 출구).
-// 02 돌 문 → 11 → 17과 돌아오기. 폰 화면(412×900), 걸어서 출구를 밟는다.
+// 신전 도시 연결(02↔11·15, 15↔T1W·T2, W↔E, T2↔T1E·T3·11, E↔17, 17↔주거실) 왕복. 폰 화면(412×900), 걸어서 출구를 밟는다.
+// 착지마다: 착지 자체가 출구 밖, 네 방향 각각 착지에서 실제 조이스틱으로 약 1칸 가고 놓아도 출구에 안 들어감(사용자 10-20).
 //   python3 tools/maps/desert.py && node tools/st-test/desert-maps.cjs [out]
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -9,7 +10,9 @@ const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 fs.mkdirSync(OUT, { recursive: true });
 (async () => {
     const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : {});
-    const page = await browser.newPage({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+    const context = await browser.newContext({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+    const page = await context.newPage();
+    const W = require('./touch-walk.cjs')(page, await context.newCDPSession(page));
     const errors = [], log = [];
     // ST's own errors (no model connected, its outside services unreachable) are not the game's, as in common.js
     page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
@@ -128,21 +131,32 @@ fs.mkdirSync(OUT, { recursive: true });
             // GAP: the landing is not in any exit, and standing there a moment takes her nowhere
             const still = await page.evaluate(({ from, at }) => { const p = T.player.player, m = T.map.getMap(from); return { map: p.map, exit: !!m.exitAt(p.x + .5, p.y + .8) }; }, { from, at });
             if (still.map !== from || still.exit) throw Error(`${from} ${at}: landing in an exit ${JSON.stringify(still)}`);
-            // and walking about there, left and right (and up and down) by 1.5 people-widths, never reaches an exit
-            const wiggle = await page.evaluate(() => {
-                const p = T.player.player, m = T.map.getMap(p.map), x0 = p.x, y0 = p.y, reach = 1.5 * (m.d.actorScale || 1), hit = [];
-                for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
-                    p.x = x0; p.y = y0;
-                    for (let n = 0; n < 2000 && Math.hypot(p.x - x0, p.y - y0) < reach; n++) {
-                        const ox = p.x, oy = p.y; T.player.stepPlayer(m, dx, dy, 0.015);
-                        if (m.exitAt(p.x + .5, p.y + .8)) { hit.push([dx, dy]); break; }
-                        if (Math.hypot(p.x - ox, p.y - oy) < 1e-6) break;
-                    }
+            // and a short step about there takes her nowhere: each way on its own from the first landing (in again each time),
+            // about 1 tile with the real stick, then let go — still on this map and not standing in an exit. (User 10-20: the
+            // old check walked 1.5 people-widths × the map's scale = 2.1 tiles by moving her directly, from the withdrawn
+            // 3× spacing rule; landings the user set stay where they are. Holding the stick on arrival, coming back on
+            // purpose after letting go, the one with her and saving are walked per connection by portal-walk.cjs.)
+            const wiggle = [];
+            for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
+                await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
+                await page.waitForTimeout(500);
+                const pad = await W.padBox(), o = await page.evaluate(() => ({ x: T.player.player.x, y: T.player.player.y }));
+                await W.touch('touchStart', pad.x, pad.y); await W.touch('touchMove', pad.x + dx * pad.lim, pad.y + dy * pad.lim);
+                let q = o;
+                for (let k = 0; k < 40; k++) {   // until about 1 tile (or a wall stops her)
+                    await page.waitForTimeout(50);
+                    q = await page.evaluate(() => ({ map: T.player.player.map, x: T.player.player.x, y: T.player.player.y }));
+                    if (q.map !== from || Math.hypot(q.x - o.x, q.y - o.y) >= 1) break;
                 }
-                p.x = x0; p.y = y0;
-                return hit;
-            });
-            if (wiggle.length) throw Error(`${from} ${at}: walking about the landing reaches an exit ${JSON.stringify(wiggle)}`);
+                await W.touch('touchEnd'); await page.waitForTimeout(400);
+                const end = await page.evaluate(from => { const p = T.player.player; return { map: p.map, moved: 0, inExit: p.map === from && !!T.map.getMap(from).exitAt(p.x + .5, p.y + .8), x: p.x, y: p.y }; }, from);
+                end.moved = +Math.hypot(end.x - o.x, end.y - o.y).toFixed(2);
+                if (end.map !== from || end.inExit) wiggle.push({ way: [dx, dy], ...end });
+                if (end.map !== from) { await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at }); await page.waitForTimeout(500); }
+            }
+            if (wiggle.length) throw Error(`${from} ${at}: a short step from the landing goes into an exit ${JSON.stringify(wiggle)}`);
+            await page.evaluate(async ({ from, at }) => T.win.travel(from, at), { from, at });
+            await page.waitForTimeout(600);
             log.push({ wiggle: `${from}:${at}`, ok: true });
             r = await walkTo(exitId); log.push(r);
             if (r.exit !== to) throw Error(`${from} ${at}: ${JSON.stringify(r)}`);
@@ -157,6 +171,6 @@ fs.mkdirSync(OUT, { recursive: true });
     } finally {
         fs.writeFileSync(path.join(OUT, 'trip.json'), JSON.stringify({ log, errors }, null, 1));
         console.log(JSON.stringify({ log, errors }));
-        await browser.close();
+        await context.close(); await browser.close();
     }
 })();
