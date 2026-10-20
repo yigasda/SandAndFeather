@@ -1,0 +1,56 @@
+통과 왕복 데이터 계약 desert_city_plaza/dwelling → desert_city_dwelling
+통과 왕복 데이터 계약 desert_city_dwelling/south → desert_city_plaza
+통과 city_plaza → city_dwelling: 연속 왕복의 출발 맵
+통과 city_plaza → city_dwelling: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":0,"arrival":{"map":"desert_city_dwelling","x":25.915891082743975,"y":21.49613032111006,"inExit":false,"mateInExit":false,"mate":{"x":25.00027452637317,"y":22.174381967582647},"floor":true,"mateFloor":true},"held":{"map":"desert_city_dwelling","x":25.900218774620694,"y":21.357151191892438,"inExit":false,"mateInExit":false,"mate":{"x":25.125369113306412,"y":22.111834674116025},"floor":true,"mateFloor":true}}
+  city_plaza → city_dwelling: 출구 앞 city_plaza (18.2, 11.0) → 도착 city_dwelling (25.9, 21.5)
+통과 city_plaza → city_dwelling: 걸어서 도착, 착지 south(25.9, 21.7) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 city_plaza → city_dwelling: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (city_dwelling)
+통과 city_plaza → city_dwelling: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 city_plaza → city_dwelling: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_plaza → city_dwelling: 최초 도착 동행 간격 유지
+통과 city_plaza → city_dwelling: 첫 도착 프레임 정확한 착지
+통과 city_dwelling → city_plaza: 연속 왕복의 출발 맵
+통과 city_dwelling → city_plaza: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":1,"arrival":{"map":"desert_city_plaza","x":18.133661931002408,"y":11.193531554267073,"inExit":false,"mateInExit":false,"mate":{"x":17.065940192771755,"y":11.655010672844892},"floor":true,"mateFloor":true},"held":{"map":"desert_city_plaza","x":18.137470285903138,"y":11.263147439847815,"inExit":false,"mateInExit":false,"mate":{"x":17.128299635310896,"y":11.623830951575322},"floor":true,"mateFloor":true}}
+  city_dwelling → city_plaza: 출구 앞 city_dwelling (25.8, 21.5) → 도착 city_plaza (18.1, 11.2)
+통과 city_dwelling → city_plaza: 걸어서 도착, 착지 dwelling(18.1, 11.1) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 city_dwelling → city_plaza: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (city_plaza)
+통과 city_dwelling → city_plaza: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 city_dwelling → city_plaza: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_dwelling → city_plaza: 최초 도착 동행 간격 유지
+통과 city_dwelling → city_plaza: 첫 도착 프레임 정확한 착지
+통과 city_plaza → city_dwelling: 연속 왕복의 출발 맵
+통과 city_plaza → city_dwelling: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":2,"arrival":{"map":"desert_city_dwelling","x":25.93408302456451,"y":21.63487132121197,"inExit":false,"mateInExit":false,"mate":{"x":24.875179892010205,"y":22.23692928476413},"floor":true,"mateFloor":true},"held":{"map":"desert_city_dwelling","x":25.550398663783483,"y":16.60992211895134,"inExit":false,"mateInExit":false,"mate":{"x":25.646327820594543,"y":17.866265064517364},"floor":true,"mateFloor":true}}
+통과 city_plaza → city_dwelling: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  city_plaza → city_dwelling: 출구 앞 city_plaza (18.1, 11.3) → 도착 city_dwelling (25.9, 21.6)
+통과 city_plaza → city_dwelling: 걸어서 도착, 착지 south(25.9, 21.7) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 city_plaza → city_dwelling: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (city_dwelling)
+통과 city_plaza → city_dwelling: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 city_plaza → city_dwelling: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 city_plaza → city_dwelling: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 city_plaza → city_dwelling: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_plaza → city_dwelling: 최초 도착 동행 간격 유지
+통과 city_plaza → city_dwelling: 첫 도착 프레임 정확한 착지
+통과 city_dwelling → city_plaza: 연속 왕복의 출발 맵
+통과 city_dwelling → city_plaza: 문 앞 착지까지 실제 조이스틱 접근
+  positions {"leg":3,"arrival":{"map":"desert_city_plaza","x":18.128965454958212,"y":11.193211808557253,"inExit":false,"mateInExit":false,"mate":{"x":17.065564503338788,"y":11.655198517561375},"floor":true,"mateFloor":true},"held":{"map":"desert_city_plaza","x":18.067608211881705,"y":16.30255921426779,"inExit":false,"mateInExit":false,"mate":{"x":18.082738236564797,"y":15.042650057878694},"floor":true,"mateFloor":true}}
+통과 city_dwelling → city_plaza: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  city_dwelling → city_plaza: 출구 앞 city_dwelling (26.0, 21.7) → 도착 city_plaza (18.1, 11.2)
+통과 city_dwelling → city_plaza: 걸어서 도착, 착지 dwelling(18.1, 11.1) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 city_dwelling → city_plaza: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (city_plaza)
+통과 city_dwelling → city_plaza: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 city_dwelling → city_plaza: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 city_dwelling → city_plaza: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로 
+통과 city_dwelling → city_plaza: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_dwelling → city_plaza: 최초 도착 동행 간격 유지
+통과 city_dwelling → city_plaza: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: city_plaza (18.1, 11.2) 그대로, 트리거 밖
+통과 페이지 오류 없음 
+통과 실행 중 런타임·맵·시험 코드 동일

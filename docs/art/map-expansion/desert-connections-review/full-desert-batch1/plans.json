@@ -1,0 +1,41 @@
+{
+  "desert_forecourt_west": {
+    "verified": [
+      "east",
+      "south"
+    ]
+  },
+  "desert_forecourt_east": {
+    "verified": [
+      "east",
+      "west",
+      "south"
+    ]
+  },
+  "desert_votive_hall": {
+    "verified": [
+      "west",
+      "east",
+      "north",
+      "south"
+    ]
+  },
+  "desert_city_gate": {
+    "verified": [
+      "door",
+      "outside",
+      "left"
+    ]
+  },
+  "desert_city_plaza": {
+    "verified": [
+      "east",
+      "dwelling"
+    ]
+  },
+  "desert_city_dwelling": {
+    "verified": [
+      "south"
+    ]
+  }
+}
