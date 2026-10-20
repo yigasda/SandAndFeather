@@ -77,8 +77,10 @@ fs.mkdirSync(OUT, { recursive: true });
                     const x = m.exitAt(p.x + .5, p.y + .8); if (x) return { from, at: [p.x, p.y], exit: x.to, steps: n };
                 }
             }
-            // the last bit: on toward the middle of the exit
-            const cx = (e.x0 + e.x1) / 2 - 0.5, cy = (e.y0 + e.y1) / 2 - 0.8;
+            // the last bit: on toward the middle of the exit (a slanted one: the middle of its corners, which lies in it — the
+            // middle of the box round it can lie outside)
+            const mid = e.polygon ? [e.polygon.reduce((a, q) => a + q[0], 0) / e.polygon.length, e.polygon.reduce((a, q) => a + q[1], 0) / e.polygon.length] : [(e.x0 + e.x1) / 2, (e.y0 + e.y1) / 2];
+            const cx = mid[0] - 0.5, cy = mid[1] - 0.8;
             for (let i = 0; i < 400; i++) {
                 T.player.stepPlayer(m, cx - p.x, cy - p.y, 0.015); n++;
                 const x = m.exitAt(p.x + .5, p.y + .8); if (x) return { from, at: [p.x, p.y], exit: x.to, steps: n };

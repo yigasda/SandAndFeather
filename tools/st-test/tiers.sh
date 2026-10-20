@@ -59,6 +59,10 @@ else echo "문법: $B 이후 바뀐 JS $n개 통과" | tee -a "$OUT/summary.txt"
 [ ${#want[@]} -eq 0 ] && exit $([ $n -eq 0 ] && echo 3 || echo 0)
 # the code onto the test server (the 궁 size candidates rebuilt for ult-memory / ult-fx-view)
 rm -rf "$EXT/src" "$EXT/data" && cp -r "$ROOT/src" "$ROOT/data" "$EXT/" && cp "$ROOT/style.css" "$ROOT/index.js" "$ROOT/manifest.json" "$EXT/"
+# the pictures in docs/ that data/*.json points to ("../docs/..."), as tools/release.sh packs them: without them a map
+# whose picture is new falls back to Ombos ("그림을 못 불러와서 옴보스로")
+(cd "$ROOT" && grep -rhoE '"\.\./docs/[^"]+"' data | tr -d '"' | sed 's#^\.\./##' | sort -u | while read -r f; do
+  [ -f "$f" ] && { [ -f "$EXT/$f" ] && cmp -s "$f" "$EXT/$f" || { mkdir -p "$EXT/$(dirname "$f")"; cp "$f" "$EXT/$f"; }; } || echo "없는 그림: $f"; done)
 case " ${want[*]} " in *" ult-memory "*|*" ult-fx-view "*) python3 "$ROOT/tools/art/ult-fx-candidates.py" "$EXT/data" > /dev/null ;; esac
 bad=0
 for t in "${want[@]}"; do
