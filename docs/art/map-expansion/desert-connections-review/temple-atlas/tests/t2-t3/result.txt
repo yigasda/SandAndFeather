@@ -1,0 +1,49 @@
+통과 votive_hall → guardian_gate: 연속 왕복의 출발 맵
+  positions {"leg":0,"arrival":{"map":"desert_guardian_gate","x":14.75502087055424,"y":41.38679460874799,"inExit":false,"mateInExit":false,"mate":{"x":13.7600304095668,"y":42.02767710290891},"floor":true,"mateFloor":true},"held":{"map":"desert_guardian_gate","x":14.75176207506213,"y":41.316730374660445,"inExit":false,"mateInExit":false,"mate":{"x":13.822765513910916,"y":41.996309550736854},"floor":true,"mateFloor":true}}
+  votive_hall → guardian_gate: 출구 앞 votive_hall (26.0, 5.0) → 도착 guardian_gate (14.8, 41.4)
+통과 votive_hall → guardian_gate: 걸어서 도착, 착지 south(14.8, 41.5) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 votive_hall → guardian_gate: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (guardian_gate)
+통과 votive_hall → guardian_gate: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → guardian_gate: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → guardian_gate: 최초 도착 동행 간격 유지
+통과 votive_hall → guardian_gate: 첫 도착 프레임 정확한 착지
+통과 guardian_gate → votive_hall: 연속 왕복의 출발 맵
+  positions {"leg":1,"arrival":{"map":"desert_votive_hall","x":26.028427388316643,"y":5.082218715544672,"inExit":false,"mateInExit":false,"mate":{"x":24.964227332964164,"y":5.544809410440996},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":26.028006100103223,"y":5.152357423351662,"inExit":false,"mateInExit":false,"mate":{"x":25.02696243201784,"y":5.513441860914158},"floor":true,"mateFloor":true}}
+  guardian_gate → votive_hall: 출구 앞 guardian_gate (14.8, 41.3) → 도착 votive_hall (26.0, 5.1)
+통과 guardian_gate → votive_hall: 걸어서 도착, 착지 north(26.0, 5.0) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 guardian_gate → votive_hall: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (votive_hall)
+통과 guardian_gate → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 guardian_gate → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 guardian_gate → votive_hall: 최초 도착 동행 간격 유지
+통과 guardian_gate → votive_hall: 첫 도착 프레임 정확한 착지
+통과 votive_hall → guardian_gate: 연속 왕복의 출발 맵
+  positions {"leg":2,"arrival":{"map":"desert_guardian_gate","x":14.7584617130289,"y":41.45727103539554,"inExit":false,"mateInExit":false,"mate":{"x":13.696919631731298,"y":42.05923249182667},"floor":true,"mateFloor":true},"held":{"map":"desert_guardian_gate","x":14.536046158120875,"y":36.422183696055875,"inExit":false,"mateInExit":false,"mate":{"x":14.59165007618713,"y":37.68095619507851},"floor":true,"mateFloor":true}}
+통과 votive_hall → guardian_gate: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  votive_hall → guardian_gate: 출구 앞 votive_hall (26.0, 5.2) → 도착 guardian_gate (14.8, 41.5)
+통과 votive_hall → guardian_gate: 걸어서 도착, 착지 south(14.8, 41.5) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 votive_hall → guardian_gate: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (guardian_gate)
+통과 votive_hall → guardian_gate: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 votive_hall → guardian_gate: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 votive_hall → guardian_gate: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 votive_hall → guardian_gate: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 votive_hall → guardian_gate: 최초 도착 동행 간격 유지
+통과 votive_hall → guardian_gate: 첫 도착 프레임 정확한 착지
+통과 guardian_gate → votive_hall: 연속 왕복의 출발 맵
+  positions {"leg":3,"arrival":{"map":"desert_votive_hall","x":26.027621283545066,"y":5.152774652352972,"inExit":false,"mateInExit":false,"mate":{"x":25.027338139539733,"y":5.51325400715321},"floor":true,"mateFloor":true},"held":{"map":"desert_votive_hall","x":25.98361763461467,"y":6.132597298878325,"inExit":false,"mateInExit":false,"mate":{"x":25.9354571264587,"y":5.059194513693726},"floor":true,"mateFloor":true}}
+통과 guardian_gate → votive_hall: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  guardian_gate → votive_hall: 출구 앞 guardian_gate (14.8, 41.5) → 도착 votive_hall (26.0, 5.2)
+통과 guardian_gate → votive_hall: 걸어서 도착, 착지 north(26.0, 5.0) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 guardian_gate → votive_hall: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (votive_hall)
+통과 guardian_gate → votive_hall: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 guardian_gate → votive_hall: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 guardian_gate → votive_hall: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 guardian_gate → votive_hall: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 guardian_gate → votive_hall: 최초 도착 동행 간격 유지
+통과 guardian_gate → votive_hall: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: votive_hall (26.1, 5.1) 그대로, 트리거 밖
+통과 페이지 오류 없음

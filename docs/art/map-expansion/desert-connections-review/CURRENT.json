@@ -28,7 +28,7 @@
   ],
   "videoLibrary": "libfile_dc4d306dcd7881919abcfaa1aa64b6cd",
   "windowPatchApplied": true,
-  "next": "15/T2 local bundle passes; coordinate next route and premerge common-map exit regression; no push authorized",
+  "next": "User decisions for three unresolved subjects; existing 02/11 outside path preserved and tested; no push",
   "evidence": "temple-02-15",
   "nextPair": {
     "scope": "15-C ↔ T2-B",
@@ -86,5 +86,50 @@
         "11/17 routing decision before T2 south connection"
       ]
     }
+  },
+  "templeAtlas": {
+    "runtimeCode": "ccee3db9",
+    "results": {
+      "15-w": {
+        "pass": 37,
+        "fail": 0,
+        "code": "ccee3db9",
+        "transitions": 4
+      },
+      "t2-e": {
+        "pass": 37,
+        "fail": 0,
+        "code": "ccee3db9",
+        "transitions": 4
+      },
+      "t2-t3": {
+        "pass": 37,
+        "fail": 0,
+        "code": "ccee3db9",
+        "transitions": 4
+      },
+      "02-11": {
+        "pass": 37,
+        "fail": 0,
+        "runtimeCode": "ccee3db9",
+        "testCode": "bd0a388a",
+        "transitions": 4
+      }
+    },
+    "maps": 8,
+    "activeLatestDesignEdges": 6,
+    "pendingEdges": [
+      "T2-D↔11-A",
+      "T1W-B↔T1E-B",
+      "T1W-B↔T1E-C",
+      "T3-N↔16-A"
+    ],
+    "pendingDecisions": [
+      "11 existing17 external access",
+      "W-B shared opening destination selection",
+      "T3 north door passage conditions"
+    ],
+    "evidence": "temple-atlas",
+    "wholeGraphComplete": false
   }
 }

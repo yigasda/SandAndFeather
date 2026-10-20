@@ -1,0 +1,134 @@
+{
+  "desert_buried_temple": [
+    {
+      "name": "west",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "door",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "temple",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ],
+  "desert_colonnade": [
+    {
+      "name": "south",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "stair",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "forecourt",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "east",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ],
+  "desert_votive_hall": [
+    {
+      "name": "west",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "east",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "north",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "south",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ],
+  "desert_forecourt_west": [
+    {
+      "name": "east",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "south",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "yard",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ],
+  "desert_lightwell": [
+    {
+      "name": "south",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ],
+  "desert_guardian_gate": [
+    {
+      "name": "south",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "north",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ],
+  "desert_forecourt_east": [
+    {
+      "name": "east",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "west",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "south",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ],
+  "desert_city_gate": [
+    {
+      "name": "left"
+    },
+    {
+      "name": "bottom"
+    },
+    {
+      "name": "door",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    },
+    {
+      "name": "outside",
+      "landingFeetClear": true,
+      "followerFeetClear": true
+    }
+  ]
+}

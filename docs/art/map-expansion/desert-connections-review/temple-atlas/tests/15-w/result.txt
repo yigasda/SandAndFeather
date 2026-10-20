@@ -1,0 +1,49 @@
+통과 colonnade → forecourt_west: 연속 왕복의 출발 맵
+  positions {"leg":0,"arrival":{"map":"desert_forecourt_west","x":44.966684987520175,"y":6.379076870977435,"inExit":false,"mateInExit":false,"mate":{"x":43.832496587391894,"y":6.915963244765592},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":45.2462206811195,"y":6.360686253852939,"inExit":false,"mateInExit":false,"mate":{"x":44.083061419392365,"y":6.7906808287653595},"floor":true,"mateFloor":true}}
+  colonnade → forecourt_west: 출구 앞 colonnade (48.5, 17.7) → 도착 forecourt_west (45.0, 6.4)
+통과 colonnade → forecourt_west: 걸어서 도착, 착지 east(44.9, 6.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 colonnade → forecourt_west: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (forecourt_west)
+통과 colonnade → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_west: 최초 도착 동행 간격 유지
+통과 colonnade → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → colonnade: 연속 왕복의 출발 맵
+  positions {"leg":1,"arrival":{"map":"desert_colonnade","x":48.5280972505943,"y":17.61084967809769,"inExit":false,"mateInExit":false,"mate":{"x":47.469410708670694,"y":18.212890799510806},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":48.52254065503475,"y":17.540930125426158,"inExit":false,"mateInExit":false,"mate":{"x":47.53214583184742,"y":18.18152323792244},"floor":true,"mateFloor":true}}
+  forecourt_west → colonnade: 출구 앞 forecourt_west (45.0, 6.8) → 도착 colonnade (48.5, 17.6)
+통과 forecourt_west → colonnade: 걸어서 도착, 착지 forecourt(48.5, 17.7) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_west → colonnade: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (colonnade)
+통과 forecourt_west → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 forecourt_west → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → colonnade: 최초 도착 동행 간격 유지
+통과 forecourt_west → colonnade: 첫 도착 프레임 정확한 착지
+통과 colonnade → forecourt_west: 연속 왕복의 출발 맵
+  positions {"leg":2,"arrival":{"map":"desert_forecourt_west","x":44.965982382488015,"y":6.3727812014217715,"inExit":false,"mateInExit":false,"mate":{"x":43.83249658385988,"y":6.915963246531601},"floor":true,"mateFloor":true},"held":{"map":"desert_forecourt_west","x":46.76357697153681,"y":5.848863820627366,"inExit":false,"mateInExit":false,"mate":{"x":45.71771334916297,"y":6.254098755733153},"floor":true,"mateFloor":true}}
+통과 colonnade → forecourt_west: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  colonnade → forecourt_west: 출구 앞 colonnade (48.5, 17.9) → 도착 forecourt_west (45.0, 6.4)
+통과 colonnade → forecourt_west: 걸어서 도착, 착지 east(44.9, 6.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 colonnade → forecourt_west: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (forecourt_west)
+통과 colonnade → forecourt_west: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 colonnade → forecourt_west: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 colonnade → forecourt_west: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 colonnade → forecourt_west: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 colonnade → forecourt_west: 최초 도착 동행 간격 유지
+통과 colonnade → forecourt_west: 첫 도착 프레임 정확한 착지
+통과 forecourt_west → colonnade: 연속 왕복의 출발 맵
+  positions {"leg":3,"arrival":{"map":"desert_colonnade","x":48.52786282998721,"y":17.611290150955526,"inExit":false,"mateInExit":false,"mate":{"x":47.46903504925047,"y":18.213078629220917},"floor":true,"mateFloor":true},"held":{"map":"desert_colonnade","x":48.10923515529037,"y":16.216267421925153,"inExit":false,"mateInExit":false,"mate":{"x":48.5055683929048,"y":17.34380739337435},"floor":true,"mateFloor":true}}
+통과 forecourt_west → colonnade: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  forecourt_west → colonnade: 출구 앞 forecourt_west (45.0, 6.4) → 도착 colonnade (48.5, 17.6)
+통과 forecourt_west → colonnade: 걸어서 도착, 착지 forecourt(48.5, 17.7) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 forecourt_west → colonnade: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (colonnade)
+통과 forecourt_west → colonnade: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 forecourt_west → colonnade: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 forecourt_west → colonnade: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 forecourt_west → colonnade: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 forecourt_west → colonnade: 최초 도착 동행 간격 유지
+통과 forecourt_west → colonnade: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: colonnade (48.5, 17.9) 그대로, 트리거 밖
+통과 페이지 오류 없음

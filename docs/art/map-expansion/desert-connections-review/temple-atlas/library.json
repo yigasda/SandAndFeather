@@ -1,0 +1,36 @@
+{
+  "overlays": {
+    "desert_buried_temple": {
+      "library_file_id": "libfile_fc22f14fa9208191b9758d51b33fd1cc"
+    },
+    "desert_colonnade": {
+      "library_file_id": "libfile_f6a8176f44188191b9be566e2983b683"
+    },
+    "desert_votive_hall": {
+      "library_file_id": "libfile_be78261855308191907df70f8bf9425b"
+    },
+    "desert_forecourt_west": {
+      "library_file_id": "libfile_74f0d68c41f4819199401ed1b92df02b"
+    },
+    "desert_forecourt_east": {
+      "library_file_id": "libfile_e9285da90a8081918ba85682bb9ccdb8"
+    },
+    "desert_guardian_gate": {
+      "library_file_id": "libfile_1cb5fbe6c7b481919ca161a7193138a0"
+    },
+    "desert_lightwell": {
+      "library_file_id": "libfile_6c1823a17d00819197757310b6184d4e"
+    },
+    "desert_city_gate": {
+      "library_file_id": "libfile_ffe206dc94e081918eb079b0aa1b105e"
+    },
+    "W_split_candidate": {
+      "library_file_id": "libfile_028e13fc5bd481918f5206d024ce5231"
+    }
+  },
+  "videos": {
+    "15-w": "libfile_bd4690fc94b481918a3e4451b693b18b",
+    "t2-e": "libfile_1f4fcd0d0d9481919dab9b7ae65c32ad",
+    "t2-t3": "libfile_acbb9f565fd08191969cebb6ffaa3607"
+  }
+}

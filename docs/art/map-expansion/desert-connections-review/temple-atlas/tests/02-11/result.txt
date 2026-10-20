@@ -1,0 +1,49 @@
+통과 buried_temple → city_gate: 연속 왕복의 출발 맵
+  positions {"leg":0,"arrival":{"map":"desert_city_gate","x":8.841342649316429,"y":39.04768330053447,"inExit":false,"mateInExit":false,"mate":{"x":7.816083438801013,"y":39.75349674213796},"floor":true,"mateFloor":true},"held":{"map":"desert_city_gate","x":8.991317528132164,"y":38.90008888287512,"inExit":false,"mateInExit":false,"mate":{"x":8.004288808331212,"y":39.659394057372864},"floor":true,"mateFloor":true}}
+  buried_temple → city_gate: 출구 앞 buried_temple (96.9, 49.2) → 도착 city_gate (8.8, 39.0)
+통과 buried_temple → city_gate: 걸어서 도착, 착지 outside(8.4, 39.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 buried_temple → city_gate: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (city_gate)
+통과 buried_temple → city_gate: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 buried_temple → city_gate: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → city_gate: 최초 도착 동행 간격 유지
+통과 buried_temple → city_gate: 첫 도착 프레임 정확한 착지
+통과 city_gate → buried_temple: 연속 왕복의 출발 맵
+  positions {"leg":1,"arrival":{"map":"desert_buried_temple","x":96.79379197137064,"y":49.04265901924407,"inExit":false,"mateInExit":false,"mate":{"x":95.80464121287373,"y":49.75178778517154},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":96.67099466147361,"y":48.8901466629228,"inExit":false,"mateInExit":false,"mate":{"x":95.97977361569768,"y":49.66422158375957},"floor":true,"mateFloor":true}}
+  city_gate → buried_temple: 출구 앞 city_gate (1.3, 29.0) → 도착 buried_temple (96.8, 49.0)
+통과 city_gate → buried_temple: 걸어서 도착, 착지 door(96.9, 49.2) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 city_gate → buried_temple: 도착 뒤 1.2초 정지에도 되돌아가지 않음 (buried_temple)
+통과 city_gate → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 city_gate → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_gate → buried_temple: 최초 도착 동행 간격 유지
+통과 city_gate → buried_temple: 첫 도착 프레임 정확한 착지
+통과 buried_temple → city_gate: 연속 왕복의 출발 맵
+  positions {"leg":2,"arrival":{"map":"desert_city_gate","x":8.546708172516562,"y":39.34731819166084,"inExit":false,"mateInExit":false,"mate":{"x":7.440424018237555,"y":39.941326452419695},"floor":true,"mateFloor":true},"held":{"map":"desert_city_gate","x":12.30857412454686,"y":35.99385267135589,"inExit":false,"mateInExit":false,"mate":{"x":11.368029255217676,"y":36.83228892342193},"floor":true,"mateFloor":true}}
+통과 buried_temple → city_gate: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  buried_temple → city_gate: 출구 앞 buried_temple (96.7, 49.0) → 도착 city_gate (8.5, 39.3)
+통과 buried_temple → city_gate: 걸어서 도착, 착지 outside(8.4, 39.4) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 buried_temple → city_gate: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (city_gate)
+통과 buried_temple → city_gate: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 buried_temple → city_gate: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 buried_temple → city_gate: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 buried_temple → city_gate: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 buried_temple → city_gate: 최초 도착 동행 간격 유지
+통과 buried_temple → city_gate: 첫 도착 프레임 정확한 착지
+통과 city_gate → buried_temple: 연속 왕복의 출발 맵
+  positions {"leg":3,"arrival":{"map":"desert_buried_temple","x":96.85522772843444,"y":49.119262998394724,"inExit":false,"mateInExit":false,"mate":{"x":95.71681205936562,"y":49.79570236192559},"floor":true,"mateFloor":true},"held":{"map":"desert_buried_temple","x":92.72779850206042,"y":45.76600187506197,"inExit":false,"mateInExit":false,"mate":{"x":94.081220723367,"y":46.070552796668345},"floor":true,"mateFloor":true}}
+통과 city_gate → buried_temple: 입력 중립 후 출구 안에서도 즉시 재전환 없음
+  city_gate → buried_temple: 출구 앞 city_gate (1.3, 29.1) → 도착 buried_temple (96.9, 49.1)
+통과 city_gate → buried_temple: 걸어서 도착, 착지 door(96.9, 49.2) 자리, 트리거 밖
+  held exit occupancy {"inExit":false,"contract":"walking may enter threshold; no transition before neutral then departure/re-entry"}
+통과 city_gate → buried_temple: 도착 뒤 1.2초 입력 유지에도 되돌아가지 않음 (buried_temple)
+통과 city_gate → buried_temple: 유지 입력 검사 뒤 착지로 실제 걸어 돌아옴
+통과 city_gate → buried_temple: 출구 이탈까지 전환 없음, 다음 의도적 진입만 허용
+통과 city_gate → buried_temple: 도착 뒤 짧게 앞·뒤·좌·우로 움직여도 그대로
+통과 city_gate → buried_temple: 플레이어·동행 발 전체 바닥 안, 동행 트리거 밖
+통과 city_gate → buried_temple: 최초 도착 동행 간격 유지
+통과 city_gate → buried_temple: 첫 도착 프레임 정확한 착지
+통과 연속 왕복: 정확히 4번 전환, 튕김 없음
+통과 저장·다시 불러오기: buried_temple (96.8, 49.1) 그대로, 트리거 밖
+통과 페이지 오류 없음

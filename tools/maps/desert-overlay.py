@@ -132,15 +132,21 @@ def atlas(ids, out, fixtures, label, plans=None):
         for j,(c,t) in enumerate([('#ff483e','빨강: 승인 충돌 경계'),(colors['exit'],'보라: 실제 출구 / 녹색: 착지 발·진입 방향'),(colors['mate'],'하늘: 동행 발 / 노랑: 발↔출구 최소 간격')]):txt(panel,58+j*30,t,c,size=21)
         txt(panel,151,'번호: 출구 / L: 착지 / F: 초기 동행 (세트→호루스)',size=18)
         txt(panel,177,'동행은 실제 초기배치 fixture. 보행 검증 여부는 각 항목 표시.',size=17)
+        incoming={}
+        for source_file in (ROOT/'data/maps').glob('desert_*.json'):
+            source_data=json.loads(source_file.read_text())
+            for entry_exit in source_data.get('exits',[]):
+                if entry_exit['to']==ident and isinstance(entry_exit.get('at'),str):incoming.setdefault(entry_exit['at'],[]).append((source_data['id'],entry_exit['id']))
         rows=[]
         for i,name in enumerate(names,1):
             e=next((e for e in d['exits']if e['id']==name),None);p=d['entries'].get(name);y=225+(i-1)*145
-            color='#ffb84d' if name in pending else colors['exit']if e else colors['old'];txt(panel,y,f'{i}. {name}'+('  [결정 대기 / 후보]'if name in pending else '  [현재 출구]'if e else '  [보존 착지·출구 없음]'),color,size=23)
+            color='#ffb84d' if name in pending else colors['exit']if e else colors['old'];txt(panel,y,f'{i}. {name}'+('  [결정 대기 / 후보]'if name in pending else '  [현재 출구]'if e else '  [현재 진입 착지]'if name in incoming else '  [보존 착지·출구 없음]'),color,size=23)
             shape=None
             if e:
                 points=[(x*px,y*px)for x,y in e.get('polygon',[(e['x0'],e['y0']),(e['x1'],e['y0']),(e['x1'],e['y1']),(e['x0'],e['y1'])])];shape=Polygon(points)
                 g.line([pt(*p)for p in points+[points[0]]],fill=color,width=4);tag(shape.centroid.x,shape.centroid.y,i,color)
                 txt(panel,y+30,('현재 '+short.get(e['to'],e['to'])+' / '+str(e['at'])) if name in pending and pending[name].get('currentConflict') else '→ '+short.get(e['to'],e['to'])+' / '+str(e['at']),size=20)
+            if not e and name in incoming:txt(panel,y+30,'← '+' · '.join(short.get(mid,mid)+'/'+eid for mid,eid in incoming[name]),size=20)
             gap=None;f=fixtures.get(ident,{}).get(name,{}).get('follower')
             if p:
                 b=foot(p,colors['feet']);cx=(p['x']+.5)*px;cy=(p['y']+.8)*px;ax,ay=ARROW[p['dir']]
