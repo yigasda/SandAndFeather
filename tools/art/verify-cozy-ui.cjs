@@ -56,7 +56,7 @@ await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});awai
 assert(await last().locator('.sf_pop_scroll').evaluate(el=>el.scrollTop>50));await close();await close();passed.push('mobile finger swipe scrolls the character screen');
 for(const size of [{width:320,height:740},{width:360,height:800},{width:740,height:420},{width:1280,height:900}]){
  await p.setViewportSize(size);await p.waitForTimeout(150);
- for(const tab of ['party','quests','map']){await p.locator(`[data-tab="${tab}"]`).click();await images();await bounds();if(size.width===1280&&tab==='party')await capture('08-party-desktop');await close();}
+ for(const tab of ['party','quests','map']){if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();await p.locator(`[data-tab="${tab}"]`).click();await images();await bounds();if(size.width===1280&&tab==='party')await capture('08-party-desktop');await close();}
  await p.locator('.sf_bag').click();await images();await bounds();await close();
 }
 passed.push('320/360 mobile, landscape, desktop: all tabs and bag stay within screen with scrolling');

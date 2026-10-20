@@ -12,7 +12,7 @@ const BASE = '/scripts/extensions/third-party/SandAndFeather/', MAP = 'desert_fo
 fs.mkdirSync(OUT, { recursive: true });
 
 (async () => {
-    const table = JSON.parse(fs.readFileSync('/home/user/sillytavern/sillytavern/data/default-user/extensions/SandAndFeather/data/fx.json', 'utf8'));
+    const table = JSON.parse(fs.readFileSync(path.join(process.env.ST_ROOT || '/home/user/sillytavern/sillytavern', 'data/default-user/extensions/SandAndFeather/data/fx.json'), 'utf8'));
     const browser = await chromium.launch(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] } : { args: ['--no-sandbox'] });
     const context = await browser.newContext({ viewport: { width: 412, height: 900 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
     const page = await context.newPage();

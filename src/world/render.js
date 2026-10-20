@@ -31,7 +31,7 @@ export class Renderer {
         this.top = document.createElement('canvas');
         this.referenceActors = document.createElement('canvas');
         this.map = null; this.season = null;
-        this.zoom = 2; this.cam = { x: 0, y: 0 };
+        this.userZoom = 1; this.zoom = 2; this.cam = { x: 0, y: 0 };
         this.art = new Map(); // drawn pictures from data/sprites.json, one small canvas each
         this.artScale = new Map();
         this.motion = new Map(); // look → standing/walking frames in their atlas (Set, Somang, Horus)
@@ -162,6 +162,7 @@ export class Renderer {
     }
     setMap(map, season) {
         if (this.map === map && this.season === season) return;
+        if (this.map?.id !== map.id) this.userZoom = 1;
         this.map = map; this.season = season;
         this.fitZoom();
         this.paintGround();
@@ -184,7 +185,21 @@ export class Renderer {
         this.fitZoom();
     }
     // a map may ask for the camera further out (the wide desert maps: map.d.cameraScale, tools/maps/desert.py)
-    fitZoom() { this.zoom = (this.baseZoom || 2) * (this.map?.d?.cameraScale || 1); }
+    zoomLimits() {
+        const base = (this.baseZoom || 2) * (this.map?.d?.cameraScale || 1);
+        const cover = this.map ? Math.max(this.cv.width / (this.map.w * T), this.cv.height / (this.map.h * T)) : base;
+        // Preserve any margin already present at the original view; never enlarge it by zooming out.
+        return { base, min: Math.min(base, cover), max: Math.max(base, cover) * 3 };
+    }
+    fitZoom() {
+        const { base, min, max } = this.zoomLimits();
+        this.zoom = Math.max(min, Math.min(max, base * this.userZoom));
+    }
+    setUserZoom(value) {
+        const { base, min, max } = this.zoomLimits();
+        this.zoom = Math.max(min, Math.min(max, value));
+        this.userZoom = this.zoom / base;
+    }
     // and the people drawn larger than their tile (map.d.actorScale), so they do not shrink with the camera
     actorScale() { return this.map?.d?.actorScale || 1; }
 

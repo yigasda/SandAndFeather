@@ -19,7 +19,7 @@ const ok = (c, msg) => { log(`${c ? '통과' : '실패'} ${msg}`); if (!c) fail+
 const MB = b => (b / 1048576).toFixed(1);
 
 (async () => {
-    const table = JSON.parse(fs.readFileSync('/home/user/sillytavern/sillytavern/data/default-user/extensions/SandAndFeather/data/fx.json', 'utf8'));
+    const table = JSON.parse(fs.readFileSync(path.join(process.env.ST_ROOT || '/home/user/sillytavern/sillytavern', 'data/default-user/extensions/SandAndFeather/data/fx.json'), 'utf8'));
     // a run is <tag> or <tag>-nowarm (the old way: decoded, not drawn once before the first 궁)
     for (const run of (process.argv[3] || 'full,half').split(',')) {
         const tag = run.replace('-nowarm', ''), warm = !run.endsWith('-nowarm');

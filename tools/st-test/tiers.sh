@@ -22,12 +22,14 @@
 #   art    그림·메모리 desert-boss-view(0.5분) ult-memory(1.5분)
 #   full   위 전부(약 30분) — 병합 전에만
 ROOT=$(cd "$(dirname "$0")/../.." && pwd)
-EXT=/home/user/sillytavern/sillytavern/data/default-user/extensions/SandAndFeather
+ST_ROOT=${ST_ROOT:-/home/user/sillytavern/sillytavern}
+export ST_ROOT
+EXT="$ST_ROOT/data/default-user/extensions/SandAndFeather"
 OUT=${OUT:-/tmp/st-tiers}
 BASE=HEAD   # --since <커밋>: 그 커밋 이후 바뀐 JS의 문법을 본다(커밋까지 한 변경도 포함)
 declare -A G=(
   [ult]="desert-ult ult-fx-view" [hit]="desert-strike desert-target desert-horus-leap duat-field"
-  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs" [map]="portal-walk:--connections portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 portal-walk:--temple-w-e portal-walk:--temple-t2-11 portal-walk:--temple-e-17 portal-walk:--city-dwelling portal-walk:--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-maps desert-save-move"
+  [mob]="desert-entry-safe desert-b3 desert-mob-hits" [input]="pad-tabs landscape" [map]="portal-walk:--connections portal-walk:--temple-02-15 portal-walk:--temple-15-w portal-walk:--temple-15-t2 portal-walk:--temple-t2-e portal-walk:--temple-t2-t3 portal-walk:--temple-02-11 portal-walk:--temple-w-e portal-walk:--temple-t2-11 portal-walk:--temple-e-17 portal-walk:--city-dwelling portal-walk:--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json desert-maps desert-save-move"
   [ui]="verify-cozy-ui verify-ui-themes verify-full-map" [art]="desert-boss-view ult-memory"
 )
 G[full]="${G[ult]} ${G[hit]} ${G[mob]} ${G[input]} ${G[map]} ${G[ui]} ${G[art]}"
@@ -49,7 +51,7 @@ echo "== $(date '+%F %T') 기준 코드 $C0 · 검사: ${want[*]:-문법만}" | 
 n=0
 for f in $(cd "$ROOT" && { git diff --name-only "$BASE" -- '*.js' '*.cjs'; git ls-files --others --exclude-standard -- '*.js' '*.cjs'; } | sort -u); do
   [ -f "$ROOT/$f" ] || continue
-  case $f in *.cjs) node --check "$ROOT/$f" ;; *) node --experimental-default-type=module --check "$ROOT/$f" ;; esac || { echo "문법 오류 $f" | tee -a "$OUT/summary.txt"; exit 1; }
+  case $f in *.cjs) node --check "$ROOT/$f" ;; *) node --input-type=module --check < "$ROOT/$f" ;; esac || { echo "문법 오류 $f" | tee -a "$OUT/summary.txt"; exit 1; }
   n=$((n + 1))
 done
 B=$(cd "$ROOT" && git rev-parse --short "$BASE")
@@ -59,7 +61,7 @@ else echo "문법: $B 이후 바뀐 JS $n개 통과" | tee -a "$OUT/summary.txt"
 [ ${#want[@]} -eq 0 ] && exit $([ $n -eq 0 ] && echo 3 || echo 0)
 # the test server dies with the container: start it again when it does not answer
 if ! curl -s -o /dev/null http://127.0.0.1:8000/; then
-  (cd /home/user/sillytavern/sillytavern && exec nohup node server.js --port 8000 --listen false > /tmp/st-server.log 2>&1) 9>&- &   # nothing of it holds the lock
+  (cd "$ST_ROOT" && exec nohup node server.js --port 8000 --listen false > /tmp/st-server.log 2>&1) 9>&- &   # nothing of it holds the lock
   for i in $(seq 60); do curl -s -o /dev/null http://127.0.0.1:8000/ && break; sleep 2; done
   echo "시험 서버 다시 켬" | tee -a "$OUT/summary.txt"
 fi

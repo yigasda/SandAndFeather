@@ -1831,3 +1831,38 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game .sf_duat_skill s { position: absolute; inset: 0; display: grid; place-items: center; font-size: 19px; font-weight: 900; text-decoration: none; color: #fff; z-index: 2; }
 #sf_game .sf_duat_skill s:empty { display: none; }
 #sf_game .sf_duat_skill.sf_cd > span, #sf_game .sf_duat_skill.sf_cd > i { visibility: hidden; }
+
+/* Approved B pad artwork; input boxes and movement speed remain the same. */
+#sf_game .sf_pad { border:2px solid transparent;border-radius:0;background:url('data/art/ui/controls/joystick-base.png') center/100% 100% no-repeat;background-origin:border-box;box-shadow:none;image-rendering:pixelated; }
+#sf_game .sf_knob { position:relative;border:1px solid transparent;border-radius:0;background:none;box-shadow:none;image-rendering:pixelated; }
+#sf_game .sf_knob::before { content:'';position:absolute;left:-1px;top:-1px;width:calc(100% + 2px);height:calc(100% + 4px);background:url('data/art/ui/controls/joystick-knob.png') center/100% 100% no-repeat;pointer-events:none; }
+#sf_game .sf_menu, #sf_game .sf_menu_fold, #sf_game .sf_menu_close { display:none; }
+/* Each HP/fear label has its own line box, including larger platform fonts. */
+#sf_game .sf_duat_bar { min-height:17px;height:auto; }
+#sf_game .sf_duat_bar span { display:block;padding:1px 4px;line-height:15px;font-size:10px; }
+#sf_game .sf_duat_hud > b { overflow-wrap:anywhere; }
+
+@media (orientation: landscape) and (max-height: 540px) {
+    #sf_game[data-ui-theme] { top:0;left:0;transform:none;width:100vw;height:100dvh;--hud-left:calc(18px + env(safe-area-inset-left,0px));--hud-right:calc(18px + env(safe-area-inset-right,0px));--hud-top:calc(14px + env(safe-area-inset-top,0px));--hud-column:clamp(174px,26vw,220px);--hud-middle:calc(var(--hud-left) + var(--hud-column) + 12px); }
+    #sf_game[data-ui-theme] .sf_top { left:var(--hud-left);right:var(--hud-right);top:var(--hud-top); }
+    #sf_game[data-ui-theme] .sf_date_card { width:var(--hud-column);min-height:56px;height:auto; }
+    #sf_game[data-ui-theme] .sf_mini { width:104px;height:86px; }
+    #sf_game[data-ui-theme] .sf_date { font-size:14px; }
+    #sf_game[data-ui-theme] .sf_date_sub { font-size:9px; }
+    #sf_game[data-ui-theme] .sf_side_btns { display:none; }
+    #sf_game[data-ui-theme] .sf_chips { left:var(--hud-middle);top:var(--hud-top);max-width:calc(100% - var(--hud-middle) - var(--hud-right) - 116px);flex-wrap:wrap;gap:2px; }
+    #sf_game[data-ui-theme] .sf_chip_rank { order:-1;display:inline-flex; }
+    #sf_game[data-ui-theme] .sf_hint_pill { left:var(--hud-middle);top:calc(var(--hud-top) + 58px);max-width:calc(100% - var(--hud-middle) - var(--hud-right) - 116px);white-space:normal;text-align:left; }
+    #sf_game[data-ui-theme] .sf_duat_hud { left:var(--hud-left)!important;top:calc(var(--hud-top) + 62px)!important;width:var(--hud-column);box-sizing:border-box; }
+    #sf_game[data-ui-theme] :is(.sf_menu,.sf_appearance,.sf_bag) { display:grid;place-items:center;top:calc(var(--hud-top) + 92px);width:32px;height:34px;min-width:0;padding:2px;border:3px solid transparent;border-image:var(--skin-hud) var(--slice-hud) stretch;border-radius:0;box-shadow:none;background:#463322;background-clip:padding-box;color:#f8e9cf;z-index:4; }
+    #sf_game[data-ui-theme] .sf_menu { position:absolute;right:calc(var(--hud-right) + 72px); }
+    #sf_game[data-ui-theme] .sf_appearance { right:calc(var(--hud-right) + 36px); }
+    #sf_game[data-ui-theme] .sf_bag { right:var(--hud-right); }
+    #sf_game[data-ui-theme] .sf_bag span { display:none; }
+    #sf_game[data-ui-theme] .sf_bag i { width:22px;height:24px;opacity:1; }
+    #sf_game[data-ui-theme] .sf_controls { left:calc(var(--hud-left) + 12px);right:calc(var(--hud-right) + 12px);bottom:calc(24px + env(safe-area-inset-bottom,0px)); }
+    #sf_game[data-ui-theme] .sf_pad { width:90px;height:90px; }
+    #sf_game[data-ui-theme] .sf_tabs { display:none;left:auto;right:var(--hud-right);top:calc(var(--hud-top) + 132px);bottom:auto;width:180px;max-height:calc(100% - var(--hud-top) - 145px);overflow-y:auto;z-index:5; }
+    #sf_game[data-ui-theme].sf_menu_open .sf_tabs { display:flex;flex-direction:column; }
+    #sf_game[data-ui-theme] .sf_tabs .sf_tab { display:flex;flex-direction:row;gap:8px;flex:none;min-height:36px;width:100%;justify-content:center; }
+}
