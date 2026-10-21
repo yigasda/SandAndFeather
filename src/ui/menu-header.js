@@ -24,6 +24,14 @@ export function attachMenuHeader(root, wrap, active) {
     head.prepend(art, current); head.append(nav);
     function refresh() {
         const theme = HEADERS[root.dataset.uiTheme] ? root.dataset.uiTheme : 'cozy';
+        if (theme === 'cozy') {
+            // The adopted PNG pieces own the title band; never load the retired full header.
+            for (const name of ['frame','paper','button','button-fill','primary','primary-fill','slot','selected'])
+                wrap.style.setProperty('--menu-' + name, `var(--skin-${name})`);
+            for (const { icon } of links) icon.style.cssText = '';
+            current.style.cssText = ''; art.replaceChildren();
+            return;
+        }
         for (const name of ['frame','paper','button','button-fill','primary','primary-fill','slot','selected']) {
             const file = name === 'frame' && theme === 'temple' ? 'panel' : name === 'selected' && theme === 'journal' ? 'primary' : name;
             wrap.style.setProperty('--menu-' + name, `url("${new URL(`../../data/art/ui/skins/${theme}/${file}.png`, import.meta.url).href}")`);

@@ -1,3 +1,4 @@
+import { settings } from '../core/settings.js';
 import { getState, saveState } from '../core/state.js';
 import { ctx } from '../core/st.js';
 import { on } from '../core/bus.js';
@@ -7,6 +8,7 @@ import { changedChunks, createScanJob, isScanning, rpMessages, runScan, scanPrev
 import { plainText, sentences } from '../core/picks.js';
 import { itemInfo } from '../core/bag.js';
 import { itemArt } from './itemart.js';
+import { lotusBondScene } from './lotus-bond-scene.js';
 import { feel } from '../packs/life/poses.js';
 import { leadOf as leadNow, withOf as withNow } from '../core/heroes.js';
 // 0.9.70: the one who got the gift turns shy for a moment (쑥스러움 ♥) on the map behind the window
@@ -17,8 +19,9 @@ const redrawn = new URL('../../data/art/ui/bond/redrawn/', import.meta.url);
 // only the icons the theme has no match for (the user's marked set); frames, cards, buttons and lines are the UI theme's
 const REDRAWN = {section_book:'27-section-book',section_plant:'28-section-sprout',section_gift:'29-section-gift',section_branch:'30-section-branch',bond_heart:'31-heart',reward_gift_red:'34-reward-red',reward_gift_gold:'36-reward-chest',reward_gift_open:'35-reward-gold',reward_80:'35-reward-gold',gift_icon_bow:'64-gift-cream',activity_fishing_icon:'43-fishing',activity_cooking_icon:'44-cooking',activity_study_icon:'45-study',activity_explore_icon:'46-exploration',footer_feather:'47-feather',memory_book_icon:'48-memory-book'};
 const node = (tag, cls = '', text = '') => { const e = document.createElement(tag); e.className = cls; e.textContent = text; return e; };
+const LOTUS = {"section_book": "icon.record", "section_plant": "icon.bondheart", "section_gift": "icon.gift", "section_branch": "icon.sprout", "bond_heart": "icon.gaugeheart", "reward_gift_red": "game.34-reward-red", "reward_gift_gold": "game.36-reward-chest", "reward_gift_open": "game.35-reward-gold", "reward_80": "game.35-reward-gold", "gift_icon_bow": "icon.gift", "activity_fishing_icon": "game.43-fishing", "activity_cooking_icon": "game.44-cooking", "activity_study_icon": "game.45-study", "activity_explore_icon": "game.46-exploration", "footer_feather": "icon.feather", "memory_book_icon": "icon.notebook"};
 function img(name, cls = '') {
-    const e = node('img', cls); e.src = new URL(`${REDRAWN[name] || name}.png`, REDRAWN[name] ? redrawn : art).href; e.alt = ''; e.decoding = 'async';
+    const e = node('img', cls); e.src = new URL(`${REDRAWN[name] || name}.png`, REDRAWN[name] ? redrawn : art).href; if (settings().uiTheme === 'cozy' && LOTUS[name]) e.src = new URL(`../../data/art/ui/lotus/${LOTUS[name]}.png`, import.meta.url).href; e.alt = ''; e.decoding = 'async';
     if (['section_book', 'section_gift', 'section_branch', 'footer_feather'].includes(name)) {
         const wrap = node('span', 'sf_bond_semantic'); wrap.style.setProperty('--semantic-icon', `url("${e.src}")`); wrap.append(e); return wrap;
     }
@@ -32,7 +35,8 @@ function button(text, fn, cls = 'sf_btn sf_small') {
 const row = (...children) => { const e = node('div', 'sf_bond_actions'); e.append(...children); return e; };
 function section(title, icon, help = '') {
     const el = node('section', 'sf_bond_section'), h = node('header', 'sf_bond_section_head');
-    h.append(img(icon), node('h3', '', title)); if (help) h.append(node('small', '', help)); el.append(h); return el;
+    const divider = node('i', 'sf_bond_divider'); divider.setAttribute('aria-hidden', 'true');
+    h.append(img(icon), node('h3', '', title), divider); if (help) h.append(node('small', '', help)); el.append(h); return el;
 }
 function field(label, value = '', type = 'text') {
     const wrap = node('label', 'sf_bond_field', label), input = node(type === 'textarea' ? 'textarea' : 'input');
@@ -66,8 +70,10 @@ export function bondCard(ui, initial = 'set', onBack = null) {
     tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', '인물 선택');
     const content = node('div', 'sf_bond_columns');
     box.append(tabs, content);
-    const close = ui.showCard({ title: '인연과 유대', body: box, kind: 'bond', wide: true, buttons: [], onClose: () => { closed = true; off(); change(); onBack?.(); } });
+    let lotus = null;
+    const close = ui.showCard({ title: '인연과 유대', body: box, kind: 'bond', wide: true, buttons: [], onClose: () => { closed = true; lotus?.dispose(); off(); change(); onBack?.(); } });
     const wrap = box.closest('.sf_pop_wrap');
+    if (settings().uiTheme === 'cozy') lotus = lotusBondScene(wrap, ui);
     // the theme's own title bar, plain words; the line under it opens the window
     box.prepend(node('p', 'sf_bond_subtitle', '함께한 시간이, 더 특별한 내일을 만듭니다.'));
     const off = on('bond:changed', () => { if (!closed && getState() === s) draw(); });
@@ -178,6 +184,17 @@ export function bondCard(ui, initial = 'set', onBack = null) {
         note.append(img('footer_feather'), node('span', '', '인연은 이어지고, 유대는 오늘부터 쌓입니다.'));
         const memory = button('', () => memoryCard(ui, s, who), 'sf_btn sf_primary sf_bond_memory'); memory.append(img('memory_book_icon'), node('span', '', '추억 수첩'), node('span', '', '›'));
         footer.append(note, memory); content.append(left, right, footer);
+        lotus?.update({ who, pts: b[who].pts, ties, tabs: [...tabs.querySelectorAll('[data-bond-who]')],
+            slots: [...slots.querySelectorAll('[data-bond-item]')], gift, memory,
+            activities: [...activityGrid.children], stages: [...stages.children],
+            manage: index => {
+                // Move the live controls, preserving their handlers and every source-management action.
+                const body = node('div', 'sf_bond'); body.append(records);
+                management.open = true;
+                if (Number.isInteger(index)) recordsBox.children[index]?.querySelector('details')?.setAttribute('open', '');
+                ui.showCard({ title: '원문 · 관리', body, wide: true, onClose: () => { if (!closed) draw(); } });
+            },
+        });
         slots.scrollLeft = slotScroll;
         const restore = focusWho ? [...tabs.querySelectorAll('[data-bond-who]')].find(e => e.dataset.bondWho === focusWho)
             : focusItem ? [...slots.querySelectorAll('[data-bond-item]')].find(e => e.dataset.bondItem === focusItem) : giftFocus ? gift : null;

@@ -1,0 +1,2852 @@
+{
+  "status": "user-adopted A treatment with approved follow-up changes",
+  "canvas_size": [
+    1842,
+    854
+  ],
+  "asset_count": 90,
+  "placement_count": 112,
+  "text_is_separate": true,
+  "notes": [
+    "A gradient retained; five old icon-occlusion fill stripes repaired separately. Header flower internal petal alpha omission repaired from exact original RGB pixels.",
+    "Six navigation faces are original-color sampled solid fills; original icons, frames and alpha masks are unchanged.",
+    "Four gift slots use fishing button frame and A-repaired fill, 16px corner-preserving 9-slice to 160x122 with 10px gaps. Item icons and quantities unchanged.",
+    "Gift action button restored to original sage frame and adopted A gradient fill, with white lettering.",
+    "Outer window frame and header lower rail use the selected generated PNGs. The pyramid strip is omitted. Other UI art uses extracted PNGs or existing game PNGs.",
+    "At displayed bond 12/100: rewards 20/40/60 use existing red gift, 80 gold gift, 100 chest.",
+    "No discarded slots, source screenshots, alternative candidates, scripts or internal notes included.",
+    "2026-10-21 user-directed repair: three panels reuse record1 with identical 56px 9-slice; five title/footer icons reference existing game PNGs. Original assembly retained in local restoration commit; unused original icon PNGs preserved."
+  ],
+  "assets": [
+    {
+      "id": "body.background",
+      "file": "assets/body.background.png",
+      "role": "background",
+      "native_size": [
+        1798,
+        726
+      ],
+      "sha256": "0b8dacb54d170648c5e3f92a5f030e0eb81c3f4ed0693b25f6be6584531979bf",
+      "notes": "Original-color sampled flat underlay used by the adopted assembly."
+    },
+    {
+      "id": "header.underlay",
+      "file": "assets/header.underlay.png",
+      "role": "background",
+      "native_size": [
+        1798,
+        95
+      ],
+      "sha256": "f512addcaae9e8fde6d528382da984787febd76cc41baf7824ef8bc3bec4d3fe",
+      "notes": "Original-color sampled flat underlay used by the adopted assembly."
+    },
+    {
+      "id": "header.background-restored",
+      "file": "assets/header.background-restored.png",
+      "role": "fill",
+      "native_size": [
+        1792,
+        83
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "sha256": "2ab7682ff18d500c141465e341203cff806a9c07c63489062814b4424c416bc8",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "tab.selected.fill",
+      "file": "assets/tab.selected.fill.png",
+      "role": "fill",
+      "native_size": [
+        305,
+        71
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "9e73fc4ab3d5b87c1daff398e17e0a42b5a573eaac95388daa97613136b491b4",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "tab.neutral.fill",
+      "file": "assets/tab.neutral.fill.png",
+      "role": "fill",
+      "native_size": [
+        308,
+        66
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "684ac5271cf1260201d558d3528228e8f546e2ba3a16c7fd7fbdefafa6ec5264",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "panel.record1.fill",
+      "file": "assets/panel.record1.fill.png",
+      "role": "fill",
+      "native_size": [
+        656,
+        139
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "a87e3e5e46b6ecb2a53e3f46f0d067608ec4313974696fcaaa1c46b2826c3cd0",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "slot.fishing-style.fill",
+      "file": "assets/slot.fishing-style.fill.png",
+      "role": "fill",
+      "native_size": [
+        160,
+        122
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "8ae6cdb19a93f7ef710fe691f848928653de4e762800d96fe98b182ccc151bc2",
+      "notes": "Fishing beige frame/fill reused with 16px corner-preserving 9-slice at gift slot dimensions. No icon or text baked in."
+    },
+    {
+      "id": "activity.fishing.fill",
+      "file": "assets/activity.fishing.fill.png",
+      "role": "fill",
+      "native_size": [
+        243,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "a3ac573f0588e76a23883a68bdd991dd8d2e04a532e5067aa60944dffcb7bba2",
+      "notes": "Adopted A gradient plus approved isolated occlusion-stripe repair. Alpha preserved."
+    },
+    {
+      "id": "activity.cooking.fill",
+      "file": "assets/activity.cooking.fill.png",
+      "role": "fill",
+      "native_size": [
+        237,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "2b0435ded708f7343da7f6c2d11a3f8453163d3b045d3a7f5dc13ca6fc427926",
+      "notes": "Adopted A gradient plus approved isolated occlusion-stripe repair. Alpha preserved."
+    },
+    {
+      "id": "activity.books.fill",
+      "file": "assets/activity.books.fill.png",
+      "role": "fill",
+      "native_size": [
+        250,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "9c0be485aa3bc9f80d463442cf1579815701a1b5b53427a4d6a10c1111754406",
+      "notes": "Adopted A gradient plus approved isolated occlusion-stripe repair. Alpha preserved."
+    },
+    {
+      "id": "activity.explore.fill",
+      "file": "assets/activity.explore.fill.png",
+      "role": "fill",
+      "native_size": [
+        259,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "2210691e51dfd4e8311c85ec9706f41280315f4d3a7935bb3a4756006813b4ca",
+      "notes": "Adopted A gradient plus approved isolated occlusion-stripe repair. Alpha preserved."
+    },
+    {
+      "id": "button.gift.fill",
+      "file": "assets/button.gift.fill.png",
+      "role": "fill",
+      "native_size": [
+        343,
+        117
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "574a3e1af925ae4ab794c40df6680189f813e352a7fd79528f65c8b6a77901ed",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "button.source.fill",
+      "file": "assets/button.source.fill.png",
+      "role": "fill",
+      "native_size": [
+        656,
+        50
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "dcc6c70ad92c088d4adb0f7c023d51215d3688233accdcdf590ca28e2fd7213e",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "button.notebook.fill",
+      "file": "assets/button.notebook.fill.png",
+      "role": "fill",
+      "native_size": [
+        250,
+        72
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "d82d8b97cb4a39847e7b682a183fbd756b0d3ac74cf1bd3265c65ae24bfbe309",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "gauge.empty",
+      "file": "assets/gauge.empty.png",
+      "role": "fill",
+      "native_size": [
+        868,
+        43
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "961a55761440d01edd43b434b5d61e360b1bc8bb2abf835485f2190e2011037f",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "tab.selected.frame",
+      "file": "assets/tab.selected.frame.png",
+      "role": "frame",
+      "native_size": [
+        305,
+        71
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "bb22b72be13d5f38d02147b913eedceeb299dc0a948b4fa03cfa71db07cfbf1c",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "tab.neutral.frame",
+      "file": "assets/tab.neutral.frame.png",
+      "role": "frame",
+      "native_size": [
+        308,
+        66
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "01fff72738ac4fcae35fa3f809a6f30a7b44cfb24cb78a9fc1bc875da0ad7fd3",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "panel.record1.frame",
+      "file": "assets/panel.record1.frame.png",
+      "role": "frame",
+      "native_size": [
+        656,
+        139
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "1d19448ec258365fd644d215c44fa008918b087ea0315804e16d64de3bd25d9d",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "slot.fishing-style.frame",
+      "file": "assets/slot.fishing-style.frame.png",
+      "role": "frame",
+      "native_size": [
+        160,
+        122
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "e2851700d6789942762e5d44bd75f7d91d6f1700e9ab8e783c8aebe6d9d65e86",
+      "notes": "Fishing beige frame/fill reused with 16px corner-preserving 9-slice at gift slot dimensions. No icon or text baked in."
+    },
+    {
+      "id": "activity.fishing.frame",
+      "file": "assets/activity.fishing.frame.png",
+      "role": "frame",
+      "native_size": [
+        243,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "3b52ce6fcd4b9c410333351e4548e06c6306a7adc8b9a8de1e42d4b932a2f349",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "activity.cooking.frame",
+      "file": "assets/activity.cooking.frame.png",
+      "role": "frame",
+      "native_size": [
+        237,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "f85f2ab0e9d2b416f895f27a1906d42bca79cec380c0b83e3f41e07820e0a025",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "activity.books.frame",
+      "file": "assets/activity.books.frame.png",
+      "role": "frame",
+      "native_size": [
+        250,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "7f48bb09eec388c96194467c9a9392166055b2de8d3a167c02af3b74eb343037",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "activity.explore.frame",
+      "file": "assets/activity.explore.frame.png",
+      "role": "frame",
+      "native_size": [
+        259,
+        108
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "1888efad0ed250861024897c55c23d06300c8bf600ea5cca95f61ec7a5073950",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "button.gift.frame",
+      "file": "assets/button.gift.frame.png",
+      "role": "frame",
+      "native_size": [
+        343,
+        117
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "c73e39f2ca71ca18675142de26214f77344f74dcefb1a1c4ee4776dc78f5d181",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "button.source.frame",
+      "file": "assets/button.source.frame.png",
+      "role": "frame",
+      "native_size": [
+        656,
+        50
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "7911506ada290bcb82d727262631a84e65e7a2222963beaac6c1cb93b70abccc",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "button.notebook.frame",
+      "file": "assets/button.notebook.frame.png",
+      "role": "frame",
+      "native_size": [
+        250,
+        72
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "e86088db75a2e538b22f309a2296b96c8ec9365890286f5a82618a9dbc770331",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "reward.rail-full",
+      "file": "assets/reward.rail-full.png",
+      "role": "ornament",
+      "native_size": [
+        864,
+        10
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "c753302f9d12b24a397086ebb54496f4e782dc7f4d82410ed0f965395f5a6a91",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "gauge.frame",
+      "file": "assets/gauge.frame.png",
+      "role": "frame",
+      "native_size": [
+        868,
+        43
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "e3bb38a54fe8383f0040d96673d2e674baccc3a523f1812a007a95c9f8ab30f0",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "gauge.pink",
+      "file": "assets/gauge.pink.png",
+      "role": "ornament",
+      "native_size": [
+        101,
+        32
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "b86e943c81ffec52893ab1da72ebb31b67a241b35c919da7e57923cdeb79cb94",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.horizontal",
+      "file": "assets/divider.horizontal.png",
+      "role": "ornament",
+      "native_size": [
+        365,
+        8
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "3d5966902f0febb2a20409b3bbc40d0c437455c9e1249c8510bf92591d508e07",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.vertical",
+      "file": "assets/divider.vertical.png",
+      "role": "ornament",
+      "native_size": [
+        10,
+        234
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "933f501840a1adae3107923cba1f59975bdd11e2e620df6b74188fa069552d09",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.node",
+      "file": "assets/divider.node.png",
+      "role": "ornament",
+      "native_size": [
+        13,
+        19
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "74f964c19ab966e1ef41b706aae50bb13397d12e75f8696ac636b82250eaba45",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.diamond-cluster",
+      "file": "assets/ornament.diamond-cluster.png",
+      "role": "ornament",
+      "native_size": [
+        46,
+        25
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "c6182679b0ef9adec4a237ed959bd4df7b38cf11fdb8b9ffeea704b4da410329",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.bullet",
+      "file": "assets/ornament.bullet.png",
+      "role": "ornament",
+      "native_size": [
+        23,
+        29
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "c896f325c66ca8bae8f93f330274a6571ac1209c8cd2a4a35388563bd1d51076",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "reward.tick",
+      "file": "assets/reward.tick.png",
+      "role": "ornament",
+      "native_size": [
+        23,
+        27
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "82a126dc88cb73623b18f7a39382ea0107f9459fed347402a0cf390cf5ceddd7",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.bond",
+      "file": "assets/divider.bond.png",
+      "role": "ornament",
+      "native_size": [
+        647,
+        8
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "2a42ff717b75f4d866ba85eac44209291c66ae3c97df7fe9d26bbfeee42e493c",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.gift",
+      "file": "assets/divider.gift.png",
+      "role": "ornament",
+      "native_size": [
+        786,
+        8
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "7cfd98a5694dbb8a263e5bcc794f631efd7bc43f3118971eba8e79277d5c143c",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.activity",
+      "file": "assets/divider.activity.png",
+      "role": "ornament",
+      "native_size": [
+        719,
+        8
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "c3d81fda9902255134f2de40fea7831da39db29c52ffb9bfccfaf33457a13a3e",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.footer",
+      "file": "assets/divider.footer.png",
+      "role": "ornament",
+      "native_size": [
+        807,
+        8
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "5e71b4684bb8dd8539b1fbdfeea0e6c76fa0f45f64647fd423513260ce6abd7c",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.cluster1",
+      "file": "assets/ornament.cluster1.png",
+      "role": "ornament",
+      "native_size": [
+        39,
+        21
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "04d97fe97f8e3578077d22cb1ecf85ef1389231a03f9f200692c55fb43a731a9",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.cluster2",
+      "file": "assets/ornament.cluster2.png",
+      "role": "ornament",
+      "native_size": [
+        38,
+        25
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "4ff69141ce2d57a5b42cf09311a13da76ea11bad98f4fb463712977d9b5242c1",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.cluster3",
+      "file": "assets/ornament.cluster3.png",
+      "role": "ornament",
+      "native_size": [
+        39,
+        24
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "554364410b85c610d1d36249e8bd221fa07618edf0db2f3142a3eca3b575140b",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.cluster4",
+      "file": "assets/ornament.cluster4.png",
+      "role": "ornament",
+      "native_size": [
+        46,
+        23
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "a94a319897327ac69412a6c299503b6430ee16f62fa4a7c59b86faba6d8f6e77",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.cluster5",
+      "file": "assets/ornament.cluster5.png",
+      "role": "ornament",
+      "native_size": [
+        38,
+        24
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "94132f41c830cb2562121e9f6e682f2e72b40d50d2a414e5ce27c32543cdc9bb",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.vertical1",
+      "file": "assets/divider.vertical1.png",
+      "role": "ornament",
+      "native_size": [
+        12,
+        27
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "43715f3b1b30c87b599a36251da2fa6db5f396f1fbbfc6bbf176c72abc5c5f00",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.vertical2",
+      "file": "assets/divider.vertical2.png",
+      "role": "ornament",
+      "native_size": [
+        10,
+        299
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "f47991e606e12d3b7d0c61f063fad76c17ea5097e90986da4a9c109f009d2449",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "divider.vertical3",
+      "file": "assets/divider.vertical3.png",
+      "role": "ornament",
+      "native_size": [
+        12,
+        27
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "900bfa9beba38478572e728ecc146b951b9cc60ff2b487ce5f9d35acadc21373",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "panel.record1.corner-ornaments",
+      "file": "assets/panel.record1.corner-ornaments.png",
+      "role": "ornament",
+      "native_size": [
+        656,
+        139
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "cb9d325e47900ef60bdc4ae390e6d3a22d7090c1214b14d6d2b74573888473aa",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.record",
+      "file": "../bond/redrawn/27-section-book.png",
+      "role": "icon",
+      "native_size": [
+        139,
+        105
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "899841ef9c5c207e84c6102acf8526deba65ec75cba15943b7c06489fd173aa1",
+      "notes": "Existing in-game PNG, byte-preserved; contain in unchanged placement bbox."
+    },
+    {
+      "id": "icon.bondheart",
+      "file": "../bond/redrawn/31-heart.png",
+      "role": "icon",
+      "native_size": [
+        93,
+        80
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "3c7c754212bba8e8eedebdb0e67f8f11d8feed65f9bc0f71545478b447b86ab1",
+      "notes": "Existing in-game PNG, byte-preserved; contain in unchanged placement bbox."
+    },
+    {
+      "id": "icon.gaugeheart",
+      "file": "assets/icon.gaugeheart.png",
+      "role": "icon",
+      "native_size": [
+        45,
+        41
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "04098b07ce8d63972c49b1232d9c54335e6ad9124b4eb5ce1c368acaa8d6666a",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.gift",
+      "file": "../bond/redrawn/29-section-gift.png",
+      "role": "icon",
+      "native_size": [
+        106,
+        111
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "9b2395892ed07aacab37a25313b23f3435890a73e4533178b364b704e8a06b56",
+      "notes": "Existing in-game PNG, byte-preserved; contain in unchanged placement bbox."
+    },
+    {
+      "id": "icon.sprout",
+      "file": "../bond/redrawn/28-section-sprout.png",
+      "role": "icon",
+      "native_size": [
+        140,
+        117
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "64f6d798af1da87f7b19c8b0d303b203ce5bdc01f2c32bff5aeaec1b9c1bd2fd",
+      "notes": "Existing in-game PNG, byte-preserved; contain in unchanged placement bbox."
+    },
+    {
+      "id": "icon.lotus",
+      "file": "assets/icon.lotus.png",
+      "role": "icon",
+      "native_size": [
+        103,
+        85
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "c13ea77dfe386e6299b0c6086313ded23d8eb13b2096d3038a0698bb4c21a987",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.cookie",
+      "file": "assets/icon.cookie.png",
+      "role": "icon",
+      "native_size": [
+        87,
+        75
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "66f6b99657c5ae9f77c8294f178c0f81ea9ea83574edd84a24652889c5bf7b32",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.honey",
+      "file": "assets/icon.honey.png",
+      "role": "icon",
+      "native_size": [
+        71,
+        82
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "1159f57f3d536796332e5e27f90477e47145be73de21f1f2c5fec4722c13977a",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.dates",
+      "file": "assets/icon.dates.png",
+      "role": "icon",
+      "native_size": [
+        86,
+        78
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "e193143bfd7bb5313f756c53b7cda65def805bde84ad4b560b986412bc832af1",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "game.43-fishing",
+      "file": "assets/game.43-fishing.png",
+      "role": "icon",
+      "native_size": [
+        149,
+        124
+      ],
+      "alpha_range": [
+        0,
+        253
+      ],
+      "sha256": "7bf12e39ec706be8a60db7663b4f4d2c58548be356bc20117b0db3da10c39974",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "game.44-cooking",
+      "file": "assets/game.44-cooking.png",
+      "role": "icon",
+      "native_size": [
+        155,
+        121
+      ],
+      "alpha_range": [
+        0,
+        253
+      ],
+      "sha256": "a9ee2670cbc3e8383939a7dd12e6e369b5465834168e165478d255c26db5224e",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "game.45-study",
+      "file": "assets/game.45-study.png",
+      "role": "icon",
+      "native_size": [
+        156,
+        126
+      ],
+      "alpha_range": [
+        0,
+        254
+      ],
+      "sha256": "d48fc2d97458ddc440f493b89b06d9212a3909a1308acbcbe1a2d521f1ee60a4",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "game.46-exploration",
+      "file": "assets/game.46-exploration.png",
+      "role": "icon",
+      "native_size": [
+        209,
+        125
+      ],
+      "alpha_range": [
+        0,
+        254
+      ],
+      "sha256": "96d8dcfc2cd96beb42454246ed16a09b49f4ba91ef6c2a8d54a76d6195a71dd8",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.source",
+      "file": "assets/icon.source.png",
+      "role": "icon",
+      "native_size": [
+        31,
+        35
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "3b12559ba41ef6a8df3aac516efbde389ce380b3a0fb5a4020002c9ae7936546",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.notebook",
+      "file": "assets/icon.notebook.png",
+      "role": "icon",
+      "native_size": [
+        36,
+        38
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "80c2b96e081a0df191ed08bf4231efd72ed2c15149c1865a6ec8eb04fe9c1d08",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.feather",
+      "file": "../bond/redrawn/47-feather.png",
+      "role": "icon",
+      "native_size": [
+        144,
+        127
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "67748ed0fbcaf1d6977c5d10460011ce2f24628dd0a953ebde0111a4a0804ac4",
+      "notes": "Existing in-game PNG, byte-preserved; contain in unchanged placement bbox."
+    },
+    {
+      "id": "game.34-reward-red",
+      "file": "assets/game.34-reward-red.png",
+      "role": "icon",
+      "native_size": [
+        113,
+        105
+      ],
+      "alpha_range": [
+        0,
+        254
+      ],
+      "sha256": "6ae436155717e60b80c171bbd8d8949bec402c4e3982cb22ec4c5cd5a1762bf5",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "game.35-reward-gold",
+      "file": "assets/game.35-reward-gold.png",
+      "role": "icon",
+      "native_size": [
+        109,
+        104
+      ],
+      "alpha_range": [
+        0,
+        253
+      ],
+      "sha256": "cc9592cf4e6acdc32bb93876addbb952bb85f598a65dba38626c02c7c103d91d",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "game.36-reward-chest",
+      "file": "assets/game.36-reward-chest.png",
+      "role": "icon",
+      "native_size": [
+        124,
+        105
+      ],
+      "alpha_range": [
+        0,
+        254
+      ],
+      "sha256": "7de88e4fbd833dbd1201158473872d36ab80838a77bed0052c90aa07e46852f1",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.home.face-restored",
+      "file": "assets/nav.home.face-restored.png",
+      "role": "fill",
+      "native_size": [
+        89,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "36d8c5461ef4bc3be0bf5e073c705d53a0af9c1ea44dc3896dd4b40de82cbea5",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.heart.face-restored",
+      "file": "assets/nav.heart.face-restored.png",
+      "role": "fill",
+      "native_size": [
+        90,
+        84
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "47501ab9aeb8bc8f44c9ddba1ccbe59ca17be703c7f25e950e1ab221eb47f95e",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.rings.face-restored",
+      "file": "assets/nav.rings.face-restored.png",
+      "role": "fill",
+      "native_size": [
+        90,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "83010b625f2e126aee4eb729931cfc52b4e0427b34a9b87ff3754a365c0d51e3",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.scroll.face-restored",
+      "file": "assets/nav.scroll.face-restored.png",
+      "role": "fill",
+      "native_size": [
+        90,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "6a149cd4c6853f07df6d9a538529f3f71d2b1831b71e3917076e2658252c46c6",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.map.face-restored",
+      "file": "assets/nav.map.face-restored.png",
+      "role": "fill",
+      "native_size": [
+        93,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "263570223aac908eadef676282e7b41ae460d3d32710317f8404593fe799c591",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.close.face-restored",
+      "file": "assets/nav.close.face-restored.png",
+      "role": "fill",
+      "native_size": [
+        85,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "55047d519ca8df5896bd059b6313812e1e0ee435f2cb8ca42115b96410f875a5",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.home.frame",
+      "file": "assets/nav.home.frame.png",
+      "role": "frame",
+      "native_size": [
+        89,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "928777c2abd3a247333ccf93fd0c7ab572fa510e7dd80632294ab6f53bb7500b",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.heart.frame",
+      "file": "assets/nav.heart.frame.png",
+      "role": "frame",
+      "native_size": [
+        90,
+        84
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "5e75b987a43a3c0f27574b5c853ee5afdcfe286d67423c45f4f7713a68981d38",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.rings.frame",
+      "file": "assets/nav.rings.frame.png",
+      "role": "frame",
+      "native_size": [
+        90,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "ddb101f0c30570f9013796b9a71ad6a6195d71f776607cd1533399b9b1ee4ae7",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.scroll.frame",
+      "file": "assets/nav.scroll.frame.png",
+      "role": "frame",
+      "native_size": [
+        90,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "a977f9b9c374edad18d6fc93b7a023c7676ca681b3756acbc3e851d1eb47c383",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.map.frame",
+      "file": "assets/nav.map.frame.png",
+      "role": "frame",
+      "native_size": [
+        93,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "d7c90fc404240f8db9b7c36a2413fb41c552fbb040d5ce5aee1971fdb68716d5",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "nav.close.frame",
+      "file": "assets/nav.close.frame.png",
+      "role": "frame",
+      "native_size": [
+        85,
+        68
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "761c9cf3a07269a03d7e735fa883706ec82db11c0d3c73edc3a01e9a251631d0",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "header.lower-rail",
+      "file": "assets/header.lower-rail.png",
+      "role": "ornament",
+      "native_size": [
+        1597,
+        985
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "09d3d45459e56519f336a597c7e87feef630aef0367f6709003eb5098adcf30b",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "header.left-junction",
+      "file": "assets/header.left-junction.png",
+      "role": "ornament",
+      "native_size": [
+        29,
+        38
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "cf4aed5439529d08481e7946864590a3a4714c9adbbbc88e6fbeec19b8f65d6c",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "window.frame",
+      "file": "assets/window.frame.png",
+      "role": "frame",
+      "native_size": [
+        1842,
+        854
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "9e962e9871cb049dfcff5659f9643eae0a7eb357ee18030380a3b754bf6a2a38",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.home",
+      "file": "assets/icon.home.png",
+      "role": "icon",
+      "native_size": [
+        51,
+        51
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "4f877046bc9d323d8129e53c32127308857db44ad53c3d1d74f9876e6e8e0a75",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.heart",
+      "file": "assets/icon.heart.png",
+      "role": "icon",
+      "native_size": [
+        54,
+        48
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "ce4b342f7e21a80903d88ad2a8953402b53aa1e913fd8e45a8dc947856f54d59",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.rings",
+      "file": "assets/icon.rings.png",
+      "role": "icon",
+      "native_size": [
+        53,
+        48
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "dd8c55fa1c1521089e4dabebb3e28c62400a8fc7595093f9881620970c9f29ea",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.scroll",
+      "file": "assets/icon.scroll.png",
+      "role": "icon",
+      "native_size": [
+        50,
+        54
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "e2273e7e2906b3addb532439e13e28a57ad125e26be9d84f0821f240c3a8337b",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.map",
+      "file": "assets/icon.map.png",
+      "role": "icon",
+      "native_size": [
+        58,
+        52
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "d5c3a5506286d12ea1c3aaf41b2269d6b52a2316ca7d4d1e23e94c9a891f1952",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.close",
+      "file": "assets/icon.close.png",
+      "role": "icon",
+      "native_size": [
+        43,
+        46
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "1fef7c3934dd55197dc8833f61d117418b2201e80eda9745396fb9ad739738be",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "icon.rings-large",
+      "file": "assets/icon.rings-large.png",
+      "role": "icon",
+      "native_size": [
+        87,
+        76
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "4b1158ffb80be15cce2f528fd3fd6d2b9d88abbc22e698af1f0ca48f8716cda3",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    },
+    {
+      "id": "ornament.header-lotus",
+      "file": "assets/ornament.header-lotus.png",
+      "role": "ornament",
+      "native_size": [
+        94,
+        67
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "sha256": "66f16db19ed1caab27c1b8ab4f8672accd3d953fd98decbbfcb6cdb410f9863a",
+      "notes": "Native PNG bytes preserved. See placements for display scaling."
+    }
+  ],
+  "placements": [
+    {
+      "asset_id": "body.background",
+      "bbox": [
+        23,
+        109,
+        1821,
+        835
+      ],
+      "mode": "native"
+    },
+    {
+      "asset_id": "header.underlay",
+      "bbox": [
+        23,
+        20,
+        1821,
+        115
+      ],
+      "mode": "native"
+    },
+    {
+      "asset_id": "header.background-restored",
+      "bbox": [
+        25,
+        26,
+        1817,
+        109
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "tab.selected.fill",
+      "bbox": [
+        53,
+        127,
+        358,
+        198
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "tab.neutral.fill",
+      "bbox": [
+        367,
+        129,
+        675,
+        195
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "panel.record1.fill",
+      "bbox": [
+        54,
+        272,
+        710,
+        411
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "panel.record1.fill",
+      "bbox": [
+        54,
+        421,
+        710,
+        559
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.record2.fill",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "panel.record1.fill",
+      "bbox": [
+        54,
+        572,
+        710,
+        709
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.record3.fill",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "panel.record1.fill",
+      "bbox": [
+        773,
+        187,
+        1794,
+        389
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.bond.fill",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "slot.fishing-style.fill",
+      "bbox": [
+        773,
+        450,
+        933,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "slot.fishing-style.fill",
+      "bbox": [
+        943,
+        450,
+        1103,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "slot.fishing-style.fill",
+      "bbox": [
+        1113,
+        450,
+        1273,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "slot.fishing-style.fill",
+      "bbox": [
+        1283,
+        450,
+        1443,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "activity.fishing.fill",
+      "bbox": [
+        774,
+        638,
+        1017,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "activity.cooking.fill",
+      "bbox": [
+        1029,
+        638,
+        1266,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "activity.books.fill",
+      "bbox": [
+        1276,
+        638,
+        1526,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "activity.explore.fill",
+      "bbox": [
+        1537,
+        638,
+        1796,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "button.gift.fill",
+      "bbox": [
+        1453,
+        454,
+        1796,
+        571
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "button.source.fill",
+      "bbox": [
+        54,
+        714,
+        710,
+        764
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "button.notebook.fill",
+      "bbox": [
+        1547,
+        756,
+        1797,
+        828
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "gauge.empty",
+      "bbox": [
+        884,
+        210,
+        1752,
+        253
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "tab.selected.frame",
+      "bbox": [
+        53,
+        127,
+        358,
+        198
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "tab.neutral.frame",
+      "bbox": [
+        367,
+        129,
+        675,
+        195
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "panel.record1.frame",
+      "bbox": [
+        54,
+        272,
+        710,
+        411
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "panel.record1.frame",
+      "bbox": [
+        54,
+        421,
+        710,
+        559
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.record2.frame",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "panel.record1.frame",
+      "bbox": [
+        54,
+        572,
+        710,
+        709
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.record3.frame",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "panel.record1.frame",
+      "bbox": [
+        773,
+        187,
+        1794,
+        389
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.bond.frame",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "slot.fishing-style.frame",
+      "bbox": [
+        773,
+        450,
+        933,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "slot.fishing-style.frame",
+      "bbox": [
+        943,
+        450,
+        1103,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "slot.fishing-style.frame",
+      "bbox": [
+        1113,
+        450,
+        1273,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "slot.fishing-style.frame",
+      "bbox": [
+        1283,
+        450,
+        1443,
+        572
+      ],
+      "mode": "fishing button frame/fill 16px corner-preserving 9-slice; uniform 160x122, 10px gaps"
+    },
+    {
+      "asset_id": "activity.fishing.frame",
+      "bbox": [
+        774,
+        638,
+        1017,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "activity.cooking.frame",
+      "bbox": [
+        1029,
+        638,
+        1266,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "activity.books.frame",
+      "bbox": [
+        1276,
+        638,
+        1526,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "activity.explore.frame",
+      "bbox": [
+        1537,
+        638,
+        1796,
+        746
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "button.gift.frame",
+      "bbox": [
+        1453,
+        454,
+        1796,
+        571
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "button.source.frame",
+      "bbox": [
+        54,
+        714,
+        710,
+        764
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "button.notebook.frame",
+      "bbox": [
+        1547,
+        756,
+        1797,
+        828
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "reward.rail-full",
+      "bbox": [
+        850,
+        303,
+        1714,
+        313
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "gauge.frame",
+      "bbox": [
+        884,
+        210,
+        1752,
+        253
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "gauge.pink",
+      "bbox": [
+        888,
+        215,
+        989,
+        247
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.horizontal",
+      "bbox": [
+        295,
+        235,
+        660,
+        243
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.vertical",
+      "bbox": [
+        732,
+        176,
+        742,
+        410
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.node",
+      "bbox": [
+        731,
+        413,
+        744,
+        432
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.diamond-cluster",
+      "bbox": [
+        663,
+        227,
+        709,
+        252
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.bullet",
+      "bbox": [
+        83,
+        301,
+        106,
+        330
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.bullet",
+      "bbox": [
+        83,
+        450,
+        106,
+        479
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.bullet",
+      "bbox": [
+        83,
+        598,
+        106,
+        627
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "reward.tick",
+      "bbox": [
+        979,
+        295,
+        1002,
+        322
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "reward.tick",
+      "bbox": [
+        1174,
+        295,
+        1197,
+        322
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "reward.tick",
+      "bbox": [
+        1370,
+        295,
+        1393,
+        322
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "reward.tick",
+      "bbox": [
+        1568,
+        295,
+        1591,
+        322
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.bond",
+      "bbox": [
+        1108,
+        156,
+        1755,
+        164
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.gift",
+      "bbox": [
+        969,
+        421,
+        1755,
+        429
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.activity",
+      "bbox": [
+        1037,
+        605,
+        1756,
+        613
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.footer",
+      "bbox": [
+        675,
+        798,
+        1482,
+        806
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.cluster1",
+      "bbox": [
+        1755,
+        151,
+        1794,
+        172
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.cluster2",
+      "bbox": [
+        1756,
+        413,
+        1794,
+        438
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.cluster3",
+      "bbox": [
+        1755,
+        597,
+        1794,
+        621
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.cluster4",
+      "bbox": [
+        628,
+        791,
+        674,
+        814
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.cluster5",
+      "bbox": [
+        1483,
+        790,
+        1521,
+        814
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.vertical1",
+      "bbox": [
+        731,
+        147,
+        743,
+        174
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.vertical2",
+      "bbox": [
+        732,
+        432,
+        742,
+        731
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "divider.vertical3",
+      "bbox": [
+        731,
+        731,
+        743,
+        758
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "panel.record1.corner-ornaments",
+      "bbox": [
+        54,
+        272,
+        710,
+        411
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "panel.record1.corner-ornaments",
+      "bbox": [
+        54,
+        421,
+        710,
+        559
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.record2.corner-ornaments",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "panel.record1.corner-ornaments",
+      "bbox": [
+        54,
+        572,
+        710,
+        709
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.record3.corner-ornaments",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "panel.record1.corner-ornaments",
+      "bbox": [
+        773,
+        187,
+        1794,
+        389
+      ],
+      "mode": "Reuse approved first record PNG; identical 56px corner-preserving 9-slice for frame, fill and ornaments; original bbox retained.",
+      "id": "panel.bond.corner-ornaments",
+      "nine_slice": 56
+    },
+    {
+      "asset_id": "icon.record",
+      "bbox": [
+        61,
+        216,
+        97,
+        255
+      ],
+      "mode": "Existing in-game PNG, aspect ratio preserved in original bbox.",
+      "fit": "contain"
+    },
+    {
+      "asset_id": "icon.bondheart",
+      "bbox": [
+        776,
+        139,
+        815,
+        175
+      ],
+      "mode": "Existing in-game PNG, aspect ratio preserved in original bbox.",
+      "fit": "contain"
+    },
+    {
+      "asset_id": "icon.gaugeheart",
+      "bbox": [
+        819,
+        213,
+        864,
+        254
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.gift",
+      "bbox": [
+        776,
+        400,
+        815,
+        441
+      ],
+      "mode": "Existing in-game PNG, aspect ratio preserved in original bbox.",
+      "fit": "contain"
+    },
+    {
+      "asset_id": "icon.sprout",
+      "bbox": [
+        775,
+        587,
+        818,
+        625
+      ],
+      "mode": "Existing in-game PNG, aspect ratio preserved in original bbox.",
+      "fit": "contain"
+    },
+    {
+      "asset_id": "icon.lotus",
+      "bbox": [
+        805,
+        468,
+        908,
+        553
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.cookie",
+      "bbox": [
+        980,
+        474,
+        1067,
+        549
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.honey",
+      "bbox": [
+        1159,
+        471,
+        1230,
+        553
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.dates",
+      "bbox": [
+        1314,
+        474,
+        1400,
+        552
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "game.43-fishing",
+      "bbox": [
+        801,
+        652,
+        882,
+        730
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "game.44-cooking",
+      "bbox": [
+        1069,
+        653,
+        1160,
+        731
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "game.45-study",
+      "bbox": [
+        1317,
+        652,
+        1400,
+        731
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "game.46-exploration",
+      "bbox": [
+        1571,
+        651,
+        1677,
+        734
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "icon.source",
+      "bbox": [
+        301,
+        722,
+        332,
+        757
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.notebook",
+      "bbox": [
+        1591,
+        772,
+        1627,
+        810
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.feather",
+      "bbox": [
+        72,
+        774,
+        124,
+        824
+      ],
+      "mode": "Existing in-game PNG, aspect ratio preserved in original bbox.",
+      "fit": "contain"
+    },
+    {
+      "asset_id": "game.34-reward-red",
+      "bbox": [
+        858,
+        277,
+        927,
+        335
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "game.34-reward-red",
+      "bbox": [
+        1054,
+        277,
+        1123,
+        335
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "game.34-reward-red",
+      "bbox": [
+        1250,
+        277,
+        1319,
+        335
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "game.35-reward-gold",
+      "bbox": [
+        1446,
+        277,
+        1515,
+        335
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "game.36-reward-chest",
+      "bbox": [
+        1642,
+        277,
+        1711,
+        335
+      ],
+      "mode": "existing game PNG, native color and alpha; aspect-ratio-preserving display resize only"
+    },
+    {
+      "asset_id": "nav.home.face-restored",
+      "bbox": [
+        1161,
+        34,
+        1250,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.heart.face-restored",
+      "bbox": [
+        1263,
+        25,
+        1353,
+        109
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.rings.face-restored",
+      "bbox": [
+        1368,
+        34,
+        1458,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.scroll.face-restored",
+      "bbox": [
+        1472,
+        34,
+        1562,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.map.face-restored",
+      "bbox": [
+        1576,
+        34,
+        1669,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.close.face-restored",
+      "bbox": [
+        1704,
+        34,
+        1789,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.home.frame",
+      "bbox": [
+        1161,
+        34,
+        1250,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.heart.frame",
+      "bbox": [
+        1263,
+        25,
+        1353,
+        109
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.rings.frame",
+      "bbox": [
+        1368,
+        34,
+        1458,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.scroll.frame",
+      "bbox": [
+        1472,
+        34,
+        1562,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.map.frame",
+      "bbox": [
+        1576,
+        34,
+        1669,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "nav.close.frame",
+      "bbox": [
+        1704,
+        34,
+        1789,
+        102
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "header.lower-rail",
+      "bbox": [
+        35,
+        108,
+        1818,
+        119
+      ],
+      "mode": "generated header lower rail only, replaces marked horizontal line"
+    },
+    {
+      "asset_id": "header.left-junction",
+      "bbox": [
+        24,
+        109,
+        53,
+        147
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "window.frame",
+      "bbox": [
+        10,
+        8,
+        1834,
+        846
+      ],
+      "mode": "only generated artwork retained"
+    },
+    {
+      "asset_id": "icon.home",
+      "bbox": [
+        1180,
+        43,
+        1231,
+        94
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.heart",
+      "bbox": [
+        1281,
+        44,
+        1335,
+        92
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.rings",
+      "bbox": [
+        1387,
+        46,
+        1440,
+        94
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.scroll",
+      "bbox": [
+        1493,
+        41,
+        1543,
+        95
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.map",
+      "bbox": [
+        1592,
+        44,
+        1650,
+        96
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.close",
+      "bbox": [
+        1726,
+        45,
+        1769,
+        91
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "icon.rings-large",
+      "bbox": [
+        70,
+        32,
+        157,
+        108
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    },
+    {
+      "asset_id": "ornament.header-lotus",
+      "bbox": [
+        1722,
+        86,
+        1816,
+        153
+      ],
+      "mode": "native original-extracted PNG, unchanged size"
+    }
+  ],
+  "text": [
+    {
+      "text": "인연과 유대",
+      "bbox": [
+        171,
+        33,
+        467,
+        100
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 57
+    },
+    {
+      "text": "세트",
+      "bbox": [
+        65,
+        133,
+        346,
+        187
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 29
+    },
+    {
+      "text": "호루스",
+      "bbox": [
+        378,
+        136,
+        663,
+        187
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 28
+    },
+    {
+      "text": "인연의 기록",
+      "bbox": [
+        119,
+        211,
+        282,
+        256
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 32
+    },
+    {
+      "text": "오늘부터 쌓는 유대",
+      "bbox": [
+        836,
+        136,
+        1097,
+        180
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 32
+    },
+    {
+      "text": "선물하기",
+      "bbox": [
+        835,
+        400,
+        958,
+        445
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 32
+    },
+    {
+      "text": "함께하는 활동",
+      "bbox": [
+        835,
+        585,
+        1027,
+        629
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 31
+    },
+    {
+      "text": "3일 · 옛 성소",
+      "bbox": [
+        120,
+        295,
+        660,
+        337
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 28
+    },
+    {
+      "text": "옛 성소로 향하는 길을 함께 걸었다.",
+      "bbox": [
+        121,
+        340,
+        687,
+        385
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 27
+    },
+    {
+      "text": "2일 · 시장",
+      "bbox": [
+        120,
+        444,
+        660,
+        486
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 28
+    },
+    {
+      "text": "시장에서 마음에 드는 물건을 함께 골랐다.",
+      "bbox": [
+        121,
+        489,
+        687,
+        534
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 27
+    },
+    {
+      "text": "1일 · 강가",
+      "bbox": [
+        120,
+        594,
+        660,
+        636
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 28
+    },
+    {
+      "text": "강가를 함께 걸으며 이야기를 나누었다.",
+      "bbox": [
+        121,
+        639,
+        687,
+        684
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 27
+    },
+    {
+      "text": "12 / 100",
+      "bbox": [
+        1170,
+        214,
+        1435,
+        246
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 28
+    },
+    {
+      "text": "20",
+      "bbox": [
+        852,
+        338,
+        932,
+        371
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 26
+    },
+    {
+      "text": "40",
+      "bbox": [
+        1048,
+        338,
+        1128,
+        371
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 26
+    },
+    {
+      "text": "60",
+      "bbox": [
+        1244,
+        338,
+        1324,
+        371
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 26
+    },
+    {
+      "text": "80",
+      "bbox": [
+        1440,
+        338,
+        1520,
+        371
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 26
+    },
+    {
+      "text": "100",
+      "bbox": [
+        1636,
+        338,
+        1716,
+        371
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 26
+    },
+    {
+      "text": "1",
+      "bbox": [
+        903,
+        529,
+        926,
+        563
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 25
+    },
+    {
+      "text": "1",
+      "bbox": [
+        1070,
+        529,
+        1093,
+        563
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 25
+    },
+    {
+      "text": "1",
+      "bbox": [
+        1236,
+        529,
+        1259,
+        563
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 25
+    },
+    {
+      "text": "1",
+      "bbox": [
+        1401,
+        529,
+        1424,
+        563
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 25
+    },
+    {
+      "text": "선물하기",
+      "bbox": [
+        1470,
+        477,
+        1782,
+        545
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 36
+    },
+    {
+      "text": "낚시",
+      "bbox": [
+        914,
+        666,
+        986,
+        715
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 28
+    },
+    {
+      "text": "요리",
+      "bbox": [
+        1174,
+        666,
+        1241,
+        715
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 28
+    },
+    {
+      "text": "공부",
+      "bbox": [
+        1430,
+        666,
+        1502,
+        715
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 28
+    },
+    {
+      "text": "탐험",
+      "bbox": [
+        1690,
+        666,
+        1765,
+        715
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 28
+    },
+    {
+      "text": "원문 · 관리",
+      "bbox": [
+        343,
+        718,
+        504,
+        757
+      ],
+      "font": "Noto Sans CJK KR bold",
+      "size": 25
+    },
+    {
+      "text": "“인연은 이어지고, 유대는 오늘부터 쌓입니다.",
+      "bbox": [
+        141,
+        784,
+        616,
+        818
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 25
+    },
+    {
+      "text": "추억 수첩",
+      "bbox": [
+        1644,
+        768,
+        1779,
+        815
+      ],
+      "font": "Noto Sans CJK KR regular",
+      "size": 25
+    }
+  ]
+}
