@@ -31,7 +31,11 @@ jobs:
           set -euo pipefail
           mkdir -p capture-output driver
           test "$(git -C game rev-parse HEAD)" = "$GAME_SHA"
-          GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/SillyTavern/SillyTavern.git sillytavern
+          mkdir sillytavern
+          git -C sillytavern init
+          git -C sillytavern remote add origin https://github.com/SillyTavern/SillyTavern.git
+          GIT_LFS_SKIP_SMUDGE=1 git -C sillytavern fetch --depth 1 origin 06bde939fb1e9c4c8d8641d810f0a916b5bce127
+          GIT_LFS_SKIP_SMUDGE=1 git -C sillytavern checkout --detach 06bde939fb1e9c4c8d8641d810f0a916b5bce127
           git -C sillytavern rev-parse HEAD > capture-output/sillytavern-sha.txt
           (cd sillytavern && npm install --no-audit --no-fund)
           (cd driver && npm install --no-audit --no-fund --ignore-scripts --save-exact playwright-core@1.56.1)
@@ -111,7 +115,9 @@ jobs:
               await page.waitForFunction(()=>!!window.SillyTavern?.getContext,null,{timeout:60000});
               await page.waitForTimeout(2500);
               const save=page.locator('button:visible, .menu_button:visible',{hasText:/^Save$/});
-              if(await save.count()){await save.first().click();await page.waitForTimeout(1500);}
+              await save.first().waitFor({state:'visible',timeout:60000});
+              await save.first().click();
+              await save.first().waitFor({state:'hidden',timeout:30000});
               await page.waitForFunction(()=>SillyTavern.getContext().characters?.length>0);
               await page.evaluate(()=>{
                 const ctx=SillyTavern.getContext();
