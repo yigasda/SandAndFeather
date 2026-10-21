@@ -1,0 +1,80 @@
+name: Lotus capture roundtrip smoke
+
+on:
+  pull_request:
+    branches: [recovery/lotus-182b59d0-transfer-20261021]
+    types: [opened, synchronize, reopened]
+    paths: ['.github/workflows/lotus-capture-smoke.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  browser-capture:
+    if: github.head_ref == 'ci/lotus-capture-smoke-20261022' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - name: Check out the exact PR head, only the existing test image
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /data/art/ui/bond/header_lotus_banner.png
+      - name: Render a clearly labeled smoke page in the runner browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p capture-output
+          python3 - <<'PY'
+          import base64, html, os
+          from pathlib import Path
+          image = base64.b64encode(Path('data/art/ui/bond/header_lotus_banner.png').read_bytes()).decode()
+          sha = html.escape(os.environ['HEAD_SHA'])
+          page = '<!doctype html><meta charset="utf-8"><title>Capture roundtrip smoke</title><style>body{margin:0;background:#162c38;color:#f5e8cb;font:20px sans-serif}main{padding:48px}h1{font-size:32px}strong{color:#ffd479}img{display:block;max-width:800px;max-height:260px;margin:32px 0}small{font-size:14px;overflow-wrap:anywhere}</style><main><strong>SMOKE TEST ONLY — NOT FINAL GAME UI</strong><h1>SandAndFeather capture roundtrip</h1><p>Existing repository art rendered by a real browser.</p><img alt="Existing lotus banner asset" src="data:image/png;base64,' + image + '"><small>PR head: ' + sha + '</small><p>Browser screenshot → GitHub artifact → chat delivery</p></main>'
+          Path('capture-smoke.html').write_text(page, encoding='utf-8')
+          PY
+          google-chrome --version
+          google-chrome --headless --disable-gpu --disable-background-networking --no-first-run --no-default-browser-check --hide-scrollbars --window-size=960,640 --virtual-time-budget=3000 --screenshot="$PWD/capture-output/lotus-capture-smoke.png" "file://$PWD/capture-smoke.html"
+          python3 - <<'PY'
+          import hashlib, json, os, struct, subprocess
+          from datetime import datetime, timezone
+          from pathlib import Path
+          path = Path('capture-output/lotus-capture-smoke.png')
+          png = path.read_bytes()
+          assert png[:8] == b'\x89PNG\r\n\x1a\n', 'Not PNG'
+          width, height = struct.unpack('>II', png[16:24])
+          assert (width, height) == (960, 640), (width, height)
+          assert 1000 < len(png) < 2000000, len(png)
+          actual_sha = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert actual_sha == os.environ['HEAD_SHA']
+          metadata = {
+              'purpose': 'Browser and artifact roundtrip smoke ONLY; not final game UI or game validation',
+              'head_sha': actual_sha,
+              'run_id': os.environ['GITHUB_RUN_ID'],
+              'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'browser': subprocess.check_output(['google-chrome', '--version'], text=True).strip(),
+              'captured_at_utc': datetime.now(timezone.utc).isoformat(),
+              'image': path.name, 'width': width, 'height': height,
+              'bytes': len(png), 'sha256': hashlib.sha256(png).hexdigest(),
+              'asset': 'data/art/ui/bond/header_lotus_banner.png',
+              'game_runtime_tested': False
+          }
+          Path('capture-output/metadata.json').write_text(json.dumps(metadata, indent=2) + '\n')
+          print(json.dumps(metadata, indent=2))
+          PY
+      - name: Upload one PNG and brief metadata only
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: lotus-capture-smoke
+          path: |
+            capture-output/lotus-capture-smoke.png
+            capture-output/metadata.json
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 6
