@@ -1,0 +1,288 @@
+{
+  "archive_sha256": "c8612498cd722dfa28f4d8090ad9d243a1aa6f48b8b8857d9ec429738dcd12e1",
+  "archive_bytes": 24118264,
+  "parts": [
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part000",
+      "size": 524286,
+      "sha256": "0549d3b7dd68a36754cc58727970d931f5fdae3bde94b1731d5eb388f347c040",
+      "git_blob_sha": "7b817cde05a52e5a233711b4c2cd74cbfb33321b"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part001",
+      "size": 524286,
+      "sha256": "9a772f5c1d6b4e92167e4b65cade3b05c0e94820a24a1fe95f96b1559b8977dd",
+      "git_blob_sha": "93ad047ba8eb01dea8726cca0faa6471c010f05d"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part002",
+      "size": 524286,
+      "sha256": "d9bccc4f68c3f7c888e7f98acc75bc38e3939311d61bfd95a441465ed0075b0b",
+      "git_blob_sha": "85d959205c2ecd98d7f5896b7518f928bfb107a7"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part003",
+      "size": 524286,
+      "sha256": "e53032822904e2e1047e058b6be2e4bb5b4fe9b7ec7a949b9d431dcad117b34e",
+      "git_blob_sha": "8e20a9623721d09949dbb7087c62cb51c392bb97"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part004",
+      "size": 524286,
+      "sha256": "318a066069bcd4bda03c55ac8ec0a624c793146d5e914c49825dc290a36f05f1",
+      "git_blob_sha": "34e9577af57c5203512775413f493875723f0717"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part005",
+      "size": 524286,
+      "sha256": "200f68540ebc7a7388f34f09c8cf416f22a4522d95f327eb00e3b70662ad4e9c",
+      "git_blob_sha": "f9b8d017d516af4c7501272a831a1baf1b28bab4"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part006",
+      "size": 524286,
+      "sha256": "6152ae06afce63155d149ab9d6d1ab2d886e5ed6de778b0611c3a432540e3012",
+      "git_blob_sha": "8c11fbd7aad7ba4ed38733b58e5e413aeac77fa3"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part007",
+      "size": 524286,
+      "sha256": "7a65da69898826768cb12a601e45da2d039f152922dcbffad5d5834e226b730c",
+      "git_blob_sha": "8fc6e017133f662b17f34d7dda317be75440deda"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part008",
+      "size": 524286,
+      "sha256": "6aa2237cbb6c38fcfb6176d8f07a4b27b2c7606cc3975078bdcc342262155d33",
+      "git_blob_sha": "59cde44b201b4ec16d8055b4c983a118e029a9c2"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part009",
+      "size": 524286,
+      "sha256": "a219aeb2970e50977abe1bcd9cb4ca93bdeadd78a6f88d95042c356359a4d1a2",
+      "git_blob_sha": "1ef40f7fb5439475b360e64a4aaf6976b5deaad7"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part010",
+      "size": 524286,
+      "sha256": "8721943717c21be4e1f5d0dabb8a428640201f41d2d0164ffde7136530fcfa56",
+      "git_blob_sha": "c1c6bd7a9ae5cc73579483a70b5e79c3f3f318d0"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part011",
+      "size": 524286,
+      "sha256": "90c0b58f09ac09cfb8ab04d30002a3713ab8ff2201917b32eb560a7141d3802e",
+      "git_blob_sha": "67ded359b37cab986c3e67e989aa13e7c212ebda"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part012",
+      "size": 524286,
+      "sha256": "565f013afdd8b1f3e6bfd863b9115c8d54a095fe204a64313c89ae3889d7ce49",
+      "git_blob_sha": "02e0fb5316b3b57c6deaba0ad3cfd38ec0c8e251"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part013",
+      "size": 524286,
+      "sha256": "11b772d524938faa2d52640a85aa897fba4aa459e3de6f12cd8f8126f9caada8",
+      "git_blob_sha": "dbc60a837d216974e99a978dfe79e27b98d9a285"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part014",
+      "size": 524286,
+      "sha256": "4164c5e126d8a498036590ffc42f1be736b9791b8925e3b22e489d7526fce3a2",
+      "git_blob_sha": "2340707269c4cf896b44cf70213cfac3635ece60"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part015",
+      "size": 524286,
+      "sha256": "dd88fbd0bf7c7b4fdbdb48c096fc61457c4279a87ae40d3c40de5c7d4163aa2d",
+      "git_blob_sha": "0326179f191530513291f7372855cbd0b8779d1d"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part016",
+      "size": 524286,
+      "sha256": "3119fe6719d58706a5be7537eaec854a29697dee0c2ec6719012f3f67ba7e02c",
+      "git_blob_sha": "7b1f3d1f4f6b6b4961684e8bca6611a4fe9387c2"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part017",
+      "size": 524286,
+      "sha256": "e8c64574eb04c8d52cdf5222ca7496c1e36057e2e8aa64a31edb43335f1922e5",
+      "git_blob_sha": "a9c7748fa9632be46f612721bd422e87d8e4ae2c"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part018",
+      "size": 524286,
+      "sha256": "6d6afe7db8676fda200e2c25ee4eb923f79e6fccaaf17014ae0d94b07c47b0df",
+      "git_blob_sha": "4d5eb2f75e9476a323865655723ad2a4ee6fb28d"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part019",
+      "size": 524286,
+      "sha256": "387a6b2d2270e1b0665df0fe83996299dcac116be58b2d388569eabeadc47990",
+      "git_blob_sha": "f0dc9e50822ec0ff7714d7312c56585bc83c91d4"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part020",
+      "size": 524286,
+      "sha256": "3956139fed230a6329343bc867c6ad732635a1a9378fab1803f0d7a271b3f380",
+      "git_blob_sha": "fe1c562ed2379460015fa480bf440a2aab833a31"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part021",
+      "size": 524286,
+      "sha256": "6de8ee4627c123af4dd9da1994cb9464e365517e590949ac39704cf51824272e",
+      "git_blob_sha": "8ea8becd7a7de7139f149e6ed6b197aba27c5d09"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part022",
+      "size": 524286,
+      "sha256": "f9e0abd55fde828f09ca869bcaa828a9ec4373ec4bc7b0debb7e9a92e2f0273a",
+      "git_blob_sha": "8a409b9f50d104ad0018ceaff0593cacaa79801d"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part023",
+      "size": 524286,
+      "sha256": "3951961cfcb4a28b1c84a83a84be38c7e9f7c1f1ff68f76f280e35f36b119833",
+      "git_blob_sha": "5ec2ef456476f4c3f3829afc991bc85e9e5bea97"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part024",
+      "size": 524286,
+      "sha256": "1127b47f3a4b06528a6fadf60d551d8903d29c8ecd1b51dbb0c982ddb811458c",
+      "git_blob_sha": "247451195df798feb2383ea53ab3eb2da7beb488"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part025",
+      "size": 524286,
+      "sha256": "ff48ad8bc21e9213791b64bff9c10b64e288b7b456510577f34c2e97f07e3e62",
+      "git_blob_sha": "ce7ab701d73a5cb2efd4afaed56fd51bb55e5fdf"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part026",
+      "size": 524286,
+      "sha256": "898f21e92af7cc7b88fdb7621f6e591c2393cc3d5bb28df99e36c665316fac63",
+      "git_blob_sha": "bee821d157ae856a0cf732ded66a3a4cdfb35fad"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part027",
+      "size": 524286,
+      "sha256": "90957d18f07b89b725dad702a85feb2a5e45a54a88782d20b529c112be8f146c",
+      "git_blob_sha": "f4acb576bee713629f64cb6b29fd41a79db96959"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part028",
+      "size": 524286,
+      "sha256": "3847e0ea256e875d8ffedfcae9a835346eaa8b40a0368ba107a4f06bd8c7f8b7",
+      "git_blob_sha": "0eb4448f45493c1ae7f037043ad3183a35a2d1f6"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part029",
+      "size": 524286,
+      "sha256": "0add74deaa0e0a33039c154fdffc3aac2565cbeab5649c209be38cc29a352796",
+      "git_blob_sha": "df220936dd46bf45947d1e05a67e973a8071789e"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part030",
+      "size": 524286,
+      "sha256": "9e0d009e468792ea49ef26918bdffbe42990bcafb69e9348ef3f63adcd6eb57e",
+      "git_blob_sha": "a55c6844151f57077c209b39ba336c6e66cf60ad"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part031",
+      "size": 524286,
+      "sha256": "27dbbc862e6aebd9ad892f6fc49d09ff78786017a977fafaa26c6c55f0ded2d2",
+      "git_blob_sha": "8ebe5a50dcac0e5b1cd5e808c010c13bed286775"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part032",
+      "size": 524286,
+      "sha256": "756ce1f12bc4bbdbe2ab49d6fd5fe1b8d52624e37858fd7075434eb9c082b0d7",
+      "git_blob_sha": "bbe187c759e10113ab5ef4ef79e895b3bddda106"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part033",
+      "size": 524286,
+      "sha256": "e7541a57bbcb84c91002d7540d9f7aa8b35b3ec592f0e459ea9a151c96a138e4",
+      "git_blob_sha": "a2d4b218d7c50138533365ccf0c60a569be0e913"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part034",
+      "size": 524286,
+      "sha256": "b862d90bc01334f5fc13d014b621a45c736235def20a23ed92b23c779984bd3c",
+      "git_blob_sha": "36afa66046b13d2f60320ee704c4b5fbdae5c877"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part035",
+      "size": 524286,
+      "sha256": "6ec61a13134d30bb88f2e02f8c76c94cd1d6b7339fa6bc2efedfcea1517b882c",
+      "git_blob_sha": "53a995e637d6be73221602f8ea962ce8a86756cd"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part036",
+      "size": 524286,
+      "sha256": "8396996446de83fecafcb452d49e601c53e89881fbd8a4f4ea591fe16fe94a07",
+      "git_blob_sha": "a0f841381541c15815804ecc3016bd677ca355b0"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part037",
+      "size": 524286,
+      "sha256": "1614f3bf9e1d1bc5364d175843861b81a0fd8ff6bc9bbf2f0c8cef23520ce5ed",
+      "git_blob_sha": "11f66940269435bea741ce9e24bf709b69060d05"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part038",
+      "size": 524286,
+      "sha256": "b31d344838201029b339955bcd609042355fa445cbca48d5d191eba0dc3270b4",
+      "git_blob_sha": "5bad3797120a998feef37eeeef05237d36d8e7aa"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part039",
+      "size": 524286,
+      "sha256": "bf4b23b27722da223b1440c0ccffdea6f1324e01102ba2eeb2dd955703563fba",
+      "git_blob_sha": "1a5857b0a08475cb8a75ff507f8381c303d580cc"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part040",
+      "size": 524286,
+      "sha256": "aa4c39bdaa7557a2923b3a9a538da460d8019fcabe31c3bb68132e0f8e77a4a8",
+      "git_blob_sha": "0d5c6c9c0160ad9a2f9b066788e66022e6069479"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part041",
+      "size": 524286,
+      "sha256": "21d51a7c9c9ade11a7909f676e6ae80475ae330cb3b54b9514fd951586482684",
+      "git_blob_sha": "19312abad4070ebd6da2cac1a0caf32cda2f4ad2"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part042",
+      "size": 524286,
+      "sha256": "c66a03ae3dd7f194ce2a82ca34dab62dffd862a7e33ab74e66c8089adbacbe32",
+      "git_blob_sha": "8072b1ff1bc71ba129db7fee00abe0c03a49e846"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part043",
+      "size": 524286,
+      "sha256": "d2abc231a80bce9a64b1dc81583c19cec5874a92dc61437e603d28b759b72a9b",
+      "git_blob_sha": "c3a1bd7fe68801dbc086f1ac83320ac7844c1bbe"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part044",
+      "size": 524286,
+      "sha256": "9bf6b0edccd9624ddde2bbbb5a682fd26a95c2a9bf5d984cf16ba0338b5ff76d",
+      "git_blob_sha": "65ebb8b9301fb2494fc309a47fc31dc18b3f977b"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part045",
+      "size": 524286,
+      "sha256": "1e108e0dff823e0f97e18ae1e46dcb5f5e0fc3fc0067bba686ff346667638c25",
+      "git_blob_sha": "2bd8cf3ee686ad98a6f010802ebd70da16dd2892"
+    },
+    {
+      "path": "recovery/lotus-182b59d0/lotus-recovery.zip.part046",
+      "size": 1108,
+      "sha256": "e911050353b1b03ef0e0fb4aa15271610c7134c4a21b10fc4e1a22b085bf3970",
+      "git_blob_sha": "ff3eb81d52b82f6c966414f0e2c76a5f695df4a0"
+    }
+  ]
+}
