@@ -1,5 +1,7 @@
 """Desert maps (사막맵/, approved art 34 places / 40 PNG). One map a picture, the Duat way (tools/maps/duat.py):
 the picture is copied byte for byte, the floor is the user's own collision picture.
+An explicitly measured runtime under-lintel passage may reconnect floor hidden by an overhead beam;
+the original collision PNG is never edited, and the additive exception is recorded in map source metadata.
 
 The collision pictures (사막맵/충돌/, from the user's Google Drive folder '사막맵 충돌') are transparent PNGs the size of
 the art: the painted part (one flat colour) is where the feet may go, the clear part is dunes, walls, stones. The
@@ -37,7 +39,7 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
       'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
-      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling'}
+      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling', 'desert_city_archive': '18'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # User approved for release (2026-10-20): both desert kinds use 1.6 × the base 4.2 tiles/s, with walking animation in step.
 # This is only map.walkSpeed; actor size, camera, collision and the global base speed stay unchanged.
@@ -49,6 +51,15 @@ WALK = {'big': 1.6, 'detail': 1.6}
 CAMERA = {'big': 0.6, 'detail': 0.8}
 ACTOR = {'big': 1.6, 'detail': 1.4}
 ALPHA = 128
+# The 18 mask traces the overhead lintel as solid and disconnects the visible walk-through doorway.
+# Source-pixel half-open box, no changes to either approved PNG; the adjoining posts remain solid.
+# Counting new pixels makes an upstream collision change stop the build for a fresh visual review.
+RUNTIME_PASSAGES = {'desert_city_archive': [{
+    'box': [779, 627, 993, 663], 'addedPixels': 7013,
+    'sourceCollisionSha256': '84975e2b0aea877d62af70ffec5ab0fa2ba5be9160f369931576e008e9f43d32',
+    'reason': 'Walk-through floor under the foreground wooden lintel; original collision PNG unchanged.'
+}]}
+
 # every landing at least GAP people-widths (tiles × the map's actorScale) from every exit, so walking about where she
 # lands, left or right, never takes her back (user: "좌우로 움직이다가 다시 전 맵으로 돌아가는 일이 없게", "착지랑 출구
 # 사이를 좀 더 멀리"); checked below, the build stops when one is closer
@@ -62,6 +73,9 @@ EXIT_POLYGONS = {
     ('desert_city_plaza', 'east'): [(1754,430),(1773,430),(1773,515),(1754,515)],
     ('desert_city_plaza', 'dwelling'): [(590,302),(635,302),(646,317),(590,317)],
     ('desert_city_dwelling', 'south'): [(765,850),(1010,850),(1010,870),(765,870)],
+    # 17 right house: follow the clear floor beyond the sill, not the posts or shelves.
+    ('desert_city_plaza', 'archive'): [(1228,300),(1333,300),(1333,315),(1220,315)],
+    ('desert_city_archive', 'south'): [(779,782),(993,782),(993,802),(779,802)],
     ('desert_colonnade', 'forecourt'): [(1706,582),(1720,580),(1736,644),(1728,650)],
     ('desert_forecourt_west', 'east'): [(1439,107),(1595,107),(1595,127),(1435,127)],
     ('desert_forecourt_east', 'east'): [(1665,254),(1684,248),(1732,319),(1732,340),(1727,342)],
@@ -90,6 +104,9 @@ REVIEW = OUT_ART / 'desert-connections-review'
 # docs/OPUS-HANDOFF.md "가구에 몸 가리기": straight edges measured at 5-6x on the rows they cross, joined as corners
 # (user: "지붕 맞춰"). Only the edge against where she can be shown matters; the rest of a polygon is the same stone.
 FRONT = {
+    # 18: only the actual horizontal wooden lintel, not the floor beneath or the whole doorway.
+    # Its foot line is the visible sill; bodies under the beam go behind it in both travel directions.
+    'desert_city_archive': [(802, [[744,627],[1028,627],[1028,662],[744,662]])],
     # 11: the lintel over the stairway down (its lower edge against the dark opening: 615,291 → 784,338), the left jamb
     # (inner edge x 615 down to its foot at 455-465) and the right jamb (inner edge 784 → 781, its foot at 528), each its own
     # foot so someone on the stairs in front of a jamb's foot is not put behind it (left jamb taken out, then back: user
@@ -136,14 +153,18 @@ PLACES = [
      {'outside': ((300, 1350), 'up'), 'door': ((672, 468), 'down')},
      [('left', (0, 335, 14, 1536), 'desert_buried_temple', 'door'), ('bottom', (0, 1522, 644, 1536), 'desert_buried_temple', 'door'),
       ('door', (640, 312, 790, 352), 'desert_votive_hall', 'south')]),
-    # 17 잊힌 지하 도시의 광장: 오른쪽 계단 위가 11의 문 (guide: 17 우측 계단); 왼쪽 집 주거실·오른쪽 집 18 기록고는 다음
+    # 17 잊힌 지하 도시의 광장: east stairs lead to T1E; the existing house doors lead to dwelling and 18 archive.
     ('desert_city_plaza', '잊힌 지하 도시의 광장', '17_지하도시광장.png', '17_지하도시광장.png',
      # the landing inside so all of her and the companion show (the camera stops at the map's right edge), on the walk at
      # the top of the stairs in the user's blue circle ("착지 파란색이 더 안전할 듯"), GAP from the exit.
      # The exit as it was (the user's red mark is the same right edge, "출구는 빨간색")
-     {'east': ((1623, 570), 'left'), 'dwelling': ((625,400), 'down')},
+     {'east': ((1623, 570), 'left'), 'dwelling': ((625,400), 'down'), 'archive': ((1278,415), 'down')},
      [('east', (1754,430,1773,515), 'desert_forecourt_east', 'south'),
-      ('dwelling', (590,302,646,317), 'desert_city_dwelling', 'south')]),
+      ('dwelling', (590,302,646,317), 'desert_city_dwelling', 'south'),
+      ('archive', (1220,300,1333,315), 'desert_city_archive', 'south')]),
+    ('desert_city_archive', '지하 도시의 옛 기록고', '18_옛기록고.png', '18_옛기록고.png',
+     {'south': ((887,590), 'up')},
+     [('south', (779,782,993,802), 'desert_city_plaza', 'archive')]),
     ('desert_city_dwelling', '지하 도시 부속 주거실', '17_추가_주거실.png', '17_추가_주거실.png',
      {'south': ((887,755), 'up')},
      [('south', (765,850,1010,870), 'desert_city_plaza', 'dwelling')]),
@@ -195,7 +216,8 @@ for _place in PLACES:
         _place[4].update({'sanctuary': ((275, 250), 'down')})
         _place[5].extend([('sanctuary', (272, 175, 321, 190), 'desert_old_sanctuary', 'south')])
 EXIT_POLYGONS.update({('desert_old_sanctuary', 'south'): [(1180, 744), (1410, 700), (1410, 719), (1180, 764)], ('desert_golden_dunes', 'sanctuary'): [(289, 175), (321, 175), (318, 190), (272, 190)]})
-LANDING_MIN_GAP = {('desert_old_sanctuary', 'south'): 90, ('desert_golden_dunes', 'sanctuary'): 55}
+LANDING_MIN_GAP = {('desert_old_sanctuary', 'south'): 90, ('desert_golden_dunes', 'sanctuary'): 55,
+                   ('desert_city_plaza', 'archive'): 100}
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
@@ -211,6 +233,13 @@ def main(review_ids=None):
         cimg = Image.open(SRC / '충돌' / coll)
         assert cimg.size == (w, h), f'{coll}: collision {cimg.size} is not the art size {(w, h)}'
         mask = np.asarray(cimg.convert('RGBA'))[..., 3] >= ALPHA
+        runtime_passages = RUNTIME_PASSAGES.get(ident, [])
+        for passage in runtime_passages:
+            assert sha(SRC / '충돌' / coll) == passage['sourceCollisionSha256'], f'{ident}: under-lintel passage needs fresh source review'
+            x0, y0, x1, y1 = passage['box']
+            strip = mask[y0:y1, x0:x1]
+            assert int((~strip).sum()) == passage['addedPixels'], f'{ident}: under-lintel added floor changed'
+            strip[:] = True
         PX = px_of(ident)
         safe = P.safe_centres(mask, PX)
         out_file = f'desert-{NO[ident]}.png'; shutil.copyfile(src, OUT_ART / out_file)
@@ -270,7 +299,8 @@ def main(review_ids=None):
                 'note': '',
                 'source': {'art': f'사막맵/{file}', 'artSha256': manifest[file]['sha256'], 'collision': f'사막맵/충돌/{coll}',
                            'collisionSha256': sha(SRC / '충돌' / coll), 'floorAlphaAtLeast': ALPHA,
-                           **({'collisionMadeBy': 'tools/maps/desert-collision.py'} if coll in MADE else {})}}
+                           **({'collisionMadeBy': 'tools/maps/desert-collision.py'} if coll in MADE else {}),
+                           **({'runtimePassages': runtime_passages} if runtime_passages else {})}}
         (ROOT / f'data/maps/{ident}.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
         art[ident] = {'file': R.ART + out_file, 'fullMap': True, 'lazy': True, 'origin': [0, 0], 'scale': [16 / PX] * 2,
                       'day': [0, 0, w, h], 'night': [0, 0, w, h], 'clip': [[0, 0], [w, 0], [w, h], [0, h]], 'tintActors': False, 'tintWorld': False}

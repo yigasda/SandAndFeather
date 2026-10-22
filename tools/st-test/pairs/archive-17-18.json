@@ -1,0 +1,16 @@
+[
+  [
+    "desert_city_archive",
+    "south",
+    "south",
+    "desert_city_plaza",
+    "archive"
+  ],
+  [
+    "desert_city_plaza",
+    "archive",
+    "archive",
+    "desert_city_archive",
+    "south"
+  ]
+]
