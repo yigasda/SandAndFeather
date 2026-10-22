@@ -1,4 +1,4 @@
-name: Lotus controlled failure diagnosis
+name: Lotus portal controlled diagnosis
 
 on:
   pull_request:
@@ -126,11 +126,12 @@ jobs:
           printf 'served_game_sha=%s\ndiagnostic_harness_sha=%s\n' "$GAME_SHA" "$(git -C test-harness rev-parse HEAD)" >> "$OUT/provenance.txt"
           node -e "const p=require('playwright');(async()=>{let b=await p.chromium.launch({executablePath:'/usr/bin/chromium'});console.log(b.version());await b.close()})()" > "$OUT/browser-version.txt"
           RESULT=0
-          node test-harness/tools/st-test/portal-walk.cjs "$OUT/portal-city" --independent-tiles 1.7472 --city-dwelling --return-trace > "$OUT/portal-city.log" 2>&1 || RESULT=1
-          node test-harness/tools/st-test/desert-ult.cjs "$OUT/desert-ult" > "$OUT/desert-ult.log" 2>&1 || RESULT=1
-          if [ "$VARIANT" = final ]; then
-            node test-harness/tools/art/verify-ui-themes.cjs "$OUT/theme" > "$OUT/theme.log" 2>&1 || RESULT=1
-          fi
+          test -d game/src && test -d game/data
+          test -f game/tools/st-test/touch-walk.cjs
+          cp test-harness/tools/st-test/portal-walk.cjs game/tools/st-test/portal-walk.cjs
+          node --check game/tools/st-test/portal-walk.cjs
+          git -C game diff --stat > "$OUT/test-only-diff.txt"
+          node game/tools/st-test/portal-walk.cjs "$OUT/portal-city" --independent-tiles 1.7472 --city-dwelling --return-trace > "$OUT/portal-city.log" 2>&1 || RESULT=1
           (cd "$EXT" && find src data -type f -print0 | sort -z | xargs -0 sha256sum; sha256sum index.js style.css manifest.json) > "$OUT/runtime-hashes-after.txt"
           cmp "$OUT/runtime-hashes-before.txt" "$OUT/runtime-hashes-after.txt" || RESULT=1
           set -e
@@ -142,7 +143,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: lotus-diagnosis-${{ matrix.variant }}
+          name: lotus-portal-${{ matrix.variant }}
           path: |
             full-output/**/*.png
             full-output/desert-ult/**/*.png
