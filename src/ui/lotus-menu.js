@@ -11,9 +11,9 @@ const place = (el, [x, y, right, bottom]) => Object.assign(el.style, {
 });
 const navIds = ['home', 'heart', 'rings', 'scroll', 'map'];
 const tabIds = ['world', 'party', 'bond', 'quests', 'map'];
-// Same transparent-source bounds as the approved bond scene. These are display
-// coordinates, not edits to either source PNG.
-const sourceBounds = { 'window.frame': [8, 7, 1835, 844], 'header.lower-rail': [17, 480, 1579, 503] };
+// Same outer-frame source bounds as the approved bond scene. The approved
+// header rail and junction already match their display boxes; do not crop them.
+const sourceBounds = { 'window.frame': [8, 7, 1835, 844] };
 
 export function attachLotusMenu(root, wrap, active) {
     const pop = wrap.querySelector('.sf_pop'), body = wrap.querySelector('.sf_pop_body > .sf_stack');

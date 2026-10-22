@@ -11,9 +11,9 @@ const place = (el, [x, y, right, bottom]) => Object.assign(el.style, {
     left: `${x}px`, top: `${y}px`, width: `${right - x}px`, height: `${bottom - y}px`,
 });
 const itemIcons = { blue_lotus: 'icon.lotus', bread: 'icon.cookie', honey: 'icon.honey', dates: 'icon.dates' };
-// The generated files include transparent margins. Their alpha>128 bounds reconstruct
-// the approved assembly (verified against assembled-bond.png), not a new art crop.
-const sourceBounds = { 'window.frame': [8, 7, 1835, 844], 'header.lower-rail': [17, 480, 1579, 503] };
+// The outer frame retains its approved transparent-source bounds.
+// The approved header rail and junction now match their display boxes natively.
+const sourceBounds = { 'window.frame': [8, 7, 1835, 844] };
 
 export function lotusBondScene(wrap) {
     const root = wrap.closest('#sf_game'), legacy = wrap.querySelector('.sf_pop');

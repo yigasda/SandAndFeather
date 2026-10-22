@@ -15,7 +15,8 @@
     "Outer window frame and header lower rail use the selected generated PNGs. The pyramid strip is omitted. Other UI art uses extracted PNGs or existing game PNGs.",
     "At displayed bond 12/100: rewards 20/40/60 use existing red gift, 80 gold gift, 100 chest.",
     "No discarded slots, source screenshots, alternative candidates, scripts or internal notes included.",
-    "2026-10-21 user-directed repair: three panels reuse record1 with identical 56px 9-slice; five title/footer icons reference existing game PNGs. Original assembly retained in local restoration commit; unused original icon PNGs preserved."
+    "2026-10-21 user-directed repair: three panels reuse record1 with identical 56px 9-slice; five title/footer icons reference existing game PNGs. Original assembly retained in local restoration commit; unused original icon PNGs preserved.",
+    "2026-10-22 user-approved header replacement: lower rail 1783x11 and left junction29x38 rendered directly at unchanged display boxes. Obsolete lower-rail source crop removed in both landscape renderers. Other PNGs and placements preserved."
   ],
   "assets": [
     {
@@ -1200,15 +1201,15 @@
       "file": "assets/header.lower-rail.png",
       "role": "ornament",
       "native_size": [
-        1597,
-        985
+        1783,
+        11
       ],
       "alpha_range": [
         0,
-        255
+        254
       ],
-      "sha256": "09d3d45459e56519f336a597c7e87feef630aef0367f6709003eb5098adcf30b",
-      "notes": "Native PNG bytes preserved. See placements for display scaling."
+      "sha256": "3044165c1c3a6b0dfc12b3002e6613030cf3649520d3903505b8143cf6ba6f90",
+      "notes": "User-approved 2026-10-22 replacement PNG. Native dimensions match the unchanged display box; no source crop or resampling."
     },
     {
       "id": "header.left-junction",
@@ -1220,10 +1221,10 @@
       ],
       "alpha_range": [
         0,
-        255
+        254
       ],
-      "sha256": "cf4aed5439529d08481e7946864590a3a4714c9adbbbc88e6fbeec19b8f65d6c",
-      "notes": "Native PNG bytes preserved. See placements for display scaling."
+      "sha256": "b5b9349d244464bfa625361a3f6d3593ff1339e09bcf6e975b7c6ee1aec18853",
+      "notes": "User-approved 2026-10-22 replacement PNG. Native dimensions match the unchanged display box; no source crop or resampling."
     },
     {
       "id": "window.frame",
@@ -2403,7 +2404,7 @@
         1818,
         119
       ],
-      "mode": "generated header lower rail only, replaces marked horizontal line"
+      "mode": "user-approved replacement PNG at native size, unchanged placement"
     },
     {
       "asset_id": "header.left-junction",
@@ -2413,7 +2414,7 @@
         53,
         147
       ],
-      "mode": "native original-extracted PNG, unchanged size"
+      "mode": "user-approved replacement PNG at native size, unchanged placement"
     },
     {
       "asset_id": "window.frame",
