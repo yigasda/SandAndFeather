@@ -26,7 +26,13 @@ const log = m => { console.log(m); res.push(m); };
     const sleep = ms => page.waitForTimeout(ms);
     const W = require('./touch-walk.cjs')(page, cdp);
     const boot = async () => {
-        await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 }); await sleep(2500);
+        await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 });
+        // A fresh host may expose getContext before its onboarding Save button or characters.
+        // Wait for either actual ready state, rather than missing Save after an arbitrary 2.5 s.
+        await page.waitForFunction(() => SillyTavern.getContext().characters?.length > 0 ||
+            [...document.querySelectorAll('button,.menu_button')].some(e => e.textContent.trim() === 'Save' &&
+                e.getBoundingClientRect().width > 0 && e.getBoundingClientRect().height > 0 &&
+                getComputedStyle(e).visibility !== 'hidden'), null, { timeout: 60000 });
         const save = page.locator('button:visible, .menu_button:visible', { hasText: /^Save$/ });
         if (await save.count()) { await save.first().click(); await sleep(1500); }
         await page.waitForFunction(() => SillyTavern.getContext().characters?.length > 0, null, { timeout: 30000 });
@@ -112,10 +118,11 @@ const log = m => { console.log(m); res.push(m); };
         const w0 = await U();
         const hp0 = await page.evaluate(() => T.field.fieldState().run.hp.somang);
         ok(w0.wards.somang?.left === num.somang.ward && w0.wards.set?.left === num.somang.ward, `소망 궁(연꽃 방패): 소망·세트 각자 흡수 ${num.somang.ward}`);
-        // a blow of 5 (±1): the ward takes it all; the next takes what is left and the rest goes through
+        // First 5 (±1) is fully absorbed by ward 8, leaving 2..4. Second 6 (±1) guarantees spill.
+        // Two rolls of 4 would exactly exhaust ward 8 with no HP loss; that is valid game behavior.
         await page.evaluate(() => T.field.testHit('somang', 5)); await sleep(700);
         const w1 = await U(), hp1 = await page.evaluate(() => T.field.fieldState().run.hp.somang);
-        await page.evaluate(() => T.field.testHit('somang', 5)); await sleep(700);
+        await page.evaluate(() => T.field.testHit('somang', 6)); await sleep(700);
         const w2 = await U(), hp2 = await page.evaluate(() => T.field.fieldState().run.hp.somang);
         ok(hp1 === hp0 && w1.wards.somang.left < num.somang.ward && hp2 < hp0 && !w2.wards.somang, `연꽃 방패는 흡수: 첫 타 다 막음(체력 ${hp0} → ${hp1}, 남은 흡수 ${w1.wards.somang?.left}), 다음 타 남은 만큼 막고 나머지 들어옴(체력 → ${hp2}), 방패 끝`);
         // the old 2 s no-harm is gone (not on top of the ward), and the companion's ward is its own
