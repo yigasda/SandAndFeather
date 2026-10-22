@@ -26,6 +26,20 @@ export function showCard(root, { tag = '', title = '', text = '', body = null, b
     const wrap = document.createElement('div');
     wrap.className = 'sf_pop_wrap';
     if (kind) wrap.dataset.kind = kind;
+    // Semantic title artwork for cozy; other themes keep their own title symbols.
+    const activeTab = root.querySelector('.sf_tabs [data-tab].sf_on')?.dataset.tab;
+    const titleArt = /인연|유대/.test(title) || kind.startsWith('bond') ? 'icon.rings-large'
+        : /낚시|선착장/.test(title) || kind.startsWith('fish') ? 'game.43-fishing'
+        : /부엌|요리|식사/.test(title) ? 'game.44-cooking'
+        : /도감|수첩/.test(title) ? 'icon.notebook'
+        : /설정|축제|텃밭/.test(title) || kind === 'appearance' ? 'icon.lotus'
+        : /시장|가방|선물/.test(title) || kind === 'inventory' ? 'icon.gift'
+        : kind === 'party' || kind.startsWith('character') || kind === 'conversation' ? 'icon.heart'
+        : /탐사|지도/.test(title) || (activeTab === 'map' && openCount === 0) ? 'icon.map'
+        : /결산|달력|기록/.test(title) ? 'icon.record'
+        : 'icon.scroll';
+    wrap.style.setProperty('--lotus-title-icon', `url("${new URL(`../../data/art/ui/lotus/${titleArt}.png`, import.meta.url).href}")`);
+
     wrap.innerHTML = `
       <div class="sf_pop${wide ? ' sf_pop_wide' : ''}" role="dialog" aria-label="${esc(title)}">
         <div class="sf_pop_head">
