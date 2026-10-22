@@ -1,4 +1,5 @@
 @import url("src/ui/bond.css");
+@import url("src/ui/lotus-menu.css");
 /* 모래와 깃털 — the same look as NarrativeArchive: cream paper, orange accent, round cards.
    .sf_dark (set by the theme setting) swaps the colours for the warm dark palette. */
 
@@ -2224,3 +2225,4 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  #sf_game .sf_lotus_scene > .sf_lotus_hit:focus-visible { outline:2px solid #fff7e5;outline-offset:-4px; }
  #sf_game .sf_lotus_scene > .sf_lotus_hit:disabled { cursor:default; }
 }
+

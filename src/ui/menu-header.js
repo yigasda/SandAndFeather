@@ -1,3 +1,5 @@
+import { attachLotusMenu } from './lotus-menu.js';
+
 // Runtime adaptation of the approved original10 handoff (3d68d03c).
 // Original header ornaments keep their proportions; only plain connecting strips stretch.
 const HEADERS = { classic:[770,96,32,738,360,410], walnut:[797,89,60,770,150,775], journal:[799,84,85,714,355,445], temple:[756,91,195,560,222,535], cozy:[804,84,40,700,360,444] };
@@ -66,5 +68,7 @@ export function attachMenuHeader(root, wrap, active) {
     }
     wrap.sfRefreshMenu = refresh;
     const observer = new ResizeObserver(refresh); observer.observe(head); refresh();
-    return () => { observer.disconnect(); delete wrap.sfRefreshMenu; };
+    const detachLotus = ['party', 'quests', 'map'].includes(active) ? attachLotusMenu(root, wrap, active) : null;
+    return () => { detachLotus?.(); observer.disconnect(); delete wrap.sfRefreshMenu; };
 }
+
