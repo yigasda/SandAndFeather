@@ -29,6 +29,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
           mkdir -p capture-output driver
           test "$(git -C game rev-parse HEAD)" = "$GAME_SHA"
           mkdir sillytavern
@@ -83,7 +85,7 @@ jobs:
             game_sha:process.env.GAME_SHA, harness_sha:process.env.HEAD_SHA,
             sillytavern_sha:fs.readFileSync(path.join(out,'sillytavern-sha.txt'),'utf8').trim(),
             run_id:process.env.GITHUB_RUN_ID, viewport:{width:1842,height:854}, device_scale_factor:1,
-            user_save_access:false, disposable_default_data:true, game_code_modified:false,
+            user_save_access:false, disposable_default_data:true, game_code_modified:false, korean_fallback_font:'Ubuntu fonts-noto-cjk',
             seeded_records:false, seeded_inventory:false, ai_generation_requests:[],
             blocked_external_requests:[], page_errors:[], request_failures:[], http_errors:[],
             captured_at_utc:new Date().toISOString(), success:false
