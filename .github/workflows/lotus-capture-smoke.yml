@@ -188,10 +188,12 @@ jobs:
               metadata.quest_last=await fits('.sf_lotus_menu .sf_lotus_menu_column:first-child .sf_list_row:last-child');
               check(metadata.quest_last.fullyVisible,'Fourth daily task fully fits compact view without scrolling');
               await page.locator('.sf_lotus_menu .sf_pop_btns button',{hasText:'업적'}).click();
-              check(await page.locator('.sf_pop_wrap').count()>1,'Quest achievements original action opens auxiliary card');
+              await page.waitForSelector('.sf_pop_wrap[data-kind="achieve"]');
+              check(await page.locator('.sf_pop_wrap[data-kind="achieve"]').count()===1,'Quest achievements original action opens correct card');
               await navigate('map');
               await page.locator('.sf_lotus_menu .sf_explore_open').click();
-              check(await page.locator('.sf_pop_wrap').count()>1,'Map exploration notebook original action opens auxiliary card');
+              await page.getByRole('dialog',{name:'탐사 수첩',exact:true}).waitFor({state:'visible'});
+              check(await page.getByRole('dialog',{name:'탐사 수첩',exact:true}).count()===1,'Map exploration notebook original action opens correct card');
               await navigate('party');
               await page.locator('.sf_lotus_menu button[data-lead="horus"]').click();
               await page.waitForFunction(async base=>{const h=await import(base+'src/core/heroes.js'),s=await import(base+'src/core/state.js');return h.leadOf(s.getState())==='horus';},base);
