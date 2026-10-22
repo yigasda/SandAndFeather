@@ -22,7 +22,7 @@ T3 → 16 remains pending its separate north-door opening decision.
 Run the generator, bounded pixel/geometry assertions, then actual mobile touch widths:
 `python tools/maps/desert.py --review-only desert_city_archive desert_city_plaza`
 `python tools/maps/check-archive-connection.py`
-`node tools/st-test/portal-walk.cjs --pair-file tools/st-test/pairs/archive-17-18.json --widths --independent-tiles 1.7472`
+`node tools/st-test/portal-walk.cjs /tmp/st-archive-17-18 --pair-file tools/st-test/pairs/archive-17-18.json --widths --independent-tiles 1.7472`
 
 The existing real-CDP timing fix and 0.02-tile precision are unchanged.
 The pair order ends in the archive so save/reload exercises the newly registered map.

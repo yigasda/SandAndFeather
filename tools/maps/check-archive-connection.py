@@ -63,6 +63,9 @@ plaza_safe = safe_of(plaza_original, plaza['authoredCollision']['pixelWalk']['pi
 for x in [1246, 1278, 1318]:
     assert np.all(plaza_safe[307:416, x]), ('Plaza full-foot approach', x)
 assert [e['id'] for e in plaza['exits']] == ['east','dwelling','archive']
+# Exact approved baseline records, not just their names.
+assert {k: plaza['entries'][k] for k in ['east', 'dwelling']} == {"east":{"x":47.877884615384616,"y":16.190384615384616,"dir":"left"},"dwelling":{"x":18.129807692307693,"y":11.123076923076923,"dir":"down"}}
+assert plaza['exits'][:2] == [{"id":"east","x0":52.28269230769231,"y0":12.817307692307693,"x1":52.84903846153846,"y1":15.350961538461538,"to":"desert_forecourt_east","at":"south","polygon":[[52.28269230769231,12.817307692307693],[52.84903846153846,12.817307692307693],[52.84903846153846,15.350961538461538],[52.28269230769231,15.350961538461538]]},{"id":"dwelling","x0":17.586538461538463,"y0":9.001923076923077,"x1":19.255769230769232,"y1":9.449038461538462,"to":"desert_city_dwelling","at":"south","polygon":[[17.586538461538463,9.001923076923077],[18.927884615384617,9.001923076923077],[19.255769230769232,9.449038461538462],[17.586538461538463,9.449038461538462]]}]
 for data, entry, pixels, dest, at in [
     (archive, 'south', (887,590), 'desert_city_plaza', 'archive'),
     (plaza, 'archive', (1278,415), 'desert_city_archive', 'south'),
@@ -73,4 +76,8 @@ for data, entry, pixels, dest, at in [
     assert abs((p['y'] + .8)*px - pixels[1]) < 1e-6
     ex = next(e for e in data['exits'] if e['id'] == entry)
     assert ex['to'] == dest and ex['at'] == at
+    expected_polygon = ([(779,782),(993,782),(993,802),(779,802)] if entry == 'south'
+                        else [(1228,300),(1333,300),(1333,315),(1220,315)])
+    assert ex['polygon'] == [[x/px, y/px] for x, y in expected_polygon]
+    assert p['dir'] == ('up' if entry == 'south' else 'down')
 print('PASS: exact 7,013-pixel additive aperture, original assets/floor preserved, full-foot lanes, solid posts/furniture, reciprocal exits and fixed landings')
