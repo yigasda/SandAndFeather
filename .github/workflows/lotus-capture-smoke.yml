@@ -83,7 +83,7 @@ jobs:
           const out = path.resolve('capture-output');
           const base = '/scripts/extensions/third-party/SandAndFeather/';
           const metadata = {
-            purpose:'Landscape tab changed-source captures and focused interactions, not full regression',
+            purpose:'Compact landscape scroll reachability only, no state-changing choices',
             game_sha:process.env.GAME_SHA, harness_sha:process.env.HEAD_SHA,
             sillytavern_sha:fs.readFileSync(path.join(out,'sillytavern-sha.txt'),'utf8').trim(),
             run_id:process.env.GITHUB_RUN_ID, viewport:{width:1842,height:854}, device_scale_factor:1,
@@ -138,73 +138,59 @@ jobs:
                 await win.openGame();
                 window.toastr?.clear();
               },base);
-              metadata.captures=[];
-              for (const viewport of [{width:1842,height:854},{width:844,height:390},{width:390,height:844}]) {
-                await page.setViewportSize(viewport);
-                for (const tab of ['party','quests','map','world']) {
-                  if(viewport.width===1842 && tab==='world')continue;
-                  await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
-                  if(viewport.width>viewport.height && tab!=='world')await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
-                  await page.waitForTimeout(800);
-                  const geometry=await page.evaluate(async()=>{
-                    await document.fonts.ready;
-                    const root=document.querySelector('#sf_game');
-                    const visible=el=>{const r=el.getBoundingClientRect();const s=getComputedStyle(el);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden';};
-                    await Promise.all([...root.querySelectorAll('img')].filter(visible).map(img=>img.decode().catch(()=>{})));
-                    const box=el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
-                    return {
-                      cards:[...root.querySelectorAll('.sf_pop_wrap')].map(el=>({classes:el.className,box:box(el),text:el.textContent})),
-                      controls:[...root.querySelectorAll('button')].filter(visible).map(el=>({text:el.textContent,label:el.getAttribute('aria-label'),tab:el.dataset.menuTab,lead:el.dataset.lead,companion:el.dataset.companion,box:box(el)})),
-                      images:[...root.querySelectorAll('img')].filter(visible).map(el=>({src:el.src,complete:el.complete,width:el.naturalWidth})),
-                      canvases:[...root.querySelectorAll('canvas')].filter(visible).map(el=>({classes:el.className,width:el.width,height:el.height,box:box(el)}))
-                    };
-                  });
-                  const name=tab+'-'+viewport.width+'x'+viewport.height+'.png';
-                  await page.screenshot({path:path.join(out,name)});
-                  const bytes=fs.readFileSync(path.join(out,name));
-                  metadata.captures.push({tab,viewport,name,bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),geometry});
-                }
-              }
-              metadata.interactions=[];
+              metadata.interactions=[]; metadata.captures=[];
               const check=(condition,name)=>{metadata.interactions.push({name,pass:!!condition});if(!condition)throw new Error(name);};
               const navigate=async tab=>{
                 await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
-                if(tab!=='world')await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
+                await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
+                await page.evaluate(()=>document.fonts.ready);
+              };
+              const scroll=async(selector)=>{
+                const el=page.locator(selector), box=await el.boundingBox();
+                const before=await el.evaluate(e=>({top:e.scrollTop,height:e.clientHeight,scroll:e.scrollHeight,overflow:getComputedStyle(e).overflowY}));
+                await page.mouse.move(box.x+box.width/2,box.y+box.height/2);
+                await page.mouse.wheel(0,1200);await page.waitForTimeout(400);
+                const after=await el.evaluate(e=>({top:e.scrollTop,height:e.clientHeight,scroll:e.scrollHeight}));
+                metadata.interactions.push({name:'Wheel '+selector,before,after});
+                if(before.scroll>before.height+1)check(after.top>before.top,'Wheel advances overflowing '+selector);
+              };
+              const shot=async tab=>{
+                await page.waitForTimeout(300);
+                const name=tab+'-844x390-scrolled.png';await page.screenshot({path:path.join(out,name)});
+                const bytes=fs.readFileSync(path.join(out,name));
+                metadata.captures.push({name,bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex')});
               };
               await page.setViewportSize({width:844,height:390});
               await navigate('party');
-              for(const tab of ['quests','map','party','quests','party']){
-                await page.locator('.sf_menu_window.sf_lotus_menu .sf_menu_nav [data-menu-tab="'+tab+'"]').click();
-                await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
-                check(await page.locator('.sf_menu_window.sf_lotus_menu').count()===1,'Actual header navigation '+tab+' has one shell');
-              }
-              await page.locator('.sf_menu_window.sf_lotus_menu button[data-detail="somang"]').click();
+              const footerBefore=await page.locator('.sf_lotus_menu .sf_pop_btns').boundingBox();
+              await scroll('.sf_lotus_menu .sf_party_heroes');
+              check(await page.locator('.sf_lotus_menu .sf_party_choices:not(.sf_party_heroes)').evaluate(e=>e.scrollTop)===0,'Party columns scroll independently');
+              await scroll('.sf_lotus_menu .sf_party_choices:not(.sf_party_heroes)');
+              await page.locator('.sf_lotus_menu button[data-detail="horus"]').click({trial:true});
+              await page.locator('.sf_lotus_menu button[data-companion="horus"]').click({trial:true});
+              const footerAfter=await page.locator('.sf_lotus_menu .sf_pop_btns').boundingBox();
+              check(JSON.stringify(footerBefore)===JSON.stringify(footerAfter),'Party footer fixed during scroll');
+              await shot('party');
+              await page.locator('.sf_lotus_menu button[data-detail="horus"]').click();
               await page.waitForSelector('.sf_character_summary');
-              check(await page.locator('.sf_character_summary').count()===1,'Original party detail handler opens character card');
+              check((await page.locator('.sf_character_name').textContent()).includes('호루스'),'Scrolled third hero actual detail click works');
               await page.keyboard.press('Escape');
-              await navigate('party');
-              await page.locator('.sf_menu_window.sf_lotus_menu .sf_pop_x').click();
-              check(await page.locator('.sf_pop_wrap').count()===0,'Close restores world without lingering card');
+              await navigate('quests');
+              await scroll('.sf_lotus_menu .sf_lotus_menu_column:first-child');
+              const last=page.locator('.sf_lotus_menu .sf_lotus_menu_column:first-child .sf_list_row').last();
+              const reachable=await last.evaluate(el=>{
+                const r=el.getBoundingClientRect(),parent=el.closest('.sf_lotus_menu_column').getBoundingClientRect();
+                const x=(r.left+r.right)/2,y=(Math.max(r.top,parent.top)+Math.min(r.bottom,parent.bottom))/2;
+                return r.bottom<=parent.bottom+1 && r.top>=parent.top-1 && el.contains(document.elementFromPoint(x,y));
+              });
+              check(reachable,'Last daily task fully visible and hit-test reachable after wheel');
+              check(await page.locator('.sf_lotus_menu .sf_lotus_menu_column:last-child').evaluate(e=>e.scrollTop)===0,'Quest columns scroll independently');
+              await shot('quests');
               await navigate('map');
-              check(await page.locator('.sf_bigmap').count()===1,'Map retains one original canvas');
-              await page.evaluate(()=>{window.__baselineMap=document.querySelector('.sf_bigmap');});
-              await page.setViewportSize({width:390,height:844});
-              await page.waitForTimeout(300);
-              check(await page.locator('.sf_lotus_menu').count()===0,'Portrait disables scaled shell');
-              check(await page.locator('.sf_lotus_menu_column').count()===0,'Portrait unwraps temporary columns');
-              check(await page.evaluate(()=>document.querySelector('.sf_bigmap')===window.__baselineMap),'Portrait preserves original canvas identity');
-              await page.setViewportSize({width:844,height:390});
-              await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="map"]');
-              check(await page.evaluate(()=>document.querySelector('.sf_bigmap')===window.__baselineMap),'Rotate back preserves original canvas identity');
-              await page.evaluate(async base=>{const s=await import(base+'src/core/settings.js'),w=await import(base+'src/ui/window.js');s.settings().uiTheme='classic';w.applyTheme();},base);
-              await page.waitForTimeout(300);
-              check(await page.locator('.sf_lotus_menu').count()===0,'Classic theme disables Lotus shell');
-              check(await page.locator('.sf_lotus_menu_column').count()===0,'Classic theme unwraps columns');
-              await page.evaluate(async base=>{const s=await import(base+'src/core/settings.js'),w=await import(base+'src/ui/window.js');s.settings().uiTheme='cozy';w.applyTheme();},base);
-              await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="map"]');
-              check(await page.evaluate(()=>document.querySelector('.sf_bigmap')===window.__baselineMap),'Theme roundtrip preserves original canvas identity');
-              await page.keyboard.press('Escape');
-              check(await page.locator('.sf_pop_wrap').count()===0,'Escape restores world');
+              await scroll('.sf_lotus_menu .sf_lotus_map_details');
+              await page.locator('.sf_lotus_menu .sf_explore_open').click({trial:true});
+              check(await page.locator('.sf_bigmap').count()===1,'Map scroll retains real canvas and action reachable');
+              await shot('map');
               if(metadata.ai_generation_requests.length)throw new Error('Unexpected generation request blocked');
               metadata.success=true;
             } catch(error) {
@@ -223,7 +209,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: lotus-tabs-after
+          name: lotus-tabs-scroll
           path: |
             capture-output/*.png
             capture-output/metadata.json
