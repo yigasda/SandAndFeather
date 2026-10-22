@@ -115,6 +115,33 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
     const errors = []; page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
     const sleep = ms => page.waitForTimeout(ms);
     const W = require('./touch-walk.cjs')(page, cdp);
+    // Queue neutral 20 ms after queuing active, not 20 ms after its CDP acknowledgement.
+    // Waiting for that acknowledgement first delivered ~50 ms holds in the runner and
+    // made the 0.16 minimum input jump across the unchanged +/-0.02 return target.
+    async function precisionPulse(pad, x, y) {
+        const timing = {activeQueuedNodeMs:Date.now()};
+        const settle = (promise, key) => promise.then(() => {
+            timing[key] = Date.now(); return {ok:true};
+        }, error => ({error}));
+        // Attach rejection handlers immediately, while both requests may be pending.
+        const active = settle(W.touch('touchMove', x, y), 'activeAcknowledgedNodeMs');
+        await new Promise(resolve => setTimeout(resolve, 20));
+        timing.neutralQueuedNodeMs = Date.now();
+        const neutral = settle(W.touch('touchMove', pad.x, pad.y), 'neutralAcknowledgedNodeMs');
+        let deadline;
+        try {
+            const results = await Promise.race([
+                Promise.all([active, neutral]),
+                new Promise((_, reject) => { deadline = setTimeout(() => reject(new Error('precision touch delivery timed out')), 5000); })
+            ]);
+            const failure = results.find(r => r.error);
+            if (failure) throw failure.error;
+        } catch (error) {
+            // If delivery failed or is uncertain, stop the browser rather than continue with held input.
+            await context.close().catch(() => {}); throw error;
+        } finally { clearTimeout(deadline); }
+        return timing;
+    }
     const returnTraceCalls = [];
     const writeReturnTrace = () => {
         if (!RETURN_TRACE) return;
@@ -122,7 +149,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             fs.writeFileSync(path.join(OUT, 'return-trace.json'), JSON.stringify({
                 schema: 1, codeStamp: initialCodeStamp, arguments: process.argv.slice(2),
                 limits: { calls: 64, framesPerCall: 2048, pointerEventsPerCall: 1024, loopMeasurementsPerCall: 160 },
-                notes: ['Read-only observer; original control loop, touches, sleeps and assertions are unchanged.',
+                notes: ['Read-only observer; tracing does not change controller commands or assertions.',
                     'RAF timestamps/counts belong to the observer, not necessarily an executed movement frame.',
                     'Pointer listeners are registered on the pad after bindPad, so input is read after its handler.',
                     'Bounded buffers preserve the most recent samples; dropped counts disclose truncation.'],
@@ -182,10 +209,9 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             if(d<(INDEPENDENT_TILES?.02:.18)){arrived=true;break;}
             const speed=Math.max(INDEPENDENT_TILES?.16:.15,Math.min(1,d/.6));
             if (trace) Object.assign(trace.measurements.at(-1), {speed,requestedTouch:{x:pad.x+dx/d*pad.lim*speed,y:pad.y+dy/d*pad.lim*speed},activeCommandNodeMs:Date.now()});
-            await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(20);
-            // Neutral before measuring: CDP round trips/video encoding must not leave
-            // the stick moving after the measured position (especially at pace 1.6).
-            await W.touch('touchMove',pad.x,pad.y);
+            const pulse = await precisionPulse(pad,pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);
+            // Both real CDP touch deliveries are settled and the stick is neutral before measuring.
+            if (trace) trace.measurements.at(-1).pulse = pulse;
             if (trace) trace.measurements.at(-1).neutralCommandCompletedNodeMs = Date.now();
         }
         await W.touch('touchEnd');await sleep(150);
@@ -579,7 +605,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                         if(Math.abs(travelled-last)<.001)stalled++;else stalled=0;
                         if(stalled>20){blocked=await page.evaluate(([dx,dy])=>{const p=T.player.player,m=T.win.currentMap();const step=.05*4.2*(m.d.walkSpeed||1);for(let d=.02;d<=step+.02;d+=.02)if(m.solidRect(p.x+dx*d+.22,p.y+dy*d+.62,p.x+dx*d+.78,p.y+dy*d+.96))return true;return false;},[dx,dy]);break;}last=travelled;
                         const amp=Math.max(.16,Math.min(1,Math.abs(remaining)/.6));
-                        await W.touch('touchMove',p.x+dx*p.lim*amp*Math.sign(remaining),p.y+dy*p.lim*amp*Math.sign(remaining));await sleep(20);await W.touch('touchMove',p.x,p.y);
+                        await precisionPulse(p,p.x+dx*p.lim*amp*Math.sign(remaining),p.y+dy*p.lim*amp*Math.sign(remaining));
                     }
                 }else{await W.touch('touchMove',p.x+dx*p.lim,p.y+dy*p.lim);await sleep(260);}
                 await W.touch('touchEnd');await sleep(350);
