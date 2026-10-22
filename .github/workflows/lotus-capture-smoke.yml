@@ -15,13 +15,13 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
-      GAME_SHA: 3b830b0b977b4a463cc234d12ca62bb854de8932
+      GAME_SHA: 3010c502ad89a2a76b9a1ea78118529b9166532d
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out the approved game commit without credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: 3b830b0b977b4a463cc234d12ca62bb854de8932
+          ref: 3010c502ad89a2a76b9a1ea78118529b9166532d
           path: game
           persist-credentials: false
           fetch-depth: 1
@@ -33,6 +33,8 @@ jobs:
           sudo apt-get install -y --no-install-recommends fonts-noto-cjk
           mkdir -p capture-output driver
           test "$(git -C game rev-parse HEAD)" = "$GAME_SHA"
+          node --input-type=module --check < game/src/ui/lotus-menu.js
+          node --input-type=module --check < game/src/ui/menu-header.js
           mkdir sillytavern
           git -C sillytavern init
           git -C sillytavern remote add origin https://github.com/SillyTavern/SillyTavern.git
@@ -81,7 +83,7 @@ jobs:
           const out = path.resolve('capture-output');
           const base = '/scripts/extensions/third-party/SandAndFeather/';
           const metadata = {
-            purpose:'Landscape tab baseline captures, not full regression',
+            purpose:'Landscape tab changed-source captures and focused interactions, not full regression',
             game_sha:process.env.GAME_SHA, harness_sha:process.env.HEAD_SHA,
             sillytavern_sha:fs.readFileSync(path.join(out,'sillytavern-sha.txt'),'utf8').trim(),
             run_id:process.env.GITHUB_RUN_ID, viewport:{width:1842,height:854}, device_scale_factor:1,
@@ -142,6 +144,7 @@ jobs:
                 for (const tab of ['party','quests','map','world']) {
                   if(viewport.width===1842 && tab==='world')continue;
                   await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
+                  if(viewport.width>viewport.height && tab!=='world')await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
                   await page.waitForTimeout(800);
                   const geometry=await page.evaluate(async()=>{
                     await document.fonts.ready;
@@ -162,6 +165,46 @@ jobs:
                   metadata.captures.push({tab,viewport,name,bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),geometry});
                 }
               }
+              metadata.interactions=[];
+              const check=(condition,name)=>{metadata.interactions.push({name,pass:!!condition});if(!condition)throw new Error(name);};
+              const navigate=async tab=>{
+                await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
+                if(tab!=='world')await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
+              };
+              await page.setViewportSize({width:844,height:390});
+              await navigate('party');
+              for(const tab of ['quests','map','party','quests','party']){
+                await page.locator('.sf_menu_window.sf_lotus_menu .sf_menu_nav [data-menu-tab="'+tab+'"]').click();
+                await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
+                check(await page.locator('.sf_menu_window.sf_lotus_menu').count()===1,'Actual header navigation '+tab+' has one shell');
+              }
+              await page.locator('.sf_menu_window.sf_lotus_menu button[data-detail="somang"]').click();
+              await page.waitForSelector('.sf_character_summary');
+              check(await page.locator('.sf_character_summary').count()===1,'Original party detail handler opens character card');
+              await page.keyboard.press('Escape');
+              await navigate('party');
+              await page.locator('.sf_menu_window.sf_lotus_menu .sf_pop_x').click();
+              check(await page.locator('.sf_pop_wrap').count()===0,'Close restores world without lingering card');
+              await navigate('map');
+              check(await page.locator('.sf_bigmap').count()===1,'Map retains one original canvas');
+              await page.evaluate(()=>{window.__baselineMap=document.querySelector('.sf_bigmap');});
+              await page.setViewportSize({width:390,height:844});
+              await page.waitForTimeout(300);
+              check(await page.locator('.sf_lotus_menu').count()===0,'Portrait disables scaled shell');
+              check(await page.locator('.sf_lotus_menu_column').count()===0,'Portrait unwraps temporary columns');
+              check(await page.evaluate(()=>document.querySelector('.sf_bigmap')===window.__baselineMap),'Portrait preserves original canvas identity');
+              await page.setViewportSize({width:844,height:390});
+              await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="map"]');
+              check(await page.evaluate(()=>document.querySelector('.sf_bigmap')===window.__baselineMap),'Rotate back preserves original canvas identity');
+              await page.evaluate(async base=>{const s=await import(base+'src/core/settings.js'),w=await import(base+'src/ui/window.js');s.settings().uiTheme='classic';w.applyTheme();},base);
+              await page.waitForTimeout(300);
+              check(await page.locator('.sf_lotus_menu').count()===0,'Classic theme disables Lotus shell');
+              check(await page.locator('.sf_lotus_menu_column').count()===0,'Classic theme unwraps columns');
+              await page.evaluate(async base=>{const s=await import(base+'src/core/settings.js'),w=await import(base+'src/ui/window.js');s.settings().uiTheme='cozy';w.applyTheme();},base);
+              await page.waitForSelector('.sf_menu_window.sf_lotus_menu[data-lotus-tab="map"]');
+              check(await page.evaluate(()=>document.querySelector('.sf_bigmap')===window.__baselineMap),'Theme roundtrip preserves original canvas identity');
+              await page.keyboard.press('Escape');
+              check(await page.locator('.sf_pop_wrap').count()===0,'Escape restores world');
               if(metadata.ai_generation_requests.length)throw new Error('Unexpected generation request blocked');
               metadata.success=true;
             } catch(error) {
@@ -180,7 +223,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: lotus-tabs-baseline
+          name: lotus-tabs-after
           path: |
             capture-output/*.png
             capture-output/metadata.json
