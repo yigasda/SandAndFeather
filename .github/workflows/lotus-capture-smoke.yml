@@ -1,4 +1,4 @@
-name: Archive 17-18 doorway validation
+name: Wind basin 02-10 route validation
 
 on:
   pull_request:
@@ -15,16 +15,16 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
-      GAME_SHA: 87eaf760017d59386cb4052f1b43a73219d76114
+      GAME_SHA: ccf7d3dcb7e26f89c73e3a220e85f6918b33a1aa
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out the approved game commit without credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: 87eaf760017d59386cb4052f1b43a73219d76114
+          ref: ccf7d3dcb7e26f89c73e3a220e85f6918b33a1aa
           path: game
           persist-credentials: false
-          fetch-depth: 5
+          fetch-depth: 3
       - name: Prepare disposable official SillyTavern and browser driver
         shell: bash
         run: |
@@ -46,25 +46,24 @@ jobs:
           (cd driver && npx playwright install --with-deps chromium ffmpeg)
           CHROMIUM=$(node -e "console.log(require('./driver/node_modules/playwright').chromium.executablePath())")
           sudo ln -sf "$CHROMIUM" /usr/bin/chromium
-          git -C game cat-file -e 35b8f3d4caf41c28878ab0e57818d345c5f299ce^{commit}
-      - name: Reproduce committed generated maps
+          git -C game cat-file -e c593e326fb3e26e939dd95aa737b7d52d9fc2729^{commit}
+      - name: Generate bounded wind basin maps
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p full-output/generated
-          (cd game && python3 -u tools/maps/desert.py --review-only desert_city_archive desert_city_plaza) > full-output/generator.log 2>&1
-          git -C game diff --exit-code -- data/maps/desert_city_archive.json data/maps/desert_city_plaza.json data/scene-art.json docs/art/map-expansion/desert-18.png > full-output/reproducibility.log
+          (cd game && python3 -u tools/maps/desert.py --review-only desert_buried_temple desert_wind_basin) > full-output/generator.log 2>&1
       - name: Check exact pixel and geometry invariants
         shell: bash
         run: |
           set -euo pipefail
-          (cd game && python3 tools/maps/check-archive-connection.py) > full-output/invariants.log 2>&1
+          (cd game && python3 tools/maps/check-wind-basin-connection.py && python3 tools/maps/check-archive-connection.py) > full-output/invariants.log 2>&1
           git -C game diff --name-only > full-output/generated-diff.txt
           python3 - <<'PY'
           import subprocess, pathlib, shutil, hashlib, json
           root=pathlib.Path('game')
           changed=subprocess.check_output(['git','-C','game','diff','--name-only'],text=True).splitlines()
-          allowed={'data/maps/desert_city_archive.json','data/maps/desert_city_plaza.json','data/scene-art.json','docs/art/map-expansion/desert-18.png'}
+          allowed={'data/maps/desert_wind_basin.json','data/maps/desert_buried_temple.json','data/scene-art.json','docs/art/map-expansion/desert-10.png'}
           bad=[p for p in changed if p not in allowed and not p.startswith('docs/art/map-expansion/desert-connections-review/')]
           assert not bad, 'Unrelated tracked changes: '+repr(bad)
           rows=[]
@@ -77,7 +76,7 @@ jobs:
           review=root/'docs/art/map-expansion/desert-connections-review'
           out=pathlib.Path('full-output/reviews');out.mkdir()
           for f in review.glob('*.png'):
-              if f.name.startswith(('17','18')): shutil.copy2(f,out/f.name)
+              if f.name.startswith(('02','2-','10')): shutil.copy2(f,out/f.name)
           PY
       - name: Install generated disposable runtime
         shell: bash
@@ -103,7 +102,7 @@ jobs:
                   target.parent.mkdir(parents=True, exist_ok=True)
                   shutil.copy2(source, target)
           PY
-      - name: Validate archive doorway with real touch in three lanes
+      - name: Validate wind basin and preserved neighboring doors
         shell: bash
         run: |
           set -euo pipefail
@@ -114,7 +113,7 @@ jobs:
           node game/tools/st-test/fakeai.js > "$OUT/fakeai.log" 2>&1 &
           FAKE_PID=$!
           trap 'kill "$FAKE_PID" 2>/dev/null || true' EXIT
-          printf 'source=%s\nharness=%s\nbase=%s\nhost=%s\nuser_save_access=false\n' "$GAME_SHA" "$HEAD_SHA" "35b8f3d4caf41c28878ab0e57818d345c5f299ce" "$(git -C sillytavern rev-parse HEAD)" > "$OUT/provenance.txt"
+          printf 'source=%s\nharness=%s\nbase=%s\nhost=%s\nuser_save_access=false\n' "$GAME_SHA" "$HEAD_SHA" "c593e326fb3e26e939dd95aa737b7d52d9fc2729" "$(git -C sillytavern rev-parse HEAD)" > "$OUT/provenance.txt"
           (cd "$ST_ROOT" && node server.js --port 8000 --listen false > "$OUT/server.log" 2>&1) &
           for i in $(seq 90); do curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break; sleep 2; done
           cat > driver/onboard.cjs <<'JS'
@@ -139,7 +138,7 @@ jobs:
           JS
           node driver/onboard.cjs
           set +e
-          bash game/tools/st-test/tiers.sh portal-walk:--pair-file,tools/st-test/pairs/archive-17-18.json,--widths,--independent-tiles,1.7472 --since 35b8f3d4caf41c28878ab0e57818d345c5f299ce --out "$OUT"
+          bash game/tools/st-test/tiers.sh portal-walk:--pair-file,tools/st-test/pairs/wind-basin-02-10.json,--widths,--independent-tiles,1.7472 portal-walk:--temple-02-15 portal-walk:--temple-02-11 --since c593e326fb3e26e939dd95aa737b7d52d9fc2729 --out "$OUT"
           RESULT=$?
           set -e
           if grep -nE '^FAIL|^실패' "$OUT"/*.log > "$OUT/failure-lines.txt"; then RESULT=1; fi
@@ -150,7 +149,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: archive-17-18-validation
+          name: wind-basin-02-10-validation
           path: |
             full-output/**
           if-no-files-found: error
