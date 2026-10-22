@@ -1,0 +1,16 @@
+[
+  [
+    "desert_wind_basin",
+    "west",
+    "west",
+    "desert_buried_temple",
+    "east"
+  ],
+  [
+    "desert_buried_temple",
+    "east",
+    "east",
+    "desert_wind_basin",
+    "west"
+  ]
+]

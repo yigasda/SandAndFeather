@@ -39,7 +39,7 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
       'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
-      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling', 'desert_city_archive': '18'}
+      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling', 'desert_city_archive': '18', 'desert_wind_basin': '10'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # User approved for release (2026-10-20): both desert kinds use 1.6 × the base 4.2 tiles/s, with walking animation in step.
 # This is only map.walkSpeed; actor size, camera, collision and the global base speed stay unchanged.
@@ -66,6 +66,9 @@ RUNTIME_PASSAGES = {'desert_city_archive': [{
 GAP = 3
 # Parent-registered latest user mark, source pixels. AABB remains in each runtime exit.
 EXIT_POLYGONS = {
+    # 02 right outer paved approach <-> 10 lower-left sandy gap. Neither stone doorway is repurposed.
+    ('desert_buried_temple', 'east'): [(1760,785),(1773,785),(1773,886),(1760,886)],
+    ('desert_wind_basin', 'west'): [(3,443),(24,443),(24,566),(3,566)],
     ('desert_forecourt_west', 'south'): [(1052,873),(1415,873),(1415,886),(1048,886)],
     ('desert_forecourt_east', 'west'): [(227,748),(396,748),(396,772),(227,772)],
     ('desert_forecourt_east', 'south'): [(800,860),(1210,860),(1230,886),(780,886)],
@@ -128,8 +131,8 @@ FRONT = {
 OMBOS_BACK = {'x': 37.5, 'y': 22.4, 'dir': 'left'}   # 3.2 tiles from the exit (GAP)
 
 # id, name, art file, collision file, ways in {name: (source px, facing)}, exits [(name, source box x0,y0,x1,y1, to, at)]. The big maps run 01 → 04 → 03 → 02 across their side edges (docs/ASTRA-DESERT-05-20-GUIDE.md
-# "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's right side (10)
-# waits for that place. Current temple route: docs/DESERT-TEMPLE-CONNECTIONS.md.
+# "01 황금 사구해 → 04 메마른 모래벌판 → 03 고요한 사구 → 02 매몰 신전 사막", no new road drawn). 02's right outer side joins
+# 10's existing lower-left sandy return; its separate 20 stair stays inactive. Current temple route: docs/DESERT-TEMPLE-CONNECTIONS.md.
 # First implemented pair: 02-A temple <-> 15-D south. Retired linear exits stay disabled;
 # historical entries remain for test/save compatibility while their new routes are staged.
 PLACES = [
@@ -145,9 +148,14 @@ PLACES = [
     ('desert_buried_temple', '매몰 신전 사막', '02_매몰신전사막.png', '02_매몰신전사막.png',
      # the west way out only where the paved path meets the edge (user's circle); the door landing on the stone path below
      # the door, GAP from it (it was just inside the door, user's mark, until the GAP rule)
-     {'west': ((85, 330), 'right'), 'door': ((1438, 738), 'down'), 'temple': ((903, 390), 'down')},   # temple: the user's blue circle on the temple steps
+     {'west': ((85, 330), 'right'), 'door': ((1438, 738), 'down'), 'temple': ((903, 390), 'down'), 'east': ((1689,850), 'left')},   # temple: the user's blue circle on the temple steps
      [('west', (0, 188, 14, 425), 'desert_quiet_dunes', 'east'), ('door', (1484, 668, 1518, 684), 'desert_city_gate', 'outside'),
-      ('temple', (910, 315, 956, 340), 'desert_colonnade', 'south')]),
+      ('temple', (910, 315, 956, 340), 'desert_colonnade', 'south'),
+      ('east', (1760,785,1773,886), 'desert_wind_basin', 'west')]),
+    ('desert_wind_basin', '모래바람 분지', '10_모래바람분지.png', '10_모래바람분지.png',
+     # Follow the clear sand between the rocks, far enough inland for full feet, the companion and short moves.
+     {'west': ((210,594), 'right')},
+     [('west', (3,443,24,566), 'desert_buried_temple', 'east')]),
     # 11 매몰 도시의 출입구: 02 오른쪽 아래 야자수 사이 돌 문을 가까이 본 곳 (user: "누가 봐도 여기잖아"); 계단 위 문 → 17
     ('desert_city_gate', '매몰 도시의 출입구', '11_매몰도시출입구.png', '11_매몰도시출입구.png',
      {'outside': ((300, 1350), 'up'), 'door': ((672, 468), 'down')},
