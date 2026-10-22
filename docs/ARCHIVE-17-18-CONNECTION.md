@@ -27,4 +27,18 @@ Run the generator, bounded pixel/geometry assertions, then actual mobile touch w
 The existing real-CDP timing fix and 0.02-tile precision are unchanged.
 The pair order ends in the archive so save/reload exercises the newly registered map.
 Runtime capture must verify exact initial feet, follower clearance, input neutrality/no bounce, three doorway lanes, intentional return and save/load.
-Generated data, screenshots and actual-walk results are pending CI; do not describe this branch as validated or released until those results are recorded.
+## Verified result (2026-10-22)
+
+- Tested runtime commit: `87eaf760017d59386cb4052f1b43a73219d76114`.
+- [Targeted GitHub Actions run](https://github.com/yigasda/SandAndFeather/actions/runs/39742290516): success. Generator reproduction of the four committed runtime files is exact; strengthened pixel/portal invariants pass; one changed JS file passes module-mode syntax checking.
+- Actual mobile touch walk: **130 pass / 0 fail in 117 seconds**, exactly six transitions across left/center/right lanes in both directions. The existing 0.02-tile precision, held-input/neutral lifecycle and all assertions are unchanged.
+- First-frame positions match each destination entry. Every first arrival retains a companion separation of 1.26 tiles. All six post-excursion full-foot checks pass for player and companion, outside exit triggers.
+- Independent front/back/left/right excursions target 1.7472 tiles from the same landing, with real walks back to the origin. Intentional return works; no bounce or unintended extra transition occurs.
+- Save/reload ends in `desert_city_archive`, around (27.68,16.79), within the test's 0.05-tile position tolerance and outside the trigger. The final screenshot shows both characters standing separately on clear floor.
+- The full 131.48-second video decodes normally. Settled arrival/reload screenshots and sampled motion frames were visually checked: the player passes beneath the actual wooden beam in both directions; only the beam silhouette occludes the body. No doorway clipping or wrong landing was observed.
+- Runtime/map/test SHA-256 stayed `12cbb4364aae290bf453e315d887b80ee3ddcdb81ddec084d1c48a8801f12212` from start to finish (124 files).
+- Evidence artifact: ID `12409129355`, SHA-256 `cf8777cce35f6c9ee364d9af4dca67ac2beffeab4c8b9994843a9802bcf7102d`. Contains generated-file hashes, invariants, six transition records, screenshots, full video and result logs.
+
+The first run exhausted its job time because a redundant full-history Git fetch took about 13 minutes, not because of map generation or a failed game assertion. Its 84 recorded assertions passed before interruption. The successful run used known shallow ancestry and the explicit baseline SHA, without relaxing tests.
+
+**Handoff:** feature branch `fix/archive-17-18-doorway-20261022` only. Main/release were not modified, no version was bumped and no new PR was opened. This route is functionally verified, not published. The existing temple loops and dwelling route remain untouched; T3 → 16 still needs its independent north-door opening decision.
