@@ -63,9 +63,13 @@ export function attachLotusMenu(root, wrap, active) {
         const asset = id => data.assets.find(a => a.id === id);
         const url = id => new URL(asset(id).file.replace(/^assets\//, ''), base).href;
         const layer = (id, box, contain = false) => {
-            const crop = sourceBounds[id], el = document.createElement(crop ? 'div' : 'img');
+            const crop = sourceBounds[id], sliced = id.startsWith('nav.');
+            const el = document.createElement(crop || sliced ? 'div' : 'img');
             el.className = 'sf_lotus_menu_layer'; el.dataset.asset = id; place(el, box);
-            if (crop) {
+            if (sliced) {
+                el.style.boxSizing = 'border-box'; el.style.border = '12px solid transparent';
+                el.style.borderImage = `url("${url(id)}") 12 fill stretch`;
+            } else if (crop) {
                 const img = document.createElement('img'), [x, y, r, b] = crop, [nw, nh] = asset(id).native_size;
                 const sx = (box[2] - box[0]) / (r - x), sy = (box[3] - box[1]) / (b - y);
                 el.style.overflow = 'hidden'; img.src = url(id); img.alt = ''; img.draggable = false;

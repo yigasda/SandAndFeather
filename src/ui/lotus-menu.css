@@ -81,3 +81,20 @@
  #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_lotus_map_details .sf_list_btns { grid-column:2;align-items:flex-end; }
  #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_explore_open { width:100%;min-height:72px; }
 }
+/* Default three-person and four-commission lists fit the approved reference height.
+   Longer titles, records and additional map parts retain their native scrolling. */
+@media (orientation:landscape) {
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_party_choices { gap:10px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_party_choices > .sf_sub_head { min-height:0;font-size:26px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_party_choice { min-height:114px;padding:14px 24px;grid-template-columns:48px minmax(0,1fr) 190px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_party_choice .sf_list_main { gap:4px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_party_choice .sf_list_main small { font-size:22px;line-height:1.35; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu .sf_party_choice > .sf_list_btns > .sf_btn { white-space:nowrap; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu[data-lotus-tab='party'] .sf_pop_btns { min-height:62px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu[data-lotus-tab='party'] .sf_pop_btns > .sf_btn { height:62px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu[data-lotus-tab='quests'] .sf_lotus_menu_column:first-child > .sf_list { gap:8px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu[data-lotus-tab='quests'] .sf_lotus_menu_column:first-child > .sf_list > .sf_list_row { min-height:82px;padding:12px 26px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu[data-lotus-tab='quests'] .sf_lotus_menu_column:first-child > .sf_list .sf_lotus_surface > span { border-width:32px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu[data-lotus-tab='quests'] .sf_lotus_menu_column:first-child > .sf_list .sf_list_main { flex-direction:row;align-items:center;justify-content:space-between;gap:12px; }
+ #sf_game[data-ui-theme='cozy'] .sf_menu_window.sf_lotus_menu[data-lotus-tab='quests'] .sf_lotus_menu_column:first-child > .sf_list .sf_list_main b { font-size:27px; }
+}
