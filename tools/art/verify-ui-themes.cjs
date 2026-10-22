@@ -5,7 +5,8 @@ const out=path.resolve(process.argv[2]||'/tmp/ui-themes');fs.mkdirSync(out,{recu
 (async()=>{
 const browser=await chromium.launch({...(require('node:fs').existsSync('/usr/bin/chromium')?{executablePath:'/usr/bin/chromium'}:{}),args:['--no-sandbox']});
 const p=await browser.newPage({viewport:{width:412,height:900},hasTouch:true});
-const errors=[],failed=[],generated=[],passed=[],colors={};let saved;
+const errors=[],failed=[],generated=[],passed=[],colors={},consoleErrors=[];let saved,stage='boot';
+p.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});
 p.on('request',r=>{if(/\/api\/.*\/generate(?:$|\?)/.test(r.url()))generated.push(r.url());});
 p.on('pageerror',e=>{if(!/Internal S/.test(e.message))errors.push(e.message);});p.on('response',r=>{if(r.status()>=400&&r.url().includes('SandAndFeather'))failed.push(r.url());});
 const last=()=>p.locator('#sf_game .sf_pop_wrap').last();
@@ -63,7 +64,7 @@ for(const tab of TABS){
   assert(g.width===48&&g.height===48&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong icon`);
  }
  if(size.width===412)await p.locator('.sf_tabs').screenshot({path:path.join(out,`${i+1}-${id}-menu-${tab}.png`)});
- await p.locator(`.sf_tab[data-tab="${tab}"]`).click();await bounds();
+ stage=`${id} ${size.width}x${size.height} ${tab}`;await p.locator(`.sf_tab[data-tab="${tab}"]`).click();await bounds();
  assert.equal(await p.locator('.sf_tabs .sf_on').getAttribute('data-tab'),tab);
  if(tab!=='world')await close();
 }
@@ -93,6 +94,16 @@ await p.evaluate(()=>{const el=document.querySelector('#sf_ui_theme');el.value='
 await p.reload();await init();assert.equal(await p.evaluate(()=>themeTest.settings.settings().uiTheme),'temple');await p.evaluate(()=>themeTest.win.openGame());assert.equal(await p.locator('#sf_game').getAttribute('data-ui-theme'),'temple');passed.push('extension drawer applies immediately and selected theme survives full page reload');
 assert.equal(await p.evaluate(()=>SillyTavern.getContext().chat.length),saved.length);assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);assert.deepEqual(generated,[]);
 fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify({passed,colors,pageErrors:errors,failedRequests:failed,generationRequests:generated},null,2)+'\n');console.log(JSON.stringify({passed,pageErrors:errors,failedRequests:failed,generationRequests:generated,output:out},null,2));
+}catch(error){
+const diagnostic=await p.evaluate(()=>({
+ theme:document.querySelector('#sf_game')?.dataset.uiTheme,viewport:[innerWidth,innerHeight],
+ popups:[...document.querySelectorAll('#sf_game .sf_pop_wrap')].map(e=>({kind:e.dataset.kind,classes:e.className,lotusTab:e.dataset.lotusTab,visible:!!e.getClientRects().length})),
+ images:[...document.querySelectorAll('#sf_game .sf_pop img,#sf_game .sf_lotus_scene img')].filter(i=>!i.complete||!i.naturalWidth).map(i=>({src:i.currentSrc||i.src,complete:i.complete,naturalWidth:i.naturalWidth,asset:i.dataset.asset,classes:i.className})),
+ fonts:document.fonts.status
+})).catch(e=>({diagnosticError:String(e)}));
+fs.writeFileSync(path.join(out,'failure.json'),JSON.stringify({stage,error:String(error),diagnostic,errors,failed,consoleErrors,passed},null,2)+'\n');
+await p.screenshot({path:path.join(out,'failure.png')}).catch(()=>{});console.error('THEME_FAILURE',JSON.stringify({stage,diagnostic,errors,failed,consoleErrors}));
+throw error;
 }finally{
 if(saved){const request=p.waitForResponse(r=>r.url().includes('/api/settings/save')&&r.status()===200).catch(()=>{});await p.evaluate(async original=>{const t=themeTest;await t.win.closeGame();Object.assign(t.settings.settings(),{theme:original.theme,uiTheme:original.uiTheme});t.settings.saveSettings();t.win.applyTheme();const c=SillyTavern.getContext();c.chatMetadata.sand_feather=original.chat;await c.saveMetadata();document.querySelector('#send_textarea').value=original.text;},saved).catch(()=>{});await request;}await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
