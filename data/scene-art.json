@@ -804,5 +804,17 @@
         "polygon": [[744, 627], [1028, 627], [1028, 662], [744, 662]]
       }
     ]
+  },
+  "desert_wind_basin": {
+    "file": "../docs/art/map-expansion/desert-10.png",
+    "fullMap": true,
+    "lazy": true,
+    "origin": [0, 0],
+    "scale": [0.47692307692307695, 0.47692307692307695],
+    "day": [0, 0, 1774, 887],
+    "night": [0, 0, 1774, 887],
+    "clip": [[0, 0], [1774, 0], [1774, 887], [0, 887]],
+    "tintActors": false,
+    "tintWorld": false
   }
 }
