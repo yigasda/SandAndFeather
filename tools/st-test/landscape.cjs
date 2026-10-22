@@ -6,6 +6,13 @@ const out=path.resolve(process.argv[2]||'/tmp/landscape');fs.mkdirSync(out,{recu
  const c=await b.newContext({viewport:{width:900,height:412},deviceScaleFactor:2,isMobile:true,hasTouch:true}),p=await c.newPage(),cdp=await c.newCDPSession(p),errors=[];
  p.on('pageerror',e=>{if(!/Internal S|Host not/.test(e.message))errors.push(e.message)});
  const touch=(type,points)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints:points.map(([x,y,id])=>({x,y,id}))});
+ const ready=()=>p.waitForFunction(()=>{const root=document.querySelector('#sf_game'),wrap=[...document.querySelectorAll('#sf_game .sf_pop_wrap')].at(-1);
+ if(root?.dataset.uiTheme==='cozy'&&matchMedia('(orientation: landscape)').matches&&wrap){
+  if(wrap.dataset.kind==='bond'&&!wrap.classList.contains('sf_lotus_exact'))return false;
+  if(wrap.dataset.lotusTab&&!wrap.classList.contains('sf_lotus_menu'))return false;
+ }
+ return [...document.querySelectorAll('#sf_game .sf_pop img,#sf_game .sf_lotus_scene img')].every(i=>i.complete&&i.naturalWidth>0);});
+ const close=async()=>{await ready();await p.locator('.sf_pop_wrap').last().locator('.sf_pop_x:visible,.sf_lotus_hit[data-action="close"]:visible').click();};
  const camera=()=>p.evaluate(()=>T.win.testCamera());
  const box=sel=>p.locator(sel).boundingBox();
  const center=async sel=>{const r=await box(sel);return[r.x+r.width/2,r.y+r.height/2]};
@@ -22,7 +29,7 @@ const out=path.resolve(process.argv[2]||'/tmp/landscape');fs.mkdirSync(out,{recu
     await p.evaluate(async theme=>{T.settings.settings().uiTheme=theme;T.win.applyTheme();const s=T.state.getState();s.party.with='set';await T.win.travel('desert_forecourt_west','yard');T.field.testOnly('desert_leather_shield',0,0,{hp:999,speed:0,range:0});},theme);await p.waitForTimeout(350);
     const check=await p.evaluate(()=>{const r=s=>document.querySelector(s).getBoundingClientRect(),date=r('.sf_date_card'),hp=r('.sf_duat_hud'),rank=r('.sf_chips'),hint=r('.sf_hint_pill'),mini=r('.sf_mini'),pad=r('.sf_pad');return{aligned:Math.abs(date.left-hp.left)<1,dateAbove:date.bottom<=hp.top,rankAligned:document.querySelector('.sf_hint_pill').hidden||Math.abs(rank.left-hint.left)<1,hintBelow:document.querySelector('.sf_hint_pill').hidden||hint.top>=Math.max(...[...document.querySelectorAll('.sf_chips > *')].map(e=>e.getBoundingClientRect().bottom)),labels:[...document.querySelectorAll('.sf_duat_bar span')].every(e=>e.scrollWidth<=e.clientWidth&&e.scrollHeight<=e.clientHeight),visible:['.sf_date_card','.sf_duat_hud','.sf_mini','.sf_menu','.sf_appearance','.sf_bag','.sf_pad','.sf_talk','.sf_duat_btns'].every(s=>{const b=r(s);return b.left>=0&&b.top>=0&&b.right<=innerWidth&&b.bottom<=innerHeight}),safe:hp.bottom<pad.top&&mini.bottom<r('.sf_menu').top&&r('.sf_chips').right<=mini.left,bagIcon:getComputedStyle(document.querySelector('.sf_bag i')).opacity==='1'};});
     assert(Object.values(check).every(Boolean),JSON.stringify({w,h,theme,check}));
-    for(const tab of ['party','bond','quests','map']){await p.locator('.sf_menu').click();await p.locator(`[data-tab="${tab}"]`).click();assert(await p.locator('.sf_pop_wrap').count());await p.locator('.sf_pop_wrap').last().locator('.sf_pop_x').click();}
+    for(const tab of ['party','bond','quests','map']){await p.locator('.sf_menu').click();await p.locator(`[data-tab="${tab}"]`).click();assert(await p.locator('.sf_pop_wrap').count());await close();}
     if(w===900&&theme==='cozy')await p.screenshot({path:path.join(out,'combat.png')});
    }
    pass(`${w}x${h}: five themes, HUD columns/labels/bounds, four menu destinations`);
@@ -31,7 +38,7 @@ const out=path.resolve(process.argv[2]||'/tmp/landscape');fs.mkdirSync(out,{recu
   const z=(await camera()).zoom;await pinch([350,220],[500,220],[300,220],[550,220]);assert((await camera()).zoom>z*1.5);pass('map-only two-finger pinch zooms in');
   let before=(await camera()).zoom;const pad=await center('.sf_pad');await pinch(pad,[500,220],pad,[600,220]);assert.equal((await camera()).zoom,before);pass('joystick plus map finger does not zoom');
   await p.locator('.sf_menu').click();await p.locator('[data-tab="party"]').click();
-  before=(await camera()).zoom;await pinch([350,220],[500,220],[300,220],[550,220]);assert.equal((await camera()).zoom,before);await p.locator('.sf_pop_x').last().click();pass('popup touches never zoom the map');
+  before=(await camera()).zoom;await pinch([350,220],[500,220],[300,220],[550,220]);assert.equal((await camera()).zoom,before);await close();pass('popup touches never zoom the map');
   before=(await camera()).zoom;await touch('touchStart',[[350,220,1],[500,220,2]]);await touch('touchCancel',[]);await touch('touchStart',[[350,220,1]]);await touch('touchMove',[[300,220,1]]);await touch('touchEnd',[]);assert.equal((await camera()).zoom,before);pass('cancel clears pinch state');
   for(const map of ['ombos','set_room','desert_golden_dunes','desert_forecourt_west']){
    await p.evaluate(map=>T.win.travel(map),map);await p.waitForTimeout(200);
@@ -39,7 +46,7 @@ const out=path.resolve(process.argv[2]||'/tmp/landscape');fs.mkdirSync(out,{recu
    for(const[x,y]of [[0,0],[999,999]]){await p.evaluate(({x,y})=>Object.assign(T.player.player,{x,y}),{x,y});await p.waitForTimeout(180);const a=await camera(),mw=a.mapWidth*16*a.zoom,mh=a.mapHeight*16*a.zoom;assert(mw<a.width||a.cam.x>=-0.01&&a.cam.x+a.width<=mw+.01);assert(mh<a.height||a.cam.y>=-.01&&a.cam.y+a.height<=mh+.01);}
   }
   pass('four map sizes clamp zoom-out and both camera edges');
-  await p.setViewportSize({width:412,height:900});await p.evaluate(()=>T.win.travel('ombos',{x:24,y:18}));assert(await p.locator('.sf_menu').isVisible());await p.locator('.sf_menu').click();assert(await p.locator('.sf_tabs').isVisible());await p.locator('[data-tab="party"]').click();await p.locator('.sf_pop_x').last().click();pass('portrait menu opens existing destinations');
+  await p.setViewportSize({width:412,height:900});await p.evaluate(()=>T.win.travel('ombos',{x:24,y:18}));assert(await p.locator('.sf_menu').isVisible());await p.locator('.sf_menu').click();assert(await p.locator('.sf_tabs').isVisible());await p.locator('[data-tab="party"]').click();await close();pass('portrait menu opens existing destinations');
   await p.setViewportSize({width:900,height:412});await p.locator('.sf_menu').click();await p.locator('.sf_menu_fold').click();assert(await p.locator('#sf_chip').isVisible());await p.locator('#sf_chip').click();await p.locator('.sf_menu').click();await p.locator('.sf_menu_close').click();assert(!await p.locator('#sf_game').isVisible());pass('landscape menu fold/reopen/close work');
   assert.deepEqual(errors,[]);pass('no game page errors');
  }finally{await b.close()}

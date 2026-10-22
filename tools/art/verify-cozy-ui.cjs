@@ -8,7 +8,12 @@ const p=await browser.newPage({viewport:{width:412,height:900},hasTouch:true});c
 p.on('pageerror',e=>{if(!/Internal S/.test(e.message))errors.push(e.message);});p.on('response',r=>{if(r.status()>=400&&r.url().includes('SandAndFeather'))failed.push(r.url());});
 const last=()=>p.locator('.sf_pop_wrap').last();
 const close=async()=>{await last().locator('.sf_pop_x').click();};
-const images=async()=>{await p.waitForFunction(()=>[...document.querySelectorAll('#sf_game .sf_pop img')].every(i=>i.complete&&i.naturalWidth>0));};
+const images=async()=>{await p.waitForFunction(()=>{const root=document.querySelector('#sf_game'),wrap=[...document.querySelectorAll('#sf_game .sf_pop_wrap')].at(-1);
+ if(root?.dataset.uiTheme==='cozy'&&matchMedia('(orientation: landscape)').matches&&wrap){
+  if(wrap.dataset.kind==='bond'&&!wrap.classList.contains('sf_lotus_exact'))return false;
+  if(wrap.dataset.lotusTab&&!wrap.classList.contains('sf_lotus_menu'))return false;
+ }
+ return [...document.querySelectorAll('#sf_game .sf_pop img,#sf_game .sf_lotus_scene img')].every(i=>i.complete&&i.naturalWidth>0);});};
 const capture=async name=>{await images();await p.locator('#sf_game').screenshot({path:path.join(out,name+'.png')});};
 const bounds=async()=>{const a=await p.evaluate(()=>[...document.querySelectorAll('#sf_game .sf_pop')].map(el=>{const b=el.getBoundingClientRect();return{x:b.x,right:b.right,width:innerWidth,overflow:el.scrollWidth-el.clientWidth};}));assert(a.every(b=>b.x>=0&&b.right<=b.width+1&&b.overflow<=2),JSON.stringify(a));};
 try{

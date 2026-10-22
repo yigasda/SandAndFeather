@@ -9,9 +9,14 @@ const errors=[],failed=[],generated=[],passed=[],colors={};let saved;
 p.on('request',r=>{if(/\/api\/.*\/generate(?:$|\?)/.test(r.url()))generated.push(r.url());});
 p.on('pageerror',e=>{if(!/Internal S/.test(e.message))errors.push(e.message);});p.on('response',r=>{if(r.status()>=400&&r.url().includes('SandAndFeather'))failed.push(r.url());});
 const last=()=>p.locator('#sf_game .sf_pop_wrap').last();
-const close=()=>last().locator('.sf_pop_x').click();
-const images=()=>p.waitForFunction(()=>[...document.querySelectorAll('#sf_game .sf_pop img')].every(i=>i.complete&&i.naturalWidth));
-const bounds=async()=>{await images();const bad=await p.evaluate(()=>[...document.querySelectorAll('#sf_game .sf_pop,#sf_game .sf_inventory_content,#sf_game .sf_party_gallery')].filter(e=>{const b=e.getBoundingClientRect();return b.x<0||b.right>innerWidth+1||e.scrollWidth>e.clientWidth+2;}).map(e=>e.className));assert.deepEqual(bad,[]);};
+const close=()=>last().locator('.sf_pop_x:visible,.sf_lotus_hit[data-action="close"]:visible').click();
+const images=()=>p.waitForFunction(()=>{const root=document.querySelector('#sf_game'),wrap=[...document.querySelectorAll('#sf_game .sf_pop_wrap')].at(-1);
+ if(root?.dataset.uiTheme==='cozy'&&matchMedia('(orientation: landscape)').matches&&wrap){
+  if(wrap.dataset.kind==='bond'&&!wrap.classList.contains('sf_lotus_exact'))return false;
+  if(wrap.dataset.lotusTab&&!wrap.classList.contains('sf_lotus_menu'))return false;
+ }
+ return [...document.querySelectorAll('#sf_game .sf_pop img,#sf_game .sf_lotus_scene img')].every(i=>i.complete&&i.naturalWidth>0);});
+const bounds=async()=>{await images();const bad=await p.evaluate(()=>[...document.querySelectorAll('#sf_game .sf_pop,#sf_game .sf_lotus_scene,#sf_game .sf_inventory_content,#sf_game .sf_party_gallery')].filter(e=>{const b=e.getBoundingClientRect();return b.x<0||b.right>innerWidth+1||e.scrollWidth>e.clientWidth+2;}).map(e=>e.className));assert.deepEqual(bad,[]);};
 const shot=async name=>{await images();await p.locator('#sf_game').screenshot({path:path.join(out,name+'.png')});};
 async function init(){
 await p.waitForSelector('#sf_open',{state:'attached'});
@@ -34,7 +39,7 @@ await p.setViewportSize(size);
 const overlap=await p.evaluate(()=>{const a=document.querySelector('.sf_appearance').getBoundingClientRect(),b=document.querySelector('.sf_chips').getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;});assert(!overlap,`${id} ${size.width} HUD`);
 if(size.width===412)await shot(`${i+1}-${id}-world`);
 // Verify every approved glyph in its live selected and inactive menu states.
-// 0.9.66: 「인연과 유대」 (bond) sits between 일행 and 임무; its glyph is the birds picture used as a mask in the theme's menu ink
+// Cozy uses the approved Lotus PNGs; other themes retain their original menu PNGs and bond bird mask.
 const TABS=['world','party','bond','quests','map'];
 for(const tab of TABS){
  if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();
@@ -48,6 +53,11 @@ for(const tab of TABS){
  });
  assert.equal(glyphs.length,TABS.length);
  for(const [j,g]of glyphs.entries()){
+  if(id==='cozy'){
+   const [name,width,height]=[['home',51,51],['heart',54,48],['rings',53,48],['scroll',50,54],['map',58,52]][j];
+   assert(g.url.includes(`/lotus/icon.${name}.png`),g.url);
+   assert(g.width===width&&g.height===height&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong Lotus icon`);continue;
+  }
   if(TABS[j]==='bond'){assert(g.url.includes('/bond/redrawn/22-birds-symbol.png'),g.url);assert(g.inside,`${id} ${size.width} ${tab}: clipped bond icon`);continue;}
   assert(g.url.includes(`/menu-icons/${id}/${TABS[j]}.png`),g.url);
   assert(g.width===48&&g.height===48&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong icon`);
