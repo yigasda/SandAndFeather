@@ -28,6 +28,7 @@ function codeStamp() {
 const OUT = path.resolve(process.argv[2] || 'docs/consult/desert/maps/portal-02-t1w');
 const independentIndex=process.argv.indexOf('--independent-tiles');
 const INDEPENDENT_TILES=independentIndex<0?null:Number(process.argv[independentIndex+1]);
+const RETURN_TRACE = process.argv.includes('--return-trace'); // Read-only diagnostics; no controller or assertion changes.
 if(INDEPENDENT_TILES!==null&&!(INDEPENDENT_TILES>0&&INDEPENDENT_TILES<10))throw new Error('invalid independent tiles');
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
@@ -114,6 +115,28 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
     const errors = []; page.on('pageerror', e => /Internal S|Host not/.test(e.message) || errors.push(e.message));
     const sleep = ms => page.waitForTimeout(ms);
     const W = require('./touch-walk.cjs')(page, cdp);
+    const returnTraceCalls = [];
+    const writeReturnTrace = () => {
+        if (!RETURN_TRACE) return;
+        try {
+            fs.writeFileSync(path.join(OUT, 'return-trace.json'), JSON.stringify({
+                schema: 1, codeStamp: initialCodeStamp, arguments: process.argv.slice(2),
+                limits: { calls: 64, framesPerCall: 2048, pointerEventsPerCall: 1024, loopMeasurementsPerCall: 160 },
+                notes: ['Read-only observer; original control loop, touches, sleeps and assertions are unchanged.',
+                    'RAF timestamps/counts belong to the observer, not necessarily an executed movement frame.',
+                    'Pointer listeners are registered on the pad after bindPad, so input is read after its handler.',
+                    'Bounded buffers preserve the most recent samples; dropped counts disclose truncation.'],
+                calls: returnTraceCalls
+            }, null, 2));
+        } catch (error) { console.warn('RETURN_TRACE_WRITE_ERROR', String(error)); }
+    };
+    const finishReturnTrace = async (trace, result, reason) => {
+        if (!trace) return;
+        trace.result = result; trace.reason = reason; trace.finishedNodeMs = Date.now();
+        try { trace.browser = await page.evaluate(() => T.returnTracer?.finish() || null); }
+        catch (error) { trace.captureError = String(error); }
+        writeReturnTrace();
+    };
     const boot = async () => {
         await page.waitForFunction(() => !!window.SillyTavern?.getContext, null, { timeout: 60000 }); await sleep(2500);
         const save = page.locator('button:visible, .menu_button:visible', { hasText: /^Save$/ });
@@ -128,7 +151,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         return { map: m.id, x: p.x, y: p.y, inExit: !!m.exitAt(p.x + 0.5, p.y + 0.8), mateInExit: !!m.exitAt(q.x + 0.5, q.y + 0.8), mate: {x:q.x,y:q.y}, floor: !m.solidRect(p.x+.22,p.y+.62,p.x+.78,p.y+.96), mateFloor: !m.solidRect(q.x+.22,q.y+.62,q.x+.78,q.y+.96) };
     });
     async function walkBackToLanding(entry) {
-        const clear=await page.evaluate(e=>{
+        const trace = RETURN_TRACE && returnTraceCalls.length < 64
+            ? { id:returnTraceCalls.length+1, origin:{...entry}, startedNodeMs:Date.now(), measurements:[] } : null;
+        if (trace) returnTraceCalls.push(trace);
+        const clear=await page.evaluate(([e, traceId])=>{
+            if (traceId != null) T.returnTracer?.start(e, traceId);
             const p=T.player.player,m=T.win.currentMap(),n=Math.ceil(Math.hypot(p.x-e.x,p.y-e.y)/.04);
             let leftExit=false;
             for(let k=0;k<=n;k++){const t=n?k/n:0,x=p.x+(e.x-p.x)*t,y=p.y+(e.y-p.y)*t;
@@ -137,23 +164,33 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
                 if(inExit&&leftExit)return false;
                 if(!inExit)leftExit=true;}
             return true;
-        },entry);
+        },[entry, trace?.id ?? null]);
+        if (trace) trace.straightPathClear = clear;
         // Route around obstacles first, then finish the exact return below.
         // The pathfinder's .4-tile goal radius is not a completed precision return.
-        if(!clear && !await W.walkToPoint(entry.x,entry.y,30000,.4,{avoidExits:true}))return false;
+        if(!clear && !await W.walkToPoint(entry.x,entry.y,30000,.4,{avoidExits:true})) {
+            if (trace) await finishReturnTrace(trace, false, 'pathfinder-returned-false');
+            return false;
+        }
         // Do not round a collision-safe start onto a blocked grid point beside a doorway post.
         const pad=await W.padBox();await W.touch('touchStart',pad.x,pad.y);
+        if (trace) trace.driverPad = {...pad};
         let arrived=false;
         for(let k=0;k<160;k++){
             const me=await where(),dx=entry.x-me.x,dy=entry.y-me.y,d=Math.hypot(dx,dy);
+            if (trace) trace.measurements.push({iteration:k,nodeMs:Date.now(),position:me,dx,dy,distance:d});
             if(d<(INDEPENDENT_TILES?.02:.18)){arrived=true;break;}
             const speed=Math.max(INDEPENDENT_TILES?.16:.15,Math.min(1,d/.6));
+            if (trace) Object.assign(trace.measurements.at(-1), {speed,requestedTouch:{x:pad.x+dx/d*pad.lim*speed,y:pad.y+dy/d*pad.lim*speed},activeCommandNodeMs:Date.now()});
             await W.touch('touchMove',pad.x+dx/d*pad.lim*speed,pad.y+dy/d*pad.lim*speed);await sleep(20);
             // Neutral before measuring: CDP round trips/video encoding must not leave
             // the stick moving after the measured position (especially at pace 1.6).
             await W.touch('touchMove',pad.x,pad.y);
+            if (trace) trace.measurements.at(-1).neutralCommandCompletedNodeMs = Date.now();
         }
-        await W.touch('touchEnd');await sleep(150);return arrived;
+        await W.touch('touchEnd');await sleep(150);
+        if (trace) await finishReturnTrace(trace, arrived, arrived ? 'arrival-threshold' : 'precision-loop-exhausted');
+        return arrived;
     }
     try {
         await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
@@ -161,6 +198,83 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.evaluate(async () => {
             T.state.resetState(); const s = T.state.getState(); s.part = 'day'; s.wake = null; T.heroes.setLead(s, 'set'); T.heroes.setWith(s, 'horus'); await T.win.openGame(); window.toastr?.clear();
         });
+        if (RETURN_TRACE) await page.evaluate(async base => {
+            const { input } = await import(base + 'src/world/input.js');
+            const FRAME_CAP = 2048, EVENT_CAP = 1024;
+            let active = null, raf = 0;
+            const ring = cap => ({ cap, total: 0, values: [] });
+            const push = (r, value) => { r.values[r.total++ % r.cap] = value; };
+            const ordered = r => {
+                const offset = r.total > r.cap ? r.total % r.cap : 0;
+                return { total: r.total, dropped: Math.max(0, r.total - r.cap),
+                    values: r.values.slice(offset).concat(r.values.slice(0, offset)) };
+            };
+            const snapshot = () => {
+                const p = T.player.player, m = T.win.currentMap();
+                return { at: performance.now(), map: m?.id, x: p.x, y: p.y,
+                    input: { dx: input.dx, dy: input.dy, length: Math.hypot(input.dx, input.dy) },
+                    inExit: !!m?.exitAt(p.x + .5, p.y + .8), moveCount: T.moves?.length ?? null,
+                    moving: p.moving };
+            };
+            const geometry = () => {
+                const selectors = { game: '#sf_game', controls: '#sf_game .sf_controls',
+                    pad: '#sf_game .sf_pad', actions: '#sf_game .sf_actions', knob: '#sf_game .sf_knob' };
+                const boxes = {};
+                for (const [name, selector] of Object.entries(selectors)) {
+                    const el = document.querySelector(selector); if (!el) { boxes[name] = null; continue; }
+                    const r = el.getBoundingClientRect(), s = getComputedStyle(el);
+                    boxes[name] = { rect: { left:r.left, top:r.top, width:r.width, height:r.height },
+                        offsetWidth:el.offsetWidth, offsetHeight:el.offsetHeight,
+                        css: Object.fromEntries(['width','height','boxSizing','transform','zoom','display',
+                            'flexShrink','borderLeftWidth','borderRightWidth','borderTopWidth','borderBottomWidth',
+                            'paddingLeft','paddingRight','paddingTop','paddingBottom'].map(k => [k,s[k]])) };
+                }
+                const r = boxes.pad?.rect;
+                return { boxes, theme:document.getElementById('sf_game')?.dataset.uiTheme,
+                    viewport: { width:innerWidth, height:innerHeight, dpr:devicePixelRatio,
+                        visualScale:visualViewport?.scale ?? null },
+                    helperCenter:r ? {x:r.left+r.width/2,y:r.top+r.height/2,lim:r.width/2*.62}:null,
+                    inputHandlerCenter:r ? {x:r.left+r.width/2,y:r.top+r.width/2,lim:r.width/2*.62}:null };
+            };
+            const sample = timestamp => {
+                if (!active) return;
+                const state = snapshot();
+                const previous = active.lastRaf;
+                active.lastRaf = timestamp;
+                push(active.frames, { frame:active.frames.total+1, timestamp,
+                    rafDelta:previous == null ? null : timestamp-previous, ...state });
+                raf = requestAnimationFrame(sample);
+            };
+            // These passive observers never dispatch events, set input, move actors or change clocks.
+            const pad = document.querySelector('#sf_game .sf_pad');
+            for (const type of ['pointerdown','pointermove','pointerup','pointercancel']) {
+                pad?.addEventListener(type, event => {
+                    if (active) push(active.pointerEvents, { type, eventTime:event.timeStamp,
+                        clientX:event.clientX, clientY:event.clientY, pointerId:event.pointerId, ...snapshot() });
+                }, { passive:true });
+            }
+            T.returnTracer = {
+                start(entry, id) {
+                    if (active) cancelAnimationFrame(raf);
+                    active = { id, origin:{x:entry.x,y:entry.y,map:entry.map ?? T.win.currentMap()?.id},
+                        timeOrigin:performance.timeOrigin, started:snapshot(), startGeometry:geometry(),
+                        frames:ring(FRAME_CAP), pointerEvents:ring(EVENT_CAP), lastRaf:null,
+                        initialMoves:(T.moves || []).length };
+                    raf = requestAnimationFrame(sample);
+                },
+                finish() {
+                    if (!active) return null;
+                    cancelAnimationFrame(raf);
+                    const call = active, final = snapshot();
+                    active = null;
+                    return { id:call.id, origin:call.origin, timeOrigin:call.timeOrigin,
+                        started:call.started, final, finalDistance:Math.hypot(final.x-call.origin.x,final.y-call.origin.y),
+                        startGeometry:call.startGeometry, finalGeometry:geometry(),
+                        frames:ordered(call.frames), pointerEvents:ordered(call.pointerEvents),
+                        transitions:(T.moves || []).slice(call.initialMoves) };
+                }
+            };
+        }, BASE);
         if(process.argv.includes('--overlay-fixtures')) {
             const fixtures=await page.evaluate(()=>{
                 const s=T.state.getState(),saved=structuredClone(s.pos),out={};
@@ -514,6 +628,11 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
         await page.screenshot({ path: path.join(OUT, `${String(shot++).padStart(2, '0')}-after-reload.png`) });
         ok(!errors.length, `페이지 오류 없음 ${errors.join('; ')}`);
     } finally {
+        if (RETURN_TRACE) {
+            const pending = returnTraceCalls.find(call => call.result === undefined);
+            if (pending) await finishReturnTrace(pending, null, 'interrupted-or-exception');
+            else writeReturnTrace();
+        }
         const end=codeStamp();
         ok(end.runtimeAndTestSha256===initialCodeStamp.runtimeAndTestSha256,'실행 중 런타임·맵·시험 코드 동일');
         fs.writeFileSync(path.join(OUT,'code-stamp.json'),JSON.stringify({start:initialCodeStamp,end,arguments:process.argv.slice(2)},null,2));
@@ -524,3 +643,4 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
     console.log(`\n${fail ? 'FAIL' : 'ALL PASS'} (${fail} failed)`);
     process.exit(fail ? 1 : 0);
 })();
+
