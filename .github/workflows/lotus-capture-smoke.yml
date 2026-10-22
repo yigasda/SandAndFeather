@@ -1,4 +1,4 @@
-name: Lotus landscape tabs capture
+name: Lotus release full validation
 
 on:
   pull_request:
@@ -13,24 +13,15 @@ jobs:
   browser-capture:
     if: github.head_ref == 'ci/lotus-tabs-capture-20261022' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - variant: before
-            source: 1fb78789d3b4258b89a49809d3f51296124f2db3
-          - variant: after
-            source: 0ec1627f5e641285916f0af8552687c829637b8f
+    timeout-minutes: 90
     env:
-      VARIANT: ${{ matrix.variant }}
-      GAME_SHA: ${{ matrix.source }}
+      GAME_SHA: 6fe4a2dada19c8ef6e809a8be16d93213c90ce62
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out the approved game commit without credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: ${{ matrix.source }}
+          ref: 6fe4a2dada19c8ef6e809a8be16d93213c90ce62
           path: game
           persist-credentials: false
           fetch-depth: 1
@@ -39,7 +30,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk python3-numpy python3-pil
           mkdir -p capture-output driver
           test "$(git -C game rev-parse HEAD)" = "$GAME_SHA"
           node --input-type=module --check < game/src/ui/lotus-menu.js
@@ -51,7 +42,12 @@ jobs:
           GIT_LFS_SKIP_SMUDGE=1 git -C sillytavern checkout --detach 06bde939fb1e9c4c8d8641d810f0a916b5bce127
           git -C sillytavern rev-parse HEAD > capture-output/sillytavern-sha.txt
           (cd sillytavern && npm install --no-audit --no-fund)
-          (cd driver && npm install --no-audit --no-fund --ignore-scripts --save-exact playwright-core@1.56.1)
+          (cd driver && npm install --no-audit --no-fund --ignore-scripts --save-exact playwright@1.56.1)
+          (cd driver && npx playwright install --with-deps chromium ffmpeg)
+          CHROMIUM=$(node -e "console.log(require('./driver/node_modules/playwright').chromium.executablePath())")
+          sudo ln -sf "$CHROMIUM" /usr/bin/chromium
+          git -C game fetch --depth 1 origin main:refs/remotes/origin/main
+          test "$(git -C game rev-parse origin/main)" = "2e8323ff3a4231bdc2b80f34b29ddab1f475d464"
           EXT="$PWD/sillytavern/data/default-user/extensions/SandAndFeather"
           mkdir -p "$EXT"
           cp -r game/src game/data "$EXT/"
@@ -72,160 +68,39 @@ jobs:
                   target.parent.mkdir(parents=True, exist_ok=True)
                   shutil.copy2(source, target)
           PY
-      - name: Capture one actual Lotus bond screen in the disposable runtime
+      - name: Run mandatory pre-main full suite in disposable runtime
         shell: bash
         run: |
           set -euo pipefail
-          (cd sillytavern && node server.js --port 8000 --listen false > ../capture-output/server.log 2>&1) &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-          for i in $(seq 90); do
-            if curl --fail --silent http://127.0.0.1:8000/ > /dev/null; then break; fi
-            sleep 2
-          done
-          curl --fail --silent http://127.0.0.1:8000/ > /dev/null
-          cat > driver/capture.cjs <<'JS'
-          const {chromium} = require('playwright-core');
-          const fs = require('node:fs');
-          const crypto = require('node:crypto');
-          const path = require('node:path');
-          const out = path.resolve('capture-output');
-          const base = '/scripts/extensions/third-party/SandAndFeather/';
-          const metadata = {
-            purpose:'Accepted rail and junction before/after four-menu verification, not full regression',
-            variant:process.env.VARIANT, game_sha:process.env.GAME_SHA, harness_sha:process.env.HEAD_SHA,
-            sillytavern_sha:fs.readFileSync(path.join(out,'sillytavern-sha.txt'),'utf8').trim(),
-            run_id:process.env.GITHUB_RUN_ID, viewport:{width:1842,height:854}, device_scale_factor:1,
-            user_save_access:false, disposable_default_data:true, game_code_modified:false, korean_fallback_font:'Ubuntu fonts-noto-cjk',
-            seeded_records:false, seeded_inventory:false, ai_generation_requests:[],
-            blocked_external_requests:[], page_errors:[], request_failures:[], http_errors:[],
-            captured_at_utc:new Date().toISOString(), success:false
-          };
-          (async()=>{
-            let browser, page;
-            try {
-              browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--disable-background-networking','--no-first-run']});
-              metadata.browser=browser.version();
-              const context=await browser.newContext({viewport:metadata.viewport,deviceScaleFactor:1});
-              await context.route('**/*',async route=>{
-                const request=route.request(), url=new URL(request.url());
-                if (/\/generate(?:\/|$)|\/chat\/completions(?:\/|$)/.test(url.pathname)) {
-                  metadata.ai_generation_requests.push({method:request.method(),url:request.url()});
-                  return route.abort();
-                }
-                if (!['127.0.0.1','localhost'].includes(url.hostname) && !['data:','blob:'].includes(url.protocol)) {
-                  metadata.blocked_external_requests.push(request.url());
-                  return route.abort();
-                }
-                return route.continue();
-              });
-              page=await context.newPage();
-              page.setDefaultTimeout(30000);
-              page.on('pageerror',e=>metadata.page_errors.push(e.message));
-              page.on('requestfailed',r=>metadata.request_failures.push({url:r.url(),error:r.failure()?.errorText}));
-              page.on('response',r=>{if(r.status()>=400)metadata.http_errors.push({url:r.url(),status:r.status()});});
-              await page.goto('http://127.0.0.1:8000/',{waitUntil:'domcontentloaded'});
-              await page.waitForFunction(()=>!!window.SillyTavern?.getContext,null,{timeout:60000});
-              await page.waitForTimeout(2500);
-              const save=page.locator('button:visible, .menu_button:visible',{hasText:/^Save$/});
-              await save.first().waitFor({state:'visible',timeout:60000});
-              await save.first().click();
-              await save.first().waitFor({state:'hidden',timeout:30000});
-              await page.waitForFunction(()=>SillyTavern.getContext().characters?.length>0);
-              await page.evaluate(()=>{
-                const ctx=SillyTavern.getContext();
-                const index=ctx.characters.findIndex(c=>/Seraphina/i.test(c.name));
-                if(index<0)throw new Error('Disposable default Seraphina character missing');
-                ctx.selectCharacterById(index);
-              });
-              await page.waitForFunction(()=>!!SillyTavern.getContext().chatId);
-              await page.waitForSelector('#sf_open',{state:'attached'});
-              await page.evaluate(async base=>{
-                const settings=await import(base+'src/core/settings.js');
-                settings.settings().theme='light'; settings.settings().uiTheme='cozy';
-                const win=await import(base+'src/ui/window.js');
-                await win.openGame();
-                window.toastr?.clear();
-              },base);
-              metadata.captures=[]; metadata.interactions=[];
-              const check=(condition,name)=>{metadata.interactions.push({name,pass:!!condition});if(!condition)throw new Error(name);};
-              for (const config of [
-                {theme:'cozy',width:1842,height:854},
-                {theme:'cozy',width:844,height:390},
-                {theme:'cozy',width:390,height:844},
-                {theme:'classic',width:844,height:390}
-              ]) {
-                const {theme,width,height}=config;
-                await page.setViewportSize({width,height});
-                await page.evaluate(async({base,theme})=>{const s=await import(base+'src/core/settings.js'),w=await import(base+'src/ui/window.js');s.settings().uiTheme=theme;w.applyTheme();},{base,theme});
-                for (const tab of ['bond','party','quests','map']) {
-                  await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
-                  if(width>height && theme==='cozy')await page.waitForSelector(tab==='bond'?'.sf_pop_wrap.sf_lotus_exact':'.sf_menu_window.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
-                  await page.waitForTimeout(700);
-                  const geometry=await page.evaluate(async()=>{
-                    await document.fonts.ready;
-                    const root=document.querySelector('#sf_game');
-                    const visible=el=>{const r=el.getBoundingClientRect();const s=getComputedStyle(el);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden';};
-                    await Promise.all([...root.querySelectorAll('img')].filter(visible).map(img=>img.decode().catch(()=>{})));
-                    const box=el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
-                    return {
-                      cards:[...root.querySelectorAll('.sf_pop_wrap')].map(el=>({classes:el.className,box:box(el),text:el.textContent})),
-                      controls:[...root.querySelectorAll('button')].filter(visible).map(el=>({text:el.textContent,label:el.getAttribute('aria-label'),box:box(el)})),
-                      headerParts:[...root.querySelectorAll('[data-asset="header.lower-rail"],[data-asset="header.left-junction"]')].filter(visible).map(el=>{const img=el.tagName==='IMG'?el:el.querySelector('img');return {id:el.dataset.asset,tag:el.tagName,box:box(el),style:el.getAttribute('style'),src:img?.src,naturalWidth:img?.naturalWidth,naturalHeight:img?.naturalHeight,complete:img?.complete};}),
-                      images:[...root.querySelectorAll('img')].filter(visible).map(el=>({src:el.src,complete:el.complete,width:el.naturalWidth})),
-                      canvases:[...root.querySelectorAll('canvas')].filter(visible).map(el=>({classes:el.className,width:el.width,height:el.height,box:box(el)}))
-                    };
-                  });
-                  if(width>height && theme==='cozy' && process.env.VARIANT==='after'){
-                    const rail=geometry.headerParts.find(p=>p.id==='header.lower-rail'),junction=geometry.headerParts.find(p=>p.id==='header.left-junction');
-                    check(rail?.naturalWidth===1783&&rail?.naturalHeight===11,tab+' '+width+' approved rail native dimensions');
-                    check(junction?.naturalWidth===29&&junction?.naturalHeight===38,tab+' '+width+' approved junction native dimensions');
-                    check(rail?.tag==='IMG',tab+' '+width+' rail uses full new image without old crop wrapper');
-                  }
-                  if(theme!=='cozy'||width<height)check(await page.locator('.sf_lotus_menu,.sf_lotus_exact').count()===0,theme+' '+tab+' '+width+' keeps original layout');
-                  const name=theme+'-'+tab+'-'+width+'x'+height+'.png';
-                  await page.screenshot({path:path.join(out,name)});
-                  const bytes=fs.readFileSync(path.join(out,name));
-                  metadata.captures.push({tab,theme,viewport:{width,height},name,bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),geometry});
-                }
-              }
-              await page.setViewportSize({width:844,height:390});
-              await page.evaluate(async base=>{const s=await import(base+'src/core/settings.js'),w=await import(base+'src/ui/window.js');s.settings().uiTheme='cozy';w.applyTheme();},base);
-              await page.evaluate(()=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:'bond'})));
-              await page.waitForSelector('.sf_pop_wrap.sf_lotus_exact');
-              await page.locator('.sf_lotus_hit[data-action="nav-party"]').click();
-              await page.waitForSelector('.sf_lotus_menu[data-lotus-tab="party"]');
-              for(const tab of ['quests','map','party']){
-                await page.locator('.sf_lotus_menu .sf_menu_nav [data-menu-tab="'+tab+'"]').click();
-                await page.waitForSelector('.sf_lotus_menu[data-lotus-tab="'+tab+'"]');
-                check(await page.locator('.sf_lotus_menu').count()===1,'Four-menu header action '+tab+' works');
-              }
-              await page.locator('.sf_lotus_menu .sf_pop_x').click();
-              check(await page.locator('.sf_pop_wrap').count()===0,'Header close works');
-              check(metadata.ai_generation_requests.length===0,'No AI generation requests');
-              metadata.success=true;
-            } catch(error) {
-              metadata.failure=error.stack||String(error);
-              if(page){metadata.page_url=page.url();await page.screenshot({path:path.join(out,'lotus-runtime.png')}).catch(()=>{});}
-              process.exitCode=1;
-            } finally {
-              fs.writeFileSync(path.join(out,'metadata.json'),JSON.stringify(metadata,null,2)+'\n');
-              console.log(JSON.stringify({success:metadata.success,failure:metadata.failure,scene:metadata.scene?.box,page_errors:metadata.page_errors}));
-              if(browser)await browser.close();
-            }
-          })();
-          JS
-          node driver/capture.cjs
-      - name: Upload one PNG and diagnostic metadata only
+          export ST_ROOT="$PWD/sillytavern"
+          export NODE_PATH="$PWD/driver/node_modules"
+          OUT="$PWD/full-output"
+          mkdir -p "$OUT"
+          node game/tools/st-test/fakeai.js > "$OUT/fakeai.log" 2>&1 &
+          FAKE_PID=$!
+          trap 'kill "$FAKE_PID" 2>/dev/null || true' EXIT
+          printf 'source=%s\nharness=%s\nbase=%s\nhost=%s\nuser_save_access=false\n' "$GAME_SHA" "$HEAD_SHA" "$(git -C game rev-parse origin/main)" "$(git -C sillytavern rev-parse HEAD)" > "$OUT/provenance.txt"
+          set +e
+          bash game/tools/st-test/tiers.sh full --since origin/main --out "$OUT"
+          RESULT=$?
+          set -e
+          if grep -nE '^FAIL|^실패' "$OUT"/*.log > "$OUT/failure-lines.txt"; then RESULT=1; fi
+          if [ -f /tmp/st-server.log ]; then cp /tmp/st-server.log "$OUT/server.log"; fi
+          printf 'suite_exit=%s\n' "$RESULT" >> "$OUT/provenance.txt"
+          exit "$RESULT"
+      - name: Upload full-suite evidence without video bulk
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: lotus-header-${{ matrix.variant }}
+          name: lotus-release-full
           path: |
-            capture-output/*.png
-            capture-output/metadata.json
-            capture-output/sillytavern-sha.txt
-            capture-output/server.log
+            full-output/**/*.log
+            full-output/**/*.txt
+            full-output/**/*.json
+            full-output/landscape/**/*.png
+            full-output/verify-cozy-ui/**/*.png
+            full-output/verify-ui-themes/**/*.png
+            full-output/verify-full-map/**/*.png
           if-no-files-found: error
           retention-days: 1
           compression-level: 6
