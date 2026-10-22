@@ -1,4 +1,4 @@
-name: Lotus portal precision experiment
+name: Lotus portal route validation
 
 on:
   pull_request:
@@ -13,35 +13,18 @@ jobs:
   browser-capture:
     if: github.head_ref == 'ci/lotus-tabs-capture-20261022' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - variant: final
-            source: 7527fb1bd7615e50cba5bb81d63d9dc3bc0da7b1
+    timeout-minutes: 45
     env:
-      VARIANT: ${{ matrix.variant }}
-      GAME_SHA: ${{ matrix.source }}
+      GAME_SHA: 04d73fe236c53d2ebcc679318c9f20aa65b87597
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out the approved game commit without credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: ${{ matrix.source }}
+          ref: 04d73fe236c53d2ebcc679318c9f20aa65b87597
           path: game
           persist-credentials: false
           fetch-depth: 1
-      - name: Check out identical diagnostic test harness
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: 04d73fe236c53d2ebcc679318c9f20aa65b87597
-          path: test-harness
-          persist-credentials: false
-          fetch-depth: 1
-          sparse-checkout: |
-            tools
-            docs/art/map-expansion/desert-connections-review/sanctuary-validated
       - name: Prepare disposable official SillyTavern and browser driver
         shell: bash
         run: |
@@ -50,6 +33,8 @@ jobs:
           sudo apt-get install -y --no-install-recommends fonts-noto-cjk python3-numpy python3-pil
           mkdir -p capture-output driver
           test "$(git -C game rev-parse HEAD)" = "$GAME_SHA"
+          node --input-type=module --check < game/src/ui/lotus-menu.js
+          node --input-type=module --check < game/src/ui/menu-header.js
           mkdir sillytavern
           git -C sillytavern init
           git -C sillytavern remote add origin https://github.com/SillyTavern/SillyTavern.git
@@ -83,7 +68,7 @@ jobs:
                   target.parent.mkdir(parents=True, exist_ok=True)
                   shutil.copy2(source, target)
           PY
-      - name: Diagnose fresh onboarding and rerun unchanged ultimate test
+      - name: Validate all eleven previously failed portal routes
         shell: bash
         run: |
           set -euo pipefail
@@ -119,19 +104,8 @@ jobs:
           JS
           node driver/onboard.cjs
           set +e
-          EXT="$ST_ROOT/data/default-user/extensions/SandAndFeather"
-          (cd "$EXT" && find src data -type f -print0 | sort -z | xargs -0 sha256sum; sha256sum index.js style.css manifest.json) > "$OUT/runtime-hashes-before.txt"
-          printf 'served_game_sha=%s\ndiagnostic_harness_sha=%s\n' "$GAME_SHA" "$(git -C test-harness rev-parse HEAD)" >> "$OUT/provenance.txt"
-          node -e "const p=require('playwright');(async()=>{let b=await p.chromium.launch({executablePath:'/usr/bin/chromium'});console.log(b.version());await b.close()})()" > "$OUT/browser-version.txt"
-          RESULT=0
-          test -d game/src && test -d game/data
-          test -f game/tools/st-test/touch-walk.cjs
-          cp test-harness/tools/st-test/portal-walk.cjs game/tools/st-test/portal-walk.cjs
-          node --check game/tools/st-test/portal-walk.cjs
-          git -C game diff --stat > "$OUT/test-only-diff.txt"
-          node game/tools/st-test/portal-walk.cjs "$OUT/portal-city" --independent-tiles 1.7472 --city-dwelling --return-trace > "$OUT/portal-city.log" 2>&1 || RESULT=1
-          (cd "$EXT" && find src data -type f -print0 | sort -z | xargs -0 sha256sum; sha256sum index.js style.css manifest.json) > "$OUT/runtime-hashes-after.txt"
-          cmp "$OUT/runtime-hashes-before.txt" "$OUT/runtime-hashes-after.txt" || RESULT=1
+          bash game/tools/st-test/tiers.sh portal-walk:--independent-tiles,1.7472,--temple-02-15 portal-walk:--independent-tiles,1.7472,--temple-15-w portal-walk:--independent-tiles,1.7472,--temple-15-t2 portal-walk:--independent-tiles,1.7472,--temple-t2-e portal-walk:--independent-tiles,1.7472,--temple-t2-t3 portal-walk:--independent-tiles,1.7472,--temple-02-11 portal-walk:--independent-tiles,1.7472,--temple-w-e portal-walk:--independent-tiles,1.7472,--temple-t2-11 portal-walk:--independent-tiles,1.7472,--temple-e-17 portal-walk:--independent-tiles,1.7472,--city-dwelling portal-walk:--independent-tiles,1.7472,--pair-file,docs/art/map-expansion/desert-connections-review/sanctuary-validated/pair.json --since origin/main --out "$OUT"
+          RESULT=$?
           set -e
           if grep -nE '^FAIL|^실패' "$OUT"/*.log > "$OUT/failure-lines.txt"; then RESULT=1; fi
           if [ -f /tmp/st-server.log ]; then cp /tmp/st-server.log "$OUT/server.log"; fi
@@ -141,9 +115,9 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: lotus-portal-precision
+          name: lotus-portal-all-routes
           path: |
-            full-output/**/*.png
+            full-output/*.png
             full-output/desert-ult/**/*.png
             full-output/**/*.log
             full-output/**/*.txt
