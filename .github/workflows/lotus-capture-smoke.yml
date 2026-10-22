@@ -1,4 +1,4 @@
-name: Lotus capture roundtrip smoke
+name: Lotus landscape tabs capture
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   browser-capture:
-    if: github.head_ref == 'ci/lotus-capture-smoke-20261022' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.head_ref == 'ci/lotus-tabs-capture-20261022' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
@@ -79,7 +79,7 @@ jobs:
           const out = path.resolve('capture-output');
           const base = '/scripts/extensions/third-party/SandAndFeather/';
           const metadata = {
-            purpose:'One actual approved Lotus bond UI capture, not full regression',
+            purpose:'Landscape tab baseline captures, not full regression',
             game_sha:process.env.GAME_SHA, harness_sha:process.env.HEAD_SHA,
             sillytavern_sha:fs.readFileSync(path.join(out,'sillytavern-sha.txt'),'utf8').trim(),
             run_id:process.env.GITHUB_RUN_ID, viewport:{width:1842,height:854}, device_scale_factor:1,
@@ -131,40 +131,36 @@ jobs:
                 const settings=await import(base+'src/core/settings.js');
                 settings.settings().theme='light'; settings.settings().uiTheme='cozy';
                 const win=await import(base+'src/ui/window.js');
-                const bond=await import(base+'src/ui/bondcard.js');
                 await win.openGame();
-                bond.bondCard(win.gameUi(),'set');
                 window.toastr?.clear();
               },base);
-              await page.waitForSelector('.sf_pop_wrap.sf_lotus_exact .sf_lotus_scene',{state:'visible'});
-              metadata.scene=await page.evaluate(async()=>{
-                await document.fonts.ready;
-                const scene=document.querySelector('.sf_lotus_scene');
-                const images=[...scene.querySelectorAll('img')];
-                await Promise.all(images.map(img=>img.decode()));
-                const borders=[...scene.querySelectorAll('*')].map(el=>getComputedStyle(el).borderImageSource).filter(x=>x!=='none');
-                const urls=[...new Set(borders.flatMap(x=>[...x.matchAll(/url\(["']?(.*?)["']?\)/g)].map(m=>m[1])))];
-                await Promise.all(urls.map(url=>new Promise((resolve,reject)=>{const img=new Image();img.onload=resolve;img.onerror=()=>reject(new Error('Border image failed: '+url));img.src=url;})));
-                await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-                const box=scene.getBoundingClientRect();
-                const layers=[...scene.querySelectorAll('.sf_lotus_layer')].map(el=>({
-                  asset:el.dataset.asset,layer:Number(el.dataset.layer),left:el.style.left,top:el.style.top,width:el.style.width,height:el.style.height,
-                  source:el.src||el.querySelector('img')?.src||getComputedStyle(el).borderImageSource
-                }));
-                return {box:{x:box.x,y:box.y,width:box.width,height:box.height},scale:box.width/1842,
-                  transform:getComputedStyle(scene).transform,theme:scene.closest('#sf_game').dataset.uiTheme,
-                  fonts:[...document.fonts].filter(f=>f.family.includes('SF Lotus')).map(f=>({family:f.family,weight:f.weight,status:f.status})),
-                  images:images.map(i=>({src:i.src,complete:i.complete,natural_width:i.naturalWidth})),
-                  border_images:urls,layers,text_count:scene.querySelectorAll('.sf_lotus_text').length};
-              });
-              const names=['27-section-book','31-heart','29-section-gift','28-section-sprout','47-feather'];
-              metadata.five_icons=Object.fromEntries(names.map(name=>[name,metadata.scene.layers.filter(layer=>layer.source.includes('/bond/redrawn/'+name+'.png'))]));
-              if(Object.values(metadata.five_icons).some(v=>!v.length))throw new Error('One or more approved redrawn icons missing');
-              if(metadata.scene.fonts.some(f=>f.status!=='loaded') || metadata.scene.fonts.length<2)throw new Error('Lotus fonts not loaded');
+              metadata.captures=[];
+              for (const viewport of [{width:1842,height:854},{width:844,height:390},{width:390,height:844}]) {
+                await page.setViewportSize(viewport);
+                for (const tab of ['party','quests','map','world']) {
+                  if(viewport.width===1842 && tab==='world')continue;
+                  await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
+                  await page.waitForTimeout(800);
+                  const geometry=await page.evaluate(async()=>{
+                    await document.fonts.ready;
+                    const root=document.querySelector('#sf_game');
+                    const visible=el=>{const r=el.getBoundingClientRect();const s=getComputedStyle(el);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden';};
+                    await Promise.all([...root.querySelectorAll('img')].filter(visible).map(img=>img.decode().catch(()=>{})));
+                    const box=el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
+                    return {
+                      cards:[...root.querySelectorAll('.sf_pop_wrap')].map(el=>({classes:el.className,box:box(el),text:el.textContent})),
+                      controls:[...root.querySelectorAll('button')].filter(visible).map(el=>({text:el.textContent,label:el.getAttribute('aria-label'),tab:el.dataset.menuTab,lead:el.dataset.lead,companion:el.dataset.companion,box:box(el)})),
+                      images:[...root.querySelectorAll('img')].filter(visible).map(el=>({src:el.src,complete:el.complete,width:el.naturalWidth})),
+                      canvases:[...root.querySelectorAll('canvas')].filter(visible).map(el=>({classes:el.className,width:el.width,height:el.height,box:box(el)}))
+                    };
+                  });
+                  const name=tab+'-'+viewport.width+'x'+viewport.height+'.png';
+                  await page.screenshot({path:path.join(out,name)});
+                  const bytes=fs.readFileSync(path.join(out,name));
+                  metadata.captures.push({tab,viewport,name,bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),geometry});
+                }
+              }
               if(metadata.ai_generation_requests.length)throw new Error('Unexpected generation request blocked');
-              await page.screenshot({path:path.join(out,'lotus-runtime.png')});
-              const bytes=fs.readFileSync(path.join(out,'lotus-runtime.png'));
-              metadata.image={name:'lotus-runtime.png',bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex')};
               metadata.success=true;
             } catch(error) {
               metadata.failure=error.stack||String(error);
@@ -182,9 +178,9 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: lotus-actual-runtime
+          name: lotus-tabs-baseline
           path: |
-            capture-output/lotus-runtime.png
+            capture-output/*.png
             capture-output/metadata.json
             capture-output/sillytavern-sha.txt
             capture-output/server.log
