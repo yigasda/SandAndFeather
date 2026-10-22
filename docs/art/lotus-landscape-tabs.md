@@ -14,8 +14,8 @@
 
 - 공통 창: body.background, header.underlay, header.background-restored, window.frame.
 - 헤더: header.lower-rail, header.left-junction, ornament.header-lotus. 승인된 장면 배치 좌표를 사용하며 PNG 파일을 변경하지 않는다.
-- 메뉴: nav.*.frame / face-restored와 icon.home / heart / rings / scroll / map / close. 현재 탭에는 기존 초록 선택 프레임을 재사용한다.
-- 목록/지도 패널: panel.record1.fill / frame / corner-ornaments를 동일한 56px 9-slice로 겹쳐 사용한다.
+- 메뉴: nav.*.frame / face-restored와 icon.home / heart / rings / scroll / map / close. 현재 탭에는 기존 초록 선택 프레임을 재사용하고, 프레임과 채움의 모서리는 함께 12px 9-slice로 보존한다.
+- 목록/지도 패널: panel.record1.fill / frame / corner-ornaments를 동일한 56px 원본 슬라이스로 겹쳐 사용한다. 밀도 높은 매일 의뢰 행은 세 레이어의 모서리를 모두 32px로 같은 비율로 표시한다.
 - 실제 버튼: tab.neutral.fill / frame, tab.selected.fill / frame를 동일한 16px 9-slice로 겹쳐 사용한다.
 - 글자는 실제 한국어 폰트와 원래 게임 데이터를 사용한다. 전체 화면 PNG를 배경으로 붙이거나 CSS로 장식을 다시 그리지 않는다.
 
@@ -28,4 +28,10 @@
 - 수정 JS의 ES module 문법 검사 완료.
 - 실제 실행 검사는 GitHub Actions의 격리된 SillyTavern에서 한다. 로컬 게임 실행이나 조립 이미지를 런타임 증거로 사용하지 않는다.
 - 대상: 일행/임무/지도 1842×854, 844×390 캡처, 실제 탭/앞장/동행/상세/업적/탐사/스크롤 동작, 회전 복원, 세로/다른 테마/세계/인연 장면 기준 비교.
-- 현재 문서 작성 시점: 런타임 검증 대기. 문법 통과만으로 완료 판정하지 않는다.
+- 검증한 게임 코드: `1fb78789d3b4258b89a49809d3f51296124f2db3`.
+- [최종 GitHub Actions 실행](https://github.com/yigasda/SandAndFeather/actions/runs/39700536665): 통과. 실제 탭 이동/반복 이동, 앞장/동행 변경과 재표시, 자세히, 업적, 탐사 수첩, 닫기/Escape, 스크롤, 세로 회전과 classic 테마 전환/복원, 기존 지도 canvas 동일성 검사를 포함한다. 사용자 저장 데이터에 접근하지 않고 격리된 기본 데이터만 사용했다. 게임 페이지 오류는 없었다.
+- [읽을 수 있는 기준 캡처](https://github.com/yigasda/SandAndFeather/actions/runs/39699082403)는 최초 기준 SHA를 실행했다. CI 호스트에 공식 Ubuntu 한국어 대체 글꼴을 설치하여 세로/다른 테마에 글꼴 변경을 넣지 않았다.
+- [같은 최종 코드의 맞춤/픽셀 검토 캡처](https://github.com/yigasda/SandAndFeather/actions/runs/39700109097): 1842×854 및 844×390에서 일행 3명/동행 3개 선택과 매일 의뢰 4행이 모두 보임을 확인했다. 이 실행의 업적 팝업 개수 가정은 테스트 오류였고, 최종 실행에서 실제 기존 교체 동작에 맞게 수정했다. 게임 코드는 바꾸지 않았다.
+- 세로 390×844 일행/임무/지도 PNG는 기준과 픽셀 단위로 동일했고, 원래 DOM의 위치/크기/텍스트도 같았다. 세계 390×844 및 844×390 역시 같은 DOM 위치/크기/텍스트를 유지했다. 세계의 픽셀 차이는 기존 애니메이션 표식의 작은 영역에만 있었다. 인연 장면과 모든 기존 PNG/manifest는 소스 변경이 없다.
+- 최종 화면은 실제 런타임 캡처로 검토했다. 세로와 대표 다른 테마 classic의 복원은 표적 검사이며, 모든 테마/게임 기능의 전체 회귀 검사를 대신한다고 주장하지 않는다.
+- 별도 검토 중인 헤더 rail/junction 아트 수정은 적용하지 않았다. 이 브랜치는 main/release로 병합하거나 배포하지 않았다.
