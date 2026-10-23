@@ -1,4 +1,4 @@
-name: Wind basin exact reproduction
+name: Home rollback comparison
 
 on:
   pull_request:
@@ -14,44 +14,228 @@ jobs:
     if: github.head_ref == 'ci/lotus-tabs-capture-20261022' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: prior
+            source: 2e8323ff3a4231bdc2b80f34b29ddab1f475d464
+          - variant: current
+            source: 35b8f3d4caf41c28878ab0e57818d345c5f299ce
+          - variant: candidate
+            source: aa21810148e125fa6af89c97f807bf5f5746b85c
     env:
-      GAME_SHA: c213224d865466a0252bc94bdc72785192e760a7
+      VARIANT: ${{ matrix.variant }}
+      GAME_SHA: ${{ matrix.source }}
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out the approved game commit without credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: c213224d865466a0252bc94bdc72785192e760a7
+          ref: ${{ matrix.source }}
           path: game
           persist-credentials: false
-          fetch-depth: 3
-      - name: Prepare generator dependencies only
+          fetch-depth: 1
+      - name: Prepare disposable official SillyTavern and browser driver
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p full-output
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends python3-numpy python3-pil python3-scipy python3-shapely
-          cat > hash-runtime.cjs <<'JS'
-          const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');const ROOT=path.resolve('game'),files=[];function scan(dir,ext){for(const ent of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,ent.name);if(ent.isDirectory())scan(p,ext);else if(ext.test(ent.name))files.push(p);}}scan(path.join(ROOT,'src'),/\.js$/);scan(path.join(ROOT,'data/maps'),/\.json$/);files.push(path.join(ROOT,'data/scene-art.json'),path.join(ROOT,'tools/st-test/portal-walk.cjs'));const hash=crypto.createHash('sha256');for(const file of files.sort())hash.update(path.relative(ROOT,file)).update(fs.readFileSync(file));const result={runtimeAndTestSha256:hash.digest('hex'),files:files.length};console.log(JSON.stringify(result));if(result.runtimeAndTestSha256!=='3f81c4f174d7c9694adc8dcd4787a7714101ea5138d76bdaf54d8d035c53a8be'||result.files!==125)process.exit(1);
-          JS
-          node hash-runtime.cjs > full-output/hash-before.json
-      - name: Reproduce and verify exact committed runtime
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          mkdir -p capture-output driver
+          test "$(git -C game rev-parse HEAD)" = "$GAME_SHA"
+          mkdir sillytavern
+          git -C sillytavern init
+          git -C sillytavern remote add origin https://github.com/SillyTavern/SillyTavern.git
+          GIT_LFS_SKIP_SMUDGE=1 git -C sillytavern fetch --depth 1 origin 06bde939fb1e9c4c8d8641d810f0a916b5bce127
+          GIT_LFS_SKIP_SMUDGE=1 git -C sillytavern checkout --detach 06bde939fb1e9c4c8d8641d810f0a916b5bce127
+          git -C sillytavern rev-parse HEAD > capture-output/sillytavern-sha.txt
+          (cd sillytavern && npm install --no-audit --no-fund)
+          (cd driver && npm install --no-audit --no-fund --ignore-scripts --save-exact playwright@1.56.1)
+          (cd driver && npx playwright install --with-deps chromium)
+          sudo ln -sf /usr/bin/google-chrome /usr/bin/chromium
+          EXT="$PWD/sillytavern/data/default-user/extensions/SandAndFeather"
+          mkdir -p "$EXT"
+          cp -r game/src game/data "$EXT/"
+          cp game/index.js game/style.css game/manifest.json "$EXT/"
+          export EXT
+          python3 - <<'PY'
+          import os, re, shutil
+          from pathlib import Path
+          root, dest = Path('game'), Path(os.environ['EXT'])
+          assets = set()
+          for path in (root/'data').rglob('*'):
+              if path.is_file() and path.suffix in {'.json','.js','.txt'}:
+                  assets.update(re.findall(r'"\.\./(docs/[^"]+)"', path.read_text(errors='replace')))
+          for name in sorted(assets):
+              source = root / name
+              if source.is_file():
+                  target = dest / name
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(source, target)
+          PY
+      - name: Capture HOME and preserve approved Lotus menus
         shell: bash
         run: |
           set -euo pipefail
-          (cd game && python3 -u tools/maps/desert.py --review-only desert_buried_temple desert_wind_basin) > full-output/generator.log 2>&1
-          git -C game diff --exit-code -- data src docs/art/map-expansion/desert-10.png > full-output/reproducibility.log
-          (cd game && python3 tools/maps/check-wind-basin-connection.py && python3 tools/maps/check-archive-connection.py) > full-output/invariants.log 2>&1
-          node hash-runtime.cjs > full-output/hash-after.json
-          cmp full-output/hash-before.json full-output/hash-after.json
-          git -C game rev-parse HEAD > full-output/source.txt
-          git -C game status --short > full-output/status.txt
-      - name: Upload reproduction evidence
+          (cd sillytavern && node server.js --port 8000 --listen false > ../capture-output/server.log 2>&1) &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 90); do
+            if curl --fail --silent http://127.0.0.1:8000/ > /dev/null; then break; fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:8000/ > /dev/null
+          cat > driver/capture.cjs <<'JS'
+          const {chromium} = require('playwright');
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const path = require('node:path');
+          const out = path.resolve('capture-output');
+          const base = '/scripts/extensions/third-party/SandAndFeather/';
+          const metadata = {
+            purpose:'HOME rollback prior/current/candidate comparison, not full regression',
+            variant:process.env.VARIANT, game_sha:process.env.GAME_SHA, harness_sha:process.env.HEAD_SHA,
+            sillytavern_sha:fs.readFileSync(path.join(out,'sillytavern-sha.txt'),'utf8').trim(),
+            run_id:process.env.GITHUB_RUN_ID, viewport:{width:1842,height:854}, device_scale_factor:1,
+            user_save_access:false, disposable_default_data:true, game_code_modified:false, korean_fallback_font:'Ubuntu fonts-noto-cjk',
+            seeded_records:false, seeded_inventory:false, ai_generation_requests:[],
+            blocked_external_requests:[], page_errors:[], request_failures:[], http_errors:[],
+            captured_at_utc:new Date().toISOString(), success:false
+          };
+          (async()=>{
+            let browser, page;
+            try {
+              browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--disable-background-networking','--no-first-run']});
+              metadata.browser=browser.version();
+              const context=await browser.newContext({viewport:metadata.viewport,deviceScaleFactor:1});
+              await context.route('**/*',async route=>{
+                const request=route.request(), url=new URL(request.url());
+                if (/\/generate(?:\/|$)|\/chat\/completions(?:\/|$)/.test(url.pathname)) {
+                  metadata.ai_generation_requests.push({method:request.method(),url:request.url()});
+                  return route.abort();
+                }
+                if (!['127.0.0.1','localhost'].includes(url.hostname) && !['data:','blob:'].includes(url.protocol)) {
+                  metadata.blocked_external_requests.push(request.url());
+                  return route.abort();
+                }
+                return route.continue();
+              });
+              page=await context.newPage();
+              page.setDefaultTimeout(30000);
+              page.on('pageerror',e=>metadata.page_errors.push(e.message));
+              page.on('requestfailed',r=>metadata.request_failures.push({url:r.url(),error:r.failure()?.errorText}));
+              page.on('response',r=>{if(r.status()>=400)metadata.http_errors.push({url:r.url(),status:r.status()});});
+              await page.goto('http://127.0.0.1:8000/',{waitUntil:'domcontentloaded'});
+              await page.waitForFunction(()=>!!window.SillyTavern?.getContext,null,{timeout:60000});
+              await page.waitForTimeout(2500);
+              const save=page.locator('button:visible, .menu_button:visible',{hasText:/^Save$/});
+              await save.first().waitFor({state:'visible',timeout:60000});
+              await save.first().click();
+              await save.first().waitFor({state:'hidden',timeout:30000});
+              await page.waitForFunction(()=>SillyTavern.getContext().characters?.length>0);
+              await page.evaluate(()=>{
+                const ctx=SillyTavern.getContext();
+                const index=ctx.characters.findIndex(c=>/Seraphina/i.test(c.name));
+                if(index<0)throw new Error('Disposable default Seraphina character missing');
+                ctx.selectCharacterById(index);
+              });
+              await page.waitForFunction(()=>!!SillyTavern.getContext().chatId);
+              await page.waitForSelector('#sf_open',{state:'attached'});
+              await page.evaluate(async base=>{
+                const settings=await import(base+'src/core/settings.js');
+                settings.settings().theme='light'; settings.settings().uiTheme='cozy';
+                const win=await import(base+'src/ui/window.js');
+                await win.openGame();
+                window.toastr?.clear();
+              },base);
+
+              metadata.captures=[]; metadata.checks=[];
+              const check=(ok,name)=>{metadata.checks.push({name,pass:!!ok});if(!ok)throw new Error(name);};
+              const home=async()=>page.evaluate(async base=>{const w=await import(base+'src/ui/window.js');document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:'world'}));await w.travel('ombos',{x:25,y:13});window.toastr?.clear();},base);
+              const snap=async(name,selector)=>{
+                await page.waitForTimeout(600);await page.evaluate(()=>document.fonts.ready);
+                await page.evaluate(async()=>Promise.all([...document.querySelectorAll('#sf_game img')].filter(i=>i.checkVisibility()).map(i=>i.decode().catch(()=>{}))));
+                const elements=await page.evaluate(selector=>[...document.querySelectorAll(selector)].filter(el=>el.checkVisibility()).map(el=>{
+                  const r=el.getBoundingClientRect(),s=getComputedStyle(el),p=getComputedStyle(el,'::before');
+                  return {tag:el.tagName,classes:el.className,text:el.tagName==='CANVAS'?'':el.textContent,box:{x:r.x,y:r.y,width:r.width,height:r.height},style:{backgroundImage:s.backgroundImage,borderImageSource:s.borderImageSource,backgroundColor:s.backgroundColor,borderColor:s.borderColor,color:s.color,fontFamily:s.fontFamily,fontSize:s.fontSize,opacity:s.opacity},before:{backgroundImage:p.backgroundImage,borderImageSource:p.borderImageSource}};
+                }),selector);
+                await page.screenshot({path:path.join(out,name+'.png')});
+                metadata.captures.push({name,viewport:page.viewportSize(),elements});
+              };
+              const close=async()=>{
+                const exact=page.locator('.sf_lotus_hit[data-action="close"]:visible');
+                if(await exact.count())await exact.last().click();
+                else await page.locator('.sf_pop_wrap .sf_pop_x:visible').last().click();
+                await page.waitForTimeout(150);
+                check(await page.locator('.sf_pop_wrap').count()===0,'popup closes without residual overlay');
+              };
+              const homeSelectors='#sf_game .sf_card,#sf_game .sf_chip,#sf_game .sf_hint_pill,#sf_game .sf_round,#sf_game .sf_icon_btn,#sf_game .sf_pad,#sf_game .sf_knob,#sf_game .sf_tabs,#sf_game .sf_tab';
+              for(const [width,height] of [[390,844],[412,900],[844,390],[1842,854]]){
+                await page.setViewportSize({width,height});await home();
+                await snap('home-'+width+'x'+height,homeSelectors);
+                const menu=page.locator('#sf_game .sf_menu');
+                if(await menu.isVisible()){
+                  await menu.click();check(await menu.getAttribute('aria-expanded')==='true','hamburger opens '+width);
+                  await snap('home-menu-'+width+'x'+height,homeSelectors);
+                }
+                await page.locator('#sf_game .sf_tabs [data-tab="party"]').click();
+                await page.waitForSelector('.sf_pop_wrap');await close();
+                if(await menu.isVisible() && await menu.getAttribute('aria-expanded')!=='true')await menu.click();
+                await page.locator('#sf_game .sf_tabs [data-tab="world"]').click();
+                check(await page.locator('.sf_pop_wrap').count()===0,'world tab/back '+width);
+                for(const [sel,label] of [['.sf_bag','bag'],['.sf_mini','minimap'],['.sf_appearance','settings']]){
+                  await page.locator('#sf_game '+sel).click();await page.waitForSelector('.sf_pop_wrap');
+                  await snap(label+'-'+width+'x'+height,'.sf_pop_wrap,.sf_pop_wrap button');await close();
+                }
+              }
+              await page.setViewportSize({width:412,height:900});await home();
+              await page.evaluate(async base=>{const s=await import(base+'src/core/state.js'),w=await import(base+'src/ui/window.js');s.getState().party.with='';await w.travel('ombos',{x:24,y:13});},base);
+              await page.locator('#sf_game .sf_talk').click();await page.waitForSelector('.sf_pop_wrap');await snap('home-talk-412x900','.sf_pop_wrap,.sf_pop_wrap button');await close();
+              await home();
+              const pos=()=>page.evaluate(async base=>structuredClone((await import(base+'src/core/state.js')).getState().pos),base);
+              const before=await pos(), pad=await page.locator('#sf_game .sf_pad').boundingBox();
+              await page.mouse.move(pad.x+pad.width/2,pad.y+pad.height/2);await page.mouse.down();
+              await page.mouse.move(pad.x+pad.width*.85,pad.y+pad.height/2);await page.waitForTimeout(350);await page.mouse.up();
+              const after=await pos();check(Math.hypot(after.x-before.x,after.y-before.y)>.01,'actual joystick movement');
+              metadata.joystick={before,after};
+              await page.setViewportSize({width:844,height:390});await page.setViewportSize({width:390,height:844});await home();
+              await snap('home-rotated-390x844',homeSelectors);
+              for(const [width,height] of [[844,390],[1842,854]]){
+                await page.setViewportSize({width,height});await home();
+                for(const tab of ['bond','party','quests','map']){
+                  await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
+                  await page.waitForSelector('.sf_pop_wrap');
+                  await snap('popup-'+tab+'-'+width+'x'+height,'.sf_pop_wrap,.sf_pop_wrap *');
+                  await close();
+                }
+              }
+              check(metadata.ai_generation_requests.length===0,'zero AI generation requests');
+              metadata.success=true;
+            } catch(error) {
+              metadata.failure=error.stack||String(error);
+              if(page){metadata.page_url=page.url();await page.screenshot({path:path.join(out,'lotus-runtime.png')}).catch(()=>{});}
+              process.exitCode=1;
+            } finally {
+              fs.writeFileSync(path.join(out,'metadata.json'),JSON.stringify(metadata,null,2)+'\n');
+              console.log(JSON.stringify({success:metadata.success,failure:metadata.failure,scene:metadata.scene?.box,page_errors:metadata.page_errors}));
+              if(browser)await browser.close();
+            }
+          })();
+          JS
+          node driver/capture.cjs
+      - name: Upload one PNG and diagnostic metadata only
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: wind-basin-exact-reproduction
-          path: full-output/**
+          name: home-rollback-${{ matrix.variant }}
+          path: |
+            capture-output/**/*.png
+            capture-output/**/*.log
+            capture-output/**/*.txt
+            capture-output/metadata.json
+            capture-output/sillytavern-sha.txt
+            capture-output/server.log
           if-no-files-found: error
           retention-days: 1
+          compression-level: 6
