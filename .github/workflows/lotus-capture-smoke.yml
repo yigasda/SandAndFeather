@@ -1,4 +1,4 @@
-name: Guardian lightwell gated route validation
+name: Final HOME restoration and preservation
 
 on:
   pull_request:
@@ -15,26 +15,41 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:
-      GAME_SHA: f80cf7fc51ee054205c54cbb207bcc31b87fd9d6
+      VARIANT: diagnostic
+      GAME_SHA: 808c67f9985da6ae5d5acfa369535c58831f03c5
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out the approved game commit without credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: f80cf7fc51ee054205c54cbb207bcc31b87fd9d6
+          ref: 808c67f9985da6ae5d5acfa369535c58831f03c5
           path: game
           persist-credentials: false
-          fetch-depth: 6
+          fetch-depth: 1
+      - name: Check out current comparison
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: yigasda/SandAndFeather
+          ref: 35b8f3d4caf41c28878ab0e57818d345c5f299ce
+          path: current-source
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Check out prior comparison
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: yigasda/SandAndFeather
+          ref: 2e8323ff3a4231bdc2b80f34b29ddab1f475d464
+          path: prior-source
+          persist-credentials: false
+          fetch-depth: 1
       - name: Prepare disposable official SillyTavern and browser driver
         shell: bash
         run: |
           set -euo pipefail
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends fonts-noto-cjk python3-numpy python3-pil python3-scipy python3-shapely
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
           mkdir -p capture-output driver
           test "$(git -C game rev-parse HEAD)" = "$GAME_SHA"
-          node --input-type=module --check < game/src/ui/lotus-menu.js
-          node --input-type=module --check < game/src/ui/menu-header.js
           mkdir sillytavern
           git -C sillytavern init
           git -C sillytavern remote add origin https://github.com/SillyTavern/SillyTavern.git
@@ -43,47 +58,8 @@ jobs:
           git -C sillytavern rev-parse HEAD > capture-output/sillytavern-sha.txt
           (cd sillytavern && npm install --no-audit --no-fund)
           (cd driver && npm install --no-audit --no-fund --ignore-scripts --save-exact playwright@1.56.1)
-          (cd driver && npx playwright install ffmpeg)
           /usr/bin/google-chrome --version > capture-output/browser-version.txt
           sudo ln -sf /usr/bin/google-chrome /usr/bin/chromium
-          git -C game cat-file -e 50399fda9ac5193cd8a033610a1973af7662c80d^{commit}
-      - name: Generate bounded guardian lightwell maps
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p full-output/generated
-          (cd game && python3 -u tools/maps/desert.py --review-only desert_guardian_gate desert_lightwell) > full-output/generator.log 2>&1
-      - name: Check exact pixel and geometry invariants
-        shell: bash
-        run: |
-          set -euo pipefail
-          git -C game diff --name-only > full-output/generated-diff.txt
-          python3 - <<'PY'
-          import subprocess, pathlib, shutil, hashlib, json
-          root=pathlib.Path('game')
-          changed=subprocess.check_output(['git','-C','game','diff','--name-only'],text=True).splitlines()
-          allowed={'data/maps/desert_lightwell.json','data/maps/desert_guardian_gate.json','data/scene-art.json','docs/art/map-expansion/desert-16.png'}
-          bad=[p for p in changed if p not in allowed and not p.startswith('docs/art/map-expansion/desert-connections-review/')]
-          assert not bad, 'Unrelated tracked changes: '+repr(bad)
-          assert not [p for p in changed if p in allowed], 'Generated runtime must reproduce exactly: '+repr(changed)
-          rows=[]
-          for name in sorted(allowed):
-              f=root/name; assert f.is_file(),name
-              dest=pathlib.Path('full-output/generated')/name
-              dest.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(f,dest)
-              rows.append({'path':name,'bytes':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
-          pathlib.Path('full-output/generated-manifest.json').write_text(json.dumps(rows,indent=2))
-          review=root/'docs/art/map-expansion/desert-connections-review'
-          out=pathlib.Path('full-output/reviews');out.mkdir()
-          for f in review.glob('*.png'):
-              if f.name.startswith(('T3','16')): shutil.copy2(f,out/f.name)
-          PY
-          (cd game && python3 tools/maps/check-lightwell-connection.py --require-guardian && python3 tools/maps/check-wind-basin-connection.py && python3 tools/maps/check-archive-connection.py) > full-output/invariants.log 2>&1
-          node game/tools/st-test/exit-rules.cjs > full-output/exit-rules.log 2>&1
-      - name: Install generated disposable runtime
-        shell: bash
-        run: |
-          set -euo pipefail
           EXT="$PWD/sillytavern/data/default-user/extensions/SandAndFeather"
           mkdir -p "$EXT"
           cp -r game/src game/data "$EXT/"
@@ -104,56 +80,205 @@ jobs:
                   target.parent.mkdir(parents=True, exist_ok=True)
                   shutil.copy2(source, target)
           PY
-      - name: Validate real guardian defeat permanent gate and neighboring exits
+      - name: Capture HOME and preserve approved Lotus menus
         shell: bash
         run: |
           set -euo pipefail
-          export ST_ROOT="$PWD/sillytavern"
-          export NODE_PATH="$PWD/driver/node_modules"
-          OUT="$PWD/full-output"
-          mkdir -p "$OUT"
-          node game/tools/st-test/fakeai.js > "$OUT/fakeai.log" 2>&1 &
-          FAKE_PID=$!
-          trap 'kill "$FAKE_PID" 2>/dev/null || true' EXIT
-          printf 'source=%s\nharness=%s\nbase=%s\nhost=%s\nuser_save_access=false\n' "$GAME_SHA" "$HEAD_SHA" "50399fda9ac5193cd8a033610a1973af7662c80d" "$(git -C sillytavern rev-parse HEAD)" > "$OUT/provenance.txt"
-          (cd "$ST_ROOT" && node server.js --port 8000 --listen false > "$OUT/server.log" 2>&1) &
-          for i in $(seq 90); do curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break; sleep 2; done
-          cat > driver/onboard.cjs <<'JS'
-          const {chromium}=require('playwright'),fs=require('node:fs');
+          (cd sillytavern && exec node server.js --port 8000 --listen false > ../capture-output/server.log 2>&1) &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 90); do
+            if curl --fail --silent http://127.0.0.1:8000/ > /dev/null; then break; fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:8000/ > /dev/null
+          cat > driver/capture.cjs <<'JS'
+          const {chromium} = require('playwright');
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const path = require('node:path');
+          const out = path.resolve('capture-output',process.env.VARIANT);fs.mkdirSync(out,{recursive:true});fs.copyFileSync('capture-output/sillytavern-sha.txt',path.join(out,'sillytavern-sha.txt'));
+          const base = '/scripts/extensions/third-party/SandAndFeather/';
+          const metadata = {
+            purpose:'HOME rollback prior/current/candidate comparison, not full regression',
+            variant:process.env.VARIANT, game_sha:process.env.GAME_SHA, harness_sha:process.env.HEAD_SHA,
+            sillytavern_sha:fs.readFileSync(path.join(out,'sillytavern-sha.txt'),'utf8').trim(),
+            run_id:process.env.GITHUB_RUN_ID, viewport:{width:1842,height:854}, device_scale_factor:1,
+            user_save_access:false, disposable_default_data:true, game_code_modified:false, korean_fallback_font:'Ubuntu fonts-noto-cjk',
+            seeded_records:false, seeded_inventory:false, ai_generation_requests:[],
+            blocked_external_requests:[], page_errors:[], request_failures:[], http_errors:[],
+            captured_at_utc:new Date().toISOString(), success:false
+          };
           (async()=>{
-            const b=await chromium.launch({executablePath:'/usr/bin/chromium'}),p=await b.newPage();
-            await p.goto('http://127.0.0.1:8000/',{waitUntil:'domcontentloaded'});
-            await p.waitForFunction(()=>!!window.SillyTavern?.getContext,null,{timeout:60000});
-            await p.waitForTimeout(2500);
-            const save=p.locator('button:visible, .menu_button:visible',{hasText:/^Save$/});
-            const initial={saveCount:await save.count(),characters:await p.evaluate(()=>SillyTavern.getContext().characters?.length),time:new Date().toISOString()};
-            await p.screenshot({path:'full-output/onboarding-before.png'});
-            await save.first().waitFor({state:'visible',timeout:60000});
-            await save.first().click();
-            await save.first().waitFor({state:'hidden'});
-            await p.waitForFunction(()=>SillyTavern.getContext().characters?.length>0);
-            const final={saveCount:await save.count(),characters:await p.evaluate(()=>SillyTavern.getContext().characters.length),time:new Date().toISOString()};
-            fs.writeFileSync('full-output/onboarding.json',JSON.stringify({initial,final},null,2));
-            await p.screenshot({path:'full-output/onboarding-after.png'});
-            await b.close();
-          })().catch(e=>{console.error(e);process.exitCode=1});
+            let browser, page;
+            try {
+              browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--disable-background-networking','--no-first-run']});
+              metadata.browser=browser.version();
+              const context=await browser.newContext({viewport:metadata.viewport,deviceScaleFactor:1});
+              await context.route('**/*',async route=>{
+                const request=route.request(), url=new URL(request.url());
+                if (/\/generate(?:\/|$)|\/chat\/completions(?:\/|$)/.test(url.pathname)) {
+                  metadata.ai_generation_requests.push({method:request.method(),url:request.url()});
+                  return route.abort();
+                }
+                if (!['127.0.0.1','localhost'].includes(url.hostname) && !['data:','blob:'].includes(url.protocol)) {
+                  metadata.blocked_external_requests.push(request.url());
+                  return route.abort();
+                }
+                return route.continue();
+              });
+              page=await context.newPage();
+              page.setDefaultTimeout(30000);
+              page.on('pageerror',e=>metadata.page_errors.push(e.message));
+              page.on('requestfailed',r=>metadata.request_failures.push({url:r.url(),error:r.failure()?.errorText}));
+              page.on('response',r=>{if(r.status()>=400)metadata.http_errors.push({url:r.url(),status:r.status()});});
+              await page.goto('http://127.0.0.1:8000/',{waitUntil:'domcontentloaded'});
+              await page.waitForFunction(()=>!!window.SillyTavern?.getContext,null,{timeout:60000});
+              await page.waitForTimeout(2500);
+              const save=page.locator('button:visible, .menu_button:visible',{hasText:/^Save$/});
+              await page.waitForFunction(()=>[...document.querySelectorAll('button,.menu_button')].some(e=>e.checkVisibility()&&e.textContent.trim()==='Save')||SillyTavern.getContext().characters?.length>0,null,{timeout:60000});
+              if(await save.count()){await save.first().click();await save.first().waitFor({state:'hidden',timeout:30000});}
+              await page.waitForFunction(()=>SillyTavern.getContext().characters?.length>0);
+              await page.evaluate(()=>{
+                const ctx=SillyTavern.getContext();
+                const index=ctx.characters.findIndex(c=>/Seraphina/i.test(c.name));
+                if(index<0)throw new Error('Disposable default Seraphina character missing');
+                ctx.selectCharacterById(index);
+              });
+              await page.waitForFunction(()=>!!SillyTavern.getContext().chatId);
+              await page.waitForSelector('#sf_open',{state:'attached'});
+              await page.evaluate(async base=>{
+                const settings=await import(base+'src/core/settings.js');
+                settings.settings().theme='light'; settings.settings().uiTheme='cozy';
+                const win=await import(base+'src/ui/window.js');
+                await win.openGame();
+                window.toastr?.clear();
+              },base);
+
+              const cdp=await context.newCDPSession(page);await cdp.send('DOM.enable');await cdp.send('CSS.enable');metadata.platformFonts=[];
+              metadata.captures=[]; metadata.checks=[];
+              const check=(ok,name)=>{metadata.checks.push({name,pass:!!ok});if(!ok)throw new Error(name);};
+              const home=async()=>page.evaluate(async base=>{const w=await import(base+'src/ui/window.js');document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:'world'}));await w.travel('ombos',{x:25,y:13});window.toastr?.clear();},base);
+              const snap=async(name,selector)=>{
+                await page.waitForTimeout(600);await page.evaluate(()=>document.fonts.ready);
+                await page.evaluate(async()=>Promise.all([...document.querySelectorAll('#sf_game img')].filter(i=>i.checkVisibility()).map(i=>i.decode().catch(()=>{}))));
+                const fonts=[];
+                const dom=await cdp.send('DOM.getDocument');
+                const nodes=await cdp.send('DOM.querySelectorAll',{nodeId:dom.root.nodeId,selector:'.sf_pop_wrap span,.sf_pop_wrap b,.sf_pop_wrap h2,.sf_chip_rank b'});
+                for(const nodeId of nodes.nodeIds.slice(0,35)){
+                  const r=await cdp.send('CSS.getPlatformFontsForNode',{nodeId});if(r.fonts.length)fonts.push({nodeId,fonts:r.fonts});
+                }
+                metadata.platformFonts.push({name,fonts});
+                const elements=await page.evaluate(selector=>[...document.querySelectorAll(selector)].filter(el=>el.checkVisibility()).map(el=>{
+                  const r=el.getBoundingClientRect(),s=getComputedStyle(el),p=getComputedStyle(el,'::before');
+                  return {tag:el.tagName,classes:el.className,text:el.tagName==='CANVAS'?'':el.textContent,box:{x:r.x,y:r.y,width:r.width,height:r.height},style:{backgroundImage:s.backgroundImage,borderImageSource:s.borderImageSource,backgroundColor:s.backgroundColor,borderColor:s.borderColor,color:s.color,fontFamily:s.fontFamily,fontSize:s.fontSize,fontWeight:s.fontWeight,lineHeight:s.lineHeight,letterSpacing:s.letterSpacing,fontStretch:s.fontStretch,textSizeAdjust:s.textSizeAdjust,opacity:s.opacity,customProperties:Object.fromEntries([...s].filter(k=>k.startsWith('--')).map(k=>[k,s.getPropertyValue(k)]))},before:{backgroundImage:p.backgroundImage,borderImageSource:p.borderImageSource}};
+                }),selector);
+                await page.screenshot({path:path.join(out,name+'.png')});
+                metadata.captures.push({name,viewport:page.viewportSize(),elements});
+              };
+              const close=async()=>{
+                const exact=page.locator('.sf_lotus_hit[data-action="close"]:visible');
+                if(await exact.count())await exact.last().click();
+                else await page.locator('.sf_pop_wrap .sf_pop_x:visible').last().click();
+                await page.waitForTimeout(150);
+                check(await page.locator('.sf_pop_wrap').count()===0,'popup closes without residual overlay');
+              };
+              const homeSelectors='#sf_game .sf_card,#sf_game .sf_chip,#sf_game .sf_hint_pill,#sf_game .sf_round,#sf_game .sf_icon_btn,#sf_game .sf_pad,#sf_game .sf_knob,#sf_game .sf_tabs,#sf_game .sf_tab';
+              for(const [width,height] of [[390,844],[412,900],[844,390],[1842,854]]){
+                await page.setViewportSize({width,height});await home();
+                await snap('home-'+width+'x'+height,homeSelectors);
+                const menu=page.locator('#sf_game .sf_menu');
+                if(await menu.isVisible()){
+                  await menu.click();check(await menu.getAttribute('aria-expanded')==='true','hamburger opens '+width);
+                  await snap('home-menu-'+width+'x'+height,homeSelectors);
+                }
+                await page.locator('#sf_game .sf_tabs [data-tab="party"]').click();
+                await page.waitForSelector('.sf_pop_wrap');await close();
+                if(await menu.isVisible() && await menu.getAttribute('aria-expanded')!=='true')await menu.click();
+                await page.locator('#sf_game .sf_tabs [data-tab="world"]').click();
+                check(await page.locator('.sf_pop_wrap').count()===0,'world tab/back '+width);
+                for(const [sel,label] of [['.sf_bag','bag'],['.sf_mini','minimap'],['.sf_appearance','settings']]){
+                  await page.locator('#sf_game '+sel).click();await page.waitForSelector('.sf_pop_wrap');
+                  await snap(label+'-'+width+'x'+height,'.sf_pop_wrap,.sf_pop_wrap button');await close();
+                }
+              }
+              await page.setViewportSize({width:412,height:900});await home();
+              await page.evaluate(async base=>{const s=await import(base+'src/core/state.js'),w=await import(base+'src/ui/window.js');s.getState().party.with='';await w.travel('ombos',{x:24,y:13});},base);
+              await page.locator('#sf_game .sf_talk').click();await page.waitForSelector('.sf_pop_wrap');await snap('home-talk-412x900','.sf_pop_wrap,.sf_pop_wrap button');await close();
+              await home();
+              const pos=()=>page.evaluate(async base=>structuredClone((await import(base+'src/world/player.js')).player),base);
+              const before=await pos(), pad=await page.locator('#sf_game .sf_pad').boundingBox();
+              await page.mouse.move(pad.x+pad.width/2,pad.y+pad.height/2);await page.mouse.down();
+              await page.mouse.move(pad.x+pad.width*.85,pad.y+pad.height/2);await page.waitForTimeout(350);await page.mouse.up();
+              const after=await pos();
+              metadata.joystick={before,after};
+              await page.setViewportSize({width:844,height:390});await page.setViewportSize({width:390,height:844});await home();
+              await snap('home-rotated-390x844',homeSelectors);
+              await page.evaluate(async base=>(await import(base+'src/ui/window.js')).foldGame(),base);
+              await page.waitForSelector('#sf_chip',{state:'visible'});
+              await snap('home-folded-390x844','#sf_chip,#sf_chip *');
+              await page.locator('#sf_chip').click();await page.waitForSelector('#sf_game',{state:'visible'});
+              check(await page.locator('#sf_chip').count()===0 || !(await page.locator('#sf_chip').isVisible()),'folded chip reopens HOME');
+              for(const [width,height] of [[390,844],[844,390],[1842,854]]){
+                await page.setViewportSize({width,height});await home();
+                for(const tab of ['bond','party','quests','map']){
+                  await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
+                  await page.waitForSelector('.sf_pop_wrap');
+                  await snap('popup-'+tab+'-'+width+'x'+height,'.sf_pop_wrap,.sf_pop_wrap *');
+                  await close();
+                }
+              }
+              check(Math.hypot(metadata.joystick.after.x-metadata.joystick.before.x,metadata.joystick.after.y-metadata.joystick.before.y)>.01,'actual joystick movement');
+              check(metadata.ai_generation_requests.length===0,'zero AI generation requests');
+              await page.evaluate(async base=>{const s=await import(base+'src/core/state.js'),w=await import(base+'src/ui/window.js'),f=await import(base+'src/packs/duat/field.js');s.getState().party.with='set';await w.travel('desert_forecourt_west','yard');f.testOnly('desert_leather_shield',0,0,{hp:999,speed:0,range:0});},base);
+              for(const [width,height] of [[390,844],[844,390]]){await page.setViewportSize({width,height});await snap('home-combat-'+width+'x'+height,'.sf_duat_hud,.sf_duat_hud *,.sf_duat_btns,.sf_duat_btns *');}
+              metadata.success=true;
+            } catch(error) {
+              metadata.failure=error.stack||String(error);
+              if(page){metadata.page_url=page.url();await page.screenshot({path:path.join(out,'lotus-runtime.png')}).catch(()=>{});}
+              process.exitCode=1;
+            } finally {
+              fs.writeFileSync(path.join(out,'metadata.json'),JSON.stringify(metadata,null,2)+'\n');
+              console.log(JSON.stringify({success:metadata.success,failure:metadata.failure,scene:metadata.scene?.box,page_errors:metadata.page_errors}));
+              if(browser)await browser.close();
+            }
+          })();
           JS
-          node driver/onboard.cjs
-          set +e
-          bash game/tools/st-test/tiers.sh portal-walk:--guardian-gate,--pair-file,tools/st-test/lightwell-pair.json,--widths,--independent-tiles,1.7472 --since 50399fda9ac5193cd8a033610a1973af7662c80d --out "$OUT"
-          RESULT=$?
-          set -e
-          if grep -nE '^FAIL|^실패' "$OUT"/*.log > "$OUT/failure-lines.txt"; then RESULT=1; fi
-          if [ -f /tmp/st-server.log ]; then cp /tmp/st-server.log "$OUT/server.log"; fi
-          printf 'suite_exit=%s\n' "$RESULT" >> "$OUT/provenance.txt"
-          exit "$RESULT"
-      - name: Upload full-suite evidence without video bulk
+          fc-list > capture-output/font-inventory.txt
+          fc-match sans-serif:lang=ko > capture-output/font-match.txt
+          for VARIANT in candidate current prior; do
+            case "$VARIANT" in candidate) SOURCE=game;; current) SOURCE=current-source;; prior) SOURCE=prior-source;; esac
+            export VARIANT GAME_SHA=$(git -C "$SOURCE" rev-parse HEAD)
+            EXT="$PWD/sillytavern/data/default-user/extensions/SandAndFeather"
+            rm -rf "$EXT/src" "$EXT/data"
+            cp -r "$SOURCE/src" "$SOURCE/data" "$EXT/"
+            cp "$SOURCE/index.js" "$SOURCE/style.css" "$SOURCE/manifest.json" "$EXT/"
+            node driver/capture.cjs
+          done
+          EXT="$PWD/sillytavern/data/default-user/extensions/SandAndFeather"
+          rm -rf "$EXT/src" "$EXT/data"
+          cp -r game/src game/data "$EXT/"
+          cp game/index.js game/style.css game/manifest.json "$EXT/"
+          export ST_ROOT="$PWD/sillytavern" NODE_PATH="$PWD/driver/node_modules"
+          BAD=0
+          for TEST in tools/art/verify-ui-themes.cjs tools/st-test/date-hp-layout.cjs; do
+            NAME=$(basename "$TEST" .cjs)
+            node "game/$TEST" "$PWD/capture-output/$NAME" > "capture-output/$NAME.log" 2>&1 || BAD=1
+          done
+          if grep -nE '^FAIL|^실패' capture-output/*.log > capture-output/failure-lines.txt; then BAD=1; fi
+          exit "$BAD"
+      - name: Upload one PNG and diagnostic metadata only
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: guardian-lightwell-validation
+          name: home-final-restoration
           path: |
-            full-output/**
+            capture-output/**/*.png
+            capture-output/**/*.log
+            capture-output/**/*.txt
+            capture-output/**/*.json
+            capture-output/sillytavern-sha.txt
+            capture-output/server.log
           if-no-files-found: error
           retention-days: 1
           compression-level: 6
