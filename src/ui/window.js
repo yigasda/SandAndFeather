@@ -10,6 +10,7 @@ import { getState, saveState } from '../core/state.js';
 import { syncFromChat } from '../core/tracker.js';
 import { bindPad, bindPress, bindMapZoom, input, startInput, stopInput } from '../world/input.js';
 import { getMap } from '../world/map.js';
+import { canUseExit } from '../world/exit-rules.js';
 import { endPose, feet, follower, getUp, placePlayer, playAct, player, rememberPosition, stand, stepPlayer } from '../world/player.js';
 import { clearFx, fxBusy } from '../world/fx.js';
 import { partNow } from '../core/rest.js';
@@ -209,6 +210,9 @@ export async function travel(mapId, pos = null) {
 // through a door she walked into, or up and down the stairs
 async function useExit(ex) {
     if (!ex || !getState() || !DATA.maps[ex.to] || moving) return;
+    // Keep locked exits in the normal arming lifecycle: unlocking under held input
+    // must not teleport someone who has not left and deliberately re-entered it.
+    if (!canUseExit(ex, getState())) return;
     try { await travel(ex.to, ex.at); }
     catch (error) {
         doorArmed = false;   // still standing in it: not tried again every frame
@@ -463,3 +467,4 @@ function pickTab(id) {
     if (id === 'bond') { const s = getState(); const w = s ? withOf(s) : ''; bondCard(ui, ['set', 'horus'].includes(w) ? w : ['set', 'horus'].includes(s?.party?.lead) ? s.party.lead : 'set', back); return; }
     ({ party: partyCard, quests: questsCard })[id]?.(ui, back);
 }
+

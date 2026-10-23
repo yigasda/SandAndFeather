@@ -39,7 +39,7 @@ SCALE = {'big': 0.44, 'detail': 1.0}
 # (src/core/state.js)
 NO = {'desert_golden_dunes': '01', 'desert_buried_temple': '02', 'desert_quiet_dunes': '03', 'desert_dry_flats': '04',
       'desert_city_gate': '11', 'desert_city_plaza': '17', 'desert_colonnade': '15',
-      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling', 'desert_city_archive': '18', 'desert_wind_basin': '10'}
+      'desert_forecourt_west': 'T1W', 'desert_forecourt_east': 'T1E', 'desert_votive_hall': 'T2', 'desert_guardian_gate': 'T3', 'desert_city_dwelling': '17-dwelling', 'desert_city_archive': '18', 'desert_wind_basin': '10', 'desert_lightwell': '16'}
 def px_of(ident): return DUAT_PX * SCALE['big' if ident in BIG else 'detail']
 # User approved for release (2026-10-20): both desert kinds use 1.6 × the base 4.2 tiles/s, with walking animation in step.
 # This is only map.walkSpeed; actor size, camera, collision and the global base speed stay unchanged.
@@ -85,6 +85,8 @@ EXIT_POLYGONS = {
     ('desert_votive_hall', 'east'): [(1754,523),(1773,523),(1773,579),(1754,580)],
     ('desert_votive_hall', 'north'): [(864,75),(909,75),(910,100),(860,100)],
     ('desert_guardian_gate', 'south'): [(362,1510),(660,1510),(660,1535),(362,1535)],
+    ('desert_guardian_gate', 'north'): [(416,410),(606,410),(606,440),(415,440)],
+    ('desert_lightwell', 'south'): [(366,1510),(658,1510),(659,1535),(365,1535)],
     # Registered blue side passage; original collision and doorway perspective preserved.
     ('desert_votive_hall', 'west'): [(0,524),(20,524),(20,580),(0,581)],
     # Upper-left stair ends at the outer edge, not the torch recess behind it.
@@ -191,8 +193,12 @@ PLACES = [
       ('north', (860,75,910,100), 'desert_guardian_gate', 'south'),
       ('south', (680,860,1070,886), 'desert_city_gate', 'door')]),
     ('desert_guardian_gate', '신전 수호문 전당', 'T3_신전수호문전당.png', 'T3_신전수호문전당.png',
+     {'south': ((512,1420), 'up'), 'north': ((512,535), 'down')},
+     [('south', (362,1510,660,1535), 'desert_votive_hall', 'north'),
+      ('north', (415,410,606,440), 'desert_lightwell', 'south')]),
+    ('desert_lightwell', '신전의 빛 우물', '16_빛우물.png', '16_빛우물.png',
      {'south': ((512,1420), 'up')},
-     [('south', (362,1510,660,1535), 'desert_votive_hall', 'north')]),
+     [('south', (365,1510,659,1535), 'desert_guardian_gate', 'north')]),
     # T1W: existing combat fixture and user landings preserved. New 15/east-court routes pending.
     # yard remains the historical test entry; no retired route may bypass the new structure.
     ('desert_forecourt_west', '서쪽 제례 앞뜰', 'T1W_서쪽제례앞뜰.png', 'T1W_서쪽제례앞뜰.png',
@@ -225,7 +231,12 @@ for _place in PLACES:
         _place[5].extend([('sanctuary', (272, 175, 321, 190), 'desert_old_sanctuary', 'south')])
 EXIT_POLYGONS.update({('desert_old_sanctuary', 'south'): [(1180, 744), (1410, 700), (1410, 719), (1180, 764)], ('desert_golden_dunes', 'sanctuary'): [(289, 175), (321, 175), (318, 190), (272, 190)]})
 LANDING_MIN_GAP = {('desert_old_sanctuary', 'south'): 90, ('desert_golden_dunes', 'sanctuary'): 55,
-                   ('desert_city_plaza', 'archive'): 100}
+                   ('desert_city_plaza', 'archive'): 100,
+                   # Natural doorway/stair landings; full feet, follower and 1.7472-tile movement checked separately.
+                   ('desert_guardian_gate', 'north'): 95, ('desert_lightwell', 'south'): 90}
+# Use the existing permanent first-defeat history, not the daily respawn date.
+# The south retreat and lightwell return remain unrestricted, including old/debug saves in map 16.
+EXIT_FIRST_DEFEAT = {('desert_guardian_gate', 'north'): 't3.warden.1'}
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
@@ -289,6 +300,9 @@ def main(review_ids=None):
                 assert g >= need, f'{ident} {k}: landing {g:.0f} px from exit {e}, needs {need:.0f} (GAP)'
         ex = [{'id': k, 'x0': b[0] / PX, 'y0': b[1] / PX, 'x1': b[2] / PX, 'y1': b[3] / PX, 'to': to, 'at': at} for k, b, to, at in exits]
         for item in ex:
+            required = EXIT_FIRST_DEFEAT.get((ident, item['id']))
+            if required:
+                item['requiresFirstDefeat'] = required
             polygon = EXIT_POLYGONS.get((ident, item['id']))
             if polygon:
                 shape = Polygon(polygon)
@@ -321,3 +335,4 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--review-only", nargs="*", help="Only write collision review images for these runtime IDs (map generation is unchanged)")
     main(parser.parse_args().review_only)
+

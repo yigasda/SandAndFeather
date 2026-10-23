@@ -1,0 +1,4 @@
+[
+  ["desert_guardian_gate", "north", "north", "desert_lightwell", "south"],
+  ["desert_lightwell", "south", "south", "desert_guardian_gate", "north"]
+]
