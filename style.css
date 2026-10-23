@@ -1405,7 +1405,9 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 
 :is(#sf_game,#sf_pick,#sf_settings,#sf_chip)[data-ui-theme='temple'] { --skin-header-full:url('data/art/ui/skins/temple/header-full.png'); --skin-head-ratio:756 / 91; }
 
-:is(#sf_game,#sf_pick,#sf_settings,#sf_chip)[data-ui-theme='cozy'] { --skin-header-full:url('data/art/ui/lotus/header.background-restored.png'); --skin-head-ratio:804 / 84; }
+:is(#sf_game,#sf_chip)[data-ui-theme='cozy'] { --skin-header-full:url('data/art/ui/skins/cozy/header-full.png'); --skin-head-ratio:804 / 84; }
+#sf_game[data-ui-theme='cozy'] .sf_pop_wrap,
+:is(#sf_pick,#sf_settings)[data-ui-theme='cozy'] { --skin-header-full:url('data/art/ui/lotus/header.background-restored.png'); --skin-head-ratio:804 / 84; }
 /* Keep the full-width title artwork inside the scroll box, including its frame. */
 :is(#sf_game,#sf_pick)[data-ui-theme] .sf_pop,
 :is(#sf_game,#sf_pick)[data-ui-theme] .sf_pop_wide { position:relative;border:0;padding:14px; }
@@ -2075,12 +2077,12 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  background:url('data/art/ui/lotus/icon.close.png') center/17px 17px no-repeat,url('data/art/ui/lotus/nav.close.face-restored.png') center/100% 100% no-repeat;
 }
 :is(#sf_game,#sf_pick)[data-ui-theme='cozy'] .sf_pop_x > * { visibility:hidden; }
-:is(#sf_game,#sf_pick,#sf_settings)[data-ui-theme='cozy'] :is(.sf_btn,.sf_list_row,.sf_portrait,.sf_inventory_detail,.sf_party_portrait) { background-size:100% 100%;background-repeat:no-repeat;box-shadow:none; }
-:is(#sf_game,#sf_pick,#sf_settings)[data-ui-theme='cozy'] .sf_list_row {
+:is(#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap),#sf_pick[data-ui-theme='cozy'],#sf_settings[data-ui-theme='cozy']) :is(.sf_btn,.sf_list_row,.sf_portrait,.sf_inventory_detail,.sf_party_portrait) { background-size:100% 100%;background-repeat:no-repeat;box-shadow:none; }
+:is(#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap),#sf_pick[data-ui-theme='cozy'],#sf_settings[data-ui-theme='cozy']) .sf_list_row {
  border:6px solid transparent;border-image:url('data/art/ui/lotus/panel.record1.frame.png') 22 stretch;
  background:url('data/art/ui/lotus/panel.record1.fill.png') center/100% 100% no-repeat;border-radius:0;color:var(--sf-ink);
 }
-:is(#sf_game,#sf_pick,#sf_settings)[data-ui-theme='cozy'] :is(.sf_inventory_slot,.sf_codex_cell,.sf_puzzle_cell) {
+:is(#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap),#sf_pick[data-ui-theme='cozy'],#sf_settings[data-ui-theme='cozy']) :is(.sf_inventory_slot,.sf_codex_cell,.sf_puzzle_cell) {
  border:4px solid transparent;border-image:var(--skin-slot) 16 stretch;border-radius:0;
  background:url('data/art/ui/lotus/slot.fishing-style.fill.png') center/100% 100% no-repeat;box-shadow:none;
 }
@@ -2148,7 +2150,7 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 #sf_game[data-ui-theme='cozy'] .sf_pop_wrap .sf_bond .sf_list_row.sf_bond_activity:nth-child(3) { border-image-source:url('data/art/ui/lotus/activity.books.frame.png');background-image:url('data/art/ui/lotus/activity.books.fill.png'); }
 #sf_game[data-ui-theme='cozy'] .sf_pop_wrap .sf_bond .sf_list_row.sf_bond_activity:nth-child(4) { border-image-source:url('data/art/ui/lotus/activity.explore.frame.png');background-image:url('data/art/ui/lotus/activity.explore.fill.png'); }
 /* Fill PNGs include their alpha silhouette: align them with the frame's outer box. */
-:is(#sf_game,#sf_pick,#sf_settings)[data-ui-theme='cozy'] :is(.sf_btn,.sf_list_row,.sf_inventory_slot,.sf_menu_link) { background-origin:border-box;background-clip:border-box; }
+:is(#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap),#sf_pick[data-ui-theme='cozy'],#sf_settings[data-ui-theme='cozy']) :is(.sf_btn,.sf_list_row,.sf_inventory_slot,.sf_menu_link) { background-origin:border-box;background-clip:border-box; }
 #sf_game[data-ui-theme='cozy'] .sf_pop_wrap .sf_bond .sf_list_row:is(.sf_bond_record,.sf_bond_empty,.sf_bond_motto) { border-image:url('data/art/ui/lotus/panel.record1.frame.png') 22 stretch;background:url('data/art/ui/lotus/panel.record1.fill.png') center/100% 100% no-repeat border-box; }
 #sf_game[data-ui-theme='cozy'] .sf_pop_wrap .sf_bond .sf_list_row.sf_bond_progress_panel { background-origin:border-box;background-clip:border-box; }
 #sf_game[data-ui-theme='cozy'] .sf_pop_wrap .sf_bond .sf_btn:is(.sf_bond_tab,.sf_bond_give,.sf_bond_memory) { background-origin:border-box;background-clip:border-box; }
@@ -2159,23 +2161,21 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  #sf_game[data-ui-theme='cozy'] .sf_menu_window .sf_bond .sf_bond_activity_grid > .sf_list_row.sf_bond_activity { grid-row:auto; }
  #sf_game[data-ui-theme='cozy'] .sf_menu_window .sf_bond .sf_list_row.sf_bond_motto { border:0;background:none; }
 }
-/* Auxiliary cards use the same approved panels, including settings and the folded chip. */
-#sf_settings[data-ui-theme='cozy'] .sf_body,
-#sf_chip[data-ui-theme='cozy'] { border:7px solid transparent;border-image:var(--skin-frame) 52 stretch;border-radius:0;background:var(--skin-paper) center/100% 100% no-repeat;color:var(--sf-ink);box-shadow:none; }
-:is(#sf_game,#sf_pick,#sf_settings)[data-ui-theme='cozy'] :is(.sf_box,.sf_news_row,.sf_codex_detail,.sf_cal_day,.sf_bond_candidate,.sf_bond_notice,.sf_bond_ai_summary,.sf_treasure_rewards li) {
+/* Settings retain the approved panel; the folded HOME chip retains its original skin. */
+#sf_settings[data-ui-theme='cozy'] .sf_body { border:7px solid transparent;border-image:var(--skin-frame) 52 stretch;border-radius:0;background:var(--skin-paper) center/100% 100% no-repeat;color:var(--sf-ink);box-shadow:none; }
+:is(#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap),#sf_pick[data-ui-theme='cozy'],#sf_settings[data-ui-theme='cozy']) :is(.sf_box,.sf_news_row,.sf_codex_detail,.sf_cal_day,.sf_bond_candidate,.sf_bond_notice,.sf_bond_ai_summary,.sf_treasure_rewards li) {
  border:4px solid transparent;border-image:var(--skin-panel) 22 stretch;border-radius:0;box-shadow:none;background:url('data/art/ui/lotus/panel.record1.fill.png') center/100% 100% no-repeat border-box;color:var(--sf-ink);
 }
-:is(#sf_game,#sf_pick,#sf_settings)[data-ui-theme='cozy'] :is(input:not([type='checkbox']):not([type='radio']):not([type='range']),select,textarea) { border:3px solid transparent;border-image:var(--skin-slot) 16 stretch;border-radius:0;background:url('data/art/ui/lotus/slot.fishing-style.fill.png') center/100% 100% no-repeat border-box;color:var(--sf-ink); }
-#sf_game[data-ui-theme='cozy'] :is(.sf_gallery_step,.sf_dev_btns button,.sf_duat_btns button) { border:4px solid transparent;border-image:var(--skin-button) 16 stretch;border-radius:0;box-shadow:none;background:var(--skin-button-fill) center/100% 100% no-repeat border-box;color:var(--sf-ink); }
+:is(#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap),#sf_pick[data-ui-theme='cozy'],#sf_settings[data-ui-theme='cozy']) :is(input:not([type='checkbox']):not([type='radio']):not([type='range']),select,textarea) { border:3px solid transparent;border-image:var(--skin-slot) 16 stretch;border-radius:0;background:url('data/art/ui/lotus/slot.fishing-style.fill.png') center/100% 100% no-repeat border-box;color:var(--sf-ink); }
+#sf_game[data-ui-theme='cozy'] .sf_gallery_step { border:4px solid transparent;border-image:var(--skin-button) 16 stretch;border-radius:0;box-shadow:none;background:var(--skin-button-fill) center/100% 100% no-repeat border-box;color:var(--sf-ink); }
 #sf_game[data-ui-theme='cozy'] .sf_gallery_dot { border:0;border-radius:0;background:url('data/art/ui/lotus/icon.heart.png') center/contain no-repeat;opacity:.4; }
 #sf_game[data-ui-theme='cozy'] .sf_gallery_dot[aria-current='true'] { opacity:1; }
 #sf_game[data-ui-theme='cozy'] .sf_fish_bar { border:3px solid transparent;border-image:url('data/art/ui/lotus/gauge.frame.png') 16 stretch;border-radius:0;background:url('data/art/ui/lotus/gauge.empty.png') center/100% 100% no-repeat border-box; }
 #sf_game[data-ui-theme='cozy'] .sf_fish_zone { background:var(--skin-primary-fill) center/100% 100% no-repeat; }
 #sf_game[data-ui-theme='cozy'] .sf_fish_mark { border-radius:0;background:url('data/art/ui/lotus/gauge.pink.png') center/100% 100% no-repeat; }
 
-#sf_game[data-ui-theme='cozy'] .sf_tab[data-tab='bond'] i { background-image:url('data/art/ui/lotus/icon.rings.png'); }
-:is(#sf_game,#sf_pick,#sf_settings)[data-ui-theme='cozy'] .sf_btn.sf_primary,
-#sf_game[data-ui-theme='cozy'] .sf_btn[aria-pressed='true'] { background-color:transparent;background-origin:border-box;background-clip:border-box;background-size:100% 100%;background-repeat:no-repeat; }
+:is(#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap),#sf_pick[data-ui-theme='cozy'],#sf_settings[data-ui-theme='cozy']) .sf_btn.sf_primary,
+#sf_game[data-ui-theme='cozy'] :where(.sf_pop_wrap) .sf_btn[aria-pressed='true'] { background-color:transparent;background-origin:border-box;background-clip:border-box;background-size:100% 100%;background-repeat:no-repeat; }
 #sf_game[data-ui-theme='cozy'] :is(.sf_character_stat,.sf_stamp) { border:4px solid transparent;border-image:var(--skin-slot) 16 stretch;border-radius:0;background:url('data/art/ui/lotus/slot.fishing-style.fill.png') center/100% 100% no-repeat border-box; }
 #sf_game[data-ui-theme='cozy'] .sf_bar i { border:2px solid transparent;border-image:url('data/art/ui/lotus/gauge.frame.png') 16 stretch;background:url('data/art/ui/lotus/gauge.empty.png') center/100% 100% no-repeat border-box; }
 #sf_game[data-ui-theme='cozy'] .sf_bar b { background:url('data/art/ui/lotus/gauge.pink.png') center/100% 100% no-repeat; }

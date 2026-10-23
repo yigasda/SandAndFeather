@@ -40,7 +40,8 @@ await p.setViewportSize(size);
 const overlap=await p.evaluate(()=>{const a=document.querySelector('.sf_appearance').getBoundingClientRect(),b=document.querySelector('.sf_chips').getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;});assert(!overlap,`${id} ${size.width} HUD`);
 if(size.width===412)await shot(`${i+1}-${id}-world`);
 // Verify every approved glyph in its live selected and inactive menu states.
-// Cozy uses the approved Lotus PNGs; other themes retain their original menu PNGs and bond bird mask.
+// HOME keeps the original per-theme menu PNGs and bond bird mask, including cozy.
+// Approved Lotus popup navigation is separate from this live HOME menu.
 const TABS=['world','party','bond','quests','map'];
 for(const tab of TABS){
  if(await p.locator('.sf_menu').isVisible())await p.locator('.sf_menu').click();
@@ -54,11 +55,6 @@ for(const tab of TABS){
  });
  assert.equal(glyphs.length,TABS.length);
  for(const [j,g]of glyphs.entries()){
-  if(id==='cozy'){
-   const [name,width,height]=[['home',51,51],['heart',54,48],['rings',53,48],['scroll',50,54],['map',58,52]][j];
-   assert(g.url.includes(`/lotus/icon.${name}.png`),g.url);
-   assert(g.width===width&&g.height===height&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong Lotus icon`);continue;
-  }
   if(TABS[j]==='bond'){assert(g.url.includes('/bond/redrawn/22-birds-symbol.png'),g.url);assert(g.inside,`${id} ${size.width} ${tab}: clipped bond icon`);continue;}
   assert(g.url.includes(`/menu-icons/${id}/${TABS[j]}.png`),g.url);
   assert(g.width===48&&g.height===48&&g.inside,`${id} ${size.width} ${tab}: clipped or wrong icon`);
@@ -107,3 +103,4 @@ throw error;
 }finally{
 if(saved){const request=p.waitForResponse(r=>r.url().includes('/api/settings/save')&&r.status()===200).catch(()=>{});await p.evaluate(async original=>{const t=themeTest;await t.win.closeGame();Object.assign(t.settings.settings(),{theme:original.theme,uiTheme:original.uiTheme});t.settings.saveSettings();t.win.applyTheme();const c=SillyTavern.getContext();c.chatMetadata.sand_feather=original.chat;await c.saveMetadata();document.querySelector('#send_textarea').value=original.text;},saved).catch(()=>{});await request;}await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
