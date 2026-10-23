@@ -387,7 +387,10 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             });
             for(const [name,value] of Object.entries(checks))ok(value,'출구 실제 판정 계약: '+name);
         }
-        if (GUARDIAN_GATE) await require('./guardian-gate-preflight.cjs')({ page, W, boot, where, ok, OUT, BASE });
+        if (GUARDIAN_GATE) {
+            await require('./guardian-gate-preflight.cjs')({ page, W, boot, where, ok, OUT, BASE });
+            if (process.argv.includes('--guardian-preflight-only')) return;
+        }
         let shot = 0;
         if (CONNECTIONS) {
             const contracts=await page.evaluate(pairs=>pairs.map(([from,start,id,to,land],i)=>{

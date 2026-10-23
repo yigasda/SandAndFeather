@@ -5,11 +5,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const MAP = 'desert_guardian_gate', WELL = 'desert_lightwell', SID = 't3.warden.1';
 module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
-    const log = { fixture: 'isolated reset save; standard Set alone for first tell, then Set + Horus; production guardian unchanged', phases: [], combat: [] };
+    const log = { fixture: 'isolated reset save; standard Set alone for actual combat, then Set + Horus for portals; production guardian unchanged', phases: [], combat: [] };
     const check = (condition, message) => { ok(condition, 'guardian: ' + message); if (!condition) throw new Error('guardian: ' + message); };
     const ensure = (condition, message) => { if (!condition) check(false, message); };
     const snapshot = async name => {
         const state = await page.evaluate(sid => ({ map: T.player.player.map,
+            position: { x: T.player.player.x, y: T.player.player.y, feet: T.player.feet() },
             first: T.state.getState().desertFight?.first?.[sid] ?? null,
             killed: T.state.getState().desertFight?.killed?.[sid] ?? null,
             day: T.ledger.today(T.state.getState()), field: T.field.fieldState(),
@@ -25,6 +26,7 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
         await page.waitForTimeout(800);
     };
     const walkExit = async (map, id, target) => {
+        check((await where()).map === map, `${map}/${id} starts on its stated map`);
         const dest = await page.evaluate(id => {
             const e = T.win.currentMap().d.exits.find(e => e.id === id);
             return { x: (e.x0 + e.x1) / 2 - .5, y: (e.y0 + e.y1) / 2 - .8 };
@@ -33,6 +35,13 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
         await page.waitForTimeout(500);
         const position = await where();
         check(position.map === target, `${map}/${id} actual touch reaches ${target} (${result})`);
+        if (target === map) {
+            const inside = await page.evaluate(id => {
+                const e = T.win.currentMap().d.exits.find(e => e.id === id), f = T.player.feet();
+                return T.map.containsExit(e, f.x, f.y);
+            }, id);
+            check(result === true && inside, 'locked attempt actually entered the intended threshold, not a blocked/no-route false positive');
+        }
         return position;
     };
     const reload = async () => {
@@ -121,7 +130,7 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
 
         // One actual dodge after the next aim lock: moving cannot drag the
         // fixed attack patch after the player, and an outside point takes no hit.
-        await page.waitForFunction(seq => T.field.testEvents().some(e => e.ev === 'slamLock' && e.seq > seq), impact.seq, { timeout: 15000 });
+        await page.waitForFunction(seq => T.field.testSlam().some(s => s.seq > seq && s.st === 'prepare' && s.locked && s.t < .78), impact.seq, { timeout: 15000 });
         const dodge = await page.evaluate(() => ({ lock: T.field.testEvents().filter(e => e.ev === 'slamLock').at(-1),
             hp: T.field.fieldState().run.hp.set, p: T.player.feet() }));
         const dodgePad = await W.padBox();
@@ -139,11 +148,10 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
             + ((dodged.p.y - dodge.lock.area.y) / dodge.lock.area.ry) ** 2 > 1,
             'dodged feet are outside impact ellipse');
         await shot('04b-dodged'); await snapshot('actual-dodge');
-        await page.evaluate(() => T.heroes.setWith(T.state.getState(), 'horus'));
 
         // Walk into strike reach and press actual attack/skill controls until the
         // normal damage0 death path persists the spawn's first/killed records.
-        const fightStart = Date.now(); let presses = 0, skillPresses = 0;
+        const fightStart = Date.now(); let presses = 0, skillPresses = 0, pendingFinish = null;
         while (Date.now() - fightStart < 90000) {
             const s = await page.evaluate(sid => ({ field: T.field.fieldState(),
                 first: T.state.getState().desertFight?.first?.[sid] ?? null,
@@ -162,8 +170,23 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
                 await page.waitForTimeout(150); await neutral();
                 // Neutral input lets the existing attack auto-facing choose the nearest valid shape.
             }
+            if (mob.hp <= 5) {
+                // Default Set normal attack is exactly5. Leave the original HP
+                // untouched and finish only after a real attack has aim-locked,
+                // before its impact. This exercises cancellation, not just idle death.
+                const live = await page.evaluate(() => ({ slam: T.field.testSlam()[0], blow: T.field.testBlow(),
+                    power: 3 + Math.floor(T.heroes.statsOf(T.state.getState(), 'set').strength / 2) + 1 }));
+                ensure(live.power === 5, 'default Set attack fixture remains unmodified');
+                if (live.slam?.st === 'prepare' && live.slam.locked && live.slam.t < .92
+                    && live.blow.mobs.some(o => o.meets && o.seen)) {
+                    pendingFinish = live.slam.seq;
+                    await W.tapEl('.sf_talk'); presses++;
+                    await page.waitForTimeout(320);
+                } else await page.waitForTimeout(60);
+                continue;
+            }
             const skill = page.locator('.sf_duat_skill');
-            if (mob.st === 'guard' && await skill.count() && !(await skill.isDisabled())) {
+            if (mob.st === 'guard' && mob.hp > 10 && await skill.count() && !(await skill.isDisabled())) {
                 await W.tapEl('.sf_duat_skill'); skillPresses++;
             } else { await W.tapEl('.sf_talk'); presses++; }
             await page.waitForTimeout(320);
@@ -173,12 +196,16 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
         check(firstDay !== null && state.killed === state.day && presses > 0,
             `actual attack presses ${presses}, skills ${skillPresses}; first=${firstDay}, killed=${state.killed}`);
         check(state.field.mobs.every(o => o.st === 'dead'), 'normal death state, no live guardian');
+        check(pendingFinish !== null && state.events.some(e => e.ev === 'slamCancel' && e.reason === 'dead' && e.seq === pendingFinish)
+            && !state.events.some(e => e.ev === 'slamImpact' && e.seq === pendingFinish),
+            'actual final attack kills during a locked pending slam and cancels it before impact');
         const afterDeathHp = JSON.stringify(state.field.run?.hp);
         const impacts = state.events.filter(e => e.ev === 'slamImpact').length;
         await page.waitForTimeout(1800); state = await snapshot('after-defeat-wait');
         check(JSON.stringify(state.field.run?.hp) === afterDeathHp && state.events.filter(e => e.ev === 'slamImpact').length === impacts,
             'no delayed slam or damage after defeat');
         await shot('05-defeated');
+        await page.evaluate(() => T.heroes.setWith(T.state.getState(), 'horus'));
 
         // First clear really opens the threshold; do not set the flag directly.
         const north = await page.evaluate(() => T.data.DATA.maps.desert_guardian_gate.entries.north);

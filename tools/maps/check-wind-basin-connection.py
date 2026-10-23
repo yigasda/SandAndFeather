@@ -47,6 +47,13 @@ old['exits'].pop()
 assert canonical(old) == 'c33a6f29d52dbad196b8e77af6c8634c469809968584da9643a577a97ef17917', '02 baseline changed beyond its new east route'
 old_scenes = copy.deepcopy(scenes)
 old_scenes.pop('desert_wind_basin')
+# T3/16 is a separately authorized ADDITIVE pair. Accept only that exact new
+# scene record; never refresh or weaken the fingerprint of any pre-existing scene.
+# check-lightwell-connection.py independently verifies its pixels, geometry and
+# the entire inherited runtime. This compatibility also keeps this older checker
+# usable on the new branch instead of mistaking the added record for an old edit.
+if 'desert_lightwell' in old_scenes:
+    assert canonical(old_scenes.pop('desert_lightwell')) == '95ac0f246bf362552e6ff4cf5bce9ebb10116ce3e3ed45da115704eac900331b', 'New lightwell scene differs from its exact approved additive record'
 assert canonical(old_scenes) == '430a657ec55ea2f5f7183688e1bd690534095cbe57bebba38566b404e96f3279', 'Existing scene artwork/settings changed'
 assert [e['id'] for e in temple['exits']] == ['west', 'door', 'temple', 'east']
 assert [e['id'] for e in basin['exits']] == ['west'], '20/discovery stays inactive'
@@ -99,3 +106,4 @@ assert scenes['desert_wind_basin']['tintActors'] is False
 assert scenes['desert_wind_basin']['tintWorld'] is False
 assert not scenes['desert_wind_basin'].get('occluders')
 print('PASS: original 02 map and all old scenes preserved; exact original masks/art; full-foot lanes, short moves, follower seed, fixed reciprocal outer-edge route; 20 inactive')
+
