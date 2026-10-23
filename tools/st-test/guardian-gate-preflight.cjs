@@ -39,8 +39,21 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
     const walkExit = async (map, id, target) => {
         check((await where()).map === map, `${map}/${id} starts on its stated map`);
         const dest = await page.evaluate(id => {
-            const e = T.win.currentMap().d.exits.find(e => e.id === id);
-            return { x: (e.x0 + e.x1) / 2 - .5, y: (e.y0 + e.y1) / 2 - .8 };
+            const m = T.win.currentMap(), e = m.d.exits.find(e => e.id === id);
+            const cx = (e.x0 + e.x1) / 2 - .5, cy = (e.y0 + e.y1) / 2 - .8, candidates = [];
+            // The shared pathfinder is a .25-tile grid. A .12-radius around an
+            // arbitrary polygon centroid can contain no grid point at all.
+            // Pick an actual clear grid goal INSIDE this exact polygon instead;
+            // do not widen the portal or relax arrival/walk precision.
+            for (let ix = Math.ceil((e.x0 - .5) * 4); ix <= Math.floor((e.x1 - .5) * 4); ix++)
+                for (let iy = Math.ceil((e.y0 - .8) * 4); iy <= Math.floor((e.y1 - .8) * 4); iy++) {
+                    const x = ix / 4, y = iy / 4;
+                    if (T.map.containsExit(e, x + .5, y + .8) && !m.solidRect(x + .22, y + .62, x + .78, y + .96))
+                        candidates.push({ x, y, d: Math.hypot(x - cx, y - cy) });
+                }
+            candidates.sort((a, b) => a.d - b.d);
+            if (!candidates.length) throw new Error('no full-foot grid point inside exit ' + id);
+            return candidates[0];
         }, id);
         const result = await W.walkToPoint(dest.x, dest.y, 45000, .12, { avoidExits: true });
         await page.waitForTimeout(500);
