@@ -15,16 +15,16 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:
-      GAME_SHA: fb8db46c36800c6b43963357797369d878101493
+      GAME_SHA: f80cf7fc51ee054205c54cbb207bcc31b87fd9d6
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out the approved game commit without credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: fb8db46c36800c6b43963357797369d878101493
+          ref: f80cf7fc51ee054205c54cbb207bcc31b87fd9d6
           path: game
           persist-credentials: false
-          fetch-depth: 5
+          fetch-depth: 6
       - name: Prepare disposable official SillyTavern and browser driver
         shell: bash
         run: |
