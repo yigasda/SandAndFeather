@@ -18,8 +18,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - variant: prior
-            source: 2e8323ff3a4231bdc2b80f34b29ddab1f475d464
           - variant: current
             source: 35b8f3d4caf41c28878ab0e57818d345c5f299ce
           - variant: candidate
@@ -193,15 +191,15 @@ jobs:
               await page.evaluate(async base=>{const s=await import(base+'src/core/state.js'),w=await import(base+'src/ui/window.js');s.getState().party.with='';await w.travel('ombos',{x:24,y:13});},base);
               await page.locator('#sf_game .sf_talk').click();await page.waitForSelector('.sf_pop_wrap');await snap('home-talk-412x900','.sf_pop_wrap,.sf_pop_wrap button');await close();
               await home();
-              const pos=()=>page.evaluate(async base=>structuredClone((await import(base+'src/core/state.js')).getState().pos),base);
+              const pos=()=>page.evaluate(async base=>structuredClone((await import(base+'src/world/player.js')).player),base);
               const before=await pos(), pad=await page.locator('#sf_game .sf_pad').boundingBox();
               await page.mouse.move(pad.x+pad.width/2,pad.y+pad.height/2);await page.mouse.down();
               await page.mouse.move(pad.x+pad.width*.85,pad.y+pad.height/2);await page.waitForTimeout(350);await page.mouse.up();
-              const after=await pos();check(Math.hypot(after.x-before.x,after.y-before.y)>.01,'actual joystick movement');
+              const after=await pos();
               metadata.joystick={before,after};
               await page.setViewportSize({width:844,height:390});await page.setViewportSize({width:390,height:844});await home();
               await snap('home-rotated-390x844',homeSelectors);
-              for(const [width,height] of [[844,390],[1842,854]]){
+              for(const [width,height] of [[390,844],[844,390],[1842,854]]){
                 await page.setViewportSize({width,height});await home();
                 for(const tab of ['bond','party','quests','map']){
                   await page.evaluate(tab=>document.querySelector('#sf_game').dispatchEvent(new CustomEvent('sf:navigate',{detail:tab})),tab);
@@ -210,6 +208,7 @@ jobs:
                   await close();
                 }
               }
+              check(Math.hypot(metadata.joystick.after.x-metadata.joystick.before.x,metadata.joystick.after.y-metadata.joystick.before.y)>.01,'actual joystick movement');
               check(metadata.ai_generation_requests.length===0,'zero AI generation requests');
               metadata.success=true;
             } catch(error) {
@@ -224,6 +223,24 @@ jobs:
           })();
           JS
           node driver/capture.cjs
+      - name: Run affected UI and input checks on candidate only
+        if: always() && matrix.variant == 'candidate'
+        shell: bash
+        run: |
+          set -euo pipefail
+          export ST_ROOT="$PWD/sillytavern" NODE_PATH="$PWD/driver/node_modules"
+          (cd sillytavern && node server.js --port 8000 --listen false > ../capture-output/suite-server.log 2>&1) &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 60); do curl --fail --silent http://127.0.0.1:8000/ >/dev/null && break; sleep 2; done
+          BAD=0
+          for TEST in tools/art/verify-cozy-ui.cjs tools/art/verify-ui-themes.cjs tools/art/verify-full-map.cjs tools/st-test/pad-tabs.cjs tools/st-test/landscape.cjs; do
+            NAME=$(basename "$TEST" .cjs)
+            node "game/$TEST" "$PWD/capture-output/$NAME" > "capture-output/$NAME.log" 2>&1 || BAD=1
+          done
+          node game/tools/st-test/portal-walk.cjs "$PWD/capture-output/exit-lifecycle" --exit-lifecycle > capture-output/exit-lifecycle.log 2>&1 || BAD=1
+          if grep -nE '^FAIL|^실패' capture-output/*.log > capture-output/failure-lines.txt; then BAD=1; fi
+          exit "$BAD"
       - name: Upload one PNG and diagnostic metadata only
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -233,7 +250,7 @@ jobs:
             capture-output/**/*.png
             capture-output/**/*.log
             capture-output/**/*.txt
-            capture-output/metadata.json
+            capture-output/**/*.json
             capture-output/sillytavern-sha.txt
             capture-output/server.log
           if-no-files-found: error
