@@ -18,8 +18,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - variant: prior
-            source: 2e8323ff3a4231bdc2b80f34b29ddab1f475d464
+          - variant: current
+            source: 35b8f3d4caf41c28878ab0e57818d345c5f299ce
     env:
       VARIANT: ${{ matrix.variant }}
       GAME_SHA: ${{ matrix.source }}
