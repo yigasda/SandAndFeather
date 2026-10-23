@@ -1077,7 +1077,41 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  --slice-party:10;
  --slice-bar:15;
 }
-:is(#sf_game,#sf_pick,#sf_settings,#sf_chip)[data-ui-theme='cozy'] {
+/* HOME keeps the pre-Lotus 0.9.93 art. Popup variables stay local to their own tree. */
+:is(#sf_game,#sf_chip)[data-ui-theme='cozy'] {
+ --skin-frame:url('data/art/ui/skins/cozy/frame.png');
+ --skin-panel:url('data/art/ui/skins/cozy/panel.png');
+ --skin-slot:url('data/art/ui/skins/cozy/slot.png');
+ --skin-selected:url('data/art/ui/skins/cozy/selected.png');
+ --skin-button:url('data/art/ui/skins/cozy/button.png');
+ --skin-primary:url('data/art/ui/skins/cozy/primary.png');
+ --skin-hud:url('data/art/ui/skins/cozy/hud.png');
+ --skin-party:url('data/art/ui/skins/cozy/party.png');
+ --skin-bar:url('data/art/ui/skins/cozy/bar.png');
+ --skin-paper:url('data/art/ui/skins/cozy/paper.png');
+ --skin-header:url('data/art/ui/skins/cozy/header.png');
+ --skin-button-fill:url('data/art/ui/skins/cozy/button-fill.png');
+ --skin-primary-fill:url('data/art/ui/skins/cozy/primary-fill.png');
+ --skin-bag:url('data/art/ui/skins/cozy/bag.png');
+ --skin-talk:url('data/art/ui/skins/cozy/talk.png');
+ --skin-sun:url('data/art/ui/skins/cozy/sun.png');
+ --skin-nav-world:url('data/art/ui/skins/cozy/nav-world.png');
+ --skin-nav-somang:url('data/art/ui/skins/cozy/nav-somang.png');
+ --skin-nav-party:url('data/art/ui/skins/cozy/nav-party.png');
+ --skin-nav-quests:url('data/art/ui/skins/cozy/nav-quests.png');
+ --skin-nav-map:url('data/art/ui/skins/cozy/nav-map.png');
+ --slice-frame:24;
+ --slice-panel:17;
+ --slice-slot:9;
+ --slice-selected:9;
+ --slice-button:9;
+ --slice-primary:9;
+ --slice-hud:20;
+ --slice-party:18;
+ --slice-bar:15;
+}
+#sf_game[data-ui-theme='cozy'] .sf_pop_wrap,
+:is(#sf_pick,#sf_settings)[data-ui-theme='cozy'] {
  --skin-frame:url('data/art/ui/lotus/window.frame.png');
  --skin-panel:url('data/art/ui/lotus/panel.record1.frame.png');
  --skin-slot:url('data/art/ui/lotus/slot.fishing-style.frame.png');
@@ -1314,7 +1348,8 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 
 #sf_game[data-ui-theme='temple'] { --skin-action-bag:url('data/art/ui/skins/temple/action-bag.png'); --skin-action-talk:url('data/art/ui/skins/temple/action-talk.png'); }
 
-#sf_game[data-ui-theme='cozy'] { --skin-action-bag:url('data/art/ui/lotus/nav.home.frame.png'); --skin-action-talk:url('data/art/ui/lotus/button.gift.frame.png'); }
+#sf_game[data-ui-theme='cozy'] { --skin-action-bag:url('data/art/ui/skins/cozy/action-bag.png'); --skin-action-talk:url('data/art/ui/skins/cozy/action-talk.png'); }
+#sf_game[data-ui-theme='cozy'] .sf_pop_wrap { --skin-action-bag:url('data/art/ui/lotus/nav.home.frame.png'); --skin-action-talk:url('data/art/ui/lotus/button.gift.frame.png'); }
 @media(min-width:900px){
  :is(#sf_game,#sf_pick)[data-ui-theme] .sf_pop_wide { border-width:20px; }
  :is(#sf_game,#sf_pick)[data-ui-theme] .sf_pop_wide .sf_pop_head { min-height:64px;background-size:auto 24px;padding:10px 16px; }
@@ -1422,7 +1457,8 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 
 #sf_game[data-ui-theme='temple'] { --skin-chip:url('data/art/ui/skins/temple/chip.png');--skin-hud-fill:url('data/art/ui/skins/temple/hud-fill.png');--skin-minimap:url('data/art/ui/skins/temple/minimap.png');--slice-chip:9;--slice-minimap:17; }
 
-#sf_game[data-ui-theme='cozy'] { --skin-chip:url('data/art/ui/lotus/nav.home.frame.png');--skin-hud-fill:url('data/art/ui/lotus/nav.home.face-restored.png');--skin-minimap:url('data/art/ui/lotus/window.frame.png');--slice-chip:13;--slice-minimap:19; }
+#sf_game[data-ui-theme='cozy'] { --skin-chip:url('data/art/ui/skins/cozy/chip.png');--skin-hud-fill:url('data/art/ui/skins/cozy/hud-fill.png');--skin-minimap:url('data/art/ui/skins/cozy/minimap.png');--slice-chip:13;--slice-minimap:19; }
+#sf_game[data-ui-theme='cozy'] .sf_pop_wrap { --skin-chip:url('data/art/ui/lotus/nav.home.frame.png');--skin-hud-fill:url('data/art/ui/lotus/nav.home.face-restored.png');--skin-minimap:url('data/art/ui/lotus/window.frame.png');--slice-chip:13;--slice-minimap:19; }
 /* Match original title/icon spacing and the category tabs inside 1/3's title band. */
 :is(#sf_game,#sf_pick)[data-ui-theme] .sf_pop_head { padding-left:clamp(20px,5.1cqw,42px);gap:clamp(10px,2.7cqw,21px); }
 :is(#sf_game,#sf_pick)[data-ui-theme] .sf_pop_head::before { width:clamp(18px,5cqw,39px);height:clamp(22px,5.5cqw,44px); }
@@ -1584,6 +1620,13 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  --menu-map:url('data/art/ui/menu-icons/temple/map.png');
 }
 #sf_game[data-ui-theme='cozy'] {
+ --menu-world:url('data/art/ui/menu-icons/cozy/world.png');
+ --menu-somang:url('data/art/ui/menu-icons/cozy/somang.png');
+ --menu-party:url('data/art/ui/menu-icons/cozy/party.png');
+ --menu-quests:url('data/art/ui/menu-icons/cozy/quests.png');
+ --menu-map:url('data/art/ui/menu-icons/cozy/map.png');
+}
+#sf_game[data-ui-theme='cozy'] .sf_pop_wrap {
  --menu-world:url('data/art/ui/lotus/icon.home.png');
  --menu-somang:url('data/art/ui/lotus/icon.heart.png');
  --menu-party:url('data/art/ui/lotus/icon.heart.png');
@@ -2009,11 +2052,13 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 }
 
 /* Approved lotus PNG assembly. Cozy is the persisted theme key; portrait geometry remains above. */
-:is(#sf_game,#sf_pick,#sf_settings,#sf_chip)[data-ui-theme='cozy'] {
+#sf_game[data-ui-theme='cozy'] .sf_pop_wrap,
+:is(#sf_pick,#sf_settings)[data-ui-theme='cozy'] {
  --sf-card:#fae8cf;--sf-card2:#efdab9;--sf-ink:#382719;--sf-dim:#88613b;--sf-line:#cba477;--sf-accent:#68764b;--sf-accent-ink:#526039;
  --slice-frame:52;--slice-panel:22;--slice-slot:16;--slice-selected:16;--slice-button:16;--slice-primary:20;--slice-hud:12;--slice-party:22;--slice-bar:22;--slice-chip:12;--slice-minimap:52;
  --detail-icon-slice:16;--detail-description-slice:22;
 }
+#sf_game[data-ui-theme='cozy'] .sf_pop_wrap { color:var(--sf-ink); }
 :is(#sf_game,#sf_pick)[data-ui-theme='cozy'] .sf_pop { background:var(--skin-paper) center/100% 100% no-repeat; }
 :is(#sf_game,#sf_pick)[data-ui-theme='cozy'] .sf_pop .sf_pop_head {
  background:url('data/art/ui/lotus/header.lower-rail.png') center bottom/100% 5px no-repeat, var(--skin-header) center/100% 100% no-repeat;
@@ -2041,15 +2086,6 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
 }
 #sf_game[data-ui-theme='cozy'] .sf_inventory_slot .sf_item_art { mix-blend-mode:normal; }
 #sf_game[data-ui-theme='cozy'] .sf_inventory_slot[aria-pressed='true'] { border-image:var(--skin-slot) 16 stretch;outline:2px solid #71804d;outline-offset:-3px; }
-#sf_game[data-ui-theme='cozy'] :is(.sf_date_card,.sf_chip,.sf_hint_pill,.sf_tabs,.sf_round,.sf_menu,.sf_appearance,.sf_bag,.sf_duat_hud,.sf_dev) {
- background-image:url('data/art/ui/lotus/nav.home.face-restored.png');background-size:100% 100%;background-repeat:no-repeat;color:#fff2d9;box-shadow:none;border-radius:0;
-}
-#sf_game[data-ui-theme='cozy'] :is(.sf_duat_hud,.sf_dev) { border:5px solid transparent;border-image:var(--skin-hud) 12 stretch; }
-#sf_game[data-ui-theme='cozy'] .sf_round { border:6px solid transparent;border-image:var(--skin-primary) 20 stretch;background-image:var(--skin-primary-fill); }
-#sf_game[data-ui-theme='cozy'] .sf_round > * { opacity:1; }
-#sf_game[data-ui-theme='cozy'] .sf_tab { border:4px solid transparent;border-image:var(--skin-hud) 12 stretch;background:url('data/art/ui/lotus/nav.home.face-restored.png') center/100% 100% no-repeat;color:#fff2d9; }
-#sf_game[data-ui-theme='cozy'] .sf_tab.sf_on { border-image:var(--skin-primary) 20 stretch;background-image:var(--skin-primary-fill);color:#fff2d9; }
-#sf_game[data-ui-theme='cozy'] .sf_tab.sf_on::after { display:none; }
 #sf_game[data-ui-theme='cozy'] .sf_inventory_detail { --detail-icon:url('data/art/ui/lotus/slot.fishing-style.frame.png');--detail-description:url('data/art/ui/lotus/panel.record1.frame.png'); }
 #sf_game[data-ui-theme='cozy'] .sf_pop_wrap .sf_bond .sf_inventory_slot.sf_bond_slot,
 #sf_game[data-ui-theme='cozy'] .sf_pop_wrap .sf_bond .sf_inventory_slot.sf_bond_slot[aria-pressed='true'] {
@@ -2225,4 +2261,5 @@ body:not(.sf_linked) .sf_mes_pick { display: none !important; }
  #sf_game .sf_lotus_scene > .sf_lotus_hit:focus-visible { outline:2px solid #fff7e5;outline-offset:-4px; }
  #sf_game .sf_lotus_scene > .sf_lotus_hit:disabled { cursor:default; }
 }
+
 
