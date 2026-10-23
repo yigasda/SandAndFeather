@@ -197,13 +197,55 @@ function wayTo(o, gx, gy) {
     return next;
 }
 // the warning: fix whom it means; while 준비 0 its eye follows them, at 준비 1 the line is fixed
-function warn(o, p) { o.st = 'prepare'; o.t = 0; o.target = p.who; o.aim = null; }
+function warn(o, p) {
+    o.st = 'prepare'; o.t = 0; o.target = p.who; o.aim = null; o.slamLock = null; o.slamImpacted = false;
+    if (o.e.attack === 'slam') {
+        o.slamSeq = (o.slamSeq || 0) + 1;
+        note({ ev: 'slamWarn', what: 'slamWarn', mob: o.i, sid: o.sid, seq: o.slamSeq, frame: 'prepare-0', area: slamArea(o) });
+    }
+}
 function aimAt(o, s) {
     const c = centre(o), p = targets(s).find(q => q.who === o.target) || targets(s)[0];
     if (!p) return;
     const dx = p.x - c.x, dy = p.y - c.y, d = Math.hypot(dx, dy) || 1;
     o.look = { dx: dx / d, dy: dy / d };
     if (Math.abs(dx) > 0.1) o.faceR = dx > 0;
+}
+// A slam uses a measured contact patch in its impact picture, not the creature's body or a dash's circle.
+// `area` is in that atlas frame's pixels; its pivot/visible scale and mirroring are exactly drawMob's.
+// drawMob's picture pivot is y + 1, while centre/targets use y + .8: keep that .2 here, not in the data.
+function slamArea(o) {
+    const a = o.e.slam?.area, d = DATA.sprites?.enemies?.[o.kind], r = a && d?.frames?.[a.frame];
+    if (!a || !r || !d.visible) return null;
+    const c = centre(o), k = charTiles() / d.visible, flip = o.faceR ? -1 : 1;
+    return { x: c.x + (a.x - r[4]) * k * flip, y: c.y + .2 + (a.y - r[5]) * k,
+        rx: a.rx * k, ry: a.ry * k, origin: { ...c }, faceR: !!o.faceR };
+}
+const inSlam = (a, p) => !!a && ((p.x - a.x) / a.rx) ** 2 + ((p.y - a.y) / a.ry) ** 2 <= 1;
+const slamSees = (a, p) => !!a && !wall(p.x, p.y) && clearLine(a.origin, p);
+function cancelSlam(o, reason) {
+    if (o.e.attack !== 'slam') return;
+    if ((o.slamLock || ['prepare', 'attack'].includes(o.st)) && (reason === 'dead' || !o.slamImpacted)) note({ ev: 'slamCancel', what: 'slamCancel', mob: o.i, sid: o.sid, seq: o.slamSeq, reason, frame: mobMotion(o), area: structuredClone(o.slamLock || slamArea(o)) });
+    o.slamLock = null; o.slamImpacted = false;
+}
+function impactSlam(o, s) {
+    const a = o.slamLock;
+    if (!a || o.st !== 'attack' || o.hp <= 0 || o.slamImpacted) return;
+    o.slamImpacted = true;   // one instant, not a lingering hit zone or a delayed callback
+    const hits = [];
+    for (const p of targets(s)) if (!o.struck.has(p.who) && inSlam(a, p) && slamSees(a, p) && !sheltered(o, p)) {
+        o.struck.add(p.who);
+        const before = runNow(s).hp[p.who]; hurt(s, p.who, o.e.atk);
+        hits.push({ who: p.who, x: p.x, y: p.y, damage: before - runNow(s).hp[p.who] });
+    }
+    note({ ev: 'slamImpact', what: 'slamImpact', mob: o.i, sid: o.sid, seq: o.slamSeq, frame: 'attack-1', elapsed: o.t, area: structuredClone(a), hits });
+}
+function mobMotion(o, t = now()) {
+    const T = timing(o);
+    return o.st === 'dead' ? 'disappear' : o.st === 'hit' ? 'hit' : o.st === 'guard' ? 'guard'
+        : o.st === 'prepare' ? (o.t >= T.prepare[0] ? 'prepare-1' : 'prepare-0')
+        : o.st === 'attack' ? (o.e.attack === 'slam' && o.t >= o.e.slam.impact ? 'attack-1' : 'attack-0')
+        : o.st === 'recover' ? 'attack-1' : IDLE_LOOP[Math.floor((t + o.phase) / T.idle) % IDLE_LOOP.length];
 }
 // 입구 안전구역(사용자 10-19: 입장하자마자 공격받거나 출구가 몹에게 막히지 않게; 착지는 옮기지 않음): on a desert map,
 // round each landing and along the way from it to its own exit (the exit of the same name), SAFE_R people-widths wide.
@@ -256,6 +298,7 @@ function outOfSafe(p) {
 const intoSafe = (x, y, nx, ny) => { const d1 = safeDepth({ x: nx + 0.5, y: ny + 0.8 }); return d1 > 0 && d1 > safeDepth({ x: x + 0.5, y: y + 0.8 }) - 1e-6; };
 function stepMob(m, o, dt, s) {
     o.t += dt;
+    if (o.slamLock && !['prepare', 'attack', 'recover'].includes(o.st)) cancelSlam(o, o.st);
     const T = timing(o), c = centre(o), tg = targets(s).map(p => ({ p, d: Math.hypot(p.x - c.x, p.y - c.y) })).sort((a, b) => a.d - b.d);
     // how near it notices: AGGRO from its feet's middle (the approved 4), and a kind's own `aggro` on top (data; a boss
     // may watch its whole room). Its reach, keeping its distance and the dash stay from its feet's middle too
@@ -266,7 +309,7 @@ function stepMob(m, o, dt, s) {
     o.foe = near ? near.p.who : (tg[0]?.d < A ? tg[0].p.who : null);
     // it looks at whom it fights, standing too (guarding, struck, open after a blow; user: they faced away), not while
     // its line is fixed or it flies along it; walking, it faces the way it goes (move)
-    if (near && o.st !== 'dead' && o.st !== 'attack' && !(o.st === 'prepare' && o.aim)) { const dx = near.p.x - c.x; if (Math.abs(dx) > 0.3) o.faceR = dx > 0; }
+    if (near && o.st !== 'dead' && o.st !== 'attack' && !(o.st === 'prepare' && o.aim) && !(o.e.attack === 'slam' && o.st === 'recover')) { const dx = near.p.x - c.x; if (Math.abs(dx) > 0.3) o.faceR = dx > 0; }
     const move = (tx, ty, speed) => {
         const dx = tx - c.x, dy = ty - c.y, d = Math.hypot(dx, dy);
         if (d < 0.05) return true;
@@ -286,18 +329,30 @@ function stepMob(m, o, dt, s) {
         case 'dead': if (o.t > T.die[0] + T.die[1]) o.gone = true; return;
         case 'hit': if (o.t > o.stun) { o.st = 'chase'; o.t = 0; } return;
         case 'guard':   // it opens and strikes back, the whole warning first
-            if (o.t > T.guard) { o.t = 0; note({ ev: 'guardEnd', mob: o.i }); if (near && !sheltered(o, near.p)) warn(o, near.p); else o.st = 'chase'; }
+            if (o.t > T.guard) { o.t = 0; note({ ev: 'guardEnd', mob: o.i }); if (near && !sheltered(o, near.p) && (o.e.attack !== 'slam' || (now() >= o.restAt && inSlam(slamArea(o), near.p) && clearLine(c, near.p)))) warn(o, near.p); else o.st = 'chase'; }
             return;
         case 'prepare':
             if (o.t < T.prepare[0]) { aimAt(o, s); return; }
-            if (!o.aim) { aimAt(o, s); o.aim = o.look; }   // 준비 1: the line is fixed now
+            if (!o.aim) {   // 준비 1: the line (or the slam's contact patch and picture facing) is fixed now
+                aimAt(o, s); o.aim = o.look;
+                if (o.e.attack === 'slam') {
+                    o.slamLock = slamArea(o);
+                    note({ ev: 'slamLock', what: 'slamLock', mob: o.i, sid: o.sid, seq: o.slamSeq, elapsed: o.t, frame: 'prepare-1', area: o.slamLock && structuredClone(o.slamLock) });
+                }
+            }
             if (o.t > T.prepare[0] + T.prepare[1]) {
                 o.st = 'attack'; o.t = 0; o.struck = new Set();
                 if (o.e.attack === 'shot') shoot(o);
+                if (o.e.attack === 'slam') note({ ev: 'slamStart', what: 'slamStart', mob: o.i, sid: o.sid, seq: o.slamSeq, frame: 'attack-0', area: o.slamLock && structuredClone(o.slamLock) });
             }
             return;
         case 'attack':
-            if (o.e.attack === 'dash') {   // the picture itself flies along the line; hurts whom it really touches
+            if (o.e.attack === 'slam') {
+                if (o.t >= o.e.slam.impact) impactSlam(o, s);   // attack-1 appears on this very tick
+                if (o.t <= o.e.slam.time) return;
+                // Reserve the whole recovery/rest now: a hit interrupting recovery must not skip the rest.
+                o.restAt = now() + T.recover + T.rest;
+            } else if (o.e.attack === 'dash') {   // the picture itself flies along the line; hurts whom it really touches
                 const d = o.e.dash, v = d.dist / d.time;
                 if (o.t <= d.time) {
                     const nx = o.x + o.aim.dx * v * dt, ny = o.y + o.aim.dy * v * dt;
@@ -310,7 +365,7 @@ function stepMob(m, o, dt, s) {
             o.st = 'recover'; o.t = 0;
             return;
         case 'recover':   // open: no guard, she can strike back; then it may move but not strike for a while
-            if (o.t > T.recover) { o.st = 'chase'; o.t = 0; o.restAt = now() + T.rest; }
+            if (o.t > T.recover) { o.st = 'chase'; o.t = 0; o.restAt = now() + T.rest; if (o.e.attack === 'slam') cancelSlam(o, 'recovered'); }
             return;
     }
     // it came into a zone after someone who struck it and is left alone now: straight out the shortest way first
@@ -322,7 +377,15 @@ function stepMob(m, o, dt, s) {
     if (near) {
         o.st = 'chase';
         const p = near.p, seen = clearLine(c, p);
-        if (near.d <= o.e.range && seen && now() >= o.restAt && !sheltered(o, p)) { warn(o, p); return; }
+        if (near.d <= o.e.range && seen && now() >= o.restAt && !sheltered(o, p) && (o.e.attack !== 'slam' || inSlam(slamArea(o), p))) { warn(o, p); return; }
+        if (o.e.attack === 'slam') {
+            // Bring the measured hands to the target, not the feet to the target. No rush, rotation or homing
+            // once the warning begins. This also gives someone above/below the large picture a real attack.
+            const a = slamArea(o), face = o.faceR;
+            if (a) go(p.x - (a.x - c.x), p.y - (a.y - c.y), o.e.speed * (now() < o.restAt ? .6 : 1));
+            o.faceR = face;   // placing the hands can mean stepping backwards; do not flip the contact patch
+            return;
+        }
         const shot = o.e.attack === 'shot', keep = shot ? o.e.range * 0.6 : 0.9;   // the hourglass keeps its distance
         const ax = (c.x - p.x) / (near.d || 1), ay = (c.y - p.y) / (near.d || 1);
         o.orbit ||= Math.random() < 0.5 ? 1 : -1;
@@ -338,6 +401,7 @@ function stepMob(m, o, dt, s) {
         return;
     }
     o.st = 'wander';
+    if (o.e.wander === false) return;   // a placed guardian waits when unengaged; other species still roam
     if (o.wait > 0) { o.wait -= dt; return; }
     const stuck = go(o.tx, o.ty, o.e.speed * 0.5);
     if (stuck || Math.hypot(o.tx - c.x, o.ty - c.y) < 0.15) {
@@ -536,6 +600,7 @@ function damage0(s, o, n, push, from, kind, actor) {
     o.hp -= n;
     pop(c.x, c.y - 2.3, `${n}`, (o.st === 'guard' && st !== 'break') || st === 'shield' ? '#cfe3ea' : '#fff3c4');
     if (o.hp <= 0) {
+        cancelSlam(o, 'dead');
         o.st = 'dead'; o.t = 0;
         // 궁 게이지: the one who felled it, once for this creature (the next day's comes back as a new one), quietly
         if (actor && !o.paid) { o.paid = true; charge(s, actor, U().kill ?? 15); }
@@ -543,7 +608,7 @@ function damage0(s, o, n, push, from, kind, actor) {
         else { const r = run(s); (r.cleared[mapId] ||= []).push(o.i); save(); }
         return;
     }
-    if (st === 'break') { o.st = 'hit'; o.t = 0; o.stun = T.stagger; o.steadyAt = now() + T.stagger + T.steady; return; }   // no counter
+    if (st === 'break') { cancelSlam(o, 'guardBreak'); o.st = 'hit'; o.t = 0; o.stun = T.stagger; o.steadyAt = now() + T.stagger + T.steady; return; }   // no counter
     if (st === 'shield') return;   // stopped on the shield: no flinch, no closing up
     if (o.st === 'guard') return;
     // the first blow lands in full, then it may close up
@@ -553,6 +618,7 @@ function damage0(s, o, n, push, from, kind, actor) {
     }
     // flinch (not in the warning or the blow itself, and not again right after the last flinch)
     if (['wander', 'chase', 'recover'].includes(o.st) && now() >= o.steadyAt) {
+        cancelSlam(o, 'hit');
         o.st = 'hit'; o.t = 0; o.stun = T.hit; o.steadyAt = now() + T.hit + T.steady;
         if (push && from && !o.e.nopush) { const dx = c.x - from.x, dy = c.y - from.y, d = Math.hypot(dx, dy) || 1, nx = o.x + dx / d * push, ny = o.y + dy / d * push; if (!solid(map(), nx, ny)) { o.x = nx; o.y = ny; } }
     }
@@ -907,7 +973,7 @@ onDraw(scene => {
         p.combat = { ...mc, face: mate.face, blink: blink(mate) }; p.act = null;
     }
     for (const o of mobs) scene.extra.push({ x: o.x, y: o.y, draw: (g, sx, sy, z, ts) => drawMob(g, o, sx, sy, z, ts) });
-    scene.extra.push({ x: 0, y: -1e6, draw: (g, sx, sy, z, ts) => drawUlt(g, z, ts, -sx, -(sy + 1e6 * ts), true) });
+    scene.extra.push({ x: 0, y: -1e6, draw: (g, sx, sy, z, ts) => { drawSlams(g, z, ts, -sx, -(sy + 1e6 * ts)); drawUlt(g, z, ts, -sx, -(sy + 1e6 * ts), true); } });
     const y0 = Math.min(player.y, follower().y) - 0.01;
     scene.extra.push({ x: 0, y: y0, draw: (g, sx, sy, z, ts) => drawUlt(g, z, ts, -sx, y0 * ts - sy) });
     scene.extra.push({ x: 0, y: 1e6, draw: (g, sx, sy, z, ts) => drawTop(g, z, ts, sx, sy) });
@@ -929,6 +995,34 @@ function opaque(img, r, fx, fy) {
     }
     return !!a.d && a.d[((fy >> 2) * a.w + (fx >> 2)) * 4 + 3] >= 128;
 }
+// The floor warning and impact use the very same locked patch as damage. It never tracks the player after
+// prepare-1, never grows into a shockwave, and is below the actors (no light painted on their bodies).
+function drawSlams(g, z, ts, cx, cy) {
+    for (const o of mobs) {
+        if (o.e.attack !== 'slam' || !['prepare', 'attack', 'recover'].includes(o.st) || o.hp <= 0) continue;
+        const a = o.slamLock || slamArea(o); if (!a) continue;
+        const hit = o.slamImpacted, x = a.x * ts - cx, y = a.y * ts - cy;
+        const key = [a.x, a.y, a.rx, a.ry, a.origin.x, a.origin.y].join('|');
+        if (o.slamRender?.key !== key || now() - o.slamRender.at > .15) {
+            const edge = Array.from({ length: 49 }, (_, i) => { const t = i * Math.PI / 24; return { x: a.x + Math.cos(t) * a.rx, y: a.y + Math.sin(t) * a.ry }; });
+            o.slamRender = { key, at: now(), edge, visible: edge.map(p => slamSees(a, p)), middle: slamSees(a, a) };
+        }
+        const { edge, visible, middle } = o.slamRender;
+        g.save(); g.lineWidth = Math.max(1, (hit ? 2 : 1.5) * z);
+        g.strokeStyle = hit ? 'rgba(255,226,154,.9)' : 'rgba(218,144,67,.85)';
+        if (!o.slamLock) g.setLineDash([3 * z, 3 * z]);
+        // No warning painted through a wall. A partially occluded patch has only its visible edge drawn.
+        if (visible.every(Boolean) && middle) {
+            g.fillStyle = hit ? 'rgba(255,212,125,.2)' : 'rgba(214,142,74,.1)';
+            g.beginPath(); g.ellipse(x, y, a.rx * ts, a.ry * ts, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+        } else {
+            g.beginPath();
+            for (let i = 1; i < edge.length; i++) if (visible[i - 1] && visible[i]) { g.moveTo(edge[i - 1].x * ts - cx, edge[i - 1].y * ts - cy); g.lineTo(edge[i].x * ts - cx, edge[i].y * ts - cy); }
+            g.stroke();
+        }
+        g.restore();
+    }
+}
 function drawMob(g, o, sx, sy, z, ts) {
     const d = DATA.sprites?.enemies?.[o.kind];
     if (!d) return;
@@ -942,10 +1036,7 @@ function drawMob(g, o, sx, sy, z, ts) {
     g.fillStyle = `rgba(20,12,6,${o.st === 'dead' ? 0.12 : 0.24 - 0.05 * bob})`;
     const wide = Math.max(1, (d.height || 1) / 1.3);   // a big one's shadow as big as it is
     g.beginPath(); g.ellipse(gx, gy - 0.5 * z, 0.45 * ts * wide * (1 - 0.15 * bob * fl), 0.13 * ts * wide, 0, 0, Math.PI * 2); g.fill();
-    const motion = o.st === 'dead' ? 'disappear' : o.st === 'hit' ? 'hit' : o.st === 'guard' ? 'guard'
-        : o.st === 'prepare' ? (warn1 ? 'prepare-1' : 'prepare-0')
-        : o.st === 'attack' ? 'attack-0' : o.st === 'recover' ? 'attack-1'
-        : IDLE_LOOP[Math.floor((t + o.phase) / T.idle) % IDLE_LOOP.length];
+    const motion = mobMotion(o, t);
     // a kind's pictures are on its own sheets (one or more, tools/art/desert-mob-pack.py: frame [x, y, w, h, px, py, sheet]);
     // only the sheet this frame is on is asked for, the small set when it is drawn small, the other while that one loads
     const pick = v => { const r = v.frames[motion] || v.frames['idle-0'], img = spriteFile((v.sheets || [v.file])[r[6] || 0]); return img && { a: v, r, img }; };
@@ -1204,6 +1295,13 @@ export function testReset() {
     bolts = []; fx = []; pops = []; events.length = 0; areas.length = 0;
 }
 export const testFade = () => mobs[0]?.fade || 0;
+// Read-only: a preview before warning, then the locked world-feet patch. Tests approach it using the normal
+// controls, observe attack-0 → attack-1 and read events; this neither spawns nor damages a creature.
+export const testSlam = () => mobs.filter(o => o.e.attack === 'slam').map(o => ({
+    i: o.i, sid: o.sid, seq: o.slamSeq || 0, st: o.st, t: o.t, hp: o.hp, frame: mobMotion(o),
+    area: structuredClone(o.slamLock || slamArea(o)), locked: !!o.slamLock, impactDone: !!o.slamImpacted,
+    impactAt: o.e.slam.impact, attackTime: o.e.slam.time, faceR: !!o.faceR,
+}));
 // tests only: the first creature struck by one of the two (from where they stand), for the safe-zone checks
 export function testStrikeBy(who) { const s = getState(), o = mobs[0]; if (!s || !o) return; const f = who === leadOf(s) ? feet() : { x: follower().x + 0.5, y: follower().y + 0.8 }; damage(s, o, 1, 0, f, '', who); }
 // tests only: someone hit by a creature's blow of `atk` (as a creature's blow does)
@@ -1243,3 +1341,4 @@ export function testTune(kind, numbers = {}) { tune[kind] = numbers; }
 // tests only: one more creature beside those there (its pictures kept as a map's would be)
 export function testAdd(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs.push(makeMob(mobs.length + 100, kind, x, y)); keepArt([...new Set(mobs.map(o => o.kind))]); }
 export function testOnly(kind, x, y, numbers = {}) { tune[kind] = numbers; mobs = [makeMob(99, kind, x, y)]; bolts = []; fx = []; }
+

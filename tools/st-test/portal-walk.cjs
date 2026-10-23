@@ -21,6 +21,7 @@ function codeStamp() {
     function scan(dir,ext){for(const ent of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,ent.name);if(ent.isDirectory())scan(p,ext);else if(ext.test(ent.name))files.push(p);}}
     scan(path.join(ROOT,'src'),/\.js$/);scan(path.join(ROOT,'data/maps'),/\.json$/);
     files.push(path.join(ROOT,'data/scene-art.json'),__filename);
+    if (process.argv.includes('--guardian-gate')) files.push(path.join(ROOT,'data/desert.json'), path.join(__dirname,'guardian-gate-preflight.cjs'), path.join(__dirname,'lightwell-pair.json'));
     const hash=crypto.createHash('sha256');
     for(const file of files.sort())hash.update(path.relative(ROOT,file)).update(fs.readFileSync(file));
     return {commit:execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),runtimeAndTestSha256:hash.digest('hex'),files:files.length};
@@ -33,6 +34,7 @@ if(INDEPENDENT_TILES!==null&&!(INDEPENDENT_TILES>0&&INDEPENDENT_TILES<10))throw 
 const BASE = '/scripts/extensions/third-party/SandAndFeather/';
 // [from map, start entry, exit id, to map, landing entry]
 const LIFECYCLE = process.argv.includes('--exit-lifecycle');
+const GUARDIAN_GATE = process.argv.includes('--guardian-gate');
 const KEYBOARD = process.argv.includes('--keyboard');
 const pairFileIndex = process.argv.indexOf('--pair-file');
 const FILE_PAIRS = pairFileIndex < 0 ? null : JSON.parse(fs.readFileSync(process.argv[pairFileIndex + 1], 'utf8'));
@@ -385,6 +387,7 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
             });
             for(const [name,value] of Object.entries(checks))ok(value,'출구 실제 판정 계약: '+name);
         }
+        if (GUARDIAN_GATE) await require('./guardian-gate-preflight.cjs')({ page, W, boot, where, ok, OUT, BASE });
         let shot = 0;
         if (CONNECTIONS) {
             const contracts=await page.evaluate(pairs=>pairs.map(([from,start,id,to,land],i)=>{
@@ -669,4 +672,5 @@ const ok = (c, msg) => { const line = `${c ? '통과' : '실패'} ${msg}`; conso
     console.log(`\n${fail ? 'FAIL' : 'ALL PASS'} (${fail} failed)`);
     process.exit(fail ? 1 : 0);
 })();
+
 

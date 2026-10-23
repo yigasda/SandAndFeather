@@ -15,6 +15,25 @@
   "desert_broken_tomb_warden": "파릉 수문장"
  },
  "enemies": {
+  "desert_temple_warden": {
+   "ko": "신전 수문장",
+   "hp": 68,
+   "atk": 4,
+   "range": 4.5,
+   "speed": 1.0,
+   "wander": false,
+   "aggro": 2.5,
+   "attack": "slam",
+   "slam": {
+    "_about": "07_crush_1 양손 아래 접촉부(원본 중심 199,365 / 반폭 54,20), 파편 제외. atlas attack-1 crop 시작 96,69, pivot 139,380, visible 84.048. 준비1에 좌우·영역 고정, attack-0에서 .22초 뒤 attack-1로 바뀔 때 한 번만 피해. 원본·피격 도형은 바꾸지 않음.",
+    "impact": 0.22,
+    "time": 0.48,
+    "area": { "frame": "attack-1", "x": 103, "y": 296, "rx": 54, "ry": 20 }
+   },
+   "guard": 0.25,
+   "float": false,
+   "timing": { "prepare": [0.6, 0.5], "recover": 0.6, "rest": 1.5 }
+  },
   "desert_leather_shield": {
    "ko": "가죽 방패병",
    "hp": 34,
@@ -36,6 +55,16 @@
   }
  },
  "maps": {
+  "desert_guardian_gate": {
+   "spawns": [
+    {
+     "id": "t3.warden.1",
+     "kind": "desert_temple_warden",
+     "x": 14.761538461538462,
+     "y": 27.666346153846153
+    }
+   ]
+  },
   "desert_forecourt_west": {
    "spawns": [
     {
@@ -48,3 +77,4 @@
   }
  }
 }
+
