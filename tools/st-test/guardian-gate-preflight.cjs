@@ -6,6 +6,12 @@ const path = require('node:path');
 const MAP = 'desert_guardian_gate', WELL = 'desert_lightwell', SID = 't3.warden.1';
 module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
     const log = { fixture: 'isolated reset save; standard Set alone for actual combat, then Set + Horus for portals; production guardian unchanged', phases: [], combat: [] };
+    let touchActive = false;
+    const touch = async (type, x, y) => {
+        await W.touch(type, x, y);
+        if (type === 'touchStart') touchActive = true;
+        if (type === 'touchEnd' || type === 'touchCancel') touchActive = false;
+    };
     const check = (condition, message) => { ok(condition, 'guardian: ' + message); if (!condition) throw new Error('guardian: ' + message); };
     const ensure = (condition, message) => { if (!condition) check(false, message); };
     const snapshot = async name => {
@@ -20,7 +26,12 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
         return state;
     };
     const shot = name => page.screenshot({ path: path.join(OUT, 'guardian-' + name + '.png') });
-    const neutral = async () => { await W.touch('touchEnd'); await page.waitForTimeout(180); };
+    const neutral = async () => {
+        // CDP rejects touchEnd when no touch has started. W.walkToPoint/tapEl
+        // own and finish their touches; release only this helper's held stick.
+        if (touchActive) await touch('touchEnd');
+        await page.waitForTimeout(180);
+    };
     const enter = async (map, entry) => {
         await neutral(); await page.evaluate(async ([m, e]) => T.win.travel(m, e), [map, entry]);
         await page.waitForTimeout(800);
@@ -63,8 +74,8 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
         let state = await snapshot('locked-before');
         check(state.first === null && state.field.mobs.length === 1, 'fresh save: alive guardian and no first defeat');
         await walkExit(MAP, 'north', MAP);
-        const pad = await W.padBox(); await W.touch('touchStart', pad.x, pad.y);
-        await W.touch('touchMove', pad.x, pad.y - pad.lim); await page.waitForTimeout(1000); await neutral();
+        const pad = await W.padBox(); await touch('touchStart', pad.x, pad.y);
+        await touch('touchMove', pad.x, pad.y - pad.lim); await page.waitForTimeout(1000); await neutral();
         state = await snapshot('locked-held-input');
         check(state.map === MAP && state.first === null, 'locked threshold stays in T3 under held input');
         await shot('01-locked');
@@ -99,8 +110,8 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
             } else {
                 const dx = area.x - .5 - s.p.x, dy = area.y - .8 - s.p.y, distance = Math.hypot(dx, dy);
                 if (distance > .15) {
-                    if (!held) { await W.touch('touchStart', combatPad.x, combatPad.y); held = true; }
-                    await W.touch('touchMove', combatPad.x + dx / distance * combatPad.lim, combatPad.y + dy / distance * combatPad.lim);
+                    if (!held) { await touch('touchStart', combatPad.x, combatPad.y); held = true; }
+                    await touch('touchMove', combatPad.x + dx / distance * combatPad.lim, combatPad.y + dy / distance * combatPad.lim);
                 } else if (held) { await neutral(); held = false; }
             }
             await page.waitForTimeout(50);
@@ -135,9 +146,9 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
             hp: T.field.fieldState().run.hp.set, p: T.player.feet() }));
         const dodgePad = await W.padBox();
         const dodgeDirection = dodge.p.x >= dodge.lock.area.x ? 1 : -1;
-        await W.touch('touchStart', dodgePad.x, dodgePad.y);
-        await W.touch('touchMove', dodgePad.x + dodgeDirection * dodgePad.lim, dodgePad.y);
-        await page.waitForTimeout(420); await W.touch('touchEnd');
+        await touch('touchStart', dodgePad.x, dodgePad.y);
+        await touch('touchMove', dodgePad.x + dodgeDirection * dodgePad.lim, dodgePad.y);
+        await page.waitForTimeout(420); await touch('touchEnd');
         await page.waitForFunction(seq => T.field.testEvents().some(e => e.ev === 'slamImpact' && e.seq === seq), dodge.lock.seq, { timeout: 5000 });
         const dodged = await page.evaluate(seq => ({ impact: T.field.testEvents().find(e => e.ev === 'slamImpact' && e.seq === seq),
             hp: T.field.fieldState().run.hp.set, p: T.player.feet() }), dodge.lock.seq);
@@ -165,8 +176,8 @@ module.exports = async ({ page, W, boot, where, ok, OUT, BASE }) => {
             const close = s.blow.mobs.some(o => o.meets && o.seen);
             if (!close) {
                 const dx = at.x - .5 - s.p.x, dy = at.y - .8 - s.p.y, distance = Math.hypot(dx, dy) || 1;
-                await W.touch('touchStart', combatPad.x, combatPad.y);
-                await W.touch('touchMove', combatPad.x + dx / distance * combatPad.lim, combatPad.y + dy / distance * combatPad.lim);
+                await touch('touchStart', combatPad.x, combatPad.y);
+                await touch('touchMove', combatPad.x + dx / distance * combatPad.lim, combatPad.y + dy / distance * combatPad.lim);
                 await page.waitForTimeout(150); await neutral();
                 // Neutral input lets the existing attack auto-facing choose the nearest valid shape.
             }
